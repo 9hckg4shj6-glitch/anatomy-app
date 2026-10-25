@@ -1,0 +1,212 @@
+{
+  "system": "digestive",
+  "units": [
+    {
+      "id": "dig-mouth",
+      "title": "口と歯",
+      "terms": [
+        {
+          "id": "lip", "ja": "口唇", "yomi": "こうしん", "en": "lips", "enAlt": ["lip"], "la": "labia oris",
+          "parts": ["lip"], "level": 2,
+          "kanji": "くちびる",
+          "etym": "lip（英語の固有語）。ラテン語 labium から labial「唇の」",
+          "note": "口の入口をつくるやわらかいひだ。中に口輪筋がある。"
+        },
+        {
+          "id": "tongue", "ja": "舌", "yomi": "した", "en": "tongue", "la": "lingua",
+          "parts": ["tongue"], "level": 1,
+          "kanji": "した。熟語では「ぜつ」と読む（舌骨・舌下腺）",
+          "etym": "tongue（英語の固有語）。ラテン語 lingua から lingual「舌の」、ギリシャ語 glossa から glossal",
+          "note": "筋でできた器官。味を感じ、食べ物を混ぜて飲み込み、ことばを話すのに働く。"
+        },
+        {
+          "id": "incisors", "ja": "切歯", "yomi": "せっし", "en": "incisors", "enAlt": ["incisor", "incisor teeth"], "la": "dentes incisivi",
+          "parts": ["* incisor tooth"], "level": 1,
+          "kanji": "切る歯（前歯）",
+          "etym": "incisor ← ラテン語 incidere「切り込む」",
+          "note": "前歯。上下左右に2本ずつ計8本（永久歯）。食べ物をかみ切る。"
+        },
+        {
+          "id": "canines", "ja": "犬歯", "yomi": "けんし", "en": "canines", "enAlt": ["canine", "canine teeth"], "la": "dentes canini",
+          "parts": ["* canine tooth"], "level": 1,
+          "kanji": "犬のきばのような歯（糸切り歯）",
+          "etym": "canine ← ラテン語 canis「犬」",
+          "note": "切歯のとなりのとがった歯。上下左右に1本ずつ計4本。根が最も長い。"
+        },
+        {
+          "id": "premolars", "ja": "小臼歯", "yomi": "しょうきゅうし", "en": "premolars", "enAlt": ["premolar", "premolar teeth"], "la": "dentes premolares",
+          "parts": ["* premolar tooth"], "level": 2,
+          "kanji": "臼（うす）のような小さい歯",
+          "etym": "pre-「前」＋ molar「臼歯」",
+          "note": "犬歯の後ろの歯。上下左右に2本ずつ計8本。"
+        },
+        {
+          "id": "molars", "ja": "大臼歯", "yomi": "だいきゅうし", "en": "molars", "enAlt": ["molar", "molar teeth"], "la": "dentes molares",
+          "parts": ["* molar tooth"], "level": 1,
+          "kanji": "臼（うす）のような大きい歯（奥歯）",
+          "etym": "molar ← ラテン語 mola「石臼」",
+          "note": "奥歯。上下左右に3本ずつ計12本（第3大臼歯＝親知らずを含む）。食べ物をすりつぶす。このモデルは第1・第2大臼歯のみ。"
+        },
+        {
+          "id": "gingiva", "ja": "歯肉", "yomi": "しにく", "en": "gingiva", "enAlt": ["gums", "gum"], "la": "gingiva",
+          "parts": ["gingiva of upper jaw", "gingiva of lower jaw"], "level": 2,
+          "kanji": "歯ぐき",
+          "etym": "gingiva ← ラテン語「歯ぐき」",
+          "note": "歯の根もとと歯槽骨をおおう粘膜。"
+        },
+        {
+          "id": "submandibular-gland", "ja": "顎下腺", "yomi": "がっかせん", "en": "submandibular gland", "la": "glandula submandibularis",
+          "parts": ["submandibular gland"], "level": 2,
+          "kanji": "下顎骨の下にある腺",
+          "etym": "sub-「下」＋ mandibular「下顎の」",
+          "note": "三大唾液腺の一つ。あごの下にあり、舌の下に唾液を出す。"
+        },
+        {
+          "id": "sublingual-gland", "ja": "舌下腺", "yomi": "ぜっかせん", "en": "sublingual gland", "la": "glandula sublingualis",
+          "parts": ["sublingual gland"], "level": 2,
+          "kanji": "舌の下にある腺",
+          "etym": "sub-「下」＋ lingual「舌の」",
+          "note": "三大唾液腺で最も小さい。舌の下の口の底にある。"
+        }
+      ]
+    },
+    {
+      "id": "dig-tract",
+      "title": "消化管",
+      "terms": [
+        {
+          "id": "esophagus", "ja": "食道", "yomi": "しょくどう", "en": "esophagus", "enAlt": ["oesophagus"], "la": "oesophagus",
+          "parts": ["esophagus"], "level": 1,
+          "kanji": "食べ物の通る道",
+          "etym": "esophagus ← ギリシャ語 oisein「運ぶ」＋ phagein「食べる」",
+          "note": "咽頭から胃まで、気管の後ろを下る約25cmの管。横隔膜を貫いて胃につながる。"
+        },
+        {
+          "id": "stomach", "ja": "胃", "yomi": "い", "en": "stomach", "la": "gaster",
+          "parts": ["stomach"], "level": 1,
+          "kanji": "い",
+          "etym": "stomach ← ギリシャ語 stomachos「のど・胃の入口」(stoma 口)。gaster から gastric「胃の」",
+          "note": "左上腹部にある袋状の器官。入口が噴門、出口が幽門。胃酸と消化酵素で食べ物を消化する。"
+        },
+        {
+          "id": "duodenum", "ja": "十二指腸", "yomi": "じゅうにしちょう", "en": "duodenum", "la": "duodenum",
+          "parts": ["duodenum"], "level": 1,
+          "kanji": "指12本分の長さの腸",
+          "etym": "duodenum ← ラテン語 duodeni digitorum「指12本分」",
+          "note": "胃に続く小腸の最初の部分（約25cm）。C字形に膵頭を囲み、胆汁と膵液が注ぐ。"
+        },
+        {
+          "id": "jejunum", "ja": "空腸", "yomi": "くうちょう", "en": "jejunum", "la": "jejunum",
+          "parts": ["* part of jejunum"], "level": 1,
+          "kanji": "死後に空（から）のことが多い腸",
+          "etym": "jejunum ← ラテン語 jejunus「空腹の・空の」",
+          "note": "十二指腸に続く小腸の前半約5分の2。主に左上腹部にある。"
+        },
+        {
+          "id": "ileum", "ja": "回腸", "yomi": "かいちょう", "en": "ileum", "la": "ileum",
+          "parts": ["* part of ileum"], "level": 1,
+          "kanji": "曲がりくねって回る腸",
+          "etym": "ileum ← ギリシャ語 eilein「巻く・ねじる」",
+          "note": "空腸に続く小腸の後半約5分の3。右下腹部で大腸（盲腸）につながる。"
+        },
+        {
+          "id": "cecum", "check": true, "ja": "盲腸", "yomi": "もうちょう", "en": "cecum", "enAlt": ["caecum"], "la": "caecum",
+          "parts": ["ileocecal junction"], "level": 1,
+          "kanji": "一方が行き止まり（盲）の腸",
+          "etym": "cecum ← ラテン語 caecus「盲目の・行き止まりの」",
+          "note": "大腸の始まりで、回腸が入る所より下の袋状の部分。下に虫垂がつく。このモデルでは回盲部として示す。"
+        },
+        {
+          "id": "appendix", "ja": "虫垂", "yomi": "ちゅうすい", "en": "appendix", "enAlt": ["vermiform appendix"], "la": "appendix vermiformis",
+          "parts": ["appendix"], "level": 1,
+          "kanji": "虫のように垂れ下がったもの",
+          "etym": "appendix ← ラテン語「付属物」、vermiform「虫の形の」",
+          "note": "盲腸から垂れ下がる細い管。炎症を起こしたものが虫垂炎（いわゆる盲腸）。"
+        },
+        {
+          "id": "ascending-colon", "ja": "上行結腸", "yomi": "じょうこうけっちょう", "en": "ascending colon", "la": "colon ascendens",
+          "parts": ["ascending colon"], "level": 1,
+          "kanji": "上に行く結腸",
+          "etym": "colon ← ギリシャ語 kolon「大腸」",
+          "note": "盲腸から右の腹壁に沿って上る結腸。肝臓の下で左へ曲がり横行結腸になる。"
+        },
+        {
+          "id": "transverse-colon", "ja": "横行結腸", "yomi": "おうこうけっちょう", "en": "transverse colon", "la": "colon transversum",
+          "parts": ["transverse colon"], "level": 1,
+          "kanji": "横に行く結腸",
+          "etym": "transverse「横の」＋ colon",
+          "note": "腹部を右から左へ横切る結腸。腸間膜があり、垂れ下がるように動く。"
+        },
+        {
+          "id": "descending-colon", "ja": "下行結腸", "yomi": "かこうけっちょう", "en": "descending colon", "la": "colon descendens",
+          "parts": ["descending colon"], "level": 1,
+          "kanji": "下に行く結腸",
+          "etym": "descending「下る」＋ colon",
+          "note": "左の腹壁に沿って下る結腸。このあとS状結腸を経て直腸へ続く。"
+        },
+        {
+          "id": "rectum", "ja": "直腸", "yomi": "ちょくちょう", "en": "rectum", "la": "rectum",
+          "parts": ["rectum"], "level": 1,
+          "kanji": "まっすぐな腸",
+          "etym": "rectum ← ラテン語 rectus「まっすぐな」",
+          "note": "大腸の最後の部分。仙骨の前を下り、肛門で終わる。"
+        }
+      ]
+    },
+    {
+      "id": "dig-glands",
+      "title": "肝臓・胆道・膵臓",
+      "terms": [
+        {
+          "id": "liver", "ja": "肝臓", "yomi": "かんぞう", "en": "liver", "la": "hepar",
+          "parts": ["hepatovenous segment *", "caudate lobe of liver"], "level": 1,
+          "kanji": "肝＝きも",
+          "etym": "liver（英語の固有語）。ギリシャ語 hepar から hepatic「肝臓の」",
+          "note": "右上腹部、横隔膜の下にある人体最大の臓器。栄養の代謝・解毒・胆汁の生成などを行う。"
+        },
+        {
+          "id": "caudate-lobe", "ja": "尾状葉", "yomi": "びじょうよう", "en": "caudate lobe", "la": "lobus caudatus",
+          "parts": ["caudate lobe of liver"], "level": 3,
+          "kanji": "尾のような形の葉",
+          "etym": "caudate ← ラテン語 cauda「尾」",
+          "note": "肝臓の下後面、下大静脈の左にある小さな部分。"
+        },
+        {
+          "id": "gallbladder", "ja": "胆嚢", "yomi": "たんのう", "en": "gallbladder", "la": "vesica biliaris",
+          "parts": ["gallbladder"], "level": 1,
+          "kanji": "胆汁をためる袋（嚢）",
+          "etym": "gall「胆汁」＋ bladder「袋」",
+          "note": "肝臓の下面にあるナス形の袋。胆汁をためて濃くし、食事のときに十二指腸へ送る。"
+        },
+        {
+          "id": "common-hepatic-duct", "ja": "総肝管", "yomi": "そうかんかん", "en": "common hepatic duct", "la": "ductus hepaticus communis",
+          "parts": ["common hepatic duct"], "level": 2,
+          "kanji": "肝臓からの胆汁が通る共通の管",
+          "etym": "hepatic「肝臓の」＋ duct「管」",
+          "note": "左右の肝管が合わさった管。胆嚢管と合流して総胆管になる。"
+        },
+        {
+          "id": "cystic-duct", "ja": "胆嚢管", "yomi": "たんのうかん", "en": "cystic duct", "la": "ductus cysticus",
+          "parts": ["cystic duct"], "level": 3,
+          "kanji": "胆嚢から出る管",
+          "etym": "cystic ← ギリシャ語 kystis「袋・膀胱」",
+          "note": "胆嚢の首から出て総肝管と合流する短い管。"
+        },
+        {
+          "id": "pancreas", "ja": "膵臓", "yomi": "すいぞう", "en": "pancreas", "la": "pancreas",
+          "parts": ["pancreas"], "level": 1,
+          "kanji": "膵＝すい（「萃」＝あつまる）。蘭学者がつくった字",
+          "etym": "pancreas ← ギリシャ語 pan「すべて」＋ kreas「肉」",
+          "note": "胃の後ろを横に走る細長い臓器。消化酵素を含む膵液を出し（外分泌）、インスリンなどのホルモンも出す（内分泌）。"
+        },
+        {
+          "id": "pancreatic-duct", "ja": "膵管", "yomi": "すいかん", "en": "pancreatic duct", "la": "ductus pancreaticus",
+          "parts": ["pancreatic duct"], "level": 3, "xray": true,
+          "kanji": "膵液の通る管",
+          "etym": "pancreatic「膵臓の」＋ duct",
+          "note": "膵臓の中を尾から頭へ走る管。総胆管と合流して十二指腸に開く。"
+        }
+      ]
+    }
+  ]
+}

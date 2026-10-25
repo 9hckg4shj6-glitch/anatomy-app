@@ -1,0 +1,42 @@
+{
+  "name": "anatomy-study-app",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "fetch:sources": "./scripts/fetch-sources.sh",
+    "build:models": "node scripts/build-models.mjs",
+    "build:audio": "node scripts/build-audio.mjs",
+    "build:icons": "node scripts/build-icons.mjs",
+    "validate:content": "node scripts/validate-content.mjs",
+    "build": "npm run validate:content && tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "vitest run",
+    "check": "npm run test && npm run build",
+    "build:wikidata": "node scripts/wikidata-labels.mjs"
+  },
+  "dependencies": {
+    "dexie": "^4.4.7",
+    "three": "^0.186.1",
+    "ts-fsrs": "^5.4.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
+    "@types/node": "^24.19.2",
+    "@types/three": "^0.186.0",
+    "fake-indexeddb": "^6.2.6",
+    "jsdom": "^30.1.3",
+    "kokoro-js": "^1.2.1",
+    "meshoptimizer": "^1.3.0",
+    "phonemizer": "^1.2.1",
+    "sharp": "^0.35.5",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.7",
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^5.0.5"
+  }
+}

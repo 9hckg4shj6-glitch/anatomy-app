@@ -1,0 +1,337 @@
+{
+  "system": "nervous",
+  "units": [
+    {
+      "id": "nerv-lobes",
+      "title": "大脳と大脳葉",
+      "terms": [
+        {
+          "id": "cerebrum", "ja": "大脳", "yomi": "だいのう", "en": "cerebrum", "la": "cerebrum",
+          "parts": ["* frontal gyrus", "precentral gyrus", "postcentral gyrus", "* part of superior temporal gyrus", "middle temporal gyrus", "inferior temporal gyrus", "superior parietal lobule", "supramarginal gyrus", "angular gyrus", "occipital lobe", "insula", "cingulate gyrus", "parahippocampal gyrus", "fusiform gyrus", "orbital gyrus", "white matter of cerebral hemisphere"], "level": 1,
+          "kanji": "大きな脳",
+          "etym": "cerebrum ← ラテン語「脳」。cerebral「大脳の」",
+          "note": "左右の大脳半球からなる脳の最大の部分。表面の大脳皮質で運動・感覚・言語・思考などを担う。"
+        },
+        {
+          "id": "frontal-lobe", "ja": "前頭葉", "yomi": "ぜんとうよう", "en": "frontal lobe", "la": "lobus frontalis",
+          "parts": ["* frontal gyrus", "precentral gyrus", "orbital gyrus"], "level": 1,
+          "kanji": "頭の前にある葉",
+          "etym": "frontal ← frons「ひたい」、lobe ← ギリシャ語 lobos「耳たぶ・ふくらみ」",
+          "note": "中心溝より前の部分。運動の指令（中心前回）、話すこと（ブローカ野）、考え・判断・感情の抑制などを担う。"
+        },
+        {
+          "id": "parietal-lobe", "ja": "頭頂葉", "yomi": "とうちょうよう", "en": "parietal lobe", "la": "lobus parietalis",
+          "parts": ["postcentral gyrus", "superior parietal lobule", "supramarginal gyrus", "angular gyrus"], "level": 1,
+          "kanji": "頭のてっぺんの葉",
+          "etym": "parietal ← paries「壁」",
+          "note": "中心溝の後ろ。体の感覚（中心後回）と、空間の把握・読み書きなどを担う。"
+        },
+        {
+          "id": "temporal-lobe", "ja": "側頭葉", "yomi": "そくとうよう", "en": "temporal lobe", "la": "lobus temporalis",
+          "parts": ["* part of superior temporal gyrus", "middle temporal gyrus", "inferior temporal gyrus", "fusiform gyrus", "parahippocampal gyrus"], "level": 1,
+          "kanji": "頭の側面の葉",
+          "etym": "temporal ← tempus「こめかみ」",
+          "note": "外側溝より下の部分。聴覚、ことばの理解（ウェルニッケ野）、記憶（内側の海馬）などを担う。"
+        },
+        {
+          "id": "occipital-lobe", "ja": "後頭葉", "yomi": "こうとうよう", "en": "occipital lobe", "la": "lobus occipitalis",
+          "parts": ["occipital lobe"], "level": 1,
+          "kanji": "頭の後ろの葉",
+          "etym": "occipital ← occiput「後頭部」",
+          "note": "大脳のいちばん後ろ。目から入った情報を処理する視覚の中枢。"
+        },
+        {
+          "id": "insula", "ja": "島", "yomi": "とう", "en": "insula", "enAlt": ["insular lobe"], "la": "insula",
+          "parts": ["insula"], "level": 2, "xray": true,
+          "kanji": "（外側溝の奥に）島のように隠れた皮質",
+          "etym": "insula ← ラテン語「島」",
+          "note": "外側溝の奥に隠れた大脳皮質。味覚や内臓の感覚、情動にかかわる。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-gyri",
+      "title": "大脳の回",
+      "terms": [
+        {
+          "id": "precentral-gyrus", "ja": "中心前回", "yomi": "ちゅうしんぜんかい", "en": "precentral gyrus", "la": "gyrus precentralis",
+          "parts": ["precentral gyrus"], "level": 1,
+          "kanji": "中心溝の前の回（脳のしわの盛り上がり）",
+          "etym": "pre-「前」＋ central「中心（溝）の」、gyrus ← ギリシャ語 gyros「輪・回転」",
+          "note": "一次運動野。体を動かす指令を出す。反対側の体を支配する。"
+        },
+        {
+          "id": "postcentral-gyrus", "ja": "中心後回", "yomi": "ちゅうしんこうかい", "en": "postcentral gyrus", "la": "gyrus postcentralis",
+          "parts": ["postcentral gyrus"], "level": 1,
+          "kanji": "中心溝の後ろの回",
+          "etym": "post-「後ろ」＋ central",
+          "note": "一次体性感覚野。皮膚などからの感覚を受け取る。反対側の体の感覚を担当する。"
+        },
+        {
+          "id": "superior-frontal-gyrus", "ja": "上前頭回", "yomi": "じょうぜんとうかい", "en": "superior frontal gyrus", "la": "gyrus frontalis superior",
+          "parts": ["superior frontal gyrus"], "level": 3,
+          "kanji": "前頭葉の上の回",
+          "etym": "superior「上の」＋ frontal ＋ gyrus",
+          "note": "前頭葉の最も上の回。正中に面し、運動の計画などにかかわる。"
+        },
+        {
+          "id": "middle-frontal-gyrus", "ja": "中前頭回", "yomi": "ちゅうぜんとうかい", "en": "middle frontal gyrus", "la": "gyrus frontalis medius",
+          "parts": ["middle frontal gyrus"], "level": 3,
+          "kanji": "前頭葉の中ほどの回",
+          "etym": "middle ＋ frontal ＋ gyrus",
+          "note": "前頭葉の中央を前後に走る回。目の動き（前頭眼野）や作業記憶にかかわる。"
+        },
+        {
+          "id": "inferior-frontal-gyrus", "ja": "下前頭回", "yomi": "かぜんとうかい", "en": "inferior frontal gyrus", "la": "gyrus frontalis inferior",
+          "parts": ["inferior frontal gyrus"], "level": 2,
+          "kanji": "前頭葉の下の回",
+          "etym": "inferior「下の」＋ frontal ＋ gyrus",
+          "note": "左側の後部が運動性言語中枢（ブローカ野）。傷つくとうまく話せなくなる。"
+        },
+        {
+          "id": "superior-temporal-gyrus", "ja": "上側頭回", "yomi": "じょうそくとうかい", "en": "superior temporal gyrus", "la": "gyrus temporalis superior",
+          "parts": ["* part of superior temporal gyrus"], "level": 2,
+          "kanji": "側頭葉の上の回",
+          "etym": "superior ＋ temporal ＋ gyrus",
+          "note": "聴覚の中枢がある。左側の後部が感覚性言語中枢（ウェルニッケ野）で、ことばの理解を担う。"
+        },
+        {
+          "id": "middle-temporal-gyrus", "ja": "中側頭回", "yomi": "ちゅうそくとうかい", "en": "middle temporal gyrus", "la": "gyrus temporalis medius",
+          "parts": ["middle temporal gyrus"], "level": 3,
+          "kanji": "側頭葉の中ほどの回",
+          "etym": "middle ＋ temporal ＋ gyrus",
+          "note": "側頭葉の外側面の中央の回。動きの知覚やことばの意味の処理にかかわる。"
+        },
+        {
+          "id": "inferior-temporal-gyrus", "ja": "下側頭回", "yomi": "かそくとうかい", "en": "inferior temporal gyrus", "la": "gyrus temporalis inferior",
+          "parts": ["inferior temporal gyrus"], "level": 3,
+          "kanji": "側頭葉の下の回",
+          "etym": "inferior ＋ temporal ＋ gyrus",
+          "note": "側頭葉の下縁の回。物の形を見分けることにかかわる。"
+        },
+        {
+          "id": "superior-parietal-lobule", "ja": "上頭頂小葉", "yomi": "じょうとうちょうしょうよう", "en": "superior parietal lobule", "la": "lobulus parietalis superior",
+          "parts": ["superior parietal lobule"], "level": 3,
+          "kanji": "頭頂葉の上の小さな葉",
+          "etym": "superior ＋ parietal ＋ lobule「小葉」",
+          "note": "頭頂葉の上部。体の位置や空間の把握にかかわる。"
+        },
+        {
+          "id": "supramarginal-gyrus", "ja": "縁上回", "yomi": "えんじょうかい", "en": "supramarginal gyrus", "la": "gyrus supramarginalis",
+          "parts": ["supramarginal gyrus"], "level": 3,
+          "kanji": "（外側溝の）縁の上の回",
+          "etym": "supra-「上」＋ marginal「縁の」",
+          "note": "外側溝の後端を囲む回。ことばや動作の処理にかかわる。"
+        },
+        {
+          "id": "angular-gyrus", "ja": "角回", "yomi": "かくかい", "en": "angular gyrus", "la": "gyrus angularis",
+          "parts": ["angular gyrus"], "level": 3,
+          "kanji": "（上側頭溝の）角を囲む回",
+          "etym": "angular「角の」",
+          "note": "縁上回の後ろの回。読み書きや計算にかかわる。"
+        },
+        {
+          "id": "cingulate-gyrus", "ja": "帯状回", "yomi": "たいじょうかい", "en": "cingulate gyrus", "la": "gyrus cinguli",
+          "parts": ["cingulate gyrus"], "level": 2, "xray": true,
+          "kanji": "帯のように脳梁を取り巻く回",
+          "etym": "cingulate ← ラテン語 cingulum「帯」",
+          "note": "大脳の内側面で脳梁を囲む回。辺縁系の一部で、情動や意欲にかかわる。"
+        },
+        {
+          "id": "parahippocampal-gyrus", "ja": "海馬傍回", "yomi": "かいばぼうかい", "en": "parahippocampal gyrus", "la": "gyrus parahippocampalis",
+          "parts": ["parahippocampal gyrus"], "level": 3, "xray": true,
+          "kanji": "海馬の傍（かたわら）の回",
+          "etym": "para-「そば」＋ hippocampal「海馬の」",
+          "note": "側頭葉の内側下面で海馬のそばにある回。記憶にかかわる。"
+        },
+        {
+          "id": "fusiform-gyrus", "check": true, "ja": "紡錘状回", "yomi": "ぼうすいじょうかい", "en": "fusiform gyrus", "enAlt": ["lateral occipitotemporal gyrus"], "la": "gyrus fusiformis",
+          "parts": ["fusiform gyrus"], "level": 3,
+          "kanji": "紡錘（糸を巻く道具）の形の回",
+          "etym": "fusiform ← ラテン語 fusus「紡錘」＋ form",
+          "note": "側頭葉の下面の回。顔や文字を見分けることにかかわる。"
+        },
+        {
+          "id": "orbital-gyri", "check": true, "ja": "眼窩回", "yomi": "がんかかい", "en": "orbital gyri", "enAlt": ["orbital gyrus"], "la": "gyri orbitales",
+          "parts": ["orbital gyrus"], "level": 3,
+          "kanji": "眼窩の上にのる回",
+          "etym": "orbital ← orbita「眼窩」",
+          "note": "前頭葉の下面で眼窩の天井にのる回。意思決定や情動の調節にかかわる。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-deep",
+      "title": "脳の深部と脳室",
+      "terms": [
+        {
+          "id": "corpus-callosum", "ja": "脳梁", "yomi": "のうりょう", "en": "corpus callosum", "la": "corpus callosum",
+          "parts": ["corpus callosum"], "level": 1, "xray": true,
+          "kanji": "脳の梁（はり）。左右の大脳半球を橋渡しする",
+          "etym": "corpus「体」＋ callosum「硬い」",
+          "note": "左右の大脳半球をつなぐ神経線維の太い束。"
+        },
+        {
+          "id": "thalamus", "ja": "視床", "yomi": "ししょう", "en": "thalamus", "la": "thalamus",
+          "parts": ["thalamus"], "level": 1, "xray": true,
+          "kanji": "床＝寝床。視神経の出る所と考えられて名づけられた",
+          "etym": "thalamus ← ギリシャ語 thalamos「奥の部屋」",
+          "note": "間脳の大部分をしめる卵形の灰白質。嗅覚以外の感覚を大脳皮質へ中継する。"
+        },
+        {
+          "id": "hypothalamus", "ja": "視床下部", "yomi": "ししょうかぶ", "en": "hypothalamus", "la": "hypothalamus",
+          "parts": ["hypothalamus"], "level": 1, "xray": true,
+          "kanji": "視床の下の部分",
+          "etym": "hypo-「下」＋ thalamus",
+          "note": "視床の下にある小さな部分。体温・食欲・水分・ホルモン（下垂体）などを調節する自律神経の中枢。"
+        },
+        {
+          "id": "caudate-nucleus", "ja": "尾状核", "yomi": "びじょうかく", "en": "caudate nucleus", "la": "nucleus caudatus",
+          "parts": ["caudate nucleus"], "level": 2, "xray": true,
+          "kanji": "尾のような形の神経核",
+          "etym": "caudate ← cauda「尾」",
+          "note": "側脳室の壁に沿って弓なりに曲がる大脳基底核の一つ。運動の調節にかかわる。"
+        },
+        {
+          "id": "putamen", "ja": "被殻", "yomi": "ひかく", "en": "putamen", "la": "putamen",
+          "parts": ["putamen"], "level": 2, "xray": true,
+          "kanji": "殻（から）をかぶったように外側をおおう核",
+          "etym": "putamen ← ラテン語「殻・皮」",
+          "note": "大脳基底核の一つ。淡蒼球の外側にある。脳出血が最も多い部位。"
+        },
+        {
+          "id": "globus-pallidus", "ja": "淡蒼球", "yomi": "たんそうきゅう", "en": "globus pallidus", "la": "globus pallidus",
+          "parts": ["globus pallidus"], "level": 3, "xray": true,
+          "kanji": "淡く青白い球",
+          "etym": "globus「球」＋ pallidus「青白い」",
+          "note": "被殻の内側にある大脳基底核の一つ。運動の調節にかかわる。"
+        },
+        {
+          "id": "hippocampus", "ja": "海馬", "yomi": "かいば", "en": "hippocampus", "la": "hippocampus",
+          "parts": ["hippocampus"], "level": 1, "xray": true,
+          "kanji": "海馬＝タツノオトシゴ。形が似ている",
+          "etym": "hippocampus ← ギリシャ語 hippos「馬」＋ kampos「海の怪物」",
+          "note": "側頭葉の内側にある。新しいことを記憶するのに欠かせない。"
+        },
+        {
+          "id": "amygdala", "ja": "扁桃体", "yomi": "へんとうたい", "en": "amygdaloid body", "enAlt": ["amygdala"], "la": "corpus amygdaloideum",
+          "parts": ["amygdala"], "level": 2, "xray": true,
+          "kanji": "扁桃＝アーモンド。形が似ている",
+          "etym": "amygdala ← ギリシャ語「アーモンド」",
+          "note": "海馬の前にある神経核。恐怖などの情動にかかわる。"
+        },
+        {
+          "id": "internal-capsule", "ja": "内包", "yomi": "ないほう", "en": "internal capsule", "la": "capsula interna",
+          "parts": ["internal capsule"], "level": 2, "xray": true,
+          "kanji": "（基底核と視床を）内側で包む白質",
+          "etym": "internal ＋ capsule「小箱・包み」",
+          "note": "大脳皮質と脳幹・脊髄を結ぶ神経線維が集まる白質の帯。ここの出血で反対側の半身まひが起こる。"
+        },
+        {
+          "id": "fornix", "ja": "脳弓", "yomi": "のうきゅう", "en": "fornix", "la": "fornix",
+          "parts": ["fornix of forebrain", "commissure of fornix of forebrain"], "level": 3, "xray": true,
+          "kanji": "脳の中の弓（アーチ）",
+          "etym": "fornix ← ラテン語「アーチ・丸天井」",
+          "note": "海馬から出て弓なりに前へ向かう線維の束。記憶の回路の一部。"
+        },
+        {
+          "id": "lateral-ventricle", "ja": "側脳室", "yomi": "そくのうしつ", "en": "lateral ventricle", "la": "ventriculus lateralis",
+          "parts": ["lateral ventricle"], "level": 1, "xray": true,
+          "kanji": "脳の側方にある部屋",
+          "etym": "lateral「横の」＋ ventricle「小さな腹・部屋」",
+          "note": "左右の大脳半球の中にある脳室。脳脊髄液で満たされ、脈絡叢で液がつくられる。"
+        },
+        {
+          "id": "third-ventricle", "ja": "第三脳室", "yomi": "だいさんのうしつ", "en": "third ventricle", "la": "ventriculus tertius",
+          "parts": ["third ventricle"], "level": 2, "xray": true,
+          "kanji": "3番目の脳室",
+          "etym": "third ＋ ventricle",
+          "note": "左右の視床の間にある細い脳室。中脳水道で第四脳室とつながる。"
+        },
+        {
+          "id": "cerebral-aqueduct", "ja": "中脳水道", "yomi": "ちゅうのうすいどう", "en": "cerebral aqueduct", "enAlt": ["aqueduct of midbrain"], "la": "aqueductus mesencephali",
+          "parts": ["cerebral aqueduct"], "level": 3, "xray": true,
+          "kanji": "中脳の中の水道",
+          "etym": "aqueduct ← ラテン語 aqua「水」＋ ducere「導く」",
+          "note": "中脳を貫いて第三脳室と第四脳室をつなぐ細い管。詰まると水頭症になる。"
+        },
+        {
+          "id": "fourth-ventricle", "ja": "第四脳室", "yomi": "だいよんのうしつ", "en": "fourth ventricle", "la": "ventriculus quartus",
+          "parts": ["fourth ventricle"], "level": 2, "xray": true,
+          "kanji": "4番目の脳室",
+          "etym": "fourth ＋ ventricle",
+          "note": "橋・延髄と小脳の間にある脳室。ここから脳脊髄液がくも膜下腔へ出る。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-stem",
+      "title": "脳幹・小脳と視覚の経路",
+      "terms": [
+        {
+          "id": "midbrain", "ja": "中脳", "yomi": "ちゅうのう", "en": "midbrain", "enAlt": ["mesencephalon"], "la": "mesencephalon",
+          "parts": ["midbrain", "peduncle of midbrain"], "level": 1,
+          "kanji": "脳の中ほどの部分",
+          "etym": "mid-「中間」＋ brain。mesencephalon ← meso-「中」＋ enkephalos「脳」",
+          "note": "脳幹の最も上の部分。眼の動きや瞳孔の反射、姿勢の調節にかかわる。"
+        },
+        {
+          "id": "pons", "ja": "橋", "yomi": "きょう", "en": "pons", "la": "pons",
+          "parts": ["pons"], "level": 1,
+          "kanji": "橋＝はし。左右の小脳をつなぐ橋のように見える",
+          "etym": "pons ← ラテン語「橋」",
+          "note": "中脳と延髄の間で前にふくらむ脳幹の部分。大脳と小脳を中継し、呼吸の調節にもかかわる。"
+        },
+        {
+          "id": "medulla-oblongata", "ja": "延髄", "yomi": "えんずい", "en": "medulla oblongata", "la": "medulla oblongata",
+          "parts": ["medulla oblongata"], "level": 1,
+          "kanji": "（脊髄が）延びた髄",
+          "etym": "medulla「髄」＋ oblongata「長くのびた」",
+          "note": "脳幹の最も下で脊髄に続く。呼吸・心拍・血圧など生命維持の中枢がある。"
+        },
+        {
+          "id": "cerebellum", "ja": "小脳", "yomi": "しょうのう", "en": "cerebellum", "la": "cerebellum",
+          "parts": ["cerebellum"], "level": 1,
+          "kanji": "小さな脳",
+          "etym": "cerebellum ← ラテン語「小さな脳」(cerebrum ＋ 縮小辞)",
+          "note": "大脳の後ろ下、脳幹の後ろにある。体のバランスや、なめらかな運動の調節を担う。"
+        },
+        {
+          "id": "optic-nerve", "ja": "視神経", "yomi": "ししんけい", "en": "optic nerve", "la": "nervus opticus",
+          "parts": ["optic nerve"], "level": 1,
+          "kanji": "視る（見る）ための神経",
+          "etym": "optic ← ギリシャ語 optikos「見ることの」",
+          "note": "第Ⅱ脳神経。眼球の後ろから出て、網膜からの視覚の情報を脳へ送る。"
+        },
+        {
+          "id": "optic-chiasm", "ja": "視交叉", "yomi": "しこうさ", "en": "optic chiasm", "enAlt": ["optic chiasma"], "la": "chiasma opticum",
+          "parts": ["optic chiasm"], "level": 2,
+          "kanji": "視神経が交叉する所",
+          "etym": "chiasm ← ギリシャ文字 χ（カイ）の形に交わること",
+          "note": "左右の視神経が合わさり、網膜の内側半分からの線維が反対側へ交叉する所。下垂体のすぐ上にある。"
+        },
+        {
+          "id": "optic-tract", "ja": "視索", "yomi": "しさく", "en": "optic tract", "la": "tractus opticus",
+          "parts": ["optic tract"], "level": 3,
+          "kanji": "視覚の線維の索（なわ）",
+          "etym": "optic ＋ tract「道・束」",
+          "note": "視交叉から外側膝状体へ向かう視覚の線維の束。"
+        },
+        {
+          "id": "trochlear-nerve", "ja": "滑車神経", "yomi": "かっしゃしんけい", "en": "trochlear nerve", "la": "nervus trochlearis",
+          "parts": ["trochlear nerve"], "level": 3,
+          "kanji": "滑車（を通る筋）へ行く神経",
+          "etym": "trochlear ← ラテン語 trochlea「滑車」",
+          "note": "第Ⅳ脳神経。眼の上斜筋（滑車を通る筋）を動かす。脳幹の背側から出る唯一の脳神経。"
+        },
+        {
+          "id": "ophthalmic-nerve", "ja": "眼神経", "yomi": "がんしんけい", "en": "ophthalmic nerve", "la": "nervus ophthalmicus",
+          "parts": ["ophthalmic nerve"], "level": 3,
+          "kanji": "眼のあたりの感覚を伝える神経",
+          "etym": "ophthalmic ← ギリシャ語 ophthalmos「眼」",
+          "note": "三叉神経（第Ⅴ脳神経）の第1枝。眼球・ひたい・鼻の感覚を伝える。"
+        }
+      ]
+    }
+  ]
+}

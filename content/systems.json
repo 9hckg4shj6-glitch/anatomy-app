@@ -1,0 +1,11 @@
+[
+  { "id": "skeletal", "ja": "骨格系", "color": "#e9dfc9" },
+  { "id": "muscular", "ja": "筋系", "color": "#c75b4f" },
+  { "id": "cardiovascular", "ja": "循環器系", "color": "#c8323c" },
+  { "id": "respiratory", "ja": "呼吸器系", "color": "#6fa8dc" },
+  { "id": "digestive", "ja": "消化器系", "color": "#d9965b" },
+  { "id": "urogenital", "ja": "泌尿器・生殖器系", "color": "#d4a514" },
+  { "id": "endocrine", "ja": "内分泌系", "color": "#3fa37a" },
+  { "id": "nervous", "ja": "神経系", "color": "#e9c46a" },
+  { "id": "sensory", "ja": "感覚器", "color": "#8e7cc3" }
+]

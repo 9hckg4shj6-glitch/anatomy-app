@@ -1,0 +1,39 @@
+{
+  "system": "endocrine",
+  "units": [
+    {
+      "id": "endo-glands",
+      "title": "内分泌腺",
+      "terms": [
+        {
+          "id": "pituitary-gland", "ja": "下垂体", "yomi": "かすいたい", "en": "pituitary gland", "enAlt": ["hypophysis", "pituitary"], "la": "hypophysis",
+          "parts": ["pituitary gland"], "level": 1,
+          "kanji": "（脳から）下に垂れ下がった体",
+          "etym": "pituitary ← ラテン語 pituita「粘液」（鼻汁を出すと誤解されていた）。hypophysis ← 「下に生えたもの」",
+          "note": "脳の下、蝶形骨のトルコ鞍にのる豆粒大の器官。成長ホルモンなど多くのホルモンを出し、ほかの内分泌腺を調節する。"
+        },
+        {
+          "id": "pineal-gland", "ja": "松果体", "yomi": "しょうかたい", "en": "pineal gland", "enAlt": ["pineal body", "pineal"], "la": "glandula pinealis",
+          "parts": ["pineal body"], "level": 2, "xray": true,
+          "kanji": "松かさ（松果）の形をした体",
+          "etym": "pineal ← ラテン語 pinea「松かさ」",
+          "note": "間脳の後ろ上にある小さな器官。メラトニンを出し、睡眠のリズムにかかわる。"
+        },
+        {
+          "id": "adrenal-gland", "ja": "副腎", "yomi": "ふくじん", "en": "suprarenal gland", "enAlt": ["adrenal gland", "adrenal"], "la": "glandula suprarenalis",
+          "parts": ["adrenal gland"], "level": 1,
+          "kanji": "腎臓に副（そ）う器官",
+          "etym": "adrenal ← ad-「そば」＋ renal「腎臓の」。suprarenal ← supra-「上」＋ renal",
+          "note": "左右の腎臓の上にのる器官。皮質からステロイドホルモン、髄質からアドレナリンを出す。"
+        },
+        {
+          "id": "thymus", "ja": "胸腺", "yomi": "きょうせん", "en": "thymus", "la": "thymus",
+          "parts": ["lobe of thymus"], "level": 2,
+          "kanji": "胸にある腺",
+          "etym": "thymus ← ギリシャ語 thymos（ハーブのタイムの葉に形が似る、とする説）",
+          "note": "胸骨の後ろ、心臓の上にある器官。T細胞を育てるリンパ性器官でもある。子どもで大きく、大人では脂肪に置きかわる。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "system": "respiratory",
+  "units": [
+    {
+      "id": "resp-airway",
+      "title": "気道と肺",
+      "terms": [
+        {
+          "id": "nasal-septal-cartilage", "ja": "鼻中隔軟骨", "yomi": "びちゅうかくなんこつ", "en": "septal nasal cartilage", "enAlt": ["septal cartilage"], "la": "cartilago septi nasi",
+          "parts": ["septal nasal cartilage"], "level": 3,
+          "kanji": "鼻の中の仕切り（中隔）の軟骨",
+          "etym": "septal ← ラテン語 septum「仕切り」",
+          "note": "鼻腔を左右に分ける鼻中隔の前の部分をつくる軟骨。"
+        },
+        {
+          "id": "epiglottis", "ja": "喉頭蓋", "yomi": "こうとうがい", "en": "epiglottis", "la": "epiglottis",
+          "parts": ["epiglottis"], "level": 1,
+          "kanji": "喉頭の蓋（ふた）",
+          "etym": "epi-「上」＋ glottis「声門」",
+          "note": "舌の根もとの後ろにある木の葉形の軟骨のふた。飲み込むとき喉頭の入口をふさぎ、食べ物が気管に入るのを防ぐ。"
+        },
+        {
+          "id": "thyroid-cartilage", "ja": "甲状軟骨", "yomi": "こうじょうなんこつ", "en": "thyroid cartilage", "la": "cartilago thyroidea",
+          "parts": ["thyroid cartilage"], "level": 1,
+          "kanji": "甲（よろいの盾）の形をした軟骨",
+          "etym": "thyroid ← ギリシャ語 thyreos「盾」＋ -oid",
+          "note": "喉頭で最も大きな軟骨。前の出っぱりが「のどぼとけ」（喉頭隆起）。"
+        },
+        {
+          "id": "cricoid-cartilage", "ja": "輪状軟骨", "yomi": "りんじょうなんこつ", "en": "cricoid cartilage", "la": "cartilago cricoidea",
+          "parts": ["cricoid cartilage"], "level": 2,
+          "kanji": "指輪の形をした軟骨",
+          "etym": "cricoid ← ギリシャ語 krikos「輪」＋ -oid",
+          "note": "甲状軟骨の下にある指輪形の軟骨。前が細く、後ろが広い。下に気管が続く。"
+        },
+        {
+          "id": "arytenoid-cartilage", "ja": "披裂軟骨", "yomi": "ひれつなんこつ", "en": "arytenoid cartilage", "la": "cartilago arytenoidea",
+          "parts": ["arytenoid cartilage"], "level": 3, "xray": true,
+                    "etym": "arytenoid ← ギリシャ語 arytaina「ひしゃく」＋ -oid",
+          "note": "輪状軟骨の上にのる左右1対の小さな軟骨。声帯がつき、動いて声門を開け閉めする。"
+        },
+        {
+          "id": "trachea", "ja": "気管", "yomi": "きかん", "en": "trachea", "la": "trachea",
+          "parts": ["trachea"], "level": 1,
+          "kanji": "空気（気）の通る管",
+          "etym": "trachea ← ギリシャ語 tracheia「ざらざらした（管）」。軟骨の輪で表面がでこぼこしている",
+          "note": "喉頭の下から胸の中まで続く管。U字形の軟骨が並び、後ろは食道に接する。第4〜5胸椎の高さで左右の気管支に分かれる。"
+        },
+        {
+          "id": "main-bronchus", "ja": "主気管支", "yomi": "しゅきかんし", "en": "main bronchus", "enAlt": ["main bronchi", "principal bronchus"], "la": "bronchus principalis",
+          "parts": ["main bronchus", "main bronchus proper"], "level": 1,
+          "kanji": "気管の枝の主なもの",
+          "etym": "bronchus ← ギリシャ語 bronchos「のど・気管」",
+          "note": "気管が左右に分かれた最初の枝。右は太く短く垂直に近いので、誤って吸い込んだ物は右に入りやすい。"
+        },
+        {
+          "id": "right-lung", "ja": "右肺", "yomi": "うはい", "en": "right lung", "la": "pulmo dexter",
+          "parts": ["FMA7309", "!FJ2044", "!FJ2041"], "shape": "hull", "level": 1,
+          "kanji": "右の肺",
+          "etym": "lung（英語の固有語）。ラテン語 pulmo から pulmonary「肺の」",
+          "note": "上葉・中葉・下葉の3葉からなる。左肺より大きい。このモデルの外形は、肺の中の気管支と血管の広がりから作った近似。"
+        },
+        {
+          "id": "left-lung", "ja": "左肺", "yomi": "さはい", "en": "left lung", "la": "pulmo sinister",
+          "parts": ["FMA7310"], "shape": "hull", "level": 1,
+          "kanji": "左の肺",
+          "etym": "lung。ラテン語 pulmo",
+          "note": "上葉・下葉の2葉からなる。心臓が左に寄っているぶん右肺より小さい。このモデルの外形は、気管支と血管の広がりから作った近似。"
+        }
+      ]
+    }
+  ]
+}

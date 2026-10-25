@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+coverage/
+.DS_Store
+
+# BodyParts3D などの元データ（数百MB）。scripts/fetch-sources.sh で取り直せる。
+data-raw/

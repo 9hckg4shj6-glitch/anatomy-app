@@ -1,0 +1,63 @@
+import { speak } from "../audio";
+import { unitById } from "../content";
+import { db, nowIso } from "../db";
+import { h, until } from "../dom";
+import { shuffle, type QueueItem } from "../study";
+import { sceneFor, type AppContext } from "./context";
+import { ask, showPanel } from "./quiz";
+import { termCard } from "./term-card";
+
+/** レッスン：①3Dで1語ずつ見る → ②確認テスト（タップと名前当てを交互に） → ③復習に入る */
+export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
+  const unit = unitById.get(unitId);
+  if (!unit) {
+    ctx.panel.replaceChildren(h("p", {}, "レッスンが見つかりません。"), h("a", { href: "#/" }, "ホームへ"));
+    return;
+  }
+  const { viewer, signal } = ctx;
+  await viewer.show(sceneFor(unit.system));
+
+  for (let i = 0; i < unit.terms.length; ) {
+    const term = unit.terms[i];
+    viewer.highlight([term.id], { isolate: !!term.xray || !!term.of });
+    viewer.focus(term.id, 3.2);
+    viewer.setLabel(term.id, term.ja);
+    ctx.hint(`${i + 1} / ${unit.terms.length}`);
+    void speak(term);
+    const back = h("button", { class: "ghost-button", type: "button", disabled: i === 0 }, "前へ");
+    const next = h("button", { class: "primary", type: "button" }, i === unit.terms.length - 1 ? "確認テストへ" : "次へ");
+    showPanel(ctx,
+      h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, `${i + 1} / ${unit.terms.length}`)),
+      termCard(term),
+      h("div", { class: "nav-row" }, back, next),
+    );
+    next.focus({ preventScroll: true });
+    i += await until<number>(signal, (resolve) => {
+      back.addEventListener("click", () => resolve(-1), { once: true });
+      next.addEventListener("click", () => resolve(1), { once: true });
+    });
+  }
+
+  viewer.setLabel(null);
+  const items: QueueItem[] = shuffle(unit.terms).map((term, i) => ({ termId: term.id, facet: i % 2 || term.xray ? "locate" : "point", isNew: true }));
+  let correct = 0;
+  for (const [i, item] of items.entries()) {
+    if ((await ask(ctx, item, "lesson", `確認 ${i + 1} / ${items.length}`)) === "correct") correct++;
+  }
+  const learnedAt = nowIso();
+  await db.learned.bulkPut(unit.terms.map((term) => ({ termId: term.id, unitId: unit.id, learnedAt })));
+  // 学習の記録を、端末の空きが減ったときなどにブラウザが消さないようにする（ホーム画面に追加した PWA は多くが自動で認められる）
+  void navigator.storage?.persist?.().catch(() => false);
+
+  viewer.setLabel(null);
+  viewer.highlight(unit.terms.map((term) => term.id));
+  viewer.overview();
+  ctx.hint("");
+  showPanel(ctx,
+    h("h2", {}, `「${unit.title}」おわり`),
+    h("p", { class: "today-count" }, `確認テスト ${correct} / ${items.length}`),
+    h("p", {}, "この語は復習に入りました。英語の問題も復習で出ます。"),
+    unit.terms.some((term) => term.nerve) ? h("p", {}, "筋の起始・停止・支配神経・作用は、位置を覚えたころに復習で出ます。") : "",
+    h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/" }, "ホームへ"), h("a", { class: "primary", href: "#/review" }, "復習する")),
+  );
+}

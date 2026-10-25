@@ -1,0 +1,49 @@
+name: Test and deploy Pages
+
+# main に push すると、テスト → 内容の検査 → 型チェック → ビルドを通った版を GitHub Pages に公開する。
+# 公開先: https://9hckg4shj6-glitch.github.io/anatomy-app/ （vite.config.ts の base と合わせる）
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  # 公開の途中で打ち切ると Pages が中途半端な状態になることがあるので、前の回を待つ
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+        env:
+          # kokoro-js（音声の作成用）が使う onnxruntime-node は、GPU 用の追加ファイルを取りに行くことがある。CI では要らない
+          ONNXRUNTIME_NODE_INSTALL_CUDA: skip
+      - run: npm run check
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

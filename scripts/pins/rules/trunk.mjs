@@ -1,0 +1,36 @@
+// 椎骨・仙骨・胸骨・肋骨の部位のピンの規則（scripts/pins/compute.mjs）。ray の座標は確認画像の枠の中の割合（左上が 0,0）
+export const RULES = {
+  "vertebral-body": { ray: ["sup", 0.5, 0.75], r: 0.02, n: "ant+sup" },
+  "vertebral-arch": { rays: [["sup", 0.36, 0.55], ["sup", 0.41, 0.38]], r: 0.008, n: "sup+post" },
+  "vertebral-foramen": { rays: [["sup", 0.5, 0.4], ["sup", 0.5, 0.555], ["sup", 0.37, 0.5], ["sup", 0.63, 0.5]], center: true, inset: 0.008, r: 0.012, n: "sup" },
+  "spinous-process": { ext: "post", r: 0.01 },
+  "transverse-process": { ext: "lat", r: 0.008, n: "lat+post" },
+  "superior-articular-process": { ext: "sup", box: { m: [0.55, 0.85], a: [0, 0.5] }, r: 0.007, n: "sup+post" },
+  "inferior-articular-process": { ext: "inf", box: { m: [0.62, 0.9], a: [0.1, 0.45] }, r: 0.007, n: "inf+post" },
+  "intervertebral-foramen": { rays: [["lat", 0.52, 0.32], ["lat", 0.52, 0.52], ["lat", 0.46, 0.41], ["lat", 0.58, 0.41]], center: true, r: 0.009, n: "lat" },
+  "foramen-transversarium": { rays: [["sup", 0.24, 0.7], ["sup", 0.165, 0.765], ["sup", 0.3, 0.765], ["sup", 0.19, 0.8]], center: true, r: 0.006, n: "sup" },
+  "dens-of-axis": { ext: "sup", r: 0.007, n: "sup+ant" },
+  "promontory": { ext: "ant+sup", box: { m: [0.4, 0.6] }, r: 0.009 },
+  "anterior-sacral-foramina": { centers: [[["ant", 0.385, 0.445], ["ant", 0.385, 0.525], ["ant", 0.34, 0.485], ["ant", 0.43, 0.485]], [["ant", 0.37, 0.6], ["ant", 0.415, 0.6], ["ant", 0.39, 0.575], ["ant", 0.39, 0.625]]], r: 0.008, n: "ant" },
+  "posterior-sacral-foramina": { centers: [[["post", 0.62, 0.445], ["post", 0.62, 0.515], ["post", 0.58, 0.48], ["post", 0.665, 0.48]], [["post", 0.58, 0.6], ["post", 0.62, 0.6], ["post", 0.6, 0.58], ["post", 0.6, 0.62]]], r: 0.007, n: "post" },
+  "median-sacral-crest": { ridge: { dir: "post", along: "s", from: 0.4, to: 0.75, k: 4 }, box: { m: [0.44, 0.56] }, r: 0.005 },
+  "sacral-hiatus": { ray: ["post", 0.5, 0.69], r: 0.007, n: "post+inf" },
+  "jugular-notch": { ext: "sup", box: { m: [0.45, 0.55] }, r: 0.007, n: "sup+ant" },
+  "clavicular-notch": { ext: "sup+0.5lat", box: { m: [0.55, 1] }, r: 0.007, n: "sup+lat" },
+  "sternal-angle": { ext: "ant+0.6inf", only: "manubrium", box: { m: [0.45, 0.55] }, r: 0.008, n: "ant" },
+  "head-of-rib": { ext: "med", r: 0.007, n: "med+post" },
+  "neck-of-rib": { between: ["head-of-rib", "tubercle-of-rib"], r: 0.005, n: "post+sup" },
+  "tubercle-of-rib": { ext: "post+0.3sup", box: { m: [0.12, 0.25] }, r: 0.006, n: "post" },
+  "angle-of-rib": { ext: "post", box: { m: [0.3, 0.6] }, r: 0.008, n: "post+lat" },
+  "costal-groove": { ridge: { dir: "inf", along: "a", from: 0.08, to: 0.45, k: 4 }, box: { m: [0.25, 1] }, r: 0.005, n: "inf" },
+};
+const V = ["vertebral-body", "vertebral-arch", "vertebral-foramen", "spinous-process", "transverse-process", "superior-articular-process", "inferior-articular-process"];
+export const CHECKS = [
+  { name: "l3", mesh: "vertebral-body", views: ["sup", "lat", "post"], ids: V },
+  { name: "ivf", mesh: "intervertebral-foramen", views: ["lat"], ids: ["intervertebral-foramen"] },
+  { name: "c5", mesh: "foramen-transversarium", views: ["sup"], ids: ["foramen-transversarium"] },
+  { name: "axis", mesh: "dens-of-axis", views: ["ant"], ids: ["dens-of-axis"] },
+  { name: "sacrum", mesh: "sacrum", views: ["ant", "post", "lat"], ids: ["promontory", "anterior-sacral-foramina", "posterior-sacral-foramina", "median-sacral-crest", "sacral-hiatus"] },
+  { name: "sternum", mesh: "sternum", views: ["ant", "lat"], ids: ["jugular-notch", "clavicular-notch", "sternal-angle"] },
+  { name: "rib", mesh: "head-of-rib", views: ["sup", "post", "inf"], ids: ["head-of-rib", "neck-of-rib", "tubercle-of-rib", "angle-of-rib", "costal-groove"] },
+];

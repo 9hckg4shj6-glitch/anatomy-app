@@ -1,0 +1,88 @@
+{
+  "system": "urogenital",
+  "units": [
+    {
+      "id": "uro-urinary",
+      "title": "泌尿器と男性生殖器",
+      "terms": [
+        {
+          "id": "kidney", "ja": "腎臓", "yomi": "じんぞう", "en": "kidney", "enAlt": ["kidneys"], "la": "ren",
+          "parts": ["kidney"], "level": 1,
+          "kanji": "腎＝じん",
+          "etym": "kidney（英語の固有語）。ラテン語 ren から renal、ギリシャ語 nephros から nephro-",
+          "note": "腰の高さ、背骨の両側にあるそら豆形の臓器。血液をろ過して尿をつくる。右腎は肝臓に押されて左よりやや低い。"
+        },
+        {
+          "id": "ureter", "ja": "尿管", "yomi": "にょうかん", "en": "ureter", "la": "ureter",
+          "parts": ["ureter"], "level": 1,
+          "kanji": "尿を運ぶ管",
+          "etym": "ureter ← ギリシャ語 ouron「尿」",
+          "note": "腎臓から膀胱へ尿を運ぶ約25〜30cmの管。"
+        },
+        {
+          "id": "urinary-bladder", "ja": "膀胱", "yomi": "ぼうこう", "en": "urinary bladder", "enAlt": ["bladder"], "la": "vesica urinaria",
+          "parts": ["urinary bladder"], "level": 1,
+          "kanji": "膀胱＝尿をためる袋",
+          "etym": "bladder「袋」。ラテン語 vesica から vesical「膀胱の」",
+          "note": "恥骨のすぐ後ろにある袋。尿をため、たまると上へふくらむ。"
+        },
+        {
+          "id": "urethra", "ja": "尿道", "yomi": "にょうどう", "en": "urethra", "la": "urethra",
+          "parts": ["urethra"], "level": 1,
+          "kanji": "尿の通る道",
+          "etym": "urethra ← ギリシャ語 ourein「排尿する」",
+          "note": "膀胱から体外へ尿を出す管。男性は約16〜20cm、女性は約4cm。"
+        },
+        {
+          "id": "prostate", "ja": "前立腺", "yomi": "ぜんりつせん", "en": "prostate", "enAlt": ["prostate gland"], "la": "prostata",
+          "parts": ["prostate"], "level": 1,
+          "kanji": "（膀胱の）前に立つ腺",
+          "etym": "prostate ← ギリシャ語 prostates「前に立つもの」",
+          "note": "膀胱のすぐ下で尿道を囲む男性の腺。精液の一部をつくる。"
+        },
+        {
+          "id": "testis", "ja": "精巣", "yomi": "せいそう", "en": "testis", "enAlt": ["testes", "testicle"], "la": "testis",
+          "parts": ["testis"], "level": 1,
+          "kanji": "精子の巣",
+          "etym": "testis ← ラテン語「証人」とする説がある",
+          "note": "陰嚢の中にある左右1対の器官。精子と男性ホルモン（テストステロン）をつくる。"
+        },
+        {
+          "id": "epididymis", "ja": "精巣上体", "yomi": "せいそうじょうたい", "en": "epididymis", "la": "epididymis",
+          "parts": ["epididymis"], "level": 2,
+          "kanji": "精巣の上にのる体",
+          "etym": "epi-「上」＋ didymos「双子（精巣）」",
+          "note": "精巣の後ろ上にのる細長い器官。精子をためて成熟させる。"
+        },
+        {
+          "id": "ductus-deferens", "ja": "精管", "yomi": "せいかん", "en": "ductus deferens", "enAlt": ["vas deferens", "deferent duct"], "la": "ductus deferens",
+          "parts": ["deferent duct"], "level": 2,
+          "kanji": "精子を運ぶ管",
+          "etym": "deferens ← ラテン語 deferre「運び去る」",
+          "note": "精巣上体から骨盤の中へ精子を運ぶ管。"
+        },
+        {
+          "id": "seminal-gland", "check": true, "ja": "精嚢", "yomi": "せいのう", "en": "seminal gland", "enAlt": ["seminal vesicle"], "la": "glandula seminalis",
+          "parts": ["seminal vesicle"], "level": 2,
+          "kanji": "精液の袋",
+          "etym": "seminal ← ラテン語 semen「種」",
+          "note": "膀胱の後ろにある左右1対の腺。精液の大部分となる液を出す。"
+        },
+        {
+          "id": "corpus-cavernosum", "ja": "陰茎海綿体", "yomi": "いんけいかいめんたい", "en": "corpus cavernosum of penis", "enAlt": ["corpus cavernosum"], "la": "corpus cavernosum penis",
+          "parts": ["corpus cavernosum of penis"], "level": 3,
+          "kanji": "海綿（スポンジ）のような組織の体",
+          "etym": "corpus「体」＋ cavernosum「洞穴の多い」",
+          "note": "陰茎の背側の左右1対の海綿体。血液が満ちると勃起する。"
+        },
+        {
+          "id": "corpus-spongiosum", "ja": "尿道海綿体", "yomi": "にょうどうかいめんたい", "en": "corpus spongiosum of penis", "enAlt": ["corpus spongiosum"], "la": "corpus spongiosum penis",
+          "parts": ["corpus spongiosum of penis", "glans penis"], "level": 3,
+          "kanji": "尿道を包む海綿体",
+          "etym": "corpus「体」＋ spongiosum「スポンジ状の」",
+          "note": "陰茎の腹側で尿道を包む海綿体。先端がふくらんで亀頭になる。"
+        }
+      ]
+    }
+  ]
+}
