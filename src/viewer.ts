@@ -77,6 +77,8 @@ export class AnatomyViewer {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     host.prepend(this.renderer.domElement);
+    // WebGL がいったん失われて戻ったとき（スマホでアプリを裏に回したときなど）は、描き直さないと画面が空のままになる
+    this.renderer.domElement.addEventListener("webglcontextrestored", () => (this.dirty = true));
     this.label = document.createElement("div");
     this.label.className = "stage-label";
     this.label.hidden = true;

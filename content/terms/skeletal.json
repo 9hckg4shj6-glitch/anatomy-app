@@ -274,6 +274,13 @@
           "note": "5個の仙椎が癒合した三角形の骨。左右の寛骨と骨盤をつくる。"
         },
         {
+          "id": "coccyx", "ja": "尾骨", "yomi": "びこつ", "en": "coccyx", "la": "os coccygis",
+          "parts": ["coccyx"], "level": 1,
+          "kanji": "尾＝しっぽ。しっぽの名残の骨",
+          "etym": "coccyx ← ギリシャ語 kokkyx「カッコウ」。形がカッコウのくちばしに似るため",
+          "note": "脊柱の最下端の小さな骨。3〜5個の尾椎が癒合したもので、仙骨の下端（仙骨尖）に続く。"
+        },
+        {
           "id": "sternum", "ja": "胸骨", "yomi": "きょうこつ", "en": "sternum", "la": "sternum",
           "parts": ["manubrium", "body of sternum", "xiphoid process"], "fma": "FMA7485", "level": 1,
           "kanji": "胸の前の中央にある骨",

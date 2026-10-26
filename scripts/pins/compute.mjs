@@ -1,10 +1,14 @@
 // 骨の部位のピン（content/pins.json）を、骨の形から規則で計算し、確認用の画像を data-raw/pin-check/ に描く。
 // 規則は scripts/pins/rules/*.mjs（RULES: 部位の語ID → 規則、CHECKS: 描く画像）。画像を見て規則を直し、合ったら書き込む。
+// ATTACH: "筋の語ID@origin|insertion" → 規則（または規則の配列）は、Z-Anatomy に付着面の無い筋の起始・停止を骨の上の球で示す
+// （content/attachments.json。形は attachments-za.json と同じ）。規則には骨の語ID bone を書き、part（部品名）や
+// each（部品名の配列。部品ごとに同じ規則を当てる＝第2〜5胸椎の棘突起など）で部品を絞る。
 // 使い方: node scripts/pins/compute.mjs scripts/pins/rules/shoulder.mjs [--write] [--force] [--only id,id]
-//   --write  まだピンの無い部位だけ content/pins.json に書く（ピン打ちツールで直したピンを消さない）
+//   --write  まだピンの無い部位だけ content/pins.json に書く（ピン打ちツールで直したピンを消さない）。ATTACH は計算した分を書く
 //   --force  --write のとき、すでにあるピンも計算し直して上書きする
 import fs from "node:fs";
 import path from "node:path";
+import { baseName } from "../build-models.mjs";
 import { db, termMeshes, makeFrame, render, raycast, basis, dot, norm } from "./geometry.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
@@ -13,7 +17,7 @@ const args = process.argv.slice(2);
 const rulesFile = path.resolve(args[0]);
 const write = args.includes("--write");
 const force = args.includes("--force");
-const { RULES: R1, RULES2 = {}, CHECKS } = await import(rulesFile);
+const { RULES: R1, RULES2 = {}, ATTACH = {}, CHECKS } = await import(rulesFile);
 const RULES = { ...R1, ...RULES2 };
 
 // 方向: "lat+0.3sup" など。右側の骨で lat = -x
@@ -168,8 +172,11 @@ function capRim(ms, b, { ext, box, fit = 0.015, theta = 80, k = 5, phase = 0, on
 const round = (x) => Math.round(x * 10000) / 10000;
 
 export function compute(id, rule) {
-  // only: 部品名に含まれる語で部品を絞る（胸骨柄だけ、など）。side: "all" なら左の部品も使う
-  const ms = termMeshes(id, rule.side ?? "right").filter((m) => !rule.only || m.name.toLowerCase().includes(rule.only));
+  // only: 部品名に含まれる語で部品を絞る（胸骨柄だけ、など）。part: 部品名（左右を外した形）が一致するものだけ。
+  // side: "all" なら左の部品も使う
+  const ms = termMeshes(id, rule.side ?? "right")
+    .filter((m) => (!rule.only || m.name.toLowerCase().includes(rule.only)) && (!rule.part || baseName(m.name) === rule.part));
+  if (!ms.length) throw new Error(`部品がありません（${rule.only ?? rule.part ?? ""}）`);
   const b = bounds(ms);
   const at = [];
   let n = null;
@@ -362,12 +369,41 @@ for (const [id, rule] of Object.entries(RULES)) {
   }
 }
 
+// 筋の起始・停止（ATTACH）。球ごとに [骨の語ID, x, y, z, 半径, 面の向き…]
+const attachPath = path.join(ROOT, "content/attachments.json");
+const attachments = fs.existsSync(attachPath) ? JSON.parse(fs.readFileSync(attachPath, "utf8")) : {};
+const attachSpots = new Map();
+for (const [key, rules] of Object.entries(ATTACH)) {
+  const [muscle, kind] = key.split("@");
+  if (!termById.get(muscle)?.nerve || !["origin", "insertion"].includes(kind)) throw new Error(`${key} は「筋の語ID@origin|insertion」ではありません`);
+  if (only && !only.includes(key)) continue;
+  const spots = [];
+  try {
+    for (const rule of [rules].flat()) {
+      const bone = termById.get(rule.bone);
+      if (!bone || bone.system !== "skeletal" || bone.of) throw new Error(`骨の語「${rule.bone}」がありません`);
+      for (const part of rule.each ?? [rule.part]) {
+        const pin = compute(rule.bone, { ...rule, part });
+        for (const at of pin.at) spots.push([rule.bone, ...at, pin.r, ...(pin.n ?? [])]);
+      }
+    }
+  } catch (error) {
+    console.error(`${key}: ${error.message}`);
+    continue;
+  }
+  attachSpots.set(key, spots);
+  attachments[muscle] = { ...attachments[muscle], [kind]: spots };
+}
+
 // 確認画像: CHECKS = [{ name, mesh: 語ID（"skull-all" で頭蓋全体）, views: [...], ids: [...], crop?, side?, half? }]
 fs.mkdirSync(OUT, { recursive: true });
 const PALETTE = ["#ff5a1a", "#1a8cff", "#14a05a", "#c03ad0", "#e0b000", "#00b5b5", "#e0306a", "#6a5acd", "#8b4513", "#7cfc00", "#ff1493", "#00008b", "#808000", "#ff8c00", "#2f4f4f", "#dc143c"];
 for (const check of CHECKS ?? []) {
   const SKULL = ["frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone", "maxilla", "mandible", "zygomatic-bone", "nasal-bone", "lacrimal-bone", "palatine-bone", "vomer", "inferior-nasal-concha"];
-  let ms = (check.mesh === "skull-all" ? SKULL.flatMap((t) => termMeshes(t, "all")) : termMeshes(check.mesh, check.side ?? "right")).map((m) => ({ ...m, color: "#e9dfc9" }));
+  // mesh は骨の語ID（配列で複数）。only で部品名に含まれる語で絞る
+  let ms = (check.mesh === "skull-all" ? SKULL.flatMap((t) => termMeshes(t, "all")) : [check.mesh].flat().flatMap((t) => termMeshes(t, check.side ?? "right")))
+    .filter((m) => !check.only || check.only.some((word) => m.name.toLowerCase().includes(word)))
+    .map((m) => ({ ...m, color: "#e9dfc9" }));
   // half: 右半分（x<0）の三角形だけ描く（正中をはさむ骨の内面を見るため）
   if (check.half) ms = ms.map((m) => {
     const keep = [];
@@ -377,16 +413,30 @@ for (const check of CHECKS ?? []) {
     }
     return { ...m, indices: new Uint32Array(keep) };
   });
-  const spots = check.ids.filter((id) => pins[id]).map((id, i) => ({ at: pins[id].at, r: pins[id].r, n: pins[id].n, color: PALETTE[i % PALETTE.length], label: termById.get(id).ja.replace(/（.*）/, "") }));
+  const spots = check.ids.flatMap((id, i) => {
+    const color = PALETTE[i % PALETTE.length];
+    if (attachSpots.has(id)) {
+      const [muscle, kind] = id.split("@");
+      const label = `${termById.get(muscle).ja}の${kind === "origin" ? "起始" : "停止"}`;
+      return attachSpots.get(id).map(([, x, y, z, r, ...n], j) => ({ at: [[x, y, z]], r, n: n.length ? n : undefined, color, label: j ? undefined : label }));
+    }
+    return pins[id] ? [{ at: pins[id].at, r: pins[id].r, n: pins[id].n, color, label: termById.get(id).ja.replace(/（.*）/, "") }] : [];
+  });
   for (const view of check.views) {
     const frame = makeFrame(ms, view, check.size ?? 560, 0.08, check.crop ?? null);
     await render({ meshes: ms, spots, frame, out: path.join(OUT, `${check.name}-${view}.png`), title: `${check.name} ${view}` });
   }
 }
 
-if (write) {
+if (write && Object.keys(RULES).length) {
   // 1部位1行（ピン打ちツール src/ui/admin.ts の formatPins と同じ形）
   const lines = Object.keys(pins).sort().map((id) => `  ${JSON.stringify(id)}: ${JSON.stringify(pins[id])}`);
   fs.writeFileSync(pinsPath, `{\n${lines.join(",\n")}\n}\n`);
   console.log(`content/pins.json: ${Object.keys(pins).length} 部位`);
+}
+if (write && attachSpots.size) {
+  // 1筋1行
+  const lines = Object.keys(attachments).sort().map((id) => `  ${JSON.stringify(id)}: ${JSON.stringify(attachments[id])}`);
+  fs.writeFileSync(attachPath, `{\n${lines.join(",\n")}\n}\n`);
+  console.log(`content/attachments.json: ${Object.keys(attachments).length} 筋`);
 }

@@ -91,14 +91,16 @@ for (const term of terms) {
 }
 for (const id of Object.keys(pins)) if (!seen.get(id)?.of) errors.push(`content/pins.json: 「${id}」は骨の部位の語ではありません`);
 
-// 筋の付着面（scripts/za/attachments.mjs が作る）。筋と骨の語IDが今の内容にあるか
-const attachmentsFile = path.join(ROOT, "public/models/attachments-za.json");
-if (fs.existsSync(attachmentsFile)) {
+// 筋の付着面（scripts/za/attachments.mjs と scripts/pins/rules/attach.mjs が作る）。筋と骨の語IDが今の内容にあるか
+for (const file of ["public/models/attachments-za.json", "content/attachments.json"]) {
+  const attachmentsFile = path.join(ROOT, file);
+  if (!fs.existsSync(attachmentsFile)) continue;
+  const name = path.basename(file);
   for (const [id, entry] of Object.entries(JSON.parse(fs.readFileSync(attachmentsFile, "utf8")))) {
-    if (!seen.get(id)?.nerve) errors.push(`attachments-za.json: 「${id}」は筋の語ではありません`);
+    if (!seen.get(id)?.nerve) errors.push(`${name}: 「${id}」は筋の語ではありません`);
     for (const [on] of [...(entry.origin ?? []), ...(entry.insertion ?? [])]) {
       const bone = seen.get(on);
-      if (!bone || bone.system !== "skeletal" || bone.of) errors.push(`attachments-za.json: ${id} の「${on}」は骨の語ではありません`);
+      if (!bone || bone.system !== "skeletal" || bone.of) errors.push(`${name}: ${id} の「${on}」は骨の語ではありません`);
     }
   }
 }

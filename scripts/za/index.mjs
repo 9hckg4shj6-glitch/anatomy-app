@@ -35,21 +35,21 @@ function orient(positions, indices) {
 }
 
 // Z-Anatomy の内腹斜筋・腹横筋は腱膜まで1つの形で、腹直筋の前をおおってしまう（アプリで腹直筋が見えず、タップもできない）。
-// 前から見て腹直筋（同じ側）と重なる所＝腹直筋鞘になる腱膜を切り取る。
-const CLIP = [{ mesh: /^(internal abdominal oblique|transversus abdominis) muscle$/, by: "rectus abdominis muscle" }];
+// 前から見て腹直筋（同じ側）と重なる所＝腹直筋鞘になる腱膜を切り取る（by）。
+// BodyParts3D の総頚動脈・内頚静脈は頚の下の方で終わっているので、Z-Anatomy の同じ血管の、BodyParts3D の上端より上だけを足す（above）。
+const CLIP = [
+  { mesh: /^(internal abdominal oblique|transversus abdominis) muscle$/, by: "rectus abdominis muscle" },
+  { mesh: /^(common carotid artery|internal jugular vein)$/, above: true },
+];
 const CELL = 0.004;
+const OVERLAP = 0.004; // above: BodyParts3D の上端より少し下から残してつなげる
 
-function clip(positions, indices, by) {
-  const covered = new Set();
-  for (let i = 0; i < by.length; i += 3) {
-    const cx = Math.floor(by[i] / CELL), cy = Math.floor(by[i + 1] / CELL);
-    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) covered.add(`${cx + dx},${cy + dy}`);
-  }
+function clip(positions, indices, keep) {
   const kept = [];
   for (let t = 0; t < indices.length; t += 3) {
     const [a, b, c] = [indices[t] * 3, indices[t + 1] * 3, indices[t + 2] * 3];
     const x = (positions[a] + positions[b] + positions[c]) / 3, y = (positions[a + 1] + positions[b + 1] + positions[c + 1]) / 3;
-    if (!covered.has(`${Math.floor(x / CELL)},${Math.floor(y / CELL)}`)) kept.push(indices[t], indices[t + 1], indices[t + 2]);
+    if (keep(x, y)) kept.push(indices[t], indices[t + 1], indices[t + 2]);
   }
   // 使わなくなった頂点を詰める
   const remap = new Map();
@@ -65,7 +65,7 @@ function clip(positions, indices, by) {
 }
 
 /**
- * bpNames: BodyParts3D の部品ID → 名前、bpMesh: 部品ID → { positions }。
+ * bpNames: BodyParts3D の部品ID → 名前、bpMesh: 部品ID → { positions }（骨の合わせ込みに使う。切る前の形＝readWhole）。
  * 返り値: { names: 部品ID → 名前, mesh(id): 骨に合わせた形, all: 読んだ形すべて（合わせ込み前）, pairs: 合わせた骨の組 }
  */
 export async function loadZa(bpNames, bpMesh) {
@@ -99,9 +99,22 @@ export async function loadZa(bpNames, bpMesh) {
     for (let i = 0; i < positions.length; i += 3) positions.set(warp(source.positions[i], source.positions[i + 1], source.positions[i + 2]), i);
     let indices = source.indices;
     const rule = CLIP.find((c) => c.mesh.test(source.name.replace(/^(right|left) /, "")));
-    if (rule) {
-      const by = all.find((m) => m.name === (source.side ? `${source.side} ${rule.by}` : rule.by));
-      ({ positions, indices } = clip(positions, indices, mesh(by.id).positions));
+    if (rule?.by) {
+      const by = mesh(all.find((m) => m.name === (source.side ? `${source.side} ${rule.by}` : rule.by)).id).positions;
+      const covered = new Set();
+      for (let i = 0; i < by.length; i += 3) {
+        const cx = Math.floor(by[i] / CELL), cy = Math.floor(by[i + 1] / CELL);
+        for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) covered.add(`${cx + dx},${cy + dy}`);
+      }
+      ({ positions, indices } = clip(positions, indices, (x, y) => !covered.has(`${Math.floor(x / CELL)},${Math.floor(y / CELL)}`)));
+    }
+    if (rule?.above) {
+      // 同じ側・同じ名前の BodyParts3D の部品（左の総頚動脈は Z-Anatomy では名前の頭に left が付く）
+      const target = source.name.toLowerCase();
+      const [bpId] = [...bpNames].find(([, name]) => name.toLowerCase() === target) ?? [];
+      if (!bpId) throw new Error(`BodyParts3D に ${source.name} がありません`);
+      const top = bpMesh(bpId).bounds[1][1] - OVERLAP;
+      ({ positions, indices } = clip(positions, indices, (x, y) => y > top));
     }
     indices = orient(positions, indices);
     const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];

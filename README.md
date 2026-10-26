@@ -24,11 +24,12 @@ npm run build      # 内容の検査 → 型チェック → dist/ に出力
 ## 内容を足す・直す
 
 1. `content/terms/<系統>.json` を書きかえる（書き方は docs/設計.md）
-2. 3Dモデルと音声を作り直す（初回だけ `npm run fetch:sources` で BodyParts3D と Z-Anatomy を取得。約750MB）
+2. 3Dモデルと音声を作り直す（初回だけ `npm run fetch:sources` で BodyParts3D と Z-Anatomy を取得。約820MB）
 
 ```sh
 npm run build:models
 npm run build:attachments # 筋の起始・停止の面（Z-Anatomy から）
+node scripts/pins/compute.mjs scripts/pins/rules/attach.mjs --write # Z-Anatomy に無い起始・停止（content/attachments.json）
 npm run build:audio      # macOS の afconvert を使う
 npm run build:wikidata   # 任意。Wikidata の日本語名との照合用
 npm run validate:content # docs/要確認用語.md も作り直す

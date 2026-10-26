@@ -1,5 +1,5 @@
 // @ts-expect-error 型定義の無いビルド用スクリプト
-import { baseName, resolveParts } from "../scripts/build-models.mjs";
+import { baseName, resolveParts, splitMesh } from "../scripts/build-models.mjs";
 // @ts-expect-error 型定義の無いビルド用スクリプト
 import { anchorPairs } from "../scripts/za/warp.mjs";
 
@@ -70,5 +70,33 @@ describe("Z-Anatomy の部品", () => {
       { ...bone("right deltoid muscle", "right"), file: "MuscularSystem100" },
     ], bp);
     expect(pairs.map((p: { bp: string[] }) => p.bp[0])).toEqual(["FJ10", "FJ11", "FJ12", "FJ13", "FJ14"]);
+  });
+});
+
+describe("形を平面で分ける", () => {
+  // 1辺 1 の立方体（面は外向き・反時計回り）
+  const corners = [[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]];
+  const faces = [[0, 3, 2, 1], [4, 5, 6, 7], [0, 1, 5, 4], [2, 3, 7, 6], [1, 2, 6, 5], [0, 4, 7, 3]];
+  const cube = {
+    positions: new Float32Array(corners.flat()),
+    normals: new Float32Array(corners.flatMap((c) => c.map((v) => v - 0.5))),
+    indices: new Uint32Array(faces.flatMap(([a, b, c, d]) => [a, b, c, a, c, d])),
+  };
+  // 符号付き体積（面が外向きなら正、穴があれば閉じない分ずれる）
+  const volume = ({ positions: p, indices: t }: { positions: Float32Array; indices: Uint32Array }) => {
+    let sum = 0;
+    for (let i = 0; i < t.length; i += 3) {
+      const [a, b, c] = [t[i] * 3, t[i + 1] * 3, t[i + 2] * 3];
+      sum += p[a] * (p[b + 1] * p[c + 2] - p[b + 2] * p[c + 1]) - p[a + 1] * (p[b] * p[c + 2] - p[b + 2] * p[c]) + p[a + 2] * (p[b] * p[c + 1] - p[b + 1] * p[c]);
+    }
+    return sum / 6;
+  };
+
+  it("上と下に分け、切り口をふさぐ", () => {
+    const { above, below } = splitMesh(cube, [0, 1, 0], 0.25);
+    expect(volume(above)).toBeCloseTo(0.75);
+    expect(volume(below)).toBeCloseTo(0.25);
+    expect(above.bounds[0][1]).toBeCloseTo(0.25);
+    expect(below.bounds[1][1]).toBeCloseTo(0.25);
   });
 });

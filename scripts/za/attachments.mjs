@@ -9,7 +9,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
-import { loadTerms, parseObj, readElements, resolveParts } from "../build-models.mjs";
+import { loadTerms, readElements, resolveParts } from "../build-models.mjs";
 import { makeFrame, render } from "../pins/geometry.mjs";
 import { loadZa } from "./index.mjs";
 import { KdTree } from "./kdtree.mjs";
@@ -105,14 +105,9 @@ const TABLE = {
   "tibialis-posterior": T(["tibialis posterior muscle"], ["tibia", "fibula"], ["navicular", "cuneiforms", "metatarsals"]),
 };
 
-const { objDir, elementNames, conceptElements } = readElements();
+const { elementNames, conceptElements, readMesh: bpMesh, readWhole } = readElements();
 const { terms } = loadTerms();
-const bp = new Map();
-const bpMesh = (id) => {
-  if (!bp.has(id)) bp.set(id, parseObj(path.join(objDir, `${id}.obj`)));
-  return bp.get(id);
-};
-const za = await loadZa(elementNames, bpMesh);
+const za = await loadZa(elementNames, readWhole);
 const termById = new Map(terms.map((t) => [t.id, t]));
 for (const id of Object.keys(TABLE)) if (!termById.get(id)?.nerve) throw new Error(`表の ${id} は筋の語ではありません`);
 const bones = terms.filter((t) => t.system === "skeletal" && !t.of);

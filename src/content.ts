@@ -1,3 +1,4 @@
+import attachmentsJson from "../content/attachments.json";
 import pinsJson from "../content/pins.json";
 import systemsJson from "../content/systems.json";
 
@@ -109,17 +110,29 @@ export function landmarksOf(boneId: string): Term[] {
 /**
  * 筋の付着面（public/models/attachments-za.json、scripts/za/attachments.mjs が Z-Anatomy から作る）。
  * 起始・停止ごとに、骨の上の球の並び [骨の語ID, x, y, z, 半径, 面の向き nx, ny, nz（無いこともある）]。本人の右側だけ。
+ * Z-Anatomy に付着面の無いもの（烏口腕筋の停止など）は content/attachments.json（scripts/pins/rules/attach.mjs の規則で作る）。
  */
 export type AttachmentSpot = [string, number, number, number, number, ...number[]];
 export type Attachments = Record<string, { origin?: AttachmentSpot[]; insertion?: AttachmentSpot[] }>;
 
+const ownAttachments = attachmentsJson as unknown as Attachments;
 let attachments: Promise<Attachments> | null = null;
 
 export function loadAttachments(): Promise<Attachments> {
-  // 無くても3Dは動くので、読めなければ空にする（起始・停止は骨の部位のピンだけで示す）
+  // 無くても3Dは動くので、読めなければ content/attachments.json の分だけにする（あとは骨の部位のピンで示す）
   attachments ??= fetch(`${import.meta.env.BASE_URL}models/attachments-za.json`)
     .then((response) => (response.ok ? (response.json() as Promise<Attachments>) : {}))
-    .catch(() => ({}));
+    .catch((): Attachments => ({}))
+    .then((za: Attachments) => {
+      const merged: Attachments = { ...za };
+      for (const [id, entry] of Object.entries(ownAttachments)) {
+        merged[id] = {
+          origin: [...(za[id]?.origin ?? []), ...(entry.origin ?? [])],
+          insertion: [...(za[id]?.insertion ?? []), ...(entry.insertion ?? [])],
+        };
+      }
+      return merged;
+    });
   return attachments;
 }
 

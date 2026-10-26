@@ -149,7 +149,14 @@
           "parts": ["descending colon"], "level": 1,
           "kanji": "下に行く結腸",
           "etym": "descending「下る」＋ colon",
-          "note": "左の腹壁に沿って下る結腸。このあとS状結腸を経て直腸へ続く。"
+          "note": "左の腹壁に沿って下る結腸。左腸骨窩でS状結腸に続く。"
+        },
+        {
+          "id": "sigmoid-colon", "ja": "S状結腸", "yomi": "えすじょうけっちょう", "en": "sigmoid colon", "la": "colon sigmoideum",
+          "parts": ["sigmoid colon"], "level": 1,
+          "kanji": "S字の形に曲がる結腸",
+          "etym": "sigmoid ← ギリシャ文字シグマ（ς）＋ -oid「〜の形」",
+          "note": "左腸骨窩で下行結腸に続き、S字に曲がって骨盤に入り、第3仙椎の高さで直腸に続く。S状結腸間膜をもち、よく動く。"
         },
         {
           "id": "rectum", "ja": "直腸", "yomi": "ちょくちょう", "en": "rectum", "la": "rectum",

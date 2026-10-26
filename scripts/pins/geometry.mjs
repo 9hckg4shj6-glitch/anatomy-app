@@ -1,21 +1,15 @@
 // 骨の部位のピンを作るための道具: BodyParts3D の部品の読み込み、視点と枠、光線の当たり判定、ソフトウェア描画（確認用の PNG）。
 // 座標は scripts/build-models.mjs と同じモデル座標（m・Y上・前が +z、本人の右が -x）。
-import path from "node:path";
 import sharp from "sharp";
-import { loadTerms, parseObj, readElements, resolveParts } from "../build-models.mjs";
+import { loadTerms, readElements, resolveParts } from "../build-models.mjs";
 
 let cache = null;
 export function db() {
   if (cache) return cache;
-  const { objDir, elementNames, conceptElements } = readElements();
+  const { objDir, elementNames, conceptElements, readMesh: mesh } = readElements();
   const { systems, terms } = loadTerms();
   const withParts = terms.filter((t) => t.parts);
   const { resolved } = resolveParts(withParts, elementNames, conceptElements);
-  const meshes = new Map();
-  const mesh = (id) => {
-    if (!meshes.has(id)) meshes.set(id, parseObj(path.join(objDir, `${id}.obj`)));
-    return meshes.get(id);
-  };
   cache = { objDir, elementNames, conceptElements, terms, systems, resolved, mesh };
   return cache;
 }

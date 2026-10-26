@@ -12,7 +12,7 @@ import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
 export const ZA_DIR = path.join(ROOT, "data-raw/z-anatomy");
-export const ZA_FILES = ["SkeletalSystem100", "MuscularSystem100", "NervousSystem100", "VisceralSystem100"];
+export const ZA_FILES = ["SkeletalSystem100", "MuscularSystem100", "NervousSystem100", "VisceralSystem100", "CardioVascular41"];
 
 let FBXLoader = null;
 async function loader() {

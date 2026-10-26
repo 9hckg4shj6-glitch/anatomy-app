@@ -2,7 +2,7 @@
 // 使い方: node scripts/za/check.mjs [語ID,…]（省くと Z-Anatomy を使う語をすべて、系統ごとにまとめて描く）
 import fs from "node:fs";
 import path from "node:path";
-import { loadTerms, parseObj, readElements, resolveParts } from "../build-models.mjs";
+import { loadTerms, readElements, resolveParts } from "../build-models.mjs";
 import { makeFrame, render } from "../pins/geometry.mjs";
 import { loadZa } from "./index.mjs";
 
@@ -10,14 +10,9 @@ const ROOT = path.resolve(import.meta.dirname, "../..");
 const OUT = path.join(ROOT, "data-raw/za-check");
 fs.mkdirSync(OUT, { recursive: true });
 
-const { objDir, elementNames, conceptElements } = readElements();
+const { elementNames, conceptElements, readMesh: bpMesh, readWhole } = readElements();
 const { terms } = loadTerms();
-const bp = new Map();
-const bpMesh = (id) => {
-  if (!bp.has(id)) bp.set(id, parseObj(path.join(objDir, `${id}.obj`)));
-  return bp.get(id);
-};
-const za = await loadZa(elementNames, bpMesh);
+const za = await loadZa(elementNames, readWhole);
 const mesh = (id) => (za.names.has(id) ? za.mesh(id) : bpMesh(id));
 const { resolved } = resolveParts(terms, elementNames, conceptElements, za.names);
 const PALETTE = ["#d1495b", "#00798c", "#edae49", "#30638e", "#8e5572", "#66a182", "#e76f51", "#2a9d8f", "#6d597a", "#f4a261"];
