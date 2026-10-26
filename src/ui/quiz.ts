@@ -44,16 +44,24 @@ export function attachMarks(term: Term): [string, string][] {
 }
 
 /**
- * 4択の候補（3Dで近い語, 全体）。骨の部位は骨の部位どうし、ほかは同じ系統の語どうしで選ぶ。
+ * 4択の候補（3Dで近い語, 全体）。骨・器官の部位は同じ系統の部位どうし、ほかは同じ系統の語どうしで選ぶ。
+ * 筋の起始・停止・支配神経・作用（needs あり）は系統をまたいで3Dで近い筋から選ぶ（喉頭・咽頭の筋は呼吸器・消化器にある）。
  * 「環椎」の問題に「頚椎」のような、答えを含む語や答えに含まれる語は出さない（どちらも正しくなる）。
  */
-function candidates(ctx: AppContext, term: Term, needs: (other: Term) => boolean = () => true): [string[], string[]] {
+function candidates(ctx: AppContext, term: Term, needs?: (other: Term) => boolean): [string[], string[]] {
   if (term.of) {
-    return [nearbyLandmarks(term.id), terms.filter((other) => other.of && pins[other.id]).map((other) => other.id)];
+    return [nearbyLandmarks(term.id), terms.filter((other) => other.of && pins[other.id] && other.system === term.system).map((other) => other.id)];
   }
   const own = new Set(ctx.index.terms[term.id].elements);
-  const fits = (other: Term) =>
-    !other.of && other.system === term.system && needs(other) && !ctx.index.terms[other.id]?.elements.some((element) => own.has(element));
+  const overlaps = (other: Term) => !!ctx.index.terms[other.id]?.elements.some((element) => own.has(element));
+  if (needs) {
+    const center = ctx.index.terms[term.id].center;
+    const distance = (id: string) => Math.hypot(...ctx.index.terms[id].center.map((v, k) => v - center[k]));
+    const pool = terms.filter((other) => !other.of && needs(other) && !overlaps(other)).map((other) => other.id);
+    pool.sort((a, b) => distance(a) - distance(b));
+    return [pool.slice(0, 8), pool];
+  }
+  const fits = (other: Term) => !other.of && other.system === term.system && !overlaps(other);
   return [
     (ctx.index.neighbors[term.id] ?? []).filter((id) => fits(termById.get(id)!)),
     terms.filter(fits).map((other) => other.id),
@@ -72,7 +80,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const choicesOf = (display: (id: string) => string, needs?: (other: Term) => boolean) =>
     pickChoices(term.id, ...candidates(ctx, term, needs), display);
   // 隠れた部位は周りを半透明にして見せる。タップでは答えられないので「名前→位置」は位置当てに替える。
-  // 骨の部位も、骨をはっきり見せるため周りを半透明にする。
+  // 骨・器官の部位も、骨・器官をはっきり見せるため周りを半透明にする。
   const landmark = !!term.of;
   const isolate = !!term.xray || landmark;
   const facet = item.facet === "point" && term.xray ? "locate" : item.facet;
@@ -95,9 +103,9 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     }
     case "point": {
       if (landmark) {
-        // 骨の部位は、その骨だけを見せて骨全体が入る距離から探させる
+        // 骨・器官の部位は、その骨・器官だけを見せて全体が入る距離から探させる
         viewer.only([term.id]);
-        // 前の問題の向きが残ると骨が見にくいので、いつも正面やや右上から
+        // 前の問題の向きが残ると見にくいので、いつも正面やや右上から
         viewer.focusWhole(term.id, 1.3, true, [-0.35, 0.15, 1]);
         ctx.hint(`${termById.get(term.of!)?.ja ?? "骨"}の上でタップして答える`);
       } else {
@@ -220,7 +228,7 @@ async function tapElement(ctx: AppContext, header: HTMLElement, term: Term): Pro
     return await until<{ element: string; point: Vec3 } | null>(ctx.signal, (resolve) => {
       ctx.viewer.onPick = (element, point) => {
         if (!element || !point) {
-          status.textContent = term.of ? "骨の上をタップしてください" : "部位の上をタップしてください";
+          status.textContent = term.of ? `${termById.get(term.of)?.ja ?? "骨"}の上をタップしてください` : "部位の上をタップしてください";
           return;
         }
         resolve({ element, point });

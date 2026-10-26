@@ -43,7 +43,7 @@ export async function explore(ctx: AppContext): Promise<void> {
 
   const select = (term: Term | null) => {
     selected = term;
-    // 隠れた部位と骨の部位は周りを半透明にして見せる
+    // 隠れた部位と骨・器官の部位は周りを半透明にして見せる
     isolate = !!term?.xray || !!term?.of;
     attach = false;
     paint();
@@ -71,7 +71,7 @@ export async function explore(ctx: AppContext): Promise<void> {
 
   const render = () => {
     const query = search.value.trim().toLowerCase();
-    // 骨の部位は一覧が長くなるので、検索したときと骨を選んだときだけ出す
+    // 骨・器官の部位は一覧が長くなるので、検索したときと骨・器官を選んだときだけ出す
     const matches = terms.filter((term) =>
       (query ? [term.ja, term.yomi, term.en, ...(term.enAlt ?? [])].some((text) => text.toLowerCase().includes(query)) : !term.of && shown.has(term.system)));
     list.replaceChildren(...matches.map((term) => h("li", {},
@@ -114,7 +114,7 @@ export async function explore(ctx: AppContext): Promise<void> {
 
   viewer.onPick = (elementId, point) => {
     const termId = elementId ? viewer.termsOf(elementId)[0] : null;
-    // 骨の部位（ピン）の上をタップしたら、骨ではなく部位を選ぶ
+    // 骨・器官の部位（ピン）の上をタップしたら、骨・器官ではなく部位を選ぶ
     const parts = elementId && point ? terms.filter((term) => term.of && pins[term.id] && index.terms[term.id]?.elements.includes(elementId)) : [];
     const part = point ? landmarkAt(point, parts, 0.002) : null;
     select(part ?? (termId ? termById.get(termId) ?? null : null));

@@ -1,17 +1,36 @@
-// 骨の部位のピンを作るための道具: BodyParts3D の部品の読み込み、視点と枠、光線の当たり判定、ソフトウェア描画（確認用の PNG）。
+// 骨・器官の部位のピンを作るための道具: 部品の読み込み、視点と枠、光線の当たり判定、ソフトウェア描画（確認用の PNG）。
 // 座標は scripts/build-models.mjs と同じモデル座標（m・Y上・前が +z、本人の右が -x）。
+// 部品は BodyParts3D のほか、Z-Anatomy の形（肺・甲状腺など "za:…"）も骨に合わせた位置で読む（loadDb({ za: true })）。
 import sharp from "sharp";
 import { loadTerms, readElements, resolveParts } from "../build-models.mjs";
+import { loadZa } from "../za/index.mjs";
 
 let cache = null;
-export function db() {
-  if (cache) return cache;
-  const { objDir, elementNames, conceptElements, readMesh: mesh } = readElements();
+/** 部品と語を読む。za: true なら Z-Anatomy の形も読む（時間がかかるので要るときだけ）。最初に await する */
+export async function loadDb({ za: withZa = false } = {}) {
+  if (cache && (cache.za || !withZa)) return cache;
+  const { objDir, elementNames, conceptElements, readMesh, readWhole } = readElements();
   const { systems, terms } = loadTerms();
+  const za = withZa ? await loadZa(elementNames, readWhole) : null;
   const withParts = terms.filter((t) => t.parts);
-  const { resolved } = resolveParts(withParts, elementNames, conceptElements);
-  cache = { objDir, elementNames, conceptElements, terms, systems, resolved, mesh };
+  const { resolved } = resolveParts(withParts, elementNames, conceptElements, za?.names);
+  const names = new Map([...elementNames, ...(za?.names ?? [])]);
+  const mesh = (id) => (za?.names.has(id) ? za.mesh(id) : readMesh(id));
+  cache = { objDir, elementNames: names, conceptElements, terms, systems, resolved, mesh, za: !!za };
   return cache;
+}
+
+/** 読み込んだ部品と語（先に loadDb を await しておく） */
+export function db() {
+  if (!cache) throw new Error("先に await loadDb() を呼ぶ");
+  return cache;
+}
+
+/** 語が Z-Anatomy の形を使うか（Z-Anatomy を読むかどうかの判断に使う） */
+export function usesZa(termIds) {
+  const { terms } = loadTerms();
+  const byId = new Map(terms.map((t) => [t.id, t]));
+  return termIds.some((id) => byId.get(id)?.parts?.some((spec) => spec.startsWith("za:")));
 }
 
 /** 語の部品。side: "right" なら左の部品を除く（"left" はその逆、"all" は全部） */

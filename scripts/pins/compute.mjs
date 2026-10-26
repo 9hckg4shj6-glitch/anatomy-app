@@ -1,4 +1,4 @@
-// 骨の部位のピン（content/pins.json）を、骨の形から規則で計算し、確認用の画像を data-raw/pin-check/ に描く。
+// 骨・器官の部位のピン（content/pins.json）を、骨・器官の形から規則で計算し、確認用の画像を data-raw/pin-check/ に描く。
 // 規則は scripts/pins/rules/*.mjs（RULES: 部位の語ID → 規則、CHECKS: 描く画像）。画像を見て規則を直し、合ったら書き込む。
 // ATTACH: "筋の語ID@origin|insertion" → 規則（または規則の配列）は、Z-Anatomy に付着面の無い筋の起始・停止を骨の上の球で示す
 // （content/attachments.json。形は attachments-za.json と同じ）。規則には骨の語ID bone を書き、part（部品名）や
@@ -9,7 +9,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { baseName } from "../build-models.mjs";
-import { db, termMeshes, makeFrame, render, raycast, basis, dot, norm } from "./geometry.mjs";
+import { loadTerms } from "../build-models.mjs";
+import { loadDb, usesZa, termMeshes, makeFrame, render, raycast, basis, dot, norm } from "./geometry.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
 const OUT = path.join(ROOT, "data-raw/pin-check");
@@ -19,6 +20,12 @@ const write = args.includes("--write");
 const force = args.includes("--force");
 const { RULES: R1, RULES2 = {}, ATTACH = {}, CHECKS } = await import(rulesFile);
 const RULES = { ...R1, ...RULES2 };
+// 規則・確認画像が Z-Anatomy の形（肺・甲状腺など）を使うときだけ Z-Anatomy を読む
+{
+  const byId = new Map(loadTerms().terms.map((t) => [t.id, t]));
+  const ids = [...Object.keys(RULES), ...(CHECKS ?? []).flatMap((c) => [c.mesh].flat())].map((id) => byId.get(id)?.of ?? id);
+  await loadDb({ za: usesZa(ids) });
+}
 
 // 方向: "lat+0.3sup" など。右側の骨で lat = -x
 const AXES = { lat: [-1, 0, 0], med: [1, 0, 0], ant: [0, 0, 1], post: [0, 0, -1], sup: [0, 1, 0], inf: [0, -1, 0] };
@@ -276,15 +283,16 @@ export function compute(id, rule) {
     }
     at.push(best);
   }
-  // near: 指定した座標にいちばん近い骨の表面の点
+  // near: 指定した座標にいちばん近い骨の表面の点（座標の配列なら1点ずつ。尿道のような細い管の点の列）
   if (rule.near) {
-    const P = rule.near;
-    let best = null, bd = Infinity;
-    for (const m of ms) for (let i = 0; i < m.positions.length; i += 3) {
-      const d = Math.hypot(m.positions[i] - P[0], m.positions[i + 1] - P[1], m.positions[i + 2] - P[2]);
-      if (d < bd) { bd = d; best = [m.positions[i], m.positions[i + 1], m.positions[i + 2]]; }
+    for (const P of Array.isArray(rule.near[0]) ? rule.near : [rule.near]) {
+      let best = null, bd = Infinity;
+      for (const m of ms) for (let i = 0; i < m.positions.length; i += 3) {
+        const d = Math.hypot(m.positions[i] - P[0], m.positions[i + 1] - P[1], m.positions[i + 2] - P[2]);
+        if (d < bd) { bd = d; best = [m.positions[i], m.positions[i + 1], m.positions[i + 2]]; }
+      }
+      at.push(best);
     }
-    at.push(best);
   }
   // fromMid: 正中（x=0）から外側へ当てる（下顎枝の内面など、反対側にさえぎられる所）
   if (rule.fromMid) {
@@ -294,6 +302,12 @@ export function compute(id, rule) {
     if (!hit) throw new Error("fromMid: 当たりません");
     at.push(hit.point);
     n = [1, 0, 0];
+  }
+  // union: いくつかの規則（side も別にできる）で求めた点を1つのピンに合わせる（左右の肺で形が違う斜裂・肺門など。one と使う）
+  for (const sub of rule.union ?? []) {
+    const pin = compute(id, { r: rule.r, ...sub });
+    at.push(...pin.at);
+    n ??= pin.n ?? pin.v;
   }
   if (rule.cap) {
     const { pts, axis } = capRim(ms, b, rule.cap);
@@ -349,11 +363,13 @@ export function compute(id, rule) {
   // 内側へずらす（窩の奥など）: inset m
   if (rule.inset) for (const p of at) for (let k = 0; k < 3; k++) p[k] -= n[k] * rule.inset;
   // ring: 骨を一周する部位。面の向きで塗り分けず、向きはカメラ用（v）にだけ使う
-  if (rule.ring) return { at: at.map((p) => p.map(round)), r: rule.r, v: n.map(round) };
-  return { at: at.map((p) => p.map(round)), r: rule.r, n: n.map(round) };
+  // one: 左右に折り返さない（左右の無い器官の部位・左肺だけの部位）
+  const one = rule.one ? { one: true } : {};
+  if (rule.ring) return { at: at.map((p) => p.map(round)), r: rule.r, v: n.map(round), ...one };
+  return { at: at.map((p) => p.map(round)), r: rule.r, n: n.map(round), ...one };
 }
 
-const { terms } = db();
+const { terms } = await loadDb();
 const termById = new Map(terms.map((t) => [t.id, t]));
 const pinsPath = path.join(ROOT, "content/pins.json");
 const pins = JSON.parse(fs.readFileSync(pinsPath, "utf8"));
@@ -420,7 +436,12 @@ for (const check of CHECKS ?? []) {
       const label = `${termById.get(muscle).ja}の${kind === "origin" ? "起始" : "停止"}`;
       return attachSpots.get(id).map(([, x, y, z, r, ...n], j) => ({ at: [[x, y, z]], r, n: n.length ? n : undefined, color, label: j ? undefined : label }));
     }
-    return pins[id] ? [{ at: pins[id].at, r: pins[id].r, n: pins[id].n, color, label: termById.get(id).ja.replace(/（.*）/, "") }] : [];
+    if (!pins[id]) return [];
+    const pin = pins[id];
+    const own = { at: pin.at, r: pin.r, n: pin.n, color, label: termById.get(id).ja.replace(/（.*）/, "") };
+    // 左右の部品を描くとき（side: "all"）は、アプリと同じく左側にも折り返して描く（one のピンは折り返さない）
+    if (check.side !== "all" || pin.one) return [own];
+    return [own, { at: pin.at.map(([x, y, z]) => [-x, y, z]), r: pin.r, n: pin.n && [-pin.n[0], pin.n[1], pin.n[2]], color }];
   });
   for (const view of check.views) {
     const frame = makeFrame(ms, view, check.size ?? 560, 0.08, check.crop ?? null);

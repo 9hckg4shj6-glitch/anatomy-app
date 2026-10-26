@@ -7,10 +7,10 @@
       "terms": [
         {
           "id": "pituitary-gland", "ja": "下垂体", "yomi": "かすいたい", "en": "pituitary gland", "enAlt": ["hypophysis", "pituitary"], "la": "hypophysis",
-          "parts": ["pituitary gland"], "level": 1,
+          "parts": ["za:adenohypophysis", "za:neurohypophysis"], "level": 1,
           "kanji": "（脳から）下に垂れ下がった体",
           "etym": "pituitary ← ラテン語 pituita「粘液」（鼻汁を出すと誤解されていた）。hypophysis ← 「下に生えたもの」",
-          "note": "脳の下、蝶形骨のトルコ鞍にのる豆粒大の器官。成長ホルモンなど多くのホルモンを出し、ほかの内分泌腺を調節する。"
+          "note": "脳の下、蝶形骨のトルコ鞍にのる豆粒大の器官。前の腺下垂体（前葉）と後ろの神経下垂体（後葉）からなり、成長ホルモンなど多くのホルモンを出してほかの内分泌腺を調節する。"
         },
         {
           "id": "pineal-gland", "ja": "松果体", "yomi": "しょうかたい", "en": "pineal gland", "enAlt": ["pineal body", "pineal"], "la": "glandula pinealis",
@@ -46,6 +46,54 @@
           "kanji": "胸にある腺",
           "etym": "thymus ← ギリシャ語 thymos（ハーブのタイムの葉に形が似る、とする説）",
           "note": "胸骨の後ろ、心臓の上にある器官。T細胞を育てるリンパ性器官でもある。子どもで大きく、大人では脂肪に置きかわる。"
+        }
+      ]
+    },
+    {
+      "id": "endo-detail",
+      "title": "下垂体と甲状腺の部位",
+      "terms": [
+        {
+          "id": "adenohypophysis", "ja": "腺下垂体", "yomi": "せんかすいたい", "en": "adenohypophysis", "enAlt": ["anterior pituitary", "anterior lobe of pituitary"], "la": "adenohypophysis",
+          "parts": ["za:adenohypophysis"], "level": 1,
+          "kanji": "腺でできた下垂体（前葉）",
+          "etym": "adeno-「腺」（ギリシャ語 aden）＋ hypophysis「下に生えたもの」",
+          "note": "下垂体の前の部分（前葉）。胎児の口の天井の上皮からできた腺で、成長ホルモン・プロラクチン・甲状腺刺激ホルモン・副腎皮質刺激ホルモン・性腺刺激ホルモンを出す。視床下部のホルモンが下垂体門脈で届いて調節する。"
+        },
+        {
+          "id": "neurohypophysis", "ja": "神経下垂体", "yomi": "しんけいかすいたい", "en": "neurohypophysis", "enAlt": ["posterior pituitary", "posterior lobe of pituitary"], "la": "neurohypophysis",
+          "parts": ["za:neurohypophysis"], "level": 1,
+          "kanji": "神経（脳）でできた下垂体（後葉）",
+          "etym": "neuro-「神経」＋ hypophysis",
+          "note": "下垂体の後ろの部分（後葉）と漏斗。間脳が下へ伸びたもので、視床下部の神経細胞がつくったバソプレシン（抗利尿ホルモン）とオキシトシンを、神経の突起の先から血液に出す。"
+        },
+        {
+          "id": "right-lobe-of-thyroid", "ja": "右葉（甲状腺）", "yomi": "うよう", "en": "right lobe of thyroid gland", "la": "lobus dexter glandulae thyroideae",
+          "of": "thyroid-gland", "level": 2,
+          "kanji": "甲状腺の右の葉",
+          "etym": "lobe ← ギリシャ語 lobos「丸くふくらんだ部分」",
+          "note": "気管と喉頭の右わきにある葉。後ろに上皮小体（上下2つ）が付き、後ろ内側を右の反回神経が上る。"
+        },
+        {
+          "id": "left-lobe-of-thyroid", "ja": "左葉（甲状腺）", "yomi": "さよう", "en": "left lobe of thyroid gland", "la": "lobus sinister glandulae thyroideae",
+          "of": "thyroid-gland", "level": 2,
+          "kanji": "甲状腺の左の葉",
+          "etym": "lobe ← ギリシャ語 lobos「丸くふくらんだ部分」",
+          "note": "気管と喉頭の左わきにある葉。左の反回神経は大動脈弓の下を回って、気管と食道の間の溝を上る。"
+        },
+        {
+          "id": "isthmus-of-thyroid", "ja": "峡部（甲状腺）", "yomi": "きょうぶ", "en": "isthmus of thyroid gland", "la": "isthmus glandulae thyroideae",
+          "of": "thyroid-gland", "level": 2,
+          "kanji": "甲状腺の、狭くくびれた（峡）部分",
+          "etym": "isthmus ← ギリシャ語「細い地峡」",
+          "note": "左右の葉を気管の前でつなぐ細い部分（第2〜4気管軟骨の前）。気管切開のときの目じるし。上へ錐体葉が伸びることがある。"
+        },
+        {
+          "id": "pyramidal-lobe", "ja": "錐体葉", "yomi": "すいたいよう", "en": "pyramidal lobe", "la": "lobus pyramidalis",
+          "of": "thyroid-gland", "level": 3,
+          "kanji": "錐（きり）の形の葉",
+          "etym": "pyramidal ← ギリシャ語 pyramis「ピラミッド」",
+          "note": "峡部から上へ伸びる細い葉。発生のときに甲状腺が舌の根もとから下りてきた通り道（甲状舌管）のなごりで、ある人とない人がいる。このモデルにはある。"
         }
       ]
     }

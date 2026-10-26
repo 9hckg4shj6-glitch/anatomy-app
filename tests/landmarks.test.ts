@@ -1,5 +1,5 @@
-import { distanceToPin, hitsPin, landmarkAt } from "../src/landmarks";
-import type { Pin, Term } from "../src/content";
+import { distanceToPin, hitsPin, landmarkAt, nearbyLandmarks } from "../src/landmarks";
+import { termById, type Pin, type Term } from "../src/content";
 
 const pin = (at: [number, number, number][], r = 0.01): Pin => ({ at, r });
 
@@ -16,6 +16,20 @@ describe("骨の部位のピン", () => {
     const crest = pin([[-0.1, 1, 0], [-0.1, 1.05, 0], [-0.1, 1.1, 0]], 0.005);
     expect(hitsPin([-0.1, 1.052, 0.001], crest)).toBe(true);
     expect(hitsPin([-0.1, 1.2, 0], crest)).toBe(false);
+  });
+});
+
+describe("器官の部位のピン", () => {
+  it("左右の無い器官の部位（one）は折り返さない（幽門の反対側は胃体なので）", () => {
+    const pylorus: Pin = { at: [[-0.03, 1.05, 0.12]], r: 0.01, one: true };
+    expect(hitsPin([-0.03, 1.05, 0.12], pylorus)).toBe(true);
+    expect(hitsPin([0.03, 1.05, 0.12], pylorus)).toBe(false);
+  });
+
+  it("4択の近い部位は、同じ系統の部位から選ぶ（胃の部位に骨の部位を混ぜない）", () => {
+    const near = nearbyLandmarks("pylorus");
+    expect(near.length).toBeGreaterThan(3);
+    for (const id of near) expect(termById.get(id)?.system).toBe("digestive");
   });
 });
 

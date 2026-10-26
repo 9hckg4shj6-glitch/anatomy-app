@@ -28,7 +28,7 @@
         },
         {
           "id": "urethra", "ja": "尿道", "yomi": "にょうどう", "en": "urethra", "la": "urethra",
-          "parts": ["urethra"], "level": 1,
+          "parts": ["urethra"], "level": 1, "xray": true,
           "kanji": "尿の通る道",
           "etym": "urethra ← ギリシャ語 ourein「排尿する」",
           "note": "膀胱から体外へ尿を出す管。男性は約16〜20cm、女性は約4cm。"
@@ -81,6 +81,147 @@
           "kanji": "尿道を包む海綿体",
           "etym": "corpus「体」＋ spongiosum「スポンジ状の」",
           "note": "陰茎の腹側で尿道を包む海綿体。先端がふくらんで亀頭になる。"
+        }
+      ]
+    },
+    {
+      "id": "uro-detail",
+      "title": "腎盤と陰茎",
+      "terms": [
+        {
+          "id": "renal-pelvis", "check": true, "ja": "腎盤", "yomi": "じんばん", "en": "renal pelvis", "la": "pelvis renalis",
+          "parts": ["za:renal pelvis"], "level": 1,
+          "kanji": "腎臓の中の、たらい（盤）のような部分",
+          "etym": "pelvis ← ラテン語「たらい・鉢」",
+          "note": "腎臓の中で、腎杯から尿を集める漏斗形の部分。腎門を出て尿管に続く。臨床では腎盂（じんう）ということが多い。"
+        },
+        {
+          "id": "ejaculatory-duct", "ja": "射精管", "yomi": "しゃせいかん", "en": "ejaculatory duct", "la": "ductus ejaculatorius",
+          "parts": ["za:ejaculatory duct"], "level": 2, "xray": true,
+          "kanji": "精液を射出する管",
+          "etym": "ejaculatory ← ラテン語 ejaculari「投げ出す」",
+          "note": "精管の終わり（精管膨大部）と精嚢の導管が合わさってできる長さ約2cmの管。前立腺を貫いて、尿道の前立腺部（精丘）に開く。"
+        },
+        {
+          "id": "penis", "ja": "陰茎", "yomi": "いんけい", "en": "penis", "la": "penis",
+          "parts": ["corpus cavernosum of penis", "corpus spongiosum of penis", "glans penis"], "level": 1,
+          "kanji": "陰部の茎",
+          "etym": "penis ← ラテン語「尾」",
+          "note": "左右1対の陰茎海綿体と、尿道を包む尿道海綿体からなる。根もと（陰茎根）は恥骨と会陰につき、先端は亀頭。中を尿道の海綿体部が通る。"
+        },
+        {
+          "id": "glans-penis", "ja": "陰茎亀頭", "yomi": "いんけいきとう", "en": "glans penis", "la": "glans penis",
+          "parts": ["glans penis"], "level": 2,
+          "kanji": "亀の頭のような形の部分",
+          "etym": "glans ← ラテン語「どんぐり」",
+          "note": "尿道海綿体の先端がふくらんだ部分。先に外尿道口が開く。"
+        }
+      ]
+    },
+    {
+      "id": "uro-pelvic-floor",
+      "title": "骨盤底の筋",
+      "terms": [
+        {
+          "id": "levator-ani", "ja": "肛門挙筋", "yomi": "こうもんきょきん", "en": "levator ani", "la": "musculus levator ani",
+          "parts": ["pubococcygeus", "puborectalis", "iliococcygeus", "!FJ1457M", "!FJ1458M", "!FJ1453M"], "level": 2, "color": "#c75b4f",
+          "kanji": "肛門を挙げる筋",
+          "etym": "levator「持ち上げるもの」＋ ani「肛門の」(anus)",
+          "note": "骨盤の底をハンモックのようにふさぐ筋（尾骨筋とあわせて骨盤隔膜）。恥骨直腸筋・恥骨尾骨筋・腸骨尾骨筋からなり、間を尿道・直腸（女性では腟も）が通る。出産などで傷むと尿もれや骨盤臓器脱の原因になる。",
+          "origin": "恥骨の後面・肛門挙筋腱弓・坐骨棘",
+          "insertion": "会陰腱中心・肛門尾骨靱帯・尾骨",
+          "originAt": ["ischial-spine"],
+          "nerve": "陰部神経・仙骨神経叢の枝",
+          "action": "骨盤内臓を下から支え、腹圧に耐える"
+        },
+        {
+          "id": "puborectalis", "ja": "恥骨直腸筋", "yomi": "ちこつちょくちょうきん", "en": "puborectalis", "la": "musculus puborectalis",
+          "parts": ["puborectalis", "!FJ1458M"], "level": 3, "color": "#c75b4f",
+          "kanji": "恥骨から直腸の後ろへ回る筋",
+          "etym": "pubo-「恥骨」（ラテン語 pubis）＋ rectalis「直腸の」",
+          "note": "肛門挙筋の内側の部分で、左右が直腸の後ろで U字形につながる。直腸を前へ引いて曲げ（肛門直腸角）、便がもれるのを防ぐ。排便のときはゆるむ。",
+          "origin": "恥骨結合の近くの恥骨の後面",
+          "insertion": "直腸の後ろで反対側の同じ筋とつながる",
+          "nerve": "陰部神経・仙骨神経叢の枝",
+          "action": "直腸を前へ引いて肛門直腸角をつくり、便を保つ"
+        },
+        {
+          "id": "coccygeus", "ja": "尾骨筋", "yomi": "びこつきん", "en": "coccygeus", "enAlt": ["ischiococcygeus"], "la": "musculus coccygeus",
+          "parts": ["coccygeus", "!FJ1449M"], "level": 3, "color": "#c75b4f",
+          "kanji": "尾骨に付く筋",
+          "etym": "coccygeus ← ギリシャ語 kokkyx「カッコウ（尾骨の形がくちばしに似る）」",
+          "note": "坐骨棘から仙骨・尾骨の縁へ扇形に広がる筋。肛門挙筋の後ろに並び、骨盤隔膜の後ろの部分をつくる。仙棘靱帯の骨盤側に重なる。",
+          "origin": "坐骨棘",
+          "insertion": "仙骨の下部と尾骨の外側縁",
+          "originAt": ["ischial-spine"],
+          "nerve": "仙骨神経叢の枝",
+          "action": "骨盤底を支え、尾骨を前へ引く"
+        },
+        {
+          "id": "external-anal-sphincter", "ja": "外肛門括約筋", "yomi": "がいこうもんかつやくきん", "en": "external anal sphincter", "la": "musculus sphincter ani externus",
+          "parts": ["external anal sphincter", "!FJ1450M"], "level": 2, "color": "#c75b4f",
+          "kanji": "肛門の外側を締めくくる筋",
+          "etym": "sphincter ← ギリシャ語 sphinkter「締めるもの」",
+          "note": "肛門管を外から輪のように囲む骨格筋。意識して肛門を締められるのはこの筋のおかげ（内側の内肛門括約筋は平滑筋で、意識では動かせない）。",
+          "origin": "肛門尾骨靱帯・尾骨の先端",
+          "insertion": "会陰腱中心",
+          "nerve": "陰部神経",
+          "action": "肛門を締める（意識して締められる）"
+        }
+      ]
+    },
+    {
+      "id": "uro-pt",
+      "title": "腎臓・膀胱・尿道の部位",
+      "terms": [
+        {
+          "id": "renal-hilum", "ja": "腎門", "yomi": "じんもん", "en": "renal hilum", "enAlt": ["hilum of kidney"], "la": "hilum renale",
+          "of": "kidney", "level": 1,
+          "kanji": "腎臓の門（出入口）",
+          "etym": "renal ← ラテン語 ren「腎臓」。hilum「へそ」",
+          "note": "腎臓の内側の縁の中央のくぼみ。前から腎静脈・腎動脈・腎盤（尿管）の順に並んで出入りする。奥は腎洞という空所。"
+        },
+        {
+          "id": "apex-of-bladder", "ja": "膀胱尖", "yomi": "ぼうこうせん", "en": "apex of bladder", "la": "apex vesicae",
+          "of": "urinary-bladder", "level": 3,
+          "kanji": "膀胱の先（尖）",
+          "etym": "apex「先端」＋ vesicae「膀胱の」(vesica 袋)",
+          "note": "膀胱の前上の先端。正中臍索（胎児の尿膜管のなごり）で臍とつながる。"
+        },
+        {
+          "id": "fundus-of-bladder", "ja": "膀胱底", "yomi": "ぼうこうてい", "en": "fundus of bladder", "enAlt": ["base of bladder"], "la": "fundus vesicae",
+          "of": "urinary-bladder", "level": 2,
+          "kanji": "膀胱の底",
+          "etym": "fundus ← ラテン語「底」",
+          "note": "膀胱の後ろ下の面。内面に、左右の尿管口と内尿道口を結ぶ三角形の膀胱三角があり、ここにはひだができない。男性では後ろに精嚢と精管膨大部がある。"
+        },
+        {
+          "id": "neck-of-bladder", "ja": "膀胱頚", "yomi": "ぼうこうけい", "en": "neck of bladder", "la": "cervix vesicae",
+          "of": "urinary-bladder", "level": 3,
+          "kanji": "膀胱の首",
+          "etym": "neck「首」。ラテン語 cervix",
+          "note": "膀胱の最も下の、内尿道口のある部分。男性では前立腺の上にのる。"
+        },
+        {
+          "id": "prostatic-urethra", "ja": "前立腺部（尿道）", "yomi": "ぜんりつせんぶ", "en": "prostatic urethra", "la": "pars prostatica urethrae",
+          "of": "urethra", "level": 2,
+          "kanji": "尿道の、前立腺を通る部分",
+          "etym": "prostatic「前立腺の」",
+          "note": "男性の尿道で前立腺を貫く約3cmの部分。後ろの壁の精丘に射精管と前立腺の導管が開く。前立腺肥大で狭くなる。"
+        },
+        {
+          "id": "membranous-urethra", "check": true, "ja": "隔膜部（尿道）", "yomi": "かくまくぶ", "en": "membranous urethra", "enAlt": ["intermediate part of urethra"], "la": "pars membranacea urethrae",
+          "of": "urethra", "level": 2,
+          "kanji": "尿道の、尿生殖隔膜を通る部分",
+          "etym": "membranous「膜の」",
+          "note": "前立腺の下から尿道球までの約1cmの部分で、尿道で最も狭い。周りを尿道括約筋（意識して締められる筋）が囲む。中間部ともいう。"
+        },
+        {
+          "id": "spongy-urethra", "ja": "海綿体部（尿道）", "yomi": "かいめんたいぶ", "en": "spongy urethra", "la": "pars spongiosa urethrae",
+          "of": "urethra", "level": 2,
+          "kanji": "尿道の、尿道海綿体を通る部分",
+          "etym": "spongy「海綿の」",
+          "note": "尿道海綿体の中を通る約15cmの部分。尿道球の中で広がり、亀頭の中で舟状窩となって外尿道口に開く。尿道球腺が開く。"
         }
       ]
     }

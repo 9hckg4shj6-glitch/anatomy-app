@@ -15,9 +15,9 @@ export interface Term {
   en: string;
   enAlt?: string[];
   la?: string;
-  /** 3Dの部品の指定。骨の部位（of がある語）では省略でき、親の骨の parts を使う（scripts/build-models.mjs） */
+  /** 3Dの部品の指定。骨・器官の部位（of がある語）では省略でき、親の parts を使う（scripts/build-models.mjs） */
   parts?: string[];
-  /** 骨の部位（大結節など）なら、その骨の語ID。位置は content/pins.json のピンで示す */
+  /** 骨・器官の部位（大結節・噴門など）なら、その骨・器官の語ID。位置は content/pins.json のピンで示す */
   of?: string;
   fma?: string;
   level: 1 | 2 | 3;
@@ -28,6 +28,8 @@ export interface Term {
   color?: string;
   /** ほかの構造に隠れる部位。強調するとき周りを半透明にし、タップで答える問題は出さない */
   xray?: boolean;
+  /** ほかの構造をおおったりふさいだりする形（大網・口腔・鼻腔など）。ふだんはごく薄く見せてタップでは選べず、強調したときだけ不透明にする（xray と一緒に使う） */
+  veil?: boolean;
   /** 表記などを教科書で確かめてほしい語（docs/要確認用語.md に出る） */
   check?: boolean;
   /** 筋の起始・停止・支配神経・作用。起始・停止の骨の部位は originAt / insertionAt に語IDで（3Dでピンを示す） */
@@ -55,15 +57,17 @@ interface TermFile {
 }
 
 /**
- * 骨の部位の位置（モデル座標 m・Y上、本人の右側）。at は点の列（稜・線は数点）、r は示す範囲の半径。
+ * 骨・器官の部位の位置（モデル座標 m・Y上、本人の右側）。at は点の列（稜・線は数点）、r は示す範囲の半径。
  * n は表面の外向き（その向きの面だけを塗り、カメラもその向きから見る）。
  * v はカメラの向きだけ（外科頚のように骨を一周する部位は、面の向きで塗り分けない）。
+ * one は左右に折り返さない（胃・肝臓のように左右の無い器官や、左肺だけの部位。位置は本当の側に置く）。
  */
 export interface Pin {
   at: [number, number, number][];
   r: number;
   n?: [number, number, number];
   v?: [number, number, number];
+  one?: boolean;
 }
 
 /** scripts/build-models.mjs が書き出す public/models/index.json */
@@ -95,16 +99,16 @@ export const termById = new Map(terms.map((term) => [term.id, term]));
 export const unitById = new Map(units.map((unit) => [unit.id, unit]));
 export const systemById = new Map(systems.map((system) => [system.id, system]));
 
-/** 骨の部位のピン。ピン打ちツール（#/admin）で書きかえる */
+/** 骨・器官の部位のピン。ピン打ちツール（#/admin）で書きかえる */
 export const pins = pinsJson as unknown as Record<string, Pin>;
 
 export function isLandmark(term: Pick<Term, "of"> | undefined): boolean {
   return !!term?.of;
 }
 
-/** 骨の部位の一覧（骨ごと） */
-export function landmarksOf(boneId: string): Term[] {
-  return terms.filter((term) => term.of === boneId);
+/** 骨・器官の部位の一覧（骨・器官ごと） */
+export function landmarksOf(parentId: string): Term[] {
+  return terms.filter((term) => term.of === parentId);
 }
 
 /**

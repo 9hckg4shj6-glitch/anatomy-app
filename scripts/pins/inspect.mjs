@@ -1,14 +1,15 @@
-// ピンの規則を書くための下見。骨を描く・光線が当たる所の地図・奥行きの地図を出す。
+// ピンの規則を書くための下見。骨・器官を描く・光線が当たる所の地図・奥行きの地図を出す（SIDE=left|all で左の部品も）。
 // node scripts/pins/inspect.mjs view  <語ID> <view,view> [crop u0,v0,u1,v1]   → data-raw/pin-check/view-*.png
 // node scripts/pins/inspect.mjs hits  <語ID> <view> u0 u1 v0 v1 [step]       → # が骨、. が何も無い所
 // node scripts/pins/inspect.mjs depth <語ID> <view> u0 u1 v0 v1 [step]       → 0〜9 が手前〜奥
 import fs from "node:fs";
 import path from "node:path";
-import { makeFrame, raycast, render, termMeshes } from "./geometry.mjs";
+import { loadDb, makeFrame, raycast, render, termMeshes, usesZa } from "./geometry.mjs";
 
 const OUT = path.resolve(import.meta.dirname, "../../data-raw/pin-check");
 const [mode, term, view, ...rest] = process.argv.slice(2);
-const ms = termMeshes(term, "right");
+await loadDb({ za: usesZa([term]) });
+const ms = termMeshes(term, process.env.SIDE ?? "right");
 
 if (mode === "view") {
   fs.mkdirSync(OUT, { recursive: true });

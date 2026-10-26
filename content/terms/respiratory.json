@@ -109,6 +109,279 @@
           "note": "斜裂より後ろ下の葉。横隔膜の上にのる。"
         }
       ]
+    },
+    {
+      "id": "resp-nose",
+      "title": "鼻腔と副鼻腔",
+      "terms": [
+        {
+          "id": "nasal-cavity", "ja": "鼻腔", "yomi": "びくう", "en": "nasal cavity", "la": "cavitas nasi",
+          "parts": ["za:mucosa of nasal cavity"], "level": 1, "xray": true, "veil": true,
+          "kanji": "鼻の中の空所",
+          "etym": "nasal ← ラテン語 nasus「鼻」。cavity ← cavus「うつろな」",
+          "note": "外鼻孔から後鼻孔までの空所で、後ろは咽頭鼻部に続く。鼻中隔で左右に分かれ、外側の壁から上・中・下の鼻甲介が張り出す。吸った空気を温め、湿らせ、ちりを除く。天井に嗅覚の粘膜がある。このアプリではふだん薄く見せている。"
+        },
+        {
+          "id": "lateral-nasal-cartilage", "ja": "外側鼻軟骨", "yomi": "がいそくびなんこつ", "en": "lateral nasal cartilage", "la": "cartilago nasi lateralis",
+          "parts": ["lateral nasal cartilage"], "level": 3,
+          "kanji": "鼻の外側の軟骨",
+          "etym": "lateral「外側の」＋ nasal「鼻の」＋ cartilage ← ラテン語 cartilago「軟骨」",
+          "note": "鼻骨の下に続いて鼻背の両わきをつくる三角形の軟骨。"
+        },
+        {
+          "id": "major-alar-cartilage", "ja": "大鼻翼軟骨", "yomi": "だいびよくなんこつ", "en": "major alar cartilage", "la": "cartilago alaris major",
+          "parts": ["major alar cartilage"], "level": 3,
+          "kanji": "鼻翼（小鼻）の大きな軟骨",
+          "etym": "alar ← ラテン語 ala「翼」",
+          "note": "外鼻孔を囲む U字形の軟骨。鼻尖（はなの先）と鼻翼の形をつくる。"
+        },
+        {
+          "id": "frontal-sinus", "ja": "前頭洞", "yomi": "ぜんとうどう", "en": "frontal sinus", "la": "sinus frontalis",
+          "parts": ["za:sinus of frontal bone"], "level": 1, "xray": true,
+          "kanji": "前頭骨の中の洞（空洞）",
+          "etym": "sinus ← ラテン語「くぼみ・湾」",
+          "note": "眉の奥、前頭骨の中にある副鼻腔。中鼻道に開く。副鼻腔（上顎洞・前頭洞・篩骨蜂巣・蝶形骨洞）は鼻腔につながる骨の中の空洞で、頭蓋を軽くし、声を響かせる。上顎洞はこのモデルに無い。"
+        },
+        {
+          "id": "sphenoidal-sinus", "ja": "蝶形骨洞", "yomi": "ちょうけいこつどう", "en": "sphenoidal sinus", "enAlt": ["sphenoid sinus"], "la": "sinus sphenoidalis",
+          "parts": ["za:sinus of sphenoid bone"], "level": 2, "xray": true,
+          "kanji": "蝶形骨の中の洞（空洞）",
+          "etym": "sphenoid ← ギリシャ語 sphen「くさび」＋ -oid「〜の形」",
+          "note": "蝶形骨体の中、下垂体の入るトルコ鞍のすぐ下にある副鼻腔。上鼻甲介の後ろ上の蝶篩陥凹に開く。下垂体の手術は鼻からここを通って行う。"
+        },
+        {
+          "id": "ethmoidal-cells", "ja": "篩骨蜂巣", "yomi": "しこつほうそう", "en": "ethmoidal cells", "enAlt": ["ethmoidal sinus", "ethmoid air cells"], "la": "cellulae ethmoidales",
+          "parts": ["za:*cells of ethmoid bone"], "level": 2, "xray": true,
+          "kanji": "篩骨の中の、蜂の巣のような小部屋",
+          "etym": "ethmoid ← ギリシャ語 ethmos「ふるい」＋ -oid「〜の形」",
+          "note": "左右の眼窩の間、篩骨の中にある小さな空洞の集まり（篩骨洞ともいう）。前・中のものは中鼻道に、後ろのものは上鼻道に開く。壁が薄く、炎症が眼窩に広がることがある。"
+        }
+      ]
+    },
+    {
+      "id": "resp-larynx",
+      "title": "喉頭の軟骨と靱帯",
+      "terms": [
+        {
+          "id": "larynx", "ja": "喉頭", "yomi": "こうとう", "en": "larynx", "la": "larynx",
+          "parts": ["thyroid cartilage", "cricoid cartilage", "arytenoid cartilage", "epiglottis", "corniculate cartilage", "cuneiform cartilage", "thyrohyoid membrane", "conus elasticus", "vocal ligament", "*cricothyroid", "posterior crico-arytenoid", "lateral crico-arytenoid", "thyro-arytenoid", "vocalis", "transverse arytenoid", "oblique arytenoid", "aryepiglotticus"], "level": 1,
+          "kanji": "のど（喉）の上の部分",
+          "etym": "larynx ← ギリシャ語「のど」。laryngeal「喉頭の」",
+          "note": "咽頭と気管の間にある、軟骨で囲まれた気道の部分（第4〜6頚椎の高さ）。中の声帯ひだで声を出し、飲み込むときは持ち上がって喉頭蓋で入口をふさぐ。"
+        },
+        {
+          "id": "laryngeal-prominence", "ja": "喉頭隆起", "yomi": "こうとうりゅうき", "en": "laryngeal prominence", "enAlt": ["adam's apple"], "la": "prominentia laryngea",
+          "of": "thyroid-cartilage", "level": 1,
+          "kanji": "喉頭の盛り上がり",
+          "etym": "prominence ← ラテン語 prominere「突き出る」",
+          "note": "甲状軟骨の左右の板が前で合わさってできる出っぱり（のどぼとけ）。思春期に男性で大きくなる。"
+        },
+        {
+          "id": "corniculate-cartilage", "ja": "小角軟骨", "yomi": "しょうかくなんこつ", "en": "corniculate cartilage", "la": "cartilago corniculata",
+          "parts": ["corniculate cartilage"], "level": 3, "xray": true,
+          "kanji": "小さな角（つの）の形の軟骨",
+          "etym": "corniculate ← ラテン語 corniculum「小さな角」",
+          "note": "披裂軟骨の先端にのる小さな円錐形の軟骨。披裂喉頭蓋ひだの後ろの端に小さなふくらみをつくる。"
+        },
+        {
+          "id": "cuneiform-cartilage", "ja": "楔状軟骨", "yomi": "けつじょうなんこつ", "en": "cuneiform cartilage", "la": "cartilago cuneiformis",
+          "parts": ["cuneiform cartilage"], "level": 3, "xray": true,
+          "kanji": "くさび（楔）の形の軟骨",
+          "etym": "cuneiform ← ラテン語 cuneus「くさび」＋ forma「形」",
+          "note": "披裂喉頭蓋ひだの中、小角軟骨の前にある棒状の小さな軟骨。ひだを支える。"
+        },
+        {
+          "id": "vocal-ligament", "ja": "声帯靱帯", "yomi": "せいたいじんたい", "en": "vocal ligament", "la": "ligamentum vocale",
+          "parts": ["vocal ligament"], "level": 2, "xray": true,
+          "kanji": "声を出す帯（声帯）の靱帯",
+          "etym": "vocal ← ラテン語 vox「声」",
+          "note": "甲状軟骨の後面と披裂軟骨の声帯突起を結ぶ靱帯。粘膜・声帯筋とともに声帯ひだ（声帯）をつくり、左右の声帯ひだの間のすき間が声門裂。"
+        },
+        {
+          "id": "conus-elasticus", "ja": "弾性円錐", "yomi": "だんせいえんすい", "en": "conus elasticus", "la": "conus elasticus",
+          "parts": ["conus elasticus"], "level": 3, "xray": true,
+          "kanji": "弾性線維でできた円錐形の膜",
+          "etym": "conus ← ラテン語「円錐」＋ elasticus「弾力のある」",
+          "note": "輪状軟骨の上の縁から上内側へ張り、上の縁が声帯靱帯になる膜。前の厚い部分（正中輪状甲状靱帯）は、窒息のとき気道を確保する輪状甲状靱帯切開の場所。"
+        },
+        {
+          "id": "thyrohyoid-membrane", "ja": "甲状舌骨膜", "yomi": "こうじょうぜっこつまく", "en": "thyrohyoid membrane", "la": "membrana thyrohyoidea",
+          "parts": ["thyrohyoid membrane"], "level": 3,
+          "kanji": "甲状軟骨と舌骨の間の膜",
+          "etym": "thyro-「甲状軟骨」（ギリシャ語 thyreos 盾）＋ hyoid「舌骨」",
+          "note": "舌骨と甲状軟骨の上の縁の間に張る膜。上喉頭動脈と上喉頭神経の内枝がここを貫いて喉頭に入る。"
+        }
+      ]
+    },
+    {
+      "id": "resp-larynx-muscles",
+      "title": "喉頭の筋",
+      "terms": [
+        {
+          "id": "cricothyroid", "ja": "輪状甲状筋", "yomi": "りんじょうこうじょうきん", "en": "cricothyroid", "la": "musculus cricothyroideus",
+          "parts": ["*cricothyroid"], "level": 2, "color": "#c75b4f",
+          "kanji": "輪状軟骨と甲状軟骨を結ぶ筋",
+          "etym": "crico-「輪状軟骨」（ギリシャ語 krikos 輪）＋ thyroid「甲状軟骨」（thyreos 盾）",
+          "note": "喉頭の外の前下にある筋。喉頭の筋で唯一、上喉頭神経の外枝に支配される（ほかはすべて反回神経）。甲状軟骨を前に傾けて声帯を引きのばし、声を高くする。",
+          "origin": "輪状軟骨の弓の前外側面",
+          "insertion": "甲状軟骨の下縁と下角",
+          "nerve": "上喉頭神経の外枝",
+          "action": "甲状軟骨を前に傾けて声帯を張る（声を高くする）"
+        },
+        {
+          "id": "posterior-cricoarytenoid", "ja": "後輪状披裂筋", "yomi": "こうりんじょうひれつきん", "en": "posterior cricoarytenoid", "la": "musculus cricoarytenoideus posterior",
+          "parts": ["posterior crico-arytenoid"], "level": 2, "color": "#c75b4f",
+          "kanji": "輪状軟骨の後ろから披裂軟骨へ行く筋",
+          "etym": "crico-「輪状軟骨」＋ arytenoid「披裂軟骨」（ギリシャ語 arytaina ひしゃく）",
+          "note": "輪状軟骨板の後ろにある筋。声門を開く唯一の筋で、両側がまひすると声門が開かず息ができなくなる。",
+          "origin": "輪状軟骨板の後面",
+          "insertion": "披裂軟骨の筋突起",
+          "nerve": "反回神経（下喉頭神経）",
+          "action": "披裂軟骨を回して声門を開く"
+        },
+        {
+          "id": "lateral-cricoarytenoid", "ja": "外側輪状披裂筋", "yomi": "がいそくりんじょうひれつきん", "en": "lateral cricoarytenoid", "la": "musculus cricoarytenoideus lateralis",
+          "parts": ["lateral crico-arytenoid"], "level": 3, "xray": true, "color": "#c75b4f",
+          "kanji": "輪状軟骨の外側から披裂軟骨へ行く筋",
+          "etym": "crico-「輪状軟骨」＋ arytenoid「披裂軟骨」",
+          "note": "甲状軟骨の内側にかくれた小さな筋。後輪状披裂筋と反対に披裂軟骨を回して声門を閉じる。",
+          "origin": "輪状軟骨の弓の上縁",
+          "insertion": "披裂軟骨の筋突起",
+          "nerve": "反回神経（下喉頭神経）",
+          "action": "披裂軟骨を回して声門を閉じる"
+        },
+        {
+          "id": "thyroarytenoid", "ja": "甲状披裂筋", "yomi": "こうじょうひれつきん", "en": "thyroarytenoid", "la": "musculus thyroarytenoideus",
+          "parts": ["thyro-arytenoid"], "level": 3, "xray": true, "color": "#c75b4f",
+          "kanji": "甲状軟骨から披裂軟骨へ行く筋",
+          "etym": "thyro-「甲状軟骨」＋ arytenoid「披裂軟骨」",
+          "note": "甲状軟骨の内側を前後に走る筋。内側の部分が声帯筋。声帯をゆるめ、声門を狭める。",
+          "origin": "甲状軟骨の後面（正中の近く）",
+          "insertion": "披裂軟骨の前外側面",
+          "nerve": "反回神経（下喉頭神経）",
+          "action": "声帯をゆるめ、声門を狭める"
+        },
+        {
+          "id": "vocalis", "ja": "声帯筋", "yomi": "せいたいきん", "en": "vocalis", "la": "musculus vocalis",
+          "parts": ["vocalis"], "level": 3, "xray": true, "color": "#c75b4f",
+          "kanji": "声帯の中の筋",
+          "etym": "vocalis ← ラテン語 vox「声」",
+          "note": "声帯ひだの中、声帯靱帯のすぐ外にある筋（甲状披裂筋の内側の部分）。声帯の張りと厚みを細かく変えて、声の高さや質を調節する。",
+          "origin": "甲状軟骨の後面（正中の近く）",
+          "insertion": "披裂軟骨の声帯突起",
+          "nerve": "反回神経（下喉頭神経）",
+          "action": "声帯の張りを細かく調節する"
+        },
+        {
+          "id": "transverse-arytenoid", "ja": "横披裂筋", "yomi": "おうひれつきん", "en": "transverse arytenoid", "la": "musculus arytenoideus transversus",
+          "parts": ["transverse arytenoid"], "level": 3, "color": "#c75b4f",
+          "kanji": "左右の披裂軟骨の間を横に走る筋",
+          "etym": "transverse「横の」＋ arytenoid「披裂軟骨」",
+          "note": "左右の披裂軟骨の後面の間を横に走る筋。喉頭の筋で唯一、左右1対にならない。",
+          "origin": "披裂軟骨の後面",
+          "insertion": "反対側の披裂軟骨の後面",
+          "nerve": "反回神経（下喉頭神経）",
+          "action": "左右の披裂軟骨を寄せて声門の後ろを閉じる"
+        },
+        {
+          "id": "oblique-arytenoid", "ja": "斜披裂筋", "yomi": "しゃひれつきん", "en": "oblique arytenoid", "la": "musculus arytenoideus obliquus",
+          "parts": ["oblique arytenoid"], "level": 3, "color": "#c75b4f",
+          "kanji": "左右の披裂軟骨の間を斜めに走る筋",
+          "etym": "oblique「斜めの」＋ arytenoid「披裂軟骨」",
+          "note": "横披裂筋の後ろで、左右の披裂軟骨の間を X字形に交差する筋。上へ続いて披裂喉頭蓋筋になる。",
+          "origin": "披裂軟骨の筋突起の後面",
+          "insertion": "反対側の披裂軟骨の尖",
+          "nerve": "反回神経（下喉頭神経）",
+          "action": "左右の披裂軟骨を寄せ、喉頭の入口を狭める"
+        },
+        {
+          "id": "aryepiglottic", "ja": "披裂喉頭蓋筋", "yomi": "ひれつこうとうがいきん", "en": "aryepiglottic", "enAlt": ["aryepiglotticus"], "la": "musculus aryepiglotticus",
+          "parts": ["aryepiglotticus"], "level": 3, "color": "#c75b4f",
+          "kanji": "披裂軟骨から喉頭蓋へ行く筋",
+          "etym": "ary-「披裂軟骨」＋ epiglottic「喉頭蓋の」",
+          "note": "斜披裂筋の続きで、披裂喉頭蓋ひだの中を喉頭蓋の縁へ上る細い筋。",
+          "origin": "披裂軟骨の尖",
+          "insertion": "喉頭蓋の外側縁",
+          "nerve": "反回神経（下喉頭神経）",
+          "action": "飲み込むときに喉頭の入口を狭める"
+        }
+      ]
+    },
+    {
+      "id": "resp-lung-parts",
+      "title": "肺の部位と気管支",
+      "terms": [
+        {
+          "id": "lung", "ja": "肺", "yomi": "はい", "en": "lung", "enAlt": ["lungs"], "la": "pulmo",
+          "parts": ["za:*lobe of right lung", "za:*lobe of left lung"], "level": 1,
+          "kanji": "はい",
+          "etym": "lung（英語の固有語）。ラテン語 pulmo から pulmonary「肺の」、ギリシャ語 pneumon から pneumonia「肺炎」",
+          "note": "胸腔の左右にある円錐形の器官。肺胞で酸素と二酸化炭素を交換する。表面は胸膜（臓側胸膜）におおわれ、胸壁の内面の壁側胸膜との間の胸膜腔にはわずかな液がある。"
+        },
+        {
+          "id": "apex-of-lung", "ja": "肺尖", "yomi": "はいせん", "en": "apex of lung", "la": "apex pulmonis",
+          "of": "lung", "level": 1,
+          "kanji": "肺の先（尖）",
+          "etym": "apex ← ラテン語「先端」。pulmonis「肺の」",
+          "note": "肺の上の端。鎖骨より2〜3cm上の、頚の根もとまで出ている。肺尖の腫瘍（パンコースト腫瘍）は腕神経叢や交感神経幹を巻きこむ。"
+        },
+        {
+          "id": "base-of-lung", "ja": "肺底", "yomi": "はいてい", "en": "base of lung", "enAlt": ["diaphragmatic surface"], "la": "basis pulmonis",
+          "of": "lung", "level": 2,
+          "kanji": "肺の底",
+          "etym": "base ← ラテン語 basis「土台」",
+          "note": "横隔膜にのる肺の下の面（横隔面）。横隔膜のドームに合わせてくぼむ。右は肝臓に押されて左より高い。"
+        },
+        {
+          "id": "hilum-of-lung", "ja": "肺門", "yomi": "はいもん", "en": "hilum of lung", "la": "hilum pulmonis",
+          "parts": ["za:*lobe of right lung"], "of": "lung", "level": 1,
+          "kanji": "肺の門（出入口）",
+          "etym": "hilum ← ラテン語「小さなもの・へそ」",
+          "note": "肺の内側の面（縦隔面）の中央の出入口。主気管支・肺動脈・肺静脈・気管支動静脈・神経・リンパ管が出入りし、まとめて肺根という。3Dでは右肺で示す（左肺を半透明にして内側から見る）。"
+        },
+        {
+          "id": "oblique-fissure", "ja": "斜裂", "yomi": "しゃれつ", "en": "oblique fissure", "la": "fissura obliqua",
+          "of": "lung", "level": 2,
+          "kanji": "斜めの裂け目",
+          "etym": "oblique「斜めの」＋ fissure ← ラテン語 findere「裂く」",
+          "note": "肺の後ろ上（第3〜4胸椎の高さ）から前下（第6肋軟骨のあたり）へ斜めに走る深い切れこみ。左右の肺で、下葉とその上の葉を分ける。"
+        },
+        {
+          "id": "horizontal-fissure", "ja": "水平裂", "yomi": "すいへいれつ", "en": "horizontal fissure", "la": "fissura horizontalis pulmonis dextri",
+          "of": "right-lung", "level": 2,
+          "kanji": "水平の裂け目",
+          "etym": "horizontal「水平の」＋ fissure「裂け目」",
+          "note": "右肺だけにある、第4肋骨に沿って水平に走る切れこみ。上葉と中葉を分ける。"
+        },
+        {
+          "id": "cardiac-notch", "ja": "心切痕", "yomi": "しんせっこん", "en": "cardiac notch", "la": "incisura cardiaca pulmonis sinistri",
+          "of": "left-lung", "level": 2,
+          "kanji": "心臓の所の切れこみ",
+          "etym": "cardiac「心臓の」＋ notch「切れこみ」",
+          "note": "左肺の前の縁で、心臓の分だけ大きくえぐれた所。ここでは心臓が肺におおわれず、胸壁に近い。"
+        },
+        {
+          "id": "lingula", "ja": "左肺小舌", "yomi": "さはいしょうぜつ", "en": "lingula of left lung", "enAlt": ["lingula"], "la": "lingula pulmonis sinistri",
+          "of": "left-lung", "level": 3,
+          "kanji": "左肺の小さな舌",
+          "etym": "lingula ← ラテン語「小さな舌」",
+          "note": "心切痕の下の、舌のように前へ出た左肺上葉の部分。右肺の中葉にあたる。"
+        },
+        {
+          "id": "tracheal-bifurcation", "ja": "気管分岐部", "yomi": "きかんぶんきぶ", "en": "tracheal bifurcation", "enAlt": ["bifurcation of trachea", "carina"], "la": "bifurcatio tracheae",
+          "of": "trachea", "level": 2,
+          "kanji": "気管が分かれる所",
+          "etym": "bifurcation ← ラテン語 bi-「2つ」＋ furca「フォーク」",
+          "note": "気管が左右の主気管支に分かれる所（第4〜5胸椎、胸骨角の高さ）。内面の隆起（気管竜骨）は、せきの反射が最も強く起こる所。"
+        },
+        {
+          "id": "segmental-bronchi", "ja": "区域気管支", "yomi": "くいききかんし", "en": "segmental bronchi", "enAlt": ["segmental bronchus"], "la": "bronchi segmentales",
+          "parts": ["*segmental bronchial tree", "*lingular bronchial tree"], "level": 2, "xray": true,
+          "kanji": "肺区域ごとに入る気管支",
+          "etym": "segment ← ラテン語 segmentum「切り分けたもの」。bronchus ← ギリシャ語 bronchos「気管」",
+          "note": "葉気管支から分かれて肺区域ごとに入る気管支。右肺は10本（B1〜B10）、左肺は8本ほど。区域気管支が届く範囲が肺区域（S1〜S10）で、手術で区域ごとに切り取れる。"
+        }
+      ]
     }
   ]
 }

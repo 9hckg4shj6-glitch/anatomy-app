@@ -25,6 +25,11 @@ const SPOT_MAX = 64;
 /** 強調の色。null はその語のふだんの色（骨の部位を探す問題で、骨だけを見せるとき） */
 type Highlight = Map<string, string | null>;
 
+/** 器官の部位を示すとき、器官を淡くしてスポット（橙）を見分けやすくする（消化器の橙・泌尿器の黄の上でも目立つように） */
+function pale(color: string): string {
+  return `#${new THREE.Color(color).lerp(new THREE.Color("#f4f1ea"), 0.6).getHexString()}`;
+}
+
 export class AnatomyViewer {
   readonly ready: Promise<void>;
   /** タップされた部品IDとその点・面の外向き（何も無い所なら null） */
@@ -44,6 +49,8 @@ export class AnatomyViewer {
   private index!: ModelIndex;
   private attachments: Attachments = {};
   private elementTerms = new Map<string, string[]>();
+  /** ほかの構造をおおったりふさいだりする形（大網・口腔など、veil の語）の部品。強調していないときはごく薄く見せ、タップでは選べない */
+  private veiled = new Set<string>();
   private active = new Set<string>();
   private context = new Set<string>();
   private highlighted: Highlight = new Map();
@@ -120,7 +127,8 @@ export class AnatomyViewer {
       this.index = index;
       this.attachments = attachments;
       for (const [termId, term] of Object.entries(index.terms)) {
-        // 骨の部位は骨と同じ部品なので、タップした部品の名前には使わない
+        if (termById.get(termId)?.veil) for (const element of term.elements) this.veiled.add(element);
+        // 骨・器官の部位は骨・器官と同じ部品なので、タップした部品の名前には使わない
         if (termById.get(termId)?.of) continue;
         for (const element of term.elements) {
           const list = this.elementTerms.get(element) ?? [];
@@ -214,10 +222,12 @@ export class AnatomyViewer {
     const direction = this.camera.position.clone().sub(this.controls.target).normalize();
     if (direction.lengthSq() === 0) direction.set(0, 0, 1);
     if (pin) {
-      // 骨の部位は、部位の表面を正面から見る向きで、骨の周りが少し入る近さに寄る
+      // 骨の部位は、部位の表面を正面から見る向きで、骨の周りが少し入る近さに寄る。
+      // 器官の部位は器官が大きいので、器官の形が分かるところまで引く
       const target = new THREE.Vector3(...pinCenter(pin));
       const reach = include ? target.distanceTo(new THREE.Vector3(...include)) * 1.3 : 0;
-      const half = Math.max(0.055, pinSpread(pin) * 1.4 + pin.r * zoom * 0.8, reach);
+      const organ = term && termById.get(termId)?.system !== "skeletal" ? term.radius * 0.6 : 0;
+      const half = Math.max(0.055, pinSpread(pin) * 1.4 + pin.r * zoom * 0.8, reach, organ);
       const view = pin.n ?? pin.v;
       if (view) {
         direction.set(...view).normalize();
@@ -359,10 +369,10 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
     type Spot = { at: Vec3; r: number; color: string; n?: Vec3 };
     const spots: Spot[] = [];
     const mirrored: Spot[] = [];
-    const spot = (at: Vec3, r: number, color: string, n?: Vec3) => {
+    const spot = (at: Vec3, r: number, color: string, n?: Vec3, one = false) => {
       spots.push({ at, r, color, n });
-      // 左右がある骨は、左側にも折り返して示す（ピン・付着面は右側にある）
-      if (Math.abs(at[0]) > 0.01) mirrored.push({ at: [-at[0], at[1], at[2]], r, color, n: n && [-n[0], n[1], n[2]] });
+      // 左右がある骨は、左側にも折り返して示す（ピン・付着面は右側にある）。左右の無い器官の部位（one）は折り返さない
+      if (!one && Math.abs(at[0]) > 0.01) mirrored.push({ at: [-at[0], at[1], at[2]], r, color, n: n && [-n[0], n[1], n[2]] });
     };
     for (const [termId, color] of this.highlighted) {
       const [muscle, kind] = termId.split("@") as [string, "origin" | "insertion" | undefined];
@@ -379,7 +389,7 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
         else if (!highlightedElements.has(element) || color) highlightedElements.set(element, color);
       }
       if (!pin || !color) continue;
-      for (const at of pin.at) spot(at, pin.r, color, pin.n);
+      for (const at of pin.at) spot(at, pin.r, color, pin.n, pin.one);
     }
     // 塗れる数を超えるときは左側への折り返しをやめる（右側だけでも全部を示す）
     if (spots.length + mirrored.length + (this.tapMark ? 1 : 0) <= SPOT_MAX) spots.push(...mirrored);
@@ -415,9 +425,14 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
         if (this.seeThrough) mesh.renderOrder = 1;
       } else if (spotElements.has(elementId)) {
         // 骨の部位（筋の起始・停止を含む）は、添えるだけの系統の骨でも不透明にして示す
-        mesh.material = this.spotted(highlightedElements.has(elementId) ? own() : base);
+        const color = highlightedElements.has(elementId) ? own() : base;
+        mesh.material = this.spotted(system === "skeletal" ? color : pale(color));
       } else if (this.context.has(system)) {
         mesh.material = this.ghost(base, 0.16);
+        mesh.renderOrder = 1;
+        this.ghosted.add(elementId);
+      } else if (this.veiled.has(elementId) && !highlightedElements.has(elementId)) {
+        mesh.material = this.ghost(own(), 0.12);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
       } else if (highlightedElements.has(elementId)) {

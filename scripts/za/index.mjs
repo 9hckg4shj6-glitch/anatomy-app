@@ -3,6 +3,7 @@
 // 合わせ方を変えたら VERSION を上げる。
 import fs from "node:fs";
 import path from "node:path";
+import { splitMesh } from "../split-mesh.mjs";
 import { readZaFile, vertexNormals, ZA_DIR, ZA_FILES } from "./read.mjs";
 import { anchorPairs, icp, makeWarp } from "./warp.mjs";
 
@@ -40,6 +41,12 @@ function orient(positions, indices) {
 const CLIP = [
   { mesh: /^(internal abdominal oblique|transversus abdominis) muscle$/, by: "rectus abdominis muscle" },
   { mesh: /^(common carotid artery|internal jugular vein)$/, above: true },
+];
+// Z-Anatomy で1つの形になっているものを平面で分ける（書き方は build-models.mjs の CUTS と同じ。mesh は Z-Anatomy の名前）。
+// 平面の下側（normal・p < d）が "<ID>-<slug>"（名前は name）になり、上側は元のIDのまま。骨に合わせて動かしたあとの形を切る。
+const ZA_CUTS = [
+  // 咽頭口部は口腔（舌と口蓋の間の空間）まで1つの形。口峡（口蓋舌弓）のあたりで前後に分け、前を口腔とする
+  { mesh: "oropharynx", slug: "oral", name: "oral cavity", normal: [0, 0, -1], d: -0.12 },
 ];
 const CELL = 0.004;
 const OVERLAP = 0.004; // above: BodyParts3D の上端より少し下から残してつなげる
@@ -90,9 +97,24 @@ export async function loadZa(bpNames, bpMesh) {
 
   const byId = new Map(all.map((m) => [m.id, m]));
   const names = new Map(all.map((m) => [m.id, m.name]));
+  const cutOf = new Map(); // 部品ID → [切り方, "above" | "below", 元の部品ID]
+  for (const cut of ZA_CUTS) {
+    const source = all.find((m) => m.name === cut.mesh);
+    if (!source) throw new Error(`Z-Anatomy に切る形「${cut.mesh}」がありません`);
+    cutOf.set(source.id, [cut, "above", source.id]);
+    cutOf.set(`${source.id}-${cut.slug}`, [cut, "below", source.id]);
+    names.set(`${source.id}-${cut.slug}`, cut.name);
+  }
   const warped = new Map();
   const mesh = (id) => {
-    if (warped.has(id)) return warped.get(id);
+    const [cut, half, sourceId] = cutOf.get(id) ?? [];
+    if (!cut) return whole(id);
+    if (!warped.has(id)) warped.set(id, { name: names.get(id), ...splitMesh(whole(sourceId), cut.normal, cut.d)[half] });
+    return warped.get(id);
+  };
+  const whole = (id) => {
+    const key = `whole:${id}`;
+    if (warped.has(key)) return warped.get(key);
     const source = byId.get(id);
     if (!source) throw new Error(`Z-Anatomy に ${id} がありません`);
     let positions = new Float32Array(source.positions.length);
@@ -123,7 +145,7 @@ export async function loadZa(bpNames, bpMesh) {
       hi[i % 3] = Math.max(hi[i % 3], positions[i]);
     }
     const result = { name: source.name, positions, normals: vertexNormals(positions, indices), indices, bounds: [lo, hi] };
-    warped.set(id, result);
+    warped.set(key, result);
     return result;
   };
   return { names, mesh, all, pairs };

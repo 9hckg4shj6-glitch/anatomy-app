@@ -1,5 +1,7 @@
 // @ts-expect-error 型定義の無いビルド用スクリプト
-import { baseName, resolveParts, splitMesh } from "../scripts/build-models.mjs";
+import { baseName, resolveParts } from "../scripts/build-models.mjs";
+// @ts-expect-error 型定義の無いビルド用スクリプト
+import { splitMesh } from "../scripts/split-mesh.mjs";
 // @ts-expect-error 型定義の無いビルド用スクリプト
 import { anchorPairs } from "../scripts/za/warp.mjs";
 

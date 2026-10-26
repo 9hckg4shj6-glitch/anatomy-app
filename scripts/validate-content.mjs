@@ -26,6 +26,7 @@ const Term = z.strictObject({
   note: z.string().min(10),
   color: z.string().regex(/^#[0-9a-f]{6}$/).optional(),
   xray: z.literal(true).optional(),
+  veil: z.literal(true).optional(),
   check: z.literal(true).optional(),
   origin: z.string().min(2).optional(),
   insertion: z.string().min(2).optional(),
@@ -33,7 +34,8 @@ const Term = z.strictObject({
   insertionAt: z.array(z.string()).min(1).optional(),
   nerve: z.string().min(2).optional(),
   action: z.string().min(2).optional(),
-}).refine((term) => term.parts || term.of, "parts か of のどちらかが要る");
+}).refine((term) => term.parts || term.of, "parts か of のどちらかが要る")
+  .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける");
 const TermFile = z.strictObject({
   system: z.string(),
   units: z.array(z.strictObject({ id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), terms: z.array(Term).min(1) })).min(1),
@@ -71,14 +73,14 @@ for (const system of systems) {
   }
 }
 
-// 骨の部位（of）と筋の起始・停止（originAt / insertionAt）の参照先、ピン（content/pins.json）
+// 骨・器官の部位（of）と筋の起始・停止（originAt / insertionAt）の参照先、ピン（content/pins.json）
 const pins = JSON.parse(fs.readFileSync(path.join(ROOT, "content/pins.json"), "utf8"));
 const point = z.tuple([z.number(), z.number(), z.number()]);
-const Pin = z.strictObject({ at: z.array(point).min(1), r: z.number().min(0.002).max(0.06), n: point.optional(), v: point.optional() });
+const Pin = z.strictObject({ at: z.array(point).min(1), r: z.number().min(0.002).max(0.06), n: point.optional(), v: point.optional(), one: z.literal(true).optional() });
 for (const term of terms) {
   if (term.of) {
     const parent = seen.get(term.of);
-    if (!parent || parent.of) errors.push(`${term.id}: of「${term.of}」が骨の語ではありません`);
+    if (!parent || parent.of) errors.push(`${term.id}: of「${term.of}」が骨・器官の語ではありません`);
     const pin = Pin.safeParse(pins[term.id]);
     if (!pin.success) errors.push(`${term.id}: content/pins.json のピンが無いか形が違います（#/admin のピン打ちツールで打つ）`);
   }
@@ -89,7 +91,7 @@ for (const term of terms) {
     errors.push(`${term.id}: 起始・停止・支配神経・作用は4つそろえて書く`);
   }
 }
-for (const id of Object.keys(pins)) if (!seen.get(id)?.of) errors.push(`content/pins.json: 「${id}」は骨の部位の語ではありません`);
+for (const id of Object.keys(pins)) if (!seen.get(id)?.of) errors.push(`content/pins.json: 「${id}」は骨・器官の部位の語ではありません`);
 
 // 筋の付着面（scripts/za/attachments.mjs と scripts/pins/rules/attach.mjs が作る）。筋と骨の語IDが今の内容にあるか
 for (const file of ["public/models/attachments-za.json", "content/attachments.json"]) {
