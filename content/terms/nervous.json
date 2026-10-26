@@ -332,6 +332,262 @@
           "note": "三叉神経（第Ⅴ脳神経）の第1枝。眼球・ひたい・鼻の感覚を伝える。"
         }
       ]
+    },
+    {
+      "id": "nerv-spinal",
+      "title": "脊髄と上肢・体幹の神経",
+      "terms": [
+        {
+          "id": "spinal-cord", "ja": "脊髄", "yomi": "せきずい", "en": "spinal cord", "la": "medulla spinalis",
+          "parts": ["za:white matter of spinal cord"], "level": 1,
+          "kanji": "脊柱の中の髄",
+          "etym": "spinal「脊柱の」（ラテン語 spina「とげ・背骨」）＋ cord「ひも」",
+          "note": "脊柱管の中を、延髄から第1〜2腰椎の高さまで伸びる中枢神経。31対の脊髄神経が出入りする。手足への神経が出る所は太く、頚膨大・腰膨大という。"
+        },
+        {
+          "id": "cauda-equina", "ja": "馬尾", "yomi": "ばび", "en": "cauda equina", "la": "cauda equina",
+          "parts": ["za:cauda equina"], "level": 2,
+          "kanji": "馬の尾",
+          "etym": "ラテン語 cauda「尾」＋ equina「馬の」",
+          "note": "脊髄の下端より下で、腰神経・仙骨神経の根が脊柱管の中を束になって下る部分。馬の尾のように見える。腰椎穿刺はこの高さで行う。"
+        },
+        {
+          "id": "sympathetic-trunk", "ja": "交感神経幹", "yomi": "こうかんしんけいかん", "en": "sympathetic trunk", "la": "truncus sympathicus",
+          "parts": ["za:sympathetic trunk", "za:ganglia of sympathetic trunk"], "level": 2,
+          "kanji": "交感神経の幹（みき）",
+          "etym": "sympathetic ← ギリシャ語 sym-「共に」＋ pathos「感じる」（体の各部を共に感じさせると考えられた）",
+          "note": "脊柱の両わきを頭蓋底から尾骨まで縦に走る、神経節が数珠のようにつながった索。交感神経の線維がここで乗りかえて全身へ向かう。"
+        },
+        {
+          "id": "brachial-plexus", "ja": "腕神経叢", "yomi": "わんしんけいそう", "en": "brachial plexus", "la": "plexus brachialis",
+          "parts": ["za:roots of brachial plexus", "za:*trunk of brachial plexus", "za:posterior cord of brachial plexus"], "level": 1,
+          "kanji": "腕へ行く神経の叢（くさむら＝網の目）",
+          "etym": "brachial「腕の」（ラテン語 brachium）＋ plexus「編んだもの・網」",
+          "note": "第5頚神経〜第1胸神経の前枝が、根→神経幹→部→神経束と合わさり分かれて作る網。斜角筋の間から鎖骨の後ろを通って腋窩へ入り、上肢の神経を出す。"
+        },
+        {
+          "id": "musculocutaneous-nerve", "ja": "筋皮神経", "yomi": "きんぴしんけい", "en": "musculocutaneous nerve", "la": "nervus musculocutaneus",
+          "parts": ["za:musculocutaneous nerve", "za:lateral antebrachial cutaneous nerve"], "level": 1,
+          "kanji": "筋と皮膚へ行く神経",
+          "etym": "musculo-「筋」＋ cutaneous「皮膚の」",
+          "note": "外側神経束から出て烏口腕筋を貫き、上腕の屈筋（上腕二頭筋・上腕筋・烏口腕筋）を動かす。その先は前腕の外側の皮膚の感覚を伝える。"
+        },
+        {
+          "id": "axillary-nerve", "ja": "腋窩神経", "yomi": "えきかしんけい", "en": "axillary nerve", "la": "nervus axillaris",
+          "parts": ["za:axillary nerve", "za:*of axillary nerve", "za:superior lateral brachial cutaneous nerve"], "level": 1,
+          "kanji": "腋窩（わきの下）を通る神経",
+          "etym": "axillary ← ラテン語 axilla「わきの下」",
+          "note": "後神経束から出て、上腕骨の外科頚の後ろを回り、三角筋と小円筋を動かす。外科頚の骨折や肩の脱臼で傷つきやすい。"
+        },
+        {
+          "id": "radial-nerve", "ja": "橈骨神経", "yomi": "とうこつしんけい", "en": "radial nerve", "la": "nervus radialis",
+          "parts": ["za:radial nerve", "za:*of radial nerve", "za:inferior lateral brachial cutaneous nerve", "za:posterior antebrachial cutaneous nerve", "za:posterior interosseous nerve of forearm"], "level": 1,
+          "kanji": "橈骨の側を走る神経",
+          "etym": "radial「橈骨の」← ラテン語 radius「車輪の輻（や）」",
+          "note": "後神経束から出て、上腕骨の後ろの橈骨神経溝をらせん状に回る。上腕三頭筋と前腕の伸筋を動かす。上腕骨の骨幹部の骨折で傷つくと手首が垂れる（下垂手）。"
+        },
+        {
+          "id": "median-nerve", "ja": "正中神経", "yomi": "せいちゅうしんけい", "en": "median nerve", "la": "nervus medianus",
+          "parts": ["za:median nerve", "za:*of median nerve", "za:anterior interosseous nerve of forearm"], "level": 1,
+          "kanji": "腕のまん中（正中）を走る神経",
+          "etym": "median「まん中の」",
+          "note": "外側・内側神経束から出て上腕の内側を下り、前腕の中央を通って手根管をくぐる。前腕の屈筋の多くと母指球の筋を動かす。手根管症候群で圧迫される。"
+        },
+        {
+          "id": "ulnar-nerve", "ja": "尺骨神経", "yomi": "しゃっこつしんけい", "en": "ulnar nerve", "la": "nervus ulnaris",
+          "parts": ["za:ulnar nerve", "za:*of ulnar nerve"], "level": 1,
+          "kanji": "尺骨の側を走る神経",
+          "etym": "ulnar「尺骨の」← ラテン語 ulna「肘・前腕」",
+          "note": "内側神経束から出て、上腕骨の内側上顆の後ろ（尺骨神経溝）を通る。肘をぶつけて小指までしびれるのはこの神経。手の細かい筋の多くを動かし、傷つくと鷲手になる。"
+        },
+        {
+          "id": "long-thoracic-nerve", "ja": "長胸神経", "yomi": "ちょうきょうしんけい", "en": "long thoracic nerve", "la": "nervus thoracicus longus",
+          "parts": ["za:long thoracic nerve"], "level": 2,
+          "kanji": "胸の側面を長く下る神経",
+          "etym": "long「長い」＋ thoracic「胸の」",
+          "note": "第5〜7頚神経の根から出て胸の側面を下り、前鋸筋を動かす。傷つくと肩甲骨の内側縁が浮き上がる（翼状肩甲）。"
+        },
+        {
+          "id": "thoracodorsal-nerve", "ja": "胸背神経", "yomi": "きょうはいしんけい", "en": "thoracodorsal nerve", "la": "nervus thoracodorsalis",
+          "parts": ["za:thoracodorsal nerve"], "level": 3,
+          "kanji": "胸と背中の間を下る神経",
+          "etym": "thoraco-「胸」＋ dorsal「背中の」",
+          "note": "後神経束から出て腋窩の後ろの壁を下り、広背筋を動かす。"
+        },
+        {
+          "id": "intercostal-nerves", "ja": "肋間神経", "yomi": "ろっかんしんけい", "en": "intercostal nerves", "enAlt": ["intercostal nerve"], "la": "nervi intercostales",
+          "parts": ["za:intercostal nerves"], "level": 2,
+          "kanji": "肋骨の間を走る神経",
+          "etym": "inter-「間」＋ costa「肋骨」",
+          "note": "胸神経の前枝。肋骨の下縁の肋骨溝を肋間動静脈と並んで走り、肋間筋と腹壁の筋、胸と腹の皮膚に分布する。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-lower",
+      "title": "下肢の神経",
+      "terms": [
+        {
+          "id": "femoral-nerve", "ja": "大腿神経", "yomi": "だいたいしんけい", "en": "femoral nerve", "la": "nervus femoralis",
+          "parts": ["za:femoral nerve", "za:anterior cutaneous branches of femoral nerve"], "level": 1,
+          "kanji": "大腿へ行く神経",
+          "etym": "femoral「大腿の」← ラテン語 femur「もも」",
+          "note": "腰神経叢の最大の枝。大腰筋の外側を下り、鼡径靱帯の下をくぐって大腿の前に出る。大腿四頭筋・縫工筋・腸骨筋を動かす。"
+        },
+        {
+          "id": "saphenous-nerve", "ja": "伏在神経", "yomi": "ふくざいしんけい", "en": "saphenous nerve", "la": "nervus saphenus",
+          "parts": ["za:saphenous nerve", "za:*of saphenous nerve"], "level": 2,
+          "kanji": "皮下に伏せて在る（伏在静脈に沿う）神経",
+          "etym": "saphenous ← 伏在静脈（saphenous vein）に沿う神経。語源はギリシャ語「よく見える」とアラビア語「隠れた」の2説",
+          "note": "大腿神経の最も長い皮枝。大伏在静脈と並んで下腿の内側を下り、下腿と足の内側の皮膚の感覚を伝える。"
+        },
+        {
+          "id": "obturator-nerve", "ja": "閉鎖神経", "yomi": "へいさしんけい", "en": "obturator nerve", "la": "nervus obturatorius",
+          "parts": ["za:obturator nerve", "za:*of obturator nerve"], "level": 1,
+          "kanji": "閉鎖孔を通る神経",
+          "etym": "obturator ← ラテン語 obturare「ふさぐ」（閉鎖孔をふさぐ膜から）",
+          "note": "腰神経叢から出て骨盤の側壁を下り、閉鎖孔の上部（閉鎖管）を抜けて大腿の内側に出る。内転筋群を動かす。"
+        },
+        {
+          "id": "sciatic-nerve", "ja": "坐骨神経", "yomi": "ざこつしんけい", "en": "sciatic nerve", "la": "nervus ischiadicus",
+          "parts": ["za:sciatic nerve"], "level": 1,
+          "kanji": "坐骨のそばを通る神経",
+          "etym": "sciatic ← ラテン語 ischiadicus（ギリシャ語 ischion「腰・坐骨」）",
+          "note": "人体で最も太く長い神経。仙骨神経叢から出て大坐骨孔（梨状筋の下）を抜け、大腿の後ろを下る。ハムストリングを動かし、膝の上で脛骨神経と総腓骨神経に分かれる。"
+        },
+        {
+          "id": "tibial-nerve", "ja": "脛骨神経", "yomi": "けいこつしんけい", "en": "tibial nerve", "la": "nervus tibialis",
+          "parts": ["za:tibial nerve", "za:medial sural cutaneous nerve", "za:sural nerve", "za:*plantar nerve"], "level": 1,
+          "kanji": "脛骨のそばを下る神経",
+          "etym": "tibial「脛骨の」← ラテン語 tibia「すね・笛」",
+          "note": "坐骨神経の枝。膝窩の中央を下り、ふくらはぎの深くを通って内果の後ろから足の裏へ入る。下腿の後ろの筋（下腿三頭筋など）と足の裏の筋を動かす。"
+        },
+        {
+          "id": "common-fibular-nerve", "ja": "総腓骨神経", "yomi": "そうひこつしんけい", "en": "common fibular nerve", "enAlt": ["common peroneal nerve"], "la": "nervus fibularis communis",
+          "parts": ["za:common fibular nerve", "za:sural communicating branch of common fibular nerve"], "level": 1,
+          "kanji": "腓骨のそばを通る神経の総（もと）",
+          "etym": "fibular「腓骨の」← ラテン語 fibula「留め金」。peroneal ← ギリシャ語 perone「腓骨」",
+          "note": "坐骨神経の枝。膝窩の外側を下り、腓骨頭の下（腓骨頚）を回って浅腓骨神経と深腓骨神経に分かれる。腓骨頚で圧迫されやすく、傷つくと足先が垂れる（下垂足）。"
+        },
+        {
+          "id": "superficial-fibular-nerve", "ja": "浅腓骨神経", "yomi": "せんひこつしんけい", "en": "superficial fibular nerve", "enAlt": ["superficial peroneal nerve"], "la": "nervus fibularis superficialis",
+          "parts": ["za:superficial fibular nerve", "za:*dorsal cutaneous nerve of foot", "za:*of superficial fibular nerve"], "level": 2,
+          "kanji": "浅い所を走る腓骨神経",
+          "etym": "superficial「浅い」＋ fibular「腓骨の」",
+          "note": "総腓骨神経の枝。下腿の外側を下り、長・短腓骨筋を動かす。足の甲の大部分の皮膚の感覚を伝える。"
+        },
+        {
+          "id": "deep-fibular-nerve", "ja": "深腓骨神経", "yomi": "しんひこつしんけい", "en": "deep fibular nerve", "enAlt": ["deep peroneal nerve"], "la": "nervus fibularis profundus",
+          "parts": ["za:deep fibular nerve", "za:*of deep fibular nerve"], "level": 2,
+          "kanji": "深い所を走る腓骨神経",
+          "etym": "deep「深い」＋ fibular「腓骨の」",
+          "note": "総腓骨神経の枝。下腿の前の深くを前脛骨動脈と並んで下り、前脛骨筋など下腿の前の筋（伸筋）を動かす。母指と第2指の間の皮膚の感覚を伝える。"
+        },
+        {
+          "id": "pudendal-nerve", "ja": "陰部神経", "yomi": "いんぶしんけい", "en": "pudendal nerve", "la": "nervus pudendus",
+          "parts": ["za:pudendal nerve"], "level": 2,
+          "kanji": "陰部へ行く神経",
+          "etym": "pudendal ← ラテン語 pudere「恥じる」（pudenda「陰部」）",
+          "note": "仙骨神経叢から出て、大坐骨孔から骨盤を出て小坐骨孔から会陰へ入る。外肛門括約筋・外尿道括約筋を動かし、会陰の感覚を伝える。"
+        },
+        {
+          "id": "superior-gluteal-nerve", "ja": "上殿神経", "yomi": "じょうでんしんけい", "en": "superior gluteal nerve", "la": "nervus gluteus superior",
+          "parts": ["za:superior gluteal nerve"], "level": 3,
+          "kanji": "殿部の上のほうを通る神経",
+          "etym": "superior「上の」＋ gluteal「殿部の」（ギリシャ語 gloutos「尻」）",
+          "note": "仙骨神経叢から出て梨状筋の上を抜け、中殿筋・小殿筋・大腿筋膜張筋を動かす。傷つくと片足で立ったとき反対側の骨盤が下がる（トレンデレンブルグ徴候）。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-cranial",
+      "title": "脳神経",
+      "terms": [
+        {
+          "id": "olfactory-nerve", "ja": "嗅神経", "yomi": "きゅうしんけい", "en": "olfactory nerve", "enAlt": ["olfactory nerves"], "la": "nervi olfactorii",
+          "parts": ["za:olfactory nerve (i)"], "level": 1,
+          "kanji": "嗅ぐ（におう）ための神経",
+          "etym": "olfactory ← ラテン語 olfacere「においをかぐ」",
+          "note": "第Ⅰ脳神経。鼻腔の天井の嗅上皮から、篩骨の篩板の小さな孔を通って嗅球に入り、においを伝える。"
+        },
+        {
+          "id": "oculomotor-nerve", "ja": "動眼神経", "yomi": "どうがんしんけい", "en": "oculomotor nerve", "la": "nervus oculomotorius",
+          "parts": ["za:oculomotor nerve (iii)"], "level": 1,
+          "kanji": "眼を動かす神経",
+          "etym": "oculo-「眼」＋ motor「動かすもの」",
+          "note": "第Ⅲ脳神経。中脳から出て、上直筋・下直筋・内側直筋・下斜筋・上眼瞼挙筋を動かす。瞳孔を縮める副交感神経の線維も含む。"
+        },
+        {
+          "id": "trigeminal-nerve", "ja": "三叉神経", "yomi": "さんさしんけい", "en": "trigeminal nerve", "la": "nervus trigeminus",
+          "parts": ["za:trigeminal nerve (v)", "za:*root of trigeminal nerve", "ophthalmic nerve", "za:maxillary nerve", "za:meningeal branch of maxillary nerve", "za:*division of mandibular nerve", "za:buccal nerve", "za:inferior alveolar nerve", "za:mental nerve", "za:nerve to mylohyoid muscle", "za:lingual nerve"], "level": 1,
+          "kanji": "3つに叉（わか）れる神経",
+          "etym": "trigeminal ← ラテン語 trigeminus「三つ子の」",
+          "note": "第Ⅴ脳神経で、最も太い脳神経。橋から出て、眼神経・上顎神経・下顎神経の3枝に分かれ、顔の皮膚・口・鼻の感覚を伝える。下顎神経は咀嚼筋も動かす。"
+        },
+        {
+          "id": "maxillary-nerve", "ja": "上顎神経", "yomi": "じょうがくしんけい", "en": "maxillary nerve", "la": "nervus maxillaris",
+          "parts": ["za:maxillary nerve", "za:meningeal branch of maxillary nerve"], "level": 2,
+          "kanji": "上顎へ行く神経",
+          "etym": "maxillary「上顎の」← ラテン語 maxilla「あご」",
+          "note": "三叉神経の第2枝。正円孔を通り、頬・上唇・上の歯・鼻の粘膜の感覚を伝える。"
+        },
+        {
+          "id": "mandibular-nerve", "ja": "下顎神経", "yomi": "かがくしんけい", "en": "mandibular nerve", "la": "nervus mandibularis",
+          "parts": ["za:*division of mandibular nerve", "za:buccal nerve", "za:inferior alveolar nerve", "za:mental nerve", "za:nerve to mylohyoid muscle", "za:lingual nerve"], "level": 2,
+          "kanji": "下顎へ行く神経",
+          "etym": "mandibular「下顎の」← ラテン語 mandere「かむ」",
+          "note": "三叉神経の第3枝。卵円孔を通り、下の歯・下唇・舌の前2/3の感覚を伝え、咀嚼筋を動かす。枝の下歯槽神経は下顎孔から下顎管に入る（歯科の麻酔の場所）。"
+        },
+        {
+          "id": "abducens-nerve", "ja": "外転神経", "yomi": "がいてんしんけい", "en": "abducens nerve", "enAlt": ["abducent nerve"], "la": "nervus abducens",
+          "parts": ["za:abducens nerve (vi)"], "level": 1,
+          "kanji": "眼を外転させる（外へ向ける）神経",
+          "etym": "abducens ← ラテン語 abducere「引き離す」",
+          "note": "第Ⅵ脳神経。橋と延髄の境から出て、外側直筋を動かし眼を外へ向ける。頭蓋の中を長く走るので、頭蓋内圧が上がると傷つきやすい。"
+        },
+        {
+          "id": "facial-nerve", "ja": "顔面神経", "yomi": "がんめんしんけい", "en": "facial nerve", "la": "nervus facialis",
+          "parts": ["za:facial nerve (vii)", "za:chorda tympani"], "level": 1,
+          "kanji": "顔面の筋へ行く神経",
+          "etym": "facial「顔の」← ラテン語 facies「顔」",
+          "note": "第Ⅶ脳神経。内耳道から側頭骨の中を通って茎乳突孔から出て、耳下腺の中で枝分かれして表情筋を動かす。涙腺・唾液腺の分泌と、舌の前2/3の味覚（鼓索神経）も担う。"
+        },
+        {
+          "id": "vestibulocochlear-nerve", "ja": "内耳神経", "yomi": "ないじしんけい", "en": "vestibulocochlear nerve", "la": "nervus vestibulocochlearis",
+          "parts": ["za:vestibulocochlear nerve (viii)", "za:cochlear nerve", "za:vestibular nerve"], "level": 1,
+          "kanji": "内耳から来る神経",
+          "etym": "vestibulo-「前庭の」＋ cochlear「蝸牛の」（ギリシャ語 kochlias「かたつむり」）",
+          "note": "第Ⅷ脳神経。内耳の蝸牛から聴覚を伝える蝸牛神経と、前庭・半規管から平衡覚を伝える前庭神経からなる。顔面神経と並んで内耳道を通る。"
+        },
+        {
+          "id": "glossopharyngeal-nerve", "ja": "舌咽神経", "yomi": "ぜついんしんけい", "en": "glossopharyngeal nerve", "la": "nervus glossopharyngeus",
+          "parts": ["za:glossopharyngeal nerve (ix)"], "level": 1,
+          "kanji": "舌と咽頭へ行く神経",
+          "etym": "glosso-「舌」＋ pharyngeal「咽頭の」",
+          "note": "第Ⅸ脳神経。頚静脈孔を通り、舌の後ろ1/3の味覚と感覚、咽頭の感覚を伝える。耳下腺の分泌も担う。"
+        },
+        {
+          "id": "vagus-nerve", "ja": "迷走神経", "yomi": "めいそうしんけい", "en": "vagus nerve", "la": "nervus vagus",
+          "parts": ["za:vagus nerve (x)"], "level": 1,
+          "kanji": "迷うように広く走る神経",
+          "etym": "vagus ← ラテン語 vagus「さまよう」",
+          "note": "第Ⅹ脳神経。頚静脈孔を出て首を下り、胸・腹の内臓まで広く分布する。副交感神経の大部分を担い、心拍を落とし消化管を動かす。枝の反回神経が喉頭の筋を動かす。"
+        },
+        {
+          "id": "accessory-nerve", "ja": "副神経", "yomi": "ふくしんけい", "en": "accessory nerve", "la": "nervus accessorius",
+          "parts": ["za:accessory nerve (xi)"], "level": 1,
+          "kanji": "副（そ）えの神経",
+          "etym": "accessory「付け加えられた」",
+          "note": "第Ⅺ脳神経。頚髄から出た根が大後頭孔から頭蓋に入り、頚静脈孔から出る。胸鎖乳突筋と僧帽筋を動かす。"
+        },
+        {
+          "id": "hypoglossal-nerve", "ja": "舌下神経", "yomi": "ぜっかしんけい", "en": "hypoglossal nerve", "la": "nervus hypoglossus",
+          "parts": ["za:hypoglossal nerve (xii)"], "level": 1,
+          "kanji": "舌の下を走る神経",
+          "etym": "hypo-「下」＋ glossal「舌の」",
+          "note": "第Ⅻ脳神経。延髄から出て舌下神経管を通り、舌の筋を動かす。傷つくと、舌を出したとき傷ついた側へ曲がる。"
+        }
+      ]
     }
   ]
 }

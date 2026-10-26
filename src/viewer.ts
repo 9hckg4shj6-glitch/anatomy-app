@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
-import { loadModelIndex, pins, systemById, termById, type ModelIndex } from "./content";
+import { loadAttachments, loadModelIndex, pins, systemById, termById, type Attachments, type ModelIndex } from "./content";
 import { pinCenter, pinSpread, type Vec3 } from "./landmarks";
 
 export interface SceneSpec {
@@ -42,6 +42,7 @@ export class AnatomyViewer {
   private readonly meshes = new Map<string, THREE.Mesh>();
   private readonly materials = new Map<string, THREE.Material>();
   private index!: ModelIndex;
+  private attachments: Attachments = {};
   private elementTerms = new Map<string, string[]>();
   private active = new Set<string>();
   private context = new Set<string>();
@@ -113,8 +114,9 @@ export class AnatomyViewer {
     this.resize();
     this.renderer.setAnimationLoop(() => this.frame());
 
-    this.ready = loadModelIndex().then((index) => {
+    this.ready = Promise.all([loadModelIndex(), loadAttachments()]).then(([index, attachments]) => {
       this.index = index;
+      this.attachments = attachments;
       for (const [termId, term] of Object.entries(index.terms)) {
         // 骨の部位は骨と同じ部品なので、タップした部品の名前には使わない
         if (termById.get(termId)?.of) continue;
@@ -130,6 +132,11 @@ export class AnatomyViewer {
       }
       this.overview(false);
     });
+  }
+
+  /** 筋の付着面（Z-Anatomy から作った起始・停止の面）があるか */
+  hasAttachments(termId: string): boolean {
+    return !!this.attachments[termId];
   }
 
   /** 部品を含む語（細かい順）。表示中の系統に限る。 */
@@ -154,6 +161,7 @@ export class AnatomyViewer {
   /**
    * 語を強調する。骨の部位は、その骨をふだんの色で見せ、部位の所だけを光らせる。
    * marks で、ほかの語（筋の起始・停止の部位など）を別の色で同時に示せる。
+   * marks の "語ID@origin" "語ID@insertion" は、その筋の付着面（attachments-za.json）を示す。
    */
   highlight(termIds: string[], options: { isolate?: boolean; color?: string; marks?: [string, string][]; seeThrough?: boolean } = {}): void {
     this.highlighted = new Map([...termIds.map((id) => [id, options.color ?? HIGHLIGHT] as const), ...(options.marks ?? [])]);
@@ -266,8 +274,11 @@ export class AnatomyViewer {
     if (!group) {
       this.loading++;
       this.host.classList.add("loading");
-      group = this.loader.loadAsync(`${import.meta.env.BASE_URL}${this.index.systems[systemId].url}`).then((gltf) => {
-        const root = gltf.scene;
+      const { url, za } = this.index.systems[systemId];
+      const files = [url, ...(za ? [za.url] : [])].map((file) => this.loader.loadAsync(`${import.meta.env.BASE_URL}${file}`));
+      group = Promise.all(files).then((gltfs) => {
+        const root = new THREE.Group();
+        for (const gltf of gltfs) root.add(gltf.scene);
         root.userData.system = systemId;
         root.traverse((object) => {
           if (object instanceof THREE.Mesh) {
@@ -343,20 +354,33 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
   private refresh(): void {
     const highlightedElements = new Map<string, string | null>();
     const spotElements = new Set<string>();
-    const spots: { at: Vec3; r: number; color: string; n?: Vec3 }[] = [];
+    type Spot = { at: Vec3; r: number; color: string; n?: Vec3 };
+    const spots: Spot[] = [];
+    const mirrored: Spot[] = [];
+    const spot = (at: Vec3, r: number, color: string, n?: Vec3) => {
+      spots.push({ at, r, color, n });
+      // 左右がある骨は、左側にも折り返して示す（ピン・付着面は右側にある）
+      if (Math.abs(at[0]) > 0.01) mirrored.push({ at: [-at[0], at[1], at[2]], r, color, n: n && [-n[0], n[1], n[2]] });
+    };
     for (const [termId, color] of this.highlighted) {
+      const [muscle, kind] = termId.split("@") as [string, "origin" | "insertion" | undefined];
+      if (kind) {
+        for (const [on, x, y, z, r, ...n] of (color && this.attachments[muscle]?.[kind]) || []) {
+          for (const element of this.index.terms[on]?.elements ?? []) spotElements.add(element);
+          spot([x, y, z], r, color!, n.length ? (n as Vec3) : undefined);
+        }
+        continue;
+      }
       const pin = color ? pins[termId] : undefined;
       for (const element of this.index.terms[termId]?.elements ?? []) {
         if (pin) spotElements.add(element);
         else if (!highlightedElements.has(element) || color) highlightedElements.set(element, color);
       }
       if (!pin || !color) continue;
-      for (const at of pin.at) {
-        spots.push({ at, r: pin.r, color, n: pin.n });
-        // 左右がある骨は、左側にも折り返して示す（ピンは右側に打つ）
-        if (Math.abs(at[0]) > 0.01) spots.push({ at: [-at[0], at[1], at[2]], r: pin.r, color, n: pin.n && [-pin.n[0], pin.n[1], pin.n[2]] });
-      }
+      for (const at of pin.at) spot(at, pin.r, color, pin.n);
     }
+    // 塗れる数を超えるときは左側への折り返しをやめる（右側だけでも全部を示す）
+    if (spots.length + mirrored.length + (this.tapMark ? 1 : 0) <= SPOT_MAX) spots.push(...mirrored);
     if (this.tapMark) {
       spots.unshift({ at: this.tapMark.point, r: 0.004, color: WRONG });
       spotElements.add(this.tapMark.element);

@@ -3,6 +3,7 @@ import type { AppContext } from "./context";
 
 const SOURCES: [string, string, string][] = [
   ["3Dモデル", "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International", "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"],
+  ["3Dモデル（広背筋・表情筋・末梢神経・脳神経・肺の葉など）", "Z-Anatomy（Lluís Vinent Juanico ほか, CC BY-SA 4.0）", "https://github.com/LluisV/Z-Anatomy"],
   ["3Dモデルの変換方法（参考）", "ashemag/human-atlas（MIT License）", "https://github.com/ashemag/human-atlas"],
   ["用語の下調べ", "Wikidata（CC0）", "https://www.wikidata.org/"],
   ["英語名・ラテン名の基準", "Terminologia Anatomica 2nd ed.（FIPAT, 2019）", "https://fipat.library.dal.ca/TA2"],
@@ -17,7 +18,7 @@ export function credits(ctx: AppContext): void {
       h("dt", {}, what),
       h("dd", {}, h("a", { href: url, target: "_blank", rel: "noopener" }, text)),
     ])),
-    h("p", { class: "muted" }, "日本語の用語は日本解剖学会『解剖学用語 改訂13版』の表記に合わせています。3Dモデルは BodyParts3D を軽量化・座標変換して使っています。学習用であり、診断・治療に使うものではありません。"),
+    h("p", { class: "muted" }, "日本語の用語は日本解剖学会『解剖学用語 改訂13版』の表記に合わせています。3Dモデルは BodyParts3D を軽量化・座標変換して使っています。BodyParts3D に無い構造は Z-Anatomy の形を BodyParts3D の骨に合わせて変形・軽量化して加えました（筋の付着面も Z-Anatomy から作っています）。この変形した形（models/ の名前が -za で終わるファイル）は CC BY-SA 4.0 です。学習用であり、診断・治療に使うものではありません。"),
     h("p", {}, h("a", { href: "#/" }, "ホームへ")),
   );
 }

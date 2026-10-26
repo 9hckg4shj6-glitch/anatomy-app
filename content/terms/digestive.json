@@ -55,6 +55,13 @@
           "note": "歯の根もとと歯槽骨をおおう粘膜。"
         },
         {
+          "id": "parotid-gland", "ja": "耳下腺", "yomi": "じかせん", "en": "parotid gland", "la": "glandula parotidea",
+          "parts": ["za:parotid gland", "za:(accessory parotid gland)"], "level": 1,
+          "kanji": "耳の下にある腺",
+          "etym": "parotid ← ギリシャ語 para-「そば」＋ otos「耳の」",
+          "note": "耳の前下方にある最大の唾液腺。耳下腺管が咬筋の表面を前へ走り、頬筋を貫いて上の第2大臼歯の向かいの頬の粘膜に開く。中を顔面神経が通る。おたふくかぜで腫れる。"
+        },
+        {
           "id": "submandibular-gland", "ja": "顎下腺", "yomi": "がっかせん", "en": "submandibular gland", "la": "glandula submandibularis",
           "parts": ["submandibular gland"], "level": 2,
           "kanji": "下顎骨の下にある腺",

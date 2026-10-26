@@ -7,6 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "fetch:sources": "./scripts/fetch-sources.sh",
     "build:models": "node scripts/build-models.mjs",
+    "build:attachments": "node scripts/za/attachments.mjs",
     "build:audio": "node scripts/build-audio.mjs",
     "build:icons": "node scripts/build-icons.mjs",
     "validate:content": "node scripts/validate-content.mjs",

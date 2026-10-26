@@ -1,5 +1,7 @@
 // BodyParts3D 4.0 の OBJ（data-raw/bp3d/obj）から、収録語が使う部品だけを系統別の GLB にまとめる。
-// 出力: public/models/<系統>.<ハッシュ>.glb, body.<ハッシュ>.glb（皮膚＝半透明の輪郭用）, index.json
+// BodyParts3D に無い構造（広背筋・末梢神経など）は Z-Anatomy から骨に合わせて取り込む（scripts/za/、部品の指定は "za:…"）。
+// 出力: public/models/<系統>.<ハッシュ>.glb, <系統>-za.<ハッシュ>.glb（Z-Anatomy 由来の形だけ。CC BY-SA 4.0 なので別のファイルにする）,
+//       body.<ハッシュ>.glb（皮膚＝半透明の輪郭用）, index.json
 // ファイル名に中身のハッシュを付けるので、PWA が GLB を CacheFirst で持っても古い形が残らない。
 // 使い方: npm run fetch:sources && npm run build:models
 //
@@ -14,9 +16,7 @@ import { Document, NodeIO } from "@gltf-transform/core";
 import { EXTMeshoptCompression, KHRMeshQuantization } from "@gltf-transform/extensions";
 import { dedup, meshopt, prune, quantize, reorder, simplify, weld } from "@gltf-transform/functions";
 import { MeshoptEncoder, MeshoptSimplifier } from "meshoptimizer";
-import { BufferAttribute, BufferGeometry, Vector3 } from "three";
-import { ConvexGeometry } from "three/addons/geometries/ConvexGeometry.js";
-import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
+import { loadZa } from "./za/index.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const RAW = path.join(ROOT, "data-raw/bp3d");
@@ -92,7 +92,8 @@ export function loadTerms() {
 // 名前は左右を外して比べる（"humerus" で左右両方）。ただし指定に right / left が入っていれば左右込みで比べる
 // （"cavity of right atrium" と "cavity of left atrium" を区別するため）。
 // "!FJ…" はその部品を除く（元データで位置がずれている部品など）。
-export function resolveParts(terms, elementNames, conceptElements) {
+// "za:…" は Z-Anatomy の形の名前（zaNames。左右の扱いは同じ）。
+export function resolveParts(terms, elementNames, conceptElements, zaNames = new Map()) {
   const resolved = new Map();
   const errors = [];
   for (const term of terms) {
@@ -106,9 +107,10 @@ export function resolveParts(terms, elementNames, conceptElements) {
       if (/^FMA\d+$/.test(spec)) {
         for (const id of conceptElements.get(spec) ?? []) if (elementNames.has(id)) ids.add(id);
       } else {
-        const re = globToRegExp(spec.toLowerCase());
+        const za = spec.startsWith("za:");
+        const re = globToRegExp(spec.replace(/^za:/, "").toLowerCase());
         const sided = /\b(right|left)\b/i.test(spec);
-        for (const [id, name] of elementNames) if (re.test(sided ? name.toLowerCase() : baseName(name))) ids.add(id);
+        for (const [id, name] of za ? zaNames : elementNames) if (re.test(sided ? name.toLowerCase() : baseName(name))) ids.add(id);
       }
       if (ids.size === before) errors.push(`${term.id}: 部品「${spec}」に当たるメッシュがありません`);
     }
@@ -181,58 +183,39 @@ async function main() {
   const { objDir, elementNames, conceptElements } = readElements();
 
   const { systems, terms } = loadTerms();
-  const { resolved, errors } = resolveParts(terms, elementNames, conceptElements);
-  if (errors.length) throw new Error(errors.join("\n"));
-
-  fs.rmSync(OUT, { recursive: true, force: true });
-  fs.mkdirSync(OUT, { recursive: true });
   const meshes = new Map();
-  const mesh = (id) => {
+  const bpMesh = (id) => {
     if (!meshes.has(id)) meshes.set(id, parseObj(path.join(objDir, `${id}.obj`)));
     return meshes.get(id);
   };
+  const za = terms.some((term) => term.parts.some((spec) => spec.startsWith("za:"))) ? await loadZa(elementNames, bpMesh) : null;
+  const mesh = (id) => (za?.names.has(id) ? za.mesh(id) : bpMesh(id));
+  const { resolved, errors } = resolveParts(terms, elementNames, conceptElements, za?.names);
+  if (errors.length) throw new Error(errors.join("\n"));
+  if (za) for (const [id, name] of za.names) elementNames.set(id, name);
 
-  // shape: "hull" の語は、部品の点をすべて包む凸包を1つの形として使う。
-  // BodyParts3D の肺は気管支と血管の枝しかなく、そのままでは肺の外形が分からないため（近似であることは説明文に書く）。
-  for (const term of terms.filter((t) => t.shape === "hull")) {
-    const points = [];
-    for (const id of resolved.get(term.id)) {
-      const { positions } = mesh(id);
-      for (let i = 0; i < positions.length; i += 3) points.push(new Vector3(positions[i], positions[i + 1], positions[i + 2]));
-    }
-    let geometry = new ConvexGeometry(points);
-    geometry.deleteAttribute("normal");
-    geometry = mergeVertices(geometry, 1e-6);
-    geometry.computeVertexNormals();
-    const hullId = `HULL_${term.id.replace(/-/g, "_")}`;
-    const positions = new Float32Array(geometry.getAttribute("position").array);
-    const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
-    for (let i = 0; i < positions.length; i++) {
-      lo[i % 3] = Math.min(lo[i % 3], positions[i]);
-      hi[i % 3] = Math.max(hi[i % 3], positions[i]);
-    }
-    meshes.set(hullId, {
-      name: `hull of ${term.en}`,
-      positions,
-      normals: new Float32Array(geometry.getAttribute("normal").array),
-      indices: new Uint32Array(geometry.getIndex().array),
-      bounds: [lo, hi],
-    });
-    elementNames.set(hullId, `hull of ${term.en}`);
-    resolved.set(term.id, [hullId]);
-  }
+  // 古い GLB を消す（筋の付着面 attachments-za.json は scripts/za/attachments.mjs が作るので残す）
+  fs.mkdirSync(OUT, { recursive: true });
+  for (const file of fs.readdirSync(OUT)) if (file.endsWith(".glb")) fs.rmSync(path.join(OUT, file));
 
   // 部品は最初に使った語の系統の GLB に入れる（同じ部品を2つのファイルに重複させない）。
   const elementSystem = new Map();
   for (const term of terms) for (const id of resolved.get(term.id)) if (!elementSystem.has(id)) elementSystem.set(id, term.system);
 
-  const index = { version: 1, source: "BodyParts3D 4.0", systems: {}, terms: {}, neighbors: {}, bounds: null };
+  const index = { version: 1, source: za ? "BodyParts3D 4.0, Z-Anatomy" : "BodyParts3D 4.0", systems: {}, terms: {}, neighbors: {}, bounds: null };
   for (const system of systems) {
     const ids = [...elementSystem].filter(([, s]) => s === system.id).map(([id]) => id).sort();
-    if (!ids.length) continue;
-    const { url, bytes } = await writeGlb(system.id, ids.map((id) => [id, mesh(id)]), { ratio: 0.3, error: 0.004 });
-    index.systems[system.id] = { url, bytes, elements: ids.length };
-    console.log(`${url}: ${ids.length} 部品, ${(bytes / 1024 / 1024).toFixed(2)} MB`);
+    const bp = ids.filter((id) => !za?.names.has(id));
+    const fromZa = ids.filter((id) => za?.names.has(id));
+    if (!bp.length) continue;
+    const { url, bytes } = await writeGlb(system.id, bp.map((id) => [id, mesh(id)]), { ratio: 0.3, error: 0.004 });
+    index.systems[system.id] = { url, bytes, elements: bp.length };
+    console.log(`${url}: ${bp.length} 部品, ${(bytes / 1024 / 1024).toFixed(2)} MB`);
+    if (fromZa.length) {
+      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, mesh(id)]), { ratio: 0.3, error: 0.004 });
+      index.systems[system.id].za = { ...extra, elements: fromZa.length };
+      console.log(`${extra.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(extra.bytes / 1024 / 1024).toFixed(2)} MB`);
+    }
   }
   const body = mesh(BODY_ELEMENT);
   const bodyGlb = await writeGlb("body", [[BODY_ELEMENT, body]], { ratio: 0.15, error: 0.01 });
@@ -273,7 +256,7 @@ async function main() {
       .map(([id]) => id);
   }
   fs.writeFileSync(path.join(OUT, "index.json"), `${JSON.stringify(index)}\n`);
-  const total = Object.values(index.systems).reduce((sum, s) => sum + s.bytes, 0);
+  const total = Object.values(index.systems).reduce((sum, s) => sum + s.bytes + (s.za?.bytes ?? 0), 0);
   console.log(`語 ${terms.length} / 合計 ${(total / 1024 / 1024).toFixed(2)} MB`);
 }
 

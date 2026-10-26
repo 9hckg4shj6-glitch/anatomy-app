@@ -33,11 +33,13 @@ const muscleQuestion: Partial<Record<Facet, string>> = {
   action: "おもな作用は？",
 };
 
-/** 筋の起始・停止の部位を、骨の上に色分けして示す */
+/** 筋の起始・停止の部位（骨の部位のピンと、Z-Anatomy から作った付着面）を、骨の上に色分けして示す */
 export function attachMarks(term: Term): [string, string][] {
   return [
     ...(term.originAt ?? []).map((id) => [id, ORIGIN_COLOR] as [string, string]),
     ...(term.insertionAt ?? []).map((id) => [id, INSERTION_COLOR] as [string, string]),
+    [`${term.id}@origin`, ORIGIN_COLOR],
+    [`${term.id}@insertion`, INSERTION_COLOR],
   ];
 }
 

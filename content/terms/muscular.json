@@ -467,6 +467,73 @@
       ]
     },
     {
+      "id": "mus-abdomen",
+      "title": "腹壁と広背筋",
+      "terms": [
+        {
+          "id": "latissimus-dorsi", "ja": "広背筋", "yomi": "こうはいきん", "en": "latissimus dorsi", "la": "musculus latissimus dorsi",
+          "parts": ["za:latissimus dorsi muscle"], "level": 1,
+          "kanji": "背中の広い筋",
+          "etym": "latissimus「最も広い」（latus「広い」の最上級）＋ dorsi「背中の」",
+          "note": "背中の下半分をおおう三角形の大きな筋。腕を後ろ下へ引き、内側へひねる。懸垂や水泳のクロールで働く。",
+          "origin": "下位胸椎〜腰椎の棘突起（胸腰筋膜）・腸骨稜・下位の肋骨",
+          "insertion": "上腕骨の小結節稜",
+          "originAt": ["iliac-crest"],
+          "insertionAt": ["crest-of-lesser-tubercle"],
+          "nerve": "胸背神経",
+          "action": "肩関節の伸展・内転・内旋"
+        },
+        {
+          "id": "rectus-abdominis", "ja": "腹直筋", "yomi": "ふくちょくきん", "en": "rectus abdominis", "la": "musculus rectus abdominis",
+          "parts": ["za:rectus abdominis muscle"], "level": 1,
+          "kanji": "腹をまっすぐ縦に走る筋",
+          "etym": "rectus「まっすぐな」＋ abdominis「腹の」",
+          "note": "腹の前面を縦に走る左右1対の筋。腹直筋鞘に包まれ、横に走る腱画で区切られる（いわゆるシックスパック）。体幹を前に曲げる。",
+          "origin": "恥骨（恥骨稜・恥骨結合）",
+          "insertion": "第5〜7肋軟骨・剣状突起",
+          "nerve": "肋間神経",
+          "action": "体幹の屈曲（前屈）・腹圧を高める"
+        },
+        {
+          "id": "internal-oblique", "ja": "内腹斜筋", "yomi": "ないふくしゃきん", "en": "internal oblique", "enAlt": ["internal abdominal oblique"], "la": "musculus obliquus internus abdominis",
+          "parts": ["za:internal abdominal oblique muscle"], "level": 2, "xray": true,
+          "kanji": "腹の内側（外腹斜筋の下）を斜めに走る筋",
+          "etym": "internal「内の」＋ oblique「斜めの」",
+          "note": "外腹斜筋の深くにあり、線維は外腹斜筋とほぼ直角に交わる。体幹を曲げ、同じ側へひねる。下部は腸骨下腹神経・腸骨鼡径神経も支配する。",
+          "origin": "胸腰筋膜・腸骨稜・鼡径靱帯",
+          "insertion": "第10〜12肋骨の下縁・腹直筋鞘",
+          "originAt": ["iliac-crest"],
+          "nerve": "肋間神経",
+          "action": "体幹の屈曲・同じ側への回旋、腹圧を高める"
+        },
+        {
+          "id": "transversus-abdominis", "ja": "腹横筋", "yomi": "ふくおうきん", "en": "transversus abdominis", "enAlt": ["transverse abdominal"], "la": "musculus transversus abdominis",
+          "parts": ["za:transversus abdominis muscle"], "level": 2, "xray": true,
+          "kanji": "腹を横に走る筋",
+          "etym": "transversus「横の」＋ abdominis「腹の」",
+          "note": "側腹の筋の最も深い層。線維が横に走り、コルセットのように腹を締めて腹圧を高める。",
+          "origin": "第7〜12肋軟骨の内面・胸腰筋膜・腸骨稜・鼡径靱帯",
+          "insertion": "腹直筋鞘（白線）",
+          "originAt": ["iliac-crest"],
+          "nerve": "肋間神経",
+          "action": "腹圧を高める（腹を締める）"
+        },
+        {
+          "id": "quadratus-lumborum", "ja": "腰方形筋", "yomi": "ようほうけいきん", "en": "quadratus lumborum", "la": "musculus quadratus lumborum",
+          "parts": ["za:quadratus lumborum muscle"], "level": 2, "xray": true,
+          "kanji": "腰にある四角い筋",
+          "etym": "quadratus「四角い」＋ lumborum「腰の」",
+          "note": "腰椎の横、腸骨稜と第12肋骨の間を埋める四角い筋。腰を横に曲げ、息を吸うとき第12肋骨を固定する。",
+          "origin": "腸骨稜（後部）・腸腰靱帯",
+          "insertion": "第12肋骨・第1〜4腰椎の横突起",
+          "originAt": ["iliac-crest"],
+          "insertionAt": ["transverse-process"],
+          "nerve": "腰神経叢の枝",
+          "action": "腰椎の側屈・第12肋骨を引き下げる"
+        }
+      ]
+    },
+    {
       "id": "mus-neck",
       "title": "首の筋",
       "terms": [
@@ -574,6 +641,177 @@
           "insertionAt": ["mastoid-process"],
           "nerve": "脊髄神経の後枝",
           "action": "頭をそらし、同じ側へ回す"
+        }
+      ]
+    },
+    {
+      "id": "mus-face",
+      "title": "表情筋",
+      "terms": [
+        {
+          "id": "frontalis", "ja": "前頭筋", "yomi": "ぜんとうきん", "en": "frontalis", "enAlt": ["frontal belly of occipitofrontalis"], "la": "venter frontalis musculi occipitofrontalis",
+          "parts": ["za:frontalis muscle"], "level": 1, "check": true,
+          "kanji": "前頭部（ひたい）の筋",
+          "etym": "frontalis ← ラテン語 frons「ひたい」",
+          "note": "ひたいの皮膚の下の筋。後ろの後頭筋と帽状腱膜でつながり、合わせて後頭前頭筋とよぶ（前頭筋はその前頭筋腹）。眉を上げ、ひたいに横じわを作る。",
+          "origin": "帽状腱膜",
+          "insertion": "眉のあたりの皮膚",
+          "nerve": "顔面神経",
+          "action": "眉を上げる・ひたいに横じわを作る"
+        },
+        {
+          "id": "orbicularis-oculi", "ja": "眼輪筋", "yomi": "がんりんきん", "en": "orbicularis oculi", "la": "musculus orbicularis oculi",
+          "parts": ["za:*orbicularis oculi"], "level": 1,
+          "kanji": "眼の周りを輪のように囲む筋",
+          "etym": "orbicularis「小さな輪の」（orbis「輪」）＋ oculi「眼の」",
+          "note": "眼の周りを輪状に囲む筋。まぶたの中の眼瞼部と、その外の眼窩部からなる。まぶたを閉じる。顔面神経麻痺では眼が閉じられなくなる。",
+          "origin": "眼窩の内側縁（前頭骨・上顎骨）・内側眼瞼靱帯",
+          "insertion": "眼の周りの皮膚・外側眼瞼縫線",
+          "nerve": "顔面神経",
+          "action": "まぶたを閉じる"
+        },
+        {
+          "id": "corrugator-supercilii", "ja": "皺眉筋", "yomi": "しゅうびきん", "en": "corrugator supercilii", "la": "musculus corrugator supercilii",
+          "parts": ["za:corrugator supercilii"], "level": 3, "xray": true,
+          "kanji": "眉に皺（しわ）を寄せる筋",
+          "etym": "corrugator「しわを寄せるもの」＋ supercilii「眉の」",
+          "note": "眉の内側の、前頭筋と眼輪筋の深くにある小さな筋。眉を内下方へ寄せ、眉間に縦じわを作る。",
+          "origin": "前頭骨（眉弓の内側）",
+          "insertion": "眉の中央の皮膚",
+          "nerve": "顔面神経",
+          "action": "眉を寄せる（眉間に縦じわを作る）"
+        },
+        {
+          "id": "orbicularis-oris", "ja": "口輪筋", "yomi": "こうりんきん", "en": "orbicularis oris", "la": "musculus orbicularis oris",
+          "parts": ["za:orbicularis oris muscle"], "level": 1,
+          "kanji": "口の周りを輪のように囲む筋",
+          "etym": "orbicularis「輪の」＋ oris「口の」",
+          "note": "唇の中を輪状に走る筋。周りの表情筋の線維もここに加わる。口を閉じ、唇をすぼめる。",
+          "origin": "上顎骨・下顎骨（切歯のあたり）・周りの表情筋",
+          "insertion": "唇の皮膚と粘膜",
+          "nerve": "顔面神経",
+          "action": "口を閉じる・唇をすぼめる"
+        },
+        {
+          "id": "buccinator", "ja": "頬筋", "yomi": "きょうきん", "en": "buccinator", "la": "musculus buccinator",
+          "parts": ["za:bucinator"], "level": 2,
+          "kanji": "頬（ほお）の筋",
+          "etym": "buccinator ← ラテン語 bucina「らっぱ」を吹く人（頬をふくらませて吹く）",
+          "note": "頬の壁をつくる筋。頬を歯に押しつけ、噛むときに食べ物を歯の間に保つ。表情筋だが咀嚼を助ける。耳下腺管がこの筋を貫く。",
+          "origin": "上顎骨・下顎骨（大臼歯の外側）・翼突下顎縫線",
+          "insertion": "口角（口輪筋）",
+          "nerve": "顔面神経",
+          "action": "頬を歯に押しつける・口角を外へ引く"
+        },
+        {
+          "id": "zygomaticus-major", "ja": "大頬骨筋", "yomi": "だいきょうこつきん", "en": "zygomaticus major", "la": "musculus zygomaticus major",
+          "parts": ["za:zygomaticus major muscle"], "level": 1,
+          "kanji": "頬骨から出る大きい筋",
+          "etym": "zygomaticus「頬骨の」（ギリシャ語 zygon「くびき」）＋ major「大きいほう」",
+          "note": "頬骨から口角へ斜めに走る筋。口角を外上方へ引き上げ、笑顔を作る。",
+          "origin": "頬骨の外面",
+          "insertion": "口角",
+          "nerve": "顔面神経",
+          "action": "口角を外上方へ引く（笑う）"
+        },
+        {
+          "id": "risorius", "ja": "笑筋", "yomi": "しょうきん", "en": "risorius", "la": "musculus risorius",
+          "parts": ["za:risorius muscle"], "level": 2,
+          "kanji": "笑うときに働く筋",
+          "etym": "risorius ← ラテン語 risus「笑い」",
+          "note": "頬の下部を横に走る薄い筋。口角を外側へ引き、えくぼを作る。",
+          "origin": "咬筋の筋膜（耳下腺咬筋筋膜）",
+          "insertion": "口角",
+          "nerve": "顔面神経",
+          "action": "口角を外側へ引く"
+        },
+        {
+          "id": "levator-labii-superioris", "ja": "上唇挙筋", "yomi": "じょうしんきょきん", "en": "levator labii superioris", "la": "musculus levator labii superioris",
+          "parts": ["za:levator labii superioris"], "level": 2,
+          "kanji": "上唇を挙げる筋",
+          "etym": "levator「持ち上げるもの」＋ labii superioris「上唇の」",
+          "note": "眼窩の下縁から上唇へ走る筋。上唇を引き上げる。",
+          "origin": "眼窩下縁（上顎骨）",
+          "insertion": "上唇の皮膚",
+          "nerve": "顔面神経",
+          "action": "上唇を引き上げる"
+        },
+        {
+          "id": "depressor-anguli-oris", "ja": "口角下制筋", "yomi": "こうかくかせいきん", "en": "depressor anguli oris", "la": "musculus depressor anguli oris",
+          "parts": ["za:depressor anguli oris"], "level": 2,
+          "kanji": "口角を下げる（下制する）筋",
+          "etym": "depressor「下げるもの」＋ anguli oris「口の角の」",
+          "note": "下顎の下縁から口角へ走る三角形の筋。口角を引き下げ、への字口を作る。",
+          "origin": "下顎骨の下縁（オトガイ結節の外側）",
+          "insertion": "口角",
+          "originAt": ["body-of-mandible"],
+          "nerve": "顔面神経",
+          "action": "口角を引き下げる"
+        },
+        {
+          "id": "mentalis", "ja": "オトガイ筋", "yomi": "おとがいきん", "en": "mentalis", "la": "musculus mentalis",
+          "parts": ["za:mentalis muscle"], "level": 2,
+          "kanji": "オトガイ（あご先）の筋",
+          "etym": "mentalis ← ラテン語 mentum「あご先」",
+          "note": "あご先にある小さな筋。オトガイの皮膚を引き上げて梅干しのようなしわを作り、下唇を突き出す。",
+          "origin": "下顎骨の切歯窩（下の切歯の歯根の前）",
+          "insertion": "オトガイの皮膚",
+          "nerve": "顔面神経",
+          "action": "オトガイの皮膚を引き上げる・下唇を突き出す"
+        }
+      ]
+    },
+    {
+      "id": "mus-mastication",
+      "title": "咀嚼筋",
+      "terms": [
+        {
+          "id": "temporalis", "ja": "側頭筋", "yomi": "そくとうきん", "en": "temporalis", "la": "musculus temporalis",
+          "parts": ["za:temporalis muscle"], "level": 1,
+          "kanji": "側頭部の筋",
+          "etym": "temporalis ← ラテン語 tempora「こめかみ」",
+          "note": "側頭部をおおう扇形の筋。下顎骨の筋突起へ集まり、口を閉じる。こめかみに指を当てて歯をかみしめると動きがわかる。",
+          "origin": "側頭窩（側頭骨・頭頂骨・前頭骨・蝶形骨）・側頭筋膜",
+          "insertion": "下顎骨の筋突起",
+          "insertionAt": ["coronoid-process-of-mandible"],
+          "nerve": "下顎神経",
+          "action": "下顎を引き上げる（口を閉じる）・後ろへ引く"
+        },
+        {
+          "id": "masseter", "ja": "咬筋", "yomi": "こうきん", "en": "masseter", "la": "musculus masseter",
+          "parts": ["za:*masseter"], "level": 1,
+          "kanji": "咬む（かむ）ための筋",
+          "etym": "masseter ← ギリシャ語 maseter「かむもの」",
+          "note": "頬骨弓から下顎角へ走る四角い筋。強く口を閉じ、歯をかみしめる。かみしめると頬の後ろで硬くふくらむ。",
+          "origin": "頬骨弓",
+          "insertion": "下顎角の外面（咬筋粗面）・下顎枝",
+          "originAt": ["zygomatic-arch"],
+          "insertionAt": ["angle-of-mandible"],
+          "nerve": "下顎神経",
+          "action": "下顎を引き上げる（かみしめる）"
+        },
+        {
+          "id": "medial-pterygoid", "ja": "内側翼突筋", "yomi": "ないそくよくとつきん", "en": "medial pterygoid", "la": "musculus pterygoideus medialis",
+          "parts": ["za:medial pterygoid muscle"], "level": 2, "xray": true,
+          "kanji": "翼状突起から出る、内側の筋",
+          "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ -oid「〜の形」",
+          "note": "下顎枝の内側にある筋。外側の咬筋と下顎枝をはさむように走り、口を閉じる。",
+          "origin": "蝶形骨の翼状突起（外側板の内面）",
+          "insertion": "下顎角の内面（翼突筋粗面）",
+          "nerve": "下顎神経",
+          "action": "下顎を引き上げる（口を閉じる）・左右へ動かす"
+        },
+        {
+          "id": "lateral-pterygoid", "ja": "外側翼突筋", "yomi": "がいそくよくとつきん", "en": "lateral pterygoid", "la": "musculus pterygoideus lateralis",
+          "parts": ["za:*head of lateral pterygoid muscle"], "level": 2, "xray": true,
+          "kanji": "翼状突起から出る、外側の筋",
+          "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ -oid「〜の形」",
+          "note": "下顎頭を前へ引き出す筋。咀嚼筋のうちただ一つ、口を開けるのを助ける。両側で下顎を前に出し、片側で反対側へ動かす。",
+          "origin": "蝶形骨の翼状突起（外側板の外面）・大翼の下面",
+          "insertion": "下顎骨の関節突起（下顎頭の前）・顎関節の関節円板",
+          "originAt": ["pterygoid-process"],
+          "nerve": "下顎神経",
+          "action": "下顎を前に出す・口を開ける・反対側へ動かす"
         }
       ]
     },

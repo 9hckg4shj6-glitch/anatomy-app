@@ -26,7 +26,6 @@ const Term = z.strictObject({
   note: z.string().min(10),
   color: z.string().regex(/^#[0-9a-f]{6}$/).optional(),
   xray: z.literal(true).optional(),
-  shape: z.literal("hull").optional(),
   check: z.literal(true).optional(),
   origin: z.string().min(2).optional(),
   insertion: z.string().min(2).optional(),
@@ -92,6 +91,18 @@ for (const term of terms) {
 }
 for (const id of Object.keys(pins)) if (!seen.get(id)?.of) errors.push(`content/pins.json: 「${id}」は骨の部位の語ではありません`);
 
+// 筋の付着面（scripts/za/attachments.mjs が作る）。筋と骨の語IDが今の内容にあるか
+const attachmentsFile = path.join(ROOT, "public/models/attachments-za.json");
+if (fs.existsSync(attachmentsFile)) {
+  for (const [id, entry] of Object.entries(JSON.parse(fs.readFileSync(attachmentsFile, "utf8")))) {
+    if (!seen.get(id)?.nerve) errors.push(`attachments-za.json: 「${id}」は筋の語ではありません`);
+    for (const [on] of [...(entry.origin ?? []), ...(entry.insertion ?? [])]) {
+      const bone = seen.get(on);
+      if (!bone || bone.system !== "skeletal" || bone.of) errors.push(`attachments-za.json: ${id} の「${on}」は骨の語ではありません`);
+    }
+  }
+}
+
 const indexFile = path.join(ROOT, "public/models/index.json");
 if (!fs.existsSync(indexFile)) errors.push("public/models/index.json がありません。npm run build:models を実行してください");
 else {
@@ -102,7 +113,9 @@ else {
     errors.push(`3Dモデルが内容と合っていません（未作成: ${stale.join(", ") || "なし"} / 削除済み: ${removed.join(", ") || "なし"}）。npm run build:models を実行してください`);
   }
   for (const [id, system] of Object.entries(index.systems)) {
-    if (!fs.existsSync(path.join(ROOT, "public", system.url))) errors.push(`${id} の GLB がありません: ${system.url}`);
+    for (const url of [system.url, system.za?.url].filter(Boolean)) {
+      if (!fs.existsSync(path.join(ROOT, "public", url))) errors.push(`${id} の GLB がありません: ${url}`);
+    }
   }
 }
 

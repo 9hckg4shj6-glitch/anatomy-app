@@ -20,6 +20,20 @@
           "note": "間脳の後ろ上にある小さな器官。メラトニンを出し、睡眠のリズムにかかわる。"
         },
         {
+          "id": "thyroid-gland", "ja": "甲状腺", "yomi": "こうじょうせん", "en": "thyroid gland", "la": "glandula thyroidea",
+          "parts": ["za:thyroid gland"], "level": 1,
+          "kanji": "甲状（盾の形の）軟骨のそばの腺",
+          "etym": "thyroid ← ギリシャ語 thyreos「盾」＋ -oid「〜の形」",
+          "note": "喉頭の下、気管の前にある蝶の形をした腺。右葉・左葉と、それをつなぐ峡部からなる。代謝を高める甲状腺ホルモンと、血液のカルシウムを下げるカルシトニンを出す。"
+        },
+        {
+          "id": "parathyroid-gland", "ja": "上皮小体", "yomi": "じょうひしょうたい", "en": "parathyroid gland", "enAlt": ["parathyroid glands", "parathyroid"], "la": "glandula parathyroidea",
+          "parts": ["za:*parathyroid gland"], "level": 2, "xray": true,
+          "kanji": "上皮でできた小さな体（ドイツ語 Epithelkörperchen の訳）",
+          "etym": "para-「そば」＋ thyroid「甲状腺」",
+          "note": "甲状腺の後ろにある米粒大の腺で、ふつう上下左右に4つ。副甲状腺ともいう。パラトルモンを出し、血液のカルシウムを上げる。"
+        },
+        {
           "id": "adrenal-gland", "ja": "副腎", "yomi": "ふくじん", "en": "suprarenal gland", "enAlt": ["adrenal gland", "adrenal"], "la": "glandula suprarenalis",
           "parts": ["adrenal gland"], "level": 1,
           "kanji": "腎臓に副（そ）う器官",

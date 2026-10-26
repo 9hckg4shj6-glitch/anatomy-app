@@ -55,17 +55,58 @@
         },
         {
           "id": "right-lung", "ja": "右肺", "yomi": "うはい", "en": "right lung", "la": "pulmo dexter",
-          "parts": ["FMA7309", "!FJ2044", "!FJ2041"], "shape": "hull", "level": 1,
+          "parts": ["za:*lobe of right lung"], "level": 1,
           "kanji": "右の肺",
           "etym": "lung（英語の固有語）。ラテン語 pulmo から pulmonary「肺の」",
-          "note": "上葉・中葉・下葉の3葉からなる。左肺より大きい。このモデルの外形は、肺の中の気管支と血管の広がりから作った近似。"
+          "note": "水平裂と斜裂で上葉・中葉・下葉の3葉に分かれる。左肺より大きい。下面は横隔膜にのる。"
         },
         {
           "id": "left-lung", "ja": "左肺", "yomi": "さはい", "en": "left lung", "la": "pulmo sinister",
-          "parts": ["FMA7310"], "shape": "hull", "level": 1,
+          "parts": ["za:*lobe of left lung"], "level": 1,
           "kanji": "左の肺",
           "etym": "lung。ラテン語 pulmo",
-          "note": "上葉・下葉の2葉からなる。心臓が左に寄っているぶん右肺より小さい。このモデルの外形は、気管支と血管の広がりから作った近似。"
+          "note": "斜裂で上葉・下葉の2葉に分かれる。心臓が左に寄っているぶん右肺より小さく、前縁に心切痕がある。"
+        }
+      ]
+    },
+    {
+      "id": "resp-lobes",
+      "title": "肺の葉",
+      "terms": [
+        {
+          "id": "superior-lobe-of-right-lung", "ja": "右肺上葉", "yomi": "うはいじょうよう", "en": "superior lobe of right lung", "enAlt": ["right upper lobe"], "la": "lobus superior pulmonis dextri",
+          "parts": ["za:superior lobe of right lung"], "level": 2,
+          "kanji": "右の肺の上の葉",
+          "etym": "lobe ← ギリシャ語 lobos「耳たぶ・丸くふくらんだもの」",
+          "note": "右肺の上の葉。肺尖を含み、水平裂で中葉と、斜裂で下葉と分かれる。"
+        },
+        {
+          "id": "middle-lobe-of-right-lung", "ja": "右肺中葉", "yomi": "うはいちゅうよう", "en": "middle lobe of right lung", "enAlt": ["right middle lobe"], "la": "lobus medius pulmonis dextri",
+          "parts": ["za:middle lobe of right lung"], "level": 2,
+          "kanji": "右の肺のまん中の葉",
+          "etym": "middle「まん中の」＋ lobe「葉」",
+          "note": "水平裂と斜裂の間で、右肺の前下にある小さな葉。左肺には中葉が無い（左肺上葉の小舌がこれにあたる）。"
+        },
+        {
+          "id": "inferior-lobe-of-right-lung", "ja": "右肺下葉", "yomi": "うはいかよう", "en": "inferior lobe of right lung", "enAlt": ["right lower lobe"], "la": "lobus inferior pulmonis dextri",
+          "parts": ["za:inferior lobe of right lung"], "level": 2,
+          "kanji": "右の肺の下の葉",
+          "etym": "inferior「下の」＋ lobe「葉」",
+          "note": "斜裂より後ろ下の葉。横隔膜の上にのり、背中側に大きく広がる。"
+        },
+        {
+          "id": "superior-lobe-of-left-lung", "ja": "左肺上葉", "yomi": "さはいじょうよう", "en": "superior lobe of left lung", "enAlt": ["left upper lobe"], "la": "lobus superior pulmonis sinistri",
+          "parts": ["za:superior lobe of left lung"], "level": 2,
+          "kanji": "左の肺の上の葉",
+          "etym": "superior「上の」＋ lobe「葉」",
+          "note": "斜裂より前上の葉。前縁に心臓の形の切れこみ（心切痕）があり、その下の舌のような部分（小舌）が右肺の中葉にあたる。"
+        },
+        {
+          "id": "inferior-lobe-of-left-lung", "ja": "左肺下葉", "yomi": "さはいかよう", "en": "inferior lobe of left lung", "enAlt": ["left lower lobe"], "la": "lobus inferior pulmonis sinistri",
+          "parts": ["za:inferior lobe of left lung"], "level": 2,
+          "kanji": "左の肺の下の葉",
+          "etym": "inferior「下の」＋ lobe「葉」",
+          "note": "斜裂より後ろ下の葉。横隔膜の上にのる。"
         }
       ]
     }

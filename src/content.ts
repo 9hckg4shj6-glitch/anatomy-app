@@ -27,8 +27,6 @@ export interface Term {
   color?: string;
   /** ほかの構造に隠れる部位。強調するとき周りを半透明にし、タップで答える問題は出さない */
   xray?: boolean;
-  /** "hull"＝部品を包む凸包で形を示す（scripts/build-models.mjs） */
-  shape?: "hull";
   /** 表記などを教科書で確かめてほしい語（docs/要確認用語.md に出る） */
   check?: boolean;
   /** 筋の起始・停止・支配神経・作用。起始・停止の骨の部位は originAt / insertionAt に語IDで（3Dでピンを示す） */
@@ -70,7 +68,8 @@ export interface Pin {
 /** scripts/build-models.mjs が書き出す public/models/index.json */
 export interface ModelIndex {
   version: number;
-  systems: Record<string, { url: string; bytes: number; elements: number }>;
+  /** za は Z-Anatomy 由来の形（CC BY-SA 4.0）だけを入れた別の GLB。同じ系統として一緒に読む */
+  systems: Record<string, { url: string; bytes: number; elements: number; za?: { url: string; bytes: number; elements: number } }>;
   terms: Record<string, { system: string; elements: string[]; center: [number, number, number]; radius: number }>;
   neighbors: Record<string, string[]>;
   bounds: [[number, number, number], [number, number, number]];
@@ -105,6 +104,23 @@ export function isLandmark(term: Pick<Term, "of"> | undefined): boolean {
 /** 骨の部位の一覧（骨ごと） */
 export function landmarksOf(boneId: string): Term[] {
   return terms.filter((term) => term.of === boneId);
+}
+
+/**
+ * 筋の付着面（public/models/attachments-za.json、scripts/za/attachments.mjs が Z-Anatomy から作る）。
+ * 起始・停止ごとに、骨の上の球の並び [骨の語ID, x, y, z, 半径, 面の向き nx, ny, nz（無いこともある）]。本人の右側だけ。
+ */
+export type AttachmentSpot = [string, number, number, number, number, ...number[]];
+export type Attachments = Record<string, { origin?: AttachmentSpot[]; insertion?: AttachmentSpot[] }>;
+
+let attachments: Promise<Attachments> | null = null;
+
+export function loadAttachments(): Promise<Attachments> {
+  // 無くても3Dは動くので、読めなければ空にする（起始・停止は骨の部位のピンだけで示す）
+  attachments ??= fetch(`${import.meta.env.BASE_URL}models/attachments-za.json`)
+    .then((response) => (response.ok ? (response.json() as Promise<Attachments>) : {}))
+    .catch(() => ({}));
+  return attachments;
 }
 
 let modelIndex: Promise<ModelIndex> | null = null;

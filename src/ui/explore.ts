@@ -84,7 +84,7 @@ export async function explore(ctx: AppContext): Promise<void> {
     const term = selected;
     const parts = landmarksOf(term.id);
     const parent = term.of ? termById.get(term.of) : null;
-    const attachable = !!(term.originAt?.length || term.insertionAt?.length);
+    const attachable = !!(term.originAt?.length || term.insertionAt?.length || viewer.hasAttachments(term.id));
     detail.replaceChildren(h("div", {},
       termCard(term),
       parts.length ? h("h3", {}, `${term.ja}の部位`) : "",
