@@ -194,3 +194,15 @@ button { font: inherit; color: inherit; }
 .admin-select { width: 100%; min-height: 44px; padding: 0 8px; border: 1px solid var(--line); border-radius: 10px; font-size: 16px; background: var(--surface); }
 .admin-json { width: 100%; min-height: 120px; font: 12px/1.4 ui-monospace, monospace; border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
 .term-row .missing { color: var(--ng); font-size: 13px; }
+
+/* 説明の中の基本の用語（タップで意味を出す） */
+.gloss { display: inline; padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; text-decoration: underline dotted color-mix(in srgb, var(--accent) 70%, transparent); text-underline-offset: 3px; }
+.gloss:active { color: var(--accent); }
+.gloss-box { margin-top: 12px; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 8%, var(--bg)); font-size: 14px; line-height: 1.6; }
+.gloss-box[hidden] { display: none; }
+.gloss-head { display: flex; align-items: baseline; gap: 8px; }
+.gloss-head span { color: var(--muted); }
+.gloss-close { margin-left: auto; width: 28px; height: 28px; border: 0; border-radius: 50%; background: none; color: var(--muted); font-size: 18px; cursor: pointer; }
+.gloss-box p { margin: 4px 0 0; }
+.gloss-box .ghost-button { margin-top: 8px; min-height: 36px; padding: 6px 12px; font-size: 14px; }
+.intro { padding: 4px 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: 15px; line-height: 1.75; }

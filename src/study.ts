@@ -18,13 +18,13 @@ export const facetLabels: Record<Facet, string> = {
 };
 
 /**
- * その語に出す問い方。隠れた部位（xray）はタップできないので「名前→位置」を出さない。
+ * その語に出す問い方。隠れた部位（xray）と基本の用語（figure。矢印・面・動きの図）はタップできないので「名前→位置」を出さない。
  * 筋の起始・停止・支配神経・作用は、位置→名前が復習の段階に入ってから（筋の場所を覚えてから）出す。
  */
-export function facetsFor(term: Pick<Term, "xray" | "nerve"> | undefined, locateLearned = false): Facet[] {
+export function facetsFor(term: Pick<Term, "xray" | "nerve" | "figure"> | undefined, locateLearned = false): Facet[] {
   return FACETS.filter((facet) => {
     if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && locateLearned;
-    return !(facet === "point" && term?.xray);
+    return !(facet === "point" && (term?.xray || term?.figure));
   });
 }
 

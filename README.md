@@ -31,6 +31,7 @@ npm run build:models
 npm run build:attachments # 筋の起始・停止の面（Z-Anatomy から）
 node scripts/pins/compute.mjs scripts/pins/rules/attach.mjs --write # Z-Anatomy に無い起始・停止（content/attachments.json）
 npm run build:audio      # macOS の afconvert を使う
+node scripts/joints.mjs  # 基本の用語（運動）で骨を動かす関節（content/joints.json）
 npm run build:wikidata   # 任意。Wikidata の日本語名との照合用
 npm run validate:content # docs/要確認用語.md も作り直す
 ```

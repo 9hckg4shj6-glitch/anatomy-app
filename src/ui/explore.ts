@@ -49,8 +49,10 @@ export async function explore(ctx: AppContext): Promise<void> {
     paint();
     viewer.setLabel(term?.id ?? null, term?.ja ?? "");
     if (term) {
-      if (!shown.has(term.system)) {
-        shown.add(term.system);
+      // 基本の用語（方向・面・運動）は骨格の上に図を描く
+      const system = term.figure ? "skeletal" : term.system;
+      if (!shown.has(system)) {
+        shown.add(system);
         void apply();
       }
       viewer.focus(term.id, 3.2);
@@ -86,7 +88,7 @@ export async function explore(ctx: AppContext): Promise<void> {
     const parent = term.of ? termById.get(term.of) : null;
     const attachable = !!(term.originAt?.length || term.insertionAt?.length || viewer.hasAttachments(term.id));
     detail.replaceChildren(h("div", {},
-      termCard(term),
+      termCard(term, { open: select }),
       parts.length ? h("h3", {}, `${term.ja}の部位`) : "",
       parts.length ? chips(parts) : "",
       h("div", { class: "nav-row" },
@@ -99,7 +101,7 @@ export async function explore(ctx: AppContext): Promise<void> {
             render();
           },
         }, attach ? "起始・停止を隠す" : "起始・停止を骨で見る") : null,
-        !parent && !attachable ? h("button", {
+        !parent && !attachable && !term.figure ? h("button", {
           class: "ghost-button", type: "button",
           onClick: () => {
             isolate = !isolate;

@@ -1,6 +1,7 @@
 import "fake-indexeddb/auto";
 import { Rating, State, nextSchedule } from "../src/fsrs";
 import { buildQueue, pickChoices, termMastery, typesEnglish } from "../src/study";
+import type { Figure } from "../src/content";
 import type { LearnedTerm, StoredSchedule } from "../src/db";
 
 const now = new Date("2026-11-01T09:00:00Z");
@@ -85,5 +86,13 @@ describe("隠れた部位", () => {
     expect(facetsFor({})).toContain("point");
     const queue = buildQueue([learned("thalamus")], [], now, 10, () => facetsFor({ xray: true }));
     expect(queue.map((item) => item.facet)).toEqual(["locate", "ja2en", "en2ja"]);
+  });
+});
+
+describe("基本の用語", () => {
+  it("図（矢印・面・動き）で示す語には「名前→位置」を出さない", async () => {
+    const { facetsFor } = await import("../src/study");
+    const figure: Figure = { plane: { axis: "x", at: 0 }, view: { target: [0, 1, 0], from: [0, 0, 1], size: 0.5 } };
+    expect(facetsFor({ figure })).toEqual(["locate", "ja2en", "en2ja"]);
   });
 });

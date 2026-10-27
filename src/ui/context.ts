@@ -13,7 +13,11 @@ export interface AppContext {
   signal: AbortSignal;
 }
 
-/** 系統を見せるときの既定の組み合わせ。骨格以外は骨格を半透明で添えて、体のどこにあるかを分かりやすくする。 */
+/**
+ * 系統を見せるときの既定の組み合わせ。骨格以外は骨格を半透明で添えて、体のどこにあるかを分かりやすくする。
+ * 基本の用語（方向・面・運動）は骨格の上に図を描く。
+ */
 export function sceneFor(system: string): SceneSpec {
+  if (system === "basics") return { systems: ["skeletal"], body: true };
   return { systems: [system], context: system === "skeletal" ? [] : ["skeletal"], body: true };
 }

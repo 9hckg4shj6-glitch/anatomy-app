@@ -1,4 +1,5 @@
 import attachmentsJson from "../content/attachments.json";
+import jointsJson from "../content/joints.json";
 import pinsJson from "../content/pins.json";
 import systemsJson from "../content/systems.json";
 
@@ -39,6 +40,10 @@ export interface Term {
   insertionAt?: string[];
   nerve?: string;
   action?: string;
+  /** 基本の用語（方向・面・運動）の3Dの図。部品を持たず、骨格の上に矢印・面を描いたり骨を動かしたりして示す */
+  figure?: Figure;
+  /** 図から名前を答える問題で選択肢に出してよい語（「近位」の図に「上」を出すと、どちらも正しくなるため） */
+  foils?: string[];
   /** 以下は読み込み時に付ける */
   system: string;
   unit: string;
@@ -48,12 +53,52 @@ export interface Unit {
   id: string;
   title: string;
   system: string;
+  /** レッスンの初めに見せる説明（段落ごと） */
+  intro?: string[];
   terms: Term[];
 }
 
 interface TermFile {
   system: string;
-  units: { id: string; title: string; terms: Omit<Term, "system" | "unit">[] }[];
+  units: { id: string; title: string; intro?: string[]; terms: Omit<Term, "system" | "unit">[] }[];
+}
+
+type Vec3 = [number, number, number];
+
+/** 体の面。axis に垂直で、その座標が at の面（x＝正中矢状面・矢状面、z＝前頭面、y＝水平面） */
+export interface FigurePlane {
+  axis: "x" | "y" | "z";
+  at: number;
+}
+
+/**
+ * 基本の用語の図（モデル座標 m・Y上・前が +z、本人の右が -x）。
+ * arrows は矢印 [始点, 終点]、plane は答えの面、guide は目安に薄く出す面（内側・外側の正中面など）。
+ * motion は関節の動き（content/joints.json の関節ID → 角度°）。from の姿勢から to の姿勢へ動かすのをくり返す。
+ * view はカメラ: 見る中心 target・カメラを置く向き from・映す半分の高さ size（m）。
+ */
+export interface Figure {
+  arrows?: [Vec3, Vec3][];
+  plane?: FigurePlane;
+  guide?: FigurePlane;
+  motion?: { from?: Record<string, number>; to: Record<string, number> };
+  view: { target: Vec3; from: Vec3; size: number };
+}
+
+/**
+ * 骨を動かす関節（scripts/joints.mjs が骨の形とピンから作る）。moves は動かす骨の語ID、pivot は回す中心、axis は回す軸
+ * （右側。正の角度で plus の運動）。slide の関節は回さずに axis の向きへ動かす（値は mm）。
+ * 左右のある骨は右側の部品だけを動かし、mid の関節（環軸関節）は全部を動かす。
+ * 並びは体の中心から先へ（先の関節から順に回してから根元の関節で回す）。
+ */
+export interface Joint {
+  ja: string;
+  moves: string[];
+  pivot: Vec3;
+  axis: Vec3;
+  mid?: boolean;
+  slide?: boolean;
+  plus: string;
 }
 
 /**
@@ -90,6 +135,7 @@ export const units: Unit[] = systems.flatMap((system) => {
     id: unit.id,
     title: unit.title,
     system: system.id,
+    intro: unit.intro,
     terms: unit.terms.map((term) => ({ ...term, system: system.id, unit: unit.id })),
   }));
 });
@@ -101,6 +147,15 @@ export const systemById = new Map(systems.map((system) => [system.id, system]));
 
 /** 骨・器官の部位のピン。ピン打ちツール（#/admin）で書きかえる */
 export const pins = pinsJson as unknown as Record<string, Pin>;
+
+export const joints = jointsJson as unknown as Record<string, Joint>;
+
+/** 基本の用語の図から名前を答える問題の文 */
+export function figurePrompt(figure: Figure): string {
+  if (figure.motion) return "この動きの名前は？";
+  if (figure.plane) return "オレンジ色の面の名前は？";
+  return "オレンジ色の矢印の向きは？";
+}
 
 export function isLandmark(term: Pick<Term, "of"> | undefined): boolean {
   return !!term?.of;

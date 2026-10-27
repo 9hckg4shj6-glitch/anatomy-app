@@ -74,14 +74,15 @@ function globToRegExp(pattern) {
   return new RegExp(`^${pattern.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*")}$`);
 }
 
-export function loadTerms() {
+// 基本の用語（方向・面・運動。figure がある語）は3Dの部品を持たないので、ふだんは除く（英語の音声を作るときだけ figures: true）
+export function loadTerms({ figures = false } = {}) {
   const systems = JSON.parse(fs.readFileSync(path.join(ROOT, "content/systems.json"), "utf8"));
   const terms = [];
   for (const system of systems) {
     const file = path.join(ROOT, `content/terms/${system.id}.json`);
     if (!fs.existsSync(file)) continue;
     const data = JSON.parse(fs.readFileSync(file, "utf8"));
-    for (const unit of data.units) for (const term of unit.terms) terms.push({ ...term, system: system.id, unit: unit.id });
+    for (const unit of data.units) for (const term of unit.terms) if (figures || !term.figure) terms.push({ ...term, system: system.id, unit: unit.id });
   }
   // 骨の部位（of がある語）は、parts を書かなければ親の骨の部品を使う（3Dでは骨の上のピンで示す）
   const byId = new Map(terms.map((term) => [term.id, term]));

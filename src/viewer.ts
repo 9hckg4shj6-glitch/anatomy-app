@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
-import { loadAttachments, loadModelIndex, pins, systemById, termById, type Attachments, type ModelIndex } from "./content";
+import { joints, loadAttachments, loadModelIndex, pins, systemById, termById, type Attachments, type FigurePlane, type ModelIndex } from "./content";
 import { pinCenter, pinSpread, type Vec3 } from "./landmarks";
 
 export interface SceneSpec {
@@ -21,6 +21,12 @@ export const ORIGIN_COLOR = "#2f9e44";
 export const INSERTION_COLOR = "#7048e8";
 /** 1度に光らせられるスポット（骨の部位）の数。左右の折り返しも数える */
 const SPOT_MAX = 64;
+/** 基本の用語の図で、関節の動きの道すじを示す矢印の色 */
+const PATH_COLOR = "#0c8599";
+/** 関節の動きの1回分（秒）: 初めの姿勢で止まる → 動く → 終わりの姿勢で止まる → 初めに戻る */
+const MOTION_HOLD = 0.6;
+const MOTION_MOVE = 1.6;
+const MOTION_CYCLE = 3.4;
 
 /** 強調の色。null はその語のふだんの色（骨の部位を探す問題で、骨だけを見せるとき） */
 type Highlight = Map<string, string | null>;
@@ -75,6 +81,13 @@ export class AnatomyViewer {
     spotNormals: { value: Array.from({ length: SPOT_MAX }, () => new THREE.Vector3()) },
   };
   private colors: Map<string, string> | null = null;
+  /** 基本の用語（方向・面・運動）の図。矢印・面・動きの道すじ */
+  private readonly figureGroup = new THREE.Group();
+  private figureTerm: string | null = null;
+  /** 図のラベルを置く点（矢印の先・面の角・動きの道すじの終わり） */
+  private figureAnchor: THREE.Vector3 | null = null;
+  /** 関節の動き。部品ごとに効く関節（content/joints.json の並び＝根元から先へ） */
+  private motion: { from: Record<string, number>; to: Record<string, number>; start: number; meshes: Map<THREE.Mesh, string[]> } | null = null;
   private labelTerm: string | null = null;
   private dirty = true;
   private showSeq = 0;
@@ -99,6 +112,7 @@ export class AnatomyViewer {
     this.tapBall.renderOrder = 10;
     this.tapBall.visible = false;
     this.scene.add(this.tapBall);
+    this.scene.add(this.figureGroup);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true;
@@ -215,10 +229,18 @@ export class AnatomyViewer {
 
   /** 語に寄る。zoom を大きくするほど引いて周りも映す（答えが分かりすぎないように）。include の点も画面に入れる */
   focus(termId: string, zoom = 3.2, animate = true, include?: Vec3): void {
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    const figure = termById.get(termId)?.figure;
+    if (figure) {
+      // 基本の用語の図は、決めた向きから決めた広さを映す（縦長の画面では横も入るように引く）
+      const target = new THREE.Vector3(...figure.view.target);
+      const distance = figure.view.size / tan / Math.min(1, this.camera.aspect);
+      this.moveTo(target, target.clone().add(new THREE.Vector3(...figure.view.from).normalize().multiplyScalar(distance)), animate);
+      return;
+    }
     const pin = pins[termId];
     const term = this.index.terms[termId];
     if (!pin && !term) return;
-    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
     const direction = this.camera.position.clone().sub(this.controls.target).normalize();
     if (direction.lengthSq() === 0) direction.set(0, 0, 1);
     if (pin) {
@@ -364,6 +386,9 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
   }
 
   private refresh(): void {
+    const figureId = [...this.highlighted.keys()].find((id) => termById.get(id)?.figure) ?? null;
+    if (figureId !== this.figureTerm) this.setFigure(figureId);
+    else this.prepareMotion(); // 骨格を読み込む前に図を出したときは、読み込んでから動かす骨を集める
     const highlightedElements = new Map<string, string | null>();
     const spotElements = new Set<string>();
     type Spot = { at: Vec3; r: number; color: string; n?: Vec3 };
@@ -416,8 +441,13 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
         return (termId && (this.colors?.get(termId) ?? termById.get(termId)?.color)) || base;
       };
       mesh.renderOrder = 0;
-      if (system === "body") {
-        mesh.material = this.ghost("#e8c9a8", 0.1);
+      // 関節の動きを示すときは、動く骨を光らせ、動かない皮膚は消す
+      mesh.visible = !(this.motion && system === "body");
+      if (this.motion?.meshes.has(mesh)) {
+        mesh.material = this.solid(HIGHLIGHT);
+      } else if (system === "body") {
+        // 方向・面の図では、体の表面（浅・深の境）が分かるよう皮膚を少し濃くする
+        mesh.material = this.ghost("#e8c9a8", this.figureTerm ? 0.2 : 0.1);
         mesh.renderOrder = 2;
         this.ghosted.add(elementId);
       } else if (highlightedElements.get(elementId)) {
@@ -446,6 +476,186 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
       }
     }
     this.dirty = true;
+  }
+
+  /** 基本の用語の図を出す（null で消す）。矢印・面はすぐに描き、関節の動きは骨格を読み込んでから始める */
+  private setFigure(termId: string | null): void {
+    this.figureTerm = termId;
+    this.figureAnchor = null;
+    for (const child of [...this.figureGroup.children]) {
+      this.figureGroup.remove(child);
+      child.traverse((object) => {
+        if (object instanceof THREE.Mesh || object instanceof THREE.LineSegments) object.geometry.dispose();
+      });
+    }
+    this.stopMotion();
+    const figure = termId ? termById.get(termId)?.figure : undefined;
+    if (!figure) return;
+    // 矢印の太さは映す広さに合わせる（全身でも太ももの近くでも同じくらいに見える）
+    const radius = THREE.MathUtils.clamp(figure.view.size * 0.012, 0.0025, 0.012);
+    if (figure.guide) this.figureGroup.add(this.planeFigure(figure.guide, "#7d7466", 0.12));
+    if (figure.plane) {
+      this.figureGroup.add(this.planeFigure(figure.plane, HIGHLIGHT, 0.3));
+      const [lo, hi] = this.index.bounds;
+      const { axis, at } = figure.plane;
+      this.figureAnchor = new THREE.Vector3(...(axis === "x" ? [at, hi[1], hi[2]] : axis === "y" ? [lo[0], at, hi[2]] : [lo[0], hi[1], at]) as Vec3);
+    }
+    for (const [from, to] of figure.arrows ?? []) {
+      this.figureGroup.add(this.arrowFigure(new THREE.Vector3(...from), new THREE.Vector3(...to), HIGHLIGHT, radius));
+      this.figureAnchor = new THREE.Vector3(...to);
+    }
+    if (figure.motion) {
+      this.motion = { from: figure.motion.from ?? {}, to: figure.motion.to, start: performance.now(), meshes: new Map() };
+      this.prepareMotion();
+    }
+    this.dirty = true;
+  }
+
+  /** 動かす骨（右側。環軸関節は正中の骨すべて）を集め、いちばん大きく動く骨の通り道を矢印で示す */
+  private prepareMotion(): void {
+    const motion = this.motion;
+    if (!motion || motion.meshes.size) return;
+    for (const [jointId, joint] of Object.entries(joints)) {
+      if (!(jointId in motion.from) && !(jointId in motion.to)) continue;
+      for (const termId of joint.moves) {
+        for (const element of this.index.terms[termId]?.elements ?? []) {
+          const mesh = this.meshes.get(element);
+          if (!mesh || (!joint.mid && this.restCenter(mesh).x > 0)) continue;
+          const list = motion.meshes.get(mesh) ?? [];
+          if (!list.includes(jointId)) list.push(jointId);
+          motion.meshes.set(mesh, list);
+        }
+      }
+    }
+    if (!motion.meshes.size) return; // まだ骨格を読み込んでいない
+    // 上下に動かすだけの関節（肩甲骨の挙上）は、その関節の pivot（肩の外側）を通り道の矢印の所にする
+    let tip: { center: THREE.Vector3; joints: string[]; moved: number } | null = null;
+    for (const [jointId, joint] of Object.entries(joints)) {
+      if (!joint.slide || (motion.from[jointId] ?? 0) === (motion.to[jointId] ?? 0)) continue;
+      const center = new THREE.Vector3(...joint.pivot);
+      tip = { center, joints: [jointId], moved: center.clone().applyMatrix4(this.poseMatrix([jointId], motion.from)).distanceTo(center.clone().applyMatrix4(this.poseMatrix([jointId], motion.to))) };
+    }
+    for (const [mesh, ids] of motion.meshes) {
+      mesh.updateMatrix();
+      mesh.userData.rest = mesh.matrix.clone();
+      mesh.matrixAutoUpdate = false;
+      const center = this.restCenter(mesh);
+      const moved = center.clone().applyMatrix4(this.poseMatrix(ids, motion.from)).distanceTo(center.clone().applyMatrix4(this.poseMatrix(ids, motion.to)));
+      if (!tip || moved > tip.moved) tip = { center, joints: ids, moved };
+    }
+    const points = Array.from({ length: 25 }, (_, i) => tip!.center.clone().applyMatrix4(this.poseMatrix(tip!.joints, this.poseAt(i / 24))));
+    const radius = THREE.MathUtils.clamp(termById.get(this.figureTerm!)!.figure!.view.size * 0.008, 0.002, 0.006);
+    this.figureGroup.add(this.pathFigure(points, PATH_COLOR, radius));
+    this.figureAnchor = points[points.length - 1];
+  }
+
+  private stopMotion(): void {
+    for (const mesh of this.motion?.meshes.keys() ?? []) {
+      mesh.matrix.copy(mesh.userData.rest as THREE.Matrix4);
+      mesh.matrixAutoUpdate = true;
+      mesh.matrixWorldNeedsUpdate = true;
+    }
+    this.motion = null;
+  }
+
+  /** 部品の中心（動かす前の位置） */
+  private restCenter(mesh: THREE.Mesh): THREE.Vector3 {
+    if (!mesh.userData.center) {
+      mesh.geometry.computeBoundingBox();
+      const matrix = (mesh.userData.rest as THREE.Matrix4 | undefined) ?? (mesh.updateMatrix(), mesh.matrix);
+      mesh.userData.center = mesh.geometry.boundingBox!.getCenter(new THREE.Vector3()).applyMatrix4(matrix);
+    }
+    return (mesh.userData.center as THREE.Vector3).clone();
+  }
+
+  /** 動きの途中の姿勢（t＝0 で from、1 で to） */
+  private poseAt(t: number): Record<string, number> {
+    const { from, to } = this.motion!;
+    const angles: Record<string, number> = {};
+    for (const id of new Set([...Object.keys(from), ...Object.keys(to)])) angles[id] = (from[id] ?? 0) + ((to[id] ?? 0) - (from[id] ?? 0)) * t;
+    return angles;
+  }
+
+  /** 部品に効く関節を、先の関節から順に回してから根元の関節で回す（joints は根元から先の順） */
+  private poseMatrix(jointIds: string[], angles: Record<string, number>): THREE.Matrix4 {
+    const matrix = new THREE.Matrix4();
+    for (const id of jointIds) {
+      const angle = angles[id] ?? 0;
+      if (!angle) continue;
+      const { pivot, axis, slide } = joints[id];
+      if (slide) {
+        matrix.multiply(new THREE.Matrix4().makeTranslation(new THREE.Vector3(...axis).normalize().multiplyScalar(angle / 1000)));
+        continue;
+      }
+      matrix
+        .multiply(new THREE.Matrix4().makeTranslation(...pivot))
+        .multiply(new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(...axis).normalize(), THREE.MathUtils.degToRad(angle)))
+        .multiply(new THREE.Matrix4().makeTranslation(-pivot[0], -pivot[1], -pivot[2]));
+    }
+    return matrix;
+  }
+
+  private animateMotion(): void {
+    const motion = this.motion;
+    if (!motion?.meshes.size) return;
+    const time = ((performance.now() - motion.start) / 1000) % MOTION_CYCLE;
+    const t = Math.min(1, Math.max(0, (time - MOTION_HOLD) / MOTION_MOVE));
+    const angles = this.poseAt(t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);
+    for (const [mesh, ids] of motion.meshes) {
+      mesh.matrix.multiplyMatrices(this.poseMatrix(ids, angles), mesh.userData.rest as THREE.Matrix4);
+      mesh.matrixWorldNeedsUpdate = true;
+    }
+    this.dirty = true;
+  }
+
+  /** 図の材質。体の中を通る矢印も見えるよう、奥行きを無視して手前に描く */
+  private overlay(color: string): THREE.Material {
+    return this.material(`overlay:${color}`, () =>
+      new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.35, roughness: 0.5, depthTest: false, transparent: true, opacity: 0.95 }));
+  }
+
+  private arrowFigure(from: THREE.Vector3, to: THREE.Vector3, color: string, radius: number): THREE.Object3D {
+    const direction = to.clone().sub(from);
+    const length = direction.length();
+    const head = Math.min(length * 0.4, radius * 7);
+    const shaft = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, length - head, 12), this.overlay(color));
+    shaft.position.y = (length - head) / 2;
+    const tip = new THREE.Mesh(new THREE.ConeGeometry(radius * 2.6, head, 20), this.overlay(color));
+    tip.position.y = length - head / 2;
+    shaft.renderOrder = tip.renderOrder = 10;
+    const arrow = new THREE.Group().add(shaft, tip);
+    arrow.position.copy(from);
+    arrow.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+    return arrow;
+  }
+
+  /** 動きの道すじ（曲がった矢印） */
+  private pathFigure(points: THREE.Vector3[], color: string, radius: number): THREE.Object3D {
+    const group = new THREE.Group();
+    const curve = new THREE.CatmullRomCurve3(points.slice(0, -2));
+    const tube = new THREE.Mesh(new THREE.TubeGeometry(curve, 48, radius, 8), this.overlay(color));
+    tube.renderOrder = 10;
+    group.add(tube, this.arrowFigure(points[points.length - 3], points[points.length - 1], color, radius));
+    return group;
+  }
+
+  /** 体の面（体を囲む大きさの四角形と縁） */
+  private planeFigure({ axis, at }: FigurePlane, color: string, opacity: number): THREE.Object3D {
+    const [lo, hi] = this.index.bounds;
+    const pad = 0.08;
+    const size = (k: number) => hi[k] - lo[k] + pad * 2;
+    const mid = (k: number) => (lo[k] + hi[k]) / 2;
+    const geometry = axis === "x" ? new THREE.PlaneGeometry(size(2), size(1)) : axis === "y" ? new THREE.PlaneGeometry(size(0), size(2)) : new THREE.PlaneGeometry(size(0), size(1));
+    const face = new THREE.Mesh(geometry, this.material(`plane:${color}:${opacity}`, () =>
+      new THREE.MeshBasicMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide, depthWrite: false })));
+    const edge = new THREE.LineSegments(new THREE.EdgesGeometry(geometry), this.material(`planeEdge:${color}`, () =>
+      new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.8 })));
+    face.renderOrder = edge.renderOrder = 3;
+    const plane = new THREE.Group().add(face, edge);
+    if (axis === "x") plane.rotation.y = Math.PI / 2;
+    if (axis === "y") plane.rotation.x = -Math.PI / 2;
+    plane.position.set(axis === "x" ? at : mid(0), axis === "y" ? at : mid(1), axis === "z" ? at : mid(2));
+    return plane;
   }
 
   private pick(clientX: number, clientY: number): { element: string; point: Vec3; normal: Vec3 | null } | null {
@@ -497,6 +707,7 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
       this.dirty = true;
     }
     if (this.controls.update()) this.dirty = true;
+    this.animateMotion();
     if (!this.dirty) return;
     this.dirty = false;
     this.renderer.render(this.scene, this.camera);
@@ -506,7 +717,8 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
   private placeLabel(): void {
     if (!this.labelTerm || !this.index) return;
     const pin = pins[this.labelTerm];
-    const center = pin ? pinCenter(pin) : this.index.terms[this.labelTerm]?.center;
+    const figure = this.labelTerm === this.figureTerm ? this.figureAnchor?.toArray() : undefined;
+    const center = figure ?? (pin ? pinCenter(pin) : this.index.terms[this.labelTerm]?.center);
     if (!center) return;
     const point = new THREE.Vector3(...center).project(this.camera);
     const behind = point.z > 1;

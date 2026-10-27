@@ -1,4 +1,5 @@
 [
+  { "id": "basics", "ja": "基本の用語", "color": "#8a7f6d" },
   { "id": "skeletal", "ja": "骨格系", "color": "#e9dfc9" },
   { "id": "muscular", "ja": "筋系", "color": "#c75b4f" },
   { "id": "cardiovascular", "ja": "循環器系", "color": "#c8323c" },

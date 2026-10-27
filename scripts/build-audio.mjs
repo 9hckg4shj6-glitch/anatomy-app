@@ -19,7 +19,7 @@ const VOICE = "af_heart";
 const SPEED = 0.9;
 
 const { words } = JSON.parse(fs.readFileSync(path.join(ROOT, "content/pronunciation.json"), "utf8"));
-const { terms } = loadTerms();
+const { terms } = loadTerms({ figures: true });
 
 // kokoro-js の phonemize と同じ後処理（r→ɹ など）をして、Kokoro の発音記号の語彙に合わせる
 async function phonemesOf(text) {

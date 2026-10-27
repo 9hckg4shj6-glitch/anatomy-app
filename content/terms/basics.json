@@ -1,0 +1,265 @@
+{
+  "system": "basics",
+  "units": [
+    {
+      "id": "basic-direction",
+      "title": "方向の用語",
+      "intro": [
+        "解剖学では、体を「解剖学的正位」に置いて方向を言う。まっすぐ立って顔を正面に向け、腕を体の横に下ろして手のひらを前に向け、足をそろえた姿勢（いま3Dに出ている骨格の姿勢）。",
+        "寝ていても腕を上げていても、この姿勢に戻したときの向きで言う。だから「上」はいつも頭の方、「前」はいつも腹の方。",
+        "左右は本人から見た左右。向かい合って見ると、図の左が体の右になる。",
+        "方向の用語は「上と下」のように対で覚える。部位の名前の頭によく付く（上腕骨・内側上顆・浅側頭動脈）。"
+      ],
+      "terms": [
+        {
+          "id": "superior", "ja": "上", "yomi": "じょう", "en": "superior", "la": "superior", "level": 1,
+          "kanji": "上＝頭の方", "etym": "ラテン語 superior（より上の）。super-・supra-（上に）と同じ仲間",
+          "note": "頭の方。上大静脈・上腕骨の「上」。頭側（cranial）とも言う。寝ていても、解剖学的正位に戻したときの頭の方が上。",
+          "figure": { "arrows": [[[0, 1.0, 0.26], [0, 1.34, 0.26]]], "view": { "target": [0, 0.95, 0.1], "from": [-0.3, 0.12, 1], "size": 0.75 } },
+          "foils": ["inferior", "anterior", "posterior", "medial", "lateral"]
+        },
+        {
+          "id": "inferior", "ja": "下", "yomi": "か", "en": "inferior", "la": "inferior", "level": 1,
+          "kanji": "下＝足の方", "etym": "ラテン語 inferior（より下の）。infra-（下に）と同じ仲間",
+          "note": "足の方。下大静脈・下顎骨の「下」。尾側（caudal）とも言う。",
+          "figure": { "arrows": [[[0, 1.34, 0.26], [0, 1.0, 0.26]]], "view": { "target": [0, 0.95, 0.1], "from": [-0.3, 0.12, 1], "size": 0.75 } },
+          "foils": ["superior", "anterior", "posterior", "medial", "lateral"]
+        },
+        {
+          "id": "anterior", "ja": "前", "yomi": "ぜん", "en": "anterior", "la": "anterior", "level": 1,
+          "kanji": "前＝腹の側", "etym": "ラテン語 anterior（より前の）。ante-（前に）から",
+          "note": "体の腹の側。前脛骨筋・前交通動脈の「前」。腹側（ventral）とも言う。",
+          "figure": { "arrows": [[[0, 1.12, 0.08], [0, 1.12, 0.4]]], "view": { "target": [0, 0.95, 0.1], "from": [-1, 0.12, 0.25], "size": 0.75 } },
+          "foils": ["posterior", "superior", "inferior", "medial", "lateral"]
+        },
+        {
+          "id": "posterior", "ja": "後", "yomi": "こう", "en": "posterior", "la": "posterior", "level": 1,
+          "kanji": "後＝背中の側", "etym": "ラテン語 posterior（より後ろの）。post-（後に）から",
+          "note": "体の背中の側。後頭骨・後脛骨筋の「後」。背側（dorsal）とも言う。",
+          "figure": { "arrows": [[[0, 1.12, 0.1], [0, 1.12, -0.22]]], "view": { "target": [0, 0.95, 0.1], "from": [-1, 0.12, 0.25], "size": 0.75 } },
+          "foils": ["anterior", "superior", "inferior", "medial", "lateral"]
+        },
+        {
+          "id": "medial", "ja": "内側", "yomi": "ないそく", "en": "medial", "la": "medialis", "level": 1,
+          "kanji": "体のまん中（正中）に近い側", "etym": "ラテン語 medialis。medius（まん中）から。median（正中の）も同じ仲間",
+          "note": "体の正中（正中矢状面）に近い側。内側上顆・内側広筋の「内側」。解剖学的正位では手のひらが前を向くので、小指は親指より内側にある。",
+          "figure": { "arrows": [[[-0.2, 1.12, 0.25], [-0.035, 1.12, 0.25]], [[0.2, 1.12, 0.25], [0.035, 1.12, 0.25]]], "guide": { "axis": "x", "at": 0 }, "view": { "target": [0, 0.95, 0.1], "from": [-0.3, 0.12, 1], "size": 0.75 } },
+          "foils": ["lateral", "superior", "inferior", "anterior", "posterior"]
+        },
+        {
+          "id": "lateral", "ja": "外側", "yomi": "がいそく", "en": "lateral", "la": "lateralis", "level": 1,
+          "kanji": "体のまん中から遠い側", "etym": "ラテン語 lateralis。latus（わき・側面）から。bilateral（両側の）の lateral",
+          "note": "体の正中から遠い側。外側上顆・外側広筋の「外側」。目は鼻より外側にある。",
+          "figure": { "arrows": [[[-0.035, 1.12, 0.25], [-0.2, 1.12, 0.25]], [[0.035, 1.12, 0.25], [0.2, 1.12, 0.25]]], "guide": { "axis": "x", "at": 0 }, "view": { "target": [0, 0.95, 0.1], "from": [-0.3, 0.12, 1], "size": 0.75 } },
+          "foils": ["medial", "superior", "inferior", "anterior", "posterior"]
+        },
+        {
+          "id": "proximal", "ja": "近位", "yomi": "きんい", "en": "proximal", "la": "proximalis", "level": 1,
+          "kanji": "付け根（体幹）に近い位置", "etym": "ラテン語 proximus（いちばん近い）。approximate（近づく）の proxim",
+          "note": "手足で、体幹への付け根に近い側。上腕は前腕より近位にある。血管・消化管などでは始まりの側にも使う。",
+          "figure": { "arrows": [[[-0.27, 0.8, 0.17], [-0.21, 1.24, 0.13]], [[-0.09, 0.1, 0.16], [-0.1, 0.7, 0.16]]], "view": { "target": [-0.08, 0.8, 0.1], "from": [-0.45, 0.1, 1], "size": 0.95 } },
+          "foils": ["distal", "medial", "lateral", "superficial", "deep"]
+        },
+        {
+          "id": "distal", "ja": "遠位", "yomi": "えんい", "en": "distal", "la": "distalis", "level": 1,
+          "kanji": "付け根から遠い位置", "etym": "ラテン語 distare（離れている）から。distance（距離）と同じ仲間",
+          "note": "手足で、付け根から遠い側（指先の側）。手根骨は前腕の骨より遠位にある。指骨は基節骨・中節骨・末節骨の順に遠位へ並ぶ。",
+          "figure": { "arrows": [[[-0.21, 1.24, 0.13], [-0.27, 0.8, 0.17]], [[-0.1, 0.7, 0.16], [-0.09, 0.1, 0.16]]], "view": { "target": [-0.08, 0.8, 0.1], "from": [-0.45, 0.1, 1], "size": 0.95 } },
+          "foils": ["proximal", "medial", "lateral", "superficial", "deep"]
+        },
+        {
+          "id": "superficial", "ja": "浅", "yomi": "せん", "en": "superficial", "la": "superficialis", "level": 1,
+          "kanji": "浅い＝体の表面に近い", "etym": "ラテン語 superficies（表面）。super-（上）＋facies（面）",
+          "note": "体の表面に近い側。浅指屈筋・浅側頭動脈の「浅」。浅指屈筋は深指屈筋より表面にある。",
+          "figure": { "arrows": [[[-0.09, 0.6, 0.11], [-0.09, 0.6, 0.21]], [[-0.11, 0.6, 0.09], [-0.21, 0.6, 0.09]], [[-0.09, 0.6, 0.07], [-0.09, 0.6, -0.03]], [[-0.07, 0.6, 0.09], [0, 0.6, 0.09]]], "view": { "target": [-0.09, 0.6, 0.09], "from": [-0.5, 1.0, 1], "size": 0.2 } },
+          "foils": ["deep", "proximal", "distal", "superior", "inferior"]
+        },
+        {
+          "id": "deep", "ja": "深", "yomi": "しん", "en": "deep", "la": "profundus", "level": 1,
+          "kanji": "深い＝体の表面から遠い", "etym": "ラテン語では profundus（深い）。大腿深動脈（profunda femoris）の profunda",
+          "note": "体の表面から遠い側（体の中の方）。深指屈筋・大腿深動脈の「深」。",
+          "figure": { "arrows": [[[-0.09, 0.6, 0.21], [-0.09, 0.6, 0.11]], [[-0.21, 0.6, 0.09], [-0.11, 0.6, 0.09]], [[-0.09, 0.6, -0.03], [-0.09, 0.6, 0.07]], [[0, 0.6, 0.09], [-0.07, 0.6, 0.09]]], "view": { "target": [-0.09, 0.6, 0.09], "from": [-0.5, 1.0, 1], "size": 0.2 } },
+          "foils": ["superficial", "proximal", "distal", "superior", "inferior"]
+        }
+      ]
+    },
+    {
+      "id": "basic-plane",
+      "title": "体の面",
+      "intro": [
+        "体を切る向きの面。CT・MRI の画像の向きや、関節の動きの向きを言うときに使う。",
+        "どれも解剖学的正位の体を基準にする。3Dでは、オレンジ色の面で体を切って示す。"
+      ],
+      "terms": [
+        {
+          "id": "median-plane", "ja": "正中矢状面", "yomi": "せいちゅうしじょうめん", "en": "median plane", "enAlt": ["midsagittal plane", "median sagittal plane"], "la": "planum medianum", "level": 1,
+          "kanji": "正中＝まん中。矢状＝矢が体を前から後ろへ貫く向き", "etym": "median はラテン語 medianus（まん中の）。sagittal は sagitta（矢）から",
+          "note": "体のまん中を前から後ろへ縦に通り、体を左右の同じ半分に分ける面。1つしかない。正中面とも言う。内側・外側は、この面に近いか遠いかで言う。",
+          "figure": { "plane": { "axis": "x", "at": 0 }, "view": { "target": [0, 0.82, 0.1], "from": [-0.7, 0.35, 1], "size": 0.95 } },
+          "foils": ["frontal-plane", "horizontal-plane"]
+        },
+        {
+          "id": "sagittal-plane", "ja": "矢状面", "yomi": "しじょうめん", "en": "sagittal plane", "la": "planum sagittale", "level": 1,
+          "kanji": "矢が前から後ろへ刺さる向きの面", "etym": "ラテン語 sagitta（矢）。頭蓋の矢状縫合も同じ向き",
+          "note": "正中矢状面に平行な縦の面。体を左右に分ける（同じ大きさとは限らない）。屈曲・伸展は、おもにこの面の中の動き。",
+          "figure": { "plane": { "axis": "x", "at": -0.12 }, "view": { "target": [0, 0.82, 0.1], "from": [-0.7, 0.35, 1], "size": 0.95 } },
+          "foils": ["median-plane", "frontal-plane", "horizontal-plane"]
+        },
+        {
+          "id": "frontal-plane", "ja": "前頭面", "yomi": "ぜんとうめん", "en": "frontal plane", "enAlt": ["coronal plane"], "la": "planum frontale", "level": 1,
+          "kanji": "前頭（ひたい）に平行な面", "etym": "frontal はラテン語 frons（ひたい）から。coronal は corona（冠）から（冠状縫合の向き）",
+          "note": "ひたいに平行な縦の面。体を前と後ろに分ける。冠状面とも言う。外転・内転は、おもにこの面の中の動き。",
+          "figure": { "plane": { "axis": "z", "at": 0.09 }, "view": { "target": [0, 0.82, 0.1], "from": [-0.7, 0.35, 1], "size": 0.95 } },
+          "foils": ["median-plane", "sagittal-plane", "horizontal-plane"]
+        },
+        {
+          "id": "horizontal-plane", "ja": "水平面", "yomi": "すいへいめん", "en": "horizontal plane", "enAlt": ["transverse plane", "axial plane"], "la": "planum horizontale", "level": 1,
+          "kanji": "地面に平行な面", "etym": "transverse はラテン語 transversus（横切る）から",
+          "note": "地面に平行な面。体を上と下に分ける。横断面とも言い、CT・MRI の横断像（輪切りの画像）はこの面。外旋・内旋や回旋は、おもにこの面の中の動き。",
+          "figure": { "plane": { "axis": "y", "at": 1.0 }, "view": { "target": [0, 0.82, 0.1], "from": [-0.7, 0.35, 1], "size": 0.95 } },
+          "foils": ["median-plane", "sagittal-plane", "frontal-plane"]
+        }
+      ]
+    },
+    {
+      "id": "basic-motion",
+      "title": "運動の用語（屈曲・外転・回旋）",
+      "intro": [
+        "関節の動きの名前。解剖学的正位から、どの向きへ動かすかで決まる。多くは対になる（屈曲と伸展、外転と内転、外旋と内旋）。",
+        "3Dでは骨だけを動かす。オレンジ色が動く骨、青緑の矢印が動く向き。",
+        "筋の「作用」はこの名前で書かれている（三角筋＝肩関節の外転）。説明の中の点線の語をタップすると、意味が出る。"
+      ],
+      "terms": [
+        {
+          "id": "flexion", "ja": "屈曲", "yomi": "くっきょく", "en": "flexion", "la": "flexio", "level": 1,
+          "kanji": "屈＝曲げる", "etym": "ラテン語 flectere（曲げる）。flexible（曲がりやすい）や屈筋 flexor も同じ仲間",
+          "note": "関節を曲げて角度を小さくする動き（おもに矢状面の中）。肘・股関節は前へ、膝は後ろへ曲げる。肩関節では腕を前へ上げる動き、体幹では前へ曲げる動き（前屈）。手関節の屈曲は掌屈とも言う。3Dは肘関節の屈曲。",
+          "figure": { "motion": { "to": { "elbow": 130 } }, "view": { "target": [-0.2, 1.05, 0.25], "from": [-1, 0.1, 0.2], "size": 0.5 } },
+          "foils": ["extension", "abduction", "adduction", "lateral-rotation", "medial-rotation"]
+        },
+        {
+          "id": "extension", "ja": "伸展", "yomi": "しんてん", "en": "extension", "la": "extensio", "level": 1,
+          "kanji": "伸ばして展げる", "etym": "ラテン語 extendere（伸ばす）。extend や伸筋 extensor も同じ仲間",
+          "note": "屈曲の反対。関節を伸ばして角度を大きくする動き。肩・股関節では、まっすぐの位置からさらに後ろへ動かすのも伸展。3Dは曲げた肘を伸ばす動き。",
+          "figure": { "motion": { "from": { "elbow": 130 }, "to": { "elbow": 0 } }, "view": { "target": [-0.2, 1.05, 0.25], "from": [-1, 0.1, 0.2], "size": 0.5 } },
+          "foils": ["flexion", "abduction", "adduction", "lateral-rotation", "medial-rotation"]
+        },
+        {
+          "id": "abduction", "ja": "外転", "yomi": "がいてん", "en": "abduction", "la": "abductio", "level": 1,
+          "kanji": "外へ転じる（体の正中から離す）", "etym": "ラテン語 ab-（離れて）＋ducere（導く）。abduct（連れ去る）と同じ",
+          "note": "体の正中から遠ざける動き（おもに前頭面の中）。肩関節で腕を横に上げる、股関節で脚を横に開く。肩甲骨を前へ引き出す動きも外転と言う。指では中指（足では第2指）から離す動き。",
+          "figure": { "motion": { "to": { "shoulder-abd": 90 } }, "view": { "target": [-0.4, 1.05, 0.08], "from": [-0.1, 0.1, 1], "size": 0.5 } },
+          "foils": ["adduction", "flexion", "extension", "lateral-rotation", "medial-rotation"]
+        },
+        {
+          "id": "adduction", "ja": "内転", "yomi": "ないてん", "en": "adduction", "la": "adductio", "level": 1,
+          "kanji": "内へ転じる（体の正中へ寄せる）", "etym": "ラテン語 ad-（〜へ）＋ducere（導く）。abduction と1文字違いなので注意",
+          "note": "外転の反対。体の正中へ近づける動き。横に上げた腕を体の横へ下ろす、開いた脚を閉じる。大腿の内側の内転筋群が働く。",
+          "figure": { "motion": { "from": { "shoulder-abd": 90 }, "to": { "shoulder-abd": 0 } }, "view": { "target": [-0.4, 1.05, 0.08], "from": [-0.1, 0.1, 1], "size": 0.5 } },
+          "foils": ["abduction", "flexion", "extension", "lateral-rotation", "medial-rotation"]
+        },
+        {
+          "id": "lateral-rotation", "ja": "外旋", "yomi": "がいせん", "en": "lateral rotation", "enAlt": ["external rotation"], "la": "rotatio lateralis", "level": 1,
+          "kanji": "外へ旋らす（回す）", "etym": "rotation はラテン語 rota（車輪）から",
+          "note": "骨を長い軸のまわりに回して、前面を外側へ向ける動き。肘を90°に曲げて前腕を外へ開くと、上腕が外旋する。棘下筋・小円筋が働く。",
+          "figure": { "motion": { "from": { "elbow": 90 }, "to": { "elbow": 90, "shoulder-rot": 60 } }, "view": { "target": [-0.2, 1.0, 0.25], "from": [-0.2, 1, 0.6], "size": 0.42 } },
+          "foils": ["medial-rotation", "flexion", "extension", "abduction", "adduction"]
+        },
+        {
+          "id": "medial-rotation", "ja": "内旋", "yomi": "ないせん", "en": "medial rotation", "enAlt": ["internal rotation"], "la": "rotatio medialis", "level": 1,
+          "kanji": "内へ旋らす（回す）", "etym": "rotation はラテン語 rota（車輪）から",
+          "note": "外旋の反対。骨の前面を内側へ向ける動き。肘を曲げて前腕をおなかへ寄せると、上腕が内旋する。肩甲下筋・大胸筋が働く。",
+          "figure": { "motion": { "from": { "elbow": 90 }, "to": { "elbow": 90, "shoulder-rot": -70 } }, "view": { "target": [-0.2, 1.0, 0.25], "from": [-0.2, 1, 0.6], "size": 0.42 } },
+          "foils": ["lateral-rotation", "flexion", "extension", "abduction", "adduction"]
+        },
+        {
+          "id": "rotation", "ja": "回旋", "yomi": "かいせん", "en": "rotation", "la": "rotatio", "level": 1,
+          "kanji": "回し旋らす", "etym": "ラテン語 rotare（回す）。rotate も同じ",
+          "note": "骨を長い軸のまわりに回す動き。頭・首・体幹では回旋と言い（右へ・左へ）、手足では外旋・内旋と言う。3Dは環軸関節で頭を左へ向ける動き。",
+          "figure": { "motion": { "to": { "neck": 60 } }, "view": { "target": [0, 1.53, 0.08], "from": [0, 0.6, 1], "size": 0.25 } },
+          "foils": ["flexion", "extension", "abduction", "adduction"]
+        }
+      ]
+    },
+    {
+      "id": "basic-motion-2",
+      "title": "運動の用語（前腕・足・肩）",
+      "intro": [
+        "前腕・手・足・肩甲骨に特有の動きの名前。こちらも対で覚える（回内と回外、背屈と底屈、内反と外反、挙上と下制、橈屈と尺屈）。",
+        "3Dでは骨だけを動かす。オレンジ色が動く骨、青緑の矢印が動く向き。"
+      ],
+      "terms": [
+        {
+          "id": "pronation", "ja": "回内", "yomi": "かいない", "en": "pronation", "la": "pronatio", "level": 1,
+          "kanji": "内へ回す", "etym": "ラテン語 pronus（前へ傾いた・うつぶせの）。prone（うつぶせ）と同じ",
+          "note": "前腕をひねって、手のひらを後ろ（肘を曲げると下）へ向ける動き。橈骨が尺骨の前で交差する。円回内筋・方形回内筋が働く。3Dは肘を曲げた前腕の回内。",
+          "figure": { "motion": { "from": { "elbow": 90 }, "to": { "elbow": 90, "forearm": 150 } }, "view": { "target": [-0.23, 1.03, 0.3], "from": [-0.5, 0.35, 1], "size": 0.22 } },
+          "foils": ["supination", "dorsiflexion", "plantar-flexion", "elevation", "radial-deviation", "ulnar-deviation"]
+        },
+        {
+          "id": "supination", "ja": "回外", "yomi": "かいがい", "en": "supination", "la": "supinatio", "level": 1,
+          "kanji": "外へ回す", "etym": "ラテン語 supinus（あおむけの）。supine（あおむけ）と同じ。手のひらを上にしてスープを持つ、と覚える",
+          "note": "回内の反対。手のひらを前（肘を曲げると上）へ向ける動き。解剖学的正位の前腕は回外している。回外筋と上腕二頭筋が働く。",
+          "figure": { "motion": { "from": { "elbow": 90, "forearm": 150 }, "to": { "elbow": 90, "forearm": 0 } }, "view": { "target": [-0.23, 1.03, 0.3], "from": [-0.5, 0.35, 1], "size": 0.22 } },
+          "foils": ["pronation", "dorsiflexion", "plantar-flexion", "elevation", "radial-deviation", "ulnar-deviation"]
+        },
+        {
+          "id": "dorsiflexion", "ja": "背屈", "yomi": "はいくつ", "en": "dorsiflexion", "la": "dorsiflexio", "level": 1,
+          "kanji": "背の側へ曲げる（足の背＝足の甲）", "etym": "ラテン語 dorsum（背）＋flexio（曲げること）",
+          "note": "足関節で、つま先を上げて足の甲（足背）をすねに近づける動き。前脛骨筋が働く。手関節では手の甲の側へ反らす動き（手関節の伸展）も背屈と言う。",
+          "figure": { "motion": { "to": { "ankle": 20 } }, "view": { "target": [-0.08, 0, 0.12], "from": [-1, 0.1, 0.15], "size": 0.17 } },
+          "foils": ["plantar-flexion", "pronation", "supination", "elevation", "depression"]
+        },
+        {
+          "id": "plantar-flexion", "ja": "底屈", "yomi": "ていくつ", "en": "plantar flexion", "enAlt": ["plantarflexion"], "la": "flexio plantaris", "level": 1,
+          "kanji": "足の底の側へ曲げる", "etym": "ラテン語 planta（足の裏）。plantar（足底の）",
+          "note": "背屈の反対。つま先を下げて、足の裏の側へ曲げる動き。つま先立ちや、地面をけるとき。下腿三頭筋（腓腹筋・ヒラメ筋）が働く。",
+          "figure": { "motion": { "to": { "ankle": -40 } }, "view": { "target": [-0.08, 0, 0.12], "from": [-1, 0.1, 0.15], "size": 0.17 } },
+          "foils": ["dorsiflexion", "pronation", "supination", "elevation", "depression"]
+        },
+        {
+          "id": "inversion", "ja": "内反", "yomi": "ないはん", "en": "inversion", "la": "inversio", "level": 2,
+          "kanji": "内へ反す（足の裏を内へ向ける）", "etym": "ラテン語 in-（内へ）＋vertere（向ける）。reverse の vers と同じ",
+          "note": "足の裏を内側へ向ける動き。おもに距骨下関節で起こる。足首のねんざは、この向きにひねって起きることが多い。後脛骨筋・前脛骨筋が働く。",
+          "figure": { "motion": { "to": { "subtalar": 25 } }, "view": { "target": [-0.085, -0.04, 0.1], "from": [-0.05, 0.02, 1], "size": 0.11 } },
+          "foils": ["eversion", "elevation", "depression", "radial-deviation", "ulnar-deviation"]
+        },
+        {
+          "id": "eversion", "ja": "外反", "yomi": "がいはん", "en": "eversion", "la": "eversio", "level": 2,
+          "kanji": "外へ反す（足の裏を外へ向ける）", "etym": "ラテン語 e-（外へ）＋vertere（向ける）",
+          "note": "内反の反対。足の裏を外側へ向ける動き。長腓骨筋・短腓骨筋が働く。",
+          "figure": { "motion": { "to": { "subtalar": -15 } }, "view": { "target": [-0.085, -0.04, 0.1], "from": [-0.05, 0.02, 1], "size": 0.11 } },
+          "foils": ["inversion", "elevation", "depression", "radial-deviation", "ulnar-deviation"]
+        },
+        {
+          "id": "elevation", "ja": "挙上", "yomi": "きょじょう", "en": "elevation", "la": "elevatio", "level": 1,
+          "kanji": "挙げて上へ", "etym": "ラテン語 e-（外へ）＋levare（持ち上げる）。elevator と同じ",
+          "note": "肩甲骨（肩）を上へ引き上げる動き。肩をすくめる。僧帽筋の上部・肩甲挙筋が働く。下顎骨を上げて口を閉じる動きも挙上と言う。",
+          "figure": { "motion": { "to": { "girdle": 25, "girdle-lift": 54 } }, "view": { "target": [-0.12, 1.22, 0.1], "from": [-0.1, 0.1, 1], "size": 0.22 } },
+          "foils": ["depression", "pronation", "supination", "dorsiflexion", "plantar-flexion", "inversion"]
+        },
+        {
+          "id": "depression", "ja": "下制", "yomi": "かせい", "en": "depression", "la": "depressio", "level": 1,
+          "kanji": "下へ押さえる", "etym": "ラテン語 de-（下へ）＋premere（押す）。press と同じ",
+          "note": "挙上の反対。肩甲骨（肩）を下へ下げる動き。下顎骨を下げて口を開く動きも下制と言う。",
+          "figure": { "motion": { "from": { "girdle": 15, "girdle-lift": 33 }, "to": { "girdle": -6, "girdle-lift": -13 } }, "view": { "target": [-0.12, 1.22, 0.1], "from": [-0.1, 0.1, 1], "size": 0.22 } },
+          "foils": ["elevation", "pronation", "supination", "dorsiflexion", "plantar-flexion", "inversion"]
+        },
+        {
+          "id": "radial-deviation", "ja": "橈屈", "yomi": "とうくつ", "en": "radial deviation", "enAlt": ["radial abduction"], "level": 2,
+          "kanji": "橈側（親指の側）へ曲げる", "etym": "radial はラテン語 radius（車輪の輻）から。橈骨のある側",
+          "note": "手関節で、手を親指の側（橈側）へ曲げる動き。解剖学的正位では外側へ動く。手関節の外転とも言う。",
+          "figure": { "motion": { "to": { "wrist-dev": 20 } }, "view": { "target": [-0.27, 0.73, 0.14], "from": [-0.1, 0.05, 1], "size": 0.16 } },
+          "foils": ["ulnar-deviation", "pronation", "supination", "inversion", "eversion", "elevation"]
+        },
+        {
+          "id": "ulnar-deviation", "ja": "尺屈", "yomi": "しゃっくつ", "en": "ulnar deviation", "level": 2,
+          "kanji": "尺側（小指の側）へ曲げる", "etym": "ulnar はラテン語 ulna（ひじ・前腕）から。尺骨のある側",
+          "note": "橈屈の反対。手を小指の側（尺側）へ曲げる動き。手関節の内転とも言う。橈屈より大きく動く。",
+          "figure": { "motion": { "to": { "wrist-dev": -35 } }, "view": { "target": [-0.27, 0.73, 0.14], "from": [-0.1, 0.05, 1], "size": 0.16 } },
+          "foils": ["radial-deviation", "pronation", "supination", "inversion", "eversion", "elevation"]
+        }
+      ]
+    }
+  ]
+}

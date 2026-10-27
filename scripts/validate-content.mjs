@@ -1,5 +1,6 @@
 // 内容（content/）の検査と、docs/要確認用語.md の生成。npm run build の最初に走る。
 // - 全語に日本語・読み・英語・説明があるか、ID・日本語名が重複していないか、読みがひらがなだけか
+// - 基本の用語（figure）の選択肢（foils）と関節（content/joints.json）の参照先
 // - public/models/index.json が今の内容から作られているか（語を足したら npm run build:models が要る）
 // - check: true の語と、Wikidata（data-raw/wikidata.json があれば）と表記が違う語を一覧にする
 import fs from "node:fs";
@@ -10,6 +11,15 @@ const ROOT = path.resolve(import.meta.dirname, "..");
 const errors = [];
 
 const word = z.string().regex(/^[a-z][a-z' -]*[a-z]$/, "英語は小文字の英字・空白・ハイフンだけ");
+const vec = z.tuple([z.number(), z.number(), z.number()]);
+const FigurePlane = z.strictObject({ axis: z.enum(["x", "y", "z"]), at: z.number() });
+const Figure = z.strictObject({
+  arrows: z.array(z.tuple([vec, vec])).min(1).optional(),
+  plane: FigurePlane.optional(),
+  guide: FigurePlane.optional(),
+  motion: z.strictObject({ from: z.record(z.string(), z.number()).optional(), to: z.record(z.string(), z.number()) }).optional(),
+  view: z.strictObject({ target: vec, from: vec, size: z.number().positive() }),
+}).refine((figure) => figure.arrows || figure.plane || figure.motion, "figure には arrows・plane・motion のどれかが要る");
 const Term = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/),
   ja: z.string().min(1),
@@ -34,11 +44,13 @@ const Term = z.strictObject({
   insertionAt: z.array(z.string()).min(1).optional(),
   nerve: z.string().min(2).optional(),
   action: z.string().min(2).optional(),
-}).refine((term) => term.parts || term.of, "parts か of のどちらかが要る")
+  figure: Figure.optional(),
+  foils: z.array(z.string()).min(2).optional(),
+}).refine((term) => [term.parts || term.of, term.figure].filter(Boolean).length === 1, "parts か of（3Dの部品）か figure（基本の用語の図）のどれかが要る")
   .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける");
 const TermFile = z.strictObject({
   system: z.string(),
-  units: z.array(z.strictObject({ id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), terms: z.array(Term).min(1) })).min(1),
+  units: z.array(z.strictObject({ id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), intro: z.array(z.string().min(1)).min(1).optional(), terms: z.array(Term).min(1) })).min(1),
 });
 
 const systems = JSON.parse(fs.readFileSync(path.join(ROOT, "content/systems.json"), "utf8"));
@@ -93,6 +105,23 @@ for (const term of terms) {
 }
 for (const id of Object.keys(pins)) if (!seen.get(id)?.of) errors.push(`content/pins.json: 「${id}」は骨・器官の部位の語ではありません`);
 
+// 基本の用語の図: 選択肢（foils）は同じ系統の図のある語、関節の動きは content/joints.json の関節（scripts/joints.mjs が作る）
+const joints = JSON.parse(fs.readFileSync(path.join(ROOT, "content/joints.json"), "utf8"));
+for (const [id, joint] of Object.entries(joints)) {
+  for (const bone of joint.moves) {
+    if (seen.get(bone)?.system !== "skeletal" || seen.get(bone).of) errors.push(`content/joints.json: ${id} の「${bone}」は骨の語ではありません`);
+  }
+}
+for (const term of terms) {
+  for (const id of term.foils ?? []) {
+    const foil = seen.get(id);
+    if (!foil?.figure || foil.system !== term.system || id === term.id) errors.push(`${term.id}: foils の「${id}」は同じ系統の基本の用語ではありません`);
+  }
+  if (term.foils && !term.figure) errors.push(`${term.id}: foils は図のある語（figure）だけに書く`);
+  const motion = term.figure?.motion;
+  for (const id of Object.keys({ ...motion?.from, ...motion?.to })) if (!joints[id]) errors.push(`${term.id}: 関節「${id}」が content/joints.json にありません`);
+}
+
 // 筋の付着面（scripts/za/attachments.mjs と scripts/pins/rules/attach.mjs が作る）。筋と骨の語IDが今の内容にあるか
 for (const file of ["public/models/attachments-za.json", "content/attachments.json"]) {
   const attachmentsFile = path.join(ROOT, file);
@@ -111,7 +140,8 @@ const indexFile = path.join(ROOT, "public/models/index.json");
 if (!fs.existsSync(indexFile)) errors.push("public/models/index.json がありません。npm run build:models を実行してください");
 else {
   const index = JSON.parse(fs.readFileSync(indexFile, "utf8"));
-  const stale = terms.filter((term) => !index.terms[term.id]?.elements.length).map((term) => term.id);
+  // 基本の用語（figure）は3Dの部品を持たない
+  const stale = terms.filter((term) => !term.figure && !index.terms[term.id]?.elements.length).map((term) => term.id);
   const removed = Object.keys(index.terms).filter((id) => !seen.has(id));
   if (stale.length || removed.length) {
     errors.push(`3Dモデルが内容と合っていません（未作成: ${stale.join(", ") || "なし"} / 削除済み: ${removed.join(", ") || "なし"}）。npm run build:models を実行してください`);

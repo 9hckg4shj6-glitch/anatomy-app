@@ -1,0 +1,116 @@
+{
+ "girdle": {
+  "ja": "胸鎖関節",
+  "moves": ["clavicle"],
+  "pivot": [-0.0177, 1.3218, 0.1287],
+  "axis": [0, 0, -1],
+  "plus": "挙上"
+ },
+ "girdle-lift": {
+  "ja": "肩甲骨",
+  "moves": ["scapula", "humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.1753, 1.3222, 0.0712],
+  "axis": [0, 1, 0],
+  "slide": true,
+  "plus": "挙上（mm）"
+ },
+ "shoulder-flex": {
+  "ja": "肩関節",
+  "moves": ["humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.1611, 1.3159, 0.0749],
+  "axis": [-1, 0, 0],
+  "plus": "屈曲"
+ },
+ "shoulder-abd": {
+  "ja": "肩関節",
+  "moves": ["humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.1611, 1.3159, 0.0749],
+  "axis": [0, 0, -1],
+  "plus": "外転"
+ },
+ "shoulder-rot": {
+  "ja": "肩関節",
+  "moves": ["humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.1611, 1.3159, 0.0749],
+  "axis": [-0.1902, -0.9815, -0.0217],
+  "plus": "外旋"
+ },
+ "elbow": {
+  "ja": "肘関節",
+  "moves": ["radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.2145, 1.0408, 0.0689],
+  "axis": [-0.9881, 0.1049, -0.1127],
+  "plus": "屈曲"
+ },
+ "forearm": {
+  "ja": "上・下橈尺関節",
+  "moves": ["radius", "carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.2339, 1.0291, 0.0732],
+  "axis": [0.0237, 0.98, -0.1975],
+  "plus": "回内"
+ },
+ "wrist-flex": {
+  "ja": "手関節",
+  "moves": ["carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.2564, 0.7934, 0.119],
+  "axis": [-1, 0, 0],
+  "plus": "屈曲（掌屈）"
+ },
+ "wrist-dev": {
+  "ja": "手関節",
+  "moves": ["carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.2564, 0.7934, 0.119],
+  "axis": [0, 0, -1],
+  "plus": "橈屈"
+ },
+ "hip-flex": {
+  "ja": "股関節",
+  "moves": ["femur", "tibia", "fibula", "patella", "tarsal-bones", "metatarsals", "phalanges-foot"],
+  "pivot": [-0.0872, 0.8114, 0.0789],
+  "axis": [-1, 0, 0],
+  "plus": "屈曲"
+ },
+ "hip-abd": {
+  "ja": "股関節",
+  "moves": ["femur", "tibia", "fibula", "patella", "tarsal-bones", "metatarsals", "phalanges-foot"],
+  "pivot": [-0.0872, 0.8114, 0.0789],
+  "axis": [0, 0, -1],
+  "plus": "外転"
+ },
+ "hip-rot": {
+  "ja": "股関節",
+  "moves": ["femur", "tibia", "fibula", "patella", "tarsal-bones", "metatarsals", "phalanges-foot"],
+  "pivot": [-0.0872, 0.8114, 0.0789],
+  "axis": [0.017, -0.9998, -0.0142],
+  "plus": "外旋"
+ },
+ "knee": {
+  "ja": "膝関節",
+  "moves": ["tibia", "fibula", "patella", "tarsal-bones", "metatarsals", "phalanges-foot"],
+  "pivot": [-0.0723, 0.3989, 0.0732],
+  "axis": [0.993, 0.0761, -0.0908],
+  "plus": "屈曲"
+ },
+ "ankle": {
+  "ja": "距腿関節",
+  "moves": ["tarsal-bones", "metatarsals", "phalanges-foot"],
+  "pivot": [-0.0733, -0.0076, 0.0673],
+  "axis": [-0.8554, -0.3934, -0.3368],
+  "plus": "背屈"
+ },
+ "subtalar": {
+  "ja": "距骨下関節",
+  "moves": ["calcaneus", "navicular", "cuboid", "cuneiforms", "metatarsals", "phalanges-foot"],
+  "pivot": [-0.0671, -0.0159, 0.1042],
+  "axis": [0.0984, 0.1476, 0.9841],
+  "plus": "内反"
+ },
+ "neck": {
+  "ja": "環軸関節",
+  "moves": ["atlas", "frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone", "maxilla", "mandible", "zygomatic-bone", "nasal-bone", "lacrimal-bone", "palatine-bone", "vomer", "inferior-nasal-concha"],
+  "pivot": [-0.0009, 1.4784, 0.0753],
+  "axis": [0, 1, 0],
+  "mid": true,
+  "plus": "左を向く回旋"
+ }
+}

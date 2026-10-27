@@ -17,6 +17,20 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   const { viewer, signal } = ctx;
   await viewer.show(sceneFor(unit.system));
 
+  // レッスンの初めの説明（基本の用語の「解剖学的正位」など）
+  if (unit.intro) {
+    viewer.overview();
+    ctx.hint(unit.title);
+    const start = h("button", { class: "primary", type: "button" }, "始める");
+    showPanel(ctx,
+      h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, `${unit.terms.length}語`)),
+      h("div", { class: "intro" }, ...unit.intro.map((text) => h("p", {}, text))),
+      h("div", { class: "nav-row" }, start),
+    );
+    start.focus({ preventScroll: true });
+    await until(signal, (resolve) => start.addEventListener("click", () => resolve(undefined), { once: true }));
+  }
+
   for (let i = 0; i < unit.terms.length; ) {
     const term = unit.terms[i];
     viewer.highlight([term.id], { isolate: !!term.xray || !!term.of });
@@ -39,7 +53,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   }
 
   viewer.setLabel(null);
-  const items: QueueItem[] = shuffle(unit.terms).map((term, i) => ({ termId: term.id, facet: i % 2 || term.xray ? "locate" : "point", isNew: true }));
+  const items: QueueItem[] = shuffle(unit.terms).map((term, i) => ({ termId: term.id, facet: i % 2 || term.xray || term.figure ? "locate" : "point", isNew: true }));
   let correct = 0;
   for (const [i, item] of items.entries()) {
     if ((await ask(ctx, item, "lesson", `確認 ${i + 1} / ${items.length}`)) === "correct") correct++;
