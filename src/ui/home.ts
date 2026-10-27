@@ -2,6 +2,7 @@ import { systems, units } from "../content";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
 import { installHint } from "../install";
+import { rootKey, rootUnits } from "../roots";
 import { dueCount } from "./review";
 import type { AppContext } from "./context";
 
@@ -24,12 +25,16 @@ export async function home(ctx: AppContext): Promise<void> {
         : nextUnit
           ? h("a", { class: "primary", href: `#/learn/${nextUnit.id}` }, `次のレッスン「${nextUnit.title}」`)
           : h("p", {}, "すべてのレッスンを終えました"),
+      learnedIds.size ? h("div", { class: "nav-row" },
+        h("a", { class: "ghost-button", href: "#/drill" }, "範囲を選んで解く"),
+        h("a", { class: "ghost-button", href: "#/drill/weak" }, "苦手を解く"),
+      ) : "",
     ),
     hintClosed ? "" : installHint(ctx.signal, () => void db.settings.put({ key: "installHintClosed", value: true, updatedAt: nowIso() })),
-    ...systems.map((system) => {
+    ...systems.flatMap((system) => {
       const list = units.filter((unit) => unit.system === system.id);
-      if (!list.length) return "";
-      return h("section", { class: "system" },
+      if (!list.length) return [];
+      const section = h("section", { class: "system" },
         h("h2", {}, h("span", { class: "swatch", style: `background:${system.color}` }), system.ja),
         h("ul", { class: "units" }, ...list.map((unit) => {
           const done = unit.terms.filter((term) => learnedIds.has(term.id)).length;
@@ -40,7 +45,23 @@ export async function home(ctx: AppContext): Promise<void> {
             ));
         })),
       );
+      // 語根カードは基本の用語のすぐ後に（英語名の意味が分かると、どの系統の語も覚えやすくなる）
+      return system.id === "basics" ? [section, rootSection(learnedIds)] : [section];
     }),
     h("p", { class: "footer-link" }, h("a", { href: "#/credits" }, "出典・クレジット")),
+  );
+}
+
+function rootSection(learnedIds: Set<string>): HTMLElement {
+  return h("section", { class: "system" },
+    h("h2", {}, h("span", { class: "swatch root-swatch" }), "語根カード", h("a", { class: "more-link", href: "#/roots" }, "一覧")),
+    h("ul", { class: "units" }, ...rootUnits.map((unit) => {
+      const done = unit.roots.filter((root) => learnedIds.has(rootKey(root))).length;
+      return h("li", {},
+        h("a", { href: `#/roots/${unit.id}`, class: done === unit.roots.length ? "unit done" : "unit" },
+          h("span", { class: "unit-title" }, unit.title.replace("語根：", "")),
+          h("span", { class: "unit-count" }, done ? `${done}/${unit.roots.length}` : `${unit.roots.length}個`),
+        ));
+    })),
   );
 }

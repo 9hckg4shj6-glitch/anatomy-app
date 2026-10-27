@@ -2,7 +2,10 @@ import type { Term } from "./content";
 import type { Facet, LearnedTerm, StoredSchedule } from "./db";
 import { retrievability, State } from "./fsrs";
 
-export const FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja", "attach", "nerve", "action"];
+export const FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "rootMeaning", "rootForm"];
+
+/** 語根カード（content/roots.json）の問い方 */
+export const ROOT_FACETS: Facet[] = ["rootMeaning", "rootForm"];
 
 /** 筋だけに付く問い方（起始・停止・支配神経・作用） */
 export const MUSCLE_FACETS: Facet[] = ["attach", "nerve", "action"];
@@ -15,6 +18,8 @@ export const facetLabels: Record<Facet, string> = {
   attach: "起始・停止",
   nerve: "支配神経",
   action: "作用",
+  rootMeaning: "語根→意味",
+  rootForm: "意味→語根",
 };
 
 /**
@@ -23,6 +28,7 @@ export const facetLabels: Record<Facet, string> = {
  */
 export function facetsFor(term: Pick<Term, "xray" | "nerve" | "figure"> | undefined, locateLearned = false): Facet[] {
   return FACETS.filter((facet) => {
+    if (ROOT_FACETS.includes(facet)) return false;
     if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && locateLearned;
     return !(facet === "point" && (term?.xray || term?.figure));
   });
@@ -111,4 +117,36 @@ export function termMastery(schedules: StoredSchedule[], at = new Date()): numbe
 /** 日→英は、何度か正解して復習の段階に入ったら4択をやめてつづりを入力させる */
 export function typesEnglish(schedule: StoredSchedule | undefined): boolean {
   return !!schedule && schedule.state === State.Review && schedule.reps >= 2;
+}
+
+export interface PracticeCandidate {
+  termId: string;
+  facet: Facet;
+  /** 今思い出せる確率（一度も解いていなければ null） */
+  recall: number | null;
+  lapses: number;
+}
+
+/**
+ * 範囲を選んだ演習の出題。weak なら苦手な順（思い出せる確率が低い・忘れた回数が多い・まだ解いていないものは真ん中）、
+ * そうでなければ混ぜる。1周ごとに1つの語から1問ずつ取る（同じ語の問い方ばかりにならないように）。
+ */
+export function practiceQueue(candidates: PracticeCandidate[], count: number, weak: boolean, random: () => number = Math.random): QueueItem[] {
+  const score = (c: PracticeCandidate) => (c.recall ?? 0.75) - Math.min(c.lapses, 5) * 0.05;
+  const ordered = weak ? shuffle(candidates, random).sort((a, b) => score(a) - score(b)) : shuffle(candidates, random);
+  const picked: PracticeCandidate[] = [];
+  const used = new Set<string>();
+  for (let round = 0; picked.length < count && round < 9; round++) {
+    const taken = new Set<string>();
+    for (const c of ordered) {
+      if (picked.length >= count) break;
+      const key = `${c.termId}:${c.facet}`;
+      if (used.has(key) || taken.has(c.termId)) continue;
+      used.add(key);
+      taken.add(c.termId);
+      picked.push(c);
+    }
+  }
+  const items = picked.map((c) => ({ termId: c.termId, facet: c.facet, isNew: c.recall === null }));
+  return weak ? items : shuffle(items, random);
 }

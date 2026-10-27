@@ -38,8 +38,8 @@ function pinWriter(): Plugin {
 
 export default defineConfig({
   base: process.env.GITHUB_ACTIONS ? "/anatomy-app/" : "/",
-  // three.js（約600KB）と用語データを1つにまとめているため、既定の500KBの警告を上げる（圧縮後は約330KB）
-  build: { target: "es2022", sourcemap: true, chunkSizeWarningLimit: 1300 },
+  // three.js（約600KB）と用語データ（1,045語と語根カード）を1つにまとめているため、既定の500KBの警告を上げる（圧縮後は約390KB）
+  build: { target: "es2022", sourcemap: true, chunkSizeWarningLimit: 1600 },
   test: { environment: "jsdom", globals: true },
   plugins: [
     pinWriter(),

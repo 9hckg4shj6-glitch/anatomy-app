@@ -3,7 +3,7 @@ import type { AppContext } from "./context";
 
 const SOURCES: [string, string, string][] = [
   ["3Dモデル", "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International", "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"],
-  ["3Dモデル（広背筋・表情筋・末梢神経・脳神経・肺の葉・動脈の枝など）", "Z-Anatomy（Lluís Vinent Juanico ほか, CC BY-SA 4.0）", "https://github.com/LluisV/Z-Anatomy"],
+  ["3Dモデル（広背筋・表情筋・末梢神経・脳神経・肺の葉・動脈の枝・靱帯・リンパ節など）", "Z-Anatomy（Lluís Vinent Juanico ほか, CC BY-SA 4.0）", "https://github.com/LluisV/Z-Anatomy"],
   ["3Dモデルの変換方法（参考）", "ashemag/human-atlas（MIT License）", "https://github.com/ashemag/human-atlas"],
   ["用語の下調べ", "Wikidata（CC0）", "https://www.wikidata.org/"],
   ["英語名・ラテン名の基準", "Terminologia Anatomica 2nd ed.（FIPAT, 2019）", "https://fipat.library.dal.ca/TA2"],

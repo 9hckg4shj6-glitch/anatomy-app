@@ -707,6 +707,44 @@
           "note": "分界溝より後ろの、舌の後ろ3分の1。咽頭口部の前の壁をつくり、表面に舌扁桃がある。感覚と味覚は舌咽神経が伝える。"
         }
       ]
+    },
+    {
+      "id": "dig-liver-segments",
+      "title": "肝臓の区域",
+      "intro": [
+        "肝臓は表から見た形（右葉・左葉など）とは別に、中の血管（門脈・肝動脈・胆管が一緒に入り、肝静脈が出る）で区域に分けられる。手術でまとめて切り取れる単位なので、CTや手術で使う。",
+        "クイノーの分類では8つの亜区域（S1〜S8）に分け、尾状葉がS1、外側区域がS2・S3、内側区域がS4、前区域がS5・S8、後区域がS6・S7。左葉と右葉（機能的な）の境は胆嚢と下大静脈を結ぶ線（カントリー線）。"
+      ],
+      "terms": [
+        {
+          "id": "lateral-segment-of-liver", "ja": "外側区域（肝臓）", "yomi": "がいそくくいき", "en": "left lateral section of liver", "enAlt": ["left lateral section"], "la": "divisio lateralis sinistra hepatis",
+          "parts": ["hepatovenous segment ii", "hepatovenous segment iii"], "level": 2,
+          "kanji": "左葉の外側の区域",
+          "etym": "lateral「外側の」＋ section「区域」",
+          "note": "肝鎌状間膜より左の部分で、S2（上）とS3（下）からなる。表から見た左葉にあたる。"
+        },
+        {
+          "id": "medial-segment-of-liver", "ja": "内側区域（肝臓）", "yomi": "ないそくくいき", "en": "left medial section of liver", "enAlt": ["left medial section", "segment iv"], "la": "divisio medialis sinistra hepatis",
+          "parts": ["hepatovenous segment iv", "quadrate lobe of liver"], "level": 2,
+          "kanji": "左葉の内側の区域",
+          "etym": "medial「内側の」＋ section「区域」",
+          "note": "S4にあたる区域。肝鎌状間膜と、胆嚢と下大静脈を結ぶ線の間。表から見た方形葉はこの区域の下部。血管の上では左葉に入る。"
+        },
+        {
+          "id": "anterior-segment-of-liver", "ja": "前区域（肝臓）", "yomi": "ぜんくいき", "en": "right anterior section of liver", "enAlt": ["right anterior section"], "la": "divisio medialis dextra hepatis",
+          "parts": ["hepatovenous segment v", "hepatovenous segment viii"], "level": 2, "check": true,
+          "kanji": "右葉の前の区域",
+          "etym": "anterior「前の」＋ section「区域」",
+          "note": "右葉の前の部分で、S5（下）とS8（上）からなる。胆嚢はS4とS5の境の下面にある。"
+        },
+        {
+          "id": "posterior-segment-of-liver", "ja": "後区域（肝臓）", "yomi": "こうくいき", "en": "right posterior section of liver", "enAlt": ["right posterior section"], "la": "divisio lateralis dextra hepatis",
+          "parts": ["hepatovenous segment vi", "hepatovenous segment vii"], "level": 2, "check": true,
+          "kanji": "右葉の後ろの区域",
+          "etym": "posterior「後ろの」＋ section「区域」",
+          "note": "右葉の後ろ外側の部分で、S6（下）とS7（上）からなる。右肝静脈が前区域との境を走る。"
+        }
+      ]
     }
   ]
 }

@@ -11,7 +11,7 @@ import { INSERTION_COLOR, ORIGIN_COLOR } from "../viewer";
 import { sceneFor, type AppContext } from "./context";
 import { termCard } from "./term-card";
 
-type Outcome = EnglishResult | "skip";
+export type Outcome = EnglishResult | "skip";
 
 const ratingOf: Record<Outcome, Grade> = {
   correct: Rating.Good,
@@ -182,6 +182,9 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
       break;
     }
+    default:
+      // 語根カードの問い方は ui/roots.ts の askRoot で出す
+      throw new Error(`語の問題ではない問い方: ${facet}`);
   }
 
   const schedule = await recordReview(term.id, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });

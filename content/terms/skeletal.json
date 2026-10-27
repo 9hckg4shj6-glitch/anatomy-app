@@ -1428,6 +1428,82 @@
           "note": "下顎枝の内面の中ほどにある孔。下歯槽神経と血管が入る（下の歯の麻酔をする所）。"
         }
       ]
+    },
+    {
+      "id": "skel-digits",
+      "title": "指節骨と楔状骨",
+      "terms": [
+        {
+          "id": "proximal-phalanges-of-hand", "ja": "基節骨（手）", "yomi": "きせつこつ", "en": "proximal phalanges of hand", "enAlt": ["proximal phalanx of hand"], "la": "phalanges proximales manus",
+          "parts": ["proximal phalanx of thumb", "proximal phalanx of * finger"], "level": 2,
+          "kanji": "指の付け根の節の骨",
+          "etym": "proximal「近位の」＋ phalanx「指骨」（ギリシャ語 phalanx＝兵の列）",
+          "note": "中手骨に続く、指の付け根の骨。5本の指すべてにある。"
+        },
+        {
+          "id": "middle-phalanges-of-hand", "ja": "中節骨（手）", "yomi": "ちゅうせつこつ", "en": "middle phalanges of hand", "enAlt": ["middle phalanx of hand"], "la": "phalanges mediae manus",
+          "parts": ["middle phalanx of * finger"], "level": 2,
+          "kanji": "指の真ん中の節の骨",
+          "etym": "middle「中の」＋ phalanx「指骨」",
+          "note": "基節骨と末節骨の間の骨。母指には無い（母指は2節）。浅指屈筋の腱が付く。"
+        },
+        {
+          "id": "distal-phalanges-of-hand", "ja": "末節骨（手）", "yomi": "まっせつこつ", "en": "distal phalanges of hand", "enAlt": ["distal phalanx of hand"], "la": "phalanges distales manus",
+          "parts": ["distal phalanx of thumb", "distal phalanx of * finger"], "level": 2,
+          "kanji": "指先の節の骨",
+          "etym": "distal「遠位の」＋ phalanx「指骨」",
+          "note": "指先の骨。先が広がって爪の土台になる（末節骨粗面）。深指屈筋・長母指屈筋の腱が付く。"
+        },
+        {
+          "id": "proximal-phalanges-of-foot", "ja": "基節骨（足）", "yomi": "きせつこつ", "en": "proximal phalanges of foot", "enAlt": ["proximal phalanx of foot"], "la": "phalanges proximales pedis",
+          "parts": ["proximal phalanx of * toe"], "level": 3,
+          "kanji": "足の指の付け根の節の骨",
+          "etym": "proximal「近位の」＋ phalanx「指骨」",
+          "note": "中足骨に続く、足の指の付け根の骨。"
+        },
+        {
+          "id": "middle-phalanges-of-foot", "ja": "中節骨（足）", "yomi": "ちゅうせつこつ", "en": "middle phalanges of foot", "enAlt": ["middle phalanx of foot"], "la": "phalanges mediae pedis",
+          "parts": ["middle phalanx of * toe"], "level": 3,
+          "kanji": "足の指の真ん中の節の骨",
+          "etym": "middle「中の」＋ phalanx「指骨」",
+          "note": "足の第2〜5趾の真ん中の骨。とても短く、小趾では末節骨とくっついていることが多い。"
+        },
+        {
+          "id": "distal-phalanges-of-foot", "ja": "末節骨（足）", "yomi": "まっせつこつ", "en": "distal phalanges of foot", "enAlt": ["distal phalanx of foot"], "la": "phalanges distales pedis",
+          "parts": ["distal phalanx of * toe"], "level": 3,
+          "kanji": "足の指先の節の骨",
+          "etym": "distal「遠位の」＋ phalanx「指骨」",
+          "note": "足の指先の骨。長趾屈筋・長母趾屈筋の腱が付く。"
+        },
+        {
+          "id": "medial-cuneiform", "ja": "内側楔状骨", "yomi": "ないそくけつじょうこつ", "en": "medial cuneiform", "enAlt": ["medial cuneiform bone"], "la": "os cuneiforme mediale",
+          "parts": ["medial cuneiform bone"], "level": 2,
+          "kanji": "内側の、くさびの形の骨",
+          "etym": "medial「内側の」＋ cuneiform「くさびの形の」（ラテン語 cuneus＝くさび）",
+          "note": "3つの楔状骨のうち最も大きく、第1中足骨と関節する。前脛骨筋・長腓骨筋の腱が付く。"
+        },
+        {
+          "id": "intermediate-cuneiform", "ja": "中間楔状骨", "yomi": "ちゅうかんけつじょうこつ", "en": "intermediate cuneiform", "enAlt": ["intermediate cuneiform bone"], "la": "os cuneiforme intermedium",
+          "parts": ["intermediate cuneiform bone"], "level": 3,
+          "kanji": "真ん中の、くさびの形の骨",
+          "etym": "intermediate「中間の」＋ cuneiform「くさびの形の」",
+          "note": "3つの楔状骨のうち最も小さく、第2中足骨と関節する。"
+        },
+        {
+          "id": "lateral-cuneiform", "ja": "外側楔状骨", "yomi": "がいそくけつじょうこつ", "en": "lateral cuneiform", "enAlt": ["lateral cuneiform bone"], "la": "os cuneiforme laterale",
+          "parts": ["lateral cuneiform bone"], "level": 3,
+          "kanji": "外側の、くさびの形の骨",
+          "etym": "lateral「外側の」＋ cuneiform「くさびの形の」",
+          "note": "第3中足骨と関節し、外側で立方骨と接する。3つの楔状骨は上が広いくさびで、足の横のアーチを作る。"
+        },
+        {
+          "id": "sesamoid-bones-of-foot", "ja": "種子骨（足）", "yomi": "しゅしこつ", "en": "sesamoid bones of foot", "enAlt": ["sesamoid bone of foot"], "la": "ossa sesamoidea pedis",
+          "parts": ["sesamoid bone of foot"], "level": 3,
+          "kanji": "ゴマの種のような小さな骨",
+          "etym": "sesamoid「ゴマの形の」（ギリシャ語 sēsamon＝ゴマ）",
+          "note": "母趾の付け根の下で、短母趾屈筋の腱の中にある2つの小さな骨。腱の向きを変え、体重を受ける。膝蓋骨も大きな種子骨。"
+        }
+      ]
     }
   ]
 }

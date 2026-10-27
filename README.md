@@ -6,7 +6,9 @@
 
 https://9hckg4shj6-glitch.github.io/anatomy-app/
 
-スマホでは開いてから「ホーム画面に追加」（iPhone は Safari の共有ボタンから）すると、アプリとして全画面で開ける。2回目からは通信が無くても動く（3Dモデルと音声は一度開いた分を端末に保存）。学習の記録は端末ごと。
+スマホでは開いてから「ホーム画面に追加」（iPhone は Safari の共有ボタンから）すると、アプリとして全画面で開ける。2回目からは通信が無くても動く（3Dモデルと音声は一度開いた分を端末に保存）。学習の記録は端末ごと（進捗の画面でファイルに書き出して、別の端末で読み込める）。
+
+12系統・1,045語（99レッスン）と語根カード138個。レッスン → 復習（FSRS）のほか、範囲を選んだ演習・苦手を解く演習、図鑑（関係する語・断面）がある。
 
 `main` に push すると GitHub Actions（`.github/workflows/pages.yml`）がテスト → 内容の検査 → 型チェック → ビルドを通して GitHub Pages に公開する。開いている端末には、次にホームに戻ったときに新しい版が入る。
 
@@ -34,7 +36,10 @@ npm run build:audio      # macOS の afconvert を使う
 node scripts/joints.mjs  # 基本の用語（運動）で骨を動かす関節（content/joints.json）
 npm run build:wikidata   # 任意。Wikidata の日本語名との照合用
 npm run validate:content # docs/要確認用語.md も作り直す
+node scripts/visibility.mjs <系統> # 隠れて見えない語（xray を付けるか）の目安
 ```
+
+語根カードは `content/roots.json`（例の語は英語名から自動で拾う）。
 
 アイコンを変えたら `public/icons/icon.svg` を直して `npm run build:icons`（ホーム画面用の PNG を作り直す）。
 

@@ -104,6 +104,7 @@ button { font: inherit; color: inherit; }
   min-height: 44px; padding: 10px 16px; border-radius: 10px; cursor: pointer; text-decoration: none; font-size: 16px;
 }
 .primary { border: 0; background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.primary:disabled { opacity: 0.4; cursor: default; }
 .ghost-button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
 .ghost-button:disabled { color: #c4bfb3; cursor: default; }
 .chip { min-height: 34px; padding: 6px 12px; border: 1px solid var(--line); background: rgb(255 255 255 / 0.9); font-size: 14px; border-radius: 999px; }
@@ -211,3 +212,25 @@ button { font: inherit; color: inherit; }
 .gloss-box p { margin: 4px 0 0; }
 .gloss-box .ghost-button { margin-top: 8px; min-height: 36px; padding: 6px 12px; font-size: 14px; }
 .intro { padding: 4px 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: 15px; line-height: 1.75; }
+
+/* 語根カード */
+.root-form { font-size: 30px; font-weight: 700; letter-spacing: 0.02em; }
+.root-form.big { display: block; font-size: 40px; margin: 8px 0; }
+.root-meaning { font-size: 20px; font-weight: 600; margin: 8px 0 0; }
+.root-examples { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 4px; }
+.root-examples a { display: flex; justify-content: space-between; gap: 12px; padding: 6px 2px; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 15px; }
+.root-word { color: var(--muted); }
+.root-word b { color: var(--accent); font-weight: 700; }
+.root-chips { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-top: 8px; font-size: 15px; }
+.root-chips .gloss-box { flex-basis: 100%; margin-top: 4px; }
+.root-swatch { background: linear-gradient(135deg, var(--accent), #8a7f6d); }
+.more-link { margin-left: auto; font-size: 14px; font-weight: 400; }
+
+/* 図鑑の断面 */
+.section-box { margin-bottom: 12px; padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.section-box .nav-row { margin-top: 8px; }
+.section-box .muted { margin: 8px 0 0; }
+.section-slider { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.section-slider input { flex: 1; min-width: 0; }
+
+.backup { margin-top: 28px; padding-top: 4px; border-top: 1px solid var(--line); }

@@ -1145,6 +1145,1027 @@
           "action": "足の内反・足関節の底屈"
         }
       ]
+    },
+    {
+      "id": "mus-hand",
+      "title": "手の筋",
+      "intro": [
+        "手の中の筋（手内筋）は、母指のふくらみ（母指球）をつくる筋、小指のふくらみ（小指球）をつくる筋、中手骨の間の筋（虫様筋・骨間筋）に分けられる。",
+        "母指球の筋の多くは正中神経、それ以外のほとんどは尺骨神経が支配する。正中神経が手根管で圧迫されると母指球がやせる（手根管症候群）。"
+      ],
+      "terms": [
+        {
+          "id": "abductor-pollicis-brevis", "ja": "短母指外転筋", "yomi": "たんぼしがいてんきん", "en": "abductor pollicis brevis", "la": "musculus abductor pollicis brevis",
+          "parts": ["abductor pollicis brevis"], "level": 2,
+          "kanji": "母指を外転する短い筋",
+          "etym": "abductor「外へ引くもの」＋ pollicis「母指の」（ラテン語 pollex）＋ brevis「短い」",
+          "note": "母指球のいちばん表面の筋。親指を手のひらから垂直に立てる（外転）。手根管症候群で最初にやせる。",
+          "origin": "屈筋支帯・舟状骨・大菱形骨",
+          "insertion": "母指の基節骨底（橈側）",
+          "nerve": "正中神経",
+          "action": "母指の外転"
+        },
+        {
+          "id": "flexor-pollicis-brevis", "ja": "短母指屈筋", "yomi": "たんぼしくっきん", "en": "flexor pollicis brevis", "la": "musculus flexor pollicis brevis",
+          "parts": ["*flexor pollicis brevis"], "level": 2,
+          "kanji": "母指を曲げる短い筋",
+          "etym": "flexor「曲げるもの」＋ pollicis「母指の」＋ brevis「短い」",
+          "note": "母指球の筋で、短母指外転筋の内側にある。浅頭と深頭の2つの頭をもつ。",
+          "origin": "屈筋支帯・大菱形骨（浅頭）、小菱形骨・有頭骨（深頭）",
+          "insertion": "母指の基節骨底",
+          "nerve": "正中神経・尺骨神経",
+          "action": "母指の中手指節関節の屈曲"
+        },
+        {
+          "id": "opponens-pollicis", "ja": "母指対立筋", "yomi": "ぼしたいりつきん", "en": "opponens pollicis", "la": "musculus opponens pollicis",
+          "parts": ["opponens pollicis"], "level": 2, "xray": true,
+          "kanji": "母指をほかの指と向かい合わせる筋",
+          "etym": "opponens「向かい合わせるもの」＋ pollicis「母指の」",
+          "note": "母指球の深くの筋。第1中手骨を回して親指の腹をほかの指先に向ける（対立）。ものをつまむのに欠かせない。",
+          "origin": "屈筋支帯・大菱形骨",
+          "insertion": "第1中手骨の橈側縁",
+          "nerve": "正中神経",
+          "action": "母指の対立"
+        },
+        {
+          "id": "adductor-pollicis", "ja": "母指内転筋", "yomi": "ぼしないてんきん", "en": "adductor pollicis", "la": "musculus adductor pollicis",
+          "parts": ["*head of adductor pollicis"], "level": 2,
+          "kanji": "母指を内転する筋",
+          "etym": "adductor「内へ引き寄せるもの」＋ pollicis「母指の」",
+          "note": "母指と示指の間の水かきの深くにある扇形の筋（斜頭と横頭）。親指を手のひらへ寄せ、ものを強くはさむ。尺骨神経が麻痺すると紙を親指ではさめない（フロマン徴候）。",
+          "origin": "有頭骨・第2・3中手骨（斜頭）、第3中手骨（横頭）",
+          "insertion": "母指の基節骨底（尺側）",
+          "nerve": "尺骨神経",
+          "action": "母指の内転"
+        },
+        {
+          "id": "abductor-digiti-minimi-of-hand", "ja": "小指外転筋", "yomi": "しょうしがいてんきん", "en": "abductor digiti minimi of hand", "la": "musculus abductor digiti minimi manus",
+          "parts": ["abductor digiti minimi of hand"], "level": 2,
+          "kanji": "小指を外転する筋",
+          "etym": "abductor「外へ引くもの」＋ digiti minimi「最も小さい指の」",
+          "note": "小指球のいちばん内側（尺側）の筋。小指をほかの指から離す。",
+          "origin": "豆状骨",
+          "insertion": "小指の基節骨底（尺側）",
+          "nerve": "尺骨神経",
+          "action": "小指の外転"
+        },
+        {
+          "id": "flexor-digiti-minimi-brevis-of-hand", "ja": "短小指屈筋", "yomi": "たんしょうしくっきん", "en": "flexor digiti minimi brevis of hand", "la": "musculus flexor digiti minimi brevis manus",
+          "parts": ["flexor digiti minimi brevis of hand"], "level": 3,
+          "kanji": "小指を曲げる短い筋",
+          "etym": "flexor「曲げるもの」＋ digiti minimi「小指の」＋ brevis「短い」",
+          "note": "小指球の筋で、小指外転筋の橈側にある。",
+          "origin": "有鈎骨鈎・屈筋支帯",
+          "insertion": "小指の基節骨底",
+          "nerve": "尺骨神経",
+          "action": "小指の中手指節関節の屈曲"
+        },
+        {
+          "id": "opponens-digiti-minimi-of-hand", "ja": "小指対立筋", "yomi": "しょうしたいりつきん", "en": "opponens digiti minimi of hand", "la": "musculus opponens digiti minimi manus",
+          "parts": ["opponens digiti minimi of hand"], "level": 3, "xray": true,
+          "kanji": "小指を母指と向かい合わせる筋",
+          "etym": "opponens「向かい合わせるもの」＋ digiti minimi「小指の」",
+          "note": "小指球の深くの筋。第5中手骨を前へ回して手のひらをくぼませる。",
+          "origin": "有鈎骨鈎・屈筋支帯",
+          "insertion": "第5中手骨の尺側縁",
+          "nerve": "尺骨神経",
+          "action": "小指の対立"
+        },
+        {
+          "id": "lumbricals-of-hand", "ja": "虫様筋（手）", "yomi": "ちゅうようきん", "en": "lumbricals of hand", "la": "musculi lumbricales manus",
+          "parts": ["set of lumbricals of hand"], "level": 2,
+          "kanji": "ミミズのような形の筋",
+          "etym": "lumbrical ← ラテン語 lumbricus「ミミズ」",
+          "note": "手のひらの深指屈筋の腱から起こる4本の細い筋。指の付け根を曲げながら指先をのばす（字を書く・ものを持つ形）。外側の2本は正中神経、内側の2本は尺骨神経が支配する。",
+          "origin": "深指屈筋の腱",
+          "insertion": "第2〜5指の指背腱膜",
+          "nerve": "正中神経・尺骨神経",
+          "action": "中手指節関節の屈曲と指節間関節の伸展"
+        },
+        {
+          "id": "palmar-interossei", "ja": "掌側骨間筋", "yomi": "しょうそくこっかんきん", "en": "palmar interossei", "la": "musculi interossei palmares",
+          "parts": ["set of palmar interossei of hand"], "level": 2,
+          "kanji": "手のひら側の、骨の間の筋",
+          "etym": "palmar「手のひらの」＋ interosseous「骨の間の」",
+          "note": "中手骨の間の手のひら側にある3本の筋。指を中指へ寄せる（内転）。覚え方は PAD（Palmar ADduct）。",
+          "origin": "第2・4・5中手骨",
+          "insertion": "同じ指の基節骨・指背腱膜",
+          "nerve": "尺骨神経",
+          "action": "指の内転（中指へ寄せる）"
+        },
+        {
+          "id": "dorsal-interossei-of-hand", "ja": "背側骨間筋（手）", "yomi": "はいそくこっかんきん", "en": "dorsal interossei of hand", "la": "musculi interossei dorsales manus",
+          "parts": ["set of dorsal interossei of hand"], "level": 2,
+          "kanji": "手の甲側の、骨の間の筋",
+          "etym": "dorsal「背側の」＋ interosseous「骨の間の」",
+          "note": "中手骨の間を埋める4本の羽状筋。指を中指から離す（外転）。手の甲の骨の間のふくらみ。覚え方は DAB（Dorsal ABduct）。",
+          "origin": "第1〜5中手骨の向かい合う面",
+          "insertion": "第2〜4指の基節骨・指背腱膜",
+          "nerve": "尺骨神経",
+          "action": "指の外転（中指から離す）"
+        }
+      ]
+    },
+    {
+      "id": "mus-forearm-deep",
+      "title": "前腕の深層と母指の筋",
+      "terms": [
+        {
+          "id": "flexor-pollicis-longus", "ja": "長母指屈筋", "yomi": "ちょうぼしくっきん", "en": "flexor pollicis longus", "la": "musculus flexor pollicis longus",
+          "parts": ["flexor pollicis longus"], "level": 2, "xray": true,
+          "kanji": "母指を曲げる長い筋",
+          "etym": "flexor「曲げるもの」＋ pollicis「母指の」＋ longus「長い」",
+          "note": "前腕の前面の深くで橈骨から起こり、手根管を通って親指の先へ行く。親指の第一関節を曲げる唯一の筋。",
+          "origin": "橈骨の前面・前腕骨間膜",
+          "insertion": "母指の末節骨底",
+          "nerve": "正中神経",
+          "action": "母指の指節間関節の屈曲"
+        },
+        {
+          "id": "abductor-pollicis-longus", "ja": "長母指外転筋", "yomi": "ちょうぼしがいてんきん", "en": "abductor pollicis longus", "la": "musculus abductor pollicis longus",
+          "parts": ["abductor pollicis longus"], "level": 2,
+          "kanji": "母指を外転する長い筋",
+          "etym": "abductor「外へ引くもの」＋ pollicis「母指の」＋ longus「長い」",
+          "note": "前腕の後面の深くから斜めに橈骨を越え、親指の付け根へ行く。短母指伸筋と同じ腱鞘を通り、ここの腱鞘炎がドケルバン病。",
+          "origin": "尺骨・橈骨の後面・前腕骨間膜",
+          "insertion": "第1中手骨底",
+          "nerve": "橈骨神経",
+          "action": "母指の外転"
+        },
+        {
+          "id": "extensor-pollicis-brevis", "ja": "短母指伸筋", "yomi": "たんぼししんきん", "en": "extensor pollicis brevis", "la": "musculus extensor pollicis brevis",
+          "parts": ["extensor pollicis brevis"], "level": 2,
+          "kanji": "母指をのばす短い筋",
+          "etym": "extensor「のばすもの」＋ pollicis「母指の」＋ brevis「短い」",
+          "note": "長母指外転筋のすぐ下にならぶ。親指を立てると手首の親指側に、長母指伸筋の腱との間のくぼみ（解剖学的嗅ぎタバコ入れ）ができる。",
+          "origin": "橈骨の後面・前腕骨間膜",
+          "insertion": "母指の基節骨底",
+          "nerve": "橈骨神経",
+          "action": "母指の中手指節関節の伸展"
+        },
+        {
+          "id": "extensor-pollicis-longus", "ja": "長母指伸筋", "yomi": "ちょうぼししんきん", "en": "extensor pollicis longus", "la": "musculus extensor pollicis longus",
+          "parts": ["extensor pollicis longus"], "level": 2,
+          "kanji": "母指をのばす長い筋",
+          "etym": "extensor「のばすもの」＋ pollicis「母指の」＋ longus「長い」",
+          "note": "尺骨の後面から起こり、橈骨の背側結節を滑車のようにして向きを変え、親指の先へ行く。嗅ぎタバコ入れの尺側の縁。",
+          "origin": "尺骨の後面・前腕骨間膜",
+          "insertion": "母指の末節骨底",
+          "nerve": "橈骨神経",
+          "action": "母指の指節間関節の伸展"
+        },
+        {
+          "id": "extensor-indicis", "ja": "示指伸筋", "yomi": "じししんきん", "en": "extensor indicis", "la": "musculus extensor indicis",
+          "parts": ["extensor indicis"], "level": 3,
+          "kanji": "示指（人さし指）をのばす筋",
+          "etym": "extensor「のばすもの」＋ indicis「示指の」（ラテン語 index＝指し示すもの）",
+          "note": "前腕の後面の深くの筋。指伸筋とは別に人さし指だけをのばせる（指さしの形）。",
+          "origin": "尺骨の後面・前腕骨間膜",
+          "insertion": "示指の指背腱膜",
+          "nerve": "橈骨神経",
+          "action": "示指の伸展"
+        },
+        {
+          "id": "extensor-digiti-minimi", "ja": "小指伸筋", "yomi": "しょうししんきん", "en": "extensor digiti minimi", "la": "musculus extensor digiti minimi",
+          "parts": ["extensor digiti minimi"], "level": 3,
+          "kanji": "小指をのばす筋",
+          "etym": "extensor「のばすもの」＋ digiti minimi「小指の」",
+          "note": "指伸筋の尺側にならぶ細い筋。小指だけをのばせる。",
+          "origin": "上腕骨の外側上顆",
+          "insertion": "小指の指背腱膜",
+          "originAt": ["lateral-epicondyle-of-humerus"],
+          "nerve": "橈骨神経",
+          "action": "小指の伸展"
+        },
+        {
+          "id": "extensor-carpi-radialis-brevis", "ja": "短橈側手根伸筋", "yomi": "たんとうそくしゅこんしんきん", "en": "extensor carpi radialis brevis", "la": "musculus extensor carpi radialis brevis",
+          "parts": ["extensor carpi radialis brevis"], "level": 2,
+          "kanji": "橈側で手首をのばす短い筋",
+          "etym": "extensor「のばすもの」＋ carpi「手根の」＋ radialis「橈側の」＋ brevis「短い」",
+          "note": "長橈側手根伸筋のすぐ下にならぶ。外側上顆の付着部の炎症がテニス肘（上腕骨外側上顆炎）。",
+          "origin": "上腕骨の外側上顆",
+          "insertion": "第3中手骨底",
+          "originAt": ["lateral-epicondyle-of-humerus"],
+          "nerve": "橈骨神経",
+          "action": "手関節の伸展（背屈）・橈屈"
+        },
+        {
+          "id": "anconeus", "ja": "肘筋", "yomi": "ちゅうきん", "en": "anconeus", "la": "musculus anconeus",
+          "parts": ["anconeus"], "level": 3,
+          "kanji": "肘の筋",
+          "etym": "anconeus ← ギリシャ語 ankōn「肘」",
+          "note": "肘の後ろの外側にある小さな三角形の筋。上腕三頭筋を助けて肘をのばす。",
+          "origin": "上腕骨の外側上顆",
+          "insertion": "尺骨の肘頭の外側面",
+          "originAt": ["lateral-epicondyle-of-humerus"],
+          "insertionAt": ["olecranon"],
+          "nerve": "橈骨神経",
+          "action": "肘関節の伸展（補助）"
+        }
+      ]
+    },
+    {
+      "id": "mus-leg-deep",
+      "title": "下腿の深層と前の筋",
+      "terms": [
+        {
+          "id": "extensor-digitorum-longus", "ja": "長趾伸筋", "yomi": "ちょうししんきん", "en": "extensor digitorum longus", "la": "musculus extensor digitorum longus",
+          "parts": ["extensor digitorum longus"], "level": 2,
+          "kanji": "足の指をのばす長い筋",
+          "etym": "extensor「のばすもの」＋ digitorum「指の」＋ longus「長い」",
+          "note": "すねの前の外側の筋。4本の腱に分かれて第2〜5趾へ行く。",
+          "origin": "脛骨の外側顆・腓骨の前縁・下腿骨間膜",
+          "insertion": "第2〜5趾の趾背腱膜（中節骨・末節骨）",
+          "originAt": ["lateral-condyle-of-tibia"],
+          "nerve": "深腓骨神経",
+          "action": "第2〜5趾の伸展・足関節の背屈"
+        },
+        {
+          "id": "extensor-hallucis-longus", "ja": "長母趾伸筋", "yomi": "ちょうぼししんきん", "en": "extensor hallucis longus", "la": "musculus extensor hallucis longus",
+          "parts": ["extensor hallucis longus"], "level": 2,
+          "kanji": "母趾（足の親指）をのばす長い筋",
+          "etym": "extensor「のばすもの」＋ hallucis「母趾の」（ラテン語 hallux）＋ longus「長い」",
+          "note": "前脛骨筋と長趾伸筋の間の深くから起こり、足の甲で腱が浮き出る。第5腰神経（L5）の障害で力が弱くなる。",
+          "origin": "腓骨の前面・下腿骨間膜",
+          "insertion": "母趾の末節骨底",
+          "nerve": "深腓骨神経",
+          "action": "母趾の伸展・足関節の背屈"
+        },
+        {
+          "id": "fibularis-tertius", "ja": "第三腓骨筋", "yomi": "だいさんひこつきん", "en": "fibularis tertius", "enAlt": ["peroneus tertius"], "la": "musculus fibularis tertius",
+          "parts": ["fibularis tertius"], "level": 3,
+          "kanji": "3番目の腓骨の筋",
+          "etym": "fibularis「腓骨の」＋ tertius「3番目の」",
+          "note": "長趾伸筋の外側下部が分かれたような筋。足の甲の外側へ行く。無い人もいる。",
+          "origin": "腓骨の前面の下部",
+          "insertion": "第5中足骨底（背側）",
+          "insertionAt": ["tuberosity-of-fifth-metatarsal"],
+          "nerve": "深腓骨神経",
+          "action": "足関節の背屈・足の外反"
+        },
+        {
+          "id": "flexor-digitorum-longus", "ja": "長趾屈筋", "yomi": "ちょうしくっきん", "en": "flexor digitorum longus", "la": "musculus flexor digitorum longus",
+          "parts": ["flexor digitorum longus"], "level": 2,
+          "kanji": "足の指を曲げる長い筋",
+          "etym": "flexor「曲げるもの」＋ digitorum「指の」＋ longus「長い」",
+          "note": "ふくらはぎの深くで脛骨の後面から起こり、内果の後ろを通って足の裏で4本の腱に分かれる。",
+          "origin": "脛骨の後面",
+          "insertion": "第2〜5趾の末節骨底",
+          "nerve": "脛骨神経",
+          "action": "第2〜5趾の屈曲・足関節の底屈"
+        },
+        {
+          "id": "flexor-hallucis-longus", "ja": "長母趾屈筋", "yomi": "ちょうぼしくっきん", "en": "flexor hallucis longus", "la": "musculus flexor hallucis longus",
+          "parts": ["flexor hallucis longus"], "level": 2, "xray": true,
+          "kanji": "母趾を曲げる長い筋",
+          "etym": "flexor「曲げるもの」＋ hallucis「母趾の」＋ longus「長い」",
+          "note": "ふくらはぎの深くで腓骨の後面から起こり、距骨の後ろと載距突起の下を通って母趾の先へ行く。歩くときの最後の蹴り出しに働く。",
+          "origin": "腓骨の後面・下腿骨間膜",
+          "insertion": "母趾の末節骨底",
+          "nerve": "脛骨神経",
+          "action": "母趾の屈曲・足関節の底屈"
+        },
+        {
+          "id": "popliteus", "ja": "膝窩筋", "yomi": "しっかきん", "en": "popliteus", "la": "musculus popliteus",
+          "parts": ["popliteus"], "level": 2, "xray": true,
+          "kanji": "膝窩（ひざの裏）の筋",
+          "etym": "popliteus ← ラテン語 poples「ひかがみ（膝の裏）」",
+          "note": "膝の裏の深くを斜めに走る平たい筋。伸ばしきってロックした膝を、脛骨を内へ回してゆるめる（膝の鍵を外す）。",
+          "origin": "大腿骨の外側顆",
+          "insertion": "脛骨の後面（ヒラメ筋線の上）",
+          "originAt": ["lateral-condyle-of-femur"],
+          "nerve": "脛骨神経",
+          "action": "膝関節の屈曲の始めの脛骨の内旋"
+        },
+        {
+          "id": "plantaris", "ja": "足底筋", "yomi": "そくていきん", "en": "plantaris", "la": "musculus plantaris",
+          "parts": ["plantaris"], "level": 3, "xray": true,
+          "kanji": "足底（足の裏）の筋",
+          "etym": "plantaris「足の裏の」（ラテン語 planta）",
+          "note": "腓腹筋の外側頭とヒラメ筋の間にある小さな筋腹と、とても長く細い腱からなる。ヒトでは働きが小さく、腱は移植に使われる。",
+          "origin": "大腿骨の外側顆の上",
+          "insertion": "踵骨隆起（踵骨腱とともに）",
+          "insertionAt": ["calcaneal-tuberosity"],
+          "nerve": "脛骨神経",
+          "action": "足関節の底屈・膝関節の屈曲（弱い）"
+        }
+      ]
+    },
+    {
+      "id": "mus-foot",
+      "title": "足の筋",
+      "intro": [
+        "足の中の筋（足内筋）は、足の甲の筋（短趾伸筋・短母趾伸筋）と、足の裏の筋に分けられる。足の裏の筋は4層に重なり、足のアーチを下から支える。",
+        "足の甲の筋は深腓骨神経、足の裏の筋は脛骨神経の枝の内側足底神経・外側足底神経が支配する。"
+      ],
+      "terms": [
+        {
+          "id": "extensor-digitorum-brevis", "ja": "短趾伸筋", "yomi": "たんししんきん", "en": "extensor digitorum brevis", "la": "musculus extensor digitorum brevis",
+          "parts": ["za:extensor digitorum brevis"], "level": 2,
+          "kanji": "足の指をのばす短い筋",
+          "etym": "extensor「のばすもの」＋ digitorum「指の」＋ brevis「短い」",
+          "note": "足の甲の外側のふくらみ。踵骨から起こり、第2〜4趾の長趾伸筋の腱に合わさる。",
+          "origin": "踵骨の上面（前部）",
+          "insertion": "第2〜4趾の長趾伸筋の腱",
+          "nerve": "深腓骨神経",
+          "action": "第2〜4趾の伸展"
+        },
+        {
+          "id": "extensor-hallucis-brevis", "ja": "短母趾伸筋", "yomi": "たんぼししんきん", "en": "extensor hallucis brevis", "la": "musculus extensor hallucis brevis",
+          "parts": ["extensor hallucis brevis"], "level": 3,
+          "kanji": "母趾をのばす短い筋",
+          "etym": "extensor「のばすもの」＋ hallucis「母趾の」＋ brevis「短い」",
+          "note": "短趾伸筋の内側の部分。母趾の付け根をのばす。",
+          "origin": "踵骨の上面（前部）",
+          "insertion": "母趾の基節骨底",
+          "nerve": "深腓骨神経",
+          "action": "母趾の中足趾節関節の伸展"
+        },
+        {
+          "id": "abductor-hallucis", "ja": "母趾外転筋", "yomi": "ぼしがいてんきん", "en": "abductor hallucis", "la": "musculus abductor hallucis",
+          "parts": ["abductor hallucis"], "level": 2,
+          "kanji": "母趾を外転する筋",
+          "etym": "abductor「外へ引くもの」＋ hallucis「母趾の」",
+          "note": "足の裏の内側の縁をつくる筋。土踏まずを支え、外反母趾ではこの筋の引く向きが崩れる。",
+          "origin": "踵骨隆起の内側・屈筋支帯・足底腱膜",
+          "insertion": "母趾の基節骨底（内側）",
+          "originAt": ["calcaneal-tuberosity"],
+          "nerve": "内側足底神経",
+          "action": "母趾の外転・屈曲"
+        },
+        {
+          "id": "flexor-digitorum-brevis", "ja": "短趾屈筋", "yomi": "たんしくっきん", "en": "flexor digitorum brevis", "la": "musculus flexor digitorum brevis",
+          "parts": ["flexor digitorum brevis"], "level": 2,
+          "kanji": "足の指を曲げる短い筋",
+          "etym": "flexor「曲げるもの」＋ digitorum「指の」＋ brevis「短い」",
+          "note": "足の裏の中央、足底腱膜のすぐ上にある筋。手の浅指屈筋にあたり、腱が中節骨に付く。",
+          "origin": "踵骨隆起・足底腱膜",
+          "insertion": "第2〜5趾の中節骨",
+          "originAt": ["calcaneal-tuberosity"],
+          "nerve": "内側足底神経",
+          "action": "第2〜5趾の屈曲"
+        },
+        {
+          "id": "abductor-digiti-minimi-of-foot", "ja": "小趾外転筋", "yomi": "しょうしがいてんきん", "en": "abductor digiti minimi of foot", "la": "musculus abductor digiti minimi pedis",
+          "parts": ["abductor digiti minimi of foot"], "level": 2,
+          "kanji": "小趾（足の小指）を外転する筋",
+          "etym": "abductor「外へ引くもの」＋ digiti minimi「最も小さい指の」",
+          "note": "足の裏の外側の縁をつくる筋。",
+          "origin": "踵骨隆起",
+          "insertion": "小趾の基節骨底",
+          "originAt": ["calcaneal-tuberosity"],
+          "nerve": "外側足底神経",
+          "action": "小趾の外転・屈曲"
+        },
+        {
+          "id": "quadratus-plantae", "ja": "足底方形筋", "yomi": "そくていほうけいきん", "en": "quadratus plantae", "la": "musculus quadratus plantae",
+          "parts": ["za:quadratus plantae muscle"], "level": 3,
+          "kanji": "足の裏の四角い筋",
+          "etym": "quadratus「四角い」＋ plantae「足の裏の」",
+          "note": "足の裏の2層目の筋。斜めに引く長趾屈筋の腱を後ろへ引いて、指をまっすぐ曲げられるようにする。",
+          "origin": "踵骨の下面",
+          "insertion": "長趾屈筋の腱",
+          "nerve": "外側足底神経",
+          "action": "長趾屈筋を助けて第2〜5趾を曲げる"
+        },
+        {
+          "id": "flexor-hallucis-brevis", "ja": "短母趾屈筋", "yomi": "たんぼしくっきん", "en": "flexor hallucis brevis", "la": "musculus flexor hallucis brevis",
+          "parts": ["*head of flexor hallucis brevis"], "level": 3,
+          "kanji": "母趾を曲げる短い筋",
+          "etym": "flexor「曲げるもの」＋ hallucis「母趾の」＋ brevis「短い」",
+          "note": "足の裏の母趾の付け根の深くにある、内側頭と外側頭の筋。2つの腱の中に種子骨がある。",
+          "origin": "立方骨・外側楔状骨",
+          "insertion": "母趾の基節骨底（両側の種子骨を経て）",
+          "nerve": "内側足底神経",
+          "action": "母趾の中足趾節関節の屈曲"
+        },
+        {
+          "id": "adductor-hallucis", "ja": "母趾内転筋", "yomi": "ぼしないてんきん", "en": "adductor hallucis", "la": "musculus adductor hallucis",
+          "parts": ["*head of adductor hallucis"], "level": 3,
+          "kanji": "母趾を内転する筋",
+          "etym": "adductor「内へ引き寄せるもの」＋ hallucis「母趾の」",
+          "note": "足の裏の深くにある斜頭と横頭の筋。母趾を第2趾へ寄せ、横のアーチを支える。",
+          "origin": "第2〜4中足骨底（斜頭）、第3〜5中足趾節関節の靱帯（横頭）",
+          "insertion": "母趾の基節骨底（外側）",
+          "nerve": "外側足底神経",
+          "action": "母趾の内転"
+        },
+        {
+          "id": "lumbricals-of-foot", "ja": "虫様筋（足）", "yomi": "ちゅうようきん", "en": "lumbricals of foot", "la": "musculi lumbricales pedis",
+          "parts": ["* lumbrical of foot"], "level": 3,
+          "kanji": "ミミズのような形の筋",
+          "etym": "lumbrical ← ラテン語 lumbricus「ミミズ」",
+          "note": "足の裏の長趾屈筋の腱から起こる4本の細い筋。手の虫様筋と同じ形。",
+          "origin": "長趾屈筋の腱",
+          "insertion": "第2〜5趾の基節骨・趾背腱膜",
+          "nerve": "内側足底神経・外側足底神経",
+          "action": "中足趾節関節の屈曲"
+        }
+      ]
+    },
+    {
+      "id": "mus-hip-deep",
+      "title": "殿部の深層と短内転筋",
+      "intro": [
+        "大殿筋の下には、股関節を外へ回す小さな筋（深層外旋六筋）がならぶ。上から梨状筋・上双子筋・内閉鎖筋・下双子筋・大腿方形筋、前から外閉鎖筋。",
+        "梨状筋の下を坐骨神経が通る。"
+      ],
+      "terms": [
+        {
+          "id": "superior-gemellus", "ja": "上双子筋", "yomi": "じょうそうしきん", "en": "superior gemellus", "la": "musculus gemellus superior",
+          "parts": ["gemellus superior"], "level": 2, "xray": true,
+          "kanji": "上の、双子の筋",
+          "etym": "superior「上の」＋ gemellus「双子」（ラテン語）",
+          "note": "内閉鎖筋の腱の上にそう細い筋。下双子筋と双子のように腱をはさむ。",
+          "origin": "坐骨棘",
+          "insertion": "大腿骨の転子窩（内閉鎖筋の腱とともに）",
+          "originAt": ["ischial-spine"],
+          "nerve": "内閉鎖筋神経",
+          "action": "股関節の外旋"
+        },
+        {
+          "id": "obturator-internus", "ja": "内閉鎖筋", "yomi": "ないへいさきん", "en": "obturator internus", "la": "musculus obturator internus",
+          "parts": ["obturator internus"], "level": 2, "xray": true,
+          "kanji": "閉鎖孔の内側の筋",
+          "etym": "obturator「ふさぐもの（閉鎖膜の）」＋ internus「内の」",
+          "note": "骨盤の内側の閉鎖膜から起こり、小坐骨孔を通って直角に向きを変え大転子へ行く。",
+          "origin": "閉鎖膜の内面とその周りの寛骨",
+          "insertion": "大腿骨の転子窩",
+          "originAt": ["obturator-foramen"],
+          "nerve": "内閉鎖筋神経",
+          "action": "股関節の外旋"
+        },
+        {
+          "id": "inferior-gemellus", "ja": "下双子筋", "yomi": "かそうしきん", "en": "inferior gemellus", "la": "musculus gemellus inferior",
+          "parts": ["gemellus inferior"], "level": 2, "xray": true,
+          "kanji": "下の、双子の筋",
+          "etym": "inferior「下の」＋ gemellus「双子」",
+          "note": "内閉鎖筋の腱の下にそう細い筋。",
+          "origin": "坐骨結節（上部）",
+          "insertion": "大腿骨の転子窩（内閉鎖筋の腱とともに）",
+          "originAt": ["ischial-tuberosity"],
+          "nerve": "大腿方形筋神経",
+          "action": "股関節の外旋"
+        },
+        {
+          "id": "quadratus-femoris", "ja": "大腿方形筋", "yomi": "だいたいほうけいきん", "en": "quadratus femoris", "la": "musculus quadratus femoris",
+          "parts": ["quadratus femoris"], "level": 2, "xray": true,
+          "kanji": "大腿の四角い筋",
+          "etym": "quadratus「四角い」＋ femoris「大腿の」",
+          "note": "深層外旋六筋のいちばん下の四角い筋。",
+          "origin": "坐骨結節（外側）",
+          "insertion": "大腿骨の転子間稜",
+          "originAt": ["ischial-tuberosity"],
+          "insertionAt": ["intertrochanteric-crest"],
+          "nerve": "大腿方形筋神経",
+          "action": "股関節の外旋"
+        },
+        {
+          "id": "obturator-externus", "ja": "外閉鎖筋", "yomi": "がいへいさきん", "en": "obturator externus", "la": "musculus obturator externus",
+          "parts": ["obturator externus"], "level": 3, "xray": true,
+          "kanji": "閉鎖孔の外側の筋",
+          "etym": "obturator「ふさぐもの」＋ externus「外の」",
+          "note": "閉鎖膜の外面から起こり、大腿骨頚の下を回って転子窩へ行く。前からは恥骨筋・内転筋に隠れる。",
+          "origin": "閉鎖膜の外面とその周り",
+          "insertion": "大腿骨の転子窩",
+          "originAt": ["obturator-foramen"],
+          "nerve": "閉鎖神経",
+          "action": "股関節の外旋"
+        },
+        {
+          "id": "adductor-brevis", "ja": "短内転筋", "yomi": "たんないてんきん", "en": "adductor brevis", "la": "musculus adductor brevis",
+          "parts": ["adductor brevis"], "level": 2, "xray": true,
+          "kanji": "内転する短い筋",
+          "etym": "adductor「内へ引き寄せるもの」＋ brevis「短い」",
+          "note": "長内転筋の後ろ（深く）にある三角形の筋。閉鎖神経の前枝と後枝の間にはさまれる。",
+          "origin": "恥骨下枝",
+          "insertion": "大腿骨の粗線（上部）",
+          "insertionAt": ["linea-aspera"],
+          "nerve": "閉鎖神経",
+          "action": "股関節の内転"
+        }
+      ]
+    },
+    {
+      "id": "mus-back-deep",
+      "title": "背部の深層の筋",
+      "intro": [
+        "脊柱起立筋（腸肋筋・最長筋・棘筋）は外側から内側へ3列にならぶ。その深くには、横突起から上の棘突起へ斜めに走る横突棘筋（半棘筋・多裂筋・回旋筋）がある。",
+        "これらの固有背筋はどれも脊髄神経の後枝が支配する（背中の浅い層の僧帽筋・広背筋などは前枝や副神経）。"
+      ],
+      "terms": [
+        {
+          "id": "iliocostalis", "ja": "腸肋筋", "yomi": "ちょうろくきん", "en": "iliocostalis", "la": "musculus iliocostalis",
+          "parts": ["iliocostalis *"], "level": 2,
+          "kanji": "腸骨と肋骨の間の筋",
+          "etym": "ilio-「腸骨の」＋ costalis「肋骨の」",
+          "note": "脊柱起立筋のいちばん外側の列。腰・胸・頚の3部に分かれ、肋骨角に付く。",
+          "origin": "腸骨稜・仙骨・下位の肋骨",
+          "insertion": "肋骨角・下位頚椎の横突起",
+          "insertionAt": ["angle-of-rib"],
+          "nerve": "脊髄神経の後枝",
+          "action": "脊柱の伸展・側屈"
+        },
+        {
+          "id": "longissimus", "ja": "最長筋", "yomi": "さいちょうきん", "en": "longissimus", "la": "musculus longissimus",
+          "parts": ["longissimus *"], "level": 2,
+          "kanji": "最も長い筋",
+          "etym": "longissimus「最も長い」（ラテン語 longus の最上級）",
+          "note": "脊柱起立筋の真ん中の列で、最も長く太い。胸・頚・頭の3部に分かれ、頭最長筋は乳様突起まで届く。",
+          "origin": "仙骨・腰椎の棘突起・胸椎と頚椎の横突起",
+          "insertion": "胸椎・頚椎の横突起・肋骨・乳様突起",
+          "insertionAt": ["transverse-process", "mastoid-process"],
+          "nerve": "脊髄神経の後枝",
+          "action": "脊柱の伸展・側屈（頭を後ろへ引く）"
+        },
+        {
+          "id": "spinalis", "ja": "棘筋", "yomi": "きょくきん", "en": "spinalis", "la": "musculus spinalis",
+          "parts": ["spinalis*"], "level": 2,
+          "kanji": "棘突起の間の筋",
+          "etym": "spinalis「棘突起の」",
+          "note": "脊柱起立筋のいちばん内側の列。棘突起どうしをつなぐ。胸部でよく発達する。",
+          "origin": "上位の腰椎・下位の胸椎の棘突起",
+          "insertion": "上位の胸椎の棘突起",
+          "originAt": ["spinous-process"],
+          "insertionAt": ["spinous-process"],
+          "nerve": "脊髄神経の後枝",
+          "action": "脊柱の伸展"
+        },
+        {
+          "id": "semispinalis", "ja": "半棘筋", "yomi": "はんきょくきん", "en": "semispinalis", "la": "musculus semispinalis",
+          "parts": ["semispinalis *"], "level": 2, "xray": true,
+          "kanji": "脊柱の半分ほどにある棘筋",
+          "etym": "semi-「半分」＋ spinalis「棘突起の」",
+          "note": "横突棘筋の浅い層。胸・頚・頭の3部があり、頭半棘筋はうなじの太い縦のふくらみをつくる。",
+          "origin": "胸椎・下位の頚椎の横突起",
+          "insertion": "上位の胸椎・頚椎の棘突起・後頭骨",
+          "originAt": ["transverse-process"],
+          "insertionAt": ["spinous-process"],
+          "nerve": "脊髄神経の後枝",
+          "action": "脊柱と頭の伸展・反対側への回旋"
+        },
+        {
+          "id": "multifidus", "ja": "多裂筋", "yomi": "たれつきん", "en": "multifidus", "la": "musculus multifidus",
+          "parts": ["za:multifidus *"], "level": 2, "xray": true,
+          "kanji": "多くに裂けた筋",
+          "etym": "multi-「多くの」＋ fidus「裂けた」（ラテン語 findere＝裂く）",
+          "note": "横突棘筋の真ん中の層。仙骨から頚まで、2〜4個上の棘突起へ行く短い束が重なる。腰でとくに厚く、腰椎を安定させる。腰痛の運動療法で注目される。",
+          "origin": "仙骨・腰椎の乳頭突起・胸椎の横突起・頚椎の関節突起",
+          "insertion": "2〜4個上の椎骨の棘突起",
+          "insertionAt": ["spinous-process"],
+          "nerve": "脊髄神経の後枝",
+          "action": "脊柱の安定・伸展・回旋"
+        },
+        {
+          "id": "rotatores", "ja": "回旋筋", "yomi": "かいせんきん", "en": "rotatores", "la": "musculi rotatores",
+          "parts": ["* rotator"], "level": 3, "xray": true,
+          "kanji": "背骨を回す筋",
+          "etym": "rotatores「回すもの」（ラテン語 rotare＝回す）",
+          "note": "横突棘筋のいちばん深い層。横突起から1〜2個上の椎弓へ行く短い筋で、胸部でよく発達する。",
+          "origin": "横突起",
+          "insertion": "1〜2個上の椎骨の椎弓板・棘突起の根もと",
+          "originAt": ["transverse-process"],
+          "nerve": "脊髄神経の後枝",
+          "action": "脊柱の回旋・安定"
+        },
+        {
+          "id": "splenius-cervicis", "ja": "頚板状筋", "yomi": "けいばんじょうきん", "en": "splenius cervicis", "la": "musculus splenius cervicis",
+          "parts": ["splenius cervicis"], "level": 3, "xray": true,
+          "kanji": "頚の、板のような筋",
+          "etym": "splenius ← ギリシャ語 splēnion「包帯」＋ cervicis「頚の」",
+          "note": "頭板状筋の下外側に続く筋。上位頚椎の横突起へ行く。",
+          "origin": "第3〜6胸椎の棘突起",
+          "insertion": "第1〜3頚椎の横突起",
+          "originAt": ["spinous-process"],
+          "insertionAt": ["transverse-process"],
+          "nerve": "脊髄神経の後枝",
+          "action": "頚の伸展・同じ側への回旋"
+        },
+        {
+          "id": "serratus-posterior-superior", "ja": "上後鋸筋", "yomi": "じょうこうきょきん", "en": "serratus posterior superior", "la": "musculus serratus posterior superior",
+          "parts": ["serratus posterior superior"], "level": 3, "xray": true,
+          "kanji": "上の、後ろの、のこぎりの歯のような筋",
+          "etym": "serratus「のこぎりの歯の」＋ posterior「後ろの」＋ superior「上の」",
+          "note": "菱形筋の下にある薄い筋。肋骨を引き上げて息を吸うのを助ける。",
+          "origin": "第6頚椎〜第2胸椎の棘突起",
+          "insertion": "第2〜5肋骨（肋骨角の外側）",
+          "originAt": ["spinous-process"],
+          "nerve": "肋間神経",
+          "action": "肋骨の挙上（吸気の補助）"
+        },
+        {
+          "id": "serratus-posterior-inferior", "ja": "下後鋸筋", "yomi": "かこうきょきん", "en": "serratus posterior inferior", "la": "musculus serratus posterior inferior",
+          "parts": ["serratus posterior inferior"], "level": 3, "xray": true,
+          "kanji": "下の、後ろの、のこぎりの歯のような筋",
+          "etym": "serratus「のこぎりの歯の」＋ posterior「後ろの」＋ inferior「下の」",
+          "note": "広背筋の下にある薄い筋。下の肋骨を引き下げる。",
+          "origin": "第11胸椎〜第2腰椎の棘突起",
+          "insertion": "第9〜12肋骨",
+          "originAt": ["spinous-process"],
+          "nerve": "肋間神経",
+          "action": "下位の肋骨の引き下げ"
+        }
+      ]
+    },
+    {
+      "id": "mus-neck-deep",
+      "title": "首の深層と後頭下の筋",
+      "intro": [
+        "後頭骨と環椎・軸椎の間には、頭を細かく動かす4つの後頭下筋がある。大後頭直筋・上頭斜筋・下頭斜筋の3つが囲む三角形（後頭下三角）の中を椎骨動脈が通る。"
+      ],
+      "terms": [
+        {
+          "id": "rectus-capitis-posterior-major", "ja": "大後頭直筋", "yomi": "だいこうとうちょくきん", "en": "rectus capitis posterior major", "la": "musculus rectus capitis posterior major",
+          "parts": ["rectus capitis posterior major"], "level": 3, "xray": true,
+          "kanji": "頭の後ろの、まっすぐな大きい筋",
+          "etym": "rectus「まっすぐな」＋ capitis「頭の」＋ posterior「後ろの」＋ major「大きい」",
+          "note": "軸椎の棘突起から後頭骨へ広がる後頭下筋。",
+          "origin": "軸椎の棘突起",
+          "insertion": "後頭骨の下項線の外側部",
+          "nerve": "後頭下神経",
+          "action": "頭の伸展・同じ側への回旋"
+        },
+        {
+          "id": "rectus-capitis-posterior-minor", "ja": "小後頭直筋", "yomi": "しょうこうとうちょくきん", "en": "rectus capitis posterior minor", "la": "musculus rectus capitis posterior minor",
+          "parts": ["rectus capitis posterior minor"], "level": 3, "xray": true,
+          "kanji": "頭の後ろの、まっすぐな小さい筋",
+          "etym": "rectus「まっすぐな」＋ capitis「頭の」＋ minor「小さい」",
+          "note": "環椎の後結節から後頭骨へ行く小さな筋。大後頭直筋の内側にある。",
+          "origin": "環椎の後結節",
+          "insertion": "後頭骨の下項線の内側部",
+          "nerve": "後頭下神経",
+          "action": "頭の伸展"
+        },
+        {
+          "id": "obliquus-capitis-superior", "ja": "上頭斜筋", "yomi": "じょうとうしゃきん", "en": "obliquus capitis superior", "la": "musculus obliquus capitis superior",
+          "parts": ["obliquus capitis superior"], "level": 3, "xray": true,
+          "kanji": "頭の、上の斜めの筋",
+          "etym": "obliquus「斜めの」＋ capitis「頭の」＋ superior「上の」",
+          "note": "環椎の横突起から後頭骨へ斜めに上る後頭下筋。",
+          "origin": "環椎の横突起",
+          "insertion": "後頭骨（下項線の上）",
+          "nerve": "後頭下神経",
+          "action": "頭の伸展・同じ側への側屈"
+        },
+        {
+          "id": "obliquus-capitis-inferior", "ja": "下頭斜筋", "yomi": "かとうしゃきん", "en": "obliquus capitis inferior", "la": "musculus obliquus capitis inferior",
+          "parts": ["obliquus capitis inferior"], "level": 3, "xray": true,
+          "kanji": "頭の、下の斜めの筋",
+          "etym": "obliquus「斜めの」＋ capitis「頭の」＋ inferior「下の」",
+          "note": "軸椎の棘突起から環椎の横突起へ行く。頭蓋には付かないが「頭」斜筋とよぶ。環軸関節で頭を回す。",
+          "origin": "軸椎の棘突起",
+          "insertion": "環椎の横突起",
+          "nerve": "後頭下神経",
+          "action": "頭（環椎）の同じ側への回旋"
+        },
+        {
+          "id": "posterior-scalene", "ja": "後斜角筋", "yomi": "こうしゃかくきん", "en": "posterior scalene", "enAlt": ["scalenus posterior"], "la": "musculus scalenus posterior",
+          "parts": ["scalenus posterior"], "level": 3, "xray": true,
+          "kanji": "後ろの斜角筋",
+          "etym": "posterior「後ろの」＋ scalene ← ギリシャ語 skalēnos「不等辺の（三角形）」",
+          "note": "中斜角筋の後ろにある細い斜角筋。第2肋骨へ行く。",
+          "origin": "第4〜6頚椎の横突起（後結節）",
+          "insertion": "第2肋骨",
+          "originAt": ["transverse-process"],
+          "nerve": "頚神経の前枝",
+          "action": "第2肋骨の挙上・頚の側屈"
+        },
+        {
+          "id": "sternothyroid", "ja": "胸骨甲状筋", "yomi": "きょうこつこうじょうきん", "en": "sternothyroid", "la": "musculus sternothyroideus",
+          "parts": ["sternothyroid"], "level": 2, "xray": true,
+          "kanji": "胸骨と甲状軟骨の間の筋",
+          "etym": "sterno-「胸骨の」＋ thyroid「甲状軟骨の」",
+          "note": "胸骨舌骨筋の下（深く）にある舌骨下筋。甲状腺の前をおおう。",
+          "origin": "胸骨柄の後面",
+          "insertion": "甲状軟骨の斜線",
+          "nerve": "頚神経ワナ",
+          "action": "喉頭を下げる"
+        },
+        {
+          "id": "thyrohyoid", "ja": "甲状舌骨筋", "yomi": "こうじょうぜっこつきん", "en": "thyrohyoid", "la": "musculus thyrohyoideus",
+          "parts": ["thyrohyoid"], "level": 2, "xray": true,
+          "kanji": "甲状軟骨と舌骨の間の筋",
+          "etym": "thyro-「甲状軟骨の」＋ hyoid「舌骨の」",
+          "note": "胸骨甲状筋の上に続く短い舌骨下筋。舌骨を下げ、舌骨を止めると喉頭を上げる（飲み込むとき）。",
+          "origin": "甲状軟骨の斜線",
+          "insertion": "舌骨体・大角",
+          "nerve": "第1頚神経（舌下神経に伴う）",
+          "action": "舌骨を下げる・喉頭を上げる"
+        },
+        {
+          "id": "stylohyoid", "ja": "茎突舌骨筋", "yomi": "けいとつぜっこつきん", "en": "stylohyoid", "la": "musculus stylohyoideus",
+          "parts": ["stylohyoid"], "level": 3,
+          "kanji": "茎状突起と舌骨の間の筋",
+          "etym": "stylo-「茎状突起の」＋ hyoid「舌骨の」",
+          "note": "顎二腹筋の後腹にそう細い舌骨上筋。停止の近くで2つに割れて顎二腹筋の腱を通す。",
+          "origin": "側頭骨の茎状突起",
+          "insertion": "舌骨体",
+          "originAt": ["styloid-process-of-temporal-bone"],
+          "nerve": "顔面神経",
+          "action": "舌骨を後上方へ引く"
+        },
+        {
+          "id": "geniohyoid", "ja": "オトガイ舌骨筋", "yomi": "おとがいぜっこつきん", "en": "geniohyoid", "la": "musculus geniohyoideus",
+          "parts": ["geniohyoid"], "level": 2, "xray": true,
+          "kanji": "おとがい（あご先）と舌骨の間の筋",
+          "etym": "genio-「おとがいの」（ギリシャ語 geneion＝あご）＋ hyoid「舌骨の」",
+          "note": "顎舌骨筋の上（口の底の深く）にある細い舌骨上筋。舌骨を前へ引き、飲み込むときに喉頭を前上方へ動かす。",
+          "origin": "下顎骨のオトガイ棘",
+          "insertion": "舌骨体",
+          "nerve": "第1頚神経（舌下神経に伴う）",
+          "action": "舌骨を前へ引く・下顎を下げる"
+        },
+        {
+          "id": "longus-colli", "ja": "頚長筋", "yomi": "けいちょうきん", "en": "longus colli", "la": "musculus longus colli",
+          "parts": ["*part of longus colli"], "level": 3,
+          "kanji": "頚の長い筋",
+          "etym": "longus「長い」＋ colli「頚の」",
+          "note": "頚椎の前面にはりつく椎前筋。頚の前弯を支える。むち打ちで傷む。",
+          "origin": "上位の胸椎・下位の頚椎の椎体と横突起",
+          "insertion": "上位の頚椎の椎体・環椎の前結節",
+          "nerve": "頚神経の前枝",
+          "action": "頚の屈曲"
+        },
+        {
+          "id": "longus-capitis", "ja": "頭長筋", "yomi": "とうちょうきん", "en": "longus capitis", "la": "musculus longus capitis",
+          "parts": ["longus capitis"], "level": 3, "xray": true,
+          "kanji": "頭の長い筋",
+          "etym": "longus「長い」＋ capitis「頭の」",
+          "note": "頚長筋の上外側にある椎前筋。後頭骨の底へ行き、頭を前へ曲げる。",
+          "origin": "第3〜6頚椎の横突起",
+          "insertion": "後頭骨の底部",
+          "originAt": ["transverse-process"],
+          "nerve": "頚神経の前枝",
+          "action": "頭の屈曲"
+        }
+      ]
+    },
+    {
+      "id": "mus-thorax-face",
+      "title": "胸壁と顔の筋（追加）",
+      "terms": [
+        {
+          "id": "innermost-intercostal", "ja": "最内肋間筋", "yomi": "さいないろっかんきん", "en": "innermost intercostal", "enAlt": ["innermost intercostal muscle"], "la": "musculi intercostales intimi",
+          "parts": ["innermost intercostal muscle"], "level": 3, "xray": true,
+          "kanji": "最も内側の肋間筋",
+          "etym": "innermost「最も内の」＋ intercostal「肋骨の間の」",
+          "note": "内肋間筋のさらに内側の薄い筋。内肋間筋との間を肋間動静脈・肋間神経が走る。",
+          "origin": "上位の肋骨の内面",
+          "insertion": "下位の肋骨の上縁",
+          "nerve": "肋間神経",
+          "action": "肋骨の引き下げ（呼気の補助）"
+        },
+        {
+          "id": "transversus-thoracis", "ja": "胸横筋", "yomi": "きょうおうきん", "en": "transversus thoracis", "la": "musculus transversus thoracis",
+          "parts": ["transversus thoracis"], "level": 3, "xray": true,
+          "kanji": "胸を横に走る筋",
+          "etym": "transversus「横の」＋ thoracis「胸の」",
+          "note": "胸骨の裏側（胸腔の側）から肋軟骨へ扇形に広がる薄い筋。",
+          "origin": "胸骨体の下部・剣状突起の後面",
+          "insertion": "第2〜6肋軟骨の内面",
+          "nerve": "肋間神経",
+          "action": "肋軟骨の引き下げ"
+        },
+        {
+          "id": "levatores-costarum", "ja": "肋骨挙筋", "yomi": "ろっこつきょきん", "en": "levatores costarum", "la": "musculi levatores costarum",
+          "parts": ["set of levatores costarum *"], "level": 3, "xray": true,
+          "kanji": "肋骨を持ち上げる筋",
+          "etym": "levatores「持ち上げるもの」＋ costarum「肋骨の」",
+          "note": "横突起からすぐ下（または2つ下）の肋骨へ行く小さな筋の列。",
+          "origin": "第7頚椎〜第11胸椎の横突起",
+          "insertion": "下の肋骨（肋骨結節と肋骨角の間）",
+          "originAt": ["transverse-process"],
+          "nerve": "脊髄神経の後枝",
+          "action": "肋骨の挙上"
+        },
+        {
+          "id": "pyramidalis", "ja": "錐体筋", "yomi": "すいたいきん", "en": "pyramidalis", "la": "musculus pyramidalis",
+          "parts": ["za:pyramidalis muscle"], "level": 3,
+          "kanji": "ピラミッド形の筋",
+          "etym": "pyramidalis「ピラミッド形の」",
+          "note": "腹直筋の下端の前にある小さな三角形の筋。無い人もいる。",
+          "origin": "恥骨（恥骨結合の前）",
+          "insertion": "白線（下部）",
+          "nerve": "肋下神経",
+          "action": "白線を緊張させる"
+        },
+        {
+          "id": "occipitalis", "ja": "後頭筋", "yomi": "こうとうきん", "en": "occipitalis", "la": "venter occipitalis musculi occipitofrontalis",
+          "parts": ["za:occipitalis muscle"], "level": 2,
+          "kanji": "後頭の筋",
+          "etym": "occipitalis「後頭の」（ラテン語 occiput＝後頭）",
+          "note": "後頭部の表情筋。帽状腱膜で前頭筋とつながり、まとめて後頭前頭筋とよぶ。頭皮を後ろへ引く。",
+          "origin": "後頭骨の最上項線",
+          "insertion": "帽状腱膜",
+          "nerve": "顔面神経",
+          "action": "頭皮を後ろへ引く"
+        },
+        {
+          "id": "procerus", "ja": "鼻根筋", "yomi": "びこんきん", "en": "procerus", "la": "musculus procerus",
+          "parts": ["za:procerus muscle"], "level": 3,
+          "kanji": "鼻の根もとの筋",
+          "etym": "procerus「背の高い・長い」（ラテン語）",
+          "note": "眉間から鼻の根もとにある小さな表情筋。眉間に横じわを作る（しかめっ面）。",
+          "origin": "鼻骨",
+          "insertion": "眉間の皮膚",
+          "nerve": "顔面神経",
+          "action": "眉間に横じわを作る（眉の内側を下げる）"
+        },
+        {
+          "id": "nasalis", "ja": "鼻筋", "yomi": "びきん", "en": "nasalis", "la": "musculus nasalis",
+          "parts": ["za:nasalis muscle"], "level": 3,
+          "kanji": "鼻の筋",
+          "etym": "nasalis「鼻の」（ラテン語 nasus）",
+          "note": "鼻の横の表情筋。鼻孔をせばめる横部と、鼻翼を引いて鼻孔を広げる翼部がある。",
+          "origin": "上顎骨（犬歯・切歯の上）",
+          "insertion": "鼻背の腱膜・鼻翼",
+          "nerve": "顔面神経",
+          "action": "鼻孔をせばめる・広げる"
+        },
+        {
+          "id": "zygomaticus-minor", "ja": "小頬骨筋", "yomi": "しょうきょうこつきん", "en": "zygomaticus minor", "la": "musculus zygomaticus minor",
+          "parts": ["za:zygomaticus minor muscle"], "level": 3,
+          "kanji": "頬骨から起こる小さい筋",
+          "etym": "zygomaticus「頬骨の」（ギリシャ語 zygon＝くびき）＋ minor「小さい」",
+          "note": "大頬骨筋の内側にある細い表情筋。上唇を上げる。",
+          "origin": "頬骨",
+          "insertion": "上唇",
+          "nerve": "顔面神経",
+          "action": "上唇を上げる"
+        },
+        {
+          "id": "levator-anguli-oris", "ja": "口角挙筋", "yomi": "こうかくきょきん", "en": "levator anguli oris", "la": "musculus levator anguli oris",
+          "parts": ["za:levator anguli oris"], "level": 3,
+          "kanji": "口角を持ち上げる筋",
+          "etym": "levator「持ち上げるもの」＋ anguli「角の」＋ oris「口の」",
+          "note": "上唇挙筋の下（深く）にある表情筋。口角を上げる。",
+          "origin": "上顎骨の犬歯窩",
+          "insertion": "口角",
+          "nerve": "顔面神経",
+          "action": "口角を上げる"
+        },
+        {
+          "id": "depressor-labii-inferioris", "ja": "下唇下制筋", "yomi": "かしんかせいきん", "en": "depressor labii inferioris", "la": "musculus depressor labii inferioris",
+          "parts": ["za:depressor labii inferioris"], "level": 3,
+          "kanji": "下唇を引き下げる筋",
+          "etym": "depressor「引き下げるもの」＋ labii「唇の」＋ inferioris「下の」",
+          "note": "口角下制筋の内側（深く）にある四角い表情筋。下唇を下げる。",
+          "origin": "下顎骨（オトガイ孔の下）",
+          "insertion": "下唇",
+          "nerve": "顔面神経",
+          "action": "下唇を下げる"
+        }
+      ]
+    },
+    {
+      "id": "mus-fascia",
+      "title": "筋膜・支帯と滑液包",
+      "intro": [
+        "筋は筋膜に包まれ、手首や足首では腱が浮き上がらないよう支帯という帯が押さえる。腱が骨や筋とこすれる所には、滑液の入った袋（滑液包）がある。",
+        "この系統では、筋膜・支帯・腱膜を白っぽい色で、滑液包を水色で示す。大腿筋膜・胸腰筋膜は筋を広くおおうので、ふだんは薄く見せる。"
+      ],
+      "terms": [
+        {
+          "id": "flexor-retinaculum-of-wrist", "ja": "屈筋支帯（手）", "yomi": "くっきんしたい", "en": "flexor retinaculum of wrist", "enAlt": ["transverse carpal ligament"], "la": "retinaculum musculorum flexorum manus",
+          "parts": ["flexor retinaculum of wrist"], "level": 1, "color": "#d6cdb8",
+          "kanji": "屈筋の腱を押さえる帯",
+          "etym": "flexor「屈筋の」＋ retinaculum「つなぎとめるもの」（ラテン語 retinere＝引きとめる）",
+          "note": "手根骨の前面のくぼみに橋のように渡る靱帯。下の手根管を正中神経と指の屈筋の腱が通る。ここで正中神経が圧迫されるのが手根管症候群。"
+        },
+        {
+          "id": "extensor-retinaculum-of-wrist", "ja": "伸筋支帯（手）", "yomi": "しんきんしたい", "en": "extensor retinaculum of wrist", "la": "retinaculum musculorum extensorum manus",
+          "parts": ["za:extensor retinaculum of wrist"], "level": 2, "color": "#d6cdb8",
+          "kanji": "伸筋の腱を押さえる帯",
+          "etym": "extensor「伸筋の」＋ retinaculum「つなぎとめるもの」",
+          "note": "手首の甲側で伸筋の腱を押さえる帯。下を6つの区画に分かれて腱が通る。"
+        },
+        {
+          "id": "palmar-aponeurosis", "ja": "手掌腱膜", "yomi": "しゅしょうけんまく", "en": "palmar aponeurosis", "la": "aponeurosis palmaris",
+          "parts": ["za:palmar aponeurosis"], "level": 2, "color": "#d6cdb8",
+          "kanji": "手のひらの腱の膜",
+          "etym": "palmar「手のひらの」＋ aponeurosis「腱膜」（ギリシャ語 apo-＋neuron＝腱）",
+          "note": "手のひらの皮膚のすぐ下に広がる三角形の厚い膜。長掌筋の腱が続く。縮んで指が曲がったまま伸びなくなるのがデュピュイトラン拘縮。"
+        },
+        {
+          "id": "plantar-aponeurosis", "ja": "足底腱膜", "yomi": "そくていけんまく", "en": "plantar aponeurosis", "la": "aponeurosis plantaris",
+          "parts": ["za:plantar aponeurosis"], "level": 2, "color": "#d6cdb8",
+          "kanji": "足の裏の腱の膜",
+          "etym": "plantar「足の裏の」＋ aponeurosis「腱膜」",
+          "note": "踵骨隆起から足の指の付け根へ広がる厚い膜。弓の弦のように縦のアーチを支える。踵の付着部の炎症が足底腱膜炎。"
+        },
+        {
+          "id": "superior-extensor-retinaculum", "ja": "上伸筋支帯", "yomi": "じょうしんきんしたい", "en": "superior extensor retinaculum", "la": "retinaculum musculorum extensorum superius",
+          "parts": ["za:superior extensor retinaculum of ankle"], "level": 3, "color": "#d6cdb8",
+          "kanji": "上の、伸筋の腱を押さえる帯",
+          "etym": "superior「上の」＋ extensor「伸筋の」＋ retinaculum「つなぎとめるもの」",
+          "note": "足首の少し上で脛骨と腓骨の前縁の間に渡る帯。前脛骨筋・長母趾伸筋・長趾伸筋の腱を押さえる。"
+        },
+        {
+          "id": "inferior-extensor-retinaculum", "ja": "下伸筋支帯", "yomi": "かしんきんしたい", "en": "inferior extensor retinaculum", "la": "retinaculum musculorum extensorum inferius",
+          "parts": ["za:inferior extensor retinaculum of ankle"], "level": 3, "color": "#d6cdb8",
+          "kanji": "下の、伸筋の腱を押さえる帯",
+          "etym": "inferior「下の」＋ extensor「伸筋の」＋ retinaculum「つなぎとめるもの」",
+          "note": "足首の前でY字形に渡る帯。足を背屈したときに伸筋の腱が弓の弦のように浮き上がるのを防ぐ。"
+        },
+        {
+          "id": "flexor-retinaculum-of-ankle", "ja": "屈筋支帯（足）", "yomi": "くっきんしたい", "en": "flexor retinaculum of ankle", "la": "retinaculum musculorum flexorum pedis",
+          "parts": ["za:flexor retinaculum of ankle"], "level": 2, "color": "#d6cdb8",
+          "kanji": "足首の屈筋の腱を押さえる帯",
+          "etym": "flexor「屈筋の」＋ retinaculum「つなぎとめるもの」",
+          "note": "内果と踵骨の間に渡る帯。下（足根管）を後脛骨筋・長趾屈筋・長母趾屈筋の腱と後脛骨動静脈・脛骨神経が通る（足根管症候群）。"
+        },
+        {
+          "id": "fibular-retinacula", "ja": "腓骨筋支帯", "yomi": "ひこつきんしたい", "en": "fibular retinacula", "enAlt": ["peroneal retinacula"], "la": "retinacula musculorum fibularium",
+          "parts": ["za:superior fibular retinaculum", "za:inferior fibular retinaculum"], "level": 3, "color": "#d6cdb8",
+          "kanji": "腓骨筋の腱を押さえる帯",
+          "etym": "fibular「腓骨筋の」＋ retinacula「つなぎとめるもの（複数）」",
+          "note": "外果の後ろと下で、長腓骨筋・短腓骨筋の腱を押さえる上下の帯。切れると腱が外果の前へ外れる（腓骨筋腱脱臼）。"
+        },
+        {
+          "id": "iliotibial-tract", "ja": "腸脛靱帯", "yomi": "ちょうけいじんたい", "en": "iliotibial tract", "enAlt": ["iliotibial band"], "la": "tractus iliotibialis",
+          "parts": ["iliotibial tract"], "level": 1, "color": "#d6cdb8",
+          "kanji": "腸骨と脛骨をつなぐ帯",
+          "etym": "ilio-「腸骨の」＋ tibial「脛骨の」＋ tract「帯・道」",
+          "note": "大腿筋膜の外側が厚くなった帯。大腿筋膜張筋と大殿筋が引き、脛骨の外側顆（ガーディー結節）に付く。走りすぎで膝の外側がこすれて痛む（腸脛靱帯炎＝ランナー膝）。"
+        },
+        {
+          "id": "fascia-lata", "ja": "大腿筋膜", "yomi": "だいたいきんまく", "en": "fascia lata", "la": "fascia lata",
+          "parts": ["za:fascia lata"], "level": 2, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "大腿を包む筋膜",
+          "etym": "fascia「帯・筋膜」＋ lata「広い」",
+          "note": "大腿の筋を全体に包む丈夫な筋膜。外側は厚くなって腸脛靱帯になる。"
+        },
+        {
+          "id": "thoracolumbar-fascia", "ja": "胸腰筋膜", "yomi": "きょうようきんまく", "en": "thoracolumbar fascia", "la": "fascia thoracolumbalis",
+          "parts": ["za:* layer of thoracolumbar fascia"], "level": 2, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "胸と腰の筋膜",
+          "etym": "thoraco-「胸の」＋ lumbar「腰の」＋ fascia「筋膜」",
+          "note": "腰背部で固有背筋を包む筋膜。前・中・後の3層があり、後層には広背筋が、中層・前層には腹横筋・内腹斜筋が付く。"
+        },
+        {
+          "id": "linea-alba", "ja": "白線", "yomi": "はくせん", "en": "linea alba", "la": "linea alba",
+          "parts": ["linea alba"], "level": 1, "color": "#d6cdb8",
+          "kanji": "白い線",
+          "etym": "linea「線」＋ alba「白い」",
+          "note": "左右の腹直筋の間で、剣状突起から恥骨結合まで縦に走る腱の帯。左右の腹筋の腱膜が合わさってできる。血管が少ないので開腹の切開に使う。"
+        },
+        {
+          "id": "inguinal-ligament", "ja": "鼡径靱帯", "yomi": "そけいじんたい", "en": "inguinal ligament", "la": "ligamentum inguinale",
+          "parts": ["za:inguinal ligament"], "level": 1, "color": "#d6cdb8",
+          "kanji": "鼡径部（脚の付け根）の靱帯",
+          "etym": "inguinal「鼡径の」（ラテン語 inguen＝脚の付け根）",
+          "note": "上前腸骨棘から恥骨結節へ張る帯。外腹斜筋の腱膜の下のふちが折れ返ったもの。下を大腿動静脈・大腿神経が通る。鼡径ヘルニアの目印。"
+        },
+        {
+          "id": "epicranial-aponeurosis", "ja": "帽状腱膜", "yomi": "ぼうじょうけんまく", "en": "epicranial aponeurosis", "enAlt": ["galea aponeurotica"], "la": "galea aponeurotica",
+          "parts": ["za:epicranial aponeurosis"], "level": 2, "color": "#d6cdb8",
+          "kanji": "頭を帽子のようにおおう腱膜",
+          "etym": "epi-「上」＋ cranial「頭蓋の」＋ aponeurosis「腱膜」",
+          "note": "頭頂をおおう丈夫な腱の膜。前に前頭筋、後ろに後頭筋が付く。下はゆるい結合組織で、頭皮はここで動く。"
+        },
+        {
+          "id": "subacromial-bursa", "ja": "肩峰下包", "yomi": "けんぽうかほう", "en": "subacromial bursa", "la": "bursa subacromialis",
+          "parts": ["za:subacromial bursa"], "level": 2, "xray": true, "color": "#9fc2da",
+          "kanji": "肩峰の下の滑液包",
+          "etym": "sub-「下」＋ acromial「肩峰の」＋ bursa「袋」（ラテン語＝財布）",
+          "note": "肩峰・烏口肩峰靱帯と棘上筋の腱の間にある袋。腕を上げるときに腱がなめらかにすべる。炎症で肩が痛む（肩峰下滑液包炎・インピンジメント）。"
+        },
+        {
+          "id": "subdeltoid-bursa", "ja": "三角筋下包", "yomi": "さんかくきんかほう", "en": "subdeltoid bursa", "la": "bursa subdeltoidea",
+          "parts": ["za:subdeltoid bursa"], "level": 3, "xray": true, "color": "#9fc2da",
+          "kanji": "三角筋の下の滑液包",
+          "etym": "sub-「下」＋ deltoid「三角筋の」＋ bursa「袋」",
+          "note": "三角筋と上腕骨の大結節の間の袋。肩峰下包とつながっていることが多い。"
+        },
+        {
+          "id": "suprapatellar-bursa", "ja": "膝蓋上包", "yomi": "しつがいじょうほう", "en": "suprapatellar bursa", "la": "bursa suprapatellaris",
+          "parts": ["za:suprapatellar bursa"], "level": 2, "xray": true, "color": "#9fc2da",
+          "kanji": "膝蓋骨の上の滑液包",
+          "etym": "supra-「上」＋ patellar「膝蓋骨の」＋ bursa「袋」",
+          "note": "大腿四頭筋の腱と大腿骨の間に上へ広がる袋。膝関節の中とつながっているので、膝に水がたまるとここがふくれる。"
+        },
+        {
+          "id": "prepatellar-bursa", "ja": "膝蓋前皮下包", "yomi": "しつがいぜんひかほう", "en": "prepatellar bursa", "la": "bursa subcutanea prepatellaris",
+          "parts": ["za:subcutaneous prepatellar bursa"], "level": 3, "color": "#9fc2da",
+          "kanji": "膝蓋骨の前の、皮膚の下の滑液包",
+          "etym": "pre-「前」＋ patellar「膝蓋骨の」＋ bursa「袋」",
+          "note": "膝蓋骨と皮膚の間の袋。床にひざまずく作業で炎症を起こしてふくれる。"
+        },
+        {
+          "id": "anserine-bursa", "ja": "鵞足包", "yomi": "がそくほう", "en": "anserine bursa", "la": "bursa anserina",
+          "parts": ["za:anserine bursa"], "level": 3, "xray": true, "color": "#9fc2da",
+          "kanji": "鵞足（ガチョウの足）の下の滑液包",
+          "etym": "anserine「ガチョウの」（ラテン語 anser）＋ bursa「袋」",
+          "note": "脛骨の内側で、縫工筋・薄筋・半腱様筋の腱（3本並んでガチョウの足のように見える＝鵞足）の下にある袋。"
+        },
+        {
+          "id": "trochanteric-bursa", "ja": "大殿筋の転子包", "yomi": "だいでんきんのてんしほう", "en": "trochanteric bursa", "la": "bursa trochanterica musculi glutei maximi",
+          "parts": ["za:trochanteric bursa of gluteus maximus muscle"], "level": 3, "color": "#9fc2da",
+          "kanji": "大転子の上の、大殿筋の下の滑液包",
+          "etym": "trochanteric「大転子の」＋ bursa「袋」",
+          "note": "大殿筋と大転子の間の大きな袋。炎症で太ももの付け根の外側が痛む（大転子滑液包炎）。"
+        }
+      ]
     }
   ]
 }

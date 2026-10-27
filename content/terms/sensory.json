@@ -152,6 +152,99 @@
           "note": "耳介（耳たぶを含む外に出た部分）と外耳道からなり、音を集めて鼓膜へ導く。"
         }
       ]
+    },
+    {
+      "id": "sens-ear",
+      "title": "中耳と内耳",
+      "intro": [
+        "耳は外耳（耳介・外耳道）・中耳（鼓膜・鼓室・耳小骨・耳管）・内耳（蝸牛・前庭・半規管）に分けられる。音は鼓膜を震わせ、3つの耳小骨が振動を大きくして内耳の蝸牛へ伝える。",
+        "中耳と内耳は側頭骨の中に埋もれていて小さいので、示すときは周りを半透明にする。"
+      ],
+      "terms": [
+        {
+          "id": "tympanic-membrane", "ja": "鼓膜", "yomi": "こまく", "en": "tympanic membrane", "la": "membrana tympanica",
+          "parts": ["za:tympanic membrane"], "level": 1,
+          "kanji": "鼓（つづみ）の膜",
+          "etym": "tympanic「鼓の」（ギリシャ語 tympanon＝太鼓）＋ membrane「膜」",
+          "note": "外耳道の奥で外耳と中耳を分ける、直径約1cmの薄い膜。音で震え、ツチ骨へ伝える。耳鏡で見ると光の反射（光錐）が前下に見える。"
+        },
+        {
+          "id": "malleus", "ja": "ツチ骨", "yomi": "つちこつ", "en": "malleus", "la": "malleus",
+          "parts": ["za:malleus"], "level": 1,
+          "kanji": "槌（つち）の形の骨",
+          "etym": "malleus「ハンマー・槌」（ラテン語）",
+          "note": "耳小骨のいちばん外側。柄が鼓膜に付き、頭がキヌタ骨とつながる。鼓膜張筋が付く。"
+        },
+        {
+          "id": "incus", "ja": "キヌタ骨", "yomi": "きぬたこつ", "en": "incus", "la": "incus",
+          "parts": ["za:incus"], "level": 1,
+          "kanji": "砧（きぬた＝布を打つ台）の形の骨",
+          "etym": "incus「金床（かなとこ）」（ラテン語）",
+          "note": "耳小骨の真ん中。ツチ骨とアブミ骨の間で振動を伝える。"
+        },
+        {
+          "id": "stapes", "ja": "アブミ骨", "yomi": "あぶみこつ", "en": "stapes", "la": "stapes",
+          "parts": ["za:stapes"], "level": 1,
+          "kanji": "鐙（あぶみ＝馬具の足かけ）の形の骨",
+          "etym": "stapes「あぶみ」（中世ラテン語）",
+          "note": "耳小骨のいちばん内側で、人体で最も小さい骨（約3mm）。底が内耳の前庭窓（卵円窓）にはまり、振動を内耳の液へ伝える。アブミ骨筋（顔面神経）が付く。"
+        },
+        {
+          "id": "auditory-tube", "ja": "耳管", "yomi": "じかん", "en": "auditory tube", "enAlt": ["eustachian tube", "pharyngotympanic tube"], "la": "tuba auditiva",
+          "parts": ["za:auditory tube"], "level": 1,
+          "kanji": "耳と咽頭をつなぐ管",
+          "etym": "auditory「耳の・聴覚の」＋ tube「管」",
+          "note": "中耳の鼓室と咽頭鼻部をつなぐ約3.5cmの管。飲み込むと開き、鼓膜の内外の気圧をそろえる。子どもは短く水平なので、のどの細菌が中耳へ入りやすい（中耳炎）。"
+        },
+        {
+          "id": "cochlea", "ja": "蝸牛", "yomi": "かぎゅう", "en": "cochlea", "la": "cochlea",
+          "parts": ["za:cochlea"], "level": 1,
+          "kanji": "かたつむり（蝸牛）の形",
+          "etym": "cochlea「かたつむり・巻き貝」（ラテン語）",
+          "note": "内耳の前の部分。約2回転半のらせんの管で、中のコルチ器が音の振動を神経の信号に変える。入口（基部）で高い音、先（頂）で低い音を感じる。"
+        },
+        {
+          "id": "vestibule", "ja": "前庭", "yomi": "ぜんてい", "en": "vestibule", "enAlt": ["vestibule of inner ear"], "la": "vestibulum",
+          "parts": ["za:vestibule"], "level": 2,
+          "kanji": "内耳の玄関",
+          "etym": "vestibule ← ラテン語 vestibulum「玄関・入口の間」",
+          "note": "内耳の真ん中の部屋。中の卵形嚢と球形嚢が頭の傾きと直線の加速を感じる。前に蝸牛、後ろに半規管が続く。"
+        }
+      ]
+    },
+    {
+      "id": "sens-eye-detail",
+      "title": "眼の細部",
+      "terms": [
+        {
+          "id": "ciliary-zonule", "ja": "毛様体小帯", "yomi": "もうようたいしょうたい", "en": "ciliary zonule", "enAlt": ["zonular fibres", "suspensory ligament of lens"], "la": "zonula ciliaris",
+          "parts": ["suspensory ligament of lens"], "level": 2, "xray": true,
+          "kanji": "毛様体から出る小さな帯",
+          "etym": "ciliary「毛様体の」＋ zonule「小さな帯」（ラテン語 zonula）",
+          "note": "毛様体と水晶体のふちをつなぐ細い線維の輪（チン小帯）。毛様体筋がゆるむと小帯が張って水晶体が薄くなり（遠くを見る）、縮むと小帯がゆるんで水晶体が厚くなる（近くを見る）。"
+        },
+        {
+          "id": "common-tendinous-ring", "ja": "総腱輪", "yomi": "そうけんりん", "en": "common tendinous ring", "la": "anulus tendineus communis",
+          "parts": ["common tendinous ring"], "level": 2, "xray": true,
+          "kanji": "共通の腱の輪",
+          "etym": "common「共通の」＋ tendinous「腱の」＋ ring「輪」",
+          "note": "眼窩の奥で視神経管と上眼窩裂の一部を囲む腱の輪。4つの直筋がここから起こる。中を視神経・眼動脈・動眼神経・外転神経などが通る。"
+        },
+        {
+          "id": "tarsal-plates", "ja": "瞼板", "yomi": "けんばん", "en": "tarsal plates", "enAlt": ["tarsus"], "la": "tarsi",
+          "parts": ["za:superior tarsus", "za:inferior tarsus"], "level": 2,
+          "kanji": "まぶたの板",
+          "etym": "tarsus ← ギリシャ語 tarsos「平たい板・すのこ」",
+          "note": "上下のまぶたの芯になる密な結合組織の板。中に瞼板腺（マイボーム腺）が並び、涙が蒸発しないよう脂を出す。上瞼板に上眼瞼挙筋が付く。"
+        },
+        {
+          "id": "lacrimal-canaliculus", "ja": "涙小管", "yomi": "るいしょうかん", "en": "lacrimal canaliculus", "la": "canaliculus lacrimalis",
+          "parts": ["lacrimal canaliculus"], "level": 2,
+          "kanji": "涙の小さな管",
+          "etym": "lacrimal「涙の」（ラテン語 lacrima）＋ canaliculus「小さな管」",
+          "note": "まぶたの内側の端の小さな穴（涙点）から涙嚢へ涙を運ぶ上下の細い管。涙は涙腺→眼の表面→涙点→涙小管→涙嚢→鼻涙管→下鼻道と流れる。"
+        }
+      ]
     }
   ]
 }

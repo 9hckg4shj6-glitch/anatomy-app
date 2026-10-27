@@ -12,7 +12,8 @@ import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
 export const ZA_DIR = path.join(ROOT, "data-raw/z-anatomy");
-export const ZA_FILES = ["SkeletalSystem100", "MuscularSystem100", "NervousSystem100", "VisceralSystem100", "CardioVascular41"];
+// 後ろの2つ（関節・靱帯とリンパ節）は後から足した。部品のIDが変わらないよう、新しいファイルは最後に足す
+export const ZA_FILES = ["SkeletalSystem100", "MuscularSystem100", "NervousSystem100", "VisceralSystem100", "CardioVascular41", "Joints100", "LymphoidOrgans100"];
 
 let FBXLoader = null;
 async function loader() {

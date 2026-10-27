@@ -27,9 +27,9 @@ if [ ! -d "$V3/obj" ]; then
 fi
 echo "BodyParts3D 3.0 obj files: $(ls "$V3/obj" | wc -l)"
 
-# Z-Anatomy（CC BY-SA 4.0）の FBX。BodyParts3D に無い構造を骨に合わせて取り込む（scripts/za/）。約215MB。
+# Z-Anatomy（CC BY-SA 4.0）の FBX。BodyParts3D に無い構造（靱帯・リンパ節を含む）を骨に合わせて取り込む（scripts/za/）。約230MB。
 ZA="https://raw.githubusercontent.com/LluisV/Z-Anatomy/PC-Version/Resources/Models/FBX"
 mkdir -p data-raw/z-anatomy
-for f in SkeletalSystem100 MuscularSystem100 NervousSystem100 VisceralSystem100 CardioVascular41; do
+for f in SkeletalSystem100 MuscularSystem100 NervousSystem100 VisceralSystem100 CardioVascular41 Joints100 LymphoidOrgans100; do
   [ -s "data-raw/z-anatomy/$f.fbx" ] || curl -fSL "$ZA/$f.fbx" -o "data-raw/z-anatomy/$f.fbx"
 done

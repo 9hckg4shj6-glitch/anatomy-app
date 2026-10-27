@@ -1,6 +1,7 @@
 // 内容（content/）の検査と、docs/要確認用語.md の生成。npm run build の最初に走る。
 // - 全語に日本語・読み・英語・説明があるか、ID・日本語名が重複していないか、読みがひらがなだけか
 // - 基本の用語（figure）の選択肢（foils）と関節（content/joints.json）の参照先
+// - 語根カード（content/roots.json）の形と、例の語があるか
 // - public/models/index.json が今の内容から作られているか（語を足したら npm run build:models が要る）
 // - check: true の語と、Wikidata（data-raw/wikidata.json があれば）と表記が違う語を一覧にする
 import fs from "node:fs";
@@ -136,6 +137,30 @@ for (const file of ["public/models/attachments-za.json", "content/attachments.js
   }
 }
 
+// 語根カード（content/roots.json）: ID の重複、match が正規表現として読めるか、例の語が1つ以上あるか
+const Root = z.strictObject({
+  id: z.string().regex(/^[a-z]+$/), root: z.string().min(2), match: z.string().min(2), la: z.literal(true).optional(),
+  meaning: z.string().min(1), from: z.string().min(1), note: z.string().min(5),
+});
+const rootsParsed = z.strictObject({ groups: z.array(z.strictObject({ id: z.string(), title: z.string(), roots: z.array(Root).min(1) })) })
+  .safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/roots.json"), "utf8")));
+if (!rootsParsed.success) for (const issue of rootsParsed.error.issues) errors.push(`roots.json ${issue.path.join(".")}: ${issue.message}`);
+const rootIds = new Set();
+for (const root of rootsParsed.success ? rootsParsed.data.groups.flatMap((group) => group.roots) : []) {
+  if (rootIds.has(root.id)) errors.push(`roots.json: 語根IDが重複: ${root.id}`);
+  rootIds.add(root.id);
+  let re;
+  try {
+    re = new RegExp(root.match, "i");
+  } catch (error) {
+    errors.push(`roots.json: ${root.id} の match が正規表現として読めません（${error.message}）`);
+    continue;
+  }
+  if (!terms.some((term) => [term.en, ...(term.enAlt ?? []), ...(root.la && term.la ? [term.la] : [])].some((name) => re.test(name)))) {
+    errors.push(`roots.json: ${root.id}（${root.root}）を含む語がありません`);
+  }
+}
+
 const indexFile = path.join(ROOT, "public/models/index.json");
 if (!fs.existsSync(indexFile)) errors.push("public/models/index.json がありません。npm run build:models を実行してください");
 else {
@@ -204,4 +229,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);
+console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 語根 ${rootIds.size} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);

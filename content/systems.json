@@ -1,8 +1,10 @@
 [
   { "id": "basics", "ja": "基本の用語", "color": "#8a7f6d" },
   { "id": "skeletal", "ja": "骨格系", "color": "#e9dfc9" },
+  { "id": "joints", "ja": "関節・靱帯", "color": "#b7c7cc" },
   { "id": "muscular", "ja": "筋系", "color": "#c75b4f" },
   { "id": "cardiovascular", "ja": "循環器系", "color": "#c8323c" },
+  { "id": "lymphatic", "ja": "リンパ系", "color": "#8dbb52" },
   { "id": "respiratory", "ja": "呼吸器系", "color": "#6fa8dc" },
   { "id": "digestive", "ja": "消化器系", "color": "#d9965b" },
   { "id": "urogenital", "ja": "泌尿器・生殖器系", "color": "#d4a514" },

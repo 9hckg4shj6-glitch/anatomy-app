@@ -1,0 +1,231 @@
+{
+  "system": "lymphatic",
+  "units": [
+    {
+      "id": "lymph-head-neck",
+      "title": "扁桃と頭頚部のリンパ節",
+      "intro": [
+        "組織の間の液（組織液）の一部はリンパ管に入り、リンパとして流れる。リンパはリンパ節でこされ（細菌やがん細胞を捕らえる）、最後は胸管・右リンパ本幹から左右の静脈角（内頚静脈と鎖骨下静脈の合流点）で静脈に戻る。",
+        "がんはリンパの流れにそってリンパ節へ広がる（リンパ節転移）ので、どの器官のリンパがどのリンパ節へ行くかは臨床で大切。",
+        "このアプリの3Dモデルには胸管・リンパ管が無いので、リンパ節と扁桃を示す（脾臓は循環器系、胸腺は内分泌系にある）。"
+      ],
+      "terms": [
+        {
+          "id": "palatine-tonsil", "ja": "口蓋扁桃", "yomi": "こうがいへんとう", "en": "palatine tonsil", "la": "tonsilla palatina",
+          "parts": ["za:palatine tonsil"], "level": 1,
+          "kanji": "口蓋のわきの扁桃（へんとう＝アーモンドの形）",
+          "etym": "palatine「口蓋の」＋ tonsil ← ラテン語 tonsilla「アーモンド」",
+          "note": "口を開けると見える、のどの奥の両わき（口蓋舌弓と口蓋咽頭弓の間）のリンパ組織。咽頭扁桃・舌扁桃とともにのどの入口を輪のように守る（ワルダイエルの咽頭輪）。いわゆる扁桃腺。"
+        },
+        {
+          "id": "submandibular-nodes", "ja": "顎下リンパ節", "yomi": "がっかりんぱせつ", "en": "submandibular nodes", "la": "nodi lymphoidei submandibulares",
+          "parts": ["za:submandibular nodes"], "level": 1,
+          "kanji": "下顎の下のリンパ節",
+          "etym": "sub-「下」＋ mandibular「下顎の」＋ node「節（こぶ）」",
+          "note": "顎下腺のまわりのリンパ節。顔・鼻・口唇・歯肉・舌の前部のリンパを受ける。歯の炎症ではれる。"
+        },
+        {
+          "id": "submental-nodes", "ja": "オトガイ下リンパ節", "yomi": "おとがいかりんぱせつ", "en": "submental nodes", "la": "nodi lymphoidei submentales",
+          "parts": ["za:submental nodes"], "level": 2,
+          "kanji": "おとがい（あご先）の下のリンパ節",
+          "etym": "sub-「下」＋ mental「おとがいの」（ラテン語 mentum＝あご先）",
+          "note": "あご先の下の左右の顎二腹筋前腹の間にあるリンパ節。下唇の中央・舌先・口の底のリンパを受ける。"
+        },
+        {
+          "id": "parotid-nodes", "ja": "耳下腺リンパ節", "yomi": "じかせんりんぱせつ", "en": "parotid nodes", "la": "nodi lymphoidei parotidei",
+          "parts": ["za:superficial parotid nodes", "za:intraglandular parotid nodes", "za:pre-auricular nodes"], "level": 2,
+          "kanji": "耳下腺のリンパ節",
+          "etym": "parotid「耳下腺の」（ギリシャ語 para-「わき」＋ ous, ōtos「耳」）",
+          "note": "耳の前の耳下腺の表面と中にあるリンパ節。額・側頭部・まぶた・耳の前のリンパを受ける。"
+        },
+        {
+          "id": "occipital-nodes", "ja": "後頭リンパ節", "yomi": "こうとうりんぱせつ", "en": "occipital nodes", "la": "nodi lymphoidei occipitales",
+          "parts": ["za:occipital nodes"], "level": 2,
+          "kanji": "後頭部のリンパ節",
+          "etym": "occipital「後頭の」",
+          "note": "後頭部の髪の生え際の近く、僧帽筋の付着部の上にあるリンパ節。後頭部の頭皮のリンパを受ける。風疹ではれる。"
+        },
+        {
+          "id": "mastoid-nodes", "ja": "乳突リンパ節", "yomi": "にゅうとつりんぱせつ", "en": "mastoid nodes", "enAlt": ["retro-auricular nodes"], "la": "nodi lymphoidei mastoidei",
+          "parts": ["za:mastoid nodes"], "level": 3,
+          "kanji": "乳様突起の上のリンパ節",
+          "etym": "mastoid「乳様突起の」（ギリシャ語 mastos＝乳房）",
+          "note": "耳の後ろの乳様突起の上にあるリンパ節（耳介後リンパ節）。耳の後ろと頭皮のリンパを受ける。"
+        },
+        {
+          "id": "superficial-cervical-nodes", "ja": "浅頚リンパ節", "yomi": "せんけいりんぱせつ", "en": "superficial cervical nodes", "la": "nodi lymphoidei cervicales superficiales",
+          "parts": ["za:superficial lateral cervical nodes", "za:superficial anterior cervical nodes"], "level": 2,
+          "kanji": "頚の浅い所のリンパ節",
+          "etym": "superficial「浅い」＋ cervical「頚の」",
+          "note": "外頚静脈・前頚静脈にそって皮下にあるリンパ節。耳下部・頚の皮膚のリンパを受け、深頚リンパ節へ送る。"
+        },
+        {
+          "id": "deep-cervical-nodes", "ja": "深頚リンパ節", "yomi": "しんけいりんぱせつ", "en": "deep cervical nodes", "enAlt": ["jugular nodes"], "la": "nodi lymphoidei cervicales profundi",
+          "parts": ["za:lateral superior jugular node", "za:jugulodigastric node", "za:inferior deep lateral cervical nodes", "za:anterior inferior jugular nodes"], "level": 1,
+          "kanji": "頚の深くのリンパ節",
+          "etym": "deep「深い」＋ cervical「頚の」",
+          "note": "胸鎖乳突筋の下で内頚静脈にそって縦に並ぶリンパ節の鎖。頭頚部のすべてのリンパが最後にここに集まり、頚リンパ本幹から静脈角へ行く。顎二腹筋の後腹の下の頚静脈二腹筋リンパ節は扁桃のリンパを受ける。"
+        },
+        {
+          "id": "supraclavicular-nodes", "ja": "鎖骨上リンパ節", "yomi": "さこつじょうりんぱせつ", "en": "supraclavicular nodes", "la": "nodi lymphoidei supraclaviculares",
+          "parts": ["za:supraclavicular nodes"], "level": 1,
+          "kanji": "鎖骨の上のリンパ節",
+          "etym": "supra-「上」＋ clavicular「鎖骨の」",
+          "note": "鎖骨の上のくぼみにある深頚リンパ節の下端。左のこのリンパ節は胸管の近くにあり、胃がんなど腹のがんが転移してはれることがある（ウィルヒョウのリンパ節）。"
+        },
+        {
+          "id": "retropharyngeal-nodes", "ja": "咽頭後リンパ節", "yomi": "いんとうこうりんぱせつ", "en": "retropharyngeal nodes", "la": "nodi lymphoidei retropharyngeales",
+          "parts": ["za:retropharyngeal nodes"], "level": 3,
+          "kanji": "咽頭の後ろのリンパ節",
+          "etym": "retro-「後ろ」＋ pharyngeal「咽頭の」",
+          "note": "咽頭の後ろの壁と頚椎の間にあるリンパ節。鼻腔・咽頭・中耳のリンパを受ける。"
+        }
+      ]
+    },
+    {
+      "id": "lymph-thorax-arm",
+      "title": "胸部と上肢のリンパ節",
+      "terms": [
+        {
+          "id": "axillary-nodes", "ja": "腋窩リンパ節", "yomi": "えきかりんぱせつ", "en": "axillary nodes", "la": "nodi lymphoidei axillares",
+          "parts": ["za:anterior axillary nodes", "za:lateral axillary nodes", "za:posterior axillary nodes", "za:central axillary nodes", "za:apical axillary nodes"], "level": 1,
+          "kanji": "腋窩（わきの下）のリンパ節",
+          "etym": "axillary「腋窩の」（ラテン語 axilla＝わきの下）",
+          "note": "わきの下の脂肪の中にある20〜30個のリンパ節。前（胸筋）・外側（上腕）・後（肩甲下）・中心・上（尖）の5群に分かれる。上肢と乳房のリンパの大部分を受けるので、乳がんの手術で調べる（センチネルリンパ節）。"
+        },
+        {
+          "id": "infraclavicular-nodes", "ja": "鎖骨下リンパ節", "yomi": "さこつかりんぱせつ", "en": "infraclavicular nodes", "la": "nodi lymphoidei infraclaviculares",
+          "parts": ["za:infraclavicular nodes"], "level": 3,
+          "kanji": "鎖骨の下のリンパ節",
+          "etym": "infra-「下」＋ clavicular「鎖骨の」",
+          "note": "鎖骨の下で、三角筋と大胸筋の間の溝（三角筋胸筋三角）にあるリンパ節。橈側皮静脈にそうリンパを受ける。"
+        },
+        {
+          "id": "interpectoral-nodes", "ja": "胸筋間リンパ節", "yomi": "きょうきんかんりんぱせつ", "en": "interpectoral nodes", "la": "nodi lymphoidei interpectorales",
+          "parts": ["za:interpectoral nodes"], "level": 3,
+          "kanji": "胸の筋の間のリンパ節",
+          "etym": "inter-「間」＋ pectoral「胸筋の」",
+          "note": "大胸筋と小胸筋の間にあるリンパ節（ロッテルのリンパ節）。乳房の深くのリンパを受ける。"
+        },
+        {
+          "id": "cubital-nodes", "ja": "肘リンパ節", "yomi": "ちゅうりんぱせつ", "en": "cubital nodes", "la": "nodi lymphoidei cubitales",
+          "parts": ["za:cubital nodes", "za:supratrochlear nodes"], "level": 2,
+          "kanji": "肘のリンパ節",
+          "etym": "cubital「肘の」（ラテン語 cubitus＝肘）",
+          "note": "肘の内側、上腕骨の内側上顆の上で尺側皮静脈にそうリンパ節（滑車上リンパ節）。手と前腕の小指側のリンパを受ける。"
+        },
+        {
+          "id": "parasternal-nodes", "ja": "胸骨傍リンパ節", "yomi": "きょうこつぼうりんぱせつ", "en": "parasternal nodes", "la": "nodi lymphoidei parasternales",
+          "parts": ["za:parasternal nodes"], "level": 2,
+          "kanji": "胸骨のわきのリンパ節",
+          "etym": "para-「わき」＋ sternal「胸骨の」",
+          "note": "胸骨のわきの裏で内胸動静脈にそって並ぶリンパ節。乳房の内側半分と前胸壁のリンパを受ける。"
+        },
+        {
+          "id": "tracheobronchial-nodes", "ja": "気管気管支リンパ節", "yomi": "きかんきかんしりんぱせつ", "en": "tracheobronchial nodes", "la": "nodi lymphoidei tracheobronchiales",
+          "parts": ["za:superior tracheobronchial nodes", "za:inferior tracheobronchial nodes"], "level": 2,
+          "kanji": "気管と気管支の間のリンパ節",
+          "etym": "tracheo-「気管の」＋ bronchial「気管支の」",
+          "note": "気管が左右の主気管支に分かれる所のまわりのリンパ節。下気管気管支リンパ節は気管分岐部の下にある（気管分岐部リンパ節）。肺のリンパは肺門のリンパ節からここへ集まる。"
+        },
+        {
+          "id": "paratracheal-nodes", "ja": "気管傍リンパ節", "yomi": "きかんぼうりんぱせつ", "en": "paratracheal nodes", "la": "nodi lymphoidei paratracheales",
+          "parts": ["za:paratracheal thoracic nodes", "za:paratracheal cervical nodes"], "level": 2,
+          "kanji": "気管のわきのリンパ節",
+          "etym": "para-「わき」＋ tracheal「気管の」",
+          "note": "気管の両わきに縦に並ぶリンパ節。気管・食道・甲状腺と、肺から上ってくるリンパを受ける。左は反回神経にそう。"
+        },
+        {
+          "id": "intrapulmonary-nodes", "ja": "肺内リンパ節", "yomi": "はいないりんぱせつ", "en": "intrapulmonary nodes", "la": "nodi lymphoidei intrapulmonales",
+          "parts": ["za:intrapulmonary nodes"], "level": 3,
+          "kanji": "肺の中のリンパ節",
+          "etym": "intra-「中」＋ pulmonary「肺の」",
+          "note": "肺の中で気管支の分かれ目にそうリンパ節。肺のリンパはここから肺門（気管支肺リンパ節）へ流れる。"
+        },
+        {
+          "id": "intercostal-nodes", "ja": "肋間リンパ節", "yomi": "ろっかんりんぱせつ", "en": "intercostal nodes", "la": "nodi lymphoidei intercostales",
+          "parts": ["za:intercostal nodes"], "level": 3,
+          "kanji": "肋骨の間のリンパ節",
+          "etym": "inter-「間」＋ costal「肋骨の」",
+          "note": "肋骨頭の近くの肋間にあるリンパ節。胸壁の後ろと胸膜のリンパを受ける。"
+        }
+      ]
+    },
+    {
+      "id": "lymph-abdomen-leg",
+      "title": "腹部・骨盤と下肢のリンパ節",
+      "terms": [
+        {
+          "id": "celiac-nodes", "ja": "腹腔リンパ節", "yomi": "ふくくうりんぱせつ", "en": "celiac nodes", "enAlt": ["coeliac nodes"], "la": "nodi lymphoidei coeliaci",
+          "parts": ["za:coeliac nodes"], "level": 1,
+          "kanji": "腹腔動脈のまわりのリンパ節",
+          "etym": "celiac「腹の・腹腔動脈の」（ギリシャ語 koilia＝腹）",
+          "note": "腹腔動脈の根もとのまわりのリンパ節。胃・十二指腸・肝臓・膵臓・脾臓のリンパが最後に集まる。"
+        },
+        {
+          "id": "gastric-nodes", "ja": "胃リンパ節", "yomi": "いりんぱせつ", "en": "gastric nodes", "la": "nodi lymphoidei gastrici",
+          "parts": ["za:gastric nodes", "za:gastro-omental nodes", "za:(subpyloric nodes)", "za:(suprapyloric node)", "za:(retropyloric nodes)"], "level": 2,
+          "kanji": "胃のまわりのリンパ節",
+          "etym": "gastric「胃の」（ギリシャ語 gastēr）",
+          "note": "胃の小弯・大弯にそう動脈（胃動脈・胃大網動脈）と幽門のまわりに並ぶリンパ節。胃がんの手術ではこれらを動脈ごと取り除く（リンパ節郭清）。"
+        },
+        {
+          "id": "superior-mesenteric-nodes", "ja": "上腸間膜リンパ節", "yomi": "じょうちょうかんまくりんぱせつ", "en": "superior mesenteric nodes", "la": "nodi lymphoidei mesenterici superiores",
+          "parts": ["za:central superior mesenteric nodes", "za:juxta-intestinal mesenteric nodes", "za:paracolic superior mesenteric nodes", "za:ileocolic nodes", "za:middle colic nodes"], "level": 2,
+          "kanji": "上腸間膜動脈のまわりのリンパ節",
+          "etym": "superior「上の」＋ mesenteric「腸間膜の」",
+          "note": "腸間膜の中で上腸間膜動脈とその枝にそう100〜200個のリンパ節。小腸から横行結腸までのリンパを受ける。小腸のリンパ（乳び）は脂肪を運ぶ。"
+        },
+        {
+          "id": "lumbar-nodes", "ja": "腰リンパ節", "yomi": "ようりんぱせつ", "en": "lumbar nodes", "la": "nodi lymphoidei lumbales",
+          "parts": ["za:lateral aortic nodes", "za:pre-aortic nodes", "za:retro-aortic nodes", "za:lateral caval nodes", "za:precaval nodes", "za:retrocaval nodes", "za:intermediate lumbar nodes"], "level": 1,
+          "kanji": "腰の（大動脈のまわりの）リンパ節",
+          "etym": "lumbar「腰の」",
+          "note": "腹大動脈と下大静脈のまわりに並ぶリンパ節。下肢・骨盤のリンパと、腎臓・副腎・精巣（卵巣）のリンパを受け、腰リンパ本幹から乳び槽・胸管へ送る。精巣がんはまずここへ転移する。"
+        },
+        {
+          "id": "common-iliac-nodes", "ja": "総腸骨リンパ節", "yomi": "そうちょうこつりんぱせつ", "en": "common iliac nodes", "la": "nodi lymphoidei iliaci communes",
+          "parts": ["za:lateral common iliac nodes", "za:intermediate common iliac nodes", "za:medial common iliac nodes", "za:subaortic nodes"], "level": 2,
+          "kanji": "総腸骨動脈のまわりのリンパ節",
+          "etym": "common「共通の」＋ iliac「腸骨の」",
+          "note": "総腸骨動静脈にそうリンパ節。外腸骨・内腸骨リンパ節からのリンパを集めて腰リンパ節へ送る。"
+        },
+        {
+          "id": "external-iliac-nodes", "ja": "外腸骨リンパ節", "yomi": "がいちょうこつりんぱせつ", "en": "external iliac nodes", "la": "nodi lymphoidei iliaci externi",
+          "parts": ["za:medial external iliac nodes", "za:intermediate external iliac nodes", "za:(medial lacunar node)", "za:(intermediate lacunar node)", "za:(lateral lacunar node)"], "level": 2,
+          "kanji": "外腸骨動脈のまわりのリンパ節",
+          "etym": "external「外の」＋ iliac「腸骨の」",
+          "note": "外腸骨動静脈にそうリンパ節。鼡径リンパ節からのリンパと、膀胱・子宮頚部などのリンパを受ける。"
+        },
+        {
+          "id": "internal-iliac-nodes", "ja": "内腸骨リンパ節", "yomi": "ないちょうこつりんぱせつ", "en": "internal iliac nodes", "la": "nodi lymphoidei iliaci interni",
+          "parts": ["za:obturator nodes", "za:superior gluteal nodes", "za:inferior gluteal nodes", "za:lateral sacral nodes"], "level": 2,
+          "kanji": "内腸骨動脈のまわりのリンパ節",
+          "etym": "internal「内の」＋ iliac「腸骨の」",
+          "note": "内腸骨動脈とその枝（閉鎖・殿・仙骨の動脈）にそうリンパ節。骨盤の器官（直腸・膀胱・前立腺・子宮）と殿部のリンパを受ける。"
+        },
+        {
+          "id": "superficial-inguinal-nodes", "ja": "浅鼡径リンパ節", "yomi": "せんそけいりんぱせつ", "en": "superficial inguinal nodes", "la": "nodi lymphoidei inguinales superficiales",
+          "parts": ["za:inferior superficial inguinal nodes", "za:superomedial superficial inguinal nodes", "za:superolateral superficial inguinal nodes"], "level": 1,
+          "kanji": "鼡径部の浅い所のリンパ節",
+          "etym": "superficial「浅い」＋ inguinal「鼡径の」",
+          "note": "脚の付け根の皮下で、鼡径靱帯の下と大伏在静脈の終わりのまわりに並ぶリンパ節。下肢の浅い所・外陰部・肛門の下部・へそより下の腹壁と殿部のリンパを受ける。触ってわかる。"
+        },
+        {
+          "id": "deep-inguinal-nodes", "ja": "深鼡径リンパ節", "yomi": "しんそけいりんぱせつ", "en": "deep inguinal nodes", "la": "nodi lymphoidei inguinales profundi",
+          "parts": ["za:(intermediate deep inguinal node)", "za:(proximal deep inguinal node)"], "level": 2,
+          "kanji": "鼡径部の深くのリンパ節",
+          "etym": "deep「深い」＋ inguinal「鼡径の」",
+          "note": "大腿静脈の内側にそう1〜3個のリンパ節。いちばん上は大腿輪にあり（ローゼンミュラーのリンパ節）、外腸骨リンパ節へ続く。"
+        },
+        {
+          "id": "popliteal-nodes", "ja": "膝窩リンパ節", "yomi": "しっかりんぱせつ", "en": "popliteal nodes", "la": "nodi lymphoidei poplitei",
+          "parts": ["za:superficial popliteal nodes", "za:deep popliteal nodes"], "level": 2,
+          "kanji": "膝窩（膝の裏）のリンパ節",
+          "etym": "popliteal「膝窩の」",
+          "note": "膝の裏の脂肪の中にあるリンパ節。小伏在静脈にそう足の外側と、下腿の深くのリンパを受ける。"
+        }
+      ]
+    }
+  ]
+}

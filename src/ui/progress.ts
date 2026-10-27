@@ -1,6 +1,8 @@
+import { exportBackup, importBackup, isBackup } from "../backup";
 import { systems, termById, terms } from "../content";
 import { db, type StoredSchedule } from "../db";
 import { h } from "../dom";
+import { rootKey, roots } from "../roots";
 import { termMastery } from "../study";
 import { sceneFor, type AppContext } from "./context";
 
@@ -57,7 +59,7 @@ export async function progress(ctx: AppContext): Promise<void> {
           h("td", {}, system.ja),
           h("td", {}, `${list.filter((term) => learnedIds.has(term.id)).length} / ${list.length}`),
           h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
-      })),
+      }), rootRow()),
     ),
     weakest.length ? h("h3", {}, "覚え具合の低い語") : "",
     weakest.length ? h("ul", { class: "term-list" }, ...weakest.map(([id, value]) => {
@@ -67,5 +69,57 @@ export async function progress(ctx: AppContext): Promise<void> {
         onClick: () => { shown = term.system; void showSystem(); viewer.highlight([id], { isolate: !!term.xray }); viewer.focus(id, 3.2); viewer.setLabel(id, term.ja); },
       }, h("span", {}, term.ja), h("span", { class: "en" }, `${Math.round(value * 100)}%`)));
     })) : "",
+    weakest.length ? h("div", { class: "nav-row" }, h("a", { class: "primary", href: "#/drill/weak" }, "苦手な語を解く")) : "",
+    backupSection(),
+  );
+
+  function rootRow(): HTMLElement {
+    const keys = roots.map(rootKey);
+    const values = keys.filter((key) => learnedIds.has(key)).map((key) => termMastery(byTerm.get(key) ?? [])).filter((v): v is number => v != null);
+    return h("tr", {},
+      h("td", {}, "語根カード"),
+      h("td", {}, `${keys.filter((key) => learnedIds.has(key)).length} / ${keys.length}`),
+      h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
+  }
+}
+
+/** 記録の書き出し・読み込み（機種変更や、iOS の Safari とホーム画面のアプリの間で移すとき） */
+function backupSection(): HTMLElement {
+  const status = h("p", { class: "muted" });
+  const file = h("input", { type: "file", accept: "application/json,.json", hidden: true });
+  file.addEventListener("change", async () => {
+    const chosen = file.files?.[0];
+    file.value = "";
+    if (!chosen) return;
+    try {
+      const data: unknown = JSON.parse(await chosen.text());
+      if (!isBackup(data)) throw new Error("このアプリの記録のファイルではありません");
+      if (!confirm(`${data.exportedAt.slice(0, 10)} に書き出した記録を、今の記録に足し合わせます。よろしいですか？`)) return;
+      const result = await importBackup(data);
+      window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
+      status.textContent = `読み込みました（覚え具合 ${result.schedules}件・解いた記録 ${result.reviewEvents}件・学んだ語 ${result.learned}件）。`;
+    } catch (error) {
+      status.textContent = `読み込めませんでした: ${error instanceof Error ? error.message : String(error)}`;
+    }
+  });
+  const save = async () => {
+    const backup = await exportBackup();
+    const url = URL.createObjectURL(new Blob([JSON.stringify(backup)], { type: "application/json" }));
+    const link = h("a", { href: url, download: `anatomy-records-${backup.exportedAt.slice(0, 10)}.json` });
+    document.body.append(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10_000);
+    status.textContent = `書き出しました（覚え具合 ${backup.schedules.length}件・解いた記録 ${backup.reviewEvents.length}件）。`;
+  };
+  return h("section", { class: "backup" },
+    h("h3", {}, "記録の書き出し・読み込み"),
+    h("p", { class: "muted" }, "記録はこの端末の中だけにあります。機種を変えるときや、iOS の Safari とホーム画面のアプリの間で移すときは、ファイルに書き出して読み込んでください（今の記録に足し合わせます）。"),
+    h("div", { class: "nav-row" },
+      h("button", { class: "ghost-button", type: "button", onClick: () => void save() }, "書き出す"),
+      h("button", { class: "ghost-button", type: "button", onClick: () => file.click() }, "読み込む"),
+    ),
+    file,
+    status,
   );
 }

@@ -13,6 +13,15 @@ export interface SceneSpec {
   context?: string[];
   /** 皮膚の輪郭を半透明で添える */
   body?: boolean;
+  /** 添える系統の濃さ（ふだん 0.16。関節・靱帯は骨を少し濃く添える） */
+  contextOpacity?: number;
+}
+
+/** 断面: axis に垂直な面で切り、keep の側（1 なら座標が at より大きい側）を残す */
+export interface Section {
+  axis: "x" | "y" | "z";
+  at: number;
+  keep: 1 | -1;
 }
 
 const HIGHLIGHT = "#ff7a1a";
@@ -44,8 +53,13 @@ const TISSUES: Record<string, Tissue> = {
   nerve: { roughness: 0.5, clearcoat: 0.2, sheen: 0.2, bump: 0.06, grain: 0.008, mottle: 0.08, deepen: 0, fibers: true },
   vessel: { roughness: 0.4, clearcoat: 0.5, sheen: 0, bump: 0.02, grain: 0.02, mottle: 0.08, deepen: 0.3 },
   organ: { roughness: 0.45, clearcoat: 0.45, sheen: 0, bump: 0.03, grain: 0.015, mottle: 0.1, deepen: 0.2 },
+  // 靱帯・筋膜・腱膜: 白く光る密な線維（向きは形の主軸）
+  ligament: { roughness: 0.38, clearcoat: 0.4, sheen: 0.3, bump: 0.035, grain: 0.01, mottle: 0.05, deepen: 0, fibers: true },
 };
-const TISSUE_OF: Record<string, string> = { skeletal: "bone", muscular: "muscle", cardiovascular: "vessel", nervous: "organ" };
+const TISSUE_OF: Record<string, string> = { skeletal: "bone", joints: "ligament", muscular: "muscle", cardiovascular: "vessel", nervous: "organ" };
+/** 筋系の中の筋膜・支帯・腱膜と滑液包の色（content/terms/muscular.json） */
+const SHEET = "#d6cdb8";
+const BURSA = "#9fc2da";
 /** 骨格の中の軟骨（肋軟骨・椎間円板。GLB の部品に cartilage の印）の色 */
 const CARTILAGE = "#d5dfe0";
 /** 系統・語のもとの色。この色のときだけ組織の色の深め（deepen）をかける（強調の橙・青や進捗の色は変えない） */
@@ -182,6 +196,11 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
 #endif`)
     .replace("#include <normal_fragment_maps>", `#include <normal_fragment_maps>
 normal = surfacePerturb(normal, surfHeight, faceDirection);`)
+    // 断面（SURF_SECTION）: 切った所から見える形の裏側を、組織の色で平らに塗って切り口にする
+    .replace("#include <opaque_fragment>", `#ifdef SURF_SECTION
+if (!gl_FrontFacing) outgoingLight = diffuseColor.rgb * 0.72;
+#endif
+#include <opaque_fragment>`)
     .replace("#include <aomap_fragment>", `#include <aomap_fragment>
 // くぼみ・すき間を暗くする。影は描かないので、直接の光も少し弱めて奥行きを出す
 float surfOcclusion = clamp(vSurfAo, 0.0, 1.0);
@@ -219,6 +238,10 @@ export class AnatomyViewer {
   private veiled = new Set<string>();
   private active = new Set<string>();
   private context = new Set<string>();
+  private contextOpacity = 0.16;
+  /** 断面（図鑑の「断面」）。切る面は renderer の clippingPlanes で、すべての材質に効く */
+  private section: Section | null = null;
+  private readonly clipPlane = new THREE.Plane();
   private highlighted: Highlight = new Map();
   private isolate = false;
   /** 強調した語を半透明にして、下の骨（筋の起始・停止のスポット）が透けて見えるようにする */
@@ -353,6 +376,7 @@ export class AnatomyViewer {
     if (seq !== this.showSeq) return;
     this.active = new Set(spec.systems);
     this.context = new Set(context);
+    this.contextOpacity = spec.contextOpacity ?? 0.16;
     for (const [id, group] of await this.loadedGroups()) group.visible = wanted.includes(id);
     this.refresh();
   }
@@ -387,6 +411,41 @@ export class AnatomyViewer {
     this.seeThrough = false;
     this.tapMark = tap;
     this.refresh();
+  }
+
+  /** 断面で切る（null でやめる）。切り口は組織の色で平らに塗り、タップでも切り口の構造を選べる */
+  setSection(section: Section | null): void {
+    // 切る位置を動かすだけなら材質は替えない（つまみを動かしている間に何度も呼ばれる）
+    const toggled = !section !== !this.section;
+    this.section = section;
+    if (section) {
+      const normal = new THREE.Vector3().setComponent("xyz".indexOf(section.axis), section.keep);
+      this.clipPlane.set(normal, -section.at * section.keep);
+    }
+    this.renderer.clippingPlanes = section ? [this.clipPlane] : [];
+    if (toggled) this.refresh();
+    this.dirty = true;
+  }
+
+  /**
+   * 切り口を正面から見る。水平断は上側を残したとき下から見る（前が画面の上・本人の右が画面の左＝CTの向き）。
+   * 矢状断は右半分を左から（前が画面の左）、前頭断は後ろ半分を前から見る。
+   * around を渡すと、その点（語の中心）のまわり half（m）を映す。無ければ体全体の切り口を映す。
+   */
+  viewSection(animate = true, around?: Vec3, half?: number): void {
+    if (!this.section) return;
+    const { axis, at, keep } = this.section;
+    const k = "xyz".indexOf(axis);
+    const [lo, hi] = this.index.bounds;
+    const middle = around ?? ([0, 1, 2].map((i) => (lo[i] + hi[i]) / 2) as Vec3);
+    const target = new THREE.Vector3(...([0, 1, 2].map((i) => (i === k ? at : middle[i])) as Vec3));
+    const extent = half ? half / 0.55 : Math.max(...[0, 1, 2].filter((i) => i !== k).map((i) => hi[i] - lo[i]));
+    // 切った面の、取り除いた側から見る。真上・真下から見るときは、前が画面の上に来るよう少し傾ける
+    const direction = new THREE.Vector3().setComponent(k, -keep);
+    if (axis === "y") direction.z = keep * 0.02;
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    const distance = (extent * 0.55) / tan / Math.min(1, this.camera.aspect);
+    this.moveTo(target, target.clone().add(direction.normalize().multiplyScalar(distance)), animate);
   }
 
   /** 語ごとの色分け（進捗表示）。null で系統の色に戻す。 */
@@ -539,24 +598,34 @@ export class AnatomyViewer {
     pmrem.dispose();
   }
 
-  /** 部品の組織（質感）。筋の色の語（喉頭・咽頭・骨盤底の筋）と線維のある部品は筋・神経の質感にする */
+  /**
+   * 部品の組織（質感）。筋の色の語（喉頭・咽頭・骨盤底の筋）と線維のある部品は筋・神経の質感にする。
+   * 関節・靱帯の系統と筋膜・支帯は靱帯の質感、滑液包は内臓の質感（色は強調で変わるので、語のもとの色で決める）
+   */
   private tissue(mesh: THREE.Mesh, color: string): string {
     if (mesh.userData.cartilage) return "cartilage";
-    if (mesh.userData.fibers) return mesh.userData.system === "nervous" ? "nerve" : "muscle";
+    const system = mesh.userData.system as string;
+    const own = termById.get(this.elementTerms.get(mesh.name)?.[0] ?? "")?.color;
+    if (own === SHEET || system === "joints") return "ligament";
+    if (own === BURSA) return "organ";
+    if (mesh.userData.fibers) return system === "nervous" ? "nerve" : "muscle";
     if (color === "#c75b4f") return "muscle";
-    return TISSUE_OF[mesh.userData.system as string] ?? "organ";
+    return TISSUE_OF[system] ?? "organ";
   }
 
   /** 不透明の表面。spots にすると、スポット（球）の中に入る所を塗る（縁を少し濃くして範囲を分かりやすくする） */
   private surface(color: string, tissue: string, spots = false): THREE.Material {
-    return this.material(`${spots ? "spot" : "solid"}:${tissue}:${color}`, () => {
+    const cut = !!this.section;
+    return this.material(`${spots ? "spot" : "solid"}:${tissue}:${color}${cut ? ":cut" : ""}`, () => {
       const kind = TISSUES[tissue];
       const material = new THREE.MeshPhysicalMaterial({
         color, metalness: 0, roughness: kind.roughness,
         clearcoat: kind.clearcoat, clearcoatRoughness: 0.32,
         sheen: kind.sheen, sheenRoughness: 0.55, sheenColor: new THREE.Color(color).lerp(new THREE.Color("#ffffff"), 0.5),
       });
-      material.defines = { ...(kind.fibers ? { SURF_FIBERS: "" } : {}), ...(spots ? { USE_SPOTS: "" } : {}) };
+      material.defines = { ...(kind.fibers ? { SURF_FIBERS: "" } : {}), ...(spots ? { USE_SPOTS: "" } : {}), ...(cut ? { SURF_SECTION: "" } : {}) };
+      // 断面では裏側も描く（切り口から見える内側の面が切り口の色になる）
+      if (cut) material.side = THREE.DoubleSide;
       // GLB に AO・線維の値が無い形（念のため）は、さえぎる物なし・線維なしとして描く
       // （three.js は型に無いが、どの材質でもこの値を見る）
       Object.assign(material, { defaultAttributeValues: { surfaceAo: [1], surfaceFiber: [0, 0, 0] } });
@@ -576,8 +645,8 @@ export class AnatomyViewer {
   }
 
   private solid(color: string, mesh: THREE.Mesh): THREE.Material {
-    // 軟骨は、骨格の色のときだけ軟骨の色にする（強調・進捗の色はそのまま）
-    if (mesh.userData.cartilage && color === systemById.get("skeletal")?.color) color = CARTILAGE;
+    // 軟骨は、骨格・関節の色のときだけ軟骨の色にする（強調・進捗の色はそのまま）
+    if (mesh.userData.cartilage && [systemById.get("skeletal")?.color, systemById.get("joints")?.color].includes(color)) color = CARTILAGE;
     return this.surface(color, this.tissue(mesh, color));
   }
 
@@ -659,7 +728,7 @@ export class AnatomyViewer {
         const color = highlightedElements.has(elementId) ? own() : base;
         mesh.material = this.surface(system === "skeletal" ? color : pale(color), this.tissue(mesh, color), true);
       } else if (this.context.has(system)) {
-        mesh.material = this.ghost(base, 0.16);
+        mesh.material = this.ghost(base, this.contextOpacity);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
       } else if (this.veiled.has(elementId) && !highlightedElements.has(elementId)) {
@@ -872,7 +941,9 @@ export class AnatomyViewer {
         const x = clientX + radius * Math.cos((i / steps) * Math.PI * 2);
         const y = clientY + radius * Math.sin((i / steps) * Math.PI * 2);
         raycaster.setFromCamera(new THREE.Vector2(((x - rect.left) / rect.width) * 2 - 1, -((y - rect.top) / rect.height) * 2 + 1), this.camera);
-        const hit = raycaster.intersectObjects(candidates, false)[0];
+        // 断面では、切り取った側（見えていない所）に当たったものは除く
+        const hits = raycaster.intersectObjects(candidates, false);
+        const hit = this.section ? hits.find((h) => this.clipPlane.distanceToPoint(h.point) >= -1e-4) : hits[0];
         if (hit) {
           const normal = hit.face ? hit.face.normal.clone().transformDirection(hit.object.matrixWorld) : null;
           // 裏から当たった面（向きがそろっていない部品）は、見ている側へ向け直す

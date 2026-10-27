@@ -126,7 +126,7 @@ export function resolveParts(terms, elementNames, conceptElements, zaNames = new
 }
 
 // くぼみの暗さ（AO）を求めるとき、光線がさえぎられたと見る距離（m）。系統の形の大きさに合わせる
-const AO_DISTANCE = { skeletal: 0.025, muscular: 0.02, cardiovascular: 0.025, respiratory: 0.04, digestive: 0.04, urogenital: 0.03, endocrine: 0.02, nervous: 0.02, sensory: 0.012 };
+const AO_DISTANCE = { skeletal: 0.025, joints: 0.015, muscular: 0.02, cardiovascular: 0.025, lymphatic: 0.015, respiratory: 0.04, digestive: 0.04, urogenital: 0.03, endocrine: 0.02, nervous: 0.02, sensory: 0.012 };
 
 /**
  * 形を減らし（ratio・error は surface.mjs の simplify）、くぼみの暗さ（_AO）と線維の向き（_FIBER）を付けて GLB に書く。
@@ -175,9 +175,17 @@ async function writeGlb(stem, elements, { ratio, error, ao = null, fiberOf = () 
 // 形を減らすときに許すずれ（m。surface.mjs の simplify）。骨・脳は細かく、筋は形が大きくなめらかなので少し粗く
 const DETAIL = { skeletal: 0.00012, nervous: 0.00012, muscular: 0.0004 };
 
+// 筋系の中の滑液包の色（content/terms/muscular.json）。袋なので線維を描かない
+const BURSA = "#9fc2da";
+// 関節・靱帯の系統で、線維の向きを入れない語（関節包・関節円板・半月・関節唇・髄核・恥骨結合）
+const NOT_LIGAMENT = /joint$|disc|menisc|labrum|nucleus|symphysis/;
+// 軟骨の印を付ける部品（骨格の肋軟骨・椎間円板、関節・靱帯の系統の線維軟骨）
+const CARTILAGE = /cartilage|intervertebral dis[ck]|menisc|articular disc|interpubic disc|labrum|nucleus pulposus|pubic symphysis/i;
+
 /**
  * 筋線維・神経の走る向き（surface.mjs）を部品ごとに返す関数を作る。
  * 筋は起始・停止の点（付着面 attachments-za.json・content/attachments.json と、無ければ骨の部位のピン）から、神経は形の並びから求める。
+ * 靱帯・筋膜は起始・停止の無い筋と同じく形の主軸の向き。
  */
 function fibers(terms, resolved) {
   const read = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : {});
@@ -194,8 +202,10 @@ function fibers(terms, resolved) {
   // 部品を含む語のうち、いちばん細かい語の起始・停止を使う
   for (const term of [...terms].sort((a, b) => resolved.get(a.id).length - resolved.get(b.id).length)) {
     if (term.of) continue;
-    const muscle = term.system === "muscular" || term.color === "#c75b4f" || term.origin || /rectus|oblique|levator-palpebrae/.test(term.id);
-    const nerve = term.system === "nervous" && (/^nerv-(spinal|lower|cranial)$/.test(term.unit) || /nerve|chiasm|tract/.test(term.id));
+    const muscle = (term.system === "muscular" && term.color !== BURSA) || term.color === "#c75b4f" || term.origin || /rectus|oblique|levator-palpebrae/.test(term.id)
+      || (term.system === "joints" && !NOT_LIGAMENT.test(term.id));
+    const nerve = term.system === "nervous" && ((/^nerv-(spinal|lower|cranial|upper-branches|lower-branches|cranial-branches|cord-inner)$/.test(term.unit) && !/ganglion|horn|canal/.test(term.id))
+      || /nerve|chiasm|tract/.test(term.id));
     for (const id of resolved.get(term.id)) {
       if (muscle && !muscles.has(id)) muscles.set(id, { origin: points(term, "origin"), insertion: points(term, "insertion") });
       if (nerve) nerves.add(id);
@@ -326,14 +336,23 @@ async function main() {
     const ids = [...elementSystem].filter(([, s]) => s === system.id).map(([id]) => id).sort();
     const bp = ids.filter((id) => !za?.names.has(id));
     const fromZa = ids.filter((id) => za?.names.has(id));
-    if (!bp.length) continue;
-    // 骨格の中の軟骨（肋軟骨・椎間円板）は、アプリで骨と違う青みのある白にする
-    const extrasOf = (id) => (system.id === "skeletal" && /cartilage|intervertebral dis[ck]|menisc/i.test(elementNames.get(id)) ? { cartilage: true } : null);
+    if (!ids.length) continue;
+    // 骨格の中の軟骨（肋軟骨・椎間円板）と関節の線維軟骨（半月・関節円板など）は、アプリで骨と違う青みのある白にする
+    const extrasOf = (id) => (["skeletal", "joints"].includes(system.id) && CARTILAGE.test(elementNames.get(id)) ? { cartilage: true } : null);
     const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf };
-    const { url, bytes, meshes } = await writeGlb(system.id, bp.map((id) => [id, shown(id)]), shape);
-    index.systems[system.id] = { url, bytes, elements: bp.length };
-    console.log(`${url}: ${bp.length} 部品, ${(bytes / 1024 / 1024).toFixed(2)} MB`);
-    if (fromZa.length) {
+    let meshes = new Map();
+    if (bp.length) {
+      const glb = await writeGlb(system.id, bp.map((id) => [id, shown(id)]), shape);
+      meshes = glb.meshes;
+      index.systems[system.id] = { url: glb.url, bytes: glb.bytes, elements: bp.length };
+      console.log(`${glb.url}: ${bp.length} 部品, ${(glb.bytes / 1024 / 1024).toFixed(2)} MB`);
+    }
+    if (fromZa.length && !bp.length) {
+      // Z-Anatomy の形だけの系統（リンパ系）は、その GLB を系統の GLB にする（名前は -za のまま）
+      const only = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, mesh(id)]), shape);
+      index.systems[system.id] = { url: only.url, bytes: only.bytes, elements: fromZa.length };
+      console.log(`${only.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(only.bytes / 1024 / 1024).toFixed(2)} MB`);
+    } else if (fromZa.length) {
       // Z-Anatomy の形の AO は、同じ系統の BodyParts3D の形にもさえぎらせる（BodyParts3D の GLB には Z-Anatomy 由来のものを入れない）
       const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, mesh(id)]), { ...shape, occluders: [...meshes.values()] });
       index.systems[system.id].za = { url: extra.url, bytes: extra.bytes, elements: fromZa.length };

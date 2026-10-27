@@ -1,6 +1,7 @@
 import { speak } from "../audio";
 import { systemById, termById, terms, type Term } from "../content";
 import { h } from "../dom";
+import { rootsOf, splitAtRoot, type Root } from "../roots";
 import { INSERTION_COLOR, ORIGIN_COLOR } from "../viewer";
 
 /**
@@ -26,9 +27,39 @@ function linkGlossary(text: string, self: string, show: (word: Term) => void): (
   return out;
 }
 
+/** 英語名の中の語根を太字にする */
+export function markedRoot(text: string, root: Root): HTMLElement {
+  const parts = splitAtRoot(text, root);
+  return h("span", { lang: "en", class: "root-word" }, ...(parts ? [parts[0], h("b", {}, parts[1]), parts[2]] : [text]));
+}
+
+/** 英語名に含まれる語根（タップで意味）。語根カード（content/roots.json）に無ければ出さない */
+function rootChips(term: Term): HTMLElement | null {
+  const list = rootsOf(term);
+  if (!list.length) return null;
+  const box = h("div", { class: "gloss-box", hidden: true });
+  return h("div", { class: "root-chips" },
+    h("span", { class: "muted" }, "語根"),
+    ...list.map((root) => h("button", {
+      class: "gloss", type: "button", lang: "en",
+      onClick: () => {
+        box.hidden = false;
+        box.replaceChildren(
+          h("div", { class: "gloss-head" }, h("b", { lang: "en" }, root.root), h("span", {}, root.meaning),
+            h("button", { class: "gloss-close", type: "button", "aria-label": "閉じる", onClick: () => (box.hidden = true) }, "×")),
+          h("p", {}, markedRoot(term.en, root), "　", root.note),
+          h("a", { href: "#/roots" }, "語根カードの一覧へ"),
+        );
+      },
+    }, root.root)),
+    box,
+  );
+}
+
 /**
  * 語の中身（日本語・読み・英語・ラテン語・漢字の意味・語源・説明、筋なら起始・停止・支配神経・作用）。
  * 説明・作用の中の基本の用語はタップで意味を出す。open を渡すと（図鑑）、その用語を3Dで見るボタンも出す。
+ * 英語名に含まれる語根（brachi-「腕」など）もタップで意味を出す。
  */
 export function termCard(term: Term, options: { compact?: boolean; open?: (word: Term) => void } = {}): HTMLElement {
   const where = term.of ? `${termById.get(term.of)?.ja ?? ""}の部位` : systemById.get(term.system)?.ja ?? "";
@@ -55,6 +86,7 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
       h("span", { lang: "en" }, term.en),
       term.la && term.la.toLowerCase() !== term.en.toLowerCase() ? h("span", { class: "term-la", lang: "la" }, `（ラ）${term.la}`) : null,
     ),
+    options.compact ? null : rootChips(term),
     options.compact ? null : h("dl", { class: "term-notes" },
       term.kanji ? h("div", {}, h("dt", {}, "漢字"), h("dd", {}, term.kanji)) : null,
       term.etym ? h("div", {}, h("dt", {}, "語源"), h("dd", {}, term.etym)) : null,

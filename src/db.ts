@@ -3,8 +3,9 @@ import Dexie, { type EntityTable } from "dexie";
 /**
  * 語に付く問い方。locate＝位置→名前, point＝名前→位置, ja2en＝日→英, en2ja＝英→日（聞き取り）。
  * 筋にはさらに attach＝起始・停止, nerve＝支配神経, action＝作用 が付く。
+ * 語根カード（termId が "root:…"）は rootMeaning＝語根→意味, rootForm＝意味→語根。
  */
-export type Facet = "locate" | "point" | "ja2en" | "en2ja" | "attach" | "nerve" | "action";
+export type Facet = "locate" | "point" | "ja2en" | "en2ja" | "attach" | "nerve" | "action" | "rootMeaning" | "rootForm";
 
 export interface StoredSchedule {
   /** `${termId}:${facet}` */
@@ -34,8 +35,8 @@ export interface ReviewEvent {
   durationMs: number | null;
   /** その問い方を初めて解いた回か（1日の新規上限を数えるのに使う） */
   isNew: boolean;
-  /** レッスンの確認テストか、復習か。新規上限はレッスン分を数えない。 */
-  source: "lesson" | "review";
+  /** レッスンの確認テストか、復習か、範囲を選んだ演習か。新規上限は復習の分だけを数える。 */
+  source: "lesson" | "review" | "practice";
 }
 
 /** レッスンで一度見た語。復習（演習）にはここにある語だけが出る。 */
