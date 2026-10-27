@@ -78,7 +78,8 @@ function globToRegExp(pattern) {
   return new RegExp(`^${pattern.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*")}$`);
 }
 
-// 基本の用語（方向・面・運動。figure がある語）は3Dの部品を持たないので、ふだんは除く（英語の音声を作るときだけ figures: true）
+// 基本の用語（方向・面・運動。figure がある語）と局所解剖の語（region。ほかの語を組み合わせて示す）は3Dの部品を持たないので、
+// ふだんは除く（英語の音声を作るときだけ figures: true）
 export function loadTerms({ figures = false } = {}) {
   const systems = JSON.parse(fs.readFileSync(path.join(ROOT, "content/systems.json"), "utf8"));
   const terms = [];
@@ -86,7 +87,7 @@ export function loadTerms({ figures = false } = {}) {
     const file = path.join(ROOT, `content/terms/${system.id}.json`);
     if (!fs.existsSync(file)) continue;
     const data = JSON.parse(fs.readFileSync(file, "utf8"));
-    for (const unit of data.units) for (const term of unit.terms) if (figures || !term.figure) terms.push({ ...term, system: system.id, unit: unit.id });
+    for (const unit of data.units) for (const term of unit.terms) if (figures || !(term.figure || term.region)) terms.push({ ...term, system: system.id, unit: unit.id });
   }
   // 骨の部位（of がある語）は、parts を書かなければ親の骨の部品を使う（3Dでは骨の上のピンで示す）
   const byId = new Map(terms.map((term) => [term.id, term]));
@@ -238,6 +239,7 @@ function fibers(terms, resolved) {
 // BodyParts3D で1つの形になっているものを平面で2つに分ける（仙骨は尾骨まで、下行結腸は S状結腸まで1つの形）。
 // 平面の下側（normal・p < d）は別の部品 "<ID>-<slug>"（名前は name）になり、parts で name を指定して使う。
 // 上側は元のIDのまま（"sacrum" は尾骨を除いた形になる）。切り口はふさぐ。
+// sided: true は左右の部品を両方切る（平面は右側で書き、左側は x を折り返す。下側の名前に Right / Left を付ける）。
 const CUTS = [
   // 仙尾連結: 横幅が最も細くなる高さ（その上が仙骨尖、下が第1尾椎の横突起）
   { part: "sacrum", slug: "coccyx", name: "Coccyx", normal: [0, 1, 0], d: 0.818 },
@@ -247,6 +249,8 @@ const CUTS = [
   { part: "common hepatic duct", slug: "bile", name: "Bile duct", normal: [0, 1, 0], d: 1.081 },
   // 第IV区域の肝門（左右の肝管が合わさる所）より下＝方形葉。上は右葉の一部（肝鎌状間膜より右）
   { part: "hepatovenous segment iv", slug: "quadrate", name: "Quadrate lobe of liver", normal: [0, 1, 0], d: 1.103 },
+  // BodyParts3D の大腿直筋は膝蓋骨を包んで脛骨粗面まで続く（膝蓋靱帯を含む）。膝蓋骨尖（y = 0.3615）のすぐ下から下を膝蓋靱帯とする
+  { part: "rectus femoris", slug: "patlig", name: "Patellar ligament", normal: [0, 1, 0], d: 0.358, sided: true },
 ];
 
 // BodyParts3D には is-a と part-of の両方の木に同じ形が別IDで入っていることがある（脳の各部など）。
@@ -276,11 +280,14 @@ export function readElements() {
   const cutOf = new Map(); // 部品ID → [切り方, "above" | "below"]
   for (const cut of CUTS) {
     const sources = [...elementNames].filter(([, name]) => baseName(name) === cut.part);
-    if (sources.length !== 1) throw new Error(`切る部品「${cut.part}」が ${sources.length} 個あります`);
-    const [id] = sources[0];
-    cutOf.set(id, [cut, "above"]);
-    cutOf.set(`${id}-${cut.slug}`, [cut, "below", id]);
-    elementNames.set(`${id}-${cut.slug}`, cut.name);
+    if (sources.length !== (cut.sided ? 2 : 1)) throw new Error(`切る部品「${cut.part}」が ${sources.length} 個あります`);
+    for (const [id, name] of sources) {
+      const side = cut.sided ? (/\bleft\b/i.test(name) ? "Left" : "Right") : "";
+      const plane = side === "Left" ? { ...cut, normal: [-cut.normal[0], cut.normal[1], cut.normal[2]] } : cut;
+      cutOf.set(id, [plane, "above"]);
+      cutOf.set(`${id}-${cut.slug}`, [plane, "below", id]);
+      elementNames.set(`${id}-${cut.slug}`, side ? `${side} ${cut.name.toLowerCase()}` : cut.name);
+    }
   }
   const cache = new Map();
   const readMesh = (id) => {

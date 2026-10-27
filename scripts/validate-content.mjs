@@ -1,6 +1,7 @@
 // 内容（content/）の検査と、docs/要確認用語.md の生成。npm run build の最初に走る。
 // - 全語に日本語・読み・英語・説明があるか、ID・日本語名が重複していないか、読みがひらがなだけか
-// - 基本の用語（figure）の選択肢（foils）と関節（content/joints.json）の参照先
+// - 基本の用語（figure）の選択肢（foils）と関節（content/joints.json）の参照先、筋の動き（motion）の関節
+// - 局所解剖の語（region）の境界・中を通る語が、部品を持つ語か
 // - 語根カード（content/roots.json）の形と、例の語があるか
 // - public/models/index.json が今の内容から作られているか（語を足したら npm run build:models が要る）
 // - check: true の語と、Wikidata（data-raw/wikidata.json があれば）と表記が違う語を一覧にする
@@ -14,13 +15,26 @@ const errors = [];
 const word = z.string().regex(/^[a-z][a-z' -]*[a-z]$/, "英語は小文字の英字・空白・ハイフンだけ");
 const vec = z.tuple([z.number(), z.number(), z.number()]);
 const FigurePlane = z.strictObject({ axis: z.enum(["x", "y", "z"]), at: z.number() });
+const Motion = z.strictObject({ from: z.record(z.string(), z.number()).optional(), to: z.record(z.string(), z.number()), via: z.array(z.string()).min(1).optional() });
+const View = z.strictObject({ target: vec, from: vec, size: z.number().positive() });
 const Figure = z.strictObject({
   arrows: z.array(z.tuple([vec, vec])).min(1).optional(),
   plane: FigurePlane.optional(),
   guide: FigurePlane.optional(),
-  motion: z.strictObject({ from: z.record(z.string(), z.number()).optional(), to: z.record(z.string(), z.number()) }).optional(),
-  view: z.strictObject({ target: vec, from: vec, size: z.number().positive() }),
+  motion: Motion.optional(),
+  view: View,
 }).refine((figure) => figure.arrows || figure.plane || figure.motion, "figure には arrows・plane・motion のどれかが要る");
+const Region = z.strictObject({
+  bounds: z.array(z.string()).min(1),
+  contents: z.array(z.string()),
+  outline: z.array(vec).min(2).optional(),
+  open: z.literal(true).optional(),
+  section: z.strictObject({ axis: z.enum(["x", "y", "z"]), at: z.number(), keep: z.union([z.literal(1), z.literal(-1)]) }).optional(),
+  view: View,
+  boundsLabel: z.string().min(1).optional(),
+  contentsLabel: z.string().min(1).optional(),
+  prompt: z.string().min(1).optional(),
+});
 const Term = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/),
   ja: z.string().min(1),
@@ -47,7 +61,10 @@ const Term = z.strictObject({
   action: z.string().min(2).optional(),
   figure: Figure.optional(),
   foils: z.array(z.string()).min(2).optional(),
-}).refine((term) => [term.parts || term.of, term.figure].filter(Boolean).length === 1, "parts か of（3Dの部品）か figure（基本の用語の図）のどれかが要る")
+  motion: Motion.optional(),
+  region: Region.optional(),
+}).refine((term) => [term.parts || term.of, term.figure, term.region].filter(Boolean).length === 1, "parts か of（3Dの部品）か figure（基本の用語の図）か region（局所解剖）のどれかが要る")
+  .refine((term) => !term.motion || term.nerve, "motion（作用の動き）は筋の語だけに書く")
   .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける");
 const TermFile = z.strictObject({
   system: z.string(),
@@ -119,8 +136,19 @@ for (const term of terms) {
     if (!foil?.figure || foil.system !== term.system || id === term.id) errors.push(`${term.id}: foils の「${id}」は同じ系統の基本の用語ではありません`);
   }
   if (term.foils && !term.figure) errors.push(`${term.id}: foils は図のある語（figure）だけに書く`);
-  const motion = term.figure?.motion;
-  for (const id of Object.keys({ ...motion?.from, ...motion?.to })) if (!joints[id]) errors.push(`${term.id}: 関節「${id}」が content/joints.json にありません`);
+  for (const motion of [term.figure?.motion, term.motion]) {
+    for (const id of Object.keys({ ...motion?.from, ...motion?.to })) if (!joints[id]) errors.push(`${term.id}: 関節「${id}」が content/joints.json にありません`);
+  }
+  for (const id of term.motion?.via ?? []) if (!seen.get(id)?.of || !pins[id]) errors.push(`${term.id}: 帯が通る「${id}」はピンのある骨の部位ではありません`);
+  // 局所解剖: 境界・中を通る語は、部品を持つ語（骨の部位も可）。同じ語を両方に書かない
+  if (term.region) {
+    const { bounds, contents } = term.region;
+    for (const id of [...bounds, ...contents]) {
+      const member = seen.get(id);
+      if (!member || member.figure || member.region) errors.push(`${term.id}: 局所解剖の「${id}」は部品を持つ語ではありません`);
+    }
+    for (const id of bounds) if (contents.includes(id)) errors.push(`${term.id}: 「${id}」が境界と中を通る語の両方にあります`);
+  }
 }
 
 // 筋の付着面（scripts/za/attachments.mjs と scripts/pins/rules/attach.mjs が作る）。筋と骨の語IDが今の内容にあるか
@@ -165,11 +193,16 @@ const indexFile = path.join(ROOT, "public/models/index.json");
 if (!fs.existsSync(indexFile)) errors.push("public/models/index.json がありません。npm run build:models を実行してください");
 else {
   const index = JSON.parse(fs.readFileSync(indexFile, "utf8"));
-  // 基本の用語（figure）は3Dの部品を持たない
-  const stale = terms.filter((term) => !term.figure && !index.terms[term.id]?.elements.length).map((term) => term.id);
+  // 基本の用語（figure）と局所解剖（region）は3Dの部品を持たない
+  const stale = terms.filter((term) => !term.figure && !term.region && !index.terms[term.id]?.elements.length).map((term) => term.id);
   const removed = Object.keys(index.terms).filter((id) => !seen.has(id));
   if (stale.length || removed.length) {
     errors.push(`3Dモデルが内容と合っていません（未作成: ${stale.join(", ") || "なし"} / 削除済み: ${removed.join(", ") || "なし"}）。npm run build:models を実行してください`);
+  }
+  // 関節の only（動かす部品を絞る）は、動かす骨の語の部品
+  for (const [id, joint] of Object.entries(joints)) {
+    const elements = new Set(joint.moves.flatMap((bone) => index.terms[bone]?.elements ?? []));
+    for (const element of joint.only ?? []) if (!elements.has(element)) errors.push(`content/joints.json: ${id} の only の「${element}」は動かす骨の部品ではありません`);
   }
   for (const [id, system] of Object.entries(index.systems)) {
     for (const url of [system.url, system.za?.url].filter(Boolean)) {

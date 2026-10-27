@@ -481,7 +481,7 @@
           "parts": ["za:deep fibular nerve", "za:*of deep fibular nerve"], "level": 2,
           "kanji": "深い所を走る腓骨神経",
           "etym": "deep「深い」＋ fibular「腓骨の」",
-          "note": "総腓骨神経の枝。下腿の前の深くを前脛骨動脈と並んで下り、前脛骨筋など下腿の前の筋（伸筋）を動かす。母指と第2指の間の皮膚の感覚を伝える。"
+          "note": "総腓骨神経の枝。下腿の前の深くを前脛骨動脈と並んで下り、前脛骨筋など下腿の前の筋（伸筋）を動かす。母趾と第2趾の間の皮膚の感覚を伝える。"
         },
         {
           "id": "pudendal-nerve", "ja": "陰部神経", "yomi": "いんぶしんけい", "en": "pudendal nerve", "la": "nervus pudendus",
@@ -1111,6 +1111,75 @@
           "kanji": "毛様体へ行く神経の節",
           "etym": "ciliary「毛様体の」（ラテン語 cilium＝まつげ）＋ ganglion「節」",
           "note": "眼窩の奥、視神経の外側にある小さな副交感の神経節。動眼神経の副交感の線維がここで替わり、瞳孔括約筋と毛様体筋へ行く。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-lower-more",
+      "title": "下肢の皮神経と神経の枝（追加）",
+      "terms": [
+        {
+          "id": "sural-nerve", "ja": "腓腹神経", "yomi": "ひふくしんけい", "en": "sural nerve", "la": "nervus suralis",
+          "parts": ["za:sural nerve"], "level": 2,
+          "kanji": "腓腹（ふくらはぎ）の神経",
+          "etym": "sural ← ラテン語 sura「ふくらはぎ」",
+          "note": "脛骨神経の内側腓腹皮神経と、総腓骨神経からの交通枝が合わさった皮神経。小伏在静脈と並んで外果の後ろを回り、足の外側の皮膚の感覚を伝える。神経の生検に使われる。"
+        },
+        {
+          "id": "medial-sural-cutaneous-nerve", "ja": "内側腓腹皮神経", "yomi": "ないそくひふくひしんけい", "en": "medial sural cutaneous nerve", "la": "nervus cutaneus surae medialis",
+          "parts": ["za:medial sural cutaneous nerve"], "level": 3,
+          "kanji": "ふくらはぎの内側の皮膚の神経",
+          "etym": "medial「内側の」＋ sural「ふくらはぎの」＋ cutaneous「皮膚の」",
+          "note": "膝窩で脛骨神経から出て、腓腹筋の2つの頭の間を下る皮神経。ふくらはぎの中ほどで総腓骨神経からの枝と合わさり腓腹神経になる。"
+        },
+        {
+          "id": "anterior-branch-of-obturator-nerve", "ja": "閉鎖神経の前枝", "yomi": "へいさしんけいのぜんし", "en": "anterior branch of obturator nerve", "la": "ramus anterior nervi obturatorii",
+          "parts": ["za:anterior branch of obturator nerve"], "level": 3,
+          "kanji": "閉鎖神経の前の枝",
+          "etym": "anterior branch「前枝」＋ obturator「閉鎖（孔）の」",
+          "note": "閉鎖管を出た閉鎖神経のうち、短内転筋の前を下る枝。長内転筋・短内転筋・薄筋を動かし、大腿の内側の皮膚の感覚を伝える。"
+        },
+        {
+          "id": "posterior-branch-of-obturator-nerve", "ja": "閉鎖神経の後枝", "yomi": "へいさしんけいのこうし", "en": "posterior branch of obturator nerve", "la": "ramus posterior nervi obturatorii",
+          "parts": ["za:posterior branch of obturator nerve"], "level": 3,
+          "kanji": "閉鎖神経の後ろの枝",
+          "etym": "posterior branch「後枝」＋ obturator「閉鎖（孔）の」",
+          "note": "外閉鎖筋を貫いて短内転筋の後ろを下る枝。外閉鎖筋と大内転筋（の内転筋部）を動かす。"
+        },
+        {
+          "id": "medial-dorsal-cutaneous-nerve-of-foot", "ja": "内側足背皮神経", "yomi": "ないそくそくはいひしんけい", "en": "medial dorsal cutaneous nerve of foot", "la": "nervus cutaneus dorsalis medialis",
+          "parts": ["za:medial dorsal cutaneous nerve of foot"], "level": 3,
+          "kanji": "足の甲の内側の皮膚の神経",
+          "etym": "medial「内側の」＋ dorsal「背側（甲）の」＋ cutaneous「皮膚の」",
+          "note": "浅腓骨神経の2本の終枝のうち内側の枝。足の甲の内側と、母趾の内側・第2〜3趾の向かい合う側の皮膚の感覚を伝える（第1趾と第2趾の間は深腓骨神経）。"
+        },
+        {
+          "id": "intermediate-dorsal-cutaneous-nerve-of-foot", "ja": "中間足背皮神経", "yomi": "ちゅうかんそくはいひしんけい", "en": "intermediate dorsal cutaneous nerve of foot", "la": "nervus cutaneus dorsalis intermedius",
+          "parts": ["za:intermediate dorsal cutaneous nerve of foot"], "level": 3,
+          "kanji": "足の甲の中ほどの皮膚の神経",
+          "etym": "intermediate「中間の」＋ dorsal「背側（甲）の」＋ cutaneous「皮膚の」",
+          "note": "浅腓骨神経の外側の終枝。足の甲の外側寄りと、第3〜5趾の向かい合う側の皮膚の感覚を伝える。"
+        },
+        {
+          "id": "infrapatellar-branch-of-saphenous-nerve", "ja": "伏在神経の膝蓋下枝", "yomi": "ふくざいしんけいのしつがいかし", "en": "infrapatellar branch of saphenous nerve", "la": "ramus infrapatellaris nervi sapheni",
+          "parts": ["za:infrapatellar branch of saphenous nerve"], "level": 3,
+          "kanji": "伏在神経の、膝蓋骨の下へ行く枝",
+          "etym": "infra-「下」＋ patellar「膝蓋骨の」＋ branch「枝」",
+          "note": "伏在神経の枝で、縫工筋を貫いて膝の前の下へ回る。膝の前内側の皮膚の感覚を伝える。膝の手術の切開で傷つくと、膝の下がしびれる。"
+        },
+        {
+          "id": "nerve-to-quadratus-femoris", "ja": "大腿方形筋神経", "yomi": "だいたいほうけいきんしんけい", "en": "nerve to quadratus femoris", "la": "nervus musculi quadrati femoris",
+          "parts": ["za:nerve to quadratus femoris muscle"], "level": 3,
+          "kanji": "大腿方形筋へ行く神経",
+          "etym": "nerve to「〜への神経」＋ quadratus femoris「大腿方形筋」",
+          "note": "仙骨神経叢（L4〜S1）の枝。梨状筋の下から骨盤を出て、大腿方形筋と下双子筋を動かす。"
+        },
+        {
+          "id": "nerve-to-piriformis", "ja": "梨状筋神経", "yomi": "りじょうきんしんけい", "en": "nerve to piriformis", "la": "nervus musculi piriformis",
+          "parts": ["za:nerve to piriformis muscle"], "level": 3,
+          "kanji": "梨状筋へ行く神経",
+          "etym": "nerve to「〜への神経」＋ piriformis「梨の形の（筋）」",
+          "note": "仙骨神経叢（S1〜S2）の短い枝。骨盤の中で梨状筋の前面に入る。"
         }
       ]
     }

@@ -1,0 +1,214 @@
+{
+  "system": "regional",
+  "units": [
+    {
+      "id": "reg-thigh",
+      "title": "大腿の領域と通り道",
+      "intro": [
+        "局所解剖では、体の中の「場所」を、まわりを囲むもの（境界）と、そこを通るもの（内容）で覚える。このアプリでは境界をオレンジ（筋・靱帯は半透明）、通る神経・血管・筋をもとの色（神経は黄・動脈は赤・静脈は青）で示す。",
+        "脚の付け根では、鼡径靱帯の下を、外側から腸腰筋と大腿神経（筋裂孔）、大腿動脈と大腿静脈（血管裂孔）が通って、太ももの前の大腿三角に出る。大腿動静脈はそこから内転筋管を下り、内転筋腱裂孔を抜けて膝の裏（膝窩）へ回る。"
+      ],
+      "terms": [
+        {
+          "id": "femoral-triangle", "ja": "大腿三角", "yomi": "だいたいさんかく", "en": "femoral triangle", "enAlt": ["scarpa's triangle"], "la": "trigonum femorale",
+          "level": 1,
+          "kanji": "大腿の前上部の三角形の領域",
+          "etym": "femoral「大腿の」＋ triangle「三角形」。スカルパ三角ともいう",
+          "note": "鼡径靱帯・縫工筋・長内転筋で囲まれる、脚の付け根の三角形のくぼみ。外側から大腿神経・大腿動脈・大腿静脈が並び（NAV）、脈を触れたりカテーテルを入れたりする所。大伏在静脈がここで大腿静脈に注ぐ。",
+          "region": { "bounds": ["inguinal-ligament", "sartorius", "adductor-longus"], "contents": ["femoral-nerve", "femoral-artery", "femoral-vein", "deep-femoral-artery", "great-saphenous-vein"], "outline": [[-0.1255, 0.8975, 0.142], [-0.058, 0.841, 0.141], [-0.0165, 0.8025, 0.141], [-0.028, 0.72, 0.142], [-0.045, 0.63, 0.142], [-0.075, 0.73, 0.143], [-0.105, 0.83, 0.142]], "view": { "target": [-0.07, 0.76, 0.13], "from": [-0.15, 0.05, 1], "size": 0.13 } }
+        },
+        {
+          "id": "adductor-canal", "ja": "内転筋管", "yomi": "ないてんきんかん", "en": "adductor canal", "enAlt": ["hunter's canal", "subsartorial canal"], "la": "canalis adductorius",
+          "level": 2,
+          "kanji": "内転筋（長内転筋・大内転筋）に沿う管",
+          "etym": "adductor「内転筋の」＋ canal「管」。ハンター管ともいう",
+          "note": "大腿の中ほどで、前を縫工筋、外側を内側広筋、後ろを長内転筋と大内転筋に囲まれた溝。大腿三角の先から内転筋腱裂孔まで続き、大腿動脈・大腿静脈・伏在神経が通る。",
+          "region": { "bounds": ["sartorius", "vastus-medialis", "adductor-longus", "adductor-magnus"], "contents": ["femoral-artery", "femoral-vein", "saphenous-nerve", "descending-genicular-artery"], "view": { "target": [-0.05, 0.57, 0.11], "from": [0.55, 0.05, 1], "size": 0.16 } }
+        },
+        {
+          "id": "adductor-hiatus", "ja": "内転筋腱裂孔", "yomi": "ないてんきんけんれっこう", "en": "adductor hiatus", "la": "hiatus adductorius",
+          "level": 3,
+          "kanji": "内転筋の腱の間の裂け目",
+          "etym": "adductor「内転筋の」＋ hiatus「すき間」",
+          "note": "大内転筋の停止腱の間のすき間。内転筋管の出口で、ここを抜けると大腿動脈・大腿静脈は膝窩動脈・膝窩静脈と名前を変える。",
+          "region": { "bounds": ["adductor-magnus"], "contents": ["femoral-artery", "popliteal-artery", "femoral-vein", "popliteal-vein"], "outline": [[-0.0498, 0.481, 0.0869], [-0.0488, 0.477, 0.0942], [-0.0538, 0.4753, 0.1008], [-0.0618, 0.477, 0.1029], [-0.0682, 0.481, 0.0991], [-0.0692, 0.485, 0.0918], [-0.0642, 0.4867, 0.0852], [-0.0562, 0.485, 0.0831]], "view": { "target": [-0.06, 0.49, 0.09], "from": [0.8, 0.1, 0.25], "size": 0.09 } }
+        },
+        {
+          "id": "muscular-lacuna", "ja": "筋裂孔", "yomi": "きんれっこう", "en": "muscular lacuna", "enAlt": ["lacuna musculorum", "muscular space"], "la": "lacuna musculorum",
+          "level": 3,
+          "kanji": "筋が通る裂け目",
+          "etym": "muscular「筋の」＋ lacuna「すき間・くぼみ」",
+          "note": "鼡径靱帯と寛骨の間のすき間のうち外側の部分（内側の血管裂孔とは腸恥筋膜弓で分かれる）。腸腰筋・大腿神経・外側大腿皮神経が通る。",
+          "region": { "bounds": ["inguinal-ligament", "anterior-inferior-iliac-spine"], "contents": ["iliopsoas", "femoral-nerve", "lateral-femoral-cutaneous-nerve"], "outline": [[-0.1255, 0.8975, 0.142], [-0.058, 0.841, 0.141], [-0.062, 0.818, 0.11], [-0.095, 0.84, 0.118], [-0.1255, 0.8789, 0.1278]], "view": { "target": [-0.085, 0.85, 0.13], "from": [-0.2, 0.15, 1], "size": 0.08 } }
+        },
+        {
+          "id": "vascular-lacuna", "ja": "血管裂孔", "yomi": "けっかんれっこう", "en": "vascular lacuna", "enAlt": ["lacuna vasorum", "vascular space"], "la": "lacuna vasorum",
+          "level": 3,
+          "kanji": "血管が通る裂け目",
+          "etym": "vascular「血管の」＋ lacuna「すき間」",
+          "note": "鼡径靱帯と恥骨の間のすき間のうち内側の部分。外側から大腿動脈・大腿静脈が通り、いちばん内側の大腿輪（大腿管の入口）にはリンパ節がある。大腿輪から腸が出るのが大腿ヘルニア（中年以降の女性に多い）。",
+          "region": { "bounds": ["inguinal-ligament", "pecten-pubis", "pubic-tubercle"], "contents": ["femoral-artery", "femoral-vein", "deep-inguinal-nodes", "genitofemoral-nerve"], "outline": [[-0.058, 0.841, 0.141], [-0.0165, 0.8025, 0.141], [-0.0202, 0.8062, 0.1272], [-0.031, 0.8081, 0.1211], [-0.062, 0.818, 0.11]], "view": { "target": [-0.04, 0.825, 0.13], "from": [0.1, 0.15, 1], "size": 0.07 } }
+        },
+        {
+          "id": "obturator-canal", "ja": "閉鎖管", "yomi": "へいさかん", "en": "obturator canal", "la": "canalis obturatorius",
+          "level": 3,
+          "kanji": "閉鎖孔の上のすみの管",
+          "etym": "obturator「ふさぐもの（閉鎖膜）の」＋ canal「管」",
+          "note": "閉鎖孔の上のすみで、閉鎖膜がふさいでいない小さなトンネル。骨盤から大腿の内側へ、閉鎖神経・閉鎖動脈・閉鎖静脈が抜ける。",
+          "region": { "bounds": ["obturator-membrane", "superior-pubic-ramus"], "contents": ["obturator-nerve", "obturator-artery", "obturator-veins"], "outline": [[-0.0497, 0.8045, 0.0974], [-0.0494, 0.7996, 0.0954], [-0.0487, 0.7975, 0.0905], [-0.048, 0.7996, 0.0856], [-0.0477, 0.8045, 0.0836], [-0.048, 0.8094, 0.0856], [-0.0487, 0.8115, 0.0905], [-0.0494, 0.8094, 0.0954]], "view": { "target": [-0.05, 0.795, 0.09], "from": [-0.25, -0.15, 1], "size": 0.06 } }
+        }
+      ]
+    },
+    {
+      "id": "reg-gluteal-knee-ankle",
+      "title": "殿部・膝窩・足首の通り道",
+      "intro": [
+        "骨盤の後ろの大坐骨切痕・小坐骨切痕は、仙棘靱帯と仙結節靱帯で囲まれて大坐骨孔・小坐骨孔になる。大坐骨孔は梨状筋で上下に分かれ（梨状筋上孔・梨状筋下孔）、骨盤から殿部への神経・血管が通る。",
+        "膝の裏の膝窩、内くるぶしの後ろの足根管も、大きな神経と血管の通り道。"
+      ],
+      "terms": [
+        {
+          "id": "greater-sciatic-foramen", "ja": "大坐骨孔", "yomi": "だいざこっこう", "en": "greater sciatic foramen", "la": "foramen ischiadicum majus",
+          "level": 2,
+          "kanji": "坐骨のそばの大きな孔",
+          "etym": "greater「大きい」＋ sciatic「坐骨の」（ischium の変化した形）＋ foramen「孔」",
+          "note": "大坐骨切痕が仙棘靱帯と仙結節靱帯で囲まれてできる孔。梨状筋が通り、その上（梨状筋上孔）と下（梨状筋下孔）を骨盤から殿部への神経・血管が抜ける。",
+          "region": { "bounds": ["greater-sciatic-notch", "sacrospinous-ligament", "sacrotuberous-ligament"], "contents": ["piriformis", "sciatic-nerve", "superior-gluteal-nerve", "superior-gluteal-artery", "inferior-gluteal-artery", "pudendal-nerve", "internal-pudendal-artery", "posterior-femoral-cutaneous-nerve"], "outline": [[-0.0471, 0.8788, 0.0194], [-0.0785, 0.8574, 0.0548], [-0.0462, 0.8177, 0.0342], [-0.025, 0.835, 0.02], [-0.0411, 0.8605, 0.0182]], "view": { "target": [-0.055, 0.845, 0.035], "from": [-0.45, 0.15, -1], "size": 0.08 } }
+        },
+        {
+          "id": "lesser-sciatic-foramen", "ja": "小坐骨孔", "yomi": "しょうざこっこう", "en": "lesser sciatic foramen", "la": "foramen ischiadicum minus",
+          "level": 2,
+          "kanji": "坐骨のそばの小さな孔",
+          "etym": "lesser「小さい」＋ sciatic「坐骨の」＋ foramen「孔」",
+          "note": "小坐骨切痕が仙棘靱帯と仙結節靱帯で囲まれてできる孔。内閉鎖筋の腱が骨盤から出ていき、陰部神経・内陰部動脈が大坐骨孔からいったん出て、ここから入り直して会陰へ向かう。",
+          "region": { "bounds": ["lesser-sciatic-notch", "sacrospinous-ligament", "sacrotuberous-ligament"], "contents": ["obturator-internus", "pudendal-nerve", "internal-pudendal-artery"], "outline": [[-0.0462, 0.8177, 0.0342], [-0.0729, 0.7929, 0.0332], [-0.058, 0.771, 0.036], [-0.042, 0.798, 0.026]], "view": { "target": [-0.055, 0.8, 0.03], "from": [-0.35, 0.05, -1], "size": 0.065 } }
+        },
+        {
+          "id": "suprapiriform-foramen", "ja": "梨状筋上孔", "yomi": "りじょうきんじょうこう", "en": "suprapiriform foramen", "la": "foramen suprapiriforme",
+          "level": 3, "check": true,
+          "kanji": "梨状筋の上のすき間",
+          "etym": "supra-「上」＋ piriform「梨の形の（梨状筋）」＋ foramen「孔」",
+          "note": "大坐骨孔のうち梨状筋より上のすき間。上殿神経・上殿動静脈が通り、中殿筋・小殿筋・大腿筋膜張筋へ行く。",
+          "region": { "bounds": ["piriformis", "greater-sciatic-notch"], "contents": ["superior-gluteal-nerve", "superior-gluteal-artery", "superior-gluteal-veins"], "view": { "target": [-0.06, 0.855, 0.035], "from": [-0.45, 0.2, -1], "size": 0.075 }, "prompt": "オレンジ色の筋（梨状筋）のどちら側のすき間？" }
+        },
+        {
+          "id": "infrapiriform-foramen", "ja": "梨状筋下孔", "yomi": "りじょうきんかこう", "en": "infrapiriform foramen", "la": "foramen infrapiriforme",
+          "level": 3, "check": true,
+          "kanji": "梨状筋の下のすき間",
+          "etym": "infra-「下」＋ piriform「梨の形の（梨状筋）」＋ foramen「孔」",
+          "note": "大坐骨孔のうち梨状筋より下のすき間。坐骨神経・下殿神経・下殿動静脈・陰部神経・内陰部動静脈・後大腿皮神経が通る。殿部の注射は坐骨神経を避けて上外側に打つ。",
+          "region": { "bounds": ["piriformis", "sacrospinous-ligament"], "contents": ["sciatic-nerve", "inferior-gluteal-artery", "inferior-gluteal-veins", "pudendal-nerve", "internal-pudendal-artery", "posterior-femoral-cutaneous-nerve"], "view": { "target": [-0.055, 0.83, 0.035], "from": [-0.45, 0.05, -1], "size": 0.08 }, "prompt": "オレンジ色の筋（梨状筋）のどちら側のすき間？" }
+        },
+        {
+          "id": "popliteal-fossa", "ja": "膝窩", "yomi": "しっか", "en": "popliteal fossa", "la": "fossa poplitea",
+          "level": 1,
+          "kanji": "膝の裏のくぼみ",
+          "etym": "popliteal ← ラテン語 poples「膝の裏」＋ fossa「くぼみ」",
+          "note": "膝の裏のひし形のくぼみ。上は大腿二頭筋（外側）と半腱様筋・半膜様筋（内側）、下は腓腹筋の内側頭・外側頭で囲まれる。浅い所から脛骨神経・膝窩静脈・膝窩動脈の順に並び、総腓骨神経は大腿二頭筋に沿って外へ出る。",
+          "region": { "bounds": ["biceps-femoris", "semitendinosus", "semimembranosus", "gastrocnemius"], "contents": ["tibial-nerve", "common-fibular-nerve", "popliteal-vein", "popliteal-artery", "small-saphenous-vein", "popliteal-nodes"], "outline": [[-0.072, 0.475, 0.032], [-0.106, 0.385, 0.03], [-0.072, 0.315, 0.02], [-0.04, 0.385, 0.035]], "view": { "target": [-0.072, 0.395, 0.04], "from": [-0.15, 0.08, -1], "size": 0.12 } }
+        },
+        {
+          "id": "tarsal-tunnel", "ja": "足根管", "yomi": "そっこんかん", "en": "tarsal tunnel", "la": "canalis tarsi",
+          "level": 2,
+          "kanji": "足根骨のそばの管",
+          "etym": "tarsal「足根の」＋ tunnel「トンネル」",
+          "note": "内果の後ろで、屈筋支帯におおわれた通り道。前から後脛骨筋・長趾屈筋の腱、後脛骨動静脈と脛骨神経、長母趾屈筋の腱の順に通る。脛骨神経がここで圧迫されると足の裏がしびれる（足根管症候群）。",
+          "region": { "bounds": ["flexor-retinaculum-of-ankle", "medial-malleolus"], "contents": ["tibialis-posterior", "flexor-digitorum-longus", "posterior-tibial-artery", "posterior-tibial-veins", "tibial-nerve", "flexor-hallucis-longus"], "outline": [[-0.0446, 0.0056, 0.0786], [-0.04, -0.03, 0.052], [-0.049, -0.066, 0.05], [-0.0551, -0.0249, 0.0754]], "view": { "target": [-0.048, -0.025, 0.065], "from": [1, 0.15, 0.1], "size": 0.07 } }
+        }
+      ]
+    },
+    {
+      "id": "reg-compartments",
+      "title": "大腿と下腿の区画",
+      "intro": [
+        "大腿と下腿の筋は、筋間中隔・骨間膜・骨で区画に仕切られる。同じ区画の筋は同じ神経に支配され、似たはたらきをするので、区画ごとに覚えると支配神経と作用がまとめて覚えられる。",
+        "大腿：前（膝を伸ばす・大腿神経）、内側（股関節を内転する・閉鎖神経）、後ろ（膝を曲げる・坐骨神経）。下腿：前（足を背屈する・深腓骨神経）、外側（足を外反する・浅腓骨神経）、後ろ（足を底屈する・脛骨神経）。",
+        "区画は水平断（CT と同じく下から見る。前が上、本人の右が左）で示す。オレンジの線が筋間中隔。"
+      ],
+      "terms": [
+        {
+          "id": "anterior-compartment-of-thigh", "ja": "前区画（大腿）", "yomi": "ぜんくかく", "en": "anterior compartment of thigh", "la": "compartimentum femoris anterius",
+          "level": 2,
+          "kanji": "大腿の前の仕切られた部屋",
+          "etym": "anterior「前の」＋ compartment「区画」＋ thigh「大腿」",
+          "note": "大腿の前の区画（伸筋区画）。大腿四頭筋・縫工筋が入り、大腿神経が支配する。膝を伸ばし、股関節を曲げる。",
+          "region": { "bounds": ["lateral-intermuscular-septum-of-thigh", "medial-intermuscular-septum-of-thigh"], "contents": ["quadriceps-femoris", "sartorius", "femoral-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.6, "keep": 1 }, "view": { "target": [-0.075, 0.6, 0.085], "from": [0, -1, 0.02], "size": 0.1 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        },
+        {
+          "id": "medial-compartment-of-thigh", "ja": "内側区画（大腿）", "yomi": "ないそくくかく", "en": "medial compartment of thigh", "la": "compartimentum femoris mediale",
+          "level": 2,
+          "kanji": "大腿の内側の仕切られた部屋",
+          "etym": "medial「内側の」＋ compartment「区画」",
+          "note": "大腿の内側の区画（内転筋区画）。長内転筋・短内転筋・大内転筋・薄筋・外閉鎖筋（恥骨筋も）が入り、おもに閉鎖神経が支配する（恥骨筋は大腿神経、大内転筋の一部は坐骨神経も）。股関節を内転する。",
+          "region": { "bounds": ["medial-intermuscular-septum-of-thigh"], "contents": ["adductor-longus", "adductor-brevis", "adductor-magnus", "gracilis", "pectineus", "obturator-externus", "obturator-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.6, "keep": 1 }, "view": { "target": [-0.075, 0.6, 0.085], "from": [0, -1, 0.02], "size": 0.1 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        },
+        {
+          "id": "posterior-compartment-of-thigh", "ja": "後区画（大腿）", "yomi": "こうくかく", "en": "posterior compartment of thigh", "la": "compartimentum femoris posterius",
+          "level": 2,
+          "kanji": "大腿の後ろの仕切られた部屋",
+          "etym": "posterior「後ろの」＋ compartment「区画」",
+          "note": "大腿の後ろの区画（屈筋区画）。ハムストリング（大腿二頭筋・半腱様筋・半膜様筋）が入り、坐骨神経が支配する。膝を曲げ、股関節を伸ばす。",
+          "region": { "bounds": ["lateral-intermuscular-septum-of-thigh"], "contents": ["biceps-femoris", "semitendinosus", "semimembranosus", "sciatic-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.6, "keep": 1 }, "view": { "target": [-0.075, 0.6, 0.085], "from": [0, -1, 0.02], "size": 0.1 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        },
+        {
+          "id": "anterior-compartment-of-leg", "ja": "前区画（下腿）", "yomi": "ぜんくかく", "en": "anterior compartment of leg", "la": "compartimentum cruris anterius",
+          "level": 2,
+          "kanji": "下腿の前の仕切られた部屋",
+          "etym": "anterior「前の」＋ compartment「区画」＋ leg「下腿」",
+          "note": "下腿の前の区画（伸筋区画）。前脛骨筋・長趾伸筋・長母趾伸筋・第三腓骨筋が入り、深腓骨神経が支配する。足を背屈し、指を伸ばす。前脛骨動脈が通る。狭い区画で、コンパートメント症候群が最も起こりやすい。",
+          "region": { "bounds": ["anterior-intermuscular-septum-of-leg", "interosseous-membrane-of-leg"], "contents": ["tibialis-anterior", "extensor-digitorum-longus", "extensor-hallucis-longus", "fibularis-tertius", "deep-fibular-nerve", "anterior-tibial-artery"], "contentsLabel": "中の筋・神経・血管", "section": { "axis": "y", "at": 0.2, "keep": 1 }, "view": { "target": [-0.085, 0.2, 0.07], "from": [0, -1, 0.02], "size": 0.075 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        },
+        {
+          "id": "lateral-compartment-of-leg", "ja": "外側区画（下腿）", "yomi": "がいそくくかく", "en": "lateral compartment of leg", "la": "compartimentum cruris laterale",
+          "level": 2,
+          "kanji": "下腿の外側の仕切られた部屋",
+          "etym": "lateral「外側の」＋ compartment「区画」",
+          "note": "下腿の外側の区画（腓骨筋区画）。長腓骨筋・短腓骨筋が入り、浅腓骨神経が支配する。足を外反する。",
+          "region": { "bounds": ["anterior-intermuscular-septum-of-leg", "posterior-intermuscular-septum-of-leg"], "contents": ["fibularis-longus", "fibularis-brevis", "superficial-fibular-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.2, "keep": 1 }, "view": { "target": [-0.085, 0.2, 0.07], "from": [0, -1, 0.02], "size": 0.075 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        },
+        {
+          "id": "posterior-compartment-of-leg", "ja": "後区画（下腿）", "yomi": "こうくかく", "en": "posterior compartment of leg", "la": "compartimentum cruris posterius",
+          "level": 2,
+          "kanji": "下腿の後ろの仕切られた部屋",
+          "etym": "posterior「後ろの」＋ compartment「区画」",
+          "note": "下腿の後ろの区画（屈筋区画）。浅い層に下腿三頭筋・足底筋、深い層に膝窩筋・後脛骨筋・長趾屈筋・長母趾屈筋が入り、脛骨神経が支配する。足を底屈し、指を曲げる。後脛骨動脈・腓骨動脈が通る。",
+          "region": { "bounds": ["posterior-intermuscular-septum-of-leg", "interosseous-membrane-of-leg"], "contents": ["triceps-surae", "plantaris", "popliteus", "tibialis-posterior", "flexor-digitorum-longus", "flexor-hallucis-longus", "tibial-nerve", "posterior-tibial-artery", "fibular-artery"], "contentsLabel": "中の筋・神経・血管", "section": { "axis": "y", "at": 0.2, "keep": 1 }, "view": { "target": [-0.085, 0.2, 0.07], "from": [0, -1, 0.02], "size": 0.075 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        }
+      ]
+    },
+    {
+      "id": "reg-foot-arches",
+      "title": "足のアーチ（足弓）",
+      "intro": [
+        "足の骨は弓（アーチ）のように組まれ、体重を受け止めるばね・歩くときのてこになる。縦の2つのアーチ（内側・外側）と横のアーチがある。",
+        "アーチは骨の形のほか、靱帯（底側踵舟靱帯・長足底靱帯）、足底腱膜、筋（後脛骨筋・長腓骨筋・足の裏の筋）が支える。内側縦足弓が低くなったのが扁平足。"
+      ],
+      "terms": [
+        {
+          "id": "medial-longitudinal-arch", "ja": "内側縦足弓", "yomi": "ないそくじゅうそくきゅう", "en": "medial longitudinal arch of foot", "la": "arcus pedis longitudinalis pars medialis",
+          "level": 2,
+          "kanji": "足の内側の縦の弓",
+          "etym": "medial「内側の」＋ longitudinal「縦の」＋ arch「弓」",
+          "note": "踵骨・距骨・舟状骨・3つの楔状骨・第1〜3中足骨がつくる、足の内側の高いアーチ（土踏まず）。頂点は距骨頭。底側踵舟靱帯（スプリング靱帯）・足底腱膜・後脛骨筋が支える。",
+          "region": { "bounds": ["calcaneus", "talus", "navicular", "cuneiforms"], "contents": ["plantar-calcaneonavicular-ligament", "plantar-aponeurosis", "tibialis-posterior"], "boundsLabel": "つくる骨", "contentsLabel": "支えるもの", "outline": [[-0.062, -0.068, 0.045], [-0.064, -0.035, 0.075], [-0.065, -0.014, 0.1], [-0.07, -0.026, 0.13], [-0.085, -0.048, 0.165], [-0.092, -0.062, 0.19]], "open": true, "view": { "target": [-0.07, -0.035, 0.11], "from": [1, 0.1, 0.05], "size": 0.09 }, "prompt": "オレンジ色の骨と線がつくるアーチは？" }
+        },
+        {
+          "id": "lateral-longitudinal-arch", "ja": "外側縦足弓", "yomi": "がいそくじゅうそくきゅう", "en": "lateral longitudinal arch of foot", "la": "arcus pedis longitudinalis pars lateralis",
+          "level": 2,
+          "kanji": "足の外側の縦の弓",
+          "etym": "lateral「外側の」＋ longitudinal「縦の」＋ arch「弓」",
+          "note": "踵骨・立方骨・第4〜5中足骨がつくる、足の外側の低いアーチ。立つと地面に近く、体重を受ける。長足底靱帯・底側踵立方靱帯・長腓骨筋の腱が支える。",
+          "region": { "bounds": ["calcaneus", "cuboid", "tuberosity-of-fifth-metatarsal"], "contents": ["long-plantar-ligament", "plantar-calcaneocuboid-ligament", "fibularis-longus"], "boundsLabel": "つくる骨", "contentsLabel": "支えるもの", "outline": [[-0.075, -0.069, 0.045], [-0.095, -0.05, 0.09], [-0.115, -0.048, 0.12], [-0.148, -0.06, 0.146], [-0.143, -0.065, 0.16]], "open": true, "view": { "target": [-0.105, -0.045, 0.1], "from": [-1, 0.15, 0.05], "size": 0.09 }, "prompt": "オレンジ色の骨と線がつくるアーチは？" }
+        },
+        {
+          "id": "transverse-arch-of-foot", "ja": "横足弓", "yomi": "おうそくきゅう", "en": "transverse arch of foot", "la": "arcus pedis transversalis",
+          "level": 2,
+          "kanji": "足の横の弓",
+          "etym": "transverse「横の」＋ arch「弓」",
+          "note": "楔状骨・立方骨と中足骨の底がつくる横のアーチ。前の中足骨頭では平らになる。足の裏を横切る長腓骨筋の腱が下から支え、後脛骨筋・母趾内転筋の横頭も助ける。",
+          "region": { "bounds": ["cuneiforms", "cuboid"], "contents": ["fibularis-longus", "tibialis-posterior", "adductor-hallucis"], "boundsLabel": "つくる骨", "contentsLabel": "支えるもの", "outline": [[-0.068, -0.045, 0.12], [-0.08, -0.02, 0.118], [-0.092, -0.012, 0.115], [-0.104, -0.022, 0.11], [-0.114, -0.045, 0.105]], "open": true, "section": { "axis": "z", "at": 0.12, "keep": -1 }, "view": { "target": [-0.09, -0.03, 0.115], "from": [0, 0.1, 1], "size": 0.06 }, "prompt": "オレンジ色の骨と線がつくるアーチは？" }
+        }
+      ]
+    }
+  ]
+}

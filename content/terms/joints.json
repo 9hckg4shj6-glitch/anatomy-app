@@ -504,6 +504,96 @@
           "note": "側頭骨の茎状突起の先から舌骨の小角へ張る細い靱帯。骨のように硬くなることがある（イーグル症候群）。"
         }
       ]
+    },
+    {
+      "id": "joint-knee-foot-more",
+      "title": "膝の靱帯と足の小さな関節（追加）",
+      "terms": [
+        {
+          "id": "patellar-ligament", "ja": "膝蓋靱帯", "yomi": "しつがいじんたい", "en": "patellar ligament", "enAlt": ["patellar tendon"], "la": "ligamentum patellae",
+          "parts": ["patellar ligament"], "level": 1,
+          "kanji": "膝蓋骨から下へ伸びる靱帯",
+          "etym": "patellar ← ラテン語 patella「小さな皿」＋ ligament「靱帯」",
+          "note": "膝蓋骨の下端（膝蓋骨尖）から脛骨粗面へ張る太い帯。大腿四頭筋の腱の続きで、膝を伸ばす力を脛骨へ伝える。ここをハンマーでたたくと膝が伸びる（膝蓋腱反射）。"
+        },
+        {
+          "id": "infrapatellar-fat-pad", "ja": "膝蓋下脂肪体", "yomi": "しつがいかしぼうたい", "en": "infrapatellar fat pad", "la": "corpus adiposum infrapatellare",
+          "parts": ["za:infrapatellar fat pad"], "level": 2, "color": "#e3c96f",
+          "kanji": "膝蓋骨の下の脂肪のかたまり",
+          "etym": "infra-「下」＋ patellar「膝蓋骨の」＋ fat pad「脂肪のクッション」",
+          "note": "膝蓋靱帯の後ろで、関節包と滑膜の間をうめる脂肪のかたまり。関節が動くときのクッションになる。膝の前の痛みの原因になることがある。"
+        },
+        {
+          "id": "arcuate-popliteal-ligament", "ja": "弓状膝窩靱帯", "yomi": "きゅうじょうしっかじんたい", "en": "arcuate popliteal ligament", "la": "ligamentum popliteum arcuatum",
+          "parts": ["za:arcuate popliteal ligament"], "level": 3,
+          "kanji": "膝窩にある弓の形の靱帯",
+          "etym": "arcuate「弓の形の」＋ popliteal「膝窩の」",
+          "note": "腓骨頭から膝の関節包の後面へ弓のように張る靱帯。下を膝窩筋の腱が通る。膝の後外側を補強する。"
+        },
+        {
+          "id": "popliteofibular-ligament", "ja": "膝窩腓骨靱帯", "yomi": "しっかひこつじんたい", "en": "popliteofibular ligament", "la": "ligamentum popliteofibulare",
+          "parts": ["za:popliteofibular ligament"], "level": 3,
+          "kanji": "膝窩筋の腱と腓骨をつなぐ靱帯",
+          "etym": "popliteo-「膝窩（筋）の」＋ fibular「腓骨の」",
+          "note": "膝窩筋の腱から腓骨頭へ張る靱帯。腓側側副靱帯とともに膝の後外側を支え、脛骨が外へねじれすぎるのを防ぐ。"
+        },
+        {
+          "id": "meniscotibial-ligaments", "ja": "半月脛骨靱帯", "yomi": "はんげつけいこつじんたい", "en": "meniscotibial ligaments", "enAlt": ["coronary ligaments of knee"], "la": "ligamenta meniscotibialia",
+          "parts": ["za:*meniscotibial ligament*"], "level": 3, "check": true,
+          "kanji": "半月と脛骨をつなぐ靱帯",
+          "etym": "menisco-「半月の」（ギリシャ語 meniskos＝三日月）＋ tibial「脛骨の」",
+          "note": "内側半月・外側半月の前と後ろの端を脛骨の上端につなぐ短い線維（冠状靱帯ともいう）。半月が動きすぎないようにする。"
+        },
+        {
+          "id": "tibiofibular-joint", "ja": "脛腓関節", "yomi": "けいひかんせつ", "en": "tibiofibular joint", "enAlt": ["superior tibiofibular joint", "proximal tibiofibular joint"], "la": "articulatio tibiofibularis",
+          "parts": ["za:articular capsule of superior tibiofibular joint"], "level": 3,
+          "kanji": "脛骨と腓骨の間の関節",
+          "etym": "tibio-「脛骨の」＋ fibular「腓骨の」＋ joint「関節」",
+          "note": "脛骨の外側顆と腓骨頭の間の小さな平面関節。わずかにすべるだけで、足首を動かすと腓骨が少し動く。下端の脛骨と腓骨は関節ではなく靱帯で結ばれる（脛腓靱帯結合）。"
+        },
+        {
+          "id": "plantar-calcaneocuboid-ligament", "ja": "底側踵立方靱帯", "yomi": "ていそくしょうりっぽうじんたい", "en": "plantar calcaneocuboid ligament", "enAlt": ["short plantar ligament"], "la": "ligamentum calcaneocuboideum plantare",
+          "parts": ["za:plantar calcaneocuboid ligament"], "level": 3,
+          "kanji": "足の裏で踵骨と立方骨をつなぐ靱帯",
+          "etym": "plantar「足の裏の」＋ calcaneo-「踵骨の」＋ cuboid「立方骨の」",
+          "note": "踵骨の前下面から立方骨の下面へ張る短く強い靱帯（短足底靱帯）。長足底靱帯の深くにあり、外側縦足弓を支える。"
+        },
+        {
+          "id": "talonavicular-ligament", "ja": "距舟靱帯", "yomi": "きょしゅうじんたい", "en": "talonavicular ligament", "enAlt": ["dorsal talonavicular ligament"], "la": "ligamentum talonaviculare",
+          "parts": ["za:talonavicular ligament"], "level": 3,
+          "kanji": "距骨と舟状骨をつなぐ靱帯",
+          "etym": "talo-「距骨の」＋ navicular「舟状骨の」",
+          "note": "距骨頚の上面から舟状骨の上面へ張る薄い靱帯。距舟関節（横足根関節の内側半分）の上をおおう。"
+        },
+        {
+          "id": "dorsal-tarsometatarsal-ligaments", "ja": "背側足根中足靱帯", "yomi": "はいそくそっこんちゅうそくじんたい", "en": "dorsal tarsometatarsal ligaments", "la": "ligamenta tarsometatarsalia dorsalia",
+          "parts": ["za:dorsal tarsometatarsal ligaments"], "level": 3,
+          "kanji": "足の甲の側で足根骨と中足骨をつなぐ靱帯",
+          "etym": "dorsal「背側の」＋ tarso-「足根の」＋ metatarsal「中足骨の」",
+          "note": "楔状骨・立方骨と中足骨の底を足の甲の側でつなぐ短い靱帯。足根中足関節（リスフラン関節）を補強する。"
+        },
+        {
+          "id": "deep-transverse-metatarsal-ligament", "ja": "深横中足靱帯", "yomi": "しんおうちゅうそくじんたい", "en": "deep transverse metatarsal ligament", "la": "ligamentum metatarsale transversum profundum",
+          "parts": ["za:deep transverse metatarsal ligament"], "level": 3,
+          "kanji": "中足骨の頭を深い所で横につなぐ靱帯",
+          "etym": "deep「深い」＋ transverse「横の」＋ metatarsal「中足骨の」",
+          "note": "5つの中足骨頭の下を横につなぐ靱帯。中足骨頭が左右に広がるのを防ぐ。足の指へ行く神経がこの下で圧迫されるのがモートン病。"
+        },
+        {
+          "id": "metatarsophalangeal-joints", "ja": "中足趾節関節", "yomi": "ちゅうそくしせつかんせつ", "en": "metatarsophalangeal joints", "la": "articulationes metatarsophalangeae",
+          "parts": ["za:articular capsules of metatarsophalangeal joints"], "level": 2,
+          "kanji": "中足骨と趾節骨（足の指の骨）の間の関節",
+          "etym": "metatarso-「中足骨の」＋ phalangeal「指節骨の」",
+          "note": "中足骨頭と基節骨の底の間の関節。つま先立ちや歩くとき、ここで指が背屈する。母趾のこの関節で母趾が外へ曲がるのが外反母趾。"
+        },
+        {
+          "id": "interphalangeal-joints-of-foot", "ja": "趾節間関節", "yomi": "しせつかんかんせつ", "en": "interphalangeal joints of foot", "la": "articulationes interphalangeae pedis",
+          "parts": ["za:articular capsules of proximal interphalangeal joints of foot", "za:articular capsules of distal interphalangeal joints of foot", "za:articular capsule of interphalangeal joint of great toe"], "level": 3,
+          "kanji": "足の指の骨の間の関節",
+          "etym": "inter-「間の」＋ phalangeal「指節骨の」",
+          "note": "足の指の骨（趾節骨）の間の蝶番関節。母趾は1つ、ほかの指は近位・遠位の2つずつ。"
+        }
+      ]
     }
   ]
 }

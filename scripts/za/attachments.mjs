@@ -139,6 +139,13 @@ const TABLE = {
   "obturator-internus": T(["obturator internus", "trochanteric insertion"], ["hip-bone"], ["femur"]),
   "obturator-externus": T(["obturator externus"], ["hip-bone"]),
   "quadratus-femoris": T(["quadratus femoris muscle"], ["hip-bone"], ["femur"]),
+  // 下肢のまとめた筋と頭・足の骨間筋（Phase 3 その4）。背側骨間筋（足）は Z-Anatomy に付着面が無い
+  "iliopsoas": T(["iliopsoas muscle", "iliacus muscle"], ["lumbar-vertebrae", "hip-bone"], ["femur"]),
+  "hamstrings": T(["biceps femoris muscle", "long head of biceps femoris", "semitendinosus muscle", "semimembranosus muscle"], ["hip-bone"], ["fibula", "tibia"]),
+  "long-head-of-biceps-femoris": T(["biceps femoris muscle", "long head of biceps femoris"], ["hip-bone"], ["fibula"]),
+  "short-head-of-biceps-femoris": T(["biceps femoris muscle", "short head of biceps femoris"], ["femur"], ["fibula"]),
+  "plantar-interossei": T(["plantar interossei muscles"], ["metatarsals"], ["phalanges-foot"]),
+  "flexor-digiti-minimi-brevis-of-foot": T(["flexor digiti minimi of foot"], ["metatarsals"], ["phalanges-foot"]),
   // 背部・後頭下・首
   "iliocostalis": T(["iliocostalis colli muscle", "erector spinae"], ["hip-bone"], ["cervical-vertebrae"]),
   "longissimus": T(["longissimus thoracis muscle"], [], ["thoracic-vertebrae", "lumbar-vertebrae"]),

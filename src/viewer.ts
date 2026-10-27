@@ -3,7 +3,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
-import { joints, loadAttachments, loadModelIndex, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex } from "./content";
+import { joints, loadAttachments, loadModelIndex, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex, type Motion, type Term, type View } from "./content";
 import { pinCenter, pinSpread, type Vec3 } from "./landmarks";
 
 export interface SceneSpec {
@@ -25,6 +25,8 @@ export interface Section {
 }
 
 const HIGHLIGHT = "#ff7a1a";
+/** 局所解剖の境界の色（強調と同じ橙） */
+export const REGION_BOUND = HIGHLIGHT;
 const WRONG = "#3d7bd9";
 /** 筋の起始・停止を骨の上に示す色 */
 export const ORIGIN_COLOR = "#2f9e44";
@@ -33,6 +35,10 @@ export const INSERTION_COLOR = "#7048e8";
 const SPOT_MAX = 64;
 /** 基本の用語の図で、関節の動きの道すじを示す矢印の色 */
 const PATH_COLOR = "#0c8599";
+/** 断面で見せる局所解剖で、区画の外の語を描く色 */
+const MUTED = "#8c8580";
+/** 筋の動きを見せるとき、起始と停止を結ぶ帯の色 */
+const BAND_COLOR = "#d9483b";
 /** 関節の動きの1回分（秒）: 初めの姿勢で止まる → 動く → 終わりの姿勢で止まる → 初めに戻る */
 const MOTION_HOLD = 0.6;
 const MOTION_MOVE = 1.6;
@@ -40,6 +46,12 @@ const MOTION_CYCLE = 3.4;
 
 /** 強調の色。null はその語のふだんの色（骨の部位を探す問題で、骨だけを見せるとき） */
 type Highlight = Map<string, string | null>;
+
+/** 筋の起始・停止の点（動かす前の位置）と、その点のある骨を動かす関節 */
+interface Anchor {
+  rest: THREE.Vector3;
+  joints: string[];
+}
 
 /**
  * 組織ごとの質感。bump は細かい凹凸の深さ（mm）、grain はざらつきの粒の大きさ（m）、mottle は色むらの強さ、
@@ -184,15 +196,25 @@ vSpotNormal = normalize(mat3(modelMatrix) * objectNormal);
     .replace("#include <color_fragment>", `#include <color_fragment>
 float surfHeight = surfaceDetail(diffuseColor.rgb);
 #ifdef USE_SPOTS
+// いちばん内側に入っている球で塗る（腸骨のように球を並べた範囲で、重なった所に縁の線が出ないように）
+float spotBest = -1.0, spotInside = 0.0, spotRim = 0.0;
+vec3 spotColor = vec3(0.0);
 for (int i = 0; i < ${SPOT_MAX}; i++) {
   if (i >= spotCount) break;
   float d = distance(vSpotPosition, spots[i].xyz);
   float r = spots[i].w;
   float inside = 1.0 - smoothstep(r * 0.92, r, d);
   if (dot(spotNormals[i], spotNormals[i]) > 0.0) inside *= smoothstep(-0.45, -0.2, dot(normalize(vSpotNormal), spotNormals[i]));
-  float rim = smoothstep(r * 0.78, r * 0.92, d) * inside;
-  diffuseColor.rgb = mix(diffuseColor.rgb, spotColors[i] * (1.0 - 0.35 * rim), inside);
+  float rim = smoothstep(r * 0.78, r * 0.92, d);
+  float score = inside - 0.5 * rim;
+  if (inside > 0.0 && score > spotBest) {
+    spotBest = score;
+    spotInside = inside;
+    spotRim = rim;
+    spotColor = spotColors[i];
+  }
 }
+diffuseColor.rgb = mix(diffuseColor.rgb, spotColor * (1.0 - 0.35 * spotRim * spotInside), spotInside);
 #endif`)
     .replace("#include <normal_fragment_maps>", `#include <normal_fragment_maps>
 normal = surfacePerturb(normal, surfHeight, faceDirection);`)
@@ -208,6 +230,11 @@ reflectedLight.indirectDiffuse *= surfOcclusion * surfOcclusion;
 reflectedLight.indirectSpecular *= surfOcclusion * surfOcclusion;
 reflectedLight.directDiffuse *= mix(1.0, surfOcclusion, 0.85);
 reflectedLight.directSpecular *= mix(1.0, surfOcclusion, 0.8);`);
+}
+
+/** 語のもとの色（静脈の青など。無ければ系統の色）。局所解剖で中を通る語を示すとき */
+function naturalColor(term: Term | undefined): string {
+  return term?.color ?? systemById.get(term?.system ?? "")?.color ?? "#cccccc";
 }
 
 /** 器官の部位を示すとき、器官を淡くしてスポット（橙）を見分けやすくする（消化器の橙・泌尿器の黄の上でも目立つように） */
@@ -241,6 +268,8 @@ export class AnatomyViewer {
   private contextOpacity = 0.16;
   /** 断面（図鑑の「断面」）。切る面は renderer の clippingPlanes で、すべての材質に効く */
   private section: Section | null = null;
+  /** 局所解剖の語（区画など）を見せるときに切る面。図鑑の断面（section）があればそちらを使う */
+  private regionSection: Section | null = null;
   private readonly clipPlane = new THREE.Plane();
   private highlighted: Highlight = new Map();
   private isolate = false;
@@ -271,8 +300,14 @@ export class AnatomyViewer {
   private figureTerm: string | null = null;
   /** 図のラベルを置く点（矢印の先・面の角・動きの道すじの終わり） */
   private figureAnchor: THREE.Vector3 | null = null;
-  /** 関節の動き。部品ごとに効く関節（content/joints.json の並び＝根元から先へ） */
-  private motion: { from: Record<string, number>; to: Record<string, number>; start: number; meshes: Map<THREE.Mesh, string[]> } | null = null;
+  /** 関節の動き。部品ごとに効く関節（content/joints.json の並び＝根元から先へ）。size は道すじの矢印の太さの目安（映す広さ m） */
+  private motion: { from: Record<string, number>; to: Record<string, number>; start: number; size: number; meshes: Map<THREE.Mesh, string[]> } | null = null;
+  /** 筋の動きを見せている筋（playAction）。骨だけを見せ、起始と停止を結ぶ帯（bands）を骨と一緒に動かす */
+  private actionTerm: string | null = null;
+  private bands: { path: Anchor[]; segments: THREE.Mesh[]; knots: THREE.Mesh[]; ends: [THREE.Mesh, THREE.Mesh] }[] = [];
+  /** 局所解剖の語の囲みの線（今描いている語のIDを並べたもの） */
+  private readonly regionGroup = new THREE.Group();
+  private regionKey = "";
   private labelTerm: string | null = null;
   private dirty = true;
   /** 画素の細かさ（2まで）。描くのが重い端末では、動かしている間だけ下げる（frame） */
@@ -310,7 +345,7 @@ export class AnatomyViewer {
     this.tapBall.renderOrder = 10;
     this.tapBall.visible = false;
     this.scene.add(this.tapBall);
-    this.scene.add(this.figureGroup);
+    this.scene.add(this.figureGroup, this.regionGroup);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true;
@@ -387,6 +422,7 @@ export class AnatomyViewer {
    * marks の "語ID@origin" "語ID@insertion" は、その筋の付着面（attachments-za.json）を示す。
    */
   highlight(termIds: string[], options: { isolate?: boolean; color?: string; marks?: [string, string][]; seeThrough?: boolean } = {}): void {
+    this.stopAction();
     this.highlighted = new Map([...termIds.map((id) => [id, options.color ?? HIGHLIGHT] as const), ...(options.marks ?? [])]);
     this.isolate = options.isolate ?? false;
     this.seeThrough = options.seeThrough ?? false;
@@ -396,6 +432,7 @@ export class AnatomyViewer {
 
   /** その語だけをふだんの色で見せ、ほかを半透明にする（骨の部位をタップで答えるとき） */
   only(termIds: string[]): void {
+    this.stopAction();
     this.highlighted = new Map(termIds.map((id) => [id, null]));
     this.isolate = true;
     this.seeThrough = false;
@@ -405,6 +442,7 @@ export class AnatomyViewer {
 
   /** 正解（橙）と、間違えて選んだ所（青）を同時に示す。tap はタップした部品と点（小さな青い印） */
   reveal(correct: string, wrong: string | null, isolate = false, tap: { element: string; point: Vec3 } | null = null): void {
+    this.stopAction();
     this.highlighted = new Map([[correct, HIGHLIGHT]]);
     if (wrong && wrong !== correct) this.highlighted.set(wrong, WRONG);
     this.isolate = isolate;
@@ -413,18 +451,59 @@ export class AnatomyViewer {
     this.refresh();
   }
 
+  /**
+   * 筋の作用を骨の動きで見せる（null でやめる）。骨格だけを見せ、作用の関節（term.motion）で骨を動かしながら、
+   * 起始（緑）と停止（紫）を結ぶ帯を骨と一緒に動かす。帯が縮む＝筋が縮んで、停止の骨を起始の骨へ引き寄せる。
+   * 返り値は、いちばん長さの変わる帯の、動かす前と後の長さ（m）。骨格をまだ読み込んでいなければ null。
+   */
+  playAction(termId: string | null): { from: number; to: number } | null {
+    this.stopAction();
+    const term = termId ? termById.get(termId) : undefined;
+    if (!term?.motion) {
+      this.refresh();
+      return null;
+    }
+    this.actionTerm = term.id;
+    this.motion = { from: term.motion.from ?? {}, to: term.motion.to, start: performance.now(), size: 0, meshes: new Map() };
+    this.prepareMotion();
+    if (!this.motion.meshes.size) {
+      this.stopAction();
+      this.refresh();
+      return null;
+    }
+    const lengths = this.makeBands(term);
+    this.refresh();
+    this.viewAction(term.motion);
+    return lengths;
+  }
+
+  /** 筋の動きを見せているか */
+  get playing(): boolean {
+    return !!this.actionTerm;
+  }
+
   /** 断面で切る（null でやめる）。切り口は組織の色で平らに塗り、タップでも切り口の構造を選べる */
   setSection(section: Section | null): void {
     // 切る位置を動かすだけなら材質は替えない（つまみを動かしている間に何度も呼ばれる）
     const toggled = !section !== !this.section;
     this.section = section;
+    this.applyClip();
+    if (toggled) this.refresh();
+    this.dirty = true;
+  }
+
+  /** 今切っている面（図鑑の断面、無ければ局所解剖の語の面） */
+  private get cutting(): Section | null {
+    return this.section ?? this.regionSection;
+  }
+
+  private applyClip(): void {
+    const section = this.cutting;
     if (section) {
       const normal = new THREE.Vector3().setComponent("xyz".indexOf(section.axis), section.keep);
       this.clipPlane.set(normal, -section.at * section.keep);
     }
     this.renderer.clippingPlanes = section ? [this.clipPlane] : [];
-    if (toggled) this.refresh();
-    this.dirty = true;
   }
 
   /**
@@ -464,12 +543,13 @@ export class AnatomyViewer {
   /** 語に寄る。zoom を大きくするほど引いて周りも映す（答えが分かりすぎないように）。include の点も画面に入れる */
   focus(termId: string, zoom = 3.2, animate = true, include?: Vec3): void {
     const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
-    const figure = termById.get(termId)?.figure;
-    if (figure) {
-      // 基本の用語の図は、決めた向きから決めた広さを映す（縦長の画面では横も入るように引く）
-      const target = new THREE.Vector3(...figure.view.target);
-      const distance = figure.view.size / tan / Math.min(1, this.camera.aspect);
-      this.moveTo(target, target.clone().add(new THREE.Vector3(...figure.view.from).normalize().multiplyScalar(distance)), animate);
+    const drawn = termById.get(termId);
+    const view: View | undefined = drawn?.figure?.view ?? drawn?.region?.view;
+    if (view) {
+      // 基本の用語の図・局所解剖は、決めた向きから決めた広さを映す（縦長の画面では横も入るように引く）
+      const target = new THREE.Vector3(...view.target);
+      const distance = view.size / tan / Math.min(1, this.camera.aspect);
+      this.moveTo(target, target.clone().add(new THREE.Vector3(...view.from).normalize().multiplyScalar(distance)), animate);
       return;
     }
     const pin = pins[termId];
@@ -615,7 +695,7 @@ export class AnatomyViewer {
 
   /** 不透明の表面。spots にすると、スポット（球）の中に入る所を塗る（縁を少し濃くして範囲を分かりやすくする） */
   private surface(color: string, tissue: string, spots = false): THREE.Material {
-    const cut = !!this.section;
+    const cut = !!this.cutting;
     return this.material(`${spots ? "spot" : "solid"}:${tissue}:${color}${cut ? ":cut" : ""}`, () => {
       const kind = TISSUES[tissue];
       const material = new THREE.MeshPhysicalMaterial({
@@ -657,9 +737,35 @@ export class AnatomyViewer {
 
   private refresh(): void {
     const figureId = [...this.highlighted.keys()].find((id) => termById.get(id)?.figure) ?? null;
-    if (figureId !== this.figureTerm) this.setFigure(figureId);
+    if (this.actionTerm) this.prepareMotion();
+    else if (figureId !== this.figureTerm) this.setFigure(figureId);
     else this.prepareMotion(); // 骨格を読み込む前に図を出したときは、読み込んでから動かす骨を集める
+    // 局所解剖の語は、境界の語（強調の色）と中を通る語（もとの色）に開いて示す。ほかの語は隠す（骨格は薄く添える）
+    const regions = [...this.highlighted.keys()].filter((id) => termById.get(id)?.region);
+    const shownTerms: Highlight = new Map();
+    // 境界の筋・靱帯などは半透明の橙にして、中を通る神経・血管が透けて見えるようにする（骨はそのまま）
+    const thinBounds = new Set<string>();
+    for (const [termId, color] of this.highlighted) {
+      const region = termById.get(termId)?.region;
+      if (!region) {
+        if (!shownTerms.has(termId) || color) shownTerms.set(termId, color);
+        continue;
+      }
+      for (const id of region.contents) if (!shownTerms.has(id)) shownTerms.set(id, color && naturalColor(termById.get(id)));
+      for (const id of region.bounds) {
+        shownTerms.set(id, color);
+        if (termById.get(id)?.system !== "skeletal" && !region.section) thinBounds.add(id);
+      }
+    }
+    this.setRegions(regions);
+    // 断面で見せる局所解剖（区画など）では、ほかの語を隠さずにくすんだ色で不透明に描き、CT のような切り口にする
+    const regionSection = regions.map((id) => termById.get(id)!.region!.section).find(Boolean) ?? null;
+    if (JSON.stringify(regionSection) !== JSON.stringify(this.regionSection)) {
+      this.regionSection = regionSection;
+      this.applyClip();
+    }
     const highlightedElements = new Map<string, string | null>();
+    const thinElements = new Set<string>();
     const spotElements = new Set<string>();
     type Spot = { at: Vec3; r: number; color: string; n?: Vec3 };
     const spots: Spot[] = [];
@@ -669,7 +775,7 @@ export class AnatomyViewer {
       // 左右がある骨は、左側にも折り返して示す（ピン・付着面は右側にある）。左右の無い器官の部位（one）は折り返さない
       if (!one && Math.abs(at[0]) > 0.01) mirrored.push({ at: [-at[0], at[1], at[2]], r, color, n: n && [-n[0], n[1], n[2]] });
     };
-    for (const [termId, color] of this.highlighted) {
+    for (const [termId, color] of shownTerms) {
       const [muscle, kind] = termId.split("@") as [string, "origin" | "insertion" | undefined];
       if (kind) {
         for (const [on, x, y, z, r, ...n] of (color && this.attachments[muscle]?.[kind]) || []) {
@@ -682,9 +788,15 @@ export class AnatomyViewer {
       for (const element of this.index.terms[termId]?.elements ?? []) {
         if (pin) spotElements.add(element);
         else if (!highlightedElements.has(element) || color) highlightedElements.set(element, color);
+        if (!pin && thinBounds.has(termId)) thinElements.add(element);
       }
       if (!pin || !color) continue;
       for (const at of pin.at) spot(at, pin.r, color, pin.n, pin.one);
+    }
+    // 筋の動きを見せるときは骨が動くので、骨の上のスポットは出さない
+    if (this.actionTerm) {
+      spots.length = mirrored.length = 0;
+      spotElements.clear();
     }
     // 塗れる数を超えるときは左側への折り返しをやめる（右側だけでも全部を示す）
     if (spots.length + mirrored.length + (this.tapMark ? 1 : 0) <= SPOT_MAX) spots.push(...mirrored);
@@ -711,18 +823,32 @@ export class AnatomyViewer {
         return (termId && (this.colors?.get(termId) ?? termById.get(termId)?.color)) || base;
       };
       mesh.renderOrder = 0;
-      // 関節の動きを示すときは、動く骨を光らせ、動かない皮膚は消す
-      mesh.visible = !(this.motion && system === "body");
+      // 関節の動きを示すときは、動く骨を光らせ、動かない皮膚は消す。筋の動きでは骨だけを見せる。
+      // 局所解剖では、境界と中を通る語のほかは隠す（骨格は添える）
+      const bone = system === "skeletal" || system === "body";
+      const outside = regions.length > 0 && !bone && !highlightedElements.has(elementId) && !spotElements.has(elementId);
+      // 断面では区画の外の筋だけをくすんだ色で描く（細い神経・血管は切り口をごちゃつかせるので隠す）
+      const hiddenByRegion = outside && (!regionSection || system !== "muscular");
+      // 局所解剖は右側で示すので、左側の形は隠す（内側から見るとき反対側の脚がじゃまにならないように）
+      const leftSide = regions.length > 0 && system !== "body" && this.restCenter(mesh).x > 0.02;
+      mesh.visible = !(this.motion && system === "body") && !(this.actionTerm && !bone) && !hiddenByRegion && !leftSide;
       if (this.motion?.meshes.has(mesh)) {
         mesh.material = this.solid(HIGHLIGHT, mesh);
+      } else if (this.actionTerm && system === "skeletal") {
+        mesh.material = this.solid(base, mesh);
       } else if (system === "body") {
         // 方向・面の図では、体の表面（浅・深の境）が分かるよう皮膚を少し濃くする
         mesh.material = this.ghost("#e8c9a8", this.figureTerm ? 0.2 : 0.1);
         mesh.renderOrder = 2;
         this.ghosted.add(elementId);
       } else if (highlightedElements.get(elementId)) {
-        mesh.material = this.seeThrough ? this.ghost(highlightedElements.get(elementId)!, 0.45) : this.solid(highlightedElements.get(elementId)!, mesh);
-        if (this.seeThrough) mesh.renderOrder = 1;
+        const thin = this.seeThrough || thinElements.has(elementId);
+        mesh.material = thin ? this.ghost(highlightedElements.get(elementId)!, this.seeThrough ? 0.45 : 0.32) : this.solid(highlightedElements.get(elementId)!, mesh);
+        if (thin) mesh.renderOrder = 1;
+      } else if (outside && regionSection) {
+        mesh.material = this.solid(MUTED, mesh);
+      } else if (regionSection && system === "skeletal" && !spotElements.has(elementId)) {
+        mesh.material = this.solid(base, mesh);
       } else if (spotElements.has(elementId)) {
         // 骨の部位（筋の起始・停止を含む）は、添えるだけの系統の骨でも不透明にして示す
         const color = highlightedElements.has(elementId) ? own() : base;
@@ -737,7 +863,7 @@ export class AnatomyViewer {
         this.ghosted.add(elementId);
       } else if (highlightedElements.has(elementId)) {
         mesh.material = this.solid(own(), mesh);
-      } else if (this.isolate) {
+      } else if (this.isolate || regions.length) {
         mesh.material = this.ghost(base, 0.12);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
@@ -775,8 +901,177 @@ export class AnatomyViewer {
       this.figureAnchor = new THREE.Vector3(...to);
     }
     if (figure.motion) {
-      this.motion = { from: figure.motion.from ?? {}, to: figure.motion.to, start: performance.now(), meshes: new Map() };
+      this.motion = { from: figure.motion.from ?? {}, to: figure.motion.to, start: performance.now(), size: figure.view.size, meshes: new Map() };
       this.prepareMotion();
+    }
+    this.dirty = true;
+  }
+
+  /** 筋の動きをやめる（帯と道すじを消し、骨を元の位置に戻す） */
+  private stopAction(): void {
+    if (!this.actionTerm) return;
+    this.actionTerm = null;
+    this.bands = [];
+    this.setFigure(null);
+  }
+
+  /**
+   * 筋の起始・停止の点（付着面と、起始・停止の骨の部位のピン）を骨ごとにまとめ、起始→停止の帯を作る。
+   * 帯は motion.via の骨の部位（くるぶしなど、腱が向きを変える所）を通る。
+   * 点ごとに、いちばん近い部品を動かす関節を使う（足の指の骨のうち母趾だけが動く、など）。
+   */
+  private makeBands(term: Term): { from: number; to: number } | null {
+    const anchors = (kind: "origin" | "insertion"): Anchor[] => {
+      const byBone = new Map<string, THREE.Vector3[]>();
+      const add = (bone: string, point: THREE.Vector3) => byBone.set(bone, [...(byBone.get(bone) ?? []), point]);
+      for (const [bone, x, y, z] of this.attachments[term.id]?.[kind] ?? []) add(bone, new THREE.Vector3(x, y, z));
+      for (const id of (kind === "origin" ? term.originAt : term.insertionAt) ?? []) {
+        const bone = termById.get(id)?.of;
+        if (bone && pins[id]) add(bone, new THREE.Vector3(...pinCenter(pins[id])));
+      }
+      return [...byBone].map(([bone, points]) => this.anchor(bone, points.reduce((sum, p) => sum.add(p), new THREE.Vector3()).divideScalar(points.length)));
+    };
+    const via = (term.motion?.via ?? []).flatMap((id) => {
+      const bone = termById.get(id)?.of;
+      return bone && pins[id] ? [this.anchor(bone, new THREE.Vector3(...pinCenter(pins[id])))] : [];
+    });
+    const radius = THREE.MathUtils.clamp(this.motion!.size * 0.012, 0.003, 0.007);
+    const ball = (color: string, size: number) => {
+      const mesh = new THREE.Mesh(new THREE.SphereGeometry(size, 16, 12), this.overlay(color));
+      mesh.renderOrder = 12;
+      return mesh;
+    };
+    for (const from of anchors("origin")) {
+      for (const to of anchors("insertion")) {
+        const path = [from, ...via, to];
+        const segments = path.slice(1).map(() => {
+          const segment = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, 1, 12), this.overlay(BAND_COLOR));
+          segment.renderOrder = 11;
+          return segment;
+        });
+        const knots = via.map(() => ball(BAND_COLOR, radius));
+        const ends: [THREE.Mesh, THREE.Mesh] = [ball(ORIGIN_COLOR, radius * 1.9), ball(INSERTION_COLOR, radius * 1.9)];
+        this.figureGroup.add(...segments, ...knots, ...ends);
+        this.bands.push({ path, segments, knots, ends });
+      }
+    }
+    this.updateBands(this.poseAt(0));
+    // いちばん長さの変わる帯の、動かす前と後の長さ
+    let best: { from: number; to: number } | null = null;
+    for (const { path } of this.bands) {
+      const length = (t: number) => {
+        const points = this.placed(path, this.poseAt(t));
+        return points.slice(1).reduce((sum, p, i) => sum + p.distanceTo(points[i]), 0);
+      };
+      const pair = { from: length(0), to: length(1) };
+      if (!best || Math.abs(pair.to - pair.from) / pair.from > Math.abs(best.to - best.from) / best.from) best = pair;
+    }
+    return best;
+  }
+
+  /** 帯の点を、その姿勢の位置へ動かす */
+  private placed(path: Anchor[], angles: Record<string, number>): THREE.Vector3[] {
+    return path.map(({ rest, joints: ids }) => rest.clone().applyMatrix4(this.poseMatrix(ids, angles)));
+  }
+
+  /** 骨の上の点と、その点のある部品を動かす関節（いちばん近い部品。動かない骨なら関節なし） */
+  private anchor(bone: string, point: THREE.Vector3): Anchor {
+    let nearest: THREE.Mesh | null = null;
+    let distance = Infinity;
+    for (const element of this.index.terms[bone]?.elements ?? []) {
+      const mesh = this.meshes.get(element);
+      if (!mesh) continue;
+      mesh.geometry.computeBoundingBox();
+      const box = mesh.geometry.boundingBox!.clone().applyMatrix4((mesh.userData.rest as THREE.Matrix4 | undefined) ?? mesh.matrix);
+      const d = box.distanceToPoint(point);
+      if (d < distance) {
+        distance = d;
+        nearest = mesh;
+      }
+    }
+    return { rest: point, joints: (nearest && this.motion?.meshes.get(nearest)) ?? [] };
+  }
+
+  private updateBands(angles: Record<string, number>): void {
+    const up = new THREE.Vector3(0, 1, 0);
+    for (const { path, segments, knots, ends } of this.bands) {
+      const points = this.placed(path, angles);
+      for (const [i, segment] of segments.entries()) {
+        const [a, b] = [points[i], points[i + 1]];
+        const direction = b.clone().sub(a);
+        segment.position.copy(a).add(b).multiplyScalar(0.5);
+        segment.scale.set(1, Math.max(direction.length(), 1e-4), 1);
+        segment.quaternion.setFromUnitVectors(up, direction.normalize());
+      }
+      for (const [i, knot] of knots.entries()) knot.position.copy(points[i + 1]);
+      ends[0].position.copy(points[0]);
+      ends[1].position.copy(points[points.length - 1]);
+    }
+  }
+
+  /**
+   * 筋の動きを映す。いちばん大きく動く関節の軸の向きから見る（回す面が正面に見える）。
+   * 体の右側・前から見るように向きをそろえ、軸がほぼ縦（股関節の回旋）なら前の右上から見る。
+   */
+  private viewAction(motion: Motion): void {
+    const change = (id: string) => Math.abs((motion.to[id] ?? 0) - (motion.from?.[id] ?? 0));
+    const main = Object.keys({ ...motion.from, ...motion.to }).sort((a, b) => change(b) - change(a))[0];
+    const axis = new THREE.Vector3(...joints[main].axis).normalize();
+    let direction: THREE.Vector3;
+    if (Math.abs(axis.y) > 0.7) direction = new THREE.Vector3(-0.35, 0.45, 1);
+    else {
+      direction = axis.clone();
+      if (Math.abs(direction.x) >= Math.abs(direction.z) ? direction.x > 0 : direction.z < 0) direction.negate();
+      direction.y += 0.15;
+    }
+    const box = new THREE.Box3();
+    for (const t of [0, 0.5, 1]) {
+      const angles = this.poseAt(t);
+      for (const [mesh, ids] of this.motion!.meshes) box.expandByPoint(this.restCenter(mesh).applyMatrix4(this.poseMatrix(ids, angles)));
+      for (const { path } of this.bands) for (const point of this.placed(path, angles)) box.expandByPoint(point);
+    }
+    const target = box.getCenter(new THREE.Vector3());
+    const half = Math.max(0.12, box.getSize(new THREE.Vector3()).length() * 0.5);
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    this.moveTo(target, target.clone().add(direction.normalize().multiplyScalar((half * 1.05) / tan / Math.min(1, this.camera.aspect))), true);
+  }
+
+  /** 局所解剖の語の囲みの線を描く（右側だけ。左側の形は隠している）。開いた線（足弓）は端を閉じない */
+  private setRegions(ids: string[]): void {
+    const key = ids.join(",");
+    if (key === this.regionKey) return;
+    this.regionKey = key;
+    for (const child of [...this.regionGroup.children]) {
+      this.regionGroup.remove(child);
+      child.traverse((object) => {
+        if (object instanceof THREE.Mesh) object.geometry.dispose();
+      });
+    }
+    for (const id of ids) {
+      const region = termById.get(id)!.region!;
+      if (!region.outline || region.outline.length < 2) continue;
+      const radius = THREE.MathUtils.clamp(region.view.size * 0.008, 0.0015, 0.005);
+      {
+        const points = region.outline.map(([x, y, z]) => new THREE.Vector3(x, y, z));
+        const curve = new THREE.CatmullRomCurve3(points, !region.open, "centripetal");
+        const line = new THREE.Mesh(new THREE.TubeGeometry(curve, points.length * 16, radius, 8, !region.open), this.overlay(HIGHLIGHT));
+        line.renderOrder = 10;
+        this.regionGroup.add(line);
+        if (region.open) continue;
+        // 囲んだ所をごく薄く塗る（中心からの扇形）
+        const inner = curve.getPoints(points.length * 16);
+        const center = inner.reduce((sum, p) => sum.add(p), new THREE.Vector3()).divideScalar(inner.length);
+        const positions: number[] = [];
+        for (let i = 0; i < inner.length; i++) {
+          const a = inner[i], b = inner[(i + 1) % inner.length];
+          positions.push(...center.toArray(), ...a.toArray(), ...b.toArray());
+        }
+        const geometry = new THREE.BufferGeometry().setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+        const fill = new THREE.Mesh(geometry, this.material(`regionFill`, () =>
+          new THREE.MeshBasicMaterial({ color: HIGHLIGHT, transparent: true, opacity: 0.16, side: THREE.DoubleSide, depthTest: false, depthWrite: false })));
+        fill.renderOrder = 9;
+        this.regionGroup.add(fill);
+      }
     }
     this.dirty = true;
   }
@@ -789,6 +1084,7 @@ export class AnatomyViewer {
       if (!(jointId in motion.from) && !(jointId in motion.to)) continue;
       for (const termId of joint.moves) {
         for (const element of this.index.terms[termId]?.elements ?? []) {
+          if (joint.only && !joint.only.includes(element)) continue;
           const mesh = this.meshes.get(element);
           if (!mesh || (!joint.mid && this.restCenter(mesh).x > 0)) continue;
           const list = motion.meshes.get(mesh) ?? [];
@@ -814,7 +1110,9 @@ export class AnatomyViewer {
       if (!tip || moved > tip.moved) tip = { center, joints: ids, moved };
     }
     const points = Array.from({ length: 25 }, (_, i) => tip!.center.clone().applyMatrix4(this.poseMatrix(tip!.joints, this.poseAt(i / 24))));
-    const radius = THREE.MathUtils.clamp(termById.get(this.figureTerm!)!.figure!.view.size * 0.008, 0.002, 0.006);
+    // 筋の動き（映す広さを決めていない）では、動く骨の通り道の大きさから
+    if (!motion.size) motion.size = Math.max(0.1, points[0].distanceTo(points[24]) * 1.2);
+    const radius = THREE.MathUtils.clamp(motion.size * 0.008, 0.002, 0.006);
     this.figureGroup.add(this.pathFigure(points, PATH_COLOR, radius));
     this.figureAnchor = points[points.length - 1];
   }
@@ -875,6 +1173,7 @@ export class AnatomyViewer {
       mesh.matrix.multiplyMatrices(this.poseMatrix(ids, angles), mesh.userData.rest as THREE.Matrix4);
       mesh.matrixWorldNeedsUpdate = true;
     }
+    this.updateBands(angles);
     this.dirty = true;
   }
 
@@ -943,7 +1242,7 @@ export class AnatomyViewer {
         raycaster.setFromCamera(new THREE.Vector2(((x - rect.left) / rect.width) * 2 - 1, -((y - rect.top) / rect.height) * 2 + 1), this.camera);
         // 断面では、切り取った側（見えていない所）に当たったものは除く
         const hits = raycaster.intersectObjects(candidates, false);
-        const hit = this.section ? hits.find((h) => this.clipPlane.distanceToPoint(h.point) >= -1e-4) : hits[0];
+        const hit = this.cutting ? hits.find((h) => this.clipPlane.distanceToPoint(h.point) >= -1e-4) : hits[0];
         if (hit) {
           const normal = hit.face ? hit.face.normal.clone().transformDirection(hit.object.matrixWorld) : null;
           // 裏から当たった面（向きがそろっていない部品）は、見ている側へ向け直す
@@ -1000,7 +1299,8 @@ export class AnatomyViewer {
     if (!this.labelTerm || !this.index) return;
     const pin = pins[this.labelTerm];
     const figure = this.labelTerm === this.figureTerm ? this.figureAnchor?.toArray() : undefined;
-    const center = figure ?? (pin ? pinCenter(pin) : this.index.terms[this.labelTerm]?.center);
+    const region = termById.get(this.labelTerm)?.region;
+    const center = figure ?? (pin ? pinCenter(pin) : region ? region.view.target : this.index.terms[this.labelTerm]?.center);
     if (!center) return;
     const point = new THREE.Vector3(...center).project(this.camera);
     const behind = point.z > 1;

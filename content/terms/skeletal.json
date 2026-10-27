@@ -1504,6 +1504,169 @@
           "note": "母趾の付け根の下で、短母趾屈筋の腱の中にある2つの小さな骨。腱の向きを変え、体重を受ける。膝蓋骨も大きな種子骨。"
         }
       ]
+    },
+    {
+      "id": "skel-pt-hip-femur-more",
+      "title": "寛骨の3つの骨と大腿骨の部位（追加）",
+      "intro": [
+        "寛骨は、子どものうちは腸骨・坐骨・恥骨の3つの骨で、寛骨臼の中でY字の軟骨（Y軟骨）でつながっている。15〜17歳ごろにこの軟骨が骨になり、1つの寛骨になる。",
+        "このレッスンでは3つの骨のおよその範囲を寛骨の上に色で示す（境目は寛骨臼と閉鎖孔のまわり）。"
+      ],
+      "terms": [
+        {
+          "id": "ilium", "ja": "腸骨", "yomi": "ちょうこつ", "en": "ilium", "la": "os ilium",
+          "of": "hip-bone", "level": 1,
+          "kanji": "腸（わき腹）のあたりの骨",
+          "etym": "ilium ← ラテン語 ilia「わき腹・下腹」",
+          "note": "寛骨の上の大きく広がった部分。上のふちが腸骨稜で、内面の腸骨窩が腸を下から受ける。後ろで仙骨と仙腸関節をつくり、寛骨臼の上の約2/5をつくる。"
+        },
+        {
+          "id": "ischium", "ja": "坐骨", "yomi": "ざこつ", "en": "ischium", "la": "os ischii",
+          "of": "hip-bone", "level": 1,
+          "kanji": "坐る（すわる）ときに当たる骨",
+          "etym": "ischium ← ギリシャ語 ischion「股関節・尻」",
+          "note": "寛骨の後ろ下の部分。下端の坐骨結節に座ったときの体重がかかり、ハムストリングが起こる。寛骨臼の後ろ下の約2/5をつくり、坐骨枝で恥骨とつながって閉鎖孔を囲む。"
+        },
+        {
+          "id": "pubis", "ja": "恥骨", "yomi": "ちこつ", "en": "pubis", "enAlt": ["pubic bone"], "la": "os pubis",
+          "of": "hip-bone", "level": 1,
+          "kanji": "陰部（恥部）の骨",
+          "etym": "pubis ← ラテン語 pubes「成人・陰毛」",
+          "note": "寛骨の前下の部分。左右の恥骨が正中で恥骨結合をつくる。寛骨臼の前下の約1/5をつくり、上枝と下枝で閉鎖孔の前を囲む。"
+        },
+        {
+          "id": "superior-pubic-ramus", "ja": "恥骨上枝", "yomi": "ちこつじょうし", "en": "superior pubic ramus", "enAlt": ["superior ramus of pubis"], "la": "ramus superior ossis pubis",
+          "of": "hip-bone", "level": 3,
+          "kanji": "恥骨の上の枝",
+          "etym": "superior「上の」＋ pubic「恥骨の」＋ ramus「枝」",
+          "note": "恥骨体から寛骨臼へ外上に伸びる部分。上面に恥骨櫛があり、閉鎖孔の上を囲む。高齢者が転んだときに骨折しやすい（骨盤の脆弱性骨折）。"
+        },
+        {
+          "id": "inferior-pubic-ramus", "ja": "恥骨下枝", "yomi": "ちこつかし", "en": "inferior pubic ramus", "enAlt": ["inferior ramus of pubis"], "la": "ramus inferior ossis pubis",
+          "of": "hip-bone", "level": 3,
+          "kanji": "恥骨の下の枝",
+          "etym": "inferior「下の」＋ pubic「恥骨の」＋ ramus「枝」",
+          "note": "恥骨体から後ろ下へ伸び、坐骨枝とつながる部分（合わせて坐骨恥骨枝）。閉鎖孔の前下を囲み、左右で恥骨弓をつくる。"
+        },
+        {
+          "id": "ramus-of-ischium", "ja": "坐骨枝", "yomi": "ざこつし", "en": "ramus of ischium", "enAlt": ["ischial ramus"], "la": "ramus ossis ischii",
+          "of": "hip-bone", "level": 3,
+          "kanji": "坐骨の枝",
+          "etym": "ramus「枝」＋ ischium「坐骨」",
+          "note": "坐骨体から前上へ伸び、恥骨下枝とつながる細い部分。閉鎖孔の下を囲む。陰茎脚（女性では陰核脚）が付く。"
+        },
+        {
+          "id": "trochanteric-fossa", "ja": "転子窩", "yomi": "てんしか", "en": "trochanteric fossa", "la": "fossa trochanterica",
+          "of": "femur", "level": 3,
+          "kanji": "大転子のうしろの内側のくぼみ",
+          "etym": "trochanter ← ギリシャ語 trochanter「回すもの」＋ fossa「くぼみ」",
+          "note": "大転子の内側（後ろ）の深いくぼみ。外閉鎖筋が停止し、内閉鎖筋と双子筋もそのすぐ上に付く。"
+        },
+        {
+          "id": "pectineal-line-of-femur", "ja": "恥骨筋線", "yomi": "ちこつきんせん", "en": "pectineal line of femur", "la": "linea pectinea femoris",
+          "of": "femur", "level": 3,
+          "kanji": "恥骨筋が付く線",
+          "etym": "pectineal ← 恥骨筋（pectineus＝くし状の）の。ラテン語 pecten「くし」",
+          "note": "小転子の下から粗線へ下る線。恥骨筋が停止する。恥骨上枝の恥骨櫛（pectineal line of pubis）とは別の線。"
+        },
+        {
+          "id": "popliteal-surface", "ja": "膝窩面", "yomi": "しっかめん", "en": "popliteal surface", "enAlt": ["popliteal surface of femur"], "la": "facies poplitea",
+          "of": "femur", "level": 3,
+          "kanji": "膝窩に面する（大腿骨の）面",
+          "etym": "popliteal ← ラテン語 poples「膝の裏」",
+          "note": "大腿骨の下端の後面で、粗線が内外に分かれて囲む三角形の平らな面。膝窩の床になり、すぐ後ろを膝窩動脈が通る。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-leg-foot-more",
+      "title": "下腿と足の骨の部位（追加）",
+      "terms": [
+        {
+          "id": "medial-surface-of-tibia", "ja": "内側面（脛骨）", "yomi": "ないそくめん", "en": "medial surface of tibia", "la": "facies medialis tibiae",
+          "of": "tibia", "level": 2,
+          "kanji": "脛骨の内側の面",
+          "etym": "medial「内側の」＋ surface「面」",
+          "note": "脛骨の体の前内側の平らな面。筋におおわれず皮膚のすぐ下にあるので、すねをぶつけると痛い。子どもの救急で骨髄に輸液の針を刺す所（上部）。"
+        },
+        {
+          "id": "pes-anserinus", "ja": "鵞足", "yomi": "がそく", "en": "pes anserinus", "la": "pes anserinus",
+          "of": "tibia", "level": 2,
+          "kanji": "鵞鳥（がちょう）の足",
+          "etym": "pes「足」＋ anserinus「ガチョウの」",
+          "note": "脛骨の上部の内側で、縫工筋・薄筋・半腱様筋の腱が並んで付く所。3本の腱が広がる形が水かきのある鳥の足に見える。腱の下に鵞足包があり、走る人で痛む（鵞足炎）。"
+        },
+        {
+          "id": "fibular-notch", "ja": "腓骨切痕", "yomi": "ひこつせっこん", "en": "fibular notch", "la": "incisura fibularis",
+          "of": "tibia", "level": 3,
+          "kanji": "腓骨がはまる切れ込み",
+          "etym": "fibular「腓骨の」＋ notch「切れ込み」",
+          "note": "脛骨の下端の外側のくぼみ。腓骨の下端がはまり、前脛腓靱帯・後脛腓靱帯で強く結ばれる（脛腓靱帯結合）。"
+        },
+        {
+          "id": "neck-of-talus", "ja": "距骨頚", "yomi": "きょこつけい", "en": "neck of talus", "la": "collum tali",
+          "of": "talus", "level": 3,
+          "kanji": "距骨のくび",
+          "etym": "neck「くび」＋ talus「くるぶし・距骨」",
+          "note": "距骨頭と距骨体の間のくびれ。足を強く背屈して着地したときなどに骨折し、距骨体への血流が途絶えやすい（距骨の壊死）。"
+        },
+        {
+          "id": "posterior-process-of-talus", "ja": "距骨後突起", "yomi": "きょこつこうとっき", "en": "posterior process of talus", "la": "processus posterior tali",
+          "of": "talus", "level": 3,
+          "kanji": "距骨の後ろの突起",
+          "etym": "posterior「後ろの」＋ process「突起」",
+          "note": "距骨の後ろへ出る突起。内側結節と外側結節の間の溝を長母趾屈筋の腱が通る。外側結節が離れて小さな骨になったものが三角骨。"
+        },
+        {
+          "id": "fibular-trochlea", "ja": "腓骨筋滑車", "yomi": "ひこつきんかっしゃ", "en": "fibular trochlea", "enAlt": ["peroneal trochlea"], "la": "trochlea fibularis",
+          "of": "calcaneus", "level": 3,
+          "kanji": "腓骨筋の腱をかける滑車",
+          "etym": "fibular「腓骨（筋）の」＋ trochlea「滑車」",
+          "note": "踵骨の外側面の小さな高まり。上を短腓骨筋の腱、下を長腓骨筋の腱が通り、2つの腱を分ける。"
+        },
+        {
+          "id": "tarsal-sinus", "ja": "足根洞", "yomi": "そっこんどう", "en": "tarsal sinus", "enAlt": ["sinus tarsi"], "la": "sinus tarsi",
+          "of": "calcaneus", "level": 3,
+          "kanji": "足根骨の間のほら穴",
+          "etym": "tarsal「足根の」＋ sinus「くぼみ・ほら穴」",
+          "note": "距骨と踵骨の間の、外側に開いたトンネル状のすき間。中を骨間距踵靱帯が通る。足首のねんざのあと痛みが残る所（足根洞症候群）。"
+        },
+        {
+          "id": "groove-for-fibularis-longus", "ja": "長腓骨筋腱溝", "yomi": "ちょうひこつきんけんこう", "en": "groove for tendon of fibularis longus", "la": "sulcus tendinis musculi fibularis longi",
+          "of": "cuboid", "level": 3,
+          "kanji": "長腓骨筋の腱が通る溝",
+          "etym": "groove「溝」＋ tendon「腱」＋ fibularis longus「長腓骨筋」",
+          "note": "立方骨の下面の斜めの溝。長腓骨筋の腱はここで向きを変えて足の裏を横切り、内側楔状骨と第1中足骨へ行く。"
+        },
+        {
+          "id": "tuberosity-of-first-metatarsal", "ja": "第1中足骨粗面", "yomi": "だいいちちゅうそくこつそめん", "en": "tuberosity of first metatarsal bone", "la": "tuberositas ossis metatarsi primi",
+          "parts": ["first metatarsal bone"], "of": "metatarsals", "level": 3,
+          "kanji": "第1中足骨の粗い面",
+          "etym": "tuberosity「粗面」＋ first metatarsal「第1中足骨」",
+          "note": "第1中足骨の底の下外側の高まり。長腓骨筋の腱が付く。内側から前脛骨筋の腱も近くに付き、2つの筋が足のアーチをあぶみのように吊る。"
+        },
+        {
+          "id": "head-of-metatarsal", "ja": "中足骨頭", "yomi": "ちゅうそくこつとう", "en": "head of metatarsal bone", "enAlt": ["metatarsal heads"], "la": "caput ossis metatarsi",
+          "of": "metatarsals", "level": 2,
+          "kanji": "中足骨の頭（前の端）",
+          "etym": "head「頭」＋ metatarsal「中足骨の」",
+          "note": "中足骨の前の端の丸い部分。基節骨と中足趾節関節をつくる。立つと踵とこの頭（とくに第1・第5）に体重がかかる。第1中足骨頭の下のふくらみが母趾球。"
+        },
+        {
+          "id": "malleolar-groove-of-tibia", "ja": "果溝（脛骨）", "yomi": "かこう", "en": "malleolar groove of tibia", "la": "sulcus malleolaris tibiae",
+          "of": "tibia", "level": 3,
+          "kanji": "くるぶし（内果）の後ろの溝",
+          "etym": "malleolar「くるぶしの」（ラテン語 malleolus＝小さな槌）＋ groove「溝」",
+          "note": "内果の後面の浅い溝。後脛骨筋と長趾屈筋の腱がここを回って足の裏へ向きを変える（滑車のはたらき）。"
+        },
+        {
+          "id": "malleolar-groove-of-fibula", "ja": "果溝（腓骨）", "yomi": "かこう", "en": "malleolar groove of fibula", "la": "sulcus malleolaris fibulae",
+          "of": "fibula", "level": 3,
+          "kanji": "くるぶし（外果）の後ろの溝",
+          "etym": "malleolar「くるぶしの」＋ groove「溝」",
+          "note": "外果の後面の溝。長腓骨筋と短腓骨筋の腱がここを回って足の外側へ向きを変える。腱を押さえる上腓骨筋支帯が切れると、腱が外果の前へ外れる。"
+        }
+      ]
     }
   ]
 }

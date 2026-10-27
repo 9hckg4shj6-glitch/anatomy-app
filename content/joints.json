@@ -105,6 +105,22 @@
   "axis": [0.0984, 0.1476, 0.9841],
   "plus": "内反"
  },
+ "hallux": {
+  "ja": "母趾の中足趾節関節",
+  "moves": ["phalanges-foot"],
+  "only": ["FJ3192", "FJ3310"],
+  "pivot": [-0.0926, -0.0505, 0.1832],
+  "axis": [0.9889, 0, 0.1483],
+  "plus": "屈曲"
+ },
+ "toes": {
+  "ja": "第2〜5趾の中足趾節関節",
+  "moves": ["phalanges-foot"],
+  "only": ["FJ3189", "FJ3190", "FJ3191", "FJ3195", "FJ3300", "FJ3301", "FJ3302", "FJ3305", "FJ3319", "FJ3320", "FJ3321", "FJ3324"],
+  "pivot": [-0.128, -0.0559, 0.1622],
+  "axis": [0.9428, 0.0471, 0.33],
+  "plus": "屈曲"
+ },
  "neck": {
   "ja": "環軸関節",
   "moves": ["atlas", "frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone", "maxilla", "mandible", "zygomatic-bone", "nasal-bone", "lacrimal-bone", "palatine-bone", "vomer", "inferior-nasal-concha"],

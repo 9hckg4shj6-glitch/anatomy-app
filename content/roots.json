@@ -5,7 +5,7 @@
       "title": "語根：体の部位",
       "roots": [
         { "id": "brachi", "root": "brachi-", "match": "brachi", "meaning": "腕（上腕）", "from": "ラ brachium", "note": "上腕筋 brachialis・腕神経叢 brachial plexus。antebrachium（ante-「前」）は前腕" },
-        { "id": "carp", "root": "carp-", "match": "carp", "meaning": "手首（手根）", "from": "ギ karpos", "note": "手根骨 carpal bones・中手骨 metacarpals（meta-「後ろ・次」）" },
+        { "id": "carp", "root": "carp-", "match": "(?<!s)carp", "meaning": "手首（手根）", "from": "ギ karpos", "note": "手根骨 carpal bones・中手骨 metacarpals（meta-「後ろ・次」）" },
         { "id": "digit", "root": "digit-", "match": "digit", "meaning": "指", "from": "ラ digitus", "note": "指伸筋 extensor digitorum。digiti minimi は「最も小さい指（小指）の」" },
         { "id": "pollic", "root": "pollic-", "match": "pollic|pollex", "meaning": "母指（手の親指）", "from": "ラ pollex", "note": "長母指屈筋 flexor pollicis longus" },
         { "id": "halluc", "root": "halluc-", "match": "halluc|hallux", "meaning": "母趾（足の親指）", "from": "ラ hallux", "note": "長母趾伸筋 extensor hallucis longus。外反母趾は hallux valgus" },
@@ -31,7 +31,7 @@
         { "id": "labi", "root": "labi-", "match": "labi|labr", "la": true,"meaning": "唇", "from": "ラ labium（labrum は縁の唇）", "note": "上唇挙筋 levator labii superioris・関節唇 glenoid labrum" },
         { "id": "ment", "root": "ment-", "match": "\\bment|genio", "meaning": "おとがい（あご先）", "from": "ラ mentum / ギ geneion", "note": "オトガイ筋 mentalis・オトガイ舌骨筋 geniohyoid" },
         { "id": "or", "root": "or- / stom-", "match": "\\boris\\b|\\boral\\b|stom", "la": true,"meaning": "口", "from": "ラ os, oris / ギ stoma", "note": "口輪筋 orbicularis oris。stoma（ストーマ）は「口＝開口部」" },
-        { "id": "nas", "root": "nas- / rhin-", "match": "nas|rhin", "meaning": "鼻", "from": "ラ nasus / ギ rhis, rhinos", "note": "鼻骨 nasal bone。鼻炎は rhinitis" },
+        { "id": "nas", "root": "nas- / rhin-", "match": "nas(?!tom)|rhin", "meaning": "鼻", "from": "ラ nasus / ギ rhis, rhinos", "note": "鼻骨 nasal bone。鼻炎は rhinitis" },
         { "id": "ocul", "root": "ocul- / ophthalm-", "match": "ocul|ophthalm", "meaning": "眼", "from": "ラ oculus / ギ ophthalmos", "note": "動眼神経 oculomotor nerve・眼動脈 ophthalmic artery" },
         { "id": "ot", "root": "ot- / aur-", "match": "\\bot|aur(?!a)|acoust|audit", "meaning": "耳", "from": "ギ ous, ōtos / ラ auris", "note": "耳下腺 parotid（para-「わき」＋ot-）・耳介 auricle。audit-・acoust- は「聞く」" },
         { "id": "gloss", "root": "gloss- / lingu-", "match": "gloss|lingu", "la": true,"meaning": "舌", "from": "ギ glōssa / ラ lingua", "note": "舌下神経 hypoglossal nerve・舌動脈 lingual artery" },

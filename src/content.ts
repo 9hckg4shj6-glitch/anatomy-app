@@ -44,6 +44,10 @@ export interface Term {
   figure?: Figure;
   /** 図から名前を答える問題で選択肢に出してよい語（「近位」の図に「上」を出すと、どちらも正しくなるため） */
   foils?: string[];
+  /** 筋の作用の動き（content/joints.json の関節ID → 角度°）。「動きを見る」で骨を動かし、起始と停止を結ぶ帯が縮むのを示す */
+  motion?: Motion;
+  /** 局所解剖の語（大腿三角・膝窩・区画など）。部品を持たず、境界と中を通る語を組み合わせて示す */
+  region?: Region;
   /** 以下は読み込み時に付ける */
   system: string;
   unit: string;
@@ -81,8 +85,43 @@ export interface Figure {
   arrows?: [Vec3, Vec3][];
   plane?: FigurePlane;
   guide?: FigurePlane;
-  motion?: { from?: Record<string, number>; to: Record<string, number> };
-  view: { target: Vec3; from: Vec3; size: number };
+  motion?: Motion;
+  view: View;
+}
+
+/**
+ * 関節の動き（content/joints.json の関節ID → 角度°）。from の姿勢（無ければ解剖学的正位）から to の姿勢へ動かす。
+ * via は筋の動きの帯が通る骨の部位（ピン）。くるぶしの後ろを回る腱のように、滑車で向きを変える筋で使う
+ */
+export interface Motion {
+  from?: Record<string, number>;
+  to: Record<string, number>;
+  via?: string[];
+}
+
+/** カメラ: 見る中心 target・カメラを置く向き from・映す半分の高さ size（m） */
+export interface View {
+  target: Vec3;
+  from: Vec3;
+  size: number;
+}
+
+/**
+ * 局所解剖の語（モデル座標 m、右側）。bounds は境界の語（オレンジ）、contents は中を通る・中にある語（もとの色）。
+ * outline は囲みの線（open なら閉じない＝足弓のアーチ）。右側で示し、見せるときは左側の形を隠す。
+ * boundsLabel / contentsLabel は説明の見出し（無ければ「境界」「通るもの」）、prompt は位置→名前の問題文。
+ * section は見せるときに体を切る面（区画は水平断で、CT と同じく下から見る。keep: 1 で座標の大きい側を残す）。
+ */
+export interface Region {
+  bounds: string[];
+  contents: string[];
+  outline?: Vec3[];
+  open?: boolean;
+  section?: { axis: "x" | "y" | "z"; at: number; keep: 1 | -1 };
+  view: View;
+  boundsLabel?: string;
+  contentsLabel?: string;
+  prompt?: string;
 }
 
 /**
@@ -90,6 +129,7 @@ export interface Figure {
  * （右側。正の角度で plus の運動）。slide の関節は回さずに axis の向きへ動かす（値は mm）。
  * 左右のある骨は右側の部品だけを動かし、mid の関節（環軸関節）は全部を動かす。
  * 並びは体の中心から先へ（先の関節から順に回してから根元の関節で回す）。
+ * only は動かす部品を絞る（足の指の骨のうち母趾だけ、など。部品ID）。
  */
 export interface Joint {
   ja: string;
@@ -98,6 +138,7 @@ export interface Joint {
   axis: Vec3;
   mid?: boolean;
   slide?: boolean;
+  only?: string[];
   plus: string;
 }
 
@@ -155,6 +196,21 @@ export function figurePrompt(figure: Figure): string {
   if (figure.motion) return "この動きの名前は？";
   if (figure.plane) return "オレンジ色の面の名前は？";
   return "オレンジ色の矢印の向きは？";
+}
+
+/** 局所解剖の語の、位置→名前の問題の文 */
+export function regionPrompt(region: Region): string {
+  return region.prompt ?? "オレンジ色が囲む場所の名前は？";
+}
+
+/** 局所解剖の語を示すのに要る系統（境界と中を通る語の系統。骨・骨の部位は添える骨格で示す） */
+export function regionSystems(region: Region): string[] {
+  return [...new Set([...region.bounds, ...region.contents].map((id) => termById.get(id)?.system ?? "").filter((id) => id && id !== "skeletal"))];
+}
+
+/** 部品を持たない語（基本の用語の図・局所解剖）。タップでは答えられない */
+export function isDrawn(term: Pick<Term, "figure" | "region"> | undefined): boolean {
+  return !!(term?.figure || term?.region);
 }
 
 export function isLandmark(term: Pick<Term, "of"> | undefined): boolean {

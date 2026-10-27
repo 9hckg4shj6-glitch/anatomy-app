@@ -39,6 +39,8 @@ describe("関節の向き（scripts/joints.mjs）", () => {
     expect(move("hip-rot", 40, toe).x).toBeLessThan(toe[0] - 0.05); // 外旋: つま先が外へ
     const sole: [number, number, number] = [-0.08, -0.07, 0.1];
     expect(move("subtalar", 25, sole).x).toBeGreaterThan(sole[0]); // 内反: 足の裏が内側へ
+    expect(move("hallux", 30, [-0.09, -0.055, 0.23]).y).toBeLessThan(-0.07); // 屈曲: 母趾の先が下へ
+    expect(move("toes", -30, [-0.13, -0.06, 0.2]).y).toBeGreaterThan(-0.045); // 伸展（負）: 指の先が上へ
     expect(move("neck", 60, [0, 1.52, 0.17]).x).toBeGreaterThan(0.05); // 回旋（正）: 顔が左（+x）を向く
   });
 

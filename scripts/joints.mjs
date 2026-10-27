@@ -87,6 +87,18 @@ const kneeAxis = unit(sub(pin("medial-epicondyle-of-femur"), pin("lateral-epicon
 // 足関節（距腿関節）の軸は内果と外果の先を結ぶ線
 const ankle = mid(pin("medial-malleolus"), pin("lateral-malleolus"));
 const ankleAxis = unit(sub(pin("lateral-malleolus"), pin("medial-malleolus")));
+// 足の指（中足趾節関節）: 中足骨頭（前の端）を結ぶ線のまわりに回す。母趾（hallux）とほかの指（toes）で別の関節にして、
+// 動かす部品を only で絞る（足の指の骨は1つの語「指骨（足）」なので）。軸は外側→内側（中足骨頭の並びに合わせて第2〜5趾は少し斜め）で、
+// 正の角度で屈曲（指が下へ）
+const metatarsalHeads = Object.fromEntries(termMeshes("metatarsals", "right").map(({ name, positions }) => {
+  let best = null;
+  for (let i = 0; i < positions.length; i += 3) if (!best || positions[i + 2] > best[2]) best = [positions[i], positions[i + 1], positions[i + 2]];
+  // 頭の先から少し後ろ・上（頭の丸みの中心のあたり）
+  return [name.toLowerCase().match(/(first|second|third|fourth|fifth)/)[1], add(best, [0, 0.004, -0.009])];
+}));
+const toeBones = termMeshes("phalanges-foot", "right");
+const greatToe = toeBones.filter(({ name }) => /big toe/i.test(name)).map(({ id }) => id);
+const lesserToes = toeBones.filter(({ name }) => !/big toe/i.test(name)).map(({ id }) => id);
 const capitate = (() => {
   const pts = termMeshes("capitate", "right").flatMap(({ bounds }) => [bounds[0], bounds[1]]);
   return mid(pts[0], pts[1]);
@@ -114,6 +126,14 @@ const joints = {
   subtalar: {
     ja: "距骨下関節", moves: ["calcaneus", "navicular", "cuboid", "cuneiforms", "metatarsals", "phalanges-foot"],
     pivot: pin("head-of-talus"), axis: unit([0.1, 0.15, 1]), plus: "内反",
+  },
+  hallux: {
+    ja: "母趾の中足趾節関節", moves: ["phalanges-foot"], only: greatToe,
+    pivot: metatarsalHeads.first, axis: unit([1, 0, 0.15]), plus: "屈曲",
+  },
+  toes: {
+    ja: "第2〜5趾の中足趾節関節", moves: ["phalanges-foot"], only: lesserToes,
+    pivot: mid(metatarsalHeads.second, metatarsalHeads.fifth), axis: unit([1, 0.05, 0.35]), plus: "屈曲",
   },
   neck: { ja: "環軸関節", moves: ["atlas", ...skull], pivot: pin("dens-of-axis"), axis: [0, 1, 0], mid: true, plus: "左を向く回旋" },
 };

@@ -1,9 +1,9 @@
 import { speak } from "../audio";
-import { unitById } from "../content";
+import { isDrawn, unitById } from "../content";
 import { db, nowIso } from "../db";
 import { h, until } from "../dom";
 import { shuffle, type QueueItem } from "../study";
-import { sceneFor, type AppContext } from "./context";
+import { motionPlayer, sceneFor, type AppContext } from "./context";
 import { ask, showPanel } from "./quiz";
 import { termCard } from "./term-card";
 
@@ -15,7 +15,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     return;
   }
   const { viewer, signal } = ctx;
-  await viewer.show(sceneFor(unit.system));
+  await viewer.show(sceneFor(unit.system, unit.id));
 
   // レッスンの初めの説明（基本の用語の「解剖学的正位」など）
   if (unit.intro) {
@@ -42,7 +42,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     const next = h("button", { class: "primary", type: "button" }, i === unit.terms.length - 1 ? "確認テストへ" : "次へ");
     showPanel(ctx,
       h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, `${i + 1} / ${unit.terms.length}`)),
-      termCard(term),
+      termCard(term, { motion: motionPlayer(ctx, term) }),
       h("div", { class: "nav-row" }, back, next),
     );
     next.focus({ preventScroll: true });
@@ -53,7 +53,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   }
 
   viewer.setLabel(null);
-  const items: QueueItem[] = shuffle(unit.terms).map((term, i) => ({ termId: term.id, facet: i % 2 || term.xray || term.figure ? "locate" : "point", isNew: true }));
+  const items: QueueItem[] = shuffle(unit.terms).map((term, i) => ({ termId: term.id, facet: i % 2 || term.xray || isDrawn(term) ? "locate" : "point", isNew: true }));
   let correct = 0;
   for (const [i, item] of items.entries()) {
     if ((await ask(ctx, item, "lesson", `確認 ${i + 1} / ${items.length}`)) === "correct") correct++;

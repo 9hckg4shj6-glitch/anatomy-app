@@ -1,14 +1,14 @@
 import type { Grade } from "ts-fsrs";
 import { checkEnglish, type EnglishResult } from "../answer";
 import { speak } from "../audio";
-import { figurePrompt, pins, termById, terms, type Term } from "../content";
+import { figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
 import { db, type Facet, type ReviewEvent } from "../db";
 import { h, until } from "../dom";
 import { dueLabel, Rating, recordReview } from "../fsrs";
 import { hitsPin, landmarkAt, nearbyLandmarks, type Vec3 } from "../landmarks";
 import { facetLabels, pickChoices, typesEnglish, type QueueItem } from "../study";
 import { INSERTION_COLOR, ORIGIN_COLOR } from "../viewer";
-import { sceneFor, type AppContext } from "./context";
+import { motionPlayer, sceneFor, type AppContext } from "./context";
 import { termCard } from "./term-card";
 
 export type Outcome = EnglishResult | "skip";
@@ -45,13 +45,13 @@ export function attachMarks(term: Term): [string, string][] {
 
 /**
  * 4択の候補（3Dで近い語, 全体）。骨・器官の部位は同じ系統の部位どうし、ほかは同じ系統の語どうしで選ぶ。
- * 基本の用語は同じレッスンの語を先に出す。図から名前を答える問題（byFigure）では、図に当てはまらない語（foils）だけを出す
+ * 基本の用語・局所解剖は同じレッスンの語を先に出す。図から名前を答える問題（byFigure）では、図に当てはまらない語（foils）だけを出す
  * （「近位」の矢印は上も向いているので「上」を出さない）。
  * 筋の起始・停止・支配神経・作用（needs あり）は系統をまたいで3Dで近い筋から選ぶ（喉頭・咽頭の筋は呼吸器・消化器にある）。
  * 「環椎」の問題に「頚椎」のような、答えを含む語や答えに含まれる語は出さない（どちらも正しくなる）。
  */
 function candidates(ctx: AppContext, term: Term, needs?: (other: Term) => boolean, byFigure = false): [string[], string[]] {
-  if (term.figure) {
+  if (isDrawn(term)) {
     if (byFigure && term.foils) return [term.foils, term.foils];
     return [terms.filter((other) => other.unit === term.unit).map((other) => other.id), terms.filter((other) => other.system === term.system).map((other) => other.id)];
   }
@@ -79,7 +79,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const term = termById.get(item.termId)!;
   const { viewer, signal } = ctx;
   const started = performance.now();
-  await viewer.show(sceneFor(term.system));
+  await viewer.show(sceneFor(term.system, term.unit));
   viewer.setLabel(null);
   viewer.highlight([]);
 
@@ -89,7 +89,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   // 骨・器官の部位も、骨・器官をはっきり見せるため周りを半透明にする。
   const landmark = !!term.of;
   const isolate = !!term.xray || landmark;
-  const facet = item.facet === "point" && (term.xray || term.figure) ? "locate" : item.facet;
+  const facet = item.facet === "point" && (term.xray || isDrawn(term)) ? "locate" : item.facet;
   const header = h("div", { class: "quiz-head" }, h("span", { class: "facet" }, facetLabels[facet]), h("span", { class: "count" }, progress));
 
   let outcome: Outcome;
@@ -101,12 +101,12 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     case "locate": {
       viewer.highlight([term.id], { isolate });
       viewer.focus(term.id, 3.4);
-      const question = term.figure ? figurePrompt(term.figure) : "オレンジ色の部位の名前は？";
+      const question = term.figure ? figurePrompt(term.figure) : term.region ? regionPrompt(term.region) : "オレンジ色の部位の名前は？";
       ctx.hint(question);
       const picked = await chooseOne(ctx, header, question, choicesOf((id) => termById.get(id)!.ja, undefined, true), (id) => termById.get(id)!.ja);
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
-      // 基本の用語の図は1つずつしか描かないので、選んだ語を青で示さない
-      wrongTerm = picked && picked !== term.id && !term.figure ? picked : null;
+      // 基本の用語の図・局所解剖は1つずつしか描かないので、選んだ語を青で示さない
+      wrongTerm = picked && picked !== term.id && !isDrawn(term) ? picked : null;
       break;
     }
     case "point": {
@@ -207,7 +207,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       ? h("p", { class: "wrong-note" }, "青い点はあなたがタップした所")
       : null;
   const next = h("button", { class: "primary", type: "button" }, "次へ");
-  showPanel(ctx, header, banner, wrongNote ?? "", termCard(term), h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`), next);
+  showPanel(ctx, header, banner, wrongNote ?? "", termCard(term, { motion: motionPlayer(ctx, term) }), h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`), next);
   next.focus({ preventScroll: true });
   await until(signal, (resolve) => next.addEventListener("click", () => resolve(undefined), { once: true }));
   return outcome;

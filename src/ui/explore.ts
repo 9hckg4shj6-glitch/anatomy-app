@@ -1,10 +1,10 @@
 import { speak } from "../audio";
-import { landmarksOf, loadAttachments, pins, systems, termById, terms, type Term } from "../content";
+import { isDrawn, landmarksOf, loadAttachments, pins, regionSystems, systems, termById, terms, type Term } from "../content";
 import { h } from "../dom";
 import { landmarkAt } from "../landmarks";
 import { relatedTerms } from "../related";
 import type { Section } from "../viewer";
-import type { AppContext } from "./context";
+import { motionPlayer, type AppContext } from "./context";
 import { attachMarks } from "./quiz";
 import { termCard } from "./term-card";
 
@@ -21,7 +21,8 @@ const SECTION_AXES: { axis: Section["axis"]; label: string; keep: Section["keep"
 export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   const { viewer, panel, tools, index } = ctx;
   const attachments = await loadAttachments();
-  const available = systems.filter((system) => index.systems[system.id]);
+  // 局所解剖は3Dの部品を持たないが、語の一覧を出すために系統のボタンに入れる（語を選ぶと、境界と中を通る語の系統を読み込む）
+  const available = systems.filter((system) => index.systems[system.id] || system.id === "regional");
   const opened = termById.get(termId);
   const shown = new Set([opened && index.systems[opened.system] ? opened.system : available[0]?.id ?? "skeletal"]);
   let body = true;
@@ -128,10 +129,10 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     paint();
     viewer.setLabel(term?.id ?? null, term?.ja ?? "");
     if (term) {
-      // 基本の用語（方向・面・運動）は骨格の上に図を描く
-      const system = term.figure ? "skeletal" : term.system;
-      if (!shown.has(system)) {
-        shown.add(system);
+      // 基本の用語（方向・面・運動）は骨格の上に図を描く。局所解剖は境界と中を通る語の系統と骨格を見せる
+      const needed = term.figure ? ["skeletal"] : term.region ? [term.system, "skeletal", ...regionSystems(term.region)] : [term.system];
+      if (needed.some((system) => !shown.has(system))) {
+        for (const system of needed) shown.add(system);
         void apply();
       }
       if (!section) viewer.focus(term.id, 3.2);
@@ -176,7 +177,14 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     const attachable = !!(term.originAt?.length || term.insertionAt?.length || viewer.hasAttachments(term.id));
     const related = relatedTerms(term, attachments).filter((relation) => relation.list.length);
     detail.replaceChildren(h("div", {},
-      termCard(term, { open: select }),
+      termCard(term, {
+        open: select,
+        // 筋の動きは骨格を表示に加えてから
+        motion: motionPlayer(ctx, term, shown.has("skeletal") ? undefined : async () => {
+          shown.add("skeletal");
+          await apply();
+        }),
+      }),
       parts.length ? h("h3", {}, `${term.ja}の部位`) : "",
       parts.length ? chips(parts) : "",
       ...related.flatMap((relation) => [
@@ -197,7 +205,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
             render();
           },
         }, attach ? "起始・停止を隠す" : "起始・停止を骨で見る") : null,
-        !parent && !attachable && !term.figure ? h("button", {
+        !parent && !attachable && !isDrawn(term) ? h("button", {
           class: "ghost-button", type: "button",
           onClick: () => {
             isolate = !isolate;

@@ -449,7 +449,8 @@
           "insertion": "大腿骨の小転子",
           "insertionAt": ["lesser-trochanter"],
           "nerve": "腰神経叢の枝",
-          "action": "股関節の屈曲"
+          "action": "股関節の屈曲",
+          "motion": { "to": { "hip-flex": 70 } }
         },
         {
           "id": "iliacus", "ja": "腸骨筋", "yomi": "ちょうこつきん", "en": "iliacus", "la": "musculus iliacus",
@@ -462,7 +463,8 @@
           "originAt": ["iliac-fossa"],
           "insertionAt": ["lesser-trochanter"],
           "nerve": "大腿神経",
-          "action": "股関節の屈曲"
+          "action": "股関節の屈曲",
+          "motion": { "to": { "hip-flex": 70 } }
         }
       ]
     },
@@ -829,7 +831,8 @@
           "insertion": "大腿骨の殿筋粗面・腸脛靱帯",
           "insertionAt": ["gluteal-tuberosity"],
           "nerve": "下殿神経",
-          "action": "股関節の伸展・外旋"
+          "action": "股関節の伸展・外旋",
+          "motion": { "from": { "hip-flex": 45 }, "to": { "hip-flex": -10 } }
         },
         {
           "id": "gluteus-medius", "ja": "中殿筋", "yomi": "ちゅうでんきん", "en": "gluteus medius", "la": "musculus gluteus medius",
@@ -841,7 +844,8 @@
           "insertion": "大腿骨の大転子",
           "insertionAt": ["greater-trochanter"],
           "nerve": "上殿神経",
-          "action": "股関節の外転・内旋"
+          "action": "股関節の外転・内旋",
+          "motion": { "to": { "hip-abd": 35 } }
         },
         {
           "id": "gluteus-minimus", "ja": "小殿筋", "yomi": "しょうでんきん", "en": "gluteus minimus", "la": "musculus gluteus minimus",
@@ -853,7 +857,8 @@
           "insertion": "大腿骨の大転子（前面）",
           "insertionAt": ["greater-trochanter"],
           "nerve": "上殿神経",
-          "action": "股関節の外転・内旋"
+          "action": "股関節の外転・内旋",
+          "motion": { "to": { "hip-abd": 35 } }
         },
         {
           "id": "piriformis", "ja": "梨状筋", "yomi": "りじょうきん", "en": "piriformis", "la": "musculus piriformis",
@@ -865,8 +870,9 @@
           "insertion": "大腿骨の大転子（上端）",
           "originAt": ["anterior-sacral-foramina"],
           "insertionAt": ["greater-trochanter"],
-          "nerve": "仙骨神経叢の枝",
-          "action": "股関節の外旋"
+          "nerve": "梨状筋神経（仙骨神経叢の枝）",
+          "action": "股関節の外旋",
+          "motion": { "to": { "hip-rot": 40 } }
         },
         {
           "id": "tensor-fasciae-latae", "ja": "大腿筋膜張筋", "yomi": "だいたいきんまくちょうきん", "en": "tensor fasciae latae", "la": "musculus tensor fasciae latae",
@@ -879,7 +885,8 @@
           "originAt": ["anterior-superior-iliac-spine"],
           "insertionAt": ["lateral-condyle-of-tibia"],
           "nerve": "上殿神経",
-          "action": "股関節の屈曲・外転・内旋（腸脛靱帯を張る）"
+          "action": "股関節の屈曲・外転・内旋（腸脛靱帯を張る）",
+          "motion": { "to": { "hip-flex": 30, "hip-abd": 20 } }
         },
         {
           "id": "sartorius", "ja": "縫工筋", "yomi": "ほうこうきん", "en": "sartorius", "la": "musculus sartorius",
@@ -891,7 +898,8 @@
           "insertion": "脛骨上部の内側面（鵞足）",
           "originAt": ["anterior-superior-iliac-spine"],
           "nerve": "大腿神経",
-          "action": "股関節の屈曲・外転・外旋、膝関節の屈曲"
+          "action": "股関節の屈曲・外転・外旋、膝関節の屈曲",
+          "motion": { "to": { "hip-flex": 50, "hip-abd": 25, "hip-rot": 35, "knee": 70 } }
         },
         {
           "id": "quadriceps-femoris", "ja": "大腿四頭筋", "yomi": "だいたいしとうきん", "en": "quadriceps femoris", "enAlt": ["quadriceps"], "la": "musculus quadriceps femoris",
@@ -904,7 +912,8 @@
           "originAt": ["anterior-inferior-iliac-spine"],
           "insertionAt": ["base-of-patella", "tibial-tuberosity"],
           "nerve": "大腿神経",
-          "action": "膝関節の伸展（大腿直筋は股関節の屈曲も）"
+          "action": "膝関節の伸展（大腿直筋は股関節の屈曲も）",
+          "motion": { "from": { "knee": 90 }, "to": { "knee": 0 } }
         },
         {
           "id": "rectus-femoris", "ja": "大腿直筋", "yomi": "だいたいちょっきん", "en": "rectus femoris", "la": "musculus rectus femoris",
@@ -917,7 +926,8 @@
           "originAt": ["anterior-inferior-iliac-spine"],
           "insertionAt": ["base-of-patella", "tibial-tuberosity"],
           "nerve": "大腿神経",
-          "action": "膝関節の伸展・股関節の屈曲"
+          "action": "膝関節の伸展・股関節の屈曲",
+          "motion": { "from": { "knee": 90 }, "to": { "hip-flex": 35, "knee": 0 } }
         },
         {
           "id": "vastus-lateralis", "ja": "外側広筋", "yomi": "がいそくこうきん", "en": "vastus lateralis", "la": "musculus vastus lateralis",
@@ -930,7 +940,8 @@
           "originAt": ["greater-trochanter", "linea-aspera"],
           "insertionAt": ["base-of-patella", "tibial-tuberosity"],
           "nerve": "大腿神経",
-          "action": "膝関節の伸展"
+          "action": "膝関節の伸展",
+          "motion": { "from": { "knee": 90 }, "to": { "knee": 0 } }
         },
         {
           "id": "vastus-medialis", "ja": "内側広筋", "yomi": "ないそくこうきん", "en": "vastus medialis", "la": "musculus vastus medialis",
@@ -943,7 +954,8 @@
           "originAt": ["intertrochanteric-line", "linea-aspera"],
           "insertionAt": ["base-of-patella", "tibial-tuberosity"],
           "nerve": "大腿神経",
-          "action": "膝関節の伸展"
+          "action": "膝関節の伸展",
+          "motion": { "from": { "knee": 90 }, "to": { "knee": 0 } }
         },
         {
           "id": "vastus-intermedius", "ja": "中間広筋", "yomi": "ちゅうかんこうきん", "en": "vastus intermedius", "la": "musculus vastus intermedius",
@@ -955,7 +967,8 @@
           "insertion": "膝蓋骨・膝蓋靱帯を介して脛骨粗面",
           "insertionAt": ["base-of-patella", "tibial-tuberosity"],
           "nerve": "大腿神経",
-          "action": "膝関節の伸展"
+          "action": "膝関節の伸展",
+          "motion": { "from": { "knee": 90 }, "to": { "knee": 0 } }
         },
         {
           "id": "gracilis", "ja": "薄筋", "yomi": "はっきん", "en": "gracilis", "la": "musculus gracilis",
@@ -966,7 +979,8 @@
           "origin": "恥骨下枝",
           "insertion": "脛骨上部の内側面（鵞足）",
           "nerve": "閉鎖神経",
-          "action": "股関節の内転・膝関節の屈曲"
+          "action": "股関節の内転・膝関節の屈曲",
+          "motion": { "from": { "hip-abd": 30 }, "to": { "hip-abd": 0, "knee": 45 } }
         },
         {
           "id": "adductor-longus", "ja": "長内転筋", "yomi": "ちょうないてんきん", "en": "adductor longus", "la": "musculus adductor longus",
@@ -979,7 +993,8 @@
           "originAt": ["pubic-tubercle"],
           "insertionAt": ["linea-aspera"],
           "nerve": "閉鎖神経",
-          "action": "股関節の内転"
+          "action": "股関節の内転",
+          "motion": { "from": { "hip-abd": 35 }, "to": { "hip-abd": -5 } }
         },
         {
           "id": "adductor-magnus", "ja": "大内転筋", "yomi": "だいないてんきん", "en": "adductor magnus", "la": "musculus adductor magnus",
@@ -992,7 +1007,8 @@
           "originAt": ["ischial-tuberosity"],
           "insertionAt": ["linea-aspera", "adductor-tubercle"],
           "nerve": "閉鎖神経・坐骨神経",
-          "action": "股関節の内転"
+          "action": "股関節の内転",
+          "motion": { "from": { "hip-abd": 35 }, "to": { "hip-abd": -5 } }
         },
         {
           "id": "pectineus", "ja": "恥骨筋", "yomi": "ちこつきん", "en": "pectineus", "la": "musculus pectineus",
@@ -1004,7 +1020,8 @@
           "insertion": "大腿骨の恥骨筋線（小転子の下）",
           "originAt": ["pecten-pubis"],
           "nerve": "大腿神経",
-          "action": "股関節の屈曲・内転"
+          "action": "股関節の屈曲・内転",
+          "motion": { "from": { "hip-abd": 30 }, "to": { "hip-abd": 0, "hip-flex": 30 } }
         },
         {
           "id": "biceps-femoris", "ja": "大腿二頭筋", "yomi": "だいたいにとうきん", "en": "biceps femoris", "la": "musculus biceps femoris",
@@ -1017,7 +1034,8 @@
           "originAt": ["ischial-tuberosity", "linea-aspera"],
           "insertionAt": ["head-of-fibula"],
           "nerve": "坐骨神経",
-          "action": "膝関節の屈曲・股関節の伸展"
+          "action": "膝関節の屈曲・股関節の伸展",
+          "motion": { "from": { "hip-flex": 40 }, "to": { "hip-flex": -5, "knee": 70 } }
         },
         {
           "id": "semitendinosus", "ja": "半腱様筋", "yomi": "はんけんようきん", "en": "semitendinosus", "la": "musculus semitendinosus",
@@ -1029,7 +1047,8 @@
           "insertion": "脛骨上部の内側面（鵞足）",
           "originAt": ["ischial-tuberosity"],
           "nerve": "坐骨神経",
-          "action": "膝関節の屈曲・股関節の伸展"
+          "action": "膝関節の屈曲・股関節の伸展",
+          "motion": { "from": { "hip-flex": 40 }, "to": { "hip-flex": -5, "knee": 70 } }
         },
         {
           "id": "semimembranosus", "ja": "半膜様筋", "yomi": "はんまくようきん", "en": "semimembranosus", "la": "musculus semimembranosus",
@@ -1042,7 +1061,8 @@
           "originAt": ["ischial-tuberosity"],
           "insertionAt": ["medial-condyle-of-tibia"],
           "nerve": "坐骨神経",
-          "action": "膝関節の屈曲・股関節の伸展"
+          "action": "膝関節の屈曲・股関節の伸展",
+          "motion": { "from": { "hip-flex": 40 }, "to": { "hip-flex": -5, "knee": 70 } }
         }
       ]
     },
@@ -1060,7 +1080,8 @@
           "insertion": "内側楔状骨・第1中足骨の底",
           "originAt": ["lateral-condyle-of-tibia"],
           "nerve": "深腓骨神経",
-          "action": "足関節の背屈・足の内反"
+          "action": "足関節の背屈・足の内反",
+          "motion": { "from": { "ankle": -25 }, "to": { "ankle": 15, "subtalar": 15 } }
         },
         {
           "id": "triceps-surae", "ja": "下腿三頭筋", "yomi": "かたいさんとうきん", "en": "triceps surae", "la": "musculus triceps surae",
@@ -1073,7 +1094,8 @@
           "originAt": ["medial-condyle-of-femur", "lateral-condyle-of-femur", "soleal-line"],
           "insertionAt": ["calcaneal-tuberosity"],
           "nerve": "脛骨神経",
-          "action": "足関節の底屈（つま先立ち）"
+          "action": "足関節の底屈（つま先立ち）",
+          "motion": { "from": { "ankle": 15 }, "to": { "ankle": -35 } }
         },
         {
           "id": "gastrocnemius", "ja": "腓腹筋", "yomi": "ひふくきん", "en": "gastrocnemius", "la": "musculus gastrocnemius",
@@ -1086,7 +1108,8 @@
           "originAt": ["medial-condyle-of-femur", "lateral-condyle-of-femur"],
           "insertionAt": ["calcaneal-tuberosity"],
           "nerve": "脛骨神経",
-          "action": "足関節の底屈・膝関節の屈曲"
+          "action": "足関節の底屈・膝関節の屈曲",
+          "motion": { "from": { "ankle": 15 }, "to": { "ankle": -35, "knee": 40 } }
         },
         {
           "id": "soleus", "ja": "ヒラメ筋", "yomi": "ひらめきん", "en": "soleus", "la": "musculus soleus",
@@ -1099,7 +1122,8 @@
           "originAt": ["soleal-line", "head-of-fibula"],
           "insertionAt": ["calcaneal-tuberosity"],
           "nerve": "脛骨神経",
-          "action": "足関節の底屈（立った姿勢を保つ）"
+          "action": "足関節の底屈（立った姿勢を保つ）",
+          "motion": { "from": { "ankle": 15 }, "to": { "ankle": -35 } }
         },
         {
           "id": "calcaneal-tendon", "ja": "踵骨腱", "yomi": "しょうこつけん", "en": "calcaneal tendon", "enAlt": ["achilles tendon", "tendo calcaneus"], "la": "tendo calcaneus",
@@ -1118,7 +1142,8 @@
           "insertion": "内側楔状骨・第1中足骨の底",
           "originAt": ["head-of-fibula"],
           "nerve": "浅腓骨神経",
-          "action": "足の外反・足関節の底屈"
+          "action": "足の外反・足関節の底屈",
+          "motion": { "from": { "subtalar": 10 }, "to": { "subtalar": -25, "ankle": -25 }, "via": ["malleolar-groove-of-fibula", "groove-for-fibularis-longus"] }
         },
         {
           "id": "fibularis-brevis", "ja": "短腓骨筋", "yomi": "たんひこつきん", "en": "fibularis brevis", "enAlt": ["peroneus brevis"], "la": "musculus fibularis brevis",
@@ -1130,7 +1155,8 @@
           "insertion": "第5中足骨粗面",
           "insertionAt": ["tuberosity-of-fifth-metatarsal"],
           "nerve": "浅腓骨神経",
-          "action": "足の外反"
+          "action": "足の外反",
+          "motion": { "from": { "subtalar": 10 }, "to": { "subtalar": -25, "ankle": -10 }, "via": ["malleolar-groove-of-fibula"] }
         },
         {
           "id": "tibialis-posterior", "ja": "後脛骨筋", "yomi": "こうけいこつきん", "en": "tibialis posterior", "la": "musculus tibialis posterior",
@@ -1142,7 +1168,8 @@
           "insertion": "舟状骨粗面・楔状骨・中足骨の底",
           "insertionAt": ["tuberosity-of-navicular"],
           "nerve": "脛骨神経",
-          "action": "足の内反・足関節の底屈"
+          "action": "足の内反・足関節の底屈",
+          "motion": { "from": { "subtalar": -10 }, "to": { "subtalar": 30, "ankle": -25 }, "via": ["malleolar-groove-of-tibia"] }
         }
       ]
     },
@@ -1378,7 +1405,8 @@
           "insertion": "第2〜5趾の趾背腱膜（中節骨・末節骨）",
           "originAt": ["lateral-condyle-of-tibia"],
           "nerve": "深腓骨神経",
-          "action": "第2〜5趾の伸展・足関節の背屈"
+          "action": "第2〜5趾の伸展・足関節の背屈",
+          "motion": { "from": { "toes": 20, "ankle": -15 }, "to": { "toes": -35, "ankle": 15 } }
         },
         {
           "id": "extensor-hallucis-longus", "ja": "長母趾伸筋", "yomi": "ちょうぼししんきん", "en": "extensor hallucis longus", "la": "musculus extensor hallucis longus",
@@ -1389,7 +1417,8 @@
           "origin": "腓骨の前面・下腿骨間膜",
           "insertion": "母趾の末節骨底",
           "nerve": "深腓骨神経",
-          "action": "母趾の伸展・足関節の背屈"
+          "action": "母趾の伸展・足関節の背屈",
+          "motion": { "from": { "hallux": 20, "ankle": -15 }, "to": { "hallux": -40, "ankle": 15 } }
         },
         {
           "id": "fibularis-tertius", "ja": "第三腓骨筋", "yomi": "だいさんひこつきん", "en": "fibularis tertius", "enAlt": ["peroneus tertius"], "la": "musculus fibularis tertius",
@@ -1401,7 +1430,8 @@
           "insertion": "第5中足骨底（背側）",
           "insertionAt": ["tuberosity-of-fifth-metatarsal"],
           "nerve": "深腓骨神経",
-          "action": "足関節の背屈・足の外反"
+          "action": "足関節の背屈・足の外反",
+          "motion": { "to": { "ankle": 15, "subtalar": -15 } }
         },
         {
           "id": "flexor-digitorum-longus", "ja": "長趾屈筋", "yomi": "ちょうしくっきん", "en": "flexor digitorum longus", "la": "musculus flexor digitorum longus",
@@ -1412,7 +1442,8 @@
           "origin": "脛骨の後面",
           "insertion": "第2〜5趾の末節骨底",
           "nerve": "脛骨神経",
-          "action": "第2〜5趾の屈曲・足関節の底屈"
+          "action": "第2〜5趾の屈曲・足関節の底屈",
+          "motion": { "from": { "toes": -25, "ankle": 10 }, "to": { "toes": 40, "ankle": -20 }, "via": ["malleolar-groove-of-tibia", "sustentaculum-tali"] }
         },
         {
           "id": "flexor-hallucis-longus", "ja": "長母趾屈筋", "yomi": "ちょうぼしくっきん", "en": "flexor hallucis longus", "la": "musculus flexor hallucis longus",
@@ -1423,7 +1454,8 @@
           "origin": "腓骨の後面・下腿骨間膜",
           "insertion": "母趾の末節骨底",
           "nerve": "脛骨神経",
-          "action": "母趾の屈曲・足関節の底屈"
+          "action": "母趾の屈曲・足関節の底屈",
+          "motion": { "from": { "hallux": -20 }, "to": { "hallux": 35, "ankle": -20 }, "via": ["posterior-process-of-talus", "sustentaculum-tali"] }
         },
         {
           "id": "popliteus", "ja": "膝窩筋", "yomi": "しっかきん", "en": "popliteus", "la": "musculus popliteus",
@@ -1435,7 +1467,8 @@
           "insertion": "脛骨の後面（ヒラメ筋線の上）",
           "originAt": ["lateral-condyle-of-femur"],
           "nerve": "脛骨神経",
-          "action": "膝関節の屈曲の始めの脛骨の内旋"
+          "action": "膝関節の屈曲の始めの脛骨の内旋",
+          "motion": { "to": { "knee": 35 } }
         },
         {
           "id": "plantaris", "ja": "足底筋", "yomi": "そくていきん", "en": "plantaris", "la": "musculus plantaris",
@@ -1447,7 +1480,8 @@
           "insertion": "踵骨隆起（踵骨腱とともに）",
           "insertionAt": ["calcaneal-tuberosity"],
           "nerve": "脛骨神経",
-          "action": "足関節の底屈・膝関節の屈曲（弱い）"
+          "action": "足関節の底屈・膝関節の屈曲（弱い）",
+          "motion": { "from": { "ankle": 15 }, "to": { "ankle": -30, "knee": 25 } }
         }
       ]
     },
@@ -1468,7 +1502,8 @@
           "origin": "踵骨の上面（前部）",
           "insertion": "第2〜4趾の長趾伸筋の腱",
           "nerve": "深腓骨神経",
-          "action": "第2〜4趾の伸展"
+          "action": "第2〜4趾の伸展",
+          "motion": { "from": { "toes": 15 }, "to": { "toes": -35 } }
         },
         {
           "id": "extensor-hallucis-brevis", "ja": "短母趾伸筋", "yomi": "たんぼししんきん", "en": "extensor hallucis brevis", "la": "musculus extensor hallucis brevis",
@@ -1479,7 +1514,8 @@
           "origin": "踵骨の上面（前部）",
           "insertion": "母趾の基節骨底",
           "nerve": "深腓骨神経",
-          "action": "母趾の中足趾節関節の伸展"
+          "action": "母趾の中足趾節関節の伸展",
+          "motion": { "from": { "hallux": 15 }, "to": { "hallux": -35 } }
         },
         {
           "id": "abductor-hallucis", "ja": "母趾外転筋", "yomi": "ぼしがいてんきん", "en": "abductor hallucis", "la": "musculus abductor hallucis",
@@ -1491,7 +1527,8 @@
           "insertion": "母趾の基節骨底（内側）",
           "originAt": ["calcaneal-tuberosity"],
           "nerve": "内側足底神経",
-          "action": "母趾の外転・屈曲"
+          "action": "母趾の外転・屈曲",
+          "motion": { "to": { "hallux": 25 } }
         },
         {
           "id": "flexor-digitorum-brevis", "ja": "短趾屈筋", "yomi": "たんしくっきん", "en": "flexor digitorum brevis", "la": "musculus flexor digitorum brevis",
@@ -1503,7 +1540,8 @@
           "insertion": "第2〜5趾の中節骨",
           "originAt": ["calcaneal-tuberosity"],
           "nerve": "内側足底神経",
-          "action": "第2〜5趾の屈曲"
+          "action": "第2〜5趾の屈曲",
+          "motion": { "from": { "toes": -15 }, "to": { "toes": 35 } }
         },
         {
           "id": "abductor-digiti-minimi-of-foot", "ja": "小趾外転筋", "yomi": "しょうしがいてんきん", "en": "abductor digiti minimi of foot", "la": "musculus abductor digiti minimi pedis",
@@ -1526,7 +1564,8 @@
           "origin": "踵骨の下面",
           "insertion": "長趾屈筋の腱",
           "nerve": "外側足底神経",
-          "action": "長趾屈筋を助けて第2〜5趾を曲げる"
+          "action": "長趾屈筋を助けて第2〜5趾を曲げる",
+          "motion": { "from": { "toes": -10 }, "to": { "toes": 30 } }
         },
         {
           "id": "flexor-hallucis-brevis", "ja": "短母趾屈筋", "yomi": "たんぼしくっきん", "en": "flexor hallucis brevis", "la": "musculus flexor hallucis brevis",
@@ -1537,7 +1576,8 @@
           "origin": "立方骨・外側楔状骨",
           "insertion": "母趾の基節骨底（両側の種子骨を経て）",
           "nerve": "内側足底神経",
-          "action": "母趾の中足趾節関節の屈曲"
+          "action": "母趾の中足趾節関節の屈曲",
+          "motion": { "from": { "hallux": -10 }, "to": { "hallux": 30 } }
         },
         {
           "id": "adductor-hallucis", "ja": "母趾内転筋", "yomi": "ぼしないてんきん", "en": "adductor hallucis", "la": "musculus adductor hallucis",
@@ -1559,7 +1599,8 @@
           "origin": "長趾屈筋の腱",
           "insertion": "第2〜5趾の基節骨・趾背腱膜",
           "nerve": "内側足底神経・外側足底神経",
-          "action": "中足趾節関節の屈曲"
+          "action": "中足趾節関節の屈曲",
+          "motion": { "to": { "toes": 25 } }
         }
       ]
     },
@@ -1581,7 +1622,8 @@
           "insertion": "大腿骨の転子窩（内閉鎖筋の腱とともに）",
           "originAt": ["ischial-spine"],
           "nerve": "内閉鎖筋神経",
-          "action": "股関節の外旋"
+          "action": "股関節の外旋",
+          "motion": { "to": { "hip-rot": 40 } }
         },
         {
           "id": "obturator-internus", "ja": "内閉鎖筋", "yomi": "ないへいさきん", "en": "obturator internus", "la": "musculus obturator internus",
@@ -1593,7 +1635,8 @@
           "insertion": "大腿骨の転子窩",
           "originAt": ["obturator-foramen"],
           "nerve": "内閉鎖筋神経",
-          "action": "股関節の外旋"
+          "action": "股関節の外旋",
+          "motion": { "to": { "hip-rot": 40 } }
         },
         {
           "id": "inferior-gemellus", "ja": "下双子筋", "yomi": "かそうしきん", "en": "inferior gemellus", "la": "musculus gemellus inferior",
@@ -1605,7 +1648,8 @@
           "insertion": "大腿骨の転子窩（内閉鎖筋の腱とともに）",
           "originAt": ["ischial-tuberosity"],
           "nerve": "大腿方形筋神経",
-          "action": "股関節の外旋"
+          "action": "股関節の外旋",
+          "motion": { "to": { "hip-rot": 40 } }
         },
         {
           "id": "quadratus-femoris", "ja": "大腿方形筋", "yomi": "だいたいほうけいきん", "en": "quadratus femoris", "la": "musculus quadratus femoris",
@@ -1618,7 +1662,8 @@
           "originAt": ["ischial-tuberosity"],
           "insertionAt": ["intertrochanteric-crest"],
           "nerve": "大腿方形筋神経",
-          "action": "股関節の外旋"
+          "action": "股関節の外旋",
+          "motion": { "to": { "hip-rot": 40 } }
         },
         {
           "id": "obturator-externus", "ja": "外閉鎖筋", "yomi": "がいへいさきん", "en": "obturator externus", "la": "musculus obturator externus",
@@ -1630,7 +1675,8 @@
           "insertion": "大腿骨の転子窩",
           "originAt": ["obturator-foramen"],
           "nerve": "閉鎖神経",
-          "action": "股関節の外旋"
+          "action": "股関節の外旋",
+          "motion": { "to": { "hip-rot": 40 } }
         },
         {
           "id": "adductor-brevis", "ja": "短内転筋", "yomi": "たんないてんきん", "en": "adductor brevis", "la": "musculus adductor brevis",
@@ -1642,7 +1688,8 @@
           "insertion": "大腿骨の粗線（上部）",
           "insertionAt": ["linea-aspera"],
           "nerve": "閉鎖神経",
-          "action": "股関節の内転"
+          "action": "股関節の内転",
+          "motion": { "from": { "hip-abd": 35 }, "to": { "hip-abd": -5 } }
         }
       ]
     },
@@ -2164,6 +2211,171 @@
           "kanji": "大転子の上の、大殿筋の下の滑液包",
           "etym": "trochanteric「大転子の」＋ bursa「袋」",
           "note": "大殿筋と大転子の間の大きな袋。炎症で太ももの付け根の外側が痛む（大転子滑液包炎）。"
+        }
+      ]
+    },
+    {
+      "id": "mus-lower-groups",
+      "title": "腸腰筋・ハムストリングと足の骨間筋",
+      "intro": [
+        "大腿の筋は、前（大腿四頭筋・縫工筋）、内側（内転筋群）、後ろ（ハムストリング）の3つのまとまり（区画）に分かれ、それぞれ大腿神経・閉鎖神経・坐骨神経が支配する。",
+        "大腰筋と腸骨筋は一緒に小転子に停止するので、合わせて腸腰筋とよぶ。股関節を曲げる最も強い筋。",
+        "筋の説明の「動きを見る」で、筋が縮んだときの骨の動きを見られる（起始と停止を結ぶ帯が縮む）。"
+      ],
+      "terms": [
+        {
+          "id": "iliopsoas", "ja": "腸腰筋", "yomi": "ちょうようきん", "en": "iliopsoas", "la": "musculus iliopsoas",
+          "parts": ["psoas major", "iliacus"], "level": 1, "xray": true,
+          "kanji": "腸骨と腰（腰椎）からの筋",
+          "etym": "ilio-「腸骨の」＋ psoas ← ギリシャ語 psoa「腰の筋」",
+          "note": "大腰筋と腸骨筋をまとめた名前。腰椎と腸骨窩から起こり、鼡径靱帯の下（筋裂孔）を通って小転子に付く。股関節を曲げる最も強い筋で、歩くときに脚を前へ振り出す。",
+          "origin": "大腰筋＝第12胸椎〜第5腰椎、腸骨筋＝腸骨窩",
+          "insertion": "大腿骨の小転子",
+          "originAt": ["iliac-fossa"],
+          "insertionAt": ["lesser-trochanter"],
+          "nerve": "大腿神経・腰神経叢の枝",
+          "action": "股関節の屈曲",
+          "motion": { "to": { "hip-flex": 70 } }
+        },
+        {
+          "id": "hamstrings", "ja": "ハムストリング", "yomi": "はむすとりんぐ", "en": "hamstrings", "enAlt": ["hamstring muscles"],
+          "parts": ["long head of biceps femoris", "semitendinosus", "semimembranosus"], "level": 1, "check": true,
+          "etym": "ham「ももの裏・膝の裏」＋ string「ひも（腱）」",
+          "note": "大腿の後ろで、坐骨結節から起こり膝をまたぐ3つの筋（大腿二頭筋長頭・半腱様筋・半膜様筋）の呼び名。ハムストリングスともいう。股関節を伸ばし膝を曲げる。短距離走で肉離れを起こしやすい。",
+          "origin": "坐骨結節",
+          "insertion": "大腿二頭筋＝腓骨頭、半腱様筋＝脛骨の上部の内側（鵞足）、半膜様筋＝脛骨の内側顆の後面",
+          "originAt": ["ischial-tuberosity"],
+          "insertionAt": ["head-of-fibula", "pes-anserinus", "medial-condyle-of-tibia"],
+          "nerve": "坐骨神経",
+          "action": "股関節の伸展・膝関節の屈曲",
+          "motion": { "from": { "hip-flex": 40 }, "to": { "hip-flex": -5, "knee": 70 } }
+        },
+        {
+          "id": "long-head-of-biceps-femoris", "ja": "大腿二頭筋長頭", "yomi": "だいたいにとうきんちょうとう", "en": "long head of biceps femoris", "la": "caput longum musculi bicipitis femoris",
+          "parts": ["long head of biceps femoris"], "level": 3,
+          "kanji": "大腿二頭筋の長い頭",
+          "etym": "long head「長い頭」＋ biceps「2つの頭の」＋ femoris「大腿の」",
+          "note": "大腿二頭筋の2つの頭のうち、坐骨結節から起こる方。半腱様筋と同じ所から起こり、股関節と膝関節の2つをまたぐ。",
+          "origin": "坐骨結節（半腱様筋と共通の腱）",
+          "insertion": "腓骨頭",
+          "originAt": ["ischial-tuberosity"],
+          "insertionAt": ["head-of-fibula"],
+          "nerve": "坐骨神経",
+          "action": "股関節の伸展・膝関節の屈曲と外旋",
+          "motion": { "from": { "hip-flex": 40 }, "to": { "hip-flex": -5, "knee": 70 } }
+        },
+        {
+          "id": "short-head-of-biceps-femoris", "ja": "大腿二頭筋短頭", "yomi": "だいたいにとうきんたんとう", "en": "short head of biceps femoris", "la": "caput breve musculi bicipitis femoris",
+          "parts": ["short head of biceps femoris"], "level": 3,
+          "kanji": "大腿二頭筋の短い頭",
+          "etym": "short head「短い頭」＋ biceps femoris「大腿二頭筋」",
+          "note": "大腿二頭筋の2つの頭のうち、大腿骨の粗線から起こる方。膝だけをまたぐのでハムストリングには入れない。大腿二頭筋の中で短頭だけは総腓骨神経（坐骨神経の腓骨神経部）が支配する。",
+          "origin": "大腿骨の粗線（外側唇）",
+          "insertion": "腓骨頭（長頭と一緒に）",
+          "originAt": ["linea-aspera"],
+          "insertionAt": ["head-of-fibula"],
+          "nerve": "総腓骨神経",
+          "action": "膝関節の屈曲",
+          "motion": { "to": { "knee": 80 } }
+        },
+        {
+          "id": "dorsal-interossei-of-foot", "ja": "背側骨間筋（足）", "yomi": "はいそくこっかんきん", "en": "dorsal interossei of foot", "la": "musculi interossei dorsales pedis",
+          "parts": ["za:dorsal interossei muscles of foot"], "level": 2,
+          "kanji": "足の甲の側の、骨の間の筋",
+          "etym": "dorsal「背側の」＋ interosseous「骨の間の」",
+          "note": "中足骨の間をうめる4つの筋（どれも2頭）。第2趾を中心として指を開く（外転）。手では中指が中心なのに対し、足では第2趾が中心。",
+          "origin": "第1〜5中足骨の向かい合う面（2頭）",
+          "insertion": "第2〜4趾の基節骨の底",
+          "nerve": "外側足底神経",
+          "action": "第2〜4趾の外転（第2趾を中心に開く）"
+        },
+        {
+          "id": "plantar-interossei", "ja": "底側骨間筋", "yomi": "ていそくこっかんきん", "en": "plantar interossei", "la": "musculi interossei plantares",
+          "parts": ["* plantar interosseous of foot"], "level": 2,
+          "kanji": "足の裏の側の、骨の間の筋",
+          "etym": "plantar「足の裏の」＋ interosseous「骨の間の」",
+          "note": "第3〜5中足骨の内側面から起こる3つの筋。第3〜5趾を第2趾へ寄せる（内転）。手の掌側骨間筋にあたる。",
+          "origin": "第3〜5中足骨の内側面",
+          "insertion": "第3〜5趾の基節骨の底の内側",
+          "nerve": "外側足底神経",
+          "action": "第3〜5趾の内転（第2趾へ寄せる）"
+        },
+        {
+          "id": "flexor-digiti-minimi-brevis-of-foot", "ja": "短小趾屈筋", "yomi": "たんしょうしくっきん", "en": "flexor digiti minimi brevis of foot", "la": "musculus flexor digiti minimi brevis pedis",
+          "parts": ["flexor digiti minimi brevis of foot"], "level": 3,
+          "kanji": "小趾を曲げる短い筋",
+          "etym": "flexor「曲げるもの」＋ digiti minimi「小指の」＋ brevis「短い」",
+          "note": "足の裏の外側で、小趾外転筋の内側の深くにある小さな筋。小趾の付け根を曲げる。",
+          "origin": "第5中足骨の底・長足底靱帯",
+          "insertion": "小趾の基節骨の底",
+          "nerve": "外側足底神経",
+          "action": "小趾の中足趾節関節の屈曲"
+        }
+      ]
+    },
+    {
+      "id": "mus-lower-fascia",
+      "title": "下肢の筋間中隔・支帯・滑液包",
+      "intro": [
+        "大腿と下腿の筋は、骨から筋膜へ張る筋間中隔という仕切りで区画に分けられる。同じ区画の筋は同じ神経に支配され、似たはたらきをする（区画は「局所解剖」の系統で見られる）。",
+        "区画は硬い筋膜に囲まれているので、骨折などで中の圧が上がると血流が止まる（コンパートメント症候群）。下腿の前区画で起こりやすい。"
+      ],
+      "terms": [
+        {
+          "id": "lateral-intermuscular-septum-of-thigh", "ja": "外側大腿筋間中隔", "yomi": "がいそくだいたいきんかんちゅうかく", "en": "lateral intermuscular septum of thigh", "enAlt": ["lateral femoral intermuscular septum"], "la": "septum intermusculare femoris laterale",
+          "parts": ["za:lateral femoral intermuscular septum"], "level": 3, "xray": true, "color": "#d6cdb8",
+          "kanji": "大腿の外側で筋の間を仕切る膜",
+          "etym": "lateral「外側の」＋ intermuscular「筋の間の」＋ septum「仕切り」",
+          "note": "大腿筋膜から大腿骨の粗線（外側唇）へ張る仕切り。前区画（外側広筋）と後区画（大腿二頭筋）を分ける。"
+        },
+        {
+          "id": "medial-intermuscular-septum-of-thigh", "ja": "内側大腿筋間中隔", "yomi": "ないそくだいたいきんかんちゅうかく", "en": "medial intermuscular septum of thigh", "enAlt": ["medial femoral intermuscular septum"], "la": "septum intermusculare femoris mediale",
+          "parts": ["za:medial femoral intermuscular septum"], "level": 3, "color": "#d6cdb8",
+          "kanji": "大腿の内側で筋の間を仕切る膜",
+          "etym": "medial「内側の」＋ intermuscular「筋の間の」＋ septum「仕切り」",
+          "note": "大腿筋膜から粗線（内側唇）へ張る仕切り。前区画（内側広筋）と内側区画（内転筋群）を分ける。"
+        },
+        {
+          "id": "anterior-intermuscular-septum-of-leg", "ja": "前下腿筋間中隔", "yomi": "ぜんかたいきんかんちゅうかく", "en": "anterior intermuscular septum of leg", "la": "septum intermusculare cruris anterius",
+          "parts": ["za:anterior intermuscular septum of leg"], "level": 3, "color": "#d6cdb8",
+          "kanji": "下腿の前の、筋の間の仕切り",
+          "etym": "anterior「前の」＋ intermuscular「筋の間の」＋ septum「仕切り」",
+          "note": "下腿筋膜から腓骨の前縁へ張る仕切り。前区画（伸筋）と外側区画（腓骨筋）を分ける。"
+        },
+        {
+          "id": "posterior-intermuscular-septum-of-leg", "ja": "後下腿筋間中隔", "yomi": "こうかたいきんかんちゅうかく", "en": "posterior intermuscular septum of leg", "la": "septum intermusculare cruris posterius",
+          "parts": ["za:posterior intermuscular septum of leg"], "level": 3, "color": "#d6cdb8",
+          "kanji": "下腿の後ろの、筋の間の仕切り",
+          "etym": "posterior「後ろの」＋ intermuscular「筋の間の」＋ septum「仕切り」",
+          "note": "下腿筋膜から腓骨の後縁へ張る仕切り。外側区画（腓骨筋）と後区画（下腿三頭筋など）を分ける。"
+        },
+        {
+          "id": "crural-fascia", "ja": "下腿筋膜", "yomi": "かたいきんまく", "en": "crural fascia", "enAlt": ["deep fascia of leg"], "la": "fascia cruris",
+          "parts": ["za:crural fascia"], "level": 2, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "下腿の筋を包む膜",
+          "etym": "crural ← ラテン語 crus「下腿・すね」＋ fascia「帯・膜」",
+          "note": "下腿の筋を全体に包む筋膜。脛骨の内側面では骨膜とくっつく。前・後の下腿筋間中隔と骨間膜とで、下腿を前・外側・後ろの3つの区画に分ける。"
+        },
+        {
+          "id": "patellar-retinacula", "ja": "膝蓋支帯", "yomi": "しつがいしたい", "en": "patellar retinacula", "enAlt": ["patellar retinaculum"], "la": "retinacula patellae",
+          "parts": ["za:medial patellar retinaculum", "za:lateral patellar retinaculum"], "level": 3, "color": "#d6cdb8",
+          "kanji": "膝蓋骨を支える帯",
+          "etym": "patellar「膝蓋骨の」＋ retinaculum「つなぎとめるもの」",
+          "note": "膝蓋骨の両わきから脛骨へ張る、広筋の腱膜の線維の帯（内側膝蓋支帯・外側膝蓋支帯）。膝蓋骨を左右から支える。内側がゆるむと膝蓋骨が外へ外れやすくなる。"
+        },
+        {
+          "id": "bursa-of-calcaneal-tendon", "ja": "踵骨腱の滑液包", "yomi": "しょうこつけんのかつえきほう", "en": "bursa of calcaneal tendon", "enAlt": ["retrocalcaneal bursa"], "la": "bursa tendinis calcanei",
+          "parts": ["za:subtendinous calcaneal bursa"], "level": 3, "color": "#9fc2da",
+          "kanji": "踵骨腱（アキレス腱）の下の袋",
+          "etym": "bursa「袋」＋ calcaneal tendon「踵骨腱」",
+          "note": "アキレス腱（踵骨腱）と踵骨の上部の間の袋。腱が骨とこすれないようにする。かかとの後ろの痛みの原因になる（踵骨後部滑液包炎）。"
+        },
+        {
+          "id": "deep-infrapatellar-bursa", "ja": "深膝蓋下包", "yomi": "しんしつがいかほう", "en": "deep infrapatellar bursa", "la": "bursa infrapatellaris profunda",
+          "parts": ["za:deep infrapatellar bursa"], "level": 3, "color": "#9fc2da",
+          "kanji": "膝蓋骨の下の深い所の袋",
+          "etym": "deep「深い」＋ infra-「下」＋ patellar「膝蓋骨の」＋ bursa「袋」",
+          "note": "膝蓋靱帯と脛骨の上端の間の袋。膝を曲げ伸ばしするとき、靱帯が骨とこすれないようにする。"
         }
       ]
     }

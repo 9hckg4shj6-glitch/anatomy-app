@@ -17,10 +17,13 @@ describe("語根カード", () => {
     expect(rootsOf(termById.get("femoral-artery")!).map((r) => r.id)).toContain("femor");
   });
 
-  it("誤って拾いやすい語を拾わない（posterior の oste、maxillary の axill、lung の lun）", () => {
+  it("誤って拾いやすい語を拾わない（posterior の oste、maxillary の axill、lung の lun、scarpa の carp、anastomosis の nas）", () => {
     expect(examplesOf(root("oste")).map((t) => t.en)).not.toContain("posterior");
     expect(examplesOf(root("axill")).map((t) => t.id)).not.toContain("maxillary-artery");
     expect(examplesOf(root("lun")).some((t) => /lung/.test(t.en))).toBe(false);
+    // scarpa's triangle（大腿三角）の carp、anastomosis（膝関節動脈網）の nas
+    expect(examplesOf(root("carp")).map((t) => t.id)).not.toContain("femoral-triangle");
+    expect(examplesOf(root("nas")).map((t) => t.id)).not.toContain("genicular-anastomosis");
   });
 
   it("英語名の中の語根の部分を切り出す", () => {

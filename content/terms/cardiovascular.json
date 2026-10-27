@@ -1267,6 +1267,182 @@
           "note": "足の甲の皮下を横に走る静脈の弓。内側の端から大伏在静脈、外側の端から小伏在静脈が始まる。"
         }
       ]
+    },
+    {
+      "id": "cv-knee-arteries",
+      "title": "膝の動脈",
+      "intro": [
+        "膝窩動脈は膝のまわりに5本の膝動脈（上に2本・中1本・下に2本）を出し、大腿動脈の下行膝動脈や前脛骨反回動脈などとつながって膝関節動脈網をつくる。",
+        "膝窩動脈がつまっても、この網を通って下腿へ血液が回る（側副循環）。"
+      ],
+      "terms": [
+        {
+          "id": "descending-genicular-artery", "ja": "下行膝動脈", "yomi": "かこうしつどうみゃく", "en": "descending genicular artery", "la": "arteria descendens genus",
+          "parts": ["descending genicular artery"], "level": 3,
+          "kanji": "膝へ下る動脈",
+          "etym": "descending「下る」＋ genicular「膝の」（ラテン語 genu＝膝）",
+          "note": "大腿動脈が内転筋管を出る直前に出す枝。膝の内側を下り、膝関節動脈網に加わる。伏在神経に沿う枝も出す。"
+        },
+        {
+          "id": "superior-medial-genicular-artery", "ja": "内側上膝動脈", "yomi": "ないそくじょうしつどうみゃく", "en": "superior medial genicular artery", "enAlt": ["medial superior genicular artery"], "la": "arteria superior medialis genus",
+          "parts": ["medial superior genicular artery"], "level": 3,
+          "kanji": "膝の上の内側の動脈",
+          "etym": "superior「上の」＋ medial「内側の」＋ genicular「膝の」",
+          "note": "膝窩動脈から出て、大腿骨の内側顆の上を前へ回る枝。膝関節動脈網に加わる。"
+        },
+        {
+          "id": "superior-lateral-genicular-artery", "ja": "外側上膝動脈", "yomi": "がいそくじょうしつどうみゃく", "en": "superior lateral genicular artery", "enAlt": ["lateral superior genicular artery"], "la": "arteria superior lateralis genus",
+          "parts": ["lateral superior genicular artery"], "level": 3,
+          "kanji": "膝の上の外側の動脈",
+          "etym": "superior「上の」＋ lateral「外側の」＋ genicular「膝の」",
+          "note": "膝窩動脈から出て、大腿骨の外側顆の上を前へ回る枝。膝関節動脈網に加わる。"
+        },
+        {
+          "id": "middle-genicular-artery", "ja": "中膝動脈", "yomi": "ちゅうしつどうみゃく", "en": "middle genicular artery", "la": "arteria media genus",
+          "parts": ["middle genicular artery"], "level": 3,
+          "kanji": "膝の中の動脈",
+          "etym": "middle「中の」＋ genicular「膝の」",
+          "note": "膝窩動脈から前へ出て、斜膝窩靱帯を貫いて関節の中へ入る枝。十字靱帯と滑膜を養う。"
+        },
+        {
+          "id": "inferior-medial-genicular-artery", "ja": "内側下膝動脈", "yomi": "ないそくかしつどうみゃく", "en": "inferior medial genicular artery", "la": "arteria inferior medialis genus",
+          "parts": ["inferior medial genicular artery"], "level": 3,
+          "kanji": "膝の下の内側の動脈",
+          "etym": "inferior「下の」＋ medial「内側の」＋ genicular「膝の」",
+          "note": "膝窩動脈から出て、脛骨の内側顆の下を脛側側副靱帯の深くで前へ回る枝。"
+        },
+        {
+          "id": "inferior-lateral-genicular-artery", "ja": "外側下膝動脈", "yomi": "がいそくかしつどうみゃく", "en": "inferior lateral genicular artery", "la": "arteria inferior lateralis genus",
+          "parts": ["inferior lateral genicular artery"], "level": 3,
+          "kanji": "膝の下の外側の動脈",
+          "etym": "inferior「下の」＋ lateral「外側の」＋ genicular「膝の」",
+          "note": "膝窩動脈から出て、腓側側副靱帯の深くを外側半月に沿って前へ回る枝。"
+        },
+        {
+          "id": "genicular-anastomosis", "ja": "膝関節動脈網", "yomi": "しつかんせつどうみゃくもう", "en": "genicular anastomosis", "enAlt": ["patellar anastomosis", "articular network of knee"], "la": "rete articulare genus",
+          "parts": ["za:patellar anastomosis"], "level": 2,
+          "kanji": "膝関節のまわりの動脈の網",
+          "etym": "genicular「膝の」＋ anastomosis「吻合（つながり）」",
+          "note": "膝蓋骨のまわりで、5本の膝動脈・下行膝動脈・外側大腿回旋動脈の下行枝・前脛骨反回動脈がつながってできる網。膝窩動脈がつまったときの回り道になる。"
+        }
+      ]
+    },
+    {
+      "id": "cv-leg-artery-more",
+      "title": "大腿と足の動脈の枝（追加）",
+      "terms": [
+        {
+          "id": "perforating-arteries", "ja": "貫通動脈", "yomi": "かんつうどうみゃく", "en": "perforating arteries", "la": "arteriae perforantes",
+          "parts": ["set of perforating arteries"], "level": 2,
+          "kanji": "筋を貫いて通る動脈",
+          "etym": "perforating「貫く」＋ artery「動脈」",
+          "note": "大腿深動脈から出る3〜4本の枝。大内転筋などの付け根を貫いて大腿の後ろへ回り、ハムストリングと大腿骨を養う。"
+        },
+        {
+          "id": "superficial-epigastric-artery", "ja": "浅腹壁動脈", "yomi": "せんふくへきどうみゃく", "en": "superficial epigastric artery", "la": "arteria epigastrica superficialis",
+          "parts": ["superficial epigastric artery"], "level": 3,
+          "kanji": "腹の壁の浅い所の動脈",
+          "etym": "superficial「浅い」＋ epigastric「上腹部の」（epi-「上」＋ gaster「胃・腹」）",
+          "note": "大腿動脈が鼡径靱帯のすぐ下で出す細い枝。鼡径靱帯をこえて上り、下腹部の皮下を養う。再建手術の皮弁に使われる。"
+        },
+        {
+          "id": "anterior-tibial-recurrent-artery", "ja": "前脛骨反回動脈", "yomi": "ぜんけいこつはんかいどうみゃく", "en": "anterior tibial recurrent artery", "la": "arteria recurrens tibialis anterior",
+          "parts": ["anterior tibial recurrent artery"], "level": 3,
+          "kanji": "前脛骨動脈から出て（上へ）引き返す動脈",
+          "etym": "anterior tibial「前脛骨の」＋ recurrent「引き返す」",
+          "note": "前脛骨動脈が骨間膜を貫いて前へ出た所で出す枝。上へ引き返して膝関節動脈網に加わる。"
+        },
+        {
+          "id": "lateral-tarsal-artery", "ja": "外側足根動脈", "yomi": "がいそくそっこんどうみゃく", "en": "lateral tarsal artery", "la": "arteria tarsalis lateralis",
+          "parts": ["lateral tarsal artery"], "level": 3,
+          "kanji": "足根の外側の動脈",
+          "etym": "lateral「外側の」＋ tarsal「足根の」",
+          "note": "足背動脈が距骨の上で出す枝。短趾伸筋の下を外側へ走り、弓状動脈とつながる。"
+        },
+        {
+          "id": "deep-plantar-artery", "ja": "深足底動脈", "yomi": "しんそくていどうみゃく", "en": "deep plantar artery", "la": "arteria plantaris profunda",
+          "parts": ["deep plantar artery"], "level": 3,
+          "kanji": "足の裏の深くへ行く動脈",
+          "etym": "deep「深い」＋ plantar「足の裏の」",
+          "note": "足背動脈の終わりの枝。第1中足骨と第2中足骨の間を足の裏へ貫き、外側足底動脈とつながって足底動脈弓を完成させる。"
+        },
+        {
+          "id": "dorsal-metatarsal-arteries", "ja": "背側中足動脈", "yomi": "はいそくちゅうそくどうみゃく", "en": "dorsal metatarsal arteries", "la": "arteriae metatarsales dorsales",
+          "parts": ["za:dorsal metatarsal arteries"], "level": 3,
+          "kanji": "足の甲の側の、中足骨の間の動脈",
+          "etym": "dorsal「背側の」＋ metatarsal「中足骨の」",
+          "note": "弓状動脈（第1は足背動脈）から出て、中足骨の間を前へ走る4本の動脈。指の付け根で2本ずつの背側趾動脈に分かれる。"
+        },
+        {
+          "id": "plantar-metatarsal-arteries", "ja": "底側中足動脈", "yomi": "ていそくちゅうそくどうみゃく", "en": "plantar metatarsal arteries", "la": "arteriae metatarsales plantares",
+          "parts": ["plantar metatarsal artery"], "level": 3,
+          "kanji": "足の裏の側の、中足骨の間の動脈",
+          "etym": "plantar「足の裏の」＋ metatarsal「中足骨の」",
+          "note": "足底動脈弓から出て、中足骨の間を前へ走る4本の動脈。総底側趾動脈を経て指へ行く。"
+        }
+      ]
+    },
+    {
+      "id": "cv-leg-vein-more",
+      "title": "下肢と殿部の静脈（追加）",
+      "terms": [
+        {
+          "id": "anterior-tibial-veins", "ja": "前脛骨静脈", "yomi": "ぜんけいこつじょうみゃく", "en": "anterior tibial veins", "la": "venae tibiales anteriores",
+          "parts": ["anterior tibial vein"], "level": 2, "color": "#3b64b8",
+          "kanji": "前脛骨動脈に沿う静脈",
+          "etym": "anterior「前の」＋ tibial「脛骨の」",
+          "note": "前脛骨動脈に2本ずつ寄りそって上る深部静脈（伴行静脈）。膝の下で後脛骨静脈と合わさって膝窩静脈になる。"
+        },
+        {
+          "id": "fibular-veins", "ja": "腓骨静脈", "yomi": "ひこつじょうみゃく", "en": "fibular veins", "enAlt": ["peroneal veins"], "la": "venae fibulares",
+          "parts": ["fibular vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "腓骨動脈に沿う静脈",
+          "etym": "fibular「腓骨の」（ラテン語 fibula＝留め金）",
+          "note": "腓骨動脈に寄りそう深部静脈。後脛骨静脈に注ぐ。ふくらはぎの深部静脈血栓症が起こる所の一つ。"
+        },
+        {
+          "id": "perforating-veins", "ja": "貫通静脈", "yomi": "かんつうじょうみゃく", "en": "perforating veins", "la": "venae perforantes",
+          "parts": ["set of perforating veins"], "level": 3, "color": "#3b64b8",
+          "kanji": "筋を貫いて通る静脈",
+          "etym": "perforating「貫く」＋ vein「静脈」",
+          "note": "貫通動脈に寄りそい、大腿の後ろから大腿深静脈へ注ぐ静脈。皮下の静脈と深部静脈をつなぐ「穿通枝」とは別のもの。"
+        },
+        {
+          "id": "superior-gluteal-veins", "ja": "上殿静脈", "yomi": "じょうでんじょうみゃく", "en": "superior gluteal veins", "la": "venae gluteae superiores",
+          "parts": ["superior gluteal vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "殿部の上の静脈",
+          "etym": "superior「上の」＋ gluteal「殿部の」",
+          "note": "上殿動脈に寄りそい、梨状筋の上（梨状筋上孔）から骨盤に入って内腸骨静脈に注ぐ。"
+        },
+        {
+          "id": "inferior-gluteal-veins", "ja": "下殿静脈", "yomi": "かでんじょうみゃく", "en": "inferior gluteal veins", "la": "venae gluteae inferiores",
+          "parts": ["inferior gluteal vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "殿部の下の静脈",
+          "etym": "inferior「下の」＋ gluteal「殿部の」",
+          "note": "下殿動脈に寄りそい、梨状筋の下（梨状筋下孔）から骨盤に入って内腸骨静脈に注ぐ。"
+        },
+        {
+          "id": "obturator-veins", "ja": "閉鎖静脈", "yomi": "へいさじょうみゃく", "en": "obturator veins", "la": "venae obturatoriae",
+          "parts": ["obturator vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "閉鎖孔を通る静脈",
+          "etym": "obturator「ふさぐもの（閉鎖孔・閉鎖膜）の」",
+          "note": "大腿の内側の筋から閉鎖管を通って骨盤に入り、内腸骨静脈に注ぐ。"
+        },
+        {
+          "id": "plantar-venous-arch", "ja": "足底静脈弓", "yomi": "そくていじょうみゃくきゅう", "en": "plantar venous arch", "la": "arcus venosus plantaris",
+          "parts": ["plantar venous arch of foot"], "level": 3, "color": "#3b64b8",
+          "kanji": "足の裏の静脈の弓",
+          "etym": "plantar「足の裏の」＋ venous「静脈の」＋ arch「弓」",
+          "note": "足底動脈弓に寄りそう深部の静脈の弓。内側・外側足底静脈を経て後脛骨静脈へ注ぐ。立つと足の裏で押されて血液を送り出す（足底の静脈ポンプ）。"
+        },
+        {
+          "id": "superficial-epigastric-vein", "ja": "浅腹壁静脈", "yomi": "せんふくへきじょうみゃく", "en": "superficial epigastric vein", "la": "vena epigastrica superficialis",
+          "parts": ["superficial epigastric vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "腹の壁の浅い所の静脈",
+          "etym": "superficial「浅い」＋ epigastric「上腹部の」",
+          "note": "下腹部の皮下を下って大伏在静脈に注ぐ静脈。肝硬変などで門脈の圧が高くなると、へその周りの静脈とともにふくれる（メドゥーサの頭）。"
+        }
+      ]
     }
   ]
 }
