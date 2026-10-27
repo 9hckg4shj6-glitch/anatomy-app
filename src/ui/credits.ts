@@ -18,7 +18,7 @@ export function credits(ctx: AppContext): void {
       h("dt", {}, what),
       h("dd", {}, h("a", { href: url, target: "_blank", rel: "noopener" }, text)),
     ])),
-    h("p", { class: "muted" }, "日本語の用語は日本解剖学会『解剖学用語 改訂13版』の表記に合わせています。3Dモデルは BodyParts3D を軽量化・座標変換して使っています。BodyParts3D に無い構造は Z-Anatomy の形を BodyParts3D の骨に合わせて変形・軽量化して加えました（筋の付着面も Z-Anatomy から作っています）。この変形した形（models/ の名前が -za で終わるファイル）は CC BY-SA 4.0 です。学習用であり、診断・治療に使うものではありません。"),
+    h("p", { class: "muted" }, "日本語の用語は日本解剖学会『解剖学用語 改訂13版』の表記に合わせています。3Dモデルは BodyParts3D を軽量化・座標変換して使っています（骨・脳などは、4.0 より細かい 3.0 の形を 4.0 の形に重ねて使っています）。BodyParts3D に無い構造は Z-Anatomy の形を BodyParts3D の骨に合わせて変形・軽量化して加えました（筋の付着面も Z-Anatomy から作っています）。この変形した形（models/ の名前が -za で終わるファイル）は CC BY-SA 4.0 です。学習用であり、診断・治療に使うものではありません。"),
     h("p", {}, h("a", { href: "#/" }, "ホームへ")),
   );
 }

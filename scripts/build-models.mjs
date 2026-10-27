@@ -1,5 +1,7 @@
 // BodyParts3D 4.0 の OBJ（data-raw/bp3d/obj）から、収録語が使う部品だけを系統別の GLB にまとめる。
 // BodyParts3D に無い構造（広背筋・末梢神経など）は Z-Anatomy から骨に合わせて取り込む（scripts/za/、部品の指定は "za:…"）。
+// 表示する形は、使えるときは BodyParts3D 3.0 の細かい形を 4.0 に重ねたもの（scripts/hires.mjs）にし、
+// くぼみの暗さと筋線維・神経の向きを頂点ごとに入れる（scripts/surface.mjs、docs/設計.md の「3Dの見た目」）。
 // 出力: public/models/<系統>.<ハッシュ>.glb, <系統>-za.<ハッシュ>.glb（Z-Anatomy 由来の形だけ。CC BY-SA 4.0 なので別のファイルにする）,
 //       body.<ハッシュ>.glb（皮膚＝半透明の輪郭用）, index.json
 // ファイル名に中身のハッシュを付けるので、PWA が GLB を CacheFirst で持っても古い形が残らない。
@@ -14,9 +16,11 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { Document, NodeIO } from "@gltf-transform/core";
 import { EXTMeshoptCompression, KHRMeshQuantization } from "@gltf-transform/extensions";
-import { dedup, meshopt, prune, quantize, reorder, simplify, weld } from "@gltf-transform/functions";
+import { dedup, meshopt, prune, quantize, reorder } from "@gltf-transform/functions";
 import { MeshoptEncoder, MeshoptSimplifier } from "meshoptimizer";
 import { splitMesh } from "./split-mesh.mjs";
+import { loadHires } from "./hires.mjs";
+import { bakeAo, muscleFibers, nerveFibers, relax, simplify } from "./surface.mjs";
 import { loadZa } from "./za/index.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -121,28 +125,42 @@ export function resolveParts(terms, elementNames, conceptElements, zaNames = new
   return { resolved, errors };
 }
 
-async function writeGlb(stem, elements, { ratio, error }) {
+// くぼみの暗さ（AO）を求めるとき、光線がさえぎられたと見る距離（m）。系統の形の大きさに合わせる
+const AO_DISTANCE = { skeletal: 0.025, muscular: 0.02, cardiovascular: 0.025, respiratory: 0.04, digestive: 0.04, urogenital: 0.03, endocrine: 0.02, nervous: 0.02, sensory: 0.012 };
+
+/**
+ * 形を減らし（ratio・error は surface.mjs の simplify）、くぼみの暗さ（_AO）と線維の向き（_FIBER）を付けて GLB に書く。
+ * fiberOf(部品ID, 減らした形) は線維の向き（無ければ null）。occluders は AO で光線をさえぎる形に加える、ほかの GLB の形。
+ * extrasOf(部品ID) は部品に付ける印（アプリでは mesh.userData。軟骨は { cartilage: true }）。返り値の meshes は減らした形（部品ID → 形）。
+ */
+async function writeGlb(stem, elements, { ratio, error, ao = null, fiberOf = () => null, occluders = [], extrasOf = () => null }) {
+  const meshes = new Map(elements.map(([id, mesh]) => [id, simplify(mesh, { ratio, error })]));
+  const shading = ao ? bakeAo([...meshes.values()], [...meshes.values(), ...occluders], { distance: ao }) : null;
   const doc = new Document();
   const buffer = doc.createBuffer();
   const scene = doc.createScene();
   const material = doc.createMaterial("default");
-  for (const [id, mesh] of elements) {
+  for (const [i, [id, mesh]] of [...meshes].entries()) {
     const accessor = (type, array) => doc.createAccessor().setType(type).setArray(array).setBuffer(buffer);
     const primitive = doc.createPrimitive()
       .setAttribute("POSITION", accessor("VEC3", mesh.positions))
       .setAttribute("NORMAL", accessor("VEC3", mesh.normals))
       .setIndices(accessor("SCALAR", mesh.indices))
       .setMaterial(material);
-    scene.addChild(doc.createNode(id).setMesh(doc.createMesh(id).addPrimitive(primitive)));
+    if (shading) {
+      primitive.setAttribute("_AO", accessor("SCALAR", shading[i]));
+      primitive.setAttribute("_FIBER", accessor("VEC3", fiberOf(id, mesh) ?? new Float32Array(mesh.positions.length)));
+    }
+    const node = doc.createNode(id).setMesh(doc.createMesh(id).addPrimitive(primitive));
+    if (extrasOf(id)) node.setExtras(extrasOf(id));
+    scene.addChild(node);
   }
   await doc.transform(
-    weld(),
-    simplify({ simplifier: MeshoptSimplifier, ratio, error }),
     dedup(),
     prune(),
-    quantize(),
+    quantize({ quantizeGeneric: 8 }),
     reorder({ encoder: MeshoptEncoder }),
-    meshopt({ encoder: MeshoptEncoder, level: "medium" }),
+    meshopt({ encoder: MeshoptEncoder, level: "high" }),
   );
   const io = new NodeIO()
     .registerExtensions([EXTMeshoptCompression, KHRMeshQuantization])
@@ -151,7 +169,60 @@ async function writeGlb(stem, elements, { ratio, error }) {
   const hash = createHash("sha1").update(bytes).digest("hex").slice(0, 10);
   const name = `${stem}.${hash}.glb`;
   fs.writeFileSync(path.join(OUT, name), bytes);
-  return { url: `models/${name}`, bytes: bytes.byteLength };
+  return { url: `models/${name}`, bytes: bytes.byteLength, meshes };
+}
+
+// 形を減らすときに許すずれ（m。surface.mjs の simplify）。骨・脳は細かく、筋は形が大きくなめらかなので少し粗く
+const DETAIL = { skeletal: 0.00012, nervous: 0.00012, muscular: 0.0004 };
+
+/**
+ * 筋線維・神経の走る向き（surface.mjs）を部品ごとに返す関数を作る。
+ * 筋は起始・停止の点（付着面 attachments-za.json・content/attachments.json と、無ければ骨の部位のピン）から、神経は形の並びから求める。
+ */
+function fibers(terms, resolved) {
+  const read = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : {});
+  const fromZa = read(path.join(OUT, "attachments-za.json"));
+  const own = read(path.join(ROOT, "content/attachments.json"));
+  const pins = read(path.join(ROOT, "content/pins.json"));
+  const points = (term, kind) => {
+    const list = [...(fromZa[term.id]?.[kind] ?? []), ...(own[term.id]?.[kind] ?? [])].map(([, x, y, z]) => [x, y, z]);
+    if (!list.length && pins[term[`${kind}At`]]) list.push(...pins[term[`${kind}At`]].at);
+    return list;
+  };
+  const muscles = new Map();
+  const nerves = new Set();
+  // 部品を含む語のうち、いちばん細かい語の起始・停止を使う
+  for (const term of [...terms].sort((a, b) => resolved.get(a.id).length - resolved.get(b.id).length)) {
+    if (term.of) continue;
+    const muscle = term.system === "muscular" || term.color === "#c75b4f" || term.origin || /rectus|oblique|levator-palpebrae/.test(term.id);
+    const nerve = term.system === "nervous" && (/^nerv-(spinal|lower|cranial)$/.test(term.unit) || /nerve|chiasm|tract/.test(term.id));
+    for (const id of resolved.get(term.id)) {
+      if (muscle && !muscles.has(id)) muscles.set(id, { origin: points(term, "origin"), insertion: points(term, "insertion") });
+      if (nerve) nerves.add(id);
+    }
+  }
+  return (id, mesh) => {
+    if (nerves.has(id)) return nerveFibers(mesh);
+    const attach = muscles.get(id);
+    if (!attach) return null;
+    if (!attach.origin.length && !attach.insertion.length) return muscleFibers(mesh, null);
+    const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity], sum = [0, 0, 0];
+    for (let i = 0; i < mesh.positions.length; i++) {
+      lo[i % 3] = Math.min(lo[i % 3], mesh.positions[i]);
+      hi[i % 3] = Math.max(hi[i % 3], mesh.positions[i]);
+      sum[i % 3] += mesh.positions[i] / (mesh.positions.length / 3);
+    }
+    // 点は右側にある。左側の形には折り返し、正中をまたぐ形（口輪筋など）には両側の点を使う
+    const side = (list) => {
+      if (lo[0] < -0.02 && hi[0] > 0.02) return [...list, ...list.map(([x, y, z]) => [-x, y, z])];
+      return sum[0] > 0.01 ? list.map(([x, y, z]) => [-x, y, z]) : list;
+    };
+    // 片方しか骨に付かない筋（横隔膜の停止＝腱中心など）は、もう片方を形の中心とする
+    return muscleFibers(mesh, {
+      origin: attach.origin.length ? side(attach.origin) : [sum],
+      insertion: attach.insertion.length ? side(attach.insertion) : [sum],
+    });
+  };
 }
 
 // BodyParts3D で1つの形になっているものを平面で2つに分ける（仙骨は尾骨まで、下行結腸は S状結腸まで1つの形）。
@@ -211,17 +282,32 @@ export function readElements() {
     return cache.get(id);
   };
   const readWhole = (id) => (cutOf.get(id)?.[1] === "above" ? parseObj(path.join(objDir, `${id}.obj`)) : readMesh(id));
-  return { objDir, elementNames, conceptElements, readMesh, readWhole };
+  // splitOf(部品ID) → [切り方, "above" | "below", 元の部品ID]（切って作った部品でなければ undefined）
+  return { objDir, elementNames, conceptElements, readMesh, readWhole, splitOf: (id) => cutOf.get(id) };
 }
 
 async function main() {
   await MeshoptEncoder.ready;
   await MeshoptSimplifier.ready;
-  const { elementNames, conceptElements, readMesh: bpMesh, readWhole } = readElements();
+  const { objDir, elementNames, conceptElements, readMesh: bpMesh, readWhole, splitOf } = readElements();
 
   const { systems, terms } = loadTerms();
   const za = terms.some((term) => term.parts.some((spec) => spec.startsWith("za:"))) ? await loadZa(elementNames, readWhole) : null;
+  // 表示には、BodyParts3D 3.0 の細かい形を 4.0 に重ねたもの（scripts/hires.mjs）を使えるときは使う。
+  // 位置・大きさ・近さ（index.json）とピンは今までどおり 4.0 の形で決める
+  const hires = loadHires({ parseObj, objDir, readWhole });
+  const fine = (id) => {
+    const [cut, half, source] = splitOf(id) ?? [];
+    if (!cut) return hires(id);
+    const whole = hires(source ?? id);
+    return whole && { name: elementNames.get(id), ...splitMesh(whole, cut.normal, cut.d)[half] };
+  };
   const mesh = (id) => (za?.names.has(id) ? za.mesh(id) : bpMesh(id));
+  // 3.0 の細かい形の無い筋（4.0 の粗い形のまま）は、三角形の角のでこぼこをならす
+  const shown = (id) => {
+    if (za?.names.has(id)) return za.mesh(id);
+    return fine(id) ?? (elementSystem.get(id) === "muscular" ? relax(bpMesh(id)) : bpMesh(id));
+  };
   const { resolved, errors } = resolveParts(terms, elementNames, conceptElements, za?.names);
   if (errors.length) throw new Error(errors.join("\n"));
   if (za) for (const [id, name] of za.names) elementNames.set(id, name);
@@ -234,24 +320,29 @@ async function main() {
   const elementSystem = new Map();
   for (const term of terms) for (const id of resolved.get(term.id)) if (!elementSystem.has(id)) elementSystem.set(id, term.system);
 
+  const fiberOf = fibers(terms, resolved);
   const index = { version: 1, source: za ? "BodyParts3D 4.0, Z-Anatomy" : "BodyParts3D 4.0", systems: {}, terms: {}, neighbors: {}, bounds: null };
   for (const system of systems) {
     const ids = [...elementSystem].filter(([, s]) => s === system.id).map(([id]) => id).sort();
     const bp = ids.filter((id) => !za?.names.has(id));
     const fromZa = ids.filter((id) => za?.names.has(id));
     if (!bp.length) continue;
-    const { url, bytes } = await writeGlb(system.id, bp.map((id) => [id, mesh(id)]), { ratio: 0.3, error: 0.004 });
+    // 骨格の中の軟骨（肋軟骨・椎間円板）は、アプリで骨と違う青みのある白にする
+    const extrasOf = (id) => (system.id === "skeletal" && /cartilage|intervertebral dis[ck]|menisc/i.test(elementNames.get(id)) ? { cartilage: true } : null);
+    const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf };
+    const { url, bytes, meshes } = await writeGlb(system.id, bp.map((id) => [id, shown(id)]), shape);
     index.systems[system.id] = { url, bytes, elements: bp.length };
     console.log(`${url}: ${bp.length} 部品, ${(bytes / 1024 / 1024).toFixed(2)} MB`);
     if (fromZa.length) {
-      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, mesh(id)]), { ratio: 0.3, error: 0.004 });
-      index.systems[system.id].za = { ...extra, elements: fromZa.length };
+      // Z-Anatomy の形の AO は、同じ系統の BodyParts3D の形にもさえぎらせる（BodyParts3D の GLB には Z-Anatomy 由来のものを入れない）
+      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, mesh(id)]), { ...shape, occluders: [...meshes.values()] });
+      index.systems[system.id].za = { url: extra.url, bytes: extra.bytes, elements: fromZa.length };
       console.log(`${extra.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(extra.bytes / 1024 / 1024).toFixed(2)} MB`);
     }
   }
   const body = mesh(BODY_ELEMENT);
   const bodyGlb = await writeGlb("body", [[BODY_ELEMENT, body]], { ratio: 0.15, error: 0.01 });
-  index.systems.body = { ...bodyGlb, elements: 1 };
+  index.systems.body = { url: bodyGlb.url, bytes: bodyGlb.bytes, elements: 1 };
   index.bounds = body.bounds;
   console.log(`${bodyGlb.url}: ${(bodyGlb.bytes / 1024 / 1024).toFixed(2)} MB`);
 

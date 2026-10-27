@@ -1,8 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
-import { joints, loadAttachments, loadModelIndex, pins, systemById, termById, type Attachments, type FigurePlane, type ModelIndex } from "./content";
+import { joints, loadAttachments, loadModelIndex, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex } from "./content";
 import { pinCenter, pinSpread, type Vec3 } from "./landmarks";
 
 export interface SceneSpec {
@@ -30,6 +31,165 @@ const MOTION_CYCLE = 3.4;
 
 /** 強調の色。null はその語のふだんの色（骨の部位を探す問題で、骨だけを見せるとき） */
 type Highlight = Map<string, string | null>;
+
+/**
+ * 組織ごとの質感。bump は細かい凹凸の深さ（mm）、grain はざらつきの粒の大きさ（m）、mottle は色むらの強さ、
+ * deepen は色を濃くする割合（筋の赤を深く）、clearcoat はぬれた表面のつや。筋・神経の線維は GLB の頂点の向き（surfaceFiber）に沿って描く。
+ */
+interface Tissue { roughness: number; clearcoat: number; sheen: number; bump: number; grain: number; mottle: number; deepen: number; fibers?: boolean }
+const TISSUES: Record<string, Tissue> = {
+  bone: { roughness: 0.62, clearcoat: 0, sheen: 0, bump: 0.05, grain: 0.012, mottle: 0.1, deepen: 0 },
+  cartilage: { roughness: 0.38, clearcoat: 0.35, sheen: 0, bump: 0.015, grain: 0.015, mottle: 0.06, deepen: 0 },
+  muscle: { roughness: 0.5, clearcoat: 0.25, sheen: 0.35, bump: 0.09, grain: 0.008, mottle: 0.12, deepen: 0.6, fibers: true },
+  nerve: { roughness: 0.5, clearcoat: 0.2, sheen: 0.2, bump: 0.06, grain: 0.008, mottle: 0.08, deepen: 0, fibers: true },
+  vessel: { roughness: 0.4, clearcoat: 0.5, sheen: 0, bump: 0.02, grain: 0.02, mottle: 0.08, deepen: 0.3 },
+  organ: { roughness: 0.45, clearcoat: 0.45, sheen: 0, bump: 0.03, grain: 0.015, mottle: 0.1, deepen: 0.2 },
+};
+const TISSUE_OF: Record<string, string> = { skeletal: "bone", muscular: "muscle", cardiovascular: "vessel", nervous: "organ" };
+/** 骨格の中の軟骨（肋軟骨・椎間円板。GLB の部品に cartilage の印）の色 */
+const CARTILAGE = "#d5dfe0";
+/** 系統・語のもとの色。この色のときだけ組織の色の深め（deepen）をかける（強調の橙・青や進捗の色は変えない） */
+const NATURAL = new Set([...systems.map((system) => system.color), ...terms.flatMap((term) => (term.color ? [term.color] : [])), CARTILAGE]);
+
+/** 組織の凹凸と色むらに使う、つなぎ目の無い3Dのノイズ（size³）。乱数を3つの向きにぼかして作る */
+function noiseTexture(size = 64): THREE.Data3DTexture {
+  let a = new Float32Array(size ** 3);
+  let seed = 7;
+  for (let i = 0; i < a.length; i++) {
+    seed = (seed * 16807) % 2147483647;
+    a[i] = seed / 2147483647;
+  }
+  let b = new Float32Array(a.length);
+  for (let pass = 0; pass < 2; pass++) {
+    for (const stride of [1, size, size * size]) {
+      for (let i = 0; i < a.length; i++) {
+        const c = Math.floor(i / stride) % size;
+        const prev = i + (((c + size - 1) % size) - c) * stride;
+        const next = i + (((c + 1) % size) - c) * stride;
+        b[i] = (a[prev] + 2 * a[i] + a[next]) / 4;
+      }
+      [a, b] = [b, a];
+    }
+  }
+  let mean = 0, variance = 0;
+  for (const v of a) mean += v / a.length;
+  for (const v of a) variance += (v - mean) ** 2 / a.length;
+  const data = new Uint8Array(a.length);
+  for (let i = 0; i < a.length; i++) data[i] = Math.round(THREE.MathUtils.clamp(0.5 + ((a[i] - mean) / Math.sqrt(variance)) * 0.17, 0, 1) * 255);
+  const texture = new THREE.Data3DTexture(data, size, size, size);
+  texture.format = THREE.RedFormat;
+  texture.wrapS = texture.wrapT = texture.wrapR = THREE.RepeatWrapping;
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.generateMipmaps = true;
+  texture.needsUpdate = true;
+  return texture;
+}
+
+const SURFACE_VERTEX = /* glsl */ `
+attribute float surfaceAo;
+attribute vec3 surfaceFiber;
+varying float vSurfAo;
+varying vec3 vSurfFiber;
+varying vec3 vSurfPos;
+#ifdef USE_SPOTS
+varying vec3 vSpotPosition;
+varying vec3 vSpotNormal;
+#endif`;
+
+const SURFACE_FRAGMENT = /* glsl */ `
+uniform sampler3D surfNoise;
+uniform float surfBump;
+uniform float surfGrain;
+uniform float surfMottle;
+uniform float surfDeepen;
+varying float vSurfAo;
+varying vec3 vSurfFiber;
+varying vec3 vSurfPos;
+#ifdef USE_SPOTS
+varying vec3 vSpotPosition;
+varying vec3 vSpotNormal;
+uniform int spotCount;
+uniform vec4 spots[${SPOT_MAX}];
+uniform vec3 spotColors[${SPOT_MAX}];
+uniform vec3 spotNormals[${SPOT_MAX}];
+#endif
+float surfNoiseAt(vec3 p, float tile) { return texture(surfNoise, p / tile).r - 0.5; }
+// 細かい凹凸の高さ（mm）。色むらと線維の濃淡で color も変える
+float surfaceDetail(inout vec3 color) {
+  vec3 p = vSurfPos;
+  color = mix(color, color * color * 1.25, surfDeepen);
+  float mottle = surfNoiseAt(p, 0.09) + 0.6 * surfNoiseAt(p, 0.03);
+  float grain = surfNoiseAt(p, surfGrain) + 0.5 * surfNoiseAt(p, surfGrain * 0.41);
+  float height = grain;
+  float shade = mottle * surfMottle + grain * 0.05;
+#ifdef SURF_FIBERS
+  // 線維: 向きに沿って並べた点のノイズを平均すると（線積分）、その向きにそろった細い筋になる
+  float strength = clamp(length(vSurfFiber), 0.0, 1.0);
+  vec3 f = vSurfFiber / max(length(vSurfFiber), 1e-4);
+  float fine = 0.0, coarse = 0.0;
+  for (int i = 0; i < 6; i++) {
+    float t = float(i) - 2.5;
+    fine += surfNoiseAt(p + f * (t * 0.0011), 0.007);
+    coarse += surfNoiseAt(p + f * (t * 0.005), 0.03);
+  }
+  // fine は細い線維（約1mm）、coarse は線維の束（約4mm）。6つの和なので小さめの係数で戻す
+  float fibers = fine * 0.3 + coarse * 0.45;
+  height = mix(grain, fibers * 1.6, strength);
+  shade += strength * fibers * 0.55;
+#endif
+  color *= 1.0 + shade;
+  return height * surfBump;
+}
+// 高さの画面上の変化から法線を傾ける（Mikkelsen の方法。単位は mm）
+vec3 surfacePerturb(vec3 n, float height, float faceDirection) {
+  vec3 pos = -vViewPosition * 1000.0;
+  vec3 sx = dFdx(pos), sy = dFdy(pos);
+  vec3 r1 = cross(sy, n), r2 = cross(n, sx);
+  float det = dot(sx, r1) * faceDirection;
+  vec3 grad = sign(det) * (dFdx(height) * r1 + dFdy(height) * r2);
+  return normalize(abs(det) * n - grad);
+}`;
+
+/** 表面の材質に、くぼみの暗さ（AO）・凹凸・色むら・線維と、骨の部位のスポット（USE_SPOTS）を足す */
+function surfaceShader(shader: THREE.WebGLProgramParametersWithUniforms): void {
+  shader.vertexShader = shader.vertexShader
+    .replace("#include <common>", `#include <common>\n${SURFACE_VERTEX}`)
+    .replace("#include <begin_vertex>", `#include <begin_vertex>
+vSurfAo = surfaceAo;
+vSurfFiber = surfaceFiber;`)
+    // 形の座標は GLB の量子化で部品ごとに縮めてあるので、凹凸の大きさをそろえるため体の座標（m）で引く
+    .replace("#include <project_vertex>", `#include <project_vertex>
+vSurfPos = (modelMatrix * vec4(transformed, 1.0)).xyz;
+#ifdef USE_SPOTS
+vSpotPosition = (modelMatrix * vec4(transformed, 1.0)).xyz;
+vSpotNormal = normalize(mat3(modelMatrix) * objectNormal);
+#endif`);
+  shader.fragmentShader = shader.fragmentShader
+    .replace("#include <common>", `#include <common>\n${SURFACE_FRAGMENT}`)
+    .replace("#include <color_fragment>", `#include <color_fragment>
+float surfHeight = surfaceDetail(diffuseColor.rgb);
+#ifdef USE_SPOTS
+for (int i = 0; i < ${SPOT_MAX}; i++) {
+  if (i >= spotCount) break;
+  float d = distance(vSpotPosition, spots[i].xyz);
+  float r = spots[i].w;
+  float inside = 1.0 - smoothstep(r * 0.92, r, d);
+  if (dot(spotNormals[i], spotNormals[i]) > 0.0) inside *= smoothstep(-0.45, -0.2, dot(normalize(vSpotNormal), spotNormals[i]));
+  float rim = smoothstep(r * 0.78, r * 0.92, d) * inside;
+  diffuseColor.rgb = mix(diffuseColor.rgb, spotColors[i] * (1.0 - 0.35 * rim), inside);
+}
+#endif`)
+    .replace("#include <normal_fragment_maps>", `#include <normal_fragment_maps>
+normal = surfacePerturb(normal, surfHeight, faceDirection);`)
+    .replace("#include <aomap_fragment>", `#include <aomap_fragment>
+// くぼみ・すき間を暗くする。影は描かないので、直接の光も少し弱めて奥行きを出す
+float surfOcclusion = clamp(vSurfAo, 0.0, 1.0);
+reflectedLight.indirectDiffuse *= surfOcclusion * surfOcclusion;
+reflectedLight.indirectSpecular *= surfOcclusion * surfOcclusion;
+reflectedLight.directDiffuse *= mix(1.0, surfOcclusion, 0.85);
+reflectedLight.directSpecular *= mix(1.0, surfOcclusion, 0.8);`);
+}
 
 /** 器官の部位を示すとき、器官を淡くしてスポット（橙）を見分けやすくする（消化器の橙・泌尿器の黄の上でも目立つように） */
 function pale(color: string): string {
@@ -81,6 +241,8 @@ export class AnatomyViewer {
     spotNormals: { value: Array.from({ length: SPOT_MAX }, () => new THREE.Vector3()) },
   };
   private colors: Map<string, string> | null = null;
+  /** 組織の凹凸・色むら・線維に使うノイズ（すべての表面の材質で共有） */
+  private readonly noise = noiseTexture();
   /** 基本の用語（方向・面・運動）の図。矢印・面・動きの道すじ */
   private readonly figureGroup = new THREE.Group();
   private figureTerm: string | null = null;
@@ -90,24 +252,37 @@ export class AnatomyViewer {
   private motion: { from: Record<string, number>; to: Record<string, number>; start: number; meshes: Map<THREE.Mesh, string[]> } | null = null;
   private labelTerm: string | null = null;
   private dirty = true;
+  /** 画素の細かさ（2まで）。描くのが重い端末では、動かしている間だけ下げる（frame） */
+  private readonly fullRatio = Math.min(window.devicePixelRatio, 2);
+  private frameGap = 0;
+  private lastRender = 0;
   private showSeq = 0;
   private tween: { from: [THREE.Vector3, THREE.Vector3]; to: [THREE.Vector3, THREE.Vector3]; start: number } | null = null;
 
   constructor(private readonly host: HTMLElement) {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setPixelRatio(this.fullRatio);
+    this.renderer.toneMapping = THREE.NeutralToneMapping;
     host.prepend(this.renderer.domElement);
     // WebGL がいったん失われて戻ったとき（スマホでアプリを裏に回したときなど）は、描き直さないと画面が空のままになる
-    this.renderer.domElement.addEventListener("webglcontextrestored", () => (this.dirty = true));
+    this.renderer.domElement.addEventListener("webglcontextrestored", () => {
+      this.lightEnvironment();
+      this.dirty = true;
+    });
     this.label = document.createElement("div");
     this.label.className = "stage-label";
     this.label.hidden = true;
     host.append(this.label);
 
-    this.scene.add(new THREE.HemisphereLight("#ffffff", "#8a8070", 1.6));
-    const headlight = new THREE.DirectionalLight("#ffffff", 1.8);
-    headlight.position.set(0.3, 0.5, 1);
-    this.camera.add(headlight);
+    // 光はカメラに付ける（どの向きから見ても同じ明るさ）。左上の主な光・右の弱い光・後ろからの縁の光と、部屋の映り込み
+    this.lightEnvironment();
+    this.scene.add(new THREE.HemisphereLight("#fffaf2", "#5e5448", 0.25));
+    for (const [x, y, z, intensity] of [[-0.55, 0.75, 1, 2.4], [0.9, 0.1, 0.5, 0.4], [0.15, 0.6, -1, 1.2]] as const) {
+      const light = new THREE.DirectionalLight("#ffffff", intensity);
+      light.position.set(x, y, z);
+      light.target.position.set(0, 0, 0);
+      this.camera.add(light, light.target);
+    }
     this.scene.add(this.camera);
     this.tapBall.renderOrder = 10;
     this.tapBall.visible = false;
@@ -317,6 +492,17 @@ export class AnatomyViewer {
         root.traverse((object) => {
           if (object instanceof THREE.Mesh) {
             object.userData.system = systemId;
+            // GLB の頂点ごとの値（scripts/surface.mjs）: くぼみの暗さと、筋線維・神経の向き
+            const geometry = object.geometry as THREE.BufferGeometry;
+            for (const [from, to] of [["_ao", "surfaceAo"], ["_fiber", "surfaceFiber"]]) {
+              if (!geometry.hasAttribute(from)) continue;
+              geometry.setAttribute(to, geometry.getAttribute(from));
+              geometry.deleteAttribute(from);
+            }
+            const fiber = geometry.getAttribute("surfaceFiber");
+            let fibers = false;
+            for (let i = 0; fiber && i < fiber.count && !fibers; i++) fibers = !!(fiber.getX(i) || fiber.getY(i) || fiber.getZ(i));
+            object.userData.fibers = fibers;
             this.meshes.set(object.name, object);
           }
         });
@@ -344,45 +530,60 @@ export class AnatomyViewer {
     return material;
   }
 
-  private solid(color: string): THREE.Material {
-    return this.material(`solid:${color}`, () => new THREE.MeshStandardMaterial({ color, roughness: 0.65, metalness: 0 }));
+  /** 部屋の映り込み（つやのある所に柔らかい光が映る）。WebGL が戻ったときも作り直す */
+  private lightEnvironment(): void {
+    const pmrem = new THREE.PMREMGenerator(this.renderer);
+    this.scene.environment?.dispose();
+    this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    this.scene.environmentIntensity = 0.35;
+    pmrem.dispose();
+  }
+
+  /** 部品の組織（質感）。筋の色の語（喉頭・咽頭・骨盤底の筋）と線維のある部品は筋・神経の質感にする */
+  private tissue(mesh: THREE.Mesh, color: string): string {
+    if (mesh.userData.cartilage) return "cartilage";
+    if (mesh.userData.fibers) return mesh.userData.system === "nervous" ? "nerve" : "muscle";
+    if (color === "#c75b4f") return "muscle";
+    return TISSUE_OF[mesh.userData.system as string] ?? "organ";
+  }
+
+  /** 不透明の表面。spots にすると、スポット（球）の中に入る所を塗る（縁を少し濃くして範囲を分かりやすくする） */
+  private surface(color: string, tissue: string, spots = false): THREE.Material {
+    return this.material(`${spots ? "spot" : "solid"}:${tissue}:${color}`, () => {
+      const kind = TISSUES[tissue];
+      const material = new THREE.MeshPhysicalMaterial({
+        color, metalness: 0, roughness: kind.roughness,
+        clearcoat: kind.clearcoat, clearcoatRoughness: 0.32,
+        sheen: kind.sheen, sheenRoughness: 0.55, sheenColor: new THREE.Color(color).lerp(new THREE.Color("#ffffff"), 0.5),
+      });
+      material.defines = { ...(kind.fibers ? { SURF_FIBERS: "" } : {}), ...(spots ? { USE_SPOTS: "" } : {}) };
+      // GLB に AO・線維の値が無い形（念のため）は、さえぎる物なし・線維なしとして描く
+      // （three.js は型に無いが、どの材質でもこの値を見る）
+      Object.assign(material, { defaultAttributeValues: { surfaceAo: [1], surfaceFiber: [0, 0, 0] } });
+      const uniforms = {
+        surfNoise: { value: this.noise },
+        surfBump: { value: kind.bump },
+        surfGrain: { value: kind.grain },
+        surfMottle: { value: kind.mottle },
+        surfDeepen: { value: NATURAL.has(color) ? kind.deepen : 0 },
+      };
+      material.onBeforeCompile = (shader) => {
+        Object.assign(shader.uniforms, uniforms, spots ? this.spotUniforms : {});
+        surfaceShader(shader);
+      };
+      return material;
+    });
+  }
+
+  private solid(color: string, mesh: THREE.Mesh): THREE.Material {
+    // 軟骨は、骨格の色のときだけ軟骨の色にする（強調・進捗の色はそのまま）
+    if (mesh.userData.cartilage && color === systemById.get("skeletal")?.color) color = CARTILAGE;
+    return this.surface(color, this.tissue(mesh, color));
   }
 
   private ghost(color: string, opacity: number): THREE.Material {
     return this.material(`ghost:${color}:${opacity}`, () =>
       new THREE.MeshStandardMaterial({ color, roughness: 0.8, transparent: true, opacity, depthWrite: false }));
-  }
-
-  /** 表面のうち、スポット（球）の中に入る所を塗る材質。縁を少し濃くして範囲を分かりやすくする */
-  private spotted(color: string): THREE.Material {
-    return this.material(`spot:${color}`, () => {
-      const material = new THREE.MeshStandardMaterial({ color, roughness: 0.65, metalness: 0 });
-      material.onBeforeCompile = (shader) => {
-        Object.assign(shader.uniforms, this.spotUniforms);
-        shader.vertexShader = shader.vertexShader
-          .replace("#include <common>", "#include <common>\nvarying vec3 vSpotPosition;\nvarying vec3 vSpotNormal;")
-          .replace("#include <project_vertex>", "#include <project_vertex>\nvSpotPosition = (modelMatrix * vec4(transformed, 1.0)).xyz;\nvSpotNormal = normalize(mat3(modelMatrix) * objectNormal);");
-        shader.fragmentShader = shader.fragmentShader
-          .replace("#include <common>", `#include <common>
-varying vec3 vSpotPosition;
-varying vec3 vSpotNormal;
-uniform int spotCount;
-uniform vec4 spots[${SPOT_MAX}];
-uniform vec3 spotColors[${SPOT_MAX}];
-uniform vec3 spotNormals[${SPOT_MAX}];`)
-          .replace("#include <color_fragment>", `#include <color_fragment>
-for (int i = 0; i < ${SPOT_MAX}; i++) {
-  if (i >= spotCount) break;
-  float d = distance(vSpotPosition, spots[i].xyz);
-  float r = spots[i].w;
-  float inside = 1.0 - smoothstep(r * 0.92, r, d);
-  if (dot(spotNormals[i], spotNormals[i]) > 0.0) inside *= smoothstep(-0.45, -0.2, dot(normalize(vSpotNormal), spotNormals[i]));
-  float rim = smoothstep(r * 0.78, r * 0.92, d) * inside;
-  diffuseColor.rgb = mix(diffuseColor.rgb, spotColors[i] * (1.0 - 0.35 * rim), inside);
-}`);
-      };
-      return material;
-    });
   }
 
   private refresh(): void {
@@ -444,19 +645,19 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
       // 関節の動きを示すときは、動く骨を光らせ、動かない皮膚は消す
       mesh.visible = !(this.motion && system === "body");
       if (this.motion?.meshes.has(mesh)) {
-        mesh.material = this.solid(HIGHLIGHT);
+        mesh.material = this.solid(HIGHLIGHT, mesh);
       } else if (system === "body") {
         // 方向・面の図では、体の表面（浅・深の境）が分かるよう皮膚を少し濃くする
         mesh.material = this.ghost("#e8c9a8", this.figureTerm ? 0.2 : 0.1);
         mesh.renderOrder = 2;
         this.ghosted.add(elementId);
       } else if (highlightedElements.get(elementId)) {
-        mesh.material = this.seeThrough ? this.ghost(highlightedElements.get(elementId)!, 0.45) : this.solid(highlightedElements.get(elementId)!);
+        mesh.material = this.seeThrough ? this.ghost(highlightedElements.get(elementId)!, 0.45) : this.solid(highlightedElements.get(elementId)!, mesh);
         if (this.seeThrough) mesh.renderOrder = 1;
       } else if (spotElements.has(elementId)) {
         // 骨の部位（筋の起始・停止を含む）は、添えるだけの系統の骨でも不透明にして示す
         const color = highlightedElements.has(elementId) ? own() : base;
-        mesh.material = this.spotted(system === "skeletal" ? color : pale(color));
+        mesh.material = this.surface(system === "skeletal" ? color : pale(color), this.tissue(mesh, color), true);
       } else if (this.context.has(system)) {
         mesh.material = this.ghost(base, 0.16);
         mesh.renderOrder = 1;
@@ -466,13 +667,13 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
       } else if (highlightedElements.has(elementId)) {
-        mesh.material = this.solid(own());
+        mesh.material = this.solid(own(), mesh);
       } else if (this.isolate) {
         mesh.material = this.ghost(base, 0.12);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
       } else {
-        mesh.material = this.solid(own());
+        mesh.material = this.solid(own(), mesh);
       }
     }
     this.dirty = true;
@@ -493,7 +694,7 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
     if (!figure) return;
     // 矢印の太さは映す広さに合わせる（全身でも太ももの近くでも同じくらいに見える）
     const radius = THREE.MathUtils.clamp(figure.view.size * 0.012, 0.0025, 0.012);
-    if (figure.guide) this.figureGroup.add(this.planeFigure(figure.guide, "#7d7466", 0.12));
+    if (figure.guide) this.figureGroup.add(this.planeFigure(figure.guide, "#d9d3c7", 0.12));
     if (figure.plane) {
       this.figureGroup.add(this.planeFigure(figure.plane, HIGHLIGHT, 0.3));
       const [lo, hi] = this.index.bounds;
@@ -698,6 +899,7 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
   }
 
   private frame(): void {
+    const now = performance.now();
     if (this.tween) {
       const t = Math.min(1, (performance.now() - this.tween.start) / 450);
       const ease = 1 - (1 - t) ** 3;
@@ -708,8 +910,17 @@ for (int i = 0; i < ${SPOT_MAX}; i++) {
     }
     if (this.controls.update()) this.dirty = true;
     this.animateMotion();
-    if (!this.dirty) return;
+    if (!this.dirty) {
+      // 止まったら、動かしている間だけ下げていた画素の細かさを戻して描き直す
+      if (this.renderer.getPixelRatio() >= this.fullRatio || now - this.lastRender < 250) return;
+      this.renderer.setPixelRatio(this.fullRatio);
+    } else if (now - this.lastRender < 100) {
+      // 続けて描いている（回している）間の間隔を測る。平均で 30ms を超える端末では、動かしている間の細かさを下げる
+      this.frameGap = this.frameGap * 0.9 + (now - this.lastRender) * 0.1;
+      if (this.frameGap > 30 && this.renderer.getPixelRatio() > 1) this.renderer.setPixelRatio(Math.max(1, this.fullRatio * 0.6));
+    }
     this.dirty = false;
+    this.lastRender = now;
     this.renderer.render(this.scene, this.camera);
     this.placeLabel();
   }

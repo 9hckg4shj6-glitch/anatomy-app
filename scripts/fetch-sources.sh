@@ -16,6 +16,17 @@ if [ ! -d "$DEST/obj" ]; then
 fi
 echo "obj files: $(ls "$DEST/obj" | wc -l)"
 
+# BodyParts3D 3.0 の細かい形（ポリゴンを95%減らした版。4.0 は99%減らした版だけ）。約520MB。
+# scripts/hires.mjs が 4.0 の形に重ねて、表示用の形に使う。ZIP の中の区切りが \ なので、展開してから平らにする。
+V3="data-raw/bp3d-v3"
+mkdir -p "$V3"
+if [ ! -d "$V3/obj" ]; then
+  [ -s "$V3/BodyParts3D_3.0_obj_95.zip" ] || curl -fSL "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/20110915/BodyParts3D_3.0_obj_95.zip" -o "$V3/BodyParts3D_3.0_obj_95.zip"
+  mkdir -p "$V3/obj"
+  (cd "$V3/obj" && unzip -q -o ../BodyParts3D_3.0_obj_95.zip && mv BodyParts3D_3.0_obj_95/* . && rmdir BodyParts3D_3.0_obj_95)
+fi
+echo "BodyParts3D 3.0 obj files: $(ls "$V3/obj" | wc -l)"
+
 # Z-Anatomy（CC BY-SA 4.0）の FBX。BodyParts3D に無い構造を骨に合わせて取り込む（scripts/za/）。約215MB。
 ZA="https://raw.githubusercontent.com/LluisV/Z-Anatomy/PC-Version/Resources/Models/FBX"
 mkdir -p data-raw/z-anatomy
