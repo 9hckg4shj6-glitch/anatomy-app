@@ -1,5 +1,5 @@
 #!/bin/zsh
-# BodyParts3D 4.0（DBCLS, CC BY 4.0）を data-raw/bp3d/ に、Z-Anatomy の FBX を data-raw/z-anatomy/ に取得する。data-raw/ は git の対象外。
+# BodyParts3D 4.0（DBCLS, CC BY 4.0）を data-raw/bp3d/ に、3.0 の細かい形を data-raw/bp3d-v3/ に、Z-Anatomy の FBX を data-raw/z-anatomy/ に取得する。data-raw/ は git の対象外。
 # 出典表記: "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International"
 set -euo pipefail
 cd "$(dirname "$0")/.."
