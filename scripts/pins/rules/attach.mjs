@@ -44,6 +44,15 @@ export const ATTACH = {
   "corrugator-supercilii@origin": { bone: "frontal-bone", ray: ["ant", 0.41, 0.73], r: 0.006 },
   // 下顎頚の前面（翼突筋窩）
   "lateral-pterygoid@insertion": { bone: "mandible", ext: "ant+0.5med", box: { y: [1.492, 1.5], z: [0.08, 0.11], x: [-0.06, -0.03] }, r: 0.005 },
+  // 僧帽筋の横行部（第7頚椎〜第3胸椎）と上行部（第4〜12胸椎）の棘突起
+  "transverse-part-of-trapezius@origin": [{ bone: "cervical-vertebrae", part: "seventh cervical vertebra", ...SPINOUS }, { bone: "thoracic-vertebrae", each: thoracic(1, 3), ...SPINOUS }],
+  "ascending-part-of-trapezius@origin": { bone: "thoracic-vertebrae", each: thoracic(4, 12), ...SPINOUS },
+  // 母指の基節骨の底: 短母指外転筋は橈側（外側）、短母指屈筋は掌側
+  "abductor-pollicis-brevis@insertion": { bone: "phalanges-hand", part: "proximal phalanx of thumb", ext: "lat+0.5sup", box: { s: [0.65, 1] }, r: 0.004 },
+  "flexor-pollicis-brevis@insertion": { bone: "phalanges-hand", part: "proximal phalanx of thumb", ext: "ant+0.5sup", box: { s: [0.65, 1] }, r: 0.004 },
+  // 第1中手骨の橈側縁（母指対立筋）、第5中手骨の尺側縁（小指対立筋）
+  "opponens-pollicis@insertion": { bone: "metacarpals", part: "first metacarpal bone", ridge: { dir: "lat+0.3ant", along: "s", from: 0.3, to: 0.75, k: 3 }, r: 0.004 },
+  "opponens-digiti-minimi-of-hand@insertion": { bone: "metacarpals", part: "fifth metacarpal bone", ridge: { dir: "med+0.3ant", along: "s", from: 0.3, to: 0.75, k: 3 }, r: 0.004 },
   // 内側楔状骨と第1中足骨の底の足底側（外側寄り）
   "fibularis-longus@insertion": [
     { bone: "cuneiforms", part: "medial cuneiform bone", ext: "inf+0.5lat", r: 0.005 },
@@ -61,5 +70,7 @@ export const CHECKS = [
   { name: "att-hyoid", mesh: "hyoid-bone", side: "all", views: ["ant", "sup", "lat"], ids: ["digastric@insertion", "mylohyoid@insertion"] },
   { name: "att-frontal", mesh: "frontal-bone", side: "all", views: ["ant"], ids: ["corrugator-supercilii@origin"] },
   { name: "att-mandible", mesh: "mandible", views: ["lat", "med", "ant"], crop: [0, 0, 1, 0.5], ids: ["lateral-pterygoid@insertion"] },
+  { name: "att-trapezius", mesh: ["cervical-vertebrae", "thoracic-vertebrae"], views: ["post", "lat"], ids: ["transverse-part-of-trapezius@origin", "ascending-part-of-trapezius@origin"] },
+  { name: "att-thumb", mesh: ["metacarpals", "phalanges-hand"], views: ["ant", "lat", "med"], ids: ["abductor-pollicis-brevis@insertion", "flexor-pollicis-brevis@insertion", "opponens-pollicis@insertion", "opponens-digiti-minimi-of-hand@insertion"] },
   { name: "att-foot", mesh: ["cuneiforms", "metatarsals"], views: ["inf", "med"], ids: ["fibularis-longus@insertion"] },
 ];

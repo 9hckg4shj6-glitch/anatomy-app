@@ -146,6 +146,19 @@ const TABLE = {
   "short-head-of-biceps-femoris": T(["biceps femoris muscle", "short head of biceps femoris"], ["femur"], ["fibula"]),
   "plantar-interossei": T(["plantar interossei muscles"], ["metatarsals"], ["phalanges-foot"]),
   "flexor-digiti-minimi-brevis-of-foot": T(["flexor digiti minimi of foot"], ["metatarsals"], ["phalanges-foot"]),
+  // 上肢の筋の部・頭と回旋筋腱板（Phase 3 その5）。停止の面は筋全体の名前（"deltoid muscle" など）に付いている。
+  // 僧帽筋の部は Z-Anatomy の付着面の名前が上下で入れかわっているので使わない（rules/attach.mjs）
+  "clavicular-part-of-deltoid": T(["clavicular part of deltoid muscle", "deltoid muscle"], ["clavicle"], ["humerus"]),
+  "acromial-part-of-deltoid": T(["acromial part of deltoid muscle", "deltoid muscle"], ["scapula"], ["humerus"]),
+  "spinal-part-of-deltoid": T(["scapular spinal part of deltoid muscle", "deltoid muscle"], ["scapula"], ["humerus"]),
+  "clavicular-part-of-pectoralis-major": T(["pectoralis major muscle"], ["clavicle"], ["humerus"]),
+  "sternocostal-part-of-pectoralis-major": T(["sternocostal head of pectoralis major muscle", "pectoralis major muscle"], ["sternum", "costal-cartilages"], ["humerus"]),
+  "long-head-of-biceps-brachii": T(["long head of biceps brachii", "biceps brachii muscle"], ["scapula"], ["radius"]),
+  "short-head-of-biceps-brachii": T(["short head of biceps brachii", "biceps brachii muscle"], ["scapula"], ["radius"]),
+  "long-head-of-triceps-brachii": T(["long head of triceps brachii", "triceps brachii muscle"], ["scapula"], ["ulna"]),
+  "lateral-head-of-triceps-brachii": T(["lateral head of triceps brachii", "triceps brachii muscle"], ["humerus"], ["ulna"]),
+  "medial-head-of-triceps-brachii": T(["medial head of triceps brachii", "triceps brachii muscle"], ["humerus"], ["ulna"]),
+  "rotator-cuff": T(["supraspinatus muscle", "infraspinatus muscle", "teres minor muscle", "subscapularis muscle"], ["scapula"], ["humerus"]),
   // 背部・後頭下・首
   "iliocostalis": T(["iliocostalis colli muscle", "erector spinae"], ["hip-bone"], ["cervical-vertebrae"]),
   "longissimus": T(["longissimus thoracis muscle"], [], ["thoracic-vertebrae", "lumbar-vertebrae"]),

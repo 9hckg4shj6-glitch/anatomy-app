@@ -1667,6 +1667,103 @@
           "note": "外果の後面の溝。長腓骨筋と短腓骨筋の腱がここを回って足の外側へ向きを変える。腱を押さえる上腓骨筋支帯が切れると、腱が外果の前へ外れる。"
         }
       ]
+    },
+    {
+      "id": "skel-pt-upper-more",
+      "title": "上肢の骨の部位（追加）",
+      "terms": [
+        {
+          "id": "conoid-tubercle", "ja": "円錐靱帯結節", "yomi": "えんすいじんたいけっせつ", "en": "conoid tubercle", "la": "tuberculum conoideum",
+          "of": "clavicle", "level": 3,
+          "kanji": "円錐靱帯が付く小さな高まり",
+          "etym": "conoid「円錐の形の」＋ tubercle「小さな結節」",
+          "note": "鎖骨の外側部の下面、後ろ寄りの小さな高まり。烏口鎖骨靱帯のうち円錐靱帯が付き、鎖骨と肩甲骨をつなぐ。"
+        },
+        {
+          "id": "trapezoid-line", "ja": "菱形靱帯線", "yomi": "りょうけいじんたいせん", "en": "trapezoid line", "la": "linea trapezoidea",
+          "of": "clavicle", "level": 3,
+          "kanji": "菱形靱帯が付く線",
+          "etym": "trapezoid「台形の（菱形の）」＋ line「線」",
+          "note": "円錐靱帯結節から外側の前へ斜めに走る、鎖骨の下面の線。烏口鎖骨靱帯のうち菱形靱帯が付く。"
+        },
+        {
+          "id": "neck-of-scapula", "ja": "肩甲頚", "yomi": "けんこうけい", "en": "neck of scapula", "la": "collum scapulae",
+          "of": "scapula", "level": 3,
+          "kanji": "肩甲骨の頚（くびれ）",
+          "etym": "neck「頚」＋ scapula「肩甲骨」（ラテン語＝肩の骨）",
+          "note": "関節窩のすぐ内側の、少しくびれた部分。関節窩を肩甲骨の本体につなぐ。"
+        },
+        {
+          "id": "medial-supracondylar-ridge", "ja": "内側顆上稜", "yomi": "ないそくかじょうりょう", "en": "medial supracondylar ridge", "la": "crista supracondylaris medialis",
+          "of": "humerus", "level": 3,
+          "kanji": "内側の顆の上の稜（へり）",
+          "etym": "medial「内側の」＋ supra-「上」＋ condylar「顆の」＋ ridge「稜」",
+          "note": "上腕骨の下部の内側縁で、内側上顆へ続く稜。内側上腕筋間中隔が付く。"
+        },
+        {
+          "id": "lateral-supracondylar-ridge", "ja": "外側顆上稜", "yomi": "がいそくかじょうりょう", "en": "lateral supracondylar ridge", "la": "crista supracondylaris lateralis",
+          "of": "humerus", "level": 3,
+          "kanji": "外側の顆の上の稜（へり）",
+          "etym": "lateral「外側の」＋ supra-「上」＋ condylar「顆の」＋ ridge「稜」",
+          "note": "上腕骨の下部の外側縁で、外側上顆へ続く稜。腕橈骨筋と長橈側手根伸筋が起こり、外側上腕筋間中隔が付く。"
+        },
+        {
+          "id": "radial-fossa", "ja": "橈骨窩", "yomi": "とうこつか", "en": "radial fossa", "la": "fossa radialis",
+          "of": "humerus", "level": 3,
+          "kanji": "橈骨（橈骨頭）が入るくぼみ",
+          "etym": "radial「橈骨の」＋ fossa「くぼみ」",
+          "note": "上腕骨の下端の前面、上腕骨小頭のすぐ上のくぼみ。肘を深く曲げると橈骨頭が入る（内側の鈎突窩には尺骨の鈎状突起が入る）。"
+        },
+        {
+          "id": "supinator-crest", "ja": "回外筋稜", "yomi": "かいがいきんりょう", "en": "supinator crest", "la": "crista musculi supinatoris",
+          "of": "ulna", "level": 3,
+          "kanji": "回外筋が起こる稜",
+          "etym": "supinator「回外筋」＋ crest「稜」",
+          "note": "尺骨の上部の外側を、橈骨切痕の下から下へ走る稜。回外筋が起こる。"
+        },
+        {
+          "id": "ulnar-notch-of-radius", "ja": "尺骨切痕", "yomi": "しゃっこつせっこん", "en": "ulnar notch of radius", "la": "incisura ulnaris radii",
+          "of": "radius", "level": 3,
+          "kanji": "尺骨（尺骨頭）がはまる切れこみ",
+          "etym": "ulnar「尺骨の」＋ notch「切れこみ」",
+          "note": "橈骨の下端の内側のくぼみ。尺骨頭がはまって下橈尺関節をつくり、回内・回外で橈骨はここで尺骨頭のまわりを回る（尺骨の上端の橈骨切痕とは逆の組み合わせ）。"
+        },
+        {
+          "id": "dorsal-tubercle-of-radius", "ja": "背側結節（橈骨）", "yomi": "はいそくけっせつ", "en": "dorsal tubercle of radius", "enAlt": ["lister's tubercle"], "la": "tuberculum dorsale radii",
+          "of": "radius", "level": 2,
+          "kanji": "橈骨の背中側（手の甲の側）の結節",
+          "etym": "dorsal「背側の」＋ tubercle「結節」。リスター結節ともいう",
+          "note": "橈骨の下端の後面の高まり（リスター結節）。長母指伸筋の腱がこの内側を回って向きを変え、母指へ向かう（滑車のはたらき）。手首の後ろで触れる。"
+        },
+        {
+          "id": "tubercle-of-scaphoid", "ja": "舟状骨結節", "yomi": "しゅうじょうこつけっせつ", "en": "tubercle of scaphoid", "la": "tuberculum ossis scaphoidei",
+          "of": "scaphoid", "level": 2,
+          "kanji": "舟状骨の結節",
+          "etym": "tubercle「結節」＋ scaphoid「舟の形の（骨）」",
+          "note": "舟状骨の前（掌側）下の高まり。手首の親指側の付け根で触れる。屈筋支帯の外側の端が付き、短母指外転筋が起こる。"
+        },
+        {
+          "id": "tubercle-of-trapezium", "ja": "大菱形骨結節", "yomi": "だいりょうけいこつけっせつ", "en": "tubercle of trapezium", "la": "tuberculum ossis trapezii",
+          "of": "trapezium", "level": 3,
+          "kanji": "大菱形骨の結節",
+          "etym": "tubercle「結節」＋ trapezium「台形（の骨）」",
+          "note": "大菱形骨の前面の高まり。屈筋支帯の外側の端が付き、その内側の溝を橈側手根屈筋の腱が通る。母指球の筋が起こる。"
+        },
+        {
+          "id": "hook-of-hamate", "ja": "有鈎骨鈎", "yomi": "ゆうこうこつこう", "en": "hook of hamate", "enAlt": ["hamulus of hamate"], "la": "hamulus ossis hamati",
+          "of": "hamate", "level": 2,
+          "kanji": "有鈎骨の鈎（かぎ）",
+          "etym": "hook「鈎」＋ hamate ← ラテン語 hamatus「鈎のある」（hamus＝釣り針）",
+          "note": "有鈎骨の前へ曲がって突き出す鈎。屈筋支帯の内側の端が付いて手根管の内側の壁をつくり、すぐ外側を尺骨神経・尺骨動脈が通る（尺骨神経管）。ゴルフや野球のグリップで骨折することがある。"
+        },
+        {
+          "id": "head-of-metacarpal", "ja": "中手骨頭", "yomi": "ちゅうしゅこつとう", "en": "head of metacarpal bone", "enAlt": ["metacarpal heads"], "la": "caput ossis metacarpi",
+          "of": "metacarpals", "level": 2,
+          "kanji": "中手骨の頭（先の端）",
+          "etym": "head「頭」＋ metacarpal「中手骨の」（meta-「後の」＋ carpus「手根」）",
+          "note": "中手骨の先の丸い部分。基節骨と中手指節関節（MP関節）をつくる。こぶしを握ると、手の甲の側に山（ナックル）として出る。第5中手骨頚の骨折はボクサー骨折と呼ばれる。"
+        }
+      ]
     }
   ]
 }

@@ -1,4 +1,8 @@
+import fs from "node:fs";
+import path from "node:path";
 import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 import ownAttachmentsJson from "../content/attachments.json";
 import jointsJson from "../content/joints.json";
 import pinsJson from "../content/pins.json";
@@ -20,28 +24,43 @@ const muscles = (muscularJson as unknown as { units: { terms: Muscle[] }[] }).un
 const elementsOf = (id: string) => (indexJson as unknown as { terms: Record<string, { elements: string[] }> }).terms[id]?.elements ?? [];
 const boneOf = new Map((skeletalJson as unknown as { units: { terms: { id: string; of?: string }[] }[] }).units.flatMap((unit) => unit.terms).flatMap((term) => (term.of ? [[term.id, term.of] as const] : [])));
 
+/** 骨格の GLB の部品ごとの外接箱（アプリと同じく、点にいちばん近い部品でその点を動かす関節を決める） */
+const boxes = new Map<string, THREE.Box3>();
+beforeAll(async () => {
+  const file = path.join(import.meta.dirname, "../public", (indexJson as unknown as { systems: Record<string, { url: string }> }).systems.skeletal.url);
+  // jsdom の中なので、Node の Buffer の中身をこの環境の ArrayBuffer に写す（GLTFLoader が instanceof で見るため）
+  const bytes = fs.readFileSync(file);
+  const buffer = new ArrayBuffer(bytes.byteLength);
+  new Uint8Array(buffer).set(bytes);
+  const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(buffer, "");
+  gltf.scene.updateMatrixWorld(true);
+  gltf.scene.traverse((object) => {
+    if (!(object instanceof THREE.Mesh)) return;
+    object.geometry.computeBoundingBox();
+    boxes.set(object.name, object.geometry.boundingBox!.clone().applyMatrix4(object.matrixWorld));
+  });
+});
+
 /**
- * 骨の上の点を動かす関節（根元から先の順）。アプリと同じく部品で見る（距腿関節は「足根骨」の部品として踵骨も動かす）。
- * 足の指の骨のように部品を絞る関節（only）が複数あるときは、回す中心がいちばん近いもの（母趾か第2〜5趾か）だけを使う
- * （アプリはいちばん近い部品で決める）。
+ * 骨の上の点を動かす関節（根元から先の順）。アプリ（src/viewer.ts の anchor）と同じく、骨の部品のうち点にいちばん近いものを
+ * 動かす関節（足の指の骨は母趾か第2〜5趾か、手の指の骨は母指かほかの指か）。距腿関節は「足根骨」の部品として踵骨も動かす。
  */
 function jointsFor(bone: string, point: THREE.Vector3): string[] {
-  const own = new Set(elementsOf(bone));
-  const all = Object.keys(joints).filter((id) =>
-    joints[id].moves.some((term) => elementsOf(term).some((element) => own.has(element) && (!joints[id].only || joints[id].only!.includes(element)))));
-  const partial = all.filter((id) => joints[id].only);
-  const nearest = partial.sort((a, b) => point.distanceTo(new THREE.Vector3(...joints[a].pivot)) - point.distanceTo(new THREE.Vector3(...joints[b].pivot)))[0];
-  return all.filter((id) => !joints[id].only || id === nearest);
+  const nearest = elementsOf(bone).filter((element) => boxes.has(element))
+    .sort((a, b) => boxes.get(a)!.distanceToPoint(point) - boxes.get(b)!.distanceToPoint(point))[0];
+  return Object.keys(joints).filter((id) =>
+    joints[id].moves.some((term) => elementsOf(term).includes(nearest)) && (!joints[id].only || joints[id].only!.includes(nearest)));
 }
 
-/** アプリ（src/viewer.ts の poseMatrix）と同じく、先の関節から順に回してから根元の関節で回す */
+/** アプリ（src/viewer.ts の poseMatrix）と同じく、先の関節から順に回してから根元の関節で回す（slide は mm だけ動かす） */
 function pose(point: THREE.Vector3, ids: string[], angles: Record<string, number>): THREE.Vector3 {
   const p = point.clone();
   for (const id of [...ids].reverse()) {
     const angle = angles[id] ?? 0;
     if (!angle) continue;
-    const { pivot, axis } = joints[id];
-    p.sub(new THREE.Vector3(...pivot)).applyAxisAngle(new THREE.Vector3(...axis).normalize(), THREE.MathUtils.degToRad(angle)).add(new THREE.Vector3(...pivot));
+    const { pivot, axis, slide } = joints[id];
+    if (slide) p.add(new THREE.Vector3(...axis).normalize().multiplyScalar(angle / 1000));
+    else p.sub(new THREE.Vector3(...pivot)).applyAxisAngle(new THREE.Vector3(...axis).normalize(), THREE.MathUtils.degToRad(angle)).add(new THREE.Vector3(...pivot));
   }
   return p;
 }

@@ -209,6 +209,157 @@
           "region": { "bounds": ["cuneiforms", "cuboid"], "contents": ["fibularis-longus", "tibialis-posterior", "adductor-hallucis"], "boundsLabel": "つくる骨", "contentsLabel": "支えるもの", "outline": [[-0.068, -0.045, 0.12], [-0.08, -0.02, 0.118], [-0.092, -0.012, 0.115], [-0.104, -0.022, 0.11], [-0.114, -0.045, 0.105]], "open": true, "section": { "axis": "z", "at": 0.12, "keep": -1 }, "view": { "target": [-0.09, -0.03, 0.115], "from": [0, 0.1, 1], "size": 0.06 }, "prompt": "オレンジ色の骨と線がつくるアーチは？" }
         }
       ]
+    },
+    {
+      "id": "reg-shoulder-axilla",
+      "title": "腋窩と肩・首の通り道",
+      "intro": [
+        "上肢へ行く血管と神経は、首の斜角筋の間（斜角筋隙）を抜け、鎖骨の下を通って腋窩に入り、腕へ下る。腋窩は前・後ろ・内側・外側の4つの壁に囲まれたピラミッドの形の空間。",
+        "腋窩の後ろの壁では、小円筋・大円筋・上腕三頭筋の長頭・上腕骨の間に隙間ができ、肩の後ろへ神経と血管が抜ける（外側腋窩隙・内側腋窩隙・上腕三頭筋裂孔）。後ろから見た形で覚える。"
+      ],
+      "terms": [
+        {
+          "id": "axilla", "ja": "腋窩", "yomi": "えきか", "en": "axilla", "enAlt": ["axillary fossa", "armpit"], "la": "axilla",
+          "level": 1,
+          "kanji": "わきの下のくぼみ（腋＝わき、窩＝くぼみ）",
+          "etym": "axilla ← ラテン語「わきの下」",
+          "note": "腕の付け根の内側の、ピラミッドの形の空間。前の壁は大胸筋・小胸筋、後ろの壁は肩甲下筋・大円筋・広背筋、内側の壁は前鋸筋（と肋骨）、外側の壁は上腕骨の結節間溝。腋窩動脈・腋窩静脈・腕神経叢と、たくさんの腋窩リンパ節が入る（乳がんの転移先として大事）。",
+          "region": { "bounds": ["pectoralis-major", "pectoralis-minor", "subscapularis", "teres-major", "latissimus-dorsi", "serratus-anterior"], "contents": ["axillary-artery", "axillary-vein", "brachial-plexus", "axillary-nodes"], "boundsLabel": "壁をつくる筋", "view": { "target": [-0.13, 1.26, 0.07], "from": [-0.45, -0.75, 0.55], "size": 0.12 }, "prompt": "オレンジの筋に囲まれ、血管と神経が通る所は？" }
+        },
+        {
+          "id": "quadrangular-space", "ja": "外側腋窩隙", "yomi": "がいそくえきかげき", "en": "quadrangular space", "enAlt": ["quadrilateral space"], "la": "foramen axillare laterale",
+          "level": 2,
+          "kanji": "腋窩の後ろの外側の隙間",
+          "etym": "quadrangular「四角形の」＋ space「すき間」。四角間隙ともいう",
+          "note": "後ろから見て、上を小円筋、下を大円筋、内側を上腕三頭筋の長頭、外側を上腕骨の外科頚で囲まれた四角形の隙間。腋窩神経と後上腕回旋動脈が抜けて三角筋へ行く。外科頚の骨折や肩の脱臼で腋窩神経が傷むのはこのため。",
+          "region": { "bounds": ["teres-minor", "teres-major", "long-head-of-triceps-brachii", "surgical-neck"], "contents": ["axillary-nerve", "posterior-circumflex-humeral-artery"], "outline": [[-0.1626, 1.2799, 0.035], [-0.1701, 1.2841, 0.035], [-0.1708, 1.2683, 0.035], [-0.1694, 1.26, 0.035], [-0.1639, 1.2683, 0.035]], "view": { "target": [-0.167, 1.272, 0.035], "from": [-0.25, 0.05, -1], "size": 0.07 } }
+        },
+        {
+          "id": "triangular-space", "ja": "内側腋窩隙", "yomi": "ないそくえきかげき", "en": "triangular space", "enAlt": ["upper triangular space", "medial triangular space"], "la": "foramen axillare mediale",
+          "level": 2,
+          "kanji": "腋窩の後ろの内側の隙間",
+          "etym": "triangular「三角形の」＋ space「すき間」。三角間隙ともいう",
+          "note": "後ろから見て、上を小円筋、下を大円筋、外側を上腕三頭筋の長頭で囲まれた三角形の隙間。肩甲回旋動脈が抜けて肩甲骨の後ろへ回る。",
+          "region": { "bounds": ["teres-minor", "teres-major", "long-head-of-triceps-brachii"], "contents": ["circumflex-scapular-artery"], "outline": [[-0.1428, 1.2612, 0.035], [-0.1517, 1.2708, 0.035], [-0.1524, 1.2591, 0.035]], "view": { "target": [-0.149, 1.264, 0.035], "from": [-0.15, 0.05, -1], "size": 0.07 } }
+        },
+        {
+          "id": "triangular-interval", "ja": "上腕三頭筋裂孔", "yomi": "じょうわんさんとうきんれっこう", "en": "triangular interval", "enAlt": ["lower triangular space", "triceps hiatus"],
+          "level": 3, "check": true,
+          "kanji": "上腕三頭筋の頭の間の裂け目",
+          "etym": "triangular「三角形の」＋ interval「間」",
+          "note": "後ろから見て、上を大円筋、内側を上腕三頭筋の長頭、外側を上腕三頭筋の外側頭（上腕骨）で囲まれた三角形の隙間。橈骨神経と上腕深動脈が腋窩から上腕の後ろへ抜け、上腕骨の橈骨神経溝へ向かう。",
+          "region": { "bounds": ["teres-major", "long-head-of-triceps-brachii", "lateral-head-of-triceps-brachii"], "contents": ["radial-nerve", "deep-brachial-artery"], "outline": [[-0.1639, 1.2536, 0.035], [-0.1714, 1.255, 0.035], [-0.1742, 1.2358, 0.035]], "view": { "target": [-0.17, 1.248, 0.035], "from": [-0.25, 0.0, -1], "size": 0.08 } }
+        },
+        {
+          "id": "clavipectoral-triangle", "ja": "鎖骨胸筋三角", "yomi": "さこつきょうきんさんかく", "en": "clavipectoral triangle", "enAlt": ["deltopectoral triangle", "infraclavicular fossa"], "la": "trigonum clavipectorale",
+          "level": 2, "check": true,
+          "kanji": "鎖骨と胸の筋（大胸筋）と三角筋で囲まれた三角",
+          "etym": "clavi-「鎖骨の」＋ pectoral「胸の」＋ triangle「三角形」",
+          "note": "鎖骨の下で、外側を三角筋、内側を大胸筋、上を鎖骨で囲まれた小さな三角のくぼみ（モーレンハイム窩）。三角筋と大胸筋の間の溝（三角筋胸筋溝）を上ってきた橈側皮静脈が、ここで深くへ入って腋窩静脈に注ぐ。胸肩峰動脈もここに出てくる。",
+          "region": { "bounds": ["clavicle", "clavicular-part-of-deltoid", "clavicular-part-of-pectoralis-major"], "contents": ["cephalic-vein", "thoracoacromial-artery"], "outline": [[-0.1224, 1.3404, 0.0923], [-0.0931, 1.3439, 0.0979], [-0.1404, 1.3096, 0.0664]], "view": { "target": [-0.119, 1.331, 0.086], "from": [-0.25, 0.15, 1], "size": 0.07 } }
+        },
+        {
+          "id": "scalene-hiatus", "ja": "斜角筋隙", "yomi": "しゃかくきんげき", "en": "scalene hiatus", "enAlt": ["interscalene triangle", "scalene triangle"], "la": "hiatus scalenorum",
+          "level": 2, "check": true,
+          "kanji": "斜角筋の間の隙間",
+          "etym": "scalene ← ギリシャ語 skalenos「不等辺の（三角形）」＋ hiatus「すき間」",
+          "note": "首の横で、前斜角筋と中斜角筋と第1肋骨で囲まれた三角形の隙間。腕神経叢と鎖骨下動脈が通る（鎖骨下静脈は前斜角筋の前を通るので通らない）。ここで神経と動脈が締めつけられると腕がしびれる（斜角筋症候群・胸郭出口症候群）。",
+          "region": { "bounds": ["anterior-scalene", "middle-scalene"], "contents": ["brachial-plexus", "subclavian-artery"], "outline": [[-0.036, 1.405, 0.083], [-0.072, 1.346, 0.104], [-0.054, 1.346, 0.1062]], "view": { "target": [-0.054, 1.366, 0.098], "from": [-0.75, 0.1, 0.7], "size": 0.08 } }
+        }
+      ]
+    },
+    {
+      "id": "reg-elbow-wrist",
+      "title": "肘と手首の通り道",
+      "intro": [
+        "肘の前のくぼみ（肘窩）では、上腕動脈と正中神経が上腕二頭筋の腱の内側を通って前腕へ入る。肘の内側の後ろ（肘部管）は尺骨神経の通り道で、ぶつけるとしびれる所。",
+        "手首の前では、手根骨と屈筋支帯がつくるトンネル（手根管）を正中神経と9本の屈筋の腱が通り、その小指側の浅い所（尺骨神経管）を尺骨神経と尺骨動脈が通る。手首の親指側の後ろのくぼみ（解剖学的嗅ぎタバコ入れ）では橈骨動脈の脈を触れる。"
+      ],
+      "terms": [
+        {
+          "id": "cubital-fossa", "ja": "肘窩", "yomi": "ちゅうか", "en": "cubital fossa", "enAlt": ["antecubital fossa"], "la": "fossa cubitalis",
+          "level": 1,
+          "kanji": "肘（の前）のくぼみ",
+          "etym": "cubital ← ラテン語 cubitus「肘」＋ fossa「くぼみ」",
+          "note": "肘の前の三角形のくぼみ。上は内側上顆と外側上顆を結ぶ線、外側は腕橈骨筋、内側は円回内筋。外側から上腕二頭筋の腱・上腕動脈・正中神経が並ぶ（外側の深くを橈骨神経）。上を肘正中皮静脈がまたぎ、採血や血圧の聴診（上腕動脈）に使う。",
+          "region": { "bounds": ["brachioradialis", "pronator-teres", "lateral-epicondyle-of-humerus", "medial-epicondyle-of-humerus"], "contents": ["biceps-brachii", "brachial-artery", "median-nerve", "radial-nerve"], "outline": [[-0.2351, 1.0486, 0.0941], [-0.1875, 1.0486, 0.0745], [-0.2297, 1.0086, 0.0995]], "view": { "target": [-0.217, 1.035, 0.089], "from": [-0.1, 0.05, 1], "size": 0.08 } }
+        },
+        {
+          "id": "cubital-tunnel", "ja": "肘部管", "yomi": "ちゅうぶかん", "en": "cubital tunnel",
+          "level": 2, "check": true,
+          "kanji": "肘の部分の管",
+          "etym": "cubital「肘の」＋ tunnel「トンネル」",
+          "note": "肘の内側の後ろで、上腕骨の内側上顆の後ろの尺骨神経溝と、尺側手根屈筋の2つの頭の間に張る膜（オズボーン靱帯）でできるトンネル。尺骨神経が通る。肘をぶつけて小指がしびれるのはここ。締めつけられると小指側がしびれ、手の細かい動きが悪くなる（肘部管症候群）。",
+          "region": { "bounds": ["medial-epicondyle-of-humerus", "groove-for-ulnar-nerve", "olecranon", "flexor-carpi-ulnaris"], "contents": ["ulnar-nerve"], "view": { "target": [-0.19, 1.04, 0.055], "from": [0.65, 0.1, -0.75], "size": 0.07 } }
+        },
+        {
+          "id": "carpal-tunnel", "ja": "手根管", "yomi": "しゅこんかん", "en": "carpal tunnel", "enAlt": ["carpal canal"], "la": "canalis carpi",
+          "level": 1,
+          "kanji": "手根（手首の骨）の管",
+          "etym": "carpal「手根の」（ギリシャ語 karpos＝手首）＋ tunnel「トンネル」",
+          "note": "手首の前で、手根骨がつくる溝の上に屈筋支帯が屋根のように張ってできるトンネル。正中神経と、浅指屈筋・深指屈筋の8本と長母指屈筋の腱が通る。ここで正中神経が圧迫されると、母指から環指の母指側のしびれと母指球のやせが起こる（手根管症候群）。",
+          "region": { "bounds": ["flexor-retinaculum-of-wrist", "carpal-bones"], "contents": ["median-nerve", "flexor-digitorum-superficialis", "flexor-digitorum-profundus", "flexor-pollicis-longus"], "boundsLabel": "壁と屋根", "section": { "axis": "y", "at": 0.79, "keep": 1 }, "view": { "target": [-0.258, 0.79, 0.125], "from": [0, -1, 0.02], "size": 0.045 }, "prompt": "手根骨と屈筋支帯に囲まれ、正中神経と屈筋の腱が通る所は？" }
+        },
+        {
+          "id": "ulnar-canal", "ja": "尺骨神経管", "yomi": "しゃっこつしんけいかん", "en": "ulnar canal", "enAlt": ["guyon's canal", "ulnar tunnel"], "la": "canalis ulnaris",
+          "level": 2,
+          "kanji": "尺骨神経が通る管",
+          "etym": "ulnar「尺骨の」＋ canal「管」。ギヨン管ともいう",
+          "note": "手首の小指側で、豆状骨と有鈎骨鈎の間、屈筋支帯の前（浅い所）にある短いトンネル。尺骨神経と尺骨動脈が通り、中で尺骨神経が浅枝と深枝に分かれる。自転車のハンドルで圧迫されると小指側がしびれ、手の筋がやせる。",
+          "region": { "bounds": ["pisiform", "hook-of-hamate", "flexor-retinaculum-of-wrist"], "contents": ["ulnar-nerve", "ulnar-artery"], "outline": [[-0.2441, 0.7958, 0.1381], [-0.236, 0.798, 0.1366], [-0.2349, 0.7916, 0.1357], [-0.2435, 0.7895, 0.1379]], "view": { "target": [-0.24, 0.794, 0.137], "from": [0.2, 0.05, 1], "size": 0.05 } }
+        },
+        {
+          "id": "anatomical-snuffbox", "ja": "解剖学的嗅ぎタバコ入れ", "yomi": "かいぼうがくてきかぎたばこいれ", "en": "anatomical snuffbox", "la": "fovea radialis",
+          "level": 2, "check": true,
+          "kanji": "嗅ぎタバコをのせたくぼみ",
+          "etym": "anatomical「解剖学の」＋ snuffbox「嗅ぎタバコ入れ」。親指を反らすと出るくぼみに嗅ぎタバコをのせて吸ったことから",
+          "note": "親指を反らすと手首の親指側の後ろに出る三角形のくぼみ。手のひら側の縁は長母指外転筋と短母指伸筋の腱、手の甲側の縁は長母指伸筋の腱。底に舟状骨があり、橈骨動脈が通る（脈を触れる）。転んで手をついたあとここが痛むときは舟状骨の骨折を疑う。",
+          "region": { "bounds": ["abductor-pollicis-longus", "extensor-pollicis-brevis", "extensor-pollicis-longus", "scaphoid"], "contents": ["radial-artery"], "outline": [[-0.2688, 0.8178, 0.1064], [-0.261, 0.7905, 0.1107], [-0.2885, 0.7948, 0.1226]], "view": { "target": [-0.273, 0.801, 0.113], "from": [-1, 0.1, -0.25], "size": 0.06 } }
+        }
+      ]
+    },
+    {
+      "id": "reg-upper-compartments",
+      "title": "上腕と前腕の区画",
+      "intro": [
+        "上腕は内側・外側の上腕筋間中隔で前と後ろの2つに、前腕は骨間膜と橈骨・尺骨で前と後ろの2つに仕切られる。前（屈筋区画）は肘・手首・指を曲げ、後ろ（伸筋区画）は伸ばす。",
+        "支配神経も区画で決まる。上腕の前は筋皮神経、上腕の後ろは橈骨神経、前腕の前は正中神経（尺側手根屈筋と深指屈筋の尺側半分は尺骨神経）、前腕の後ろは橈骨神経（深枝・後骨間神経）。",
+        "区画は水平断（CT と同じく下から見る。前が上、本人の右が左）で示す。"
+      ],
+      "terms": [
+        {
+          "id": "anterior-compartment-of-arm", "ja": "前区画（上腕）", "yomi": "ぜんくかく", "en": "anterior compartment of arm", "enAlt": ["flexor compartment of arm"], "la": "compartimentum brachii anterius",
+          "level": 2,
+          "kanji": "上腕の前の仕切られた部屋",
+          "etym": "anterior「前の」＋ compartment「区画」＋ arm「上腕」",
+          "note": "上腕の前の区画（屈筋区画）。上腕二頭筋・上腕筋・烏口腕筋が入り、筋皮神経が支配する。肘を曲げる。",
+          "region": { "bounds": ["medial-intermuscular-septum-of-arm", "lateral-intermuscular-septum-of-arm"], "contents": ["biceps-brachii", "brachialis", "coracobrachialis", "musculocutaneous-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 1.19, "keep": 1 }, "view": { "target": [-0.19, 1.19, 0.065], "from": [0, -1, 0.02], "size": 0.06 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        },
+        {
+          "id": "posterior-compartment-of-arm", "ja": "後区画（上腕）", "yomi": "こうくかく", "en": "posterior compartment of arm", "enAlt": ["extensor compartment of arm"], "la": "compartimentum brachii posterius",
+          "level": 2,
+          "kanji": "上腕の後ろの仕切られた部屋",
+          "etym": "posterior「後ろの」＋ compartment「区画」＋ arm「上腕」",
+          "note": "上腕の後ろの区画（伸筋区画）。上腕三頭筋が入り、橈骨神経が支配する。肘を伸ばす。橈骨神経と上腕深動脈が上腕骨の後ろの橈骨神経溝を回る。",
+          "region": { "bounds": ["medial-intermuscular-septum-of-arm", "lateral-intermuscular-septum-of-arm"], "contents": ["triceps-brachii", "radial-nerve", "deep-brachial-artery"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 1.19, "keep": 1 }, "view": { "target": [-0.19, 1.19, 0.065], "from": [0, -1, 0.02], "size": 0.06 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        },
+        {
+          "id": "anterior-compartment-of-forearm", "ja": "前区画（前腕）", "yomi": "ぜんくかく", "en": "anterior compartment of forearm", "enAlt": ["flexor compartment of forearm"], "la": "compartimentum antebrachii anterius",
+          "level": 2,
+          "kanji": "前腕の前の仕切られた部屋",
+          "etym": "anterior「前の」＋ compartment「区画」＋ forearm「前腕」",
+          "note": "前腕の前の区画（屈筋区画）。手首と指を曲げる筋（橈側手根屈筋・長掌筋・尺側手根屈筋・浅指屈筋・深指屈筋・長母指屈筋）と回内筋が入る。おもに正中神経、尺側手根屈筋と深指屈筋の尺側半分は尺骨神経が支配する。",
+          "region": { "bounds": ["interosseous-membrane-of-forearm"], "contents": ["flexor-carpi-radialis", "palmaris-longus", "flexor-carpi-ulnaris", "flexor-digitorum-superficialis", "flexor-digitorum-profundus", "flexor-pollicis-longus", "median-nerve", "ulnar-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.93, "keep": 1 }, "view": { "target": [-0.24, 0.93, 0.095], "from": [0, -1, 0.02], "size": 0.055 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        },
+        {
+          "id": "posterior-compartment-of-forearm", "ja": "後区画（前腕）", "yomi": "こうくかく", "en": "posterior compartment of forearm", "enAlt": ["extensor compartment of forearm"], "la": "compartimentum antebrachii posterius",
+          "level": 2,
+          "kanji": "前腕の後ろの仕切られた部屋",
+          "etym": "posterior「後ろの」＋ compartment「区画」＋ forearm「前腕」",
+          "note": "前腕の後ろの区画（伸筋区画）。手首と指を伸ばす筋（指伸筋・小指伸筋・尺側手根伸筋・長母指外転筋・短母指伸筋・長母指伸筋など）と、外側の腕橈骨筋・長橈側手根伸筋・短橈側手根伸筋が入る。すべて橈骨神経（深枝・後骨間神経）が支配する。",
+          "region": { "bounds": ["interosseous-membrane-of-forearm"], "contents": ["brachioradialis", "extensor-carpi-radialis-longus", "extensor-carpi-radialis-brevis", "extensor-digitorum", "extensor-digiti-minimi", "extensor-carpi-ulnaris", "abductor-pollicis-longus", "extensor-pollicis-brevis", "extensor-pollicis-longus", "posterior-interosseous-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.93, "keep": 1 }, "view": { "target": [-0.24, 0.93, 0.095], "from": [0, -1, 0.02], "size": 0.055 }, "prompt": "色の付いた筋と神経が入る区画は？" }
+        }
+      ]
     }
   ]
 }

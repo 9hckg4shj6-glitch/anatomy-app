@@ -1012,13 +1012,15 @@ export class AnatomyViewer {
   /**
    * 筋の動きを映す。いちばん大きく動く関節の軸の向きから見る（回す面が正面に見える）。
    * 体の右側・前から見るように向きをそろえ、軸がほぼ縦（股関節の回旋）なら前の右上から見る。
+   * motion.view が "back" なら右の後ろ上から見る（肩甲骨を動かす背中の筋）。
    */
   private viewAction(motion: Motion): void {
     const change = (id: string) => Math.abs((motion.to[id] ?? 0) - (motion.from?.[id] ?? 0));
     const main = Object.keys({ ...motion.from, ...motion.to }).sort((a, b) => change(b) - change(a))[0];
     const axis = new THREE.Vector3(...joints[main].axis).normalize();
     let direction: THREE.Vector3;
-    if (Math.abs(axis.y) > 0.7) direction = new THREE.Vector3(-0.35, 0.45, 1);
+    if (motion.view === "back") direction = new THREE.Vector3(-0.35, 0.35, -1);
+    else if (Math.abs(axis.y) > 0.7) direction = new THREE.Vector3(-0.35, 0.45, 1);
     else {
       direction = axis.clone();
       if (Math.abs(direction.x) >= Math.abs(direction.z) ? direction.x > 0 : direction.z < 0) direction.negate();

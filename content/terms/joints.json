@@ -594,6 +594,103 @@
           "note": "足の指の骨（趾節骨）の間の蝶番関節。母趾は1つ、ほかの指は近位・遠位の2つずつ。"
         }
       ]
+    },
+    {
+      "id": "joint-wrist-hand",
+      "title": "肩・手首・指の関節と靱帯（追加）",
+      "terms": [
+        {
+          "id": "acromioclavicular-ligament", "ja": "肩鎖靱帯", "yomi": "けんさじんたい", "en": "acromioclavicular ligament", "la": "ligamentum acromioclaviculare",
+          "parts": ["za:acromioclavicular ligament"], "level": 2,
+          "kanji": "肩峰と鎖骨をつなぐ靱帯",
+          "etym": "acromio-「肩峰の」＋ clavicular「鎖骨の」",
+          "note": "肩鎖関節の関節包の上を補強する靱帯。肩から落ちて強く打つと切れ、鎖骨の外側端が上へ浮き上がる（肩鎖関節脱臼）。上下のずれを大きく止めるのは烏口鎖骨靱帯。"
+        },
+        {
+          "id": "transverse-humeral-ligament", "ja": "上腕横靱帯", "yomi": "じょうわんおうじんたい", "en": "transverse humeral ligament", "la": "ligamentum transversum humeri",
+          "parts": ["za:transverse humeral ligament"], "level": 3, "check": true,
+          "kanji": "上腕骨の上で横に張る靱帯",
+          "etym": "transverse「横の」＋ humeral「上腕骨の」",
+          "note": "上腕骨の大結節と小結節の間に張り、結節間溝を屋根のようにおおう。中を通る上腕二頭筋長頭の腱が溝から外れないよう押さえる。"
+        },
+        {
+          "id": "radiate-carpal-ligament", "ja": "放線状手根靱帯", "yomi": "ほうせんじょうしゅこんじんたい", "en": "radiate carpal ligament", "la": "ligamentum carpi radiatum",
+          "parts": ["za:radiate carpal ligament"], "level": 3,
+          "kanji": "手根で放射状（放線状）に広がる靱帯",
+          "etym": "radiate「放射状の」＋ carpal「手根の」",
+          "note": "手根の掌側で、有頭骨の頭から周りの手根骨へ放射状に広がる靱帯。手根骨どうしをつなぎとめる。"
+        },
+        {
+          "id": "dorsal-radiocarpal-ligament", "ja": "背側橈骨手根靱帯", "yomi": "はいそくとうこつしゅこんじんたい", "en": "dorsal radiocarpal ligament", "la": "ligamentum radiocarpale dorsale",
+          "parts": ["za:dorsal radiocarpal ligament"], "level": 3,
+          "kanji": "手の甲の側で橈骨と手根骨をつなぐ靱帯",
+          "etym": "dorsal「背側の」＋ radio-「橈骨の」＋ carpal「手根の」",
+          "note": "橈骨の下端の後ろから、手根骨（おもに月状骨と三角骨）へ斜めに張る靱帯。手首の後ろを補強し、手が橈骨から前へずれないよう支える。"
+        },
+        {
+          "id": "ulnar-collateral-ligament-of-wrist-joint", "ja": "尺側手根側副靱帯", "yomi": "しゃくそくしゅこんそくふくじんたい", "en": "ulnar collateral ligament of wrist joint", "la": "ligamentum collaterale carpi ulnare",
+          "parts": ["za:ulnar collateral ligament of wrist joint"], "level": 3,
+          "kanji": "手根の尺側（小指側）のわきの靱帯",
+          "etym": "ulnar「尺骨の」＋ collateral「わきの」＋ wrist joint「手関節」",
+          "note": "尺骨の茎状突起から三角骨・豆状骨へ張る、手首の小指側の靱帯。手が橈側へ曲がりすぎないようにする。"
+        },
+        {
+          "id": "radial-collateral-ligament-of-wrist-joint", "ja": "橈側手根側副靱帯", "yomi": "とうそくしゅこんそくふくじんたい", "en": "radial collateral ligament of wrist joint", "la": "ligamentum collaterale carpi radiale",
+          "parts": ["za:radial collateral ligament of wrist joint"], "level": 3,
+          "kanji": "手根の橈側（親指側）のわきの靱帯",
+          "etym": "radial「橈骨の」＋ collateral「わきの」＋ wrist joint「手関節」",
+          "note": "橈骨の茎状突起から舟状骨へ張る、手首の親指側の靱帯。手が尺側へ曲がりすぎないようにする。"
+        },
+        {
+          "id": "dorsal-intercarpal-ligaments", "ja": "背側手根間靱帯", "yomi": "はいそくしゅこんかんじんたい", "en": "dorsal intercarpal ligaments", "la": "ligamenta intercarpalia dorsalia",
+          "parts": ["za:dorsal intercarpal ligaments", "za:dorsal scaphotriquetral ligament"], "level": 3,
+          "kanji": "手の甲の側で手根骨どうしをつなぐ靱帯",
+          "etym": "dorsal「背側の」＋ inter-「間の」＋ carpal「手根の」",
+          "note": "手の甲の側で、手根骨どうしをつなぐ靱帯の群れ。舟状骨と三角骨の間に横に張る帯が目立つ。"
+        },
+        {
+          "id": "palmar-radio-ulnar-ligament", "ja": "掌側橈尺靱帯", "yomi": "しょうそくとうしゃくじんたい", "en": "palmar radio-ulnar ligament", "la": "ligamentum radioulnare palmare",
+          "parts": ["za:palmar radio-ulnar ligament"], "level": 3,
+          "kanji": "手のひらの側で橈骨と尺骨をつなぐ靱帯",
+          "etym": "palmar「手のひらの」＋ radio-「橈骨の」＋ ulnar「尺骨の」",
+          "note": "下橈尺関節の前を補強する靱帯。関節円板（三角線維軟骨）の縁と一緒に、回内・回外で橈骨が尺骨頭のまわりを回るのを支える。"
+        },
+        {
+          "id": "metacarpophalangeal-joints", "ja": "中手指節関節", "yomi": "ちゅうしゅしせつかんせつ", "en": "metacarpophalangeal joints", "enAlt": ["mcp joints", "mp joints"], "la": "articulationes metacarpophalangeae",
+          "parts": ["za:articular capsules of metacarpophalangeal joints"], "level": 1, "xray": true, "veil": true,
+          "kanji": "中手骨と指節骨（基節骨）の関節",
+          "etym": "metacarpo-「中手骨の」＋ phalangeal「指節骨の」（ギリシャ語 phalanx＝兵の隊列）",
+          "note": "中手骨頭と基節骨の底の関節（MP関節）。こぶしの山（ナックル）の所。指の屈曲・伸展のほか、指を開く・閉じる動き（外転・内転）もできる。"
+        },
+        {
+          "id": "proximal-interphalangeal-joints-of-hand", "ja": "近位指節間関節（手）", "yomi": "きんいしせつかんかんせつ", "en": "proximal interphalangeal joints of hand", "enAlt": ["pip joints"], "la": "articulationes interphalangeae proximales manus",
+          "parts": ["za:articular capsules of proximal interphalangeal joints"], "level": 2, "xray": true, "veil": true,
+          "kanji": "指節骨の間の、近い方の関節",
+          "etym": "proximal「近位の」＋ inter-「間の」＋ phalangeal「指節骨の」",
+          "note": "基節骨と中節骨の間の蝶番関節（PIP関節）。曲げ・伸ばしだけを行う。浅指屈筋が曲げる。関節リウマチでよく腫れる。"
+        },
+        {
+          "id": "distal-interphalangeal-joints-of-hand", "ja": "遠位指節間関節（手）", "yomi": "えんいしせつかんかんせつ", "en": "distal interphalangeal joints of hand", "enAlt": ["dip joints"], "la": "articulationes interphalangeae distales manus",
+          "parts": ["za:articular capsules of distal interphalangeal joints"], "level": 2, "xray": true, "veil": true,
+          "kanji": "指節骨の間の、遠い方の関節",
+          "etym": "distal「遠位の」＋ inter-「間の」＋ phalangeal「指節骨の」",
+          "note": "中節骨と末節骨の間の蝶番関節（DIP関節）。深指屈筋が曲げる。変形性関節症で骨のこぶができやすい（ヘバーデン結節）。"
+        },
+        {
+          "id": "collateral-ligaments-of-metacarpophalangeal-joints", "ja": "側副靱帯（中手指節関節）", "yomi": "そくふくじんたい", "en": "collateral ligaments of metacarpophalangeal joints", "la": "ligamenta collateralia articulationum metacarpophalangearum",
+          "parts": ["za:collateral metacarpophalangeal ligaments"], "level": 3,
+          "kanji": "MP関節のわきの靱帯",
+          "etym": "collateral「わきの」＋ metacarpophalangeal「中手指節の」",
+          "note": "MP関節の両わきの靱帯。指を曲げると張り、伸ばすとゆるむので、伸ばしたときだけ指を大きく開ける。手を固定するときは MP関節を曲げた形にする（靱帯が縮んで固まらないように）。"
+        },
+        {
+          "id": "deep-transverse-metacarpal-ligament", "ja": "深横中手靱帯", "yomi": "しんおうちゅうしゅじんたい", "en": "deep transverse metacarpal ligament", "la": "ligamentum metacarpale transversum profundum",
+          "parts": ["za:deep transverse metacarpal ligament"], "level": 3,
+          "kanji": "中手骨の頭の間を深くで横につなぐ靱帯",
+          "etym": "deep「深い」＋ transverse「横の」＋ metacarpal「中手の」",
+          "note": "第2〜5中手骨の頭の間を横につなぐ靱帯。中手骨頭が広がらないようにする。骨間筋の腱はこの後ろを、虫様筋の腱はこの前を通る。"
+        }
+      ]
     }
   ]
 }

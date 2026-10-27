@@ -1182,6 +1182,106 @@
           "note": "仙骨神経叢（S1〜S2）の短い枝。骨盤の中で梨状筋の前面に入る。"
         }
       ]
+    },
+    {
+      "id": "nerv-upper-more",
+      "title": "腕神経叢の部と上肢の神経の枝（追加）",
+      "intro": [
+        "腕神経叢は、根（C5〜T1 の前枝）→ 幹（上・中・下）→ 部（前部・後部）→ 束（外側・内側・後）→ 枝 の順に組み替わる。後部はすべて後神経束になって腕の後ろ（伸筋）へ、前部は外側・内側神経束になって腕の前（屈筋）へ行く。"
+      ],
+      "terms": [
+        {
+          "id": "anterior-divisions-of-brachial-plexus", "ja": "腕神経叢の前部", "yomi": "わんしんけいそうのぜんぶ", "en": "anterior divisions of brachial plexus", "la": "divisiones anteriores plexus brachialis",
+          "parts": ["za:anterior division of * trunk of brachial plexus"], "level": 3, "check": true,
+          "kanji": "腕神経叢の神経幹が分かれた前の部分",
+          "etym": "anterior「前の」＋ division「分かれ」",
+          "note": "上・中・下の神経幹が鎖骨の後ろでそれぞれ前と後ろに分かれた、前の分かれ。上と中の前部は外側神経束に、下の前部は内側神経束になり、腕の前（屈筋）の神経（筋皮神経・正中神経・尺骨神経）になる。"
+        },
+        {
+          "id": "posterior-divisions-of-brachial-plexus", "ja": "腕神経叢の後部", "yomi": "わんしんけいそうのこうぶ", "en": "posterior divisions of brachial plexus", "la": "divisiones posteriores plexus brachialis",
+          "parts": ["za:posterior division of * trunk of brachial plexus"], "level": 3, "check": true,
+          "kanji": "腕神経叢の神経幹が分かれた後ろの部分",
+          "etym": "posterior「後ろの」＋ division「分かれ」",
+          "note": "上・中・下の神経幹の後ろの分かれ。3つとも合わさって後神経束になり、腕の後ろ（伸筋）の神経（腋窩神経・橈骨神経）になる。"
+        },
+        {
+          "id": "posterior-cord-of-brachial-plexus", "ja": "後神経束", "yomi": "こうしんけいそく", "en": "posterior cord of brachial plexus", "la": "fasciculus posterior plexus brachialis",
+          "parts": ["za:posterior cord of brachial plexus"], "level": 2,
+          "kanji": "腕神経叢の後ろの神経の束",
+          "etym": "posterior「後ろの」＋ cord「ひも・束」",
+          "note": "腕神経叢の3つの神経束（外側・内側・後）の1つで、腋窩動脈の後ろにある。3つの神経幹の後部が合わさってでき、肩甲下神経・胸背神経を出したあと、腋窩神経と橈骨神経に分かれる。"
+        },
+        {
+          "id": "lateral-antebrachial-cutaneous-nerve", "ja": "外側前腕皮神経", "yomi": "がいそくぜんわんひしんけい", "en": "lateral antebrachial cutaneous nerve", "enAlt": ["lateral cutaneous nerve of forearm"], "la": "nervus cutaneus antebrachii lateralis",
+          "parts": ["za:lateral antebrachial cutaneous nerve"], "level": 2,
+          "kanji": "前腕の外側の皮膚の神経",
+          "etym": "lateral「外側の」＋ antebrachial「前腕の」＋ cutaneous「皮膚の」（ラテン語 cutis）",
+          "note": "筋皮神経の終わりの枝。肘の外側で上腕二頭筋の腱の外側から皮下に出て、前腕の外側（親指側）の皮膚の感覚を受けもつ。肘の静脈の採血で傷むことがある。"
+        },
+        {
+          "id": "posterior-antebrachial-cutaneous-nerve", "ja": "後前腕皮神経", "yomi": "こうぜんわんひしんけい", "en": "posterior antebrachial cutaneous nerve", "enAlt": ["posterior cutaneous nerve of forearm"], "la": "nervus cutaneus antebrachii posterior",
+          "parts": ["za:posterior antebrachial cutaneous nerve"], "level": 3,
+          "kanji": "前腕の後ろの皮膚の神経",
+          "etym": "posterior「後ろの」＋ antebrachial「前腕の」＋ cutaneous「皮膚の」",
+          "note": "上腕の後ろで橈骨神経から分かれ、前腕の後ろの皮膚の感覚を受けもつ。"
+        },
+        {
+          "id": "superior-lateral-brachial-cutaneous-nerve", "ja": "上外側上腕皮神経", "yomi": "じょうがいそくじょうわんひしんけい", "en": "superior lateral brachial cutaneous nerve", "enAlt": ["superior lateral cutaneous nerve of arm"], "la": "nervus cutaneus brachii lateralis superior",
+          "parts": ["za:superior lateral brachial cutaneous nerve"], "level": 3,
+          "kanji": "上腕の外側の上部の皮膚の神経",
+          "etym": "superior「上の」＋ lateral「外側の」＋ brachial「上腕の」＋ cutaneous「皮膚の」",
+          "note": "腋窩神経の皮膚の枝。三角筋の後縁から出て、肩の外側（三角筋の上）の皮膚の感覚を受けもつ。肩の脱臼や外科頚の骨折で腋窩神経が傷むと、ここの感覚がなくなる。"
+        },
+        {
+          "id": "inferior-lateral-brachial-cutaneous-nerve", "ja": "下外側上腕皮神経", "yomi": "かがいそくじょうわんひしんけい", "en": "inferior lateral brachial cutaneous nerve", "enAlt": ["inferior lateral cutaneous nerve of arm"], "la": "nervus cutaneus brachii lateralis inferior",
+          "parts": ["za:inferior lateral brachial cutaneous nerve"], "level": 3,
+          "kanji": "上腕の外側の下部の皮膚の神経",
+          "etym": "inferior「下の」＋ lateral「外側の」＋ brachial「上腕の」＋ cutaneous「皮膚の」",
+          "note": "橈骨神経の皮膚の枝。上腕の下半分の外側の皮膚の感覚を受けもつ。"
+        },
+        {
+          "id": "posterior-interosseous-nerve", "ja": "後骨間神経", "yomi": "こうこっかんしんけい", "en": "posterior interosseous nerve", "la": "nervus interosseus antebrachii posterior",
+          "parts": ["za:posterior interosseous nerve of forearm"], "level": 2,
+          "kanji": "前腕の骨の間の後ろを走る神経",
+          "etym": "posterior「後ろの」＋ interosseous「骨の間の」",
+          "note": "橈骨神経深枝が回外筋を貫いたあとの続き。前腕の後ろの深くを下り、指と母指の伸筋を動かす。回外筋の入口で締めつけられると指が伸ばせなくなる（後骨間神経麻痺。手首は伸ばせる）。"
+        },
+        {
+          "id": "palmar-branch-of-median-nerve", "ja": "正中神経の掌枝", "yomi": "せいちゅうしんけいのしょうし", "en": "palmar branch of median nerve", "la": "ramus palmaris nervi mediani",
+          "parts": ["za:palmar branch of median nerve"], "level": 3,
+          "kanji": "正中神経の手のひらへの枝",
+          "etym": "palmar「手のひらの」＋ branch「枝」＋ median「正中の」",
+          "note": "手首の少し上で正中神経から分かれ、屈筋支帯の上（手根管の外）を通って手のひらの中央の皮膚へ行く枝。手根管症候群でもこの領域の感覚は残る。"
+        },
+        {
+          "id": "dorsal-branch-of-ulnar-nerve", "ja": "尺骨神経の手背枝", "yomi": "しゃっこつしんけいのしゅはいし", "en": "dorsal branch of ulnar nerve", "la": "ramus dorsalis nervi ulnaris",
+          "parts": ["za:dorsal branch of ulnar nerve", "za:dorsal digital branches of ulnar nerve"], "level": 3,
+          "kanji": "尺骨神経の手の甲への枝",
+          "etym": "dorsal「背側の」＋ branch「枝」＋ ulnar「尺骨の」",
+          "note": "前腕の下部で尺骨神経から分かれ、尺骨の下端を回って手の甲の小指側の皮膚へ行く枝。尺骨神経管（ギヨン管）での障害ではこの領域の感覚は残る。"
+        },
+        {
+          "id": "superficial-branch-of-ulnar-nerve", "ja": "尺骨神経浅枝", "yomi": "しゃっこつしんけいせんし", "en": "superficial branch of ulnar nerve", "la": "ramus superficialis nervi ulnaris",
+          "parts": ["za:superficial branch of ulnar nerve"], "level": 3,
+          "kanji": "尺骨神経の浅い枝",
+          "etym": "superficial「浅い」＋ branch「枝」＋ ulnar「尺骨の」",
+          "note": "尺骨神経管の中で尺骨神経が深枝と分かれた浅い方の枝。小指と環指の小指側の手のひらの皮膚の感覚を受けもつ。"
+        },
+        {
+          "id": "common-palmar-digital-nerves", "ja": "総掌側指神経", "yomi": "そうしょうそくししんけい", "en": "common palmar digital nerves", "la": "nervi digitales palmares communes",
+          "parts": ["za:common palmar digital branches of median nerve", "za:common palmar digital branches of ulnar nerve"], "level": 3,
+          "kanji": "手のひらの側の、指へ向かう共通の神経",
+          "etym": "common「共通の」＋ palmar「手のひらの」＋ digital「指の」",
+          "note": "手のひらで正中神経と尺骨神経浅枝から出て、指の間へ向かう枝。指の付け根で2本ずつの固有掌側指神経に分かれる。正中神経は母指から環指の母指側まで、尺骨神経は残りを受けもつ。"
+        },
+        {
+          "id": "proper-palmar-digital-nerves", "ja": "固有掌側指神経", "yomi": "こゆうしょうそくししんけい", "en": "proper palmar digital nerves", "la": "nervi digitales palmares proprii",
+          "parts": ["za:proper palmar digital branches of median nerve", "za:proper palmar digital branches of ulnar nerve"], "level": 3,
+          "kanji": "それぞれの指の、手のひらの側の神経",
+          "etym": "proper「固有の（その指だけの）」＋ palmar「手のひらの」＋ digital「指の」",
+          "note": "指の両わき（掌側）を指先まで走る細い神経。指先の細かい感覚を受けもつ。指の麻酔（指ブロック）では指の付け根の両わきに注射する。"
+        }
+      ]
     }
   ]
 }

@@ -6,6 +6,13 @@
   "axis": [0, 0, -1],
   "plus": "挙上"
  },
+ "girdle-protract": {
+  "ja": "胸鎖関節",
+  "moves": ["clavicle", "scapula", "humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.0177, 1.3218, 0.1287],
+  "axis": [0, 1, 0],
+  "plus": "前方突出（外転）"
+ },
  "girdle-lift": {
   "ja": "肩甲骨",
   "moves": ["scapula", "humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
@@ -13,6 +20,13 @@
   "axis": [0, 1, 0],
   "slide": true,
   "plus": "挙上（mm）"
+ },
+ "scapula-rot": {
+  "ja": "肩甲骨",
+  "moves": ["scapula", "humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
+  "pivot": [-0.1453, 1.3522, 0.0712],
+  "axis": [-0.5024, 0.2087, -0.8391],
+  "plus": "上方回旋"
  },
  "shoulder-flex": {
   "ja": "肩関節",
@@ -62,6 +76,30 @@
   "pivot": [-0.2564, 0.7934, 0.119],
   "axis": [0, 0, -1],
   "plus": "橈屈"
+ },
+ "thumb-abd": {
+  "ja": "母指の手根中手関節",
+  "moves": ["metacarpals", "phalanges-hand"],
+  "only": ["FJ3350", "FJ3198", "FJ3327"],
+  "pivot": [-0.2799, 0.791, 0.1265],
+  "axis": [-0.8514, 0.5244, 0],
+  "plus": "掌側外転"
+ },
+ "thumb-flex": {
+  "ja": "母指の手根中手関節",
+  "moves": ["metacarpals", "phalanges-hand"],
+  "only": ["FJ3350", "FJ3198", "FJ3327"],
+  "pivot": [-0.2799, 0.791, 0.1265],
+  "axis": [0, 0.5403, 0.8414],
+  "plus": "屈曲"
+ },
+ "fingers": {
+  "ja": "第2〜5指の中手指節関節",
+  "moves": ["phalanges-hand"],
+  "only": ["FJ3193", "FJ3194", "FJ3196", "FJ3197", "FJ3292", "FJ3303", "FJ3304", "FJ3306", "FJ3322", "FJ3323", "FJ3325", "FJ3326"],
+  "pivot": [-0.2576, 0.7335, 0.1375],
+  "axis": [-0.9704, -0.2415, -0.007],
+  "plus": "屈曲"
  },
  "hip-flex": {
   "ja": "股関節",

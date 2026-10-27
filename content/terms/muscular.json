@@ -16,7 +16,8 @@
           "originAt": ["acromial-end-of-clavicle", "acromion", "spine-of-scapula"],
           "insertionAt": ["deltoid-tuberosity"],
           "nerve": "腋窩神経",
-          "action": "肩関節の外転（前部は屈曲、後部は伸展）"
+          "action": "肩関節の外転（前部は屈曲、後部は伸展）",
+          "motion": { "to": { "shoulder-abd": 80 }, "via": ["greater-tubercle"] }
         },
         {
           "id": "supraspinatus", "ja": "棘上筋", "yomi": "きょくじょうきん", "en": "supraspinatus", "la": "musculus supraspinatus",
@@ -29,7 +30,8 @@
           "originAt": ["supraspinous-fossa"],
           "insertionAt": ["greater-tubercle"],
           "nerve": "肩甲上神経",
-          "action": "肩関節の外転（はじめの約15°）"
+          "action": "肩関節の外転（はじめの約15°）",
+          "motion": { "to": { "shoulder-abd": 60 } }
         },
         {
           "id": "infraspinatus", "ja": "棘下筋", "yomi": "きょくかきん", "en": "infraspinatus", "la": "musculus infraspinatus",
@@ -42,7 +44,8 @@
           "originAt": ["infraspinous-fossa"],
           "insertionAt": ["greater-tubercle"],
           "nerve": "肩甲上神経",
-          "action": "肩関節の外旋"
+          "action": "肩関節の外旋",
+          "motion": { "from": { "elbow": 90, "shoulder-rot": -20 }, "to": { "elbow": 90, "shoulder-rot": 50 } }
         },
         {
           "id": "teres-minor", "ja": "小円筋", "yomi": "しょうえんきん", "en": "teres minor", "la": "musculus teres minor",
@@ -55,7 +58,8 @@
           "originAt": ["lateral-border-of-scapula"],
           "insertionAt": ["greater-tubercle"],
           "nerve": "腋窩神経",
-          "action": "肩関節の外旋"
+          "action": "肩関節の外旋",
+          "motion": { "from": { "elbow": 90, "shoulder-rot": -20 }, "to": { "elbow": 90, "shoulder-rot": 50 } }
         },
         {
           "id": "teres-major", "ja": "大円筋", "yomi": "だいえんきん", "en": "teres major", "la": "musculus teres major",
@@ -68,7 +72,8 @@
           "originAt": ["inferior-angle-of-scapula"],
           "insertionAt": ["crest-of-lesser-tubercle"],
           "nerve": "肩甲下神経",
-          "action": "肩関節の内旋・内転・伸展"
+          "action": "肩関節の内旋・内転・伸展",
+          "motion": { "from": { "shoulder-flex": 90 }, "to": { "shoulder-flex": -10 } }
         },
         {
           "id": "subscapularis", "ja": "肩甲下筋", "yomi": "けんこうかきん", "en": "subscapularis", "la": "musculus subscapularis",
@@ -81,7 +86,8 @@
           "originAt": ["subscapular-fossa"],
           "insertionAt": ["lesser-tubercle"],
           "nerve": "肩甲下神経",
-          "action": "肩関節の内旋"
+          "action": "肩関節の内旋",
+          "motion": { "from": { "elbow": 90, "shoulder-rot": 30 }, "to": { "elbow": 90, "shoulder-rot": -50 } }
         },
         {
           "id": "biceps-brachii", "ja": "上腕二頭筋", "yomi": "じょうわんにとうきん", "en": "biceps brachii", "la": "musculus biceps brachii",
@@ -94,7 +100,8 @@
           "originAt": ["supraglenoid-tubercle", "coracoid-process"],
           "insertionAt": ["radial-tuberosity"],
           "nerve": "筋皮神経",
-          "action": "肘関節の屈曲・前腕の回外"
+          "action": "肘関節の屈曲・前腕の回外",
+          "motion": { "from": { "forearm": 60 }, "to": { "elbow": 100 } }
         },
         {
           "id": "coracobrachialis", "ja": "烏口腕筋", "yomi": "うこうわんきん", "en": "coracobrachialis", "la": "musculus coracobrachialis",
@@ -106,7 +113,8 @@
           "insertion": "上腕骨体の内側面（中央）",
           "originAt": ["coracoid-process"],
           "nerve": "筋皮神経",
-          "action": "肩関節の屈曲・内転"
+          "action": "肩関節の屈曲・内転",
+          "motion": { "to": { "shoulder-flex": 70 } }
         },
         {
           "id": "brachialis", "ja": "上腕筋", "yomi": "じょうわんきん", "en": "brachialis", "la": "musculus brachialis",
@@ -118,7 +126,8 @@
           "insertion": "尺骨粗面・鈎状突起",
           "insertionAt": ["ulnar-tuberosity", "coronoid-process-of-ulna"],
           "nerve": "筋皮神経",
-          "action": "肘関節の屈曲"
+          "action": "肘関節の屈曲",
+          "motion": { "to": { "elbow": 110 } }
         },
         {
           "id": "triceps-brachii", "ja": "上腕三頭筋", "yomi": "じょうわんさんとうきん", "en": "triceps brachii", "la": "musculus triceps brachii",
@@ -131,7 +140,8 @@
           "originAt": ["infraglenoid-tubercle"],
           "insertionAt": ["olecranon"],
           "nerve": "橈骨神経",
-          "action": "肘関節の伸展"
+          "action": "肘関節の伸展",
+          "motion": { "from": { "elbow": 110 }, "to": { "elbow": 0 } }
         }
       ]
     },
@@ -147,9 +157,11 @@
           "note": "前腕の親指側のふくらみ。肘を曲げる。",
           "origin": "上腕骨の外側縁（外側上顆の上）",
           "insertion": "橈骨の茎状突起",
+          "originAt": ["lateral-supracondylar-ridge"],
           "insertionAt": ["radial-styloid-process"],
           "nerve": "橈骨神経",
-          "action": "肘関節の屈曲"
+          "action": "肘関節の屈曲",
+          "motion": { "from": { "forearm": 45 }, "to": { "forearm": 45, "elbow": 100 } }
         },
         {
           "id": "pronator-teres", "ja": "円回内筋", "yomi": "えんかいないきん", "en": "pronator teres", "la": "musculus pronator teres",
@@ -161,7 +173,8 @@
           "insertion": "橈骨の外側面（中央）",
           "originAt": ["medial-epicondyle-of-humerus", "coronoid-process-of-ulna"],
           "nerve": "正中神経",
-          "action": "前腕の回内"
+          "action": "前腕の回内",
+          "motion": { "from": { "forearm": -10 }, "to": { "forearm": 70 } }
         },
         {
           "id": "pronator-quadratus", "ja": "方形回内筋", "yomi": "ほうけいかいないきん", "en": "pronator quadratus", "la": "musculus pronator quadratus",
@@ -172,7 +185,8 @@
           "origin": "尺骨の前面（下1/4）",
           "insertion": "橈骨の前面（下1/4）",
           "nerve": "正中神経",
-          "action": "前腕の回内（回内の主力）"
+          "action": "前腕の回内（回内の主力）",
+          "motion": { "from": { "forearm": -10 }, "to": { "forearm": 70 } }
         },
         {
           "id": "supinator", "ja": "回外筋", "yomi": "かいがいきん", "en": "supinator", "la": "musculus supinator",
@@ -182,9 +196,10 @@
           "note": "肘の外側の深くにある筋。手のひらを上に向ける（回外）。",
           "origin": "上腕骨の外側上顆・尺骨の上部",
           "insertion": "橈骨の上部（外側面）",
-          "originAt": ["lateral-epicondyle-of-humerus"],
+          "originAt": ["lateral-epicondyle-of-humerus", "supinator-crest"],
           "nerve": "橈骨神経",
-          "action": "前腕の回外"
+          "action": "前腕の回外",
+          "motion": { "from": { "forearm": 70 }, "to": { "forearm": -10 } }
         },
         {
           "id": "flexor-carpi-radialis", "ja": "橈側手根屈筋", "yomi": "とうそくしゅこんくっきん", "en": "flexor carpi radialis", "la": "musculus flexor carpi radialis",
@@ -196,7 +211,8 @@
           "insertion": "第2・第3中手骨の底",
           "originAt": ["medial-epicondyle-of-humerus"],
           "nerve": "正中神経",
-          "action": "手関節の屈曲・橈屈"
+          "action": "手関節の屈曲・橈屈",
+          "motion": { "from": { "wrist-flex": -30 }, "to": { "wrist-flex": 50, "wrist-dev": 10 } }
         },
         {
           "id": "palmaris-longus", "ja": "長掌筋", "yomi": "ちょうしょうきん", "en": "palmaris longus", "la": "musculus palmaris longus",
@@ -208,7 +224,8 @@
           "insertion": "手掌腱膜",
           "originAt": ["medial-epicondyle-of-humerus"],
           "nerve": "正中神経",
-          "action": "手関節の屈曲・手掌腱膜を張る"
+          "action": "手関節の屈曲・手掌腱膜を張る",
+          "motion": { "from": { "wrist-flex": -30 }, "to": { "wrist-flex": 50 } }
         },
         {
           "id": "flexor-carpi-ulnaris", "ja": "尺側手根屈筋", "yomi": "しゃくそくしゅこんくっきん", "en": "flexor carpi ulnaris", "la": "musculus flexor carpi ulnaris",
@@ -220,7 +237,8 @@
           "insertion": "豆状骨・有鈎骨・第5中手骨の底",
           "originAt": ["medial-epicondyle-of-humerus", "olecranon"],
           "nerve": "尺骨神経",
-          "action": "手関節の屈曲・尺屈"
+          "action": "手関節の屈曲・尺屈",
+          "motion": { "from": { "wrist-flex": -30 }, "to": { "wrist-flex": 50, "wrist-dev": -15 } }
         },
         {
           "id": "flexor-digitorum-superficialis", "ja": "浅指屈筋", "yomi": "せんしくっきん", "en": "flexor digitorum superficialis", "la": "musculus flexor digitorum superficialis",
@@ -232,7 +250,8 @@
           "insertion": "第2〜5指の中節骨",
           "originAt": ["medial-epicondyle-of-humerus"],
           "nerve": "正中神経",
-          "action": "第2〜5指の屈曲（中節まで）"
+          "action": "第2〜5指の屈曲（中節まで）",
+          "motion": { "from": { "wrist-flex": -20, "fingers": -10 }, "to": { "wrist-flex": 20, "fingers": 70 } }
         },
         {
           "id": "flexor-digitorum-profundus", "ja": "深指屈筋", "yomi": "しんしくっきん", "en": "flexor digitorum profundus", "la": "musculus flexor digitorum profundus",
@@ -243,7 +262,8 @@
           "origin": "尺骨の前面・骨間膜",
           "insertion": "第2〜5指の末節骨",
           "nerve": "正中神経・尺骨神経",
-          "action": "第2〜5指の屈曲（指先まで）"
+          "action": "第2〜5指の屈曲（指先まで）",
+          "motion": { "from": { "wrist-flex": -20, "fingers": -10 }, "to": { "wrist-flex": 20, "fingers": 70 } }
         },
         {
           "id": "extensor-carpi-radialis-longus", "ja": "長橈側手根伸筋", "yomi": "ちょうとうそくしゅこんしんきん", "en": "extensor carpi radialis longus", "la": "musculus extensor carpi radialis longus",
@@ -253,8 +273,10 @@
           "note": "前腕の背側・親指側を走り、手首をそらす（背屈）。",
           "origin": "上腕骨の外側縁（外側上顆の上）",
           "insertion": "第2中手骨の底",
+          "originAt": ["lateral-supracondylar-ridge"],
           "nerve": "橈骨神経",
-          "action": "手関節の伸展（背屈）・橈屈"
+          "action": "手関節の伸展（背屈）・橈屈",
+          "motion": { "from": { "wrist-flex": 40 }, "to": { "wrist-flex": -50, "wrist-dev": 10 } }
         },
         {
           "id": "extensor-carpi-ulnaris", "ja": "尺側手根伸筋", "yomi": "しゃくそくしゅこんしんきん", "en": "extensor carpi ulnaris", "la": "musculus extensor carpi ulnaris",
@@ -266,7 +288,8 @@
           "insertion": "第5中手骨の底",
           "originAt": ["lateral-epicondyle-of-humerus"],
           "nerve": "橈骨神経",
-          "action": "手関節の伸展（背屈）・尺屈"
+          "action": "手関節の伸展（背屈）・尺屈",
+          "motion": { "from": { "wrist-flex": 30, "wrist-dev": 10 }, "to": { "wrist-flex": -40, "wrist-dev": -25 }, "via": ["head-of-ulna"] }
         },
         {
           "id": "extensor-digitorum", "ja": "指伸筋", "yomi": "ししんきん", "en": "extensor digitorum", "la": "musculus extensor digitorum",
@@ -278,7 +301,8 @@
           "insertion": "第2〜5指の指背腱膜（中節骨・末節骨）",
           "originAt": ["lateral-epicondyle-of-humerus"],
           "nerve": "橈骨神経",
-          "action": "第2〜5指の伸展"
+          "action": "第2〜5指の伸展",
+          "motion": { "from": { "wrist-flex": 40, "fingers": 10 }, "to": { "wrist-flex": -50, "fingers": -20 }, "via": ["dorsal-tubercle-of-radius"] }
         }
       ]
     },
@@ -296,7 +320,8 @@
           "insertion": "上腕骨の大結節稜",
           "insertionAt": ["crest-of-greater-tubercle"],
           "nerve": "内側・外側胸筋神経",
-          "action": "肩関節の内転・内旋・屈曲"
+          "action": "肩関節の内転・内旋・屈曲",
+          "motion": { "from": { "shoulder-abd": 70 }, "to": { "shoulder-abd": 0, "shoulder-flex": 30 } }
         },
         {
           "id": "pectoralis-minor", "ja": "小胸筋", "yomi": "しょうきょうきん", "en": "pectoralis minor", "la": "musculus pectoralis minor",
@@ -308,7 +333,8 @@
           "insertion": "肩甲骨の烏口突起",
           "insertionAt": ["coracoid-process"],
           "nerve": "内側胸筋神経",
-          "action": "肩甲骨を前下方へ引く"
+          "action": "肩甲骨を前下方へ引く",
+          "motion": { "to": { "girdle-protract": 10, "girdle-lift": -10, "girdle": -5 } }
         },
         {
           "id": "serratus-anterior", "ja": "前鋸筋", "yomi": "ぜんきょきん", "en": "serratus anterior", "la": "musculus serratus anterior",
@@ -320,7 +346,8 @@
           "insertion": "肩甲骨の内側縁（前面）",
           "insertionAt": ["medial-border-of-scapula"],
           "nerve": "長胸神経",
-          "action": "肩甲骨を前へ引く（外転）・上方回旋"
+          "action": "肩甲骨を前へ引く（外転）・上方回旋",
+          "motion": { "from": { "girdle-protract": -8 }, "to": { "girdle-protract": 12, "scapula-rot": 25, "shoulder-abd": -25 }, "view": "back" }
         },
         {
           "id": "subclavius", "ja": "鎖骨下筋", "yomi": "さこつかきん", "en": "subclavius", "la": "musculus subclavius",
@@ -331,7 +358,8 @@
           "origin": "第1肋骨（肋軟骨との境）",
           "insertion": "鎖骨の下面",
           "nerve": "鎖骨下筋神経",
-          "action": "鎖骨を下内方へ引いて胸鎖関節を安定させる"
+          "action": "鎖骨を下内方へ引いて胸鎖関節を安定させる",
+          "motion": { "to": { "girdle": -8 } }
         },
         {
           "id": "external-intercostal", "ja": "外肋間筋", "yomi": "がいろっかんきん", "en": "external intercostal muscles", "enAlt": ["external intercostal", "external intercostals"], "la": "musculi intercostales externi",
@@ -389,7 +417,8 @@
           "originAt": ["external-occipital-protuberance"],
           "insertionAt": ["acromial-end-of-clavicle", "acromion", "spine-of-scapula"],
           "nerve": "副神経",
-          "action": "肩甲骨の挙上・内転・上方回旋"
+          "action": "肩甲骨の挙上・内転・上方回旋",
+          "motion": { "to": { "girdle": 6, "girdle-lift": 10, "scapula-rot": 20, "shoulder-abd": -20 }, "view": "back" }
         },
         {
           "id": "levator-scapulae", "ja": "肩甲挙筋", "yomi": "けんこうきょきん", "en": "levator scapulae", "la": "musculus levator scapulae",
@@ -401,7 +430,8 @@
           "insertion": "肩甲骨の上角",
           "insertionAt": ["superior-angle-of-scapula"],
           "nerve": "肩甲背神経",
-          "action": "肩甲骨の挙上"
+          "action": "肩甲骨の挙上",
+          "motion": { "to": { "girdle": 8, "girdle-lift": 15 }, "view": "back" }
         },
         {
           "id": "rhomboid-major", "ja": "大菱形筋", "yomi": "だいりょうけいきん", "en": "rhomboid major", "la": "musculus rhomboideus major",
@@ -413,7 +443,8 @@
           "insertion": "肩甲骨の内側縁（肩甲棘より下）",
           "insertionAt": ["medial-border-of-scapula"],
           "nerve": "肩甲背神経",
-          "action": "肩甲骨の内転（背骨へ寄せる）・挙上"
+          "action": "肩甲骨の内転（背骨へ寄せる）・挙上",
+          "motion": { "from": { "girdle-protract": 10 }, "to": { "girdle-protract": -10, "girdle-lift": 8 }, "view": "back" }
         },
         {
           "id": "rhomboid-minor", "ja": "小菱形筋", "yomi": "しょうりょうけいきん", "en": "rhomboid minor", "la": "musculus rhomboideus minor",
@@ -425,7 +456,8 @@
           "insertion": "肩甲骨の内側縁（肩甲棘の根もと）",
           "insertionAt": ["medial-border-of-scapula"],
           "nerve": "肩甲背神経",
-          "action": "肩甲骨の内転（背骨へ寄せる）・挙上"
+          "action": "肩甲骨の内転（背骨へ寄せる）・挙上",
+          "motion": { "from": { "girdle-protract": 10 }, "to": { "girdle-protract": -10, "girdle-lift": 8 }, "view": "back" }
         },
         {
           "id": "erector-spinae", "ja": "脊柱起立筋", "yomi": "せきちゅうきりつきん", "en": "erector spinae", "la": "musculus erector spinae",
@@ -483,7 +515,8 @@
           "originAt": ["iliac-crest"],
           "insertionAt": ["crest-of-lesser-tubercle"],
           "nerve": "胸背神経",
-          "action": "肩関節の伸展・内転・内旋"
+          "action": "肩関節の伸展・内転・内旋",
+          "motion": { "from": { "shoulder-flex": 110 }, "to": { "shoulder-flex": -10 } }
         },
         {
           "id": "rectus-abdominis", "ja": "腹直筋", "yomi": "ふくちょくきん", "en": "rectus abdominis", "la": "musculus rectus abdominis",
@@ -1189,8 +1222,10 @@
           "note": "母指球のいちばん表面の筋。親指を手のひらから垂直に立てる（外転）。手根管症候群で最初にやせる。",
           "origin": "屈筋支帯・舟状骨・大菱形骨",
           "insertion": "母指の基節骨底（橈側）",
+          "originAt": ["tubercle-of-scaphoid", "tubercle-of-trapezium"],
           "nerve": "正中神経",
-          "action": "母指の外転"
+          "action": "母指の外転",
+          "motion": { "from": { "thumb-abd": -5 }, "to": { "thumb-abd": 40 } }
         },
         {
           "id": "flexor-pollicis-brevis", "ja": "短母指屈筋", "yomi": "たんぼしくっきん", "en": "flexor pollicis brevis", "la": "musculus flexor pollicis brevis",
@@ -1201,7 +1236,8 @@
           "origin": "屈筋支帯・大菱形骨（浅頭）、小菱形骨・有頭骨（深頭）",
           "insertion": "母指の基節骨底",
           "nerve": "正中神経・尺骨神経",
-          "action": "母指の中手指節関節の屈曲"
+          "action": "母指の中手指節関節の屈曲",
+          "motion": { "to": { "thumb-flex": 35 } }
         },
         {
           "id": "opponens-pollicis", "ja": "母指対立筋", "yomi": "ぼしたいりつきん", "en": "opponens pollicis", "la": "musculus opponens pollicis",
@@ -1211,8 +1247,10 @@
           "note": "母指球の深くの筋。第1中手骨を回して親指の腹をほかの指先に向ける（対立）。ものをつまむのに欠かせない。",
           "origin": "屈筋支帯・大菱形骨",
           "insertion": "第1中手骨の橈側縁",
+          "originAt": ["tubercle-of-trapezium"],
           "nerve": "正中神経",
-          "action": "母指の対立"
+          "action": "母指の対立",
+          "motion": { "to": { "thumb-abd": 30, "thumb-flex": 30 } }
         },
         {
           "id": "adductor-pollicis", "ja": "母指内転筋", "yomi": "ぼしないてんきん", "en": "adductor pollicis", "la": "musculus adductor pollicis",
@@ -1223,7 +1261,8 @@
           "origin": "有頭骨・第2・3中手骨（斜頭）、第3中手骨（横頭）",
           "insertion": "母指の基節骨底（尺側）",
           "nerve": "尺骨神経",
-          "action": "母指の内転"
+          "action": "母指の内転",
+          "motion": { "from": { "thumb-flex": -20, "thumb-abd": 20 }, "to": { "thumb-flex": 15 } }
         },
         {
           "id": "abductor-digiti-minimi-of-hand", "ja": "小指外転筋", "yomi": "しょうしがいてんきん", "en": "abductor digiti minimi of hand", "la": "musculus abductor digiti minimi manus",
@@ -1244,6 +1283,7 @@
           "note": "小指球の筋で、小指外転筋の橈側にある。",
           "origin": "有鈎骨鈎・屈筋支帯",
           "insertion": "小指の基節骨底",
+          "originAt": ["hook-of-hamate"],
           "nerve": "尺骨神経",
           "action": "小指の中手指節関節の屈曲"
         },
@@ -1255,6 +1295,7 @@
           "note": "小指球の深くの筋。第5中手骨を前へ回して手のひらをくぼませる。",
           "origin": "有鈎骨鈎・屈筋支帯",
           "insertion": "第5中手骨の尺側縁",
+          "originAt": ["hook-of-hamate"],
           "nerve": "尺骨神経",
           "action": "小指の対立"
         },
@@ -1306,7 +1347,8 @@
           "origin": "橈骨の前面・前腕骨間膜",
           "insertion": "母指の末節骨底",
           "nerve": "正中神経",
-          "action": "母指の指節間関節の屈曲"
+          "action": "母指の指節間関節の屈曲",
+          "motion": { "from": { "thumb-flex": -10 }, "to": { "thumb-flex": 40 } }
         },
         {
           "id": "abductor-pollicis-longus", "ja": "長母指外転筋", "yomi": "ちょうぼしがいてんきん", "en": "abductor pollicis longus", "la": "musculus abductor pollicis longus",
@@ -1317,7 +1359,8 @@
           "origin": "尺骨・橈骨の後面・前腕骨間膜",
           "insertion": "第1中手骨底",
           "nerve": "橈骨神経",
-          "action": "母指の外転"
+          "action": "母指の外転",
+          "motion": { "from": { "thumb-flex": 25 }, "to": { "thumb-flex": -15, "wrist-dev": 10 } }
         },
         {
           "id": "extensor-pollicis-brevis", "ja": "短母指伸筋", "yomi": "たんぼししんきん", "en": "extensor pollicis brevis", "la": "musculus extensor pollicis brevis",
@@ -1328,7 +1371,8 @@
           "origin": "橈骨の後面・前腕骨間膜",
           "insertion": "母指の基節骨底",
           "nerve": "橈骨神経",
-          "action": "母指の中手指節関節の伸展"
+          "action": "母指の中手指節関節の伸展",
+          "motion": { "from": { "thumb-flex": 30 }, "to": { "thumb-flex": -15 } }
         },
         {
           "id": "extensor-pollicis-longus", "ja": "長母指伸筋", "yomi": "ちょうぼししんきん", "en": "extensor pollicis longus", "la": "musculus extensor pollicis longus",
@@ -1339,7 +1383,8 @@
           "origin": "尺骨の後面・前腕骨間膜",
           "insertion": "母指の末節骨底",
           "nerve": "橈骨神経",
-          "action": "母指の指節間関節の伸展"
+          "action": "母指の指節間関節の伸展",
+          "motion": { "from": { "thumb-flex": 30 }, "to": { "thumb-flex": -15 }, "via": ["dorsal-tubercle-of-radius"] }
         },
         {
           "id": "extensor-indicis", "ja": "示指伸筋", "yomi": "じししんきん", "en": "extensor indicis", "la": "musculus extensor indicis",
@@ -1374,7 +1419,8 @@
           "insertion": "第3中手骨底",
           "originAt": ["lateral-epicondyle-of-humerus"],
           "nerve": "橈骨神経",
-          "action": "手関節の伸展（背屈）・橈屈"
+          "action": "手関節の伸展（背屈）・橈屈",
+          "motion": { "from": { "wrist-flex": 40 }, "to": { "wrist-flex": -50, "wrist-dev": 10 } }
         },
         {
           "id": "anconeus", "ja": "肘筋", "yomi": "ちゅうきん", "en": "anconeus", "la": "musculus anconeus",
@@ -1387,7 +1433,8 @@
           "originAt": ["lateral-epicondyle-of-humerus"],
           "insertionAt": ["olecranon"],
           "nerve": "橈骨神経",
-          "action": "肘関節の伸展（補助）"
+          "action": "肘関節の伸展（補助）",
+          "motion": { "from": { "elbow": 90 }, "to": { "elbow": 0 } }
         }
       ]
     },
@@ -2376,6 +2423,332 @@
           "kanji": "膝蓋骨の下の深い所の袋",
           "etym": "deep「深い」＋ infra-「下」＋ patellar「膝蓋骨の」＋ bursa「袋」",
           "note": "膝蓋靱帯と脛骨の上端の間の袋。膝を曲げ伸ばしするとき、靱帯が骨とこすれないようにする。"
+        }
+      ]
+    },
+    {
+      "id": "mus-upper-heads",
+      "title": "肩と上腕の筋の部と頭",
+      "intro": [
+        "大きな筋は、部分ごとに起こる所と作用が違う。三角筋は前・中・後ろの部で腕を前・横・後ろへ上げ、僧帽筋は上・中・下の部で肩甲骨を上・内・下へ引く。",
+        "上腕二頭筋・上腕三頭筋は、起こる所（頭）の数が名前になっている。長頭はどちらも肩甲骨から起こって肩関節もまたぐので、肘だけでなく肩も動かす。"
+      ],
+      "terms": [
+        {
+          "id": "clavicular-part-of-deltoid", "ja": "三角筋鎖骨部", "yomi": "さんかくきんさこつぶ", "en": "clavicular part of deltoid", "enAlt": ["anterior part of deltoid", "anterior deltoid"], "la": "pars clavicularis musculi deltoidei",
+          "parts": ["clavicular part of deltoid"], "level": 2,
+          "kanji": "三角筋のうち鎖骨から起こる部（前部）",
+          "etym": "clavicular「鎖骨の」（ラテン語 clavicula＝小さな鍵）＋ part「部」",
+          "note": "三角筋の前の部分。鎖骨の外側1/3から起こり、腕を前へ上げ（屈曲）、内へ回す（内旋）。大胸筋との間の溝（三角筋胸筋溝）を橈側皮静脈が通る。",
+          "origin": "鎖骨の外側1/3",
+          "insertion": "上腕骨の三角筋粗面",
+          "originAt": ["acromial-end-of-clavicle"],
+          "insertionAt": ["deltoid-tuberosity"],
+          "nerve": "腋窩神経",
+          "action": "肩関節の屈曲・内旋",
+          "motion": { "to": { "shoulder-flex": 75 } }
+        },
+        {
+          "id": "acromial-part-of-deltoid", "ja": "三角筋肩峰部", "yomi": "さんかくきんけんぽうぶ", "en": "acromial part of deltoid", "enAlt": ["middle part of deltoid", "middle deltoid"], "la": "pars acromialis musculi deltoidei",
+          "parts": ["acromial part of deltoid"], "level": 2,
+          "kanji": "三角筋のうち肩峰から起こる部（中部）",
+          "etym": "acromial「肩峰の」（ギリシャ語 akron「先」＋ omos「肩」）＋ part「部」",
+          "note": "三角筋の真ん中の部分で、肩の丸みの外側をつくる。肩峰から起こり、腕を横に上げる（外転）主役。棘上筋が上げはじめたあとを受け継ぐ。",
+          "origin": "肩峰",
+          "insertion": "上腕骨の三角筋粗面",
+          "originAt": ["acromion"],
+          "insertionAt": ["deltoid-tuberosity"],
+          "nerve": "腋窩神経",
+          "action": "肩関節の外転",
+          "motion": { "to": { "shoulder-abd": 80 } }
+        },
+        {
+          "id": "spinal-part-of-deltoid", "ja": "三角筋肩甲棘部", "yomi": "さんかくきんけんこうきょくぶ", "en": "spinal part of deltoid", "enAlt": ["posterior part of deltoid", "posterior deltoid"], "la": "pars spinalis musculi deltoidei",
+          "parts": ["spinal part of deltoid"], "level": 2,
+          "kanji": "三角筋のうち肩甲棘から起こる部（後部）",
+          "etym": "spinal「棘の」（ラテン語 spina＝とげ。ここでは肩甲棘）＋ part「部」",
+          "note": "三角筋の後ろの部分。肩甲棘から起こり、腕を後ろへ引き（伸展）、外へ回す（外旋）。",
+          "origin": "肩甲棘",
+          "insertion": "上腕骨の三角筋粗面",
+          "originAt": ["spine-of-scapula"],
+          "insertionAt": ["deltoid-tuberosity"],
+          "nerve": "腋窩神経",
+          "action": "肩関節の伸展・外旋",
+          "motion": { "from": { "shoulder-flex": 40 }, "to": { "shoulder-flex": -35 } }
+        },
+        {
+          "id": "descending-part-of-trapezius", "ja": "僧帽筋下行部", "yomi": "そうぼうきんかこうぶ", "en": "descending part of trapezius", "enAlt": ["upper fibers of trapezius", "superior part of trapezius"], "la": "pars descendens musculi trapezii",
+          "parts": ["descending part of trapezius"], "level": 2,
+          "kanji": "僧帽筋のうち、頭から肩へ降りる線維の部（上部）",
+          "etym": "descending「下行する（降りる）」＋ part「部」。線維が頭から肩へ降りる向きによる名",
+          "note": "僧帽筋の上の部分。後頭部と項靱帯から鎖骨の外側へ降りる。肩をすくめる（肩甲骨の挙上）。重い荷物を肩にかけるときにはたらき、肩こりの起こりやすい所。",
+          "origin": "外後頭隆起・上項線・項靱帯",
+          "insertion": "鎖骨の外側1/3",
+          "originAt": ["external-occipital-protuberance"],
+          "insertionAt": ["acromial-end-of-clavicle"],
+          "nerve": "副神経",
+          "action": "肩甲骨の挙上・上方回旋",
+          "motion": { "to": { "girdle": 8, "girdle-lift": 15, "scapula-rot": 10, "shoulder-abd": -10 }, "view": "back" }
+        },
+        {
+          "id": "transverse-part-of-trapezius", "ja": "僧帽筋横行部", "yomi": "そうぼうきんおうこうぶ", "en": "transverse part of trapezius", "enAlt": ["middle fibers of trapezius", "middle part of trapezius"], "la": "pars transversa musculi trapezii",
+          "parts": ["transverse part of trapezius"], "level": 2,
+          "kanji": "僧帽筋のうち、横に走る線維の部（中部）",
+          "etym": "transverse「横の」＋ part「部」",
+          "note": "僧帽筋の中ほどの部分。上位の胸椎の棘突起から横に走って肩峰と肩甲棘へ付き、肩甲骨を背骨へ引き寄せる（内転）。胸を張る姿勢をつくる。",
+          "origin": "第7頚椎〜第3胸椎の棘突起",
+          "insertion": "肩峰・肩甲棘",
+          "insertionAt": ["acromion", "spine-of-scapula"],
+          "nerve": "副神経",
+          "action": "肩甲骨の内転（背骨へ寄せる）",
+          "motion": { "from": { "girdle-protract": 10 }, "to": { "girdle-protract": -10 }, "view": "back" }
+        },
+        {
+          "id": "ascending-part-of-trapezius", "ja": "僧帽筋上行部", "yomi": "そうぼうきんじょうこうぶ", "en": "ascending part of trapezius", "enAlt": ["lower fibers of trapezius", "inferior part of trapezius"], "la": "pars ascendens musculi trapezii",
+          "parts": ["ascending part of trapezius"], "level": 2,
+          "kanji": "僧帽筋のうち、下から肩甲骨へ昇る線維の部（下部）",
+          "etym": "ascending「上行する（昇る）」＋ part「部」",
+          "note": "僧帽筋の下の部分。中・下位の胸椎から斜め上へ昇って肩甲棘の内側部へ付き、肩甲骨を引き下げる（下制）。上の部分と一緒にはたらいて肩甲骨を上方回旋させ、腕を頭の上まで上げられるようにする。",
+          "origin": "第4〜12胸椎の棘突起",
+          "insertion": "肩甲棘の内側部",
+          "insertionAt": ["spine-of-scapula"],
+          "nerve": "副神経",
+          "action": "肩甲骨の下制・上方回旋",
+          "motion": { "to": { "girdle-lift": -8, "scapula-rot": 20, "shoulder-abd": -20 }, "view": "back" }
+        },
+        {
+          "id": "clavicular-part-of-pectoralis-major", "ja": "大胸筋鎖骨部", "yomi": "だいきょうきんさこつぶ", "en": "clavicular part of pectoralis major", "enAlt": ["clavicular head of pectoralis major"], "la": "pars clavicularis musculi pectoralis majoris",
+          "parts": ["clavicular part of pectoralis major"], "level": 2,
+          "kanji": "大胸筋のうち鎖骨から起こる部",
+          "etym": "clavicular「鎖骨の」＋ pectoralis major「大きな胸の筋」",
+          "note": "大胸筋の上の部分。鎖骨の内側半分から起こり、腕を前へ上げる（屈曲）。三角筋鎖骨部と協力する。",
+          "origin": "鎖骨の内側1/2",
+          "insertion": "上腕骨の大結節稜",
+          "insertionAt": ["crest-of-greater-tubercle"],
+          "nerve": "内側・外側胸筋神経",
+          "action": "肩関節の屈曲・内転・内旋",
+          "motion": { "from": { "shoulder-flex": -10 }, "to": { "shoulder-flex": 70 } }
+        },
+        {
+          "id": "sternocostal-part-of-pectoralis-major", "ja": "大胸筋胸肋部", "yomi": "だいきょうきんきょうろくぶ", "en": "sternocostal part of pectoralis major", "enAlt": ["sternocostal head of pectoralis major"], "la": "pars sternocostalis musculi pectoralis majoris",
+          "parts": ["sternocostal part of pectoralis major"], "level": 2,
+          "kanji": "大胸筋のうち胸骨と肋軟骨から起こる部",
+          "etym": "sterno-「胸骨の」＋ costal「肋骨の」（ラテン語 costa）",
+          "note": "大胸筋の大部分をしめる真ん中の部分。胸骨と上位の肋軟骨から起こり、上げた腕を引き下ろして体に寄せる（内転）。腕立て伏せや抱きしめる動きの主役。",
+          "origin": "胸骨の前面・第1〜6肋軟骨",
+          "insertion": "上腕骨の大結節稜",
+          "insertionAt": ["crest-of-greater-tubercle"],
+          "nerve": "内側・外側胸筋神経",
+          "action": "肩関節の内転・内旋（上げた腕を引き下ろす）",
+          "motion": { "from": { "shoulder-abd": 80 }, "to": { "shoulder-abd": 0 } }
+        },
+        {
+          "id": "abdominal-part-of-pectoralis-major", "ja": "大胸筋腹部", "yomi": "だいきょうきんふくぶ", "en": "abdominal part of pectoralis major", "la": "pars abdominalis musculi pectoralis majoris",
+          "parts": ["abdominal part of pectoralis major"], "level": 3,
+          "kanji": "大胸筋のうち腹から起こる部",
+          "etym": "abdominal「腹の」＋ pectoralis major「大きな胸の筋」",
+          "note": "大胸筋のいちばん下の小さな部分。腹直筋鞘の前葉から起こる。腋窩の前の壁（前腋窩ひだ）の下の縁をつくる。",
+          "origin": "腹直筋鞘の前葉",
+          "insertion": "上腕骨の大結節稜",
+          "insertionAt": ["crest-of-greater-tubercle"],
+          "nerve": "内側胸筋神経",
+          "action": "肩関節の内転（上げた腕を引き下ろす）",
+          "motion": { "from": { "shoulder-abd": 100 }, "to": { "shoulder-abd": 10 } }
+        },
+        {
+          "id": "long-head-of-biceps-brachii", "ja": "上腕二頭筋長頭", "yomi": "じょうわんにとうきんちょうとう", "en": "long head of biceps brachii", "la": "caput longum musculi bicipitis brachii",
+          "parts": ["long head of biceps brachii"], "level": 2,
+          "kanji": "上腕二頭筋の長い頭",
+          "etym": "long head「長い頭」＋ biceps「2つの頭の」＋ brachii「腕の」",
+          "note": "上腕二頭筋の外側の頭。肩甲骨の関節上結節から起こり、腱は肩関節の関節包の中を通って結節間溝を下る。肩の前の痛み（長頭腱炎）や、腱が切れて力こぶが下へずれることがある。",
+          "origin": "肩甲骨の関節上結節",
+          "insertion": "橈骨粗面",
+          "originAt": ["supraglenoid-tubercle"],
+          "insertionAt": ["radial-tuberosity"],
+          "nerve": "筋皮神経",
+          "action": "肘関節の屈曲・前腕の回外（肩関節の外転を助ける）",
+          "motion": { "from": { "forearm": 60 }, "to": { "elbow": 100 } }
+        },
+        {
+          "id": "short-head-of-biceps-brachii", "ja": "上腕二頭筋短頭", "yomi": "じょうわんにとうきんたんとう", "en": "short head of biceps brachii", "la": "caput breve musculi bicipitis brachii",
+          "parts": ["short head of biceps brachii"], "level": 2,
+          "kanji": "上腕二頭筋の短い頭",
+          "etym": "short head「短い頭」＋ biceps「2つの頭の」＋ brachii「腕の」",
+          "note": "上腕二頭筋の内側の頭。烏口突起から烏口腕筋と一緒に起こる。長頭と合わさって橈骨粗面へ付く。",
+          "origin": "肩甲骨の烏口突起",
+          "insertion": "橈骨粗面",
+          "originAt": ["coracoid-process"],
+          "insertionAt": ["radial-tuberosity"],
+          "nerve": "筋皮神経",
+          "action": "肘関節の屈曲・前腕の回外（肩関節の屈曲を助ける）",
+          "motion": { "from": { "forearm": 60 }, "to": { "elbow": 100 } }
+        },
+        {
+          "id": "long-head-of-triceps-brachii", "ja": "上腕三頭筋長頭", "yomi": "じょうわんさんとうきんちょうとう", "en": "long head of triceps brachii", "la": "caput longum musculi tricipitis brachii",
+          "parts": ["long head of triceps brachii"], "level": 2,
+          "kanji": "上腕三頭筋の長い頭",
+          "etym": "long head「長い頭」＋ triceps「3つの頭の」＋ brachii「腕の」",
+          "note": "上腕三頭筋の真ん中の頭で、ただ1つ肩甲骨から起こり肩関節もまたぐ。小円筋・大円筋との間に外側腋窩隙・内側腋窩隙をつくる。",
+          "origin": "肩甲骨の関節下結節",
+          "insertion": "尺骨の肘頭",
+          "originAt": ["infraglenoid-tubercle"],
+          "insertionAt": ["olecranon"],
+          "nerve": "橈骨神経",
+          "action": "肘関節の伸展・肩関節の伸展と内転",
+          "motion": { "from": { "shoulder-flex": 60, "elbow": 100 }, "to": { "elbow": 0 } }
+        },
+        {
+          "id": "lateral-head-of-triceps-brachii", "ja": "上腕三頭筋外側頭", "yomi": "じょうわんさんとうきんがいそくとう", "en": "lateral head of triceps brachii", "la": "caput laterale musculi tricipitis brachii",
+          "parts": ["lateral head of triceps brachii"], "level": 2,
+          "kanji": "上腕三頭筋の外側の頭",
+          "etym": "lateral head「外側の頭」＋ triceps「3つの頭の」",
+          "note": "上腕三頭筋の外側の頭。上腕骨の後面で、橈骨神経溝より上外側から起こる。",
+          "origin": "上腕骨の後面（橈骨神経溝より上外側）",
+          "insertion": "尺骨の肘頭",
+          "insertionAt": ["olecranon"],
+          "nerve": "橈骨神経",
+          "action": "肘関節の伸展",
+          "motion": { "from": { "elbow": 110 }, "to": { "elbow": 0 } }
+        },
+        {
+          "id": "medial-head-of-triceps-brachii", "ja": "上腕三頭筋内側頭", "yomi": "じょうわんさんとうきんないそくとう", "en": "medial head of triceps brachii", "la": "caput mediale musculi tricipitis brachii",
+          "parts": ["medial head of triceps brachii"], "level": 2,
+          "kanji": "上腕三頭筋の内側の頭",
+          "etym": "medial head「内側の頭」＋ triceps「3つの頭の」",
+          "note": "上腕三頭筋の深い頭。上腕骨の後面で、橈骨神経溝より下内側の広い範囲から起こる。ほかの2つの頭におおわれ、肘を伸ばすときにいつもはたらく。",
+          "origin": "上腕骨の後面（橈骨神経溝より下内側）",
+          "insertion": "尺骨の肘頭",
+          "insertionAt": ["olecranon"],
+          "nerve": "橈骨神経",
+          "action": "肘関節の伸展",
+          "motion": { "from": { "elbow": 110 }, "to": { "elbow": 0 } }
+        }
+      ]
+    },
+    {
+      "id": "mus-upper-groups",
+      "title": "上肢の筋のまとまりと筋膜",
+      "terms": [
+        {
+          "id": "rotator-cuff", "ja": "回旋筋腱板", "yomi": "かいせんきんけんばん", "en": "rotator cuff", "enAlt": ["musculotendinous cuff"],
+          "parts": ["supraspinatus", "infraspinatus muscle", "teres minor", "subscapularis"], "level": 1, "check": true,
+          "kanji": "上腕骨を回す筋の腱がつくる板",
+          "etym": "rotator「回すもの」＋ cuff「袖口」。4つの腱が上腕骨頭を袖口のように包む",
+          "note": "棘上筋・棘下筋・小円筋・肩甲下筋の4つの腱が、上腕骨頭を上・後ろ・前から包んだもの（頭文字で SITS）。浅い関節窩に骨頭を引きつけて肩関節を安定させる。腱板断裂は肩の痛みと腕が上がらない原因の代表。ローテーターカフともいう。",
+          "origin": "肩甲骨（棘上窩・棘下窩・外側縁・肩甲下窩）",
+          "insertion": "上腕骨の大結節（棘上筋・棘下筋・小円筋）と小結節（肩甲下筋）",
+          "originAt": ["supraspinous-fossa", "infraspinous-fossa", "lateral-border-of-scapula", "subscapular-fossa"],
+          "insertionAt": ["greater-tubercle", "lesser-tubercle"],
+          "nerve": "肩甲上神経・腋窩神経・肩甲下神経",
+          "action": "上腕骨頭を関節窩に引きつけて肩関節を安定させる（外転・外旋・内旋）"
+        },
+        {
+          "id": "thenar-muscles", "ja": "母指球筋", "yomi": "ぼしきゅうきん", "en": "thenar muscles", "enAlt": ["muscles of thenar eminence"],
+          "parts": ["abductor pollicis brevis", "*flexor pollicis brevis", "opponens pollicis", "*head of adductor pollicis"], "level": 2, "check": true,
+          "kanji": "母指の付け根のふくらみ（母指球）をつくる筋",
+          "etym": "thenar ← ギリシャ語 thenar「手のひら」",
+          "note": "母指の付け根のふくらみ（母指球）の筋のまとまり。短母指外転筋・短母指屈筋・母指対立筋と、深くの母指内転筋。おもに正中神経が支配し、手根管症候群でやせる（母指内転筋と短母指屈筋の深頭は尺骨神経）。",
+          "origin": "屈筋支帯・舟状骨・大菱形骨（母指内転筋は有頭骨・第3中手骨）",
+          "insertion": "母指の基節骨底・第1中手骨",
+          "nerve": "正中神経（母指内転筋と短母指屈筋の深頭は尺骨神経）",
+          "action": "母指の外転・屈曲・対立・内転"
+        },
+        {
+          "id": "hypothenar-muscles", "ja": "小指球筋", "yomi": "しょうしきゅうきん", "en": "hypothenar muscles", "enAlt": ["muscles of hypothenar eminence"],
+          "parts": ["abductor digiti minimi of hand", "flexor digiti minimi brevis of hand", "opponens digiti minimi of hand"], "level": 2,
+          "kanji": "小指の付け根のふくらみ（小指球）をつくる筋",
+          "etym": "hypo-「下の・次の」＋ thenar「手のひら（母指球）」",
+          "note": "小指の付け根のふくらみ（小指球）の筋のまとまり。小指外転筋・短小指屈筋・小指対立筋（と皮膚の中の短掌筋）。すべて尺骨神経が支配する。",
+          "origin": "豆状骨・有鈎骨鈎・屈筋支帯",
+          "insertion": "小指の基節骨底・第5中手骨",
+          "nerve": "尺骨神経",
+          "action": "小指の外転・屈曲・対立"
+        },
+        {
+          "id": "medial-intermuscular-septum-of-arm", "ja": "内側上腕筋間中隔", "yomi": "ないそくじょうわんきんかんちゅうかく", "en": "medial intermuscular septum of arm", "la": "septum intermusculare brachii mediale",
+          "parts": ["za:medial intermuscular septum of arm"], "level": 3, "color": "#d6cdb8",
+          "kanji": "上腕の内側で筋の間を仕切る膜",
+          "etym": "medial「内側の」＋ intermuscular「筋の間の」＋ septum「仕切り」",
+          "note": "上腕筋膜から上腕骨の内側縁（内側顆上稜）へ張る仕切り。前区画（上腕筋）と後区画（上腕三頭筋）を分ける。尺骨神経と上尺側側副動脈が上腕の中ほどでこれを貫いて後ろへ移る。"
+        },
+        {
+          "id": "lateral-intermuscular-septum-of-arm", "ja": "外側上腕筋間中隔", "yomi": "がいそくじょうわんきんかんちゅうかく", "en": "lateral intermuscular septum of arm", "la": "septum intermusculare brachii laterale",
+          "parts": ["za:lateral intermuscular septum of arm"], "level": 3, "color": "#d6cdb8",
+          "kanji": "上腕の外側で筋の間を仕切る膜",
+          "etym": "lateral「外側の」＋ intermuscular「筋の間の」＋ septum「仕切り」",
+          "note": "上腕筋膜から上腕骨の外側縁（外側顆上稜）へ張る仕切り。前区画と後区画を分ける。橈骨神経と橈側側副動脈が上腕の下1/3でこれを貫いて前へ出る。"
+        },
+        {
+          "id": "brachial-fascia", "ja": "上腕筋膜", "yomi": "じょうわんきんまく", "en": "brachial fascia", "enAlt": ["deep fascia of arm"], "la": "fascia brachii",
+          "parts": ["za:brachial fascia"], "level": 2, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "上腕の筋を包む膜",
+          "etym": "brachial「上腕の」（ラテン語 brachium＝腕）＋ fascia「帯・膜」",
+          "note": "上腕の筋を全体に包む筋膜。内側・外側の上腕筋間中隔で上腕骨に付き、上腕を前（屈筋）と後ろ（伸筋）の区画に分ける。"
+        },
+        {
+          "id": "antebrachial-fascia", "ja": "前腕筋膜", "yomi": "ぜんわんきんまく", "en": "antebrachial fascia", "enAlt": ["deep fascia of forearm"], "la": "fascia antebrachii",
+          "parts": ["za:antebrachial fascia"], "level": 2, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "前腕の筋を包む膜",
+          "etym": "ante-「前の」＋ brachial「上腕の」＝上腕の先（前腕）の＋ fascia「膜」",
+          "note": "前腕の筋を全体に包む筋膜。上腕二頭筋の腱膜がこれに放射状に入り、手首の近くでは厚くなって伸筋支帯・屈筋支帯に続く。"
+        },
+        {
+          "id": "clavipectoral-fascia", "ja": "鎖骨胸筋筋膜", "yomi": "さこつきょうきんきんまく", "en": "clavipectoral fascia", "la": "fascia clavipectoralis",
+          "parts": ["za:clavipectoral fascia"], "level": 3, "xray": true, "color": "#d6cdb8",
+          "kanji": "鎖骨と胸の筋（小胸筋）の間の膜",
+          "etym": "clavi-「鎖骨の」＋ pectoral「胸の」＋ fascia「膜」",
+          "note": "大胸筋の深くで、鎖骨と鎖骨下筋から小胸筋を包んで腋窩の底へ続く筋膜。橈側皮静脈・胸肩峰動脈・外側胸筋神経がこれを貫く。"
+        }
+      ]
+    },
+    {
+      "id": "mus-upper-sheaths",
+      "title": "手の腱鞘と上肢の滑液包",
+      "intro": [
+        "長い腱が骨や支帯の下をくぐる所では、腱は滑液の入ったさや（腱鞘＝滑液鞘）に包まれて、すべりがよくなっている。手首と指の腱鞘は炎症（腱鞘炎）やばね指の起こる所。"
+      ],
+      "terms": [
+        {
+          "id": "synovial-sheaths-of-digits-of-hand", "ja": "指の滑液鞘（手）", "yomi": "ゆびのかつえきしょう", "en": "synovial sheaths of digits of hand", "enAlt": ["digital synovial sheaths of hand", "digital tendon sheaths"], "la": "vaginae synoviales digitorum manus",
+          "parts": ["za:synovial sheaths of digits of hand"], "level": 2, "color": "#9fc2da", "check": true,
+          "kanji": "指の腱を包む、滑液の入ったさや",
+          "etym": "synovial「滑液の」（syn-「一緒に」＋ ovum「卵」＝卵白のような液）＋ sheath「さや」",
+          "note": "指の屈筋の腱（浅指屈筋・深指屈筋）を包む滑液のさや。第2〜4指では指の中だけにあり、小指と母指では手のひらの総指屈筋腱鞘・長母指屈筋腱鞘に続く。腱が太くなって引っかかるとばね指になる。"
+        },
+        {
+          "id": "common-flexor-sheath", "ja": "総指屈筋腱鞘", "yomi": "そうしくっきんけんしょう", "en": "common flexor sheath", "enAlt": ["ulnar bursa", "common synovial sheath of flexor tendons"], "la": "vagina communis tendinum musculorum flexorum",
+          "parts": ["za:common flexor tendon sheath"], "level": 3, "xray": true, "color": "#9fc2da",
+          "kanji": "指の屈筋の腱をまとめて包むさや",
+          "etym": "common「共通の」＋ flexor「屈筋の」＋ sheath「さや」",
+          "note": "手根管の中で浅指屈筋・深指屈筋の8本の腱をまとめて包む滑液のさや（尺側滑液包）。手首の上から手のひらまで続き、小指の滑液鞘とつながる。"
+        },
+        {
+          "id": "tendinous-sheath-of-flexor-pollicis-longus", "ja": "長母指屈筋腱鞘", "yomi": "ちょうぼしくっきんけんしょう", "en": "tendinous sheath of flexor pollicis longus", "enAlt": ["radial bursa"], "la": "vagina tendinis musculi flexoris pollicis longi",
+          "parts": ["za:tendon sheath of flexor pollicis longus"], "level": 3, "color": "#9fc2da",
+          "kanji": "長母指屈筋の腱を包むさや",
+          "etym": "flexor pollicis longus「母指の長い屈筋」＋ sheath「さや」",
+          "note": "手根管の中で長母指屈筋の腱を包む滑液のさや（橈側滑液包）。母指の先まで続く。総指屈筋腱鞘とつながっていることがあり、感染が両方へ広がることがある。"
+        },
+        {
+          "id": "tendinous-sheath-of-abductor-longus-and-extensor-brevis-pollicis", "ja": "長母指外転筋・短母指伸筋の腱鞘", "yomi": "ちょうぼしがいてんきんたんぼししんきんのけんしょう", "en": "tendinous sheath of abductor longus and extensor pollicis brevis", "la": "vagina tendinum musculorum abductoris longi et extensoris pollicis brevis",
+          "parts": ["za:tendon sheath - abd pollicis longus - ext pollicis brevis"], "level": 3, "color": "#9fc2da",
+          "kanji": "長母指外転筋と短母指伸筋の腱を包むさや",
+          "etym": "abductor longus「長い外転筋」＋ extensor pollicis brevis「母指の短い伸筋」＋ sheath「さや」",
+          "note": "手首の親指側で、伸筋支帯の下の第1区画を通る2本の腱を包む滑液のさや。親指をよく使う人で炎症を起こしやすい（ドケルバン病。親指を握りこんで手首を小指側へ曲げると痛む）。"
+        },
+        {
+          "id": "intertubercular-tendon-sheath", "ja": "結節間腱鞘", "yomi": "けっせつかんけんしょう", "en": "intertubercular tendon sheath", "la": "vagina tendinis intertubercularis",
+          "parts": ["za:intertubercular tendon sheath"], "level": 3, "xray": true, "color": "#9fc2da",
+          "kanji": "結節間溝の中の腱を包むさや",
+          "etym": "inter-「間の」＋ tubercular「結節の」＋ tendon sheath「腱鞘」",
+          "note": "上腕骨の結節間溝の中で、上腕二頭筋長頭の腱を包む滑液のさや。肩関節の関節腔とつながっている。"
+        },
+        {
+          "id": "bicipitoradial-bursa", "ja": "二頭筋橈骨包", "yomi": "にとうきんとうこつほう", "en": "bicipitoradial bursa", "la": "bursa bicipitoradialis",
+          "parts": ["za:bicipitoradial bursa"], "level": 3, "xray": true, "color": "#9fc2da",
+          "kanji": "上腕二頭筋の腱と橈骨の間の滑液包",
+          "etym": "bicipito-「二頭筋の」＋ radial「橈骨の」＋ bursa「袋」",
+          "note": "上腕二頭筋の腱と橈骨粗面の前の部分の間にある滑液包。前腕を回内すると腱が橈骨に巻き付くので、その間ですべりをよくする。"
         }
       ]
     }

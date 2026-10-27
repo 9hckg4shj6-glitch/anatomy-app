@@ -91,12 +91,14 @@ export interface Figure {
 
 /**
  * 関節の動き（content/joints.json の関節ID → 角度°）。from の姿勢（無ければ解剖学的正位）から to の姿勢へ動かす。
- * via は筋の動きの帯が通る骨の部位（ピン）。くるぶしの後ろを回る腱のように、滑車で向きを変える筋で使う
+ * via は筋の動きの帯が通る骨の部位（ピン）。くるぶしの後ろを回る腱のように、滑車で向きを変える筋で使う。
+ * view: "back" は筋の動きを後ろから見る（肩甲骨を動かす背中の筋。前からでは胸郭の陰になる）
  */
 export interface Motion {
   from?: Record<string, number>;
   to: Record<string, number>;
   via?: string[];
+  view?: "back";
 }
 
 /** カメラ: 見る中心 target・カメラを置く向き from・映す半分の高さ size（m） */

@@ -99,6 +99,45 @@ const metatarsalHeads = Object.fromEntries(termMeshes("metatarsals", "right").ma
 const toeBones = termMeshes("phalanges-foot", "right");
 const greatToe = toeBones.filter(({ name }) => /big toe/i.test(name)).map(({ id }) => id);
 const lesserToes = toeBones.filter(({ name }) => !/big toe/i.test(name)).map(({ id }) => id);
+// 手の指: 中手骨の頭（手根骨から遠い端）と底（近い端）。中手骨の向きは手根骨の中心から形の中心へ
+const carpus = (() => {
+  const pts = termMeshes("carpal-bones", "right").flatMap(({ bounds }) => [bounds[0], bounds[1]]);
+  return scale(pts.reduce((sum, p) => add(sum, p), [0, 0, 0]), 1 / pts.length);
+})();
+const metacarpalEnds = Object.fromEntries(termMeshes("metacarpals", "right").map(({ name, positions }) => {
+  let center = [0, 0, 0];
+  for (let i = 0; i < positions.length; i += 3) center = add(center, [positions[i], positions[i + 1], positions[i + 2]]);
+  center = scale(center, 3 / positions.length);
+  const axis = unit(sub(center, carpus));
+  let head = null, base = null;
+  for (let i = 0; i < positions.length; i += 3) {
+    const p = [positions[i], positions[i + 1], positions[i + 2]];
+    const s = p.reduce((sum, v, k) => sum + (v - center[k]) * axis[k], 0);
+    if (!head || s > head.s) head = { s, p };
+    if (!base || s < base.s) base = { s, p };
+  }
+  // 頭は丸みの中心のあたり（先から 8mm 戻る）、底は関節面から 4mm 入った所
+  return [name.toLowerCase().match(/(first|second|third|fourth|fifth)/)[1], { head: add(head.p, scale(axis, -0.008)), base: add(base.p, scale(axis, 0.004)) }];
+}));
+const handBones = termMeshes("phalanges-hand", "right");
+const thumbBones = handBones.filter(({ name }) => /thumb/i.test(name));
+const fingerBones = handBones.filter(({ name }) => !/thumb/i.test(name)).map(({ id }) => id);
+const firstMetacarpal = termMeshes("metacarpals", "right").filter(({ name }) => /first/i.test(name)).map(({ id }) => id);
+// 母指の向き: 手根中手関節（第1中手骨の底）から末節骨の中心へ
+const thumbTip = (() => {
+  const { bounds } = thumbBones.find(({ name }) => /distal/i.test(name));
+  return mid(bounds[0], bounds[1]);
+})();
+const thumbCmc = metacarpalEnds.first.base;
+const thumbDir = unit(sub(thumbTip, thumbCmc));
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+// 肩甲骨の面の法線（後ろ外側向き）: 内側縁・関節窩・下角を通る面
+const scapularNormal = (() => {
+  const border = pins["medial-border-of-scapula"].at;
+  const medial = scale(border.reduce((sum, p) => add(sum, p), [0, 0, 0]), 1 / border.length);
+  const n = unit(cross(sub(pin("glenoid-cavity"), medial), sub(pin("inferior-angle-of-scapula"), medial)));
+  return n[2] < 0 ? n : scale(n, -1);
+})();
 const capitate = (() => {
   const pts = termMeshes("capitate", "right").flatMap(({ bounds }) => [bounds[0], bounds[1]]);
   return mid(pts[0], pts[1]);
@@ -107,8 +146,12 @@ const capitate = (() => {
 const joints = {
   // 肩甲骨の挙上・下制: 鎖骨は胸鎖関節で回し、肩甲骨と腕は鎖骨の外側端と同じだけ上下させる（回すと腕が横へ振れるため）
   girdle: { ja: "胸鎖関節", moves: ["clavicle"], pivot: add(pin("sternal-end-of-clavicle"), [-0.008, 0.004, 0]), axis: [0, 0, -1], plus: "挙上" },
+  // 肩甲骨の前方突出（外転）・後退（内転）: 鎖骨を胸鎖関節で縦の軸のまわりに回し、肩甲骨は胸郭に沿って前外側へ回り込む
+  "girdle-protract": { ja: "胸鎖関節", moves: ["clavicle", "scapula", ...arm], pivot: add(pin("sternal-end-of-clavicle"), [-0.008, 0.004, 0]), axis: [0, 1, 0], plus: "前方突出（外転）" },
   // slide の pivot は動きの矢印を描く所（肩の外側）
   "girdle-lift": { ja: "肩甲骨", moves: ["scapula", ...arm], pivot: add(pin("acromial-end-of-clavicle"), [-0.03, -0.03, 0]), axis: [0, 1, 0], slide: true, plus: "挙上（mm）" },
+  // 肩甲骨の上方回旋: 肩鎖関節のまわりに肩甲骨の面の中で回す（関節窩が上を向き、下角が外へ動く）。腕も一緒に動く
+  "scapula-rot": { ja: "肩甲骨", moves: ["scapula", ...arm], pivot: pin("acromial-end-of-clavicle"), axis: scapularNormal, plus: "上方回旋" },
   "shoulder-flex": { ja: "肩関節", moves: arm, pivot: shoulder, axis: [-1, 0, 0], plus: "屈曲" },
   "shoulder-abd": { ja: "肩関節", moves: arm, pivot: shoulder, axis: [0, 0, -1], plus: "外転" },
   "shoulder-rot": { ja: "肩関節", moves: arm, pivot: shoulder, axis: unit(sub(elbow, shoulder)), plus: "外旋" },
@@ -116,6 +159,21 @@ const joints = {
   forearm: { ja: "上・下橈尺関節", moves: ["radius", ...hand], pivot: radialHead, axis: unit(sub(radialHead, ulnarHead)), plus: "回内" },
   "wrist-flex": { ja: "手関節", moves: hand, pivot: capitate, axis: [-1, 0, 0], plus: "屈曲（掌屈）" },
   "wrist-dev": { ja: "手関節", moves: hand, pivot: capitate, axis: [0, 0, -1], plus: "橈屈" },
+  // 母指の手根中手関節（鞍関節）: 第1中手骨と母指の骨だけを動かす。手のひらは前を向くので、掌側外転は前へ、屈曲は手のひらを横切って内側へ。
+  // 対立はこの2つを合わせて示す
+  "thumb-abd": {
+    ja: "母指の手根中手関節", moves: ["metacarpals", "phalanges-hand"], only: [...firstMetacarpal, ...thumbBones.map(({ id }) => id)],
+    pivot: thumbCmc, axis: unit(cross(thumbDir, [0, 0, 1])), plus: "掌側外転",
+  },
+  "thumb-flex": {
+    ja: "母指の手根中手関節", moves: ["metacarpals", "phalanges-hand"], only: [...firstMetacarpal, ...thumbBones.map(({ id }) => id)],
+    pivot: thumbCmc, axis: unit(cross(thumbDir, [1, 0, 0])), plus: "屈曲",
+  },
+  // 第2〜5指の中手指節関節: 中手骨の頭を結ぶ線のまわりに回す（正で屈曲＝指が前へ）。指の骨は1つの語「指骨（手）」なので only で絞る
+  fingers: {
+    ja: "第2〜5指の中手指節関節", moves: ["phalanges-hand"], only: fingerBones,
+    pivot: mid(metacarpalEnds.second.head, metacarpalEnds.fifth.head), axis: unit(sub(metacarpalEnds.second.head, metacarpalEnds.fifth.head)), plus: "屈曲",
+  },
   "hip-flex": { ja: "股関節", moves: ["femur", ...leg], pivot: hip, axis: [-1, 0, 0], plus: "屈曲" },
   "hip-abd": { ja: "股関節", moves: ["femur", ...leg], pivot: hip, axis: [0, 0, -1], plus: "外転" },
   "hip-rot": { ja: "股関節", moves: ["femur", ...leg], pivot: hip, axis: unit(sub(ankle, hip)), plus: "外旋" },

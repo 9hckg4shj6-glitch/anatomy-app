@@ -31,6 +31,20 @@ describe("関節の向き（scripts/joints.mjs）", () => {
     expect(move("girdle", 20, [-0.15, 1.35, 0.07]).y).toBeGreaterThan(1.37); // 挙上: 鎖骨の外側端が上へ
   });
 
+  it("肩甲骨・母指・手の指", () => {
+    const border: [number, number, number] = [-0.06, 1.27, 0.008];
+    const protracted = move("girdle-protract", 15, border);
+    expect(protracted.x).toBeLessThan(border[0] - 0.02); // 前方突出: 内側縁が外側へ
+    expect(protracted.z).toBeGreaterThan(border[2] + 0.01); // 胸郭に沿って前へ
+    const angle: [number, number, number] = [-0.0944, 1.184, 0.0053];
+    expect(move("scapula-rot", 30, angle).x).toBeLessThan(angle[0] - 0.05); // 上方回旋: 下角が外側へ
+    const thumbTip: [number, number, number] = [-0.317, 0.73, 0.165];
+    expect(move("thumb-abd", 30, thumbTip).z).toBeGreaterThan(thumbTip[2] + 0.02); // 掌側外転: 母指が手のひらから前へ離れる
+    expect(move("thumb-flex", 30, thumbTip).x).toBeGreaterThan(thumbTip[0] + 0.02); // 屈曲: 母指が手のひらを横切って内側へ
+    const fingertip: [number, number, number] = [-0.276, 0.66, 0.186];
+    expect(move("fingers", 40, fingertip).z).toBeGreaterThan(fingertip[2] + 0.02); // 屈曲: 指先が前（手のひらの側）へ
+  });
+
   it("股・膝・足", () => {
     const toe: [number, number, number] = [-0.12, -0.06, 0.2];
     expect(move("ankle", 20, toe).y).toBeGreaterThan(toe[1] + 0.02); // 背屈: つま先が上へ
@@ -51,5 +65,9 @@ describe("関節の向き（scripts/joints.mjs）", () => {
     expect(order.indexOf("shoulder-rot")).toBeLessThan(order.indexOf("elbow"));
     expect(order.indexOf("elbow")).toBeLessThan(order.indexOf("forearm"));
     expect(order.indexOf("knee")).toBeLessThan(order.indexOf("ankle"));
+    expect(order.indexOf("girdle-protract")).toBeLessThan(order.indexOf("scapula-rot"));
+    expect(order.indexOf("scapula-rot")).toBeLessThan(order.indexOf("shoulder-flex"));
+    expect(order.indexOf("wrist-flex")).toBeLessThan(order.indexOf("thumb-abd"));
+    expect(order.indexOf("wrist-flex")).toBeLessThan(order.indexOf("fingers"));
   });
 });

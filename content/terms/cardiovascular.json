@@ -1443,6 +1443,157 @@
           "note": "下腹部の皮下を下って大伏在静脈に注ぐ静脈。肝硬変などで門脈の圧が高くなると、へその周りの静脈とともにふくれる（メドゥーサの頭）。"
         }
       ]
+    },
+    {
+      "id": "cv-arm-collaterals",
+      "title": "肘のまわりの動脈と肩甲背動脈",
+      "intro": [
+        "肘のまわりでは、上腕動脈・上腕深動脈から下る側副動脈と、前腕の動脈から上る反回動脈がつながって網をつくる（肘関節動脈網）。上腕動脈が途中でふさがっても、この回り道で血が前腕へ届く。肩甲骨のまわりにも、肩甲上動脈・肩甲背動脈・肩甲回旋動脈がつながる網がある。"
+      ],
+      "terms": [
+        {
+          "id": "superior-ulnar-collateral-artery", "ja": "上尺側側副動脈", "yomi": "じょうしゃくそくそくふくどうみゃく", "en": "superior ulnar collateral artery", "la": "arteria collateralis ulnaris superior",
+          "parts": ["superior ulnar collateral artery"], "level": 3,
+          "kanji": "尺骨の側を並んで走る、上の動脈",
+          "etym": "superior「上の」＋ ulnar「尺骨の」＋ collateral「並んで走る・わきの」",
+          "note": "上腕の中ほどで上腕動脈から分かれ、尺骨神経と一緒に内側上腕筋間中隔を貫いて内側上顆の後ろへ下る。後尺側反回動脈とつながる。"
+        },
+        {
+          "id": "inferior-ulnar-collateral-artery", "ja": "下尺側側副動脈", "yomi": "かしゃくそくそくふくどうみゃく", "en": "inferior ulnar collateral artery", "la": "arteria collateralis ulnaris inferior",
+          "parts": ["inferior ulnar collateral artery"], "level": 3,
+          "kanji": "尺骨の側を並んで走る、下の動脈",
+          "etym": "inferior「下の」＋ ulnar「尺骨の」＋ collateral「並んで走る」",
+          "note": "肘のすぐ上で上腕動脈から分かれ、内側上顆の前へ下って前尺側反回動脈とつながる。"
+        },
+        {
+          "id": "radial-collateral-artery", "ja": "橈側側副動脈", "yomi": "とうそくそくふくどうみゃく", "en": "radial collateral artery", "la": "arteria collateralis radialis",
+          "parts": ["za:radial collateral artery"], "level": 3,
+          "kanji": "橈骨の側を並んで走る動脈",
+          "etym": "radial「橈骨の」＋ collateral「並んで走る」",
+          "note": "上腕深動脈の前の終枝。橈骨神経と一緒に外側上腕筋間中隔を貫き、外側上顆の前で橈側反回動脈とつながる。"
+        },
+        {
+          "id": "middle-collateral-artery", "ja": "中側副動脈", "yomi": "ちゅうそくふくどうみゃく", "en": "middle collateral artery", "la": "arteria collateralis media",
+          "parts": ["za:middle collateral artery"], "level": 3,
+          "kanji": "まん中を並んで走る動脈",
+          "etym": "middle「中の」＋ collateral「並んで走る」",
+          "note": "上腕深動脈の後ろの終枝。上腕三頭筋の内側頭の中を下り、外側上顆の後ろで反回骨間動脈とつながる。"
+        },
+        {
+          "id": "radial-recurrent-artery", "ja": "橈側反回動脈", "yomi": "とうそくはんかいどうみゃく", "en": "radial recurrent artery", "la": "arteria recurrens radialis",
+          "parts": ["radial recurrent artery"], "level": 3,
+          "kanji": "橈骨の側で上へ戻る（反回する）動脈",
+          "etym": "radial「橈骨の」＋ recurrent「逆向きに戻る」",
+          "note": "肘の下で橈骨動脈から分かれ、上へ戻って外側上顆の前で橈側側副動脈とつながる。"
+        },
+        {
+          "id": "ulnar-recurrent-artery", "ja": "尺側反回動脈", "yomi": "しゃくそくはんかいどうみゃく", "en": "ulnar recurrent artery", "enAlt": ["anterior ulnar recurrent artery", "posterior ulnar recurrent artery"], "la": "arteria recurrens ulnaris",
+          "parts": ["anterior ulnar recurrent artery", "posterior ulnar recurrent artery"], "level": 3,
+          "kanji": "尺骨の側で上へ戻る動脈",
+          "etym": "ulnar「尺骨の」＋ recurrent「逆向きに戻る」",
+          "note": "肘の下で尺骨動脈から分かれて上へ戻る枝。前枝は内側上顆の前で下尺側側副動脈と、後枝は内側上顆の後ろで上尺側側副動脈とつながる。"
+        },
+        {
+          "id": "recurrent-interosseous-artery", "ja": "反回骨間動脈", "yomi": "はんかいこっかんどうみゃく", "en": "recurrent interosseous artery", "la": "arteria interossea recurrens",
+          "parts": ["recurrent interosseous artery"], "level": 3,
+          "kanji": "骨の間から上へ戻る動脈",
+          "etym": "recurrent「戻る」＋ interosseous「骨の間の」",
+          "note": "後骨間動脈から出て上へ戻り、外側上顆と肘頭の間で中側副動脈とつながる。"
+        },
+        {
+          "id": "dorsal-scapular-artery", "ja": "肩甲背動脈", "yomi": "けんこうはいどうみゃく", "en": "dorsal scapular artery", "la": "arteria dorsalis scapulae",
+          "parts": ["dorsal scapular artery"], "level": 3,
+          "kanji": "肩甲骨の背中の側の動脈",
+          "etym": "dorsal「背側の」＋ scapular「肩甲骨の」",
+          "note": "鎖骨下動脈（または頚横動脈の深枝）から出て、肩甲骨の内側縁にそって下り、菱形筋と肩甲挙筋を養う。肩甲背神経と一緒に走り、肩甲骨のまわりの動脈網の一部になる。"
+        }
+      ]
+    },
+    {
+      "id": "cv-hand-vessels",
+      "title": "手の動脈と前腕・手の静脈",
+      "intro": [
+        "手のひらには2つの動脈弓がある。尺骨動脈が主につくる浅掌動脈弓（指へ総掌側指動脈を出す）と、橈骨動脈が主につくる深掌動脈弓（掌側中手動脈を出す）。手の甲では手首の背側手根動脈網から背側中手動脈が出る。"
+      ],
+      "terms": [
+        {
+          "id": "common-palmar-digital-arteries", "ja": "総掌側指動脈", "yomi": "そうしょうそくしどうみゃく", "en": "common palmar digital arteries", "la": "arteriae digitales palmares communes",
+          "parts": ["* common palmar digital artery"], "level": 3,
+          "kanji": "手のひらの側の、指へ向かう共通の動脈",
+          "etym": "common「共通の」＋ palmar「手のひらの」＋ digital「指の」",
+          "note": "浅掌動脈弓から指の間へ向かう3〜4本の動脈。指の付け根で2本ずつの固有掌側指動脈に分かれる。深掌動脈弓からの掌側中手動脈を受ける。"
+        },
+        {
+          "id": "proper-palmar-digital-arteries", "ja": "固有掌側指動脈", "yomi": "こゆうしょうそくしどうみゃく", "en": "proper palmar digital arteries", "la": "arteriae digitales palmares propriae",
+          "parts": ["* proper palmar digital artery of *"], "level": 3,
+          "kanji": "それぞれの指の、手のひらの側の動脈",
+          "etym": "proper「固有の（その指だけの）」＋ palmar「手のひらの」＋ digital「指の」",
+          "note": "指の両わき（掌側）を指先まで走る動脈。固有掌側指神経と並ぶ。指先で左右がつながる。"
+        },
+        {
+          "id": "princeps-pollicis-artery", "ja": "母指主動脈", "yomi": "ぼししゅどうみゃく", "en": "princeps pollicis artery", "la": "arteria princeps pollicis",
+          "parts": ["arteria princeps pollicis"], "level": 3,
+          "kanji": "母指の主な動脈",
+          "etym": "princeps「第一の・主な」＋ pollicis「母指の」（ラテン語 pollex）",
+          "note": "手のひらの深くで橈骨動脈から出て、母指の両わきへ分かれて母指を養う。"
+        },
+        {
+          "id": "radialis-indicis-artery", "ja": "示指橈側動脈", "yomi": "しじとうそくどうみゃく", "en": "radialis indicis artery", "enAlt": ["radial artery of index finger"], "la": "arteria radialis indicis",
+          "parts": ["arteria radialis indicis"], "level": 3,
+          "kanji": "示指の橈側（親指側）の動脈",
+          "etym": "radialis「橈側の」＋ indicis「示指の」（ラテン語 index＝指し示すもの）",
+          "note": "橈骨動脈（または母指主動脈）から出て、示指の橈側を指先へ向かう。"
+        },
+        {
+          "id": "palmar-metacarpal-arteries", "ja": "掌側中手動脈", "yomi": "しょうそくちゅうしゅどうみゃく", "en": "palmar metacarpal arteries", "la": "arteriae metacarpales palmares",
+          "parts": ["palmar metacarpal artery"], "level": 3,
+          "kanji": "手のひらの側で中手骨の間を走る動脈",
+          "etym": "palmar「手のひらの」＋ metacarpal「中手の」",
+          "note": "深掌動脈弓から出て、骨間筋の前を指の付け根へ下り、総掌側指動脈とつながる。浅・深の2つの動脈弓をつなぐ道。"
+        },
+        {
+          "id": "dorsal-carpal-arch", "ja": "背側手根動脈網", "yomi": "はいそくしゅこんどうみゃくもう", "en": "dorsal carpal arch", "enAlt": ["dorsal carpal network", "dorsal carpal rete"], "la": "rete carpale dorsale",
+          "parts": ["za:dorsal carpal anastomosis"], "level": 3,
+          "kanji": "手首の甲の側の動脈の網",
+          "etym": "dorsal「背側の」＋ carpal「手根の」＋ arch「弓」・rete「網」（ラテン語）",
+          "note": "手首の後ろで、橈骨動脈と尺骨動脈の背側手根枝、骨間動脈がつくる動脈の網。ここから背側中手動脈が出る。"
+        },
+        {
+          "id": "dorsal-metacarpal-arteries", "ja": "背側中手動脈", "yomi": "はいそくちゅうしゅどうみゃく", "en": "dorsal metacarpal arteries", "la": "arteriae metacarpales dorsales",
+          "parts": ["za:dorsal metacarpal arteries", "za:dorsal digital arteries of hand"], "level": 3,
+          "kanji": "手の甲の側で中手骨の間を走る動脈",
+          "etym": "dorsal「背側の」＋ metacarpal「中手の」",
+          "note": "背側手根動脈網から出て、手の甲の中手骨の間を指へ下り、指の付け根で背側指動脈に分かれる。"
+        },
+        {
+          "id": "radial-veins", "ja": "橈骨静脈", "yomi": "とうこつじょうみゃく", "en": "radial veins", "enAlt": ["radial vein"], "la": "venae radiales",
+          "parts": ["radial vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "橈骨にそう静脈",
+          "etym": "radial「橈骨の」",
+          "note": "橈骨動脈の両わきにそう2本の深い静脈。手のひらの深掌静脈弓から始まり、肘で尺骨静脈と合わさって上腕静脈になる。"
+        },
+        {
+          "id": "ulnar-veins", "ja": "尺骨静脈", "yomi": "しゃっこつじょうみゃく", "en": "ulnar veins", "enAlt": ["ulnar vein"], "la": "venae ulnares",
+          "parts": ["ulnar vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "尺骨にそう静脈",
+          "etym": "ulnar「尺骨の」",
+          "note": "尺骨動脈の両わきにそう2本の深い静脈。手のひらの浅掌静脈弓から始まり、肘で橈骨静脈と合わさって上腕静脈になる。"
+        },
+        {
+          "id": "median-antebrachial-vein", "ja": "前腕正中皮静脈", "yomi": "ぜんわんせいちゅうひじょうみゃく", "en": "median antebrachial vein", "enAlt": ["median vein of forearm"], "la": "vena mediana antebrachii",
+          "parts": ["median antebrachial vein"], "level": 2, "color": "#3b64b8",
+          "kanji": "前腕の前面の中央の皮下の静脈",
+          "etym": "median「中央の」＋ antebrachial「前腕の」",
+          "note": "手のひらの静脈網から前腕の前面の中央を上る皮静脈。肘で肘正中皮静脈か尺側皮静脈に注ぐ。"
+        },
+        {
+          "id": "superficial-palmar-venous-arch", "ja": "浅掌静脈弓", "yomi": "せんしょうじょうみゃくきゅう", "en": "superficial palmar venous arch", "la": "arcus venosus palmaris superficialis",
+          "parts": ["superficial palmar venous arch"], "level": 3, "color": "#3b64b8",
+          "kanji": "手のひらの浅い所の静脈の弓",
+          "etym": "superficial「浅い」＋ palmar「手のひらの」＋ venous arch「静脈の弓」",
+          "note": "浅掌動脈弓にそう静脈の弓。指からの静脈を集めて尺骨静脈へ流す。"
+        }
+      ]
     }
   ]
 }

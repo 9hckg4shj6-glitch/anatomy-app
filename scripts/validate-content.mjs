@@ -15,7 +15,7 @@ const errors = [];
 const word = z.string().regex(/^[a-z][a-z' -]*[a-z]$/, "英語は小文字の英字・空白・ハイフンだけ");
 const vec = z.tuple([z.number(), z.number(), z.number()]);
 const FigurePlane = z.strictObject({ axis: z.enum(["x", "y", "z"]), at: z.number() });
-const Motion = z.strictObject({ from: z.record(z.string(), z.number()).optional(), to: z.record(z.string(), z.number()), via: z.array(z.string()).min(1).optional() });
+const Motion = z.strictObject({ from: z.record(z.string(), z.number()).optional(), to: z.record(z.string(), z.number()), via: z.array(z.string()).min(1).optional(), view: z.literal("back").optional() });
 const View = z.strictObject({ target: vec, from: vec, size: z.number().positive() });
 const Figure = z.strictObject({
   arrows: z.array(z.tuple([vec, vec])).min(1).optional(),
