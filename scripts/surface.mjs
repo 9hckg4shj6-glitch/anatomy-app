@@ -174,6 +174,184 @@ export function bakeAo(targets, occluders, { distance, rays = 32 }) {
   });
 }
 
+/** 位置が同じ頂点（法線の違いで分かれた頂点）を1つにまとめた番号。返り値 { weld（頂点 → まとめた番号）, count } */
+function weldByPosition(positions) {
+  const ids = new Map();
+  const weld = new Int32Array(positions.length / 3);
+  for (let i = 0; i < weld.length; i++) {
+    const key = `${positions[i * 3].toFixed(6)},${positions[i * 3 + 1].toFixed(6)},${positions[i * 3 + 2].toFixed(6)}`;
+    if (!ids.has(key)) ids.set(key, ids.size);
+    weld[i] = ids.get(key);
+  }
+  return { weld, count: ids.size };
+}
+
+/**
+ * 本体から離れた小さなかけら（つながった三角形の集まり）を除く。BodyParts3D には、右の角膜・強膜・脈絡膜の中に
+ * 左眼の位置の三角形が数枚入っているような部品がある。見た目には映らないが、語の中心と大きさ（カメラを寄せる先・ラベル・近さ）を狂わせる。
+ * 除くのは、三角形が maxTriangles 以下・いちばん大きい集まりの2%未満で、その外接箱から gap（m）より離れたもの。
+ */
+export function dropStrays(mesh, { maxTriangles = 40, gap = 0.01 } = {}) {
+  const { weld, count } = weldByPosition(mesh.positions);
+  const parent = Int32Array.from({ length: count }, (_, i) => i);
+  const find = (a) => {
+    while (parent[a] !== a) a = parent[a] = parent[parent[a]];
+    return a;
+  };
+  const idx = mesh.indices;
+  for (let t = 0; t < idx.length; t += 3) {
+    const a = find(weld[idx[t]]);
+    parent[find(weld[idx[t + 1]])] = a;
+    parent[find(weld[idx[t + 2]])] = a;
+  }
+  const groups = new Map();
+  for (let t = 0; t < idx.length; t += 3) {
+    const root = find(weld[idx[t]]);
+    if (!groups.has(root)) groups.set(root, { triangles: 0, lo: [Infinity, Infinity, Infinity], hi: [-Infinity, -Infinity, -Infinity] });
+    const g = groups.get(root);
+    g.triangles++;
+    for (let e = 0; e < 3; e++) {
+      for (let k = 0; k < 3; k++) {
+        const v = mesh.positions[idx[t + e] * 3 + k];
+        g.lo[k] = Math.min(g.lo[k], v);
+        g.hi[k] = Math.max(g.hi[k], v);
+      }
+    }
+  }
+  if (groups.size < 2) return mesh;
+  const main = [...groups.values()].reduce((a, b) => (b.triangles > a.triangles ? b : a));
+  const apart = (g) => Math.max(...[0, 1, 2].map((k) => Math.max(main.lo[k] - g.hi[k], g.lo[k] - main.hi[k]))) > gap;
+  const drop = new Set([...groups].filter(([, g]) => g.triangles <= maxTriangles && g.triangles < main.triangles * 0.02 && apart(g)).map(([root]) => root));
+  if (!drop.size) return mesh;
+  const kept = [];
+  for (let t = 0; t < idx.length; t += 3) if (!drop.has(find(weld[idx[t]]))) kept.push(idx[t], idx[t + 1], idx[t + 2]);
+  // 使う頂点だけに詰める
+  const remap = new Int32Array(mesh.positions.length / 3).fill(-1);
+  let n = 0;
+  for (const i of kept) if (remap[i] < 0) remap[i] = n++;
+  const positions = new Float32Array(n * 3), normals = new Float32Array(n * 3);
+  for (let i = 0; i < remap.length; i++) {
+    if (remap[i] < 0) continue;
+    positions.set(mesh.positions.subarray(i * 3, i * 3 + 3), remap[i] * 3);
+    normals.set(mesh.normals.subarray(i * 3, i * 3 + 3), remap[i] * 3);
+  }
+  const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
+  for (let i = 0; i < positions.length; i++) {
+    lo[i % 3] = Math.min(lo[i % 3], positions[i]);
+    hi[i % 3] = Math.max(hi[i % 3], positions[i]);
+  }
+  return { ...mesh, positions, normals, indices: new Uint32Array(kept.map((i) => remap[i])), bounds: [lo, hi] };
+}
+
+/**
+ * 粗い形を細かく、なめらかにする（Loop の細分。1回で三角形が4倍）。BodyParts3D 4.0 の舌・唇・唾液腺のように、
+ * 99%減らした版で角張った形の見た目に使う。辺の真ん中に点を足し、元の点はとなりとの平均へ寄せる。
+ * 縁の辺（三角形1つだけの辺）と3つ以上の三角形が付く辺は真ん中に点を足すだけで、その端の点は動かさない（縁が縮んで穴が広がらないように。
+ * 使う形はどれも閉じているので、縁は折れ線のままでよい）。
+ * Loop の細分は元の点を内側へ寄せるので粗い形ほど縮む。最後に元の点を元の位置へ戻し、そのずれを間の点へなめらかに配る
+ * （細分した形が元の点を通る）。法線は計算し直し、元の法線と逆を向いたものは裏返す（relax と同じ）
+ */
+export function subdivide(mesh, levels = 1) {
+  const { weld, count } = weldByPosition(mesh.positions);
+  // まとめた番号で作り直す（法線で分かれた頂点のすき間が開かないように）
+  let positions = new Float32Array(count * 3);
+  let reference = new Float32Array(count * 3);
+  for (let i = 0; i < weld.length; i++) {
+    positions.set(mesh.positions.subarray(i * 3, i * 3 + 3), weld[i] * 3);
+    for (let k = 0; k < 3; k++) reference[weld[i] * 3 + k] += mesh.normals[i * 3 + k];
+  }
+  let indices = Uint32Array.from(mesh.indices, (i) => weld[i]);
+  for (let level = 0; level < levels; level++) {
+    const n = positions.length / 3;
+    const edges = new Map(); // "a,b" → { id（新しい点）, a, b, opposite: [] }
+    const edgeOf = (a, b, c) => {
+      const key = a < b ? `${a},${b}` : `${b},${a}`;
+      let e = edges.get(key);
+      if (!e) edges.set(key, (e = { id: n + edges.size, a, b, opposite: [] }));
+      e.opposite.push(c);
+      return e.id;
+    };
+    const faces = [];
+    for (let t = 0; t < indices.length; t += 3) {
+      const [a, b, c] = [indices[t], indices[t + 1], indices[t + 2]];
+      const ab = edgeOf(a, b, c), bc = edgeOf(b, c, a), ca = edgeOf(c, a, b);
+      faces.push(a, ab, ca, ab, b, bc, ca, bc, c, ab, bc, ca);
+    }
+    const next = new Float32Array((n + edges.size) * 3);
+    const p = (i, k) => positions[i * 3 + k];
+    // 新しい点: ふつうの辺は 3/8・3/8・1/8・1/8、縁の辺は真ん中
+    const sharp = new Set(); // 縁の辺の端の点
+    const ring = Array.from({ length: n }, () => new Set());
+    for (const e of edges.values()) {
+      ring[e.a].add(e.b);
+      ring[e.b].add(e.a);
+      const smooth = e.opposite.length === 2;
+      for (let k = 0; k < 3; k++) {
+        next[e.id * 3 + k] = smooth
+          ? (3 * (p(e.a, k) + p(e.b, k)) + p(e.opposite[0], k) + p(e.opposite[1], k)) / 8
+          : (p(e.a, k) + p(e.b, k)) / 2;
+      }
+      if (!smooth) sharp.add(e.a).add(e.b);
+    }
+    // 元の点: となり n 個の平均へ β で寄せる。縁の点は動かさない
+    for (let i = 0; i < n; i++) {
+      for (let k = 0; k < 3; k++) {
+        if (sharp.has(i)) {
+          next[i * 3 + k] = p(i, k);
+          continue;
+        }
+        const m = ring[i].size;
+        const beta = m === 3 ? 3 / 16 : 3 / (8 * m);
+        let sum = 0;
+        for (const j of ring[i]) sum += p(j, k);
+        next[i * 3 + k] = (1 - m * beta) * p(i, k) + beta * sum;
+      }
+    }
+    // 元の法線は、新しい点には辺の両端の和を引き継ぐ（向きをそろえるためだけに使う）
+    const ref = new Float32Array(next.length);
+    ref.set(reference);
+    for (const e of edges.values()) for (let k = 0; k < 3; k++) ref[e.id * 3 + k] = reference[e.a * 3 + k] + reference[e.b * 3 + k];
+    positions = next;
+    reference = ref;
+    indices = new Uint32Array(faces);
+  }
+  // 元の点（番号は細分しても 0〜count-1 のまま）のずれを、となりとの平均をくり返して間の点へ配る。
+  // 縁の点は縁でとなる点だけから（縁が外へはみ出さないように）
+  const total = positions.length / 3;
+  const shift = new Float32Array(total * 3);
+  for (const [i, j] of weld.entries()) for (let k = 0; k < 3; k++) shift[j * 3 + k] = mesh.positions[i * 3 + k] - positions[j * 3 + k];
+  const links = neighbors(indices, total);
+  const faceCount = new Map();
+  for (let t = 0; t < indices.length; t += 3) {
+    for (let e = 0; e < 3; e++) {
+      const a = indices[t + e], b = indices[t + ((e + 1) % 3)];
+      const key = a < b ? `${a},${b}` : `${b},${a}`;
+      faceCount.set(key, (faceCount.get(key) ?? 0) + 1);
+    }
+  }
+  for (let i = count; i < total; i++) {
+    const edge = links[i].filter((j) => faceCount.get(i < j ? `${i},${j}` : `${j},${i}`) !== 2);
+    if (edge.length) links[i] = edge;
+  }
+  for (let round = 0; round < 6 * 2 ** levels; round++) {
+    for (let i = count; i < total; i++) {
+      for (let k = 0; k < 3; k++) {
+        let sum = 0;
+        for (const j of links[i]) sum += shift[j * 3 + k];
+        shift[i * 3 + k] = sum / links[i].length;
+      }
+    }
+  }
+  for (let i = 0; i < positions.length; i++) positions[i] += shift[i];
+  const normals = vertexNormals(positions, indices);
+  for (let i = 0; i < normals.length; i += 3) {
+    if (normals[i] * reference[i] + normals[i + 1] * reference[i + 1] + normals[i + 2] * reference[i + 2] < 0) {
+      for (let k = 0; k < 3; k++) normals[i + k] *= -1;
+    }
+  }
+  return { ...mesh, positions, normals, indices };
+}
+
 /** 点の並びの主軸（いちばん広がる向き）。共分散行列のべき乗法 */
 function principalAxis(points, count, weightOf = () => 1) {
   let cx = 0, cy = 0, cz = 0, w = 0;
@@ -259,6 +437,28 @@ export function muscleFibers(mesh, attach) {
     for (let i = 0; i < count; i++) field.set(axis, i * 3);
   }
   return settle(field, mesh, new Float32Array(count).fill(1));
+}
+
+/**
+ * 虹彩のすじ（瞳孔から放射状に走るひだ）の向き。形の中心から外への向きを面に沿わせる。
+ * 瞳孔の縁の近く（中心から半径の35%まで）は弱くして、瞳孔のまわりが筋で荒れないようにする
+ */
+export function radialFibers(mesh) {
+  const count = mesh.positions.length / 3;
+  const p = mesh.positions;
+  const center = [0, 0, 0];
+  for (let i = 0; i < p.length; i++) center[i % 3] += p[i] / count;
+  const field = new Float32Array(count * 3);
+  const strength = new Float32Array(count);
+  let reach = 0;
+  for (let i = 0; i < count; i++) reach = Math.max(reach, Math.hypot(p[i * 3] - center[0], p[i * 3 + 1] - center[1], p[i * 3 + 2] - center[2]));
+  for (let i = 0; i < count; i++) {
+    field.set([p[i * 3] - center[0], p[i * 3 + 1] - center[1], p[i * 3 + 2] - center[2]], i * 3);
+    const r = Math.hypot(field[i * 3], field[i * 3 + 1], field[i * 3 + 2]);
+    normalize(field, i * 3);
+    strength[i] = Math.min(1, Math.max(0, (r / reach - 0.35) / 0.2));
+  }
+  return settle(field, mesh, strength, 1);
 }
 
 /**

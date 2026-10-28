@@ -1,6 +1,7 @@
 import * as THREE from "three";
+import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 // @ts-expect-error 型定義の無いビルド用スクリプト
-import { bakeAo, muscleFibers, nerveFibers } from "../scripts/surface.mjs";
+import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, subdivide } from "../scripts/surface.mjs";
 
 type Mesh = { positions: Float32Array; normals: Float32Array; indices: Uint32Array };
 
@@ -59,5 +60,74 @@ describe("線維の向き（scripts/surface.mjs）", () => {
     expect(Math.abs(v.y) / v.length()).toBeGreaterThan(0.95);
     const sheet = mesh(new THREE.PlaneGeometry(0.1, 0.1, 40, 40));
     expect(direction(nerveFibers(sheet) as Float32Array, 840).length()).toBeLessThan(0.2);
+  });
+});
+
+describe("形の手直し（scripts/surface.mjs）", () => {
+  /** 2つの形を1つにつなぐ（三角形の番号をずらす） */
+  const join = (a: Mesh, b: Mesh): Mesh => {
+    const count = a.positions.length / 3;
+    return {
+      positions: new Float32Array([...a.positions, ...b.positions]),
+      normals: new Float32Array([...a.normals, ...b.normals]),
+      indices: new Uint32Array([...a.indices, ...[...b.indices].map((i) => i + count)]),
+    };
+  };
+  /** 多面体の形（三角形ごとに頂点が分かれている）を、頂点を共有する形にする */
+  const polyhedron = (geometry: THREE.BufferGeometry) => mesh(mergeVertices(geometry.deleteAttribute("normal").deleteAttribute("uv")));
+  const radii = (m: Mesh) => {
+    const out: number[] = [];
+    for (let i = 0; i < m.positions.length; i += 3) out.push(Math.hypot(m.positions[i], m.positions[i + 1], m.positions[i + 2]));
+    return out;
+  };
+
+  it("本体から離れた小さなかけらを除き、近くのものと大きいものは残す", () => {
+    const body = mesh(new THREE.SphereGeometry(0.012, 32, 24));
+    const far = polyhedron(new THREE.TetrahedronGeometry(0.0005).translate(0.055, 0, 0));
+    const near = polyhedron(new THREE.TetrahedronGeometry(0.0005).translate(0.015, 0, 0));
+    const out = dropStrays(join(join(body, far), near)) as Mesh & { bounds: number[][] };
+    expect(out.indices.length).toBe(body.indices.length + near.indices.length);
+    expect(out.bounds[1][0]).toBeLessThan(0.02);
+    const twin = join(body, mesh(new THREE.SphereGeometry(0.012, 32, 24).translate(0.06, 0, 0)));
+    expect(dropStrays(twin).indices.length).toBe(twin.indices.length);
+  });
+
+  it("細分すると三角形が4倍になり、元の点を通って球の形に近づく", () => {
+    // 角張った球（80面体）の面の真ん中は球の内側へへこんでいる。細分した形は縮まず、それより球に近い
+    const coarse = polyhedron(new THREE.IcosahedronGeometry(0.02, 1));
+    const fine = subdivide(coarse, 2) as Mesh;
+    expect(fine.indices.length).toBe(coarse.indices.length * 16);
+    const centers: number[] = [];
+    for (let t = 0; t < coarse.indices.length; t += 3) {
+      const c = [0, 1, 2].map((k) => [0, 1, 2].reduce((sum, e) => sum + coarse.positions[coarse.indices[t + e] * 3 + k] / 3, 0));
+      centers.push(Math.hypot(...c));
+    }
+    const r = radii(fine);
+    expect(Math.min(...r)).toBeGreaterThan(Math.min(...centers));
+    expect(Math.max(...r)).toBeLessThanOrEqual(0.02 + 1e-6);
+    // 法線は外向き
+    for (let i = 0; i < fine.positions.length; i += 3 * 17) {
+      const p = new THREE.Vector3(fine.positions[i], fine.positions[i + 1], fine.positions[i + 2]);
+      expect(direction(fine.normals, i / 3).dot(p)).toBeGreaterThan(0);
+    }
+  });
+
+  it("細分しても縁は縮まない（開いた形の穴が広がらない）", () => {
+    const sheet = mesh(new THREE.PlaneGeometry(0.1, 0.1, 4, 4));
+    const fine = subdivide(sheet, 1) as Mesh;
+    let reach = 0;
+    for (let i = 0; i < fine.positions.length; i += 3) reach = Math.max(reach, Math.abs(fine.positions[i]));
+    expect(reach).toBeCloseTo(0.05, 6);
+  });
+
+  it("虹彩のすじは中心から外へ向き、瞳孔の縁の近くは弱い", () => {
+    const disc = mesh(new THREE.RingGeometry(0.002, 0.006, 48, 6));
+    const field = radialFibers(disc) as Float32Array;
+    for (let i = 0; i < disc.positions.length / 3; i += 13) {
+      const p = new THREE.Vector3(disc.positions[i * 3], disc.positions[i * 3 + 1], 0);
+      const v = direction(field, i);
+      if (p.length() > 0.005) expect(Math.abs(v.clone().normalize().dot(p.normalize()))).toBeGreaterThan(0.95);
+      if (p.length() < 0.0021) expect(v.length()).toBeLessThan(0.05);
+    }
   });
 });

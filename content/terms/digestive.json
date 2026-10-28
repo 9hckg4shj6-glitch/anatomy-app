@@ -7,70 +7,70 @@
       "terms": [
         {
           "id": "lip", "ja": "口唇", "yomi": "こうしん", "en": "lips", "enAlt": ["lip"], "la": "labia oris",
-          "parts": ["lip"], "level": 2,
+          "parts": ["lip"], "level": 2, "color": "#c9706c", "tissue": "mucosa",
           "kanji": "くちびる",
           "etym": "lip（英語の固有語）。ラテン語 labium から labial「唇の」",
           "note": "口の入口をつくるやわらかいひだ。中に口輪筋がある。"
         },
         {
           "id": "tongue", "ja": "舌", "yomi": "した", "en": "tongue", "la": "lingua",
-          "parts": ["tongue"], "level": 1,
+          "parts": ["tongue"], "level": 1, "color": "#d27f78", "tissue": "tongue",
           "kanji": "した。熟語では「ぜつ」と読む（舌骨・舌下腺）",
           "etym": "tongue（英語の固有語）。ラテン語 lingua から lingual「舌の」、ギリシャ語 glossa から glossal",
           "note": "筋でできた器官。味を感じ、食べ物を混ぜて飲み込み、ことばを話すのに働く。"
         },
         {
           "id": "incisors", "ja": "切歯", "yomi": "せっし", "en": "incisors", "enAlt": ["incisor", "incisor teeth"], "la": "dentes incisivi",
-          "parts": ["* incisor tooth"], "level": 1,
+          "parts": ["* incisor tooth"], "level": 1, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "切る歯（前歯）",
           "etym": "incisor ← ラテン語 incidere「切り込む」",
           "note": "前歯。上下左右に2本ずつ計8本（永久歯）。食べ物をかみ切る。"
         },
         {
           "id": "canines", "ja": "犬歯", "yomi": "けんし", "en": "canines", "enAlt": ["canine", "canine teeth"], "la": "dentes canini",
-          "parts": ["* canine tooth"], "level": 1,
+          "parts": ["* canine tooth"], "level": 1, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "犬のきばのような歯（糸切り歯）",
           "etym": "canine ← ラテン語 canis「犬」",
           "note": "切歯のとなりのとがった歯。上下左右に1本ずつ計4本。根が最も長い。"
         },
         {
           "id": "premolars", "ja": "小臼歯", "yomi": "しょうきゅうし", "en": "premolars", "enAlt": ["premolar", "premolar teeth"], "la": "dentes premolares",
-          "parts": ["* premolar tooth"], "level": 2,
+          "parts": ["* premolar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "臼（うす）のような小さい歯",
           "etym": "pre-「前」＋ molar「臼歯」",
           "note": "犬歯の後ろの歯。上下左右に2本ずつ計8本。"
         },
         {
           "id": "molars", "ja": "大臼歯", "yomi": "だいきゅうし", "en": "molars", "enAlt": ["molar", "molar teeth"], "la": "dentes molares",
-          "parts": ["* molar tooth"], "level": 1,
+          "parts": ["* molar tooth"], "level": 1, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "臼（うす）のような大きい歯（奥歯）",
           "etym": "molar ← ラテン語 mola「石臼」",
           "note": "奥歯。上下左右に3本ずつ計12本（第3大臼歯＝親知らずを含む）。食べ物をすりつぶす。このモデルは第1・第2大臼歯のみ。"
         },
         {
           "id": "gingiva", "ja": "歯肉", "yomi": "しにく", "en": "gingiva", "enAlt": ["gums", "gum"], "la": "gingiva",
-          "parts": ["gingiva of upper jaw", "gingiva of lower jaw"], "level": 2,
+          "parts": ["gingiva of upper jaw", "gingiva of lower jaw"], "level": 2, "color": "#e2948e", "tissue": "mucosa",
           "kanji": "歯ぐき",
           "etym": "gingiva ← ラテン語「歯ぐき」",
           "note": "歯の根もとと歯槽骨をおおう粘膜。"
         },
         {
           "id": "parotid-gland", "ja": "耳下腺", "yomi": "じかせん", "en": "parotid gland", "la": "glandula parotidea",
-          "parts": ["za:parotid gland", "za:(accessory parotid gland)"], "level": 1,
+          "parts": ["za:parotid gland", "za:(accessory parotid gland)"], "level": 1, "color": "#e0b48a", "tissue": "gland",
           "kanji": "耳の下にある腺",
           "etym": "parotid ← ギリシャ語 para-「そば」＋ otos「耳の」",
           "note": "耳の前下方にある最大の唾液腺。耳下腺管が咬筋の表面を前へ走り、頬筋を貫いて上の第2大臼歯の向かいの頬の粘膜に開く。中を顔面神経が通る。おたふくかぜで腫れる。"
         },
         {
           "id": "submandibular-gland", "ja": "顎下腺", "yomi": "がっかせん", "en": "submandibular gland", "la": "glandula submandibularis",
-          "parts": ["submandibular gland"], "level": 2,
+          "parts": ["submandibular gland"], "level": 2, "color": "#e0b48a", "tissue": "gland",
           "kanji": "下顎骨の下にある腺",
           "etym": "sub-「下」＋ mandibular「下顎の」",
           "note": "三大唾液腺の一つ。あごの下にあり、舌の下に唾液を出す。"
         },
         {
           "id": "sublingual-gland", "ja": "舌下腺", "yomi": "ぜっかせん", "en": "sublingual gland", "la": "glandula sublingualis",
-          "parts": ["sublingual gland"], "level": 2,
+          "parts": ["sublingual gland"], "level": 2, "color": "#e0b48a", "tissue": "gland",
           "kanji": "舌の下にある腺",
           "etym": "sub-「下」＋ lingual「舌の」",
           "note": "三大唾液腺で最も小さい。舌の下の口の底にある。"
@@ -228,21 +228,21 @@
       "terms": [
         {
           "id": "oral-cavity", "ja": "口腔", "yomi": "こうくう", "en": "oral cavity", "enAlt": ["mouth"], "la": "cavitas oris",
-          "parts": ["za:oral cavity"], "level": 1, "xray": true, "veil": true,
+          "parts": ["za:oral cavity"], "level": 1, "color": "#d98b86", "xray": true, "veil": true,
           "kanji": "口の中の空所（腔＝体の中の空所）",
           "etym": "oral ← ラテン語 os, oris「口」。cavity ← ラテン語 cavus「うつろな」",
           "note": "口唇から口峡（口蓋舌弓）までの空所。歯列より外の口腔前庭と、内の固有口腔に分かれる。上は口蓋、下は舌と口腔底。このモデルでは舌と口蓋の間の空間で示し、ふだんは薄く見せている。"
         },
         {
           "id": "soft-palate", "ja": "軟口蓋", "yomi": "なんこうがい", "en": "soft palate", "la": "palatum molle",
-          "parts": ["za:soft palate"], "level": 1, "xray": true, "veil": true,
+          "parts": ["za:soft palate"], "level": 1, "color": "#d98b86", "tissue": "mucosa", "xray": true, "veil": true,
           "kanji": "やわらかい口蓋（口の天井）",
           "etym": "palate ← ラテン語 palatum「口蓋」。palatine「口蓋の」",
           "note": "口蓋の後ろ約3分の1で、骨が無く筋と粘膜でできた部分。飲み込むときに持ち上がって咽頭鼻部との境をふさぎ、食べ物が鼻に入るのを防ぐ。後ろの縁の中央から口蓋垂が垂れる。"
         },
         {
           "id": "uvula", "ja": "口蓋垂", "yomi": "こうがいすい", "en": "uvula", "enAlt": ["palatine uvula"], "la": "uvula palatina",
-          "parts": ["za:uvula of palate"], "level": 1, "xray": true, "veil": true,
+          "parts": ["za:uvula of palate"], "level": 1, "color": "#d98b86", "tissue": "mucosa", "xray": true, "veil": true,
           "kanji": "口蓋から垂れ下がるもの",
           "etym": "uvula ← ラテン語「小さなぶどうの房」(uva ぶどう)",
           "note": "軟口蓋の後ろの縁の中央から垂れ下がる小さな突起（いわゆる「のどちんこ」）。片側の迷走神経がまひすると、声を出したとき口蓋垂は健康な側へ引かれる。"
@@ -277,14 +277,14 @@
         },
         {
           "id": "parotid-duct", "ja": "耳下腺管", "yomi": "じかせんかん", "en": "parotid duct", "la": "ductus parotideus",
-          "parts": ["za:parotid duct"], "level": 2,
+          "parts": ["za:parotid duct"], "level": 2, "color": "#ead9c6",
           "kanji": "耳下腺の唾液を運ぶ管",
           "etym": "parotid「耳下腺の」＋ duct ← ラテン語 ducere「導く」",
           "note": "耳下腺の前の縁から出て咬筋の表面を前へ走り、頬筋を貫いて、上の第2大臼歯に向かい合う頬の粘膜に開く管（ステノン管）。"
         },
         {
           "id": "submandibular-duct", "ja": "顎下腺管", "yomi": "がっかせんかん", "en": "submandibular duct", "la": "ductus submandibularis",
-          "parts": ["za:submandibular duct"], "level": 3, "xray": true,
+          "parts": ["za:submandibular duct"], "level": 3, "color": "#ead9c6", "xray": true,
           "kanji": "顎下腺の唾液を運ぶ管",
           "etym": "submandibular「顎下腺の」＋ duct",
           "note": "顎下腺から出て口腔底を前へ走り、舌小帯の両わきの舌下小丘に開く管（ワルトン管）。唾液の石（唾石）ができやすい。"

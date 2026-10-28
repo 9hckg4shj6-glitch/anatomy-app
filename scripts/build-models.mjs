@@ -20,7 +20,7 @@ import { dedup, meshopt, prune, quantize, reorder } from "@gltf-transform/functi
 import { MeshoptEncoder, MeshoptSimplifier } from "meshoptimizer";
 import { splitMesh } from "./split-mesh.mjs";
 import { loadHires } from "./hires.mjs";
-import { bakeAo, muscleFibers, nerveFibers, relax, simplify } from "./surface.mjs";
+import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, relax, simplify, subdivide } from "./surface.mjs";
 import { loadZa } from "./za/index.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -71,7 +71,8 @@ export function parseObj(file) {
       bounds[1][k] = Math.max(bounds[1][k], p[k]);
     }
   }
-  return { name, positions: new Float32Array(positions), normals: new Float32Array(normals), indices: new Uint32Array(indices), bounds };
+  // 本体から離れた数枚の三角形（右の角膜の中にある左眼の位置のかけらなど）は除く（surface.mjs の dropStrays）
+  return dropStrays({ name, positions: new Float32Array(positions), normals: new Float32Array(normals), indices: new Uint32Array(indices), bounds });
 }
 
 function globToRegExp(pattern) {
@@ -176,6 +177,10 @@ async function writeGlb(stem, elements, { ratio, error, ao = null, fiberOf = () 
 // 形を減らすときに許すずれ（m。surface.mjs の simplify）。骨・脳は細かく、筋は形が大きくなめらかなので少し粗く
 const DETAIL = { skeletal: 0.00012, nervous: 0.00012, muscular: 0.0004 };
 
+// 表示の前に細分してなめらかにする部品（左右を外した名前 → 回数。surface.mjs の subdivide）。
+// BodyParts3D 4.0 の舌（524面）・唇・唾液腺、Z-Anatomy の瞼板は粗く、角張って見える（3.0 の細かい形も無い）
+const SMOOTH = { tongue: 2, lip: 2, "submandibular gland": 2, "sublingual gland": 2, "superior tarsus": 2, "inferior tarsus": 2 };
+
 // 筋系の中の滑液包の色（content/terms/muscular.json）。袋なので線維を描かない
 const BURSA = "#9fc2da";
 // 関節・靱帯の系統で、線維の向きを入れない語（関節包・関節円板・半月・関節唇・髄核・恥骨結合）
@@ -200,6 +205,8 @@ function fibers(terms, resolved) {
   };
   const muscles = new Map();
   const nerves = new Set();
+  // 虹彩は瞳孔から放射状に走るすじ（語の tissue が "iris"）
+  const radial = new Set(terms.filter((term) => term.tissue === "iris").flatMap((term) => resolved.get(term.id)));
   // 部品を含む語のうち、いちばん細かい語の起始・停止を使う
   for (const term of [...terms].sort((a, b) => resolved.get(a.id).length - resolved.get(b.id).length)) {
     if (term.of) continue;
@@ -213,6 +220,7 @@ function fibers(terms, resolved) {
     }
   }
   return (id, mesh) => {
+    if (radial.has(id)) return radialFibers(mesh);
     if (nerves.has(id)) return nerveFibers(mesh);
     const attach = muscles.get(id);
     if (!attach) return null;
@@ -320,8 +328,10 @@ async function main() {
     return whole && { name: elementNames.get(id), ...splitMesh(whole, cut.normal, cut.d)[half] };
   };
   const mesh = (id) => (za?.names.has(id) ? za.mesh(id) : bpMesh(id));
-  // 3.0 の細かい形の無い筋（4.0 の粗い形のまま）は、三角形の角のでこぼこをならす
+  // 3.0 の細かい形の無い筋（4.0 の粗い形のまま）は、三角形の角のでこぼこをならす。舌・唇などの粗い形は細分する（SMOOTH）
   const shown = (id) => {
+    const levels = SMOOTH[baseName(elementNames.get(id) ?? "")];
+    if (levels) return subdivide(mesh(id), levels);
     if (za?.names.has(id)) return za.mesh(id);
     return fine(id) ?? (elementSystem.get(id) === "muscular" ? relax(bpMesh(id)) : bpMesh(id));
   };
@@ -356,12 +366,12 @@ async function main() {
     }
     if (fromZa.length && !bp.length) {
       // Z-Anatomy の形だけの系統（リンパ系）は、その GLB を系統の GLB にする（名前は -za のまま）
-      const only = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, mesh(id)]), shape);
+      const only = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, shown(id)]), shape);
       index.systems[system.id] = { url: only.url, bytes: only.bytes, elements: fromZa.length };
       console.log(`${only.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(only.bytes / 1024 / 1024).toFixed(2)} MB`);
     } else if (fromZa.length) {
       // Z-Anatomy の形の AO は、同じ系統の BodyParts3D の形にもさえぎらせる（BodyParts3D の GLB には Z-Anatomy 由来のものを入れない）
-      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, mesh(id)]), { ...shape, occluders: [...meshes.values()] });
+      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, shown(id)]), { ...shape, occluders: [...meshes.values()] });
       index.systems[system.id].za = { url: extra.url, bytes: extra.bytes, elements: fromZa.length };
       console.log(`${extra.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(extra.bytes / 1024 / 1024).toFixed(2)} MB`);
     }

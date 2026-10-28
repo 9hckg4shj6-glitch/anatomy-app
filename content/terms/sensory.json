@@ -14,56 +14,56 @@
         },
         {
           "id": "cornea", "ja": "角膜", "yomi": "かくまく", "en": "cornea", "la": "cornea",
-          "parts": ["cornea"], "level": 1,
+          "parts": ["cornea"], "level": 1, "color": "#dfe9ee", "tissue": "clear",
           "kanji": "角（つの）のように硬く透明な膜",
           "etym": "cornea ← ラテン語 corneus「角（つの）でできた」",
           "note": "眼球の前面をおおう透明な膜。光を大きく曲げてピントの大部分をつくる。血管がない。"
         },
         {
           "id": "sclera", "ja": "強膜", "yomi": "きょうまく", "en": "sclera", "la": "sclera",
-          "parts": ["sclera"], "level": 1,
+          "parts": ["sclera"], "level": 1, "color": "#ece6dc", "tissue": "sclera",
           "kanji": "強く硬い膜",
           "etym": "sclera ← ギリシャ語 skleros「硬い」",
           "note": "眼球の後ろ5分の6をおおう白く硬い膜。いわゆる白目。"
         },
         {
           "id": "iris", "ja": "虹彩", "yomi": "こうさい", "en": "iris", "la": "iris",
-          "parts": ["iris"], "level": 1, "xray": true,
+          "parts": ["iris"], "level": 1, "color": "#86593a", "tissue": "iris", "xray": true,
           "kanji": "虹のような彩り（瞳の色の部分）",
           "etym": "iris ← ギリシャ神話の虹の女神イリス",
           "note": "角膜の奥にある円盤状の膜。中央の穴が瞳孔で、大きさを変えて入る光の量を調節する。"
         },
         {
           "id": "ciliary-body", "ja": "毛様体", "yomi": "もうようたい", "en": "ciliary body", "la": "corpus ciliare",
-          "parts": ["corona ciliaris"], "level": 2, "xray": true,
+          "parts": ["corona ciliaris"], "level": 2, "color": "#4a3029", "xray": true,
           "kanji": "まつ毛（毛）のような突起が並ぶ体",
           "etym": "ciliary ← ラテン語 cilium「まつ毛」",
           "note": "虹彩の根もとの輪状の部分。毛様体筋で水晶体の厚さを変えてピントを合わせ、房水をつくる。"
         },
         {
           "id": "lens", "ja": "水晶体", "yomi": "すいしょうたい", "en": "lens", "la": "lens",
-          "parts": ["lens"], "level": 1, "xray": true,
+          "parts": ["lens"], "level": 1, "color": "#f2e6c4", "tissue": "clear", "xray": true,
           "kanji": "水晶のように透明な体",
           "etym": "lens ← ラテン語「レンズ豆」（形が似ている）",
           "note": "虹彩の後ろにある凸レンズ。厚さを変えてピントを合わせる。濁ると白内障。"
         },
         {
           "id": "vitreous-body", "ja": "硝子体", "yomi": "しょうしたい", "en": "vitreous body", "la": "corpus vitreum",
-          "parts": ["vitreous body"], "level": 2, "xray": true,
+          "parts": ["vitreous body"], "level": 2, "color": "#e8eef0", "tissue": "clear", "xray": true,
           "kanji": "硝子（ガラス）のように透明な体",
           "etym": "vitreous ← ラテン語 vitrum「ガラス」",
           "note": "水晶体の後ろ、眼球の大部分をしめる透明なゼリー状の物質。"
         },
         {
           "id": "retina", "ja": "網膜", "yomi": "もうまく", "en": "retina", "la": "retina",
-          "parts": ["optic part of retina"], "level": 1, "xray": true,
+          "parts": ["optic part of retina"], "level": 1, "color": "#d98a6a", "tissue": "retina", "xray": true,
           "kanji": "網のような膜",
           "etym": "retina ← ラテン語 rete「網」",
           "note": "眼球のいちばん内側の膜。光を感じる視細胞があり、カメラのフィルムにあたる。"
         },
         {
           "id": "choroid", "ja": "脈絡膜", "yomi": "みゃくらくまく", "en": "choroid", "la": "choroidea",
-          "parts": ["choroid"], "level": 2, "xray": true,
+          "parts": ["choroid"], "level": 2, "color": "#5a2f2b", "xray": true,
           "kanji": "血管（脈）がからみあう（絡）膜",
           "etym": "choroid ← ギリシャ語 chorion「膜（胎盤の膜）」＋ -oid",
           "note": "強膜と網膜の間にある、血管と色素の多い膜。網膜に栄養を送り、余分な光を吸収する。"
@@ -76,70 +76,70 @@
       "terms": [
         {
           "id": "superior-rectus", "ja": "上直筋", "yomi": "じょうちょっきん", "en": "superior rectus", "la": "musculus rectus superior",
-          "parts": ["superior rectus"], "level": 2,
+          "parts": ["superior rectus"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の上をまっすぐ走る筋",
           "etym": "superior「上の」＋ rectus「まっすぐな」",
           "note": "眼球を上へ向ける外眼筋。動眼神経が支配する。"
         },
         {
           "id": "inferior-rectus", "ja": "下直筋", "yomi": "かちょっきん", "en": "inferior rectus", "la": "musculus rectus inferior",
-          "parts": ["inferior rectus"], "level": 2,
+          "parts": ["inferior rectus"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の下をまっすぐ走る筋",
           "etym": "inferior「下の」＋ rectus",
           "note": "眼球を下へ向ける外眼筋。動眼神経が支配する。"
         },
         {
           "id": "medial-rectus", "ja": "内側直筋", "yomi": "ないそくちょっきん", "en": "medial rectus", "la": "musculus rectus medialis",
-          "parts": ["medial rectus"], "level": 2,
+          "parts": ["medial rectus"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の内側（鼻側）をまっすぐ走る筋",
           "etym": "medial「内側の」＋ rectus",
           "note": "眼球を内側（鼻側）へ向ける外眼筋。動眼神経が支配する。"
         },
         {
           "id": "lateral-rectus", "ja": "外側直筋", "yomi": "がいそくちょっきん", "en": "lateral rectus", "la": "musculus rectus lateralis",
-          "parts": ["lateral rectus"], "level": 2,
+          "parts": ["lateral rectus"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の外側（耳側）をまっすぐ走る筋",
           "etym": "lateral「外側の」＋ rectus",
           "note": "眼球を外側へ向ける外眼筋。外転神経が支配する。"
         },
         {
           "id": "superior-oblique", "ja": "上斜筋", "yomi": "じょうしゃきん", "en": "superior oblique", "la": "musculus obliquus superior",
-          "parts": ["superior oblique"], "level": 2,
+          "parts": ["superior oblique"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の上を斜めにつく筋",
           "etym": "superior ＋ oblique「斜めの」",
           "note": "滑車を通って向きを変え、眼球を下外方へ向ける外眼筋。滑車神経が支配する。"
         },
         {
           "id": "inferior-oblique", "ja": "下斜筋", "yomi": "かしゃきん", "en": "inferior oblique", "la": "musculus obliquus inferior",
-          "parts": ["inferior oblique"], "level": 2,
+          "parts": ["inferior oblique"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の下を斜めにつく筋",
           "etym": "inferior ＋ oblique",
           "note": "眼球を上外方へ向ける外眼筋。動眼神経が支配する。"
         },
         {
           "id": "levator-palpebrae-superioris", "ja": "上眼瞼挙筋", "yomi": "じょうがんけんきょきん", "en": "levator palpebrae superioris", "la": "musculus levator palpebrae superioris",
-          "parts": ["levator palpebrae superioris"], "level": 3,
+          "parts": ["levator palpebrae superioris"], "level": 3, "color": "#c75b4f",
           "kanji": "上のまぶた（眼瞼）を挙げる筋",
           "etym": "levator「持ち上げるもの」＋ palpebrae「まぶたの」＋ superioris「上の」",
           "note": "上まぶたを持ち上げて目を開く。動眼神経が支配し、まひすると眼瞼下垂になる。"
         },
         {
           "id": "lacrimal-gland", "ja": "涙腺", "yomi": "るいせん", "en": "lacrimal gland", "la": "glandula lacrimalis",
-          "parts": ["lacrimal gland"], "level": 2,
+          "parts": ["lacrimal gland"], "level": 2, "color": "#d8a48c", "tissue": "gland",
           "kanji": "涙をつくる腺",
           "etym": "lacrimal ← lacrima「涙」",
           "note": "眼球の上外側にある腺。涙を出して眼の表面をうるおす。"
         },
         {
           "id": "lacrimal-sac", "ja": "涙嚢", "yomi": "るいのう", "en": "lacrimal sac", "la": "saccus lacrimalis",
-          "parts": ["lacrimal sac"], "level": 3,
+          "parts": ["lacrimal sac"], "level": 3, "color": "#e3b0a6", "tissue": "mucosa",
           "kanji": "涙をためる袋",
           "etym": "lacrimal ＋ sac「袋」",
           "note": "目頭の奥にある袋。涙点から入った涙をためて鼻涙管へ流す。"
         },
         {
           "id": "nasolacrimal-duct", "ja": "鼻涙管", "yomi": "びるいかん", "en": "nasolacrimal duct", "la": "ductus nasolacrimalis",
-          "parts": ["nasolacrimal duct"], "level": 3,
+          "parts": ["nasolacrimal duct"], "level": 3, "color": "#e3b0a6", "tissue": "mucosa",
           "kanji": "涙を鼻へ流す管",
           "etym": "naso-「鼻」＋ lacrimal「涙の」＋ duct",
           "note": "涙嚢から下鼻道へ涙を流す管。泣くと鼻水が出るのはこのため。"
@@ -218,28 +218,28 @@
       "terms": [
         {
           "id": "ciliary-zonule", "ja": "毛様体小帯", "yomi": "もうようたいしょうたい", "en": "ciliary zonule", "enAlt": ["zonular fibres", "suspensory ligament of lens"], "la": "zonula ciliaris",
-          "parts": ["suspensory ligament of lens"], "level": 2, "xray": true,
+          "parts": ["suspensory ligament of lens"], "level": 2, "color": "#e9e4d6", "tissue": "clear", "xray": true,
           "kanji": "毛様体から出る小さな帯",
           "etym": "ciliary「毛様体の」＋ zonule「小さな帯」（ラテン語 zonula）",
           "note": "毛様体と水晶体のふちをつなぐ細い線維の輪（チン小帯）。毛様体筋がゆるむと小帯が張って水晶体が薄くなり（遠くを見る）、縮むと小帯がゆるんで水晶体が厚くなる（近くを見る）。"
         },
         {
           "id": "common-tendinous-ring", "ja": "総腱輪", "yomi": "そうけんりん", "en": "common tendinous ring", "la": "anulus tendineus communis",
-          "parts": ["common tendinous ring"], "level": 2, "xray": true,
+          "parts": ["common tendinous ring"], "level": 2, "color": "#e6dfcf", "tissue": "ligament", "xray": true,
           "kanji": "共通の腱の輪",
           "etym": "common「共通の」＋ tendinous「腱の」＋ ring「輪」",
           "note": "眼窩の奥で視神経管と上眼窩裂の一部を囲む腱の輪。4つの直筋がここから起こる。中を視神経・眼動脈・動眼神経・外転神経などが通る。"
         },
         {
           "id": "tarsal-plates", "ja": "瞼板", "yomi": "けんばん", "en": "tarsal plates", "enAlt": ["tarsus"], "la": "tarsi",
-          "parts": ["za:superior tarsus", "za:inferior tarsus"], "level": 2,
+          "parts": ["za:superior tarsus", "za:inferior tarsus"], "level": 2, "color": "#eadfcd", "tissue": "ligament",
           "kanji": "まぶたの板",
           "etym": "tarsus ← ギリシャ語 tarsos「平たい板・すのこ」",
           "note": "上下のまぶたの芯になる密な結合組織の板。中に瞼板腺（マイボーム腺）が並び、涙が蒸発しないよう脂を出す。上瞼板に上眼瞼挙筋が付く。"
         },
         {
           "id": "lacrimal-canaliculus", "ja": "涙小管", "yomi": "るいしょうかん", "en": "lacrimal canaliculus", "la": "canaliculus lacrimalis",
-          "parts": ["lacrimal canaliculus"], "level": 2,
+          "parts": ["lacrimal canaliculus"], "level": 2, "color": "#e3b0a6", "tissue": "mucosa",
           "kanji": "涙の小さな管",
           "etym": "lacrimal「涙の」（ラテン語 lacrima）＋ canaliculus「小さな管」",
           "note": "まぶたの内側の端の小さな穴（涙点）から涙嚢へ涙を運ぶ上下の細い管。涙は涙腺→眼の表面→涙点→涙小管→涙嚢→鼻涙管→下鼻道と流れる。"

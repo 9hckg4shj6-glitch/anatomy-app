@@ -27,6 +27,12 @@ export interface Term {
   note: string;
   /** 3Dでの色（静脈の青など）。無ければ系統の色 */
   color?: string;
+  /**
+   * 3Dでの質感（src/viewer.ts の TISSUES）。無ければ系統から決める。眼と口の形を本物に近く見せるため:
+   * clear＝透明（角膜・水晶体・硝子体）、sclera＝白くなめらか、iris＝放射状のすじ、retina＝内側を暗く（瞳孔が黒く見える）、
+   * tooth＝エナメル、mucosa＝湿った粘膜、tongue＝乳頭のざらつき、gland＝小葉の凹凸、ligament＝白く光る密な線維
+   */
+  tissue?: Tissue;
   /** ほかの構造に隠れる部位。強調するとき周りを半透明にし、タップで答える問題は出さない */
   xray?: boolean;
   /** ほかの構造をおおったりふさいだりする形（大網・口腔・鼻腔など）。ふだんはごく薄く見せてタップでは選べず、強調したときだけ不透明にする（xray と一緒に使う） */
@@ -52,6 +58,8 @@ export interface Term {
   system: string;
   unit: string;
 }
+
+export type Tissue = "clear" | "sclera" | "iris" | "retina" | "tooth" | "mucosa" | "tongue" | "gland" | "ligament";
 
 export interface Unit {
   id: string;

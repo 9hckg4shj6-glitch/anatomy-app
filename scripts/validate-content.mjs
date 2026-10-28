@@ -50,6 +50,7 @@ const Term = z.strictObject({
   etym: z.string().min(1).optional(),
   note: z.string().min(10),
   color: z.string().regex(/^#[0-9a-f]{6}$/).optional(),
+  tissue: z.enum(["clear", "sclera", "iris", "retina", "tooth", "mucosa", "tongue", "gland", "ligament"]).optional(),
   xray: z.literal(true).optional(),
   veil: z.literal(true).optional(),
   check: z.literal(true).optional(),

@@ -56,8 +56,14 @@ interface Anchor {
 /**
  * 組織ごとの質感。bump は細かい凹凸の深さ（mm）、grain はざらつきの粒の大きさ（m）、mottle は色むらの強さ、
  * deepen は色を濃くする割合（筋の赤を深く）、clearcoat はぬれた表面のつや。筋・神経の線維は GLB の頂点の向き（surfaceFiber）に沿って描く。
+ * fiberScale は線維の太さの倍率（虹彩のすじは筋線維より細い）。opacity があると透明（角膜・水晶体。映り込みの明るい所ほど濃く）。
+ * inside があると、もとの色で断面でないときにその明るさまで暗く描く（網膜。眼球の中は光が届かないので、瞳孔の奥が黒く見える。
+ * 網膜は厚みのある殻で、瞳孔から見えるのは内側の面。もとの色のとき外側の面は脈絡膜・強膜に隠れて見えない）
  */
-interface Tissue { roughness: number; clearcoat: number; sheen: number; bump: number; grain: number; mottle: number; deepen: number; fibers?: boolean }
+interface Tissue {
+  roughness: number; clearcoat: number; sheen: number; bump: number; grain: number; mottle: number; deepen: number;
+  fibers?: boolean; fiberScale?: number; opacity?: number; inside?: number;
+}
 const TISSUES: Record<string, Tissue> = {
   bone: { roughness: 0.62, clearcoat: 0, sheen: 0, bump: 0.05, grain: 0.012, mottle: 0.1, deepen: 0 },
   cartilage: { roughness: 0.38, clearcoat: 0.35, sheen: 0, bump: 0.015, grain: 0.015, mottle: 0.06, deepen: 0 },
@@ -67,6 +73,21 @@ const TISSUES: Record<string, Tissue> = {
   organ: { roughness: 0.45, clearcoat: 0.45, sheen: 0, bump: 0.03, grain: 0.015, mottle: 0.1, deepen: 0.2 },
   // 靱帯・筋膜・腱膜: 白く光る密な線維（向きは形の主軸）
   ligament: { roughness: 0.38, clearcoat: 0.4, sheen: 0.3, bump: 0.035, grain: 0.01, mottle: 0.05, deepen: 0, fibers: true },
+  // 以下は眼と口（語の tissue）。透明な角膜・水晶体・硝子体
+  clear: { roughness: 0.03, clearcoat: 1, sheen: 0, bump: 0.002, grain: 0.02, mottle: 0, deepen: 0, opacity: 0.12 },
+  // 強膜（白目）: 白くなめらかでぬれている
+  sclera: { roughness: 0.3, clearcoat: 0.8, sheen: 0, bump: 0.006, grain: 0.02, mottle: 0.05, deepen: 0 },
+  // 虹彩: 瞳孔から放射状に走る細かいすじ（向きは GLB の頂点に入れてある）
+  iris: { roughness: 0.62, clearcoat: 0.2, sheen: 0.2, bump: 0.1, grain: 0.004, mottle: 0.22, deepen: 0.15, fibers: true, fiberScale: 0.35 },
+  retina: { roughness: 0.45, clearcoat: 0.45, sheen: 0, bump: 0.02, grain: 0.015, mottle: 0.12, deepen: 0.1, inside: 0.04 },
+  // 歯: エナメル質のつや
+  tooth: { roughness: 0.2, clearcoat: 0.9, sheen: 0, bump: 0.008, grain: 0.012, mottle: 0.07, deepen: 0 },
+  // 口唇・歯肉・口蓋などの粘膜: ぬれて柔らかい
+  mucosa: { roughness: 0.36, clearcoat: 0.65, sheen: 0.15, bump: 0.03, grain: 0.012, mottle: 0.12, deepen: 0.12 },
+  // 舌: 舌乳頭のざらつき（ビロードのような鈍いつや）
+  tongue: { roughness: 0.62, clearcoat: 0.3, sheen: 0.5, bump: 0.22, grain: 0.022, mottle: 0.14, deepen: 0.12 },
+  // 唾液腺・涙腺: 小葉の集まった凹凸
+  gland: { roughness: 0.5, clearcoat: 0.3, sheen: 0, bump: 0.16, grain: 0.05, mottle: 0.18, deepen: 0.08 },
 };
 const TISSUE_OF: Record<string, string> = { skeletal: "bone", joints: "ligament", muscular: "muscle", cardiovascular: "vessel", nervous: "organ" };
 /** 筋系の中の筋膜・支帯・腱膜と滑液包の色（content/terms/muscular.json） */
@@ -129,6 +150,7 @@ uniform float surfBump;
 uniform float surfGrain;
 uniform float surfMottle;
 uniform float surfDeepen;
+uniform float surfFiberScale;
 varying float vSurfAo;
 varying vec3 vSurfFiber;
 varying vec3 vSurfPos;
@@ -156,8 +178,8 @@ float surfaceDetail(inout vec3 color) {
   float fine = 0.0, coarse = 0.0;
   for (int i = 0; i < 6; i++) {
     float t = float(i) - 2.5;
-    fine += surfNoiseAt(p + f * (t * 0.0011), 0.007);
-    coarse += surfNoiseAt(p + f * (t * 0.005), 0.03);
+    fine += surfNoiseAt(p + f * (t * 0.0011 * surfFiberScale), 0.007 * surfFiberScale);
+    coarse += surfNoiseAt(p + f * (t * 0.005 * surfFiberScale), 0.03 * surfFiberScale);
   }
   // fine は細い線維（約1mm）、coarse は線維の束（約4mm）。6つの和なので小さめの係数で戻す
   float fibers = fine * 0.3 + coarse * 0.45;
@@ -195,6 +217,10 @@ vSpotNormal = normalize(mat3(modelMatrix) * objectNormal);
     .replace("#include <common>", `#include <common>\n${SURFACE_FRAGMENT}`)
     .replace("#include <color_fragment>", `#include <color_fragment>
 float surfHeight = surfaceDetail(diffuseColor.rgb);
+#ifdef SURF_CLEAR
+// 透明な組織は光をほとんど散らさない（地の色で白く濁らないように）
+diffuseColor.rgb *= 0.08;
+#endif
 #ifdef USE_SPOTS
 // いちばん内側に入っている球で塗る（腸骨のように球を並べた範囲で、重なった所に縁の線が出ないように）
 float spotBest = -1.0, spotInside = 0.0, spotRim = 0.0;
@@ -221,6 +247,13 @@ normal = surfacePerturb(normal, surfHeight, faceDirection);`)
     // 断面（SURF_SECTION）: 切った所から見える形の裏側を、組織の色で平らに塗って切り口にする
     .replace("#include <opaque_fragment>", `#ifdef SURF_SECTION
 if (!gl_FrontFacing) outgoingLight = diffuseColor.rgb * 0.72;
+#elif defined(SURF_INSIDE)
+// 眼球の中は光が届かないので暗く描く
+outgoingLight *= SURF_INSIDE;
+#endif
+#ifdef SURF_CLEAR
+// 透明な組織: 地の色はうすく、映り込み・つやの明るい所ほど濃く見せる（ガラスのように）
+diffuseColor.a = clamp(diffuseColor.a + dot(outgoingLight, vec3(0.3, 0.59, 0.11)) * 0.9, 0.0, 0.92);
 #endif
 #include <opaque_fragment>`)
     .replace("#include <aomap_fragment>", `#include <aomap_fragment>
@@ -685,7 +718,10 @@ export class AnatomyViewer {
   private tissue(mesh: THREE.Mesh, color: string): string {
     if (mesh.userData.cartilage) return "cartilage";
     const system = mesh.userData.system as string;
-    const own = termById.get(this.elementTerms.get(mesh.name)?.[0] ?? "")?.color;
+    const term = termById.get(this.elementTerms.get(mesh.name)?.[0] ?? "");
+    // 眼と口の語は語の質感で。透明な組織は、強調・進捗の色のときは不透明にする（色が見えるように）
+    if (term?.tissue) return term.tissue === "clear" && !NATURAL.has(color) ? "organ" : term.tissue;
+    const own = term?.color;
     if (own === SHEET || system === "joints") return "ligament";
     if (own === BURSA) return "organ";
     if (mesh.userData.fibers) return system === "nervous" ? "nerve" : "muscle";
@@ -703,9 +739,18 @@ export class AnatomyViewer {
         clearcoat: kind.clearcoat, clearcoatRoughness: 0.32,
         sheen: kind.sheen, sheenRoughness: 0.55, sheenColor: new THREE.Color(color).lerp(new THREE.Color("#ffffff"), 0.5),
       });
-      material.defines = { ...(kind.fibers ? { SURF_FIBERS: "" } : {}), ...(spots ? { USE_SPOTS: "" } : {}), ...(cut ? { SURF_SECTION: "" } : {}) };
+      material.defines = {
+        ...(kind.fibers ? { SURF_FIBERS: "" } : {}), ...(spots ? { USE_SPOTS: "" } : {}), ...(cut ? { SURF_SECTION: "" } : {}),
+        ...(kind.inside !== undefined && !cut && NATURAL.has(color) ? { SURF_INSIDE: kind.inside.toFixed(3) } : {}),
+        ...(kind.opacity ? { SURF_CLEAR: "" } : {}),
+      };
       // 断面では裏側も描く（切り口から見える内側の面が切り口の色になる）
       if (cut) material.side = THREE.DoubleSide;
+      if (kind.opacity) {
+        material.transparent = true;
+        material.opacity = kind.opacity;
+        material.depthWrite = false;
+      }
       // GLB に AO・線維の値が無い形（念のため）は、さえぎる物なし・線維なしとして描く
       // （three.js は型に無いが、どの材質でもこの値を見る）
       Object.assign(material, { defaultAttributeValues: { surfaceAo: [1], surfaceFiber: [0, 0, 0] } });
@@ -715,6 +760,7 @@ export class AnatomyViewer {
         surfGrain: { value: kind.grain },
         surfMottle: { value: kind.mottle },
         surfDeepen: { value: NATURAL.has(color) ? kind.deepen : 0 },
+        surfFiberScale: { value: kind.fiberScale ?? 1 },
       };
       material.onBeforeCompile = (shader) => {
         Object.assign(shader.uniforms, uniforms, spots ? this.spotUniforms : {});
