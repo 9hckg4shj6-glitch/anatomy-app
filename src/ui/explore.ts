@@ -1,5 +1,6 @@
 import { speak } from "../audio";
-import { isDrawn, landmarksOf, loadAttachments, pins, regionSystems, systems, termById, terms, type Term } from "../content";
+import { isDrawn, landmarksOf, loadAttachments, pins, regionSystems, systems, termById, terms, units, type Term } from "../content";
+import { db, nowIso } from "../db";
 import { h } from "../dom";
 import { landmarkAt } from "../landmarks";
 import { relatedTerms } from "../related";
@@ -17,10 +18,12 @@ const SECTION_AXES: { axis: Section["axis"]; label: string; keep: Section["keep"
   { axis: "z", label: "前頭断", keep: -1 },
 ];
 
+const OPEN_FOLDERS = "exploreOpenFolders";
+
 /** 図鑑：系統を選んで自由に回し、タップした部位や検索した語を調べる。termId があればその語を選んで開く */
 export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   const { viewer, panel, tools, index } = ctx;
-  const attachments = await loadAttachments();
+  const [attachments, openSetting] = await Promise.all([loadAttachments(), db.settings.get(OPEN_FOLDERS)]);
   // 局所解剖は3Dの部品を持たないが、語の一覧を出すために系統のボタンに入れる（語を選ぶと、境界と中を通る語の系統を読み込む）
   const available = systems.filter((system) => index.systems[system.id] || system.id === "regional");
   const opened = termById.get(termId);
@@ -153,22 +156,66 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   };
 
   const search = h("input", { class: "search", type: "search", placeholder: "日本語・読み・英語・ラテン語で検索", "aria-label": "検索" });
-  const list = h("ul", { class: "term-list" });
+  const list = h("div", { class: "explore-list" });
   const detail = h("div", { class: "detail" });
+  /** 一覧の行（選んだ語の行を強調するため） */
+  const rows = new Map<string, HTMLElement>();
+  // 開いたフォルダーは覚えておき、図鑑に戻ったときも開いたままにする
+  const openIds = new Set(Array.isArray(openSetting?.value) ? (openSetting.value as string[]) : []);
+
+  const termRows = (items: Term[]) => h("ul", { class: "term-list" }, ...items.map((term) => {
+    const row = h("button", { type: "button", class: term === selected ? "term-row on" : "term-row", onClick: () => select(term) },
+      h("span", {}, term.ja), h("span", { class: "en", lang: "en" }, term.en));
+    rows.set(term.id, row);
+    return h("li", {}, row);
+  }));
+  const folder = (id: string, className: string, title: (Node | string)[], summary: string, content: () => HTMLElement) => {
+    // 中身は開いたときに作る（全部で千語を超えるので）
+    const box = h("details", {
+      class: className, open: openIds.has(id),
+      ontoggle: () => {
+        if (box.open && box.children.length < 2) box.append(content());
+        if (box.open === openIds.has(id)) return;
+        if (box.open) openIds.add(id);
+        else openIds.delete(id);
+        void db.settings.put({ key: OPEN_FOLDERS, value: [...openIds], updatedAt: nowIso() });
+      },
+    },
+      h("summary", {}, h("span", { class: "folder-title" }, ...title), h("span", { class: "folder-count" }, summary)),
+    );
+    if (box.open) box.append(content());
+    return box;
+  };
+
+  /** 一覧: 検索したときは当てはまる語を並べ、ふだんは系統→レッスンのフォルダーにまとめる */
+  const renderList = () => {
+    const query = search.value.trim().toLowerCase();
+    rows.clear();
+    if (query) {
+      const matches = terms.filter((term) => [term.ja, term.yomi, term.en, term.la ?? "", ...(term.enAlt ?? [])].some((text) => text.toLowerCase().includes(query)));
+      list.replaceChildren(matches.length ? termRows(matches) : h("p", { class: "muted" }, "見つかりませんでした。"));
+      return;
+    }
+    list.replaceChildren(...systems.flatMap((system) => {
+      const inSystem = units.filter((unit) => unit.system === system.id);
+      if (!inSystem.length) return [];
+      const total = inSystem.reduce((sum, unit) => sum + unit.terms.length, 0);
+      return [folder(system.id, "system folder",
+        [h("span", { class: "swatch", style: `background:${system.color}` }), system.ja],
+        `${inSystem.length}レッスン・${total}語`,
+        () => h("div", { class: "subfolders" }, ...inSystem.map((unit) =>
+          folder(unit.id, "subfolder", [unit.title], `${unit.terms.length}語`, () => termRows(unit.terms)))),
+      )];
+    }));
+  };
 
   const chips = (items: Term[]) => h("div", { class: "chip-list" },
     ...items.map((item) => h("button", { class: "chip", type: "button", onClick: () => select(item) }, item.ja)));
 
   const render = () => {
-    const query = search.value.trim().toLowerCase();
-    // 骨・器官の部位は一覧が長くなるので、検索したときと骨・器官を選んだときだけ出す
-    const matches = terms.filter((term) =>
-      (query ? [term.ja, term.yomi, term.en, term.la ?? "", ...(term.enAlt ?? [])].some((text) => text.toLowerCase().includes(query)) : !term.of && shown.has(term.system)));
-    list.replaceChildren(...matches.map((term) => h("li", {},
-      h("button", { type: "button", class: term === selected ? "term-row on" : "term-row", onClick: () => select(term) },
-        h("span", {}, term.ja), h("span", { class: "en", lang: "en" }, term.en)))));
+    for (const [id, row] of rows) row.classList.toggle("on", id === selected?.id);
     if (!selected) {
-      detail.replaceChildren(h("p", { class: "muted" }, section ? "切り口や3Dの部位をタップするか、下の一覧から選んでください。" : "3Dの部位をタップするか、下の一覧から選んでください。"));
+      detail.replaceChildren(h("p", { class: "muted" }, section ? "切り口や3Dの部位をタップするか、下の系統のフォルダーや検索から選んでください。" : "3Dの部位をタップするか、下の系統のフォルダーや検索から選んでください。"));
       return;
     }
     const term = selected;
@@ -216,7 +263,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
         h("button", { class: "ghost-button", type: "button", onClick: () => { select(null); if (section) viewer.viewSection(); else viewer.overview(); } }, "選択をやめる"),
       )));
   };
-  search.addEventListener("input", render);
+  search.addEventListener("input", renderList);
 
   viewer.onPick = (elementId, point) => {
     const termId = elementId ? viewer.termsOf(elementId)[0] : null;
@@ -227,6 +274,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   };
   ctx.hint("タップで名前を表示");
   panel.replaceChildren(sectionBox, detail, search, list);
+  renderList();
   render();
   await apply();
   if (opened) select(opened);

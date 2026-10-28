@@ -193,6 +193,18 @@ button { font: inherit; color: inherit; }
 }
 .term-row.on { background: var(--surface); font-weight: 600; }
 .term-row .en { color: var(--muted); font-size: 14px; }
+/* 図鑑の一覧: 系統のフォルダーの中に、レッスンごとの小さなフォルダー */
+.explore-list .subfolders { padding: 0 10px 10px; display: grid; gap: 6px; }
+.subfolder { border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+.subfolder summary {
+  display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px;
+  list-style: none; cursor: pointer; font-size: 15px; font-weight: 600; -webkit-tap-highlight-color: transparent;
+}
+.subfolder summary::-webkit-details-marker { display: none; }
+.subfolder summary::before { content: "▸"; color: var(--muted); transition: transform 0.15s; }
+.subfolder[open] summary::before { transform: rotate(90deg); }
+.subfolder .term-list { padding: 0 8px 4px; }
+.subfolder li:last-child .term-row { border-bottom: 0; }
 
 .legend { list-style: none; padding: 0; display: grid; gap: 6px; font-size: 14px; }
 .legend li { display: flex; align-items: center; gap: 8px; }
