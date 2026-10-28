@@ -2,12 +2,14 @@ import { termById } from "../content";
 import { db, type ReviewEvent } from "../db";
 import { State } from "../fsrs";
 import { h } from "../dom";
+import { examByKey, examFacets, isExamKey } from "../exam";
 import { isRootKey, rootByKey } from "../roots";
 import { preferences } from "../settings";
 import { buildQueue, facetsFor, ROOT_FACETS, type QueueItem } from "../study";
 import type { AppContext } from "./context";
 import { nextLesson } from "./home";
 import { ask, type Outcome } from "./quiz";
+import { askExam } from "./exam";
 import { askRoot } from "./roots";
 
 async function todayQueue(now = new Date()): Promise<QueueItem[]> {
@@ -19,15 +21,22 @@ async function todayQueue(now = new Date()): Promise<QueueItem[]> {
     db.reviewEvents.where("reviewedAt").aboveOrEqual(startOfDay.toISOString()).toArray(),
   ]);
   const newToday = today.filter((event) => event.isNew && event.source === "review").length;
-  // 内容の更新で消えた語の記録は出さない。語根カード（"root:…"）も一緒に出す
-  const known = learned.filter((item) => termById.has(item.termId) || rootByKey.has(item.termId));
+  // 内容の更新で消えた語の記録は出さない。語根カード（"root:…"）と骨学試験（"exam:…"）も一緒に出す
+  const known = learned.filter((item) => termById.has(item.termId) || rootByKey.has(item.termId) || examByKey.has(item.termId));
   const locateLearned = new Set(schedules.filter((s) => s.facet === "locate" && s.state === State.Review).map((s) => s.termId));
-  return buildQueue(known, schedules, now, preferences.newPerDay - newToday, (id) => (isRootKey(id) ? ROOT_FACETS : facetsFor(termById.get(id), locateLearned.has(id))));
+  const facetsOf = (id: string) => {
+    if (isRootKey(id)) return ROOT_FACETS;
+    if (isExamKey(id)) return examFacets[examByKey.get(id)!.kind];
+    return facetsFor(termById.get(id), locateLearned.has(id));
+  };
+  return buildQueue(known, schedules, now, preferences.newPerDay - newToday, facetsOf);
 }
 
-/** 語の問題か語根の問題かで出し分ける */
+/** 語の問題か語根の問題か骨学試験の問題かで出し分ける */
 export function askItem(ctx: AppContext, item: QueueItem, source: ReviewEvent["source"], progress: string): Promise<Outcome> {
-  return isRootKey(item.termId) ? askRoot(ctx, item, source, progress) : ask(ctx, item, source, progress);
+  if (isRootKey(item.termId)) return askRoot(ctx, item, source, progress);
+  if (isExamKey(item.termId)) return askExam(ctx, item, source, progress);
+  return ask(ctx, item, source, progress);
 }
 
 export async function dueCount(): Promise<number> {
@@ -59,9 +68,10 @@ export async function review(ctx: AppContext): Promise<void> {
     missed.size ? h("h3", {}, "まちがえた語（タップで図鑑）") : "",
     missed.size ? h("div", { class: "chip-list" }, ...[...missed].map((id) => {
       const root = rootByKey.get(id);
-      return root
-        ? h("a", { class: "chip", href: "#/roots", lang: "en" }, root.root)
-        : h("a", { class: "chip", href: `#/explore/${id}` }, termById.get(id)?.ja ?? id);
+      const exam = examByKey.get(id);
+      if (root) return h("a", { class: "chip", href: "#/roots", lang: "en" }, root.root);
+      if (exam) return h("a", { class: "chip", href: "#/exam" }, exam.title);
+      return h("a", { class: "chip", href: `#/explore/${id}` }, termById.get(id)?.ja ?? id);
     })) : "",
     h("div", { class: "nav-row" },
       ...(next && learned.length

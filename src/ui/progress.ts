@@ -2,6 +2,7 @@ import { exportBackup, importBackup, isBackup } from "../backup";
 import { systems, termById, terms } from "../content";
 import { db, type StoredSchedule } from "../db";
 import { h } from "../dom";
+import { EXAM_KINDS, examProgress, kindLabels } from "../exam";
 import { rootKey, roots } from "../roots";
 import { loadPreferences, NEW_PER_DAY_OPTIONS, preferences, setPreference } from "../settings";
 import { termMastery } from "../study";
@@ -62,7 +63,7 @@ export async function progress(ctx: AppContext): Promise<void> {
           h("td", {}, system.ja),
           h("td", {}, `${list.filter((term) => learnedIds.has(term.id)).length} / ${list.length}`),
           h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
-      }), rootRow()),
+      }), rootRow(), ...EXAM_KINDS.map(examRow)),
     ),
     weakest.length ? h("h3", {}, "覚え具合の低い語") : "",
     weakest.length ? h("ul", { class: "term-list" }, ...weakest.map(([id, value]) => {
@@ -76,6 +77,14 @@ export async function progress(ctx: AppContext): Promise<void> {
     settings.box,
     backupSection(settings.render),
   );
+
+  function examRow(kind: (typeof EXAM_KINDS)[number]): HTMLElement {
+    const { done, total, mastery } = examProgress(kind, learnedIds, schedules);
+    return h("tr", {},
+      h("td", {}, `骨学試験 ${kindLabels[kind]}`),
+      h("td", {}, `${done} / ${total}`),
+      h("td", {}, mastery === null ? "—" : `${Math.round(mastery * 100)}%`));
+  }
 
   function rootRow(): HTMLElement {
     const keys = roots.map(rootKey);

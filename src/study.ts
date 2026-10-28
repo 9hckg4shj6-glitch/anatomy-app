@@ -2,10 +2,13 @@ import type { Term } from "./content";
 import type { Facet, LearnedTerm, StoredSchedule } from "./db";
 import { retrievability, State } from "./fsrs";
 
-export const FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "rootMeaning", "rootForm"];
+export const FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "rootMeaning", "rootForm", "cloze", "read", "spell", "explain"];
 
 /** 語根カード（content/roots.json）の問い方 */
 export const ROOT_FACETS: Facet[] = ["rootMeaning", "rootForm"];
+
+/** 骨学試験（content/exam.json）の問い方 */
+export const EXAM_FACETS: Facet[] = ["cloze", "read", "spell", "explain"];
 
 /** 筋だけに付く問い方（起始・停止・支配神経・作用） */
 export const MUSCLE_FACETS: Facet[] = ["attach", "nerve", "action"];
@@ -21,6 +24,10 @@ export const facetLabels: Record<Facet, string> = {
   passage: "通るもの",
   rootMeaning: "語根→意味",
   rootForm: "意味→語根",
+  cloze: "穴埋め",
+  read: "ラテン語→日本語",
+  spell: "日本語→英語・ラテン語",
+  explain: "短文記述",
 };
 
 /**
@@ -30,7 +37,7 @@ export const facetLabels: Record<Facet, string> = {
  */
 export function facetsFor(term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "passes"> | undefined, locateLearned = false): Facet[] {
   return FACETS.filter((facet) => {
-    if (ROOT_FACETS.includes(facet)) return false;
+    if (ROOT_FACETS.includes(facet) || EXAM_FACETS.includes(facet)) return false;
     if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && locateLearned;
     if (facet === "passage") return !!term?.passes && locateLearned;
     return !(facet === "point" && (term?.xray || term?.figure || term?.region));

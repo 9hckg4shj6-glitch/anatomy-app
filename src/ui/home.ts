@@ -1,5 +1,6 @@
 import { systems, units, type Unit } from "../content";
-import { db, nowIso } from "../db";
+import { db, nowIso, type StoredSchedule } from "../db";
+import { EXAM_KINDS, examProgress, kindLabels } from "../exam";
 import { h } from "../dom";
 import { installHint } from "../install";
 import { rootKey, rootUnits } from "../roots";
@@ -14,9 +15,9 @@ export async function home(ctx: AppContext): Promise<void> {
 
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
-  const [learned, due, answeredToday, hintClosed, openSetting] = await Promise.all([
+  const [learned, due, answeredToday, hintClosed, openSetting, schedules] = await Promise.all([
     db.learned.toArray(), dueCount(), db.reviewEvents.where("reviewedAt").aboveOrEqual(startOfDay.toISOString()).count(),
-    db.settings.get("installHintClosed"), db.settings.get(OPEN_FOLDERS),
+    db.settings.get("installHintClosed"), db.settings.get(OPEN_FOLDERS), db.schedules.toArray(),
   ]);
   const learnedIds = new Set(learned.map((item) => item.termId));
   // 開いたフォルダーは覚えておき、レッスンから戻ったときも開いたままにする
@@ -71,8 +72,10 @@ export async function home(ctx: AppContext): Promise<void> {
             ));
         })),
       );
-      // 語根カードは基本の用語のすぐ後に（英語名の意味が分かると、どの系統の語も覚えやすくなる）
-      return system.id === "basics" ? [section, rootSection(learnedIds, folder)] : [section];
+      // 語根カードは基本の用語のすぐ後に（英語名の意味が分かると、どの系統の語も覚えやすくなる）。骨学試験は骨格系の後に
+      if (system.id === "basics") return [section, rootSection(learnedIds, folder)];
+      if (system.id === "skeletal") return [section, examSection(learnedIds, schedules, folder)];
+      return [section];
     }),
     h("p", { class: "footer-link" }, h("a", { href: "#/credits" }, "出典・クレジット")),
   );
@@ -86,6 +89,25 @@ export function nextLesson(learnedIds: Set<string>): Unit | undefined {
 }
 
 type Folder = (id: string, title: (Node | string)[], summary: string, allDone: boolean, list: HTMLElement) => HTMLElement;
+
+/** 骨学試験（A・B・C）。押すとまだ学んでいない項目を出る順に解く */
+function examSection(learnedIds: Set<string>, schedules: StoredSchedule[], folder: Folder): HTMLElement {
+  const progress = EXAM_KINDS.map((kind) => ({ kind, ...examProgress(kind, learnedIds, schedules) }));
+  const done = progress.reduce((sum, p) => sum + p.done, 0);
+  const total = progress.reduce((sum, p) => sum + p.total, 0);
+  return folder("exam",
+    [h("span", { class: "swatch exam-swatch" }), "骨学試験"],
+    `A・B・C ${done ? `${done}/${total}` : total}問`,
+    done === total,
+    h("ul", { class: "units" },
+      h("li", {}, h("a", { class: "unit unit-all", href: "#/exam" }, h("span", { class: "unit-title" }, "骨学試験の一覧"), h("span", { class: "unit-count" }, "→"))),
+      ...progress.map((p) => h("li", {},
+        h("a", { href: `#/exam/${p.kind}`, class: p.done === p.total ? "unit done" : "unit" },
+          h("span", { class: "unit-title" }, kindLabels[p.kind]),
+          h("span", { class: "unit-count" }, `${p.done ? `${p.done}/${p.total}` : `${p.total}問`}${p.mastery === null ? "" : `・覚え ${Math.round(p.mastery * 100)}%`}`),
+        )))),
+  );
+}
 
 function rootSection(learnedIds: Set<string>, folder: Folder): HTMLElement {
   const total = rootUnits.reduce((sum, unit) => sum + unit.roots.length, 0);

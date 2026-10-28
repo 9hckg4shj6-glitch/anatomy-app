@@ -305,3 +305,30 @@ button { font: inherit; color: inherit; }
 .settings { margin-top: 28px; padding-top: 4px; border-top: 1px solid var(--line); }
 .setting-label { margin: 14px 0 8px; font-size: 15px; font-weight: 600; }
 .settings .muted { margin: 6px 0 0; }
+
+/* 骨学試験 */
+.exam-swatch { background: linear-gradient(135deg, #e9dfc9, var(--highlight)); }
+.exam-mark { display: inline-block; margin-right: 6px; padding: 1px 8px; border-radius: 999px; background: color-mix(in srgb, var(--highlight) 16%, var(--surface)); color: #a5470a; font-size: 12px; text-decoration: none; white-space: nowrap; }
+.exam-kind { margin-top: 14px; padding: 4px 16px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.exam-kind .nav-row { margin: 10px 0; }
+.exam-count { font-size: 13px; }
+.exam-foreign { display: block; margin: 8px 0 16px; font-size: 26px; font-style: italic; }
+.exam-missed { margin: 0 0 12px; padding-left: 20px; line-height: 1.8; }
+.cloze { font-size: 17px; line-height: 2.1; margin: 8px 0 12px; }
+.cloze .blank { display: inline-block; min-width: 3.4em; margin: 0 2px; padding: 0 6px; border-bottom: 2px solid var(--accent); color: var(--accent); font-weight: 600; text-align: center; line-height: 1.6; }
+.cloze-inputs { display: grid; gap: 8px; margin-bottom: 8px; }
+.cloze-row { display: flex; align-items: center; gap: 8px; }
+.cloze-no { flex: none; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-size: 14px; font-weight: 700; }
+.cloze-input { min-height: 44px; }
+.blank-answer { display: inline; margin: 0 2px; padding: 2px 6px; border-radius: 6px; font-weight: 700; }
+.blank-answer.correct { background: color-mix(in srgb, var(--ok) 16%, var(--surface)); color: var(--ok); }
+.blank-answer.close { background: color-mix(in srgb, var(--close) 18%, var(--surface)); color: #8a6208; }
+.blank-answer.wrong { background: color-mix(in srgb, var(--ng) 14%, var(--surface)); color: var(--ng); }
+.blank-answer .gloss { font-weight: 700; color: inherit; text-decoration-style: solid; }
+.typed-ja { margin-left: 6px; color: var(--muted); font-weight: 400; font-size: 14px; }
+.points { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
+.points label { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); font-size: 15px; line-height: 1.6; cursor: pointer; }
+.points input { flex: none; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--ok); }
+.points.done li { padding: 8px 12px 8px 34px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); font-size: 15px; line-height: 1.6; position: relative; }
+.points.done li::before { content: "・"; position: absolute; left: 12px; color: var(--muted); }
+.points.done li.said::before { content: "✓"; color: var(--ok); font-weight: 700; }

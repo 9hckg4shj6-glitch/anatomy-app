@@ -3,6 +3,7 @@
 // - 基本の用語（figure）の選択肢（foils）と関節（content/joints.json）の参照先、筋の動き（motion）の関節
 // - 局所解剖の語（region）の境界・中を通る語が、部品を持つ語か
 // - 語根カード（content/roots.json）の形と、例の語があるか
+// - 骨学試験（content/exam.json）の形と、空欄・語・3Dで示す語の参照先
 // - public/models/index.json が今の内容から作られているか（語を足したら npm run build:models が要る）
 // - check: true の語と、Wikidata（data-raw/wikidata.json があれば）と表記が違う語を一覧にする
 import fs from "node:fs";
@@ -192,6 +193,45 @@ for (const root of rootsParsed.success ? rootsParsed.data.groups.flatMap((group)
   }
 }
 
+// 骨学試験（content/exam.json）: 種類ごとの ID の重複、A の空欄（{語ID} か {=答え|別解}）、B・C の語と3Dで示す語。
+// B の総論の語（term の無い語）は日本語・読み・英語・説明を直接書く
+const termIds = new Set(terms.map((term) => term.id));
+const area = z.enum(["general", "trunk", "upper", "lower", "skull"]);
+const examBase = { id: z.string().regex(/^[a-z0-9-]+$/), area, count: z.number().int().min(0), recent: z.literal(true).optional(), show: z.array(z.string()).min(1).optional() };
+const examParsed = z.strictObject({
+  cloze: z.array(z.strictObject({ ...examBase, text: z.string().min(5) })).min(1),
+  words: z.array(z.strictObject({
+    ...examBase, term: z.string().optional(), ja: z.string().min(1).optional(), yomi: z.string().regex(/^[ぁ-ゖー]+$/).optional(),
+    en: word.optional(), enAlt: z.array(word).optional(), la: z.string().min(1).optional(), note: z.string().min(10).optional(),
+  }).refine((w) => !!w.term !== !!(w.ja && w.yomi && w.en && w.note), "term か、ja・yomi・en・note のどちらか一方を書く")).min(1),
+  essays: z.array(z.strictObject({
+    ...examBase, term: z.string().optional(), title: z.string().min(1).optional(), yomi: z.string().regex(/^[ぁ-ゖー・]+$/).optional(),
+    points: z.array(z.string().min(5)).min(2).max(5),
+  }).refine((e) => e.term || e.title, "term か title が要る")).min(1),
+}).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/exam.json"), "utf8")));
+if (!examParsed.success) for (const issue of examParsed.error.issues) errors.push(`exam.json ${issue.path.join(".")}: ${issue.message}`);
+const examCounts = {};
+for (const [kind, list] of Object.entries(examParsed.success ? examParsed.data : {})) {
+  const ids = new Set();
+  examCounts[kind] = list.length;
+  for (const item of list) {
+    const name = `exam.json ${kind} ${item.id}`;
+    if (ids.has(item.id)) errors.push(`${name}: ID が重複`);
+    ids.add(item.id);
+    for (const id of [...(item.term ? [item.term] : []), ...(item.show ?? [])]) if (!termIds.has(id)) errors.push(`${name}: 語が無い: ${id}`);
+    if (kind === "words" && !item.term && termIds.has(item.id)) errors.push(`${name}: 総論の語の ID が語の ID と同じ`);
+    if (kind !== "cloze") continue;
+    const blanks = [...item.text.matchAll(/\{([^}]*)\}/g)].map((match) => match[1]);
+    if (!blanks.length) errors.push(`${name}: 空欄が無い`);
+    for (const blank of blanks) {
+      if (blank.startsWith("=")) {
+        if (blank.slice(1).split("|").some((answer) => !answer.trim())) errors.push(`${name}: 空の答え: {${blank}}`);
+      } else if (!termIds.has(blank)) errors.push(`${name}: 空欄の語が無い: {${blank}}`);
+    }
+    if (/[{}]/.test(item.text.replace(/\{[^}]*\}/g, ""))) errors.push(`${name}: { } の対がそろっていない`);
+  }
+}
+
 const indexFile = path.join(ROOT, "public/models/index.json");
 if (!fs.existsSync(indexFile)) errors.push("public/models/index.json がありません。npm run build:models を実行してください");
 else {
@@ -265,4 +305,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 語根 ${rootIds.size} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);
+console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 語根 ${rootIds.size} / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);

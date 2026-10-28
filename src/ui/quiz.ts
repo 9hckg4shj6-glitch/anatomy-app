@@ -311,18 +311,19 @@ async function tapElement(ctx: AppContext, header: HTMLElement, term: Term): Pro
   }
 }
 
-async function typeEnglish(ctx: AppContext, header: HTMLElement, prompt: HTMLElement): Promise<string> {
+/** つづりを入力させる（骨学試験の用語では英語かラテン語） */
+export async function typeEnglish(ctx: AppContext, header: HTMLElement, prompt: HTMLElement, question = "英語で書くと？", placeholder = "英語でつづりを入力"): Promise<string> {
   return until(ctx.signal, (resolve) => {
     const input = h("input", {
       // iOS の自動修正（解剖の英語名を普通の単語に直してしまう）も切る
       class: "type-en", type: "text", lang: "en", autocomplete: "off", autocapitalize: "off", autocorrect: "off", spellcheck: false, enterkeyhint: "done",
-      placeholder: "英語でつづりを入力", "aria-label": "英語のつづり",
+      placeholder, "aria-label": "英語のつづり",
     });
     const form = h("form", { class: "type-form", onSubmit: (event: Event) => { event.preventDefault(); resolve(input.value); } },
       input, h("button", { class: "primary", type: "submit" }, "答える"));
     showPanel(ctx,
       header,
-      h("p", { class: "prompt" }, "英語で書くと？"),
+      h("p", { class: "prompt" }, question),
       prompt,
       form,
       h("button", { class: "ghost-button", type: "button", onClick: () => resolve("") }, "わからない"),

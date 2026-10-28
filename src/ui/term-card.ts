@@ -1,6 +1,7 @@
 import { speak } from "../audio";
 import { systemById, termById, terms, type Term } from "../content";
 import { h } from "../dom";
+import { examCountOf } from "../exam";
 import { rootsOf, splitAtRoot, type Root } from "../roots";
 import { INSERTION_COLOR, ORIGIN_COLOR, REGION_BOUND } from "../viewer";
 
@@ -114,10 +115,13 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
     );
   };
   const linked = (text: string) => linkGlossary(text, term.id, show);
+  const examCount = examCountOf(term.id);
   return h("article", { class: "term-card" },
     h("div", { class: "term-head" },
       h("ruby", { class: "term-ja" }, term.ja, h("rt", {}, term.yomi)),
-      h("span", { class: "term-system" }, where),
+      h("span", { class: "term-system" },
+        examCount ? h("a", { class: "exam-mark", href: "#/exam", title: "骨学試験に出た回数（A・B・C の合計）" }, `試験 ${examCount}回`) : null,
+        where),
     ),
     h("div", { class: "term-en" },
       h("button", { class: "speak", type: "button", "aria-label": "英語の発音を聞く", onClick: () => void speak(term) }, "🔊"),

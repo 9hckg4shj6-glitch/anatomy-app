@@ -7,6 +7,7 @@ import { admin } from "./ui/admin";
 import { credits } from "./ui/credits";
 import type { AppContext } from "./ui/context";
 import { drill } from "./ui/drill";
+import { exam } from "./ui/exam";
 import { explore } from "./ui/explore";
 import { home } from "./ui/home";
 import { lesson } from "./ui/lesson";
@@ -90,7 +91,7 @@ async function start(): Promise<void> {
 
     const [, name = "", arg = ""] = location.hash.split("/");
     for (const tab of document.querySelectorAll<HTMLAnchorElement>("[data-tab]")) {
-      tab.classList.toggle("on", tab.dataset.tab === (name || "home") || (["learn", "roots", "drill"].includes(name) && tab.dataset.tab === "home"));
+      tab.classList.toggle("on", tab.dataset.tab === (name || "home") || (["learn", "roots", "drill", "exam"].includes(name) && tab.dataset.tab === "home"));
     }
     try {
       if (name === "learn") await lesson(ctx, decodeURIComponent(arg));
@@ -98,6 +99,7 @@ async function start(): Promise<void> {
       else if (name === "explore") await explore(ctx, decodeURIComponent(arg));
       else if (name === "roots") await (arg ? rootLesson(ctx, decodeURIComponent(arg)) : rootIndex(ctx));
       else if (name === "drill") await drill(ctx, arg);
+      else if (name === "exam") await exam(ctx, decodeURIComponent(arg));
       else if (name === "progress") await progress(ctx);
       else if (name === "credits") credits(ctx);
       else if (name === "admin") await admin(ctx, decodeURIComponent(arg));
