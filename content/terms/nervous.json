@@ -1282,6 +1282,242 @@
           "note": "指の両わき（掌側）を指先まで走る細い神経。指先の細かい感覚を受けもつ。指の麻酔（指ブロック）では指の付け根の両わきに注射する。"
         }
       ]
+    },
+    {
+      "id": "nerv-sulci",
+      "title": "大脳の溝",
+      "intro": [
+        "大脳の表面のしわのうち、へこんだ所を溝（こう）、盛り上がった所を回（かい）という。大きな溝は大脳葉の境目になる。中心溝は前頭葉と頭頂葉を、外側溝は側頭葉を前頭葉・頭頂葉から、頭頂後頭溝は頭頂葉と後頭葉を分ける。",
+        "3Dモデルは回ごとの形なので、溝は回と回の境目の上に色を付けて示す。内側面の溝は右の大脳半球だけを見せて、内側から映す。"
+      ],
+      "terms": [
+        {
+          "id": "central-sulcus", "ja": "中心溝", "yomi": "ちゅうしんこう", "en": "central sulcus", "enAlt": ["rolandic fissure", "fissure of rolando"], "la": "sulcus centralis",
+          "of": "cerebrum", "level": 1,
+          "kanji": "大脳の外側面の中ほどの溝",
+          "etym": "central「中心の」＋ sulcus ← ラテン語「溝（畝と畝の間）」。ローランド溝ともいう",
+          "note": "大脳の外側面を、上の縁から前下へ斜めに走る溝。前の中心前回（一次運動野）と後ろの中心後回（一次体性感覚野）を分け、前頭葉と頭頂葉の境目になる。下の端は外側溝の少し上で止まる。"
+        },
+        {
+          "id": "lateral-sulcus", "ja": "外側溝", "yomi": "がいそくこう", "en": "lateral sulcus", "enAlt": ["sylvian fissure", "lateral fissure"], "la": "sulcus lateralis",
+          "of": "cerebrum", "level": 1,
+          "kanji": "大脳の外側面の深い溝",
+          "etym": "lateral「外側の」＋ sulcus「溝」。シルビウス裂ともいう",
+          "note": "大脳の外側面で、側頭葉を前頭葉・頭頂葉から分ける深い溝。前で短い前枝と上行枝を出し、長い後枝は後ろ上へ向かって縁上回に囲まれて終わる。溝の奥に島が隠れていて、中大脳動脈がこの中を走る。"
+        },
+        {
+          "id": "parieto-occipital-sulcus", "ja": "頭頂後頭溝", "yomi": "とうちょうこうとうこう", "en": "parieto-occipital sulcus", "la": "sulcus parietooccipitalis",
+          "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 1,
+          "kanji": "頭頂葉と後頭葉の間の溝",
+          "etym": "parieto-「頭頂の」（ラテン語 paries＝壁）＋ occipital「後頭の」＋ sulcus「溝」",
+          "note": "大脳半球の内側面で、上の縁から前下へ走る深い溝。頭頂葉（楔前部）と後頭葉（楔部）の境目。下の端で鳥距溝と合わさり、内側から見てY字になる。"
+        },
+        {
+          "id": "calcarine-sulcus", "ja": "鳥距溝", "yomi": "ちょうきょこう", "en": "calcarine sulcus", "enAlt": ["calcarine fissure"], "la": "sulcus calcarinus",
+          "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 1,
+          "kanji": "鳥のけづめの形の溝（距＝けづめ）",
+          "etym": "calcarine ← ラテン語 calcar「けづめ・拍車」",
+          "note": "後頭葉の内側面を、後頭極から前へ水平に走る溝。上の楔部と下の舌状回を分ける。溝の両側の皮質が一次視覚野で、外側膝状体からの視放線がここに届く。"
+        },
+        {
+          "id": "cingulate-sulcus", "ja": "帯状溝", "yomi": "たいじょうこう", "en": "cingulate sulcus", "la": "sulcus cinguli",
+          "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
+          "kanji": "帯状回の上の溝",
+          "etym": "cingulate ← ラテン語 cingulum「帯」＋ sulcus「溝」",
+          "note": "内側面で、帯状回の上を脳梁にそって弓なりに走る溝。帯状回を上前頭回（の内側面）と傍中心小葉から分ける。後ろの端（縁部）は上へ曲がって、中心溝のすぐ後ろで上の縁に達する。"
+        },
+        {
+          "id": "precentral-sulcus", "ja": "中心前溝", "yomi": "ちゅうしんぜんこう", "en": "precentral sulcus", "la": "sulcus precentralis",
+          "of": "cerebrum", "level": 2,
+          "kanji": "中心溝の前の溝",
+          "etym": "pre-「前の」＋ central「中心の」＋ sulcus「溝」",
+          "note": "中心溝の前を平行に走る溝。中心前回の前の境目で、ここから前へ上前頭溝と下前頭溝が出る。"
+        },
+        {
+          "id": "postcentral-sulcus", "ja": "中心後溝", "yomi": "ちゅうしんこうこう", "en": "postcentral sulcus", "la": "sulcus postcentralis",
+          "of": "cerebrum", "level": 2,
+          "kanji": "中心溝の後ろの溝",
+          "etym": "post-「後ろの」＋ central「中心の」＋ sulcus「溝」",
+          "note": "中心溝の後ろを平行に走る溝。中心後回の後ろの境目で、ここから後ろへ頭頂間溝が続く。"
+        },
+        {
+          "id": "superior-frontal-sulcus", "ja": "上前頭溝", "yomi": "じょうぜんとうこう", "en": "superior frontal sulcus", "la": "sulcus frontalis superior",
+          "of": "cerebrum", "level": 3,
+          "kanji": "前頭葉の上の溝",
+          "etym": "superior「上の」＋ frontal「前頭の」＋ sulcus「溝」",
+          "note": "中心前溝から前へ走り、上前頭回と中前頭回を分ける溝。"
+        },
+        {
+          "id": "inferior-frontal-sulcus", "ja": "下前頭溝", "yomi": "かぜんとうこう", "en": "inferior frontal sulcus", "la": "sulcus frontalis inferior",
+          "of": "cerebrum", "level": 3,
+          "kanji": "前頭葉の下の溝",
+          "etym": "inferior「下の」＋ frontal「前頭の」＋ sulcus「溝」",
+          "note": "中心前溝から前へ走り、中前頭回と下前頭回を分ける溝。"
+        },
+        {
+          "id": "superior-temporal-sulcus", "ja": "上側頭溝", "yomi": "じょうそくとうこう", "en": "superior temporal sulcus", "la": "sulcus temporalis superior",
+          "of": "cerebrum", "level": 2,
+          "kanji": "側頭葉の上の溝",
+          "etym": "superior「上の」＋ temporal「側頭の」（ラテン語 tempora＝こめかみ）＋ sulcus「溝」",
+          "note": "外側溝と平行に前後に走り、上側頭回と中側頭回を分ける溝。後ろの端は上へ曲がって角回に囲まれる。"
+        },
+        {
+          "id": "intraparietal-sulcus", "ja": "頭頂間溝", "yomi": "とうちょうかんこう", "en": "intraparietal sulcus", "la": "sulcus intraparietalis",
+          "of": "cerebrum", "level": 2,
+          "kanji": "頭頂葉の中を走る溝",
+          "etym": "intra-「中の」＋ parietal「頭頂の」＋ sulcus「溝」",
+          "note": "中心後溝から後ろへ走り、頭頂葉を上頭頂小葉と下頭頂小葉（縁上回・角回）に分ける溝。目で見た物に手を伸ばす動きなど、空間の情報を扱う所。"
+        },
+        {
+          "id": "collateral-sulcus", "ja": "側副溝", "yomi": "そくふくこう", "en": "collateral sulcus", "la": "sulcus collateralis",
+          "of": "cerebrum", "level": 3,
+          "kanji": "わきに並んで走る溝",
+          "etym": "collateral「わきの・並んだ」（col-「共に」＋ latus「わき」）＋ sulcus「溝」",
+          "note": "大脳の下面を前後に走る溝。内側の海馬傍回と舌状回を、外側の紡錘状回から分ける。"
+        },
+        {
+          "id": "olfactory-sulcus", "ja": "嗅溝", "yomi": "きゅうこう", "en": "olfactory sulcus", "la": "sulcus olfactorius",
+          "of": "cerebrum", "level": 3,
+          "kanji": "嗅索がのる溝",
+          "etym": "olfactory「嗅覚の」（ラテン語 olfacere＝においをかぐ）＋ sulcus「溝」",
+          "note": "前頭葉の下面の内側を前後に走る溝。嗅球と嗅索がのる。内側の直回と外側の眼窩回を分ける。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-cortex-parts",
+      "title": "大脳の内側面・下面の回と下前頭回の部",
+      "intro": [
+        "大脳半球の内側面にも回がある。帯状回のまわりに、前から上前頭回の内側部・傍中心小葉・楔前部・楔部・舌状回が並ぶ。内側面の語は、右の大脳半球だけを見せて内側から映す。",
+        "下前頭回は、外側溝の前枝と上行枝で、前から眼窩部・三角部・弁蓋部の3つに分かれる。左の三角部と弁蓋部はブローカ野（運動性言語野）で、ここが傷むと言葉を話しにくくなる（運動性失語）。"
+      ],
+      "terms": [
+        {
+          "id": "cuneus", "ja": "楔部", "yomi": "けつぶ", "en": "cuneus", "la": "cuneus",
+          "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
+          "kanji": "くさび形の部分（楔＝くさび）",
+          "etym": "cuneus ← ラテン語「くさび」",
+          "note": "後頭葉の内側面で、頭頂後頭溝と鳥距溝にはさまれたくさび形の部分。鳥距溝に面した下の部分は一次視覚野で、視野の下半分を見る。"
+        },
+        {
+          "id": "precuneus", "ja": "楔前部", "yomi": "けつぜんぶ", "en": "precuneus", "la": "precuneus",
+          "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
+          "kanji": "楔部の前の部分",
+          "etym": "pre-「前の」＋ cuneus「くさび」",
+          "note": "頭頂葉の内側面で、楔部の前の部分。前は帯状溝の縁部、後ろは頭頂後頭溝で区切られる。自分の体と空間の位置の認識や、記憶を思い出すことにかかわる。"
+        },
+        {
+          "id": "lingual-gyrus", "ja": "舌状回", "yomi": "ぜつじょうかい", "en": "lingual gyrus", "la": "gyrus lingualis",
+          "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
+          "kanji": "舌の形の回",
+          "etym": "lingual「舌の」（ラテン語 lingua）＋ gyrus「回・輪」",
+          "note": "後頭葉の内側面の下で、鳥距溝の下の回。前は海馬傍回に続く。鳥距溝に面した上の部分は一次視覚野で、視野の上半分を見る。"
+        },
+        {
+          "id": "paracentral-lobule", "ja": "傍中心小葉", "yomi": "ぼうちゅうしんしょうよう", "en": "paracentral lobule", "la": "lobulus paracentralis",
+          "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
+          "kanji": "中心溝のそばの小さな葉",
+          "etym": "para-「そばの」＋ central「中心の」＋ lobule「小葉」",
+          "note": "内側面で、中心前回と中心後回が上の縁を越えて続く部分（中心溝の上の端を囲む）。下肢の運動と感覚を受けもつ（体部位局在では足が内側面にある）。"
+        },
+        {
+          "id": "straight-gyrus", "ja": "直回", "yomi": "ちょっかい", "en": "straight gyrus", "enAlt": ["gyrus rectus"], "la": "gyrus rectus",
+          "of": "cerebrum", "level": 3,
+          "kanji": "まっすぐな回",
+          "etym": "ラテン語 rectus「まっすぐな」＋ gyrus「回」",
+          "note": "前頭葉の下面のいちばん内側で、嗅溝の内側をまっすぐ前後に走る回。"
+        },
+        {
+          "id": "opercular-part-of-inferior-frontal-gyrus", "ja": "弁蓋部（下前頭回）", "yomi": "べんがいぶ", "en": "opercular part of inferior frontal gyrus", "enAlt": ["pars opercularis"], "la": "pars opercularis gyri frontalis inferioris",
+          "of": "cerebrum", "level": 2,
+          "kanji": "ふたの部分（弁蓋＝ふた）。島にふたをする",
+          "etym": "opercular ← ラテン語 operculum「ふた」",
+          "note": "下前頭回の後ろの部分で、中心前回のすぐ前。外側溝の上行枝の後ろにあり、島を上からおおう。左では三角部とともにブローカ野（運動性言語野）をつくる。"
+        },
+        {
+          "id": "triangular-part-of-inferior-frontal-gyrus", "ja": "三角部（下前頭回）", "yomi": "さんかくぶ", "en": "triangular part of inferior frontal gyrus", "enAlt": ["pars triangularis"], "la": "pars triangularis gyri frontalis inferioris",
+          "of": "cerebrum", "level": 2,
+          "kanji": "三角形の部分",
+          "etym": "triangular「三角形の」",
+          "note": "下前頭回の中ほどで、外側溝の前枝と上行枝にはさまれた三角形の部分。左では弁蓋部とともにブローカ野をつくる。"
+        },
+        {
+          "id": "orbital-part-of-inferior-frontal-gyrus", "ja": "眼窩部（下前頭回）", "yomi": "がんかぶ", "en": "orbital part of inferior frontal gyrus", "enAlt": ["pars orbitalis"], "la": "pars orbitalis gyri frontalis inferioris",
+          "of": "cerebrum", "level": 3,
+          "kanji": "眼窩の上にのる部分",
+          "etym": "orbital「眼窩の」（ラテン語 orbita＝わだち・輪）",
+          "note": "下前頭回の前下の部分で、外側溝の前枝より下。前頭葉の下面（眼窩の上にのる面）へ続く。"
+        },
+        {
+          "id": "transverse-temporal-gyri", "ja": "横側頭回", "yomi": "おうそくとうかい", "en": "transverse temporal gyri", "enAlt": ["heschl gyri"], "la": "gyri temporales transversi",
+          "parts": ["* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right fusiform gyrus", "right parahippocampal gyrus"], "of": "cerebrum", "level": 2,
+          "kanji": "側頭葉を横に走る回",
+          "etym": "transverse「横の」＋ temporal「側頭の」＋ gyri「回」（複数）。ヘシュル回ともいう",
+          "note": "上側頭回の上の面（外側溝の中に隠れた面）を、前外側から後内側へ斜めに走る1〜2本の回。一次聴覚野。外からは見えないので、3Dでは側頭葉だけを見せて上から映す。"
+        },
+        {
+          "id": "frontal-pole", "ja": "前頭極", "yomi": "ぜんとうきょく", "en": "frontal pole", "la": "polus frontalis",
+          "of": "cerebrum", "level": 3,
+          "kanji": "前頭葉の前の端",
+          "etym": "frontal「前頭の」＋ pole「極・端」",
+          "note": "大脳半球の前の端。前頭骨（前頭洞の後ろ）の内側に収まる。"
+        },
+        {
+          "id": "temporal-pole", "ja": "側頭極", "yomi": "そくとうきょく", "en": "temporal pole", "la": "polus temporalis",
+          "of": "cerebrum", "level": 3,
+          "kanji": "側頭葉の前の端",
+          "etym": "temporal「側頭の」＋ pole「極・端」",
+          "note": "側頭葉の前の端。中頭蓋窩の前の端（蝶形骨の大翼の後ろ）に収まる。"
+        },
+        {
+          "id": "occipital-pole", "ja": "後頭極", "yomi": "こうとうきょく", "en": "occipital pole", "la": "polus occipitalis",
+          "of": "cerebrum", "level": 3,
+          "kanji": "後頭葉の後ろの端",
+          "etym": "occipital「後頭の」＋ pole「極・端」",
+          "note": "大脳半球の後ろの端。鳥距溝はここから前へ走る。後頭極のあたりの視覚野は、視野の中心（黄斑で見る所）を受けもつ。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-septal",
+      "title": "透明中隔とレンズ核",
+      "terms": [
+        {
+          "id": "septum-pellucidum", "ja": "透明中隔", "yomi": "とうめいちゅうかく", "en": "septum pellucidum", "la": "septum pellucidum",
+          "parts": ["za:septum pellucidum"], "level": 2, "xray": true,
+          "kanji": "透けて見えるほど薄い仕切り",
+          "etym": "septum「仕切り」＋ pellucidum ← ラテン語「透き通った」",
+          "note": "左右の側脳室の前角の間を仕切る、薄い2枚の板。上は脳梁、下は脳弓に付く。"
+        },
+        {
+          "id": "septal-nuclei", "ja": "中隔核", "yomi": "ちゅうかくかく", "en": "septal nuclei", "la": "nuclei septales",
+          "parts": ["za:septal nuclei"], "level": 3, "xray": true,
+          "kanji": "中隔（透明中隔の下）の核",
+          "etym": "septal「中隔の」＋ nuclei「核」（複数）",
+          "note": "透明中隔の下、前交連の前にある灰白質の核。海馬・扁桃体・視床下部とつながる大脳辺縁系の一部で、情動や快の感覚にかかわる。"
+        },
+        {
+          "id": "stria-terminalis", "ja": "分界条", "yomi": "ぶんかいじょう", "en": "stria terminalis", "la": "stria terminalis",
+          "parts": ["za:stria terminalis"], "level": 3, "xray": true,
+          "kanji": "境界をつくる線（条＝すじ）",
+          "etym": "stria「すじ」＋ terminalis「境の」",
+          "note": "扁桃体から出て、側脳室の壁で尾状核と視床の境目を弓なりに走り、視床下部と中隔へ向かう線維の束。"
+        },
+        {
+          "id": "stria-medullaris-of-thalamus", "ja": "視床髄条", "yomi": "ししょうずいじょう", "en": "stria medullaris of thalamus", "enAlt": ["stria medullaris thalami"], "la": "stria medullaris thalami",
+          "parts": ["za:stria medullaris thalami"], "level": 3, "xray": true,
+          "kanji": "視床の上の白いすじ（髄＝白質）",
+          "etym": "stria「すじ」＋ medullaris「髄（白質）の」＋ thalami「視床の」",
+          "note": "視床の上内側の縁を前後に走る線維の束。中隔核などから手綱へ向かう。"
+        },
+        {
+          "id": "lentiform-nucleus", "ja": "レンズ核", "yomi": "れんずかく", "en": "lentiform nucleus", "enAlt": ["lenticular nucleus"], "la": "nucleus lentiformis",
+          "parts": ["putamen", "globus pallidus"], "level": 2, "xray": true,
+          "kanji": "凸レンズの形の核",
+          "etym": "lentiform ← ラテン語 lens「レンズ豆」＋ forma「形」",
+          "note": "外側の被殻と内側の淡蒼球を合わせた、凸レンズの形のかたまり。内側を内包、外側を外包に囲まれる。尾状核とともに大脳基底核の中心で、運動の調節にかかわる。"
+        }
+      ]
     }
   ]
 }

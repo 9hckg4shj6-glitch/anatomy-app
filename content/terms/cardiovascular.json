@@ -1594,6 +1594,40 @@
           "note": "浅掌動脈弓にそう静脈の弓。指からの静脈を集めて尺骨静脈へ流す。"
         }
       ]
+    },
+    {
+      "id": "cv-neck-mediastinum",
+      "title": "頚部と縦隔の血管（追加）",
+      "terms": [
+        {
+          "id": "ascending-pharyngeal-artery", "ja": "上行咽頭動脈", "yomi": "じょうこういんとうどうみゃく", "en": "ascending pharyngeal artery", "la": "arteria pharyngea ascendens",
+          "parts": ["za:ascending pharyngeal artery"], "level": 3,
+          "kanji": "咽頭の横を上る動脈",
+          "etym": "ascending「上行する」＋ pharyngeal「咽頭の」",
+          "note": "外頚動脈のいちばん下の枝の1つで、内頚動脈と咽頭の間を頭蓋底まで上る細い動脈。咽頭・口蓋扁桃・中耳・硬膜に分布する。"
+        },
+        {
+          "id": "superior-thyroid-vein", "ja": "上甲状腺静脈", "yomi": "じょうこうじょうせんじょうみゃく", "en": "superior thyroid vein", "la": "vena thyroidea superior",
+          "parts": ["za:superior thyroid vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "甲状腺の上から出る静脈",
+          "etym": "superior「上の」＋ thyroid「甲状腺の」（ギリシャ語 thyreos＝盾）",
+          "note": "甲状腺の上の端から出て、上甲状腺動脈と並んで内頚静脈（または顔面静脈）に注ぐ静脈。"
+        },
+        {
+          "id": "bronchial-arteries", "ja": "気管支動脈", "yomi": "きかんしどうみゃく", "en": "bronchial arteries", "enAlt": ["bronchial artery"], "la": "rami bronchiales aortae thoracicae",
+          "parts": ["bronchial artery"], "level": 2,
+          "kanji": "気管支と肺に栄養を送る動脈",
+          "etym": "bronchial「気管支の」（ギリシャ語 bronchos＝のど）＋ artery「動脈」",
+          "note": "胸大動脈（右は肋間動脈から）から出て、気管支にそって肺へ入る細い動脈。肺動脈は血を酸素化するための血管で、肺の組織そのものを養うのは気管支動脈（肺の栄養血管）。喀血の多くはここから出血する。"
+        },
+        {
+          "id": "esophageal-arteries", "ja": "食道動脈", "yomi": "しょくどうどうみゃく", "en": "esophageal arteries", "enAlt": ["oesophageal arteries", "esophageal artery"], "la": "rami oesophageales aortae thoracicae",
+          "parts": ["esophageal artery"], "level": 3, "xray": true,
+          "kanji": "食道に分布する動脈",
+          "etym": "esophageal「食道の」（ギリシャ語 oisophagos＝食べ物を運ぶもの）",
+          "note": "胸大動脈の前の面から出て、後縦隔の食道に分布する4〜5本の細い動脈。頚部の食道は下甲状腺動脈、腹部の食道は左胃動脈が養う。"
+        }
+      ]
     }
   ]
 }

@@ -599,7 +599,7 @@
         },
         {
           "id": "digastric", "ja": "顎二腹筋", "yomi": "がくにふくきん", "en": "digastric", "la": "musculus digastricus",
-          "parts": ["digastric"], "level": 2,
+          "parts": ["za:*belly of digastric muscle", "za:intermediate tendon of digastric muscle"], "level": 2,
           "kanji": "あごにある、筋腹が2つの筋",
           "etym": "di-「2」＋ gaster「腹」",
           "note": "前腹と後腹が中間腱でつながる筋。舌骨を引き上げ、口を開ける。",
@@ -2749,6 +2749,206 @@
           "kanji": "上腕二頭筋の腱と橈骨の間の滑液包",
           "etym": "bicipito-「二頭筋の」＋ radial「橈骨の」＋ bursa「袋」",
           "note": "上腕二頭筋の腱と橈骨粗面の前の部分の間にある滑液包。前腕を回内すると腱が橈骨に巻き付くので、その間ですべりをよくする。"
+        }
+      ]
+    },
+    {
+      "id": "mus-head-neck-parts",
+      "title": "頭頚部の筋の部と腹",
+      "intro": [
+        "顎二腹筋は、前腹と後腹で支配神経が違う（前腹は下顎神経、後腹は顔面神経）。前腹は第1咽頭弓（顎の弓）、後腹は第2咽頭弓から生まれるためで、頭頚部の筋はどの咽頭弓から生まれたかで支配する脳神経が決まる。",
+        "咬筋は浅部と深部の2層、外側翼突筋は上頭と下頭、眼輪筋は眼窩部と眼瞼部に分かれ、はたらきが少しずつ違う。"
+      ],
+      "terms": [
+        {
+          "id": "anterior-belly-of-digastric", "ja": "顎二腹筋前腹", "yomi": "がくにふくきんぜんぷく", "en": "anterior belly of digastric", "la": "venter anterior musculi digastrici",
+          "parts": ["za:anterior belly of digastric muscle"], "level": 2, "xray": true,
+          "kanji": "顎二腹筋の前の筋腹",
+          "etym": "anterior「前の」＋ belly「腹（筋腹）」＋ digastric「2つの腹の」",
+          "note": "下顎骨の内面（二腹筋窩）から後ろ下へ走り、中間腱で後腹とつながる。中間腱は線維の輪で舌骨に留められている。顎舌骨筋と同じく下顎神経の枝（顎舌骨筋神経）が支配する。",
+          "origin": "下顎骨の二腹筋窩",
+          "insertion": "中間腱（舌骨体に付く）",
+          "nerve": "下顎神経",
+          "action": "舌骨を前上へ引く・下顎を下げる（口を開ける）"
+        },
+        {
+          "id": "posterior-belly-of-digastric", "ja": "顎二腹筋後腹", "yomi": "がくにふくきんこうふく", "en": "posterior belly of digastric", "la": "venter posterior musculi digastrici",
+          "parts": ["za:posterior belly of digastric muscle"], "level": 2,
+          "kanji": "顎二腹筋の後ろの筋腹",
+          "etym": "posterior「後ろの」＋ belly「腹（筋腹）」",
+          "note": "側頭骨の乳突切痕（乳様突起の内側）から前下へ走り、中間腱へ続く。茎突舌骨筋と並んで走り、どちらも顔面神経が支配する。顎下三角・頚動脈三角の境界になる。",
+          "origin": "側頭骨の乳突切痕",
+          "insertion": "中間腱（舌骨体に付く）",
+          "originAt": ["mastoid-process"],
+          "nerve": "顔面神経",
+          "action": "舌骨を後上へ引く"
+        },
+        {
+          "id": "superficial-part-of-masseter", "ja": "咬筋浅部", "yomi": "こうきんせんぶ", "en": "superficial part of masseter", "la": "pars superficialis musculi masseteris",
+          "parts": ["za:superficial part of masseter"], "level": 3,
+          "kanji": "咬筋の浅い（外側の）層",
+          "etym": "superficial「浅い」＋ masseter ← ギリシャ語「かむもの」",
+          "note": "咬筋の大きな外側の層。頬骨弓の前2/3から後ろ下へ斜めに走り、下顎角の外面に付く。",
+          "origin": "頬骨弓の前2/3（頬骨・上顎骨の頬骨突起）",
+          "insertion": "下顎角の外面（咬筋粗面）",
+          "originAt": ["zygomatic-arch"],
+          "insertionAt": ["angle-of-mandible"],
+          "nerve": "下顎神経",
+          "action": "下顎を引き上げる・前へ出す"
+        },
+        {
+          "id": "deep-part-of-masseter", "ja": "咬筋深部", "yomi": "こうきんしんぶ", "en": "deep part of masseter", "la": "pars profunda musculi masseteris",
+          "parts": ["za:deep part of masseter"], "level": 3,
+          "kanji": "咬筋の深い（内側の）層",
+          "etym": "deep「深い」＋ masseter「咬筋」",
+          "note": "咬筋の内側の小さな層。頬骨弓の後ろ1/3の内面からほぼ垂直に下り、下顎枝の上部に付く。",
+          "origin": "頬骨弓の後ろ1/3（内面）",
+          "insertion": "下顎枝の外面の上部・筋突起の根もと",
+          "originAt": ["zygomatic-arch"],
+          "insertionAt": ["ramus-of-mandible"],
+          "nerve": "下顎神経",
+          "action": "下顎を引き上げる・後ろへ引く"
+        },
+        {
+          "id": "superior-head-of-lateral-pterygoid", "ja": "外側翼突筋上頭", "yomi": "がいそくよくとつきんじょうとう", "en": "superior head of lateral pterygoid", "la": "caput superius musculi pterygoidei lateralis",
+          "parts": ["za:superior head of lateral pterygoid muscle"], "level": 3,
+          "kanji": "外側翼突筋の上の頭",
+          "etym": "superior「上の」＋ head「頭」＋ lateral pterygoid「外側翼突筋」",
+          "note": "蝶形骨の大翼の下面（側頭下面）から後ろへ水平に走り、顎関節の関節円板と関節包に付く。口を閉じるとき関節円板を前へ引いて安定させる。",
+          "origin": "蝶形骨の大翼の側頭下面",
+          "insertion": "顎関節の関節円板・関節包",
+          "originAt": ["greater-wing-of-sphenoid"],
+          "nerve": "下顎神経",
+          "action": "関節円板を前へ引く（口を閉じるとき円板を安定させる）"
+        },
+        {
+          "id": "inferior-head-of-lateral-pterygoid", "ja": "外側翼突筋下頭", "yomi": "がいそくよくとつきんかとう", "en": "inferior head of lateral pterygoid", "la": "caput inferius musculi pterygoidei lateralis",
+          "parts": ["za:inferior head of lateral pterygoid muscle"], "level": 3, "xray": true,
+          "kanji": "外側翼突筋の下の頭",
+          "etym": "inferior「下の」＋ head「頭」＋ lateral pterygoid「外側翼突筋」",
+          "note": "翼状突起の外側板の外面から後ろ外側へ走り、下顎頚の翼突筋窩に付く。下顎頭を前へ引き出して口を大きく開け、片側だけ縮むと下顎を反対側へ動かす（すりつぶす動き）。",
+          "origin": "翼状突起の外側板の外面",
+          "insertion": "下顎頚の翼突筋窩",
+          "originAt": ["pterygoid-process"],
+          "nerve": "下顎神経",
+          "action": "下顎頭を前へ引く（口を開ける・下顎を前と反対側へ動かす）"
+        },
+        {
+          "id": "orbital-part-of-orbicularis-oculi", "ja": "眼輪筋眼窩部", "yomi": "がんりんきんがんかぶ", "en": "orbital part of orbicularis oculi", "la": "pars orbitalis musculi orbicularis oculi",
+          "parts": ["za:orbital part of orbicularis oculi"], "level": 3,
+          "kanji": "眼輪筋のうち眼窩の縁の上の部分",
+          "etym": "orbital「眼窩の」＋ orbicularis「輪の」＋ oculi「眼の」",
+          "note": "眼輪筋の外側の厚い輪。眼窩の縁の上をぐるりと回り、目を固くつむる（まぶしいとき・目を守るとき）。",
+          "origin": "前頭骨の鼻部・上顎骨の前頭突起・内側眼瞼靱帯",
+          "insertion": "眼窩のまわりの皮膚（輪になって元に戻る）",
+          "nerve": "顔面神経",
+          "action": "まぶたを強く閉じる"
+        },
+        {
+          "id": "palpebral-part-of-orbicularis-oculi", "ja": "眼輪筋眼瞼部", "yomi": "がんりんきんがんけんぶ", "en": "palpebral part of orbicularis oculi", "la": "pars palpebralis musculi orbicularis oculi",
+          "parts": ["za:palpebral part of orbicularis oculi"], "level": 3,
+          "kanji": "眼輪筋のうちまぶたの中の部分",
+          "etym": "palpebral「まぶたの」（ラテン語 palpebra）＋ orbicularis oculi「眼輪筋」",
+          "note": "まぶたの中の薄い部分。内側眼瞼靱帯から外側眼瞼縫線へ弓なりに走り、軽く目を閉じる（まばたき・眠るとき）。顔面神経まひでは目が閉じなくなる（兎眼）。",
+          "origin": "内側眼瞼靱帯",
+          "insertion": "外側眼瞼縫線",
+          "nerve": "顔面神経",
+          "action": "まぶたを軽く閉じる（まばたき）"
+        },
+        {
+          "id": "rectus-capitis-anterior", "ja": "前頭直筋", "yomi": "ぜんとうちょくきん", "en": "rectus capitis anterior", "la": "musculus rectus capitis anterior",
+          "parts": ["rectus capitis anterior"], "level": 3, "xray": true,
+          "kanji": "頭の前の、まっすぐな筋",
+          "etym": "rectus「まっすぐな」＋ capitis「頭の」＋ anterior「前の」",
+          "note": "頭長筋の後ろに隠れた短い椎前筋。環椎から後頭骨の底部へ上がり、頭をうなずくように前へ傾ける。",
+          "origin": "環椎の外側塊の前面",
+          "insertion": "後頭骨の底部（大後頭孔の前）",
+          "nerve": "頚神経の前枝",
+          "action": "頭の屈曲（環椎後頭関節）"
+        },
+        {
+          "id": "rectus-capitis-lateralis", "ja": "外側頭直筋", "yomi": "がいそくとうちょくきん", "en": "rectus capitis lateralis", "la": "musculus rectus capitis lateralis",
+          "parts": ["rectus capitis lateralis"], "level": 3, "xray": true,
+          "kanji": "頭の外側の、まっすぐな筋",
+          "etym": "rectus「まっすぐな」＋ capitis「頭の」＋ lateralis「外側の」",
+          "note": "環椎の横突起から後頭骨の頚静脈突起へ上がる短い筋。すぐ前を内頚静脈が通る。",
+          "origin": "環椎の横突起",
+          "insertion": "後頭骨の頚静脈突起",
+          "nerve": "頚神経の前枝",
+          "action": "頭を同じ側へ傾ける"
+        },
+        {
+          "id": "depressor-septi-nasi", "ja": "鼻中隔下制筋", "yomi": "びちゅうかくかせいきん", "en": "depressor septi nasi", "la": "musculus depressor septi nasi",
+          "parts": ["za:depressor septi nasi"], "level": 3, "xray": true,
+          "kanji": "鼻中隔を下げる筋",
+          "etym": "depressor「下げるもの」＋ septi「中隔の」＋ nasi「鼻の」",
+          "note": "上唇の奥（上顎骨の切歯の上）から鼻中隔の下の端（鼻柱）へ上がる小さな表情筋。鼻中隔を下へ引き、鼻孔を広げる。",
+          "origin": "上顎骨の切歯窩",
+          "insertion": "鼻中隔の可動部・鼻翼",
+          "nerve": "顔面神経",
+          "action": "鼻中隔を下へ引く（鼻孔を広げる）"
+        },
+        {
+          "id": "temporoparietalis", "ja": "側頭頭頂筋", "yomi": "そくとうとうちょうきん", "en": "temporoparietalis", "la": "musculus temporoparietalis",
+          "parts": ["za:temporoparietalis muscle"], "level": 3, "xray": true, "veil": true,
+          "kanji": "側頭部から頭頂部へ広がる筋",
+          "etym": "temporo-「側頭の」＋ parietalis「頭頂の」",
+          "note": "耳の上で、前頭筋・後頭筋の間に広がる薄い表情筋（頭蓋表筋の一部）。帽状腱膜を横へ引く。",
+          "origin": "耳介の上の側頭筋膜",
+          "insertion": "帽状腱膜の外側縁",
+          "nerve": "顔面神経",
+          "action": "帽状腱膜を引く・耳介を上げる"
+        }
+      ]
+    },
+    {
+      "id": "mus-head-trunk-fascia",
+      "title": "頚・顔・体幹の筋膜",
+      "intro": [
+        "筋膜は筋を包む丈夫な膜で、筋と筋の間を仕切り、炎症や膿が広がる通り道も決める。頚筋膜・横筋筋膜は局所解剖（頚の三角・鼡径管）の境界にもなる。"
+      ],
+      "terms": [
+        {
+          "id": "investing-layer-of-cervical-fascia", "ja": "頚筋膜浅葉", "yomi": "けいきんまくせんよう", "en": "investing layer of cervical fascia", "enAlt": ["superficial layer of deep cervical fascia", "investing layer of deep cervical fascia"], "la": "lamina superficialis fasciae cervicalis",
+          "parts": ["za:superficial investing cervical fascia"], "level": 2, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "頚の筋膜の浅い層",
+          "etym": "investing「包む」＋ cervical「頚の」（ラテン語 cervix）＋ fascia「帯・膜」",
+          "note": "頚を全体に包む筋膜。胸鎖乳突筋と僧帽筋を包みこみ、上は下顎骨・乳様突起・外後頭隆起、下は胸骨柄・鎖骨・肩峰に付く。頚の三角はこの膜の下にある。"
+        },
+        {
+          "id": "transversalis-fascia", "ja": "横筋筋膜", "yomi": "おうきんきんまく", "en": "transversalis fascia", "la": "fascia transversalis",
+          "parts": ["za:transversalis fascia"], "level": 2, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "腹横筋の内面の筋膜",
+          "etym": "transversalis「横の（腹横筋の）」＋ fascia「膜」",
+          "note": "腹横筋の内面をおおう、腹壁のいちばん内側の筋膜。その内側に腹膜外の脂肪と腹膜がある。鼡径靱帯の中点の上で精索（女性は子宮円索）が横筋筋膜を押し出して出ていく口が深鼡径輪。"
+        },
+        {
+          "id": "pectoral-fascia", "ja": "胸筋筋膜", "yomi": "きょうきんきんまく", "en": "pectoral fascia", "la": "fascia pectoralis",
+          "parts": ["za:pectoral fascia"], "level": 3, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "大胸筋をおおう筋膜",
+          "etym": "pectoral「胸の」（ラテン語 pectus）＋ fascia「膜」",
+          "note": "大胸筋の表面をおおう筋膜。乳房はこの上にのり、乳腺と胸筋筋膜の間には疎性結合組織（乳房後隙）がある。乳がんの手術では胸筋筋膜まで広がっているかが大切。"
+        },
+        {
+          "id": "temporal-fascia", "ja": "側頭筋膜", "yomi": "そくとうきんまく", "en": "temporal fascia", "la": "fascia temporalis",
+          "parts": ["za:superficial layer of temporal fascia"], "level": 3, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "側頭筋をおおう筋膜",
+          "etym": "temporal「側頭の」＋ fascia「膜」",
+          "note": "側頭筋の表面をおおう丈夫な筋膜。上は上側頭線に付き、下は浅葉と深葉に分かれて頬骨弓の外と内に付く。側頭筋の一部はこの膜からも起こる。"
+        },
+        {
+          "id": "masseteric-fascia", "ja": "咬筋筋膜", "yomi": "こうきんきんまく", "en": "masseteric fascia", "la": "fascia masseterica",
+          "parts": ["za:masseteric fascia"], "level": 3, "xray": true, "veil": true, "color": "#d6cdb8",
+          "kanji": "咬筋をおおう筋膜",
+          "etym": "masseteric「咬筋の」＋ fascia「膜」",
+          "note": "咬筋をおおう筋膜。後ろで耳下腺を包む耳下腺筋膜に続く（まとめて耳下腺咬筋筋膜という）。"
+        },
+        {
+          "id": "iliopsoas-fascia", "ja": "腸腰筋筋膜", "yomi": "ちょうようきんきんまく", "en": "iliopsoas fascia", "la": "fascia iliopsoas",
+          "parts": ["za:iliopsoas fascia"], "level": 3, "xray": true, "veil": true, "color": "#d6cdb8", "check": true,
+          "kanji": "腸腰筋をおおう筋膜",
+          "etym": "ilio-「腸骨の」＋ psoas ← ギリシャ語「腰の筋」＋ fascia「膜」",
+          "note": "大腰筋と腸骨筋をおおう筋膜（腸骨の上の部分は腸骨筋膜）。鼡径靱帯の下で腸恥筋膜弓をつくり、筋裂孔と血管裂孔を分ける。腰椎の結核などの膿は、この筋膜の中を下って大腿の付け根に出ることがある（流注膿瘍）。"
         }
       ]
     }

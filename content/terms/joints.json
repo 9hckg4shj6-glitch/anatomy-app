@@ -691,6 +691,40 @@
           "note": "第2〜5中手骨の頭の間を横につなぐ靱帯。中手骨頭が広がらないようにする。骨間筋の腱はこの後ろを、虫様筋の腱はこの前を通る。"
         }
       ]
+    },
+    {
+      "id": "joint-thorax-membranes",
+      "title": "肋骨の間の膜と肋骨頭・仙尾の連結",
+      "terms": [
+        {
+          "id": "external-intercostal-membrane", "ja": "外肋間膜", "yomi": "がいろっかんまく", "en": "external intercostal membrane", "la": "membrana intercostalis externa",
+          "parts": ["za:external intercostal membrane"], "level": 3,
+          "kanji": "肋骨の間の外側の膜",
+          "etym": "external「外の」＋ intercostal「肋骨の間の」（inter-「間」＋ costa「肋骨」）＋ membrane「膜」",
+          "note": "肋軟骨の間（肋骨の前の部分）で、外肋間筋の代わりに張る膜。外肋間筋は前では肋軟骨の間まで届かず、この膜に続く。"
+        },
+        {
+          "id": "internal-intercostal-membrane", "ja": "内肋間膜", "yomi": "ないろっかんまく", "en": "internal intercostal membrane", "la": "membrana intercostalis interna",
+          "parts": ["za:internal intercostal membrane"], "level": 3,
+          "kanji": "肋骨の間の内側の膜",
+          "etym": "internal「内の」＋ intercostal「肋骨の間の」＋ membrane「膜」",
+          "note": "肋骨角から脊柱まで（肋骨の後ろの部分）で、内肋間筋の代わりに張る膜。内肋間筋は後ろでは肋骨角までで、この膜に続く。"
+        },
+        {
+          "id": "intra-articular-ligament-of-head-of-rib", "ja": "関節内肋骨頭靱帯", "yomi": "かんせつないろっこつとうじんたい", "en": "intra-articular ligament of head of rib", "la": "ligamentum capitis costae intraarticulare",
+          "parts": ["za:intra-articular ligament of head of rib*"], "level": 3, "xray": true,
+          "kanji": "肋骨頭の関節の中の靱帯",
+          "etym": "intra-articular「関節の中の」＋ head of rib「肋骨頭」",
+          "note": "肋骨頭の稜（上下の関節面の間）から椎間円板へ張り、肋骨頭関節を上下の2つの腔に分ける短い靱帯。1つの椎骨とだけ関節する第1・11・12肋骨には無い。"
+        },
+        {
+          "id": "sacrococcygeal-joint", "ja": "仙尾連結", "yomi": "せんびれんけつ", "en": "sacrococcygeal joint", "enAlt": ["sacrococcygeal symphysis"], "la": "junctura sacrococcygea",
+          "parts": ["za:sacrococcygeal symphysis"], "level": 3, "check": true,
+          "kanji": "仙骨と尾骨のつなぎ目",
+          "etym": "sacro-「仙骨の」（ラテン語 os sacrum＝聖なる骨）＋ coccygeal「尾骨の」（ギリシャ語 kokkyx＝カッコウのくちばし）",
+          "note": "仙骨の尖と尾骨の間の線維軟骨の連結。少し動き、出産のときには尾骨が後ろへ押されて産道が広がる。"
+        }
+      ]
     }
   ]
 }

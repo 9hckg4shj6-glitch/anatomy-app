@@ -382,6 +382,40 @@
           "note": "葉気管支から分かれて肺区域ごとに入る気管支。右肺は10本（B1〜B10）、左肺は8本ほど。区域気管支が届く範囲が肺区域（S1〜S10）で、手術で区域ごとに切り取れる。"
         }
       ]
+    },
+    {
+      "id": "resp-larynx-ligaments",
+      "title": "喉頭の膜と靱帯（追加）",
+      "terms": [
+        {
+          "id": "quadrangular-membrane", "ja": "四角膜", "yomi": "しかくまく", "en": "quadrangular membrane", "la": "membrana quadrangularis",
+          "parts": ["za:quadrangular membrane"], "level": 3,
+          "kanji": "四角形の膜",
+          "etym": "quadrangular「四角形の」（quadri-「4」＋ angulus「角」）＋ membrane「膜」",
+          "note": "喉頭蓋の外側の縁と披裂軟骨の間に張る四角形の膜（喉頭の弾性膜の上の部分。下の部分が弾性円錐）。上の縁は披裂喉頭蓋ヒダの芯、下の縁は厚くなって前庭靱帯（室ヒダの芯）になる。"
+        },
+        {
+          "id": "median-cricothyroid-ligament", "ja": "正中輪状甲状靱帯", "yomi": "せいちゅうりんじょうこうじょうじんたい", "en": "median cricothyroid ligament", "la": "ligamentum cricothyroideum medianum",
+          "parts": ["median cricothyroid ligament"], "level": 2,
+          "kanji": "輪状軟骨と甲状軟骨の間の、正中の靱帯",
+          "etym": "median「正中の」＋ crico-「輪状軟骨」（ギリシャ語 krikos＝輪）＋ thyroid「甲状軟骨」",
+          "note": "甲状軟骨の下の縁と輪状軟骨の弓の間に、前の正中で張る靱帯（弾性円錐の前の厚い部分）。喉頭隆起の下のくぼみとして皮膚の上からさわれる。気道がふさがった緊急のときは、ここを切って空気の通り道をつくる（輪状甲状靱帯切開）。"
+        },
+        {
+          "id": "median-thyrohyoid-ligament", "ja": "正中甲状舌骨靱帯", "yomi": "せいちゅうこうじょうぜっこつじんたい", "en": "median thyrohyoid ligament", "la": "ligamentum thyrohyoideum medianum",
+          "parts": ["median thyrohyoid ligament"], "level": 3,
+          "kanji": "甲状軟骨と舌骨の間の、正中の靱帯",
+          "etym": "median「正中の」＋ thyro-「甲状軟骨」＋ hyoid「舌骨」",
+          "note": "甲状舌骨膜の正中の厚い部分。甲状軟骨の上甲状切痕から舌骨体の後ろの上の縁へ張る。"
+        },
+        {
+          "id": "lateral-thyrohyoid-ligament", "ja": "外側甲状舌骨靱帯", "yomi": "がいそくこうじょうぜっこつじんたい", "en": "lateral thyrohyoid ligament", "la": "ligamentum thyrohyoideum laterale",
+          "parts": ["lateral thyrohyoid ligament"], "level": 3,
+          "kanji": "甲状軟骨と舌骨の間の、外側の靱帯",
+          "etym": "lateral「外側の」＋ thyro-「甲状軟骨」＋ hyoid「舌骨」",
+          "note": "甲状舌骨膜の後ろの縁の厚い部分で、甲状軟骨の上角の先と舌骨の大角の先を結ぶ。中に小さな麦粒軟骨があることがある。"
+        }
+      ]
     }
   ]
 }

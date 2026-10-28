@@ -226,6 +226,119 @@
           "note": "膝の裏の脂肪の中にあるリンパ節。小伏在静脈にそう足の外側と、下腿の深くのリンパを受ける。"
         }
       ]
+    },
+    {
+      "id": "lymph-face-mediastinum",
+      "title": "顔と縦隔のリンパ節",
+      "intro": [
+        "縦隔のリンパ節は、前縦隔（胸腺・心膜の前）、気管のまわり、後縦隔（食道・大動脈のそば）に並ぶ。肺がん・食道がんの広がりを調べるときに、どの群に転移しているかが大切になる。"
+      ],
+      "terms": [
+        {
+          "id": "facial-nodes", "ja": "顔面リンパ節", "yomi": "がんめんりんぱせつ", "en": "facial nodes", "la": "nodi lymphoidei faciales",
+          "parts": ["za:bucinator node", "za:nasolabial node", "za:mandibular node"], "level": 3,
+          "kanji": "顔の皮下のリンパ節",
+          "etym": "facial「顔の」（ラテン語 facies）＋ nodes「節」",
+          "note": "顔面静脈にそって頬（頬筋リンパ節）・鼻唇溝（鼻唇リンパ節）・下顎の縁（下顎リンパ節）に散らばる小さなリンパ節。顔のリンパを集めて顎下リンパ節へ送る。"
+        },
+        {
+          "id": "pretracheal-nodes", "ja": "気管前リンパ節", "yomi": "きかんぜんりんぱせつ", "en": "pretracheal nodes", "la": "nodi lymphoidei pretracheales",
+          "parts": ["za:pretracheal nodes"], "level": 3,
+          "kanji": "頚の気管の前のリンパ節",
+          "etym": "pre-「前の」＋ tracheal「気管の」",
+          "note": "頚部で甲状腺の峡部の下、気管の前にあるリンパ節。甲状腺と喉頭のリンパを受け、深頚リンパ節へ送る。甲状腺がんの転移先として大切。"
+        },
+        {
+          "id": "brachiocephalic-nodes", "ja": "腕頭リンパ節", "yomi": "わんとうりんぱせつ", "en": "brachiocephalic nodes", "la": "nodi lymphoidei brachiocephalici",
+          "parts": ["za:brachiocephalic nodes"], "level": 3,
+          "kanji": "腕頭静脈のそばのリンパ節",
+          "etym": "brachio-「腕の」＋ cephalic「頭の」",
+          "note": "上縦隔の前で、左右の腕頭静脈のそばにあるリンパ節（前縦隔リンパ節）。胸腺・甲状腺・心膜のリンパを受ける。"
+        },
+        {
+          "id": "prepericardial-nodes", "ja": "心膜前リンパ節", "yomi": "しんまくぜんりんぱせつ", "en": "prepericardial nodes", "la": "nodi lymphoidei prepericardiaci",
+          "parts": ["za:prepericardial nodes"], "level": 3,
+          "kanji": "心膜の前のリンパ節",
+          "etym": "pre-「前の」＋ pericardial「心膜の」（peri-「まわり」＋ kardia「心臓」）",
+          "note": "前縦隔で、胸骨と心膜の間にあるリンパ節。横隔膜の前の部分と肝臓の上面のリンパも受ける。"
+        },
+        {
+          "id": "juxta-esophageal-nodes", "ja": "食道傍リンパ節", "yomi": "しょくどうぼうりんぱせつ", "en": "juxta-esophageal nodes", "enAlt": ["juxta-oesophageal nodes", "paraesophageal nodes"], "la": "nodi lymphoidei juxtaoesophageales",
+          "parts": ["za:juxta-oesophageal nodes"], "level": 2,
+          "kanji": "食道のそばのリンパ節",
+          "etym": "juxta-「そばの」＋ esophageal「食道の」",
+          "note": "後縦隔で、食道のまわりに並ぶリンパ節。食道がんはここから上（頚部）にも下（腹部の胃のまわり）にも広がる。"
+        },
+        {
+          "id": "prevertebral-nodes", "ja": "椎前リンパ節", "yomi": "ついぜんりんぱせつ", "en": "prevertebral nodes", "la": "nodi lymphoidei prevertebrales",
+          "parts": ["za:prevertebral nodes"], "level": 3,
+          "kanji": "椎骨の前のリンパ節",
+          "etym": "pre-「前の」＋ vertebral「椎骨の」",
+          "note": "後縦隔で、胸椎の前（大動脈と奇静脈のそば）にあるリンパ節。胸壁の後ろと食道のリンパを受ける。"
+        },
+        {
+          "id": "superior-diaphragmatic-nodes", "ja": "上横隔リンパ節", "yomi": "じょうおうかくりんぱせつ", "en": "superior diaphragmatic nodes", "la": "nodi lymphoidei phrenici superiores",
+          "parts": ["za:superior diaphragmatic nodes"], "level": 3,
+          "kanji": "横隔膜の上のリンパ節",
+          "etym": "superior「上の」＋ diaphragmatic「横隔膜の」（ギリシャ語 diaphragma＝仕切り）",
+          "note": "横隔膜の胸側の面にあるリンパ節。横隔膜と肝臓の上面のリンパを受け、胸骨傍リンパ節や縦隔のリンパ節へ送る。"
+        }
+      ]
+    },
+    {
+      "id": "lymph-abdomen-pelvis-more",
+      "title": "腹部と骨盤のリンパ節（追加）",
+      "terms": [
+        {
+          "id": "inferior-diaphragmatic-nodes", "ja": "下横隔リンパ節", "yomi": "かおうかくりんぱせつ", "en": "inferior diaphragmatic nodes", "la": "nodi lymphoidei phrenici inferiores",
+          "parts": ["za:inferior diaphragmatic nodes"], "level": 3,
+          "kanji": "横隔膜の下のリンパ節",
+          "etym": "inferior「下の」＋ diaphragmatic「横隔膜の」",
+          "note": "横隔膜の腹側の面で、下横隔動脈にそうリンパ節。横隔膜の後ろの部分と肝臓のリンパを受け、腰リンパ節へ送る。"
+        },
+        {
+          "id": "pancreatic-nodes", "ja": "膵リンパ節", "yomi": "すいりんぱせつ", "en": "pancreatic nodes", "la": "nodi lymphoidei pancreatici",
+          "parts": ["za:superior pancreatic nodes", "za:inferior pancreatic nodes"], "level": 3,
+          "kanji": "膵臓のまわりのリンパ節",
+          "etym": "pancreatic「膵臓の」（ギリシャ語 pan「すべて」＋ kreas「肉」）",
+          "note": "膵臓の上の縁（脾動脈にそう上膵リンパ節）と下の縁（下膵リンパ節）に並ぶリンパ節。膵臓のリンパを受け、腹腔リンパ節・上腸間膜リンパ節へ送る。"
+        },
+        {
+          "id": "splenic-nodes", "ja": "脾リンパ節", "yomi": "ひりんぱせつ", "en": "splenic nodes", "la": "nodi lymphoidei splenici",
+          "parts": ["za:splenic nodes"], "level": 3,
+          "kanji": "脾臓の門のリンパ節",
+          "etym": "splenic「脾臓の」（ギリシャ語 splen）",
+          "note": "脾門（脾臓の血管の出入口）にあるリンパ節。胃の大弯の左の部分と膵尾のリンパも受け、上膵リンパ節へ送る。"
+        },
+        {
+          "id": "inferior-mesenteric-nodes", "ja": "下腸間膜リンパ節", "yomi": "かちょうかんまくりんぱせつ", "en": "inferior mesenteric nodes", "la": "nodi lymphoidei mesenterici inferiores",
+          "parts": ["za:left colic nodes", "za:sigmoid nodes"], "level": 2,
+          "kanji": "下腸間膜動脈にそうリンパ節",
+          "etym": "inferior「下の」＋ mesenteric「腸間膜の」（mes-「中間」＋ enteron「腸」）",
+          "note": "下腸間膜動脈の枝にそうリンパ節（左結腸リンパ節・S状結腸リンパ節・上直腸リンパ節）。下行結腸・S状結腸・直腸の上部のリンパを受け、腰リンパ節へ送る。大腸がんの手術ではこのリンパ節を血管ごと取る。"
+        },
+        {
+          "id": "appendicular-nodes", "ja": "虫垂リンパ節", "yomi": "ちゅうすいりんぱせつ", "en": "appendicular nodes", "la": "nodi lymphoidei appendiculares",
+          "parts": ["za:appendicular nodes"], "level": 3,
+          "kanji": "虫垂のリンパ節",
+          "etym": "appendicular「虫垂の」（ラテン語 appendix＝付属物）",
+          "note": "虫垂間膜の中で、虫垂動脈にそうリンパ節。回結腸リンパ節へ続く。"
+        },
+        {
+          "id": "paravesical-nodes", "ja": "膀胱傍リンパ節", "yomi": "ぼうこうぼうりんぱせつ", "en": "paravesical nodes", "la": "nodi lymphoidei paravesicales",
+          "parts": ["za:prevesical nodes", "za:postvesical nodes", "za:lateral vesical nodes"], "level": 3,
+          "kanji": "膀胱のまわりのリンパ節",
+          "etym": "para-「そばの」＋ vesical「膀胱の」（ラテン語 vesica）",
+          "note": "膀胱の前・後ろ・外側にあるリンパ節。膀胱（と前立腺）のリンパを受け、内腸骨リンパ節・外腸骨リンパ節へ送る。"
+        },
+        {
+          "id": "pararectal-nodes", "ja": "直腸傍リンパ節", "yomi": "ちょくちょうぼうりんぱせつ", "en": "pararectal nodes", "enAlt": ["anorectal nodes"], "la": "nodi lymphoidei pararectales",
+          "parts": ["za:pararectal nodes"], "level": 3,
+          "kanji": "直腸のまわりのリンパ節",
+          "etym": "para-「そばの」＋ rectal「直腸の」",
+          "note": "直腸の筋層のまわり（直腸間膜の中）のリンパ節。直腸がんの手術では、直腸間膜ごとこのリンパ節を取る（直腸間膜全切除）。"
+        }
+      ]
     }
   ]
 }

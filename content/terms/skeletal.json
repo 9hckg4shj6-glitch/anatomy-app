@@ -1764,6 +1764,54 @@
           "note": "中手骨の先の丸い部分。基節骨と中手指節関節（MP関節）をつくる。こぶしを握ると、手の甲の側に山（ナックル）として出る。第5中手骨頚の骨折はボクサー骨折と呼ばれる。"
         }
       ]
+    },
+    {
+      "id": "skel-pt-skull-base",
+      "title": "頭蓋底と舌骨の部位（追加）",
+      "terms": [
+        {
+          "id": "clivus", "ja": "斜台", "yomi": "しゃだい", "en": "clivus", "la": "clivus",
+          "of": "occipital-bone", "level": 2,
+          "kanji": "斜めの台",
+          "etym": "clivus ← ラテン語「坂・斜面」",
+          "note": "トルコ鞍の後ろ（鞍背）から大後頭孔の前の縁へ、斜めに下る広い面（蝶形骨の体と後頭骨の底部でできる）。後頭蓋窩の前の壁で、上に橋と延髄がのり、脳底動脈が走る。"
+        },
+        {
+          "id": "petrous-part-of-temporal-bone", "ja": "錐体（側頭骨）", "yomi": "すいたい", "en": "petrous part of temporal bone", "enAlt": ["petrous pyramid"], "la": "pars petrosa ossis temporalis",
+          "of": "temporal-bone", "level": 2,
+          "kanji": "三角錐の形の部分。岩のように硬い（petrous＝岩の）",
+          "etym": "petrous ← ギリシャ語 petra「岩」",
+          "note": "側頭骨のうち、頭蓋底を前内側へ斜めに突き出す三角錐の形の部分。からだでいちばん硬い骨で、中に内耳と中耳がある。上の縁（錐体上縁）が中頭蓋窩と後頭蓋窩の境目。"
+        },
+        {
+          "id": "internal-occipital-protuberance", "ja": "内後頭隆起", "yomi": "ないこうとうりゅうき", "en": "internal occipital protuberance", "la": "protuberantia occipitalis interna",
+          "of": "occipital-bone", "level": 3,
+          "kanji": "後頭骨の内面の高まり",
+          "etym": "internal「内の」＋ occipital「後頭の」＋ protuberance「隆起」",
+          "note": "後頭骨の内面の中央の高まり。十字形の隆起の交わる所で、上矢状洞・横静脈洞・直静脈洞が合わさる静脈洞交会がここにある。"
+        },
+        {
+          "id": "body-of-hyoid-bone", "ja": "舌骨体", "yomi": "ぜっこつたい", "en": "body of hyoid bone", "la": "corpus ossis hyoidei",
+          "of": "hyoid-bone", "level": 2,
+          "kanji": "舌骨の中央の部分",
+          "etym": "body「体」＋ hyoid ← ギリシャ語 hyoeides「U（ユプシロン）の形の」",
+          "note": "舌骨の前の中央の部分。前の面に顎舌骨筋・オトガイ舌骨筋・胸骨舌骨筋・肩甲舌骨筋などが付く。下顎骨の下、喉頭隆起の上にさわれる。"
+        },
+        {
+          "id": "greater-horn-of-hyoid-bone", "ja": "大角（舌骨）", "yomi": "だいかく", "en": "greater horn of hyoid bone", "enAlt": ["greater cornu"], "la": "cornu majus ossis hyoidei",
+          "of": "hyoid-bone", "level": 3,
+          "kanji": "舌骨の大きな角（つの）",
+          "etym": "greater「大きい」＋ horn「角（つの）」",
+          "note": "舌骨体の両端から後ろへ長く伸びる突起。中咽頭収縮筋と舌骨舌筋が起こり、先に外側甲状舌骨靱帯が付く。"
+        },
+        {
+          "id": "lesser-horn-of-hyoid-bone", "ja": "小角（舌骨）", "yomi": "しょうかく", "en": "lesser horn of hyoid bone", "enAlt": ["lesser cornu"], "la": "cornu minus ossis hyoidei",
+          "of": "hyoid-bone", "level": 3,
+          "kanji": "舌骨の小さな角（つの）",
+          "etym": "lesser「小さい」＋ horn「角（つの）」",
+          "note": "舌骨体と大角の境目から上へ出る小さな突起。茎突舌骨靱帯が付く。"
+        }
+      ]
     }
   ]
 }

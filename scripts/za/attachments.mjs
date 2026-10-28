@@ -180,6 +180,15 @@ const TABLE = {
   "zygomaticus-minor": T(["zygomaticus minor muscle"], ["zygomatic-bone"]),
   "levator-anguli-oris": T(["levator anguli oris"], ["maxilla"]),
   "depressor-labii-inferioris": T(["depressor labii inferioris"], ["mandible"]),
+  // 頭頚部の筋の部と腹（Phase 3 その6）。咬筋の付着面は筋全体の名前に付いているので、浅部は頬骨、深部は側頭骨（頬骨突起）で分ける
+  "anterior-belly-of-digastric": T(["anterior belly of digastric muscle"], ["mandible"], ["hyoid-bone"]),
+  "posterior-belly-of-digastric": T(["posterior belly of digastric muscle"], ["temporal-bone"], ["hyoid-bone"]),
+  "superficial-part-of-masseter": T(["masseter"], ["zygomatic-bone"], ["mandible"]),
+  "deep-part-of-masseter": T(["masseter"], ["temporal-bone"], ["mandible"]),
+  "orbital-part-of-orbicularis-oculi": T(["orbital part of orbicularis oculi"], ["maxilla", "frontal-bone"]),
+  "depressor-septi-nasi": T(["depressor septi nasi"], ["maxilla"]),
+  "rectus-capitis-anterior": T(["rectus anterior capitis muscle"], ["atlas"], ["occipital-bone"]),
+  "rectus-capitis-lateralis": T(["rectus lateralis capitis muscle"], ["atlas"], ["occipital-bone"]),
 };
 
 const { elementNames, conceptElements, readMesh: bpMesh, readWhole } = readElements();

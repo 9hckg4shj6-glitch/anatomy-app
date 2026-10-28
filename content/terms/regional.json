@@ -360,6 +360,177 @@
           "region": { "bounds": ["interosseous-membrane-of-forearm"], "contents": ["brachioradialis", "extensor-carpi-radialis-longus", "extensor-carpi-radialis-brevis", "extensor-digitorum", "extensor-digiti-minimi", "extensor-carpi-ulnaris", "abductor-pollicis-longus", "extensor-pollicis-brevis", "extensor-pollicis-longus", "posterior-interosseous-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.93, "keep": 1 }, "view": { "target": [-0.24, 0.93, 0.095], "from": [0, -1, 0.02], "size": 0.055 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         }
       ]
+    },
+    {
+      "id": "reg-neck-triangles",
+      "title": "頚部の三角",
+      "intro": [
+        "頚の横の部分は、胸鎖乳突筋で前頚三角と後頚三角に分かれる。前頚三角は顎二腹筋と肩甲舌骨筋で、さらに顎下三角・オトガイ下三角・頚動脈三角・筋三角の4つに分かれる。",
+        "三角は、手術や診察のときに「どの膜の下に何があるか」を探す目印になる。頚動脈三角では総頚動脈の拍動をふれ、後頚三角では副神経を傷つけないよう気をつける。"
+      ],
+      "terms": [
+        {
+          "id": "anterior-triangle-of-neck", "ja": "前頚三角", "yomi": "ぜんけいさんかく", "en": "anterior triangle of neck", "enAlt": ["anterior cervical region"], "la": "trigonum cervicale anterius",
+          "level": 1,
+          "kanji": "頚の前の三角",
+          "etym": "anterior「前の」＋ triangle「三角」＋ neck「頚」",
+          "note": "胸鎖乳突筋の前縁・下顎骨の下縁・頚の正中線で囲まれた三角。頂点は胸骨の頚切痕。中に舌骨の上下の筋、甲状腺・喉頭・気管、総頚動脈と内頚静脈・迷走神経（頚動脈鞘）、顎下腺が入る。",
+          "region": { "bounds": ["sternocleidomastoid", "body-of-mandible"], "contents": ["submandibular-gland", "thyroid-gland", "sternohyoid", "common-carotid-artery", "internal-jugular-vein", "vagus-nerve", "hypoglossal-nerve"], "outline": [[-0.002,1.423,0.168],[-0.028,1.433,0.137],[-0.0402,1.4504,0.1024],[-0.0416,1.4373,0.1032],[-0.0292,1.3981,0.1187],[-0.0222,1.3586,0.1336],[-0.0105,1.3036,0.1553],[0,1.326,0.137],[0,1.38,0.13],[0,1.4297,0.129]], "view": { "target": [-0.02,1.39,0.12], "from": [-0.6,-0.05,0.8], "size": 0.08 }, "prompt": "胸鎖乳突筋の前、下顎骨の下の三角は？" }
+        },
+        {
+          "id": "posterior-triangle-of-neck", "ja": "後頚三角", "yomi": "こうけいさんかく", "en": "posterior triangle of neck", "enAlt": ["lateral cervical region", "posterior cervical triangle"], "la": "regio cervicalis lateralis",
+          "level": 1, "check": true,
+          "kanji": "頚の後ろ（外側）の三角",
+          "etym": "posterior「後ろの」＋ triangle「三角」＋ neck「頚」。解剖学用語では外側頚部",
+          "note": "胸鎖乳突筋の後縁・僧帽筋の前縁・鎖骨の中1/3で囲まれた三角。床は頭板状筋・肩甲挙筋・斜角筋。副神経が斜めに横切り（リンパ節の生検で傷つきやすい）、下の部分を腕神経叢・鎖骨下動脈・頚横動脈・肩甲舌骨筋の下腹が通る。外頚静脈が表面を下る。",
+          "region": { "bounds": ["sternocleidomastoid", "trapezius", "clavicle"], "contents": ["accessory-nerve", "brachial-plexus", "transverse-cervical-artery", "external-jugular-vein", "omohyoid", "levator-scapulae", "middle-scalene"], "contentsLabel": "通るものと床の筋", "outline": [[-0.0583,1.5,0.0415],[-0.0525,1.4629,0.0633],[-0.043,1.4224,0.0826],[-0.0383,1.3827,0.1007],[-0.0476,1.3365,0.1357],[-0.0723,1.3392,0.1165],[-0.0929,1.3494,0.0841],[-0.0658,1.3572,0.0922],[-0.0477,1.397,0.0753],[-0.0372,1.4411,0.0551],[-0.0345,1.4822,0.0291]], "view": { "target": [-0.06,1.42,0.07], "from": [-1,0.1,0.25], "size": 0.09 }, "prompt": "胸鎖乳突筋・僧帽筋・鎖骨で囲まれた三角は？" }
+        },
+        {
+          "id": "submandibular-triangle", "ja": "顎下三角", "yomi": "がくかさんかく", "en": "submandibular triangle", "enAlt": ["digastric triangle"], "la": "trigonum submandibulare",
+          "level": 2,
+          "kanji": "下顎の下の三角",
+          "etym": "sub-「下の」＋ mandibular「下顎の」＋ triangle「三角」",
+          "note": "下顎骨の下縁と、顎二腹筋の前腹・後腹で囲まれた三角。床は顎舌骨筋と舌骨舌筋。顎下腺と顎下リンパ節が入り、顔面動脈・顔面静脈が下顎の縁を越える。舌下神経が舌骨舌筋の表面を前へ走る。",
+          "region": { "bounds": ["body-of-mandible", "anterior-belly-of-digastric", "posterior-belly-of-digastric"], "contents": ["submandibular-gland", "submandibular-nodes", "facial-artery", "facial-vein", "hypoglossal-nerve", "mylohyoid"], "outline": [[-0.0402,1.4504,0.1024],[-0.036,1.462,0.094],[-0.0127,1.4345,0.1251],[-0.0048,1.4251,0.1558],[-0.02,1.428,0.15],[-0.032,1.435,0.128]], "view": { "target": [-0.025,1.44,0.12], "from": [-0.6,-0.6,0.5], "size": 0.05 }, "prompt": "下顎骨と顎二腹筋の2つの腹で囲まれた三角は？" }
+        },
+        {
+          "id": "submental-triangle", "ja": "オトガイ下三角", "yomi": "おとがいかさんかく", "en": "submental triangle", "la": "trigonum submentale",
+          "level": 2,
+          "kanji": "オトガイ（あご先）の下の三角",
+          "etym": "sub-「下の」＋ mental「オトガイの」（ラテン語 mentum＝あご先）＋ triangle「三角」",
+          "note": "左右の顎二腹筋の前腹と舌骨体で囲まれた、正中の三角（3Dでは右半分を示す）。床は左右の顎舌骨筋。オトガイ下リンパ節が入り、下唇の中央・あご先・舌の先のリンパを受ける。",
+          "region": { "bounds": ["anterior-belly-of-digastric", "body-of-hyoid-bone"], "contents": ["submental-nodes", "mylohyoid"], "outline": [[0,1.423,0.163],[-0.0055,1.425,0.155],[-0.0138,1.4353,0.1236],[0,1.4297,0.129]], "view": { "target": [-0.005,1.43,0.14], "from": [-0.25,-1,0.35], "size": 0.035 }, "prompt": "左右の顎二腹筋前腹と舌骨で囲まれた三角は？" }
+        },
+        {
+          "id": "carotid-triangle", "ja": "頚動脈三角", "yomi": "けいどうみゃくさんかく", "en": "carotid triangle", "la": "trigonum caroticum",
+          "level": 1,
+          "kanji": "頚動脈がある三角",
+          "etym": "carotid「頚動脈の」（ギリシャ語 karoun＝眠らせる。押すと気を失うことから）＋ triangle「三角」",
+          "note": "胸鎖乳突筋の前縁・顎二腹筋の後腹・肩甲舌骨筋の上腹で囲まれた三角。総頚動脈が内頚動脈と外頚動脈に分かれる所（頚動脈洞・頚動脈小体）があり、拍動をふれる。内頚静脈・迷走神経・舌下神経も通る。",
+          "region": { "bounds": ["sternocleidomastoid", "posterior-belly-of-digastric", "omohyoid"], "contents": ["common-carotid-artery", "internal-carotid-artery", "external-carotid-artery", "internal-jugular-vein", "vagus-nerve", "hypoglossal-nerve"], "outline": [[-0.047,1.477,0.081],[-0.0464,1.458,0.093],[-0.0322,1.4175,0.1122],[-0.027,1.385,0.12],[-0.0137,1.4264,0.1206],[-0.0127,1.4345,0.1251],[-0.03,1.456,0.098]], "view": { "target": [-0.03,1.43,0.1], "from": [-0.8,0,0.6], "size": 0.055 }, "prompt": "頚動脈が枝分かれする三角は？" }
+        },
+        {
+          "id": "muscular-triangle", "ja": "筋三角", "yomi": "きんさんかく", "en": "muscular triangle", "enAlt": ["omotracheal triangle"], "la": "trigonum musculare",
+          "level": 2,
+          "kanji": "舌骨下筋がある三角",
+          "etym": "muscular「筋の」＋ triangle「三角」",
+          "note": "胸鎖乳突筋の前縁（下の部分）・肩甲舌骨筋の上腹・頚の正中線で囲まれた三角。胸骨舌骨筋・胸骨甲状筋などの舌骨下筋と、その下の甲状腺・喉頭・気管が入る。",
+          "region": { "bounds": ["sternocleidomastoid", "omohyoid"], "contents": ["sternohyoid", "sternothyroid", "thyroid-gland"], "contentsLabel": "中の筋と器官", "outline": [[-0.0137,1.4264,0.1206],[-0.027,1.385,0.12],[-0.0222,1.3586,0.1336],[-0.0105,1.3036,0.1553],[0,1.326,0.137],[0,1.38,0.13],[0,1.4297,0.129]], "view": { "target": [-0.015,1.37,0.13], "from": [-0.5,0,0.9], "size": 0.06 }, "prompt": "肩甲舌骨筋の下、正中までの三角は？" }
+        },
+        {
+          "id": "suboccipital-triangle", "ja": "後頭下三角", "yomi": "こうとうかさんかく", "en": "suboccipital triangle", "la": "trigonum suboccipitale",
+          "level": 2, "check": true,
+          "kanji": "後頭骨の下の三角",
+          "etym": "sub-「下の」＋ occipital「後頭の」＋ triangle「三角」",
+          "note": "項部の深い所で、大後頭直筋・上頭斜筋・下頭斜筋で囲まれた三角。床は環椎の後弓と後環椎後頭膜。椎骨動脈が環椎の上を横に走って大後頭孔へ向かい、後頭下神経（第1頚神経の後枝）が出る（このアプリの3Dには無い）。",
+          "region": { "bounds": ["rectus-capitis-posterior-major", "obliquus-capitis-superior", "obliquus-capitis-inferior"], "contents": ["vertebral-artery"], "outline": [[-0.0022,1.4376,0.0374],[-0.0393,1.4668,0.0735],[-0.031,1.489,0.025]], "view": { "target": [-0.025,1.465,0.035], "from": [-0.35,0.15,-1], "size": 0.04 }, "prompt": "後頭下の3つの筋に囲まれ、椎骨動脈が通る三角は？" }
+        }
+      ]
+    },
+    {
+      "id": "reg-trunk",
+      "title": "体幹の通り道と三角",
+      "terms": [
+        {
+          "id": "inguinal-canal", "ja": "鼡径管", "yomi": "そけいかん", "en": "inguinal canal", "la": "canalis inguinalis",
+          "level": 1,
+          "kanji": "鼡径部（足の付け根）の管",
+          "etym": "inguinal ← ラテン語 inguen「鼡径部」＋ canal「管」",
+          "note": "鼡径靱帯の内側半分のすぐ上を、外上の深鼡径輪から内下の浅鼡径輪へ斜めに通る約4cmの管。前の壁は外腹斜筋の腱膜、後ろの壁は横筋筋膜、床は鼡径靱帯、天井は内腹斜筋と腹横筋の下の縁。男性は精索（精管・精巣動脈・精巣静脈）、女性は子宮円索が通り、腸骨鼡径神経も通る。腸がここへ出てくるのが鼡径ヘルニア。",
+          "region": { "bounds": ["external-oblique", "internal-oblique", "transversus-abdominis", "inguinal-ligament", "transversalis-fascia"], "contents": ["ductus-deferens", "testicular-artery", "testicular-vein", "ilio-inguinal-nerve", "genitofemoral-nerve"], "boundsLabel": "壁をつくるもの", "outline": [[-0.083,0.866,0.13],[-0.058,0.842,0.15],[-0.031,0.815,0.155],[-0.034,0.8,0.15],[-0.062,0.828,0.145],[-0.08,0.852,0.13]], "view": { "target": [-0.058,0.833,0.14], "from": [-0.3,0.1,1], "size": 0.055 }, "prompt": "精管が腹壁を斜めに抜ける通り道は？" }
+        },
+        {
+          "id": "triangle-of-auscultation", "ja": "聴診三角", "yomi": "ちょうしんさんかく", "en": "triangle of auscultation", "enAlt": ["auscultatory triangle"], "la": "trigonum auscultationis",
+          "level": 2,
+          "kanji": "聴診器を当てる三角",
+          "etym": "auscultation ← ラテン語 auscultare「耳を傾ける」",
+          "note": "背中で、僧帽筋の外側縁・広背筋の上縁・肩甲骨の内側縁（大菱形筋）で囲まれた三角。筋が薄いので、ここに聴診器を当てると肺の音がよく聞こえる。腕を前で組んで肩甲骨を外へ出すと広がる。",
+          "region": { "bounds": ["trapezius", "latissimus-dorsi", "medial-border-of-scapula"], "contents": ["rhomboid-major"], "contentsLabel": "床の筋", "outline": [[-0.0753,1.2215,-0.021],[-0.0698,1.2061,-0.019],[-0.0841,1.2136,-0.004]], "view": { "target": [-0.076,1.214,-0.015], "from": [-0.3,0.15,-1], "size": 0.045 } }
+        },
+        {
+          "id": "inferior-lumbar-triangle", "ja": "腰三角", "yomi": "ようさんかく", "en": "inferior lumbar triangle", "enAlt": ["lumbar triangle", "petit triangle"], "la": "trigonum lumbale inferius",
+          "level": 2,
+          "kanji": "腰の三角",
+          "etym": "lumbar「腰の」（ラテン語 lumbus）＋ triangle「三角」。プチの三角ともいう",
+          "note": "腰の外側で、広背筋の前縁・外腹斜筋の後縁・腸骨稜で囲まれた三角。床は内腹斜筋で、腹壁の弱い所なのでまれにヘルニアが起こる（腰ヘルニア）。",
+          "region": { "bounds": ["latissimus-dorsi", "external-oblique", "iliac-crest"], "contents": ["internal-oblique"], "contentsLabel": "床の筋", "outline": [[-0.104,1.011,0.066],[-0.0914,0.9552,0.049],[-0.1217,0.9539,0.0741]], "view": { "target": [-0.105,0.98,0.06], "from": [-0.6,0.1,-0.8], "size": 0.06 } }
+        }
+      ]
+    },
+    {
+      "id": "reg-mediastinum",
+      "title": "縦隔",
+      "intro": [
+        "縦隔は左右の肺（胸膜腔）の間の部分で、心臓・大血管・気管・食道・胸腺などが入る。胸骨角と第4・第5胸椎の間を結ぶ面で上縦隔と下縦隔に分け、下縦隔はさらに心膜（心臓）の前・心膜・心膜の後ろで前縦隔・中縦隔・後縦隔に分ける。",
+        "3Dでは右から見て、体の正中の面に区分の線を引く。それぞれの区分に入るものをもとの色で示す（胸管はこのアプリの3Dに無い）。"
+      ],
+      "terms": [
+        {
+          "id": "superior-mediastinum", "ja": "上縦隔", "yomi": "じょうじゅうかく", "en": "superior mediastinum", "la": "mediastinum superius",
+          "level": 1,
+          "kanji": "縦隔の上の部分",
+          "etym": "superior「上の」＋ mediastinum ← ラテン語「真ん中にあるもの」",
+          "note": "胸郭の上の口から、胸骨角と第4・5胸椎の間を結ぶ面までの部分。胸腺、大動脈弓とその3本の枝、腕頭静脈と上大静脈の上の部分、気管、食道、迷走神経・横隔神経・左の反回神経、胸管が入る。",
+          "region": { "bounds": ["manubrium", "thoracic-vertebrae", "sternal-angle"], "contents": ["thymus", "aortic-arch", "brachiocephalic-trunk", "brachiocephalic-vein", "superior-vena-cava", "trachea", "esophagus", "vagus-nerve"], "boundsLabel": "境界の骨", "outline": [[0,1.326,0.136],[0,1.287,0.157],[0,1.287,0.067],[0,1.338,0.082]], "view": { "target": [0,1.24,0.12], "from": [-1,0.05,0.1], "size": 0.1 }, "prompt": "胸骨角の面より上の、縦隔の部分は？" }
+        },
+        {
+          "id": "anterior-mediastinum", "ja": "前縦隔", "yomi": "ぜんじゅうかく", "en": "anterior mediastinum", "la": "mediastinum anterius",
+          "level": 2,
+          "kanji": "下縦隔のうち心膜の前の部分",
+          "etym": "anterior「前の」＋ mediastinum「縦隔」",
+          "note": "胸骨体と心膜の間の狭い部分。疎性結合組織と、心膜前リンパ節・胸骨傍リンパ節、子どもでは大きな胸腺の下の部分が入る。胸腺腫などの腫瘍ができる場所として大切。",
+          "region": { "bounds": ["body-of-sternum", "heart"], "contents": ["prepericardial-nodes", "thymus"], "boundsLabel": "前と後ろの境界", "outline": [[0,1.287,0.157],[0,1.24,0.178],[0,1.185,0.196],[0,1.183,0.165],[0,1.22,0.176],[0,1.26,0.163],[0,1.285,0.13]], "view": { "target": [0,1.24,0.12], "from": [-1,0.05,0.1], "size": 0.1 }, "prompt": "胸骨と心臓の間の、縦隔の部分は？" }
+        },
+        {
+          "id": "middle-mediastinum", "ja": "中縦隔", "yomi": "ちゅうじゅうかく", "en": "middle mediastinum", "la": "mediastinum medium",
+          "level": 1,
+          "kanji": "下縦隔のうち心膜とその中",
+          "etym": "middle「中の」＋ mediastinum「縦隔」",
+          "note": "心膜に包まれた部分。心臓、上行大動脈、肺動脈幹、上大静脈の下の部分、肺静脈、主気管支の根もと、横隔神経が入る。",
+          "region": { "bounds": ["sternal-angle", "diaphragm"], "contents": ["heart", "ascending-aorta", "pulmonary-trunk", "pulmonary-veins", "main-bronchus"], "boundsLabel": "上と下の境界", "outline": [[0,1.285,0.13],[0,1.26,0.163],[0,1.22,0.176],[0,1.18,0.156],[0,1.18,0.103],[0,1.22,0.075],[0,1.26,0.0765],[0,1.285,0.1]], "view": { "target": [0,1.24,0.12], "from": [-1,0.05,0.1], "size": 0.1 }, "prompt": "心臓とそれを包む心膜の部分は？" }
+        },
+        {
+          "id": "posterior-mediastinum", "ja": "後縦隔", "yomi": "こうじゅうかく", "en": "posterior mediastinum", "la": "mediastinum posterius",
+          "level": 1,
+          "kanji": "下縦隔のうち心膜の後ろの部分",
+          "etym": "posterior「後ろの」＋ mediastinum「縦隔」",
+          "note": "心膜と第5〜12胸椎の間で、横隔膜より上の部分。胸大動脈、食道と迷走神経、奇静脈と半奇静脈、胸管、交感神経幹、食道傍リンパ節が縦に走る。",
+          "region": { "bounds": ["thoracic-vertebrae", "diaphragm"], "contents": ["thoracic-aorta", "esophagus", "azygos-vein", "hemiazygos-vein", "sympathetic-trunk", "juxta-esophageal-nodes"], "boundsLabel": "後ろと下の境界", "outline": [[0,1.285,0.1],[0,1.26,0.0765],[0,1.22,0.075],[0,1.18,0.103],[0,1.12,0.104],[0,1.1,0.0976],[0,1.14,0.0835],[0,1.2,0.0693],[0,1.24,0.0661],[0,1.287,0.067]], "view": { "target": [0,1.24,0.12], "from": [-1,0.05,0.1], "size": 0.1 }, "prompt": "心臓の後ろ、胸椎の前の縦隔の部分は？" }
+        }
+      ]
+    },
+    {
+      "id": "reg-cranial-fossae",
+      "title": "頭蓋窩",
+      "intro": [
+        "頭蓋の底の内面は、前から前頭蓋窩・中頭蓋窩・後頭蓋窩の3段の階段になっている。前頭蓋窩には前頭葉、中頭蓋窩には側頭葉、後頭蓋窩には小脳と脳幹がのる。3Dでは頭蓋の天井を切り取って上から見る（前が下）。"
+      ],
+      "terms": [
+        {
+          "id": "anterior-cranial-fossa", "ja": "前頭蓋窩", "yomi": "ぜんとうがいか", "en": "anterior cranial fossa", "la": "fossa cranii anterior",
+          "level": 2,
+          "kanji": "頭蓋の底の前のくぼみ",
+          "etym": "anterior「前の」＋ cranial「頭蓋の」（ギリシャ語 kranion）＋ fossa「くぼみ」",
+          "note": "頭蓋底のいちばん高い前の段。前頭骨（眼窩の天井）・篩骨の篩板・蝶形骨の小翼でできる。前頭葉がのり、篩板の小さな孔を嗅神経が通って鼻腔へ行く。後ろの縁は蝶形骨の小翼。",
+          "region": { "bounds": ["cribriform-plate", "crista-galli"], "contents": ["olfactory-nerve"], "boundsLabel": "底の骨", "outline": [[0,1.525,0.166],[-0.027,1.543,0.167],[-0.0505,1.5536,0.155],[-0.056,1.545,0.127],[-0.027,1.5373,0.1216],[-0.009,1.5305,0.1143],[0,1.5326,0.1171]], "section": { "axis": "y", "at": 1.57, "keep": -1 }, "view": { "target": [-0.02,1.54,0.135], "from": [0,1,0.3], "size": 0.06 }, "prompt": "オレンジの線が囲む頭蓋の底のくぼみは？" }
+        },
+        {
+          "id": "middle-cranial-fossa", "ja": "中頭蓋窩", "yomi": "ちゅうとうがいか", "en": "middle cranial fossa", "la": "fossa cranii media",
+          "level": 2,
+          "kanji": "頭蓋の底の中ほどのくぼみ",
+          "etym": "middle「中の」＋ cranial「頭蓋の」＋ fossa「くぼみ」",
+          "note": "蝶形骨の小翼から側頭骨の錐体の上の縁までの、蝶の形のくぼみ。中央のトルコ鞍に下垂体がのり、左右の深い所に側頭葉が入る。視神経管・上眼窩裂・正円孔・卵円孔・棘孔が開き、視神経・動眼神経・三叉神経の枝などが出ていく。",
+          "region": { "bounds": ["sella-turcica", "greater-wing-of-sphenoid", "petrous-part-of-temporal-bone"], "contents": ["pituitary-gland", "optic-chiasm", "internal-carotid-artery", "trigeminal-nerve", "maxillary-nerve", "mandibular-nerve"], "boundsLabel": "底と縁の骨", "outline": [[0,1.5326,0.1171],[-0.009,1.5305,0.1143],[-0.027,1.5373,0.1216],[-0.056,1.545,0.127],[-0.063,1.535,0.105],[-0.0505,1.5173,0.0829],[-0.036,1.515,0.0868],[-0.018,1.5127,0.0975],[-0.0072,1.5272,0.0988],[0,1.5282,0.0991]], "section": { "axis": "y", "at": 1.57, "keep": -1 }, "view": { "target": [-0.03,1.53,0.1], "from": [0,1,0.3], "size": 0.06 }, "prompt": "オレンジの線が囲む頭蓋の底のくぼみは？" }
+        },
+        {
+          "id": "posterior-cranial-fossa", "ja": "後頭蓋窩", "yomi": "こうとうがいか", "en": "posterior cranial fossa", "la": "fossa cranii posterior",
+          "level": 2,
+          "kanji": "頭蓋の底の後ろのくぼみ",
+          "etym": "posterior「後ろの」＋ cranial「頭蓋の」＋ fossa「くぼみ」",
+          "note": "錐体の上の縁と鞍背より後ろの、いちばん深いくぼみ。前は斜台、中央に大後頭孔がある。小脳・橋・延髄が入り、上を小脳テントがおおう。内耳孔（顔面神経・内耳神経）、頚静脈孔（舌咽・迷走・副神経）、舌下神経管が開く。",
+          "region": { "bounds": ["clivus", "petrous-part-of-temporal-bone", "internal-occipital-protuberance", "foramen-magnum"], "contents": ["pons", "medulla-oblongata", "facial-nerve", "vestibulocochlear-nerve", "glossopharyngeal-nerve", "vagus-nerve", "hypoglossal-nerve"], "boundsLabel": "底と縁の骨", "outline": [[0,1.5282,0.0991],[-0.0072,1.5272,0.0988],[-0.018,1.5127,0.0975],[-0.036,1.515,0.0868],[-0.0505,1.5173,0.0829],[-0.062,1.525,0.07],[-0.0649,1.5302,0.0613],[-0.0631,1.5336,0.0396],[-0.0451,1.527,0.0154],[-0.018,1.5111,0.0002],[0,1.5169,-0.0006]], "section": { "axis": "y", "at": 1.57, "keep": -1 }, "view": { "target": [-0.03,1.525,0.05], "from": [0,1,0.3], "size": 0.06 }, "prompt": "オレンジの線が囲む頭蓋の底のくぼみは？" }
+        }
+      ]
     }
   ]
 }
