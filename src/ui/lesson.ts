@@ -33,7 +33,8 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
 
   for (let i = 0; i < unit.terms.length; ) {
     const term = unit.terms[i];
-    viewer.highlight([term.id], { isolate: !!term.xray || !!term.of });
+    // 学ぶ語を強調し、まわりは半透明にする（基本の用語の図は骨格を手がかりに見るので、まわりも見せる）
+    viewer.highlight([term.id], { isolate: !term.figure });
     viewer.focus(term.id, 3.2);
     viewer.setLabel(term.id, term.ja);
     ctx.hint(`${i + 1} / ${unit.terms.length}`);
@@ -64,7 +65,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   void navigator.storage?.persist?.().catch(() => false);
 
   viewer.setLabel(null);
-  viewer.highlight(unit.terms.map((term) => term.id));
+  viewer.highlight(unit.terms.map((term) => term.id), { isolate: !unit.terms.some((term) => term.figure) });
   viewer.overview();
   ctx.hint("");
   showPanel(ctx,
