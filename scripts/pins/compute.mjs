@@ -364,7 +364,8 @@ export function compute(id, rule) {
   if (rule.inset) for (const p of at) for (let k = 0; k < 3; k++) p[k] -= n[k] * rule.inset;
   // ring: 骨を一周する部位。面の向きで塗り分けず、向きはカメラ用（v）にだけ使う
   // one: 左右に折り返さない（左右の無い器官の部位・左肺だけの部位）
-  const one = rule.one ? { one: true } : {};
+  // cam: 寄るときにカメラを置く向き（面の向きから寄ると反対側にさえぎられる、下顎骨の内面など）
+  const one = { ...(rule.one ? { one: true } : {}), ...(rule.cam ? { cam: dir(rule.cam).map(round) } : {}) };
   if (rule.ring) return { at: at.map((p) => p.map(round)), r: rule.r, v: n.map(round), ...one };
   return { at: at.map((p) => p.map(round)), r: rule.r, n: n.map(round), ...one };
 }

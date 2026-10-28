@@ -701,7 +701,7 @@ export class AnatomyViewer {
       const reach = include ? target.distanceTo(new THREE.Vector3(...include)) * 1.3 : 0;
       const organ = term && termById.get(termId)?.system !== "skeletal" ? term.radius * 0.6 : 0;
       const half = Math.max(0.055, pinSpread(pin) * 1.4 + pin.r * zoom * 0.8, reach, organ);
-      const view = pin.n ?? pin.v;
+      const view = pin.cam ?? pin.n ?? pin.v;
       if (view) {
         direction.set(...view).normalize();
         // 真上・真下からだと回転の操作がしにくいので少し前に傾ける

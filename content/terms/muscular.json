@@ -477,12 +477,13 @@
           "kanji": "腰の大きな筋",
           "etym": "psoas ← ギリシャ語 psoa「腰の筋」",
           "note": "腰椎の横から大腿骨の小転子へ。腸骨筋と合わせて腸腰筋とよび、股関節を曲げる。",
-          "origin": "第12胸椎〜第5腰椎の椎体・横突起",
+          "origin": "第12胸椎〜第5腰椎の椎体・肋骨突起（横突起）",
           "insertion": "大腿骨の小転子",
           "insertionAt": ["lesser-trochanter"],
           "nerve": "腰神経叢の枝",
           "action": "股関節の屈曲",
-          "motion": { "to": { "hip-flex": 70 } }
+          "motion": { "to": { "hip-flex": 70 } },
+          "originAt": ["vertebral-body", "costal-process"]
         },
         {
           "id": "iliacus", "ja": "腸骨筋", "yomi": "ちょうこつきん", "en": "iliacus", "la": "musculus iliacus",
@@ -560,9 +561,9 @@
           "etym": "quadratus「四角い」＋ lumborum「腰の」",
           "note": "腰椎の横、腸骨稜と第12肋骨の間を埋める四角い筋。腰を横に曲げ、息を吸うとき第12肋骨を固定する。",
           "origin": "腸骨稜（後部）・腸腰靱帯",
-          "insertion": "第12肋骨・第1〜4腰椎の横突起",
+          "insertion": "第12肋骨・第1〜4腰椎の肋骨突起（横突起）",
           "originAt": ["iliac-crest"],
-          "insertionAt": ["transverse-process"],
+          "insertionAt": ["costal-process"],
           "nerve": "腰神経叢の枝",
           "action": "腰椎の側屈・第12肋骨を引き下げる"
         }
@@ -605,7 +606,7 @@
           "note": "前腹と後腹が中間腱でつながる筋。舌骨を引き上げ、口を開ける。",
           "origin": "前腹＝下顎骨の内面、後腹＝側頭骨（乳様突起の内側）",
           "insertion": "中間腱を介して舌骨",
-          "originAt": ["mastoid-process"],
+          "originAt": ["mastoid-notch", "digastric-fossa"],
           "nerve": "顔面神経・下顎神経",
           "action": "舌骨を引き上げる・口を開ける"
         },
@@ -618,7 +619,8 @@
           "origin": "下顎骨の内面（顎舌骨筋線）",
           "insertion": "舌骨体・正中の縫線",
           "nerve": "下顎神経",
-          "action": "口の底と舌骨を持ち上げる"
+          "action": "口の底と舌骨を持ち上げる",
+          "originAt": ["mylohyoid-line"]
         },
         {
           "id": "sternohyoid", "ja": "胸骨舌骨筋", "yomi": "きょうこつぜっこつきん", "en": "sternohyoid", "la": "musculus sternohyoideus",
@@ -652,7 +654,9 @@
           "origin": "第3〜6頚椎の横突起",
           "insertion": "第1肋骨",
           "nerve": "頚神経の前枝",
-          "action": "第1肋骨を引き上げる（吸気を助ける）・首を曲げる"
+          "action": "第1肋骨を引き上げる（吸気を助ける）・首を曲げる",
+          "originAt": ["carotid-tubercle"],
+          "insertionAt": ["scalene-tubercle"]
         },
         {
           "id": "middle-scalene", "ja": "中斜角筋", "yomi": "ちゅうしゃかくきん", "en": "middle scalene", "enAlt": ["scalenus medius"], "la": "musculus scalenus medius",
@@ -810,7 +814,8 @@
           "insertion": "下顎骨の筋突起",
           "insertionAt": ["coronoid-process-of-mandible"],
           "nerve": "下顎神経",
-          "action": "下顎を引き上げる（口を閉じる）・後ろへ引く"
+          "action": "下顎を引き上げる（口を閉じる）・後ろへ引く",
+          "originAt": ["temporal-fossa"]
         },
         {
           "id": "masseter", "ja": "咬筋", "yomi": "こうきん", "en": "masseter", "la": "musculus masseter",
@@ -821,7 +826,7 @@
           "origin": "頬骨弓",
           "insertion": "下顎角の外面（咬筋粗面）・下顎枝",
           "originAt": ["zygomatic-arch"],
-          "insertionAt": ["angle-of-mandible"],
+          "insertionAt": ["angle-of-mandible", "masseteric-tuberosity"],
           "nerve": "下顎神経",
           "action": "下顎を引き上げる（かみしめる）"
         },
@@ -834,7 +839,8 @@
           "origin": "蝶形骨の翼状突起（外側板の内面）",
           "insertion": "下顎角の内面（翼突筋粗面）",
           "nerve": "下顎神経",
-          "action": "下顎を引き上げる（口を閉じる）・左右へ動かす"
+          "action": "下顎を引き上げる（口を閉じる）・左右へ動かす",
+          "insertionAt": ["pterygoid-tuberosity"]
         },
         {
           "id": "lateral-pterygoid", "ja": "外側翼突筋", "yomi": "がいそくよくとつきん", "en": "lateral pterygoid", "la": "musculus pterygoideus lateralis",
@@ -843,10 +849,11 @@
           "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ -oid「〜の形」",
           "note": "下顎頭を前へ引き出す筋。咀嚼筋のうちただ一つ、口を開けるのを助ける。両側で下顎を前に出し、片側で反対側へ動かす。",
           "origin": "蝶形骨の翼状突起（外側板の外面）・大翼の下面",
-          "insertion": "下顎骨の関節突起（下顎頭の前）・顎関節の関節円板",
+          "insertion": "下顎頚の翼突筋窩・顎関節の関節円板",
           "originAt": ["pterygoid-process"],
           "nerve": "下顎神経",
-          "action": "下顎を前に出す・口を開ける・反対側へ動かす"
+          "action": "下顎を前に出す・口を開ける・反対側へ動かす",
+          "insertionAt": ["pterygoid-fovea"]
         }
       ]
     },
@@ -970,7 +977,7 @@
           "note": "大腿四頭筋のうち最も大きい、太ももの外側の筋。乳幼児の筋肉注射の部位。",
           "origin": "大転子・粗線（外側唇）",
           "insertion": "膝蓋骨・膝蓋靱帯を介して脛骨粗面",
-          "originAt": ["greater-trochanter", "linea-aspera"],
+          "originAt": ["greater-trochanter", "linea-aspera", "lateral-lip-of-linea-aspera"],
           "insertionAt": ["base-of-patella", "tibial-tuberosity"],
           "nerve": "大腿神経",
           "action": "膝関節の伸展",
@@ -984,7 +991,7 @@
           "note": "大腿四頭筋のうち膝の内側上方のふくらみをつくる筋。",
           "origin": "転子間線・粗線（内側唇）",
           "insertion": "膝蓋骨・膝蓋靱帯を介して脛骨粗面",
-          "originAt": ["intertrochanteric-line", "linea-aspera"],
+          "originAt": ["intertrochanteric-line", "linea-aspera", "medial-lip-of-linea-aspera"],
           "insertionAt": ["base-of-patella", "tibial-tuberosity"],
           "nerve": "大腿神経",
           "action": "膝関節の伸展",
@@ -1808,7 +1815,8 @@
           "insertion": "2〜4個上の椎骨の棘突起",
           "insertionAt": ["spinous-process"],
           "nerve": "脊髄神経の後枝",
-          "action": "脊柱の安定・伸展・回旋"
+          "action": "脊柱の安定・伸展・回旋",
+          "originAt": ["mammillary-process"]
         },
         {
           "id": "rotatores", "ja": "回旋筋", "yomi": "かいせんきん", "en": "rotatores", "la": "musculi rotatores",
@@ -1831,7 +1839,6 @@
           "origin": "第3〜6胸椎の棘突起",
           "insertion": "第1〜3頚椎の横突起",
           "originAt": ["spinous-process"],
-          "insertionAt": ["transverse-process"],
           "nerve": "脊髄神経の後枝",
           "action": "頚の伸展・同じ側への回旋"
         },
@@ -1920,7 +1927,6 @@
           "note": "中斜角筋の後ろにある細い斜角筋。第2肋骨へ行く。",
           "origin": "第4〜6頚椎の横突起（後結節）",
           "insertion": "第2肋骨",
-          "originAt": ["transverse-process"],
           "nerve": "頚神経の前枝",
           "action": "第2肋骨の挙上・頚の側屈"
         },
@@ -1967,7 +1973,8 @@
           "origin": "下顎骨のオトガイ棘",
           "insertion": "舌骨体",
           "nerve": "第1頚神経（舌下神経に伴う）",
-          "action": "舌骨を前へ引く・下顎を下げる"
+          "action": "舌骨を前へ引く・下顎を下げる",
+          "originAt": ["mental-spine"]
         },
         {
           "id": "longus-colli", "ja": "頚長筋", "yomi": "けいちょうきん", "en": "longus colli", "la": "musculus longus colli",
@@ -1988,7 +1995,7 @@
           "note": "頚長筋の上外側にある椎前筋。後頭骨の底へ行き、頭を前へ曲げる。",
           "origin": "第3〜6頚椎の横突起",
           "insertion": "後頭骨の底部",
-          "originAt": ["transverse-process"],
+          "originAt": ["carotid-tubercle"],
           "nerve": "頚神経の前枝",
           "action": "頭の屈曲"
         }
@@ -2769,7 +2776,8 @@
           "origin": "下顎骨の二腹筋窩",
           "insertion": "中間腱（舌骨体に付く）",
           "nerve": "下顎神経",
-          "action": "舌骨を前上へ引く・下顎を下げる（口を開ける）"
+          "action": "舌骨を前上へ引く・下顎を下げる（口を開ける）",
+          "originAt": ["digastric-fossa"]
         },
         {
           "id": "posterior-belly-of-digastric", "ja": "顎二腹筋後腹", "yomi": "がくにふくきんこうふく", "en": "posterior belly of digastric", "la": "venter posterior musculi digastrici",
@@ -2779,7 +2787,7 @@
           "note": "側頭骨の乳突切痕（乳様突起の内側）から前下へ走り、中間腱へ続く。茎突舌骨筋と並んで走り、どちらも顔面神経が支配する。顎下三角・頚動脈三角の境界になる。",
           "origin": "側頭骨の乳突切痕",
           "insertion": "中間腱（舌骨体に付く）",
-          "originAt": ["mastoid-process"],
+          "originAt": ["mastoid-notch"],
           "nerve": "顔面神経",
           "action": "舌骨を後上へ引く"
         },
@@ -2792,7 +2800,7 @@
           "origin": "頬骨弓の前2/3（頬骨・上顎骨の頬骨突起）",
           "insertion": "下顎角の外面（咬筋粗面）",
           "originAt": ["zygomatic-arch"],
-          "insertionAt": ["angle-of-mandible"],
+          "insertionAt": ["masseteric-tuberosity"],
           "nerve": "下顎神経",
           "action": "下顎を引き上げる・前へ出す"
         },
@@ -2831,7 +2839,8 @@
           "insertion": "下顎頚の翼突筋窩",
           "originAt": ["pterygoid-process"],
           "nerve": "下顎神経",
-          "action": "下顎頭を前へ引く（口を開ける・下顎を前と反対側へ動かす）"
+          "action": "下顎頭を前へ引く（口を開ける・下顎を前と反対側へ動かす）",
+          "insertionAt": ["pterygoid-fovea"]
         },
         {
           "id": "orbital-part-of-orbicularis-oculi", "ja": "眼輪筋眼窩部", "yomi": "がんりんきんがんかぶ", "en": "orbital part of orbicularis oculi", "la": "pars orbitalis musculi orbicularis oculi",

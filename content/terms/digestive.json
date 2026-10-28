@@ -383,7 +383,8 @@
           "origin": "下顎骨のオトガイ棘",
           "insertion": "舌の内部（舌尖から舌根まで）・舌骨体",
           "nerve": "舌下神経",
-          "action": "舌を前に突き出す"
+          "action": "舌を前に突き出す",
+          "originAt": ["mental-spine"]
         },
         {
           "id": "hyoglossus", "ja": "舌骨舌筋", "yomi": "ぜっこつぜっきん", "en": "hyoglossus", "la": "musculus hyoglossus",

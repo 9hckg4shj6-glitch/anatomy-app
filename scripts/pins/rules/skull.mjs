@@ -33,7 +33,7 @@ export const RULES2 = {
   "mandibular-notch": { ray: ["lat", 0.4, 0.31], r: 0.006, n: "lat+sup" },
   "ramus-of-mandible": { ray: ["lat", 0.3, 0.45], r: 0.012 },
   "body-of-mandible": { ray: ["lat", 0.62, 0.74], r: 0.013 },
-  "mandibular-foramen": { fromMid: { s: 0.55, a: 0.25 }, r: 0.006 },
+  "mandibular-foramen": { fromMid: { s: 0.55, a: 0.25 }, r: 0.006, cam: "0.55med+0.55inf+0.6post" },
 };
 const SK = [...Object.keys(RULES), ...Object.keys(RULES2)];
 export const CHECKS = [

@@ -48,14 +48,41 @@ export function landmarkAt(point: Vec3, candidates: Term[], tolerance = TAP_TOLE
   return best;
 }
 
+/**
+ * 一方のピンの点がすべて（または点の中心が深く）、もう一方の範囲に入る。
+ */
+export function nestedPins(a: Pin, b: Pin): boolean {
+  const inside = (inner: Pin, outer: Pin) =>
+    inner.at.every((p) => distanceToPin(p as Vec3, outer) <= outer.r) || distanceToPin(pinCenter(inner), outer) <= outer.r * 0.8;
+  return inside(a, b) || inside(b, a);
+}
+
+/** 部位がのる骨・器官の部品の名前（parts が無ければ親の parts） */
+function hostParts(term: Term): string[] {
+  return term.parts ?? terms.find((other) => other.id === term.of)?.parts ?? [];
+}
+
+/**
+ * 同じ骨の上で範囲が入れ子の部位（椎弓と椎弓根、寛骨臼と月状面、頬骨弓と側頭骨の頬骨突起）。4択に並べるとどちらも正しくなるので出さない。
+ * 関節で向かい合う別の骨の部位（大腿骨頭と寛骨臼、肋骨頭と肋骨窩）は、位置が重なっても紛らわしい選択肢として残す。
+ */
+export function nestedLandmarks(a: Term, b: Term): boolean {
+  const pa = pins[a.id], pb = pins[b.id];
+  if (!pa || !pb || !nestedPins(pa, pb)) return false;
+  // 薄い骨の表と裏（棘下窩と肩甲下窩、肘頭窩と鈎突窩）は別の部位
+  if (pa.n && pb.n && pa.n[0] * pb.n[0] + pa.n[1] * pb.n[1] + pa.n[2] * pb.n[2] < 0) return false;
+  const host = new Set(hostParts(a));
+  return hostParts(b).some((part) => host.has(part));
+}
+
 /** 4択の選択肢に使う、ピンが近い部位（近い順）。骨の部位は骨の部位どうし、器官の部位は同じ系統の部位どうし */
 export function nearbyLandmarks(termId: string, count = 8): string[] {
   const pin = pins[termId];
-  const system = terms.find((term) => term.id === termId)?.system;
-  if (!pin) return [];
+  const self = terms.find((term) => term.id === termId);
+  if (!pin || !self) return [];
   const c = pinCenter(pin);
   return terms
-    .filter((term) => term.of && term.id !== termId && pins[term.id] && term.system === system)
+    .filter((term) => term.of && term.id !== termId && pins[term.id] && term.system === self.system && !nestedLandmarks(self, term))
     .map((term) => [term.id, distanceToPin(c, pins[term.id])] as const)
     .sort((a, b) => a[1] - b[1])
     .slice(0, count)

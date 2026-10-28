@@ -165,6 +165,8 @@ export interface Pin {
   r: number;
   n?: [number, number, number];
   v?: [number, number, number];
+  /** 寄るときにカメラを置く向き（無ければ n・v。面の向きから寄ると反対側の骨にさえぎられる下顎骨の内面など） */
+  cam?: [number, number, number];
   one?: boolean;
 }
 

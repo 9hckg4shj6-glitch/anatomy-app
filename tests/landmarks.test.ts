@@ -1,4 +1,4 @@
-import { distanceToPin, hitsPin, landmarkAt, nearbyLandmarks } from "../src/landmarks";
+import { distanceToPin, hitsPin, landmarkAt, nearbyLandmarks, nestedPins } from "../src/landmarks";
 import { termById, type Pin, type Term } from "../src/content";
 
 const pin = (at: [number, number, number][], r = 0.01): Pin => ({ at, r });
@@ -30,6 +30,19 @@ describe("器官の部位のピン", () => {
     const near = nearbyLandmarks("pylorus");
     expect(near.length).toBeGreaterThan(3);
     for (const id of near) expect(termById.get(id)?.system).toBe("digestive");
+  });
+
+  it("範囲が入れ子の部位（椎弓と椎弓根、粗線と内側唇）は4択に並べない（どちらも正しくなる）", () => {
+    const arch = pin([[-0.016, 1, 0.078], [-0.007, 0.989, 0.061]], 0.009);
+    expect(nestedPins(pin([[-0.016, 1, 0.078]], 0.007), arch)).toBe(true);
+    expect(nestedPins(arch, pin([[-0.016, 1, 0.078]], 0.007))).toBe(true);
+    expect(nestedPins(arch, pin([[-0.04, 1, 0.07]], 0.008))).toBe(false);
+    expect(nearbyLandmarks("pedicle-of-vertebral-arch")).not.toContain("vertebral-arch");
+    expect(nearbyLandmarks("lunate-surface")).not.toContain("acetabulum");
+    // 関節で向かい合う別の骨の部位は残す
+    expect(nearbyLandmarks("head-of-femur")).toContain("acetabulum");
+    // 薄い骨の表と裏の部位も残す
+    expect(nearbyLandmarks("infraspinous-fossa")).toContain("subscapular-fossa");
   });
 });
 

@@ -5,7 +5,7 @@ import { figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term }
 import { db, type Facet, type ReviewEvent } from "../db";
 import { h, onKeys, until } from "../dom";
 import { dueLabel, Rating, recordReview } from "../fsrs";
-import { hitsPin, landmarkAt, nearbyLandmarks, type Vec3 } from "../landmarks";
+import { hitsPin, landmarkAt, nearbyLandmarks, nestedLandmarks, type Vec3 } from "../landmarks";
 import { facetLabels, pickChoices, typesEnglish, type QueueItem } from "../study";
 import { INSERTION_COLOR, ORIGIN_COLOR } from "../viewer";
 import { motionPlayer, sceneFor, type AppContext } from "./context";
@@ -56,7 +56,8 @@ function candidates(ctx: AppContext, term: Term, needs?: (other: Term) => boolea
     return [terms.filter((other) => other.unit === term.unit).map((other) => other.id), terms.filter((other) => other.system === term.system).map((other) => other.id)];
   }
   if (term.of) {
-    return [nearbyLandmarks(term.id), terms.filter((other) => other.of && pins[other.id] && other.system === term.system).map((other) => other.id)];
+    const fits = (other: Term) => !!other.of && !!pins[other.id] && other.system === term.system && !nestedLandmarks(term, other);
+    return [nearbyLandmarks(term.id), terms.filter(fits).map((other) => other.id)];
   }
   const own = new Set(ctx.index.terms[term.id].elements);
   const overlaps = (other: Term) => !!ctx.index.terms[other.id]?.elements.some((element) => own.has(element));

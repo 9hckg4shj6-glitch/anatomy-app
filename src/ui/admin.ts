@@ -121,7 +121,7 @@ export async function admin(ctx: AppContext, initial: string): Promise<void> {
     // 点を足すときは、最初の点の向き（n・v）を保つ
     pins[current.id] = adding && before
       ? { ...before, at: [...before.at, at], r: radius }
-      : { at: [at], r: radius, ...(n ? { n } : {}), ...(one ? { one: true } : {}) };
+      : { at: [at], r: radius, ...(n ? { n } : {}), ...(before?.cam ? { cam: before.cam } : {}), ...(one ? { one: true } : {}) };
     unsaved++;
     render();
     paint();

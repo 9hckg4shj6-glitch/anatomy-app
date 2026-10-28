@@ -4,54 +4,64 @@
     {
       "id": "skel-upper",
       "title": "上肢の骨",
+      "intro": [
+        "上肢の骨は、上肢帯（鎖骨・肩甲骨）と自由上肢骨（上腕骨・橈骨・尺骨・手の骨）に分ける。",
+        "上腕骨が体幹につながる道は回り道になっている: 上腕骨→（肩関節）→肩甲骨→（肩鎖関節）→鎖骨→（胸鎖関節）→胸骨→肋骨→胸椎。上肢が体幹に対して大きく自由に動けるのはこのため。",
+        "左右の見分け方: 鎖骨は平たい端が外側、なめらかな面が上、円錐靱帯結節が後ろ下。上腕骨は骨頭が内側、大きなくぼみ（肘頭窩）が後ろ。橈骨は下端が太く、尺骨は上端が太い。解剖学的正位（手のひらが前）では橈骨が外側、尺骨が内側にある。"
+      ],
       "terms": [
         {
           "id": "clavicle", "ja": "鎖骨", "yomi": "さこつ", "en": "clavicle", "la": "clavicula",
           "parts": ["clavicle"], "fma": "FMA13321", "level": 1,
           "kanji": "鎖＝錠前（かぎ）。オランダ語 sleutelbeen（鍵の骨）の訳",
-          "etym": "clavicle ← ラテン語 clavicula「小さな鍵」(clavis 鍵 ＋ -cula 小さい)",
-          "note": "胸骨と肩甲骨をつなぐS字状の骨。皮膚の上から全長を触れる。"
+          "etym": "clavicula ← ラテン語 clavis「かぎ、かんぬき」の縮小形「小さなかんぬき」",
+          "note": "胸骨と肩甲骨をつなぐ、イタリック体の f のようなS字状の骨。上肢を胴につなぎとめる「つっかい棒」で、皮膚の上から全長を触れる。からだで最も早く骨化が始まり、骨化が終わるのは最も遅い（25〜30歳）。骨折が非常に多く（中央と外側1/3の境）、内側の骨片は胸鎖乳突筋に引かれて上へずれる。"
         },
         {
           "id": "scapula", "ja": "肩甲骨", "yomi": "けんこうこつ", "en": "scapula", "la": "scapula",
           "parts": ["scapula"], "fma": "FMA13394", "level": 1,
           "kanji": "肩の甲（こう＝よろいの板）のように平たい骨",
-          "etym": "scapula ← ラテン語で「肩甲骨」。平たい鋤（すき）の形から、という説がある",
-          "note": "背中の上外側にある逆三角形の平たい骨。上腕骨と肩関節をつくる。"
+          "etym": "scapula ← ギリシャ語 skaptein「掘る」（シャベルの形）",
+          "note": "背中の上外側にある逆三角形の平たい骨。腕を下ろした姿勢で上の縁は第2肋骨、下角は第7〜第8肋骨の高さにある。光に透かすと紙のように薄いが、前後を厚い筋にはさまれているので折れにくい。上腕骨と肩関節をつくる。"
         },
         {
           "id": "humerus", "ja": "上腕骨", "yomi": "じょうわんこつ", "en": "humerus", "la": "humerus",
           "parts": ["humerus"], "fma": "FMA13303", "level": 1,
           "kanji": "上腕＝肩からひじまで",
           "etym": "humerus ← ラテン語 umerus「肩」",
-          "note": "上腕にある1本の長い骨。肩で肩甲骨と、肘で橈骨・尺骨と関節をつくる。"
+          "note": "上腕にある1本の長い骨。肩で肩甲骨と、肘で橈骨・尺骨と関節をつくる。上端の骨頭が内側を、下端の深いくぼみ（肘頭窩）が後ろを向くように持つと左右が分かる。子どもが肘を伸ばして手をつくと、下端のすぐ上が折れやすい（顆上骨折）。"
         },
         {
           "id": "radius", "ja": "橈骨", "yomi": "とうこつ", "en": "radius", "la": "radius",
           "parts": ["radius"], "fma": "FMA23463", "level": 1,
           "kanji": "橈（とう）＝たわむ・曲がる",
-          "etym": "radius ← ラテン語「車輪の輻（スポーク）」。尺骨のまわりを回るように動く",
-          "note": "前腕の親指側の骨。手のひらを返すとき、尺骨のまわりを回る。"
+          "etym": "radius ← ラテン語「車輪の輻（スポーク）、光線」",
+          "note": "前腕の親指側の骨。尺骨とは逆に、下端が上端よりずっと太い。手のひらを返すとき、尺骨のまわりを回る（回外位で尺骨と平行、回内位で交差する）。高齢者が手をついて転ぶと下端が折れやすい（コーレス骨折）。"
         },
         {
           "id": "ulna", "ja": "尺骨", "yomi": "しゃっこつ", "en": "ulna", "la": "ulna",
           "parts": ["ulna"], "fma": "FMA23466", "level": 1,
           "kanji": "尺＝長さの単位。前腕の長さが「尺」のもとになったとされる",
-          "etym": "ulna ← ラテン語「肘・前腕」。英語の長さの単位 ell と同じ語源で、日本語の「尺」と発想が同じ",
-          "note": "前腕の小指側の骨。肘の後ろの出っぱり（肘頭）はこの骨の一部。"
+          "etym": "ulna ← ラテン語「ひじ、前腕」（ギリシャ語 olene と同じ語源）",
+          "note": "前腕の小指側の骨。上端が太く、大きな滑車切痕で上腕骨の滑車をはさむ。肘の後ろの出っぱり（肘頭）はこの骨の一部。後縁は肘から手首まで皮膚の上から触れる。"
         }
       ]
     },
     {
       "id": "skel-hand",
       "title": "手の骨",
+      "intro": [
+        "手根骨は8個。親指側から、近位列が舟状骨・月状骨・三角骨・豆状骨、遠位列が大菱形骨・小菱形骨・有頭骨・有鈎骨（覚え方の一例:「舟と月の三角豆、大小の菱形、頭に鈎」）。",
+        "豆状骨は尺側手根屈筋の腱の中の種子骨。手根骨は手のひら側にへこんだアーチをつくり、両端の高まり（豆状骨・有鈎骨鈎と舟状骨結節・大菱形骨結節）に屈筋支帯が橋をかけて手根管になる（正中神経と指の屈筋の腱が通る）。",
+        "母指は基節骨と末節骨の2節、ほかの指は3節。母指の手根中手関節は鞍関節で、母指をほかの指と向かい合わせる動き（対立）ができる。"
+      ],
       "terms": [
         {
           "id": "carpal-bones", "ja": "手根骨", "yomi": "しゅこんこつ", "en": "carpal bones", "enAlt": ["carpals", "carpus"], "la": "ossa carpi",
           "parts": ["scaphoid", "lunate", "triquetral", "pisiform", "trapezium", "trapezoid", "capitate", "hamate"], "level": 1,
           "kanji": "手根＝手首（手の根もと）",
           "etym": "carpal ← ギリシャ語 karpos「手首」",
-          "note": "手首にある8個の小さな骨。近位列4個・遠位列4個に並ぶ。"
+          "note": "手首にある8個の小さな骨。近位列4個（舟状骨・月状骨・三角骨・豆状骨）と遠位列4個（大菱形骨・小菱形骨・有頭骨・有鈎骨）に、親指側から並ぶ。全体が手のひら側にへこんだアーチ（手根溝）をつくり、屈筋支帯が橋をかけて手根管になる。"
         },
         {
           "id": "scaphoid", "check": true, "ja": "舟状骨（手）", "yomi": "しゅうじょうこつ", "en": "scaphoid", "enAlt": ["scaphoid bone"], "la": "os scaphoideum",
@@ -65,7 +75,7 @@
           "parts": ["lunate"], "level": 2,
           "kanji": "三日月の形をした骨",
           "etym": "lunate ← ラテン語 luna「月」",
-          "note": "手根骨の近位列で舟状骨の小指側となり。"
+          "note": "手根骨の近位列で舟状骨の小指側となり。舟状骨とともに橈骨と手首の関節（橈骨手根関節）をつくる。手を使う仕事を続ける人では血流が悪くなって壊死することがある（キーンベック病）。"
         },
         {
           "id": "triquetrum", "ja": "三角骨", "yomi": "さんかくこつ", "en": "triquetrum", "enAlt": ["triquetral", "triquetral bone"], "la": "os triquetrum",
@@ -113,7 +123,7 @@
           "parts": ["* metacarpal bone"], "level": 1,
           "kanji": "手の中ほど（手のひら）の骨",
           "etym": "metacarpal ← meta-「後ろ・次」＋ carpal「手根」",
-          "note": "手のひらにある5本の骨。親指側から第1〜第5中手骨と数える。"
+          "note": "手のひらにある5本の骨。親指側から第1〜第5中手骨と数える。近位から底・体・頭に分かれる。第2中手骨が最も長く、第1中手骨は太く短い。"
         },
         {
           "id": "phalanges-hand", "check": true, "ja": "指骨（手）", "yomi": "しこつ", "en": "phalanges of hand", "enAlt": ["phalanges", "phalanx"], "la": "ossa digitorum manus",
@@ -127,68 +137,78 @@
     {
       "id": "skel-lower",
       "title": "下肢の骨",
+      "intro": [
+        "下肢の骨は、下肢帯（寛骨）と自由下肢骨（大腿骨・膝蓋骨・脛骨・腓骨・足の骨）に分ける。左右の寛骨と仙骨・尾骨で骨盤をつくる。",
+        "骨盤は、岬角から弓状線・恥骨櫛を通って恥骨結合の上の縁に至る分界線で、上の大骨盤と下の小骨盤に分かれる。小骨盤の入口が骨盤上口、出口が骨盤下口で、出産のときの産道になる。",
+        "骨盤は男女の差が最も大きい骨。女性は骨盤上口が楕円形で広く、恥骨下角が大きい（約80°、男性は約60°）。立った姿勢では、上前腸骨棘と恥骨結節が同じ前頭面にくるほど骨盤が前へ傾いている。"
+      ],
       "terms": [
         {
           "id": "hip-bone", "ja": "寛骨", "yomi": "かんこつ", "en": "hip bone", "enAlt": ["coxal bone", "os coxae"], "la": "os coxae",
           "parts": ["hip bone"], "fma": "FMA16585", "level": 1,
           "kanji": "寛＝ひろい。骨盤の左右をつくる広い骨",
           "etym": "hip bone ＝ hip（腰）＋ bone。ラテン語 coxa も「腰」",
-          "note": "骨盤の左右をつくる骨。腸骨・坐骨・恥骨の3つが癒合してできる。"
+          "note": "骨盤の左右をつくる、8の字のような形の大きな骨。腸骨・坐骨・恥骨の3つが寛骨臼のところで癒合してできる（16〜17歳ごろまでY字の軟骨でつながる）。"
         },
         {
           "id": "femur", "ja": "大腿骨", "yomi": "だいたいこつ", "en": "femur", "la": "femur",
           "parts": ["femur"], "fma": "FMA9611", "level": 1,
           "kanji": "大腿＝ふともも",
           "etym": "femur ← ラテン語「もも」",
-          "note": "人体で最も長い骨。股関節で寛骨と、膝関節で脛骨と関節をつくる。"
+          "note": "人体で最も長い骨（身長の約1/4）。股関節で寛骨と、膝関節で脛骨と関節をつくる。頚は体に対して120〜130°の角度で内上へ曲がり（頚体角）、体は外上から内下へ想像以上に傾いて立つ。"
         },
         {
           "id": "patella", "ja": "膝蓋骨", "yomi": "しつがいこつ", "en": "patella", "la": "patella",
           "parts": ["patella"], "fma": "FMA24485", "level": 1,
           "kanji": "膝の蓋（ふた）＝ひざのお皿",
-          "etym": "patella ← ラテン語「小さな皿」",
-          "note": "膝の前にあるお皿の骨。大腿四頭筋の腱の中にできた種子骨。"
+          "etym": "patella ← ラテン語 patera「平たい皿」の縮小形",
+          "note": "膝の前にあるお皿の骨。大腿四頭筋の腱の中にできた種子骨で、下のとがった端が尖。後ろの関節面は外側半分が広いので左右が分かる。膝を伸ばしているときは、大腿骨の下端の前に意外と高くのっている。"
         },
         {
           "id": "tibia", "ja": "脛骨", "yomi": "けいこつ", "en": "tibia", "la": "tibia",
           "parts": ["tibia"], "fma": "FMA24476", "level": 1,
           "kanji": "脛＝すね",
-          "etym": "tibia ← ラテン語「笛」。昔は動物のすねの骨で笛を作った",
-          "note": "下腿の内側の太い骨。体重を支える。すねの前面は皮膚のすぐ下にある。"
+          "etym": "tibia ← ラテン語「すねの骨、笛」",
+          "note": "下腿の内側の太い骨。体重を支える。体の前縁と内側面は皮膚のすぐ下にあり、打つと骨膜が痛む（弁慶の泣き所）。体は下1/3で最も細く、骨折しやすい。"
         },
         {
           "id": "fibula", "ja": "腓骨", "yomi": "ひこつ", "en": "fibula", "la": "fibula",
           "parts": ["fibula"], "fma": "FMA24479", "level": 1,
           "kanji": "腓＝こむら（ふくらはぎ）",
-          "etym": "fibula ← ラテン語「留め金（ブローチ）」。脛骨と並ぶ形が留め金のピンに似る",
-          "note": "下腿の外側の細い骨。体重はほとんど支えず、外くるぶしをつくる。"
+          "etym": "fibula ← ラテン語「留め針、ブローチの針」（ギリシャ語では perone ＝ 腓骨筋 peroneus の語源）",
+          "note": "下腿の外側の細い骨。体重はほとんど支えず、膝関節にも加わらない。下端が外くるぶし（外果）をつくり、距骨をはさんで足首を安定させる。"
         }
       ]
     },
     {
       "id": "skel-foot",
       "title": "足の骨",
+      "intro": [
+        "足根骨は7個: 近位列の距骨・踵骨と、遠位列の舟状骨・内側楔状骨・中間楔状骨・外側楔状骨・立方骨。足では体重を受ける足根骨が大きく、指骨は小さい。",
+        "足の骨は2つの列に分かれる。内側の列（踵骨・距骨・舟状骨・楔状骨・第1〜第3中足骨）はアーチが高く、歩くときのばねになる。外側の列（踵骨・立方骨・第4・第5中足骨）はアーチが低く、体重を支える。横にもアーチがあり、土踏まずをつくる。",
+        "足の切断に使われた関節の名前が残っている: 横足根関節（ショパール関節）と足根中足関節（リスフラン関節）。"
+      ],
       "terms": [
         {
           "id": "tarsal-bones", "ja": "足根骨", "yomi": "そっこんこつ", "en": "tarsal bones", "enAlt": ["tarsals", "tarsus"], "la": "ossa tarsi",
           "parts": ["talus", "calcaneus", "navicular bone of foot", "cuboid bone", "medial cuneiform bone", "intermediate cuneiform bone", "lateral cuneiform bone"], "level": 1,
           "kanji": "足根＝足の根もと（かかと〜足の甲の後ろ半分）",
           "etym": "tarsal ← ギリシャ語 tarsos「平たい面・足の裏」",
-          "note": "足の後ろ半分をつくる7個の骨。距骨・踵骨・舟状骨・立方骨・3個の楔状骨。"
+          "note": "足の後ろ半分をつくる7個の骨。近位列の距骨・踵骨と、遠位列の舟状骨・3個の楔状骨・立方骨。体重を受ける距骨と踵骨はとくに大きい。距骨と舟状骨の間・踵骨と立方骨の間の関節はほぼ一直線に並ぶ（横足根関節＝ショパール関節）。"
         },
         {
           "id": "talus", "ja": "距骨", "yomi": "きょこつ", "en": "talus", "la": "talus",
           "parts": ["talus"], "level": 2,
           "kanji": "距＝けづめ・へだてる",
-          "etym": "talus ← ラテン語「くるぶし・さいころ」。古代ローマでは動物の距骨をさいころにした",
-          "note": "脛骨・腓骨と足関節をつくる骨。上から体重を受けて踵骨などへ伝える。"
+          "etym": "talus ← ラテン語「くるぶし、さいころ」（古代ローマでは動物の距骨でさいころを作った）",
+          "note": "脛骨・腓骨と足関節（距腿関節）をつくる骨。立つと全身の体重がかかる。上の距骨滑車は前が広いので、足首を背屈すると内果と外果の間にしっかりはまって安定し、底屈するとゆるむ（ねんざは底屈で起こりやすい）。"
         },
         {
           "id": "calcaneus", "ja": "踵骨", "yomi": "しょうこつ", "en": "calcaneus", "la": "calcaneus",
           "parts": ["calcaneus"], "level": 2,
           "kanji": "踵＝かかと",
           "etym": "calcaneus ← ラテン語 calx「かかと」",
-          "note": "かかとをつくる足根骨で最大の骨。後ろにアキレス腱（踵骨腱）がつく。"
+          "note": "かかとをつくる足根骨で最大の骨。上に距骨をのせる関節面が3つ（前・中・後）あり、後ろの踵骨隆起にアキレス腱（踵骨腱）がつく。"
         },
         {
           "id": "navicular", "check": true, "ja": "舟状骨（足）", "yomi": "しゅうじょうこつ", "en": "navicular", "enAlt": ["navicular bone"], "la": "os naviculare",
@@ -216,76 +236,81 @@
           "parts": ["* metatarsal bone"], "level": 1,
           "kanji": "足の中ほど（足の甲）の骨",
           "etym": "metatarsal ← meta-「後ろ・次」＋ tarsal「足根」",
-          "note": "足の甲にある5本の骨。親指側から第1〜第5中足骨と数える。"
+          "note": "足の甲にある5本の骨。親指側から第1〜第5中足骨と数える。第1中足骨はとびぬけて太い。第2中足骨の底は3つの楔状骨の間に入り込み、足根中足関節（リスフラン関節）をほとんど動かなくしている。"
         },
         {
           "id": "phalanges-foot", "check": true, "ja": "指骨（足）", "yomi": "しこつ", "en": "phalanges of foot", "enAlt": ["phalanges", "phalanx"], "la": "ossa digitorum pedis",
           "parts": ["* phalanx of * toe"], "level": 1,
           "kanji": "足の指の骨",
           "etym": "phalanx ← ギリシャ語「兵士の隊列」",
-          "note": "足の指の骨。母指（親指）は2個、ほかの指は3個（第5指は2個のこともある）。"
+          "note": "足の指の骨。母指（親指）は2個、ほかの指は3個。手の指骨よりずっと短い。第5指（小指）の中節骨と末節骨は日本人の約9割で癒合していて、2個に見える。"
         }
       ]
     },
     {
       "id": "skel-trunk",
       "title": "脊柱と胸郭",
+      "intro": [
+        "脊柱は、24個の椎骨（頚椎7・胸椎12・腰椎5）と、仙骨（5個の仙椎が癒合）・尾骨（3〜5個の尾椎が癒合）でできる。体重を支える柱なので、下の椎骨ほど大きい。「脊椎」という解剖学用語は無く、椎骨・脊柱という。",
+        "横から見ると、頚と腰は前へ（前弯）、胸と仙骨は後ろへ（後弯）ゆるく曲がる。胸と仙骨の後弯は胎児のときからあり、腰の前弯は歩き始める1歳ごろからできる（直立二足歩行への適応）。",
+        "胸郭は胸椎12個・肋骨12対・胸骨1個でできる籠。胸郭上口は第1胸椎・第1肋骨・胸骨柄で、胸郭下口は第12胸椎・第12肋骨・肋骨弓・剣状突起で囲まれる。ヒトの胸郭は前後に平たい（四足の動物では左右に平たい）。"
+      ],
       "terms": [
         {
           "id": "atlas", "ja": "環椎", "yomi": "かんつい", "en": "atlas", "la": "atlas",
           "parts": ["atlas"], "level": 2,
           "kanji": "環（わ）の形をした椎骨。椎体がなく輪になっている",
           "etym": "atlas ← 天球を支えるギリシャ神話の巨人アトラス。頭を支えることから",
-          "note": "第1頚椎。頭蓋（後頭骨）を直接支え、首を縦にふる動きにかかわる。"
+          "note": "第1頚椎。椎体と棘突起が無く、前弓と後弓が左右の外側塊を結ぶ輪の形。外側塊の上に後頭骨の後頭顆がのって環椎後頭関節（うなずく動き）をつくる。頭を左右に回すときは、頭をのせたまま軸椎の歯突起のまわりを回る。"
         },
         {
           "id": "axis", "ja": "軸椎", "yomi": "じくつい", "en": "axis", "la": "axis",
           "parts": ["axis"], "level": 2,
           "kanji": "回る軸になる椎骨",
           "etym": "axis ← ラテン語「軸」",
-          "note": "第2頚椎。上に突き出た歯突起を軸にして、環椎と頭が左右に回る。"
+          "note": "第2頚椎。椎体から上へ歯突起が出る（もとは環椎の椎体だった部分）。環椎は頭をのせたまま、この歯突起を軸に左右に約30°ずつ回る（正中・外側環軸関節）。軸椎の名はこのため。"
         },
         {
           "id": "cervical-vertebrae", "ja": "頚椎", "yomi": "けいつい", "en": "cervical vertebrae", "enAlt": ["cervical vertebra"], "la": "vertebrae cervicales",
           "parts": ["atlas", "axis", "* cervical vertebra"], "level": 1,
           "kanji": "頚＝くび",
           "etym": "cervical ← ラテン語 cervix「くび」、vertebra ← ラテン語 vertere「回す」",
-          "note": "首の骨。7個（C1〜C7）。第1は環椎、第2は軸椎。"
+          "note": "首の骨。7個（C1〜C7）。第1は環椎、第2は軸椎、第7は隆椎。横突起に横突孔があるのが頚椎の目印で、第3〜第6頚椎では棘突起の先が2つに分かれる。椎体は小さく横に長い。"
         },
         {
           "id": "thoracic-vertebrae", "ja": "胸椎", "yomi": "きょうつい", "en": "thoracic vertebrae", "enAlt": ["thoracic vertebra"], "la": "vertebrae thoracicae",
           "parts": ["* thoracic vertebra"], "level": 1,
           "kanji": "胸の高さの椎骨",
           "etym": "thoracic ← ギリシャ語 thorax「胸・胸当て」",
-          "note": "胸の背骨。12個（T1〜T12）。それぞれ左右の肋骨と関節をつくる。"
+          "note": "胸の背骨。12個（T1〜T12）。椎体の横（肋骨窩）と横突起（横突肋骨窩）に肋骨と関節する面があるのが目印。棘突起は長く下へ傾き、第5〜第8胸椎で最も急（心臓の真後ろで、後ろへ反る動きが制限される）。"
         },
         {
           "id": "lumbar-vertebrae", "ja": "腰椎", "yomi": "ようつい", "en": "lumbar vertebrae", "enAlt": ["lumbar vertebra"], "la": "vertebrae lumbales",
           "parts": ["* lumbar vertebra"], "level": 1,
           "kanji": "腰の椎骨",
           "etym": "lumbar ← ラテン語 lumbus「腰」",
-          "note": "腰の背骨。5個（L1〜L5）。体重を支えるので椎体が最も大きい。"
+          "note": "腰の背骨。5個（L1〜L5）。体重を支えるので椎体が最も大きい。横に張り出す突起は肋骨にあたる肋骨突起で、棘突起は短い板の形。第5腰椎が仙骨に癒合したり（約3%）、第1仙椎が離れて腰椎のようになったり（6〜7%）することがある。"
         },
         {
           "id": "sacrum", "ja": "仙骨", "yomi": "せんこつ", "en": "sacrum", "la": "os sacrum",
           "parts": ["sacrum"], "fma": "FMA16202", "level": 1,
           "kanji": "仙＝神聖なもの。ラテン語 os sacrum の訳",
           "etym": "sacrum ← ラテン語 os sacrum「神聖な骨」",
-          "note": "5個の仙椎が癒合した三角形の骨。左右の寛骨と骨盤をつくる。"
+          "note": "5個の仙椎が癒合した逆三角形の骨（17〜18歳ごろに癒合が終わる）。前面はへこみ、後面はでこぼこして凸。左右の寛骨と仙腸関節をつくり、骨盤の後ろの壁になる。男性では幅が狭く長く、女性では幅が広く短い。"
         },
         {
           "id": "coccyx", "ja": "尾骨", "yomi": "びこつ", "en": "coccyx", "la": "os coccygis",
           "parts": ["coccyx"], "level": 1,
           "kanji": "尾＝しっぽ。しっぽの名残の骨",
           "etym": "coccyx ← ギリシャ語 kokkyx「カッコウ」。形がカッコウのくちばしに似るため",
-          "note": "脊柱の最下端の小さな骨。3〜5個の尾椎が癒合したもので、仙骨の下端（仙骨尖）に続く。"
+          "note": "脊柱の最下端の小さな骨。3〜5個の尾椎が癒合したもので（胎児では9個あった原基が下から消える）、仙骨の下端（仙骨尖）に続く。動物の尾の骨にあたる。出産のときには後ろへ動いて産道を広げる。"
         },
         {
           "id": "sternum", "ja": "胸骨", "yomi": "きょうこつ", "en": "sternum", "la": "sternum",
           "parts": ["manubrium", "body of sternum", "xiphoid process"], "fma": "FMA7485", "level": 1,
           "kanji": "胸の前の中央にある骨",
           "etym": "sternum ← ギリシャ語 sternon「胸」",
-          "note": "胸の前の中央にある平たい骨。胸骨柄・胸骨体・剣状突起からなる。"
+          "note": "胸の前の中央にある平たい骨。胸骨柄・胸骨体・剣状突起からなる。胸骨柄と胸骨体の結合は大人になるまで軟骨のままで、その境が前へ角ばって出る（胸骨角＝第2肋骨の高さ）。"
         },
         {
           "id": "manubrium", "ja": "胸骨柄", "yomi": "きょうこつへい", "en": "manubrium of sternum", "enAlt": ["manubrium"], "la": "manubrium sterni",
@@ -305,14 +330,14 @@
           "parts": ["xiphoid process"], "level": 2,
           "kanji": "剣の切っ先のような突起",
           "etym": "xiphoid ← ギリシャ語 xiphos「剣」＋ -oid「〜の形」",
-          "note": "胸骨のいちばん下の小さな突起。みぞおちで触れる。"
+          "note": "胸骨のいちばん下の小さな突起。大人でも大部分が軟骨で、完全に骨になるのは高齢になってから。みぞおちで触れる。"
         },
         {
           "id": "ribs", "ja": "肋骨", "yomi": "ろっこつ", "en": "ribs", "enAlt": ["rib"], "la": "costae",
           "parts": ["* rib"], "level": 1,
           "kanji": "肋＝あばら",
           "etym": "ラテン語 costa「肋骨」（costal 肋骨の）",
-          "note": "左右12対の弓状の骨。後ろは胸椎と、前は肋軟骨を介して胸骨とつながり胸郭をつくる。"
+          "note": "左右12対の弓状の骨。後ろは胸椎と、前は肋軟骨を介して胸骨とつながり胸郭をつくる。弓のように曲がるうえにねじれている。第7肋骨あたりが最も長い。骨折は第4〜第9肋骨に多い（高齢者ではせきで折れることもある）。肋骨頚を軸にわずかに回るだけで前の端が大きく上下し、呼吸で胸郭が広がる。"
         },
         {
           "id": "costal-cartilages", "ja": "肋軟骨", "yomi": "ろくなんこつ", "en": "costal cartilages", "enAlt": ["costal cartilage"], "la": "cartilagines costales",
@@ -326,27 +351,31 @@
     {
       "id": "skel-skull",
       "title": "頭蓋の骨",
+      "intro": [
+        "頭蓋は15種23個の骨でできる。1対ある骨（頭頂骨・側頭骨・上顎骨・頬骨・鼻骨・涙骨・口蓋骨・下鼻甲介）が8種16個、1つだけの骨（前頭骨・後頭骨・蝶形骨・篩骨・鋤骨・下顎骨・舌骨）が7種。",
+        "下顎骨（顎関節で動く）と舌骨（筋で吊られる）を除き、骨どうしは縫合でつながって1つの塊になる。脳を入れる脳頭蓋と、顔をつくる顔面頭蓋に分ける。「頭蓋」は解剖学では「とうがい」と読む。"
+      ],
       "terms": [
         {
           "id": "frontal-bone", "ja": "前頭骨", "yomi": "ぜんとうこつ", "en": "frontal bone", "la": "os frontale",
           "parts": ["frontal bone"], "level": 1,
           "kanji": "頭の前（ひたい）の骨",
           "etym": "frontal ← ラテン語 frons「ひたい」",
-          "note": "ひたいと眼窩の上壁をつくる骨。"
+          "note": "ひたいと眼窩の上壁をつくる骨。胎児では左右1対で、正中の前頭縫合は2歳ごろから癒合して消える（日本人の約6%は大人でも残る）。中に前頭洞がある。"
         },
         {
           "id": "parietal-bone", "ja": "頭頂骨", "yomi": "とうちょうこつ", "en": "parietal bone", "la": "os parietale",
           "parts": ["parietal bone"], "level": 1,
           "kanji": "頭のてっぺんの骨",
           "etym": "parietal ← ラテン語 paries「壁」",
-          "note": "頭のてっぺんと側面の上部をつくる左右1対の骨。"
+          "note": "頭のてっぺんと側面の上部をつくる左右1対の四角い骨。側頭骨と接する縁だけはかんなの刃のように薄く、ほかの3辺はぎざぎざの縫合になる。"
         },
         {
           "id": "temporal-bone", "ja": "側頭骨", "yomi": "そくとうこつ", "en": "temporal bone", "la": "os temporale",
           "parts": ["temporal bone"], "level": 1,
           "kanji": "側頭＝こめかみのあたり",
           "etym": "temporal ← ラテン語 tempus「時・こめかみ」。白髪が最初に出て年齢（時）を示す場所、という説がある",
-          "note": "頭の側面下部の骨。中に耳（中耳・内耳）があり、下顎骨と顎関節をつくる。"
+          "note": "頭の側面下部の骨。鱗部・鼓室部・岩様部（乳様突起と錐体）の3つが生後1年ほどで癒合したもの。中に耳（中耳・内耳）があり、下顎骨と顎関節をつくる。"
         },
         {
           "id": "occipital-bone", "ja": "後頭骨", "yomi": "こうとうこつ", "en": "occipital bone", "la": "os occipitale",
@@ -359,8 +388,8 @@
           "id": "sphenoid-bone", "ja": "蝶形骨", "yomi": "ちょうけいこつ", "en": "sphenoid bone", "enAlt": ["sphenoid"], "la": "os sphenoidale",
           "parts": ["sphenoid bone"], "level": 2,
           "kanji": "蝶が羽を広げた形の骨",
-          "etym": "sphenoid ← ギリシャ語 sphen「くさび」＋ -oid。頭蓋の骨の間にくさびのように入る",
-          "note": "頭蓋底の中央にある骨。中央のくぼみ（トルコ鞍）に下垂体がおさまる。"
+          "etym": "sphenoid ← ギリシャ語 sphen「くさび」＋ eidos「形」（蝶ではなく、くさびの意）",
+          "note": "頭蓋底の中央にある骨。体・小翼・大翼・翼状突起からなり、多くの骨の間にくさびのようにはまり込む。体の上面のくぼみ（トルコ鞍）に下垂体がおさまり、体の中に蝶形骨洞がある。"
         },
         {
           "id": "ethmoid-bone", "ja": "篩骨", "yomi": "しこつ", "en": "ethmoid bone", "enAlt": ["ethmoid"], "la": "os ethmoidale",
@@ -387,8 +416,8 @@
           "id": "zygomatic-bone", "ja": "頬骨", "yomi": "きょうこつ", "en": "zygomatic bone", "la": "os zygomaticum",
           "parts": ["zygomatic bone"], "level": 1,
           "kanji": "頬（ほお）の骨",
-          "etym": "zygomatic ← ギリシャ語 zygon「くびき（2つをつなぐ横木）」。側頭骨とつながって弓（頬骨弓）をつくる",
-          "note": "ほおの出っぱりをつくる骨。読みは「胸骨」と同じ「きょうこつ」なので注意。"
+          "etym": "zygomatic ← ギリシャ語 zygon「くびき（2頭の牛をつなぐ横木）」",
+          "note": "ほおの出っぱりをつくる骨。眼窩の外側の壁と頬骨弓の前半分をつくる。横の縫合で上下2つに分かれていることがあり、日本人に多い（二分頬骨・日本骨）。読みは「胸骨」と同じ「きょうこつ」なので注意。"
         },
         {
           "id": "nasal-bone", "ja": "鼻骨", "yomi": "びこつ", "en": "nasal bone", "la": "os nasale",
@@ -415,8 +444,8 @@
           "id": "vomer", "ja": "鋤骨", "yomi": "じょこつ", "en": "vomer", "la": "vomer",
           "parts": ["vomer"], "level": 2,
           "kanji": "鋤（すき）＝田畑を耕す農具の形",
-          "etym": "vomer ← ラテン語「すき（犂）の刃」",
-          "note": "鼻中隔の後ろ下の部分をつくる薄い骨。"
+          "etym": "vomer ← ラテン語「すき（農具）の刃」",
+          "note": "鼻中隔の後ろ下の部分をつくる薄い骨（前上は篩骨の垂直板）。上の縁が2枚に開いて蝶形骨の体の下の稜をはさむ。"
         },
         {
           "id": "inferior-nasal-concha", "ja": "下鼻甲介", "yomi": "かびこうかい", "en": "inferior nasal concha", "la": "concha nasalis inferior",
@@ -429,8 +458,8 @@
           "id": "hyoid-bone", "ja": "舌骨", "yomi": "ぜっこつ", "en": "hyoid bone", "enAlt": ["hyoid"], "la": "os hyoideum",
           "parts": ["hyoid bone"], "level": 1,
           "kanji": "舌の根もとを支える骨",
-          "etym": "hyoid ← ギリシャ語の文字 υ（ウプシロン）の形 ＋ -oid",
-          "note": "あごの下、のどぼとけの上にあるU字形の骨。ほかの骨と関節をつくらず、筋で吊られている。"
+          "etym": "hyoid ← ギリシャ文字 υ（ユプシロン）＋ eidos「形」",
+          "note": "あごの下、のどぼとけの2〜3cm上にあるU字形の骨。ほかの骨と関節をつくらず、筋で吊られている。口を開けるとき、舌骨上筋と舌骨下筋の中継ぎになる。"
         }
       ]
     },
@@ -462,15 +491,15 @@
           "id": "coracoid-process", "ja": "烏口突起", "yomi": "うこうとっき", "en": "coracoid process", "la": "processus coracoideus",
           "of": "scapula", "level": 1,
           "kanji": "烏（カラス）の口（くちばし）のような突起",
-          "etym": "coracoid ← ギリシャ語 korax「カラス」＋ -oid「〜の形」",
-          "note": "肩甲骨の上縁から前へ曲がって突き出す突起。小胸筋・烏口腕筋・上腕二頭筋の短頭が付く。"
+          "etym": "coracoid ← ギリシャ語 korax「からす」＋ eidos「形」",
+          "note": "肩甲骨の上縁から前へ曲がって突き出す、からすのくちばしのような突起。鎖骨の下に隠れるが、鎖骨のすぐ下で触れる。小胸筋・烏口腕筋・上腕二頭筋の短頭が付く。鎖骨との間の烏口鎖骨靱帯が肩甲骨を鎖骨につなぎとめる。"
         },
         {
           "id": "glenoid-cavity", "ja": "関節窩", "yomi": "かんせつか", "en": "glenoid cavity", "enAlt": ["glenoid fossa"], "la": "cavitas glenoidalis",
           "of": "scapula", "level": 1,
           "kanji": "関節をつくる窩（くぼみ）",
           "etym": "glenoid ← ギリシャ語 glene「浅いくぼみ」＋ -oid",
-          "note": "肩甲骨の外側の浅いくぼみ。上腕骨頭を受けて肩関節をつくる。受け皿が浅いので、肩は脱臼しやすい。"
+          "note": "肩甲骨の外側の浅い西洋梨形のくぼみ。上腕骨頭を受けて肩関節をつくる。骨頭よりずっと小さく浅いので肩はよく動くが脱臼しやすい（ふちの関節唇が少し深くする）。腕を水平より高く上げるときは肩甲骨ごと回る。"
         },
         {
           "id": "spine-of-scapula", "ja": "肩甲棘", "yomi": "けんこうきょく", "en": "spine of scapula", "enAlt": ["scapular spine"], "la": "spina scapulae",
@@ -537,7 +566,7 @@
           "of": "scapula", "level": 3,
           "kanji": "切痕＝切れこみ",
           "etym": "notch「切れこみ」、la. incisura ← incidere「切りこむ」",
-          "note": "肩甲骨の上縁で、烏口突起の根もとの内側にある切れこみ。肩甲上神経が通る。"
+          "note": "肩甲骨の上縁で、烏口突起の根もとの内側にある切れこみ。大きさと形は人によって違い、骨で閉じて孔になっていることもある。ふつうは上肩甲横靱帯が橋をかけて孔になり、その中を肩甲上神経が通る。"
         }
       ]
     },
@@ -641,7 +670,7 @@
           "id": "olecranon-fossa", "ja": "肘頭窩", "yomi": "ちゅうとうか", "en": "olecranon fossa", "la": "fossa olecrani",
           "of": "humerus", "level": 2,
           "kanji": "肘頭がはまる窩",
-          "note": "上腕骨の下端の後面の深いくぼみ。肘を伸ばすと尺骨の肘頭がはまる。"
+          "note": "上腕骨の下端の後面の深いくぼみ。肘を伸ばすと尺骨の肘頭がはまる。底は前の鈎突窩と紙のように薄い骨で接し、孔があいていることもある（滑車上孔）。"
         },
         {
           "id": "coronoid-fossa", "ja": "鈎突窩", "yomi": "こうとつか", "en": "coronoid fossa", "la": "fossa coronoidea",
@@ -708,7 +737,7 @@
         {
           "id": "head-of-radius", "ja": "橈骨頭", "yomi": "とうこつとう", "en": "head of radius", "enAlt": ["radial head"], "la": "caput radii",
           "of": "radius", "level": 1,
-          "note": "橈骨の上端の円盤形の部分。上腕骨小頭と尺骨の橈骨切痕に接し、前腕をひねるとその場で回る。"
+          "note": "橈骨の上端の円盤形の部分。上面のくぼみで上腕骨小頭と、側面（関節環状面）で尺骨の橈骨切痕と接し、前腕をひねるとその場で回る。2〜6歳の子では腕を急に引くと輪状靱帯から抜けかける（肘内障）。"
         },
         {
           "id": "neck-of-radius", "ja": "橈骨頚", "yomi": "とうこつけい", "en": "neck of radius", "enAlt": ["radial neck"], "la": "collum radii",
@@ -774,11 +803,11 @@
           "note": "腸骨の内面の大きく浅いくぼみ。腸骨筋が起こる。"
         },
         {
-          "id": "auricular-surface-of-ilium", "ja": "耳状面", "yomi": "じじょうめん", "en": "auricular surface", "enAlt": ["auricular surface of ilium"], "la": "facies auricularis",
+          "id": "auricular-surface-of-ilium", "ja": "耳状面（腸骨）", "yomi": "じじょうめん", "en": "auricular surface of ilium", "la": "facies auricularis ossis ilii",
           "of": "hip-bone", "level": 3,
           "kanji": "耳の形の面",
           "etym": "auricular ← ラテン語 auricula「小さな耳」",
-          "note": "腸骨の内面の後ろにある、耳の形の関節面。仙骨の同じ名前の面と仙腸関節をつくる。"
+          "note": "腸骨の内面の後ろにある、耳の形の関節面。仙骨の耳状面とかみ合って仙腸関節をつくる。関節面がでこぼこでかみ合いが強く、ほとんど動かない（脊柱からの体重を下肢へ伝える）。"
         },
         {
           "id": "greater-sciatic-notch", "ja": "大坐骨切痕", "yomi": "だいざこつせっこん", "en": "greater sciatic notch", "la": "incisura ischiadica major",
@@ -817,15 +846,15 @@
           "id": "acetabulum", "ja": "寛骨臼", "yomi": "かんこつきゅう", "en": "acetabulum", "la": "acetabulum",
           "of": "hip-bone", "level": 1,
           "kanji": "寛骨の臼（うす）",
-          "etym": "acetabulum ← ラテン語「酢を入れる小皿」(acetum 酢)",
-          "note": "寛骨の外側の深い半球形のくぼみ。大腿骨頭を受けて股関節をつくる。腸骨・坐骨・恥骨の3つが合わさる所。"
+          "etym": "acetabulum ← ラテン語「酢を入れる小さな器」",
+          "note": "寛骨の外側の深い半球形のくぼみ。大腿骨頭を受けて股関節をつくる。腸骨・坐骨・恥骨の3つが合わさる所。関節面は三日月の形（月状面）で、下の寛骨臼切痕で切れる。"
         },
         {
           "id": "symphysial-surface", "ja": "恥骨結合面", "yomi": "ちこつけつごうめん", "en": "symphysial surface", "enAlt": ["symphyseal surface"], "la": "facies symphysialis",
           "of": "hip-bone", "level": 2,
           "kanji": "恥骨結合をつくる面",
           "etym": "symphysis ← ギリシャ語「ともに育つ」(syn 共に ＋ phyein 育つ)",
-          "note": "恥骨の内側の端の楕円形の面。線維軟骨（恥骨間円板）をはさんで反対側と恥骨結合をつくる。"
+          "note": "恥骨の内側の端の楕円形の面。線維軟骨（恥骨間円板）をはさんで反対側と恥骨結合をつくる。面の様子が年齢とともに変わるので、骨から年齢を推定する手がかりになる。"
         },
         {
           "id": "pubic-tubercle", "ja": "恥骨結節", "yomi": "ちこつけっせつ", "en": "pubic tubercle", "la": "tuberculum pubicum",
@@ -875,8 +904,8 @@
           "id": "greater-trochanter", "ja": "大転子", "yomi": "だいてんし", "en": "greater trochanter", "la": "trochanter major",
           "of": "femur", "level": 1,
           "kanji": "転子＝（脚を）回す筋が付く突起",
-          "etym": "trochanter ← ギリシャ語「走る・回す」(trechein 走る)",
-          "note": "大腿骨の上端の外側の大きな突出。腰の横で触れる。中殿筋・小殿筋・梨状筋などが付く。"
+          "etym": "trochanter ← ギリシャ語 trochanter「回すもの、ハンドル」",
+          "note": "大腿骨の上端の外側の大きな突出。腰の横で触れる。中殿筋・小殿筋・梨状筋などが付き、てこのはたらきで大腿を外転させる。"
         },
         {
           "id": "lesser-trochanter", "ja": "小転子", "yomi": "しょうてんし", "en": "lesser trochanter", "la": "trochanter minor",
@@ -901,14 +930,14 @@
           "of": "femur", "level": 2,
           "kanji": "殿筋が付く粗い面",
           "etym": "gluteal ← ギリシャ語 gloutos「尻」",
-          "note": "大腿骨の後面の上部、外側の粗い高まり。大殿筋が付く。"
+          "note": "大腿骨の後面の上部、外側の粗い高まり（粗線の外側唇の上の続き）。大殿筋が付く。特に発達したものを第3転子といい、日本人では約3割に見られる。"
         },
         {
           "id": "linea-aspera", "ja": "粗線", "yomi": "そせん", "en": "linea aspera", "la": "linea aspera",
           "of": "femur", "level": 2,
           "kanji": "ざらざらした線",
           "etym": "linea aspera ← ラテン語「ざらざらした線」",
-          "note": "大腿骨の体の後面を縦に走る粗い稜。内転筋群・大腿二頭筋の短頭・内側広筋・外側広筋が付く。"
+          "note": "大腿骨の体の後面を縦に走る粗い稜（内側唇と外側唇）。内転筋群・大腿二頭筋の短頭・内側広筋・外側広筋が付く。直立二足歩行の筋が付くためヒトでよく発達する。"
         },
         {
           "id": "medial-condyle-of-femur", "ja": "内側顆（大腿骨）", "yomi": "ないそくか", "en": "medial condyle of femur", "enAlt": ["medial femoral condyle"], "la": "condylus medialis femoris",
@@ -948,7 +977,7 @@
           "id": "patellar-surface", "ja": "膝蓋面", "yomi": "しつがいめん", "en": "patellar surface", "enAlt": ["patellar surface of femur"], "la": "facies patellaris",
           "of": "femur", "level": 2,
           "kanji": "膝蓋骨と向き合う面",
-          "note": "大腿骨の下端の前面の関節面。膝蓋骨がこの上をすべる。"
+          "note": "大腿骨の下端の前面の関節面。膝蓋骨がこの上をすべる。中央の縦の溝は内側に寄っていて、外側半分が広い。"
         },
         {
           "id": "base-of-patella", "ja": "膝蓋骨底", "yomi": "しつがいこつてい", "en": "base of patella", "la": "basis patellae",
@@ -1022,7 +1051,7 @@
           "id": "lateral-malleolus", "ja": "外果", "yomi": "がいか", "en": "lateral malleolus", "la": "malleolus lateralis",
           "of": "fibula", "level": 1,
           "kanji": "外側の果",
-          "note": "腓骨の下端の突出。外くるぶし。内果より低く、後ろにある。"
+          "note": "腓骨の下端の突出。外くるぶし。内果より約1cm低く、後ろにある。足を強く内反すると、靱帯に引かれて先から約1cm上で折れることがある。"
         },
         {
           "id": "calcaneal-tuberosity", "ja": "踵骨隆起", "yomi": "しょうこつりゅうき", "en": "calcaneal tuberosity", "enAlt": ["tuber calcanei"], "la": "tuber calcanei",
@@ -1042,7 +1071,7 @@
           "id": "trochlea-of-talus", "ja": "距骨滑車", "yomi": "きょこつかっしゃ", "en": "trochlea of talus", "la": "trochlea tali",
           "of": "talus", "level": 2,
           "kanji": "距骨の滑車",
-          "note": "距骨の上の面の滑車形の関節面。脛骨と腓骨にはさまれて距腿関節（足首の関節）をつくる。"
+          "note": "距骨の上の面の滑車形の関節面。脛骨と腓骨にはさまれて距腿関節（足首の関節）をつくる。前が広いので、背屈すると足首がしっかり固まる。"
         },
         {
           "id": "head-of-talus", "ja": "距骨頭", "yomi": "きょこつとう", "en": "head of talus", "la": "caput tali",
@@ -1064,6 +1093,10 @@
     {
       "id": "skel-pt-vertebra",
       "title": "椎骨の部位",
+      "intro": [
+        "椎骨はどれも、前の椎体（体重を支える）と後ろの椎弓（脊髄を後ろから守る）でできている。椎弓から出る棘突起・横突起には背中の筋が付いて椎骨を動かし、上下の関節突起は隣の椎骨と関節する。胎児でも、まず椎体ができ、次に椎弓、そこから突起がのびる。",
+        "このレッスンの部位はおもに第3腰椎の上で示す（横突起は第6胸椎、横突孔は第5頚椎）。"
+      ],
       "terms": [
         {
           "id": "vertebral-body", "ja": "椎体", "yomi": "ついたい", "en": "vertebral body", "la": "corpus vertebrae",
@@ -1076,27 +1109,27 @@
           "id": "vertebral-arch", "ja": "椎弓", "yomi": "ついきゅう", "en": "vertebral arch", "la": "arcus vertebrae",
           "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 1,
           "kanji": "椎骨の弓",
-          "note": "椎体の後ろにつく弓形の部分。椎体とともに椎孔を囲み、棘突起・横突起・関節突起が出る。（図は第3腰椎）"
+          "note": "椎体の後ろにつく弓形の部分で、脊髄を後ろから守る。椎体につながる根もとの椎弓根と、後ろの板の形の椎弓板に分かれ、棘突起・横突起・関節突起が出る。（図は第3腰椎）"
         },
         {
           "id": "vertebral-foramen", "ja": "椎孔", "yomi": "ついこう", "en": "vertebral foramen", "la": "foramen vertebrale",
           "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 1,
           "kanji": "椎骨の孔",
           "etym": "foramen ← ラテン語 forare「穴をあける」",
-          "note": "椎体と椎弓に囲まれた孔。上下につながって脊柱管となり、脊髄が通る。（図は第3腰椎）"
+          "note": "椎体と椎弓に囲まれた孔。胸椎では小指がやっと通るほど。上下につながって脊柱管となり、脊髄が通る（椎孔・椎間孔・脊柱管は名前が似ているので区別する）。（図は第3腰椎）"
         },
         {
           "id": "spinous-process", "ja": "棘突起", "yomi": "きょくとっき", "en": "spinous process", "la": "processus spinosus",
           "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 1,
           "kanji": "棘（とげ）のような突起",
-          "note": "椎弓から後ろへ突き出す突起。背中の正中で皮膚の上から触れる。（図は第3腰椎）"
+          "note": "椎弓から後ろへ突き出す突起。背中の正中で皮膚の上から触れる。傾きは胸椎の中ほど（第5〜第8）で最も急で、腰椎では短い板の形。（図は第3腰椎）"
         },
         {
           "id": "transverse-process", "ja": "横突起", "yomi": "おうとっき", "en": "transverse process", "la": "processus transversus",
-          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 1,
+          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 1, "from": [-1, 0.3, -0.6],
           "kanji": "横へ出る突起",
           "etym": "transverse ← trans-「横切って」＋ vertere「向ける」",
-          "note": "椎弓から左右へ突き出す突起。筋や靱帯が付く。胸椎では肋骨と関節をつくる。（図は第3腰椎）"
+          "note": "椎弓から左右へ突き出す突起。背中の筋（固有背筋）が付いて椎骨を動かす。胸椎では先の横突肋骨窩で肋骨結節と関節をつくる（肋横突関節）。腰椎で横に張り出しているのは肋骨にあたる肋骨突起で、本来の横突起は根もとの小さな副突起になっている。（図は第6胸椎）"
         },
         {
           "id": "superior-articular-process", "ja": "上関節突起", "yomi": "じょうかんせつとっき", "en": "superior articular process", "la": "processus articularis superior",
@@ -1112,7 +1145,7 @@
           "id": "intervertebral-foramen", "ja": "椎間孔", "yomi": "ついかんこう", "en": "intervertebral foramen", "la": "foramen intervertebrale",
           "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra", "fourth lumbar vertebra"], "level": 2,
           "kanji": "椎骨の間の孔",
-          "note": "上下の椎骨の間に、横に開く孔。脊髄神経がここから出ていく。椎間板ヘルニアで神経が圧迫される所。（図は第3・第4腰椎の間）"
+          "note": "上下の椎骨の間に横に開く孔。上の椎骨の下椎切痕と下の椎骨の上椎切痕でできる。脊髄神経がここから出ていく。椎間板ヘルニアで神経が圧迫される所。（図は第3・第4腰椎の間）"
         },
         {
           "id": "foramen-transversarium", "ja": "横突孔", "yomi": "おうとつこう", "en": "foramen transversarium", "enAlt": ["transverse foramen"], "la": "foramen transversarium",
@@ -1139,7 +1172,7 @@
           "of": "sacrum", "level": 2,
           "kanji": "岬（みさき）のように突き出た角",
           "etym": "promontory ← ラテン語 promontorium「岬」",
-          "note": "仙骨の上端の前の縁が前へ突き出した所。骨盤の入口の後ろの目印になる。"
+          "note": "仙骨の上端の前の縁が前へ突き出した所。脊柱で最も鋭く前に出る。骨盤の入口の後ろの目印で、ここから恥骨結合の後ろまでが真結合線（日本人女性で約11cm、9cm以下は狭骨盤）。"
         },
         {
           "id": "anterior-sacral-foramina", "ja": "前仙骨孔", "yomi": "ぜんせんこつこう", "en": "anterior sacral foramina", "enAlt": ["pelvic sacral foramina"], "la": "foramina sacralia anteriora",
@@ -1195,7 +1228,7 @@
           "id": "head-of-rib", "ja": "肋骨頭", "yomi": "ろっこつとう", "en": "head of rib", "la": "caput costae",
           "of": "ribs", "parts": ["sixth rib"], "level": 2,
           "etym": "la. costa「肋骨」→ 英語 costal・coast（わき）と同じ語源",
-          "note": "肋骨の後ろの端。胸椎の椎体と関節をつくる。（図は第6肋骨）"
+          "note": "肋骨の後ろの端のふくらみ。第2〜第10肋骨ではくさび形の関節面が上下2つの胸椎の肋骨窩にまたがってはまる（第1・第11・第12肋骨は1つの胸椎だけと関節する）。（図は第6肋骨）"
         },
         {
           "id": "neck-of-rib", "ja": "肋骨頚", "yomi": "ろっこつけい", "en": "neck of rib", "la": "collum costae",
@@ -1205,7 +1238,7 @@
         {
           "id": "tubercle-of-rib", "ja": "肋骨結節", "yomi": "ろっこつけっせつ", "en": "tubercle of rib", "la": "tuberculum costae",
           "of": "ribs", "parts": ["sixth rib"], "level": 2,
-          "note": "肋骨頚の外側の、後ろへの小さな高まり。胸椎の横突起と関節をつくる。（図は第6肋骨）"
+          "note": "肋骨頚の外側の、後ろへの小さな高まり。胸椎の横突起と関節をつくる（肋横突関節）。第11・第12肋骨でははっきりせず、横突起とも関節しない。（図は第6肋骨）"
         },
         {
           "id": "angle-of-rib", "ja": "肋骨角", "yomi": "ろっこつかく", "en": "angle of rib", "la": "angulus costae",
@@ -1223,6 +1256,9 @@
     {
       "id": "skel-pt-skull",
       "title": "頭蓋の部位",
+      "intro": [
+        "新生児の頭蓋では骨の間が広く、3つ以上の骨が会う所は膜でふさがれた泉門になっている。冠状・矢状・前頭縫合が十字に会う大泉門（ひし形、2歳ごろに閉じる）と、矢状縫合とラムダ縫合が会う小泉門（三角形、生後3か月ほどで閉じる）が大事。"
+      ],
       "terms": [
         {
           "id": "coronal-suture", "ja": "冠状縫合", "yomi": "かんじょうほうごう", "en": "coronal suture", "la": "sutura coronalis",
@@ -1236,7 +1272,7 @@
           "of": "parietal-bone", "level": 1,
           "kanji": "矢が刺さる向き（前後）の縫合",
           "etym": "sagittal ← ラテン語 sagitta「矢」",
-          "note": "左右の頭頂骨の間の縫合。頭の正中を前後に走る。"
+          "note": "左右の頭頂骨の間の縫合。頭の正中を前後に走る。前端（ブレグマ）は新生児の大泉門（2歳ごろに閉じる）、後端（ラムダ）は小泉門（生後3か月ほどで閉じる）にあたる。"
         },
         {
           "id": "lambdoid-suture", "ja": "ラムダ縫合", "yomi": "らむだほうごう", "en": "lambdoid suture", "la": "sutura lambdoidea",
@@ -1263,7 +1299,7 @@
           "of": "occipital-bone", "level": 1,
           "kanji": "後頭骨の大きな孔",
           "etym": "foramen magnum ← ラテン語「大きな孔」",
-          "note": "後頭骨の底の大きな孔。延髄が脊髄へ続く所がここを通る。"
+          "note": "後頭骨の底の大きな孔。延髄が脊髄へ続く所・椎骨動脈・副神経の脊髄根が通る。ヒトでは耳眼平面に対してほぼ水平で、頭が脊柱の真上にのる（直立二足歩行の特徴）。"
         },
         {
           "id": "occipital-condyle", "ja": "後頭顆", "yomi": "こうとうか", "en": "occipital condyle", "la": "condylus occipitalis",
@@ -1295,33 +1331,33 @@
           "id": "mandibular-fossa", "ja": "下顎窩", "yomi": "かがくか", "en": "mandibular fossa", "la": "fossa mandibularis",
           "of": "temporal-bone", "level": 2,
           "kanji": "下顎（頭）がはまる窩",
-          "note": "外耳孔のすぐ前のくぼみ。下顎頭がはまって顎関節をつくる。"
+          "note": "外耳孔のすぐ前のくぼみ。下顎頭がはまって顎関節をつくる（間に関節円板がある）。後ろの縁の裂け目（錐体鼓室裂）を鼓索神経が通る。"
         },
         {
           "id": "zygomatic-arch", "ja": "頬骨弓", "yomi": "きょうこつきゅう", "en": "zygomatic arch", "la": "arcus zygomaticus",
           "of": "zygomatic-bone", "parts": ["zygomatic bone", "temporal bone"], "level": 1,
           "kanji": "頬骨の弓",
           "etym": "zygomatic ← ギリシャ語 zygon「くびき（2つをつなぐ横木）」",
-          "note": "側頭骨の頬骨突起と頬骨の側頭突起がつながってできる弓。頬の横で触れる。咬筋が起こる。"
+          "note": "側頭骨の頬骨突起と頬骨の側頭突起がつながってできる弓。上の縁はほぼ耳眼平面の高さで、頬の横で触れる。咬筋が起こり、上の縁に側頭筋膜が付く。顔を打つと内側へ折れて口が開きにくくなることがある。"
         },
         {
           "id": "supra-orbital-foramen", "ja": "眼窩上孔", "yomi": "がんかじょうこう", "en": "supra-orbital foramen", "enAlt": ["supraorbital foramen", "supra-orbital notch"], "la": "foramen supraorbitale",
           "of": "frontal-bone", "level": 2,
           "kanji": "眼窩の上の孔",
-          "note": "眼窩の上の縁の、内側寄りにある孔（切れこみのこともある）。眼窩上神経が出る。"
+          "note": "眼窩の上の縁の、内側寄りにある孔（切れこみのことも多い＝眼窩上切痕）。眼窩上神経が出る。眼窩下孔・オトガイ孔とほぼ縦一列に並ぶ（三叉神経の3つの枝の出口）。"
         },
         {
           "id": "infra-orbital-foramen", "ja": "眼窩下孔", "yomi": "がんかかこう", "en": "infra-orbital foramen", "enAlt": ["infraorbital foramen"], "la": "foramen infraorbitale",
           "of": "maxilla", "level": 2,
           "kanji": "眼窩の下の孔",
-          "note": "眼窩の下の縁のすぐ下にある上顎骨の孔。眼窩下神経が出る。"
+          "note": "眼窩の下の縁のすぐ下にある上顎骨の孔。眼窩下神経が出る。眼窩上孔・オトガイ孔とほぼ縦一列に並ぶ。"
         },
         {
           "id": "orbit", "ja": "眼窩", "yomi": "がんか", "en": "orbit", "la": "orbita",
           "of": "frontal-bone", "parts": ["frontal bone", "zygomatic bone", "maxilla", "sphenoid bone", "ethmoid", "lacrimal bone", "palatine bone"], "level": 1,
           "kanji": "眼の窩（くぼみ）",
           "etym": "orbit ← ラテン語 orbita「車輪の跡・軌道」",
-          "note": "眼球が入る、顔の前面の四角錐形のくぼみ。前頭骨・頬骨・上顎骨・蝶形骨・篩骨・涙骨・口蓋骨の7つの骨でできる。"
+          "note": "眼球が入る、顔の前面の四角錐形のくぼみ。前頭骨・頬骨・上顎骨・蝶形骨・篩骨・涙骨・口蓋骨の7つの骨でできる。内側の壁は紙のように薄い。左右の眼窩の軸は外へ約40°開いている。"
         },
         {
           "id": "alveolar-process", "ja": "歯槽突起", "yomi": "しそうとっき", "en": "alveolar process", "la": "processus alveolaris",
@@ -1342,13 +1378,13 @@
           "of": "sphenoid-bone", "level": 1,
           "kanji": "トルコ式の鞍（くら）の形",
           "etym": "ラテン語 sella「鞍」＋ turcica「トルコの」",
-          "note": "蝶形骨の体の上面のくぼみ。中央の下垂体窩に下垂体がのる。"
+          "note": "蝶形骨の体の上面の、馬の鞍のようなくぼみ。中央の下垂体窩に下垂体がのる（下垂体窩の大きさはX線で見て下垂体の腫瘍の手がかりになる）。後ろの高まりが鞍背、すぐ下に蝶形骨洞がある。"
         },
         {
           "id": "greater-wing-of-sphenoid", "ja": "大翼", "yomi": "だいよく", "en": "greater wing", "enAlt": ["greater wing of sphenoid"], "la": "ala major",
           "of": "sphenoid-bone", "level": 3,
           "kanji": "大きい翼",
-          "note": "蝶形骨の体から左右に大きく広がる翼。中頭蓋窩の床と、こめかみの一部をつくる。"
+          "note": "蝶形骨の体から左右に大きく広がる翼。中頭蓋窩の床・眼窩の外側の壁・こめかみの一部をつくる。正円孔（上顎神経）・卵円孔（下顎神経）・棘孔（中硬膜動脈）があく。"
         },
         {
           "id": "pterygoid-process", "ja": "翼状突起", "yomi": "よくじょうとっき", "en": "pterygoid process", "la": "processus pterygoideus",
@@ -1419,7 +1455,7 @@
           "id": "mental-foramen", "ja": "オトガイ孔", "yomi": "おとがいこう", "en": "mental foramen", "la": "foramen mentale",
           "of": "mandible", "level": 2,
           "kanji": "オトガイ（あご先）の孔",
-          "note": "下顎体の外面、第2小臼歯の下あたりにある孔。オトガイ神経が出る。"
+          "note": "下顎体の外面、第2小臼歯の下あたりにある孔。オトガイ神経が出る。孔は後ろを向いて開くことが多い（細い針金を入れてもすぐ行き止まる）。眼窩上孔・眼窩下孔とほぼ縦一列に並ぶ。"
         },
         {
           "id": "mandibular-foramen", "ja": "下顎孔", "yomi": "かがくこう", "en": "mandibular foramen", "la": "foramen mandibulae",
@@ -1922,7 +1958,7 @@
           "parts": ["tenth rib"], "level": 3,
           "kanji": "上から10番目の肋骨",
           "etym": "tenth「10番目の」＋ rib「肋骨」（ラテン語 costa decima）",
-          "note": "仮肋。肋骨弓に加わる最も下の肋骨。肋骨弓の最も低い所は第10肋軟骨で、ここを通る水平面（肋骨下平面）はおよそ第3腰椎の高さ。肋骨頭はふつう第10胸椎とだけ関節する。"
+          "note": "仮肋。肋骨弓に加わる最も下の肋骨。肋骨弓の最も低い所は第10肋軟骨で、ここを通る水平面（肋骨下平面）はおよそ第3腰椎の高さ。肋骨頭はくさび形で、第9胸椎の下の肋骨窩と第10胸椎の上の肋骨窩にまたがる（第10胸椎とだけ関節する人もいる）。"
         },
         {
           "id": "eleventh-rib", "ja": "第11肋骨", "yomi": "だいじゅういちろっこつ", "en": "eleventh rib", "la": "costa undecima",
@@ -2055,7 +2091,7 @@
           "parts": ["tenth thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
           "kanji": "上から10番目の胸椎",
           "etym": "tenth「10番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
-          "note": "横隔膜の食道裂孔（食道と迷走神経が通る）は、およそ第10胸椎の高さにある。椎体の肋骨窩は、ふつう第10肋骨のための1つだけ。"
+          "note": "横隔膜の食道裂孔（食道と迷走神経が通る）は、およそ第10胸椎の高さにある。椎体の肋骨窩は上の端の半分のものだけで、第9胸椎の下の肋骨窩と合わせて第10肋骨を受ける。"
         },
         {
           "id": "eleventh-thoracic-vertebra", "ja": "第11胸椎", "yomi": "だいじゅういちきょうつい", "en": "eleventh thoracic vertebra", "la": "vertebra thoracica XI",
@@ -2090,21 +2126,21 @@
           "parts": ["third lumbar vertebra"], "level": 3,
           "kanji": "上から3番目の腰椎",
           "etym": "third「3番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
-          "note": "横突起が最も長い腰椎。肋骨下平面（肋骨弓の最も低い所＝第10肋軟骨を通る）はおよそ第3腰椎の高さで、下腸間膜動脈はこの高さで腹大動脈から出る。臍はふつう第3・第4腰椎の間の高さ。"
+          "note": "肋骨突起が長い腰椎。肋骨下平面（肋骨弓の最も低い所＝第10肋軟骨を通る）はおよそ第3腰椎の高さで、下腸間膜動脈はこの高さで腹大動脈から出る。臍はふつう第3・第4腰椎の間の高さ。腰椎の部位のレッスンは、この椎骨の上で示している。"
         },
         {
           "id": "fourth-lumbar-vertebra", "ja": "第4腰椎", "yomi": "だいよんようつい", "en": "fourth lumbar vertebra", "la": "vertebra lumbalis IV",
           "parts": ["fourth lumbar vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
           "kanji": "上から4番目の腰椎",
           "etym": "fourth「4番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
-          "note": "左右の腸骨稜のいちばん高い所を結ぶ線（ヤコビー線）がこの棘突起の高さを通り、腰椎穿刺の目印になる。腹大動脈はおよそこの高さで左右の総腸骨動脈に分かれる。"
+          "note": "肋骨突起が最も長い腰椎（第3腰椎とする本もある）。左右の腸骨稜のいちばん高い所を結ぶ線（ヤコビー線）がこの棘突起の高さを通り、腰椎穿刺（ふつう第3・第4腰椎の間）の目印になる。腹大動脈はおよそこの高さで左右の総腸骨動脈に分かれる。"
         },
         {
           "id": "fifth-lumbar-vertebra", "ja": "第5腰椎", "yomi": "だいごようつい", "en": "fifth lumbar vertebra", "la": "vertebra lumbalis V",
           "parts": ["fifth lumbar vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
           "kanji": "上から5番目の腰椎",
           "etym": "fifth「5番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
-          "note": "最も大きい腰椎で、椎体は前が厚いくさびの形（腰の前弯をつくる）。仙骨と腰仙連結をつくる。関節突起の間（関節突起間部）が疲労骨折で離れる腰椎分離症は、この椎骨に最も多い。"
+          "note": "最も大きい腰椎で、椎体は前が厚いくさびの形（腰の前弯をつくる）。棘突起は上下に低く、ほかの腰椎と形が少し違う。仙骨と腰仙連結をつくり、仙骨に癒合していることがある（仙骨化、日本人で約3%）。関節突起の間（関節突起間部）が疲労骨折で離れる腰椎分離症は、この椎骨に最も多い。"
         }
       ]
     },
@@ -2185,6 +2221,503 @@
           "kanji": "母趾の側から5番目の中足骨",
           "etym": "fifth「5番目の」＋ metatarsal（meta-「次の」＋ tarsal「足根の」）",
           "note": "小趾の中足骨。立方骨と関節し、底の外側に大きく出る第5中足骨粗面に短腓骨筋が付く。足を内側へひねったときに底が折れやすい（下駄骨折）。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-vertebra-more",
+      "title": "椎骨の部位（追加）",
+      "intro": [
+        "頚椎・胸椎・腰椎の見分け方: 頚椎は横突起に横突孔がある。胸椎は椎体の横と横突起に、肋骨と関節する面（肋骨窩・横突肋骨窩）がある。腰椎は椎体が大きく、横に張り出す突起は肋骨にあたる肋骨突起で、上関節突起の後ろに乳頭突起がある。",
+        "環椎（第1頚椎）だけは椎体が無く、前弓・後弓と左右の外側塊でできた輪の形。椎体にあたる部分は軸椎へ移って歯突起になった。"
+      ],
+      "terms": [
+        {
+          "id": "pedicle-of-vertebral-arch", "ja": "椎弓根", "yomi": "ついきゅうこん", "en": "pedicle of vertebral arch", "enAlt": ["pedicle"], "la": "pediculus arcus vertebrae",
+          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 2, "from": [-1, 0.3, -0.3],
+          "kanji": "椎弓の根もと",
+          "etym": "pedicle ← ラテン語 pediculus「小さな足」",
+          "note": "椎弓のうち、椎体につながる根もとの太い部分。上と下の縁がえぐれていて（上椎切痕・下椎切痕）、上の椎骨の下椎切痕と下の椎骨の上椎切痕が合わさって椎間孔になる。（図は第3腰椎）"
+        },
+        {
+          "id": "lamina-of-vertebral-arch", "ja": "椎弓板", "yomi": "ついきゅうばん", "en": "lamina of vertebral arch", "enAlt": ["lamina"], "la": "lamina arcus vertebrae",
+          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 2, "from": [-0.3, 0.4, -1],
+          "kanji": "椎弓の板の部分",
+          "etym": "lamina ← ラテン語「薄い板」",
+          "note": "椎弓のうち、関節突起の付け根から後ろの棘突起までの板の形の部分。上下の椎弓板の間を黄色靱帯がつなぐ。椎弓板を切り取って脊柱管を広げる手術が椎弓切除術。（図は第3腰椎）"
+        },
+        {
+          "id": "costal-process", "ja": "肋骨突起", "yomi": "ろっこつとっき", "en": "costal process", "la": "processus costiformis",
+          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 2, "from": [-0.3, 0.4, -1],
+          "kanji": "肋骨にあたる突起",
+          "etym": "costal ← ラテン語 costa「肋骨」",
+          "note": "腰椎の椎弓から左右へ平たく張り出す突起。横突起のように見えるが、肋骨にあたる部分が癒合したもの（本来の横突起は根もとの副突起）。第4腰椎のものが最も長い（第3腰椎とする本もある）。大腰筋が起こり、腰方形筋が付く。英語では transverse process と呼ぶことが多い。（図は第3腰椎）"
+        },
+        {
+          "id": "accessory-process", "ja": "副突起", "yomi": "ふくとっき", "en": "accessory process", "la": "processus accessorius",
+          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 3, "from": [-0.3, 0.4, -1],
+          "kanji": "添えものの突起",
+          "etym": "accessory ← ラテン語 accedere「付け加わる」",
+          "note": "腰椎の肋骨突起の根もとの後ろ下に出る、つららのような小さな突起。これが本来の横突起の名残り。（図は第3腰椎）"
+        },
+        {
+          "id": "mammillary-process", "ja": "乳頭突起", "yomi": "にゅうとうとっき", "en": "mammillary process", "la": "processus mammillaris",
+          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 3, "from": [-0.3, 0.4, -1],
+          "kanji": "乳頭のような小さな突起",
+          "etym": "mammillary ← ラテン語 mammilla「乳頭」",
+          "note": "腰椎の上関節突起の後ろの縁にある小さな高まり。上関節突起の一部のように見えるが、本来の横突起の一部。多裂筋が起こる。（図は第3腰椎）"
+        },
+        {
+          "id": "costal-facet", "ja": "肋骨窩", "yomi": "ろっこつか", "en": "costal facet", "la": "fovea costalis",
+          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 2, "from": [-1, 0.3, -0.3],
+          "kanji": "肋骨を受けるくぼみ",
+          "etym": "facet ← フランス語 facette「小さな面」",
+          "note": "胸椎の椎体の側面の上下の端にある、半円形の浅い関節面。上下に隣り合う胸椎の肋骨窩が合わさって1本の肋骨の肋骨頭を受ける（肋骨頭関節）。第1胸椎と第10〜第12胸椎では形と数が違う。胸椎を見分ける決め手。（図は第6胸椎）"
+        },
+        {
+          "id": "transverse-costal-facet", "ja": "横突肋骨窩", "yomi": "おうとつろっこつか", "en": "transverse costal facet", "la": "fovea costalis processus transversi",
+          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 3, "from": [-1, 0.3, -0.3],
+          "kanji": "横突起にある肋骨のくぼみ",
+          "note": "胸椎の横突起の先の前の面にある丸い関節面。同じ番号の肋骨の肋骨結節と関節する（肋横突関節）。第11・第12胸椎には無い（第11・第12肋骨が短いため）。（図は第6胸椎）"
+        },
+        {
+          "id": "anterior-arch-of-atlas", "ja": "前弓（環椎）", "yomi": "ぜんきゅう", "en": "anterior arch of atlas", "la": "arcus anterior atlantis",
+          "of": "atlas", "level": 2,
+          "kanji": "前の弓",
+          "note": "環椎の前の短い弓。後ろの面に歯突起窩があって軸椎の歯突起と関節し（正中環軸関節）、前の面の中央に小さな前結節が下向きに出る。"
+        },
+        {
+          "id": "posterior-arch-of-atlas", "ja": "後弓（環椎）", "yomi": "こうきゅう", "en": "posterior arch of atlas", "la": "arcus posterior atlantis",
+          "of": "atlas", "level": 2,
+          "kanji": "後ろの弓",
+          "note": "環椎の後ろの長い弓。棘突起は無く、中央に小さな後結節があるだけ。上の面を椎骨動脈が横に走って大後頭孔へ向かう。"
+        },
+        {
+          "id": "lateral-mass-of-atlas", "ja": "外側塊（環椎）", "yomi": "がいそくかい", "en": "lateral mass of atlas", "la": "massa lateralis atlantis",
+          "of": "atlas", "level": 2,
+          "kanji": "外側のかたまり",
+          "etym": "mass ← ラテン語 massa「かたまり」",
+          "note": "環椎の左右の厚い部分。椎体の代わりに頭の重さを受ける。上の面で後頭骨と、下の面で軸椎と関節する（外側環軸関節）。左右の外側塊の間に環椎横靱帯が張り、歯突起が後ろへ抜けないよう押さえる。"
+        },
+        {
+          "id": "superior-articular-facet-of-atlas", "ja": "上関節窩（環椎）", "yomi": "じょうかんせつか", "en": "superior articular facet of atlas", "la": "fovea articularis superior atlantis",
+          "of": "atlas", "level": 3,
+          "kanji": "上にある関節のくぼみ",
+          "note": "外側塊の上の面の、細長く大きくくぼんだ関節面。後頭骨の後頭顆を受けて環椎後頭関節をつくり、首を前後に曲げる（うなずく）。頭を左右に回す動きはここではできない。下の面の関節面は丸く平らなので、上下を見分ける目安になる。"
+        },
+        {
+          "id": "facet-for-dens", "ja": "歯突起窩", "yomi": "しとっきか", "en": "facet for dens", "la": "fovea dentis",
+          "of": "atlas", "level": 3,
+          "kanji": "歯突起を受けるくぼみ",
+          "etym": "dens ← ラテン語「歯」",
+          "note": "環椎の前弓の後ろの面の中央にある、丸い小さな関節面。軸椎の歯突起が接し、頭を左右に回すときは、頭をのせたまま環椎が歯突起のまわりを回る（左右に約30°ずつ）。"
+        },
+        {
+          "id": "carotid-tubercle", "ja": "頚動脈結節", "yomi": "けいどうみゃくけっせつ", "en": "carotid tubercle", "la": "tuberculum caroticum",
+          "of": "cervical-vertebrae", "parts": ["sixth cervical vertebra"], "level": 3,
+          "kanji": "頚動脈のそばの結節",
+          "note": "第6頚椎の横突起の前結節。大きく、すぐ前を総頚動脈が通るので、首の横で総頚動脈をこれに押しつけて止血できる。頚椎の横突起は横突孔をはさんで、前結節（肋骨にあたる部分）と後結節（本来の横突起）に分かれる。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-sacrum-more",
+      "title": "仙骨の部位（追加）",
+      "intro": [
+        "仙骨は5個の仙椎が癒合した骨（癒合が終わるのは17〜18歳ごろ）。椎骨の部分が名前を変えて残っている: 椎体の継ぎ目が前面の横線、棘突起が正中仙骨稜、関節突起が中間仙骨稜、横突起が外側仙骨稜。椎孔は上下につながって仙骨管になる。",
+        "前仙骨孔と後仙骨孔は、仙骨管の前と後ろの窓。仙骨神経の前枝は前の窓から、後枝は後ろの窓から出る（上下の椎骨の間の椎間孔にあたる）。",
+        "男性の仙骨は幅が狭く縦に長く、女性の仙骨は幅が広く短い。"
+      ],
+      "terms": [
+        {
+          "id": "base-of-sacrum", "ja": "仙骨底", "yomi": "せんこつてい", "en": "base of sacrum", "la": "basis ossis sacri",
+          "of": "sacrum", "level": 3,
+          "kanji": "仙骨の底（逆三角形の上の辺）",
+          "etym": "base ← ラテン語 basis「土台」",
+          "note": "逆三角形の仙骨の上の面（第1仙椎の上面）。中央の楕円形の椎体の面が椎間円板を介して第5腰椎と連結し、その前の縁が岬角。後ろに仙骨管の入口が開く。"
+        },
+        {
+          "id": "apex-of-sacrum", "ja": "仙骨尖", "yomi": "せんこつせん", "en": "apex of sacrum", "la": "apex ossis sacri",
+          "of": "sacrum", "level": 3,
+          "kanji": "仙骨のとがった先",
+          "etym": "apex ← ラテン語「先端」",
+          "note": "逆三角形の仙骨の下の端。尾骨と連結する（仙尾連結）。"
+        },
+        {
+          "id": "lateral-part-of-sacrum", "ja": "外側部（仙骨）", "yomi": "がいそくぶ", "en": "lateral part of sacrum", "la": "pars lateralis ossis sacri",
+          "of": "sacrum", "level": 3,
+          "kanji": "外側の部分",
+          "note": "仙骨の前仙骨孔より外側の部分。仙椎の横突起と肋骨にあたる部分が癒合したもの。上は翼のように左右へ張り出し（仙骨翼）、外側の面に耳状面がある。"
+        },
+        {
+          "id": "intermediate-sacral-crest", "ja": "中間仙骨稜", "yomi": "ちゅうかんせんこつりょう", "en": "intermediate sacral crest", "enAlt": ["medial sacral crest"], "la": "crista sacralis medialis",
+          "of": "sacrum", "level": 3,
+          "kanji": "正中と外側の間の稜",
+          "note": "仙骨の後面で、正中仙骨稜の両わきを縦に走る低い稜。仙椎の関節突起が上下に癒合したもの。下の端は仙骨角になる。すぐ外側に後仙骨孔が並ぶ。"
+        },
+        {
+          "id": "lateral-sacral-crest", "ja": "外側仙骨稜", "yomi": "がいそくせんこつりょう", "en": "lateral sacral crest", "la": "crista sacralis lateralis",
+          "of": "sacrum", "level": 3,
+          "kanji": "外側の稜",
+          "note": "仙骨の後面で、後仙骨孔のさらに外側を縦に走る稜（上半分ははっきりしないことが多い）。仙椎の横突起が上下に癒合したもの。"
+        },
+        {
+          "id": "sacral-cornu", "ja": "仙骨角", "yomi": "せんこつかく", "en": "sacral cornu", "enAlt": ["sacral horn"], "la": "cornu sacrale",
+          "of": "sacrum", "level": 3,
+          "kanji": "仙骨の角（つの）",
+          "etym": "cornu ← ラテン語「角（つの）」",
+          "note": "仙骨裂孔の両わきで下へ突き出す小さな高まり（中間仙骨稜の下の端）。皮膚の上から触れ、仙骨麻酔で仙骨裂孔を探す目印になる。"
+        },
+        {
+          "id": "auricular-surface-of-sacrum", "ja": "耳状面（仙骨）", "yomi": "じじょうめん", "en": "auricular surface of sacrum", "la": "facies auricularis ossis sacri",
+          "of": "sacrum", "level": 3,
+          "kanji": "耳の形の面",
+          "etym": "auricular ← ラテン語 auricula「小さな耳」",
+          "note": "仙骨の外側の面の上半分にある、耳の形の関節面。腸骨の耳状面とかみ合って仙腸関節をつくる。かみ合いが強く、ほとんど動かない。脊柱から下肢へ体重を伝える所。"
+        },
+        {
+          "id": "transverse-ridges-of-sacrum", "ja": "横線（仙骨）", "yomi": "おうせん", "en": "transverse ridges of sacrum", "enAlt": ["transverse lines of sacrum"], "la": "lineae transversae ossis sacri",
+          "of": "sacrum", "level": 3,
+          "kanji": "横に走る線",
+          "note": "仙骨の前面の正中に、竹の節のように横に並ぶ4本の高まり。5個の仙椎の椎体が癒合した跡で、数えると何個の椎骨でできているかが分かる。両端に前仙骨孔が開く。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-thorax-upper-more",
+      "title": "肋骨と上肢の骨の部位（追加）",
+      "terms": [
+        {
+          "id": "scalene-tubercle", "ja": "前斜角筋結節", "yomi": "ぜんしゃかくきんけっせつ", "en": "scalene tubercle", "la": "tuberculum musculi scaleni anterioris",
+          "of": "first-rib", "level": 3,
+          "kanji": "前斜角筋が付く結節",
+          "note": "第1肋骨の上の面の内側の縁にある小さな高まり。前斜角筋が付く。前に鎖骨下静脈、後ろに鎖骨下動脈の溝があり、前斜角筋が動脈と静脈を分ける。"
+        },
+        {
+          "id": "groove-for-subclavian-artery", "ja": "鎖骨下動脈溝", "yomi": "さこつかどうみゃくこう", "en": "groove for subclavian artery", "la": "sulcus arteriae subclaviae",
+          "of": "first-rib", "level": 3,
+          "kanji": "鎖骨下動脈の溝",
+          "note": "第1肋骨の上の面で、前斜角筋結節のすぐ後ろを斜めに横切る浅い溝。前斜角筋と中斜角筋の間（斜角筋隙）を抜けた鎖骨下動脈がのる。"
+        },
+        {
+          "id": "costoclavicular-ligament-impression", "ja": "肋鎖靱帯圧痕", "yomi": "ろくさじんたいあっこん", "en": "impression for costoclavicular ligament", "la": "impressio ligamenti costoclavicularis",
+          "of": "clavicle", "level": 3,
+          "kanji": "肋骨と鎖骨を結ぶ靱帯の跡",
+          "note": "鎖骨の胸骨端の近くの下の面の粗い所。第1肋骨とを結ぶ肋鎖靱帯が付き、鎖骨の内側の端が上へずれないよう押さえる。鎖骨の上の面はなめらかで、下の面は両端が粗いので、上下を見分けられる。"
+        },
+        {
+          "id": "articular-circumference-of-radius", "ja": "関節環状面（橈骨）", "yomi": "かんせつかんじょうめん", "en": "articular circumference of radius", "la": "circumferentia articularis radii",
+          "of": "radius", "level": 3,
+          "kanji": "輪のようにまわる関節面",
+          "note": "橈骨頭の円盤の側面の関節面。尺骨の橈骨切痕と上橈尺関節をつくり、輪状靱帯に囲まれてその場で回る。2〜6歳の子では腕を急に引っぱると橈骨頭が輪状靱帯から抜けかける（肘内障）。"
+        },
+        {
+          "id": "interosseous-border-of-radius", "ja": "骨間縁（橈骨）", "yomi": "こつかんえん", "en": "interosseous border of radius", "la": "margo interosseus radii",
+          "of": "radius", "level": 3,
+          "kanji": "骨と骨の間に向く縁",
+          "etym": "interosseous ← ラテン語 inter「間」＋ os「骨」",
+          "note": "橈骨の体の内側（尺骨側）の鋭い縁。尺骨の骨間縁との間に前腕骨間膜が張る。"
+        },
+        {
+          "id": "interosseous-border-of-ulna", "ja": "骨間縁（尺骨）", "yomi": "こつかんえん", "en": "interosseous border of ulna", "la": "margo interosseus ulnae",
+          "of": "ulna", "level": 3,
+          "kanji": "骨と骨の間に向く縁",
+          "etym": "interosseous ← ラテン語 inter「間」＋ os「骨」",
+          "note": "尺骨の体の外側（橈骨側）の鋭い縁。橈骨の骨間縁との間に前腕骨間膜が張り、前腕の前と後ろの筋を分ける。"
+        },
+        {
+          "id": "posterior-border-of-ulna", "ja": "後縁（尺骨）", "yomi": "こうえん", "en": "posterior border of ulna", "la": "margo posterior ulnae",
+          "of": "ulna", "level": 3,
+          "kanji": "後ろの縁",
+          "note": "尺骨の体の後ろの縁。肘頭から手首まで皮膚のすぐ下にあり、前腕の後ろで全長を線として触れる。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-pelvis-lower-more",
+      "title": "寛骨臼と下肢の骨の部位（追加）",
+      "intro": [
+        "寛骨臼の関節面は全周ではなく三日月の形（月状面）で、下で切れている（寛骨臼切痕）。底の一段深いくぼみ（寛骨臼窩）は関節面ではなく、大腿骨頭靱帯と脂肪が入る。",
+        "寛骨臼は深く、大腿骨頭がすっぽり入る。浅い関節窩の肩関節にくらべ、股関節は動く範囲が狭いかわりに外れにくい。",
+        "前腕の橈骨と尺骨、下腿の脛骨と腓骨は、向かい合う骨間縁の間に骨間膜が張る。脛骨と腓骨はほとんど動かないので、下腿では回内・回外ができない。"
+      ],
+      "terms": [
+        {
+          "id": "lunate-surface", "ja": "月状面", "yomi": "げつじょうめん", "en": "lunate surface", "la": "facies lunata",
+          "of": "hip-bone", "level": 2,
+          "kanji": "三日月の形の面",
+          "etym": "lunate ← ラテン語 luna「月」",
+          "note": "寛骨臼の中の、三日月の形をした関節面。大腿骨頭と接する所で、下の寛骨臼切痕の所で切れている。ふちに関節唇（線維軟骨）が付いて受け皿を深くする。"
+        },
+        {
+          "id": "acetabular-fossa", "ja": "寛骨臼窩", "yomi": "かんこつきゅうか", "en": "acetabular fossa", "la": "fossa acetabuli",
+          "of": "hip-bone", "level": 3,
+          "kanji": "寛骨臼の底のくぼみ",
+          "etym": "acetabulum ← ラテン語「酢を入れる小さな器」",
+          "note": "寛骨臼の底の、月状面に囲まれた一段深いくぼみ。関節面ではなく、大腿骨頭靱帯と脂肪が入る。底の骨は薄く、光にかざすと透けて見える。"
+        },
+        {
+          "id": "acetabular-notch", "ja": "寛骨臼切痕", "yomi": "かんこつきゅうせっこん", "en": "acetabular notch", "la": "incisura acetabuli",
+          "of": "hip-bone", "level": 3,
+          "kanji": "寛骨臼の切れこみ",
+          "note": "寛骨臼の下の縁の切れこみ（月状面の切れ目）。寛骨臼横靱帯が橋をかけ、その下を大腿骨頭へ行く血管が通る。"
+        },
+        {
+          "id": "iliopubic-eminence", "ja": "腸恥隆起", "yomi": "ちょうちりゅうき", "en": "iliopubic eminence", "la": "eminentia iliopubica",
+          "of": "hip-bone", "level": 3,
+          "kanji": "腸骨と恥骨の境の高まり",
+          "note": "腸骨と恥骨の境目で、寛骨臼の前上の縁に沿う低い高まり。弓状線はここを越えて恥骨櫛へ続く。"
+        },
+        {
+          "id": "medial-lip-of-linea-aspera", "ja": "内側唇（粗線）", "yomi": "ないそくしん", "en": "medial lip of linea aspera", "la": "labium mediale lineae asperae",
+          "of": "femur", "level": 3,
+          "kanji": "内側のくちびる（縁）",
+          "etym": "labium ← ラテン語「くちびる」",
+          "note": "粗線の内側の縁。上は転子間線のすぐ下までのび、下は内側上顆へ向かって分かれる。内側広筋が起こる。"
+        },
+        {
+          "id": "lateral-lip-of-linea-aspera", "ja": "外側唇（粗線）", "yomi": "がいそくしん", "en": "lateral lip of linea aspera", "la": "labium laterale lineae asperae",
+          "of": "femur", "level": 3,
+          "kanji": "外側のくちびる（縁）",
+          "etym": "labium ← ラテン語「くちびる」",
+          "note": "粗線の外側の縁。上は殿筋粗面へ、下は外側上顆へ向かって分かれる。外側広筋が起こる。粗線は直立二足歩行の筋が付くためヒトでよく発達し、化石人類が立って歩いていたかの手がかりになる。"
+        },
+        {
+          "id": "interosseous-border-of-tibia", "ja": "骨間縁（脛骨）", "yomi": "こつかんえん", "en": "interosseous border of tibia", "la": "margo interosseus tibiae",
+          "of": "tibia", "level": 3,
+          "kanji": "骨と骨の間に向く縁",
+          "etym": "interosseous ← ラテン語 inter「間」＋ os「骨」",
+          "note": "脛骨の体の外側（腓骨側）を縦に走る稜。腓骨の骨間縁との間に下腿骨間膜が張る。下は腓骨切痕へ続く。"
+        },
+        {
+          "id": "interosseous-border-of-fibula", "ja": "骨間縁（腓骨）", "yomi": "こつかんえん", "en": "interosseous border of fibula", "la": "margo interosseus fibulae",
+          "of": "fibula", "level": 3,
+          "kanji": "骨と骨の間に向く縁",
+          "etym": "interosseous ← ラテン語 inter「間」＋ os「骨」",
+          "note": "腓骨の体の内側（脛骨側）を縦に走る稜。脛骨の骨間縁との間に下腿骨間膜が張り、下腿の前と後ろの筋を分ける。"
+        },
+        {
+          "id": "malleolar-fossa", "ja": "外果窩", "yomi": "がいかか", "en": "malleolar fossa", "la": "fossa malleoli lateralis",
+          "of": "fibula", "level": 3,
+          "kanji": "外果のくぼみ",
+          "etym": "malleolus ← ラテン語「小さな槌（つち）」",
+          "note": "外果の内側の面で、関節面の後ろにあるくぼみ。足首の強い靱帯（後距腓靱帯）が付く。足を強く内反すると、靱帯に引かれて外果の先から約1cm上で折れることがある。外果窩は後ろにあるので、腓骨の左右を見分ける目安になる。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-calvaria-more",
+      "title": "頭蓋冠と側頭の部位（追加）",
+      "intro": [
+        "頭蓋は15種23個の骨でできる（左右1対が8種16個・1個だけが7種）。下顎骨と舌骨を除き、骨どうしは縫合（線維性の連結）でつながる。脳を入れる脳頭蓋と、顔をつくる顔面頭蓋に分けるが、境ははっきりしない。",
+        "頭蓋を見るときは、耳眼平面（左右の外耳孔の上の縁と眼窩の下の縁を通る面）を水平にする。机に置いたままでは顔が上を向きすぎている。",
+        "頭蓋冠の外面は、前頭・頭頂・側頭・後頭の領域に分ける。丸い結節は骨化が始まった所の名残り、線や隆起は筋が付く所。"
+      ],
+      "terms": [
+        {
+          "id": "superciliary-arch", "ja": "眉弓", "yomi": "びきゅう", "en": "superciliary arch", "la": "arcus superciliaris",
+          "of": "frontal-bone", "level": 2,
+          "kanji": "眉の弓形の高まり",
+          "etym": "superciliary ← ラテン語 super「上」＋ cilium「まつげ」（supercilium＝眉）",
+          "note": "眼窩の上の縁のやや上、眉の生えるあたりの弓形の高まり。発達の程度は人によって違い、男性で強い。奥に前頭洞がある。左右の眉弓の間が眉間。"
+        },
+        {
+          "id": "glabella", "ja": "眉間", "yomi": "みけん", "en": "glabella", "la": "glabella",
+          "of": "frontal-bone", "level": 2,
+          "kanji": "眉と眉の間",
+          "etym": "glabella ← ラテン語 glaber「毛の無い、なめらかな」",
+          "note": "左右の眉弓の間の、正中の平らな高まり。頭の長さ（最大頭長）を測るときの前の起点になる。"
+        },
+        {
+          "id": "frontal-tuber", "ja": "前頭結節", "yomi": "ぜんとうけっせつ", "en": "frontal tuber", "enAlt": ["frontal eminence"], "la": "tuber frontale",
+          "of": "frontal-bone", "level": 3,
+          "kanji": "前頭のふくらみ",
+          "etym": "tuber ← ラテン語「こぶ、ふくらみ」",
+          "note": "眉弓の上3〜4cmにある、左右1対のなだらかな高まり。前頭骨の骨化が始まった所の名残りで、新生児ではよく目立つ。"
+        },
+        {
+          "id": "parietal-tuber", "ja": "頭頂結節", "yomi": "とうちょうけっせつ", "en": "parietal tuber", "enAlt": ["parietal eminence"], "la": "tuber parietale",
+          "of": "parietal-bone", "level": 3,
+          "kanji": "頭頂のふくらみ",
+          "etym": "tuber ← ラテン語「こぶ、ふくらみ」",
+          "note": "頭頂骨の外面の中ほどの丸い高まり。頭頂骨の骨化が始まった所の名残り。頭蓋を後ろ上から少し離れて見ると分かりやすい。"
+        },
+        {
+          "id": "superior-nuchal-line", "ja": "上項線", "yomi": "じょうこうせん", "en": "superior nuchal line", "la": "linea nuchalis superior",
+          "of": "occipital-bone", "level": 2,
+          "kanji": "項（うなじ）の上の線",
+          "etym": "nuchal ← 中世ラテン語 nucha「うなじ」（アラビア語から）",
+          "note": "外後頭隆起から左右へ弓形にのびる稜。頭蓋冠と外頭蓋底のおよその境。僧帽筋・胸鎖乳突筋・頭板状筋が付く。"
+        },
+        {
+          "id": "inferior-nuchal-line", "ja": "下項線", "yomi": "かこうせん", "en": "inferior nuchal line", "la": "linea nuchalis inferior",
+          "of": "occipital-bone", "level": 3,
+          "kanji": "項（うなじ）の下の線",
+          "etym": "nuchal ← 中世ラテン語 nucha「うなじ」（アラビア語から）",
+          "note": "上項線の下を平行に走る、はっきりしない稜。大後頭直筋・小後頭直筋がこの線に付き、上項線との間に頭半棘筋と上頭斜筋が付く。"
+        },
+        {
+          "id": "superior-temporal-line", "ja": "上側頭線", "yomi": "じょうそくとうせん", "en": "superior temporal line", "la": "linea temporalis superior",
+          "of": "parietal-bone", "parts": ["frontal bone", "parietal bone"], "level": 3,
+          "kanji": "側頭の上の線",
+          "etym": "temporal ← ラテン語 tempora「こめかみ」",
+          "note": "前頭骨から頭頂骨へ弓形に走る2本の線のうち、上のもの。側頭筋をおおう側頭筋膜が付く。"
+        },
+        {
+          "id": "inferior-temporal-line", "ja": "下側頭線", "yomi": "かそくとうせん", "en": "inferior temporal line", "la": "linea temporalis inferior",
+          "of": "parietal-bone", "parts": ["frontal bone", "parietal bone"], "level": 3,
+          "kanji": "側頭の下の線",
+          "etym": "temporal ← ラテン語 tempora「こめかみ」",
+          "note": "上側頭線のすぐ下を走る線。側頭筋が起こる範囲の上の縁で、ここから下が側頭窩。"
+        },
+        {
+          "id": "temporal-fossa", "ja": "側頭窩", "yomi": "そくとうか", "en": "temporal fossa", "la": "fossa temporalis",
+          "of": "temporal-bone", "parts": ["frontal bone", "parietal bone", "temporal bone", "sphenoid bone"], "level": 2,
+          "kanji": "こめかみのくぼみ",
+          "etym": "temporal ← ラテン語 tempora「こめかみ」",
+          "note": "下側頭線・眼窩の外側の縁・頬骨弓に囲まれた、頭の横の広くややくぼんだ面（前頭骨・頭頂骨・側頭骨・蝶形骨の大翼でできる）。側頭筋で満たされ、頬骨弓より下は側頭下窩へ続く。4つの骨の縫合が集まる所（プテリオン）は骨が薄く、すぐ内側を中硬膜動脈が走る。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-face-more",
+      "title": "顔面の骨の部位（追加）",
+      "intro": [
+        "眼窩上孔・眼窩下孔・オトガイ孔は、顔の上下にほぼ一列に並ぶ。三叉神経の3つの枝（眼神経・上顎神経・下顎神経）の皮膚へ行く枝が、それぞれここから出る。",
+        "眼窩の内側の壁は紙のように薄い。頭蓋を持ち上げるときに眼窩や鼻腔に指を入れてはいけない。"
+      ],
+      "terms": [
+        {
+          "id": "piriform-aperture", "ja": "梨状口", "yomi": "りじょうこう", "en": "piriform aperture", "la": "apertura piriformis",
+          "of": "maxilla", "parts": ["maxilla", "nasal bone"], "level": 2,
+          "kanji": "西洋梨の形の口",
+          "etym": "piriform ← ラテン語 pirum「梨」＋ forma「形」",
+          "note": "頭蓋の鼻の開口。外鼻の軟骨が無くなった跡で、西洋梨の形をしている。上の縁は鼻骨、それ以外は上顎骨でできる。奥は鼻中隔で左右に分かれ、後ろの後鼻孔へ通じる。"
+        },
+        {
+          "id": "anterior-nasal-spine", "ja": "前鼻棘", "yomi": "ぜんびきょく", "en": "anterior nasal spine", "la": "spina nasalis anterior",
+          "of": "maxilla", "level": 3,
+          "kanji": "鼻の前のとげ",
+          "note": "梨状口の下の縁の正中から、前上へとがって突き出す突起（左右の上顎骨でできる）。鼻中隔の軟骨が付く。"
+        },
+        {
+          "id": "supra-orbital-margin", "ja": "眼窩上縁", "yomi": "がんかじょうえん", "en": "supra-orbital margin", "la": "margo supraorbitalis",
+          "of": "frontal-bone", "level": 2,
+          "kanji": "眼窩の上の縁",
+          "etym": "orbit ← ラテン語 orbis「輪」",
+          "note": "眼窩の入口（四角形）の上の縁。全部が前頭骨でできる。内側寄りに眼窩上孔（または切痕）があり、その内側に前頭切痕がある。"
+        },
+        {
+          "id": "infra-orbital-margin", "ja": "眼窩下縁", "yomi": "がんかかえん", "en": "infra-orbital margin", "la": "margo infraorbitalis",
+          "of": "maxilla", "parts": ["maxilla", "zygomatic bone"], "level": 2,
+          "kanji": "眼窩の下の縁",
+          "etym": "orbit ← ラテン語 orbis「輪」",
+          "note": "眼窩の入口の下の縁。外側半分は頬骨、内側半分は上顎骨でできる。中央のすぐ下に眼窩下孔がある。この縁の最も低い点と外耳孔の上の縁を通る面が耳眼平面（頭蓋を置く水平の基準）。"
+        },
+        {
+          "id": "fossa-for-lacrimal-sac", "ja": "涙嚢窩", "yomi": "るいのうか", "en": "fossa for lacrimal sac", "la": "fossa sacci lacrimalis",
+          "of": "lacrimal-bone", "parts": ["lacrimal bone", "maxilla"], "level": 3,
+          "kanji": "涙嚢が入るくぼみ",
+          "etym": "lacrimal ← ラテン語 lacrima「涙」",
+          "note": "眼窩の内側の壁の前の端を縦に走る、溝の形のくぼみ（涙骨と上顎骨の前頭突起でできる）。涙嚢が入り、下は鼻涙管となって下鼻道に開く。眼窩の上外側の涙腺窩と混同しない。"
+        },
+        {
+          "id": "frontal-process-of-maxilla", "ja": "前頭突起（上顎骨）", "yomi": "ぜんとうとっき", "en": "frontal process of maxilla", "la": "processus frontalis maxillae",
+          "of": "maxilla", "level": 3,
+          "kanji": "前頭骨へ向かう突起",
+          "note": "上顎骨の体から上へのびる細い突起。鼻骨と涙骨の間を通って前頭骨に達し、鼻の付け根の横の壁をつくる。後ろの溝が涙嚢窩の前半分。"
+        },
+        {
+          "id": "zygomatic-process-of-temporal-bone", "ja": "頬骨突起（側頭骨）", "yomi": "きょうこつとっき", "en": "zygomatic process of temporal bone", "la": "processus zygomaticus ossis temporalis",
+          "of": "temporal-bone", "level": 3,
+          "kanji": "頬骨へ向かう突起",
+          "etym": "zygomatic ← ギリシャ語 zygon「くびき（2頭の牛をつなぐ横木）」",
+          "note": "側頭骨の鱗部から前へ長くのびる細い突起。頬骨の側頭突起とつながって頬骨弓の後ろ半分をつくる。根もとの下に下顎窩がある。"
+        },
+        {
+          "id": "temporal-process-of-zygomatic-bone", "ja": "側頭突起（頬骨）", "yomi": "そくとうとっき", "en": "temporal process of zygomatic bone", "la": "processus temporalis ossis zygomatici",
+          "of": "zygomatic-bone", "level": 3,
+          "kanji": "側頭骨へ向かう突起",
+          "note": "頬骨から後ろへのびる太い突起。側頭骨の頬骨突起と斜めの縫合でつながって頬骨弓の前半分をつくる。咬筋が起こる。"
+        },
+        {
+          "id": "mastoid-notch", "ja": "乳突切痕", "yomi": "にゅうとつせっこん", "en": "mastoid notch", "la": "incisura mastoidea",
+          "of": "temporal-bone", "level": 3,
+          "kanji": "乳様突起の切れこみ",
+          "etym": "mastoid ← ギリシャ語 mastos「乳房」＋ eidos「形」",
+          "note": "乳様突起の内側の根もとを前後に走る深い切れこみ。顎二腹筋の後腹が起こる。前の端に茎乳突孔があり、顔面神経が頭蓋から出る。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-mandible-more",
+      "title": "下顎骨の部位（追加）",
+      "intro": [
+        "下顎骨は、胎児では左右1対で、生後まもなく正中で癒合して1つになる。咀嚼筋はすべて下顎骨に付くので、どの筋がどこに付くかを考えながら見る。",
+        "下顎骨は、頭蓋で関節（顎関節）によってつながる唯一の骨。下顎頭と側頭骨の下顎窩の間に関節円板がはさまり、口の開け閉め・あごを前後に出し入れする・臼をひくように横へずらす動きをする。"
+      ],
+      "terms": [
+        {
+          "id": "condylar-process", "ja": "関節突起（下顎骨）", "yomi": "かんせつとっき", "en": "condylar process", "la": "processus condylaris",
+          "of": "mandible", "level": 2,
+          "kanji": "関節をつくる突起",
+          "etym": "condylar ← ギリシャ語 kondylos「こぶ、指の関節」",
+          "note": "下顎枝の上の縁で、下顎切痕より後ろの突起。先の丸い所が下顎頭、そのすぐ下のくびれが下顎頚。下顎頭が顎関節をつくる。"
+        },
+        {
+          "id": "neck-of-mandible", "ja": "下顎頚", "yomi": "かがくけい", "en": "neck of mandible", "la": "collum mandibulae",
+          "of": "mandible", "level": 3,
+          "kanji": "下顎骨の頚（くび）",
+          "note": "下顎頭のすぐ下のくびれ。前内側の面に翼突筋窩がある。あごの先を強く打ったときに折れやすい所。"
+        },
+        {
+          "id": "pterygoid-fovea", "ja": "翼突筋窩", "yomi": "よくとつきんか", "en": "pterygoid fovea", "la": "fovea pterygoidea",
+          "of": "mandible", "level": 3,
+          "kanji": "翼突筋が付くくぼみ",
+          "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ eidos「形」",
+          "note": "下顎頚の前内側の浅いくぼみ。外側翼突筋が付き、下顎頭を前へ引いて口を開け、あごを前へ出す。"
+        },
+        {
+          "id": "lingula-of-mandible", "ja": "下顎小舌", "yomi": "かがくしょうぜつ", "en": "lingula of mandible", "la": "lingula mandibulae",
+          "of": "mandible", "level": 3,
+          "kanji": "下顎骨の小さな舌",
+          "etym": "lingula ← ラテン語「小さな舌」",
+          "note": "下顎孔の前の縁の、舌のように上後ろへとがった薄い板。蝶下顎靱帯が付く。下の歯の麻酔（下歯槽神経ブロック）で針を進める目印。"
+        },
+        {
+          "id": "mylohyoid-line", "ja": "顎舌骨筋線", "yomi": "がくぜっこつきんせん", "en": "mylohyoid line", "la": "linea mylohyoidea",
+          "of": "mandible", "level": 3,
+          "kanji": "顎舌骨筋が付く線",
+          "etym": "mylohyoid ← ギリシャ語 myle「臼（臼歯）」＋ hyoid「舌骨」",
+          "note": "下顎体の内面を、後ろ上から前下へ斜めに走る稜。顎舌骨筋が起こり、口の底をつくる。線より上の前に舌下腺窩、下の後ろに顎下腺窩がある。"
+        },
+        {
+          "id": "mental-spine", "ja": "オトガイ棘", "yomi": "おとがいきょく", "en": "mental spine", "enAlt": ["genial tubercle"], "la": "spina mentalis",
+          "of": "mandible", "level": 3,
+          "kanji": "オトガイ（あご先）の内側のとげ",
+          "etym": "mental ← ラテン語 mentum「あご先」",
+          "note": "下顎体の正中の内面、下の縁から約1cm上にある、とげのような小さな突起。オトガイ舌筋とオトガイ舌骨筋が起こる。"
+        },
+        {
+          "id": "digastric-fossa", "ja": "二腹筋窩", "yomi": "にふくきんか", "en": "digastric fossa", "la": "fossa digastrica",
+          "of": "mandible", "level": 3,
+          "kanji": "顎二腹筋が付くくぼみ",
+          "etym": "digastric ← ギリシャ語 di-「2つ」＋ gaster「腹」",
+          "note": "オトガイ棘の下外側、下顎底のすぐ上の楕円形の浅いくぼみ。顎二腹筋の前腹が付く。"
+        },
+        {
+          "id": "pterygoid-tuberosity", "ja": "翼突筋粗面", "yomi": "よくとつきんそめん", "en": "pterygoid tuberosity", "la": "tuberositas pterygoidea",
+          "of": "mandible", "level": 3,
+          "kanji": "翼突筋が付く粗い面",
+          "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ eidos「形」",
+          "note": "下顎角の内面の粗い面。内側翼突筋が付き、外面の咬筋とともに下顎角を内外から吊り上げて口を閉じる。"
+        },
+        {
+          "id": "masseteric-tuberosity", "ja": "咬筋粗面", "yomi": "こうきんそめん", "en": "masseteric tuberosity", "la": "tuberositas masseterica",
+          "of": "mandible", "level": 3,
+          "kanji": "咬筋が付く粗い面",
+          "etym": "masseter ← ギリシャ語 maseter「かむもの」",
+          "note": "下顎角の外面の、でこぼこした粗い面。咬筋が付く。かむ力の強い人ほど発達する。"
         }
       ]
     }
