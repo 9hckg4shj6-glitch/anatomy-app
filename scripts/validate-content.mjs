@@ -194,9 +194,11 @@ for (const root of rootsParsed.success ? rootsParsed.data.groups.flatMap((group)
 }
 
 // 骨学試験（content/exam.json）: 種類ごとの ID の重複、A の空欄（{語ID} か {=答え|別解}）、B・C の語と3Dで示す語。
-// B の総論の語（term の無い語）は日本語・読み・英語・説明を直接書く
+// B の総論の語（term の無い語）は日本語・読み・英語・説明を直接書く。D の図の番号は、ピンか骨の語のID、点を書いた語、語に無い名前（点と名前）
 const termIds = new Set(terms.map((term) => term.id));
 const area = z.enum(["general", "trunk", "upper", "lower", "skull"]);
+const drawingView = z.enum(["ant", "post", "lat", "med", "sup", "inf"]);
+const vec3 = z.tuple([z.number(), z.number(), z.number()]);
 const examBase = { id: z.string().regex(/^[a-z0-9-]+$/), area, count: z.number().int().min(0), recent: z.literal(true).optional(), show: z.array(z.string()).min(1).optional() };
 const examParsed = z.strictObject({
   cloze: z.array(z.strictObject({ ...examBase, text: z.string().min(5) })).min(1),
@@ -208,6 +210,16 @@ const examParsed = z.strictObject({
     ...examBase, term: z.string().optional(), title: z.string().min(1).optional(), yomi: z.string().regex(/^[ぁ-ゖー・]+$/).optional(),
     points: z.array(z.string().min(5)).min(2).max(5),
   }).refine((e) => e.term || e.title, "term か title が要る")).min(1),
+  drawings: z.array(z.strictObject({
+    ...examBase, title: z.string().min(1), bones: z.array(z.string()).min(1), side: z.enum(["right", "mid"]), view: drawingView,
+    cut: z.strictObject({ axis: z.enum(["x", "y", "z"]), at: z.number(), keep: z.union([z.literal(1), z.literal(-1)]) }).optional(),
+    fit: z.literal("marks").optional(), orient: z.array(drawingView).min(2).optional(),
+    marks: z.array(z.union([
+      z.string(),
+      z.strictObject({ term: z.string(), at: vec3, n: vec3.optional() }),
+      z.strictObject({ ja: z.string().min(1), yomi: z.string().regex(/^[ぁ-ゖー]+$/), en: word, la: z.string().min(1).optional(), at: vec3, n: vec3.optional() }),
+    ])).min(2),
+  }).refine((d) => !d.orient || d.side === "right", "骨と向き（orient）は左右のある骨（side: right）だけ")).min(1),
 }).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/exam.json"), "utf8")));
 if (!examParsed.success) for (const issue of examParsed.error.issues) errors.push(`exam.json ${issue.path.join(".")}: ${issue.message}`);
 const examCounts = {};
@@ -220,6 +232,13 @@ for (const [kind, list] of Object.entries(examParsed.success ? examParsed.data :
     ids.add(item.id);
     for (const id of [...(item.term ? [item.term] : []), ...(item.show ?? [])]) if (!termIds.has(id)) errors.push(`${name}: 語が無い: ${id}`);
     if (kind === "words" && !item.term && termIds.has(item.id)) errors.push(`${name}: 総論の語の ID が語の ID と同じ`);
+    if (kind === "drawings") {
+      for (const mark of item.marks) {
+        const id = typeof mark === "string" ? mark : mark.term;
+        if (id && !termIds.has(id)) errors.push(`${name}: 番号の語が無い: ${id}`);
+      }
+      if (new Set(item.marks.map((mark) => (typeof mark === "string" ? mark : mark.term ?? mark.ja))).size < item.marks.length) errors.push(`${name}: 番号の語が重複`);
+    }
     if (kind !== "cloze") continue;
     const blanks = [...item.text.matchAll(/\{([^}]*)\}/g)].map((match) => match[1]);
     if (!blanks.length) errors.push(`${name}: 空欄が無い`);
@@ -246,6 +265,17 @@ else {
   for (const [id, joint] of Object.entries(joints)) {
     const elements = new Set(joint.moves.flatMap((bone) => index.terms[bone]?.elements ?? []));
     for (const element of joint.only ?? []) if (!elements.has(element)) errors.push(`content/joints.json: ${id} の only の「${element}」は動かす骨の部品ではありません`);
+  }
+  // D の図: 見せる骨は部品のある語。点を書かない番号は、図の骨の上のピンか、図の骨の語（形の中心）
+  for (const item of examParsed.success ? examParsed.data.drawings : []) {
+    const elements = new Set(item.bones.flatMap((bone) => index.terms[bone]?.elements ?? []));
+    for (const bone of item.bones) if (!index.terms[bone]?.elements.length) errors.push(`exam.json drawings ${item.id}: 骨の部品が無い: ${bone}`);
+    for (const mark of item.marks) {
+      if (typeof mark !== "string") continue;
+      const own = index.terms[mark]?.elements ?? [];
+      if (!own.length || !own.every((element) => elements.has(element))) errors.push(`exam.json drawings ${item.id}: 「${mark}」は図の骨の上にない（点を書く）`);
+      else if (!pins[mark] && !item.bones.includes(mark) && seen.get(mark)?.of) errors.push(`exam.json drawings ${item.id}: 「${mark}」のピンが無い`);
+    }
   }
   for (const [id, system] of Object.entries(index.systems)) {
     for (const url of [system.url, system.za?.url].filter(Boolean)) {
@@ -305,4 +335,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 語根 ${rootIds.size} / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);
+console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 語根 ${rootIds.size} / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0}・D${examCounts.drawings ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);

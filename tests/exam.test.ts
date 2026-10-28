@@ -1,9 +1,12 @@
 import "fake-indexeddb/auto";
+import * as THREE from "three";
 import { termById } from "../src/content";
 import {
-  checkBlank, clozeRating, essayRating, examByKey, examCountOf, examFacets, examItems, examItemsOf, examKey, examProgress, isExamKey,
-  nextExamItems, normalizeJapanese, parseCloze, type ClozeItem,
+  annotateRating, checkBlank, clozeRating, directionOf, essayRating, examByKey, examCountOf, examFacets, examFacetsOf, examItems, examItemsOf, examKey,
+  examProgress, isExamKey, labelRating, markAnswers, nextExamItems, normalizeJapanese, orientQuestion, parseCloze, perpendicularDirections, viewFrom,
+  type ClozeItem, type DrawingItem,
 } from "../src/exam";
+import { drawingUp } from "../src/landmarks";
 import { Rating, nextSchedule } from "../src/fsrs";
 import { buildQueue, facetsFor } from "../src/study";
 
@@ -106,5 +109,79 @@ describe("骨学試験の記録と復習", () => {
     expect(progress.done).toBe(1);
     expect(progress.total).toBe(examItemsOf("c").length);
     expect(progress.mastery).toBeGreaterThan(0.8);
+  });
+});
+
+describe("骨学試験 D（図示）", () => {
+  const drawings = examItems.filter((item): item is DrawingItem => item.kind === "d");
+
+  it("図の番号はどれも名前と英語があり、点は書いた点かピン（無ければ骨の語の中心を3Dで決める）", () => {
+    expect(drawings.length).toBeGreaterThan(25);
+    for (const item of drawings) {
+      for (const mark of item.marks) {
+        expect(mark.ja && mark.en).toBeTruthy();
+        if (!mark.at) expect(termById.get(mark.term!)?.system).toBe("skeletal");
+        // ピンや骨の語の中心から取った点だけ、手前の骨の面へ移す
+        if (mark.project) expect(mark.term).toBe(mark.project);
+      }
+    }
+  });
+
+  it("「図に書き込む」は番号→名前を覚えてから、「骨と向き」は向きを書いた図だけ", () => {
+    const humerus = examByKey.get(examKey("d", "humerus-ant"))!;
+    expect(examFacetsOf(humerus)).toEqual(["label", "orient"]);
+    expect(examFacetsOf(humerus, true)).toEqual(["label", "annotate", "orient"]);
+    expect(examFacetsOf(examByKey.get(examKey("d", "humerus-post"))!, true)).toEqual(["label", "annotate"]);
+    expect(examFacetsOf(examItemsOf("c")[0])).toEqual(["explain"]);
+  });
+
+  it("画面の上の向きは 3D 表示（three.js の回転）と同じ", () => {
+    for (const view of ["ant", "post", "lat", "med", "sup", "inf"] as const) {
+      for (const roll of [0, 90, 180, 270]) {
+        const from = viewFrom(view, "left");
+        const toward = new THREE.Vector3(...from).normalize();
+        const up = new THREE.Vector3(0, 1, 0).addScaledVector(toward, -toward.y);
+        if (up.lengthSq() < 1e-6) up.set(0, 0, 1);
+        up.normalize().applyAxisAngle(toward.clone().negate(), THREE.MathUtils.degToRad(roll));
+        drawingUp(from, roll).forEach((value, i) => expect(value).toBeCloseTo(up.getComponent(i), 6));
+      }
+    }
+  });
+
+  it("骨の向き: 上を上にして前から見れば上、逆さなら下。内側・外側は左右の骨で逆", () => {
+    expect(directionOf(drawingUp(viewFrom("ant"), 0), "right")).toBe("sup");
+    expect(directionOf(drawingUp(viewFrom("ant"), 180), "right")).toBe("inf");
+    // 上から見ると画面の上は前（真上からは少し後ろから見る）
+    expect(directionOf(drawingUp(viewFrom("sup"), 0), "right")).toBe("ant");
+    expect(directionOf([1, 0, 0], "right")).toBe("med");
+    expect(directionOf([1, 0, 0], "left")).toBe("lat");
+    // 横に回すと内側か外側。左右の骨で前から見た向きを折り返すと、同じ回し方で同じ答えになる
+    const right = directionOf(drawingUp(viewFrom("ant", "right"), 90), "right");
+    expect(["med", "lat"]).toContain(right);
+    expect(directionOf(drawingUp(viewFrom("post", "left"), 90), "left")).not.toBe("sup");
+    expect(perpendicularDirections("lat")).toEqual(["sup", "inf", "ant", "post"]);
+  });
+
+  it("骨と向きの問題の正解は、選んだ左右・面・回し方から決まる", () => {
+    const item = examByKey.get(examKey("d", "femur-ant")) as DrawingItem;
+    const values = [0.7, 0.3, 0.6];
+    let i = 0;
+    const question = orientQuestion(item, () => values[i++ % values.length]);
+    expect(question.side).toBe("left");
+    expect(item.orient).toContain(question.view);
+    expect(question.up).toBe(directionOf(drawingUp(viewFrom(question.view, "left"), question.roll), "left"));
+  });
+
+  it("番号→名前の判定と、図に書き込んだ数の自己採点", () => {
+    expect(labelRating(["correct", "correct"])).toBe(Rating.Good);
+    expect(labelRating(["correct", "close"])).toBe(Rating.Hard);
+    expect(labelRating(["correct", "correct", "correct", "wrong"])).toBe(Rating.Hard);
+    expect(labelRating(["correct", "wrong"])).toBe(Rating.Again);
+    expect(annotateRating(8, 10)).toBe(Rating.Good);
+    expect(annotateRating(5, 10)).toBe(Rating.Hard);
+    expect(annotateRating(4, 10)).toBe(Rating.Again);
+    const mark = (examByKey.get(examKey("d", "orbit-ant")) as DrawingItem).marks.find((m) => !m.term)!;
+    expect(markAnswers(mark).ja).toContain("小翼");
+    expect(checkBlank("ala minor ossis sphenoidalis", markAnswers(mark).en)).toBe("correct");
   });
 });

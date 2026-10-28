@@ -81,6 +81,7 @@ async function start(): Promise<void> {
     viewer.onPick = null;
     viewer.onHover = null;
     viewer.setPeel([], []);
+    viewer.setDrawing(null);
     viewer.setSection(null);
     viewer.setLabel(null);
     viewer.colorTerms(null);

@@ -85,6 +85,17 @@ button { font: inherit; color: inherit; }
   background: rgb(43 42 39 / 0.85); color: #fff; font-size: 14px; font-weight: 600; white-space: nowrap;
   border: 1px solid rgb(255 255 255 / 0.28);
 }
+/* 骨学試験 D の図の番号。点（引き出し線の根もと）から外へ離して札を置く */
+.stage-marks { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.stage-mark {
+  position: absolute; top: 0; left: 0; translate: -50% -50%; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgb(250 247 241 / 0.94); color: #1f1d1a; border: 1.5px solid var(--highlight); font-size: 12px; font-weight: 700; line-height: 1;
+}
+.stage-mark.on { background: var(--highlight); color: #fff; border-color: #fff; z-index: 1; }
+.stage-mark-line { position: absolute; top: 0; left: 0; height: 1.5px; margin-top: -0.75px; transform-origin: 0 50%; background: rgb(250 247 241 / 0.9); }
+.stage-mark-line::before { content: ""; position: absolute; left: -3px; top: -2.25px; width: 6px; height: 6px; border-radius: 50%; background: var(--highlight); }
+.stage-mark.back, .stage-mark-line.back { opacity: 0.22; }
 /* PC でマウスを重ねた所の名前（カーソルの右下に出す） */
 .stage-hover {
   position: absolute; top: 0; left: 0; pointer-events: none; margin: 16px 0 0 14px;
@@ -332,3 +343,20 @@ button { font: inherit; color: inherit; }
 .points.done li { padding: 8px 12px 8px 34px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); font-size: 15px; line-height: 1.6; position: relative; }
 .points.done li::before { content: "・"; position: absolute; left: 12px; color: var(--muted); }
 .points.done li.said::before { content: "✓"; color: var(--ok); font-weight: 700; }
+/* 骨学試験 D: 番号と名前の一覧（押すと3Dでその番号に寄る）、番号ごとの日本語・英語の入力、骨と向きの選択 */
+.drawing-names { list-style: none; margin: 8px 0 12px; padding: 0; display: grid; gap: 6px; }
+.drawing-names li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.drawing-name { flex: 1 1 220px; display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); text-align: left; font-size: 15px; line-height: 1.5; cursor: pointer; }
+.drawing-name ruby { font-weight: 700; ruby-position: over; }
+.drawing-en { margin-left: 8px; color: var(--muted); font-size: 14px; }
+.drawing-la { margin-left: 4px; color: var(--muted); font-size: 13px; font-style: italic; }
+.drawing-check { display: flex; gap: 4px; font-size: 13px; }
+.drawing-tick { display: flex; align-items: center; gap: 6px; padding: 0 6px; font-size: 14px; color: var(--muted); }
+.drawing-tick input { width: 20px; height: 20px; accent-color: var(--ok); }
+.drawing-inputs { display: grid; gap: 8px; margin-bottom: 8px; }
+.drawing-row { display: grid; grid-template-columns: 28px minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 6px; }
+.drawing-row .cloze-no { border: 0; padding: 0; cursor: pointer; }
+.drawing-row .type-en { font-size: 16px; padding: 0 8px; }
+.orient-group { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
+.orient-label { flex: none; width: 5.5em; font-size: 14px; color: var(--muted); }
+.orient-group .chip { min-height: 40px; padding: 6px 16px; font-size: 15px; }

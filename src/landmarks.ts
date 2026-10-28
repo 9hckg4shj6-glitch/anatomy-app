@@ -88,3 +88,22 @@ export function nearbyLandmarks(termId: string, count = 8): string[] {
     .slice(0, count)
     .map(([id]) => id);
 }
+
+/**
+ * 骨学試験 D の図で画面の上になる向き。世界の上を見る向き（from＝カメラを置く向き）に垂直にしたもの
+ * （真上・真下から見るときは前か後ろ）を、見る向きのまわりに roll 度回す。3D表示（viewer.frameDrawing）と答え合わせで同じものを使う。
+ */
+export function drawingUp(from: Vec3, roll = 0): Vec3 {
+  const len = Math.hypot(...from);
+  const t = from.map((v) => v / len) as Vec3;
+  let up: Vec3 = [-t[0] * t[1], 1 - t[1] * t[1], -t[2] * t[1]];
+  const upLen = Math.hypot(...up);
+  up = upLen < 1e-6 ? [0, 0, 1] : (up.map((v) => v / upLen) as Vec3);
+  // 見る向き（-from）を軸に右ねじの向きに回す（Rodrigues の式）
+  const k: Vec3 = [-t[0], -t[1], -t[2]];
+  const a = (roll * Math.PI) / 180;
+  const cos = Math.cos(a), sin = Math.sin(a);
+  const cross: Vec3 = [k[1] * up[2] - k[2] * up[1], k[2] * up[0] - k[0] * up[2], k[0] * up[1] - k[1] * up[0]];
+  const dot = k[0] * up[0] + k[1] * up[1] + k[2] * up[2];
+  return [0, 1, 2].map((i) => up[i] * cos + cross[i] * sin + k[i] * dot * (1 - cos)) as Vec3;
+}

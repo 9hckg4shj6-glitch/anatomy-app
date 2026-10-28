@@ -2,13 +2,13 @@ import type { Term } from "./content";
 import type { Facet, LearnedTerm, StoredSchedule } from "./db";
 import { retrievability, State } from "./fsrs";
 
-export const FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "rootMeaning", "rootForm", "cloze", "read", "spell", "explain"];
+export const FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "rootMeaning", "rootForm", "cloze", "read", "spell", "explain", "label", "annotate", "orient"];
 
 /** 語根カード（content/roots.json）の問い方 */
 export const ROOT_FACETS: Facet[] = ["rootMeaning", "rootForm"];
 
 /** 骨学試験（content/exam.json）の問い方 */
-export const EXAM_FACETS: Facet[] = ["cloze", "read", "spell", "explain"];
+export const EXAM_FACETS: Facet[] = ["cloze", "read", "spell", "explain", "label", "annotate", "orient"];
 
 /** 筋だけに付く問い方（起始・停止・支配神経・作用） */
 export const MUSCLE_FACETS: Facet[] = ["attach", "nerve", "action"];
@@ -28,6 +28,9 @@ export const facetLabels: Record<Facet, string> = {
   read: "ラテン語→日本語",
   spell: "日本語→英語・ラテン語",
   explain: "短文記述",
+  label: "番号→名前",
+  annotate: "図に書き込む",
+  orient: "骨と向き",
 };
 
 /**

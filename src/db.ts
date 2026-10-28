@@ -4,11 +4,12 @@ import Dexie, { type EntityTable } from "dexie";
  * 語に付く問い方。locate＝位置→名前, point＝名前→位置, ja2en＝日→英, en2ja＝英→日（聞き取り）。
  * 筋にはさらに attach＝起始・停止, nerve＝支配神経, action＝作用 が付く。
  * 語根カード（termId が "root:…"）は rootMeaning＝語根→意味, rootForm＝意味→語根。
- * 骨学試験（termId が "exam:…"）は cloze＝A 穴埋め, read＝B ラ→日, spell＝B 日→英・ラ, explain＝C 短文記述。
+ * 骨学試験（termId が "exam:…"）は cloze＝A 穴埋め, read＝B ラ→日, spell＝B 日→英・ラ, explain＝C 短文記述,
+ * label＝D 番号→名前, annotate＝D 図に書き込む, orient＝D 骨と向き。
  */
 export type Facet =
   | "locate" | "point" | "ja2en" | "en2ja" | "attach" | "nerve" | "action" | "passage" | "rootMeaning" | "rootForm"
-  | "cloze" | "read" | "spell" | "explain";
+  | "cloze" | "read" | "spell" | "explain" | "label" | "annotate" | "orient";
 
 export interface StoredSchedule {
   /** `${termId}:${facet}` */

@@ -4,7 +4,7 @@ import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 import { joints, loadAttachments, loadModelIndex, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex, type Motion, type Term, type View } from "./content";
-import { pinCenter, pinSpread, type Vec3 } from "./landmarks";
+import { drawingUp, pinCenter, pinSpread, type Vec3 } from "./landmarks";
 
 export interface SceneSpec {
   /** 表示してタップで選べる系統 */
@@ -22,6 +22,22 @@ export interface Section {
   axis: "x" | "y" | "z";
   at: number;
   keep: 1 | -1;
+}
+
+/** 骨学試験 D の図の番号。project があれば、点の手前にあるその語の骨の面へ移す（ピンが骨の裏・中にある、骨の語の中心） */
+export interface DrawingMark {
+  text: string;
+  at: Vec3;
+  n?: Vec3;
+  project?: string;
+}
+
+/** 骨学試験 D の図: terms の部品だけを side の側で見せ（ほかは隠す）、cut で切る */
+export interface DrawingSpec {
+  terms: string[];
+  side: "right" | "left" | "both";
+  cut?: Section;
+  marks: DrawingMark[];
 }
 
 const HIGHLIGHT = "#ff7a1a";
@@ -347,6 +363,13 @@ export class AnatomyViewer {
   private readonly regionGroup = new THREE.Group();
   private regionKey = "";
   private labelTerm: string | null = null;
+  /** 骨学試験の図（D）。見せる部品と左右、番号（点・面の向き・番号の札・引き出し線） */
+  private drawing: {
+    elements: Set<string>;
+    side: DrawingSpec["side"];
+    marks: { at: THREE.Vector3; n: THREE.Vector3 | null; tag: HTMLDivElement; line: HTMLDivElement }[];
+  } | null = null;
+  private readonly markLayer: HTMLDivElement;
   private dirty = true;
   /** 画素の細かさ（2まで）。描くのが重い端末では、動かしている間だけ下げる（frame） */
   private readonly fullRatio = Math.min(window.devicePixelRatio, 2);
@@ -369,6 +392,9 @@ export class AnatomyViewer {
       this.lightEnvironment();
       this.dirty = true;
     });
+    this.markLayer = document.createElement("div");
+    this.markLayer.className = "stage-marks";
+    host.append(this.markLayer);
     this.label = document.createElement("div");
     this.label.className = "stage-label";
     this.label.hidden = true;
@@ -662,6 +688,131 @@ export class AnatomyViewer {
   /** 保存した視点へ移る */
   setView([target, position]: [Vec3, Vec3], animate = true): void {
     this.moveTo(new THREE.Vector3(...target), new THREE.Vector3(...position), animate);
+  }
+
+  /**
+   * 骨学試験の図（D）を見せる（null でやめる）。from は図を見る向き（番号の点を、その向きから見える骨の面へ移すのに使う）。
+   * 表示する系統を読み込んでから呼ぶ。
+   */
+  setDrawing(spec: DrawingSpec | null, from?: Vec3): void {
+    this.markLayer.replaceChildren();
+    this.camera.up.set(0, 1, 0);
+    this.controls.enableRotate = true;
+    if (!spec) {
+      if (!this.drawing) return;
+      this.drawing = null;
+      this.setSection(null);
+      this.refresh();
+      return;
+    }
+    this.drawing = { elements: new Set(spec.terms.flatMap((id) => this.index.terms[id]?.elements ?? [])), side: spec.side, marks: [] };
+    this.setSection(spec.cut ?? null);
+    this.refresh();
+    const meshes = [...this.drawing.elements].flatMap((id) => {
+      const mesh = this.meshes.get(id);
+      return mesh && this.onDrawingSide(mesh) ? [mesh] : [];
+    });
+    for (const mesh of meshes) mesh.updateMatrixWorld();
+    const raycaster = new THREE.Raycaster();
+    const toward = from && new THREE.Vector3(...from).normalize();
+    for (const mark of spec.marks) {
+      let at = new THREE.Vector3(...mark.at);
+      let n = mark.n ? new THREE.Vector3(...mark.n).normalize() : null;
+      if (mark.project && toward) {
+        const own = new Set(this.index.terms[mark.project]?.elements ?? []);
+        raycaster.set(at.clone().addScaledVector(toward, 1), toward.clone().negate());
+        const hit = raycaster.intersectObjects(meshes.filter((mesh) => own.has(mesh.name)), false)
+          .find((h) => !this.cutting || this.clipPlane.distanceToPoint(h.point) >= -1e-4);
+        if (hit && hit.distance < 1 - 0.002) {
+          at = hit.point.clone();
+          if (hit.face) {
+            n = hit.face.normal.clone().transformDirection(hit.object.matrixWorld);
+            if (n.dot(toward) < 0) n.negate();
+          }
+        } else {
+          // 手前に骨の面が無い（図の向きから見えている。突起の先や縁）ので、図の向きを表とする
+          n = toward.clone();
+        }
+      }
+      const tag = document.createElement("div");
+      tag.className = "stage-mark";
+      tag.textContent = mark.text;
+      const line = document.createElement("div");
+      line.className = "stage-mark-line";
+      this.markLayer.append(line, tag);
+      this.drawing.marks.push({ at, n, tag, line });
+    }
+    this.dirty = true;
+  }
+
+  /**
+   * 図（D）を from の向きから映す。roll は画面の上を何度回すか（骨の向きを当てる問題。0 でなければ回す操作を止める）。
+   * points があればその点のまわりを、無ければ見せている骨全体を映す。
+   */
+  frameDrawing(from: Vec3, roll = 0, points?: Vec3[], animate = true): void {
+    const toward = new THREE.Vector3(...from).normalize();
+    const forward = toward.clone().negate();
+    const up = new THREE.Vector3(...drawingUp(from, roll));
+    const right = new THREE.Vector3().crossVectors(forward, up).normalize();
+    const corners: THREE.Vector3[] = points ? points.map((p) => new THREE.Vector3(...p)) : [];
+    if (!points) {
+      for (const id of this.drawing?.elements ?? []) {
+        const mesh = this.meshes.get(id);
+        if (!mesh || !this.onDrawingSide(mesh)) continue;
+        mesh.geometry.computeBoundingBox();
+        const { min, max } = mesh.geometry.boundingBox!;
+        mesh.updateMatrixWorld();
+        for (let i = 0; i < 8; i++) {
+          corners.push(new THREE.Vector3(i & 1 ? max.x : min.x, i & 2 ? max.y : min.y, i & 4 ? max.z : min.z).applyMatrix4(mesh.matrixWorld));
+        }
+      }
+    }
+    if (!corners.length) return;
+    // 切って見せる図（内頭蓋底など）は、切り取った側を枠に入れない
+    const cut = this.cutting;
+    if (cut && !points) {
+      for (const corner of corners) {
+        const k = "xyz".indexOf(cut.axis);
+        corner.setComponent(k, cut.keep > 0 ? Math.max(corner.getComponent(k), cut.at) : Math.min(corner.getComponent(k), cut.at));
+      }
+    }
+    const center = new THREE.Box3().setFromPoints(corners).getCenter(new THREE.Vector3());
+    let halfW = 0, halfH = 0, depth = 0;
+    for (const corner of corners) {
+      const d = corner.clone().sub(center);
+      halfW = Math.max(halfW, Math.abs(d.dot(right)));
+      halfH = Math.max(halfH, Math.abs(d.dot(up)));
+      depth = Math.max(depth, Math.abs(d.dot(forward)));
+    }
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    // 番号の札が外にはみ出さないよう余白をとる。手前に出た所は大きく映るので、奥行きの半分ほど引く
+    const margin = points ? 1.7 : 1.42;
+    const distance = Math.max(halfH / tan, halfW / (tan * this.camera.aspect), 0.02) * margin + depth * 0.6;
+    if (roll) this.camera.up.copy(up);
+    else this.camera.up.set(0, 1, 0);
+    this.controls.enableRotate = !roll;
+    this.moveTo(center, center.clone().addScaledVector(toward, distance), animate);
+  }
+
+  /** 図（D）の番号 i（0から）を目立たせて寄る（null で目立たせるのをやめる） */
+  focusMark(i: number | null): void {
+    for (const [k, mark] of (this.drawing?.marks ?? []).entries()) mark.tag.classList.toggle("on", k === i);
+    const mark = i === null ? undefined : this.drawing?.marks[i];
+    if (mark) {
+      const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+      const direction = this.camera.position.clone().sub(this.controls.target).normalize();
+      this.moveTo(mark.at.clone(), mark.at.clone().addScaledVector(direction, 0.045 / tan), true, false);
+      if (this.homeView) this.resetButton.hidden = false;
+    }
+    this.dirty = true;
+  }
+
+  /** 図（D）で見せる側の部品か（右・左。正中の骨はどちらでも見せる） */
+  private onDrawingSide(mesh: THREE.Mesh): boolean {
+    const side = this.drawing?.side ?? "both";
+    if (side === "both") return true;
+    const x = this.restCenter(mesh).x;
+    return side === "right" ? x < 0.01 : x > -0.01;
   }
 
   /** 語ごとの色分け（進捗表示）。null で系統の色に戻す。 */
@@ -1004,7 +1155,8 @@ export class AnatomyViewer {
       const leftSide = regions.length > 0 && system !== "body" && this.restCenter(mesh).x > 0.02;
       const peeled = !highlightedElements.has(elementId) && !spotElements.has(elementId);
       mesh.visible = !(this.motion && system === "body") && !(this.actionTerm && !bone) && !hiddenByRegion && !leftSide
-        && !(peeled && this.peelHidden.has(elementId));
+        && !(peeled && this.peelHidden.has(elementId))
+        && (!this.drawing || (this.drawing.elements.has(elementId) && this.onDrawingSide(mesh)));
       if (this.motion?.meshes.has(mesh)) {
         mesh.material = this.solid(HIGHLIGHT, mesh);
       } else if (this.actionTerm && system === "skeletal") {
@@ -1473,6 +1625,55 @@ export class AnatomyViewer {
     this.lastRender = now;
     this.renderer.render(this.scene, this.camera);
     this.placeLabel();
+    this.placeMarks();
+  }
+
+  /**
+   * 図（D）の番号の札を置く。札は番号の点の重心から外へ少し離し、点と引き出し線でつなぐ（教科書の図のように）。
+   * 骨の裏に回った点（面の向きがカメラと反対）の札は薄くする。
+   */
+  private placeMarks(): void {
+    const marks = this.drawing?.marks;
+    if (!marks?.length) return;
+    const { clientWidth: width, clientHeight: height } = this.host;
+    const screen = marks.map((mark) => {
+      const p = mark.at.clone().project(this.camera);
+      return { x: ((p.x + 1) / 2) * width, y: ((1 - p.y) / 2) * height, behind: p.z > 1 };
+    });
+    const cx = screen.reduce((sum, p) => sum + p.x, 0) / screen.length;
+    const cy = screen.reduce((sum, p) => sum + p.y, 0) / screen.length;
+    const tags = screen.map(({ x, y }) => {
+      const angle = Math.hypot(x - cx, y - cy) > 1 ? Math.atan2(y - cy, x - cx) : 0;
+      return { x: x + Math.cos(angle) * 24, y: y + Math.sin(angle) * 24 };
+    });
+    // 重なった札は押し離す（近い部位が集まる骨の端で番号が読めるように）
+    const gap = 23;
+    for (let round = 0; round < 6; round++) {
+      for (let i = 0; i < tags.length; i++) {
+        for (let j = i + 1; j < tags.length; j++) {
+          const dx = tags[j].x - tags[i].x, dy = tags[j].y - tags[i].y;
+          const d = Math.hypot(dx, dy);
+          if (d >= gap) continue;
+          const [ux, uy] = d > 0.1 ? [dx / d, dy / d] : [Math.cos(i + j), Math.sin(i + j)];
+          const push = (gap - d) / 2;
+          tags[i].x -= ux * push; tags[i].y -= uy * push;
+          tags[j].x += ux * push; tags[j].y += uy * push;
+        }
+      }
+    }
+    for (const [i, mark] of marks.entries()) {
+      const { x, y, behind } = screen[i];
+      // 札は3Dの枠の内側に収める（骨の端の部位で札が外に出ないように）
+      const tag = { x: Math.min(width - 13, Math.max(13, tags[i].x)), y: Math.min(height - 13, Math.max(13, tags[i].y)) };
+      mark.tag.style.transform = `translate(${tag.x}px, ${tag.y}px)`;
+      // 引き出し線は点から札の縁まで
+      mark.line.style.width = `${Math.max(0, Math.hypot(tag.x - x, tag.y - y) - 10)}px`;
+      mark.line.style.transform = `translate(${x}px, ${y}px) rotate(${Math.atan2(tag.y - y, tag.x - x)}rad)`;
+      // 輪郭の上の点（面がカメラに垂直）は見えているので、はっきり裏を向いたときだけ
+      const facingAway = !!mark.n && mark.n.dot(this.camera.position.clone().sub(mark.at).normalize()) < -0.45;
+      mark.tag.classList.toggle("back", behind || facingAway);
+      mark.line.classList.toggle("back", behind || facingAway);
+    }
   }
 
   private placeLabel(): void {
