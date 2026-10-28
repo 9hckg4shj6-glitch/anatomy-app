@@ -23,3 +23,19 @@ export function until<T>(signal: AbortSignal, register: (resolve: (value: T) => 
     register(resolve);
   });
 }
+
+/**
+ * PC のキーボード操作（数字キーで選ぶ・矢印キーで前後へ）。handler が true を返したキーはブラウザの動きを止める。
+ * 返す関数を呼ぶか、画面を離れるとやめる。入力欄で打っているときと、Ctrl・⌘ などと一緒のときは使わない。
+ */
+export function onKeys(signal: AbortSignal, handler: (key: string) => boolean | void): () => void {
+  const controller = new AbortController();
+  const stop = () => controller.abort();
+  signal.addEventListener("abort", stop, { once: true, signal: controller.signal });
+  document.addEventListener("keydown", (event) => {
+    if (event.ctrlKey || event.metaKey || event.altKey || event.isComposing || event.repeat) return;
+    if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+    if (handler(event.key)) event.preventDefault();
+  }, { signal: controller.signal });
+  return stop;
+}

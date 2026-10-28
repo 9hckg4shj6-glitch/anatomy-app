@@ -1,4 +1,5 @@
 import type { Term } from "./content";
+import { preferences } from "./settings";
 
 // scripts/build-audio.mjs が作る { 語ID: "audio/<語ID>.<ハッシュ>.mp3" }。無ければブラウザの読み上げで代わりにする。
 let manifest: Promise<Record<string, string>> | null = null;
@@ -29,4 +30,9 @@ export async function speak(term: Pick<Term, "id" | "en">): Promise<void> {
   utterance.lang = "en-US";
   utterance.rate = 0.85;
   speechSynthesis.speak(utterance);
+}
+
+/** 画面を開いたときや答え合わせのときに自動で鳴らす（設定で切れる。🔊のボタンは speak で鳴らす） */
+export function autoSpeak(term: Pick<Term, "id" | "en">): void {
+  if (preferences.autoSpeak) void speak(term);
 }

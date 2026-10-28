@@ -1,4 +1,4 @@
-import { speak } from "../audio";
+import { autoSpeak } from "../audio";
 import { isDrawn, landmarksOf, loadAttachments, pins, regionSystems, systems, termById, terms, units, type Term } from "../content";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
@@ -139,7 +139,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
         void apply();
       }
       if (!section) viewer.focus(term.id, 3.2);
-      void speak(term);
+      autoSpeak(term);
     }
     render();
     // 一覧や部位の一覧から選んだとき、説明が見えるように上へ戻す（スマホでは画面全体、PCでは右の欄）
@@ -189,10 +189,10 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
 
   /** 一覧: 検索したときは当てはまる語を並べ、ふだんは系統→レッスンのフォルダーにまとめる */
   const renderList = () => {
-    const query = search.value.trim().toLowerCase();
+    const query = normalize(search.value.trim());
     rows.clear();
     if (query) {
-      const matches = terms.filter((term) => [term.ja, term.yomi, term.en, term.la ?? "", ...(term.enAlt ?? [])].some((text) => text.toLowerCase().includes(query)));
+      const matches = terms.filter((term) => [term.ja, term.yomi, term.en, term.la ?? "", ...(term.enAlt ?? [])].some((text) => normalize(text).includes(query)));
       list.replaceChildren(matches.length ? termRows(matches) : h("p", { class: "muted" }, "見つかりませんでした。"));
       return;
     }
@@ -278,4 +278,11 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   render();
   await apply();
   if (opened) select(opened);
+  // レッスンや問題から来たときのカメラが残らないよう、全身から始める
+  else viewer.overview();
+}
+
+/** 検索の表記ゆれをそろえる（大文字・小文字、カタカナ→ひらがな、全角英数→半角） */
+function normalize(text: string): string {
+  return text.normalize("NFKC").toLowerCase().replace(/[\u30a1-\u30f6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
 }

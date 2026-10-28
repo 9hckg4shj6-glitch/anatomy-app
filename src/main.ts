@@ -1,5 +1,6 @@
 import "./styles.css";
 import { loadModelIndex } from "./content";
+import { loadPreferences } from "./settings";
 import { h } from "./dom";
 import { watchInstallPrompt } from "./install";
 import { admin } from "./ui/admin";
@@ -48,13 +49,16 @@ async function start(): Promise<void> {
     panel.replaceChildren(h("p", {}, "3D表示を始められませんでした。"), h("p", { class: "muted" }, String(error)));
     return;
   }
-  const index = await loadModelIndex();
+  const [index] = await Promise.all([loadModelIndex(), loadPreferences()]);
   // ピン打ちツールは ?admin=1 で開いたときだけタブを出す
   if (new URLSearchParams(location.search).has("admin")) {
     document.querySelector(".tabs")?.append(h("a", { href: "#/admin", "data-tab": "admin" }, "ピン"));
   }
   if (import.meta.env.DEV) Object.assign(window, { viewer }); // 開発時の確認用
   let controller = new AbortController();
+  /** 今の画面のアドレスと、離れるときに確かめる文（レッスンの途中） */
+  let currentHash = location.hash;
+  let leaveWarning: string | null = null;
 
   const route = async () => {
     if (updated && isHome()) {
@@ -63,12 +67,15 @@ async function start(): Promise<void> {
     }
     controller.abort("navigate");
     controller = new AbortController();
+    currentHash = location.hash;
+    leaveWarning = null;
     const ctx: AppContext = {
       viewer, index, panel, tools, signal: controller.signal,
       hint: (text) => {
         hintBox.textContent = text;
         hintBox.hidden = !text;
       },
+      guard: (message) => (leaveWarning = message),
     };
     viewer.onPick = null;
     viewer.setSection(null);
@@ -106,7 +113,14 @@ async function start(): Promise<void> {
     badge.hidden = count === 0;
   };
 
-  window.addEventListener("hashchange", () => void route());
+  window.addEventListener("hashchange", () => {
+    // やめないときは、アドレスだけ元に戻して今の画面を続ける（replaceState では hashchange は起きない）
+    if (leaveWarning && !confirm(leaveWarning)) {
+      history.replaceState(null, "", currentHash || "#/");
+      return;
+    }
+    void route();
+  });
   window.addEventListener("anatomy:reviewed", () => void refreshBadge());
   await Promise.all([route(), refreshBadge()]);
 }

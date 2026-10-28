@@ -11,7 +11,12 @@ export interface AppContext {
   tools: HTMLElement;
   /** 画面を離れると abort される */
   signal: AbortSignal;
+  /** ほかの画面へ移る前に確かめる文（null でやめる）。レッスンの途中で、うっかりタブを押して進み具合を失わないように */
+  guard: (message: string | null) => void;
 }
+
+/** レッスンの途中で画面を離れるときの確認 */
+export const LEAVE_LESSON = "レッスンの途中です。ここでやめると、このレッスンは学んだことにならず、復習にも入りません。やめますか？";
 
 /**
  * 筋の「動きを見る」（term-card の motion）。骨を動かし、起始〜停止の距離の文を返す。やめたら筋に寄り直す。

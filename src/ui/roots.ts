@@ -4,8 +4,9 @@ import { h, until } from "../dom";
 import { dueLabel, Rating, recordReview } from "../fsrs";
 import { examplesOf, exampleFor, rootByKey, rootKey, roots, rootUnitById, rootUnits, type Root } from "../roots";
 import { facetLabels, pickChoices, shuffle, type QueueItem } from "../study";
-import type { AppContext } from "./context";
-import { showPanel, type Outcome } from "./quiz";
+import { LEAVE_LESSON, type AppContext } from "./context";
+import { turnPage } from "./lesson";
+import { chooseOne, retryButton, showPanel, type Outcome } from "./quiz";
 import { markedRoot as marked } from "./term-card";
 
 /** 例の語の3Dを光らせる（部位を持つ語だけ。系統は3つまで読む） */
@@ -65,6 +66,7 @@ export async function rootLesson(ctx: AppContext, unitId: string): Promise<void>
     ctx.panel.replaceChildren(h("p", {}, "レッスンが見つかりません。"), h("a", { href: "#/" }, "ホームへ"));
     return;
   }
+  ctx.guard(LEAVE_LESSON);
   for (let i = 0; i < unit.roots.length; ) {
     const root = unit.roots[i];
     void showExamples(ctx, examplesOf(root));
@@ -77,10 +79,7 @@ export async function rootLesson(ctx: AppContext, unitId: string): Promise<void>
       h("div", { class: "nav-row" }, back, next),
     );
     next.focus({ preventScroll: true });
-    i += await until<number>(ctx.signal, (resolve) => {
-      back.addEventListener("click", () => resolve(-1), { once: true });
-      next.addEventListener("click", () => resolve(1), { once: true });
-    });
+    i += await turnPage(ctx.signal, back, next);
   }
   let correct = 0;
   const items = shuffle(unit.roots).map((root) => ({ termId: rootKey(root), facet: "rootMeaning" as const, isNew: true }));
@@ -89,6 +88,7 @@ export async function rootLesson(ctx: AppContext, unitId: string): Promise<void>
   }
   const learnedAt = nowIso();
   await db.learned.bulkPut(unit.roots.map((root) => ({ termId: rootKey(root), unitId: unit.id, learnedAt })));
+  ctx.guard(null);
   void navigator.storage?.persist?.().catch(() => false);
   ctx.hint("");
   showPanel(ctx,
@@ -121,26 +121,28 @@ export async function askRoot(ctx: AppContext, item: QueueItem, source: ReviewEv
       example ? h("p", { class: "muted" }, "例: ", marked(example.en, root)) : "")
     : h("div", {}, h("p", { class: "prompt" }, "この意味の語根は？"), h("p", { class: "prompt-ja" }, root.meaning),
       example ? h("p", { class: "muted" }, `例: ${example.ja}`) : "");
-  const picked = await until<string | null>(ctx.signal, (resolve) => {
-    showPanel(ctx, header, prompt,
-      h("div", { class: "choices" }, ...choices.map((key) => h("button", { class: "choice", type: "button", lang: byMeaning ? undefined : "en", onClick: () => resolve(key) }, display(key)))),
-      h("button", { class: "ghost-button", type: "button", onClick: () => resolve(null) }, "わからない"),
-    );
-  });
+  const picked = await chooseOne(ctx, header, prompt, choices, display, byMeaning ? undefined : "en");
   const outcome: Outcome = picked === item.termId ? "correct" : picked ? "wrong" : "skip";
-  const schedule = await recordReview(item.termId, item.facet, outcome === "correct" ? Rating.Good : Rating.Again,
+  const { schedule, undo } = await recordReview(item.termId, item.facet, outcome === "correct" ? Rating.Good : Rating.Again,
     { durationMs: Math.round(performance.now() - started), source });
   void showExamples(ctx, examplesOf(root));
   const wrong = picked && picked !== item.termId ? rootByKey.get(picked)! : null;
   const next = h("button", { class: "primary", type: "button" }, "次へ");
+  const retry = outcome === "correct" ? null : retryButton();
   showPanel(ctx, header,
     outcome === "correct" ? h("div", { class: "result ok" }, "正解") : h("div", { class: "result ng" }, outcome === "skip" ? "答えを確認しよう" : "不正解"),
     wrong ? h("p", { class: "wrong-note" }, `あなたが選んだのは ${wrong.root}「${wrong.meaning}」`) : "",
     rootCard(root, { examples: 6 }),
     h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`),
+    retry ?? "",
     next,
   );
   next.focus({ preventScroll: true });
-  await until(ctx.signal, (resolve) => next.addEventListener("click", () => resolve(undefined), { once: true }));
-  return outcome;
+  const again = await until<boolean>(ctx.signal, (resolve) => {
+    next.addEventListener("click", () => resolve(false), { once: true });
+    retry?.addEventListener("click", () => resolve(true), { once: true });
+  });
+  if (!again) return outcome;
+  await undo();
+  return askRoot(ctx, item, source, progress);
 }

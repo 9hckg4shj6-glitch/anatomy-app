@@ -60,13 +60,19 @@ export function nextSchedule(
   return cardToStored(termId, facet, scheduler.next(card, at, rating).card);
 }
 
+/** 記録した1回の答え。undo で押しまちがいを取り消せる（解いた記録を消し、覚え具合を解く前に戻す） */
+export interface RecordedReview {
+  schedule: StoredSchedule;
+  undo: () => Promise<void>;
+}
+
 export async function recordReview(
   termId: string,
   facet: Facet,
   rating: Grade,
   options: { durationMs: number | null; source: ReviewEvent["source"] },
   at = new Date(),
-): Promise<StoredSchedule> {
+): Promise<RecordedReview> {
   const cardId = `${termId}:${facet}`;
   const previous = await db.schedules.get(cardId);
   const schedule = nextSchedule(previous, termId, facet, rating, at);
@@ -86,7 +92,15 @@ export async function recordReview(
     await db.schedules.put(schedule);
   });
   window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
-  return schedule;
+  const undo = async () => {
+    await db.transaction("rw", db.schedules, db.reviewEvents, async () => {
+      await db.reviewEvents.delete(event.id);
+      if (previous) await db.schedules.put(previous);
+      else await db.schedules.delete(cardId);
+    });
+    window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
+  };
+  return { schedule, undo };
 }
 
 /** 今この時点で思い出せる確率（0〜1）。一度も解いていなければ null。 */

@@ -349,6 +349,10 @@ export class AnatomyViewer {
   private lastRender = 0;
   private showSeq = 0;
   private tween: { from: [THREE.Vector3, THREE.Vector3]; to: [THREE.Vector3, THREE.Vector3]; start: number } | null = null;
+  /** アプリが最後に決めた視点（注視点・カメラの位置）。回して迷ったら「視点を戻す」でここへ戻る */
+  private homeView: [THREE.Vector3, THREE.Vector3] | null = null;
+  /** 「視点を戻す」ボタン。自分で回したり拡大したりしたときだけ出す */
+  private readonly resetButton: HTMLButtonElement;
 
   constructor(private readonly host: HTMLElement) {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -364,6 +368,13 @@ export class AnatomyViewer {
     this.label.className = "stage-label";
     this.label.hidden = true;
     host.append(this.label);
+    this.resetButton = document.createElement("button");
+    this.resetButton.type = "button";
+    this.resetButton.className = "stage-reset";
+    this.resetButton.textContent = "視点を戻す";
+    this.resetButton.hidden = true;
+    this.resetButton.addEventListener("click", () => this.resetView());
+    host.append(this.resetButton);
 
     // 光はカメラに付ける（どの向きから見ても同じ明るさ）。左上の主な光・右の弱い光・後ろからの縁の光と、部屋の映り込み
     this.lightEnvironment();
@@ -385,13 +396,26 @@ export class AnatomyViewer {
     this.controls.dampingFactor = 0.12;
     this.controls.minDistance = 0.08;
     this.controls.maxDistance = 4;
-    this.controls.addEventListener("change", () => (this.dirty = true));
+    // 指やマウスで実際に視点を動かしたときだけ「視点を戻す」を出す（タップしただけでは出さない）
+    let handling = false;
+    this.controls.addEventListener("start", () => (handling = true));
+    this.controls.addEventListener("end", () => (handling = false));
+    this.controls.addEventListener("change", () => {
+      this.dirty = true;
+      if (handling && this.homeView) this.resetButton.hidden = false;
+    });
 
     let down: { x: number; y: number; t: number } | null = null;
+    // 画面に触れている指。2本目が触れたら（ピンチ）、指を離してもタップにしない
+    const touching = new Set<number>();
+    const lift = (event: PointerEvent) => touching.delete(event.pointerId);
     this.renderer.domElement.addEventListener("pointerdown", (event) => {
-      down = { x: event.clientX, y: event.clientY, t: performance.now() };
+      touching.add(event.pointerId);
+      down = touching.size === 1 ? { x: event.clientX, y: event.clientY, t: performance.now() } : null;
     });
+    this.renderer.domElement.addEventListener("pointercancel", lift);
     this.renderer.domElement.addEventListener("pointerup", (event) => {
+      lift(event);
       // ドラッグ（回転）とタップを区別する
       if (!down || Math.hypot(event.clientX - down.x, event.clientY - down.y) > 8 || performance.now() - down.t > 600) return;
       down = null;
@@ -631,7 +655,14 @@ export class AnatomyViewer {
     this.moveTo(target, target.clone().add(new THREE.Vector3(0, 0, distance)), animate);
   }
 
+  /** アプリが最後に決めた視点へ戻る（自分で回して迷ったとき） */
+  resetView(): void {
+    if (this.homeView) this.moveTo(...this.homeView, true);
+  }
+
   private moveTo(target: THREE.Vector3, position: THREE.Vector3, animate: boolean): void {
+    this.homeView = [target.clone(), position.clone()];
+    this.resetButton.hidden = true;
     if (!animate) {
       this.controls.target.copy(target);
       this.camera.position.copy(position);

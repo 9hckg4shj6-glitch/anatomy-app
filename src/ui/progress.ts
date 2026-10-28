@@ -3,6 +3,7 @@ import { systems, termById, terms } from "../content";
 import { db, type StoredSchedule } from "../db";
 import { h } from "../dom";
 import { rootKey, roots } from "../roots";
+import { loadPreferences, NEW_PER_DAY_OPTIONS, preferences, setPreference } from "../settings";
 import { termMastery } from "../study";
 import { sceneFor, type AppContext } from "./context";
 
@@ -39,6 +40,8 @@ export async function progress(ctx: AppContext): Promise<void> {
   viewer.overview();
   ctx.hint("色＝今の覚え具合");
 
+  const settings = settingsSection();
+
   const weakest = [...mastery]
     .filter((entry): entry is [string, number] => entry[1] !== null)
     .sort((a, b) => a[1] - b[1])
@@ -70,7 +73,8 @@ export async function progress(ctx: AppContext): Promise<void> {
       }, h("span", {}, term.ja), h("span", { class: "en" }, `${Math.round(value * 100)}%`)));
     })) : "",
     weakest.length ? h("div", { class: "nav-row" }, h("a", { class: "primary", href: "#/drill/weak" }, "苦手な語を解く")) : "",
-    backupSection(),
+    settings.box,
+    backupSection(settings.render),
   );
 
   function rootRow(): HTMLElement {
@@ -83,8 +87,35 @@ export async function progress(ctx: AppContext): Promise<void> {
   }
 }
 
+/** 設定（発音の自動再生・1日の新しい問題の数）。記録を読み込んだら render で描き直す */
+function settingsSection(): { box: HTMLElement; render: () => void } {
+  const box = h("section", { class: "settings" });
+  const chips = <T>(options: { value: T; label: string }[], current: T, onPick: (value: T) => Promise<void>) =>
+    h("div", { class: "chip-list" }, ...options.map((option) => h("button", {
+      class: option.value === current ? "chip on" : "chip", type: "button",
+      onClick: async () => {
+        await onPick(option.value);
+        render();
+      },
+    }, option.label)));
+  const render = () => box.replaceChildren(
+    h("h3", {}, "設定"),
+    h("p", { class: "setting-label" }, "英語の発音を自動で鳴らす"),
+    chips([{ value: true, label: "鳴らす" }, { value: false, label: "鳴らさない" }], preferences.autoSpeak, (value) => setPreference("autoSpeak", value)),
+    h("p", { class: "muted" }, "鳴らさないときも、🔊を押せば聞けます。"),
+    h("p", { class: "setting-label" }, "1日に新しく始める問題"),
+    chips(NEW_PER_DAY_OPTIONS.map((n) => ({ value: n, label: `${n}問` })), preferences.newPerDay, async (value) => {
+      await setPreference("newPerDay", value);
+      window.dispatchEvent(new CustomEvent("anatomy:reviewed")); // 復習のバッジの数を変える
+    }),
+    h("p", { class: "muted" }, "1つの語に問い方が4つ（筋は7つ）あり、別々に数えます。期限の来た復習はこの数に関係なくすべて出ます。"),
+  );
+  render();
+  return { box, render };
+}
+
 /** 記録の書き出し・読み込み（機種変更や、iOS の Safari とホーム画面のアプリの間で移すとき） */
-function backupSection(): HTMLElement {
+function backupSection(onImported: () => void): HTMLElement {
   const status = h("p", { class: "muted" });
   const file = h("input", { type: "file", accept: "application/json,.json", hidden: true });
   file.addEventListener("change", async () => {
@@ -96,6 +127,8 @@ function backupSection(): HTMLElement {
       if (!isBackup(data)) throw new Error("このアプリの記録のファイルではありません");
       if (!confirm(`${data.exportedAt.slice(0, 10)} に書き出した記録を、今の記録に足し合わせます。よろしいですか？`)) return;
       const result = await importBackup(data);
+      await loadPreferences();
+      onImported();
       window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
       status.textContent = `読み込みました（覚え具合 ${result.schedules}件・解いた記録 ${result.reviewEvents}件・学んだ語 ${result.learned}件）。`;
     } catch (error) {

@@ -1,9 +1,9 @@
 import type { Grade } from "ts-fsrs";
 import { checkEnglish, type EnglishResult } from "../answer";
-import { speak } from "../audio";
+import { autoSpeak, speak } from "../audio";
 import { figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
 import { db, type Facet, type ReviewEvent } from "../db";
-import { h, until } from "../dom";
+import { h, onKeys, until } from "../dom";
 import { dueLabel, Rating, recordReview } from "../fsrs";
 import { hitsPin, landmarkAt, nearbyLandmarks, type Vec3 } from "../landmarks";
 import { facetLabels, pickChoices, typesEnglish, type QueueItem } from "../study";
@@ -156,10 +156,10 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     case "en2ja": {
       viewer.overview();
       ctx.hint("");
-      void speak(term);
+      autoSpeak(term);
       const reveal = h("button", { class: "ghost-button", type: "button", onClick: () => reveal.replaceWith(h("span", { class: "prompt-en", lang: "en" }, term.en)) }, "英語を表示");
       const prompt = h("div", { class: "listen" },
-        h("button", { class: "speak big", type: "button", "aria-label": "もう一度聞く", onClick: () => void speak(term) }, "🔊"),
+        h("button", { class: "speak big", type: "button", "aria-label": "英語を聞く", onClick: () => void speak(term) }, "🔊"),
         reveal,
       );
       const picked = await chooseOne(ctx, header, prompt, choicesOf((id) => termById.get(id)!.ja), (id) => termById.get(id)!.ja);
@@ -187,13 +187,13 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       throw new Error(`語の問題ではない問い方: ${facet}`);
   }
 
-  const schedule = await recordReview(term.id, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
+  const { schedule, undo } = await recordReview(term.id, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
   if (facet === "attach") viewer.highlight([term.id], { isolate: true, marks: attachMarks(term), seeThrough: true });
   else viewer.reveal(term.id, wrongTerm, isolate, tapped);
   viewer.focus(term.id, 3.4, true, tapped?.point);
   viewer.setLabel(term.id, term.ja);
   ctx.hint("");
-  if (facet === "ja2en" || facet === "en2ja") void speak(term);
+  if (facet === "ja2en" || facet === "en2ja") autoSpeak(term);
 
   const banner = {
     correct: h("div", { class: "result ok" }, "正解"),
@@ -207,13 +207,27 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       ? h("p", { class: "wrong-note" }, "青い点はあなたがタップした所")
       : null;
   const next = h("button", { class: "primary", type: "button" }, "次へ");
-  showPanel(ctx, header, banner, wrongNote ?? "", termCard(term, { motion: motionPlayer(ctx, term) }), h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`), next);
+  // タップや選択肢の押しまちがいは、記録を取り消して同じ問題を解き直せる
+  const retry = outcome === "correct" ? null : retryButton();
+  showPanel(ctx, header, banner, wrongNote ?? "", termCard(term, { motion: motionPlayer(ctx, term) }),
+    h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`), retry ?? "", next);
   next.focus({ preventScroll: true });
-  await until(signal, (resolve) => next.addEventListener("click", () => resolve(undefined), { once: true }));
-  return outcome;
+  const again = await until<boolean>(signal, (resolve) => {
+    next.addEventListener("click", () => resolve(false), { once: true });
+    retry?.addEventListener("click", () => resolve(true), { once: true });
+  });
+  if (!again) return outcome;
+  await undo();
+  return ask(ctx, item, source, progress);
 }
 
-async function chooseOne(
+/** 解き直しを出すときの共通の文言（語根の問題でも使う） */
+export function retryButton(): HTMLButtonElement {
+  return h("button", { class: "text-button", type: "button" }, "押しまちがえた（取り消して解き直す）");
+}
+
+/** 4択を出して、選んだもの（「わからない」なら null）を返す */
+export async function chooseOne(
   ctx: AppContext,
   header: HTMLElement,
   prompt: string | HTMLElement,
@@ -223,12 +237,23 @@ async function chooseOne(
   variant = "",
 ): Promise<string | null> {
   return until(ctx.signal, (resolve) => {
-    const buttons = choices.map((id) => h("button", { class: `choice ${variant}`.trim(), type: "button", lang, onClick: () => resolve(id) }, display(id)));
+    // PC では数字キー（1〜4）でも選べる。0 は「わからない」
+    const stop = onKeys(ctx.signal, (key) => {
+      const i = key === "0" ? -1 : Number(key) - 1;
+      if (!(i === -1 || (i >= 0 && i < choices.length))) return false;
+      done(i === -1 ? null : choices[i]);
+      return true;
+    });
+    const done = (id: string | null) => {
+      stop();
+      resolve(id);
+    };
+    const buttons = choices.map((id) => h("button", { class: `choice ${variant}`.trim(), type: "button", lang, onClick: () => done(id) }, display(id)));
     showPanel(ctx,
       header,
       typeof prompt === "string" ? h("p", { class: "prompt" }, prompt) : prompt,
       h("div", { class: "choices" }, ...buttons),
-      h("button", { class: "ghost-button", type: "button", onClick: () => resolve(null) }, "わからない"),
+      h("button", { class: "ghost-button", type: "button", onClick: () => done(null) }, "わからない"),
     );
   });
 }
@@ -260,7 +285,8 @@ async function tapElement(ctx: AppContext, header: HTMLElement, term: Term): Pro
 async function typeEnglish(ctx: AppContext, header: HTMLElement, prompt: HTMLElement): Promise<string> {
   return until(ctx.signal, (resolve) => {
     const input = h("input", {
-      class: "type-en", type: "text", lang: "en", autocomplete: "off", autocapitalize: "off", spellcheck: false,
+      // iOS の自動修正（解剖の英語名を普通の単語に直してしまう）も切る
+      class: "type-en", type: "text", lang: "en", autocomplete: "off", autocapitalize: "off", autocorrect: "off", spellcheck: false, enterkeyhint: "done",
       placeholder: "英語でつづりを入力", "aria-label": "英語のつづり",
     });
     const form = h("form", { class: "type-form", onSubmit: (event: Event) => { event.preventDefault(); resolve(input.value); } },

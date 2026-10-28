@@ -61,6 +61,13 @@ button { font: inherit; color: inherit; }
   background: rgb(255 255 255 / 0.85); color: var(--muted); font-size: 13px; pointer-events: none;
 }
 .stage-hint:empty { display: none; }
+/* 自分で回したり拡大したりしたときに出す。押すとアプリが決めた視点へ戻る */
+.stage-reset {
+  position: absolute; top: 8px; right: calc(8px + var(--safe-right)); min-height: 34px; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgb(255 255 255 / 0.22); background: rgb(20 22 25 / 0.55); color: #f1eee8; font-size: 13px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.stage-reset::before { content: "⟲ "; }
 .stage-tools { position: absolute; left: calc(8px + var(--safe-left)); right: 8px; bottom: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
 /* 3Dの上のボタンは、暗い背景に合わせて半透明の黒にし、選んだものを白にする */
 .stage-tools .chip { background: rgb(20 22 25 / 0.55); border-color: rgb(255 255 255 / 0.22); color: #f1eee8; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
@@ -111,15 +118,18 @@ button { font: inherit; color: inherit; }
 .chip.on { background: var(--ink); border-color: var(--ink); color: #fff; }
 .nav-row { display: flex; gap: 10px; margin-top: 16px; }
 .nav-row > * { flex: 1; }
-/* 「次へ」などは画面の下に留めて、説明を読んでいる途中でも押せるようにする */
-.panel > .nav-row, .panel > .primary { position: sticky; z-index: 2; }
-.panel > .primary { bottom: calc(10px + var(--safe-bottom)); box-shadow: 0 4px 14px rgb(43 42 39 / 0.16); }
-.panel > .nav-row { bottom: 0; padding: 10px 0 calc(10px + var(--safe-bottom)); background: linear-gradient(to bottom, transparent, var(--bg) 10px); }
+/* 「次へ」などは画面の下に留めて、説明を読んでいる途中でも押せるようにする。
+   留めるのは欄の最後の行だけ（途中の行を留めると、スクロールしたとき上の3Dに重なる） */
+.panel > .nav-row:last-child, .panel > .primary:last-child { position: sticky; z-index: 2; }
+.panel > .primary:last-child { bottom: calc(10px + var(--safe-bottom)); box-shadow: 0 4px 14px rgb(43 42 39 / 0.16); }
+.panel > .nav-row:last-child { bottom: 0; padding: 10px 0 calc(10px + var(--safe-bottom)); background: linear-gradient(to bottom, transparent, var(--bg) 10px); }
 
 .today { padding: 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
 .today h2 { margin-top: 0; }
 .today-count { font-size: 28px; font-weight: 700; margin: 4px 0 12px; }
 .today .primary { width: 100%; }
+.today-done { margin-left: auto; color: var(--muted); font-size: 13px; font-weight: 400; }
+.today .next-lesson { width: 100%; margin-top: 10px; }
 .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgb(0 0 0 / 0.1); flex: none; }
 .units { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .unit {
@@ -183,6 +193,17 @@ button { font: inherit; color: inherit; }
 .typed { font-weight: 400; text-decoration: line-through; opacity: 0.9; }
 .wrong-note { color: #3d7bd9; font-size: 14px; margin: 0 0 10px; }
 .next-due { color: var(--muted); font-size: 14px; }
+/* 押しまちがいの取り消しなど、目立たせない操作 */
+.text-button { display: block; min-height: 40px; margin: 0 auto 4px; padding: 8px 12px; border: 0; background: none; color: var(--muted); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+/* PC（マウスのある端末）では、選択肢に数字キーの番号を添える */
+@media (hover: hover) and (pointer: fine) {
+  .choices { counter-reset: choice; }
+  .choice::before {
+    counter-increment: choice; content: counter(choice); flex: none;
+    display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-right: 10px;
+    border: 1px solid var(--line); border-radius: 6px; color: var(--muted); font-size: 13px; font-weight: 400;
+  }
+}
 .panel > .primary { width: 100%; margin-top: 8px; }
 
 .search { width: 100%; min-height: 44px; margin: 16px 0 8px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 16px; background: var(--surface); }
@@ -260,3 +281,7 @@ button { font: inherit; color: inherit; }
 .section-slider input { flex: 1; min-width: 0; }
 
 .backup { margin-top: 28px; padding-top: 4px; border-top: 1px solid var(--line); }
+
+.settings { margin-top: 28px; padding-top: 4px; border-top: 1px solid var(--line); }
+.setting-label { margin: 14px 0 8px; font-size: 15px; font-weight: 600; }
+.settings .muted { margin: 6px 0 0; }

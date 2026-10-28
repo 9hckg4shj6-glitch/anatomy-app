@@ -1,4 +1,4 @@
-import { systems, units } from "../content";
+import { systems, units, type Unit } from "../content";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
 import { installHint } from "../install";
@@ -12,8 +12,11 @@ export async function home(ctx: AppContext): Promise<void> {
   void ctx.viewer.show({ systems: systems.map((s) => s.id).filter((id) => ctx.index.systems[id]), body: true });
   ctx.hint("ドラッグで回転・ピンチで拡大");
 
-  const [learned, due, hintClosed, openSetting] = await Promise.all([
-    db.learned.toArray(), dueCount(), db.settings.get("installHintClosed"), db.settings.get(OPEN_FOLDERS),
+  const startOfDay = new Date();
+  startOfDay.setHours(0, 0, 0, 0);
+  const [learned, due, answeredToday, hintClosed, openSetting] = await Promise.all([
+    db.learned.toArray(), dueCount(), db.reviewEvents.where("reviewedAt").aboveOrEqual(startOfDay.toISOString()).count(),
+    db.settings.get("installHintClosed"), db.settings.get(OPEN_FOLDERS),
   ]);
   const learnedIds = new Set(learned.map((item) => item.termId));
   // 開いたフォルダーは覚えておき、レッスンから戻ったときも開いたままにする
@@ -34,19 +37,18 @@ export async function home(ctx: AppContext): Promise<void> {
       ),
       list,
     );
-  const nextUnit = units.find((unit) => unit.terms.some((term) => !learnedIds.has(term.id)));
+  const nextUnit = nextLesson(learnedIds);
+  const lessonLink = (className: string) => nextUnit ? h("a", { class: className, href: `#/learn/${nextUnit.id}` }, `次のレッスン「${nextUnit.title}」`) : "";
 
   ctx.panel.replaceChildren(
     h("section", { class: "today" },
-      h("h2", {}, "今日の復習"),
+      h("h2", {}, "今日の復習", answeredToday ? h("span", { class: "today-done" }, `今日 ${answeredToday}問 解いた`) : ""),
       h("p", { class: "today-count" }, due ? `${due}問` : "なし"),
-      due
-        ? h("a", { class: "primary", href: "#/review" }, "復習する")
-        : nextUnit
-          ? h("a", { class: "primary", href: `#/learn/${nextUnit.id}` }, `次のレッスン「${nextUnit.title}」`)
-          : h("p", {}, "すべてのレッスンを終えました"),
+      // 復習が残っていても、新しいレッスンへ進めるようにする
+      due ? h("a", { class: "primary", href: "#/review" }, "復習する") : nextUnit ? lessonLink("primary") : h("p", {}, "すべてのレッスンを終えました"),
+      due ? lessonLink("ghost-button next-lesson") : "",
       learnedIds.size ? h("div", { class: "nav-row" },
-        h("a", { class: "ghost-button", href: "#/drill" }, "範囲を選んで解く"),
+        h("a", { class: "ghost-button", href: "#/drill" }, "範囲を選ぶ"),
         h("a", { class: "ghost-button", href: "#/drill/weak" }, "苦手を解く"),
       ) : "",
     ),
@@ -77,6 +79,11 @@ export async function home(ctx: AppContext): Promise<void> {
 }
 
 const OPEN_FOLDERS = "homeOpenFolders";
+
+/** まだ学んでいない語のある最初のレッスン（ホームと復習の終わりに出す） */
+export function nextLesson(learnedIds: Set<string>): Unit | undefined {
+  return units.find((unit) => unit.terms.some((term) => !learnedIds.has(term.id)));
+}
 
 type Folder = (id: string, title: (Node | string)[], summary: string, allDone: boolean, list: HTMLElement) => HTMLElement;
 

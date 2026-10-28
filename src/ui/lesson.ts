@@ -1,9 +1,9 @@
-import { speak } from "../audio";
+import { autoSpeak } from "../audio";
 import { isDrawn, unitById } from "../content";
 import { db, nowIso } from "../db";
-import { h, until } from "../dom";
+import { h, onKeys, until } from "../dom";
 import { shuffle, type QueueItem } from "../study";
-import { motionPlayer, sceneFor, type AppContext } from "./context";
+import { LEAVE_LESSON, motionPlayer, sceneFor, type AppContext } from "./context";
 import { ask, showPanel } from "./quiz";
 import { termCard } from "./term-card";
 
@@ -15,6 +15,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     return;
   }
   const { viewer, signal } = ctx;
+  ctx.guard(LEAVE_LESSON);
   await viewer.show(sceneFor(unit.system, unit.id));
 
   // レッスンの初めの説明（基本の用語の「解剖学的正位」など）
@@ -38,7 +39,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     viewer.focus(term.id, 3.2);
     viewer.setLabel(term.id, term.ja);
     ctx.hint(`${i + 1} / ${unit.terms.length}`);
-    void speak(term);
+    autoSpeak(term);
     const back = h("button", { class: "ghost-button", type: "button", disabled: i === 0 }, "前へ");
     const next = h("button", { class: "primary", type: "button" }, i === unit.terms.length - 1 ? "確認テストへ" : "次へ");
     showPanel(ctx,
@@ -47,10 +48,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
       h("div", { class: "nav-row" }, back, next),
     );
     next.focus({ preventScroll: true });
-    i += await until<number>(signal, (resolve) => {
-      back.addEventListener("click", () => resolve(-1), { once: true });
-      next.addEventListener("click", () => resolve(1), { once: true });
-    });
+    i += await turnPage(signal, back, next);
   }
 
   viewer.setLabel(null);
@@ -61,6 +59,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   }
   const learnedAt = nowIso();
   await db.learned.bulkPut(unit.terms.map((term) => ({ termId: term.id, unitId: unit.id, learnedAt })));
+  ctx.guard(null);
   // 学習の記録を、端末の空きが減ったときなどにブラウザが消さないようにする（ホーム画面に追加した PWA は多くが自動で認められる）
   void navigator.storage?.persist?.().catch(() => false);
 
@@ -75,4 +74,18 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     unit.terms.some((term) => term.nerve) ? h("p", {}, "筋の起始・停止・支配神経・作用は、位置を覚えたころに復習で出ます。") : "",
     h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/" }, "ホームへ"), h("a", { class: "primary", href: "#/review" }, "復習する")),
   );
+}
+
+/** 「前へ」「次へ」を待つ（PC では ← → キーでも）。進む数を返す */
+export function turnPage(signal: AbortSignal, back: HTMLButtonElement, next: HTMLButtonElement): Promise<number> {
+  return until<number>(signal, (resolve) => {
+    const stop = onKeys(signal, (key) => {
+      if (key === "ArrowRight") next.click();
+      else if (key === "ArrowLeft" && !back.disabled) back.click();
+      else return false;
+      return true;
+    });
+    back.addEventListener("click", () => { stop(); resolve(-1); }, { once: true });
+    next.addEventListener("click", () => { stop(); resolve(1); }, { once: true });
+  });
 }
