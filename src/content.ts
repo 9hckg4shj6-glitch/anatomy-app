@@ -54,6 +54,8 @@ export interface Term {
   motion?: Motion;
   /** 局所解剖の語（大腿三角・膝窩・区画など）。部品を持たず、境界と中を通る語を組み合わせて示す */
   region?: Region;
+  /** 語に寄るときにカメラを置く向き（モデル座標。無ければ今の向きのまま）。胸椎のように前からは胸骨・肋骨の陰になる語に書く */
+  from?: [number, number, number];
   /** 以下は読み込み時に付ける */
   system: string;
   unit: string;
@@ -173,6 +175,8 @@ export interface ModelIndex {
   systems: Record<string, { url: string; bytes: number; elements: number; za?: { url: string; bytes: number; elements: number } }>;
   terms: Record<string, { system: string; elements: string[]; center: [number, number, number]; radius: number }>;
   neighbors: Record<string, string[]>;
+  /** 付着面・付着のピンが乗っている、まとめた骨の語（肋骨など）の中の1本ずつの骨（"筋の語ID@origin" → 骨の語ID）。scripts/attach-bones.mjs */
+  attachedBones?: Record<string, string[]>;
   bounds: [[number, number, number], [number, number, number]];
 }
 

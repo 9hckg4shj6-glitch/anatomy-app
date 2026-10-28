@@ -18,6 +18,7 @@ import { Document, NodeIO } from "@gltf-transform/core";
 import { EXTMeshoptCompression, KHRMeshQuantization } from "@gltf-transform/extensions";
 import { dedup, meshopt, prune, quantize, reorder } from "@gltf-transform/functions";
 import { MeshoptEncoder, MeshoptSimplifier } from "meshoptimizer";
+import { attachedBones } from "./attach-bones.mjs";
 import { splitMesh } from "./split-mesh.mjs";
 import { loadHires } from "./hires.mjs";
 import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, relax, simplify, subdivide } from "./surface.mjs";
@@ -404,19 +405,33 @@ async function main() {
   }
   // 4択の選択肢に使う「3Dで近くにある同じ系統の語」。近い順に8つ。
   // 骨の部位は骨と同じ部品なので含めない（部位どうしの近さはアプリがピンの位置から求める）。
+  // 部品の重なる語（肋骨と第6肋骨のように、答えを含む語・含まれる語）は選択肢に出さないので、ここでも除く
+  // （除かないと、まとめた語の近くが1本ずつの語で埋まる）。
   const whole = terms.filter((term) => !term.of);
   for (const term of whole) {
     const c = index.terms[term.id].center;
+    const own = new Set(index.terms[term.id].elements);
     index.neighbors[term.id] = whole
-      .filter((other) => other.id !== term.id && other.system === term.system)
+      .filter((other) => other.id !== term.id && other.system === term.system && !index.terms[other.id].elements.some((id) => own.has(id)))
       .map((other) => [other.id, Math.hypot(...index.terms[other.id].center.map((v, k) => v - c[k]))])
       .sort((a, b) => a[1] - b[1])
       .slice(0, 8)
       .map(([id]) => id);
   }
+  // 付着面・付着のピンが、まとめた骨の語（肋骨など）のどの1本の上にあるか（図鑑の「この骨から起こる筋」）
+  index.attachedBones = attachedBones(index, terms, bpMesh);
   fs.writeFileSync(path.join(OUT, "index.json"), `${JSON.stringify(index)}\n`);
   const total = Object.values(index.systems).reduce((sum, s) => sum + s.bytes + (s.za?.bytes ?? 0), 0);
   console.log(`語 ${terms.length} / 合計 ${(total / 1024 / 1024).toFixed(2)} MB`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+// --attached-bones: GLB は作らず、index.json の attachedBones だけを書き直す（付着面を作り直したとき）
+async function writeAttachedBones() {
+  const file = path.join(OUT, "index.json");
+  const index = JSON.parse(fs.readFileSync(file, "utf8"));
+  index.attachedBones = attachedBones(index, loadTerms().terms, readElements().readMesh);
+  fs.writeFileSync(file, `${JSON.stringify(index)}\n`);
+  console.log(`attachedBones: ${Object.keys(index.attachedBones).length} 件`);
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) await (process.argv.includes("--attached-bones") ? writeAttachedBones() : main());

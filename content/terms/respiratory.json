@@ -416,6 +416,111 @@
           "note": "甲状舌骨膜の後ろの縁の厚い部分で、甲状軟骨の上角の先と舌骨の大角の先を結ぶ。中に小さな麦粒軟骨があることがある。"
         }
       ]
+    },
+    {
+      "id": "resp-segmental-bronchi-upper",
+      "title": "区域気管支（上葉・中葉・舌）",
+      "intro": [
+        "葉気管支から分かれて肺区域に1本ずつ入るのが区域気管支（B）で、それが届く範囲が肺区域（S）。番号は同じで、B1 が入る所が S1。",
+        "上葉は B1〜B3。右の中葉は B4・B5、左には中葉が無く、上葉の下の舌区に B4・B5 が入る。左では B1 と B2 が共通の幹（肺尖後枝 B1+2）で出ることが多い。",
+        "区域気管支は肺の中にあるので、肺を半透明にして示す。"
+      ],
+      "terms": [
+        {
+          "id": "apical-segmental-bronchus", "ja": "肺尖枝", "yomi": "はいせんし", "en": "apical segmental bronchus", "la": "bronchus segmentalis apicalis",
+          "parts": ["apical segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "肺尖へ向かう区域気管支（B1）",
+          "etym": "apical「頂点の」（ラテン語 apex）＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "B1。上葉気管支から上へ向かい、肺尖の区域（S1）に入る。左肺では後上葉枝（B2）と共通の幹で出ることが多く、まとめて肺尖後枝（B1+2）という。"
+        },
+        {
+          "id": "posterior-segmental-bronchus", "ja": "後上葉枝", "yomi": "こうじょうようし", "en": "posterior segmental bronchus", "la": "bronchus segmentalis posterior",
+          "parts": ["posterior segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "上葉の後ろへ行く枝（B2）",
+          "etym": "posterior「後ろの」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "B2。上葉の後ろの区域（S2）に入る。S1・S2 と下葉の S6 は、肺結核の好発部位として知られる。あおむけで誤嚥したものも、後ろへ向かうこの枝に入りやすい。"
+        },
+        {
+          "id": "anterior-segmental-bronchus", "ja": "前上葉枝", "yomi": "ぜんじょうようし", "en": "anterior segmental bronchus", "la": "bronchus segmentalis anterior",
+          "parts": ["anterior segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "上葉の前へ行く枝（B3）",
+          "etym": "anterior「前の」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "B3。上葉気管支から前へ向かい、上葉の前の区域（S3）に入る。右では B1・B2 とともに、上葉気管支から3本に分かれる。"
+        },
+        {
+          "id": "lateral-segmental-bronchus", "ja": "外側中葉枝", "yomi": "がいそくちゅうようし", "en": "lateral segmental bronchus", "la": "bronchus segmentalis lateralis",
+          "parts": ["lateral segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "中葉の外側へ行く枝（右の B4）",
+          "etym": "lateral「外側の」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "右の B4。中葉気管支から外側へ向かい、中葉の外側の区域（S4）に入る。中葉気管支は細く長く、まわりのリンパ節の腫れで押されてつぶれやすい（中葉症候群）。"
+        },
+        {
+          "id": "medial-segmental-bronchus", "ja": "内側中葉枝", "yomi": "ないそくちゅうようし", "en": "medial segmental bronchus", "la": "bronchus segmentalis medialis",
+          "parts": ["medial segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "中葉の内側へ行く枝（右の B5）",
+          "etym": "medial「内側の」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "右の B5。中葉の内側（前内側）の区域（S5）に入る。S5 は心臓の右の縁に接するので、胸部X線で右の心臓の縁がぼやけたら（シルエットサイン）中葉の病変を考える。"
+        },
+        {
+          "id": "superior-lingular-bronchus", "ja": "上舌枝", "yomi": "じょうぜつし", "en": "superior lingular bronchus", "la": "bronchus lingularis superior",
+          "parts": ["superior lingular bronchial tree"], "level": 3, "xray": true,
+          "kanji": "舌区の上へ行く枝（左の B4）",
+          "etym": "superior「上の」＋ lingular「舌の（小舌の）」（ラテン語 lingula「小さな舌」）＋ bronchus「気管支」",
+          "note": "左の B4。左肺の上葉の下の部分（舌区）のうち、上の区域（S4）に入る。左肺には中葉が無く、舌区が右の中葉にあたる。"
+        },
+        {
+          "id": "inferior-lingular-bronchus", "ja": "下舌枝", "yomi": "かぜつし", "en": "inferior lingular bronchus", "la": "bronchus lingularis inferior",
+          "parts": ["inferior lingular bronchial tree"], "level": 3, "xray": true,
+          "kanji": "舌区の下へ行く枝（左の B5）",
+          "etym": "inferior「下の」＋ lingular「舌の（小舌の）」＋ bronchus「気管支」",
+          "note": "左の B5。舌区の下の区域（S5）に入る。S5 は心臓の左の縁に接する。"
+        }
+      ]
+    },
+    {
+      "id": "resp-segmental-bronchi-lower",
+      "title": "区域気管支（下葉）",
+      "intro": [
+        "下葉気管支は、まず後ろへ B6 を出し、その先が肺底へ向かって B7〜B10 に分かれる（肺底枝）。",
+        "右の主気管支は左より太く、まっすぐ下へ向かうので、誤嚥したものは右の下葉に入りやすい（立っていれば肺底の区域、あおむけなら B6 や上葉の B2）。"
+      ],
+      "terms": [
+        {
+          "id": "superior-segmental-bronchus", "ja": "上下葉枝", "yomi": "じょうかようし", "en": "superior segmental bronchus", "la": "bronchus segmentalis superior",
+          "parts": ["superior segmental bronchial tree"], "level": 3, "xray": true, "check": true,
+          "kanji": "下葉の上の部分へ行く枝（B6）",
+          "etym": "superior「上の」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "B6。下葉気管支から最初に後ろへ出て、下葉の上の区域（S6）に入る。あおむけで誤嚥したものが入りやすい。"
+        },
+        {
+          "id": "medial-basal-segmental-bronchus", "ja": "内側肺底枝", "yomi": "ないそくはいていし", "en": "medial basal segmental bronchus", "enAlt": ["cardiac segmental bronchus"], "la": "bronchus segmentalis basalis medialis",
+          "parts": ["medial basal segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "肺底の内側（心臓の側）へ行く枝（B7）",
+          "etym": "medial「内側の」＋ basal「底の」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "B7。肺底の内側（心臓の側）の区域（S7）に入る。右ではっきりしているが、左では前肺底枝（B8）と共通の幹になることが多い（心臓枝ともいう）。"
+        },
+        {
+          "id": "anterior-basal-segmental-bronchus", "ja": "前肺底枝", "yomi": "ぜんはいていし", "en": "anterior basal segmental bronchus", "la": "bronchus segmentalis basalis anterior",
+          "parts": ["anterior basal segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "肺底の前へ行く枝（B8）",
+          "etym": "anterior「前の」＋ basal「底の」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "B8。肺底の前の区域（S8）に入る。横隔膜の前の部分の上にのる。"
+        },
+        {
+          "id": "lateral-basal-segmental-bronchus", "ja": "外側肺底枝", "yomi": "がいそくはいていし", "en": "lateral basal segmental bronchus", "la": "bronchus segmentalis basalis lateralis",
+          "parts": ["lateral basal segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "肺底の外側へ行く枝（B9）",
+          "etym": "lateral「外側の」＋ basal「底の」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "B9。肺底の外側の区域（S9）に入る。胸の横（側胸部）の下のほうの肺にあたる。"
+        },
+        {
+          "id": "posterior-basal-segmental-bronchus", "ja": "後肺底枝", "yomi": "こうはいていし", "en": "posterior basal segmental bronchus", "la": "bronchus segmentalis basalis posterior",
+          "parts": ["posterior basal segmental bronchial tree"], "level": 3, "xray": true,
+          "kanji": "肺底の後ろへ行く枝（B10）",
+          "etym": "posterior「後ろの」＋ basal「底の」＋ segmental「区域の」（ラテン語 segmentum「切り分けたもの」）＋ bronchus「気管支」",
+          "note": "B10。肺底の後ろの区域（S10）に入る。背中の下のほうを占める大きな区域で、寝たきりの人の誤嚥性肺炎は S6 とともにここに多い。"
+        }
+      ]
     }
   ]
 }

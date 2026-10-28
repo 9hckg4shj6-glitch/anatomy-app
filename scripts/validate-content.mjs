@@ -64,6 +64,7 @@ const Term = z.strictObject({
   foils: z.array(z.string()).min(2).optional(),
   motion: Motion.optional(),
   region: Region.optional(),
+  from: vec.optional(),
 }).refine((term) => [term.parts || term.of, term.figure, term.region].filter(Boolean).length === 1, "parts か of（3Dの部品）か figure（基本の用語の図）か region（局所解剖）のどれかが要る")
   .refine((term) => !term.motion || term.nerve, "motion（作用の動き）は筋の語だけに書く")
   .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける");

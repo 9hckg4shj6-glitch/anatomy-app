@@ -745,6 +745,58 @@
           "note": "右葉の後ろ外側の部分で、S6（下）とS7（上）からなる。右肝静脈が前区域との境を走る。"
         }
       ]
+    },
+    {
+      "id": "dig-teeth",
+      "title": "歯を1本ずつ",
+      "intro": [
+        "永久歯は上下左右に8本ずつ（計32本）。正中から順に、中切歯・側切歯・犬歯・第1小臼歯・第2小臼歯・第1大臼歯・第2大臼歯・第3大臼歯（親知らず）。歯科ではこの順に1〜8の番号で呼ぶ（右上の第1大臼歯は「右上6番」）。",
+        "このモデルには第3大臼歯が無い（生えない人も多い）。"
+      ],
+      "terms": [
+        {
+          "id": "central-incisor", "ja": "中切歯", "yomi": "ちゅうせっし", "en": "central incisor", "enAlt": ["central incisor tooth"], "la": "dens incisivus medialis",
+          "parts": ["* central secondary incisor tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
+          "kanji": "中央（正中のとなり）の切歯",
+          "etym": "central「中央の」＋ incisor「切る歯」（ラテン語 incidere「切り込む」）",
+          "note": "正中のすぐ両わきの前歯（1番）。上顎の中切歯は切歯の中で最も大きい。下顎の中切歯は、第1大臼歯とともに最も早く（6〜7歳ごろ）生える永久歯。"
+        },
+        {
+          "id": "lateral-incisor", "ja": "側切歯", "yomi": "そくせっし", "en": "lateral incisor", "enAlt": ["lateral incisor tooth"], "la": "dens incisivus lateralis",
+          "parts": ["* lateral secondary incisor tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
+          "kanji": "中切歯の側（外側）の切歯",
+          "etym": "lateral「外側の」＋ incisor「切る歯」",
+          "note": "中切歯の外側の前歯（2番）。上顎の側切歯は中切歯より小さく、形の変異が多い（小さくとがった形や、生まれつき無いこともある）。"
+        },
+        {
+          "id": "first-premolar", "ja": "第1小臼歯", "yomi": "だいいちしょうきゅうし", "en": "first premolar", "enAlt": ["first premolar tooth"], "la": "dens premolaris primus",
+          "parts": ["* first secondary premolar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
+          "kanji": "犬歯のすぐ後ろの小さな臼歯",
+          "etym": "first「1番目の」＋ premolar（pre-「前の」＋ molar「臼歯」）",
+          "note": "犬歯のすぐ後ろの歯（4番）。かむ面に頬側と舌側の2つの山（咬頭）がある。上顎の第1小臼歯は根が2本に分かれることが多い。歯並びの矯正で抜くことの多い歯。"
+        },
+        {
+          "id": "second-premolar", "ja": "第2小臼歯", "yomi": "だいにしょうきゅうし", "en": "second premolar", "enAlt": ["second premolar tooth"], "la": "dens premolaris secundus",
+          "parts": ["* second secondary premolar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
+          "kanji": "2番目の小さな臼歯",
+          "etym": "second「2番目の」＋ premolar（pre-「前の」＋ molar「臼歯」）",
+          "note": "第1小臼歯の後ろの歯（5番）。乳歯の第2乳臼歯の下から、11〜12歳ごろに生えかわる。根はふつう1本。"
+        },
+        {
+          "id": "first-molar", "ja": "第1大臼歯", "yomi": "だいいちだいきゅうし", "en": "first molar", "enAlt": ["first molar tooth"], "la": "dens molaris primus",
+          "parts": ["* first secondary molar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
+          "kanji": "1番目の大きな臼歯",
+          "etym": "first「1番目の」＋ molar（ラテン語 mola「石臼」）",
+          "note": "6番の歯。6歳ごろ、乳歯の列の後ろに最初に生える永久歯（6歳臼歯）。最も大きく、かむ力の中心になる。根は上顎で3本、下顎で2本。むし歯になりやすい。"
+        },
+        {
+          "id": "second-molar", "ja": "第2大臼歯", "yomi": "だいにだいきゅうし", "en": "second molar", "enAlt": ["second molar tooth"], "la": "dens molaris secundus",
+          "parts": ["* second secondary molar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
+          "kanji": "2番目の大きな臼歯",
+          "etym": "second「2番目の」＋ molar（ラテン語 mola「石臼」）",
+          "note": "7番の歯。12歳ごろに生える（12歳臼歯）。第1大臼歯より少し小さい。根は上顎で3本、下顎で2本（根がくっついていることも多い）。"
+        }
+      ]
     }
   ]
 }

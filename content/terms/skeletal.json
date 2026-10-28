@@ -1067,7 +1067,7 @@
       "terms": [
         {
           "id": "vertebral-body", "ja": "椎体", "yomi": "ついたい", "en": "vertebral body", "la": "corpus vertebrae",
-          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 1,
+          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 1, "from": [-0.4, 0.25, -1],
           "kanji": "椎骨の体（本体）",
           "etym": "vertebra ← ラテン語 vertere「回す」",
           "note": "椎骨の前の円柱形の部分。体重を支える。上下の椎体の間に椎間円板がはさまる。（図は第3腰椎）"
@@ -1116,7 +1116,7 @@
         },
         {
           "id": "foramen-transversarium", "ja": "横突孔", "yomi": "おうとつこう", "en": "foramen transversarium", "enAlt": ["transverse foramen"], "la": "foramen transversarium",
-          "of": "cervical-vertebrae", "parts": ["fifth cervical vertebra"], "level": 2,
+          "of": "cervical-vertebrae", "parts": ["fifth cervical vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
           "kanji": "横突起の孔",
           "note": "頚椎の横突起にある孔。椎骨動脈が（ふつう第6頚椎から上を）通る。頚椎だけにある。（図は第5頚椎）"
         },
@@ -1810,6 +1810,381 @@
           "kanji": "舌骨の小さな角（つの）",
           "etym": "lesser「小さい」＋ horn「角（つの）」",
           "note": "舌骨体と大角の境目から上へ出る小さな突起。茎突舌骨靱帯が付く。"
+        }
+      ]
+    },
+    {
+      "id": "skel-ribs-upper",
+      "title": "肋骨を1本ずつ（真肋と第1〜第7肋骨）",
+      "intro": [
+        "肋骨は左右12対で、上から第1〜第12肋骨と数える。体表で数えるときは、胸骨角（胸骨柄と胸骨体の境の出っぱり）の横に付く第2肋骨から下へ数える（第1肋骨は鎖骨の後ろに隠れて触れにくい）。",
+        "肋骨と肋骨の間が肋間隙で、上の肋骨の番号で呼ぶ（第5肋骨と第6肋骨の間が第5肋間隙）。",
+        "第1〜第7肋骨は、自分の肋軟骨で胸骨に直接付く（真肋）。"
+      ],
+      "terms": [
+        {
+          "id": "true-ribs", "ja": "真肋", "yomi": "しんろく", "en": "true ribs", "enAlt": ["true rib"], "la": "costae verae",
+          "parts": ["first rib", "second rib", "third rib", "fourth rib", "fifth rib", "sixth rib", "seventh rib"], "level": 2,
+          "kanji": "真（ほんとう）の肋骨。胸骨に直接付く",
+          "etym": "true「本当の」＋ ribs「肋骨」（ラテン語 verae「真の」→ 英語 verify）",
+          "note": "第1〜第7肋骨。それぞれ自分の肋軟骨で胸骨に直接付く（肋軟骨と胸骨の間が胸肋関節）。"
+        },
+        {
+          "id": "first-rib", "ja": "第1肋骨", "yomi": "だいいちろっこつ", "en": "first rib", "la": "costa prima",
+          "parts": ["first rib"], "level": 2,
+          "kanji": "上から1番目の肋骨",
+          "etym": "first「1番目の」＋ rib「肋骨」（ラテン語 costa prima）",
+          "note": "真肋。最も短く、幅が広く平たい（面が上と下を向く）。上面に前斜角筋が付く前斜角筋結節があり、その前に鎖骨下静脈、後ろに鎖骨下動脈の通る溝がある。鎖骨の後ろに隠れ、体表からは触れにくい。"
+        },
+        {
+          "id": "second-rib", "ja": "第2肋骨", "yomi": "だいにろっこつ", "en": "second rib", "la": "costa secunda",
+          "parts": ["second rib"], "level": 2,
+          "kanji": "上から2番目の肋骨",
+          "etym": "second「2番目の」＋ rib「肋骨」（ラテン語 costa secunda）",
+          "note": "真肋。胸骨柄と胸骨体の境（胸骨角）の高さで胸骨に付く。体表で肋骨を数えるときは、胸骨角の横の第2肋骨から下へ数える。外面の中ほどに前鋸筋の一部が起こる粗面がある。"
+        },
+        {
+          "id": "third-rib", "ja": "第3肋骨", "yomi": "だいさんろっこつ", "en": "third rib", "la": "costa tertia",
+          "parts": ["third rib"], "level": 3,
+          "kanji": "上から3番目の肋骨",
+          "etym": "third「3番目の」＋ rib「肋骨」（ラテン語 costa tertia）",
+          "note": "真肋。頭・頚・結節・角・体のそろった典型的な肋骨の1つ。小胸筋は第3〜第5肋骨の前面から起こる。"
+        },
+        {
+          "id": "fourth-rib", "ja": "第4肋骨", "yomi": "だいよんろっこつ", "en": "fourth rib", "la": "costa quarta",
+          "parts": ["fourth rib"], "level": 3,
+          "kanji": "上から4番目の肋骨",
+          "etym": "fourth「4番目の」＋ rib「肋骨」（ラテン語 costa quarta）",
+          "note": "真肋。男性の乳頭は、およそ第4肋間隙（第4肋骨と第5肋骨の間）の高さにある。"
+        },
+        {
+          "id": "fifth-rib", "ja": "第5肋骨", "yomi": "だいごろっこつ", "en": "fifth rib", "la": "costa quinta",
+          "parts": ["fifth rib"], "level": 3,
+          "kanji": "上から5番目の肋骨",
+          "etym": "fifth「5番目の」＋ rib「肋骨」（ラテン語 costa quinta）",
+          "note": "真肋。心尖拍動は、ふつう左の第5肋間隙（第5肋骨と第6肋骨の間）で、鎖骨中線のやや内側に触れる。"
+        },
+        {
+          "id": "sixth-rib", "ja": "第6肋骨", "yomi": "だいろくろっこつ", "en": "sixth rib", "la": "costa sexta",
+          "parts": ["sixth rib"], "level": 3,
+          "kanji": "上から6番目の肋骨",
+          "etym": "sixth「6番目の」＋ rib「肋骨」（ラテン語 costa sexta）",
+          "note": "真肋。典型的な肋骨の1つ。肋骨の部位（肋骨頭・肋骨結節・肋骨角・肋骨溝）のレッスンは、この肋骨の上で示している。肋軟骨は胸骨体の下部に付く。"
+        },
+        {
+          "id": "seventh-rib", "ja": "第7肋骨", "yomi": "だいななろっこつ", "en": "seventh rib", "la": "costa septima",
+          "parts": ["seventh rib"], "level": 2,
+          "kanji": "上から7番目の肋骨",
+          "etym": "seventh「7番目の」＋ rib「肋骨」（ラテン語 costa septima）",
+          "note": "最も下の真肋。肋軟骨は胸骨体と剣状突起の境の近くに付く。肋骨は第7肋骨まで下へいくほど長くなり、その下では短くなる。"
+        }
+      ]
+    },
+    {
+      "id": "skel-ribs-lower",
+      "title": "肋骨を1本ずつ（仮肋・浮遊肋と第8〜第12肋骨）",
+      "intro": [
+        "第8〜第12肋骨は胸骨に直接付かない（仮肋）。第8〜第10肋骨の肋軟骨はすぐ上の肋軟骨に付いて胸骨につながり、この連なりが体表で触れる胸郭の下のふち（肋骨弓）になる。",
+        "第11・第12肋骨は前の端が短い軟骨で終わり、どこにも付かない（浮遊肋）。",
+        "背中で数えるときは、いちばん下の第12肋骨から上へ数えることもある（ただし第12肋骨は短く、触れにくい人もいる）。"
+      ],
+      "terms": [
+        {
+          "id": "false-ribs", "ja": "仮肋", "yomi": "かろく", "en": "false ribs", "enAlt": ["false rib"], "la": "costae spuriae",
+          "parts": ["eighth rib", "ninth rib", "tenth rib", "eleventh rib", "twelfth rib"], "level": 2,
+          "kanji": "仮（かり）の肋骨。胸骨に直接は付かない",
+          "etym": "false「偽の」＋ ribs「肋骨」（ラテン語 spuriae「偽の」→ 英語 spurious）",
+          "note": "第8〜第12肋骨。胸骨に直接付かない。第8〜第10肋骨は肋軟骨がすぐ上の肋軟骨に付いて肋骨弓をつくり、第11・第12肋骨はどこにも付かない（浮遊肋）。"
+        },
+        {
+          "id": "floating-ribs", "ja": "浮遊肋", "yomi": "ふゆうろく", "en": "floating ribs", "enAlt": ["floating rib"], "la": "costae fluctuantes",
+          "parts": ["eleventh rib", "twelfth rib"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "浮いて遊ぶ（前の端がどこにも付かない）肋骨",
+          "etym": "floating「浮いている」＋ ribs（ラテン語 fluctuantes「揺れ動く」→ 英語 fluctuate）",
+          "note": "第11・第12肋骨。前の端が側腹部の筋の中で終わり、胸骨にも上の肋軟骨にも付かない。仮肋に含まれる。"
+        },
+        {
+          "id": "eighth-rib", "ja": "第8肋骨", "yomi": "だいはちろっこつ", "en": "eighth rib", "la": "costa octava",
+          "parts": ["eighth rib"], "level": 3,
+          "kanji": "上から8番目の肋骨",
+          "etym": "eighth「8番目の」＋ rib「肋骨」（ラテン語 costa octava）",
+          "note": "最も上の仮肋。肋軟骨はすぐ上の第7肋軟骨に付き、ここから肋骨弓（胸郭の下のふち）が始まる。"
+        },
+        {
+          "id": "ninth-rib", "ja": "第9肋骨", "yomi": "だいきゅうろっこつ", "en": "ninth rib", "la": "costa nona",
+          "parts": ["ninth rib"], "level": 3,
+          "kanji": "上から9番目の肋骨",
+          "etym": "ninth「9番目の」＋ rib「肋骨」（ラテン語 costa nona）",
+          "note": "仮肋。肋軟骨は第8肋軟骨に付き、肋骨弓をつくる。脾臓は左の第9〜第11肋骨の内側に沿ってあるので、この高さの肋骨の骨折で脾臓が傷つくことがある。"
+        },
+        {
+          "id": "tenth-rib", "ja": "第10肋骨", "yomi": "だいじゅうろっこつ", "en": "tenth rib", "la": "costa decima",
+          "parts": ["tenth rib"], "level": 3,
+          "kanji": "上から10番目の肋骨",
+          "etym": "tenth「10番目の」＋ rib「肋骨」（ラテン語 costa decima）",
+          "note": "仮肋。肋骨弓に加わる最も下の肋骨。肋骨弓の最も低い所は第10肋軟骨で、ここを通る水平面（肋骨下平面）はおよそ第3腰椎の高さ。肋骨頭はふつう第10胸椎とだけ関節する。"
+        },
+        {
+          "id": "eleventh-rib", "ja": "第11肋骨", "yomi": "だいじゅういちろっこつ", "en": "eleventh rib", "la": "costa undecima",
+          "parts": ["eleventh rib"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から11番目の肋骨",
+          "etym": "eleventh「11番目の」＋ rib「肋骨」（ラテン語 costa undecima）",
+          "note": "浮遊肋。前の端は側腹部の筋（腹斜筋など）の中で終わる。肋骨頭は第11胸椎とだけ関節し、肋骨頚と肋骨結節ははっきりしない。"
+        },
+        {
+          "id": "twelfth-rib", "ja": "第12肋骨", "yomi": "だいじゅうにろっこつ", "en": "twelfth rib", "la": "costa duodecima",
+          "parts": ["twelfth rib"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から12番目の肋骨",
+          "etym": "twelfth「12番目の」＋ rib「肋骨」（ラテン語 costa duodecima）",
+          "note": "仮肋のうちの浮遊肋。最も短い肋骨（長さは人によって大きく違う）。腎臓の上部の後ろにあり、下縁に腰方形筋が付く。胸膜の下端は内側で第12肋骨より下まで下がるので、背中から腎臓を手術するときに注意する。"
+        }
+      ]
+    },
+    {
+      "id": "skel-vertebrae-upper",
+      "title": "椎骨を1つずつ（第3〜第6頚椎と第1〜第6胸椎）",
+      "intro": [
+        "椎骨は上から頚椎7・胸椎12・腰椎5と、仙骨・尾骨。第1頚椎は環椎、第2頚椎は軸椎、第7頚椎は隆椎と呼ぶ（「脊柱と胸郭」「椎骨の部位」のレッスン）。",
+        "体表で数えるときは、首を前に曲げると首の付け根でいちばん出っぱる隆椎（第7頚椎）の棘突起から下へ数える。",
+        "首や胸の器官の高さは椎骨の番号で覚えるとよい（舌骨は第3頚椎、輪状軟骨は第6頚椎、胸骨角は第4・第5胸椎の間）。"
+      ],
+      "terms": [
+        {
+          "id": "third-cervical-vertebra", "ja": "第3頚椎", "yomi": "だいさんけいつい", "en": "third cervical vertebra", "la": "vertebra cervicalis III",
+          "parts": ["third cervical vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から3番目の頚椎",
+          "etym": "third「3番目の」＋ cervical「首の」（ラテン語 cervix「首」）＋ vertebra「椎骨」",
+          "note": "典型的な頚椎（第3〜第6頚椎）の始まり。椎体が小さく横に長く、横突起に横突孔があり、棘突起の先が2つに分かれる。舌骨はおよそこの高さにある。"
+        },
+        {
+          "id": "fourth-cervical-vertebra", "ja": "第4頚椎", "yomi": "だいよんけいつい", "en": "fourth cervical vertebra", "la": "vertebra cervicalis IV",
+          "parts": ["fourth cervical vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から4番目の頚椎",
+          "etym": "fourth「4番目の」＋ cervical「首の」（ラテン語 cervix「首」）＋ vertebra「椎骨」",
+          "note": "総頚動脈が内頚動脈と外頚動脈に分かれるのは、およそ甲状軟骨の上縁・第4頚椎の高さ。"
+        },
+        {
+          "id": "fifth-cervical-vertebra", "ja": "第5頚椎", "yomi": "だいごけいつい", "en": "fifth cervical vertebra", "la": "vertebra cervicalis V",
+          "parts": ["fifth cervical vertebra"], "level": 3,
+          "kanji": "上から5番目の頚椎",
+          "etym": "fifth「5番目の」＋ cervical「首の」（ラテン語 cervix「首」）＋ vertebra「椎骨」",
+          "note": "甲状軟骨（のどぼとけ）はおよそ第4〜第5頚椎の高さにある。横突孔の部位のレッスンは、この椎骨の上で示している。"
+        },
+        {
+          "id": "sixth-cervical-vertebra", "ja": "第6頚椎", "yomi": "だいろくけいつい", "en": "sixth cervical vertebra", "la": "vertebra cervicalis VI",
+          "parts": ["sixth cervical vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から6番目の頚椎",
+          "etym": "sixth「6番目の」＋ cervical「首の」（ラテン語 cervix「首」）＋ vertebra「椎骨」",
+          "note": "輪状軟骨と同じ高さで、ここで喉頭が気管に、咽頭が食道に移る。横突起の前結節が大きく（頚動脈結節）、総頚動脈をこれに押しつけて止血できる。椎骨動脈はふつう第6頚椎の横突孔から入る。"
+        },
+        {
+          "id": "first-thoracic-vertebra", "ja": "第1胸椎", "yomi": "だいいちきょうつい", "en": "first thoracic vertebra", "la": "vertebra thoracica I",
+          "parts": ["first thoracic vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から1番目の胸椎",
+          "etym": "first「1番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "第1肋骨の肋骨頭がそっくり入る肋骨窩と、第2肋骨のための半分の肋骨窩をもつ。棘突起が長く水平に近く、隆椎のすぐ下でよく触れる。"
+        },
+        {
+          "id": "second-thoracic-vertebra", "ja": "第2胸椎", "yomi": "だいにきょうつい", "en": "second thoracic vertebra", "la": "vertebra thoracica II",
+          "parts": ["second thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から2番目の胸椎",
+          "etym": "second「2番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "胸骨の上端の頚切痕は、およそ第2・第3胸椎の間の高さにある。"
+        },
+        {
+          "id": "third-thoracic-vertebra", "ja": "第3胸椎", "yomi": "だいさんきょうつい", "en": "third thoracic vertebra", "la": "vertebra thoracica III",
+          "parts": ["third thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から3番目の胸椎",
+          "etym": "third「3番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "腕を下ろしたとき、肩甲棘の内側の端（根もと）はおよそ第3胸椎の棘突起の高さにある。"
+        },
+        {
+          "id": "fourth-thoracic-vertebra", "ja": "第4胸椎", "yomi": "だいよんきょうつい", "en": "fourth thoracic vertebra", "la": "vertebra thoracica IV",
+          "parts": ["fourth thoracic vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から4番目の胸椎",
+          "etym": "fourth「4番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "胸骨角はおよそ第4・第5胸椎の間の高さ。この水平面で上縦隔と下縦隔が分かれ、気管が左右の主気管支に分かれ、大動脈弓が始まって終わる。"
+        },
+        {
+          "id": "fifth-thoracic-vertebra", "ja": "第5胸椎", "yomi": "だいごきょうつい", "en": "fifth thoracic vertebra", "la": "vertebra thoracica V",
+          "parts": ["fifth thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から5番目の胸椎",
+          "etym": "fifth「5番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "典型的な胸椎の形。椎体はハートの形で、両わきに上下の肋骨窩、横突起に横突肋骨窩があり、棘突起は長く下へ傾いて下の椎骨に重なる。"
+        },
+        {
+          "id": "sixth-thoracic-vertebra", "ja": "第6胸椎", "yomi": "だいろくきょうつい", "en": "sixth thoracic vertebra", "la": "vertebra thoracica VI",
+          "parts": ["sixth thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から6番目の胸椎",
+          "etym": "sixth「6番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "胸椎の中ほど。前を食道と胸大動脈が下り、そのさらに前に心臓（左心房）がある。"
+        }
+      ]
+    },
+    {
+      "id": "skel-vertebrae-lower",
+      "title": "椎骨を1つずつ（第7〜第12胸椎と第1〜第5腰椎）",
+      "intro": [
+        "横隔膜を通る高さ: 下大静脈は第8胸椎、食道は第10胸椎、大動脈は第12胸椎（8・10・12と覚える）。胸骨と剣状突起の境（剣胸結合）は第9胸椎の高さ。",
+        "腰では、左右の腸骨稜のいちばん高い所を結ぶ線（ヤコビー線）が、第4腰椎の棘突起か第4・第5腰椎の間を通る。脊髄の下端は第1〜第2腰椎の高さなので、腰椎穿刺はこれより下の第3・第4腰椎の間か第4・第5腰椎の間で行う。"
+      ],
+      "terms": [
+        {
+          "id": "seventh-thoracic-vertebra", "ja": "第7胸椎", "yomi": "だいななきょうつい", "en": "seventh thoracic vertebra", "la": "vertebra thoracica VII",
+          "parts": ["seventh thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から7番目の胸椎",
+          "etym": "seventh「7番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "腕を下ろしたとき、肩甲骨の下角はおよそ第7胸椎の棘突起の高さにある。胸の後弯（後ろへの曲がり）の頂点もこのあたり。"
+        },
+        {
+          "id": "eighth-thoracic-vertebra", "ja": "第8胸椎", "yomi": "だいはちきょうつい", "en": "eighth thoracic vertebra", "la": "vertebra thoracica VIII",
+          "parts": ["eighth thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から8番目の胸椎",
+          "etym": "eighth「8番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "横隔膜の大静脈孔（下大静脈が通る）は、およそ第8胸椎の高さにある。"
+        },
+        {
+          "id": "ninth-thoracic-vertebra", "ja": "第9胸椎", "yomi": "だいきゅうきょうつい", "en": "ninth thoracic vertebra", "la": "vertebra thoracica IX",
+          "parts": ["ninth thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から9番目の胸椎",
+          "etym": "ninth「9番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "胸骨体と剣状突起の境（剣胸結合）は、およそ第9胸椎の高さにある。"
+        },
+        {
+          "id": "tenth-thoracic-vertebra", "ja": "第10胸椎", "yomi": "だいじゅうきょうつい", "en": "tenth thoracic vertebra", "la": "vertebra thoracica X",
+          "parts": ["tenth thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から10番目の胸椎",
+          "etym": "tenth「10番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "横隔膜の食道裂孔（食道と迷走神経が通る）は、およそ第10胸椎の高さにある。椎体の肋骨窩は、ふつう第10肋骨のための1つだけ。"
+        },
+        {
+          "id": "eleventh-thoracic-vertebra", "ja": "第11胸椎", "yomi": "だいじゅういちきょうつい", "en": "eleventh thoracic vertebra", "la": "vertebra thoracica XI",
+          "parts": ["eleventh thoracic vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から11番目の胸椎",
+          "etym": "eleventh「11番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "椎体の肋骨窩は第11肋骨のための1つだけで、横突起に横突肋骨窩が無い（浮遊肋は横突起と関節しない）。"
+        },
+        {
+          "id": "twelfth-thoracic-vertebra", "ja": "第12胸椎", "yomi": "だいじゅうにきょうつい", "en": "twelfth thoracic vertebra", "la": "vertebra thoracica XII",
+          "parts": ["twelfth thoracic vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から12番目の胸椎",
+          "etym": "twelfth「12番目の」＋ thoracic「胸の」（ギリシャ語 thorax「胸」）＋ vertebra「椎骨」",
+          "note": "最後の胸椎。第12肋骨とだけ関節し、横突肋骨窩が無い。下関節突起は腰椎の形で、胸椎と腰椎の移り目。横隔膜の大動脈裂孔と腹腔動脈の起始は、およそこの高さ。"
+        },
+        {
+          "id": "first-lumbar-vertebra", "ja": "第1腰椎", "yomi": "だいいちようつい", "en": "first lumbar vertebra", "la": "vertebra lumbalis I",
+          "parts": ["first lumbar vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から1番目の腰椎",
+          "etym": "first「1番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
+          "note": "幽門平面（頚切痕と恥骨結合の上縁の中点を通る水平面）はおよそ第1腰椎の高さで、幽門・膵頭・腎門が並ぶ。成人の脊髄の下端（脊髄円錐）は第1〜第2腰椎の高さ。"
+        },
+        {
+          "id": "second-lumbar-vertebra", "ja": "第2腰椎", "yomi": "だいにようつい", "en": "second lumbar vertebra", "la": "vertebra lumbalis II",
+          "parts": ["second lumbar vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
+          "kanji": "上から2番目の腰椎",
+          "etym": "second「2番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
+          "note": "腎動脈・腎静脈は、およそ第1〜第2腰椎の高さで腎門に出入りする。横隔膜の右脚は第1〜第3腰椎、左脚は第1〜第2腰椎の椎体から起こる。"
+        },
+        {
+          "id": "third-lumbar-vertebra", "ja": "第3腰椎", "yomi": "だいさんようつい", "en": "third lumbar vertebra", "la": "vertebra lumbalis III",
+          "parts": ["third lumbar vertebra"], "level": 3,
+          "kanji": "上から3番目の腰椎",
+          "etym": "third「3番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
+          "note": "横突起が最も長い腰椎。肋骨下平面（肋骨弓の最も低い所＝第10肋軟骨を通る）はおよそ第3腰椎の高さで、下腸間膜動脈はこの高さで腹大動脈から出る。臍はふつう第3・第4腰椎の間の高さ。"
+        },
+        {
+          "id": "fourth-lumbar-vertebra", "ja": "第4腰椎", "yomi": "だいよんようつい", "en": "fourth lumbar vertebra", "la": "vertebra lumbalis IV",
+          "parts": ["fourth lumbar vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から4番目の腰椎",
+          "etym": "fourth「4番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
+          "note": "左右の腸骨稜のいちばん高い所を結ぶ線（ヤコビー線）がこの棘突起の高さを通り、腰椎穿刺の目印になる。腹大動脈はおよそこの高さで左右の総腸骨動脈に分かれる。"
+        },
+        {
+          "id": "fifth-lumbar-vertebra", "ja": "第5腰椎", "yomi": "だいごようつい", "en": "fifth lumbar vertebra", "la": "vertebra lumbalis V",
+          "parts": ["fifth lumbar vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
+          "kanji": "上から5番目の腰椎",
+          "etym": "fifth「5番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
+          "note": "最も大きい腰椎で、椎体は前が厚いくさびの形（腰の前弯をつくる）。仙骨と腰仙連結をつくる。関節突起の間（関節突起間部）が疲労骨折で離れる腰椎分離症は、この椎骨に最も多い。"
+        }
+      ]
+    },
+    {
+      "id": "skel-metacarpals-metatarsals",
+      "title": "中手骨と中足骨を1本ずつ",
+      "intro": [
+        "中手骨・中足骨は、親指（母指・母趾）の側から第1〜第5と数える。指は、手では母指・示指・中指・薬指・小指、足では母趾・第2趾・第3趾・第4趾・小趾。",
+        "それぞれ近位から底・体・頭に分かれ、底が手根骨・足根骨と、頭が指の基節骨と関節する。"
+      ],
+      "terms": [
+        {
+          "id": "first-metacarpal", "ja": "第1中手骨", "yomi": "だいいちちゅうしゅこつ", "en": "first metacarpal", "enAlt": ["first metacarpal bone"], "la": "os metacarpi I",
+          "parts": ["first metacarpal bone"], "level": 2,
+          "kanji": "親指の側から1番目の中手骨",
+          "etym": "first「1番目の」＋ metacarpal（meta-「次の」＋ carpal「手根の」）",
+          "note": "母指の中手骨。最も短く太い。大菱形骨と鞍の形の関節（母指の手根中手関節）をつくり、母指を手のひらの向かいへ回す動き（対立）ができる。底に長母指外転筋が付く。"
+        },
+        {
+          "id": "second-metacarpal", "ja": "第2中手骨", "yomi": "だいにちゅうしゅこつ", "en": "second metacarpal", "enAlt": ["second metacarpal bone"], "la": "os metacarpi II",
+          "parts": ["second metacarpal bone"], "level": 2,
+          "kanji": "親指の側から2番目の中手骨",
+          "etym": "second「2番目の」＋ metacarpal（meta-「次の」＋ carpal「手根の」）",
+          "note": "示指の中手骨で、最も長い。底が小菱形骨にはまり込み（大菱形骨・有頭骨とも接する）、ほとんど動かない。底に橈側手根屈筋（手のひら側）と長橈側手根伸筋（手の甲側）が付く。"
+        },
+        {
+          "id": "third-metacarpal", "ja": "第3中手骨", "yomi": "だいさんちゅうしゅこつ", "en": "third metacarpal", "enAlt": ["third metacarpal bone"], "la": "os metacarpi III",
+          "parts": ["third metacarpal bone"], "level": 3,
+          "kanji": "親指の側から3番目の中手骨",
+          "etym": "third「3番目の」＋ metacarpal（meta-「次の」＋ carpal「手根の」）",
+          "note": "中指の中手骨。底の手の甲側に小さな茎状突起があり、短橈側手根伸筋が付く。有頭骨と関節し、手の中心の軸になる（指の外転・内転は中指を基準にいう）。"
+        },
+        {
+          "id": "fourth-metacarpal", "ja": "第4中手骨", "yomi": "だいよんちゅうしゅこつ", "en": "fourth metacarpal", "enAlt": ["fourth metacarpal bone"], "la": "os metacarpi IV",
+          "parts": ["fourth metacarpal bone"], "level": 3,
+          "kanji": "親指の側から4番目の中手骨",
+          "etym": "fourth「4番目の」＋ metacarpal（meta-「次の」＋ carpal「手根の」）",
+          "note": "薬指の中手骨。細く、有鈎骨（と有頭骨）と関節する。手根中手関節が少し動き、握るときに手のひらが丸くなるのを助ける。"
+        },
+        {
+          "id": "fifth-metacarpal", "ja": "第5中手骨", "yomi": "だいごちゅうしゅこつ", "en": "fifth metacarpal", "enAlt": ["fifth metacarpal bone"], "la": "os metacarpi V",
+          "parts": ["fifth metacarpal bone"], "level": 2,
+          "kanji": "親指の側から5番目の中手骨",
+          "etym": "fifth「5番目の」＋ metacarpal（meta-「次の」＋ carpal「手根の」）",
+          "note": "小指の中手骨。有鈎骨と関節し、底の内側に尺側手根伸筋が付く。こぶしで物をなぐったときに頚が折れやすい（ボクサー骨折）。"
+        },
+        {
+          "id": "first-metatarsal", "ja": "第1中足骨", "yomi": "だいいちちゅうそくこつ", "en": "first metatarsal", "enAlt": ["first metatarsal bone"], "la": "os metatarsi I",
+          "parts": ["first metatarsal bone"], "level": 2,
+          "kanji": "母趾の側から1番目の中足骨",
+          "etym": "first「1番目の」＋ metatarsal（meta-「次の」＋ tarsal「足根の」）",
+          "note": "母趾の中足骨。最も短く太く、体重を最も多く受ける。底の足の裏側に前脛骨筋と長腓骨筋が付く（第1中足骨粗面）。頭の下に2つの種子骨がある。"
+        },
+        {
+          "id": "second-metatarsal", "ja": "第2中足骨", "yomi": "だいにちゅうそくこつ", "en": "second metatarsal", "enAlt": ["second metatarsal bone"], "la": "os metatarsi II",
+          "parts": ["second metatarsal bone"], "level": 2,
+          "kanji": "母趾の側から2番目の中足骨",
+          "etym": "second「2番目の」＋ metatarsal（meta-「次の」＋ tarsal「足根の」）",
+          "note": "最も長い中足骨。底が3つの楔状骨の間に入り込み、ほとんど動かない。長く歩いたり走ったりしてできる疲労骨折（行軍骨折）が多い。"
+        },
+        {
+          "id": "third-metatarsal", "ja": "第3中足骨", "yomi": "だいさんちゅうそくこつ", "en": "third metatarsal", "enAlt": ["third metatarsal bone"], "la": "os metatarsi III",
+          "parts": ["third metatarsal bone"], "level": 3,
+          "kanji": "母趾の側から3番目の中足骨",
+          "etym": "third「3番目の」＋ metatarsal（meta-「次の」＋ tarsal「足根の」）",
+          "note": "外側楔状骨と関節する。第2中足骨と並んで疲労骨折が起こりやすい。"
+        },
+        {
+          "id": "fourth-metatarsal", "ja": "第4中足骨", "yomi": "だいよんちゅうそくこつ", "en": "fourth metatarsal", "enAlt": ["fourth metatarsal bone"], "la": "os metatarsi IV",
+          "parts": ["fourth metatarsal bone"], "level": 3,
+          "kanji": "母趾の側から4番目の中足骨",
+          "etym": "fourth「4番目の」＋ metatarsal（meta-「次の」＋ tarsal「足根の」）",
+          "note": "立方骨と関節する。第4・第5中足骨は立方骨・踵骨とともに足の外側縦アーチをつくる。"
+        },
+        {
+          "id": "fifth-metatarsal", "ja": "第5中足骨", "yomi": "だいごちゅうそくこつ", "en": "fifth metatarsal", "enAlt": ["fifth metatarsal bone"], "la": "os metatarsi V",
+          "parts": ["fifth metatarsal bone"], "level": 2,
+          "kanji": "母趾の側から5番目の中足骨",
+          "etym": "fifth「5番目の」＋ metatarsal（meta-「次の」＋ tarsal「足根の」）",
+          "note": "小趾の中足骨。立方骨と関節し、底の外側に大きく出る第5中足骨粗面に短腓骨筋が付く。足を内側へひねったときに底が折れやすい（下駄骨折）。"
         }
       ]
     }

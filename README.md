@@ -8,7 +8,7 @@ https://9hckg4shj6-glitch.github.io/anatomy-app/
 
 スマホでは開いてから「ホーム画面に追加」（iPhone は Safari の共有ボタンから）すると、アプリとして全画面で開ける。2回目からは通信が無くても動く（3Dモデルと音声は一度開いた分を端末に保存）。学習の記録は端末ごと（進捗の画面でファイルに書き出して、別の端末で読み込める）。
 
-13系統・1,343語（138レッスン）と語根カード138個。レッスン → 復習（FSRS）のほか、範囲を選んだ演習・苦手を解く演習、図鑑（関係する語・断面）、局所解剖（大腿三角・膝窩・腋窩・手根管・区画・頚部の三角・鼡径管・縦隔・頭蓋窩など）、筋の作用を骨の動きで見る機能（下肢と上肢・肩甲骨の筋）がある。
+13系統・1,407語（146レッスン）と語根カード138個。レッスン → 復習（FSRS）のほか、範囲を選んだ演習・苦手を解く演習、図鑑（関係する語・断面）、局所解剖（大腿三角・膝窩・腋窩・手根管・区画・頚部の三角・鼡径管・縦隔・頭蓋窩など）、筋の作用を骨の動きで見る機能（下肢と上肢・肩甲骨の筋）がある。
 
 `main` に push すると GitHub Actions（`.github/workflows/pages.yml`）がテスト → 内容の検査 → 型チェック → ビルドを通して GitHub Pages に公開する。開いている端末には、次にホームに戻ったときに新しい版が入る。
 
@@ -31,6 +31,7 @@ npm run build      # 内容の検査 → 型チェック → dist/ に出力
 ```sh
 npm run build:models     # 約20分（初回は 3.0 の細かい形の重ね合わせで、さらに約5分）
 npm run build:attachments # 筋の起始・停止の面（Z-Anatomy から）
+node scripts/build-models.mjs --attached-bones # 付着面が乗っている1本ずつの骨（付着面を作り直したとき。build:models の最後にも走る）
 node scripts/pins/compute.mjs scripts/pins/rules/attach.mjs --write # Z-Anatomy に無い起始・停止（content/attachments.json）
 npm run build:audio      # macOS の afconvert を使う
 node scripts/joints.mjs  # 基本の用語（運動）で骨を動かす関節（content/joints.json）

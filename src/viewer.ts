@@ -710,6 +710,8 @@ export class AnatomyViewer {
       this.moveTo(target, target.clone().add(direction.multiplyScalar(half / tan)), animate);
       return;
     }
+    // 前からは陰になる語（胸椎など）は、語に書いた向きから見る
+    if (drawn?.from) direction.set(...drawn.from).normalize();
     const target = new THREE.Vector3(...term.center);
     const distance = Math.max(0.18, term.radius * zoom) / tan;
     this.moveTo(target, target.clone().add(direction.multiplyScalar(distance)), animate);

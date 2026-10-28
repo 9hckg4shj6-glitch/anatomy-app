@@ -1,4 +1,6 @@
 // @ts-expect-error 型定義の無いビルド用スクリプト
+import { attachedBones } from "../scripts/attach-bones.mjs";
+// @ts-expect-error 型定義の無いビルド用スクリプト
 import { baseName, resolveParts } from "../scripts/build-models.mjs";
 // @ts-expect-error 型定義の無いビルド用スクリプト
 import { splitMesh } from "../scripts/split-mesh.mjs";
@@ -100,5 +102,34 @@ describe("形を平面で分ける", () => {
     expect(volume(below)).toBeCloseTo(0.25);
     expect(above.bounds[0][1]).toBeCloseTo(0.25);
     expect(below.bounds[1][1]).toBeCloseTo(0.25);
+  });
+});
+
+describe("付着面が乗っている1本ずつの骨", () => {
+  // 第1肋骨（y = 0 の高さ）と第2肋骨（y = 0.03）を、点が3つの小さな形で表す
+  const shape = (y: number) => ({ positions: new Float32Array([0, y, 0, 0.05, y, 0, 0.1, y, 0]), bounds: [[0, y, 0], [0.1, y, 0]] });
+  const shapes: Record<string, ReturnType<typeof shape>> = { FJ1: shape(0), FJ2: shape(0.03) };
+  // 部位の語は親の骨と同じ部品。representative は代表の1本（第2肋骨）の上に置いた部位
+  const index = { terms: {
+    ribs: { elements: ["FJ1", "FJ2"] }, "first-rib": { elements: ["FJ1"] }, "second-rib": { elements: ["FJ2"] },
+    tubercle: { elements: ["FJ1", "FJ2"] }, representative: { elements: ["FJ2"] },
+  } };
+  const terms = [
+    { id: "ribs", system: "skeletal" },
+    { id: "first-rib", system: "skeletal" },
+    { id: "second-rib", system: "skeletal" },
+    { id: "tubercle", system: "skeletal", of: "ribs" },
+    { id: "representative", system: "skeletal", of: "ribs" },
+    { id: "muscle", system: "muscular", nerve: "肋間神経", insertionAt: ["tubercle"], originAt: ["representative"] },
+  ];
+  const run = (spots: object, pins: object = {}) => attachedBones(index, terms, (id: string) => shapes[id], { pins, spots: [spots] });
+
+  it("まとめた骨の語に付いた付着面を、いちばん近い部品の1本ずつの骨にする", () => {
+    expect(run({ muscle: { origin: [["ribs", 0.05, 0.028, 0, 0.008]] } })).toEqual({ "muscle@origin": ["second-rib"] });
+  });
+
+  it("起始・停止の骨の部位のピンも、乗っている1本を求める（代表の1本の上に置いた部位は使わない）", () => {
+    const pins = { tubercle: { at: [[0.09, 0.002, 0]], r: 0.005 }, representative: { at: [[0.09, 0.03, 0]], r: 0.005 } };
+    expect(run({}, pins)).toEqual({ "muscle@insertion": ["first-rib"] });
   });
 });
