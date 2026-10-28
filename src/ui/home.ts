@@ -12,8 +12,28 @@ export async function home(ctx: AppContext): Promise<void> {
   void ctx.viewer.show({ systems: systems.map((s) => s.id).filter((id) => ctx.index.systems[id]), body: true });
   ctx.hint("ドラッグで回転・ピンチで拡大");
 
-  const [learned, due, hintClosed] = await Promise.all([db.learned.toArray(), dueCount(), db.settings.get("installHintClosed")]);
+  const [learned, due, hintClosed, openSetting] = await Promise.all([
+    db.learned.toArray(), dueCount(), db.settings.get("installHintClosed"), db.settings.get(OPEN_FOLDERS),
+  ]);
   const learnedIds = new Set(learned.map((item) => item.termId));
+  // 開いたフォルダーは覚えておき、レッスンから戻ったときも開いたままにする
+  const openIds = new Set(Array.isArray(openSetting?.value) ? (openSetting.value as string[]) : []);
+  const folder = (id: string, title: (Node | string)[], summary: string, allDone: boolean, list: HTMLElement): HTMLElement =>
+    h("details", {
+      class: allDone ? "system folder done" : "system folder",
+      open: openIds.has(id),
+      ontoggle: (event: Event) => {
+        if ((event.currentTarget as HTMLDetailsElement).open) openIds.add(id);
+        else openIds.delete(id);
+        void db.settings.put({ key: OPEN_FOLDERS, value: [...openIds], updatedAt: nowIso() });
+      },
+    },
+      h("summary", {},
+        h("span", { class: "folder-title" }, ...title),
+        h("span", { class: "folder-count" }, summary),
+      ),
+      list,
+    );
   const nextUnit = units.find((unit) => unit.terms.some((term) => !learnedIds.has(term.id)));
 
   ctx.panel.replaceChildren(
@@ -34,8 +54,12 @@ export async function home(ctx: AppContext): Promise<void> {
     ...systems.flatMap((system) => {
       const list = units.filter((unit) => unit.system === system.id);
       if (!list.length) return [];
-      const section = h("section", { class: "system" },
-        h("h2", {}, h("span", { class: "swatch", style: `background:${system.color}` }), system.ja),
+      const total = list.reduce((sum, unit) => sum + unit.terms.length, 0);
+      const done = list.reduce((sum, unit) => sum + unit.terms.filter((term) => learnedIds.has(term.id)).length, 0);
+      const section = folder(system.id,
+        [h("span", { class: "swatch", style: `background:${system.color}` }), system.ja],
+        `${list.length}レッスン・${done ? `${done}/${total}` : total}語`,
+        done === total,
         h("ul", { class: "units" }, ...list.map((unit) => {
           const done = unit.terms.filter((term) => learnedIds.has(term.id)).length;
           return h("li", {},
@@ -46,22 +70,32 @@ export async function home(ctx: AppContext): Promise<void> {
         })),
       );
       // 語根カードは基本の用語のすぐ後に（英語名の意味が分かると、どの系統の語も覚えやすくなる）
-      return system.id === "basics" ? [section, rootSection(learnedIds)] : [section];
+      return system.id === "basics" ? [section, rootSection(learnedIds, folder)] : [section];
     }),
     h("p", { class: "footer-link" }, h("a", { href: "#/credits" }, "出典・クレジット")),
   );
 }
 
-function rootSection(learnedIds: Set<string>): HTMLElement {
-  return h("section", { class: "system" },
-    h("h2", {}, h("span", { class: "swatch root-swatch" }), "語根カード", h("a", { class: "more-link", href: "#/roots" }, "一覧")),
-    h("ul", { class: "units" }, ...rootUnits.map((unit) => {
+const OPEN_FOLDERS = "homeOpenFolders";
+
+type Folder = (id: string, title: (Node | string)[], summary: string, allDone: boolean, list: HTMLElement) => HTMLElement;
+
+function rootSection(learnedIds: Set<string>, folder: Folder): HTMLElement {
+  const total = rootUnits.reduce((sum, unit) => sum + unit.roots.length, 0);
+  const done = rootUnits.reduce((sum, unit) => sum + unit.roots.filter((root) => learnedIds.has(rootKey(root))).length, 0);
+  return folder("roots",
+    [h("span", { class: "swatch root-swatch" }), "語根カード"],
+    `${rootUnits.length}レッスン・${done ? `${done}/${total}` : total}個`,
+    done === total,
+    h("ul", { class: "units" },
+      h("li", {}, h("a", { class: "unit unit-all", href: "#/roots" }, h("span", { class: "unit-title" }, "語根の一覧"), h("span", { class: "unit-count" }, "→"))),
+      ...rootUnits.map((unit) => {
       const done = unit.roots.filter((root) => learnedIds.has(rootKey(root))).length;
       return h("li", {},
         h("a", { href: `#/roots/${unit.id}`, class: done === unit.roots.length ? "unit done" : "unit" },
           h("span", { class: "unit-title" }, unit.title.replace("語根：", "")),
           h("span", { class: "unit-count" }, done ? `${done}/${unit.roots.length}` : `${unit.roots.length}個`),
         ));
-    })),
+      })),
   );
 }

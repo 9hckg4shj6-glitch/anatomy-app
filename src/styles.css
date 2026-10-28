@@ -123,12 +123,27 @@ button { font: inherit; color: inherit; }
 .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgb(0 0 0 / 0.1); flex: none; }
 .units { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .unit {
-  display: flex; justify-content: space-between; align-items: center; padding: 14px 16px;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px;
   border-radius: 12px; background: var(--surface); border: 1px solid var(--line); color: var(--ink); text-decoration: none;
 }
 .unit.done { border-color: color-mix(in srgb, var(--ok) 40%, var(--line)); }
 .unit.done .unit-count::before { content: "✓ "; color: var(--ok); }
-.unit-count { color: var(--muted); font-size: 14px; }
+.unit-count { color: var(--muted); font-size: 14px; white-space: nowrap; }
+/* ホームの系統は閉じたフォルダーにして、押したものだけ開く */
+.folder { margin-top: 10px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.folder:first-of-type { margin-top: 18px; }
+.folder summary {
+  display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 12px 16px;
+  list-style: none; cursor: pointer; font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent;
+}
+.folder summary::-webkit-details-marker { display: none; }
+.folder summary::before { content: "▸"; color: var(--muted); font-size: 18px; transition: transform 0.15s; }
+.folder[open] summary::before { transform: rotate(90deg); }
+.folder-title { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+.folder-count { color: var(--muted); font-size: 13px; font-weight: 400; white-space: nowrap; }
+.folder.done .folder-count::before { content: "✓ "; color: var(--ok); }
+.folder .units { padding: 0 10px 10px; }
+.unit-all .unit-title { color: var(--accent); }
 .footer-link { margin-top: 28px; font-size: 14px; }
 .install { display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; padding: 12px 14px; border-radius: 12px; border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--line)); font-size: 14px; line-height: 1.6; }
 .install p { margin: 0; flex: 1; }
@@ -224,7 +239,6 @@ button { font: inherit; color: inherit; }
 .root-chips { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-top: 8px; font-size: 15px; }
 .root-chips .gloss-box { flex-basis: 100%; margin-top: 4px; }
 .root-swatch { background: linear-gradient(135deg, var(--accent), #8a7f6d); }
-.more-link { margin-left: auto; font-size: 14px; font-weight: 400; }
 
 /* 図鑑の断面 */
 .section-box { margin-bottom: 12px; padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
