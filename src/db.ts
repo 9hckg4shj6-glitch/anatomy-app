@@ -5,7 +5,7 @@ import Dexie, { type EntityTable } from "dexie";
  * 筋にはさらに attach＝起始・停止, nerve＝支配神経, action＝作用 が付く。
  * 語根カード（termId が "root:…"）は rootMeaning＝語根→意味, rootForm＝意味→語根。
  */
-export type Facet = "locate" | "point" | "ja2en" | "en2ja" | "attach" | "nerve" | "action" | "rootMeaning" | "rootForm";
+export type Facet = "locate" | "point" | "ja2en" | "en2ja" | "attach" | "nerve" | "action" | "passage" | "rootMeaning" | "rootForm";
 
 export interface StoredSchedule {
   /** `${termId}:${facet}` */

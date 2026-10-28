@@ -2,7 +2,8 @@
 // 座標は scripts/build-models.mjs と同じモデル座標（m・Y上・前が +z、本人の右が -x）。
 // 部品は BodyParts3D のほか、Z-Anatomy の形（肺・甲状腺など "za:…"）も骨に合わせた位置で読む（loadDb({ za: true })）。
 import sharp from "sharp";
-import { loadTerms, readElements, resolveParts } from "../build-models.mjs";
+import { loadTerms, parseObj, readElements, resolveParts } from "../build-models.mjs";
+import { loadHires } from "../hires.mjs";
 import { loadZa } from "../za/index.mjs";
 
 let cache = null;
@@ -15,7 +16,10 @@ export async function loadDb({ za: withZa = false } = {}) {
   const withParts = terms.filter((t) => t.parts);
   const { resolved } = resolveParts(withParts, elementNames, conceptElements, za?.names);
   const names = new Map([...elementNames, ...(za?.names ?? [])]);
-  const mesh = (id) => (za?.names.has(id) ? za.mesh(id) : readMesh(id));
+  // HIRES=1 なら、アプリの表示と同じ BodyParts3D 3.0 の細かい形（scripts/hires.mjs）で描く・当てる。
+  // 頭蓋底の孔のように 4.0 の形では埋もれている所を探すとき用（3.0 に無い部品は 4.0 のまま）
+  const hires = process.env.HIRES ? loadHires({ parseObj, objDir, readWhole }) : () => null;
+  const mesh = (id) => (za?.names.has(id) ? za.mesh(id) : hires(id) ?? readMesh(id));
   cache = { objDir, elementNames: names, conceptElements, terms, systems, resolved, mesh, za: !!za };
   return cache;
 }

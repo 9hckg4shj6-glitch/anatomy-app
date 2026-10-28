@@ -46,6 +46,8 @@ export interface Term {
   insertionAt?: string[];
   nerve?: string;
   action?: string;
+  /** 孔・管・溝・裂を通るもの（入るもの）。「通るもの」の問い方の答えと選択肢になる */
+  passes?: string;
   /** 基本の用語（方向・面・運動）の3Dの図。部品を持たず、骨格の上に矢印・面を描いたり骨を動かしたりして示す */
   figure?: Figure;
   /** 図から名前を答える問題で選択肢に出してよい語（「近位」の図に「上」を出すと、どちらも正しくなるため） */

@@ -79,6 +79,15 @@ describe("筋の起始・停止・支配神経・作用", () => {
   });
 });
 
+describe("孔・溝を通るもの", () => {
+  it("passes のある語だけに付き、位置→名前を覚えてから出す", async () => {
+    const { facetsFor } = await import("../src/study");
+    expect(facetsFor({ passes: "下顎神経" }, false)).toEqual(["locate", "point", "ja2en", "en2ja"]);
+    expect(facetsFor({ passes: "下顎神経" }, true)).toEqual(["locate", "point", "ja2en", "en2ja", "passage"]);
+    expect(facetsFor({ passes: "脊髄", region: {} as never }, true)).toEqual(["locate", "ja2en", "en2ja", "passage"]);
+  });
+});
+
 describe("隠れた部位", () => {
   it("xray の語には「名前→位置」を出さない", async () => {
     const { facetsFor } = await import("../src/study");

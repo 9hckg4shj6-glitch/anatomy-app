@@ -60,6 +60,7 @@ const Term = z.strictObject({
   insertionAt: z.array(z.string()).min(1).optional(),
   nerve: z.string().min(2).optional(),
   action: z.string().min(2).optional(),
+  passes: z.string().min(2).optional(),
   figure: Figure.optional(),
   foils: z.array(z.string()).min(2).optional(),
   motion: Motion.optional(),

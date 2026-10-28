@@ -13,6 +13,7 @@ const KINDS: { label: string; facets: Facet[] }[] = [
   { label: "日本語→英語", facets: ["ja2en"] },
   { label: "英語→日本語", facets: ["en2ja"] },
   { label: "筋の起始・停止・神経・作用", facets: MUSCLE_FACETS },
+  { label: "孔・溝を通るもの", facets: ["passage"] },
 ];
 const COUNTS = [10, 20, 40];
 

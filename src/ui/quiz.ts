@@ -51,6 +51,13 @@ export function attachMarks(term: Term): [string, string][] {
  * 「環椎」の問題に「頚椎」のような、答えを含む語や答えに含まれる語は出さない（どちらも正しくなる）。
  */
 function candidates(ctx: AppContext, term: Term, needs?: (other: Term) => boolean, byFigure = false): [string[], string[]] {
+  if (needs && term.passes) {
+    // 通るもの: 通るものを書いた語（骨の部位も骨の語も）から、3Dで近い順に
+    const pool = terms.filter((other) => other.id !== term.id && needs(other)).map((other) => other.id);
+    const center = placeOf(ctx, term.id);
+    pool.sort((a, b) => Math.hypot(...placeOf(ctx, a).map((v, k) => v - center[k])) - Math.hypot(...placeOf(ctx, b).map((v, k) => v - center[k])));
+    return [pool.slice(0, 8), pool];
+  }
   if (isDrawn(term)) {
     if (byFigure && term.foils) return [term.foils, term.foils];
     return [terms.filter((other) => other.unit === term.unit).map((other) => other.id), terms.filter((other) => other.system === term.system).map((other) => other.id)];
@@ -73,6 +80,13 @@ function candidates(ctx: AppContext, term: Term, needs?: (other: Term) => boolea
     (ctx.index.neighbors[term.id] ?? []).filter((id) => fits(termById.get(id)!)),
     terms.filter(fits).map((other) => other.id),
   ];
+}
+
+/** 語の位置（骨の部位はピンの中心、ほかは部品の中心）。右側（x < 0）にそろえる */
+function placeOf(ctx: AppContext, id: string): Vec3 {
+  const pin = pins[id];
+  const c = pin ? ([0, 1, 2].map((k) => pin.at.reduce((sum, p) => sum + p[k], 0) / pin.at.length) as Vec3) : ((ctx.index.terms[id]?.center ?? [0, 0, 0]) as Vec3);
+  return [-Math.abs(c[0]), c[1], c[2]];
 }
 
 /** 1問出して、答え合わせと記録まで行う。「次へ」を押したら終わる。 */
@@ -180,6 +194,20 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
         h("p", { class: "prompt" }, muscleQuestion[facet]),
       );
       const picked = await chooseOne(ctx, header, prompt, choicesOf((id) => text(termById.get(id)!), (other) => !!other.nerve), (id) => text(termById.get(id)!), undefined, "long");
+      outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
+      break;
+    }
+    case "passage": {
+      // 孔・溝を光らせて、名前と一緒に問う。選択肢は近くの孔・溝を通るもの
+      viewer.highlight([term.id], { isolate });
+      viewer.focus(term.id, 3.4);
+      ctx.hint("");
+      const prompt = h("div", {},
+        h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi)),
+        h("p", { class: "prompt" }, "ここを通る（入る）ものは？"),
+      );
+      const text = (id: string) => termById.get(id)!.passes ?? "";
+      const picked = await chooseOne(ctx, header, prompt, choicesOf(text, (other) => !!other.passes), text, undefined, "long");
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
       break;
     }

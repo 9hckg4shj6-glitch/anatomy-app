@@ -566,7 +566,8 @@
           "of": "scapula", "level": 3,
           "kanji": "切痕＝切れこみ",
           "etym": "notch「切れこみ」、la. incisura ← incidere「切りこむ」",
-          "note": "肩甲骨の上縁で、烏口突起の根もとの内側にある切れこみ。大きさと形は人によって違い、骨で閉じて孔になっていることもある。ふつうは上肩甲横靱帯が橋をかけて孔になり、その中を肩甲上神経が通る。"
+          "note": "肩甲骨の上縁で、烏口突起の根もとの内側にある切れこみ。大きさと形は人によって違い、骨で閉じて孔になっていることもある。ふつうは上肩甲横靱帯が橋をかけて孔になり、その中を肩甲上神経が通る。",
+          "passes": "肩甲上神経（肩甲上動脈は上肩甲横靱帯の上を通る）"
         }
       ]
     },
@@ -612,7 +613,8 @@
           "of": "humerus", "level": 2,
           "kanji": "結節の間の溝",
           "etym": "inter-「間」＋ tubercular「結節の」、sulcus ← ラテン語「溝」",
-          "note": "大結節と小結節の間を縦に走る溝。上腕二頭筋の長頭の腱が通る。"
+          "note": "大結節と小結節の間を縦に走る溝。上腕二頭筋の長頭の腱が通る。",
+          "passes": "上腕二頭筋の長頭の腱"
         },
         {
           "id": "crest-of-greater-tubercle", "ja": "大結節稜", "yomi": "だいけっせつりょう", "en": "crest of greater tubercle", "la": "crista tuberculi majoris",
@@ -638,7 +640,8 @@
           "id": "radial-groove", "ja": "橈骨神経溝", "yomi": "とうこつしんけいこう", "en": "radial groove", "enAlt": ["groove for radial nerve", "spiral groove"], "la": "sulcus nervi radialis",
           "of": "humerus", "level": 2,
           "kanji": "橈骨神経の通る溝",
-          "note": "上腕骨の後面をらせん状に斜めに下る浅い溝。橈骨神経が通るので、上腕骨の中ほどの骨折で傷つきやすい。"
+          "note": "上腕骨の後面をらせん状に斜めに下る浅い溝。橈骨神経が通るので、上腕骨の中ほどの骨折で傷つきやすい。",
+          "passes": "橈骨神経・上腕深動脈"
         },
         {
           "id": "medial-epicondyle-of-humerus", "ja": "内側上顆（上腕骨）", "yomi": "ないそくじょうか", "en": "medial epicondyle of humerus", "enAlt": ["medial epicondyle"], "la": "epicondylus medialis humeri",
@@ -682,7 +685,8 @@
           "id": "groove-for-ulnar-nerve", "ja": "尺骨神経溝", "yomi": "しゃっこつしんけいこう", "en": "groove for ulnar nerve", "enAlt": ["ulnar groove"], "la": "sulcus nervi ulnaris",
           "of": "humerus", "level": 2,
           "kanji": "尺骨神経の通る溝",
-          "note": "内側上顆の後ろの溝。尺骨神経が皮膚のすぐ下を通り、肘をぶつけると小指側にしびれが走る。"
+          "note": "内側上顆の後ろの溝。尺骨神経が皮膚のすぐ下を通り、肘をぶつけると小指側にしびれが走る。",
+          "passes": "尺骨神経"
         }
       ]
     },
@@ -840,7 +844,8 @@
           "of": "hip-bone", "level": 1,
           "kanji": "膜で閉ざされた孔",
           "etym": "obturator ← ラテン語 obturare「ふさぐ」",
-          "note": "恥骨と坐骨に囲まれた大きな孔。ほとんどが閉鎖膜でふさがれ、上のすきま（閉鎖管）を閉鎖神経と血管が通る。"
+          "note": "恥骨と坐骨に囲まれた大きな孔。ほとんどが閉鎖膜でふさがれ、上のすきま（閉鎖管）を閉鎖神経と血管が通る。",
+          "passes": "閉鎖神経・閉鎖動静脈（閉鎖膜の上のすきま＝閉鎖管を通る）"
         },
         {
           "id": "acetabulum", "ja": "寛骨臼", "yomi": "かんこつきゅう", "en": "acetabulum", "la": "acetabulum",
@@ -1116,7 +1121,8 @@
           "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 1,
           "kanji": "椎骨の孔",
           "etym": "foramen ← ラテン語 forare「穴をあける」",
-          "note": "椎体と椎弓に囲まれた孔。胸椎では小指がやっと通るほど。上下につながって脊柱管となり、脊髄が通る（椎孔・椎間孔・脊柱管は名前が似ているので区別する）。（図は第3腰椎）"
+          "note": "椎体と椎弓に囲まれた孔。胸椎では小指がやっと通るほど。上下につながって脊柱管となり、脊髄が通る（椎孔・椎間孔・脊柱管は名前が似ているので区別する）。（図は第3腰椎）",
+          "passes": "脊髄"
         },
         {
           "id": "spinous-process", "ja": "棘突起", "yomi": "きょくとっき", "en": "spinous process", "la": "processus spinosus",
@@ -1145,13 +1151,15 @@
           "id": "intervertebral-foramen", "ja": "椎間孔", "yomi": "ついかんこう", "en": "intervertebral foramen", "la": "foramen intervertebrale",
           "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra", "fourth lumbar vertebra"], "level": 2,
           "kanji": "椎骨の間の孔",
-          "note": "上下の椎骨の間に横に開く孔。上の椎骨の下椎切痕と下の椎骨の上椎切痕でできる。脊髄神経がここから出ていく。椎間板ヘルニアで神経が圧迫される所。（図は第3・第4腰椎の間）"
+          "note": "上下の椎骨の間に横に開く孔。上の椎骨の下椎切痕と下の椎骨の上椎切痕でできる。脊髄神経がここから出ていく。椎間板ヘルニアで神経が圧迫される所。（図は第3・第4腰椎の間）",
+          "passes": "脊髄神経"
         },
         {
           "id": "foramen-transversarium", "ja": "横突孔", "yomi": "おうとつこう", "en": "foramen transversarium", "enAlt": ["transverse foramen"], "la": "foramen transversarium",
           "of": "cervical-vertebrae", "parts": ["fifth cervical vertebra"], "level": 2, "from": [-0.4, 0.25, -1],
           "kanji": "横突起の孔",
-          "note": "頚椎の横突起にある孔。椎骨動脈が（ふつう第6頚椎から上を）通る。頚椎だけにある。（図は第5頚椎）"
+          "note": "頚椎の横突起にある孔。椎骨動脈が（ふつう第6頚椎から上を）通る。頚椎だけにある。（図は第5頚椎）",
+          "passes": "椎骨動脈・椎骨静脈"
         },
         {
           "id": "dens-of-axis", "ja": "歯突起", "yomi": "しとっき", "en": "dens", "enAlt": ["odontoid process", "dens of axis"], "la": "dens axis",
@@ -1178,13 +1186,15 @@
           "id": "anterior-sacral-foramina", "ja": "前仙骨孔", "yomi": "ぜんせんこつこう", "en": "anterior sacral foramina", "enAlt": ["pelvic sacral foramina"], "la": "foramina sacralia anteriora",
           "of": "sacrum", "level": 3,
           "kanji": "仙骨の前の孔",
-          "note": "仙骨の前面に左右4対並ぶ孔。仙骨神経の前枝が出る。"
+          "note": "仙骨の前面に左右4対並ぶ孔。仙骨神経の前枝が出る。",
+          "passes": "仙骨神経の前枝"
         },
         {
           "id": "posterior-sacral-foramina", "ja": "後仙骨孔", "yomi": "こうせんこつこう", "en": "posterior sacral foramina", "enAlt": ["dorsal sacral foramina"], "la": "foramina sacralia posteriora",
           "of": "sacrum", "level": 3,
           "kanji": "仙骨の後ろの孔",
-          "note": "仙骨の後面に左右4対並ぶ孔。仙骨神経の後枝が出る。"
+          "note": "仙骨の後面に左右4対並ぶ孔。仙骨神経の後枝が出る。",
+          "passes": "仙骨神経の後枝"
         },
         {
           "id": "median-sacral-crest", "ja": "正中仙骨稜", "yomi": "せいちゅうせんこつりょう", "en": "median sacral crest", "la": "crista sacralis mediana",
@@ -1197,7 +1207,8 @@
           "of": "sacrum", "level": 3,
           "kanji": "裂けたような孔",
           "etym": "hiatus ← ラテン語「すきま・開いた口」",
-          "note": "仙骨の後面の下端の開口部。仙骨管の出口で、仙骨硬膜外麻酔（仙骨麻酔）の針を入れる所。"
+          "note": "仙骨の後面の下端の開口部。仙骨管の出口で、仙骨硬膜外麻酔（仙骨麻酔）の針を入れる所。",
+          "passes": "第5仙骨神経・尾骨神経・終糸"
         }
       ]
     },
@@ -1249,7 +1260,8 @@
           "id": "costal-groove", "ja": "肋骨溝", "yomi": "ろっこつこう", "en": "costal groove", "la": "sulcus costae",
           "of": "ribs", "parts": ["sixth rib"], "level": 3,
           "kanji": "肋骨の溝",
-          "note": "肋骨の下の縁の内面の溝。肋間動脈・静脈・神経が通るので、胸に針を刺すときは肋骨の上の縁に沿って入れる。（図は第6肋骨）"
+          "note": "肋骨の下の縁の内面の溝。肋間動脈・静脈・神経が通るので、胸に針を刺すときは肋骨の上の縁に沿って入れる。（図は第6肋骨）",
+          "passes": "肋間神経・肋間動静脈"
         }
       ]
     },
@@ -1299,7 +1311,8 @@
           "of": "occipital-bone", "level": 1,
           "kanji": "後頭骨の大きな孔",
           "etym": "foramen magnum ← ラテン語「大きな孔」",
-          "note": "後頭骨の底の大きな孔。延髄が脊髄へ続く所・椎骨動脈・副神経の脊髄根が通る。ヒトでは耳眼平面に対してほぼ水平で、頭が脊柱の真上にのる（直立二足歩行の特徴）。"
+          "note": "後頭骨の底の大きな孔。延髄が脊髄へ続く所・椎骨動脈・副神経の脊髄根が通る。ヒトでは耳眼平面に対してほぼ水平で、頭が脊柱の真上にのる（直立二足歩行の特徴）。",
+          "passes": "延髄（と脊髄の移行部）・椎骨動脈・副神経の脊髄根"
         },
         {
           "id": "occipital-condyle", "ja": "後頭顆", "yomi": "こうとうか", "en": "occipital condyle", "la": "condylus occipitalis",
@@ -1344,13 +1357,15 @@
           "id": "supra-orbital-foramen", "ja": "眼窩上孔", "yomi": "がんかじょうこう", "en": "supra-orbital foramen", "enAlt": ["supraorbital foramen", "supra-orbital notch"], "la": "foramen supraorbitale",
           "of": "frontal-bone", "level": 2,
           "kanji": "眼窩の上の孔",
-          "note": "眼窩の上の縁の、内側寄りにある孔（切れこみのことも多い＝眼窩上切痕）。眼窩上神経が出る。眼窩下孔・オトガイ孔とほぼ縦一列に並ぶ（三叉神経の3つの枝の出口）。"
+          "note": "眼窩の上の縁の、内側寄りにある孔（切れこみのことも多い＝眼窩上切痕）。眼窩上神経が出る。眼窩下孔・オトガイ孔とほぼ縦一列に並ぶ（三叉神経の3つの枝の出口）。",
+          "passes": "眼窩上神経・眼窩上動静脈"
         },
         {
           "id": "infra-orbital-foramen", "ja": "眼窩下孔", "yomi": "がんかかこう", "en": "infra-orbital foramen", "enAlt": ["infraorbital foramen"], "la": "foramen infraorbitale",
           "of": "maxilla", "level": 2,
           "kanji": "眼窩の下の孔",
-          "note": "眼窩の下の縁のすぐ下にある上顎骨の孔。眼窩下神経が出る。眼窩上孔・オトガイ孔とほぼ縦一列に並ぶ。"
+          "note": "眼窩の下の縁のすぐ下にある上顎骨の孔。眼窩下神経が出る。眼窩上孔・オトガイ孔とほぼ縦一列に並ぶ。",
+          "passes": "眼窩下神経・眼窩下動静脈"
         },
         {
           "id": "orbit", "ja": "眼窩", "yomi": "がんか", "en": "orbit", "la": "orbita",
@@ -1405,7 +1420,8 @@
           "of": "ethmoid-bone", "level": 2,
           "kanji": "篩（ふるい）のように孔の多い板",
           "etym": "cribriform ← ラテン語 cribrum「ふるい」＋ -form",
-          "note": "篩骨の上の面の水平な板。たくさんの小さな孔を嗅神経が通る。"
+          "note": "篩骨の上の面の水平な板。たくさんの小さな孔を嗅神経が通る。",
+          "passes": "嗅神経（嗅糸）"
         },
         {
           "id": "head-of-mandible", "ja": "下顎頭", "yomi": "かがくとう", "en": "head of mandible", "enAlt": ["mandibular condyle", "condyle of mandible"], "la": "caput mandibulae",
@@ -1455,13 +1471,15 @@
           "id": "mental-foramen", "ja": "オトガイ孔", "yomi": "おとがいこう", "en": "mental foramen", "la": "foramen mentale",
           "of": "mandible", "level": 2,
           "kanji": "オトガイ（あご先）の孔",
-          "note": "下顎体の外面、第2小臼歯の下あたりにある孔。オトガイ神経が出る。孔は後ろを向いて開くことが多い（細い針金を入れてもすぐ行き止まる）。眼窩上孔・眼窩下孔とほぼ縦一列に並ぶ。"
+          "note": "下顎体の外面、第2小臼歯の下あたりにある孔。オトガイ神経が出る。孔は後ろを向いて開くことが多い（細い針金を入れてもすぐ行き止まる）。眼窩上孔・眼窩下孔とほぼ縦一列に並ぶ。",
+          "passes": "オトガイ神経・オトガイ動静脈"
         },
         {
           "id": "mandibular-foramen", "ja": "下顎孔", "yomi": "かがくこう", "en": "mandibular foramen", "la": "foramen mandibulae",
           "of": "mandible", "level": 3,
           "kanji": "下顎の孔",
-          "note": "下顎枝の内面の中ほどにある孔。下歯槽神経と血管が入る（下の歯の麻酔をする所）。"
+          "note": "下顎枝の内面の中ほどにある孔。下歯槽神経と血管が入る（下の歯の麻酔をする所）。",
+          "passes": "下歯槽神経・下歯槽動静脈"
         }
       ]
     },
@@ -1672,7 +1690,8 @@
           "of": "cuboid", "level": 3,
           "kanji": "長腓骨筋の腱が通る溝",
           "etym": "groove「溝」＋ tendon「腱」＋ fibularis longus「長腓骨筋」",
-          "note": "立方骨の下面の斜めの溝。長腓骨筋の腱はここで向きを変えて足の裏を横切り、内側楔状骨と第1中足骨へ行く。"
+          "note": "立方骨の下面の斜めの溝。長腓骨筋の腱はここで向きを変えて足の裏を横切り、内側楔状骨と第1中足骨へ行く。",
+          "passes": "長腓骨筋の腱"
         },
         {
           "id": "tuberosity-of-first-metatarsal", "ja": "第1中足骨粗面", "yomi": "だいいちちゅうそくこつそめん", "en": "tuberosity of first metatarsal bone", "la": "tuberositas ossis metatarsi primi",
@@ -1693,14 +1712,16 @@
           "of": "tibia", "level": 3,
           "kanji": "くるぶし（内果）の後ろの溝",
           "etym": "malleolar「くるぶしの」（ラテン語 malleolus＝小さな槌）＋ groove「溝」",
-          "note": "内果の後面の浅い溝。後脛骨筋と長趾屈筋の腱がここを回って足の裏へ向きを変える（滑車のはたらき）。"
+          "note": "内果の後面の浅い溝。後脛骨筋と長趾屈筋の腱がここを回って足の裏へ向きを変える（滑車のはたらき）。",
+          "passes": "後脛骨筋・長趾屈筋の腱"
         },
         {
           "id": "malleolar-groove-of-fibula", "ja": "果溝（腓骨）", "yomi": "かこう", "en": "malleolar groove of fibula", "la": "sulcus malleolaris fibulae",
           "of": "fibula", "level": 3,
           "kanji": "くるぶし（外果）の後ろの溝",
           "etym": "malleolar「くるぶしの」＋ groove「溝」",
-          "note": "外果の後面の溝。長腓骨筋と短腓骨筋の腱がここを回って足の外側へ向きを変える。腱を押さえる上腓骨筋支帯が切れると、腱が外果の前へ外れる。"
+          "note": "外果の後面の溝。長腓骨筋と短腓骨筋の腱がここを回って足の外側へ向きを変える。腱を押さえる上腓骨筋支帯が切れると、腱が外果の前へ外れる。",
+          "passes": "長腓骨筋・短腓骨筋の腱"
         }
       ]
     },
@@ -2397,7 +2418,8 @@
           "id": "groove-for-subclavian-artery", "ja": "鎖骨下動脈溝", "yomi": "さこつかどうみゃくこう", "en": "groove for subclavian artery", "la": "sulcus arteriae subclaviae",
           "of": "first-rib", "level": 3,
           "kanji": "鎖骨下動脈の溝",
-          "note": "第1肋骨の上の面で、前斜角筋結節のすぐ後ろを斜めに横切る浅い溝。前斜角筋と中斜角筋の間（斜角筋隙）を抜けた鎖骨下動脈がのる。"
+          "note": "第1肋骨の上の面で、前斜角筋結節のすぐ後ろを斜めに横切る浅い溝。前斜角筋と中斜角筋の間（斜角筋隙）を抜けた鎖骨下動脈がのる。",
+          "passes": "鎖骨下動脈"
         },
         {
           "id": "costoclavicular-ligament-impression", "ja": "肋鎖靱帯圧痕", "yomi": "ろくさじんたいあっこん", "en": "impression for costoclavicular ligament", "la": "impressio ligamenti costoclavicularis",
@@ -2619,7 +2641,8 @@
           "of": "lacrimal-bone", "parts": ["lacrimal bone", "maxilla"], "level": 3,
           "kanji": "涙嚢が入るくぼみ",
           "etym": "lacrimal ← ラテン語 lacrima「涙」",
-          "note": "眼窩の内側の壁の前の端を縦に走る、溝の形のくぼみ（涙骨と上顎骨の前頭突起でできる）。涙嚢が入り、下は鼻涙管となって下鼻道に開く。眼窩の上外側の涙腺窩と混同しない。"
+          "note": "眼窩の内側の壁の前の端を縦に走る、溝の形のくぼみ（涙骨と上顎骨の前頭突起でできる）。涙嚢が入り、下は鼻涙管となって下鼻道に開く。眼窩の上外側の涙腺窩と混同しない。",
+          "passes": "涙嚢"
         },
         {
           "id": "frontal-process-of-maxilla", "ja": "前頭突起（上顎骨）", "yomi": "ぜんとうとっき", "en": "frontal process of maxilla", "la": "processus frontalis maxillae",
@@ -2718,6 +2741,484 @@
           "kanji": "咬筋が付く粗い面",
           "etym": "masseter ← ギリシャ語 maseter「かむもの」",
           "note": "下顎角の外面の、でこぼこした粗い面。咬筋が付く。かむ力の強い人ほど発達する。"
+        }
+      ]
+    },
+    {
+      "id": "skel-groups",
+      "title": "骨格のまとまり（胸郭・骨盤・上肢帯・頭蓋冠）",
+      "intro": [
+        "いくつかの骨をまとめた呼び名。胸郭は胸の内臓を囲むかご、骨盤は腹と骨盤の内臓を受ける器、上肢帯は腕を体幹につなぐ骨、頭蓋冠は脳を上からおおう丸天井。",
+        "下肢帯は寛骨（左右1対）のことなので、3Dでは「寛骨」で見る。上肢帯（鎖骨・肩甲骨）が胸郭の上にのって大きく動くのに対し、下肢帯は仙骨とがっちり組んで体重を支える。"
+      ],
+      "terms": [
+        {
+          "id": "thoracic-cage", "ja": "胸郭", "yomi": "きょうかく", "en": "thoracic cage", "enAlt": ["thorax", "rib cage"], "la": "cavea thoracis",
+          "parts": ["* rib", "* costal cartilage", "manubrium", "body of sternum", "xiphoid process", "* thoracic vertebra"], "level": 1,
+          "kanji": "胸の郭（かこい）",
+          "etym": "thoracic ← ギリシャ語 thorax「胸当て、よろい」＋ cage「かご」",
+          "note": "12個の胸椎、12対の肋骨と肋軟骨、1個の胸骨でできる、かごの形の骨格。心臓・肺を守り、肋骨が上下に動いて呼吸を助ける。上の狭い口（胸郭上口）は第1胸椎・第1肋骨・胸骨柄の上縁で囲まれ、下の広い口（胸郭下口）は横隔膜でふさがれる。"
+        },
+        {
+          "id": "pelvis", "ja": "骨盤", "yomi": "こつばん", "en": "pelvis", "enAlt": ["bony pelvis"], "la": "pelvis",
+          "parts": ["hip bone", "sacrum", "coccyx"], "level": 1,
+          "kanji": "骨の盤（たらい）",
+          "etym": "pelvis ← ラテン語「たらい、水盤」",
+          "note": "左右の寛骨・仙骨・尾骨でできる、底の抜けたたらいの形の骨格。前で左右の恥骨が恥骨結合でつながり、後ろで仙骨と寛骨が仙腸関節をつくる。分界線より上の大骨盤には腹部の内臓が、下の小骨盤には膀胱・直腸・生殖器が入る。女性は出産のため小骨盤が広く、恥骨下角も大きい（男性は約60°、女性は約80°以上）。"
+        },
+        {
+          "id": "pectoral-girdle", "ja": "上肢帯", "yomi": "じょうしたい", "en": "pectoral girdle", "enAlt": ["shoulder girdle"], "la": "cingulum pectorale",
+          "parts": ["clavicle", "scapula"], "level": 1,
+          "kanji": "上肢を体に帯のようにつなぐ骨",
+          "etym": "pectoral ← ラテン語 pectus「胸」＋ girdle「帯」",
+          "note": "自由上肢（上腕・前腕・手）と体幹をつなぐ骨で、鎖骨と肩甲骨。鎖骨は前、肩甲骨は後ろにあって胸郭上口を外側から囲む。体幹とは胸鎖関節だけでつながり、肩甲骨は筋で胸郭の上に吊られているので、大きく動ける。"
+        },
+        {
+          "id": "calvaria", "ja": "頭蓋冠", "yomi": "とうがいかん", "en": "calvaria", "enAlt": ["skullcap"], "la": "calvaria",
+          "parts": ["frontal bone", "parietal bone", "occipital bone"], "level": 2,
+          "kanji": "頭蓋の冠（かんむり）＝上の丸天井",
+          "etym": "calvaria ← ラテン語 calvus「はげた」。頭のてっぺんの丸い所",
+          "note": "脳頭蓋の上の丸天井。おもに前頭骨・左右の頭頂骨・後頭骨（と側頭骨の鱗部）でできる（3Dでは前頭骨・頭頂骨・後頭骨で示す）。骨どうしは冠状縫合・矢状縫合・ラムダ縫合でつながる。断面は外板と内板（緻密質）の間に板間層（海綿質）をはさむ。内面には上矢状洞溝・クモ膜顆粒小窩・中硬膜動脈の動脈溝がある。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-cranial-foramina",
+      "title": "頭蓋底の孔と裂（通るもの）",
+      "intro": [
+        "脳神経と血管は、頭蓋底の孔・管・裂を通って頭蓋腔を出入りする。孔の名前は「どこにあるか」と「何が通るか」を組にして覚える。",
+        "前から順に: 篩板（嗅神経）→ 視神経管（視神経・眼動脈）→ 上眼窩裂（動眼・滑車・眼・外転神経）→ 正円孔（上顎神経）→ 卵円孔（下顎神経）→ 棘孔（中硬膜動脈）→ 内耳孔（顔面・内耳神経）→ 頚静脈孔（舌咽・迷走・副神経と内頚静脈）→ 舌下神経管（舌下神経）→ 大後頭孔（延髄）。三叉神経の3本は「眼は裂・上顎は正円・下顎は卵円」で、正円孔・卵円孔・棘孔は蝶形骨の大翼に前内側から後外側へ並ぶ。",
+        "3Dの模型は細かい孔の多くが開いていない（正円孔・棘孔・視神経管など）。ピンは周りの骨との位置関係から置いたので、穴の形ではなく場所で覚える。"
+      ],
+      "terms": [
+        {
+          "id": "optic-canal", "ja": "視神経管", "yomi": "ししんけいかん", "en": "optic canal", "la": "canalis opticus",
+          "of": "sphenoid-bone", "level": 1,
+          "kanji": "視神経が通る管",
+          "etym": "optic ← ギリシャ語 optikos「見ることの」＋ canal「管」",
+          "note": "蝶形骨の小翼の根もとを貫く短い管。頭蓋の内では視神経交叉溝の両端・前床突起の内側に開き、外は眼窩のいちばん奥（眼窩尖）の上内側に開く。模型では管が開いていない。",
+          "passes": "視神経・眼動脈"
+        },
+        {
+          "id": "superior-orbital-fissure", "ja": "上眼窩裂", "yomi": "じょうがんかれつ", "en": "superior orbital fissure", "la": "fissura orbitalis superior",
+          "of": "sphenoid-bone", "level": 1,
+          "kanji": "眼窩の上の裂（さけめ）",
+          "etym": "superior「上の」＋ orbital「眼窩の」＋ fissure「裂け目」",
+          "note": "蝶形骨の小翼と大翼の間の細長いすきまで、中頭蓋窩と眼窩をつなぐ。眼窩の外側壁と上壁の境の奥にある。眼球を動かす筋の神経（動眼・滑車・外転神経）はすべてここを通る。",
+          "passes": "動眼神経・滑車神経・眼神経・外転神経・上眼静脈"
+        },
+        {
+          "id": "inferior-orbital-fissure", "ja": "下眼窩裂", "yomi": "かがんかれつ", "en": "inferior orbital fissure", "la": "fissura orbitalis inferior",
+          "of": "sphenoid-bone", "parts": ["sphenoid bone", "maxilla", "zygomatic bone"], "level": 2,
+          "kanji": "眼窩の下の裂（さけめ）",
+          "etym": "inferior「下の」＋ orbital「眼窩の」＋ fissure「裂け目」",
+          "note": "眼窩の外側壁（蝶形骨の大翼）と下壁（上顎骨）の間のすきま。後ろで翼口蓋窩・側頭下窩とつながる。眼窩下神経はここから眼窩に入り、眼窩下溝・眼窩下管を通って眼窩下孔から顔に出る。",
+          "passes": "眼窩下神経・頬骨神経・眼窩下動静脈"
+        },
+        {
+          "id": "foramen-rotundum", "ja": "正円孔", "yomi": "せいえんこう", "en": "foramen rotundum", "la": "foramen rotundum",
+          "of": "sphenoid-bone", "level": 1,
+          "kanji": "まんまるの孔",
+          "etym": "rotundum ← ラテン語 rotundus「まるい」",
+          "note": "蝶形骨の大翼の根もと、上眼窩裂の内側端のすぐ下後ろにある孔。中頭蓋窩から前へ向かって翼口蓋窩に通じる。模型では孔が開いていない。",
+          "passes": "上顎神経"
+        },
+        {
+          "id": "foramen-ovale", "ja": "卵円孔", "yomi": "らんえんこう", "en": "foramen ovale", "la": "foramen ovale",
+          "of": "sphenoid-bone", "level": 1,
+          "kanji": "卵の形の孔",
+          "etym": "ovale ← ラテン語 ovum「卵」",
+          "note": "蝶形骨の大翼の後ろの方にある楕円の孔。正円孔の後外側、棘孔の前内側。中頭蓋窩から真下の側頭下窩に通じる（外頭蓋底では翼状突起の外側板の根もとの後ろに見える）。心臓の卵円孔（胎児の心房中隔の孔）とは別のもの。",
+          "passes": "下顎神経"
+        },
+        {
+          "id": "foramen-spinosum", "ja": "棘孔", "yomi": "きょくこう", "en": "foramen spinosum", "la": "foramen spinosum",
+          "of": "sphenoid-bone", "level": 1,
+          "kanji": "棘（とげ）のそばの孔",
+          "etym": "spinosum ← ラテン語 spina「とげ」（蝶形骨棘のそばにある）",
+          "note": "卵円孔のすぐ後外側の小さな孔。中硬膜動脈がここから頭蓋に入り、頭蓋冠の内面に枝分かれの動脈溝をつくる（側頭部を打つと動脈が裂けて硬膜外血腫になる）。模型では孔が開いていない。",
+          "passes": "中硬膜動脈"
+        },
+        {
+          "id": "foramen-lacerum", "ja": "破裂孔", "yomi": "はれつこう", "en": "foramen lacerum", "la": "foramen lacerum",
+          "of": "temporal-bone", "parts": ["temporal bone", "sphenoid bone", "occipital bone"], "level": 2,
+          "kanji": "裂けたような形の孔",
+          "etym": "lacerum ← ラテン語 lacer「引き裂かれた」",
+          "note": "側頭骨の錐体の先と蝶形骨の体・後頭骨の間のすきま。生きている体では線維軟骨でふさがっていて、何も通り抜けない。内頚動脈は頚動脈管から出てこの上を通り、海綿静脈洞へ向かう。",
+          "passes": "（生体では線維軟骨でふさがり、通り抜けるものは無い。内頚動脈が上を通る）"
+        },
+        {
+          "id": "carotid-canal", "ja": "頚動脈管", "yomi": "けいどうみゃくかん", "en": "carotid canal", "la": "canalis caroticus",
+          "of": "temporal-bone", "level": 2,
+          "kanji": "頚動脈が通る管",
+          "etym": "carotid ← ギリシャ語 karos「深い眠り」（押さえると気を失うと考えられた）",
+          "note": "側頭骨の錐体の中を曲がって走る管。外頭蓋底で頚静脈孔のすぐ前に入口があり、錐体の先（破裂孔の上）に出る。",
+          "passes": "内頚動脈（と内頚動脈神経叢）"
+        },
+        {
+          "id": "internal-acoustic-opening", "ja": "内耳孔", "yomi": "ないじこう", "en": "internal acoustic opening", "enAlt": ["internal acoustic meatus", "internal auditory meatus"], "la": "porus acusticus internus",
+          "of": "temporal-bone", "level": 1,
+          "kanji": "内耳への入口の孔",
+          "etym": "acoustic ← ギリシャ語 akouein「聞く」",
+          "note": "側頭骨の錐体の後ろの面のほぼ中央にある孔で、奥の内耳道に続く。後頭蓋窩に開く。顔面神経は内耳道から顔面神経管を通り、茎乳突孔から外へ出る。",
+          "passes": "顔面神経・内耳神経（と迷路動静脈）"
+        },
+        {
+          "id": "jugular-foramen", "ja": "頚静脈孔", "yomi": "けいじょうみゃくこう", "en": "jugular foramen", "la": "foramen jugulare",
+          "of": "occipital-bone", "parts": ["occipital bone", "temporal bone"], "level": 1,
+          "kanji": "頚静脈が通る孔",
+          "etym": "jugular ← ラテン語 jugulum「のど、首」",
+          "note": "側頭骨の錐体と後頭骨の間の孔で、大後頭孔の外側にある。S状洞溝がここに続き、S状静脈洞が内頚静脈になって出ていく。外頭蓋底では頚動脈管の入口のすぐ後ろ。",
+          "passes": "舌咽神経・迷走神経・副神経・内頚静脈"
+        },
+        {
+          "id": "hypoglossal-canal", "ja": "舌下神経管", "yomi": "ぜっかしんけいかん", "en": "hypoglossal canal", "la": "canalis nervi hypoglossi",
+          "of": "occipital-bone", "level": 1,
+          "kanji": "舌下神経が通る管",
+          "etym": "hypoglossal ← ギリシャ語 hypo「下」＋ glossa「舌」",
+          "note": "後頭骨の後頭顆の付け根を前外側へ貫く管。頭蓋の内では大後頭孔の前外側の縁に開く。",
+          "passes": "舌下神経"
+        },
+        {
+          "id": "stylomastoid-foramen", "ja": "茎乳突孔", "yomi": "けいにゅうとつこう", "en": "stylomastoid foramen", "la": "foramen stylomastoideum",
+          "of": "temporal-bone", "level": 1,
+          "kanji": "茎状突起と乳様突起の間の孔",
+          "etym": "stylo-「柱、茎状突起」＋ mastoid「乳房の形の（乳様突起）」",
+          "note": "外頭蓋底で、茎状突起と乳様突起の間に開く孔。顔面神経管の出口で、顔面神経はここから出て耳下腺の中で枝分かれし、表情筋へ行く。",
+          "passes": "顔面神経（と茎乳突孔動脈）"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-cranial-inner",
+      "title": "頭蓋の内面（トルコ鞍と静脈洞の溝）",
+      "intro": [
+        "中頭蓋窩の中央にあるトルコ鞍（蝶形骨の体の上面）は、前から鞍結節・下垂体窩・鞍背と並ぶ。鞍結節の前の横溝が視神経交叉溝、鞍の前の両脇に前床突起が出る。",
+        "頭蓋の内面には、硬膜静脈洞による溝が通る。上矢状洞溝が頭蓋冠の正中を前から後ろへ走り、内後頭隆起で左右の横洞溝に分かれ、側頭骨でS状洞溝となって頚静脈孔に入る。"
+      ],
+      "terms": [
+        {
+          "id": "hypophysial-fossa", "ja": "下垂体窩", "yomi": "かすいたいか", "en": "hypophysial fossa", "enAlt": ["hypophyseal fossa", "pituitary fossa"], "la": "fossa hypophysialis",
+          "of": "sphenoid-bone", "level": 1,
+          "kanji": "下垂体が入るくぼみ",
+          "etym": "hypophysial ← ギリシャ語 hypophysis「下に生えたもの（下垂体）」",
+          "note": "トルコ鞍の中央のくぼみ。前を鞍結節、後ろを鞍背が囲む。下垂体が入り、上は硬膜（鞍隔膜）でふたをされる。真下は蝶形骨洞なので、下垂体の手術は鼻から蝶形骨洞を通って行える。",
+          "passes": "下垂体"
+        },
+        {
+          "id": "dorsum-sellae", "ja": "鞍背", "yomi": "あんぱい", "en": "dorsum sellae", "la": "dorsum sellae",
+          "of": "sphenoid-bone", "level": 2,
+          "kanji": "鞍（くら）の背もたれ",
+          "etym": "dorsum「背」＋ sellae「鞍の」",
+          "note": "トルコ鞍の後ろの板状の高まり。上の両端が後床突起になる。後ろの面は斜台に続く。"
+        },
+        {
+          "id": "tuberculum-sellae", "ja": "鞍結節", "yomi": "あんけっせつ", "en": "tuberculum sellae", "la": "tuberculum sellae",
+          "of": "sphenoid-bone", "level": 2,
+          "kanji": "鞍の前の小さな高まり",
+          "etym": "tuberculum「小さなこぶ」＋ sellae「鞍の」",
+          "note": "下垂体窩の前の横の高まり。そのすぐ前に視神経交叉溝が横に走る。"
+        },
+        {
+          "id": "prechiasmatic-sulcus", "ja": "視神経交叉溝", "yomi": "ししんけいこうさこう", "en": "prechiasmatic sulcus", "enAlt": ["chiasmatic sulcus", "chiasmatic groove"], "la": "sulcus prechiasmaticus",
+          "of": "sphenoid-bone", "level": 2,
+          "kanji": "視神経交叉の前の溝",
+          "etym": "pre-「前の」＋ chiasma ← ギリシャ語 chi（Χ）の形の交わり",
+          "note": "鞍結節の前を左右に走る浅い溝で、両端が左右の視神経管に続く。視神経交叉はこの溝の上ではなく少し後ろ上にあるので、名前は「交叉の前の溝」。"
+        },
+        {
+          "id": "anterior-clinoid-process", "ja": "前床突起", "yomi": "ぜんしょうとっき", "en": "anterior clinoid process", "la": "processus clinoideus anterior",
+          "of": "sphenoid-bone", "level": 2,
+          "kanji": "前の床（ベッド）の脚の形の突起",
+          "etym": "clinoid ← ギリシャ語 kline「寝台」。トルコ鞍を寝台に見たてて四隅の突起を脚とした",
+          "note": "蝶形骨の小翼の後ろの内側端が、トルコ鞍の前の両脇へ突き出た突起。視神経管のすぐ外側。前頭蓋窩と中頭蓋窩の境目の内側の端で、小脳テントが付く。"
+        },
+        {
+          "id": "carotid-sulcus", "ja": "頚動脈溝", "yomi": "けいどうみゃくこう", "en": "carotid sulcus", "la": "sulcus caroticus",
+          "of": "sphenoid-bone", "level": 3,
+          "kanji": "頚動脈が通る溝",
+          "etym": "carotid「頚動脈の」＋ sulcus「溝」",
+          "note": "蝶形骨の体の外側の面を前後に走る浅い溝（内頚動脈溝とも書く）。内頚動脈が海綿静脈洞の中でこの溝にそって前へ進み、前床突起の内側で上へ曲がる。",
+          "passes": "内頚動脈（海綿静脈洞の中）"
+        },
+        {
+          "id": "trigeminal-impression", "ja": "三叉神経圧痕", "yomi": "さんさしんけいあっこん", "en": "trigeminal impression", "la": "impressio trigeminalis",
+          "of": "temporal-bone", "level": 3,
+          "kanji": "三叉神経に押されてできたくぼみ",
+          "etym": "trigeminal ← ラテン語 trigeminus「三つ子の」",
+          "note": "側頭骨の錐体の先の前の面にある浅いくぼみ。三叉神経節がのる。",
+          "passes": "三叉神経節"
+        },
+        {
+          "id": "arcuate-eminence", "ja": "弓状隆起", "yomi": "きゅうじょうりゅうき", "en": "arcuate eminence", "la": "eminentia arcuata",
+          "of": "temporal-bone", "level": 3,
+          "kanji": "弓の形の高まり",
+          "etym": "arcuate ← ラテン語 arcus「弓」＋ eminence「高まり」",
+          "note": "錐体の前の面の中ほどの高まりで、中の前半規管が盛り上げている。弓状隆起と三叉神経圧痕の間の薄い所は中耳の天井で、鼓室蓋という。"
+        },
+        {
+          "id": "subarcuate-fossa", "ja": "弓下窩", "yomi": "きゅうかか", "en": "subarcuate fossa", "la": "fossa subarcuata",
+          "of": "temporal-bone", "level": 3,
+          "kanji": "弓状隆起の下のくぼみ",
+          "etym": "sub-「下の」＋ arcuate「弓の（弓状隆起）」＋ fossa「くぼみ」",
+          "note": "錐体の後ろの面、内耳孔の上外側の浅いくぼみ。前半規管の弓の下にあたり、硬膜が入り込む（子どもでは深い）。"
+        },
+        {
+          "id": "groove-for-superior-sagittal-sinus", "ja": "上矢状洞溝", "yomi": "じょうしじょうどうこう", "en": "groove for superior sagittal sinus", "la": "sulcus sinus sagittalis superioris",
+          "of": "parietal-bone", "parts": ["frontal bone", "parietal bone", "occipital bone"], "level": 2,
+          "kanji": "上矢状静脈洞が通る溝",
+          "etym": "sagittal ← ラテン語 sagitta「矢」（矢状縫合にそう）",
+          "note": "頭蓋冠の内面の正中を、前頭骨から頭頂骨（矢状縫合にそって）・後頭骨へ走る浅い溝。前は前頭稜に続き、後ろは内後頭隆起で左右の横洞溝に分かれる。両わきにクモ膜顆粒小窩が並ぶ。",
+          "passes": "上矢状静脈洞"
+        },
+        {
+          "id": "groove-for-transverse-sinus", "ja": "横洞溝", "yomi": "おうどうこう", "en": "groove for transverse sinus", "la": "sulcus sinus transversi",
+          "of": "occipital-bone", "level": 3,
+          "kanji": "横静脈洞が通る溝",
+          "etym": "transverse「横の」＋ sinus「洞（静脈洞）」",
+          "note": "後頭骨の内面を、内後頭隆起から左右へ横に走る溝。外側で側頭骨に移ってS状洞溝となる。小脳テントがこの溝の縁に付く。",
+          "passes": "横静脈洞"
+        },
+        {
+          "id": "groove-for-sigmoid-sinus", "ja": "S状洞溝", "yomi": "えすじょうどうこう", "en": "groove for sigmoid sinus", "la": "sulcus sinus sigmoidei",
+          "of": "temporal-bone", "parts": ["temporal bone", "occipital bone"], "level": 3,
+          "kanji": "S字に曲がる静脈洞の溝",
+          "etym": "sigmoid ← ギリシャ語 sigma（Σ・ς）の形の",
+          "note": "横洞溝の外側の端から、側頭骨の乳突部の内面をS字に曲がって下り、頚静脈孔に入る溝。乳様突起のすぐ内側なので、中耳炎が広がると静脈洞に炎症が及ぶことがある。",
+          "passes": "S状静脈洞"
+        },
+        {
+          "id": "frontal-crest", "ja": "前頭稜", "yomi": "ぜんとうりょう", "en": "frontal crest", "la": "crista frontalis",
+          "of": "frontal-bone", "level": 3,
+          "kanji": "前頭骨の内面の稜（すじ）",
+          "etym": "frontal「前頭の」＋ crest「とさか、稜」",
+          "note": "前頭骨の内面の正中を、篩骨の鶏冠のすぐ前から上へ走る鋭い稜。大脳鎌が付く。上は上矢状洞溝に続く。"
+        },
+        {
+          "id": "granular-foveolae", "ja": "クモ膜顆粒小窩", "yomi": "くもまくかりゅうしょうか", "en": "granular foveolae", "la": "foveolae granulares",
+          "of": "parietal-bone", "level": 3,
+          "kanji": "クモ膜顆粒が入る小さなくぼみ",
+          "etym": "granular「つぶの」＋ foveola「小さなくぼみ」",
+          "note": "頭蓋冠の内面で、上矢状洞溝の両わきにぽつぽつと並ぶ丸い浅いくぼみ。脳脊髄液を静脈へ戻すクモ膜顆粒が入る。年を取るほど深く多くなる。",
+          "passes": "クモ膜顆粒"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-skull-outer-more",
+      "title": "頭蓋の外面と顔面の部位（追加）",
+      "intro": [
+        "外頭蓋底は前から、骨口蓋（上顎骨と口蓋骨）→ 後鼻孔と翼状突起 → 蝶形骨と側頭骨の孔 → 後頭骨（大後頭孔・後頭顆）と並ぶ。",
+        "頭蓋の外側面では、頬骨弓の内側に側頭下窩、そのさらに奥に翼口蓋窩がある。翼口蓋窩は孔や裂で眼窩・鼻腔・口腔・中頭蓋窩・側頭下窩とつながる、頭の神経と血管の交差点。"
+      ],
+      "terms": [
+        {
+          "id": "bregma", "ja": "ブレグマ", "yomi": "ぶれぐま", "en": "bregma", "la": "bregma",
+          "of": "parietal-bone", "level": 2,
+          "kanji": "冠状縫合と矢状縫合が交わる点",
+          "etym": "bregma ← ギリシャ語「頭のてっぺん（湿った所）」。赤ちゃんでは大泉門がここにある",
+          "note": "冠状縫合と矢状縫合の交わる点。頭蓋を測るときの基準点。赤ちゃんでは、ここが菱形の大泉門（生後1年半〜2年で閉じる）になっている。"
+        },
+        {
+          "id": "lambda", "ja": "ラムダ", "yomi": "らむだ", "en": "lambda", "la": "lambda",
+          "of": "parietal-bone", "level": 2,
+          "kanji": "矢状縫合とラムダ縫合が交わる点",
+          "etym": "lambda ← ギリシャ文字 λ（ラムダ縫合と矢状縫合がこの形に見える）",
+          "note": "矢状縫合とラムダ縫合の交わる点。頭蓋を測るときの基準点。赤ちゃんでは、ここが三角形の小泉門（生後3か月ごろまでに閉じる）になっている。"
+        },
+        {
+          "id": "incisive-fossa", "ja": "切歯窩", "yomi": "せっしか", "en": "incisive fossa", "la": "fossa incisiva",
+          "of": "maxilla", "level": 3,
+          "kanji": "切歯の後ろのくぼみ",
+          "etym": "incisive ← ラテン語 incidere「切る」（切歯）",
+          "note": "骨口蓋の正中の前の端、上の中切歯のすぐ後ろのくぼみ。底に切歯管が開き（切歯孔）、鼻腔とつながる。",
+          "passes": "鼻口蓋神経（と蝶口蓋動脈の枝）"
+        },
+        {
+          "id": "greater-palatine-foramen", "ja": "大口蓋孔", "yomi": "だいこうがいこう", "en": "greater palatine foramen", "la": "foramen palatinum majus",
+          "of": "palatine-bone", "parts": ["palatine bone", "maxilla"], "level": 2,
+          "kanji": "口蓋の大きいほうの孔",
+          "etym": "greater「大きい」＋ palatine ← ラテン語 palatum「口蓋」",
+          "note": "骨口蓋の後外側の隅（第3大臼歯の内側）に開く孔。翼口蓋窩から下りる大口蓋管の出口。",
+          "passes": "大口蓋神経・大口蓋動静脈"
+        },
+        {
+          "id": "lesser-palatine-foramina", "ja": "小口蓋孔", "yomi": "しょうこうがいこう", "en": "lesser palatine foramina", "la": "foramina palatina minora",
+          "of": "palatine-bone", "level": 3,
+          "kanji": "口蓋の小さいほうの孔",
+          "etym": "lesser「小さい」＋ palatine「口蓋の」",
+          "note": "大口蓋孔のすぐ後ろに1〜2個開く小さな孔（口蓋骨の錐体突起）。軟口蓋へ行く神経と血管が出る。",
+          "passes": "小口蓋神経・小口蓋動静脈"
+        },
+        {
+          "id": "choanae", "ja": "後鼻孔", "yomi": "こうびこう", "en": "choana", "enAlt": ["choanae", "posterior nasal aperture"], "la": "choana",
+          "of": "vomer", "parts": ["vomer", "palatine bone", "sphenoid bone"], "level": 2,
+          "kanji": "鼻腔の後ろの出口",
+          "etym": "choana ← ギリシャ語 choane「じょうご」",
+          "note": "鼻腔の後ろの出口で、左右1対。鋤骨の後ろの縁で左右に分かれ、下を口蓋骨の水平板、外側を翼状突起の内側板が囲む。ここから咽頭の鼻部に続く。"
+        },
+        {
+          "id": "bony-nasal-septum", "ja": "骨鼻中隔", "yomi": "こつびちゅうかく", "en": "bony nasal septum", "la": "septum nasi osseum",
+          "of": "vomer", "parts": ["vomer", "ethmoid"], "level": 2,
+          "kanji": "鼻腔を左右に分ける骨の仕切り",
+          "etym": "septum ← ラテン語「仕切り、垣根」",
+          "note": "鼻腔を左右に分ける骨の壁で、上の前は篩骨の垂直板、下の後ろは鋤骨でできる（3Dでは鋤骨と篩骨で示す）。前の部分は鼻中隔軟骨が補う。少し左右どちらかに曲がっていることが多い。"
+        },
+        {
+          "id": "pterygoid-hamulus", "ja": "翼突鈎", "yomi": "よくとつこう", "en": "pterygoid hamulus", "la": "hamulus pterygoideus",
+          "of": "sphenoid-bone", "level": 3,
+          "kanji": "翼状突起の鈎（かぎ）",
+          "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ hamulus「小さな鈎」",
+          "note": "翼状突起の内側板の下の端が、鈎のように外側へ曲がった所。口蓋帆張筋の腱がここで向きを変えて軟口蓋へ行く。"
+        },
+        {
+          "id": "pharyngeal-tubercle", "ja": "咽頭結節", "yomi": "いんとうけっせつ", "en": "pharyngeal tubercle", "la": "tuberculum pharyngeum",
+          "of": "occipital-bone", "level": 3,
+          "kanji": "咽頭が付く小さな高まり",
+          "etym": "pharyngeal ← ギリシャ語 pharynx「のど」",
+          "note": "後頭骨の底部（大後頭孔の前）の下の面の正中にある小さな高まり。咽頭の上の端（咽頭縫線）が付き、咽頭が頭蓋底から吊り下がる。"
+        },
+        {
+          "id": "infratemporal-fossa", "ja": "側頭下窩", "yomi": "そくとうかか", "en": "infratemporal fossa", "la": "fossa infratemporalis",
+          "of": "sphenoid-bone", "parts": ["sphenoid bone", "maxilla", "temporal bone", "zygomatic bone"], "level": 2,
+          "kanji": "側頭窩の下のくぼみ",
+          "etym": "infra-「下の」＋ temporal「側頭の」＋ fossa「くぼみ」",
+          "note": "頬骨弓の内側・下顎枝の内側の空間。内側の壁は翼状突起の外側板、前は上顎骨の後ろの面、天井は蝶形骨の大翼（卵円孔・棘孔が開く）。外側・内側翼突筋、顎動脈、翼突筋静脈叢、下顎神経が入る。",
+          "passes": "外側・内側翼突筋・顎動脈・翼突筋静脈叢・下顎神経"
+        },
+        {
+          "id": "pterygopalatine-fossa", "ja": "翼口蓋窩", "yomi": "よくこうがいか", "en": "pterygopalatine fossa", "la": "fossa pterygopalatina",
+          "of": "sphenoid-bone", "parts": ["sphenoid bone", "maxilla", "palatine bone"], "level": 2,
+          "kanji": "翼状突起と口蓋骨の間のくぼみ",
+          "etym": "pterygo-「翼（翼状突起）」＋ palatine「口蓋（口蓋骨）の」",
+          "note": "上顎骨の後ろ・翼状突起の前・口蓋骨の垂直板の外側の小さなすきまで、側頭下窩の奥にある。正円孔（中頭蓋窩）・下眼窩裂（眼窩）・蝶口蓋孔（鼻腔）・大口蓋管（口腔）・翼突管・翼上顎裂（側頭下窩）でまわりとつながり、上顎神経・翼口蓋神経節・顎動脈の終わりの部分が入る。",
+          "passes": "上顎神経・翼口蓋神経節・顎動脈（の終わりの部分）"
+        },
+        {
+          "id": "fossa-for-lacrimal-gland", "ja": "涙腺窩", "yomi": "るいせんか", "en": "fossa for lacrimal gland", "enAlt": ["lacrimal fossa"], "la": "fossa glandulae lacrimalis",
+          "of": "frontal-bone", "level": 2,
+          "kanji": "涙腺が入るくぼみ",
+          "etym": "lacrimal ← ラテン語 lacrima「涙」",
+          "note": "眼窩の天井（前頭骨）の前外側の、輪郭のはっきりしない浅いくぼみ。涙腺が入る。眼窩の前内側の涙嚢窩（涙嚢が入る）と取り違えないように。",
+          "passes": "涙腺"
+        },
+        {
+          "id": "base-of-mandible", "ja": "下顎底", "yomi": "かがくてい", "en": "base of mandible", "la": "basis mandibulae",
+          "of": "mandible", "level": 3,
+          "kanji": "下顎体の底（下の縁）",
+          "etym": "base「底」＋ mandible ← ラテン語 mandere「かむ」",
+          "note": "下顎体の下の縁。厚く丸い。後ろへたどると下顎角で下顎枝の後ろの縁に続く。正中の近くの内面に二腹筋窩がある。"
+        },
+        {
+          "id": "mental-tubercle", "ja": "オトガイ結節", "yomi": "おとがいけっせつ", "en": "mental tubercle", "la": "tuberculum mentale",
+          "of": "mandible", "level": 3,
+          "kanji": "オトガイ（あご先）の左右の小さな高まり",
+          "etym": "mental ← ラテン語 mentum「あご先」",
+          "note": "オトガイ隆起の下の部分の左右にある小さな高まり。オトガイ隆起とあわせて、あご先の三角形の高まりをつくる。ヒトに特有の形。"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-trunk-limb-exam",
+      "title": "体幹と四肢の骨の部位（追加）",
+      "intro": [
+        "関節面は、向かい合う骨の名前で呼ぶものが多い。脛骨の腓骨関節面は腓骨頭関節面と、脛骨の内果関節面と腓骨の外果関節面は距骨と組む。",
+        "胸椎の椎体の上と下の縁には肋骨窩（上肋骨窩・下肋骨窩）があり、上下の椎骨の肋骨窩が合わさって1本の肋骨頭を受ける（第2〜第9肋骨）。"
+      ],
+      "terms": [
+        {
+          "id": "sacral-canal", "ja": "仙骨管", "yomi": "せんこつかん", "en": "sacral canal", "la": "canalis sacralis",
+          "of": "sacrum", "level": 1,
+          "kanji": "仙骨の中を縦に走る管",
+          "etym": "sacral ← ラテン語 os sacrum「聖なる骨」",
+          "note": "仙骨の中を縦に走るトンネルで、仙椎の椎孔がつながったもの。脊柱管の続きで、上は仙骨底に開き、下は仙骨裂孔に開く。前・後仙骨孔へ枝分かれする。",
+          "passes": "馬尾（仙骨神経・尾骨神経）・終糸"
+        },
+        {
+          "id": "groove-for-vertebral-artery", "ja": "椎骨動脈溝", "yomi": "ついこつどうみゃくこう", "en": "groove for vertebral artery", "la": "sulcus arteriae vertebralis",
+          "of": "atlas", "level": 2,
+          "kanji": "椎骨動脈が通る溝",
+          "etym": "vertebral「椎骨の」＋ artery「動脈」",
+          "note": "環椎の後弓の上の面で、外側塊のすぐ後ろを横切る溝。環椎の横突孔を出た椎骨動脈がここを回って大後頭孔へ向かう。",
+          "passes": "椎骨動脈（と後頭下神経）"
+        },
+        {
+          "id": "superior-costal-facet", "ja": "上肋骨窩", "yomi": "じょうろっこつか", "en": "superior costal facet", "la": "fovea costalis superior",
+          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 3, "from": [-1, 0.3, -0.3],
+          "kanji": "椎体の上の縁の肋骨窩",
+          "etym": "superior「上の」＋ costal ← ラテン語 costa「肋骨」",
+          "note": "胸椎の椎体の外側面の上の縁にある関節面（3Dは第6胸椎）。同じ番号の肋骨の肋骨頭の下半分と関節する。"
+        },
+        {
+          "id": "inferior-costal-facet", "ja": "下肋骨窩", "yomi": "かろっこつか", "en": "inferior costal facet", "la": "fovea costalis inferior",
+          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 3, "from": [-1, 0.3, -0.3],
+          "kanji": "椎体の下の縁の肋骨窩",
+          "etym": "inferior「下の」＋ costal「肋骨の」",
+          "note": "胸椎の椎体の外側面の下の縁にある関節面（3Dは第6胸椎）。1つ下の番号の肋骨の肋骨頭の上半分と関節する。第1胸椎の上肋骨窩は第1肋骨と丸ごと、第11・第12胸椎は肋骨窩が1つずつ。"
+        },
+        {
+          "id": "ala-of-ilium", "ja": "腸骨翼", "yomi": "ちょうこつよく", "en": "ala of ilium", "enAlt": ["wing of ilium"], "la": "ala ossis ilii",
+          "of": "hip-bone", "level": 2,
+          "kanji": "腸骨の翼のように広がる部分",
+          "etym": "ala ← ラテン語「翼」",
+          "note": "腸骨のうち、寛骨臼より上で扇のように広がる薄い部分。上の縁が腸骨稜。外側面は殿筋が起こる殿筋面、内側面は前の腸骨窩と後ろの仙骨盤面に分かれる。"
+        },
+        {
+          "id": "sacropelvic-surface", "ja": "仙骨盤面", "yomi": "せんこつばんめん", "en": "sacropelvic surface", "la": "facies sacropelvica",
+          "of": "hip-bone", "level": 2,
+          "kanji": "仙骨と骨盤に向く面",
+          "etym": "sacro-「仙骨の」＋ pelvic「骨盤の」",
+          "note": "腸骨の内側面のうち、弓状線とその上への延長より後ろの部分（前の腸骨窩と分ける）。仙骨と関節する耳状面と、その後上方の、靱帯（骨間仙腸靱帯）が付くでこぼこの腸骨粗面からなる。"
+        },
+        {
+          "id": "carpal-groove", "ja": "手根溝", "yomi": "しゅこんこう", "en": "carpal groove", "enAlt": ["carpal sulcus"], "la": "sulcus carpi",
+          "of": "carpal-bones", "level": 2,
+          "kanji": "手根骨の手のひら側の溝",
+          "etym": "carpal ← ギリシャ語 karpos「手首」",
+          "note": "手根骨が手のひら側でつくる縦の深い溝。外側は舟状骨結節・大菱形骨結節、内側は豆状骨・有鈎骨鈎の高まりで囲まれる。上に屈筋支帯が張って手根管になり、正中神経と指の屈筋の腱が通る。",
+          "passes": "（屈筋支帯におおわれて手根管となり）正中神経・浅指屈筋と深指屈筋と長母指屈筋の腱"
+        },
+        {
+          "id": "condyle-of-humerus", "ja": "上腕骨顆", "yomi": "じょうわんこつか", "en": "condyle of humerus", "la": "condylus humeri",
+          "of": "humerus", "level": 1,
+          "kanji": "上腕骨の下の端の関節のふくらみ",
+          "etym": "condyle ← ギリシャ語 kondylos「こぶ、指の関節」",
+          "note": "上腕骨の下の端で、内側上顆と外側上顆の間の関節の部分。外側の上腕骨小頭（橈骨と関節）と内側の上腕骨滑車（尺骨と関節）からなる。前に鈎突窩・橈骨窩、後ろに肘頭窩がある。"
+        },
+        {
+          "id": "lateral-angle-of-scapula", "ja": "外側角（肩甲骨）", "yomi": "がいそくかく", "en": "lateral angle of scapula", "la": "angulus lateralis scapulae",
+          "of": "scapula", "level": 2,
+          "kanji": "肩甲骨の外側の角",
+          "etym": "lateral「外側の」＋ angle「角」",
+          "note": "肩甲骨の上縁と外側縁がつくる、とても厚く大きい角。外側の端に上腕骨頭と関節する卵円形の関節窩があり、根もとのくびれが肩甲頚。関節窩の上に関節上結節、下に関節下結節がある。"
+        },
+        {
+          "id": "fibular-articular-facet", "ja": "腓骨関節面（脛骨）", "yomi": "ひこつかんせつめん", "en": "fibular articular facet", "la": "facies articularis fibularis",
+          "of": "tibia", "level": 3,
+          "kanji": "腓骨と関節する面",
+          "etym": "fibular ← ラテン語 fibula「留め金、ブローチのピン」",
+          "note": "脛骨の外側顆の後下外側にある、卵円形の小さな関節面。腓骨頭関節面と脛腓関節をつくる。"
+        },
+        {
+          "id": "articular-facet-of-head-of-fibula", "ja": "腓骨頭関節面", "yomi": "ひこつとうかんせつめん", "en": "articular facet of head of fibula", "la": "facies articularis capitis fibulae",
+          "of": "fibula", "level": 3,
+          "kanji": "腓骨頭の関節面",
+          "etym": "articular「関節の」＋ head「頭」＋ fibula「腓骨」",
+          "note": "腓骨頭の上内側の関節面。脛骨の腓骨関節面と脛腓関節をつくる。膝関節には加わらない（腓骨は大腿骨と関節しない）。"
+        },
+        {
+          "id": "articular-facet-of-medial-malleolus", "ja": "内果関節面", "yomi": "ないかかんせつめん", "en": "articular facet of medial malleolus", "la": "facies articularis malleoli medialis",
+          "of": "tibia", "level": 3,
+          "kanji": "内果の関節面",
+          "etym": "malleolus ← ラテン語「小さな槌（つち）」",
+          "note": "脛骨の内果の外側（距骨に向く）面。脛骨の下関節面・腓骨の外果関節面とともに関節窩をつくり、距骨滑車をはさんで距腿関節（足関節）となる。"
+        },
+        {
+          "id": "articular-facet-of-lateral-malleolus", "ja": "外果関節面", "yomi": "がいかかんせつめん", "en": "articular facet of lateral malleolus", "la": "facies articularis malleoli lateralis",
+          "of": "fibula", "level": 3,
+          "kanji": "外果の関節面",
+          "etym": "lateral「外側の」＋ malleolus「くるぶし」",
+          "note": "腓骨の外果の内側（距骨に向く）面で、逆三角形。後ろに外果窩がある。脛骨の下関節面・内果関節面とともに距骨滑車をはさむ。外果は内果より低く、後ろにある。"
         }
       ]
     }

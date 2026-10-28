@@ -531,6 +531,48 @@
           "region": { "bounds": ["clivus", "petrous-part-of-temporal-bone", "internal-occipital-protuberance", "foramen-magnum"], "contents": ["pons", "medulla-oblongata", "facial-nerve", "vestibulocochlear-nerve", "glossopharyngeal-nerve", "vagus-nerve", "hypoglossal-nerve"], "boundsLabel": "底と縁の骨", "outline": [[0,1.5282,0.0991],[-0.0072,1.5272,0.0988],[-0.018,1.5127,0.0975],[-0.036,1.515,0.0868],[-0.0505,1.5173,0.0829],[-0.062,1.525,0.07],[-0.0649,1.5302,0.0613],[-0.0631,1.5336,0.0396],[-0.0451,1.527,0.0154],[-0.018,1.5111,0.0002],[0,1.5169,-0.0006]], "section": { "axis": "y", "at": 1.57, "keep": -1 }, "view": { "target": [-0.03,1.525,0.05], "from": [0,1,0.3], "size": 0.06 }, "prompt": "オレンジの線が囲む頭蓋の底のくぼみは？" }
         }
       ]
+    },
+    {
+      "id": "reg-bony-lines",
+      "title": "骨がつくる管と線",
+      "intro": [
+        "骨が組み合わさってつくる管と線。脊柱管は椎骨の椎孔が連なった管、分界線は骨盤を上下に分ける線、ヤコビー線と胸骨下角は体の表面から骨の高さを知る目安（ヤコビー線＝第4腰椎、胸骨下角＝第10胸椎）。"
+      ],
+      "terms": [
+        {
+          "id": "vertebral-canal", "ja": "脊柱管", "yomi": "せきちゅうかん", "en": "vertebral canal", "enAlt": ["spinal canal"], "la": "canalis vertebralis",
+          "level": 1,
+          "kanji": "脊柱の中を通る管",
+          "etym": "vertebral ← ラテン語 vertebra「関節、回るもの」＋ canal「管」",
+          "note": "椎骨の椎孔が上下に連なってできる管。上は大後頭孔で頭蓋腔に、下は仙骨管を経て仙骨裂孔に開く。脊髄と、それを包む髄膜（硬膜・クモ膜・軟膜）が入る。脊髄は第1〜第2腰椎の高さで終わり、その下は馬尾になる。前の壁は椎体と椎間円板、後ろの壁は椎弓と黄色靱帯。3Dでは正中で切って内側から見る。",
+          "passes": "脊髄（と髄膜）・馬尾",
+          "region": {"bounds": ["cervical-vertebrae", "thoracic-vertebrae", "lumbar-vertebrae", "sacrum"], "contents": ["spinal-cord", "cauda-equina"], "boundsLabel": "囲む骨", "contentsLabel": "中に入るもの", "section": {"axis": "x", "at": 0, "keep": -1}, "view": {"target": [0, 1.15, 0.04], "from": [1, 0.05, 0.15], "size": 0.4}, "prompt": "椎骨が上下に連なってつくる、脊髄の入る管は？"}
+        },
+        {
+          "id": "linea-terminalis", "ja": "分界線", "yomi": "ぶんかいせん", "en": "linea terminalis", "enAlt": ["terminal line", "pelvic brim"], "la": "linea terminalis",
+          "level": 1,
+          "kanji": "大骨盤と小骨盤を分ける境の線",
+          "etym": "linea「線」＋ terminalis ← ラテン語 terminus「境」",
+          "note": "仙骨の岬角から、仙骨の上の縁（外側部）・腸骨の弓状線・恥骨櫛を経て、恥骨結合の上の縁に至る、骨盤の内面をぐるりと一周する線。これより上が大骨盤（腹部の内臓が入る）、下が小骨盤（膀胱・直腸・生殖器が入る）。分界線で囲まれる口が骨盤上口で、男性はハート形、女性は横に長い楕円形のことが多い。3Dでは右半分を示す。",
+          "region": {"bounds": ["promontory", "arcuate-line-of-ilium", "pecten-pubis", "symphysial-surface"], "contents": [], "boundsLabel": "たどる骨の部位", "outline": [[0, 0.8976, 0.0802],[-0.0201, 0.9003, 0.0751],[-0.042, 0.884, 0.062],[-0.0615, 0.8502, 0.0508],[-0.0581, 0.8311, 0.0701],[-0.0527, 0.8168, 0.0861],[-0.045, 0.812, 0.103],[-0.031, 0.8081, 0.1211],[-0.0202, 0.8062, 0.1272],[0, 0.8063, 0.1286]], "open": true, "view": {"target": [-0.02, 0.85, 0.08], "from": [0, 0.8, 0.6], "size": 0.1}, "prompt": "骨盤を大骨盤と小骨盤に分けるオレンジの線は？"}
+        },
+        {
+          "id": "supracristal-line", "ja": "ヤコビー線", "yomi": "やこびーせん", "en": "supracristal line", "enAlt": ["intercristal line", "jacoby line"], "la": "planum supracristale",
+          "level": 1,
+          "kanji": "腸骨稜の最も高い所を結ぶ線（Jacoby の名から）",
+          "etym": "supracristal ← supra-「上の」＋ crista「稜（腸骨稜）」",
+          "note": "背中で、左右の腸骨稜の最も高い所を結ぶ線。ほぼ第4腰椎の棘突起（または第4・第5腰椎の間）の高さを通る。脊髄は第1〜第2腰椎の高さで終わるので、この線を目安に第3・第4腰椎の間か第4・第5腰椎の間に針を刺せば、脊髄を傷つけずに脳脊髄液を取れる（腰椎穿刺）。",
+          "region": {"bounds": ["iliac-crest", "fourth-lumbar-vertebra"], "contents": [], "boundsLabel": "結ぶ骨と通る高さ", "outline": [[-0.1013, 0.9579, 0.0587],[-0.05, 0.957, 0.035],[0, 0.9555, 0.02],[0.05, 0.957, 0.035],[0.1013, 0.9579, 0.0587]], "open": true, "view": {"target": [0, 0.95, 0.04], "from": [0, 0.15, -1], "size": 0.13}, "prompt": "左右の腸骨稜の最も高い所を結ぶオレンジの線は？"}
+        },
+        {
+          "id": "infrasternal-angle", "ja": "胸骨下角", "yomi": "きょうこつかかく", "en": "infrasternal angle", "enAlt": ["subcostal angle"], "la": "angulus infrasternalis",
+          "level": 1,
+          "kanji": "胸骨の下の角",
+          "etym": "infra-「下の」＋ sternal「胸骨の」＋ angle「角」",
+          "note": "左右の肋骨弓（第7〜第10肋軟骨の下の縁がつながった弓）が、胸骨体の下の端（剣状突起の付け根）で合わさってつくる角。約70〜80°で、ほぼ第10胸椎の高さ。やせ型の人は小さく、がっしりした人は大きい。3Dの模型には第8〜第10肋軟骨が無いので、肋骨弓は線で示す。",
+          "region": {"bounds": ["xiphoid-process", "costal-cartilages", "tenth-rib"], "contents": [], "boundsLabel": "つくる骨と軟骨", "outline": [[0.1207, 1.0353, 0.1177],[0.11, 1.07, 0.16],[0.093, 1.1026, 0.1881],[0.06, 1.135, 0.198],[0.03, 1.16, 0.203],[0, 1.18, 0.206],[-0.03, 1.16, 0.203],[-0.06, 1.135, 0.198],[-0.093, 1.1026, 0.1881],[-0.11, 1.07, 0.16],[-0.1207, 1.0353, 0.1177]], "open": true, "view": {"target": [0, 1.12, 0.17], "from": [0, 0.1, 1], "size": 0.12}, "prompt": "左右の肋骨弓がつくるオレンジの角は？"}
+        }
+      ]
     }
   ]
 }

@@ -283,6 +283,8 @@ export function compute(id, rule) {
     }
     at.push(best);
   }
+  // at: 座標をそのまま使う（孔・裂の中心。表面へ寄せると縁の片側にずれるので。座標は確認画像・光線で決めたもの）
+  if (rule.at) for (const P of rule.at) at.push([...P]);
   // near: 指定した座標にいちばん近い骨の表面の点（座標の配列なら1点ずつ。尿道のような細い管の点の列）
   if (rule.near) {
     for (const P of Array.isArray(rule.near[0]) ? rule.near : [rule.near]) {

@@ -2,7 +2,7 @@ import type { Term } from "./content";
 import type { Facet, LearnedTerm, StoredSchedule } from "./db";
 import { retrievability, State } from "./fsrs";
 
-export const FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "rootMeaning", "rootForm"];
+export const FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "rootMeaning", "rootForm"];
 
 /** 語根カード（content/roots.json）の問い方 */
 export const ROOT_FACETS: Facet[] = ["rootMeaning", "rootForm"];
@@ -18,6 +18,7 @@ export const facetLabels: Record<Facet, string> = {
   attach: "起始・停止",
   nerve: "支配神経",
   action: "作用",
+  passage: "通るもの",
   rootMeaning: "語根→意味",
   rootForm: "意味→語根",
 };
@@ -25,12 +26,13 @@ export const facetLabels: Record<Facet, string> = {
 /**
  * その語に出す問い方。隠れた部位（xray）と、部品を持たない基本の用語（figure。矢印・面・動きの図）・局所解剖（region）は
  * タップできないので「名前→位置」を出さない。
- * 筋の起始・停止・支配神経・作用は、位置→名前が復習の段階に入ってから（筋の場所を覚えてから）出す。
+ * 筋の起始・停止・支配神経・作用と、孔・溝を通るもの（passes）は、位置→名前が復習の段階に入ってから（場所を覚えてから）出す。
  */
-export function facetsFor(term: Pick<Term, "xray" | "nerve" | "figure" | "region"> | undefined, locateLearned = false): Facet[] {
+export function facetsFor(term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "passes"> | undefined, locateLearned = false): Facet[] {
   return FACETS.filter((facet) => {
     if (ROOT_FACETS.includes(facet)) return false;
     if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && locateLearned;
+    if (facet === "passage") return !!term?.passes && locateLearned;
     return !(facet === "point" && (term?.xray || term?.figure || term?.region));
   });
 }

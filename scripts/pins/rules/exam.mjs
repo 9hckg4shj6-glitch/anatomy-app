@@ -1,0 +1,76 @@
+// 骨学試験対策 ①（docs/骨学試験対策.md）で足した骨の部位のピンの規則（scripts/pins/compute.mjs）。
+// 頭蓋の孔・溝は語の形（蝶形骨など）の枠では当てにくいので、頭蓋全体を描いた画像の点と、内側から出した光線で求めた座標を
+// at（孔・裂の中心をそのまま）・near（いちばん近い表面の点）に書いた。BodyParts3D 3.0 の細かい形（HIRES=1）で確かめた。
+// 正円孔・棘孔・視神経管・内耳孔・舌下神経管などは模型で孔が開いていないので、周りの骨との位置関係から置いた。
+export const RULES = {
+  // 頭蓋底の孔と裂（右側。中頭蓋窩の孔は上から、外頭蓋底の孔は下から見る）
+  "optic-canal": { at: [[-0.0100, 1.5310, 0.1150], [-0.0135, 1.5285, 0.1265]], r: 0.004, n: "sup", ring: true, cam: "sup+0.6ant" },
+  "superior-orbital-fissure": { at: [[-0.0200, 1.5266, 0.1177], [-0.0230, 1.5300, 0.1203], [-0.0280, 1.5340, 0.1230]], r: 0.005, n: "ant", ring: true, cam: "post+0.8sup" },
+  "inferior-orbital-fissure": { at: [[-0.0280, 1.5080, 0.1370], [-0.0360, 1.5100, 0.1320]], r: 0.005, n: "ant+sup", ring: true, cam: "ant+0.3sup" },
+  "foramen-rotundum": { at: [[-0.0184, 1.5201, 0.1130]], r: 0.004, n: "post+sup", ring: true },
+  "foramen-ovale": { at: [[-0.0253, 1.5097, 0.1005]], r: 0.005, n: "sup", ring: true },
+  "foramen-spinosum": { near: [-0.0300, 1.5083, 0.0940], r: 0.0035, n: "sup" },
+  "foramen-lacerum": { at: [[-0.0138, 1.5100, 0.0968]], r: 0.0045, n: "sup", ring: true },
+  "carotid-canal": { near: [-0.0290, 1.5000, 0.0850], r: 0.004, n: "inf", cam: "inf+0.9post" },
+  "internal-acoustic-opening": { near: [-0.0310, 1.5050, 0.0740], r: 0.004, n: "post+med", cam: "post+0.5med+0.6sup" },
+  "jugular-foramen": { near: [[-0.0340, 1.5000, 0.0750], [-0.0360, 1.4940, 0.0680]], r: 0.006, n: "inf", ring: true, cam: "inf+0.25lat" },
+  "hypoglossal-canal": { near: [-0.0220, 1.4870, 0.0710], r: 0.0045, n: "sup+lat", cam: "sup+0.4ant" },
+  "stylomastoid-foramen": { near: [-0.0440, 1.4950, 0.0780], r: 0.0035, n: "inf" },
+  // 頭蓋の内面（トルコ鞍のまわりは正中なので one）
+  "hypophysial-fossa": { near: [-0.0007, 1.5217, 0.1046], r: 0.005, n: "sup", one: true },
+  "dorsum-sellae": { near: [-0.0007, 1.5295, 0.0969], r: 0.0045, n: "sup+post", one: true, cam: "sup+0.3post" },
+  "tuberculum-sellae": { near: [-0.0007, 1.5290, 0.1100], r: 0.0035, n: "sup", one: true },
+  "prechiasmatic-sulcus": { near: [[-0.0007, 1.5320, 0.1160], [-0.0060, 1.5310, 0.1150]], r: 0.003, n: "sup" },
+  "anterior-clinoid-process": { near: [-0.0135, 1.5323, 0.1095], r: 0.004, n: "sup+post", cam: "sup+0.3post" },
+  "carotid-sulcus": { near: [-0.0148, 1.5170, 0.1020], r: 0.004, n: "lat", cam: "sup+0.5lat+0.2post" },
+  "trigeminal-impression": { near: [-0.0210, 1.5135, 0.0905], r: 0.004, n: "sup+ant", cam: "sup" },
+  "arcuate-eminence": { near: [-0.0410, 1.5170, 0.0830], r: 0.005, n: "sup", cam: "sup" },
+  "subarcuate-fossa": { near: [-0.0375, 1.5128, 0.0722], r: 0.004, n: "post+med", cam: "post+0.5med+0.6sup" },
+  "groove-for-superior-sagittal-sinus": { near: [[0,1.5898,0.1636],[0.0,1.6013,0.1532],[0,1.6127,0.1427],[0.0,1.6185,0.1286],[0,1.6243,0.1145],[0.0,1.6275,0.1008],[0,1.6307,0.087],[0.0,1.6307,0.0735],[0,1.6307,0.06],[0.0,1.6273,0.0474],[0,1.6238,0.0349],[0.0,1.6165,0.0246],[0,1.6092,0.0143],[0.0,1.6003,0.0064],[0,1.5915,-0.0015],[0.0,1.5805,-0.0049],[0,1.5695,-0.0083],[0.0,1.5593,-0.0096],[0,1.549,-0.011]], r: 0.006, n: "inf", one: true, cam: "inf+0.3ant" },
+  "groove-for-transverse-sinus": { near: [[-0.0120, 1.5190, -0.0035], [-0.0250, 1.5190, -0.0030], [-0.0360, 1.5190, 0.0080], [-0.0470, 1.5180, 0.0200]], r: 0.005, n: "ant", cam: "ant+0.6sup" },
+  "groove-for-sigmoid-sinus": { near: [[-0.0540, 1.5130, 0.0320], [-0.0520, 1.5050, 0.0370], [-0.0500, 1.4980, 0.0520], [-0.0460, 1.4930, 0.0610]], r: 0.005, n: "med+sup", cam: "sup+0.5med" },
+  "frontal-crest": { near: [[0, 1.5443, 0.1621], [0, 1.5569, 0.168], [0, 1.574, 0.1688]], r: 0.004, n: "post", one: true, cam: "post+0.3sup" },
+  "granular-foveolae": { near: [[-0.014, 1.626, 0.1048], [-0.014, 1.6319, 0.078], [-0.014, 1.628, 0.0514]], r: 0.006, n: "inf", cam: "inf+0.3ant" },
+  // 頭蓋の外面と顔面
+  "bregma": { near: [-0.0013, 1.6299, 0.1123], r: 0.006, n: "sup", one: true },
+  "lambda": { near: [-0.0001, 1.5933, -0.0063], r: 0.006, n: "post+sup", one: true },
+  "incisive-fossa": { near: [0, 1.4710, 0.1630], r: 0.004, n: "inf", one: true },
+  "greater-palatine-foramen": { near: [-0.0210, 1.4712, 0.1320], r: 0.0035, n: "inf" },
+  "lesser-palatine-foramina": { near: [-0.0200, 1.4700, 0.1265], r: 0.003, n: "inf" },
+  "choanae": { at: [[-0.0090, 1.4900, 0.1230]], r: 0.008, n: "post", ring: true, cam: "post+0.4inf" },
+  "bony-nasal-septum": { near: [[0, 1.4950, 0.1400], [0, 1.5100, 0.1500], [0, 1.5250, 0.1550]], r: 0.009, n: "lat", ring: true, one: true, cam: "inf+0.5ant" },
+  "pterygoid-hamulus": { near: [-0.0141, 1.4789, 0.1212], r: 0.0035, n: "inf" },
+  "pharyngeal-tubercle": { near: [0, 1.4905, 0.0880], r: 0.004, n: "inf", one: true },
+  "infratemporal-fossa": { near: [[-0.0250, 1.4850, 0.1150], [-0.0350, 1.5000, 0.1100]], r: 0.01, n: "lat+inf", cam: "lat+0.6inf" },
+  "pterygopalatine-fossa": { near: [-0.0242, 1.5026, 0.1120], r: 0.006, n: "ant+lat", cam: "lat+0.2ant" },
+  "fossa-for-lacrimal-gland": { near: [-0.0448, 1.5378, 0.1472], r: 0.006, n: "inf", cam: "ant+0.5inf" },
+  "base-of-mandible": { near: [[-0.011, 1.4224, 0.159], [-0.024, 1.4277, 0.144], [-0.037, 1.437, 0.129], [-0.041, 1.444, 0.114]], r: 0.005, n: "inf" },
+  "mental-tubercle": { near: [-0.0120, 1.4250, 0.1660], r: 0.004, n: "ant" },
+};
+// 体幹と四肢（語の形の上に近い座標を書き、いちばん近い表面の点を使う）
+export const RULES2 = {
+  "sacral-canal": { near: [0, 0.9065, 0.0400], r: 0.007, n: "sup", one: true, cam: "sup+0.5post" },
+  "groove-for-vertebral-artery": { near: [[-0.0140, 1.4715, 0.0500], [-0.0170, 1.4709, 0.0520]], r: 0.004, n: "sup", cam: "sup+0.5post" },
+  "superior-costal-facet": { near: [-0.0139, 1.2545, 0.0332], r: 0.005, n: "lat" },
+  "inferior-costal-facet": { near: [-0.0158, 1.2392, 0.0347], r: 0.005, n: "lat" },
+  "ala-of-ilium": { near: [[-0.0745, 0.9339, 0.038], [-0.1198, 0.9387, 0.0701], [-0.1445, 0.9267, 0.1021], [-0.0617, 0.9052, 0.014], [-0.075, 0.9052, 0.046], [-0.1163, 0.9076, 0.0781], [-0.1295, 0.9028, 0.1102], [-0.1348, 0.9028, 0.1278], [-0.0865, 0.8789, 0.0621], [-0.1171, 0.8765, 0.0941], [-0.1267, 0.8837, 0.1214], [-0.1076, 0.9506, 0.0572], [-0.0932, 0.9219, 0.0572]], r: 0.024, n: "lat", ring: true },
+  "sacropelvic-surface": { near: [[-0.0455, 0.8837, 0.0348], [-0.0520, 0.9020, 0.0220]], r: 0.016, n: "med" },
+  "carpal-groove": { near: [-0.2570, 0.7960, 0.1270], r: 0.007, n: "ant" },
+  "condyle-of-humerus": { near: [[-0.2010, 1.0381, 0.0823], [-0.2145, 1.0405, 0.0790], [-0.2279, 1.0435, 0.0754]], r: 0.011, n: "ant+inf", ring: true },
+  "lateral-angle-of-scapula": { near: [[-0.1421, 1.3076, 0.0646], [-0.1324, 1.3022, 0.0594]], r: 0.02, n: "lat", ring: true },
+  "fibular-articular-facet": { near: [-0.1030, 0.3600, 0.0570], r: 0.005, n: "lat+post+inf" },
+  "articular-facet-of-head-of-fibula": { near: [-0.1030, 0.3600, 0.0570], r: 0.005, n: "med+sup+ant" },
+  "articular-facet-of-medial-malleolus": { near: [-0.0520, 0.0080, 0.0780], r: 0.006, n: "lat", cam: "ant+0.4lat" },
+  "articular-facet-of-lateral-malleolus": { near: [-0.0940, -0.0120, 0.0630], r: 0.006, n: "med", cam: "ant+0.4med" },
+};
+export const CHECKS = [
+  { name: "exam-base-sup", mesh: "skull-all", views: ["sup"], crop: [0.15, 0.25, 0.85, 0.75], ids: ["optic-canal", "superior-orbital-fissure", "foramen-rotundum", "foramen-ovale", "foramen-spinosum", "foramen-lacerum", "internal-acoustic-opening", "jugular-foramen", "hypoglossal-canal", "hypophysial-fossa", "dorsum-sellae", "tuberculum-sellae", "prechiasmatic-sulcus", "anterior-clinoid-process", "trigeminal-impression", "arcuate-eminence"], side: "all" },
+  { name: "exam-base-inf", mesh: "skull-all", views: ["inf"], crop: [0.15, 0.05, 0.85, 0.7], ids: ["carotid-canal", "jugular-foramen", "hypoglossal-canal", "stylomastoid-foramen", "incisive-fossa", "greater-palatine-foramen", "lesser-palatine-foramina", "choanae", "pterygoid-hamulus", "pharyngeal-tubercle", "infratemporal-fossa", "foramen-ovale"], side: "all" },
+  { name: "exam-vault", mesh: "skull-all", views: ["med", "sup"], ids: ["groove-for-superior-sagittal-sinus", "groove-for-transverse-sinus", "groove-for-sigmoid-sinus", "frontal-crest", "granular-foveolae", "bregma", "lambda", "subarcuate-fossa", "internal-acoustic-opening"], half: true },
+  { name: "exam-sacrum", mesh: "sacrum", views: ["sup"], ids: ["sacral-canal"] },
+  { name: "exam-atlas", mesh: "atlas", views: ["sup"], ids: ["groove-for-vertebral-artery", "lateral-mass-of-atlas", "posterior-arch-of-atlas"], side: "all" },
+  { name: "exam-hip", mesh: "hip-bone", views: ["lat", "med"], ids: ["ala-of-ilium", "sacropelvic-surface"] },
+  { name: "exam-arm", mesh: ["humerus", "scapula", "carpal-bones"], views: ["ant", "lat"], ids: ["condyle-of-humerus", "lateral-angle-of-scapula", "carpal-groove"] },
+  { name: "exam-leg", mesh: ["tibia", "fibula"], views: ["ant", "post"], ids: ["fibular-articular-facet", "articular-facet-of-head-of-fibula", "articular-facet-of-medial-malleolus", "articular-facet-of-lateral-malleolus"], crop: null },
+  { name: "exam-face", mesh: "skull-all", views: ["ant", "lat"], ids: ["fossa-for-lacrimal-gland", "inferior-orbital-fissure", "superior-orbital-fissure", "optic-canal", "base-of-mandible", "mental-tubercle", "infratemporal-fossa", "pterygopalatine-fossa", "bony-nasal-septum"] },
+];
