@@ -85,6 +85,11 @@ button { font: inherit; color: inherit; }
   background: rgb(43 42 39 / 0.85); color: #fff; font-size: 14px; font-weight: 600; white-space: nowrap;
   border: 1px solid rgb(255 255 255 / 0.28);
 }
+/* PC でマウスを重ねた所の名前（カーソルの右下に出す） */
+.stage-hover {
+  position: absolute; top: 0; left: 0; pointer-events: none; margin: 16px 0 0 14px;
+  padding: 2px 8px; border-radius: 6px; background: rgb(20 22 25 / 0.78); color: #f1eee8; font-size: 13px; white-space: nowrap;
+}
 
 .panel { padding: 16px calc(16px + var(--safe-right)) calc(48px + var(--safe-bottom)) calc(16px + var(--safe-left)); background: var(--bg); }
 .panel h2 { font-size: 18px; margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
@@ -277,6 +282,21 @@ button { font: inherit; color: inherit; }
 .section-box { margin-bottom: 12px; padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
 .section-box .nav-row { margin-top: 8px; }
 .section-box .muted { margin: 8px 0 0; }
+/* 図鑑ではがした（隠した・薄くした）語。押すとその語だけ戻す */
+.peel-title { margin: 0 0 8px; font-weight: 600; }
+.peel-title .muted { font-weight: 400; margin-left: 4px; }
+.chip.peeled::after { content: " ×"; color: var(--muted); }
+.chip.peeled.faded { border-style: dashed; }
+.nav-row.peel-row { margin-top: 8px; }
+.peel-box .nav-row { gap: 6px; }
+.peel-box .nav-row .ghost-button { padding: 8px 4px; font-size: 14px; white-space: nowrap; }
+.saved-views { padding: 0 12px 12px; }
+.saved-views > .muted { margin: 0 0 8px; }
+.saved-views > .ghost-button { width: 100%; }
+.view-row { display: flex; align-items: stretch; }
+.view-row .term-row { flex: 1; min-width: 0; }
+.view-delete { width: 44px; border: 0; background: none; color: var(--muted); font-size: 20px; cursor: pointer; border-bottom: 1px solid var(--line); }
+.view-row:last-child .view-delete, .view-row:last-child .term-row { border-bottom: 0; }
 .section-slider { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: var(--muted); }
 .section-slider input { flex: 1; min-width: 0; }
 

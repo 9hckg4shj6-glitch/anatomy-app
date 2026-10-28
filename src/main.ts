@@ -78,6 +78,8 @@ async function start(): Promise<void> {
       guard: (message) => (leaveWarning = message),
     };
     viewer.onPick = null;
+    viewer.onHover = null;
+    viewer.setPeel([], []);
     viewer.setSection(null);
     viewer.setLabel(null);
     viewer.colorTerms(null);

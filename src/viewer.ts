@@ -279,6 +279,7 @@ export class AnatomyViewer {
   readonly ready: Promise<void>;
   /** タップされた部品IDとその点・面の外向き（何も無い所なら null） */
   onPick: ((elementId: string | null, point: Vec3 | null, normal: Vec3 | null) => void) | null = null;
+  private hoverName: ((elementId: string, point: Vec3) => string | null) | null = null;
 
   private readonly renderer: THREE.WebGLRenderer;
   private readonly scene = new THREE.Scene();
@@ -286,6 +287,7 @@ export class AnatomyViewer {
   private readonly controls: OrbitControls;
   private readonly loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   private readonly label: HTMLDivElement;
+  private readonly hoverLabel: HTMLDivElement;
   private readonly groups = new Map<string, Promise<THREE.Group>>();
   /** 読み込み中の系統の数（3Dの上に「読み込み中」を出す） */
   private loading = 0;
@@ -317,6 +319,9 @@ export class AnatomyViewer {
   );
   /** 半透明にしている部品（タップでは選べない） */
   private ghosted = new Set<string>();
+  /** 図鑑で隠した部品・薄くした部品（解剖のように表の構造をはがして奥を見る）。強調した語の部品は隠さない */
+  private peelHidden = new Set<string>();
+  private peelFaded = new Set<string>();
   /** 骨の部位を示すスポット。すべてのスポット用の材質でこの値を共有する */
   private readonly spotUniforms = {
     spotCount: { value: 0 },
@@ -368,6 +373,10 @@ export class AnatomyViewer {
     this.label.className = "stage-label";
     this.label.hidden = true;
     host.append(this.label);
+    this.hoverLabel = document.createElement("div");
+    this.hoverLabel.className = "stage-hover";
+    this.hoverLabel.hidden = true;
+    host.append(this.hoverLabel);
     this.resetButton = document.createElement("button");
     this.resetButton.type = "button";
     this.resetButton.className = "stage-reset";
@@ -415,6 +424,7 @@ export class AnatomyViewer {
     const lift = (event: PointerEvent) => touching.delete(event.pointerId);
     this.renderer.domElement.addEventListener("pointerdown", (event) => {
       touching.add(event.pointerId);
+      this.hoverLabel.hidden = true;
       down = touching.size === 1 ? { x: event.clientX, y: event.clientY, t: performance.now() } : null;
     });
     this.renderer.domElement.addEventListener("pointercancel", lift);
@@ -436,6 +446,33 @@ export class AnatomyViewer {
       } else {
         lastTap = { x: event.clientX, y: event.clientY, t: now };
       }
+    });
+
+    // マウスを重ねた所の名前（ボタンを押していないときだけ。光線を飛ばすので間を置いて調べる）
+    let hoverAt: { x: number; y: number } | null = null;
+    let hoverTimer = 0;
+    this.renderer.domElement.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse" || event.buttons || !this.onHover) {
+        this.hoverLabel.hidden = true;
+        return;
+      }
+      hoverAt = { x: event.clientX, y: event.clientY };
+      if (hoverTimer) return;
+      hoverTimer = window.setTimeout(() => {
+        hoverTimer = 0;
+        if (!hoverAt || !this.onHover) return;
+        const hit = this.pick(hoverAt.x, hoverAt.y, false);
+        const text = hit ? this.onHover(hit.element, hit.point) : null;
+        this.hoverLabel.hidden = !text;
+        if (!text) return;
+        const rect = this.host.getBoundingClientRect();
+        this.hoverLabel.textContent = text;
+        this.hoverLabel.style.transform = `translate(${hoverAt.x - rect.left}px, ${hoverAt.y - rect.top}px)`;
+      }, 70);
+    });
+    this.renderer.domElement.addEventListener("pointerleave", () => {
+      hoverAt = null;
+      this.hoverLabel.hidden = true;
     });
 
     new ResizeObserver(() => this.resize()).observe(host);
@@ -461,6 +498,16 @@ export class AnatomyViewer {
       }
       this.overview(false);
     });
+  }
+
+  /** PC でカーソルを重ねた部品に出す名前（null なら出さない）。図鑑で使う */
+  get onHover(): ((elementId: string, point: Vec3) => string | null) | null {
+    return this.hoverName;
+  }
+
+  set onHover(name: ((elementId: string, point: Vec3) => string | null) | null) {
+    this.hoverName = name;
+    this.hoverLabel.hidden = true;
   }
 
   /** 筋の付着面（Z-Anatomy から作った起始・停止の面）があるか */
@@ -597,6 +644,24 @@ export class AnatomyViewer {
     const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
     const distance = (extent * 0.55) / tan / Math.min(1, this.camera.aspect);
     this.moveTo(target, target.clone().add(direction.normalize().multiplyScalar(distance)), animate);
+  }
+
+  /** 語の部品を隠す・薄くする（図鑑で表の構造をはがす）。薄くした部品はタップで選べない */
+  setPeel(hidden: string[], faded: string[]): void {
+    const elements = (ids: string[]) => new Set(ids.flatMap((id) => this.index?.terms[id]?.elements ?? []));
+    this.peelHidden = elements(hidden);
+    this.peelFaded = elements(faded);
+    this.refresh();
+  }
+
+  /** 今の視点（注視点・カメラの位置）。図鑑の「表示を保存」に使う */
+  get view(): [Vec3, Vec3] {
+    return [this.controls.target.toArray() as Vec3, this.camera.position.toArray() as Vec3];
+  }
+
+  /** 保存した視点へ移る */
+  setView([target, position]: [Vec3, Vec3], animate = true): void {
+    this.moveTo(new THREE.Vector3(...target), new THREE.Vector3(...position), animate);
   }
 
   /** 語ごとの色分け（進捗表示）。null で系統の色に戻す。 */
@@ -935,7 +1000,9 @@ export class AnatomyViewer {
       const hiddenByRegion = outside && (!regionSection || system !== "muscular");
       // 局所解剖は右側で示すので、左側の形は隠す（内側から見るとき反対側の脚がじゃまにならないように）
       const leftSide = regions.length > 0 && system !== "body" && this.restCenter(mesh).x > 0.02;
-      mesh.visible = !(this.motion && system === "body") && !(this.actionTerm && !bone) && !hiddenByRegion && !leftSide;
+      const peeled = !highlightedElements.has(elementId) && !spotElements.has(elementId);
+      mesh.visible = !(this.motion && system === "body") && !(this.actionTerm && !bone) && !hiddenByRegion && !leftSide
+        && !(peeled && this.peelHidden.has(elementId));
       if (this.motion?.meshes.has(mesh)) {
         mesh.material = this.solid(HIGHLIGHT, mesh);
       } else if (this.actionTerm && system === "skeletal") {
@@ -957,6 +1024,10 @@ export class AnatomyViewer {
         // 骨の部位（筋の起始・停止を含む）は、添えるだけの系統の骨でも不透明にして示す
         const color = highlightedElements.has(elementId) ? own() : base;
         mesh.material = this.surface(system === "skeletal" ? color : pale(color), this.tissue(mesh, color), true);
+      } else if (peeled && this.peelFaded.has(elementId)) {
+        mesh.material = this.ghost(own(), 0.14);
+        mesh.renderOrder = 1;
+        this.ghosted.add(elementId);
       } else if (this.context.has(system)) {
         mesh.material = this.ghost(base, this.contextOpacity);
         mesh.renderOrder = 1;
@@ -1333,14 +1404,15 @@ export class AnatomyViewer {
     return plane;
   }
 
-  private pick(clientX: number, clientY: number): { element: string; point: Vec3; normal: Vec3 | null } | null {
+  /** spread が false なら、外れても周りを探さない（マウスを重ねたとき） */
+  private pick(clientX: number, clientY: number, spread = true): { element: string; point: Vec3; normal: Vec3 | null } | null {
     const rect = this.renderer.domElement.getBoundingClientRect();
     const raycaster = new THREE.Raycaster();
     // 半透明の部品（周りを薄くしたときなど）は選べない
     const candidates = [...this.meshes.values()].filter((mesh) =>
       this.active.has(mesh.userData.system as string) && !this.ghosted.has(mesh.name) && this.isVisible(mesh));
     // 細い骨や血管は指で当てにくいので、外れたら周りを少しずつ広げて探す
-    for (const radius of [0, 6, 12, 18]) {
+    for (const radius of spread ? [0, 6, 12, 18] : [0]) {
       const steps = radius ? 8 : 1;
       for (let i = 0; i < steps; i++) {
         const x = clientX + radius * Math.cos((i / steps) * Math.PI * 2);
