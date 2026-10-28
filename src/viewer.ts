@@ -396,6 +396,8 @@ export class AnatomyViewer {
     this.controls.dampingFactor = 0.12;
     this.controls.minDistance = 0.08;
     this.controls.maxDistance = 4;
+    // ピンチ・ホイールは、体の中心ではなく指（カーソル）の所へ向かって拡大する
+    this.controls.zoomToCursor = true;
     // 指やマウスで実際に視点を動かしたときだけ「視点を戻す」を出す（タップしただけでは出さない）
     let handling = false;
     this.controls.addEventListener("start", () => (handling = true));
@@ -406,6 +408,8 @@ export class AnatomyViewer {
     });
 
     let down: { x: number; y: number; t: number } | null = null;
+    /** 1回目のタップ（ダブルタップを見分ける） */
+    let lastTap: { x: number; y: number; t: number } | null = null;
     // 画面に触れている指。2本目が触れたら（ピンチ）、指を離してもタップにしない
     const touching = new Set<number>();
     const lift = (event: PointerEvent) => touching.delete(event.pointerId);
@@ -420,7 +424,18 @@ export class AnatomyViewer {
       if (!down || Math.hypot(event.clientX - down.x, event.clientY - down.y) > 8 || performance.now() - down.t > 600) return;
       down = null;
       const hit = this.pick(event.clientX, event.clientY);
-      this.onPick?.(hit?.element ?? null, hit?.point ?? null, hit?.normal ?? null);
+      if (this.onPick) {
+        this.onPick(hit?.element ?? null, hit?.point ?? null, hit?.normal ?? null);
+        return;
+      }
+      // タップで答えたり選んだりしない画面（ホームなど）では、ダブルタップした所に寄る
+      const now = performance.now();
+      if (lastTap && now - lastTap.t < 350 && Math.hypot(event.clientX - lastTap.x, event.clientY - lastTap.y) < 40) {
+        lastTap = null;
+        if (hit) this.zoomAt(hit.point);
+      } else {
+        lastTap = { x: event.clientX, y: event.clientY, t: now };
+      }
     });
 
     new ResizeObserver(() => this.resize()).observe(host);
@@ -660,9 +675,21 @@ export class AnatomyViewer {
     if (this.homeView) this.moveTo(...this.homeView, true);
   }
 
-  private moveTo(target: THREE.Vector3, position: THREE.Vector3, animate: boolean): void {
-    this.homeView = [target.clone(), position.clone()];
-    this.resetButton.hidden = true;
+  /** point に寄る（その点を真ん中にして、今の半分より近くへ）。「視点を戻す」で元に戻れる */
+  private zoomAt(point: Vec3): void {
+    const target = new THREE.Vector3(...point);
+    const offset = this.camera.position.clone().sub(target);
+    const distance = Math.max(this.controls.minDistance * 2, offset.length() * 0.4);
+    this.moveTo(target, target.clone().add(offset.setLength(distance)), true, false);
+    if (this.homeView) this.resetButton.hidden = false;
+  }
+
+  /** remember が false のとき（自分で寄ったとき）は、「視点を戻す」の戻り先を変えない */
+  private moveTo(target: THREE.Vector3, position: THREE.Vector3, animate: boolean, remember = true): void {
+    if (remember) {
+      this.homeView = [target.clone(), position.clone()];
+      this.resetButton.hidden = true;
+    }
     if (!animate) {
       this.controls.target.copy(target);
       this.camera.position.copy(position);

@@ -10,7 +10,7 @@ export async function home(ctx: AppContext): Promise<void> {
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   void ctx.viewer.show({ systems: systems.map((s) => s.id).filter((id) => ctx.index.systems[id]), body: true });
-  ctx.hint("ドラッグで回転・ピンチで拡大");
+  ctx.hint("ドラッグで回転・ダブルタップで拡大");
 
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
