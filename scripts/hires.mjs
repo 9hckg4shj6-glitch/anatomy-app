@@ -27,6 +27,12 @@ const SIGMAS = [0.04, 0.02, 0.01, 0.005, 0.0025];
  * there は 3.0 の頂点から 4.0 の面まで（3.0 にだけある出っ張りが無いか。4.0 は粗く角が削れているので緩める）
  */
 const LIMIT = { back: { p95: 0.0014, max: 0.0035 }, there: { p95: 0.0016, max: 0.005 } };
+/**
+ * LIMIT を少し超えるが、重ねた形を 4.0 と並べて描いて確かめ、使うことにした部品（ずれは縁のごく一部だけで、3.0 の方が細かい）。
+ * 仙骨（ずれは外側縁と尾骨との境の約1%の頂点。後面の稜・仙骨孔が細かくなる）、胸骨体・胸骨柄（肋骨切痕の縁で 2〜2.5mm）。
+ * 第3頚椎は 4.0 の棘突起の先が二分しているのに 3.0 は1つの先なので、4.0 のまま（LIMIT の外）。
+ */
+const ACCEPT = new Set(["FJ3393", "FJ3178", "FJ3290"]);
 
 function bvhOf(mesh) {
   const geometry = new BufferGeometry();
@@ -177,7 +183,7 @@ export function loadHires({ parseObj, objDir, readWhole }) {
     if (source && fs.existsSync(source)) {
       const bin = path.join(CACHE, `${id}.bin`);
       // ずれ（mm）は覚えておき、使うかどうかは今の LIMIT で決める。使う形だけをファイルに置く
-      const ok = (entry) => ["back", "there"].every((k) => entry[k][0] <= LIMIT[k].p95 * 1000 && entry[k][1] <= LIMIT[k].max * 1000);
+      const ok = (entry) => ACCEPT.has(id) || ["back", "there"].every((k) => entry[k][0] <= LIMIT[k].p95 * 1000 && entry[k][1] <= LIMIT[k].max * 1000);
       if (!index[id] || (ok(index[id]) && !fs.existsSync(bin))) {
         const fit = align(parseObj(source), readWhole(id));
         const mm = (v) => +(v * 1000).toFixed(2);

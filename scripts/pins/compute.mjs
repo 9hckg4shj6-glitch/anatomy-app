@@ -66,14 +66,52 @@ function inBox(q, b, box = {}) {
   return Object.entries(box).every(([k, [lo, hi]]) => v[k] >= lo && v[k] <= hi);
 }
 
+// 骨の表面の点: 頂点に加えて、三角形の上に約 SAMPLE おきに置いた点。BodyParts3D 4.0 の形は粗く（脛骨で857頂点、骨幹の三角形は数cm）、
+// 頂点だけで「最も出た点」「最も近い点」を探すと、その高さに頂点の無い稜では反対の面の頂点を拾う（脛骨の前縁が後面に落ちていた）
+const SAMPLE = 0.001;
+const sampled = new WeakMap();
+function surfacePoints(m) {
+  if (sampled.has(m)) return sampled.get(m);
+  const p = m.positions, idx = m.indices, out = [...p];
+  for (let t = 0; t < idx.length; t += 3) {
+    const [a, b, c] = [idx[t] * 3, idx[t + 1] * 3, idx[t + 2] * 3];
+    const len = Math.max(...[[a, b], [b, c], [c, a]].map(([i, j]) => Math.hypot(p[i] - p[j], p[i + 1] - p[j + 1], p[i + 2] - p[j + 2])));
+    const k = Math.ceil(len / SAMPLE);
+    if (k < 2) continue;
+    for (let i = 0; i <= k; i++) for (let j = 0; i + j <= k; j++) {
+      if ((i === 0 && j === 0) || (i === k) || (j === k)) continue; // 頂点は入っている
+      const u = i / k, v = j / k, w = 1 - u - v;
+      out.push(w * p[a] + u * p[b] + v * p[c], w * p[a + 1] + u * p[b + 1] + v * p[c + 1], w * p[a + 2] + u * p[b + 2] + v * p[c + 2]);
+    }
+  }
+  const points = new Float32Array(out);
+  sampled.set(m, points);
+  return points;
+}
+/** 骨の表面の点ごとに fn([x, y, z]) */
+function eachPoint(ms, fn) {
+  for (const m of ms) {
+    const p = surfacePoints(m);
+    for (let i = 0; i < p.length; i += 3) fn([p[i], p[i + 1], p[i + 2]]);
+  }
+}
+/** 表面で P にいちばん近い点 */
+function nearestPoint(ms, P) {
+  let best = null, bd = Infinity;
+  eachPoint(ms, (q) => {
+    const d = Math.hypot(q[0] - P[0], q[1] - P[1], q[2] - P[2]);
+    if (d < bd) { bd = d; best = q; }
+  });
+  return best;
+}
+
 function extreme(ms, d, b, box) {
   let best = null, bestV = -Infinity;
-  for (const m of ms) for (let i = 0; i < m.positions.length; i += 3) {
-    const q = [m.positions[i], m.positions[i + 1], m.positions[i + 2]];
-    if (!inBox(q, b, box)) continue;
+  eachPoint(ms, (q) => {
+    if (!inBox(q, b, box)) return;
     const v = dot(q, d);
     if (v > bestV) { bestV = v; best = q; }
-  }
+  });
   if (!best) throw new Error("範囲に点がありません");
   return best;
 }
@@ -154,10 +192,9 @@ function fitSphere(points) {
 function capRim(ms, b, { ext, box, fit = 0.015, theta = 80, k = 5, phase = 0, only }) {
   const top = extreme(ms, dir(ext), b, box);
   const near = [];
-  for (const m of ms) for (let i = 0; i < m.positions.length; i += 3) {
-    const q = [m.positions[i], m.positions[i + 1], m.positions[i + 2]];
+  eachPoint(ms, (q) => {
     if (Math.hypot(q[0] - top[0], q[1] - top[1], q[2] - top[2]) < fit) near.push(q);
-  }
+  });
   const { c, R } = fitSphere(near);
   const axis = norm(top.map((v, i) => v - c[i]));
   const e1 = norm(Math.abs(axis[1]) < 0.9 ? [axis[2], 0, -axis[0]] : [1, 0, 0]);
@@ -230,13 +267,7 @@ export function compute(id, rule) {
   // 2つのピンの中点にいちばん近い骨の表面の点
   if (rule.between) {
     const [A, B] = rule.between.map((id) => pins[id].at[0]);
-    const M = A.map((v, i) => (v + B[i]) / 2);
-    let best = null, bd = Infinity;
-    for (const m of ms) for (let i = 0; i < m.positions.length; i += 3) {
-      const d = Math.hypot(m.positions[i] - M[0], m.positions[i + 1] - M[1], m.positions[i + 2] - M[2]);
-      if (d < bd) { bd = d; best = [m.positions[i], m.positions[i + 1], m.positions[i + 2]]; }
-    }
-    at.push(best);
+    at.push(nearestPoint(ms, A.map((v, i) => (v + B[i]) / 2)));
   }
   // 縫合: 部品 a のうち部品 b に近い（gap 以内の）点を、axis に沿って k 点えらぶ
   if (rule.seam) {
@@ -274,27 +305,12 @@ export function compute(id, rule) {
     n = rule.n ? dir(rule.n) : [0, 1, 0];
   }
   // nearestTo: ほかのピンの点にいちばん近い、この骨の表面の点（下顎頭に対する下顎窩など）
-  if (rule.nearestTo) {
-    const P = pins[rule.nearestTo].at[0];
-    let best = null, bd = Infinity;
-    for (const m of ms) for (let i = 0; i < m.positions.length; i += 3) {
-      const d = Math.hypot(m.positions[i] - P[0], m.positions[i + 1] - P[1], m.positions[i + 2] - P[2]);
-      if (d < bd) { bd = d; best = [m.positions[i], m.positions[i + 1], m.positions[i + 2]]; }
-    }
-    at.push(best);
-  }
+  if (rule.nearestTo) at.push(nearestPoint(ms, pins[rule.nearestTo].at[0]));
   // at: 座標をそのまま使う（孔・裂の中心。表面へ寄せると縁の片側にずれるので。座標は確認画像・光線で決めたもの）
   if (rule.at) for (const P of rule.at) at.push([...P]);
   // near: 指定した座標にいちばん近い骨の表面の点（座標の配列なら1点ずつ。尿道のような細い管の点の列）
   if (rule.near) {
-    for (const P of Array.isArray(rule.near[0]) ? rule.near : [rule.near]) {
-      let best = null, bd = Infinity;
-      for (const m of ms) for (let i = 0; i < m.positions.length; i += 3) {
-        const d = Math.hypot(m.positions[i] - P[0], m.positions[i + 1] - P[1], m.positions[i + 2] - P[2]);
-        if (d < bd) { bd = d; best = [m.positions[i], m.positions[i + 1], m.positions[i + 2]]; }
-      }
-      at.push(best);
-    }
+    for (const P of Array.isArray(rule.near[0]) ? rule.near : [rule.near]) at.push(nearestPoint(ms, P));
   }
   // fromMid: 正中（x=0）から外側へ当てる（下顎枝の内面など、反対側にさえぎられる所）
   if (rule.fromMid) {
@@ -336,11 +352,11 @@ export function compute(id, rule) {
   for (const sl of rule.slices ?? []) {
     const y = b.lo[1] + sl.s * (b.hi[1] - b.lo[1]);
     let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity;
-    for (const m of ms) for (let i = 0; i < m.positions.length; i += 3) {
-      if (Math.abs(m.positions[i + 1] - y) > 0.003) continue;
-      x0 = Math.min(x0, m.positions[i]); x1 = Math.max(x1, m.positions[i]);
-      z0 = Math.min(z0, m.positions[i + 2]); z1 = Math.max(z1, m.positions[i + 2]);
-    }
+    eachPoint(ms, (q) => {
+      if (Math.abs(q[1] - y) > 0.0015) return;
+      x0 = Math.min(x0, q[0]); x1 = Math.max(x1, q[0]);
+      z0 = Math.min(z0, q[2]); z1 = Math.max(z1, q[2]);
+    });
     const d = dir(sl.view).map((v) => -v); // 外から骨へ向かう向き
     const x = sl.m !== undefined ? x1 - sl.m * (x1 - x0) : (x0 + x1) / 2;
     const z = sl.a !== undefined ? z0 + sl.a * (z1 - z0) : (z0 + z1) / 2;

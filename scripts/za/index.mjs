@@ -48,7 +48,25 @@ const ZA_CUTS = [
   // 咽頭口部は口腔（舌と口蓋の間の空間）まで1つの形。口峡（口蓋舌弓）のあたりで前後に分け、前を口腔とする
   { mesh: "oropharynx", slug: "oral", name: "oral cavity", normal: [0, 0, -1], d: -0.12 },
 ];
+// BodyParts3D の肋軟骨は第1〜第7だけで、第8〜第10肋骨の前端が宙に浮く（肋骨弓が無い）。Z-Anatomy の第8〜第10肋軟骨を使うが、
+// 骨に合わせて動かしても第9・第10肋骨の前端と 8〜13mm ずれて離れる。肋骨ごとに「Z-Anatomy の肋骨の前端 → BodyParts3D の肋骨の前端」の
+// ずれを求め、BodyParts3D の第7肋軟骨（ずれ 0。第8肋軟骨が付く）との間で距離の重みでなめらかに配って寄せる（軟骨どうしのつながりも保つ）
+const ARCH = { mesh: /^costal cartilage of (eighth|ninth|tenth) rib$/, ribs: ["seventh", "eighth", "ninth", "tenth"], fixed: "seventh costal cartilage" };
 const CELL = 0.004;
+
+/** 肋骨の前端: 最も前（z 最大）の点の周り 8mm の平均 */
+function ribTip(positions) {
+  let best = 0;
+  for (let i = 0; i < positions.length; i += 3) if (positions[i + 2] > positions[best + 2]) best = i;
+  const c = [0, 0, 0];
+  let k = 0;
+  for (let i = 0; i < positions.length; i += 3) {
+    if (Math.hypot(positions[i] - positions[best], positions[i + 1] - positions[best + 1], positions[i + 2] - positions[best + 2]) > 0.008) continue;
+    for (let j = 0; j < 3; j++) c[j] += positions[i + j];
+    k++;
+  }
+  return c.map((v) => v / k);
+}
 const OVERLAP = 0.004; // above: BodyParts3D の上端より少し下から残してつなげる
 
 function clip(positions, indices, keep) {
@@ -120,6 +138,7 @@ export async function loadZa(bpNames, bpMesh) {
     let positions = new Float32Array(source.positions.length);
     for (let i = 0; i < positions.length; i += 3) positions.set(warp(source.positions[i], source.positions[i + 1], source.positions[i + 2]), i);
     let indices = source.indices;
+    if (ARCH.mesh.test(source.name.replace(/^(right|left) /, ""))) positions = snapToArch(source.side, positions);
     const rule = CLIP.find((c) => c.mesh.test(source.name.replace(/^(right|left) /, "")));
     if (rule?.by) {
       const by = mesh(all.find((m) => m.name === (source.side ? `${source.side} ${rule.by}` : rule.by)).id).positions;
@@ -147,6 +166,38 @@ export async function loadZa(bpNames, bpMesh) {
     const result = { name: source.name, positions, normals: vertexNormals(positions, indices), indices, bounds: [lo, hi] };
     warped.set(key, result);
     return result;
+  };
+  // ARCH: 肋骨の前端のずれ（と第7肋軟骨のずれ 0）を、距離の2乗の逆数の重みで混ぜて軟骨の点を動かす
+  const archAnchors = new Map();
+  const bpByName = new Map([...bpNames].map(([id, name]) => [name.toLowerCase(), id]));
+  const snapToArch = (side, positions) => {
+    if (!archAnchors.has(side)) {
+      const anchors = [];
+      for (const n of ARCH.ribs) {
+        const za = all.find((m) => m.name === `${side} ${n} rib`);
+        const bp = bpByName.get(`${side} ${n} rib`);
+        if (!za || !bp) throw new Error(`肋骨弓: ${side} ${n} rib がありません`);
+        const from = ribTip(whole(za.id).positions), to = ribTip(bpMesh(bp).positions);
+        anchors.push([from, to.map((v, k) => v - from[k])]);
+      }
+      archAnchors.set(side, { anchors, fixed: bpMesh(bpByName.get(`${side} ${ARCH.fixed}`)).positions });
+    }
+    const { anchors, fixed } = archAnchors.get(side);
+    const out = new Float32Array(positions.length);
+    for (let i = 0; i < positions.length; i += 3) {
+      const shift = [0, 0, 0];
+      // 第7肋軟骨は、いちばん近い点を1つの「ずれ 0」として数える（点の数で重みが増えないように）
+      let near = Infinity;
+      for (let j = 0; j < fixed.length; j += 3) near = Math.min(near, Math.hypot(positions[i] - fixed[j], positions[i + 1] - fixed[j + 1], positions[i + 2] - fixed[j + 2]));
+      let sw = 1 / (near ** 2 + 1e-6);
+      for (const [p, d] of anchors) {
+        const w = 1 / (Math.hypot(positions[i] - p[0], positions[i + 1] - p[1], positions[i + 2] - p[2]) ** 2 + 1e-6);
+        for (let k = 0; k < 3; k++) shift[k] += d[k] * w;
+        sw += w;
+      }
+      for (let k = 0; k < 3; k++) out[i + k] = positions[i + k] + shift[k] / sw;
+    }
+    return out;
   };
   return { names, mesh, all, pairs };
 }

@@ -341,10 +341,10 @@
         },
         {
           "id": "costal-cartilages", "ja": "肋軟骨", "yomi": "ろくなんこつ", "en": "costal cartilages", "enAlt": ["costal cartilage"], "la": "cartilagines costales",
-          "parts": ["* costal cartilage"], "level": 2,
+          "parts": ["* costal cartilage", "za:costal cartilage of eighth rib", "za:costal cartilage of ninth rib", "za:costal cartilage of tenth rib"], "level": 2,
           "kanji": "肋骨の前の軟骨部分",
           "etym": "costal ← ラテン語 costa「肋骨」",
-          "note": "肋骨の前端と胸骨をつなぐ軟骨。弾力があり、呼吸で胸郭が広がるのを助ける。"
+          "note": "肋骨の前端と胸骨をつなぐ硝子軟骨。弾力があり、呼吸で胸郭が広がるのを助ける。第1〜第7肋軟骨は胸骨に直接付き、第8〜第10肋軟骨はすぐ上の肋軟骨に付いて肋骨弓をつくる。第11・第12肋骨の先の小さな軟骨はどこにも付かない。高齢になると石灰化して硬くなる。"
         }
       ]
     },
@@ -2746,7 +2746,7 @@
     },
     {
       "id": "skel-groups",
-      "title": "骨格のまとまり（胸郭・骨盤・上肢帯・頭蓋冠）",
+      "title": "骨格のまとまり（胸郭・肋骨弓・骨盤・上肢帯・頭蓋冠）",
       "intro": [
         "いくつかの骨をまとめた呼び名。胸郭は胸の内臓を囲むかご、骨盤は腹と骨盤の内臓を受ける器、上肢帯は腕を体幹につなぐ骨、頭蓋冠は脳を上からおおう丸天井。",
         "下肢帯は寛骨（左右1対）のことなので、3Dでは「寛骨」で見る。上肢帯（鎖骨・肩甲骨）が胸郭の上にのって大きく動くのに対し、下肢帯は仙骨とがっちり組んで体重を支える。"
@@ -2754,10 +2754,17 @@
       "terms": [
         {
           "id": "thoracic-cage", "ja": "胸郭", "yomi": "きょうかく", "en": "thoracic cage", "enAlt": ["thorax", "rib cage"], "la": "cavea thoracis",
-          "parts": ["* rib", "* costal cartilage", "manubrium", "body of sternum", "xiphoid process", "* thoracic vertebra"], "level": 1,
+          "parts": ["* rib", "* costal cartilage", "za:costal cartilage of eighth rib", "za:costal cartilage of ninth rib", "za:costal cartilage of tenth rib", "manubrium", "body of sternum", "xiphoid process", "* thoracic vertebra"], "level": 1,
           "kanji": "胸の郭（かこい）",
           "etym": "thoracic ← ギリシャ語 thorax「胸当て、よろい」＋ cage「かご」",
           "note": "12個の胸椎、12対の肋骨と肋軟骨、1個の胸骨でできる、かごの形の骨格。心臓・肺を守り、肋骨が上下に動いて呼吸を助ける。上の狭い口（胸郭上口）は第1胸椎・第1肋骨・胸骨柄の上縁で囲まれ、下の広い口（胸郭下口）は横隔膜でふさがれる。"
+        },
+        {
+          "id": "costal-arch", "ja": "肋骨弓", "yomi": "ろっこつきゅう", "en": "costal arch", "enAlt": ["costal margin"], "la": "arcus costalis",
+          "parts": ["seventh costal cartilage", "za:costal cartilage of eighth rib", "za:costal cartilage of ninth rib", "za:costal cartilage of tenth rib"], "level": 2,
+          "kanji": "肋骨（肋軟骨）が連なってできる弓",
+          "etym": "costal ← ラテン語 costa「肋骨」＋ arch「弓」（ラテン語 arcus）",
+          "note": "第7〜第10肋軟骨が連なってできる、胸郭の前の下のふち。第8〜第10肋軟骨はそれぞれすぐ上の肋軟骨に付き、第7肋軟骨を通して胸骨につながる。体表でよく触れ、左右の肋骨弓は剣状突起のつけ根で胸骨下角をつくる。最も低い所は第10肋軟骨で、ここを通る水平面（肋骨下平面）はおよそ第3腰椎の高さ。右の肋骨弓の下には肝臓の下縁と胆嚢が、左の下には胃がある。"
         },
         {
           "id": "pelvis", "ja": "骨盤", "yomi": "こつばん", "en": "pelvis", "enAlt": ["bony pelvis"], "la": "pelvis",

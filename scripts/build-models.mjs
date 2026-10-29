@@ -419,7 +419,7 @@ async function main() {
       .map(([id]) => id);
   }
   // 付着面・付着のピンが、まとめた骨の語（肋骨など）のどの1本の上にあるか（図鑑の「この骨から起こる筋」）
-  index.attachedBones = attachedBones(index, terms, bpMesh);
+  index.attachedBones = attachedBones(index, terms, mesh);
   fs.writeFileSync(path.join(OUT, "index.json"), `${JSON.stringify(index)}\n`);
   const total = Object.values(index.systems).reduce((sum, s) => sum + s.bytes + (s.za?.bytes ?? 0), 0);
   console.log(`語 ${terms.length} / 合計 ${(total / 1024 / 1024).toFixed(2)} MB`);
@@ -429,7 +429,11 @@ async function main() {
 async function writeAttachedBones() {
   const file = path.join(OUT, "index.json");
   const index = JSON.parse(fs.readFileSync(file, "utf8"));
-  index.attachedBones = attachedBones(index, loadTerms().terms, readElements().readMesh);
+  const { terms } = loadTerms();
+  const { elementNames, readMesh, readWhole } = readElements();
+  // 骨の語に Z-Anatomy の形（第8〜第10肋軟骨）があるので、そのときは Z-Anatomy も読む
+  const za = terms.some((term) => term.system === "skeletal" && term.parts.some((spec) => spec.startsWith("za:"))) ? await loadZa(elementNames, readWhole) : null;
+  index.attachedBones = attachedBones(index, terms, (id) => (za?.names.has(id) ? za.mesh(id) : readMesh(id)));
   fs.writeFileSync(file, `${JSON.stringify(index)}\n`);
   console.log(`attachedBones: ${Object.keys(index.attachedBones).length} 件`);
 }

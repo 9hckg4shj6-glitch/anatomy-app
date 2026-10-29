@@ -16,7 +16,7 @@ export const RULES = {
   "acetabulum": { ray: ["lat", 0.59, 0.66], r: 0.027 },
   "symphysial-surface": { ext: "med", box: { s: [0.05, 0.4] }, r: 0.012 },
   "pubic-tubercle": { ext: "ant+0.5sup+0.3med", box: { m: [0, 0.3] }, r: 0.006 },
-  "pecten-pubis": { ridge: { dir: "sup", along: "m", from: 0.12, to: 0.38, k: 4 }, box: { s: [0.15, 0.5] }, r: 0.005, n: "sup+ant" },
+  "pecten-pubis": { ridge: { dir: "sup", along: "m", from: 0.09, to: 0.27, k: 4 }, box: { s: [0.15, 0.5], a: [0.6, 1] }, r: 0.005, n: "sup+ant" },
 };
 const H = Object.keys(RULES);
 export const CHECKS = [

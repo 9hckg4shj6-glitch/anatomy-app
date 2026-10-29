@@ -60,7 +60,7 @@ export const RULES2 = {
   "lateral-angle-of-scapula": { near: [[-0.1421, 1.3076, 0.0646], [-0.1324, 1.3022, 0.0594]], r: 0.02, n: "lat", ring: true },
   "fibular-articular-facet": { near: [-0.1030, 0.3600, 0.0570], r: 0.005, n: "lat+post+inf" },
   "articular-facet-of-head-of-fibula": { near: [-0.1030, 0.3600, 0.0570], r: 0.005, n: "med+sup+ant" },
-  "articular-facet-of-medial-malleolus": { near: [-0.0520, 0.0080, 0.0780], r: 0.006, n: "lat", cam: "ant+0.4lat" },
+  "articular-facet-of-medial-malleolus": { near: [-0.0560, 0.0010, 0.0780], r: 0.006, n: "lat", cam: "ant+0.4lat" },
   "articular-facet-of-lateral-malleolus": { near: [-0.0940, -0.0120, 0.0630], r: 0.006, n: "med", cam: "ant+0.4med" },
 };
 export const CHECKS = [

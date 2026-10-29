@@ -11,7 +11,7 @@ const ROOT = path.resolve(import.meta.dirname, "..");
 const read = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : {});
 
 /**
- * index は index.json の中身（terms の elements を使う）、readMesh(部品ID) は BodyParts3D 4.0 の形（位置は m）。
+ * index は index.json の中身（terms の elements を使う）、readMesh(部品ID) は部品の形（BodyParts3D 4.0、"ZA_…" は骨に合わせた Z-Anatomy の形。位置は m）。
  * pins は content/pins.json、spots は付着面のファイルの中身の配列（省けばファイルから読む）。
  */
 export function attachedBones(index, terms, readMesh, {
