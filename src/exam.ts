@@ -5,7 +5,7 @@ import { pins, termById, type Term } from "./content";
 import type { Facet, StoredSchedule } from "./db";
 import { Rating } from "./fsrs";
 import { drawingUp, pinCenter, type Vec3 } from "./landmarks";
-import { termMastery } from "./study";
+import { shuffle, termMastery } from "./study";
 import type { Section } from "./viewer";
 
 /**
@@ -15,25 +15,41 @@ import type { Section } from "./viewer";
  * C 短文記述（essays）: 語を見て説明してから、要点の一覧で自分で採点する（explain）。
  * D 図示（drawings）: 骨を試験の向きで見せ、番号の部位を日本語と英語で答える（label）、図に名前を書き込んで番号付きの図と見比べる（annotate）、
  * 向きを変えた骨の左右・見ている面・画面の上の向きを当てる（orient）。
+ * 整理して覚える項目（試験の形式ではない。骨学試験対策 ④）:
+ * 対で覚える（pairs）: 紛らわしい語を並べ、特徴の文がどの語のものかを答える（contrast）。
+ * 数と並び（sequences）: 語を順に並べる・すべて選ぶ（order）、覚えたら3Dで順に押す（trace。bones を書いた項目だけ）。
+ * 体表の目安（levels）: 目安の部位の高さ（椎骨・肋骨）を選ぶ（level）、高さから目安を選ぶ（landmark）。
  * count は過去の試験に出た回数、recent は直近2回の試験に出たか（どちらも並べる順に使う）。
+ * 整理の項目の count・recent は、その語を空欄・語に含む A・B・C の項目から数える（関係する問題が出た回数）。
  * 学習の記録は語と同じ表に、語ID の代わりに "exam:a:<ID>" などで入れる（語根カードの "root:" と同じ）。
  */
-export type ExamKind = "a" | "b" | "c" | "d";
+export type ExamKind = "a" | "b" | "c" | "d" | "p" | "s" | "l";
 export type ExamArea = "general" | "trunk" | "upper" | "lower" | "skull";
 
-export const EXAM_KINDS: ExamKind[] = ["a", "b", "c", "d"];
-export const kindLabels: Record<ExamKind, string> = { a: "A 穴埋め", b: "B 用語", c: "C 短文記述", d: "D 図示" };
+export const EXAM_KINDS: ExamKind[] = ["a", "b", "c", "d", "p", "s", "l"];
+/** 試験の形式の種類（A〜D）と、整理して覚える種類 */
+export const SECTION_KINDS: ExamKind[] = ["a", "b", "c", "d"];
+export const SORT_KINDS: ExamKind[] = ["p", "s", "l"];
+export const kindLabels: Record<ExamKind, string> = { a: "A 穴埋め", b: "B 用語", c: "C 短文記述", d: "D 図示", p: "対で覚える", s: "数と並び", l: "体表の目安" };
 export const areaLabels: Record<ExamArea, string> = { general: "総論", trunk: "体幹", upper: "上肢", lower: "下肢", skull: "頭蓋" };
 /** 種類ごとの問い方。B は最初にラ→日（4択）、あとで日→英・ラ（つづり）も出す。D は examFacetsOf で項目ごとに絞る */
-export const examFacets: Record<ExamKind, Facet[]> = { a: ["cloze"], b: ["read", "spell"], c: ["explain"], d: ["label", "annotate", "orient"] };
+export const examFacets: Record<ExamKind, Facet[]> = {
+  a: ["cloze"], b: ["read", "spell"], c: ["explain"], d: ["label", "annotate", "orient"],
+  p: ["contrast"], s: ["order", "trace"], l: ["level", "landmark"],
+};
+
+/** 先に覚える問い方（これが復習の段階に入ると、あとの問い方が出る） */
+export const FIRST_FACETS: Facet[] = ["label", "order"];
 
 /**
  * 項目に出す問い方。D の「図に書き込む」は「番号→名前」が復習の段階に入ってから（名前を覚えてから）、
  * 「骨と向き」は左右のある骨の、向きを当てる面（orient）を書いた図だけ。
+ * 数と並びの「3Dで押す」は、骨（bones）を書いた項目で、「並べる・選ぶ」が復習の段階に入ってから。
  */
-export function examFacetsOf(item: ExamItem, labelLearned = false): Facet[] {
-  if (item.kind !== "d") return examFacets[item.kind];
-  return examFacets.d.filter((facet) => (facet === "annotate" ? labelLearned : facet === "orient" ? item.orient.length > 0 : true));
+export function examFacetsOf(item: ExamItem, firstLearned = false): Facet[] {
+  if (item.kind === "d") return examFacets.d.filter((facet) => (facet === "annotate" ? firstLearned : facet === "orient" ? item.orient.length > 0 : true));
+  if (item.kind === "s") return examFacets.s.filter((facet) => facet !== "trace" || (firstLearned && !!item.bones));
+  return examFacets[item.kind];
 }
 
 interface Base {
@@ -89,11 +105,60 @@ interface DrawingJson extends Base {
   marks: MarkJson[];
 }
 
+interface PairJson {
+  id: string;
+  area: ExamArea;
+  /** 並べる語（2〜3） */
+  terms: string[];
+  /** 比べる点ごとに、語の順の特徴 */
+  rows: { about: string; facts: string[] }[];
+  note?: string;
+}
+
+interface SequenceJson {
+  id: string;
+  area: ExamArea;
+  title: string;
+  prompt: string;
+  /** true なら順に並べる、false ならすべて選ぶ */
+  ordered: boolean;
+  members: string[];
+  /** 選択肢に混ぜる語 */
+  foils: string[];
+  /** 3Dで順に押す問題の図（無ければその問い方を出さない） */
+  bones?: string[];
+  side?: "right" | "mid";
+  view?: DrawingView;
+  cut?: Section;
+  note: string;
+}
+
+interface LevelJson {
+  id: string;
+  area: ExamArea;
+  /** 目安の語（名前と回数） */
+  term: string;
+  /** 語の名前の代わりに出す名前（肩甲棘の内側端など） */
+  title?: string;
+  /** 3Dで光らせる語（無ければ term。ヤコビー線は腸骨稜） */
+  spot?: string;
+  answer: string;
+  foils: string[];
+  /** 同じ高さの椎骨・肋骨（3Dで別の色で示す） */
+  with: string[];
+  bones: string[];
+  view: DrawingView;
+  note: string;
+}
+
 interface ExamFile {
   cloze: ClozeJson[];
   words: WordJson[];
   essays: EssayJson[];
   drawings: DrawingJson[];
+  pairs: PairJson[];
+  sequences: SequenceJson[];
+  levels: LevelJson[];
 }
 
 export interface Blank {
@@ -169,7 +234,39 @@ export interface DrawingItem extends ItemBase {
   marks: DrawingMarkItem[];
 }
 
-export type ExamItem = ClozeItem | WordItem | EssayItem | DrawingItem;
+export interface PairItem extends ItemBase {
+  kind: "p";
+  terms: string[];
+  rows: { about: string; facts: string[] }[];
+  note: string;
+}
+
+export interface SequenceItem extends ItemBase {
+  kind: "s";
+  prompt: string;
+  ordered: boolean;
+  members: string[];
+  foils: string[];
+  bones?: string[];
+  side: "right" | "mid";
+  view: DrawingView;
+  cut?: Section;
+  note: string;
+}
+
+export interface LevelItem extends ItemBase {
+  kind: "l";
+  term: string;
+  spot: string;
+  answer: string;
+  foils: string[];
+  with: string[];
+  bones: string[];
+  view: DrawingView;
+  note: string;
+}
+
+export type ExamItem = ClozeItem | WordItem | EssayItem | DrawingItem | PairItem | SequenceItem | LevelItem;
 
 const PREFIX = "exam:";
 const data = examJson as ExamFile;
@@ -247,7 +344,7 @@ const essayItems: EssayItem[] = data.essays.map((item) => {
   };
 });
 
-function drawingMark(mark: MarkJson): DrawingMarkItem {
+export function drawingMark(mark: MarkJson): DrawingMarkItem {
   if (typeof mark !== "string" && "ja" in mark) {
     return { ja: mark.ja, yomi: mark.yomi, en: mark.en, enAlt: [], la: mark.la, at: mark.at, n: mark.n };
   }
@@ -266,7 +363,43 @@ const drawingItems: DrawingItem[] = (data.drawings ?? []).map((item) => ({
   marks: item.marks.map(drawingMark),
 }));
 
-export const examItems: ExamItem[] = [...clozeItems, ...wordItems, ...essayItems, ...drawingItems];
+/** A・B・C の項目の語（A は空欄の語） */
+function itemTerms(item: ClozeItem | WordItem | EssayItem): string[] {
+  return item.kind === "a" ? unique(item.blanks.flatMap((blank) => (blank.term ? [blank.term] : []))) : item.term ? [item.term] : [];
+}
+
+const sectionItems = [...clozeItems, ...wordItems, ...essayItems];
+
+/** 整理の項目の回数: その語を含む A・B・C の項目の回数の合計と、そのどれかが直近2回に出たか */
+function relatedCount(ids: string[]): { count: number; recent: boolean } {
+  const related = sectionItems.filter((item) => itemTerms(item).some((id) => ids.includes(id)));
+  return { count: related.reduce((sum, item) => sum + item.count, 0), recent: related.some((item) => item.recent) };
+}
+
+const nameOf = (id: string) => plainJa(termById.get(id)?.ja ?? id);
+/** 対で覚える語の名前は区別の（）を残す（茎状突起（側頭骨）・茎状突起（橈骨）など） */
+export const pairName = (id: string) => termById.get(id)?.ja ?? id;
+
+const pairItems: PairItem[] = (data.pairs ?? []).map((item) => ({
+  kind: "p", id: item.id, key: examKey("p", item.id), area: item.area, ...relatedCount(item.terms),
+  title: item.terms.map(pairName).join("・"), show: item.terms,
+  terms: item.terms, rows: item.rows, note: item.note ?? "",
+}));
+
+const sequenceItems: SequenceItem[] = (data.sequences ?? []).map((item) => ({
+  kind: "s", id: item.id, key: examKey("s", item.id), area: item.area, ...relatedCount(item.members),
+  title: item.title, show: item.members,
+  prompt: item.prompt, ordered: item.ordered, members: item.members, foils: item.foils,
+  bones: item.bones, side: item.side ?? "mid", view: item.view ?? "ant", cut: item.cut, note: item.note,
+}));
+
+const levelItems: LevelItem[] = (data.levels ?? []).map((item) => ({
+  kind: "l", id: item.id, key: examKey("l", item.id), area: item.area, ...relatedCount([item.term]),
+  title: item.title ?? nameOf(item.term), show: [item.spot ?? item.term, ...item.with],
+  term: item.term, spot: item.spot ?? item.term, answer: item.answer, foils: item.foils, with: item.with, bones: item.bones, view: item.view, note: item.note,
+}));
+
+export const examItems: ExamItem[] = [...sectionItems, ...drawingItems, ...pairItems, ...sequenceItems, ...levelItems];
 export const examByKey = new Map(examItems.map((item) => [item.key, item]));
 
 /** 出る順（試験に出た回数の多い順、同じなら直近2回に出たもの、同じならファイルの順） */
@@ -298,11 +431,9 @@ export function examProgress(kind: ExamKind, learned: Set<string>, schedules: St
 }
 
 const countByTerm = new Map<string, number>();
-// D の図の番号は、骨を描かせる回数なので数えない
-for (const item of examItems) {
-  if (item.kind === "d") continue;
-  const ids = item.kind === "a" ? unique(item.blanks.flatMap((blank) => (blank.term ? [blank.term] : []))) : item.term ? [item.term] : [];
-  for (const id of ids) countByTerm.set(id, (countByTerm.get(id) ?? 0) + item.count);
+// D の図の番号は骨を描かせる回数、整理の項目は A・B・C から数えた回数なので数えない
+for (const item of sectionItems) {
+  for (const id of itemTerms(item)) countByTerm.set(id, (countByTerm.get(id) ?? 0) + item.count);
 }
 
 /** その語が骨学試験に出た回数（A の空欄・B・C を合わせて。0 なら出ていない） */
@@ -404,4 +535,51 @@ export function labelRating(results: EnglishResult[]): Grade {
 export function annotateRating(checked: number, total: number): Grade {
   if (checked >= total * 0.8) return Rating.Good;
   return checked * 2 >= total ? Rating.Hard : Rating.Again;
+}
+
+/** 対で覚える: 特徴の文と、その文の語。比べる点を、文が6つまでになるよう選ぶ（3つの語なら2点、2つの語なら3点） */
+export interface ContrastStatement {
+  about: string;
+  text: string;
+  term: string;
+}
+
+export function contrastStatements(item: PairItem, random: () => number = Math.random): ContrastStatement[] {
+  const rows = shuffle(item.rows, random).slice(0, Math.max(1, Math.floor(6 / item.terms.length)));
+  return shuffle(rows.flatMap((row) => row.facts.map((text, i) => ({ about: row.about, text, term: item.terms[i] }))), random);
+}
+
+/** 2つの列の最長共通部分列の長さ（並べる問題で、正しい順に残っている数） */
+function commonLength(a: string[], b: string[]): number {
+  const row = new Array(b.length + 1).fill(0);
+  for (const x of a) {
+    let prev = 0;
+    for (let j = 1; j <= b.length; j++) {
+      const keep = row[j];
+      row[j] = x === b[j - 1] ? prev + 1 : Math.max(row[j], row[j - 1]);
+      prev = keep;
+    }
+  }
+  return row[b.length];
+}
+
+/**
+ * 並べる・選ぶの判定。まちがいの数は、順に並べる問題では「正しい順から動かす必要のある数」（隣どうしの入れかえ1回で1）と
+ * 余分・足りない語、すべて選ぶ問題では余分と足りない語の数。0 で Good、1 つで Hard（3つ以上の語のとき）、それ以上は Again。
+ */
+export function orderMistakes(picked: string[], members: string[], ordered: boolean): number {
+  if (ordered) return Math.max(picked.length, members.length) - commonLength(picked, members);
+  const chosen = new Set(picked);
+  return members.filter((id) => !chosen.has(id)).length + [...chosen].filter((id) => !members.includes(id)).length;
+}
+
+export function orderRating(mistakes: number, size: number): Grade {
+  if (!mistakes) return Rating.Good;
+  return mistakes === 1 && size >= 3 ? Rating.Hard : Rating.Again;
+}
+
+/** 3Dで順に押す問題の判定。押しまちがいが無ければ Good、1回なら Hard、それ以上は Again */
+export function traceRating(misses: number): Grade {
+  if (!misses) return Rating.Good;
+  return misses === 1 ? Rating.Hard : Rating.Again;
 }

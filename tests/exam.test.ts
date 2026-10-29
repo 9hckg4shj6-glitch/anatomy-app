@@ -4,7 +4,8 @@ import { termById } from "../src/content";
 import {
   annotateRating, checkBlank, clozeRating, directionOf, essayRating, examByKey, examCountOf, examFacets, examFacetsOf, examItems, examItemsOf, examKey,
   examProgress, isExamKey, labelRating, markAnswers, nextExamItems, normalizeJapanese, orientQuestion, parseCloze, perpendicularDirections, viewFrom,
-  type ClozeItem, type DrawingItem,
+  contrastStatements, orderMistakes, orderRating, traceRating, SORT_KINDS,
+  type ClozeItem, type DrawingItem, type PairItem, type SequenceItem,
 } from "../src/exam";
 import { drawingUp } from "../src/landmarks";
 import { Rating, nextSchedule } from "../src/fsrs";
@@ -183,5 +184,67 @@ describe("骨学試験 D（図示）", () => {
     const mark = (examByKey.get(examKey("d", "orbit-ant")) as DrawingItem).marks.find((m) => !m.term)!;
     expect(markAnswers(mark).ja).toContain("小翼");
     expect(checkBlank("ala minor ossis sphenoidalis", markAnswers(mark).en)).toBe("correct");
+  });
+});
+
+describe("骨学試験 整理して覚える（対・数と並び・体表の目安）", () => {
+  const random = () => 0.42;
+
+  it("回数は、その語の出る A・B・C の項目から数え、語のカードの回数には足さない", () => {
+    const pair = examByKey.get(examKey("p", "middle-fossa-foramina"))!;
+    // 中頭蓋窩の孔の文（9回）と、棘孔の出る中硬膜動脈の溝の文（2回）など
+    expect(pair.count).toBeGreaterThanOrEqual(11);
+    const mentions = (item: (typeof examItems)[number]) =>
+      item.kind === "a" ? item.blanks.some((b) => b.term === "foramen-ovale") : (item.kind === "b" || item.kind === "c") && item.term === "foramen-ovale";
+    expect(examCountOf("foramen-ovale")).toBe(examItems.filter(mentions).reduce((sum, item) => sum + item.count, 0));
+    for (const kind of SORT_KINDS) expect(examItemsOf(kind).length).toBeGreaterThan(5);
+  });
+
+  it("対で覚える: 文は6つまでで、どれも並べた語の1つのもの", () => {
+    for (const item of examItemsOf("p") as PairItem[]) {
+      const statements = contrastStatements(item, random);
+      expect(statements.length).toBeLessThanOrEqual(6);
+      expect(statements.length).toBeGreaterThanOrEqual(item.terms.length * Math.min(item.rows.length, Math.floor(6 / item.terms.length)));
+      for (const statement of statements) expect(item.terms).toContain(statement.term);
+    }
+    const notches = examByKey.get(examKey("p", "radius-ulna-notches")) as PairItem;
+    const facts = contrastStatements(notches, random);
+    expect(facts.find((fact) => fact.text === "下橈尺関節")?.term).toBe("ulnar-notch-of-radius");
+  });
+
+  it("並べる問題は隣どうしの入れかえ1回で Hard、すべて選ぶ問題は余分と足りない語を数える", () => {
+    const members = ["scaphoid", "lunate", "triquetrum", "pisiform"];
+    expect(orderMistakes(members, members, true)).toBe(0);
+    expect(orderMistakes(["lunate", "scaphoid", "triquetrum", "pisiform"], members, true)).toBe(1);
+    expect(orderMistakes(["pisiform", "triquetrum", "lunate", "scaphoid"], members, true)).toBe(3);
+    expect(orderMistakes(["scaphoid", "lunate", "triquetrum"], members, true)).toBe(1);
+    expect(orderMistakes(["pisiform", "lunate", "scaphoid", "triquetrum"], members, false)).toBe(0);
+    expect(orderMistakes(["lunate", "scaphoid", "hamate"], members, false)).toBe(3);
+    expect(orderRating(0, 4)).toBe(Rating.Good);
+    expect(orderRating(1, 4)).toBe(Rating.Hard);
+    expect(orderRating(1, 2)).toBe(Rating.Again);
+    expect(orderRating(2, 8)).toBe(Rating.Again);
+    expect([traceRating(0), traceRating(1), traceRating(2)]).toEqual([Rating.Good, Rating.Hard, Rating.Again]);
+  });
+
+  it("「3Dで押す」は図のある項目で、並べる・選ぶを覚えてから。体表の目安は高さ→目安も出る", () => {
+    const carpals = examByKey.get(examKey("s", "carpal-proximal")) as SequenceItem;
+    expect(examFacetsOf(carpals)).toEqual(["order"]);
+    expect(examFacetsOf(carpals, true)).toEqual(["order", "trace"]);
+    expect(examFacetsOf(examByKey.get(examKey("s", "orbit-bones"))!, true)).toEqual(["order"]);
+    expect(examFacetsOf(examByKey.get(examKey("l", "sternal-angle"))!)).toEqual(["level", "landmark"]);
+    expect(examFacetsOf(examByKey.get(examKey("p", "malleoli"))!)).toEqual(["contrast"]);
+  });
+
+  it("体表の目安の答えはどれも違う（高さ→目安の問題で正解が1つに決まる）", () => {
+    const levels = examItemsOf("l");
+    expect(new Set(levels.map((item) => item.kind === "l" && item.answer)).size).toBe(levels.length);
+  });
+
+  it("並べる問題を学ぶと、復習で「並べる・選ぶ」が新しく出る", () => {
+    const now = new Date("2026-11-01T09:00:00Z");
+    const key = examKey("s", "carpal-proximal");
+    const queue = buildQueue([{ termId: key, unitId: "exam-s", learnedAt: now.toISOString() }], [], now, 10, () => examFacetsOf(examByKey.get(key)!));
+    expect(queue).toEqual([{ termId: key, facet: "order", isNew: true }]);
   });
 });

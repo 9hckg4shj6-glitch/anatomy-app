@@ -2,7 +2,7 @@ import { termById } from "../content";
 import { db, type ReviewEvent } from "../db";
 import { State } from "../fsrs";
 import { h } from "../dom";
-import { examByKey, examFacetsOf, isExamKey } from "../exam";
+import { examByKey, examFacetsOf, FIRST_FACETS, isExamKey } from "../exam";
 import { isRootKey, rootByKey } from "../roots";
 import { preferences } from "../settings";
 import { buildQueue, facetsFor, ROOT_FACETS, type QueueItem } from "../study";
@@ -24,11 +24,11 @@ async function todayQueue(now = new Date()): Promise<QueueItem[]> {
   // 内容の更新で消えた語の記録は出さない。語根カード（"root:…"）と骨学試験（"exam:…"）も一緒に出す
   const known = learned.filter((item) => termById.has(item.termId) || rootByKey.has(item.termId) || examByKey.has(item.termId));
   const locateLearned = new Set(schedules.filter((s) => s.facet === "locate" && s.state === State.Review).map((s) => s.termId));
-  // 骨学試験 D の「図に書き込む」は、番号→名前が復習の段階に入ってから
-  const labelLearned = new Set(schedules.filter((s) => s.facet === "label" && s.state === State.Review).map((s) => s.termId));
+  // 骨学試験 D の「図に書き込む」は番号→名前が、数と並びの「3Dで押す」は並べる・選ぶが、復習の段階に入ってから
+  const firstLearned = new Set(schedules.filter((s) => FIRST_FACETS.includes(s.facet) && s.state === State.Review).map((s) => s.termId));
   const facetsOf = (id: string) => {
     if (isRootKey(id)) return ROOT_FACETS;
-    if (isExamKey(id)) return examFacetsOf(examByKey.get(id)!, labelLearned.has(id));
+    if (isExamKey(id)) return examFacetsOf(examByKey.get(id)!, firstLearned.has(id));
     return facetsFor(termById.get(id), locateLearned.has(id));
   };
   return buildQueue(known, schedules, now, preferences.newPerDay - newToday, facetsOf);

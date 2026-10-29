@@ -6,10 +6,13 @@ import Dexie, { type EntityTable } from "dexie";
  * 語根カード（termId が "root:…"）は rootMeaning＝語根→意味, rootForm＝意味→語根。
  * 骨学試験（termId が "exam:…"）は cloze＝A 穴埋め, read＝B ラ→日, spell＝B 日→英・ラ, explain＝C 短文記述,
  * label＝D 番号→名前, annotate＝D 図に書き込む, orient＝D 骨と向き。
+ * 整理して覚える項目は contrast＝対で覚える, order＝数と並び（並べる・選ぶ）, trace＝数と並び（3Dで押す）,
+ * level＝体表の目安（目安→高さ）, landmark＝体表の目安（高さ→目安）。
  */
 export type Facet =
   | "locate" | "point" | "ja2en" | "en2ja" | "attach" | "nerve" | "action" | "passage" | "rootMeaning" | "rootForm"
-  | "cloze" | "read" | "spell" | "explain" | "label" | "annotate" | "orient";
+  | "cloze" | "read" | "spell" | "explain" | "label" | "annotate" | "orient"
+  | "contrast" | "order" | "trace" | "level" | "landmark";
 
 export interface StoredSchedule {
   /** `${termId}:${facet}` */

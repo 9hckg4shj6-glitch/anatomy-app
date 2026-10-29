@@ -194,7 +194,8 @@ for (const root of rootsParsed.success ? rootsParsed.data.groups.flatMap((group)
 }
 
 // 骨学試験（content/exam.json）: 種類ごとの ID の重複、A の空欄（{語ID} か {=答え|別解}）、B・C の語と3Dで示す語。
-// B の総論の語（term の無い語）は日本語・読み・英語・説明を直接書く。D の図の番号は、ピンか骨の語のID、点を書いた語、語に無い名前（点と名前）
+// B の総論の語（term の無い語）は日本語・読み・英語・説明を直接書く。D の図の番号は、ピンか骨の語のID、点を書いた語、語に無い名前（点と名前）。
+// 整理の項目（pairs・sequences・levels）は語の参照先、対の特徴の数と重なり、並びの語の重なり、目安の答えの重なり
 const termIds = new Set(terms.map((term) => term.id));
 const area = z.enum(["general", "trunk", "upper", "lower", "skull"]);
 const drawingView = z.enum(["ant", "post", "lat", "med", "sup", "inf"]);
@@ -220,6 +221,22 @@ const examParsed = z.strictObject({
       z.strictObject({ ja: z.string().min(1), yomi: z.string().regex(/^[ぁ-ゖー]+$/), en: word, la: z.string().min(1).optional(), at: vec3, n: vec3.optional() }),
     ])).min(2),
   }).refine((d) => !d.orient || d.side === "right", "骨と向き（orient）は左右のある骨（side: right）だけ")).min(1),
+  pairs: z.array(z.strictObject({
+    id: examBase.id, area, terms: z.array(z.string()).min(2).max(3),
+    rows: z.array(z.strictObject({ about: z.string().min(1), facts: z.array(z.string().min(1)) })).min(2), note: z.string().min(5).optional(),
+  })).min(1),
+  sequences: z.array(z.strictObject({
+    id: examBase.id, area, title: z.string().min(1), prompt: z.string().min(5), ordered: z.boolean(),
+    members: z.array(z.string()).min(2), foils: z.array(z.string()).min(2),
+    bones: z.array(z.string()).min(1).optional(), side: z.enum(["right", "mid"]).optional(), view: drawingView.optional(),
+    cut: z.strictObject({ axis: z.enum(["x", "y", "z"]), at: z.number(), keep: z.union([z.literal(1), z.literal(-1)]) }).optional(),
+    note: z.string().min(5),
+  }).refine((s) => !s.bones || (s.side && s.view), "3Dで押す図（bones）には side と view が要る")).min(1),
+  levels: z.array(z.strictObject({
+    id: examBase.id, area, term: z.string(), title: z.string().min(1).optional(), spot: z.string().optional(),
+    answer: z.string().min(2), foils: z.array(z.string().min(2)).length(3), with: z.array(z.string()).min(1),
+    bones: z.array(z.string()).min(1), view: drawingView, note: z.string().min(5),
+  })).min(1),
 }).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/exam.json"), "utf8")));
 if (!examParsed.success) for (const issue of examParsed.error.issues) errors.push(`exam.json ${issue.path.join(".")}: ${issue.message}`);
 const examCounts = {};
@@ -230,7 +247,18 @@ for (const [kind, list] of Object.entries(examParsed.success ? examParsed.data :
     const name = `exam.json ${kind} ${item.id}`;
     if (ids.has(item.id)) errors.push(`${name}: ID が重複`);
     ids.add(item.id);
-    for (const id of [...(item.term ? [item.term] : []), ...(item.show ?? [])]) if (!termIds.has(id)) errors.push(`${name}: 語が無い: ${id}`);
+    const refs = [...(item.term ? [item.term] : []), ...(item.show ?? []), ...(item.terms ?? []), ...(item.members ?? []), ...(kind === "sequences" ? item.foils : []),
+      ...(item.spot ? [item.spot] : []), ...(kind === "levels" ? item.with : [])];
+    for (const id of refs) if (!termIds.has(id)) errors.push(`${name}: 語が無い: ${id}`);
+    if (kind === "pairs") {
+      if (new Set(item.terms).size < item.terms.length) errors.push(`${name}: 語が重複`);
+      for (const row of item.rows) {
+        if (row.facts.length !== item.terms.length) errors.push(`${name}: 「${row.about}」の特徴の数が語の数と違う`);
+        if (new Set(row.facts).size < row.facts.length) errors.push(`${name}: 「${row.about}」に同じ特徴がある（どちらの語か決まらない）`);
+      }
+    }
+    if (kind === "sequences" && new Set([...item.members, ...item.foils]).size < item.members.length + item.foils.length) errors.push(`${name}: 語が重複`);
+    if (kind === "levels" && new Set([item.answer, ...item.foils]).size < 4) errors.push(`${name}: 答えと選択肢が重複`);
     if (kind === "words" && !item.term && termIds.has(item.id)) errors.push(`${name}: 総論の語の ID が語の ID と同じ`);
     if (kind === "drawings") {
       for (const mark of item.marks) {
@@ -275,6 +303,20 @@ else {
       const own = index.terms[mark]?.elements ?? [];
       if (!own.length || !own.every((element) => elements.has(element))) errors.push(`exam.json drawings ${item.id}: 「${mark}」は図の骨の上にない（点を書く）`);
       else if (!pins[mark] && !item.bones.includes(mark) && seen.get(mark)?.of) errors.push(`exam.json drawings ${item.id}: 「${mark}」のピンが無い`);
+    }
+  }
+  // 整理の項目の図: 見せる骨は部品のある語で、3Dで押す語・光らせる語はその骨の上にある
+  for (const [kind, list] of [["sequences", examParsed.success ? examParsed.data.sequences : []], ["levels", examParsed.success ? examParsed.data.levels : []]]) {
+    for (const item of list) {
+      if (!item.bones) continue;
+      const elements = new Set(item.bones.flatMap((bone) => index.terms[bone]?.elements ?? []));
+      for (const bone of item.bones) if (!index.terms[bone]?.elements.length) errors.push(`exam.json ${kind} ${item.id}: 骨の部品が無い: ${bone}`);
+      const shown = kind === "levels" ? [item.spot ?? item.term, ...item.with] : item.members;
+      for (const id of shown) {
+        const own = index.terms[id]?.elements ?? [];
+        if (!own.length || !own.some((element) => elements.has(element))) errors.push(`exam.json ${kind} ${item.id}: 「${id}」は図の骨の上にない`);
+        else if (seen.get(id)?.of && !pins[id]) errors.push(`exam.json ${kind} ${item.id}: 「${id}」のピンが無い`);
+      }
     }
   }
   for (const [id, system] of Object.entries(index.systems)) {
@@ -335,4 +377,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 語根 ${rootIds.size} / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0}・D${examCounts.drawings ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);
+console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 語根 ${rootIds.size} / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0}・D${examCounts.drawings ?? 0}・対${examCounts.pairs ?? 0}・並び${examCounts.sequences ?? 0}・目安${examCounts.levels ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);

@@ -90,14 +90,14 @@ export function nextLesson(learnedIds: Set<string>): Unit | undefined {
 
 type Folder = (id: string, title: (Node | string)[], summary: string, allDone: boolean, list: HTMLElement) => HTMLElement;
 
-/** 骨学試験（A・B・C）。押すとまだ学んでいない項目を出る順に解く */
+/** 骨学試験（A〜D と整理して覚える項目）。押すとまだ学んでいない項目を出る順に解く */
 function examSection(learnedIds: Set<string>, schedules: StoredSchedule[], folder: Folder): HTMLElement {
   const progress = EXAM_KINDS.map((kind) => ({ kind, ...examProgress(kind, learnedIds, schedules) }));
   const done = progress.reduce((sum, p) => sum + p.done, 0);
   const total = progress.reduce((sum, p) => sum + p.total, 0);
   return folder("exam",
     [h("span", { class: "swatch exam-swatch" }), "骨学試験"],
-    `A・B・C ${done ? `${done}/${total}` : total}問`,
+    `A〜D・整理 ${done ? `${done}/${total}` : total}項目`,
     done === total,
     h("ul", { class: "units" },
       h("li", {}, h("a", { class: "unit unit-all", href: "#/exam" }, h("span", { class: "unit-title" }, "骨学試験の一覧"), h("span", { class: "unit-count" }, "→"))),
