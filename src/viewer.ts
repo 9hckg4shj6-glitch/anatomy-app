@@ -896,6 +896,17 @@ export class AnatomyViewer {
           const side = Math.abs(direction.z) > 0.8 ? new THREE.Vector3(-Math.sign(pin.region.c[0] || -1), 0, 0) : new THREE.Vector3(0, 0, 1);
           side.addScaledVector(direction, -side.dot(direction)).normalize();
           direction.addScaledVector(side, 0.9).normalize();
+          // 下や上を向く区域（大腿骨・脛骨の顆、坐骨結節など）は、見上げ・見下ろしが強いと体のほかの部分越しになって見にくいので、
+          // 上下の傾きを抑えて横から見る（真下・真上なら前から）。内側からだと反対側の脚越しになるので、内側に向くときは前へ寄せる
+          const MAX_TILT = 0.6;
+          if (Math.abs(direction.y) > MAX_TILT) {
+            const flat = new THREE.Vector3(direction.x, 0, direction.z);
+            if (flat.lengthSq() < 1e-4) flat.set(0, 0, 1);
+            flat.normalize();
+            if (flat.x * Math.sign(pin.region.c[0] || -1) < 0) flat.z += Math.abs(flat.x);
+            flat.normalize().multiplyScalar(Math.sqrt(1 - MAX_TILT * MAX_TILT));
+            direction.set(flat.x, Math.sign(direction.y) * MAX_TILT, flat.z);
+          }
         }
         // 真上・真下からだと回転の操作がしにくいので少し前に傾ける
         if (Math.abs(direction.y) > 0.96) direction.add(new THREE.Vector3(0, 0, 0.3)).normalize();
