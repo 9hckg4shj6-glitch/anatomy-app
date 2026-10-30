@@ -1518,6 +1518,223 @@
           "note": "外側の被殻と内側の淡蒼球を合わせた、凸レンズの形のかたまり。内側を内包、外側を外包に囲まれる。尾状核とともに大脳基底核の中心で、運動の調節にかかわる。"
         }
       ]
+    },
+    {
+      "id": "nerv-orbit-nerves",
+      "title": "眼窩の神経（眼神経と動眼神経の枝）",
+      "intro": ["三叉神経の第1枝の眼神経は、上眼窩裂を通って眼窩に入るとすぐに3本に分かれる。上眼瞼挙筋の上を前へ進む前頭神経、外側の涙腺へ向かう涙腺神経、視神経の上を内側へ横切る鼻毛様体神経。どれも感覚の神経で、ひたい・上まぶた・鼻・眼球の感覚を伝える。","動眼神経は上枝と下枝に分かれて眼筋へ行く。下枝から毛様体神経節へ副交感の線維が入り、短毛様体神経として眼球に入って瞳孔を縮め、水晶体の厚さを変える。"],
+      "terms": [
+        {
+          "id": "frontal-nerve", "ja": "前頭神経", "yomi": "ぜんとうしんけい", "en": "frontal nerve", "la": "nervus frontalis",
+          "parts": ["frontal nerve"], "level": 3,
+          "kanji": "ひたい（前頭）へ行く神経",
+          "etym": "frontal ← ラテン語 frons「ひたい」",
+          "note": "眼神経の3本の枝のうち最も太い。上眼窩裂を総腱輪の外で通り、眼窩の天井と上眼瞼挙筋の間を前へ進み、眼窩上神経と滑車上神経に分かれる。"
+        },
+        {
+          "id": "supra-orbital-nerve", "ja": "眼窩上神経", "yomi": "がんかじょうしんけい", "en": "supra-orbital nerve", "enAlt": ["supraorbital nerve"], "la": "nervus supraorbitalis",
+          "parts": ["supra-orbital nerve"], "level": 3,
+          "kanji": "眼窩の上の縁を越える神経",
+          "etym": "supra「上の」＋ orbital「眼窩の」（ラテン語 orbita＝わだち・輪）",
+          "note": "前頭神経の外側の枝。眼窩上孔（または眼窩上切痕）を通って眼窩を出て、ひたいから頭頂までの皮膚と上まぶたの感覚を伝える。眼窩上孔は三叉神経の第1枝の圧痛点。"
+        },
+        {
+          "id": "supratrochlear-nerve", "ja": "滑車上神経", "yomi": "かっしゃじょうしんけい", "en": "supratrochlear nerve", "la": "nervus supratrochlearis",
+          "parts": ["supratrochlear nerve"], "level": 3,
+          "kanji": "滑車の上を通る神経",
+          "etym": "supra「上の」＋ trochlear「滑車の」（ギリシャ語 trochilia＝滑車）",
+          "note": "前頭神経の内側の細い枝。上斜筋の滑車の上を通って眼窩の内側上の角から出て、眉間に近いひたいと上まぶたの内側の皮膚の感覚を伝える。"
+        },
+        {
+          "id": "lacrimal-nerve", "ja": "涙腺神経", "yomi": "るいせんしんけい", "en": "lacrimal nerve", "la": "nervus lacrimalis",
+          "parts": ["lacrimal nerve"], "level": 3,
+          "kanji": "涙腺へ行く神経",
+          "etym": "lacrimal ← ラテン語 lacrima「なみだ」",
+          "note": "眼神経の最も細い枝。上眼窩裂の外側部を通り、外側直筋の上の縁にそって涙腺へ行き、上まぶたの外側の皮膚の感覚を伝える。涙を出させる副交感の線維（顔面神経から来る）は、頬骨神経との交通枝からこの神経に乗って涙腺へ届く。"
+        },
+        {
+          "id": "nasociliary-nerve", "ja": "鼻毛様体神経", "yomi": "びもうようたいしんけい", "en": "nasociliary nerve", "la": "nervus nasociliaris",
+          "parts": ["nasociliary nerve"], "level": 3,
+          "kanji": "鼻と毛様体（眼球）へ行く神経",
+          "etym": "naso-「鼻の」（ラテン語 nasus）＋ ciliary「毛様体の」",
+          "note": "眼神経の枝で、ただ1本、総腱輪の中を通る。視神経の上を外側から内側へ横切り、長毛様体神経（眼球）・前篩骨神経と後篩骨神経（鼻腔と副鼻腔）・滑車下神経（目頭）を出す。毛様体神経節に感覚の線維を送る。"
+        },
+        {
+          "id": "infratrochlear-nerve", "ja": "滑車下神経", "yomi": "かっしゃかしんけい", "en": "infratrochlear nerve", "la": "nervus infratrochlearis",
+          "parts": ["infratrochlear nerve"], "level": 3, "xray": true,
+          "kanji": "滑車の下を通る神経",
+          "etym": "infra「下の」＋ trochlear「滑車の」",
+          "note": "鼻毛様体神経の終わりの枝。上斜筋の滑車の下を通って眼窩の内側から出て、目頭のまわりの皮膚・涙嚢・鼻根の感覚を伝える。"
+        },
+        {
+          "id": "anterior-ethmoidal-nerve", "ja": "前篩骨神経", "yomi": "ぜんしこつしんけい", "en": "anterior ethmoidal nerve", "la": "nervus ethmoidalis anterior",
+          "parts": ["anterior ethmoidal nerve"], "level": 3, "xray": true,
+          "kanji": "前の篩骨の孔を通る神経",
+          "etym": "ethmoidal ← ギリシャ語 ethmos「ふるい」＋ -eides「〜の形」",
+          "note": "鼻毛様体神経の枝。眼窩の内側壁の前篩骨孔を通っていったん前頭蓋窩に出て、篩板のわきから鼻腔に下り、鼻腔の前上部の粘膜と、鼻背から鼻尖の皮膚（外鼻枝）の感覚を伝える。"
+        },
+        {
+          "id": "posterior-ethmoidal-nerve", "ja": "後篩骨神経", "yomi": "こうしこつしんけい", "en": "posterior ethmoidal nerve", "la": "nervus ethmoidalis posterior",
+          "parts": ["posterior ethmoidal nerve"], "level": 3, "xray": true,
+          "kanji": "後ろの篩骨の孔を通る神経",
+          "etym": "posterior「後ろの」＋ ethmoidal「篩骨の」",
+          "note": "鼻毛様体神経の細い枝。眼窩の内側壁の後篩骨孔を通り、後ろの篩骨蜂巣と蝶形骨洞の粘膜の感覚を伝える。ない人もいる。"
+        },
+        {
+          "id": "long-ciliary-nerves", "ja": "長毛様体神経", "yomi": "ちょうもうようたいしんけい", "en": "long ciliary nerves", "enAlt": ["long ciliary nerve"], "la": "nervi ciliares longi",
+          "parts": ["long ciliary nerve"], "level": 3, "xray": true,
+          "kanji": "長い、毛様体へ行く神経",
+          "etym": "long「長い」＋ ciliary「毛様体の」（ラテン語 cilium＝まつげ）",
+          "note": "鼻毛様体神経から出る2〜3本の神経。毛様体神経節を通らずに視神経のわきで眼球の後ろから入り、角膜・虹彩・毛様体の感覚を伝える。瞳孔を広げる交感神経の線維（瞳孔散大筋へ）もこれに乗る。角膜反射の入り口。"
+        },
+        {
+          "id": "short-ciliary-nerves", "ja": "短毛様体神経", "yomi": "たんもうようたいしんけい", "en": "short ciliary nerves", "enAlt": ["short ciliary nerve"], "la": "nervi ciliares breves",
+          "parts": ["short ciliary nerve"], "level": 3, "xray": true,
+          "kanji": "短い、毛様体へ行く神経",
+          "etym": "short「短い」＋ ciliary「毛様体の」",
+          "note": "毛様体神経節から出る6〜10本の細い神経。視神経をとりまいて眼球の後ろから入る。動眼神経の副交感の線維を瞳孔括約筋（瞳孔を縮める）と毛様体筋（近くを見るとき水晶体を厚くする）へ運ぶ。対光反射の出口。"
+        },
+        {
+          "id": "superior-branch-of-oculomotor-nerve", "ja": "動眼神経の上枝", "yomi": "どうがんしんけいのじょうし", "en": "superior branch of oculomotor nerve", "la": "ramus superior nervi oculomotorii",
+          "parts": ["superior branch of oculomotor nerve"], "level": 3,
+          "kanji": "動眼神経の上の枝",
+          "etym": "oculomotor ← ラテン語 oculus「眼」＋ motor「動かすもの」",
+          "note": "動眼神経が上眼窩裂の総腱輪の中で分かれた上の枝。視神経の上を通って上直筋と上眼瞼挙筋へ行く。動眼神経がまひすると、まぶたが下がる（眼瞼下垂）のはこの枝の働きがなくなるため。"
+        },
+        {
+          "id": "inferior-branch-of-oculomotor-nerve", "ja": "動眼神経の下枝", "yomi": "どうがんしんけいのかし", "en": "inferior branch of oculomotor nerve", "la": "ramus inferior nervi oculomotorii",
+          "parts": ["inferior branch of oculomotor nerve"], "level": 3,
+          "kanji": "動眼神経の下の枝",
+          "etym": "inferior「下の」＋ oculomotor「眼を動かす」",
+          "note": "動眼神経の下の太い枝。内側直筋・下直筋・下斜筋へ行き、毛様体神経節へ副交感の線維（動眼神経根）を送る。上斜筋（滑車神経）と外側直筋（外転神経）のほかの眼筋は、上枝とこの枝で動かす。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-diencephalon-more",
+      "title": "脳室のつながりと脳の底の小さな構造",
+      "intro": ["左右の側脳室は室間孔で第三脳室につながり、第三脳室は中脳水道で第四脳室につながる。脳脊髄液はこの順に流れる。","脳を下から見ると、視交叉の後ろに灰白隆起（下垂体の茎＝漏斗が出る所）と1対の乳頭体があり、その後ろの左右の大脳脚の間が脚間窩になる。中脳の背側の上丘・下丘は、上丘腕・下丘腕で視覚・聴覚の中継点（外側膝状体・内側膝状体）とつながる。"],
+      "terms": [
+        {
+          "id": "interventricular-foramen", "ja": "室間孔", "yomi": "しつかんこう", "en": "interventricular foramen", "enAlt": ["foramen of monro"], "la": "foramen interventriculare",
+          "parts": ["interventricular foramen"], "level": 2, "xray": true,
+          "kanji": "脳室と脳室の間の孔",
+          "etym": "inter「間の」＋ ventricular「脳室の」（ラテン語 ventriculus＝小さな腹）。モンロー孔ともいう",
+          "note": "側脳室の前角と第三脳室をつなぐ左右1対の孔。脳弓の柱の後ろ、視床の前の端にある。ここがふさがると、その側の側脳室だけが広がる（閉塞性水頭症）。"
+        },
+        {
+          "id": "tuber-cinereum", "ja": "灰白隆起", "yomi": "かいはくりゅうき", "en": "tuber cinereum", "la": "tuber cinereum",
+          "parts": ["tuber cinereum"], "level": 3,
+          "kanji": "灰色のふくらみ",
+          "etym": "tuber「こぶ」＋ cinereum ← ラテン語 cinis「灰」",
+          "note": "脳の底で、視交叉と乳頭体の間にある視床下部の小さな高まり。ここから漏斗が下へ伸びて下垂体につながる。中に下垂体の働きを調節する神経核（弓状核など）がある。"
+        },
+        {
+          "id": "lamina-terminalis", "ja": "終板", "yomi": "しゅうばん", "en": "lamina terminalis", "la": "lamina terminalis",
+          "parts": ["lamina terminalis"], "level": 3, "xray": true,
+          "kanji": "終わりの板",
+          "etym": "lamina「板」＋ terminalis「終わりの・境の」",
+          "note": "第三脳室の前の壁をつくる薄い板。視交叉の上から前交連まで張る。発生のとき神経管の前の端が閉じた所で、のどの渇き・体液の調節にかかわる小さな部分（脳室周囲器官）がある。"
+        },
+        {
+          "id": "interpeduncular-fossa", "ja": "脚間窩", "yomi": "きゃくかんか", "en": "interpeduncular fossa", "la": "fossa interpeduncularis",
+          "parts": ["interpeduncular fossa"], "level": 3, "xray": true,
+          "kanji": "大脳脚と大脳脚の間のくぼみ",
+          "etym": "inter「間の」＋ peduncular「脚の」（ラテン語 pedunculus＝小さな足）",
+          "note": "中脳の腹側で、左右の大脳脚の間の深いくぼみ。乳頭体のすぐ後ろ。底は血管の通る小孔がたくさんあいた後有孔質で、ここから動眼神経が出る。後大脳動脈の枝がここから脳に入る。"
+        },
+        {
+          "id": "brachium-of-superior-colliculus", "ja": "上丘腕", "yomi": "じょうきゅうわん", "en": "brachium of superior colliculus", "la": "brachium colliculi superioris",
+          "parts": ["brachium of superior colliculus"], "level": 3, "xray": true,
+          "kanji": "上丘へ続く腕",
+          "etym": "brachium ← ラテン語「腕」＋ colliculus「小さな丘」",
+          "note": "視索から外側膝状体のわきを通って上丘と視蓋前域へ行く線維の束。目を光や動くものへ向ける反射と、対光反射の経路（視蓋前域へ）にかかわる。"
+        },
+        {
+          "id": "brachium-of-inferior-colliculus", "ja": "下丘腕", "yomi": "かきゅうわん", "en": "brachium of inferior colliculus", "la": "brachium colliculi inferioris",
+          "parts": ["brachium of inferior colliculus"], "level": 3, "xray": true,
+          "kanji": "下丘から出る腕",
+          "etym": "brachium「腕」＋ inferior colliculus「下の小さな丘」",
+          "note": "下丘から内側膝状体へ行く線維の束。聴覚の経路（蝸牛神経核→外側毛帯→下丘→内側膝状体→側頭葉の横側頭回）の一部。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-pt-cerebellum",
+      "title": "小脳と脳幹の表面の部位",
+      "intro": ["小脳は真ん中の細い虫部と、左右の大きな小脳半球からなる。表面は細い横のしわ（小脳回）で、深い裂で葉に分かれる。上の面の第一裂より前が前葉、後ろが後葉。下の面の前には片葉と虫部の小節があり（片葉小節葉）、体の平衡にかかわる。","延髄の前の面には、正中のわきに縦の高まりの錐体（皮質脊髄路が通る）、その外側に楕円の高まりのオリーブがある。橋の両わきは太い中小脳脚になって小脳に入る。小脳を外すと、橋と延髄の背側の菱形のくぼみ（菱形窩）が第四脳室の床として見える。"],
+      "terms": [
+        {
+          "id": "vermis-of-cerebellum", "ja": "小脳虫部", "yomi": "しょうのうちゅうぶ", "en": "vermis of cerebellum", "enAlt": ["cerebellar vermis"], "la": "vermis cerebelli",
+          "of": "cerebellum", "level": 1,
+          "kanji": "小脳の真ん中の、虫のような部分",
+          "etym": "vermis ← ラテン語「虫（いも虫）」",
+          "note": "左右の小脳半球の間の、正中の細い部分。横のしわが連なって、いも虫のように見える。体幹の姿勢と歩行の調節にかかわり、ここが傷むと立っているとき体がゆれる（体幹失調）。アルコールで傷みやすい。"
+        },
+        {
+          "id": "cerebellar-hemisphere", "ja": "小脳半球", "yomi": "しょうのうはんきゅう", "en": "cerebellar hemisphere", "la": "hemispherium cerebelli",
+          "of": "cerebellum", "level": 1,
+          "kanji": "小脳の左右の大きな半分",
+          "etym": "cerebellar「小脳の」＋ hemisphere「半球」",
+          "note": "虫部の左右に広がる小脳の大部分。手足の動きを細かく調節し、同じ側の手足の運動にかかわる（右の半球は右の手足）。傷むと同じ側の手足がうまく動かない（指鼻試験で指がふるえる・ずれる）。"
+        },
+        {
+          "id": "flocculus", "ja": "片葉", "yomi": "へんよう", "en": "flocculus", "la": "flocculus",
+          "of": "cerebellum", "level": 2,
+          "kanji": "小さな切れはしのような葉",
+          "etym": "flocculus ← ラテン語「小さな羊毛の房」",
+          "note": "小脳の下の面の前、中小脳脚のすぐ後ろにある小さな房。虫部の小節と合わせて片葉小節葉といい、前庭神経核とつながって体の平衡と眼球の動き（頭を動かしても視線を保つ）にかかわる。"
+        },
+        {
+          "id": "tonsil-of-cerebellum", "ja": "小脳扁桃", "yomi": "しょうのうへんとう", "en": "tonsil of cerebellum", "enAlt": ["cerebellar tonsil"], "la": "tonsilla cerebelli",
+          "of": "cerebellum", "level": 2,
+          "kanji": "小脳の下の面の、扁桃のようなふくらみ",
+          "etym": "tonsil ← ラテン語 tonsilla「扁桃」",
+          "note": "小脳の下の面で、虫部の両わきにある丸いふくらみ。大後頭孔のすぐ上にある。頭蓋の中の圧が上がると、ここが大後頭孔に押しこまれて延髄を圧迫し、呼吸が止まる（小脳扁桃ヘルニア）。"
+        },
+        {
+          "id": "primary-fissure", "ja": "第一裂", "yomi": "だいいちれつ", "en": "primary fissure", "la": "fissura prima",
+          "of": "cerebellum", "level": 3,
+          "kanji": "最初にできる小脳の深い裂",
+          "etym": "primary「最初の」＋ fissure「裂け目」（ラテン語 fissura）",
+          "note": "小脳の上の面を横切るV字の深い裂。胎児のとき最初にできる。これより前が前葉、後ろが後葉。前葉はおもに脊髄から体の位置の情報を受ける。"
+        },
+        {
+          "id": "horizontal-fissure-of-cerebellum", "ja": "水平裂（小脳）", "yomi": "すいへいれつ", "en": "horizontal fissure of cerebellum", "la": "fissura horizontalis cerebelli",
+          "of": "cerebellum", "level": 3,
+          "kanji": "小脳の縁をぐるりと水平に走る裂",
+          "etym": "horizontal「水平の」＋ fissure「裂け目」",
+          "note": "小脳の後ろと外側の縁を、ほぼ水平に回る深い裂。上の面と下の面の境で、上半月小葉と下半月小葉を分ける。"
+        },
+        {
+          "id": "pyramid-of-medulla-oblongata", "ja": "錐体（延髄）", "yomi": "すいたい", "en": "pyramid of medulla oblongata", "la": "pyramis medullae oblongatae",
+          "of": "medulla-oblongata", "level": 1,
+          "kanji": "延髄の前の、ピラミッドのような高まり",
+          "etym": "pyramid ← ギリシャ語 pyramis「ピラミッド」",
+          "note": "延髄の前の面で、前正中裂の両わきを縦に走る細長い高まり。中を大脳の運動野から来る皮質脊髄路（錐体路）が通る。下の端でほとんどの線維が反対側へ交わり（錐体交叉）、だから右の大脳は左の手足を動かす。"
+        },
+        {
+          "id": "olive", "ja": "オリーブ", "yomi": "おりーぶ", "en": "olive", "la": "oliva",
+          "of": "medulla-oblongata", "level": 2,
+          "kanji": "オリーブの実のような高まり",
+          "etym": "olive ← ラテン語 oliva「オリーブの実」",
+          "note": "延髄の前外側で、錐体の外側にある楕円形の高まり。中に下オリーブ核があり、小脳へ運動の学習の信号を送る。錐体とオリーブの間の溝から舌下神経が、オリーブの後ろから舌咽神経・迷走神経・副神経が出る。"
+        },
+        {
+          "id": "middle-cerebellar-peduncle", "ja": "中小脳脚", "yomi": "ちゅうしょうのうきゃく", "en": "middle cerebellar peduncle", "la": "pedunculus cerebellaris medius",
+          "of": "pons", "level": 2,
+          "kanji": "小脳の真ん中の脚（橋から小脳へ）",
+          "etym": "middle「中の」＋ cerebellar「小脳の」＋ peduncle「脚」（ラテン語 pedunculus）",
+          "note": "橋の両わきが後ろへ太い束になって小脳に入る所。3つの小脳脚のうち最も太い。大脳皮質から橋核を経て、反対側の小脳へ行く線維が通る。三叉神経がこの根もとから出る。"
+        },
+        {
+          "id": "rhomboid-fossa", "ja": "菱形窩", "yomi": "りょうけいか", "en": "rhomboid fossa", "la": "fossa rhomboidea",
+          "of": "pons", "parts": ["pons","medulla oblongata"], "level": 2,
+          "kanji": "ひし形のくぼみ",
+          "etym": "rhomboid「ひし形の」（ギリシャ語 rhombos）＋ fossa「くぼみ」",
+          "note": "橋と延髄の上半分の背側の面にある、ひし形のくぼみ。第四脳室の床で、小脳を外すと見える。ここに脳神経の核（外転神経核・舌下神経核・迷走神経背側核など）が並び、正中のわきの小さな高まり（顔面神経丘・舌下神経三角）で外から位置が分かる。"
+        }
+      ]
     }
   ]
 }

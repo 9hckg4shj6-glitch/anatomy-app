@@ -725,6 +725,82 @@
           "note": "仙骨の尖と尾骨の間の線維軟骨の連結。少し動き、出産のときには尾骨が後ろへ押されて産道が広がる。"
         }
       ]
+    },
+    {
+      "id": "joint-small-more",
+      "title": "腓骨頭・距踵・手根中手の靱帯とY軟骨",
+      "terms": [
+        {
+          "id": "anterior-ligament-of-fibular-head", "ja": "前腓骨頭靱帯", "yomi": "ぜんひこつとうじんたい", "en": "anterior ligament of fibular head", "la": "ligamentum capitis fibulae anterius",
+          "parts": ["za:anterior ligament of fibular head"], "level": 3,
+          "kanji": "腓骨頭の前の靱帯",
+          "etym": "anterior「前の」＋ fibular head「腓骨頭」（ラテン語 fibula＝留め金）",
+          "note": "脛腓関節（上の脛骨と腓骨の関節）の前の面を補強する靱帯。腓骨頭の前から斜め上内側へ脛骨の外側顆に付く。"
+        },
+        {
+          "id": "posterior-ligament-of-fibular-head", "ja": "後腓骨頭靱帯", "yomi": "こうひこつとうじんたい", "en": "posterior ligament of fibular head", "la": "ligamentum capitis fibulae posterius",
+          "parts": ["za:posterior ligament of fibular head"], "level": 3,
+          "kanji": "腓骨頭の後ろの靱帯",
+          "etym": "posterior「後ろの」＋ fibular head「腓骨頭」",
+          "note": "脛腓関節の後ろの面を補強する靱帯。腓骨頭の後ろから脛骨の外側顆の後ろへ張る。すぐ上を膝窩筋の腱が通る。"
+        },
+        {
+          "id": "lateral-talocalcaneal-ligament", "ja": "外側距踵靱帯", "yomi": "がいそくきょしょうじんたい", "en": "lateral talocalcaneal ligament", "la": "ligamentum talocalcaneum laterale",
+          "parts": ["za:lateral talocalcaneal ligament"], "level": 3,
+          "kanji": "距骨と踵骨を外側でつなぐ靱帯",
+          "etym": "talo-「距骨の」（ラテン語 talus＝くるぶし）＋ calcaneal「踵骨の」（calx＝かかと）",
+          "note": "距骨下関節の外側の短い靱帯。距骨の外側突起から踵骨の外側面へ、踵腓靱帯のすぐ前を平行に走る。"
+        },
+        {
+          "id": "medial-talocalcaneal-ligament", "ja": "内側距踵靱帯", "yomi": "ないそくきょしょうじんたい", "en": "medial talocalcaneal ligament", "la": "ligamentum talocalcaneum mediale",
+          "parts": ["za:medial talocalcaneal ligament"], "level": 3,
+          "kanji": "距骨と踵骨を内側でつなぐ靱帯",
+          "etym": "medial「内側の」＋ talocalcaneal「距骨と踵骨の」",
+          "note": "距骨下関節の内側の靱帯。距骨の後突起の内側結節から、踵骨の載距突起の後ろへ張る。"
+        },
+        {
+          "id": "posterior-talocalcaneal-ligament", "ja": "後距踵靱帯", "yomi": "こうきょしょうじんたい", "en": "posterior talocalcaneal ligament", "la": "ligamentum talocalcaneum posterius",
+          "parts": ["za:posterior talocalcaneal ligament"], "level": 3,
+          "kanji": "距骨と踵骨を後ろでつなぐ靱帯",
+          "etym": "posterior「後ろの」＋ talocalcaneal「距骨と踵骨の」",
+          "note": "距骨の後突起の外側結節から踵骨の上の面へ張る短い靱帯。距骨下関節の後ろを閉じる。"
+        },
+        {
+          "id": "dorsal-carpometacarpal-ligaments", "ja": "背側手根中手靱帯", "yomi": "はいそくしゅこんちゅうしゅじんたい", "en": "dorsal carpometacarpal ligaments", "la": "ligamenta carpometacarpalia dorsalia",
+          "parts": ["za:dorsal carpometacarpal ligaments"], "level": 3,
+          "kanji": "手の甲の側で手根骨と中手骨をつなぐ靱帯",
+          "etym": "dorsal「背側の」＋ carpo-「手根の」＋ metacarpal「中手の」",
+          "note": "遠位の手根骨と第2〜第5中手骨の底を、手の甲の側でつなぐ短い靱帯。第2・第3中手骨はこれで強く固められてほとんど動かず、第4・第5中手骨は少し動く（物を握るとき小指側が手のひらへ曲がる）。"
+        },
+        {
+          "id": "palmar-carpometacarpal-ligaments", "ja": "掌側手根中手靱帯", "yomi": "しょうそくしゅこんちゅうしゅじんたい", "en": "palmar carpometacarpal ligaments", "la": "ligamenta carpometacarpalia palmaria",
+          "parts": ["za:palmar carpometacarpal ligaments"], "level": 3,
+          "kanji": "手のひらの側で手根骨と中手骨をつなぐ靱帯",
+          "etym": "palmar「手のひらの」（ラテン語 palma）＋ carpometacarpal「手根と中手の」",
+          "note": "遠位の手根骨と第2〜第5中手骨の底を、手のひらの側でつなぐ靱帯。手根管の床の一部になる。"
+        },
+        {
+          "id": "ulnolunate-ligament", "ja": "尺骨月状骨靱帯", "yomi": "しゃっこつげつじょうこつじんたい", "en": "ulnolunate ligament", "la": "ligamentum ulnolunatum",
+          "parts": ["za:ulnolunate ligament"], "level": 3, "check": true,
+          "kanji": "尺骨（の関節円板）と月状骨をつなぐ靱帯",
+          "etym": "ulno-「尺骨の」＋ lunate「月状骨」（ラテン語 luna＝月）",
+          "note": "手首の小指側で、下橈尺関節の関節円板の前の縁から月状骨へ張る靱帯。関節円板とともに三角線維軟骨複合体（TFCC）をつくり、手首の小指側を支える。手をついて転ぶと傷みやすい。"
+        },
+        {
+          "id": "ulnotriquetral-ligament", "ja": "尺骨三角骨靱帯", "yomi": "しゃっこつさんかくこつじんたい", "en": "ulnotriquetral ligament", "la": "ligamentum ulnotriquetrum",
+          "parts": ["za:ulnotriquetral ligament"], "level": 3, "xray": true, "check": true,
+          "kanji": "尺骨（の関節円板）と三角骨をつなぐ靱帯",
+          "etym": "ulno-「尺骨の」＋ triquetral「三角骨の」（ラテン語 triquetrus＝三角の）",
+          "note": "下橈尺関節の関節円板の前の縁から三角骨へ張る靱帯。尺骨月状骨靱帯のすぐ内側に並び、ともに三角線維軟骨複合体（TFCC）の一部。"
+        },
+        {
+          "id": "triradiate-cartilage", "ja": "Y軟骨", "yomi": "わいなんこつ", "en": "triradiate cartilage", "enAlt": ["y-shaped cartilage"], "la": "cartilago triradiata",
+          "parts": ["za:triradiate cartilage"], "level": 2, "xray": true,
+          "kanji": "Y字の形の軟骨",
+          "etym": "tri-「3つの」＋ radiate「放射状の」",
+          "note": "寛骨臼の中で、腸骨・坐骨・恥骨の3つをつなぐY字の軟骨。ここで骨が伸び、思春期（15〜17歳ごろ）に骨になって3つの骨が1つの寛骨になる。寛骨臼の中の線として跡が残る。"
+        }
+      ]
     }
   ]
 }

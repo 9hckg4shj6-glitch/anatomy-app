@@ -245,6 +245,47 @@
           "note": "まぶたの内側の端の小さな穴（涙点）から涙嚢へ涙を運ぶ上下の細い管。涙は涙腺→眼の表面→涙点→涙小管→涙嚢→鼻涙管→下鼻道と流れる。"
         }
       ]
+    },
+    {
+      "id": "sens-orbit-more",
+      "title": "眼球の部屋と眼窩の支え",
+      "terms": [
+        {
+          "id": "anterior-chamber-of-eyeball", "ja": "前眼房", "yomi": "ぜんがんぼう", "en": "anterior chamber of eyeball", "enAlt": ["anterior chamber"], "la": "camera anterior bulbi",
+          "parts": ["anterior chamber of eyeball"], "level": 2, "xray": true, "color": "#dfe9ee", "tissue": "clear",
+          "kanji": "眼球の前の部屋",
+          "etym": "anterior「前の」＋ chamber「部屋」（ラテン語 camera）",
+          "note": "角膜と虹彩の間の、眼房水で満たされた空間。眼房水は毛様体でつくられ、後眼房から瞳孔を通ってここへ来て、角膜と虹彩のつけ根の角（隅角）から強膜静脈洞（シュレム管）へ出る。出口が詰まると眼圧が上がる（緑内障）。"
+        },
+        {
+          "id": "trochlea-of-superior-oblique", "ja": "上斜筋の滑車", "yomi": "じょうしゃきんのかっしゃ", "en": "trochlea of superior oblique", "la": "trochlea musculi obliqui superioris",
+          "parts": ["trochlea of superior oblique"], "level": 3,
+          "kanji": "上斜筋の腱を折り返す滑車",
+          "etym": "trochlea ← ギリシャ語 trochilia「滑車」",
+          "note": "眼窩の内側上の角（前頭骨の滑車窩）に付く、軟骨の小さな輪。上斜筋の腱はここで後ろ外側へ折れ曲がって眼球に付くので、上斜筋は眼球を下外側へ向ける（下を見る）。この滑車の名前から、上斜筋を動かす神経を滑車神経という。"
+        },
+        {
+          "id": "suspensory-ligament-of-eyeball", "ja": "眼球提靱帯", "yomi": "がんきゅうていじんたい", "en": "suspensory ligament of eyeball", "la": "ligamentum suspensorium bulbi",
+          "parts": ["za:suspensory ligament of eyeball"], "level": 3,
+          "kanji": "眼球を下から吊り下げる靱帯",
+          "etym": "suspensory「吊る」（ラテン語 suspendere）＋ ligament「靱帯」",
+          "note": "眼球の下に張る、ハンモックのような結合組織の帯。下直筋と下斜筋の筋膜が厚くなったもので、内側と外側の端は眼窩の壁に付く。眼窩の底の骨が折れても、これが眼球を支える。"
+        },
+        {
+          "id": "check-ligament-of-medial-rectus", "ja": "内側直筋の制動靱帯", "yomi": "ないそくちょくきんのせいどうじんたい", "en": "check ligament of medial rectus", "la": "lacertus musculi recti medialis",
+          "parts": ["check ligament of medial rectus"], "level": 3, "check": true,
+          "kanji": "内側直筋の動きを止める靱帯",
+          "etym": "check「止める」＋ ligament「靱帯」",
+          "note": "内側直筋の筋膜から出て、眼窩の内側壁（涙骨）に付く帯。内側直筋が縮みすぎないように止め、眼球が内側へ回りすぎるのを防ぐ。"
+        },
+        {
+          "id": "check-ligament-of-lateral-rectus", "ja": "外側直筋の制動靱帯", "yomi": "がいそくちょくきんのせいどうじんたい", "en": "check ligament of lateral rectus", "la": "lacertus musculi recti lateralis",
+          "parts": ["check ligament of lateral rectus"], "level": 3, "check": true,
+          "kanji": "外側直筋の動きを止める靱帯",
+          "etym": "check「止める」＋ lateral rectus「外側の直筋」",
+          "note": "外側直筋の筋膜から出て、眼窩の外側壁（頬骨の眼窩結節）に付く帯。眼球が外側へ回りすぎるのを防ぐ。内側と外側の制動靱帯と眼球提靱帯で、眼球をハンモックのように支える。"
+        }
+      ]
     }
   ]
 }

@@ -521,6 +521,90 @@
           "note": "B10。肺底の後ろの区域（S10）に入る。背中の下のほうを占める大きな区域で、寝たきりの人の誤嚥性肺炎は S6 とともにここに多い。"
         }
       ]
+    },
+    {
+      "id": "resp-larynx-more",
+      "title": "喉頭蓋の靱帯と甲状軟骨・輪状軟骨の部位",
+      "terms": [
+        {
+          "id": "hyo-epiglottic-ligament", "ja": "舌骨喉頭蓋靱帯", "yomi": "ぜっこつこうとうがいじんたい", "en": "hyo-epiglottic ligament", "enAlt": ["hyoepiglottic ligament"], "la": "ligamentum hyoepiglotticum",
+          "parts": ["hyo-epiglottic ligament"], "level": 3,
+          "kanji": "舌骨と喉頭蓋をつなぐ靱帯",
+          "etym": "hyo-「舌骨の」（ギリシャ語 hyoeides＝Υの字の形）＋ epiglottic「喉頭蓋の」",
+          "note": "喉頭蓋の前の面と舌骨体の後ろの縁をつなぐ靱帯。喉頭蓋を前へ引きとめる。この上の、舌根と喉頭蓋の間のくぼみが喉頭蓋谷。"
+        },
+        {
+          "id": "thyro-epiglottic-ligament", "ja": "甲状喉頭蓋靱帯", "yomi": "こうじょうこうとうがいじんたい", "en": "thyro-epiglottic ligament", "enAlt": ["thyroepiglottic ligament"], "la": "ligamentum thyroepiglotticum",
+          "parts": ["thyro-epiglottic ligament"], "level": 3, "xray": true,
+          "kanji": "甲状軟骨と喉頭蓋をつなぐ靱帯",
+          "etym": "thyro-「甲状軟骨の」（ギリシャ語 thyreos＝盾）＋ epiglottic「喉頭蓋の」",
+          "note": "喉頭蓋の下の細い端（喉頭蓋茎）を、甲状軟骨の内側の、上甲状切痕のすぐ下に付ける靱帯。喉頭蓋はこれを支点に倒れて、飲み込むとき喉頭の入り口にふたをする。"
+        },
+        {
+          "id": "straight-part-of-cricothyroid", "ja": "輪状甲状筋の直部", "yomi": "りんじょうこうじょうきんのちょくぶ", "en": "straight part of cricothyroid", "la": "pars recta musculi cricothyroidei",
+          "parts": ["straight part of cricothyroid"], "level": 3, "color": "#c75b4f",
+          "kanji": "輪状甲状筋の、まっすぐ上へ走る部",
+          "etym": "straight「まっすぐの」＋ cricothyroid「輪状軟骨と甲状軟骨の」",
+          "note": "輪状甲状筋の前の部分。輪状軟骨の弓の前から、ほぼまっすぐ上へ甲状軟骨の下の縁に付く。斜部とともに甲状軟骨を前へ傾けて声帯を張る。",
+          "origin": "輪状軟骨の弓の前面",
+          "insertion": "甲状軟骨の下縁",
+          "nerve": "上喉頭神経の外枝",
+          "action": "甲状軟骨を前に傾けて声帯を張る（声を高くする）"
+        },
+        {
+          "id": "oblique-part-of-cricothyroid", "ja": "輪状甲状筋の斜部", "yomi": "りんじょうこうじょうきんのしゃぶ", "en": "oblique part of cricothyroid", "la": "pars obliqua musculi cricothyroidei",
+          "parts": ["oblique part of cricothyroid"], "level": 3, "color": "#c75b4f",
+          "kanji": "輪状甲状筋の、斜め後ろへ走る部",
+          "etym": "oblique「斜めの」＋ cricothyroid「輪状軟骨と甲状軟骨の」",
+          "note": "輪状甲状筋の後ろの部分。輪状軟骨の弓から斜め後ろ上へ、甲状軟骨の下角に付く。甲状軟骨を前へ滑らせる。",
+          "origin": "輪状軟骨の弓の外側面",
+          "insertion": "甲状軟骨の下角",
+          "nerve": "上喉頭神経の外枝",
+          "action": "甲状軟骨を前へ引いて声帯を張る"
+        },
+        {
+          "id": "superior-thyroid-notch", "ja": "上甲状切痕", "yomi": "じょうこうじょうせっこん", "en": "superior thyroid notch", "la": "incisura thyroidea superior",
+          "of": "thyroid-cartilage", "level": 2,
+          "kanji": "甲状軟骨の上の切れこみ",
+          "etym": "superior「上の」＋ thyroid「盾の形の」＋ notch「切れこみ」",
+          "note": "甲状軟骨の左右の板が前で合わさる所の、上の縁のV字の切れこみ。そのすぐ下が喉頭隆起（のどぼとけ）。首の前で指で触れて、喉頭の高さ（第4〜第5頚椎）の目安にする。"
+        },
+        {
+          "id": "oblique-line-of-thyroid-cartilage", "ja": "斜線（甲状軟骨）", "yomi": "しゃせん", "en": "oblique line of thyroid cartilage", "la": "linea obliqua cartilaginis thyroideae",
+          "of": "thyroid-cartilage", "level": 3,
+          "kanji": "斜めに走る線",
+          "etym": "oblique「斜めの」＋ line「線」",
+          "note": "甲状軟骨の板の外側の面を、後ろ上から前下へ斜めに走る隆起。胸骨甲状筋が停止し、甲状舌骨筋が起始し、下咽頭収縮筋の一部もここから起こる。"
+        },
+        {
+          "id": "superior-horn-of-thyroid-cartilage", "ja": "上角（甲状軟骨）", "yomi": "じょうかく", "en": "superior horn of thyroid cartilage", "la": "cornu superius cartilaginis thyroideae",
+          "of": "thyroid-cartilage", "level": 3,
+          "kanji": "甲状軟骨の上へ伸びる角",
+          "etym": "superior「上の」＋ horn「角」（ラテン語 cornu）",
+          "note": "甲状軟骨の板の後ろの縁が上へ長く伸びた突起。外側甲状舌骨靱帯で舌骨の大角の先とつながる。"
+        },
+        {
+          "id": "inferior-horn-of-thyroid-cartilage", "ja": "下角（甲状軟骨）", "yomi": "かかく", "en": "inferior horn of thyroid cartilage", "la": "cornu inferius cartilaginis thyroideae",
+          "of": "thyroid-cartilage", "level": 3,
+          "kanji": "甲状軟骨の下へ伸びる角",
+          "etym": "inferior「下の」＋ horn「角」",
+          "note": "甲状軟骨の板の後ろの縁が下へ伸びた短い突起。先の内側の面で輪状軟骨と関節をつくる（輪状甲状関節）。輪状甲状筋が縮むと、ここを軸に甲状軟骨が前へ傾いて声帯が張る。"
+        },
+        {
+          "id": "arch-of-cricoid-cartilage", "ja": "輪状軟骨弓", "yomi": "りんじょうなんこつきゅう", "en": "arch of cricoid cartilage", "la": "arcus cartilaginis cricoideae",
+          "of": "cricoid-cartilage", "level": 3,
+          "kanji": "輪状軟骨の前の細い弓",
+          "etym": "arch「弓」＋ cricoid ← ギリシャ語 krikos「輪」＋ -eides「〜の形」",
+          "note": "輪状軟骨の前と横の細い部分。甲状軟骨の下の縁との間に輪状甲状膜（正中輪状甲状靱帯）が張り、首の前で触れる。気道が詰まったときに、ここを切って空気の通り道をつくる（輪状甲状膜切開）。"
+        },
+        {
+          "id": "lamina-of-cricoid-cartilage", "ja": "輪状軟骨板", "yomi": "りんじょうなんこつばん", "en": "lamina of cricoid cartilage", "la": "lamina cartilaginis cricoideae",
+          "of": "cricoid-cartilage", "level": 3,
+          "kanji": "輪状軟骨の後ろの高い板",
+          "etym": "lamina「板」＋ cricoid「輪の形の」",
+          "note": "輪状軟骨の後ろの高く広い部分（印章付き指輪の印の部分）。上の縁に披裂軟骨がのる関節面があり、後ろの面から後輪状披裂筋が起こる。"
+        }
+      ]
     }
   ]
 }

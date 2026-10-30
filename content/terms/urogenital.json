@@ -224,6 +224,42 @@
           "note": "尿道海綿体の中を通る約15cmの部分。尿道球の中で広がり、亀頭の中で舟状窩となって外尿道口に開く。尿道球腺が開く。"
         }
       ]
+    },
+    {
+      "id": "uro-pelvic-floor-more",
+      "title": "肛門挙筋の部と腱弓",
+      "terms": [
+        {
+          "id": "pubococcygeus", "ja": "恥骨尾骨筋", "yomi": "ちこつびこつきん", "en": "pubococcygeus", "la": "musculus pubococcygeus",
+          "parts": ["pubococcygeus","!FJ1457M"], "level": 3, "color": "#c75b4f",
+          "kanji": "恥骨から尾骨へ行く筋",
+          "etym": "pubo-「恥骨の」＋ coccygeus「尾骨の」",
+          "note": "肛門挙筋の中ほどの部分。恥骨の後ろの面から後ろへ走り、肛門の後ろの肛門尾骨靱帯と尾骨に付く。前立腺（女性では腟）と直腸の壁にも線維を送る。骨盤底の筋の体操で鍛えるのはおもにこの筋。",
+          "origin": "恥骨の後面・肛門挙筋腱弓の前部",
+          "insertion": "肛門尾骨靱帯・尾骨",
+          "nerve": "陰部神経・仙骨神経叢の枝",
+          "action": "骨盤内臓を支え、腹圧に耐える"
+        },
+        {
+          "id": "iliococcygeus", "ja": "腸骨尾骨筋", "yomi": "ちょうこつびこつきん", "en": "iliococcygeus", "la": "musculus iliococcygeus",
+          "parts": ["iliococcygeus","!FJ1453M"], "level": 3, "color": "#c75b4f",
+          "kanji": "腸骨（の側）から尾骨へ行く筋",
+          "etym": "ilio-「腸骨の」＋ coccygeus「尾骨の」",
+          "note": "肛門挙筋の後ろ外側の薄い部分。骨盤の側壁の肛門挙筋腱弓と坐骨棘から起こり、尾骨と肛門尾骨靱帯に付く。名前と違い、腸骨からは直接起こらない。",
+          "origin": "肛門挙筋腱弓の後部・坐骨棘",
+          "insertion": "肛門尾骨靱帯・尾骨",
+          "originAt": ["ischial-spine"],
+          "nerve": "陰部神経・仙骨神経叢の枝",
+          "action": "骨盤底を支える"
+        },
+        {
+          "id": "tendinous-arch-of-levator-ani", "ja": "肛門挙筋腱弓", "yomi": "こうもんきょきんけんきゅう", "en": "tendinous arch of levator ani", "la": "arcus tendineus musculi levatoris ani",
+          "parts": ["tendinous arch of levator ani","!FJ1465M"], "level": 3, "color": "#d6cdb8",
+          "kanji": "肛門挙筋が起こる腱の弓",
+          "etym": "tendinous「腱の」＋ arch「弓」＋ levator ani「肛門挙筋」",
+          "note": "内閉鎖筋の筋膜が厚くなってできた弓。恥骨の後ろから坐骨棘まで、骨盤の側壁を前後に走り、肛門挙筋（恥骨尾骨筋・腸骨尾骨筋）がここから起こる。"
+        }
+      ]
     }
   ]
 }

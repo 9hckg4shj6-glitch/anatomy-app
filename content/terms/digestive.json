@@ -798,6 +798,96 @@
           "note": "7番の歯。12歳ごろに生える（12歳臼歯）。第1大臼歯より少し小さい。根は上顎で3本、下顎で2本（根がくっついていることも多い）。"
         }
       ]
+    },
+    {
+      "id": "dig-pharynx-more",
+      "title": "咽頭の小さな筋と縫線",
+      "terms": [
+        {
+          "id": "salpingopharyngeus", "ja": "耳管咽頭筋", "yomi": "じかんいんとうきん", "en": "salpingopharyngeus", "la": "musculus salpingopharyngeus",
+          "parts": ["salpingopharyngeus"], "level": 3, "color": "#c75b4f",
+          "kanji": "耳管から咽頭へ下る筋",
+          "etym": "salpingo- ← ギリシャ語 salpinx「らっぱ（耳管）」＋ pharyngeus「咽頭の」",
+          "note": "耳管の咽頭の口の下の縁から下へ伸びる細い筋。粘膜をもり上げて耳管咽頭ひだをつくり、下で口蓋咽頭筋と合わさる。飲み込むとき咽頭を引き上げる。",
+          "origin": "耳管軟骨の下端",
+          "insertion": "口蓋咽頭筋と合わさり咽頭の側壁",
+          "nerve": "迷走神経（咽頭神経叢）",
+          "action": "咽頭を引き上げる（耳管の口を開くのを助ける）"
+        },
+        {
+          "id": "musculus-uvulae", "ja": "口蓋垂筋", "yomi": "こうがいすいきん", "en": "musculus uvulae", "enAlt": ["uvular muscle"], "la": "musculus uvulae",
+          "parts": ["uvular muscle"], "level": 3, "xray": true, "color": "#c75b4f",
+          "kanji": "口蓋垂の中の筋",
+          "etym": "uvulae ← ラテン語 uvula「小さなぶどうの房（のどちんこ）」",
+          "note": "口蓋垂の中を縦に走る左右1対の細い筋。口蓋垂を縮めて持ち上げ、飲み込むとき咽頭鼻部をふさぐのを助ける。迷走神経がまひすると口蓋垂は健康な側へ引かれる。",
+          "origin": "後鼻棘・口蓋腱膜",
+          "insertion": "口蓋垂の粘膜",
+          "nerve": "迷走神経（咽頭神経叢）",
+          "action": "口蓋垂を短くし、持ち上げる"
+        },
+        {
+          "id": "pterygomandibular-raphe", "ja": "翼突下顎縫線", "yomi": "よくとつかがくほうせん", "en": "pterygomandibular raphe", "la": "raphe pterygomandibularis",
+          "parts": ["pterygomandibular raphe"], "level": 3, "color": "#d6cdb8",
+          "kanji": "翼突鈎と下顎をつなぐ縫い目の線",
+          "etym": "pterygo-「翼の（翼状突起）」＋ mandibular「下顎の」＋ raphe ← ギリシャ語「縫い目」",
+          "note": "蝶形骨の翼突鈎から下顎骨の顎舌骨筋線の後ろの端へ張る腱の帯。前に頬筋が、後ろに上咽頭収縮筋が付き、2つの筋がここでつながる。口を大きく開けると口の中で粘膜のひだとして見え、下歯槽神経の麻酔の目印にする。"
+        },
+        {
+          "id": "pharyngeal-raphe", "ja": "咽頭縫線", "yomi": "いんとうほうせん", "en": "pharyngeal raphe", "la": "raphe pharyngis",
+          "parts": ["pharyngeal raphe"], "level": 3, "color": "#d6cdb8",
+          "kanji": "咽頭の後ろの正中の縫い目",
+          "etym": "pharyngeal「咽頭の」＋ raphe「縫い目」",
+          "note": "咽頭の後ろの壁の正中を縦に走る腱の線。後頭骨の咽頭結節から下がり、左右の上・中・下咽頭収縮筋がここで合わさる。"
+        }
+      ]
+    },
+    {
+      "id": "dig-pt-more",
+      "title": "胆嚢・膵頚と舌の分界溝",
+      "terms": [
+        {
+          "id": "fundus-of-gallbladder", "ja": "胆嚢底", "yomi": "たんのうてい", "en": "fundus of gallbladder", "la": "fundus vesicae biliaris",
+          "of": "gallbladder", "level": 2,
+          "kanji": "胆嚢の底（ふくらんだ先）",
+          "etym": "fundus ← ラテン語「底」＋ gallbladder「胆汁の袋」",
+          "note": "胆嚢の丸くふくらんだ前の先。肝臓の下縁から少し前に出て、右の第9肋軟骨と腹直筋の外縁が交わる所で腹壁に接する。胆嚢炎ではここを押さえて息を吸わせると痛みで止まる（マーフィー徴候）。"
+        },
+        {
+          "id": "body-of-gallbladder", "ja": "胆嚢体", "yomi": "たんのうたい", "en": "body of gallbladder", "la": "corpus vesicae biliaris",
+          "of": "gallbladder", "level": 3,
+          "kanji": "胆嚢の胴の部分",
+          "etym": "body「体」＋ gallbladder「胆嚢」",
+          "note": "胆嚢の中ほどの部分。上の面は肝臓の下面の胆嚢窩に付き、下の面は十二指腸の上部と横行結腸に接する。"
+        },
+        {
+          "id": "neck-of-gallbladder", "ja": "胆嚢頚", "yomi": "たんのうけい", "en": "neck of gallbladder", "la": "collum vesicae biliaris",
+          "of": "gallbladder", "level": 2,
+          "kanji": "胆嚢の首（細くなった所）",
+          "etym": "neck「首」＋ gallbladder「胆嚢」",
+          "note": "胆嚢の後ろ上の細い部分で、S字に曲がって胆嚢管に続く。中の粘膜はらせん状のひだ（らせんヒダ）をつくる。胆石がつまりやすい所。"
+        },
+        {
+          "id": "neck-of-pancreas", "ja": "膵頚", "yomi": "すいけい", "en": "neck of pancreas", "la": "collum pancreatis",
+          "of": "pancreas", "level": 2,
+          "kanji": "膵臓の首（膵頭と膵体の間）",
+          "etym": "neck「首」＋ pancreas ← ギリシャ語 pan「すべて」＋ kreas「肉」",
+          "note": "膵頭と膵体の間の細い部分。この後ろで上腸間膜静脈と脾静脈が合わさって門脈になる。前は胃の幽門部。膵臓の手術ではここで膵臓を切り分ける。"
+        },
+        {
+          "id": "terminal-sulcus-of-tongue", "ja": "分界溝", "yomi": "ぶんかいこう", "en": "terminal sulcus of tongue", "enAlt": ["sulcus terminalis"], "la": "sulcus terminalis linguae",
+          "of": "tongue", "level": 2,
+          "kanji": "舌体と舌根の境を分ける溝",
+          "etym": "terminal「境の」＋ sulcus「溝」＋ linguae「舌の」",
+          "note": "舌の背の後ろの方にある、後ろに頂点を向けたV字の浅い溝。前の舌体（前2/3）と後ろの舌根（後ろ1/3）を分ける。すぐ前に大きな有郭乳頭が1列に並ぶ。前2/3と後ろ1/3で、感覚の神経（舌神経と舌咽神経）も味覚の神経（鼓索神経と舌咽神経）も違う。"
+        },
+        {
+          "id": "foramen-caecum-of-tongue", "ja": "舌盲孔", "yomi": "ぜつもうこう", "en": "foramen caecum of tongue", "enAlt": ["foramen cecum of tongue"], "la": "foramen caecum linguae",
+          "of": "tongue", "level": 3,
+          "kanji": "舌の行き止まりの孔",
+          "etym": "foramen「孔」＋ caecum ← ラテン語「見えない・行き止まりの」",
+          "note": "分界溝の頂点にある小さなくぼみ。胎児のとき、甲状腺のもとがここから首の前へ下りていった跡（甲状舌管の上の端）。管が残ると首の正中に袋（甲状舌管嚢胞）ができる。"
+        }
+      ]
     }
   ]
 }
