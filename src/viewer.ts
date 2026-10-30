@@ -4,7 +4,7 @@ import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 import { joints, loadAttachments, loadModelIndex, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex, type Motion, type Term, type View } from "./content";
-import { drawingUp, pinCenter, pinSpread, type Vec3 } from "./landmarks";
+import { drawingUp, pinCenter, pinSpread, type Cut, type Vec3 } from "./landmarks";
 
 export interface SceneSpec {
   /** 表示してタップで選べる系統 */
@@ -176,7 +176,7 @@ varying vec3 vSpotNormal;
 uniform int spotCount;
 uniform vec4 spots[${SPOT_MAX}];
 uniform vec3 spotColors[${SPOT_MAX}];
-uniform vec3 spotNormals[${SPOT_MAX}];
+uniform vec4 spotNormals[${SPOT_MAX}];
 #endif
 float surfNoiseAt(vec3 p, float tile) { return texture(surfNoise, p / tile).r - 0.5; }
 // 細かい凹凸の高さ（mm）。色むらと線維の濃淡で color も変える
@@ -232,34 +232,67 @@ vSpotNormal = normalize(mat3(modelMatrix) * objectNormal);
   shader.fragmentShader = shader.fragmentShader
     .replace("#include <common>", `#include <common>\n${SURFACE_FRAGMENT}`)
     .replace("#include <color_fragment>", `#include <color_fragment>
+vec3 surfPlain = diffuseColor.rgb;
 float surfHeight = surfaceDetail(diffuseColor.rgb);
 #ifdef SURF_CLEAR
 // 透明な組織は光をほとんど散らさない（地の色で白く濁らないように）
 diffuseColor.rgb *= 0.08;
 #endif
 #ifdef USE_SPOTS
-// いちばん内側に入っている球で塗る（腸骨のように球を並べた範囲で、重なった所に縁の線が出ないように）
-float spotBest = -1.0, spotInside = 0.0, spotRim = 0.0;
+// いちばん内側に入っている球で塗る（腸骨のように球を並べた範囲で、重なった所に縁の線が出ないように）。
+// 区域（spotNormals の w が切る面の枚数。面は続く spots に入れてある）は、球は囲むだけで、すべての面の表側を塗る。
+// 面との境目は濃い線にし、すぐ外の骨に細い陰を付けて、骨頭・顆などのかたまりが一段もり上がって見えるようにする
+float spotBest = -1.0, spotInside = 0.0, spotRim = 0.0, spotLine = 0.35, spotHalo = 0.0;
 vec3 spotColor = vec3(0.0);
+int spotSkip = 0;
 for (int i = 0; i < ${SPOT_MAX}; i++) {
   if (i >= spotCount) break;
+  if (spotSkip > 0) { spotSkip--; continue; }
   float d = distance(vSpotPosition, spots[i].xyz);
   float r = spots[i].w;
-  float inside = 1.0 - smoothstep(r * 0.92, r, d);
-  if (dot(spotNormals[i], spotNormals[i]) > 0.0) inside *= smoothstep(-0.45, -0.2, dot(normalize(vSpotNormal), spotNormals[i]));
-  float rim = smoothstep(r * 0.78, r * 0.92, d);
+  vec4 facing = spotNormals[i];
+  int cutCount = int(facing.w + 0.5);
+  float inside, rim;
+  if (cutCount == 0) {
+    inside = 1.0 - smoothstep(r * 0.92, r, d);
+    rim = smoothstep(r * 0.78, r * 0.92, d);
+  } else {
+    float edge = 1.0;
+    for (int k = 1; k <= 4; k++) {
+      if (k > cutCount) break;
+      vec4 cut = spots[min(i + k, ${SPOT_MAX - 1})];
+      edge = min(edge, dot(cut.xyz, vSpotPosition) + cut.w);
+    }
+    spotSkip = cutCount;
+    float within = 1.0 - step(r, d);
+    inside = within * smoothstep(-0.00015, 0.00015, edge);
+    rim = 1.0 - smoothstep(0.0003, 0.0015, edge);
+    spotHalo = max(spotHalo, within * (1.0 - smoothstep(0.0, 0.0016, -edge)) * step(edge, 0.0));
+  }
+  if (dot(facing.xyz, facing.xyz) > 0.0) inside *= smoothstep(-0.45, -0.2, dot(normalize(vSpotNormal), facing.xyz));
   float score = inside - 0.5 * rim;
   if (inside > 0.0 && score > spotBest) {
     spotBest = score;
     spotInside = inside;
     spotRim = rim;
+    spotLine = cutCount == 0 ? 0.35 : 0.5;
     spotColor = spotColors[i];
   }
 }
-diffuseColor.rgb = mix(diffuseColor.rgb, spotColor * (1.0 - 0.35 * spotRim * spotInside), spotInside);
+// 塗る色にも骨の色むらを残す（のっぺりした色紙に見えないように）
+float spotTone = clamp(dot(diffuseColor.rgb, vec3(0.3, 0.59, 0.11)) / max(dot(surfPlain, vec3(0.3, 0.59, 0.11)), 1e-3), 0.75, 1.25);
+// 明るい橙のままだと光の当たり方の差が飽和して見えにくいので、少し落として陰影を出す
+diffuseColor.rgb = mix(diffuseColor.rgb, spotColor * spotTone * 0.8 * (1.0 - spotLine * spotRim * spotInside), spotInside);
+diffuseColor.rgb *= 1.0 - 0.4 * spotHalo * (1.0 - spotInside);
 #endif`)
     .replace("#include <normal_fragment_maps>", `#include <normal_fragment_maps>
 normal = surfacePerturb(normal, surfHeight, faceDirection);`)
+    // 塗った所の、視線に対して斜めの面（輪郭の近く）をその色で少し光らせて、骨頭や顆の丸みを見せる
+    .replace("#include <emissivemap_fragment>", `#include <emissivemap_fragment>
+#ifdef USE_SPOTS
+float spotGrazing = 1.0 - abs(dot(nonPerturbedNormal, normalize(vViewPosition)));
+totalEmissiveRadiance += spotColor * spotInside * 0.12 * spotGrazing * spotGrazing;
+#endif`)
     // 断面（SURF_SECTION）: 切った所から見える形の裏側を、組織の色で平らに塗って切り口にする
     .replace("#include <opaque_fragment>", `#ifdef SURF_SECTION
 if (!gl_FrontFacing) outgoingLight = diffuseColor.rgb * 0.72;
@@ -343,8 +376,9 @@ export class AnatomyViewer {
     spotCount: { value: 0 },
     spots: { value: Array.from({ length: SPOT_MAX }, () => new THREE.Vector4()) },
     spotColors: { value: Array.from({ length: SPOT_MAX }, () => new THREE.Color()) },
-    // 部位の表面の向き。肩甲骨のような薄い骨で、裏側の面まで塗らないようにする（0 なら向きを問わない）
-    spotNormals: { value: Array.from({ length: SPOT_MAX }, () => new THREE.Vector3()) },
+    // 部位の表面の向き。肩甲骨のような薄い骨で、裏側の面まで塗らないようにする（0 なら向きを問わない）。
+    // w は区域を切る面の枚数（0 なら球のスポット）。面 [nx, ny, nz, w] はそのあとの spots に入れる
+    spotNormals: { value: Array.from({ length: SPOT_MAX }, () => new THREE.Vector4()) },
   };
   private colors: Map<string, string> | null = null;
   /** 組織の凹凸・色むら・線維に使うノイズ（すべての表面の材質で共有） */
@@ -848,13 +882,21 @@ export class AnatomyViewer {
     if (pin) {
       // 骨の部位は、部位の表面を正面から見る向きで、骨の周りが少し入る近さに寄る。
       // 器官の部位は器官が大きいので、器官の形が分かるところまで引く
-      const target = new THREE.Vector3(...pinCenter(pin));
+      // 区域（骨頭・顆など）は、区域を囲む球の中心に寄り、区域の全体が入る近さにする
+      const target = new THREE.Vector3(...(pin.region?.c ?? pinCenter(pin)));
       const reach = include ? target.distanceTo(new THREE.Vector3(...include)) * 1.3 : 0;
       const organ = term && termById.get(termId)?.system !== "skeletal" ? term.radius * 0.6 : 0;
-      const half = Math.max(0.055, pinSpread(pin) * 1.4 + pin.r * zoom * 0.8, reach, organ);
+      const spread = pin.region ? pin.region.r * zoom * 0.7 : pinSpread(pin) * 1.4 + pin.r * zoom * 0.8;
+      const half = Math.max(0.055, spread, reach, organ);
       const view = pin.cam ?? pin.n ?? pin.v;
       if (view) {
         direction.set(...view).normalize();
+        // 区域（骨頭・顆など）は真正面から見ると円盤に見えるので、前（前を向く部位なら外）へ傾けて丸みと付け根を見せる
+        if (pin.region && !pin.cam) {
+          const side = Math.abs(direction.z) > 0.8 ? new THREE.Vector3(-Math.sign(pin.region.c[0] || -1), 0, 0) : new THREE.Vector3(0, 0, 1);
+          side.addScaledVector(direction, -side.dot(direction)).normalize();
+          direction.addScaledVector(side, 0.9).normalize();
+        }
         // 真上・真下からだと回転の操作がしにくいので少し前に傾ける
         if (Math.abs(direction.y) > 0.96) direction.add(new THREE.Vector3(0, 0, 0.3)).normalize();
       }
@@ -1089,13 +1131,16 @@ export class AnatomyViewer {
     const highlightedElements = new Map<string, string | null>();
     const thinElements = new Set<string>();
     const spotElements = new Set<string>();
-    type Spot = { at: Vec3; r: number; color: string; n?: Vec3 };
+    // cut があれば区域（骨の端や突起。pins の region）: 球は囲むだけで、面 [nx, ny, nz, w] の表側を塗る
+    type Spot = { at: Vec3; r: number; color: string; n?: Vec3; cut?: Cut[] };
     const spots: Spot[] = [];
     const mirrored: Spot[] = [];
-    const spot = (at: Vec3, r: number, color: string, n?: Vec3, one = false) => {
-      spots.push({ at, r, color, n });
+    const spot = (at: Vec3, r: number, color: string, n?: Vec3, one = false, cut?: Cut[]) => {
+      spots.push({ at, r, color, n, cut });
       // 左右がある骨は、左側にも折り返して示す（ピン・付着面は右側にある）。左右の無い器官の部位（one）は折り返さない
-      if (!one && Math.abs(at[0]) > 0.01) mirrored.push({ at: [-at[0], at[1], at[2]], r, color, n: n && [-n[0], n[1], n[2]] });
+      if (!one && Math.abs(at[0]) > 0.01) {
+        mirrored.push({ at: [-at[0], at[1], at[2]], r, color, n: n && [-n[0], n[1], n[2]], cut: cut?.map(([x, y, z, w]) => [-x, y, z, w]) });
+      }
     };
     for (const [termId, color] of shownTerms) {
       const [muscle, kind] = termId.split("@") as [string, "origin" | "insertion" | undefined];
@@ -1113,28 +1158,37 @@ export class AnatomyViewer {
         if (!pin && thinBounds.has(termId)) thinElements.add(element);
       }
       if (!pin || !color) continue;
-      for (const at of pin.at) spot(at, pin.r, color, pin.n, pin.one);
+      if (pin.region) spot(pin.region.c, pin.region.r, color, pin.region.face, pin.one, pin.region.cut);
+      else for (const at of pin.at) spot(at, pin.r, color, pin.n, pin.one);
     }
     // 筋の動きを見せるときは骨が動くので、骨の上のスポットは出さない
     if (this.actionTerm) {
       spots.length = mirrored.length = 0;
       spotElements.clear();
     }
-    // 塗れる数を超えるときは左側への折り返しをやめる（右側だけでも全部を示す）
-    if (spots.length + mirrored.length + (this.tapMark ? 1 : 0) <= SPOT_MAX) spots.push(...mirrored);
+    // 塗れる数を超えるときは左側への折り返しをやめる（右側だけでも全部を示す）。区域は切る面の数だけ枠を多く使う
+    const slots = (list: Spot[]) => list.reduce((sum, item) => sum + 1 + (item.cut?.length ?? 0), 0);
+    if (slots(spots) + slots(mirrored) + (this.tapMark ? 1 : 0) <= SPOT_MAX) spots.push(...mirrored);
     if (this.tapMark) {
       spots.unshift({ at: this.tapMark.point, r: 0.004, color: WRONG });
       spotElements.add(this.tapMark.element);
       this.tapBall.position.set(...this.tapMark.point);
     }
     this.tapBall.visible = !!this.tapMark;
-    this.spotUniforms.spotCount.value = Math.min(SPOT_MAX, spots.length);
-    for (const [i, spot] of spots.slice(0, SPOT_MAX).entries()) {
-      this.spotUniforms.spots.value[i].set(...spot.at, spot.r);
-      this.spotUniforms.spotColors.value[i].set(spot.color);
-      if (spot.n) this.spotUniforms.spotNormals.value[i].set(...spot.n).normalize();
-      else this.spotUniforms.spotNormals.value[i].set(0, 0, 0);
+    const { spots: spotData, spotColors, spotNormals } = this.spotUniforms;
+    let used = 0;
+    for (const item of spots) {
+      const cut = item.cut ?? [];
+      if (used + 1 + cut.length > SPOT_MAX) break;
+      spotData.value[used].set(...item.at, item.r);
+      spotColors.value[used].set(item.color);
+      if (item.n) spotNormals.value[used].set(...item.n, 0).normalize();
+      else spotNormals.value[used].set(0, 0, 0, 0);
+      spotNormals.value[used].w = cut.length;
+      for (const [k, plane] of cut.entries()) spotData.value[used + 1 + k].set(...plane);
+      used += 1 + cut.length;
     }
+    this.spotUniforms.spotCount.value = used;
 
     this.ghosted.clear();
     for (const [elementId, mesh] of this.meshes) {

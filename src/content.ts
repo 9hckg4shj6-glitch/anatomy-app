@@ -170,6 +170,12 @@ export interface Pin {
   /** 寄るときにカメラを置く向き（無ければ n・v。面の向きから寄ると反対側の骨にさえぎられる下顎骨の内面など） */
   cam?: [number, number, number];
   one?: boolean;
+  /**
+   * 骨の端や突起（骨頭・顆・上顆・果など）を、骨の形にそって示す区域（scripts/pins/regions.mjs が作る）。
+   * 球（c・r）の中で、すべての面 cut の表側（nx·x + ny·y + nz·z + w ≥ 0）にある表面。face があればその向きの面だけ。
+   * 塗る所とタップの判定は区域で、図の番号・選択肢の近さ・入れ子の判定は at・r のまま
+   */
+  region?: { c: [number, number, number]; r: number; cut: [number, number, number, number][]; face?: [number, number, number] };
 }
 
 /** scripts/build-models.mjs が書き出す public/models/index.json */

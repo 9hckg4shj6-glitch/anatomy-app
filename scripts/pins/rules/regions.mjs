@@ -1,0 +1,65 @@
+// 骨の端や突起を、骨の形にそった区域で示す規則（scripts/pins/regions.mjs）。向きは右側の骨で lat = -x。
+// tip: { d: 向き, h: 深さ m }＝その向きに最も出た所から h まで。cuts: さらに切る面（through: 語ID か語IDの配列＝中点）
+export const REGIONS = {
+  // 大腿骨
+  "head-of-femur": { tip: { d: [0.8575, 0.5145, 0.15], h: 0.026 } },
+  "greater-trochanter": { tip: { d: "lat+0.3sup", h: 0.014, within: 0.015 }, cuts: [{ d: "sup", off: 0.035 }, { d: "lat", off: 0.03 }] },
+  "lesser-trochanter": { tip: { d: "med+0.6post", h: 0.008, within: 0.01 }, cuts: [{ d: "inf", off: 0.012 }, { d: "sup", off: 0.015 }] },
+  "medial-condyle-of-femur": { tip: { d: "inf", h: 0.035, within: 0.04 }, cuts: [{ d: "med", through: "intercondylar-fossa" }] },
+  "lateral-condyle-of-femur": { tip: { d: "inf", h: 0.035, within: 0.04 }, cuts: [{ d: "lat", through: "intercondylar-fossa" }] },
+  "medial-epicondyle-of-femur": { tip: { d: "med", h: 0.005 } },
+  "lateral-epicondyle-of-femur": { tip: { d: "lat", h: 0.0045 } },
+  // 上腕骨
+  "head-of-humerus": { tip: { d: [0.7603, 0.6082, -0.2281], h: 0.02 } },
+  "greater-tubercle": { tip: { d: "lat", h: 0.008, within: 0.012 }, cuts: [{ d: "sup", off: 0.018 }, { d: "inf", off: 0.012 }] },
+  "lesser-tubercle": { tip: { d: "ant", h: 0.006 } },
+  "medial-epicondyle-of-humerus": { tip: { d: "med", h: 0.012 } },
+  "lateral-epicondyle-of-humerus": { tip: { d: "lat", h: 0.007 } },
+  "capitulum-of-humerus": { tip: { d: "ant+inf", h: 0.01 }, cuts: [{ d: "lat", through: ["capitulum-of-humerus", "trochlea-of-humerus"] }, { d: "med", off: 0.011 }] },
+  "trochlea-of-humerus": { tip: { d: "inf", h: 0.015 }, cuts: [{ d: "med", through: ["capitulum-of-humerus", "trochlea-of-humerus"] }, { d: "lat", off: 0.013 }] },
+  "condyle-of-humerus": { tip: { d: "inf", h: 0.035, within: 0.03 } },
+  // 脛骨・腓骨
+  "medial-condyle-of-tibia": { tip: { d: "sup", h: 0.03, within: 0.04 }, cuts: [{ d: "med", through: "intercondylar-eminence" }] },
+  "lateral-condyle-of-tibia": { tip: { d: "sup", h: 0.03, within: 0.04 }, cuts: [{ d: "lat", through: "intercondylar-eminence" }] },
+  "medial-malleolus": { tip: { d: "inf", h: 0.016 }, cuts: [{ d: "med", h: 0.014 }] },
+  "tibial-tuberosity": { tip: { d: "ant", h: 0.005 }, cuts: [{ d: "inf", off: 0.012 }, { d: "sup", off: 0.02 }] },
+  "head-of-fibula": { tip: { d: "sup", h: 0.015 } },
+  "lateral-malleolus": { tip: { d: "inf", h: 0.025 } },
+  // 橈骨・尺骨
+  "head-of-radius": { tip: { d: "sup", h: 0.012 } },
+  "radial-styloid-process": { tip: { d: [-0.5145, -0.8575, 0], h: 0.01 } },
+  olecranon: { tip: { d: [0, 0.8575, -0.5145], h: 0.02 } },
+  "coronoid-process-of-ulna": { tip: { d: "ant", h: 0.008 }, cuts: [{ d: "sup", off: 0.01 }] },
+  "head-of-ulna": { tip: { d: "inf", h: 0.012 } },
+  "ulnar-styloid-process": { tip: { d: [0.1925, -0.9623, -0.1925], h: 0.006 } },
+  // 肩甲骨・鎖骨
+  acromion: { tip: { d: "sup", h: 0.014, within: 0.02 }, cuts: [{ d: "lat", off: 0.02 }] },
+  "coracoid-process": { tip: { d: "ant", h: 0.025 } },
+  "inferior-angle-of-scapula": { tip: { d: "inf", h: 0.02 } },
+  "superior-angle-of-scapula": { tip: { d: "sup+med", h: 0.015 } },
+  "glenoid-cavity": { tip: { d: "lat+0.35ant+0.1sup", h: 0.011 } },
+  "acromial-end-of-clavicle": { tip: { d: "lat", h: 0.02 } },
+  "sternal-end-of-clavicle": { tip: { d: "med", h: 0.015 } },
+  // 頭蓋・脊柱
+  "head-of-mandible": { tip: { d: "sup", h: 0.007 } },
+  "condylar-process": { tip: { d: "sup", h: 0.016 } },
+  "coronoid-process-of-mandible": { tip: { d: "sup", h: 0.012 } },
+  "mastoid-process": { tip: { d: "inf", h: 0.012, within: 0.01 }, cuts: [{ d: "post", off: 0.01 }, { d: "lat", off: 0.012 }] },
+  "occipital-condyle": { tip: { d: "inf", h: 0.005, within: 0.01 }, cuts: [{ d: "lat", off: 0.008 }, { d: "ant", off: 0.015 }] },
+  "dens-of-axis": { tip: { d: "sup", h: 0.014 }, cuts: [{ d: "lat", off: 0.006 }, { d: "med", off: 0.006 }] },
+  "spinous-process": { tip: { d: "post", h: 0.02 } },
+  "transverse-process": { tip: { d: "lat+post", h: 0.015 } },
+  // 寛骨・膝蓋骨
+  "ischial-tuberosity": { tip: { d: "inf+0.5post", h: 0.014 } },
+  "ischial-spine": { tip: { d: [0.5145, 0, -0.8575], h: 0.008 } },
+  "anterior-superior-iliac-spine": { tip: { d: "ant", h: 0.01 } },
+  "apex-of-patella": { tip: { d: "inf", h: 0.008 } },
+  // 足・手
+  "calcaneal-tuberosity": { tip: { d: "post", h: 0.015 } },
+  "sustentaculum-tali": { tip: { d: "med", h: 0.008, within: 0.008 }, cuts: [{ d: "sup", off: 0.006 }, { d: "post", off: 0.012 }, { d: "ant", off: 0.012 }] },
+  "head-of-talus": { tip: { d: "ant+0.3med", h: 0.012 } },
+  "posterior-process-of-talus": { tip: { d: "post", h: 0.006 } },
+  "tuberosity-of-fifth-metatarsal": { tip: { d: [-0.9578, 0, -0.2873], h: 0.008 } },
+  "tuberosity-of-navicular": { tip: { d: "med", h: 0.006 } },
+  "hook-of-hamate": { tip: { d: "ant", h: 0.005 } },
+};

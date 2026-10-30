@@ -1,6 +1,8 @@
 import { pins, terms, type Pin, type Term } from "./content";
 
 export type Vec3 = [number, number, number];
+/** 区域を切る面 [nx, ny, nz, w]（nx·x + ny·y + nz·z + w ≥ 0 の側が区域） */
+export type Cut = [number, number, number, number];
 
 /** タップの判定で、示す範囲（r）の外にどれだけはみ出しても正解にするか（m） */
 export const TAP_TOLERANCE = 0.006;
@@ -26,7 +28,22 @@ export function distanceToPin(point: Vec3, pin: Pin): number {
   return Math.min(...pin.at.flatMap((p) => sides.map((q) => Math.hypot(q[0] - p[0], q[1] - p[1], q[2] - p[2]))));
 }
 
+/**
+ * 点が区域（region）からどれだけ外にあるか（中なら 0 以下）。囲む球と、切る面のはみ出しの大きいほう。左右は折り返して近いほう。
+ * 面の向き（face）は見ない（タップした点は表面の上なので）
+ */
+export function regionGap(point: Vec3, pin: Pin): number {
+  const region = pin.region;
+  if (!region) return Infinity;
+  const sides: Vec3[] = pin.one ? [point] : [point, [-point[0], point[1], point[2]]];
+  return Math.min(...sides.map((q) => Math.max(
+    Math.hypot(q[0] - region.c[0], q[1] - region.c[1], q[2] - region.c[2]) - region.r,
+    ...region.cut.map(([x, y, z, w]) => -(x * q[0] + y * q[1] + z * q[2] + w)),
+  )));
+}
+
 export function hitsPin(point: Vec3, pin: Pin, tolerance = TAP_TOLERANCE): boolean {
+  if (pin.region) return regionGap(point, pin) <= tolerance;
   return distanceToPin(point, pin) <= pin.r + tolerance;
 }
 
@@ -37,10 +54,19 @@ export function landmarkAt(point: Vec3, candidates: Term[], tolerance = TAP_TOLE
   for (const term of candidates) {
     const pin = pins[term.id];
     if (!pin) continue;
-    // 範囲の半径に対する近さで比べる。広い部位（窩）の端より、狭い部位（結節・突起）の中心近くを選ぶ
-    const distance = distanceToPin(point, pin);
-    const score = distance / pin.r;
-    if (distance <= pin.r + tolerance && score < bestScore) {
+    // 範囲の半径に対する近さで比べる。広い部位（窩）の端より、狭い部位（結節・突起）の中心近くを選ぶ。
+    // 区域（骨頭など）の中はどこでも 0.9（中にある小さな部位＝大腿骨頭窩の中心近くはそちらを選ぶ）
+    let score: number;
+    if (pin.region) {
+      const gap = regionGap(point, pin);
+      if (gap > tolerance) continue;
+      score = gap <= 0 ? 0.9 : 1 + gap / pin.r;
+    } else {
+      const distance = distanceToPin(point, pin);
+      if (distance > pin.r + tolerance) continue;
+      score = distance / pin.r;
+    }
+    if (score < bestScore) {
       best = term;
       bestScore = score;
     }

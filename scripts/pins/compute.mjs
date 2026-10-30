@@ -398,7 +398,8 @@ for (const [id, rule] of Object.entries(RULES)) {
   if (!termById.get(id)?.of) throw new Error(`${id} は骨の部位ではありません`);
   if (pins[id] && !force) continue; // 手で直したピンを残す（後の規則が参照するときもこの値を使う）
   try {
-    pins[id] = compute(id, rule);
+    // 骨の端や突起の区域（regions.mjs が作る region）は残す
+    pins[id] = { ...compute(id, rule), ...(pins[id]?.region ? { region: pins[id].region } : {}) };
   } catch (error) {
     console.error(`${id}: ${error.message}`);
   }

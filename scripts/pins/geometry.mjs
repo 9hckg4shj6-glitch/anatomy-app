@@ -124,13 +124,16 @@ function hex(c) { return [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 1
 
 /**
  * meshes: [{positions, indices, color}], spots: [{at:[[x,y,z]...], r, color, label}]
+ * spots には区域（{ region: { c, r, cut, face? }, color }。scripts/pins/regions.mjs）も入れられる。区域の境目は濃く塗る
  */
 export async function render({ meshes, spots = [], frame, out, grid = true, title = "", ghost = [] }) {
   const { W, H, toScreen, f } = frame;
   const color = new Float32Array(W * H * 3).fill(1);
   for (let i = 0; i < W * H; i++) { color[i * 3] = 0.97; color[i * 3 + 1] = 0.96; color[i * 3 + 2] = 0.93; }
   const depth = new Float32Array(W * H).fill(Infinity);
-  const spotList = spots.flatMap((s) => s.at.map((c) => ({ c, r: s.r, n: s.n ? norm(s.n) : null, col: hex(s.color ?? "#ff7a1a").map((v) => v / 255) })));
+  const spotList = spots.flatMap((s) => (s.region ? [s.region] : s.at.map((c) => ({ c, r: s.r }))).map(({ c, r, cut, face }) => ({
+    c, r, cut, n: s.region ? (face ?? null) : s.n ? norm(s.n) : null, col: hex(s.color ?? "#ff7a1a").map((v) => v / 255),
+  })));
   for (const m of [...ghost.map((g) => ({ ...g, ghost: true })), ...meshes]) {
     const base = hex(m.color ?? "#e9dfc9").map((v) => v / 255);
     const p = m.positions, idx = m.indices;
@@ -173,7 +176,11 @@ export async function render({ meshes, spots = [], frame, out, grid = true, titl
             const vn = m.normals ? norm([0, 1, 2].map((ch) => w0 * m.normals[a + ch] + w1 * m.normals[b + ch] + w2 * m.normals[c + ch])) : null;
             for (const s of spotList) {
               const dist = Math.hypot(q[0] - s.c[0], q[1] - s.c[1], q[2] - s.c[2]);
-              if (dist < s.r && (!s.n || !vn || dot(vn, s.n) > -0.3)) { col = s.col; break; }
+              if (dist >= s.r || (s.n && vn && dot(vn, s.n) <= -0.3)) continue;
+              const edge = Math.min(Infinity, ...(s.cut ?? []).map((pl) => pl[0] * q[0] + pl[1] * q[1] + pl[2] * q[2] + pl[3]));
+              if (edge < 0) continue;
+              col = edge < 0.0008 ? s.col.map((v) => v * 0.55) : s.col;
+              break;
             }
           }
           for (let ch = 0; ch < 3; ch++) color[k * 3 + ch] = col[ch] * shade;

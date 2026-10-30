@@ -1,4 +1,4 @@
-import { distanceToPin, hitsPin, landmarkAt, nearbyLandmarks, nestedPins } from "../src/landmarks";
+import { distanceToPin, hitsPin, landmarkAt, nearbyLandmarks, nestedPins, regionGap } from "../src/landmarks";
 import { termById, type Pin, type Term } from "../src/content";
 
 const pin = (at: [number, number, number][], r = 0.01): Pin => ({ at, r });
@@ -10,6 +10,16 @@ describe("骨の部位のピン", () => {
     expect(distanceToPin([0.2, 1.3, 0.05], p)).toBeCloseTo(0);
     expect(hitsPin([0.2, 1.31, 0.05], p)).toBe(true);
     expect(hitsPin([0.2, 1.35, 0.05], p)).toBe(false);
+  });
+
+  it("区域（骨頭など）は、囲む球の中で切る面の表側ならどこでも当たり。左側は折り返す", () => {
+    // 中心 (-0.1, 1, 0)・半径 3cm の球を、y = 1 の面で切った上半分（骨頭の形の代わり）
+    const head: Pin = { at: [[-0.1, 1.02, 0]], r: 0.01, region: { c: [-0.1, 1, 0], r: 0.03, cut: [[0, 1, 0, -1]] } };
+    expect(hitsPin([-0.1, 1.025, 0.02], head)).toBe(true);
+    expect(hitsPin([0.1, 1.025, 0.02], head)).toBe(true);
+    expect(regionGap([-0.1, 0.99, 0], head)).toBeCloseTo(0.01);
+    expect(hitsPin([-0.1, 0.99, 0], head)).toBe(false);
+    expect(hitsPin([-0.1, 1.04, 0], head)).toBe(false);
   });
 
   it("稜や線は、どれかの点の近くなら当たり", () => {
@@ -57,5 +67,17 @@ describe("タップした所の部位", () => {
     expect(landmarkAt([-0.1, 1.2, 0], terms)).toBeNull();
     delete pins["test-fossa"];
     delete pins["test-process"];
+  });
+
+  it("区域の中では、中にある小さな部位の中心近くを選ぶ（大腿骨頭と大腿骨頭窩）", async () => {
+    const { pins } = await import("../src/content");
+    pins["test-head"] = { at: [[-0.1, 1.02, 0]], r: 0.01, region: { c: [-0.1, 1, 0], r: 0.03, cut: [[0, 1, 0, -1]] } };
+    pins["test-fovea"] = pin([[-0.1, 1.025, 0.01]], 0.004);
+    const terms = [{ id: "test-head" }, { id: "test-fovea" }] as Term[];
+    expect(landmarkAt([-0.1, 1.025, 0.01], terms)?.id).toBe("test-fovea");
+    expect(landmarkAt([-0.08, 1.01, -0.01], terms)?.id).toBe("test-head");
+    expect(landmarkAt([-0.1, 0.98, 0], terms)).toBeNull();
+    delete pins["test-head"];
+    delete pins["test-fovea"];
   });
 });

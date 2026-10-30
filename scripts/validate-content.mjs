@@ -110,7 +110,9 @@ for (const system of systems) {
 // 骨・器官の部位（of）と筋の起始・停止（originAt / insertionAt）の参照先、ピン（content/pins.json）
 const pins = JSON.parse(fs.readFileSync(path.join(ROOT, "content/pins.json"), "utf8"));
 const point = z.tuple([z.number(), z.number(), z.number()]);
-const Pin = z.strictObject({ at: z.array(point).min(1), r: z.number().min(0.002).max(0.06), n: point.optional(), v: point.optional(), cam: point.optional(), one: z.literal(true).optional() });
+// region: 骨の端や突起の区域（scripts/pins/regions.mjs）。切る面は4枚まで（src/viewer.ts のシェーダー）
+const PinRegion = z.strictObject({ c: point, r: z.number().min(0.003).max(0.08), cut: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).min(1).max(4), face: point.optional() });
+const Pin = z.strictObject({ at: z.array(point).min(1), r: z.number().min(0.002).max(0.06), n: point.optional(), v: point.optional(), cam: point.optional(), one: z.literal(true).optional(), region: PinRegion.optional() });
 for (const term of terms) {
   if (term.of) {
     const parent = seen.get(term.of);
