@@ -436,6 +436,13 @@ for (const item of sectionItems) {
   for (const id of itemTerms(item)) countByTerm.set(id, (countByTerm.get(id) ?? 0) + item.count);
 }
 
+/** その語が出てくる骨学試験の項目（A の空欄・B・C の語と、どの項目でも3Dで示す語）。出た回数の多い順 */
+export function examItemsAbout(termId: string): ExamItem[] {
+  return examItems
+    .filter((item) => item.show.includes(termId) || ((item.kind === "a" || item.kind === "b" || item.kind === "c") && itemTerms(item).includes(termId)))
+    .sort((a, b) => b.count - a.count);
+}
+
 /** その語が骨学試験に出た回数（A の空欄・B・C を合わせて。0 なら出ていない） */
 export function examCountOf(termId: string): number {
   return countByTerm.get(termId) ?? 0;

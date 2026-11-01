@@ -35,8 +35,8 @@ export function rootCard(root: Root, options: { examples?: number } = {}): HTMLE
   );
 }
 
-/** 語根の一覧（グループごと）。タップで中身を開く */
-export async function rootIndex(ctx: AppContext): Promise<void> {
+/** 語根の一覧（グループごと）。タップで中身を開く。focus（語根の記録のキー）があれば、その語根を開いておく（復習でまちがえた語根から） */
+export async function rootIndex(ctx: AppContext, focus = ""): Promise<void> {
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   ctx.hint("語根をタップすると例の語が光る");
@@ -57,6 +57,8 @@ export async function rootIndex(ctx: AppContext): Promise<void> {
         h("button", { class: learned.has(rootKey(root)) ? "chip on" : "chip", type: "button", onClick: () => open(root) }, `${root.root} ${root.meaning}`))),
     )),
   );
+  const focused = rootByKey.get(focus);
+  if (focused) open(focused);
 }
 
 /** 語根のレッスン: 1つずつ見る → 確認テスト（語根→意味） → 復習に入る */

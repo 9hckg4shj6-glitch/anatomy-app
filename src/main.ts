@@ -91,6 +91,14 @@ async function start(): Promise<void> {
   /** 今の画面のアドレスと、離れるときに確かめる文（レッスンの途中） */
   let currentHash = location.hash;
   let leaveWarning: string | null = null;
+  /** 同じ画面の中の移動（図鑑で語を選んだあと「戻る」など）を、画面を作り直さずに受ける */
+  let stayHandler: ((arg: string) => boolean) | null = null;
+  let currentName = "";
+  /** "#/exam/a/list" → ["exam", "a/list"]（2段目からは arg にまとめる） */
+  const parseHash = (): [string, string] => {
+    const [, name = "", ...rest] = location.hash.split("/");
+    return [name, decodeURIComponent(rest.join("/"))];
+  };
 
   const route = async () => {
     if (updated && isHome()) {
@@ -101,6 +109,7 @@ async function start(): Promise<void> {
     controller = new AbortController();
     currentHash = location.hash;
     leaveWarning = null;
+    stayHandler = null;
     const ctx: AppContext = {
       viewer, index, panel, tools, signal: controller.signal,
       hint: (text) => {
@@ -108,6 +117,7 @@ async function start(): Promise<void> {
         hintBox.hidden = !text;
       },
       guard: (message) => (leaveWarning = message),
+      stay: (handler) => (stayHandler = handler),
     };
     viewer.onPick = null;
     viewer.onHover = null;
@@ -123,20 +133,22 @@ async function start(): Promise<void> {
     panel.scrollTop = 0;
     splitter.restore();
 
-    const [, name = "", arg = ""] = location.hash.split("/");
+    const [name, arg] = parseHash();
+    currentName = name;
     for (const tab of document.querySelectorAll<HTMLAnchorElement>("[data-tab]")) {
       tab.classList.toggle("on", tab.dataset.tab === (name || "home") || (["learn", "roots", "drill", "exam"].includes(name) && tab.dataset.tab === "home"));
     }
     try {
-      if (name === "learn") await lesson(ctx, decodeURIComponent(arg));
+      if (name === "learn") await lesson(ctx, arg);
       else if (name === "review") await review(ctx);
-      else if (name === "explore") await explore(ctx, decodeURIComponent(arg));
-      else if (name === "roots") await (arg ? rootLesson(ctx, decodeURIComponent(arg)) : rootIndex(ctx));
+      else if (name === "explore") await explore(ctx, arg);
+      // "#/roots/<レッスンID>" は語根のレッスン、"#/roots/root/<語根のキー>" は一覧でその語根を開く
+      else if (name === "roots") await (arg && !arg.startsWith("root/") ? rootLesson(ctx, arg) : rootIndex(ctx, arg.slice("root/".length)));
       else if (name === "drill") await drill(ctx, arg);
-      else if (name === "exam") await exam(ctx, decodeURIComponent(arg));
+      else if (name === "exam") await exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
       else if (name === "credits") credits(ctx);
-      else if (name === "admin") await admin(ctx, decodeURIComponent(arg));
+      else if (name === "admin") await admin(ctx, arg);
       else await home(ctx);
     } catch (error) {
       if (ctx.signal.aborted) return; // 途中で別の画面へ移った
@@ -153,6 +165,11 @@ async function start(): Promise<void> {
 
   window.addEventListener("hashchange", () => {
     // やめないときは、アドレスだけ元に戻して今の画面を続ける（replaceState では hashchange は起きない）
+    const [name, arg] = parseHash();
+    if (name === currentName && stayHandler?.(arg)) {
+      currentHash = location.hash;
+      return;
+    }
     if (leaveWarning && !confirm(leaveWarning)) {
       history.replaceState(null, "", currentHash || "#/");
       return;

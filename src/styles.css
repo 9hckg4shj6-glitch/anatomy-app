@@ -135,6 +135,8 @@ button { font: inherit; color: inherit; }
   .panel { flex: none; width: var(--panel-width, clamp(340px, 42%, 480px)); max-width: calc(100% - 260px); overflow-y: auto; padding-bottom: 0; }
   .splitter { position: relative; top: 0; flex: none; width: 12px; height: auto; margin: 0; border: 0; border-left: 1px solid var(--line); cursor: col-resize; }
   .splitter::before { width: 4px; height: 44px; }
+  /* 左右に並ぶときは、欄の先頭の検索欄を上に留める（説明を読んだあと、すぐ次の語を探せるように） */
+  .panel > .search:first-child { position: sticky; top: 0; z-index: 3; margin-top: 0; box-shadow: 0 6px 10px -6px rgb(43 42 39 / 0.25); }
   /* 欄の中でスクロールするときは、下の余白を padding で取ると下に留めたボタンがその分浮くので、空の箱で取る */
   .panel::after { content: ""; display: block; height: calc(48px + var(--safe-bottom)); }
 }
@@ -395,6 +397,10 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .exam-count { font-size: 13px; }
 .exam-foreign { display: block; margin: 8px 0 16px; font-size: 26px; font-style: italic; }
 .exam-missed { margin: 0 0 12px; padding-left: 20px; line-height: 1.8; }
+/* 骨学試験の項目の一覧 */
+.exam-items { margin-top: 12px; }
+.exam-items .unit-title { display: flex; align-items: baseline; gap: 8px; line-height: 1.5; }
+.exam-item-kind { flex: none; padding: 0 6px; border-radius: 6px; background: color-mix(in srgb, var(--highlight) 16%, var(--surface)); color: #a5470a; font-size: 12px; font-weight: 700; }
 .cloze { font-size: 17px; line-height: 2.1; margin: 8px 0 12px; }
 .cloze .blank { display: inline-block; min-width: 3.4em; margin: 0 2px; padding: 0 6px; border-bottom: 2px solid var(--accent); color: var(--accent); font-weight: 600; text-align: center; line-height: 1.6; }
 .cloze-inputs { display: grid; gap: 8px; margin-bottom: 8px; }

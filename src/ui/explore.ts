@@ -84,6 +84,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
       }, system.ja)),
       h("button", { class: body ? "chip on" : "chip", type: "button", onClick: () => { body = !body; void apply(); } }, "皮膚"),
       h("button", { class: section ? "chip on" : "chip", type: "button", onClick: () => toggleSection() }, "断面"),
+      h("button", { class: "chip", type: "button", onClick: () => (section ? viewer.viewSection() : viewer.overview()) }, "全身を見る"),
     );
   };
 
@@ -101,7 +102,6 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
       viewer.setSection(null);
       viewer.overview();
     } else {
-      for (const system of available) if (system.id !== "joints" && system.id !== "lymphatic") shown.add(system.id);
       const center = index.terms[selected?.id ?? "heart"]?.center ?? index.terms.heart.center;
       section = { axis: "y", at: center[1], keep: 1 };
       void apply();
@@ -113,6 +113,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     renderSection();
     renderTools();
   };
+  const sectionSystems = available.map((system) => system.id).filter((id) => index.systems[id] && id !== "joints" && id !== "lymphatic");
   const renderSection = () => {
     sectionBox.hidden = !section;
     if (!section) return;
@@ -143,6 +144,15 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
         h("button", { class: "ghost-button", type: "button", onClick: () => { section = { ...current, keep: current.keep === 1 ? -1 : 1 }; viewer.setSection(section); faceSection(); renderSection(); } }, "反対側を残す"),
         h("button", { class: "ghost-button", type: "button", onClick: faceSection }, "切り口を正面に"),
       ),
+      // 断面は今出している系統だけで切る。CT のように全部の器官を見たいときはここで足す（初めてなら約20MB 読み込む）
+      sectionSystems.some((id) => !shown.has(id)) ? h("button", {
+        class: "text-button", type: "button",
+        onClick: () => {
+          for (const id of sectionSystems) shown.add(id);
+          void apply();
+          renderSection();
+        },
+      }, "筋・内臓・血管・神経もすべて切り口に出す") : "",
       current.axis === "y" ? h("p", { class: "muted" }, current.keep === 1 ? "下から見ています（CTと同じ向き：前が上、本人の右が左）。" : "上から見ています（前が上、本人の右が右）。") : "",
     );
   };
@@ -228,8 +238,17 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     ))) : "",
   );
 
-  const select = (term: Term | null) => {
+  const select = (term: Term | null, fromAddress = false) => {
     selected = term;
+    if (!fromAddress) {
+      const hash = term ? `#/explore/${term.id}` : "#/explore";
+      if (location.hash !== hash) history.pushState(null, "", hash);
+    }
+    // 検索から選んだら検索を閉じて説明を出す
+    if (term && search.value) {
+      search.value = "";
+      renderList();
+    }
     // 隠れた部位と骨・器官の部位は周りを半透明にして見せる（断面のときは切り口で見えるので薄くしない）
     isolate = !section && (!!term?.xray || !!term?.of);
     attach = false;
@@ -260,7 +279,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     render();
   };
 
-  const search = h("input", { class: "search", type: "search", placeholder: "日本語・読み・英語・ラテン語で検索", "aria-label": "検索" });
+  const search = h("input", { class: "search", type: "search", placeholder: "語を探す（日本語・読み・英語・ラテン語）", "aria-label": "語を探す" });
   const list = h("div", { class: "explore-list" });
   const detail = h("div", { class: "detail" });
   /** 一覧の行（選んだ語の行を強調するため） */
@@ -268,9 +287,9 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   // 開いたフォルダーは覚えておき、図鑑に戻ったときも開いたままにする
   const openIds = new Set(Array.isArray(openSetting?.value) ? (openSetting.value as string[]) : []);
 
-  const termRows = (items: Term[]) => h("ul", { class: "term-list" }, ...items.map((term) => {
+  const termRows = (items: Term[], where = false) => h("ul", { class: "term-list" }, ...items.map((term) => {
     const row = h("button", { type: "button", class: term === selected ? "term-row on" : "term-row", onClick: () => select(term) },
-      h("span", {}, term.ja), h("span", { class: "en", lang: "en" }, term.en));
+      h("span", {}, term.ja, where ? h("span", { class: "term-where" }, placeOf(term)) : ""), h("span", { class: "en", lang: "en" }, term.en));
     rows.set(term.id, row);
     return h("li", {}, row);
   }));
@@ -296,9 +315,11 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   const renderList = () => {
     const query = normalize(search.value.trim());
     rows.clear();
+    detail.hidden = !!query;
+    sectionBox.hidden = !!query || !section;
     if (query) {
       const matches = searchTerms(query);
-      list.replaceChildren(matches.length ? termRows(matches) : h("p", { class: "muted" }, "見つかりませんでした。"));
+      list.replaceChildren(matches.length ? termRows(matches, true) : h("p", { class: "muted" }, "見つかりませんでした。"));
       return;
     }
     list.replaceChildren(folder(VIEWS, "system folder", ["保存した表示"], `${views.length}件`, viewRows), ...systems.flatMap((system) => {
@@ -401,12 +422,27 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   viewer.onPick = (elementId, point) => select(termAt(elementId, point));
   viewer.onHover = (elementId, point) => termAt(elementId, point)?.ja ?? null;
   ctx.hint("タップで名前を表示");
-  panel.replaceChildren(sectionBox, peelBox, detail, search, list);
+  panel.replaceChildren(search, sectionBox, peelBox, detail, list);
   renderList();
   render();
+  // ブラウザの「戻る」「進む」で図鑑の中のアドレスが変わったら、画面を作り直さずにその語を選ぶ
+  ctx.stay((arg) => {
+    const term = termById.get(arg) ?? null;
+    if (arg && !term) return false;
+    select(term, true);
+    if (!term) section ? viewer.viewSection() : viewer.overview();
+    return true;
+  });
   await apply();
-  if (opened) select(opened);
+  if (opened) select(opened, true);
   // レッスンや問題から来たときのカメラが残らないよう、全身から始める
   else viewer.overview();
 }
 
+/** 検索の結果に添える、語のある所（系統・レッスン。骨の部位なら骨） */
+function placeOf(term: Term): string {
+  const system = systems.find((item) => item.id === term.system)?.ja ?? "";
+  const parent = term.of ? termById.get(term.of)?.ja : undefined;
+  const unit = units.find((item) => item.id === term.unit)?.title ?? "";
+  return [system, parent ? `${parent}の部位` : unit].filter(Boolean).join("・");
+}

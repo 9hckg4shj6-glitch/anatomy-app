@@ -65,13 +65,12 @@ export async function progress(ctx: AppContext): Promise<void> {
           h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
       }), rootRow(), ...EXAM_KINDS.map(examRow)),
     ),
-    weakest.length ? h("h3", {}, "覚え具合の低い語") : "",
+    weakest.length ? h("h3", {}, "覚え具合の低い語（押すと図鑑）") : "",
     weakest.length ? h("ul", { class: "term-list" }, ...weakest.map(([id, value]) => {
       const term = termById.get(id)!;
-      return h("li", {}, h("button", {
-        type: "button", class: "term-row",
-        onClick: () => { shown = term.system; void showSystem(); viewer.highlight([id], { isolate: !!term.xray }); viewer.focus(id, 3.2); viewer.setLabel(id, term.ja); },
-      }, h("span", {}, term.ja), h("span", { class: "en" }, `${Math.round(value * 100)}%`)));
+      // 押すと図鑑でその語を開く（説明・関係する語を見直せるように）
+      return h("li", {}, h("a", { class: "term-row", href: `#/explore/${id}` },
+        h("span", {}, term.ja), h("span", { class: "en" }, `${Math.round(value * 100)}%`)));
     })) : "",
     weakest.length ? h("div", { class: "nav-row" }, h("a", { class: "primary", href: "#/drill/weak" }, "苦手な語を解く")) : "",
     settings.box,

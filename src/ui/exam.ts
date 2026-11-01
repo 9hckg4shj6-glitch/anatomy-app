@@ -7,7 +7,7 @@ import { h, until } from "../dom";
 import type { EnglishResult } from "../answer";
 import {
   annotateRating, areaLabels, checkBlank, clozeRating, contrastStatements, directionLabels, drawingMark, examAreas, examByKey, examFacetsOf, examItemsOf,
-  examProgress, essayRating, faceLabels, kindLabels, labelRating, markAnswers, nextExamItems, orderMistakes, orderRating, orientQuestion, pairName,
+  examItemsAbout, examProgress, essayRating, faceLabels, kindLabels, labelRating, markAnswers, nextExamItems, orderMistakes, orderRating, orientQuestion, pairName,
   perpendicularDirections, plainJa, SECTION_KINDS, SORT_KINDS, traceRating, viewFrom,
   type ClozeItem, type DrawingItem, type DrawingMarkItem, type DrawingView, type EssayItem, type ExamArea, type ExamItem, type ExamKind, type LevelItem,
   type PairItem, type SequenceItem, type WordItem,
@@ -15,7 +15,7 @@ import {
 import { landmarkAt, type Vec3 } from "../landmarks";
 import { ORIGIN_COLOR } from "../viewer";
 import { dueLabel, Rating, recordReview, retrievability } from "../fsrs";
-import { facetLabels, pickChoices, practiceQueue, shuffle, typesEnglish, type PracticeCandidate, type QueueItem } from "../study";
+import { facetLabels, pickChoices, practiceQueue, shuffle, termMastery, typesEnglish, type PracticeCandidate, type QueueItem } from "../study";
 import { sceneFor, type AppContext } from "./context";
 import { chooseOne, retryButton, showPanel, typeEnglish, waitResult, type Outcome } from "./quiz";
 import { termCard } from "./term-card";
@@ -38,9 +38,17 @@ const kindNotes: Record<ExamKind, string> = {
 
 /**
  * 骨学試験（#/exam）。arg なしで一覧、"a" で出る順に新しく学ぶ、"a-trunk" でその範囲から、"a-weak" で学んだ項目を苦手な順に解く。
+ * "a/list" で項目の一覧、"a/<ID>" でその1問、"about/<語ID>" でその語の出る項目の一覧。
  * 答えは語と同じく FSRS で記録し、学んだ項目は毎日の復習にも出る。
  */
 export async function exam(ctx: AppContext, arg: string): Promise<void> {
+  const [head, rest] = arg.split("/");
+  if (head === "about" && rest) return itemList(ctx, examItemsAbout(rest), `「${termById.get(rest)?.ja ?? rest}」の出る項目`, "#/exam");
+  if (rest === "list") return itemList(ctx, examItemsOf(head as ExamKind), `${kindLabels[head as ExamKind] ?? ""}の項目`, "#/exam", true);
+  if (rest) {
+    const item = examByKey.get(`exam:${head}:${rest}`);
+    if (item) return learnOne(ctx, item);
+  }
   const [kind, mode] = arg.split("-") as [ExamKind, string | undefined];
   if (![...SECTION_KINDS, ...SORT_KINDS].includes(kind)) return examIndex(ctx);
   if (mode === "weak") return practice(ctx, kind);
@@ -73,6 +81,7 @@ async function examIndex(ctx: AppContext): Promise<void> {
       h("div", { class: "nav-row" },
         done < total ? h("a", { class: "primary", href: `#/exam/${kind}` }, `出る順に${SET_SIZE[kind]}${kind === "d" ? "図" : "問"}`) : "",
         done ? h("a", { class: "ghost-button", href: `#/exam/${kind}-weak` }, "苦手な順に解く") : "",
+        h("a", { class: "ghost-button", href: `#/exam/${kind}/list` }, "項目を見る"),
       ),
       h("div", { class: "chip-list" }, ...examAreas(kind).map((area) => {
         const list = items.filter((item) => item.area === area);
@@ -141,8 +150,62 @@ async function practice(ctx: AppContext, kind: ExamKind): Promise<void> {
   finish(ctx, `${kindLabels[kind]}（苦手な順）`, kind, results, "");
 }
 
+/** その項目を1問だけ解くアドレス */
+export function itemHref(item: ExamItem): string {
+  return `#/exam/${item.kind}/${encodeURIComponent(item.id)}`;
+}
+
+/**
+ * 項目の一覧（出た回数・覚え具合）。押すとその1問を解く。areas なら範囲（総論〜頭蓋）で絞れる。
+ * まちがえた項目や語のカードの「試験 N回」から、目当ての項目へすぐ行けるように
+ */
+async function itemList(ctx: AppContext, items: ExamItem[], title: string, back: string, areas = false): Promise<void> {
+  await showTerms(ctx, []);
+  ctx.hint("");
+  const [learned, schedules] = await Promise.all([db.learned.toArray(), db.schedules.toArray()]);
+  const learnedIds = new Set(learned.map((item) => item.termId));
+  const byKey = new Map<string, typeof schedules>();
+  for (const schedule of schedules) byKey.set(schedule.termId, [...(byKey.get(schedule.termId) ?? []), schedule]);
+  let area: ExamArea | null = null;
+  const list = h("ul", { class: "units exam-items" });
+  const render = () => list.replaceChildren(...items.filter((item) => !area || item.area === area).map((item) => {
+    const mastery = termMastery(byKey.get(item.key) ?? []);
+    return h("li", {}, h("a", { class: learnedIds.has(item.key) ? "unit done" : "unit", href: itemHref(item) },
+      h("span", { class: "unit-title" }, h("span", { class: "exam-item-kind" }, item.kind.toUpperCase()), item.title),
+      h("span", { class: "unit-count" }, `${item.count ? `${item.count}回` : ""}${percent(mastery)}`.replace(/^・/, "")),
+    ));
+  }));
+  const chips = areas ? h("div", { class: "chip-list" }) : null;
+  const renderChips = () => chips?.replaceChildren(...[null, ...(Object.keys(areaLabels) as ExamArea[]).filter((value) => items.some((item) => item.area === value))].map((value) => h("button", {
+    class: value === area ? "chip on" : "chip", type: "button",
+    onClick: () => {
+      area = value;
+      renderChips();
+      render();
+    },
+  }, value ? areaLabels[value] : "すべて")));
+  renderChips();
+  render();
+  showPanel(ctx,
+    h("div", { class: "quiz-head" }, h("a", { href: back }, "← 骨学試験"), h("span", {}, `${items.length}項目`)),
+    h("h2", {}, title),
+    items.length ? h("p", { class: "muted" }, "押すとその1問を解きます（まだ学んでいなければ、学んだことになって復習にも入ります）。✓ は学んだ項目、％は覚え具合。") : h("p", {}, "この語の出る項目はありません。"),
+    chips ?? "",
+    list,
+  );
+}
+
+/** 項目を1問だけ解く（一覧やまちがえた項目から） */
+async function learnOne(ctx: AppContext, item: ExamItem): Promise<void> {
+  if (!(await db.learned.get(item.key))) await db.learned.put({ termId: item.key, unitId: `exam-${item.kind}`, learnedAt: nowIso() });
+  if (item.kind === "d") await studyDrawing(ctx, item, "1 / 1");
+  if (item.kind === "p" || item.kind === "s" || item.kind === "l") await studySort(ctx, item, "1 / 1");
+  const outcome = await askExam(ctx, { termId: item.key, facet: examFacetsOf(item)[0], isNew: true }, "practice", "1 / 1");
+  finish(ctx, item.title, `${item.kind}/list`, [[item, outcome]], "", "一覧へ");
+}
+
 /** 「続ける」。今と同じアドレスへのリンクでは画面が変わらないので、そのときは読み直す */
-function continueLink(next: string): HTMLElement {
+function continueLink(next: string, label = "続ける"): HTMLElement {
   const href = `#/exam/${next}`;
   return h("a", {
     class: "primary", href, onClick: (event: Event) => {
@@ -150,11 +213,11 @@ function continueLink(next: string): HTMLElement {
       event.preventDefault();
       window.dispatchEvent(new HashChangeEvent("hashchange"));
     },
-  }, "続ける");
+  }, label);
 }
 
 /** next は「続ける」の行き先（範囲を選んで学んでいたら同じ範囲） */
-function finish(ctx: AppContext, title: string, next: string, results: [ExamItem, Outcome][], note: string): void {
+function finish(ctx: AppContext, title: string, next: string, results: [ExamItem, Outcome][], note: string, nextLabel?: string): void {
   const missed = [...new Set(results.filter(([, outcome]) => outcome !== "correct").map(([item]) => item))];
   void showTerms(ctx, missed.flatMap((item) => item.show));
   ctx.viewer.setLabel(null);
@@ -164,8 +227,8 @@ function finish(ctx: AppContext, title: string, next: string, results: [ExamItem
     h("p", { class: "today-count" }, `${results.filter(([, outcome]) => outcome === "correct").length} / ${results.length} 正解`),
     note ? h("p", {}, note) : "",
     missed.length ? h("h3", {}, "まちがえた項目") : "",
-    missed.length ? h("ul", { class: "exam-missed" }, ...missed.map((item) => h("li", {}, item.title))) : "",
-    h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/exam" }, "骨学試験の一覧"), continueLink(next)),
+    missed.length ? h("ul", { class: "exam-missed" }, ...missed.map((item) => h("li", {}, h("a", { href: itemHref(item) }, item.title)))) : "",
+    h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/exam" }, "骨学試験の一覧"), continueLink(next, nextLabel)),
   );
 }
 

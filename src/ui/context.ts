@@ -13,6 +13,11 @@ export interface AppContext {
   signal: AbortSignal;
   /** ほかの画面へ移る前に確かめる文（null でやめる）。レッスンの途中で、うっかりタブを押して進み具合を失わないように */
   guard: (message: string | null) => void;
+  /**
+   * 同じ画面の中でアドレスが変わったとき（図鑑で語を選んで「戻る」を押したなど）に呼ぶ関数。true を返せば画面を作り直さない。
+   * 画面を移ると消える
+   */
+  stay: (handler: ((arg: string) => boolean) | null) => void;
 }
 
 /** レッスンの途中で画面を離れるときの確認 */

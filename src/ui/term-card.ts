@@ -120,7 +120,7 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
     h("div", { class: "term-head" },
       h("ruby", { class: "term-ja" }, term.ja, h("rt", {}, term.yomi)),
       h("span", { class: "term-system" },
-        examCount ? h("a", { class: "exam-mark", href: "#/exam", title: "骨学試験に出た回数（A・B・C の合計）" }, `試験 ${examCount}回`) : null,
+        examCount ? h("a", { class: "exam-mark", href: `#/exam/about/${term.id}`, title: "骨学試験に出た回数（A・B・C の合計）。押すとこの語の出る項目" }, `試験 ${examCount}回`) : null,
         where),
     ),
     h("div", { class: "term-en" },

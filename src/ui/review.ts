@@ -9,7 +9,7 @@ import { buildQueue, facetsFor, ROOT_FACETS, type QueueItem } from "../study";
 import type { AppContext } from "./context";
 import { nextLesson } from "./home";
 import { ask, showPanel, type Outcome } from "./quiz";
-import { askExam } from "./exam";
+import { askExam, itemHref } from "./exam";
 import { askRoot } from "./roots";
 
 async function todayQueue(now = new Date()): Promise<QueueItem[]> {
@@ -114,12 +114,12 @@ export async function review(ctx: AppContext): Promise<void> {
     h("h2", {}, queue.length ? "ここまでの復習" : answered ? "今日の復習おわり" : "今日の復習はありません"),
     answered ? h("p", { class: "today-count" }, `${correct} / ${answered} 正解`) : "",
     h("p", {}, learned.length ? "まちがえた問題は、新しい語なら1分後、覚えた語なら10分後にもう一度出ます。正解した問題は日をあけて出ます。" : "まずホームからレッスンを始めましょう。"),
-    missed.size ? h("h3", {}, "まちがえた語（タップで図鑑）") : "",
+    missed.size ? h("h3", {}, "まちがえた語（タップでその語へ）") : "",
     missed.size ? h("div", { class: "chip-list" }, ...[...missed].map((id) => {
       const root = rootByKey.get(id);
       const exam = examByKey.get(id);
-      if (root) return h("a", { class: "chip", href: "#/roots", lang: "en" }, root.root);
-      if (exam) return h("a", { class: "chip", href: "#/exam" }, exam.title);
+      if (root) return h("a", { class: "chip", href: `#/roots/root/${encodeURIComponent(id)}`, lang: "en" }, root.root);
+      if (exam) return h("a", { class: "chip", href: itemHref(exam) }, exam.title);
       return h("a", { class: "chip", href: `#/explore/${id}` }, termById.get(id)?.ja ?? id);
     })) : "",
     h("div", { class: "nav-row" },
