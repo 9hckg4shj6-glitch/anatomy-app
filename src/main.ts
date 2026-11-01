@@ -14,6 +14,7 @@ import { lesson } from "./ui/lesson";
 import { progress } from "./ui/progress";
 import { dueCount, review } from "./ui/review";
 import { rootIndex, rootLesson } from "./ui/roots";
+import { setupSplitter } from "./ui/splitter";
 import { AnatomyViewer } from "./viewer";
 
 const stage = document.getElementById("stage")!;
@@ -23,6 +24,14 @@ const tools = document.getElementById("stage-tools")!;
 const badge = document.getElementById("due-badge")!;
 
 watchInstallPrompt();
+const splitter = setupSplitter(document.querySelector<HTMLElement>(".layout")!, stage, panel);
+
+// キーボードで答えたら（iPad のキーボードなど、マウスの無い端末でも）、選択肢に数字キーの番号を添える
+document.addEventListener("keydown", (event) => {
+  if (/^[0-9]$|^Arrow|^Enter$/.test(event.key) && !(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) {
+    document.documentElement.classList.add("keys");
+  }
+});
 
 // 新しい版が届いたら（Service Worker が入れかわったら）、ホームにいるときに読み直して切りかえる。
 // レッスンや復習の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
@@ -87,8 +96,10 @@ async function start(): Promise<void> {
     viewer.colorTerms(null);
     viewer.highlight([]);
     tools.replaceChildren();
-    panel.replaceChildren();
+    // 3Dの読み込みを待つ画面（レッスンなど）でも、欄が空のままにならないように
+    panel.replaceChildren(h("p", { class: "muted" }, "読み込み中…"));
     panel.scrollTop = 0;
+    splitter.restore();
 
     const [, name = "", arg = ""] = location.hash.split("/");
     for (const tab of document.querySelectorAll<HTMLAnchorElement>("[data-tab]")) {

@@ -10,7 +10,8 @@ import type { AppContext } from "./context";
 export async function home(ctx: AppContext): Promise<void> {
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
-  void ctx.viewer.show({ systems: systems.map((s) => s.id).filter((id) => ctx.index.systems[id]), body: true });
+  // ホームでは皮膚と骨格だけを読み込む（全系統だと初めて開いたとき約25MB。ほかの系統は使う画面で読み込む）
+  void ctx.viewer.show({ systems: ["skeletal"], body: true });
   ctx.hint("ドラッグで回転・ダブルタップで拡大");
 
   const startOfDay = new Date();

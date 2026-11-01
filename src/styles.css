@@ -50,20 +50,22 @@ button { font: inherit; color: inherit; }
 .layout { display: flex; flex-direction: column; }
 .stage {
   position: sticky; top: calc(var(--header) + var(--safe-top)); z-index: 1;
-  height: 46vh; height: 46svh; min-height: 260px;
+  /* 縦に並ぶとき（スマホ）の3Dの高さ。境目のつまみで変えられる（src/ui/splitter.ts の --stage-height） */
+  height: 46vh; height: var(--stage-height, 46svh); min-height: 200px;
   /* 暗い背景の方が、骨の白・筋の赤・くぼみの陰がはっきり見える */
   background: radial-gradient(circle at 50% 35%, #4b5058 0%, #24272c 62%, #17191c 100%);
   touch-action: none; overflow: hidden;
 }
 .stage canvas { display: block; width: 100%; height: 100%; }
+/* 右上の「視点を戻す」「3Dを大きく」と重ならない幅にする */
 .stage-hint {
-  position: absolute; top: 10px; left: calc(10px + var(--safe-left)); padding: 4px 10px; border-radius: 999px;
+  position: absolute; top: 10px; left: calc(10px + var(--safe-left)); max-width: calc(100% - 190px - var(--safe-left) - var(--safe-right)); padding: 4px 10px; border-radius: 14px;
   background: rgb(255 255 255 / 0.85); color: var(--muted); font-size: 13px; pointer-events: none;
 }
 .stage-hint:empty { display: none; }
 /* 自分で回したり拡大したりしたときに出す。押すとアプリが決めた視点へ戻る */
 .stage-reset {
-  position: absolute; top: 8px; right: calc(8px + var(--safe-right)); min-height: 34px; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  position: absolute; top: 8px; right: calc(56px + var(--safe-right)); min-height: 34px; padding: 6px 12px; border-radius: 999px; cursor: pointer;
   border: 1px solid rgb(255 255 255 / 0.22); background: rgb(20 22 25 / 0.55); color: #f1eee8; font-size: 13px;
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
@@ -72,13 +74,13 @@ button { font: inherit; color: inherit; }
 /* 3Dの上のボタンは、暗い背景に合わせて半透明の黒にし、選んだものを白にする */
 .stage-tools .chip { background: rgb(20 22 25 / 0.55); border-color: rgb(255 255 255 / 0.22); color: #f1eee8; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .stage-tools .chip.on { background: #f7f4ee; border-color: #f7f4ee; color: var(--ink); }
-/* 系統のモデルを読み込んでいる間（初回は数MBある）と、読み込めなかったとき（オフラインでまだ保存していない系統） */
-.stage.loading::after, .stage.load-failed::after {
+/* 系統のモデルを読み込んでいる間（初回は数MBある。系統の名前と MB を出す）と、読み込めなかったとき（オフラインでまだ保存していない系統） */
+.stage-loading {
   position: absolute; top: 50%; left: 50%; translate: -50% -50%; max-width: 80%;
   padding: 6px 14px; border-radius: 999px; background: rgb(255 255 255 / 0.9); color: var(--muted); font-size: 14px; text-align: center; pointer-events: none;
+  font-variant-numeric: tabular-nums;
 }
-.stage.loading::after { content: "3Dを読み込み中…"; }
-.stage.load-failed:not(.loading)::after { content: "3Dを読み込めませんでした。通信できる所で開き直してください"; border-radius: 12px; }
+.stage-loading.failed { border-radius: 12px; }
 .stage-label {
   position: absolute; top: 0; left: 0; pointer-events: none;
   padding: 3px 9px; margin: -34px 0 0 0; border-radius: 6px; translate: -50% 0;
@@ -108,19 +110,52 @@ button { font: inherit; color: inherit; }
 .panel h3 { font-size: 16px; margin: 18px 0 8px; }
 .muted { color: var(--muted); font-size: 14px; }
 
-/* PC と、スマホの横向き：3Dと説明を左右に並べる */
-@media (min-width: 900px), (orientation: landscape) and (max-height: 540px) {
+/* 3Dと説明の境目のつまみ。縦に並ぶときは3Dのすぐ下に留める */
+.splitter {
+  position: sticky; z-index: 2; top: calc(var(--header) + var(--safe-top) + max(200px, var(--stage-height, 46svh)));
+  display: flex; align-items: center; justify-content: center; height: 18px;
+  background: var(--bg); border-bottom: 1px solid var(--line); cursor: row-resize; touch-action: none;
+}
+.splitter::before { content: ""; width: 44px; height: 4px; border-radius: 2px; background: #c9c3b6; }
+.splitter:hover::before, .splitter.dragging::before, .splitter:focus-visible::before { background: var(--accent); }
+/* 「3Dを大きく」: 説明を一時的にたたむ */
+.stage-expand {
+  position: absolute; top: 8px; right: calc(8px + var(--safe-right)); width: 42px; min-height: 34px; padding: 0; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgb(255 255 255 / 0.22); background: rgb(20 22 25 / 0.55); color: #f1eee8; font-size: 18px; line-height: 1;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.layout.stage-only .panel, .layout.stage-only .splitter { display: none; }
+.layout.stage-only .stage { height: calc(100vh - var(--header) - var(--safe-top)); height: calc(100dvh - var(--header) - var(--safe-top)); }
+
+/* PC・iPad と、スマホの横向き：3Dと説明を左右に並べる（説明の幅はつまみで変えられる。--panel-width） */
+@media (min-width: 768px), (orientation: landscape) and (max-height: 540px) {
   .layout { flex-direction: row; height: calc(100vh - var(--header) - var(--safe-top)); height: calc(100dvh - var(--header) - var(--safe-top)); }
   .stage { position: relative; top: 0; flex: 1; height: auto; min-height: 0; }
-  .panel { width: min(440px, 50%); overflow-y: auto; border-left: 1px solid var(--line); padding-bottom: 0; }
+  .layout.stage-only .stage { height: auto; }
+  .panel { flex: none; width: var(--panel-width, clamp(340px, 42%, 480px)); max-width: calc(100% - 260px); overflow-y: auto; padding-bottom: 0; }
+  .splitter { position: relative; top: 0; flex: none; width: 12px; height: auto; margin: 0; border: 0; border-left: 1px solid var(--line); cursor: col-resize; }
+  .splitter::before { width: 4px; height: 44px; }
   /* 欄の中でスクロールするときは、下の余白を padding で取ると下に留めたボタンがその分浮くので、空の箱で取る */
   .panel::after { content: ""; display: block; height: calc(48px + var(--safe-bottom)); }
 }
-/* スマホ：系統のボタンは1行にして横にすべらせる（3Dを覆わない） */
-@media (max-width: 899px) {
-  .stage-tools { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; touch-action: pan-x; }
+/* スマホ・iPad：系統のボタンは1行にして横にすべらせる（3Dを覆わない）。端をぼかして続きがあることを見せる */
+@media (max-width: 767px), (pointer: coarse) {
+  .stage-tools {
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; touch-action: pan-x; padding: 0 16px; margin: 0 -8px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 24px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 24px), transparent);
+  }
   .stage-tools::-webkit-scrollbar { display: none; }
   .stage-tools > * { flex: none; }
+}
+/* 指で押す端末（iPad・スマホ）では、押す所を 44px 以上にする */
+@media (pointer: coarse) {
+  .chip, .orient-group .chip, .order-chips .chip { min-height: 44px; }
+  .tabs a { display: inline-flex; align-items: center; min-height: 44px; }
+  .stage-reset { min-height: 44px; right: calc(60px + var(--safe-right)); }
+  .stage-expand { width: 44px; min-height: 44px; }
+  .install .close, .gloss-close { width: 44px; height: 44px; }
+  .install .primary, .gloss-box .ghost-button { min-height: 44px; }
 }
 
 .primary, .ghost-button, .choice, .chip {
@@ -212,7 +247,13 @@ button { font: inherit; color: inherit; }
 .next-due { color: var(--muted); font-size: 14px; }
 /* 押しまちがいの取り消しなど、目立たせない操作 */
 .text-button { display: block; min-height: 40px; margin: 0 auto 4px; padding: 8px 12px; border: 0; background: none; color: var(--muted); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-/* PC（マウスのある端末）では、選択肢に数字キーの番号を添える */
+/* PC（マウスのある端末）と、キーボードで答えた端末（iPad のキーボードなど。:root.keys は src/main.ts）では、選択肢に数字キーの番号を添える */
+.keys .choices { counter-reset: choice; }
+.keys .choice::before {
+  counter-increment: choice; content: counter(choice); flex: none;
+  display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-right: 10px;
+  border: 1px solid var(--line); border-radius: 6px; color: var(--muted); font-size: 13px; font-weight: 400;
+}
 @media (hover: hover) and (pointer: fine) {
   .choices { counter-reset: choice; }
   .choice::before {

@@ -338,8 +338,11 @@ export class AnatomyViewer {
   private readonly label: HTMLDivElement;
   private readonly hoverLabel: HTMLDivElement;
   private readonly groups = new Map<string, Promise<THREE.Group>>();
-  /** 読み込み中の系統の数（3Dの上に「読み込み中」を出す） */
-  private loading = 0;
+  /** 読み込み中のファイルの進み具合（3Dの上に「骨格系を読み込み中 1.2 / 3.5MB」を出す） */
+  private readonly loading = new Map<string, { system: string; loaded: number; total: number }>();
+  /** 読み込めなかった系統（ほかの系統が読み込めても印を消さない） */
+  private readonly failed = new Set<string>();
+  private readonly loadingBox: HTMLDivElement;
   private readonly meshes = new Map<string, THREE.Mesh>();
   private readonly materials = new Map<string, THREE.Material>();
   private index!: ModelIndex;
@@ -444,6 +447,11 @@ export class AnatomyViewer {
     this.resetButton.hidden = true;
     this.resetButton.addEventListener("click", () => this.resetView());
     host.append(this.resetButton);
+    this.loadingBox = document.createElement("div");
+    this.loadingBox.className = "stage-loading";
+    this.loadingBox.setAttribute("role", "status");
+    this.loadingBox.hidden = true;
+    host.append(this.loadingBox);
 
     // 光はカメラに付ける（どの向きから見ても同じ明るさ）。左上の主な光・右の弱い光・後ろからの縁の光と、部屋の映り込み
     this.lightEnvironment();
@@ -982,10 +990,22 @@ export class AnatomyViewer {
   private group(systemId: string): Promise<THREE.Group> {
     let group = this.groups.get(systemId);
     if (!group) {
-      this.loading++;
-      this.host.classList.add("loading");
-      const { url, za } = this.index.systems[systemId];
-      const files = [url, ...(za ? [za.url] : [])].map((file) => this.loader.loadAsync(`${import.meta.env.BASE_URL}${file}`));
+      const { url, bytes, za } = this.index.systems[systemId];
+      const files = [{ url, bytes }, ...(za ? [za] : [])].map((file) => {
+        this.loading.set(file.url, { system: systemId, loaded: 0, total: file.bytes });
+        return this.loader.loadAsync(`${import.meta.env.BASE_URL}${file.url}`, (event) => {
+          const progress = this.loading.get(file.url);
+          if (!progress) return;
+          progress.loaded = event.loaded;
+          // 送られてくる大きさが分からないとき（圧縮して送るなど）は index.json の大きさを使う
+          if (event.lengthComputable && event.total) progress.total = event.total;
+          this.showLoading();
+        }).finally(() => {
+          this.loading.delete(file.url);
+          this.showLoading();
+        });
+      });
+      this.showLoading();
       group = Promise.all(files).then((gltfs) => {
         const root = new THREE.Group();
         for (const gltf of gltfs) root.add(gltf.scene);
@@ -1012,14 +1032,34 @@ export class AnatomyViewer {
       });
       this.groups.set(systemId, group);
       const settle = (ok: boolean) => {
-        this.host.classList.toggle("loading", --this.loading > 0);
-        this.host.classList.toggle("load-failed", !ok);
+        if (ok) this.failed.delete(systemId);
+        else this.failed.add(systemId);
         // 読み込めなかった系統（オフラインでまだ保存していないなど）は、次に表示するときにやり直す
         if (!ok) this.groups.delete(systemId);
+        this.showLoading();
       };
       group.then(() => settle(true), () => settle(false));
     }
     return group;
+  }
+
+  /** 3Dの真ん中の札: 読み込み中なら系統の名前と MB、読み込めなかった系統があればそのこと */
+  private showLoading(): void {
+    const files = [...this.loading.values()];
+    let text = "";
+    if (files.length) {
+      const names = [...new Set(files.map((file) => file.system))].map((id) => systemById.get(id)?.ja ?? "3D");
+      const mb = (value: number) => (value / 1e6).toFixed(1);
+      const loaded = files.reduce((sum, file) => sum + file.loaded, 0);
+      const total = files.reduce((sum, file) => sum + Math.max(file.total, file.loaded), 0);
+      text = `${names.length > 2 ? `${names.slice(0, 2).join("・")}ほか` : names.join("・")}を読み込み中 ${mb(loaded)} / ${mb(total)}MB`;
+    } else if (this.failed.size) {
+      const names = [...this.failed].map((id) => systemById.get(id)?.ja ?? id);
+      text = `${names.join("・")}の3Dを読み込めませんでした。通信できる所で開き直してください`;
+    }
+    this.loadingBox.textContent = text;
+    this.loadingBox.hidden = !text;
+    this.loadingBox.classList.toggle("failed", !files.length && !!text);
   }
 
   private material(key: string, make: () => THREE.Material): THREE.Material {
