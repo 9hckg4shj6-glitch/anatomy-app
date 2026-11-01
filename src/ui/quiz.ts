@@ -226,10 +226,10 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   if (facet === "ja2en" || facet === "en2ja") autoSpeak(term);
 
   const banner = {
-    correct: h("div", { class: "result ok" }, "正解"),
-    close: h("div", { class: "result close" }, "惜しい（1文字ちがい）", h("span", { class: "typed", lang: "en" }, typed)),
-    wrong: h("div", { class: "result ng" }, "不正解", typed ? h("span", { class: "typed", lang: "en" }, typed) : null),
-    skip: h("div", { class: "result ng" }, "答えを確認しよう"),
+    correct: h("div", { class: "result ok", role: "status" }, "正解"),
+    close: h("div", { class: "result close", role: "status" }, "惜しい（1文字ちがい）", h("span", { class: "typed", lang: "en" }, typed)),
+    wrong: h("div", { class: "result ng", role: "status" }, "不正解", typed ? h("span", { class: "typed", lang: "en" }, typed) : null),
+    skip: h("div", { class: "result ng", role: "status" }, "答えを確認しよう"),
   }[outcome];
   const wrongNote = wrongTerm
     ? h("p", { class: "wrong-note" }, "青い所はあなたが選んだ「", termById.get(wrongTerm)!.ja, "」")

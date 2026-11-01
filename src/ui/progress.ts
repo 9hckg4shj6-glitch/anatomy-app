@@ -1,10 +1,8 @@
-import { exportBackup, importBackup, isBackup } from "../backup";
 import { systems, termById, terms } from "../content";
-import { db, type StoredSchedule } from "../db";
+import { db, type ReviewEvent, type StoredSchedule } from "../db";
 import { h } from "../dom";
-import { EXAM_KINDS, examProgress, kindLabels } from "../exam";
-import { rootKey, roots } from "../roots";
-import { loadPreferences, NEW_PER_DAY_OPTIONS, preferences, setPreference } from "../settings";
+import { EXAM_KINDS, examProgress, isExamKey, kindLabels } from "../exam";
+import { isRootKey, rootKey, roots } from "../roots";
 import { termMastery } from "../study";
 import { sceneFor, type AppContext } from "./context";
 
@@ -18,7 +16,7 @@ const UNSEEN = "#d9d4c7";
 /** 進捗：人体を覚えた度合いで色分けし、系統ごとの数と弱い語を出す */
 export async function progress(ctx: AppContext): Promise<void> {
   const { viewer, panel, tools, index } = ctx;
-  const [learned, schedules] = await Promise.all([db.learned.toArray(), db.schedules.toArray()]);
+  const [learned, schedules, events] = await Promise.all([db.learned.toArray(), db.schedules.toArray(), db.reviewEvents.toArray()]);
   const byTerm = new Map<string, StoredSchedule[]>();
   for (const schedule of schedules) byTerm.set(schedule.termId, [...(byTerm.get(schedule.termId) ?? []), schedule]);
   const learnedIds = new Set(learned.map((item) => item.termId));
@@ -41,7 +39,6 @@ export async function progress(ctx: AppContext): Promise<void> {
   viewer.overview();
   ctx.hint("色＝今の覚え具合");
 
-  const settings = settingsSection();
 
   const weakest = [...mastery]
     .filter((entry): entry is [string, number] => entry[1] !== null)
@@ -50,6 +47,8 @@ export async function progress(ctx: AppContext): Promise<void> {
 
   panel.replaceChildren(
     h("h2", {}, "進捗"),
+    ...records(events, schedules),
+    h("h3", {}, "覚え具合"),
     h("ul", { class: "legend" },
       ...LEVELS.map((level) => h("li", {}, h("span", { class: "swatch", style: `background:${level.color}` }), level.label)),
       h("li", {}, h("span", { class: "swatch", style: `background:${UNSEEN}` }), "まだ学んでいない"),
@@ -73,8 +72,7 @@ export async function progress(ctx: AppContext): Promise<void> {
         h("span", {}, term.ja), h("span", { class: "en" }, `${Math.round(value * 100)}%`)));
     })) : "",
     weakest.length ? h("div", { class: "nav-row" }, h("a", { class: "primary", href: "#/drill/weak" }, "苦手な語を解く")) : "",
-    settings.box,
-    backupSection(settings.render),
+    h("p", { class: "footer-link" }, "設定と記録の書き出し・読み込みは ", h("a", { href: "#/settings" }, "設定"), " へ移りました。"),
   );
 
   function examRow(kind: (typeof EXAM_KINDS)[number]): HTMLElement {
@@ -95,75 +93,77 @@ export async function progress(ctx: AppContext): Promise<void> {
   }
 }
 
-/** 設定（発音の自動再生・1日の新しい問題の数・正解で自動で次へ）。記録を読み込んだら render で描き直す */
-function settingsSection(): { box: HTMLElement; render: () => void } {
-  const box = h("section", { class: "settings" });
-  const chips = <T>(options: { value: T; label: string }[], current: T, onPick: (value: T) => Promise<void>) =>
-    h("div", { class: "chip-list" }, ...options.map((option) => h("button", {
-      class: option.value === current ? "chip on" : "chip", type: "button",
-      onClick: async () => {
-        await onPick(option.value);
-        render();
-      },
-    }, option.label)));
-  const render = () => box.replaceChildren(
-    h("h3", {}, "設定"),
-    h("p", { class: "setting-label" }, "英語の発音を自動で鳴らす"),
-    chips([{ value: true, label: "鳴らす" }, { value: false, label: "鳴らさない" }], preferences.autoSpeak, (value) => setPreference("autoSpeak", value)),
-    h("p", { class: "muted" }, "鳴らさないときも、🔊を押せば聞けます。"),
-    h("p", { class: "setting-label" }, "1日に新しく始める問題"),
-    chips(NEW_PER_DAY_OPTIONS.map((n) => ({ value: n, label: `${n}問` })), preferences.newPerDay, async (value) => {
-      await setPreference("newPerDay", value);
-      window.dispatchEvent(new CustomEvent("anatomy:reviewed")); // 復習のバッジの数を変える
-    }),
-    h("p", { class: "muted" }, "1つの語に問い方が4つ（筋は7つ）あり、別々に数えます。期限の来た復習はこの数に関係なくすべて出ます。"),
-    h("p", { class: "setting-label" }, "正解したら自動で次の問題へ"),
-    chips([{ value: true, label: "進む（1.5秒）" }, { value: false, label: "自分で「次へ」" }], preferences.autoNext, (value) => setPreference("autoNext", value)),
-    h("p", { class: "muted" }, "まちがえたときは、説明を読めるよう自動では進みません。正解の画面で3Dや説明に触れると止まります。"),
-  );
-  render();
-  return { box, render };
+/** その日の 0 時（端末の時刻）の "YYYY-MM-DD" */
+function dayKey(date: Date): string {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
-/** 記録の書き出し・読み込み（機種変更や、iOS の Safari とホーム画面のアプリの間で移すとき） */
-function backupSection(onImported: () => void): HTMLElement {
-  const status = h("p", { class: "muted" });
-  const file = h("input", { type: "file", accept: "application/json,.json", hidden: true });
-  file.addEventListener("change", async () => {
-    const chosen = file.files?.[0];
-    file.value = "";
-    if (!chosen) return;
-    try {
-      const data: unknown = JSON.parse(await chosen.text());
-      if (!isBackup(data)) throw new Error("このアプリの記録のファイルではありません");
-      if (!confirm(`${data.exportedAt.slice(0, 10)} に書き出した記録を、今の記録に足し合わせます。よろしいですか？`)) return;
-      const result = await importBackup(data);
-      await loadPreferences();
-      onImported();
-      window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
-      status.textContent = `読み込みました（覚え具合 ${result.schedules}件・解いた記録 ${result.reviewEvents}件・学んだ語 ${result.learned}件）。`;
-    } catch (error) {
-      status.textContent = `読み込めませんでした: ${error instanceof Error ? error.message : String(error)}`;
-    }
+/**
+ * 記録: 直近30日に解いた数（日ごとの棒）・続けた日数・これから7日の復習の予定・系統ごとの今日の期限。
+ * 毎日の目安と、どの系統の復習がたまっているかを見るため
+ */
+function records(events: ReviewEvent[], schedules: StoredSchedule[], now = new Date()): (HTMLElement | string)[] {
+  if (!events.length) return [h("p", { class: "muted" }, "まだ解いた記録がありません。レッスンや復習を解くと、日ごとの数と復習の予定がここに出ます。")];
+  const perDay = new Map<string, number>();
+  for (const event of events) {
+    const key = dayKey(new Date(event.reviewedAt));
+    perDay.set(key, (perDay.get(key) ?? 0) + 1);
+  }
+  const day = (offset: number) => new Date(now.getFullYear(), now.getMonth(), now.getDate() + offset);
+  const last30 = Array.from({ length: 30 }, (_, i) => day(i - 29));
+  const counts = last30.map((date) => perDay.get(dayKey(date)) ?? 0);
+  // 続けた日数: 今日（まだ解いていなければ昨日）からさかのぼって、毎日1問以上解いた日数
+  let streak = 0;
+  for (let i = perDay.has(dayKey(now)) ? 0 : 1; perDay.has(dayKey(day(-i))); i++) streak++;
+  // これから7日の復習の予定（今日の分には期限を過ぎたものも入れる）
+  const forecast = Array.from({ length: 7 }, (_, i) => {
+    const end = day(i + 1).getTime();
+    const start = i ? day(i).getTime() : -Infinity;
+    return schedules.filter((s) => { const due = new Date(s.due).getTime(); return due >= start && due < end; }).length;
   });
-  const save = async () => {
-    const backup = await exportBackup();
-    const url = URL.createObjectURL(new Blob([JSON.stringify(backup)], { type: "application/json" }));
-    const link = h("a", { href: url, download: `anatomy-records-${backup.exportedAt.slice(0, 10)}.json` });
-    document.body.append(link);
-    link.click();
-    link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 10_000);
-    status.textContent = `書き出しました（覚え具合 ${backup.schedules.length}件・解いた記録 ${backup.reviewEvents.length}件）。`;
-  };
-  return h("section", { class: "backup" },
-    h("h3", {}, "記録の書き出し・読み込み"),
-    h("p", { class: "muted" }, "記録はこの端末の中だけにあります。機種を変えるときや、iOS の Safari とホーム画面のアプリの間で移すときは、ファイルに書き出して読み込んでください（今の記録に足し合わせます）。"),
-    h("div", { class: "nav-row" },
-      h("button", { class: "ghost-button", type: "button", onClick: () => void save() }, "書き出す"),
-      h("button", { class: "ghost-button", type: "button", onClick: () => file.click() }, "読み込む"),
+  const endOfToday = day(1).getTime();
+  const dueBySystem = new Map<string, number>();
+  for (const schedule of schedules) {
+    if (new Date(schedule.due).getTime() >= endOfToday) continue;
+    const label = isRootKey(schedule.termId) ? "語根カード" : isExamKey(schedule.termId) ? "骨学試験"
+      : systems.find((system) => system.id === termById.get(schedule.termId)?.system)?.ja;
+    if (label) dueBySystem.set(label, (dueBySystem.get(label) ?? 0) + 1);
+  }
+  const weekday = ["日", "月", "火", "水", "木", "金", "土"];
+  return [
+    h("div", { class: "stat-row" },
+      stat("今日", `${counts[29]}問`),
+      stat("続けた日数", `${streak}日`),
+      stat("30日の合計", `${counts.reduce((a, b) => a + b, 0)}問`),
     ),
-    file,
-    status,
-  );
+    h("h3", {}, "直近30日に解いた数"),
+    bars(counts, last30.map((date, i) => (i === 29 ? "今日" : i % 7 === 1 ? `${date.getMonth() + 1}/${date.getDate()}` : "")), "直近30日に解いた数"),
+    h("h3", {}, "これから7日の復習"),
+    bars(forecast, forecast.map((_, i) => (i ? weekday[day(i).getDay()] : "今日")), "これから7日の復習の予定", true),
+    dueBySystem.size ? h("p", { class: "muted" }, "今日の期限: ", [...dueBySystem].sort((a, b) => b[1] - a[1]).map(([label, count]) => `${label} ${count}`).join("・")) : "",
+  ];
+}
+
+function stat(label: string, value: string): HTMLElement {
+  return h("div", { class: "stat" }, h("span", { class: "stat-value" }, value), h("span", { class: "stat-label" }, label));
+}
+
+/** 棒グラフ（SVG）。数は棒の上に（7本のときだけ）、下に目盛りの文字 */
+function bars(values: number[], labels: string[], title: string, showValues = false): HTMLElement {
+  const width = 300;
+  const height = 90;
+  const gap = values.length > 10 ? 2 : 8;
+  const barWidth = (width - gap * (values.length - 1)) / values.length;
+  const max = Math.max(1, ...values);
+  const box = h("figure", { class: "bars", role: "img", "aria-label": `${title}: ${values.join("・")}` });
+  const rects = values.map((value, i) => {
+    const barHeight = value ? Math.max(2, (value / max) * (height - 18)) : 0;
+    const x = i * (barWidth + gap);
+    return `<rect x="${x.toFixed(1)}" y="${(height - 14 - barHeight).toFixed(1)}" width="${barWidth.toFixed(1)}" height="${barHeight.toFixed(1)}" rx="2" class="${i === (showValues ? 0 : values.length - 1) ? "bar today" : "bar"}"><title>${labels[i] || ""} ${value}</title></rect>`
+      + (showValues && value ? `<text x="${(x + barWidth / 2).toFixed(1)}" y="${(height - 17 - barHeight).toFixed(1)}" class="bar-value">${value}</text>` : "")
+      + (labels[i] ? `<text x="${(x + barWidth / 2).toFixed(1)}" y="${height - 2}" class="bar-label">${labels[i]}</text>` : "");
+  });
+  // 端の目盛りの文字と、いちばん高い棒の上の数が切れないように、まわりに余白をとる
+  box.innerHTML = `<svg viewBox="-10 -12 ${width + 20} ${height + 12}" aria-hidden="true">${rects.join("")}</svg>`;
+  return box;
 }

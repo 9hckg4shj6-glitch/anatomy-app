@@ -41,8 +41,11 @@ export function askItem(ctx: AppContext, item: QueueItem, source: ReviewEvent["s
   return ask(ctx, item, source, progress);
 }
 
-export async function dueCount(): Promise<number> {
-  return (await todayQueue()).length;
+/** 今日解く数を、期限の来た復習と新しく始める問題に分けて（ホームと上の印） */
+export async function todayCounts(): Promise<{ review: number; fresh: number }> {
+  const queue = await todayQueue();
+  const fresh = queue.filter((item) => item.isNew).length;
+  return { review: queue.length - fresh, fresh };
 }
 
 export async function review(ctx: AppContext): Promise<void> {

@@ -132,7 +132,7 @@ export async function askRoot(ctx: AppContext, item: QueueItem, source: ReviewEv
   const next = h("button", { class: "primary", type: "button" }, "次へ");
   const retry = outcome === "correct" ? null : retryButton();
   showPanel(ctx, header,
-    outcome === "correct" ? h("div", { class: "result ok" }, "正解") : h("div", { class: "result ng" }, outcome === "skip" ? "答えを確認しよう" : "不正解"),
+    outcome === "correct" ? h("div", { class: "result ok", role: "status" }, "正解") : h("div", { class: "result ng", role: "status" }, outcome === "skip" ? "答えを確認しよう" : "不正解"),
     wrong ? h("p", { class: "wrong-note" }, `あなたが選んだのは ${wrong.root}「${wrong.meaning}」`) : "",
     rootCard(root, { examples: 6 }),
     h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`),

@@ -12,8 +12,9 @@ import { explore } from "./ui/explore";
 import { home } from "./ui/home";
 import { lesson } from "./ui/lesson";
 import { progress } from "./ui/progress";
-import { dueCount, review } from "./ui/review";
+import { review, todayCounts } from "./ui/review";
 import { rootIndex, rootLesson } from "./ui/roots";
+import { settingsScreen } from "./ui/settings-screen";
 import { setupSplitter } from "./ui/splitter";
 import { AnatomyViewer } from "./viewer";
 
@@ -39,6 +40,22 @@ const keyHelp = h("dialog", { class: "key-help", "aria-label": "キーボード�
   h("form", { method: "dialog" }, h("button", { class: "primary" }, "閉じる")),
 );
 document.body.append(keyHelp);
+
+// 3Dの動かし方（3Dの右上の「?」）
+const gestureHelp = h("dialog", { class: "key-help", "aria-label": "3Dの動かし方" },
+  h("h2", {}, "3Dの動かし方"),
+  h("dl", {},
+    ...([
+      ["回す", "1本指でドラッグ（マウスは左ドラッグ）"], ["拡大・縮小", "2本指でつまむ（マウスはホイール）。指の所へ寄る"],
+      ["ずらす", "2本指でドラッグ（マウスは右ドラッグ）"], ["名前を見る", "部位をタップ（図鑑。PC は重ねるだけでも）"],
+      ["視点を戻す", "自分で動かしたあと右上に出る。アプリが決めた向きへ戻る"], ["⤢", "説明をたたんで3Dを大きく（もう一度押すと戻る）"],
+      ["境目", "3Dと説明の境目をドラッグで大きさを変える（ダブルクリックで元に戻す）"],
+    ] as const).map(([key, text]) => h("div", {}, h("dt", {}, key), h("dd", {}, text))),
+  ),
+  h("form", { method: "dialog" }, h("button", { class: "primary" }, "閉じる")),
+);
+document.body.append(gestureHelp);
+stage.append(h("button", { class: "stage-help", type: "button", "aria-label": "3Dの動かし方", title: "3Dの動かし方", onClick: () => gestureHelp.showModal() }, "?"));
 document.addEventListener("keydown", (event) => {
   const typing = event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement;
   if (typing || event.ctrlKey || event.metaKey || event.altKey) return;
@@ -136,7 +153,10 @@ async function start(): Promise<void> {
     const [name, arg] = parseHash();
     currentName = name;
     for (const tab of document.querySelectorAll<HTMLAnchorElement>("[data-tab]")) {
-      tab.classList.toggle("on", tab.dataset.tab === (name || "home") || (["learn", "roots", "drill", "exam"].includes(name) && tab.dataset.tab === "home"));
+      const on = tab.dataset.tab === (name || "home") || (["learn", "roots", "drill", "exam"].includes(name) && tab.dataset.tab === "home");
+      tab.classList.toggle("on", on);
+      if (on) tab.setAttribute("aria-current", "page");
+      else tab.removeAttribute("aria-current");
     }
     try {
       if (name === "learn") await lesson(ctx, arg);
@@ -147,6 +167,7 @@ async function start(): Promise<void> {
       else if (name === "drill") await drill(ctx, arg);
       else if (name === "exam") await exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
+      else if (name === "settings") await settingsScreen(ctx);
       else if (name === "credits") credits(ctx);
       else if (name === "admin") await admin(ctx, arg);
       else await home(ctx);
@@ -158,9 +179,12 @@ async function start(): Promise<void> {
   };
 
   const refreshBadge = async () => {
-    const count = await dueCount();
+    const { review: due, fresh } = await todayCounts();
+    const count = due + fresh;
     badge.textContent = String(count);
     badge.hidden = count === 0;
+    badge.title = `復習 ${due}問・新しい問題 ${fresh}問`;
+    badge.setAttribute("aria-label", `今日の問題 ${count}問（${badge.title}）`);
   };
 
   window.addEventListener("hashchange", () => {

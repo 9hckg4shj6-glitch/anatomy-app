@@ -42,6 +42,7 @@ button { font: inherit; color: inherit; }
   color: var(--muted); text-decoration: none; white-space: nowrap; font-size: 15px;
 }
 .tabs a.on { color: var(--ink); background: var(--bg); font-weight: 600; }
+.tabs a[data-tab="settings"] { font-size: 19px; line-height: 1; padding-inline: 8px; }
 .badge {
   display: inline-block; min-width: 18px; margin-left: 4px; padding: 0 5px;
   border-radius: 9px; background: var(--highlight); color: #fff; font-size: 12px; line-height: 18px; text-align: center;
@@ -106,6 +107,8 @@ button { font: inherit; color: inherit; }
 }
 
 .panel { padding: 16px calc(16px + var(--safe-right)) calc(48px + var(--safe-bottom)) calc(16px + var(--safe-left)); background: var(--bg); }
+/* 説明の文字の大きさ（設定。src/settings.ts の applyTextSize）。3Dはそのまま */
+.panel > * { zoom: var(--panel-zoom, 1); }
 .panel h2 { font-size: 18px; margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
 .panel h3 { font-size: 16px; margin: 18px 0 8px; }
 .muted { color: var(--muted); font-size: 14px; }
@@ -118,6 +121,12 @@ button { font: inherit; color: inherit; }
 }
 .splitter::before { content: ""; width: 44px; height: 4px; border-radius: 2px; background: #c9c3b6; }
 .splitter:hover::before, .splitter.dragging::before, .splitter:focus-visible::before { background: var(--accent); }
+/* 3Dの動かし方（右上、⤢ の下） */
+.stage-help {
+  position: absolute; top: 50px; right: calc(8px + var(--safe-right)); width: 42px; min-height: 34px; padding: 0; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgb(255 255 255 / 0.22); background: rgb(20 22 25 / 0.55); color: #f1eee8; font-size: 16px; font-weight: 700;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
 /* 「3Dを大きく」: 説明を一時的にたたむ */
 .stage-expand {
   position: absolute; top: 8px; right: calc(8px + var(--safe-right)); width: 42px; min-height: 34px; padding: 0; border-radius: 999px; cursor: pointer;
@@ -155,7 +164,8 @@ button { font: inherit; color: inherit; }
   .chip, .orient-group .chip, .order-chips .chip { min-height: 44px; }
   .tabs a { display: inline-flex; align-items: center; min-height: 44px; }
   .stage-reset { min-height: 44px; right: calc(60px + var(--safe-right)); }
-  .stage-expand { width: 44px; min-height: 44px; }
+  .stage-expand, .stage-help { width: 44px; min-height: 44px; }
+  .stage-help { top: 58px; }
   .install .close, .gloss-close { width: 44px; height: 44px; }
   .install .primary, .gloss-box .ghost-button { min-height: 44px; }
 }
@@ -184,6 +194,16 @@ button { font: inherit; color: inherit; }
 .today .primary { width: 100%; }
 .today-done { margin-left: auto; color: var(--muted); font-size: 13px; font-weight: 400; }
 .today .next-lesson { width: 100%; margin-top: 10px; }
+.today-split { margin-left: 10px; color: var(--muted); font-size: 14px; font-weight: 400; }
+/* はじめての案内・試験までの日数・書き出しの知らせ */
+.welcome { margin-bottom: 12px; padding: 4px 16px 12px; border-radius: 14px; background: color-mix(in srgb, var(--accent) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+.welcome h2 { margin-top: 12px; }
+.welcome ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; line-height: 1.65; }
+.countdown { margin-top: 12px; padding: 12px 16px; border-radius: 14px; background: color-mix(in srgb, var(--highlight) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--highlight) 35%, var(--line)); }
+.countdown h2 { margin: 0 0 6px; }
+.countdown p { margin: 0 0 10px; font-size: 15px; }
+.countdown .ghost-button { width: 100%; }
+.reminder { border-color: color-mix(in srgb, var(--close) 55%, var(--line)); }
 .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgb(0 0 0 / 0.1); flex: none; }
 .units { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .unit {
@@ -385,7 +405,22 @@ a.term-row { color: var(--ink); text-decoration: none; }
 
 .backup { margin-top: 28px; padding-top: 4px; border-top: 1px solid var(--line); }
 
-.settings { margin-top: 28px; padding-top: 4px; border-top: 1px solid var(--line); }
+.settings { margin-top: 20px; padding-top: 4px; border-top: 1px solid var(--line); }
+.settings .ghost-button { margin-top: 12px; }
+.date-row { display: flex; align-items: center; gap: 8px; }
+.date-input { min-height: 44px; padding: 0 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font: inherit; color: inherit; }
+.date-row .text-button { margin: 0; }
+/* 進捗の記録: 数字の札と棒グラフ */
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0 4px; }
+.stat { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 4px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.stat-value { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat-label { color: var(--muted); font-size: 12px; }
+.bars { margin: 0; }
+.bars svg { display: block; width: 100%; height: auto; }
+.bars .bar { fill: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.bars .bar.today { fill: var(--accent); }
+.bars .bar-label, .bars .bar-value { font-size: 8px; text-anchor: middle; fill: var(--muted); }
+.bars .bar-value { fill: var(--ink); font-weight: 700; }
 .setting-label { margin: 14px 0 8px; font-size: 15px; font-weight: 600; }
 .settings .muted { margin: 6px 0 0; }
 

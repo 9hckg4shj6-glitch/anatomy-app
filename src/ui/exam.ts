@@ -308,10 +308,10 @@ const outcomeOf = (rating: number, skipped: boolean): Outcome =>
 
 function banner(outcome: Outcome, text?: string): HTMLElement {
   return {
-    correct: h("div", { class: "result ok" }, text ?? "正解"),
-    close: h("div", { class: "result close" }, text ?? "おおむね正解"),
-    wrong: h("div", { class: "result ng" }, text ?? "不正解"),
-    skip: h("div", { class: "result ng" }, "答えを確認しよう"),
+    correct: h("div", { class: "result ok", role: "status" }, text ?? "正解"),
+    close: h("div", { class: "result close", role: "status" }, text ?? "おおむね正解"),
+    wrong: h("div", { class: "result ng", role: "status" }, text ?? "不正解"),
+    skip: h("div", { class: "result ng", role: "status" }, "答えを確認しよう"),
   }[outcome];
 }
 
