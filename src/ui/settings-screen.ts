@@ -1,5 +1,7 @@
 import { exportBackup, importBackup, isBackup } from "../backup";
+import { systemById } from "../content";
 import { db, nowIso } from "../db";
+import { canSaveOffline, offlineFiles, savedFiles, saveFiles } from "../offline";
 import { h } from "../dom";
 import {
   daysUntilExam, loadPreferences, NEW_PER_DAY_OPTIONS, preferences, REVIEW_SIZE_OPTIONS, setPreference, TEXT_SIZES, type Preferences,
@@ -15,7 +17,55 @@ export async function settingsScreen(ctx: AppContext): Promise<void> {
   const box = h("div", {});
   const render = () => box.replaceChildren(...settingRows(render));
   render();
-  ctx.panel.replaceChildren(h("h2", {}, "設定"), box, backupSection(render));
+  ctx.panel.replaceChildren(h("h2", {}, "設定"), box, offlineSection(ctx), backupSection(render));
+}
+
+/** オフライン: 3Dと音声をまとめて保存する（ふだんは開いた系統・聞いた音声だけが保存される） */
+function offlineSection(ctx: AppContext): HTMLElement {
+  const status = h("p", { class: "muted" }, "保存したものを調べています…");
+  const list = h("p", { class: "muted offline-list" });
+  const button = h("button", { class: "ghost-button", type: "button", disabled: true }, "すべて保存");
+  const mb = (bytes: number) => `${Math.max(0.1, bytes / 1e6).toFixed(1)}MB`;
+  const check = async () => {
+    const files = await offlineFiles(ctx.index);
+    const saved = await savedFiles(files);
+    const missing = files.filter((file) => !saved.has(file.url));
+    const groups = [...new Set(files.map((file) => file.group))];
+    list.replaceChildren(...groups.map((group) => {
+      const inGroup = files.filter((file) => file.group === group);
+      const count = inGroup.filter((file) => saved.has(file.url)).length;
+      const name = group === "audio" ? "英語の音声" : group === "body" ? "皮膚" : systemById.get(group)?.ja ?? group;
+      return h("span", { class: count === inGroup.length ? "offline-item saved" : "offline-item" },
+        group === "audio" ? `${name} ${count}/${inGroup.length}` : name);
+    }));
+    if (!canSaveOffline()) {
+      status.textContent = "この開き方では保存できません（ホーム画面に追加したアプリか、公開先の https で開いてください）。";
+      button.disabled = true;
+      return;
+    }
+    status.textContent = missing.length
+      ? `まだ保存していないもの: ${missing.length}ファイル（約${mb(missing.reduce((sum, file) => sum + file.bytes, 0))}）。保存すると、通信の無い所でもすべての系統と音声が使えます。`
+      : "すべて保存してあります。通信の無い所でも使えます。";
+    button.disabled = !missing.length;
+    button.textContent = missing.length ? `すべて保存（約${mb(missing.reduce((sum, file) => sum + file.bytes, 0))}）` : "すべて保存済み";
+    button.onclick = async () => {
+      button.disabled = true;
+      const total = missing.reduce((sum, file) => sum + file.bytes, 0);
+      const failed = await saveFiles(missing, (done, bytes) => {
+        status.textContent = `保存中… ${done} / ${missing.length}ファイル（${mb(bytes)} / ${mb(total)}）。この画面を離れると止まります。`;
+      }, ctx.signal);
+      if (ctx.signal.aborted) return;
+      await check();
+      if (failed) status.textContent = `${failed}ファイルを保存できませんでした。通信できる所でもう一度押してください。`;
+    };
+  };
+  void check();
+  return h("section", { class: "settings" },
+    h("h3", {}, "オフライン"),
+    status,
+    list,
+    button,
+  );
 }
 
 function settingRows(render: () => void): HTMLElement[] {

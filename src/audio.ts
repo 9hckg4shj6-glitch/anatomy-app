@@ -5,7 +5,7 @@ import { preferences } from "./settings";
 let manifest: Promise<Record<string, string>> | null = null;
 let current: HTMLAudioElement | null = null;
 
-function loadManifest(): Promise<Record<string, string>> {
+export function loadAudioManifest(): Promise<Record<string, string>> {
   manifest ??= fetch(`${import.meta.env.BASE_URL}audio/index.json`)
     .then((response) => (response.ok ? response.json() : {}))
     .catch(() => ({}));
@@ -15,7 +15,7 @@ function loadManifest(): Promise<Record<string, string>> {
 export async function speak(term: Pick<Term, "id" | "en">): Promise<void> {
   current?.pause();
   window.speechSynthesis?.cancel();
-  const file = (await loadManifest())[term.id];
+  const file = (await loadAudioManifest())[term.id];
   if (file) {
     current = new Audio(`${import.meta.env.BASE_URL}${file}`);
     try {

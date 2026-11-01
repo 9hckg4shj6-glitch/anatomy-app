@@ -95,7 +95,17 @@ async function start(): Promise<void> {
     viewer = new AnatomyViewer(stage);
     await viewer.ready;
   } catch (error) {
-    panel.replaceChildren(h("p", {}, "3D表示を始められませんでした。"), h("p", { class: "muted" }, String(error)));
+    panel.replaceChildren(
+      h("h2", {}, "3D表示を始められませんでした"),
+      h("p", {}, "このアプリは3D（WebGL）を使います。次を試してください。"),
+      h("ul", {},
+        h("li", {}, "ほかのアプリやタブを閉じてから、読み直す"),
+        h("li", {}, "ブラウザを新しくする（Safari・Chrome・Edge の新しい版）"),
+        h("li", {}, "ブラウザの設定で「ハードウェアアクセラレーション」をオンにする（PC）"),
+      ),
+      h("button", { class: "primary", type: "button", onClick: () => location.reload() }, "読み直す"),
+      h("p", { class: "muted" }, String(error)),
+    );
     return;
   }
   const [index] = await Promise.all([loadModelIndex(), loadPreferences()]);

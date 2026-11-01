@@ -408,6 +408,10 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .settings { margin-top: 20px; padding-top: 4px; border-top: 1px solid var(--line); }
 .settings .ghost-button { margin-top: 12px; }
 .date-row { display: flex; align-items: center; gap: 8px; }
+.offline-list { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.offline-item { padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; }
+.offline-item.saved { border-color: color-mix(in srgb, var(--ok) 45%, var(--line)); color: var(--ok); }
+.offline-item.saved::before { content: "✓ "; }
 .date-input { min-height: 44px; padding: 0 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font: inherit; color: inherit; }
 .date-row .text-button { margin: 0; }
 /* 進捗の記録: 数字の札と棒グラフ */
