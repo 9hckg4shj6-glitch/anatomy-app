@@ -1,9 +1,10 @@
 import { autoSpeak } from "../audio";
-import { isDrawn, landmarksOf, loadAttachments, pins, regionSystems, systems, termById, terms, units, type Term } from "../content";
+import { isDrawn, landmarksOf, loadAttachments, pins, regionSystems, systems, termById, terms, units, type Term, type Unit } from "../content";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
 import { landmarkAt } from "../landmarks";
 import { relatedTerms } from "../related";
+import { normalize, searchTerms } from "../search";
 import type { Vec3 } from "../landmarks";
 import type { Section } from "../viewer";
 import { motionPlayer, type AppContext } from "./context";
@@ -296,7 +297,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     const query = normalize(search.value.trim());
     rows.clear();
     if (query) {
-      const matches = terms.filter((term) => [term.ja, term.yomi, term.en, term.la ?? "", ...(term.enAlt ?? [])].some((text) => normalize(text).includes(query)));
+      const matches = searchTerms(query);
       list.replaceChildren(matches.length ? termRows(matches) : h("p", { class: "muted" }, "見つかりませんでした。"));
       return;
     }
@@ -307,8 +308,17 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
       return [folder(system.id, "system folder",
         [h("span", { class: "swatch", style: `background:${system.color}` }), system.ja],
         `${inSystem.length}レッスン・${total}語`,
-        () => h("div", { class: "subfolders" }, ...inSystem.map((unit) =>
-          folder(unit.id, "subfolder", [unit.title], `${unit.terms.length}語`, () => termRows(unit.terms)))),
+        () => {
+          const lessons = (list: Unit[]) => list.map((unit) => folder(unit.id, "subfolder", [unit.title], `${unit.terms.length}語`, () => termRows(unit.terms)));
+          // まとまり（骨格系の体幹・上肢など）のある系統は、系統→まとまり→レッスンの3段にする
+          const groups = [...new Set(inSystem.map((unit) => unit.group))];
+          if (!groups[0]) return h("div", { class: "subfolders" }, ...lessons(inSystem));
+          return h("div", { class: "subfolders" }, ...groups.map((group) => {
+            const inGroup = inSystem.filter((unit) => unit.group === group);
+            return folder(`${system.id}/${group}`, "subfolder group", [group ?? ""], `${inGroup.length}レッスン・${inGroup.reduce((sum, unit) => sum + unit.terms.length, 0)}語`,
+              () => h("div", { class: "subfolders" }, ...lessons(inGroup)));
+          }));
+        },
       )];
     }));
   };
@@ -400,7 +410,3 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   else viewer.overview();
 }
 
-/** 検索の表記ゆれをそろえる（大文字・小文字、カタカナ→ひらがな、全角英数→半角） */
-function normalize(text: string): string {
-  return text.normalize("NFKC").toLowerCase().replace(/[\u30a1-\u30f6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
-}

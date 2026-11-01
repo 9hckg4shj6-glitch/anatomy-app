@@ -68,6 +68,8 @@ export type Tissue = "clear" | "sclera" | "iris" | "retina" | "tooth" | "mucosa"
 export interface Unit {
   id: string;
   title: string;
+  /** 系統の中のまとまり（骨格系は骨学試験の区分と同じ 体幹・上肢・下肢・頭蓋）。ホームと図鑑で入れ子のフォルダーにする */
+  group?: string;
   system: string;
   /** レッスンの初めに見せる説明（段落ごと） */
   intro?: string[];
@@ -76,7 +78,7 @@ export interface Unit {
 
 interface TermFile {
   system: string;
-  units: { id: string; title: string; intro?: string[]; terms: Omit<Term, "system" | "unit">[] }[];
+  units: { id: string; title: string; group?: string; intro?: string[]; terms: Omit<Term, "system" | "unit">[] }[];
 }
 
 type Vec3 = [number, number, number];
@@ -199,6 +201,7 @@ export const units: Unit[] = systems.flatMap((system) => {
   return (file?.units ?? []).map((unit) => ({
     id: unit.id,
     title: unit.title,
+    group: unit.group,
     system: system.id,
     intro: unit.intro,
     terms: unit.terms.map((term) => ({ ...term, system: system.id, unit: unit.id })),

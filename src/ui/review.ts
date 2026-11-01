@@ -62,7 +62,7 @@ export async function review(ctx: AppContext): Promise<void> {
   ctx.viewer.overview();
   ctx.hint("");
   const learned = await db.learned.toArray();
-  const next = nextLesson(new Set(learned.map((item) => item.termId)));
+  const next = nextLesson(learned);
   ctx.panel.replaceChildren(
     h("h2", {}, answered ? "今日の復習おわり" : "今日の復習はありません"),
     answered ? h("p", { class: "today-count" }, `${correct} / ${answered} 正解`) : "",

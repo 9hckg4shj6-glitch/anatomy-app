@@ -287,7 +287,7 @@
     },
     {
       "id": "lymph-abdomen-pelvis-more",
-      "title": "腹部と骨盤のリンパ節（追加）",
+      "title": "腹部の臓器と骨盤のリンパ節",
       "terms": [
         {
           "id": "inferior-diaphragmatic-nodes", "ja": "下横隔リンパ節", "yomi": "かおうかくりんぱせつ", "en": "inferior diaphragmatic nodes", "la": "nodi lymphoidei phrenici inferiores",

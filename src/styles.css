@@ -200,12 +200,26 @@ button { font: inherit; color: inherit; }
 }
 .folder summary::-webkit-details-marker { display: none; }
 .folder summary::before { content: "▸"; color: var(--muted); font-size: 18px; transition: transform 0.15s; }
-.folder[open] summary::before { transform: rotate(90deg); }
+.folder[open] > summary::before { transform: rotate(90deg); }
 .folder-title { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
 .folder-count { color: var(--muted); font-size: 13px; font-weight: 400; white-space: nowrap; }
 .folder.done .folder-count::before { content: "✓ "; color: var(--ok); }
 .folder .units { padding: 0 10px 10px; }
 .unit-all .unit-title { color: var(--accent); }
+/* 途中まで学んだレッスン */
+.unit.partial { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.unit.partial .unit-count::before { content: "途中 "; color: var(--accent); font-weight: 600; }
+/* ホームのまとまり（体幹・上肢など）: 系統のフォルダーの中の小さなフォルダー */
+.folder > .subfolders { padding: 0 10px 10px; display: grid; gap: 6px; }
+.subfolder .units { padding: 0 8px 8px; }
+.subfolder.done .folder-count::before { content: "✓ "; color: var(--ok); }
+.subfolder .folder-title { font-weight: 600; }
+.subfolder .subfolders { padding: 0 8px 8px; display: grid; gap: 6px; }
+.subfolder .subfolder { background: var(--surface); }
+.recent h3 { margin: 18px 0 8px; font-size: 15px; color: var(--muted); }
+.search-results h3 { display: flex; gap: 6px; align-items: baseline; }
+a.term-row { color: var(--ink); text-decoration: none; }
+.term-where { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; font-weight: 400; }
 .footer-link { margin-top: 28px; font-size: 14px; }
 .install { display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; padding: 12px 14px; border-radius: 12px; border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--line)); font-size: 14px; line-height: 1.6; }
 .install p { margin: 0; flex: 1; }
@@ -281,7 +295,7 @@ button { font: inherit; color: inherit; }
 }
 .subfolder summary::-webkit-details-marker { display: none; }
 .subfolder summary::before { content: "▸"; color: var(--muted); transition: transform 0.15s; }
-.subfolder[open] summary::before { transform: rotate(90deg); }
+.subfolder[open] > summary::before { transform: rotate(90deg); }
 .subfolder .term-list { padding: 0 8px 4px; }
 .subfolder li:last-child .term-row { border-bottom: 0; }
 

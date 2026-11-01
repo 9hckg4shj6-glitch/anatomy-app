@@ -72,7 +72,7 @@ const Term = z.strictObject({
   .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける");
 const TermFile = z.strictObject({
   system: z.string(),
-  units: z.array(z.strictObject({ id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), intro: z.array(z.string().min(1)).min(1).optional(), terms: z.array(Term).min(1) })).min(1),
+  units: z.array(z.strictObject({ id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), group: z.string().min(1).optional(), intro: z.array(z.string().min(1)).min(1).optional(), terms: z.array(Term).min(1) })).min(1),
 });
 
 const systems = JSON.parse(fs.readFileSync(path.join(ROOT, "content/systems.json"), "utf8"));
@@ -87,6 +87,15 @@ for (const system of systems) {
     continue;
   }
   if (parsed.data.system !== system.id) errors.push(`${system.id}.json: system が ${parsed.data.system} になっています`);
+  // まとまり（group）は系統のすべてのレッスンに付けるか、どれにも付けない。同じまとまりのレッスンは続けて並べる
+  const groups = parsed.data.units.map((unit) => unit.group);
+  if (groups.some(Boolean) && !groups.every(Boolean)) errors.push(`${system.id}.json: group が無いレッスンがある（${parsed.data.units.filter((unit) => !unit.group).map((unit) => unit.id).join(" ")}）`);
+  const closed = new Set();
+  groups.forEach((group, i) => {
+    if (group && group !== groups[i - 1] && closed.has(group)) errors.push(`${system.id}.json: まとまり「${group}」のレッスンが離れている`);
+    if (group) closed.add(group);
+  });
+  if (system.id === "skeletal" && groups.some((group) => !["体幹", "上肢", "下肢", "頭蓋"].includes(group))) errors.push("skeletal.json: 骨格系のまとまりは骨学試験の区分（体幹・上肢・下肢・頭蓋）にそろえる");
   for (const unit of parsed.data.units) {
     if (unitIds.has(unit.id)) errors.push(`レッスンIDが重複: ${unit.id}`);
     unitIds.add(unit.id);
