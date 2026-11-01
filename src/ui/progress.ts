@@ -96,7 +96,7 @@ export async function progress(ctx: AppContext): Promise<void> {
   }
 }
 
-/** 設定（発音の自動再生・1日の新しい問題の数）。記録を読み込んだら render で描き直す */
+/** 設定（発音の自動再生・1日の新しい問題の数・正解で自動で次へ）。記録を読み込んだら render で描き直す */
 function settingsSection(): { box: HTMLElement; render: () => void } {
   const box = h("section", { class: "settings" });
   const chips = <T>(options: { value: T; label: string }[], current: T, onPick: (value: T) => Promise<void>) =>
@@ -118,6 +118,9 @@ function settingsSection(): { box: HTMLElement; render: () => void } {
       window.dispatchEvent(new CustomEvent("anatomy:reviewed")); // 復習のバッジの数を変える
     }),
     h("p", { class: "muted" }, "1つの語に問い方が4つ（筋は7つ）あり、別々に数えます。期限の来た復習はこの数に関係なくすべて出ます。"),
+    h("p", { class: "setting-label" }, "正解したら自動で次の問題へ"),
+    chips([{ value: true, label: "進む（1.5秒）" }, { value: false, label: "自分で「次へ」" }], preferences.autoNext, (value) => setPreference("autoNext", value)),
+    h("p", { class: "muted" }, "まちがえたときは、説明を読めるよう自動では進みません。正解の画面で3Dや説明に触れると止まります。"),
   );
   render();
   return { box, render };

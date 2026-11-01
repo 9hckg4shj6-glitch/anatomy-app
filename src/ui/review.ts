@@ -1,14 +1,14 @@
 import { termById } from "../content";
 import { db, type ReviewEvent } from "../db";
 import { State } from "../fsrs";
-import { h } from "../dom";
+import { h, onKeys, until } from "../dom";
 import { examByKey, examFacetsOf, FIRST_FACETS, isExamKey } from "../exam";
 import { isRootKey, rootByKey } from "../roots";
-import { preferences } from "../settings";
+import { preferences, REVIEW_SIZE_OPTIONS, setPreference } from "../settings";
 import { buildQueue, facetsFor, ROOT_FACETS, type QueueItem } from "../study";
 import type { AppContext } from "./context";
 import { nextLesson } from "./home";
-import { ask, type Outcome } from "./quiz";
+import { ask, showPanel, type Outcome } from "./quiz";
 import { askExam } from "./exam";
 import { askRoot } from "./roots";
 
@@ -46,27 +46,74 @@ export async function dueCount(): Promise<number> {
 }
 
 export async function review(ctx: AppContext): Promise<void> {
+  let queue = await todayQueue();
+  // 多いときは、1回に解く数（10問・20問・全部）を選ぶ。前に選んだものを覚えておく
+  let limit = preferences.reviewSize;
+  if (queue.length > REVIEW_SIZE_OPTIONS[0]) {
+    ctx.viewer.overview();
+    ctx.hint("");
+    const sizes = REVIEW_SIZE_OPTIONS.filter((size) => size < queue.length);
+    const chosen = sizes.includes(limit) ? limit : 0;
+    const buttons = sizes.map((size) =>
+      h("button", { class: size === chosen ? "primary" : "ghost-button", type: "button" }, size ? `${size}問` : `全部（${queue.length}問）`));
+    showPanel(ctx,
+      h("h2", {}, "今日の復習"),
+      h("p", { class: "today-count" }, `${queue.length}問`),
+      h("p", {}, "1回に解く数は？ あとで続きから解けます。"),
+      h("div", { class: "nav-row review-size" }, ...buttons),
+    );
+    buttons[sizes.indexOf(chosen)].focus({ preventScroll: true });
+    limit = await until<number>(ctx.signal, (resolve) => buttons.forEach((button, i) => button.addEventListener("click", () => resolve(sizes[i]), { once: true })));
+    void setPreference("reviewSize", limit);
+  }
+
   let answered = 0;
   let correct = 0;
   /** まちがえた語・語根（終わりの画面で、図鑑や語根の一覧へ） */
   const missed = new Set<string>();
-  // 1問ごとに作り直す。間違えた問い方は10分後に再び期限が来るので、同じ回の中でもう一度出る。
-  for (let queue = await todayQueue(); queue.length; queue = await todayQueue()) {
-    const outcome = await askItem(ctx, queue[0], "review", `残り ${queue.length}`);
-    answered++;
-    if (outcome === "correct") correct++;
-    else missed.add(queue[0].termId);
+  // 「ここでやめる」（と Esc）: 今の問題をやめて、そこまでのまとめを出す
+  const session = new AbortController();
+  ctx.signal.addEventListener("abort", () => session.abort(ctx.signal.reason), { once: true });
+  const quit = h("button", { class: "chip", type: "button", onClick: () => session.abort("stop") }, "ここでやめる");
+  ctx.tools.replaceChildren(quit);
+  onKeys(session.signal, (key) => {
+    if (key !== "Escape") return false;
+    session.abort("stop");
+    return true;
+  });
+  const inner = { ...ctx, signal: session.signal };
+  // 1問ごとに作り直す。間違えた問い方は、新しい語なら1分後・覚えた語なら10分後に再び期限が来るので、同じ回の中でもう一度出る。
+  try {
+    for (; queue.length && (!limit || answered < limit); queue = await todayQueue()) {
+      const total = limit ? Math.min(limit, answered + queue.length) : answered + queue.length;
+      const outcome = await askItem(inner, queue[0], "review", `${answered + 1} / ${total}`);
+      answered++;
+      if (outcome === "correct") correct++;
+      else missed.add(queue[0].termId);
+    }
+  } catch (error) {
+    if (session.signal.reason !== "stop") throw error;
+    queue = await todayQueue();
   }
+  ctx.tools.replaceChildren();
+  ctx.viewer.onPick = null;
   ctx.viewer.setLabel(null);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   ctx.hint("");
   const learned = await db.learned.toArray();
   const next = nextLesson(learned);
+  // 「続ける」: 今と同じアドレスなので、画面を作り直す
+  const again = h("a", {
+    class: "primary", href: "#/review", onClick: (event: Event) => {
+      event.preventDefault();
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    },
+  }, `続ける（残り ${queue.length}問）`);
   ctx.panel.replaceChildren(
-    h("h2", {}, answered ? "今日の復習おわり" : "今日の復習はありません"),
+    h("h2", {}, queue.length ? "ここまでの復習" : answered ? "今日の復習おわり" : "今日の復習はありません"),
     answered ? h("p", { class: "today-count" }, `${correct} / ${answered} 正解`) : "",
-    h("p", {}, learned.length ? "間違えた問題は10分後、正解した問題は日をあけて出ます。" : "まずホームからレッスンを始めましょう。"),
+    h("p", {}, learned.length ? "まちがえた問題は、新しい語なら1分後、覚えた語なら10分後にもう一度出ます。正解した問題は日をあけて出ます。" : "まずホームからレッスンを始めましょう。"),
     missed.size ? h("h3", {}, "まちがえた語（タップで図鑑）") : "",
     missed.size ? h("div", { class: "chip-list" }, ...[...missed].map((id) => {
       const root = rootByKey.get(id);
@@ -76,9 +123,11 @@ export async function review(ctx: AppContext): Promise<void> {
       return h("a", { class: "chip", href: `#/explore/${id}` }, termById.get(id)?.ja ?? id);
     })) : "",
     h("div", { class: "nav-row" },
-      ...(next && learned.length
-        ? [h("a", { class: "ghost-button", href: "#/" }, "ホームへ"), h("a", { class: "primary", href: `#/learn/${next.id}` }, "次のレッスンへ")]
-        : [h("a", { class: "primary", href: "#/" }, "ホームへ")]),
+      ...(queue.length
+        ? [h("a", { class: "ghost-button", href: "#/" }, "ホームへ"), again]
+        : next && learned.length
+          ? [h("a", { class: "ghost-button", href: "#/" }, "ホームへ"), h("a", { class: "primary", href: `#/learn/${next.id}` }, "次のレッスンへ")]
+          : [h("a", { class: "primary", href: "#/" }, "ホームへ")]),
     ),
   );
 }

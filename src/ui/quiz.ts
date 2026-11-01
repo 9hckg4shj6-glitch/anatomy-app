@@ -7,6 +7,7 @@ import { h, onKeys, until } from "../dom";
 import { dueLabel, Rating, recordReview } from "../fsrs";
 import { hitsPin, landmarkAt, nearbyLandmarks, nestedLandmarks, type Vec3 } from "../landmarks";
 import { facetLabels, pickChoices, typesEnglish, type QueueItem } from "../study";
+import { preferences } from "../settings";
 import { INSERTION_COLOR, ORIGIN_COLOR } from "../viewer";
 import { motionPlayer, sceneFor, type AppContext } from "./context";
 import { termCard } from "./term-card";
@@ -92,7 +93,7 @@ function placeOf(ctx: AppContext, id: string): Vec3 {
 /** 1問出して、答え合わせと記録まで行う。「次へ」を押したら終わる。 */
 export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent["source"], progress = ""): Promise<Outcome> {
   const term = termById.get(item.termId)!;
-  const { viewer, signal } = ctx;
+  const { viewer } = ctx;
   const started = performance.now();
   await viewer.show(sceneFor(term.system, term.unit));
   viewer.setLabel(null);
@@ -238,16 +239,58 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const next = h("button", { class: "primary", type: "button" }, "次へ");
   // タップや選択肢の押しまちがいは、記録を取り消して同じ問題を解き直せる
   const retry = outcome === "correct" ? null : retryButton();
-  showPanel(ctx, header, banner, wrongNote ?? "", termCard(term, { motion: motionPlayer(ctx, term) }),
+  // 正解なら語のカードは名前だけにして（「くわしく」で全部）、すぐ次へ進めるようにする
+  const card = outcome === "correct" ? moreCard(term, () => termCard(term, { motion: motionPlayer(ctx, term) })) : termCard(term, { motion: motionPlayer(ctx, term) });
+  showPanel(ctx, header, banner, wrongNote ?? "", card,
     h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`), retry ?? "", next);
-  next.focus({ preventScroll: true });
-  const again = await until<boolean>(signal, (resolve) => {
-    next.addEventListener("click", () => resolve(false), { once: true });
-    retry?.addEventListener("click", () => resolve(true), { once: true });
-  });
+  const again = await waitResult(ctx, next, retry, outcome === "correct");
   if (!again) return outcome;
   await undo();
   return ask(ctx, item, source, progress);
+}
+
+/**
+ * 答え合わせの画面で「次へ」か解き直しを待つ（語・語根・骨学試験で共通）。解き直しなら true。
+ * キーボードでは Enter・→ で次へ、Backspace で解き直し（ボタンにフォーカスが無くても）。
+ * 設定の「正解したら自動で次へ」がオンなら、正解のとき1.5秒で次へ進む（画面に触れたりキーを押したりしたら止める）。
+ */
+export function waitResult(ctx: AppContext, next: HTMLButtonElement, retry: HTMLButtonElement | null, correct: boolean): Promise<boolean> {
+  next.focus({ preventScroll: true });
+  return until<boolean>(ctx.signal, (resolve) => {
+    let timer = 0;
+    const done = (again: boolean) => {
+      window.clearTimeout(timer);
+      stop();
+      resolve(again);
+    };
+    const stop = onKeys(ctx.signal, (key) => {
+      if (key === "Enter" || key === "ArrowRight") done(false);
+      else if (key === "Backspace" && retry) done(true);
+      else return false;
+      return true;
+    });
+    next.addEventListener("click", () => done(false), { once: true });
+    retry?.addEventListener("click", () => done(true), { once: true });
+    if (correct && preferences.autoNext) {
+      const note = h("p", { class: "auto-next" }, "1.5秒で次へ進みます（画面に触れると止まります）");
+      next.before(note);
+      const cancel = () => {
+        window.clearTimeout(timer);
+        note.remove();
+      };
+      timer = window.setTimeout(() => done(false), 1500);
+      // 3Dを回したり説明を読もうとしたりしたら止める
+      document.addEventListener("pointerdown", cancel, { once: true, signal: ctx.signal });
+      document.addEventListener("keydown", cancel, { once: true, signal: ctx.signal });
+    }
+  });
+}
+
+/** 正解のときの短い語のカード。「くわしく」で全部のカードに替える */
+function moreCard(term: Term, full: () => HTMLElement): HTMLElement {
+  const box = h("div", {}, termCard(term, { compact: true }));
+  box.append(h("button", { class: "text-button more", type: "button", onClick: () => box.replaceChildren(full()) }, "くわしく（説明・語源を見る）"));
+  return box;
 }
 
 /** 解き直しを出すときの共通の文言（語根の問題でも使う） */
@@ -289,8 +332,15 @@ export async function chooseOne(
 
 async function tapElement(ctx: AppContext, header: HTMLElement, term: Term): Promise<{ element: string; point: Vec3 } | null> {
   const status = h("p", { class: "tap-status" }, "部位をタップしてください（回転・拡大もできます）");
+  let stopKeys = () => {};
   try {
     return await until<{ element: string; point: Vec3 } | null>(ctx.signal, (resolve) => {
+      // キーボードでは 0 で「わからない」（ほかの問題の数字キーと同じ）
+      stopKeys = onKeys(ctx.signal, (key) => {
+        if (key !== "0") return false;
+        resolve(null);
+        return true;
+      });
       ctx.viewer.onPick = (element, point) => {
         if (!element || !point) {
           status.textContent = term.of ? `${termById.get(term.of)?.ja ?? "骨"}の上をタップしてください` : "部位の上をタップしてください";
@@ -308,6 +358,7 @@ async function tapElement(ctx: AppContext, header: HTMLElement, term: Term): Pro
     });
   } finally {
     ctx.viewer.onPick = null;
+    stopKeys();
   }
 }
 
@@ -318,6 +369,10 @@ export async function typeEnglish(ctx: AppContext, header: HTMLElement, prompt: 
       // iOS の自動修正（解剖の英語名を普通の単語に直してしまう）も切る
       class: "type-en", type: "text", lang: "en", autocomplete: "off", autocapitalize: "off", autocorrect: "off", spellcheck: false, enterkeyhint: "done",
       placeholder, "aria-label": "英語のつづり",
+    });
+    // 日本語入力の変換を決める Enter（Safari では isComposing が false で keyCode 229 になる）では答えにしない
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && (event.isComposing || event.keyCode === 229)) event.preventDefault();
     });
     const form = h("form", { class: "type-form", onSubmit: (event: Event) => { event.preventDefault(); resolve(input.value); } },
       input, h("button", { class: "primary", type: "submit" }, "答える"));

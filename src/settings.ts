@@ -6,15 +6,22 @@ export interface Preferences {
   autoSpeak: boolean;
   /** 1日に新しく始める問い方の数（4つの問い方を別々に数える） */
   newPerDay: number;
+  /** 正解したら1.5秒で次の問題へ進む（まちがえたときは自分で「次へ」） */
+  autoNext: boolean;
+  /** 復習の1回の区切り（0 は全部）。復習を始めるときに選んだものを覚える */
+  reviewSize: number;
 }
 
 export const NEW_PER_DAY_OPTIONS = [10, 20, 30, 40];
+export const REVIEW_SIZE_OPTIONS = [10, 20, 0];
 
-export const preferences: Preferences = { autoSpeak: true, newPerDay: 20 };
+export const preferences: Preferences = { autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20 };
 
 const valid: { [K in keyof Preferences]: (value: unknown) => value is Preferences[K] } = {
   autoSpeak: (value): value is boolean => typeof value === "boolean",
   newPerDay: (value): value is number => typeof value === "number" && NEW_PER_DAY_OPTIONS.includes(value),
+  autoNext: (value): value is boolean => typeof value === "boolean",
+  reviewSize: (value): value is number => typeof value === "number" && REVIEW_SIZE_OPTIONS.includes(value),
 };
 
 /** 起動したときと、記録を読み込んだときに呼ぶ */

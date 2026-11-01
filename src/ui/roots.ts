@@ -1,12 +1,12 @@
 import type { Term } from "../content";
 import { db, nowIso, type ReviewEvent } from "../db";
-import { h, until } from "../dom";
+import { h } from "../dom";
 import { dueLabel, Rating, recordReview } from "../fsrs";
 import { examplesOf, exampleFor, rootByKey, rootKey, roots, rootUnitById, rootUnits, type Root } from "../roots";
 import { facetLabels, pickChoices, shuffle, type QueueItem } from "../study";
 import { LEAVE_LESSON, type AppContext } from "./context";
 import { turnPage } from "./lesson";
-import { chooseOne, retryButton, showPanel, type Outcome } from "./quiz";
+import { chooseOne, retryButton, showPanel, waitResult, type Outcome } from "./quiz";
 import { markedRoot as marked } from "./term-card";
 
 /** 例の語の3Dを光らせる（部位を持つ語だけ。系統は3つまで読む） */
@@ -137,11 +137,7 @@ export async function askRoot(ctx: AppContext, item: QueueItem, source: ReviewEv
     retry ?? "",
     next,
   );
-  next.focus({ preventScroll: true });
-  const again = await until<boolean>(ctx.signal, (resolve) => {
-    next.addEventListener("click", () => resolve(false), { once: true });
-    retry?.addEventListener("click", () => resolve(true), { once: true });
-  });
+  const again = await waitResult(ctx, next, retry, outcome === "correct");
   if (!again) return outcome;
   await undo();
   return askRoot(ctx, item, source, progress);

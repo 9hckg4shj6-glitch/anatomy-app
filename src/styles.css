@@ -259,6 +259,20 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .typed { font-weight: 400; text-decoration: line-through; opacity: 0.9; }
 .wrong-note { color: #3d7bd9; font-size: 14px; margin: 0 0 10px; }
 .next-due { color: var(--muted); font-size: 14px; }
+.auto-next { margin: 0 0 6px; color: var(--muted); font-size: 13px; text-align: center; }
+.text-button.more { margin: 6px 0 0; }
+.text-button.skip-test { margin: 10px auto 0; }
+.drill-note { padding: 8px 12px; border-radius: 10px; background: color-mix(in srgb, var(--close) 12%, var(--surface)); font-size: 14px; }
+.review-size { flex-wrap: wrap; }
+/* ? で出すキーの一覧 */
+.key-help { max-width: min(420px, calc(100vw - 32px)); padding: 16px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); }
+.key-help::backdrop { background: rgb(0 0 0 / 0.35); }
+.key-help h2 { margin: 0 0 10px; font-size: 18px; }
+.key-help dl { display: grid; gap: 6px; margin: 0 0 14px; }
+.key-help dl div { display: grid; grid-template-columns: 7.5em 1fr; gap: 8px; align-items: baseline; }
+.key-help dd { margin: 0; font-size: 14px; }
+.key-help kbd { padding: 1px 6px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; background: var(--bg); font: 13px ui-monospace, monospace; }
+.key-help .primary { width: 100%; }
 /* 押しまちがいの取り消しなど、目立たせない操作 */
 .text-button { display: block; min-height: 40px; margin: 0 auto 4px; padding: 8px 12px; border: 0; background: none; color: var(--muted); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 /* PC（マウスのある端末）と、キーボードで答えた端末（iPad のキーボードなど。:root.keys は src/main.ts）では、選択肢に数字キーの番号を添える */

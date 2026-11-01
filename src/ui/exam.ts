@@ -17,7 +17,7 @@ import { ORIGIN_COLOR } from "../viewer";
 import { dueLabel, Rating, recordReview, retrievability } from "../fsrs";
 import { facetLabels, pickChoices, practiceQueue, shuffle, typesEnglish, type PracticeCandidate, type QueueItem } from "../study";
 import { sceneFor, type AppContext } from "./context";
-import { chooseOne, retryButton, showPanel, typeEnglish, type Outcome } from "./quiz";
+import { chooseOne, retryButton, showPanel, typeEnglish, waitResult, type Outcome } from "./quiz";
 import { termCard } from "./term-card";
 
 /** 1回に新しく学ぶ数（D は図1枚が重いので少なく）と、苦手を解く数 */
@@ -235,11 +235,7 @@ async function showResult(ctx: AppContext, outcome: Outcome, nodes: (Node | stri
   const next = h("button", { class: "primary", type: "button" }, "次へ");
   const retry = outcome === "correct" ? null : retryButton();
   showPanel(ctx, ...nodes, h("p", { class: "next-due" }, `次の出題: ${due}`), retry ?? "", next);
-  next.focus({ preventScroll: true });
-  return until<boolean>(ctx.signal, (resolve) => {
-    next.addEventListener("click", () => resolve(false), { once: true });
-    retry?.addEventListener("click", () => resolve(true), { once: true });
-  });
+  return waitResult(ctx, next, retry, outcome === "correct");
 }
 
 const ratingOf: Record<Outcome, Grade> = { correct: Rating.Good, close: Rating.Hard, wrong: Rating.Again, skip: Rating.Again };

@@ -26,10 +26,32 @@ const badge = document.getElementById("due-badge")!;
 watchInstallPrompt();
 const splitter = setupSplitter(document.querySelector<HTMLElement>(".layout")!, stage, panel);
 
-// キーボードで答えたら（iPad のキーボードなど、マウスの無い端末でも）、選択肢に数字キーの番号を添える
+// キーボードで答えたら（iPad のキーボードなど、マウスの無い端末でも）、選択肢に数字キーの番号を添える。
+// ? でキーの一覧、/ で検索欄へ（ホームと図鑑）
+const keyHelp = h("dialog", { class: "key-help", "aria-label": "キーボードの操作" },
+  h("h2", {}, "キーボードの操作"),
+  h("dl", {},
+    ...([
+      ["1〜4", "選択肢を選ぶ"], ["0", "わからない"], ["Enter ・ →", "答えたあと次へ"], ["Backspace", "押しまちがえた（取り消して解き直す）"],
+      ["← →", "レッスンで前・次の語"], ["Esc", "復習をここでやめる"], ["/", "検索欄へ（ホーム・図鑑）"], ["?", "この一覧"],
+    ] as const).map(([key, text]) => h("div", {}, h("dt", {}, h("kbd", {}, key)), h("dd", {}, text))),
+  ),
+  h("form", { method: "dialog" }, h("button", { class: "primary" }, "閉じる")),
+);
+document.body.append(keyHelp);
 document.addEventListener("keydown", (event) => {
-  if (/^[0-9]$|^Arrow|^Enter$/.test(event.key) && !(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) {
-    document.documentElement.classList.add("keys");
+  const typing = event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement;
+  if (typing || event.ctrlKey || event.metaKey || event.altKey) return;
+  if (/^[0-9]$|^Arrow|^Enter$/.test(event.key)) document.documentElement.classList.add("keys");
+  if (event.key === "?") {
+    event.preventDefault();
+    if (keyHelp.open) keyHelp.close();
+    else keyHelp.showModal();
+  } else if (event.key === "/") {
+    const search = document.querySelector<HTMLInputElement>("#panel .search");
+    if (!search) return;
+    event.preventDefault();
+    search.focus();
   }
 });
 
