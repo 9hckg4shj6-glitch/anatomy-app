@@ -8,63 +8,63 @@
       "terms": [
         {
           "id": "heart", "ja": "心臓", "yomi": "しんぞう", "en": "heart", "la": "cor",
-          "parts": ["wall of atrium", "wall of ventricle"], "level": 1, "color": "#b5443f",
+          "parts": ["wall of atrium", "wall of ventricle"], "level": 1, "color": "#a65d4f",
           "kanji": "心＝こころ・中心",
           "etym": "heart（英語の固有語）。ラテン語 cor、ギリシャ語 kardia から cardiac「心臓の」",
           "note": "胸の中央やや左にある握りこぶし大の筋の袋。2つの心房と2つの心室からなり、血液を全身と肺へ送り出す。壁は内側から心内膜・心筋層・心外膜。拍動は刺激伝導系がつくる: 右心房の上大静脈の口のそばの洞房結節（ペースメーカー）で起きた興奮が心房に広がり、冠状静脈洞の口のすぐ上の房室結節（田原結節）から房室束（ヒス束）を通って心室中隔で右脚・左脚に分かれ、プルキンエ線維で心室の壁に伝わる。"
         },
         {
           "id": "right-atrium", "ja": "右心房", "yomi": "うしんぼう", "en": "right atrium", "la": "atrium dextrum",
-          "parts": ["cavity of right atrium"], "level": 1, "xray": true,
+          "parts": ["wall of right atrium"], "level": 1, "color": "#a65d4f",
           "kanji": "房＝へや。血液を受け入れる部屋",
           "etym": "atrium ← ラテン語「玄関の広間」",
-          "note": "全身から戻った静脈血を上大静脈・下大静脈から受け取る部屋。図は内腔（血液の入る空間）を示す。後ろの内面が滑らかな大静脈洞と、櫛状筋が並ぶ右心耳の境に分界稜がある。上大静脈口・下大静脈口・冠状静脈洞の口・右房室口が開き、左心房との間の心房中隔には胎児の卵円孔の名残の卵円窩がある。"
+          "note": "全身から戻った静脈血を上大静脈・下大静脈から受け取る部屋。心臓の右の縁をつくる。後ろの内面が滑らかな大静脈洞と、櫛状筋が並ぶ右心耳の境に分界稜がある。上大静脈口・下大静脈口・冠状静脈洞の口・右房室口が開き、左心房との間の心房中隔には胎児の卵円孔の名残の卵円窩がある。"
         },
         {
           "id": "right-ventricle", "ja": "右心室", "yomi": "うしんしつ", "en": "right ventricle", "la": "ventriculus dexter",
-          "parts": ["cavity of right ventricle"], "level": 1, "xray": true,
+          "parts": ["wall of right ventricle"], "level": 1, "color": "#a65d4f",
           "kanji": "室＝へや。血液を送り出す部屋",
           "etym": "ventricle ← ラテン語 ventriculus「小さな腹」",
           "note": "右心房から受けた血液を肺動脈へ送り出す部屋。心臓の前面の大部分をしめる。内面は肉柱で凹凸し、肺動脈口へ続く漏斗の形の滑らかな部分を動脈円錐という（流れこむ道との境が室上稜）。心室中隔から前乳頭筋の付け根へ、刺激伝導系の右脚が通る中隔縁柱が渡る。"
         },
         {
           "id": "left-atrium", "ja": "左心房", "yomi": "さしんぼう", "en": "left atrium", "la": "atrium sinistrum",
-          "parts": ["cavity of left atrium"], "level": 1, "xray": true,
+          "parts": ["wall of left atrium"], "level": 1, "color": "#a65d4f", "from": [0.15, 0.3, -1],
           "kanji": "房＝へや",
           "etym": "atrium「玄関の広間」",
           "note": "肺で酸素を受け取った血液を肺静脈から受け取る部屋。心臓の最も後ろにある。後ろの壁の上部に左右2本ずつ計4本の肺静脈が開く。内面は左心耳を除いて滑らか。"
         },
         {
           "id": "left-ventricle", "ja": "左心室", "yomi": "さしんしつ", "en": "left ventricle", "la": "ventriculus sinister",
-          "parts": ["cavity of left ventricle"], "level": 1, "xray": true,
+          "parts": ["wall of left ventricle"], "level": 1, "color": "#a65d4f",
           "kanji": "室＝へや",
           "etym": "ventricle「小さな腹」",
           "note": "大動脈へ血液を全身に送り出す部屋。壁が最も厚く、右心室の2〜3倍。内面に前・後の2つの大きな乳頭筋があり、腱索で僧帽弁につながる。"
         },
         {
           "id": "mitral-valve", "ja": "僧帽弁", "yomi": "そうぼうべん", "en": "mitral valve", "enAlt": ["left atrioventricular valve", "bicuspid valve"], "la": "valva mitralis",
-          "parts": ["* leaflet of mitral valve"], "level": 2, "xray": true,
+          "parts": ["* leaflet of mitral valve"], "level": 2, "xray": true, "color": "#e3d3ac",
           "kanji": "僧帽＝司教の冠（ミトラ）の形",
           "etym": "mitral ← mitra「司教の冠」。2枚の弁尖が冠の形に似る",
           "note": "左心房と左心室の間の弁。2枚の弁尖からなる（二尖弁）。"
         },
         {
           "id": "tricuspid-valve", "ja": "三尖弁", "yomi": "さんせんべん", "en": "tricuspid valve", "enAlt": ["right atrioventricular valve"], "la": "valva tricuspidalis",
-          "parts": ["* leaflet of tricuspid valve"], "level": 2, "xray": true,
+          "parts": ["* leaflet of tricuspid valve"], "level": 2, "xray": true, "color": "#e3d3ac",
           "kanji": "3つの尖（とがった弁尖）をもつ弁",
           "etym": "tri-「3」＋ cuspis「とがった先」",
           "note": "右心房と右心室の間の弁。"
         },
         {
           "id": "aortic-valve", "ja": "大動脈弁", "yomi": "だいどうみゃくべん", "en": "aortic valve", "la": "valva aortae",
-          "parts": ["* cusp of aortic valve"], "level": 2, "xray": true,
+          "parts": ["* cusp of aortic valve"], "level": 2, "xray": true, "color": "#e3d3ac",
           "kanji": "大動脈の出口の弁",
           "etym": "aortic ← aorta「大動脈」",
           "note": "左心室と大動脈の間の弁。3枚の半月弁からなる。"
         },
         {
           "id": "pulmonary-valve", "ja": "肺動脈弁", "yomi": "はいどうみゃくべん", "en": "pulmonary valve", "la": "valva trunci pulmonalis",
-          "parts": ["* cusp of pulmonary valve"], "level": 2, "xray": true,
+          "parts": ["* cusp of pulmonary valve"], "level": 2, "xray": true, "color": "#e3d3ac",
           "kanji": "肺動脈の出口の弁",
           "etym": "pulmonary ← ラテン語 pulmo「肺」",
           "note": "右心室と肺動脈幹の間の弁。3枚の半月弁からなる。"
@@ -99,42 +99,42 @@
       "terms": [
         {
           "id": "papillary-muscles", "ja": "乳頭筋", "yomi": "にゅうとうきん", "en": "papillary muscles", "la": "musculi papillares",
-          "parts": ["*papillary muscle of ventricle"], "level": 1, "xray": true, "color": "#b5443f",
+          "parts": ["*papillary muscle of ventricle"], "level": 1, "xray": true, "color": "#a65d4f",
           "kanji": "乳首のように突き出た筋",
           "etym": "papillary「乳頭の」（ラテン語 papilla＝乳首）",
           "note": "心室の壁から内腔へ突き出た筋の柱。先から腱索が出て房室弁の弁尖につながり、心室が縮むときに弁が心房へめくれ返るのを防ぐ。心筋梗塞で切れると急に弁がもれる。"
         },
         {
           "id": "anterior-cusp-of-mitral-valve", "ja": "前尖（僧帽弁）", "yomi": "ぜんせん", "en": "anterior cusp of mitral valve", "enAlt": ["anterior leaflet of mitral valve"], "la": "cuspis anterior valvae mitralis",
-          "parts": ["anterior leaflet of mitral valve"], "level": 2, "xray": true,
+          "parts": ["anterior leaflet of mitral valve"], "level": 2, "xray": true, "color": "#e3d3ac",
           "kanji": "僧帽弁の前の弁尖",
           "etym": "anterior「前の」＋ cusp「とがった先（弁尖）」",
           "note": "僧帽弁の2枚の弁尖のうち大きい方。大動脈弁のすぐそばにあり、血液の通り道を左心房側と大動脈側に分ける。"
         },
         {
           "id": "posterior-cusp-of-mitral-valve", "ja": "後尖（僧帽弁）", "yomi": "こうせん", "en": "posterior cusp of mitral valve", "enAlt": ["posterior leaflet of mitral valve"], "la": "cuspis posterior valvae mitralis",
-          "parts": ["posterior leaflet of mitral valve"], "level": 2, "xray": true,
+          "parts": ["posterior leaflet of mitral valve"], "level": 2, "xray": true, "color": "#e3d3ac",
           "kanji": "僧帽弁の後ろの弁尖",
           "etym": "posterior「後ろの」＋ cusp「弁尖」",
           "note": "僧帽弁の小さい方の弁尖。弁輪の後ろ側の広い範囲に付く。僧帽弁逸脱は後尖に多い。"
         },
         {
           "id": "anterior-cusp-of-tricuspid-valve", "ja": "前尖（三尖弁）", "yomi": "ぜんせん", "en": "anterior cusp of tricuspid valve", "enAlt": ["anterior leaflet of tricuspid valve"], "la": "cuspis anterior valvae tricuspidalis",
-          "parts": ["anterior leaflet of tricuspid valve"], "level": 3, "xray": true,
+          "parts": ["anterior leaflet of tricuspid valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "三尖弁の前の弁尖",
           "etym": "anterior「前の」＋ cusp「弁尖」",
           "note": "三尖弁の3枚の弁尖のうち最も大きいもの。"
         },
         {
           "id": "posterior-cusp-of-tricuspid-valve", "ja": "後尖（三尖弁）", "yomi": "こうせん", "en": "posterior cusp of tricuspid valve", "enAlt": ["posterior leaflet of tricuspid valve"], "la": "cuspis posterior valvae tricuspidalis",
-          "parts": ["posterior leaflet of tricuspid valve"], "level": 3, "xray": true,
+          "parts": ["posterior leaflet of tricuspid valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "三尖弁の後ろの弁尖",
           "etym": "posterior「後ろの」＋ cusp「弁尖」",
           "note": "三尖弁の下後ろの弁尖。"
         },
         {
           "id": "septal-cusp-of-tricuspid-valve", "ja": "中隔尖（三尖弁）", "yomi": "ちゅうかくせん", "en": "septal cusp of tricuspid valve", "enAlt": ["septal leaflet of tricuspid valve"], "la": "cuspis septalis valvae tricuspidalis",
-          "parts": ["septal leaflet of tricuspid valve"], "level": 3, "xray": true,
+          "parts": ["septal leaflet of tricuspid valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "三尖弁の中隔側の弁尖",
           "etym": "septal「中隔の」＋ cusp「弁尖」",
           "note": "三尖弁の、心室中隔に付く弁尖。近くを刺激伝導系（房室束）が通る。"
@@ -166,42 +166,42 @@
       "terms": [
         {
           "id": "right-semilunar-cusp-of-aortic-valve", "ja": "右半月弁（大動脈弁）", "yomi": "うはんげつべん", "en": "right semilunar cusp of aortic valve", "enAlt": ["right coronary cusp"], "la": "valvula semilunaris dextra valvae aortae",
-          "parts": ["anterior cusp of aortic valve"], "level": 3, "xray": true,
+          "parts": ["anterior cusp of aortic valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "大動脈弁の右の半月形の弁",
           "etym": "semilunar「半月形の」（ラテン語 semi＝半分＋ luna＝月）＋ cusp「とがった先」",
           "note": "大動脈弁の3枚のうち前の1枚。この弁の上の大動脈洞から右冠状動脈が出るので、右冠尖ともいう。心エコーでは3枚の弁がベンツのマークの形に見える。"
         },
         {
           "id": "left-semilunar-cusp-of-aortic-valve", "ja": "左半月弁（大動脈弁）", "yomi": "さはんげつべん", "en": "left semilunar cusp of aortic valve", "enAlt": ["left coronary cusp"], "la": "valvula semilunaris sinistra valvae aortae",
-          "parts": ["left posterior cusp of aortic valve"], "level": 3, "xray": true,
+          "parts": ["left posterior cusp of aortic valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "大動脈弁の左の半月形の弁",
           "etym": "left「左の」＋ semilunar cusp「半月弁」",
           "note": "大動脈弁の左後ろの1枚。この弁の上の大動脈洞から左冠状動脈が出るので、左冠尖ともいう。心臓がゆるむとき（拡張期）、閉じた弁のポケットにたまった血液が冠状動脈へ流れこむ。"
         },
         {
           "id": "posterior-semilunar-cusp-of-aortic-valve", "ja": "後半月弁（大動脈弁）", "yomi": "こうはんげつべん", "en": "posterior semilunar cusp of aortic valve", "enAlt": ["non-coronary cusp"], "la": "valvula semilunaris posterior valvae aortae",
-          "parts": ["right posterior cusp of aortic valve"], "level": 3, "xray": true,
+          "parts": ["right posterior cusp of aortic valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "大動脈弁の後ろの半月形の弁",
           "etym": "posterior「後ろの」＋ semilunar cusp「半月弁」",
           "note": "大動脈弁の右後ろの1枚。この弁の上からは冠状動脈が出ないので、無冠尖ともいう。心房中隔に接し、すぐ下に僧帽弁の前尖が続く。"
         },
         {
           "id": "anterior-semilunar-cusp-of-pulmonary-valve", "ja": "前半月弁（肺動脈弁）", "yomi": "ぜんはんげつべん", "en": "anterior semilunar cusp of pulmonary valve", "la": "valvula semilunaris anterior valvae trunci pulmonalis",
-          "parts": ["left anterior cusp of pulmonary valve"], "level": 3, "xray": true,
+          "parts": ["left anterior cusp of pulmonary valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "肺動脈弁の前の半月形の弁",
           "etym": "anterior「前の」＋ semilunar cusp「半月弁」",
           "note": "肺動脈弁の3枚のうち、大動脈から最も遠い前の1枚。肺動脈弁は大動脈弁の前の左上、胸骨の左の第3肋軟骨の高さにある（聴診は第2肋間胸骨左縁）。"
         },
         {
           "id": "right-semilunar-cusp-of-pulmonary-valve", "ja": "右半月弁（肺動脈弁）", "yomi": "うはんげつべん", "en": "right semilunar cusp of pulmonary valve", "la": "valvula semilunaris dextra valvae trunci pulmonalis",
-          "parts": ["right anterior cusp of pulmonary valve"], "level": 3, "xray": true,
+          "parts": ["right anterior cusp of pulmonary valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "肺動脈弁の右の半月形の弁",
           "etym": "right「右の」＋ semilunar cusp「半月弁」",
           "note": "肺動脈弁の右の1枚。左半月弁とともに大動脈弁の方を向き、大動脈弁の右半月弁・左半月弁と向かい合う。"
         },
         {
           "id": "left-semilunar-cusp-of-pulmonary-valve", "ja": "左半月弁（肺動脈弁）", "yomi": "さはんげつべん", "en": "left semilunar cusp of pulmonary valve", "la": "valvula semilunaris sinistra valvae trunci pulmonalis",
-          "parts": ["posterior cusp of pulmonary valve"], "level": 3, "xray": true,
+          "parts": ["posterior cusp of pulmonary valve"], "level": 3, "xray": true, "color": "#e3d3ac",
           "kanji": "肺動脈弁の左の半月形の弁",
           "etym": "left「左の」＋ semilunar cusp「半月弁」",
           "note": "肺動脈弁の左後ろの1枚。大動脈弁に最も近い。半月弁の自由縁の真ん中には小さな結節（半月弁結節）があり、閉じたとき3枚の弁がすきまなく合わさる。"
@@ -245,7 +245,7 @@
     },
     {
       "id": "cv-pt-heart",
-      "title": "心臓と脾臓の表面の部位",
+      "title": "心臓の表面の部位",
       "group": "心臓",
       "intro": [
         "心臓の表面には、心房と心室の境をぐるりと回る冠状溝と、左右の心室の境を縦に走る前室間溝・後室間溝がある。冠状動脈と心臓の静脈は、脂肪に包まれてこの溝の中を走る。",
@@ -293,13 +293,6 @@
           "kanji": "左心房の、耳のように突き出た部分",
           "etym": "left「左の」＋ auricle「小さな耳」",
           "note": "左心房から前へ伸びる細長く曲がった袋で、肺動脈幹の左にのぞく。心房細動では中で血液がよどんで血栓ができやすく、脳梗塞の原因になる。手術で閉じることがある。"
-        },
-        {
-          "id": "splenic-hilum", "ja": "脾門", "yomi": "ひもん", "en": "splenic hilum", "enAlt": ["hilum of spleen"], "la": "hilum splenicum",
-          "of": "spleen", "level": 2,
-          "kanji": "脾臓の門（出入り口）",
-          "etym": "splenic ← ギリシャ語 splen「脾臓」＋ hilum「へそ」",
-          "note": "脾臓の臓側面（胃・腎臓・結腸に向く内側の面）の中ほどにある、血管の出入り口。脾動脈の枝が入り、脾静脈が出る。胃脾間膜と脾腎ヒダ（脾腎間膜）がここに付き、膵尾が届く。"
         }
       ]
     },
@@ -699,6 +692,13 @@
           "kanji": "脾＝ひ。内臓の一つ",
           "etym": "spleen ← ギリシャ語 splen。ラテン語では lien",
           "note": "左上腹部、胃の後ろにあるリンパ性の器官。古くなった赤血球をこわし、免疫にかかわる。"
+        },
+        {
+          "id": "splenic-hilum", "ja": "脾門", "yomi": "ひもん", "en": "splenic hilum", "enAlt": ["hilum of spleen"], "la": "hilum splenicum",
+          "of": "spleen", "level": 2,
+          "kanji": "脾臓の門（出入り口）",
+          "etym": "splenic ← ギリシャ語 splen「脾臓」＋ hilum「へそ」",
+          "note": "脾臓の臓側面（胃・腎臓・結腸に向く内側の面）の中ほどにある、血管の出入り口。脾動脈の枝が入り、脾静脈が出る。胃脾間膜と脾腎ヒダ（脾腎間膜）がここに付き、膵尾が届く。"
         }
       ]
     },

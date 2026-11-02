@@ -19,7 +19,7 @@ import { EXTMeshoptCompression, KHRMeshQuantization } from "@gltf-transform/exte
 import { dedup, meshopt, prune, quantize, reorder } from "@gltf-transform/functions";
 import { MeshoptEncoder, MeshoptSimplifier } from "meshoptimizer";
 import { attachedBones } from "./attach-bones.mjs";
-import { splitMesh } from "./split-mesh.mjs";
+import { partitionMesh, splitMesh } from "./split-mesh.mjs";
 import { loadHires } from "./hires.mjs";
 import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, relax, simplify, subdivide } from "./surface.mjs";
 import { loadZa } from "./za/index.mjs";
@@ -262,6 +262,21 @@ const CUTS = [
   { part: "rectus femoris", slug: "patlig", name: "Patellar ligament", normal: [0, 1, 0], d: 0.358, sided: true },
 ];
 
+// BodyParts3D で1つの形になっているものを、近い目印の形ごとに分ける（split-mesh.mjs の partitionMesh）。
+// 心室の壁は左右の心室で1つの形なので、近い方の内腔で右心室の壁・左心室の壁に分ける（心室中隔は真ん中で分かれ、
+// 外では前・後室間溝のあたりが境になる）。分けた部品は "<ID>-<slug>"（名前は name）で、元の部品は使わない。
+// 近さだけで分けると境目が溝より約4mm 左心室の側に出るので、bias（m）で右心室の側へ寄せて前室間枝・後室間枝の上に合わせる
+const PARTITIONS = [
+  {
+    part: "wall of ventricle",
+    bias: 0.004,
+    pieces: [
+      { slug: "right", name: "Wall of right ventricle", near: "cavity of right ventricle" },
+      { slug: "left", name: "Wall of left ventricle", near: "cavity of left ventricle" },
+    ],
+  },
+];
+
 // BodyParts3D には is-a と part-of の両方の木に同じ形が別IDで入っていることがある（脳の各部など）。
 // 名前と外接箱が同じ部品は1つにまとめ、同じ形を二重に描かない。
 // 返り値の readMesh(部品ID) は形を読む（CUTS で分けた部品は分けた形）。readWhole(部品ID) は分ける前の形で、
@@ -298,11 +313,28 @@ export function readElements() {
       elementNames.set(`${id}-${cut.slug}`, side ? `${side} ${cut.name.toLowerCase()}` : cut.name);
     }
   }
+  const pieceOf = new Map(); // 部品ID → [分け方, 何番目, 元の部品ID]
+  for (const partition of PARTITIONS) {
+    const find = (name) => {
+      const found = [...elementNames].filter(([, other]) => other.toLowerCase() === name);
+      if (found.length !== 1) throw new Error(`分ける部品「${name}」が ${found.length} 個あります`);
+      return found[0][0];
+    };
+    const source = find(partition.part);
+    const guides = partition.pieces.map((piece) => find(piece.near));
+    for (const [i, piece] of partition.pieces.entries()) {
+      pieceOf.set(`${source}-${piece.slug}`, [guides, i, source, partition.bias ?? 0]);
+      elementNames.set(`${source}-${piece.slug}`, piece.name);
+    }
+    elementNames.delete(source);
+  }
   const cache = new Map();
   const readMesh = (id) => {
     if (!cache.has(id)) {
       const [cut, half, source] = cutOf.get(id) ?? [];
-      if (!cut) cache.set(id, parseObj(path.join(objDir, `${id}.obj`)));
+      const [guides, i, whole, bias] = pieceOf.get(id) ?? [];
+      if (guides) cache.set(id, { name: elementNames.get(id), ...partitionMesh(parseObj(path.join(objDir, `${whole}.obj`)), guides.map(readMesh), bias)[i] });
+      else if (!cut) cache.set(id, parseObj(path.join(objDir, `${id}.obj`)));
       else cache.set(id, { name: elementNames.get(id), ...splitMesh(parseObj(path.join(objDir, `${source ?? id}.obj`)), cut.normal, cut.d)[half] });
     }
     return cache.get(id);

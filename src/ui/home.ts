@@ -1,4 +1,4 @@
-import { systems, termById, units, type Unit } from "../content";
+import { organs, systems, termById, units, type Unit } from "../content";
 import { db, nowIso, type LearnedTerm, type StoredSchedule } from "../db";
 import { EXAM_KINDS, examProgress, kindLabels, SECTION_KINDS, SORT_KINDS } from "../exam";
 import { h } from "../dom";
@@ -104,7 +104,7 @@ export async function home(ctx: AppContext): Promise<void> {
         content,
       );
       // 語根カードは基本の用語のすぐ後に（英語名の意味が分かると、どの系統の語も覚えやすくなる）。骨学試験は骨格系の後に
-      if (system.id === "basics") return [section, rootSection(learnedIds, folder)];
+      if (system.id === "basics") return [section, rootSection(learnedIds, folder), organSection(folder)];
       if (system.id === "skeletal") return [section, examSection(learnedIds, schedules, folder)];
       return [section];
     }));
@@ -235,6 +235,19 @@ function examSection(learnedIds: Set<string>, schedules: StoredSchedule[], folde
           h("span", { class: "unit-title" }, kindLabels[p.kind]),
           h("span", { class: "unit-count" }, `${p.done ? `${p.done}/${p.total}` : `${p.total}問`}${p.mastery === null ? "" : `・覚え ${Math.round(p.mastery * 100)}%`}`),
         )))),
+  );
+}
+
+/** 臓器の図（立体の色分け・切り口と、日英の名前を添えた平面図） */
+function organSection(folder: Folder): HTMLElement {
+  return folder("organs",
+    [h("span", { class: "swatch organ-swatch" }), "臓器の図"],
+    `立体と平面図・${organs.length}臓器`,
+    false,
+    h("ul", { class: "units" }, ...organs.map((organ) => h("li", {},
+      h("a", { class: "unit", href: `#/organs/${organ.id}` },
+        h("span", { class: "unit-title" }, `${organ.ja}（${organ.en}）`),
+        h("span", { class: "unit-count" }, `平面図 ${organ.plates.length}枚`))))),
   );
 }
 

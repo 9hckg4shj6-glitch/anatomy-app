@@ -11,6 +11,7 @@ import { exam } from "./ui/exam";
 import { explore } from "./ui/explore";
 import { home } from "./ui/home";
 import { lesson } from "./ui/lesson";
+import { organScreen } from "./ui/organs";
 import { progress } from "./ui/progress";
 import { review, todayCounts } from "./ui/review";
 import { rootIndex, rootLesson } from "./ui/roots";
@@ -163,7 +164,7 @@ async function start(): Promise<void> {
     const [name, arg] = parseHash();
     currentName = name;
     for (const tab of document.querySelectorAll<HTMLAnchorElement>("[data-tab]")) {
-      const on = tab.dataset.tab === (name || "home") || (["learn", "roots", "drill", "exam"].includes(name) && tab.dataset.tab === "home");
+      const on = tab.dataset.tab === (name || "home") || (["learn", "roots", "drill", "exam", "organs"].includes(name) && tab.dataset.tab === "home");
       tab.classList.toggle("on", on);
       if (on) tab.setAttribute("aria-current", "page");
       else tab.removeAttribute("aria-current");
@@ -175,6 +176,7 @@ async function start(): Promise<void> {
       // "#/roots/<レッスンID>" は語根のレッスン、"#/roots/root/<語根のキー>" は一覧でその語根を開く
       else if (name === "roots") await (arg && !arg.startsWith("root/") ? rootLesson(ctx, arg) : rootIndex(ctx, arg.slice("root/".length)));
       else if (name === "drill") await drill(ctx, arg);
+      else if (name === "organs") await organScreen(ctx, arg);
       else if (name === "exam") await exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
       else if (name === "settings") await settingsScreen(ctx);

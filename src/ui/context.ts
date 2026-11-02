@@ -1,4 +1,4 @@
-import { regionSystems, unitById, type ModelIndex, type Term } from "../content";
+import { organOfUnit, regionSystems, unitById, type ModelIndex, type Term } from "../content";
 import type { AnatomyViewer, SceneSpec } from "../viewer";
 
 export interface AppContext {
@@ -51,8 +51,11 @@ export function motionPlayer(ctx: AppContext, term: Term, before?: () => Promise
  * 系統を見せるときの既定の組み合わせ。骨格以外は骨格を半透明で添えて、体のどこにあるかを分かりやすくする。
  * 基本の用語（方向・面・運動）は骨格の上に図を描く。関節・靱帯は、どの骨をつなぐかが分かるよう骨を少し濃く添える。
  * 局所解剖は、そのレッスン（無ければ系統全体）の語の境界と中を通る語の系統を読み込む（ほかの語は隠して見せる）。
+ * 臓器の場面のレッスン（心臓など。content/organs.json）は、その臓器と大血管だけを見せる（体の中の血管に埋もれないように）。
  */
 export function sceneFor(system: string, unitId?: string): SceneSpec {
+  const organ = organOfUnit(unitId);
+  if (organ) return { systems: [system], organ: organ.id };
   if (system === "basics") return { systems: ["skeletal"], body: true };
   if (system === "joints") return { systems: ["joints"], context: ["skeletal"], body: true, contextOpacity: 0.34 };
   if (system === "regional") {

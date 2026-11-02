@@ -1,5 +1,6 @@
 import attachmentsJson from "../content/attachments.json";
 import jointsJson from "../content/joints.json";
+import organsJson from "../content/organs.json";
 import pinsJson from "../content/pins.json";
 import systemsJson from "../content/systems.json";
 
@@ -180,6 +181,58 @@ export interface Pin {
   region?: { c: [number, number, number]; r: number; cut: [number, number, number, number][]; face?: [number, number, number] };
 }
 
+/**
+ * 臓器を詳しく見る画面（#/organs/<ID>。content/organs.json）。units のレッスンの語と with の語（大血管など）が臓器の場面で、
+ * 3Dではそれだけを box の中に切って見せる（SceneSpec の organ）。colors は部屋の色分け、views は向き、cuts は切って中を見る面
+ * （normal・point で、normal の向きの側を残す。hide は切るときに隠す語）。seamless は平面図で境に線を引かない語（心房・心室の壁）。
+ * plates は平面図（scripts/plates.mjs が view・cut から描く。diagram があれば手で描いた模式図）
+ */
+export interface Organ {
+  id: string;
+  ja: string;
+  yomi: string;
+  en: string;
+  about: string;
+  units: string[];
+  with: string[];
+  box: [Vec3, Vec3];
+  seamless?: string[];
+  colors: Record<string, string>;
+  views: { label: string; from: Vec3 }[];
+  cuts: OrganCut[];
+  plates: PlateSpec[];
+}
+
+export interface OrganCut {
+  label: string;
+  normal: Vec3;
+  point: Vec3;
+  from: Vec3;
+  hide?: string[];
+}
+
+/** 平面図の指定（content/organs.json）。ラベルは語ID か { term, pin } か、語の無い所の { ja, en, uv } */
+export interface PlateSpec {
+  id: string;
+  title: string;
+  en: string;
+  diagram?: string;
+  labels: (string | { term?: string; ja?: string; en?: string })[];
+}
+
+/** scripts/plates.mjs が書き出す public/plates/index.json。ラベルの at は画像の幅・高さに対する 0〜1 */
+export interface PlateIndex {
+  plates: Record<string, { url: string; w: number; h: number; labels: PlateLabel[] }>;
+}
+
+export interface PlateLabel {
+  at: [number, number];
+  term?: string;
+  ja?: string;
+  en?: string;
+  note?: string;
+}
+
 /** scripts/build-models.mjs が書き出す public/models/index.json */
 export interface ModelIndex {
   version: number;
@@ -217,6 +270,24 @@ export const systemById = new Map(systems.map((system) => [system.id, system]));
 export const pins = pinsJson as unknown as Record<string, Pin>;
 
 export const joints = jointsJson as unknown as Record<string, Joint>;
+
+export const organs = (organsJson as unknown as { organs: Organ[] }).organs;
+export const organById = new Map(organs.map((organ) => [organ.id, organ]));
+
+/** 臓器の場面の語（レッスンの語・器官の部位と、添える大血管など） */
+export function organTerms(organ: Organ): string[] {
+  return [...organ.units.flatMap((id) => unitById.get(id)?.terms.map((term) => term.id) ?? []), ...organ.with];
+}
+
+/** 語が入る臓器の場面（無ければ undefined） */
+export function organOf(termId: string): Organ | undefined {
+  return organs.find((organ) => organTerms(organ).includes(termId));
+}
+
+/** レッスンが臓器の場面のものなら、その臓器 */
+export function organOfUnit(unitId: string | undefined): Organ | undefined {
+  return unitId ? organs.find((organ) => organ.units.includes(unitId)) : undefined;
+}
 
 /** 基本の用語の図から名前を答える問題の文 */
 export function figurePrompt(figure: Figure): string {
@@ -286,4 +357,22 @@ export function loadModelIndex(): Promise<ModelIndex> {
     return response.json() as Promise<ModelIndex>;
   });
   return modelIndex;
+}
+
+let plateIndex: Promise<PlateIndex> | null = null;
+
+export function loadPlateIndex(): Promise<PlateIndex> {
+  plateIndex ??= fetch(`${import.meta.env.BASE_URL}plates/index.json`).then((response) => {
+    if (!response.ok) throw new Error(`plates/index.json: ${response.status}`);
+    return response.json() as Promise<PlateIndex>;
+  });
+  return plateIndex;
+}
+
+/** 語が出てくる平面図（臓器の図の画面で開く）。図のIDと臓器 */
+export async function platesOf(termId: string): Promise<{ organ: Organ; plate: PlateSpec }[]> {
+  const index = await loadPlateIndex().catch(() => null);
+  return organs.flatMap((organ) => organ.plates
+    .filter((plate) => (index?.plates[plate.id]?.labels ?? []).some((label) => label.term === termId) || plate.labels.some((label) => (typeof label === "string" ? label : label.term) === termId))
+    .map((plate) => ({ organ, plate })));
 }

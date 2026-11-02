@@ -1,0 +1,508 @@
+{
+ "plates": {
+  "heart-anterior": {
+   "url": "plates/heart-anterior.c318c5767d.webp",
+   "w": 958,
+   "h": 1100,
+   "labels": [
+    {
+     "at": [
+      0.3265,
+      0.1811
+     ],
+     "term": "superior-vena-cava"
+    },
+    {
+     "at": [
+      0.482,
+      0.063
+     ],
+     "term": "brachiocephalic-trunk"
+    },
+    {
+     "at": [
+      0.4726,
+      0.1916
+     ],
+     "term": "aortic-arch"
+    },
+    {
+     "at": [
+      0.4627,
+      0.3107
+     ],
+     "term": "ascending-aorta"
+    },
+    {
+     "at": [
+      0.6093,
+      0.2961
+     ],
+     "term": "pulmonary-trunk"
+    },
+    {
+     "at": [
+      0.4082,
+      0.5052
+     ],
+     "term": "right-auricle"
+    },
+    {
+     "at": [
+      0.7572,
+      0.4209
+     ],
+     "term": "left-auricle"
+    },
+    {
+     "at": [
+      0.3218,
+      0.4298
+     ],
+     "term": "right-atrium"
+    },
+    {
+     "at": [
+      0.4413,
+      0.5952
+     ],
+     "term": "right-ventricle"
+    },
+    {
+     "at": [
+      0.8223,
+      0.5507
+     ],
+     "term": "left-ventricle"
+    },
+    {
+     "at": [
+      0.8703,
+      0.8172
+     ],
+     "term": "apex-of-heart"
+    },
+    {
+     "at": [
+      0.3254,
+      0.9016
+     ],
+     "term": "inferior-vena-cava"
+    },
+    {
+     "at": [
+      0.3343,
+      0.6216
+     ],
+     "term": "right-coronary-artery"
+    },
+    {
+     "at": [
+      0.3891,
+      0.6602
+     ],
+     "term": "right-marginal-branch"
+    },
+    {
+     "at": [
+      0.7701,
+      0.6261
+     ],
+     "term": "anterior-interventricular-branch"
+    },
+    {
+     "at": [
+      0.3275,
+      0.7611
+     ],
+     "term": "coronary-sulcus"
+    },
+    {
+     "at": [
+      0.7767,
+      0.6547
+     ],
+     "term": "anterior-interventricular-sulcus"
+    }
+   ]
+  },
+  "heart-posterior": {
+   "url": "plates/heart-posterior.512254677b.webp",
+   "w": 985,
+   "h": 1100,
+   "labels": [
+    {
+     "at": [
+      0.4911,
+      0.1598
+     ],
+     "term": "aortic-arch"
+    },
+    {
+     "at": [
+      0.3444,
+      0.252
+     ],
+     "term": "left-pulmonary-artery"
+    },
+    {
+     "at": [
+      0.6221,
+      0.292
+     ],
+     "term": "right-pulmonary-artery"
+    },
+    {
+     "at": [
+      0.6967,
+      0.1934
+     ],
+     "term": "superior-vena-cava"
+    },
+    {
+     "at": [
+      0.7566,
+      0.428
+     ],
+     "term": "superior-pulmonary-vein"
+    },
+    {
+     "at": [
+      0.218,
+      0.503
+     ],
+     "term": "inferior-pulmonary-vein"
+    },
+    {
+     "at": [
+      0.5094,
+      0.4875
+     ],
+     "term": "left-atrium"
+    },
+    {
+     "at": [
+      0.7063,
+      0.6793
+     ],
+     "term": "right-atrium"
+    },
+    {
+     "at": [
+      0.4515,
+      0.7634
+     ],
+     "term": "left-ventricle"
+    },
+    {
+     "at": [
+      0.5556,
+      0.8625
+     ],
+     "term": "right-ventricle"
+    },
+    {
+     "at": [
+      0.6865,
+      0.8598
+     ],
+     "term": "inferior-vena-cava"
+    },
+    {
+     "at": [
+      0.4165,
+      0.6375
+     ],
+     "term": "coronary-sinus"
+    },
+    {
+     "at": [
+      0.2495,
+      0.5284
+     ],
+     "term": "circumflex-branch"
+    },
+    {
+     "at": [
+      0.283,
+      0.548
+     ],
+     "term": "great-cardiac-vein"
+    },
+    {
+     "at": [
+      0.3652,
+      0.733
+     ],
+     "term": "posterior-vein-of-left-ventricle"
+    },
+    {
+     "at": [
+      0.5393,
+      0.787
+     ],
+     "term": "middle-cardiac-vein"
+    },
+    {
+     "at": [
+      0.5084,
+      0.8375
+     ],
+     "term": "posterior-interventricular-branch"
+    },
+    {
+     "at": [
+      0.5794,
+      0.8152
+     ],
+     "term": "small-cardiac-vein"
+    },
+    {
+     "at": [
+      0.3237,
+      0.9324
+     ],
+     "term": "posterior-interventricular-sulcus"
+    }
+   ]
+  },
+  "heart-frontal": {
+   "url": "plates/heart-frontal.47edd5bfc4.webp",
+   "w": 958,
+   "h": 1100,
+   "labels": [
+    {
+     "at": [
+      0.3265,
+      0.1811
+     ],
+     "term": "superior-vena-cava"
+    },
+    {
+     "at": [
+      0.4898,
+      0.3661
+     ],
+     "term": "ascending-aorta"
+    },
+    {
+     "at": [
+      0.5441,
+      0.4843
+     ],
+     "term": "aortic-valve"
+    },
+    {
+     "at": [
+      0.7148,
+      0.3748
+     ],
+     "term": "left-atrium"
+    },
+    {
+     "at": [
+      0.2691,
+      0.6339
+     ],
+     "term": "right-atrium"
+    },
+    {
+     "at": [
+      0.3651,
+      0.6757
+     ],
+     "term": "tricuspid-valve"
+    },
+    {
+     "at": [
+      0.6005,
+      0.5661
+     ],
+     "term": "mitral-valve"
+    },
+    {
+     "at": [
+      0.4199,
+      0.7407
+     ],
+     "term": "right-ventricle"
+    },
+    {
+     "at": [
+      0.8186,
+      0.5661
+     ],
+     "term": "left-ventricle"
+    },
+    {
+     "at": [
+      0.7727,
+      0.6602
+     ],
+     "term": "papillary-muscles"
+    },
+    {
+     "at": [
+      0.3254,
+      0.9016
+     ],
+     "term": "inferior-vena-cava"
+    }
+   ]
+  },
+  "heart-four-chamber": {
+   "url": "plates/heart-four-chamber.5140dc5d4b.webp",
+   "w": 1100,
+   "h": 981,
+   "labels": [
+    {
+     "at": [
+      0.2543,
+      0.38
+     ],
+     "term": "right-atrium"
+    },
+    {
+     "at": [
+      0.4093,
+      0.2347
+     ],
+     "term": "right-ventricle"
+    },
+    {
+     "at": [
+      0.4666,
+      0.6944
+     ],
+     "term": "left-atrium"
+    },
+    {
+     "at": [
+      0.7948,
+      0.3907
+     ],
+     "term": "left-ventricle"
+    },
+    {
+     "at": [
+      0.332,
+      0.3356
+     ],
+     "term": "tricuspid-valve"
+    },
+    {
+     "at": [
+      0.6125,
+      0.6491
+     ],
+     "term": "mitral-valve"
+    },
+    {
+     "at": [
+      0.2593,
+      0.6567
+     ],
+     "term": "superior-pulmonary-vein"
+    },
+    {
+     "at": [
+      0.5807,
+      0.9228
+     ],
+     "term": "thoracic-aorta"
+    }
+   ]
+  },
+  "heart-base": {
+   "url": "plates/heart-base.fa91579bfa.webp",
+   "w": 1100,
+   "h": 1058,
+   "labels": [
+    {
+     "at": [
+      0.5166,
+      0.1274
+     ],
+     "term": "anterior-semilunar-cusp-of-pulmonary-valve"
+    },
+    {
+     "at": [
+      0.5802,
+      0.2535
+     ],
+     "term": "right-semilunar-cusp-of-pulmonary-valve"
+    },
+    {
+     "at": [
+      0.4734,
+      0.3183
+     ],
+     "term": "left-semilunar-cusp-of-pulmonary-valve"
+    },
+    {
+     "at": [
+      0.667,
+      0.4185
+     ],
+     "term": "right-semilunar-cusp-of-aortic-valve"
+    },
+    {
+     "at": [
+      0.5589,
+      0.4577
+     ],
+     "term": "left-semilunar-cusp-of-aortic-valve"
+    },
+    {
+     "at": [
+      0.637,
+      0.4931
+     ],
+     "term": "posterior-semilunar-cusp-of-aortic-valve"
+    },
+    {
+     "at": [
+      0.5934,
+      0.7181
+     ],
+     "term": "anterior-cusp-of-mitral-valve"
+    },
+    {
+     "at": [
+      0.507,
+      0.8268
+     ],
+     "term": "posterior-cusp-of-mitral-valve"
+    },
+    {
+     "at": [
+      0.8734,
+      0.4435
+     ],
+     "term": "anterior-cusp-of-tricuspid-valve"
+    },
+    {
+     "at": [
+      0.8689,
+      0.5768
+     ],
+     "term": "posterior-cusp-of-tricuspid-valve"
+    },
+    {
+     "at": [
+      0.7852,
+      0.5555
+     ],
+     "term": "septal-cusp-of-tricuspid-valve"
+    },
+    {
+     "at": [
+      0.393,
+      0.3731
+     ],
+     "term": "left-coronary-artery"
+    }
+   ]
+  }
+ }
+}

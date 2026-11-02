@@ -1,0 +1,88 @@
+{
+  "organs": [
+    {
+      "id": "heart",
+      "ja": "心臓",
+      "yomi": "しんぞう",
+      "en": "heart",
+      "about": "心臓は握りこぶしほどの大きさで、胸の中央からやや左にあり、心尖を左前下に向けて傾いている。前から見ると大部分は右心室で、左心室は左の縁と心尖だけ、左心房は後ろにかくれる。",
+      "units": ["cv-heart", "cv-heart-inner", "cv-heart-cusps", "cv-pt-heart"],
+      "with": [
+        "ascending-aorta", "aortic-arch", "brachiocephalic-trunk", "common-carotid-artery", "subclavian-artery", "thoracic-aorta",
+        "pulmonary-trunk", "right-pulmonary-artery", "left-pulmonary-artery", "superior-pulmonary-vein", "inferior-pulmonary-vein",
+        "superior-vena-cava", "inferior-vena-cava",
+        "anterior-interventricular-branch", "circumflex-branch", "posterior-interventricular-branch", "great-cardiac-vein"
+      ],
+      "box": [[-0.062, 1.158, 0.052], [0.098, 1.322, 0.196]],
+      "seamless": ["right-atrium", "left-atrium", "right-ventricle", "left-ventricle"],
+      "colors": { "right-atrium": "#8fb0e6", "right-ventricle": "#4f78c8", "left-atrium": "#eea0ae", "left-ventricle": "#c4485e" },
+      "views": [
+        { "label": "前", "from": [0, 0, 1] },
+        { "label": "後ろ", "from": [0, 0.1, -1] },
+        { "label": "下（横隔面）", "from": [0.15, -1, 0.45] },
+        { "label": "右", "from": [-1, 0.1, 0.25] },
+        { "label": "左", "from": [1, 0.1, 0.1] },
+        { "label": "上（心底）", "from": [0, 1, -0.05] }
+      ],
+      "cuts": [
+        { "label": "前の壁を外す（前頭断）", "normal": [0, 0, -1], "point": [0, 0, 0.126], "from": [0, 0, 1] },
+        { "label": "四腔断（水平断）", "normal": [0, 1, 0], "point": [0, 1.214, 0], "from": [0, -1, 0.03] },
+        { "label": "弁を上から（心底）", "normal": [0, -1, 0.6], "point": [0, 1.255, 0.12], "from": [0, 1, -0.6], "hide": ["right-atrium", "left-atrium", "superior-vena-cava", "inferior-vena-cava", "superior-pulmonary-vein", "inferior-pulmonary-vein", "coronary-sinus", "thoracic-aorta"] }
+      ],
+      "plates": [
+        { "id": "heart-flow", "title": "血液の流れ（模式図）", "en": "blood flow through the heart (diagram)", "diagram": "flow", "labels": [] },
+        {
+          "id": "heart-anterior", "title": "前から見た心臓", "en": "anterior view (sternocostal surface)",
+          "view": { "f": [0, 0, -1], "u": [0, 1, 0] },
+          "labels": [
+            "superior-vena-cava", "brachiocephalic-trunk", "aortic-arch", "ascending-aorta", "pulmonary-trunk", "right-auricle", "left-auricle",
+            "right-atrium", "right-ventricle", "left-ventricle", "apex-of-heart", "inferior-vena-cava",
+            "right-coronary-artery", "right-marginal-branch", "anterior-interventricular-branch",
+            { "term": "coronary-sulcus", "pin": 0 }, "anterior-interventricular-sulcus"
+          ]
+        },
+        {
+          "id": "heart-posterior", "title": "後ろ下から見た心臓", "en": "posteroinferior view (base and diaphragmatic surface)",
+          "view": { "f": [0.05, 0.6, 1], "u": [0, 1, 0] },
+          "hide": ["thoracic-aorta"],
+          "labels": [
+            "aortic-arch", "left-pulmonary-artery", "right-pulmonary-artery", "superior-vena-cava", "superior-pulmonary-vein", "inferior-pulmonary-vein",
+            "left-atrium", "right-atrium", "left-ventricle", "right-ventricle", "inferior-vena-cava",
+            "coronary-sinus", "circumflex-branch", "great-cardiac-vein", "posterior-vein-of-left-ventricle", "middle-cardiac-vein", "posterior-interventricular-branch",
+            "small-cardiac-vein", "posterior-interventricular-sulcus"
+          ]
+        },
+        {
+          "id": "heart-frontal", "title": "前の壁を外した心臓", "en": "frontal section",
+          "view": { "f": [0, 0, -1], "u": [0, 1, 0] },
+          "cut": { "normal": [0, 0, -1], "point": [0, 0, 0.126] },
+          "labels": [
+            "superior-vena-cava", "ascending-aorta", "aortic-valve", "left-atrium", "right-atrium", "tricuspid-valve", "mitral-valve",
+            "right-ventricle", "left-ventricle", "papillary-muscles", "inferior-vena-cava"
+          ]
+        },
+        {
+          "id": "heart-four-chamber", "title": "水平に切った心臓（四腔断）", "en": "four-chamber section (horizontal)",
+          "view": { "f": [0, 1, 0], "u": [0, 0, 1] },
+          "cut": { "normal": [0, 1, 0], "point": [0, 1.214, 0] },
+          "hide": ["inferior-vena-cava", "superior-vena-cava"],
+          "labels": ["right-atrium", "right-ventricle", "left-atrium", "left-ventricle", "tricuspid-valve", "mitral-valve", "superior-pulmonary-vein", "thoracic-aorta"]
+        },
+        {
+          "id": "heart-base", "title": "心房を外して上から見た弁", "en": "valves viewed from above (base of heart)",
+          "view": { "f": [0, -1, 0.6], "u": [0, 0.6, 1] },
+          "cut": { "normal": [0, -1, 0.6], "point": [0, 1.255, 0.12] },
+          "hide": ["right-atrium", "left-atrium", "superior-vena-cava", "inferior-vena-cava", "superior-pulmonary-vein", "inferior-pulmonary-vein", "coronary-sinus", "thoracic-aorta", "great-cardiac-vein"],
+          "labels": [
+            "anterior-semilunar-cusp-of-pulmonary-valve", "right-semilunar-cusp-of-pulmonary-valve", "left-semilunar-cusp-of-pulmonary-valve",
+            "right-semilunar-cusp-of-aortic-valve", "left-semilunar-cusp-of-aortic-valve", "posterior-semilunar-cusp-of-aortic-valve",
+            "anterior-cusp-of-mitral-valve", "posterior-cusp-of-mitral-valve",
+            "anterior-cusp-of-tricuspid-valve", "posterior-cusp-of-tricuspid-valve", "septal-cusp-of-tricuspid-valve",
+            "left-coronary-artery"
+          ],
+          "frameTerms": ["right-ventricle", "left-ventricle", "pulmonary-trunk", "ascending-aorta"]
+        }
+      ]
+    }
+  ]
+}

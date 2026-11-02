@@ -1,5 +1,5 @@
 import { autoSpeak } from "../audio";
-import { isDrawn, landmarksOf, loadAttachments, pins, regionSystems, systems, termById, terms, units, type Term, type Unit } from "../content";
+import { isDrawn, landmarksOf, loadAttachments, organOf, pins, regionSystems, systems, termById, terms, units, type Term, type Unit } from "../content";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
 import { landmarkAt } from "../landmarks";
@@ -59,6 +59,8 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   let section: Section | null = null;
   let peeled: Peel[] = [];
   let views = Array.isArray(viewsSetting?.value) ? (viewsSetting.value as SavedView[]) : [];
+  /** 臓器の場面（心臓など）で見ているとき、その臓器のID。臓器の語を一覧・検索・アドレスから選ぶと、その臓器だけを見せる */
+  let organMode: string | null = null;
 
   const paint = () => {
     if (selected && group.length) viewer.highlight(group.map((term) => term.id), { isolate: true, marks: [[selected.id, NERVE_MARK]] });
@@ -67,7 +69,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   };
 
   const apply = async () => {
-    await viewer.show({ systems: [...shown], body });
+    await viewer.show({ systems: [...shown], body: body && !organMode, organ: organMode ?? undefined });
     paint();
     renderTools();
   };
@@ -238,8 +240,15 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     ))) : "",
   );
 
-  const select = (term: Term | null, fromAddress = false) => {
+  const select = (term: Term | null, fromAddress = false, tapped = false) => {
     selected = term;
+    // 臓器の語を選んだら、その臓器だけを見せる（3Dでタップしたときは今の見せ方のまま）。臓器の外の語を選んだらやめる
+    const organ = term ? organOf(term.id) : undefined;
+    const nextOrgan = term && !tapped ? organ?.id ?? null : term && organMode && organ?.id !== organMode ? null : organMode;
+    if (nextOrgan !== organMode) {
+      organMode = nextOrgan;
+      void apply();
+    }
     if (!fromAddress) {
       const hash = term ? `#/explore/${term.id}` : "#/explore";
       if (location.hash !== hash) history.pushState(null, "", hash);
@@ -363,7 +372,19 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     const peelable = !isDrawn(peelTarget) && !!index.terms[peelTarget.id]?.elements.length;
     const peeledNow = peeled.some((item) => item.id === peelTarget.id);
     const whose = parent ? `${parent.ja}を` : "";
+    const organ = organOf(term.id);
     detail.replaceChildren(h("div", {},
+      organ ? h("div", { class: "organ-switch" },
+        h("button", {
+          class: organMode ? "ghost-button on" : "ghost-button", type: "button",
+          onClick: () => {
+            organMode = organMode ? null : organ.id;
+            void apply().then(() => viewer.focus(term.id, 3.2));
+            render();
+          },
+        }, organMode ? "体の中で見る" : `${organ.ja}だけを見る`),
+        h("a", { class: "ghost-button", href: `#/organs/${organ.id}/3d/${term.id}` }, `${organ.ja}の図（色分け・切り口・平面図）`),
+      ) : "",
       termCard(term, {
         open: select,
         // 筋の動きは骨格を表示に加えてから
@@ -419,7 +440,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     const part = point ? landmarkAt(point, parts, 0.002) : null;
     return part ?? (termId ? termById.get(termId) ?? null : null);
   };
-  viewer.onPick = (elementId, point) => select(termAt(elementId, point));
+  viewer.onPick = (elementId, point) => select(termAt(elementId, point), false, true);
   viewer.onHover = (elementId, point) => termAt(elementId, point)?.ja ?? null;
   ctx.hint("タップで名前を表示");
   panel.replaceChildren(search, sectionBox, peelBox, detail, list);

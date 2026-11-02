@@ -3,7 +3,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
-import { joints, loadAttachments, loadModelIndex, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex, type Motion, type Term, type View } from "./content";
+import { joints, loadAttachments, loadModelIndex, organById, organTerms, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex, type Motion, type Term, type View } from "./content";
 import { drawingUp, pinCenter, pinSpread, type Cut, type Vec3 } from "./landmarks";
 
 export interface SceneSpec {
@@ -15,13 +15,21 @@ export interface SceneSpec {
   body?: boolean;
   /** 添える系統の濃さ（ふだん 0.16。関節・靱帯は骨を少し濃く添える） */
   contextOpacity?: number;
+  /** 臓器の場面（content/organs.json の ID）。その臓器の語だけを、臓器の箱の中に切って見せる（皮膚・添える系統は出さない） */
+  organ?: string;
 }
 
-/** 断面: axis に垂直な面で切り、keep の側（1 なら座標が at より大きい側）を残す */
+/**
+ * 断面: axis に垂直な面で切り、keep の側（1 なら座標が at より大きい側）を残す。
+ * normal があれば斜めの面（normal・p ≥ at の側を残す。臓器の切って見る面）。axis はつまみの向きの目安だけになる
+ */
 export interface Section {
   axis: "x" | "y" | "z";
   at: number;
   keep: 1 | -1;
+  normal?: Vec3;
+  /** 切り口を見るときのカメラの向き（無ければ切り取った側から） */
+  from?: Vec3;
 }
 
 /** 骨学試験 D の図の番号。project があれば、点の手前にあるその語の骨の面へ移す（ピンが骨の裏・中にある、骨の語の中心） */
@@ -358,6 +366,8 @@ export class AnatomyViewer {
   /** 局所解剖の語（区画など）を見せるときに切る面。図鑑の断面（section）があればそちらを使う */
   private regionSection: Section | null = null;
   private readonly clipPlane = new THREE.Plane();
+  /** 臓器の場面（SceneSpec の organ）。見せる部品と、箱で切る6枚の面 */
+  private organ: { id: string; elements: Set<string>; planes: THREE.Plane[]; box: THREE.Box3 } | null = null;
   private highlighted: Highlight = new Map();
   private isolate = false;
   /** 強調した語を半透明にして、下の骨（筋の起始・停止のスポット）が透けて見えるようにする */
@@ -599,8 +609,32 @@ export class AnatomyViewer {
     this.active = new Set(spec.systems);
     this.context = new Set(context);
     this.contextOpacity = spec.contextOpacity ?? 0.16;
+    this.setOrgan(spec.organ ?? null);
     for (const [id, group] of await this.loadedGroups()) group.visible = wanted.includes(id);
     this.refresh();
+  }
+
+  /** 臓器の場面にする（null でやめる）。臓器の語の部品だけを箱の中に切って見せる。表示する系統は show で読み込む */
+  private setOrgan(id: string | null): void {
+    if ((this.organ?.id ?? null) === id) return;
+    const organ = id ? organById.get(id) : undefined;
+    if (!organ) {
+      this.organ = null;
+    } else {
+      const [lo, hi] = organ.box;
+      const planes = [0, 1, 2].flatMap((k) => [
+        new THREE.Plane(new THREE.Vector3().setComponent(k, 1), -lo[k]),
+        new THREE.Plane(new THREE.Vector3().setComponent(k, -1), hi[k]),
+      ]);
+      const elements = new Set(organTerms(organ).flatMap((termId) => this.index.terms[termId]?.elements ?? []));
+      this.organ = { id: organ.id, elements, planes, box: new THREE.Box3(new THREE.Vector3(...lo), new THREE.Vector3(...hi)) };
+    }
+    this.applyClip();
+  }
+
+  /** 今の臓器の場面（無ければ null） */
+  get organId(): string | null {
+    return this.organ?.id ?? null;
   }
 
   /**
@@ -686,11 +720,19 @@ export class AnatomyViewer {
 
   private applyClip(): void {
     const section = this.cutting;
-    if (section) {
+    if (section?.normal) {
+      this.clipPlane.set(new THREE.Vector3(...section.normal).normalize(), -section.at);
+    } else if (section) {
       const normal = new THREE.Vector3().setComponent("xyz".indexOf(section.axis), section.keep);
       this.clipPlane.set(normal, -section.at * section.keep);
     }
-    this.renderer.clippingPlanes = section ? [this.clipPlane] : [];
+    this.renderer.clippingPlanes = [...(this.organ?.planes ?? []), ...(section ? [this.clipPlane] : [])];
+    this.dirty = true;
+  }
+
+  /** 切って見せている面（断面・臓器の箱）のどれかで切り取られた点か */
+  private clippedAway(point: THREE.Vector3): boolean {
+    return this.renderer.clippingPlanes.some((plane) => plane.distanceToPoint(point) < -1e-4);
   }
 
   /**
@@ -700,7 +742,18 @@ export class AnatomyViewer {
    */
   viewSection(animate = true, around?: Vec3, half?: number): void {
     if (!this.section) return;
-    const { axis, at, keep } = this.section;
+    const { axis, at, keep, normal, from } = this.section;
+    if (normal) {
+      // 斜めの面: 面の上の around（無ければ臓器の箱の中心）を、切り取った側（または from の向き）から見る
+      const n = new THREE.Vector3(...normal).normalize();
+      const middle = around ? new THREE.Vector3(...around) : this.organ?.box.getCenter(new THREE.Vector3()) ?? new THREE.Vector3();
+      const target = middle.clone().addScaledVector(n, at - n.dot(middle));
+      const span = half ?? (this.organ ? this.organ.box.getSize(new THREE.Vector3()).length() * 0.36 : 0.12);
+      const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+      const direction = from ? new THREE.Vector3(...from).normalize() : n.clone().negate();
+      this.moveTo(target, target.clone().add(direction.multiplyScalar(span / tan / Math.min(1, this.camera.aspect))), animate);
+      return;
+    }
     const k = "xyz".indexOf(axis);
     const [lo, hi] = this.index.bounds;
     const middle = around ?? ([0, 1, 2].map((i) => (lo[i] + hi[i]) / 2) as Vec3);
@@ -764,7 +817,7 @@ export class AnatomyViewer {
         const own = new Set(this.index.terms[mark.project]?.elements ?? []);
         raycaster.set(at.clone().addScaledVector(toward, 1), toward.clone().negate());
         const hit = raycaster.intersectObjects(meshes.filter((mesh) => own.has(mesh.name)), false)
-          .find((h) => !this.cutting || this.clipPlane.distanceToPoint(h.point) >= -1e-4);
+          .find((h) => !this.clippedAway(h.point));
         if (hit && hit.distance < 1 - 0.002) {
           at = hit.point.clone();
           if (hit.face) {
@@ -925,7 +978,8 @@ export class AnatomyViewer {
     // 前からは陰になる語（胸椎など）は、語に書いた向きから見る
     if (drawn?.from) direction.set(...drawn.from).normalize();
     const target = new THREE.Vector3(...term.center);
-    const distance = Math.max(0.18, term.radius * zoom) / tan;
+    // 臓器の場面では臓器しか出ていないので、小さな語（弁など）にもっと寄れる
+    const distance = Math.max(this.organ ? 0.07 : 0.18, term.radius * zoom) / tan;
     this.moveTo(target, target.clone().add(direction.multiplyScalar(distance)), animate);
   }
 
@@ -940,13 +994,29 @@ export class AnatomyViewer {
     this.moveTo(target, target.clone().add(direction.multiplyScalar(Math.max(0.06, term.radius * zoom) / tan)), animate);
   }
 
-  /** 全身を正面から */
+  /** 全身を正面から（臓器の場面では臓器を正面から） */
   overview(animate = true): void {
+    if (this.organ) {
+      this.viewOrgan([0, 0, 1], animate);
+      return;
+    }
     const [lo, hi] = this.index.bounds;
     const target = new THREE.Vector3((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (lo[2] + hi[2]) / 2);
     const height = hi[1] - lo[1];
     const distance = (height * 0.62) / Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
     this.moveTo(target, target.clone().add(new THREE.Vector3(0, 0, distance)), animate);
+  }
+
+  /** 臓器の場面の全体を from の向きから見る */
+  viewOrgan(from: Vec3, animate = true): void {
+    if (!this.organ) return;
+    const target = this.organ.box.getCenter(new THREE.Vector3());
+    const half = this.organ.box.getSize(new THREE.Vector3()).length() * 0.36;
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    const direction = new THREE.Vector3(...from).normalize();
+    // 真上・真下からだと回転の操作がしにくいので少し傾ける
+    if (Math.abs(direction.y) > 0.96) direction.z += direction.y > 0 ? -0.05 : 0.05;
+    this.moveTo(target, target.clone().add(direction.normalize().multiplyScalar(half / tan / Math.min(1, this.camera.aspect))), animate);
   }
 
   /** アプリが最後に決めた視点へ戻る（自分で回して迷ったとき） */
@@ -1100,7 +1170,8 @@ export class AnatomyViewer {
 
   /** 不透明の表面。spots にすると、スポット（球）の中に入る所を塗る（縁を少し濃くして範囲を分かりやすくする） */
   private surface(color: string, tissue: string, spots = false): THREE.Material {
-    const cut = !!this.cutting;
+    // 臓器の場面では箱の端で血管を切るので、断面と同じく切り口を塗る
+    const cut = !!this.cutting || !!this.organ;
     return this.material(`${spots ? "spot" : "solid"}:${tissue}:${color}${cut ? ":cut" : ""}`, () => {
       const kind = TISSUES[tissue];
       const material = new THREE.MeshPhysicalMaterial({
@@ -1143,6 +1214,22 @@ export class AnatomyViewer {
     // 軟骨は、骨格・関節の色のときだけ軟骨の色にする（強調・進捗の色はそのまま）
     if (mesh.userData.cartilage && [systemById.get("skeletal")?.color, systemById.get("joints")?.color].includes(color)) color = CARTILAGE;
     return this.surface(color, this.tissue(mesh, color));
+  }
+
+  /**
+   * ガラスのような半透明（臓器の場面の、周りを透かして見せるとき）。正面を向く所はごく薄く、輪郭に近い所ほど濃くして、
+   * 重なっても霧のようにならず形の丸みが分かるようにする。strength は輪郭の濃さ
+   */
+  private glass(color: string, strength: number): THREE.Material {
+    return this.material(`glass:${color}:${strength}`, () => {
+      const material = new THREE.MeshStandardMaterial({ color, roughness: 0.6, transparent: true, depthWrite: false });
+      material.onBeforeCompile = (shader) => {
+        shader.fragmentShader = shader.fragmentShader.replace("#include <opaque_fragment>", `float glassFacing = abs(dot(normalize(normal), normalize(vViewPosition)));
+diffuseColor.a = clamp(0.05 + ${strength.toFixed(2)} * pow(1.0 - glassFacing, 2.0), 0.0, 0.9);
+#include <opaque_fragment>`);
+      };
+      return material;
+    });
   }
 
   private ghost(color: string, opacity: number): THREE.Material {
@@ -1259,7 +1346,9 @@ export class AnatomyViewer {
       // 局所解剖は右側で示すので、左側の形は隠す（内側から見るとき反対側の脚がじゃまにならないように）
       const leftSide = regions.length > 0 && system !== "body" && this.restCenter(mesh).x > 0.02;
       const peeled = !highlightedElements.has(elementId) && !spotElements.has(elementId);
-      mesh.visible = !(this.motion && system === "body") && !(this.actionTerm && !bone) && !hiddenByRegion && !leftSide
+      // 臓器の場面では、臓器の語（と強調した語）のほかは出さない
+      const outsideOrgan = !!this.organ && !this.organ.elements.has(elementId) && !highlightedElements.has(elementId) && !spotElements.has(elementId);
+      mesh.visible = !(this.motion && system === "body") && !(this.actionTerm && !bone) && !hiddenByRegion && !leftSide && !outsideOrgan
         && !(peeled && this.peelHidden.has(elementId))
         && (!this.drawing || (this.drawing.elements.has(elementId) && this.onDrawingSide(mesh)));
       if (this.motion?.meshes.has(mesh)) {
@@ -1284,7 +1373,7 @@ export class AnatomyViewer {
         const color = highlightedElements.has(elementId) ? own() : base;
         mesh.material = this.surface(system === "skeletal" ? color : pale(color), this.tissue(mesh, color), true);
       } else if (peeled && this.peelFaded.has(elementId)) {
-        mesh.material = this.ghost(own(), 0.14);
+        mesh.material = this.organ ? this.glass(own(), 0.7) : this.ghost(own(), 0.14);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
       } else if (this.context.has(system)) {
@@ -1298,7 +1387,7 @@ export class AnatomyViewer {
       } else if (highlightedElements.has(elementId)) {
         mesh.material = this.solid(own(), mesh);
       } else if (this.isolate || regions.length) {
-        mesh.material = this.ghost(base, 0.12);
+        mesh.material = this.organ ? this.glass(own(), 1.0) : this.ghost(base, 0.12);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
       } else {
@@ -1679,7 +1768,7 @@ export class AnatomyViewer {
         raycaster.setFromCamera(new THREE.Vector2(((x - rect.left) / rect.width) * 2 - 1, -((y - rect.top) / rect.height) * 2 + 1), this.camera);
         // 断面では、切り取った側（見えていない所）に当たったものは除く
         const hits = raycaster.intersectObjects(candidates, false);
-        const hit = this.cutting ? hits.find((h) => this.clipPlane.distanceToPoint(h.point) >= -1e-4) : hits[0];
+        const hit = hits.find((h) => !this.clippedAway(h.point));
         if (hit) {
           const normal = hit.face ? hit.face.normal.clone().transformDirection(hit.object.matrixWorld) : null;
           // 裏から当たった面（向きがそろっていない部品）は、見ている側へ向け直す

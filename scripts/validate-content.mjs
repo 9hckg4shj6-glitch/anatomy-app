@@ -4,6 +4,7 @@
 // - 局所解剖の語（region）の境界・中を通る語が、部品を持つ語か
 // - 語根カード（content/roots.json）の形と、例の語があるか
 // - 骨学試験（content/exam.json）の形と、空欄・語・3Dで示す語の参照先
+// - 臓器の図（content/organs.json）の形と語・レッスンの参照先、平面図（public/plates/index.json）が作られているか
 // - public/models/index.json が今の内容から作られているか（語を足したら npm run build:models が要る）
 // - check: true の語と、Wikidata（data-raw/wikidata.json があれば）と表記が違う語を一覧にする
 import fs from "node:fs";
@@ -334,6 +335,44 @@ else {
     for (const url of [system.url, system.za?.url].filter(Boolean)) {
       if (!fs.existsSync(path.join(ROOT, "public", url))) errors.push(`${id} の GLB がありません: ${url}`);
     }
+  }
+}
+
+// 臓器の図: 語・レッスンの参照先と、平面図（scripts/plates.mjs が描く。模式図の diagram は描かない）
+const OrganCut = z.strictObject({ label: z.string().min(1), normal: vec, point: vec, from: vec, hide: z.array(z.string()).optional() });
+const PlateLabel = z.union([z.string(), z.strictObject({
+  term: z.string().optional(), pin: z.number().int().optional(), ja: z.string().optional(), en: z.string().optional(), note: z.string().optional(),
+  uv: z.tuple([z.number(), z.number()]).optional(), point: vec.optional(), side: z.enum(["left", "right"]).optional(),
+})]);
+const Plate = z.strictObject({
+  id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(),
+  view: z.strictObject({ f: vec, u: vec }).optional(), cut: z.strictObject({ normal: vec, point: vec }).optional(),
+  hide: z.array(z.string()).optional(), hideElements: z.array(z.string()).optional(), frameTerms: z.array(z.string()).optional(),
+  box: z.tuple([vec, vec]).optional(), frame: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
+  colors: z.record(z.string(), z.string()).optional(), terms: z.array(z.string()).optional(), labels: z.array(PlateLabel),
+}).refine((plate) => plate.diagram || plate.view, "平面図には view（描く向き）か diagram（模式図）が要る");
+const Organ = z.strictObject({
+  id: z.string().regex(/^[a-z0-9-]+$/), ja: z.string().min(1), yomi: z.string().regex(/^[ぁ-ゖー]+$/), en: word, about: z.string().min(10),
+  units: z.array(z.string()).min(1), with: z.array(z.string()), box: z.tuple([vec, vec]), seamless: z.array(z.string()).optional(),
+  colors: z.record(z.string(), z.string().regex(/^#[0-9a-f]{6}$/)), views: z.array(z.strictObject({ label: z.string().min(1), from: vec })).min(1),
+  cuts: z.array(OrganCut), plates: z.array(Plate),
+});
+const organsParsed = z.strictObject({ organs: z.array(Organ) }).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/organs.json"), "utf8")));
+if (!organsParsed.success) errors.push(`content/organs.json: ${organsParsed.error.issues.map((issue) => `${issue.path.join(".")}: ${issue.message}`).join(" / ")}`);
+const plateIndexFile = path.join(ROOT, "public/plates/index.json");
+const plateIndex = fs.existsSync(plateIndexFile) ? JSON.parse(fs.readFileSync(plateIndexFile, "utf8")) : { plates: {} };
+for (const organ of organsParsed.success ? organsParsed.data.organs : []) {
+  for (const id of organ.units) if (!unitIds.has(id)) errors.push(`organs.json ${organ.id}: レッスンが無い: ${id}`);
+  const named = [...organ.with, ...Object.keys(organ.colors), ...(organ.seamless ?? []), ...organ.cuts.flatMap((cut) => cut.hide ?? []),
+    ...organ.plates.flatMap((plate) => [...(plate.hide ?? []), ...(plate.frameTerms ?? []), ...(plate.terms ?? []), ...Object.keys(plate.colors ?? {}),
+      ...plate.labels.flatMap((label) => (typeof label === "string" ? [label] : label.term ? [label.term] : []))])];
+  for (const id of named) if (!seen.has(id)) errors.push(`organs.json ${organ.id}: 語が無い: ${id}`);
+  for (const plate of organ.plates) {
+    if (plate.diagram) continue;
+    const entry = plateIndex.plates[plate.id];
+    if (!entry) errors.push(`平面図 ${plate.id} が作られていません。node scripts/plates.mjs を実行してください`);
+    else if (!fs.existsSync(path.join(ROOT, "public", entry.url))) errors.push(`平面図 ${plate.id} の画像がありません: ${entry.url}`);
+    else for (const label of entry.labels) if (label.term && !seen.has(label.term)) errors.push(`平面図 ${plate.id}: 語が無い: ${label.term}`);
   }
 }
 

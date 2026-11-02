@@ -502,3 +502,61 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .order-line { min-height: 1.6em; margin: 10px 0; font-weight: 600; line-height: 1.6; }
 .tap-status.ng { color: var(--ng); }
 .level-answer { margin: 6px 0 12px; font-size: 18px; font-weight: 700; line-height: 1.6; }
+
+/* 臓器の図（src/ui/organs.ts）: 3Dの上に重ねる平面図の紙。右上の ⤢・? のボタンは紙の上に出る */
+.organ-swatch { background: linear-gradient(135deg, #8fb0e6, #c4485e); }
+.organ-head h2 { margin: 4px 0 6px; }
+.organ-head ruby rt { font-size: 11px; color: var(--muted); }
+.organ-en { margin-left: 10px; color: var(--muted); font-size: 16px; font-weight: 400; }
+.back-link { font-size: 14px; }
+.organ-tabs-title { margin: 14px 0 6px; color: var(--muted); font-size: 13px; }
+.organ-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.organ-tabs .chip { text-decoration: none; color: var(--ink); display: inline-flex; align-items: center; }
+.organ-tabs .chip.on { color: #fff; }
+.organ-switch { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.organ-switch a.ghost-button { text-decoration: none; display: inline-flex; align-items: center; }
+.organ-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; margin: 8px 0; }
+.legend-item { display: flex; align-items: center; gap: 6px; min-height: 36px; padding: 4px 6px; border: 0; border-radius: 8px; background: none; color: var(--ink); font-size: 14px; text-align: left; cursor: pointer; }
+.legend-item:hover { background: var(--surface); }
+.legend-item .en { color: var(--muted); font-size: 12px; }
+.switch-row { display: flex; align-items: center; gap: 8px; min-height: 40px; margin-top: 10px; font-size: 15px; }
+.switch-row input { width: 20px; height: 20px; }
+.plate-title { margin: 16px 0 8px; }
+.plate-title .en { color: var(--muted); font-size: 13px; font-weight: 400; }
+.plate-list { margin: 0; padding-left: 28px; }
+.plate-list li::marker { color: var(--muted); font-size: 13px; }
+.plate-layer { position: absolute; inset: 0; background: #f6f2ea; overflow: hidden; }
+.plate-paper { position: absolute; inset: 0; }
+.plate-tools { position: absolute; top: 8px; left: calc(8px + var(--safe-left)); right: calc(60px + var(--safe-right)); display: flex; flex-wrap: wrap; gap: 6px; }
+.plate-tools .chip { min-height: 32px; padding: 4px 10px; font-size: 13px; }
+.plate-image { position: absolute; border-radius: 6px; box-shadow: 0 1px 4px rgb(0 0 0 / 0.12); user-select: none; -webkit-user-drag: none; }
+.plate-lines { position: absolute; top: 0; left: 0; pointer-events: none; overflow: visible; }
+.plate-lines line { stroke: #4a4238; stroke-width: 1; opacity: 0.75; }
+.plate-lines circle { fill: #2b2a27; }
+.plate-lines line.on { stroke: var(--highlight); stroke-width: 2; opacity: 1; }
+.plate-lines circle.on { fill: var(--highlight); stroke: #fff; stroke-width: 1.5; }
+.plate-label {
+  position: absolute; display: flex; flex-direction: column; justify-content: center; gap: 1px; padding: 0 6px; overflow: hidden;
+  border: 0; border-radius: 6px; background: none; color: var(--ink); text-align: left; cursor: pointer; line-height: 1.15;
+}
+.plate-label.left { align-items: flex-end; text-align: right; }
+.plate-label:hover { background: rgb(255 255 255 / 0.7); }
+.plate-label.on { background: #fff3e8; box-shadow: inset 0 0 0 1.5px var(--highlight); }
+.plate-label.hidden-name .plate-ja { color: var(--muted); }
+.plate-ja { font-size: 13.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.plate-en { font-size: 11px; line-height: 14px; color: #5c574e; max-width: 100%; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.plate-num {
+  position: absolute; width: 24px; height: 24px; margin: -12px 0 0 -12px; padding: 0; border-radius: 50%; cursor: pointer;
+  border: 1.5px solid #fff; background: #2b2a27; color: #fff; font-size: 12px; font-weight: 700; line-height: 1;
+}
+.plate-num.on { background: var(--highlight); }
+.flow-diagram { position: absolute; top: 48px; left: 0; width: 100%; height: calc(100% - 52px); }
+.flow-item { cursor: pointer; outline: none; }
+.flow-item:focus-visible rect, .flow-item.on rect { filter: drop-shadow(0 0 4px rgb(255 122 26 / 0.8)); }
+.flow-item.on text { text-decoration: underline; }
+.flow-ja { font-size: 26px; font-weight: 700; }
+.flow-ja.small { font-size: 19px; }
+.flow-en { font-size: 17px; }
+.flow-en.small { font-size: 14px; }
+.flow-caption { font-size: 17px; fill: var(--muted); }
+.flow-caption.en { font-size: 13px; }
