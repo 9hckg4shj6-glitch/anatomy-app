@@ -3,7 +3,7 @@
   "units": [
     {
       "id": "reg-trunk",
-      "title": "体幹の通り道と三角",
+      "title": "体幹と会陰の通り道と三角",
       "group": "体幹と頭頚部",
       "terms": [
         {
@@ -29,6 +29,22 @@
           "etym": "lumbar「腰の」（ラテン語 lumbus）＋ triangle「三角」。プチの三角ともいう",
           "note": "腰の外側で、広背筋の前縁・外腹斜筋の後縁・腸骨稜で囲まれた三角。床は内腹斜筋で、腹壁の弱い所なのでまれにヘルニアが起こる（腰ヘルニア）。",
           "region": { "bounds": ["latissimus-dorsi", "external-oblique", "iliac-crest"], "contents": ["internal-oblique"], "contentsLabel": "床の筋", "outline": [[-0.104,1.011,0.066],[-0.0914,0.9552,0.049],[-0.1217,0.9539,0.0741]], "view": { "target": [-0.105,0.98,0.06], "from": [-0.6,0.1,-0.8], "size": 0.06 } }
+        },
+        {
+          "id": "urogenital-triangle", "ja": "尿生殖三角", "yomi": "にょうせいしょくさんかく", "en": "urogenital triangle", "enAlt": ["urogenital region"], "la": "regio urogenitalis",
+          "level": 2,
+          "kanji": "尿道と生殖器の通る三角",
+          "etym": "urogenital「尿と生殖の」＋ triangle「三角」",
+          "note": "会陰（骨盤の出口をふさぐ、恥骨結合・左右の坐骨結節・尾骨で囲まれたひし形の部分）を、左右の坐骨結節を結ぶ線で前後に分けた前の三角。恥骨結合と左右の恥骨下枝・坐骨枝で囲まれる。会陰膜（尿生殖隔膜）が張り、男性では尿道、女性では尿道と腟が通る。その下の浅会陰隙に陰茎根（陰茎脚・尿道球）と坐骨海綿体筋・球海綿体筋がある。",
+          "region": { "bounds": ["pubic-symphysis", "inferior-pubic-ramus", "ramus-of-ischium", "ischial-tuberosity"], "contents": ["corpus-cavernosum", "corpus-spongiosum", "urethra"], "boundsLabel": "境界の骨", "outline": [[0,0.787,0.128],[-0.03,0.768,0.095],[-0.0525,0.757,0.045],[0,0.754,0.045],[0.0525,0.757,0.045],[0.03,0.768,0.095]], "view": { "target": [0,0.765,0.07], "from": [0,-1,0.25], "size": 0.07 }, "prompt": "会陰のうち、左右の坐骨結節を結ぶ線より前の三角は？" }
+        },
+        {
+          "id": "anal-triangle", "ja": "肛門三角", "yomi": "こうもんさんかく", "en": "anal triangle", "enAlt": ["anal region"], "la": "regio analis",
+          "level": 2,
+          "kanji": "肛門のある三角",
+          "etym": "anal「肛門の」（ラテン語 anus）＋ triangle「三角」",
+          "note": "会陰を左右の坐骨結節を結ぶ線で分けた後ろの三角。左右の坐骨結節・仙結節靱帯と尾骨で囲まれ、中央を肛門管が通って肛門が開き、まわりを外肛門括約筋が囲む。肛門管の両わきは脂肪で満ちた坐骨肛門窩（坐骨直腸窩）で、その外側の壁の陰部神経管（アルコック管）を陰部神経と内陰部動静脈が通る。",
+          "region": { "bounds": ["ischial-tuberosity", "sacrotuberous-ligament", "coccyx"], "contents": ["external-anal-sphincter", "rectum", "levator-ani"], "boundsLabel": "境界", "outline": [[-0.0525,0.757,0.045],[0,0.754,0.045],[0.0525,0.757,0.045],[0.025,0.772,0.025],[0,0.784,0.012],[-0.025,0.772,0.025]], "view": { "target": [0,0.765,0.04], "from": [0,-1,-0.15], "size": 0.06 }, "prompt": "会陰のうち、肛門のある後ろの三角は？" }
         }
       ]
     },

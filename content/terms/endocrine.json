@@ -31,14 +31,14 @@
           "parts": ["za:*parathyroid gland"], "level": 2, "xray": true,
           "kanji": "上皮でできた小さな体（ドイツ語 Epithelkörperchen の訳）",
           "etym": "para-「そば」＋ thyroid「甲状腺」",
-          "note": "甲状腺の後ろにある米粒大の腺で、ふつう上下左右に4つ。副甲状腺ともいう。パラトルモンを出し、血液のカルシウムを上げる。"
+          "note": "甲状腺の後ろにある米粒大（径3〜6mm）の腺で、上下2対・計4つ（上上皮小体・下上皮小体）。臨床では副甲状腺ということが多い。パラトルモンを出し、血液のカルシウムを上げる。"
         },
         {
           "id": "adrenal-gland", "ja": "副腎", "yomi": "ふくじん", "en": "suprarenal gland", "enAlt": ["adrenal gland", "adrenal"], "la": "glandula suprarenalis",
           "parts": ["adrenal gland"], "level": 1,
           "kanji": "腎臓に副（そ）う器官",
           "etym": "adrenal ← ad-「そば」＋ renal「腎臓の」。suprarenal ← supra-「上」＋ renal",
-          "note": "左右の腎臓の上にのる器官。皮質からステロイドホルモン、髄質からアドレナリンを出す。"
+          "note": "左右の腎臓の上内側の端にのる器官（長さ約5cm・幅約3cm、5〜6g）で、腎臓と一緒に腎筋膜に包まれる。右は三角形で下大静脈のすぐ右後ろ、左は半月形。外側の皮質からステロイドホルモン、内側の髄質からアドレナリンを出す。上・中・下副腎動脈の3本が入るが、出るのは副腎静脈1本で、右は直接下大静脈へ、左は左腎静脈へ注ぐ。"
         },
         {
           "id": "thymus", "ja": "胸腺", "yomi": "きょうせん", "en": "thymus", "la": "thymus",
@@ -51,7 +51,7 @@
     },
     {
       "id": "endo-detail",
-      "title": "下垂体と甲状腺の部位",
+      "title": "下垂体・甲状腺・上皮小体の部位",
       "terms": [
         {
           "id": "adenohypophysis", "ja": "腺下垂体", "yomi": "せんかすいたい", "en": "adenohypophysis", "enAlt": ["anterior pituitary", "anterior lobe of pituitary"], "la": "adenohypophysis",
@@ -94,6 +94,20 @@
           "kanji": "錐（きり）の形の葉",
           "etym": "pyramidal ← ギリシャ語 pyramis「ピラミッド」",
           "note": "峡部から上へ伸びる細い葉。発生のときに甲状腺が舌の根もとから下りてきた通り道（甲状舌管）のなごりで、ある人とない人がいる。このモデルにはある。"
+        },
+        {
+          "id": "superior-parathyroid-gland", "ja": "上上皮小体", "yomi": "じょうじょうひしょうたい", "en": "superior parathyroid gland", "la": "glandula parathyroidea superior",
+          "parts": ["za:superior parathyroid gland"], "level": 3, "xray": true,
+          "kanji": "上の上皮小体",
+          "etym": "superior「上の」＋ parathyroid「甲状腺のそばの」",
+          "note": "上の1対の上皮小体で、甲状腺の左右の葉の後ろの縁の、ほぼ中ほどの高さにある。位置は比較的一定。"
+        },
+        {
+          "id": "inferior-parathyroid-gland", "ja": "下上皮小体", "yomi": "かじょうひしょうたい", "en": "inferior parathyroid gland", "la": "glandula parathyroidea inferior",
+          "parts": ["za:inferior parathyroid gland"], "level": 3, "xray": true,
+          "kanji": "下の上皮小体",
+          "etym": "inferior「下の」＋ parathyroid「甲状腺のそばの」",
+          "note": "下の1対の上皮小体で、甲状腺の左右の葉の下の端の近くにある。発生のときに胸腺と一緒に下りてくるので、甲状腺から離れた所（胸腺の中など）にあることも多い。下甲状腺動脈の枝を受け、甲状腺の手術で傷つくと血液のカルシウムが下がって手足がしびれる（テタニー）。"
         }
       ]
     }
