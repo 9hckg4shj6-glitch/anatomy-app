@@ -16,6 +16,22 @@ export const EXAM_FACETS: Facet[] = ["cloze", "read", "spell", "explain", "label
 /** 筋だけに付く問い方（起始・停止・支配神経・作用） */
 export const MUSCLE_FACETS: Facet[] = ["attach", "nerve", "action"];
 
+/** どの語にも付く基本の問い方。レッスンの確認テストで出せるのはこの4つ */
+export const BASIC_FACETS: Facet[] = ["locate", "point", "ja2en", "en2ja"];
+
+/** 語の問い方のうち、学ぶかどうかを選べるもの（設定・レッスン・復習・演習で共通。筋の3つはまとめて1つ） */
+export const TERM_KINDS: { key: string; label: string; facets: Facet[] }[] = [
+  { key: "locate", label: "位置→名前", facets: ["locate"] },
+  { key: "point", label: "名前→位置", facets: ["point"] },
+  { key: "ja2en", label: "日本語→英語", facets: ["ja2en"] },
+  { key: "en2ja", label: "英語→日本語", facets: ["en2ja"] },
+  { key: "muscle", label: "筋の起始・停止・神経・作用", facets: MUSCLE_FACETS },
+  { key: "passage", label: "孔・溝を通るもの", facets: ["passage"] },
+];
+
+/** 語に付く問い方すべて（設定の「学ぶ問い方」の初め） */
+export const TERM_FACETS: Facet[] = TERM_KINDS.flatMap((kind) => kind.facets);
+
 export const facetLabels: Record<Facet, string> = {
   locate: "位置→名前",
   point: "名前→位置",
@@ -44,15 +60,38 @@ export const facetLabels: Record<Facet, string> = {
 /**
  * その語に出す問い方。隠れた部位（xray）と、部品を持たない基本の用語（figure。矢印・面・動きの図）・局所解剖（region）は
  * タップできないので「名前→位置」を出さない。
- * 筋の起始・停止・支配神経・作用と、孔・溝を通るもの（passes）は、位置→名前が復習の段階に入ってから（場所を覚えてから）出す。
+ * 筋の起始・停止・支配神経・作用と、孔・溝を通るもの（passes）は、場所を覚えてから（unlocked。unlockedTerms を見る）出す。
+ * chosen は学ぶ問い方（設定の「学ぶ問い方」）。外した問い方は出さない。
  */
-export function facetsFor(term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "passes"> | undefined, locateLearned = false): Facet[] {
+export function facetsFor(
+  term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "passes"> | undefined,
+  unlocked = false,
+  chosen: readonly Facet[] = FACETS,
+): Facet[] {
   return FACETS.filter((facet) => {
-    if (ROOT_FACETS.includes(facet) || EXAM_FACETS.includes(facet)) return false;
-    if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && locateLearned;
-    if (facet === "passage") return !!term?.passes && locateLearned;
+    if (ROOT_FACETS.includes(facet) || EXAM_FACETS.includes(facet) || !chosen.includes(facet)) return false;
+    if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && unlocked;
+    if (facet === "passage") return !!term?.passes && unlocked;
     return !(facet === "point" && (term?.xray || term?.figure || term?.region));
   });
+}
+
+/**
+ * 筋の3つと通るものを出してよい語（場所を覚えた語）。位置→名前を学ぶならそれが、学ばないなら選んだ基本の問い方のどれかが
+ * 復習の段階（State.Review）に入った語
+ */
+export function unlockedTerms(schedules: StoredSchedule[], chosen: readonly Facet[] = FACETS): Set<string> {
+  const keys = chosen.includes("locate") ? ["locate"] : BASIC_FACETS.filter((facet) => chosen.includes(facet));
+  return new Set(schedules.filter((s) => keys.includes(s.facet) && s.state === State.Review).map((s) => s.termId));
+}
+
+/**
+ * レッスンの確認テストで、その語に出す問い方。選んだ問い方（chosen）を語ごとに順に回し、その語に出せないもの
+ * （隠れた部位の名前→位置など）は飛ばす。選んだものがどれも出せなければ、その語に出せる最初の問い方
+ */
+export function lessonFacet(available: Facet[], chosen: readonly Facet[], i: number): Facet {
+  const usable = chosen.filter((facet) => available.includes(facet));
+  return usable.length ? usable[i % usable.length] : (available[0] ?? "locate");
 }
 
 export interface QueueItem {
@@ -64,6 +103,8 @@ export interface QueueItem {
 /**
  * 今日の出題順。期限の来た復習を古い順に出し、そのあと新しい問い方を1日の上限まで足す。
  * 新しい問い方は、レッスンで見た語のうちまだ一度も解いていないもの（見た順・問い方の順）。
+ * aheadUntil を渡すと、まちがえて覚え直している途中（Learning・Relearning）の問題は、その時刻までに期限が来るものも出す
+ * （復習の回の終わりに、まちがえた問題を待たずにもう一度解く）。
  */
 export function buildQueue(
   learned: LearnedTerm[],
@@ -71,10 +112,13 @@ export function buildQueue(
   now: Date,
   newLimit: number,
   facetsOf: (termId: string) => Facet[] = () => facetsFor(undefined),
+  aheadUntil?: Date,
 ): QueueItem[] {
   const learnedIds = new Set(learned.map((item) => item.termId));
+  const relearning = (s: StoredSchedule) => s.state === State.Learning || s.state === State.Relearning;
   const due = schedules
-    .filter((s) => learnedIds.has(s.termId) && s.state !== State.New && new Date(s.due) <= now)
+    .filter((s) => learnedIds.has(s.termId) && s.state !== State.New
+      && (new Date(s.due) <= now || (!!aheadUntil && relearning(s) && new Date(s.due) <= aheadUntil)))
     .sort((a, b) => a.due.localeCompare(b.due))
     .map((s) => ({ termId: s.termId, facet: s.facet, isNew: false }));
   const started = new Set(schedules.filter((s) => s.state !== State.New).map((s) => s.cardId));

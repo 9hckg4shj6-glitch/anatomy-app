@@ -1,15 +1,16 @@
 import { autoSpeak } from "../audio";
-import { isDrawn, unitById } from "../content";
-import { db, nowIso } from "../db";
+import { unitById, type Term, type Unit } from "../content";
+import { db, nowIso, type Facet } from "../db";
 import { h, onKeys, until } from "../dom";
-import { shuffle, type QueueItem } from "../study";
+import { preferences, setPreference } from "../settings";
+import { BASIC_FACETS, facetLabels, facetsFor, lessonFacet, shuffle, type QueueItem } from "../study";
 import { motionPlayer, sceneFor, type AppContext } from "./context";
 import { nextLesson } from "./home";
 import { ask, showPanel } from "./quiz";
 import { termCard } from "./term-card";
 
 /**
- * レッスン：①3Dで1語ずつ見る → ②確認テスト（タップと名前当てを交互に） → ③復習に入る。
+ * レッスン：①始めの画面で確認テストの問い方を選ぶ → ②3Dで1語ずつ見る → ③確認テスト（選んだ問い方を順に。初めはタップと名前当てを交互に） → ④復習に入る。
  * 確認テストで答えた語から1つずつ「学んだ」に入れるので、途中でやめても答えた語は復習に入り、次に開くと残りの語から続ける。
  */
 export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
@@ -21,41 +22,15 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   const { viewer, signal } = ctx;
   await viewer.show(sceneFor(unit.system, unit.id));
 
-  // 途中まで学んだレッスン（並べ直しで語が加わったレッスンも）は、残りの語から続けるか選ぶ
+  // 始めの画面: レッスンの初めの説明（基本の用語の「解剖学的正位」など）、確認テストの問い方、
+  // 途中まで学んだレッスン（並べ直しで語が加わったレッスンも）なら残りの語から続けるか
   const learnedIds = new Set((await db.learned.bulkGet(unit.terms.map((term) => term.id))).flatMap((item) => (item ? [item.termId] : [])));
   const rest = unit.terms.filter((term) => !learnedIds.has(term.id));
-  let list = unit.terms;
-  if (rest.length && rest.length < unit.terms.length) {
-    viewer.highlight(rest.map((term) => term.id), { isolate: !rest.some((term) => term.figure) });
-    viewer.overview();
-    ctx.hint("");
-    const resume = h("button", { class: "primary", type: "button" }, `続きから（残り ${rest.length}語）`);
-    const restart = h("button", { class: "ghost-button", type: "button" }, `はじめから（${unit.terms.length}語）`);
-    showPanel(ctx,
-      h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, `${unit.terms.length - rest.length} / ${unit.terms.length}語 学んだ`)),
-      h("p", {}, "このレッスンは途中です。まだの語: ", rest.map((term) => term.ja).join("・")),
-      h("div", { class: "nav-row" }, restart, resume),
-    );
-    resume.focus({ preventScroll: true });
-    if (await until<boolean>(signal, (resolve) => {
-      resume.addEventListener("click", () => resolve(true), { once: true });
-      restart.addEventListener("click", () => resolve(false), { once: true });
-    })) list = rest;
-  }
-
-  // レッスンの初めの説明（基本の用語の「解剖学的正位」など）
-  if (unit.intro && list === unit.terms) {
-    viewer.overview();
-    ctx.hint(unit.title);
-    const start = h("button", { class: "primary", type: "button" }, "始める");
-    showPanel(ctx,
-      h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, `${unit.terms.length}語`)),
-      h("div", { class: "intro" }, ...unit.intro.map((text) => h("p", {}, text))),
-      h("div", { class: "nav-row" }, start),
-    );
-    start.focus({ preventScroll: true });
-    await until(signal, (resolve) => start.addEventListener("click", () => resolve(undefined), { once: true }));
-  }
+  const partial = rest.length > 0 && rest.length < unit.terms.length;
+  viewer.highlight((partial ? rest : unit.terms).map((term) => term.id), { isolate: !unit.terms.some((term) => term.figure) });
+  viewer.overview();
+  ctx.hint(unit.title);
+  const list = await startScreen(ctx, unit, partial ? rest : null);
 
   for (let i = 0; i < list.length; ) {
     const term = list[i];
@@ -82,7 +57,9 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   }
 
   viewer.setLabel(null);
-  const items: QueueItem[] = shuffle(list).map((term, i) => ({ termId: term.id, facet: i % 2 || term.xray || isDrawn(term) ? "locate" : "point", isNew: true }));
+  // 確認テストは、選んだ問い方を語ごとに順に回す（初めは位置→名前と名前→位置を交互に）
+  const chosen = testFacets();
+  const items: QueueItem[] = shuffle(list).map((term, i) => ({ termId: term.id, facet: lessonFacet(facetsFor(term, false, preferences.studyFacets), chosen, i), isNew: true }));
   let correct = 0;
   for (const [i, item] of items.entries()) {
     const outcome = await ask(ctx, item, "lesson", `確認 ${i + 1} / ${items.length}`);
@@ -101,15 +78,96 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   showPanel(ctx,
     h("h2", {}, `「${unit.title}」おわり`),
     h("p", { class: "today-count" }, `確認テスト ${correct} / ${items.length}`),
-    h("p", {}, "この語は復習に入りました。英語の問題も復習で出ます。"),
-    unit.terms.some((term) => term.nerve) ? h("p", {}, "筋の起始・停止・支配神経・作用は、位置を覚えたころに復習で出ます。") : "",
-    unit.terms.some((term) => term.passes) ? h("p", {}, "孔・溝を通るもの（入るもの）は、位置を覚えたころに復習で出ます。") : "",
+    h("p", {}, "この語は復習に入りました。復習では ", reviewKinds(unit), " が出ます。"),
+    unit.terms.some((term) => term.nerve) && studies("attach") ? h("p", {}, "筋の起始・停止・支配神経・作用は、場所を覚えたころに復習で出ます。") : "",
+    unit.terms.some((term) => term.passes) && studies("passage") ? h("p", {}, "孔・溝を通るもの（入るもの）は、場所を覚えたころに復習で出ます。") : "",
     h("p", {}, h("a", { href: "#/review" }, "今日の復習へ")),
     h("div", { class: "nav-row" },
       h("a", { class: next ? "ghost-button" : "primary", href: "#/" }, "ホームへ"),
       next ? h("a", { class: "primary", href: `#/learn/${next.id}` }, `次のレッスン「${next.title}」`) : "",
     ),
   );
+}
+
+/** 確認テストで出す問い方（レッスンの始めに選んだもの）。設定の「学ぶ問い方」で外したものは除く */
+function testFacets(): Facet[] {
+  const study = preferences.studyFacets.filter((facet) => BASIC_FACETS.includes(facet));
+  const chosen = preferences.lessonFacets.filter((facet) => study.includes(facet));
+  return chosen.length ? chosen : study.slice(0, 1);
+}
+
+const studies = (facet: Facet) => preferences.studyFacets.includes(facet);
+
+/** 復習で出る問い方の名前（このレッスンの語に出せて、学ぶ問い方に選んだ基本の問い方） */
+function reviewKinds(unit: Unit): string {
+  const facets = BASIC_FACETS.filter((facet) => unit.terms.some((term) => facetsFor(term, false, preferences.studyFacets).includes(facet)));
+  return facets.map((facet) => `「${facetLabels[facet]}」`).join("");
+}
+
+/**
+ * レッスンの始めの画面。初めの説明と、確認テストの問い方（場所から覚えるか、英語から覚えるか。選んだものを覚える）を出す。
+ * rest（途中まで学んだレッスンのまだの語）があれば「続きから」か「はじめから」を選ぶ。学ぶ語を返す
+ */
+async function startScreen(ctx: AppContext, unit: Unit, rest: Term[] | null): Promise<Term[]> {
+  const study = BASIC_FACETS.filter((facet) => studies(facet));
+  // このレッスンの語のどれにも出せない問い方（基本の用語の図の「名前→位置」など）は並べない
+  const usable = study.filter((facet) => unit.terms.some((term) => facetsFor(term, false, preferences.studyFacets).includes(facet)));
+  let note = "";
+  return until<Term[]>(ctx.signal, (resolve) => {
+    const render = (focusKey?: string) => {
+      // このレッスンで出せるものだけを見せる（名前→位置を選んでいても、基本の用語の図のレッスンでは出ない）
+      const chosen = testFacets().filter((facet) => usable.includes(facet));
+      const chip = (facet: Facet) => h("button", {
+        class: chosen.includes(facet) ? "chip on" : "chip", type: "button", "data-key": facet, "aria-pressed": String(chosen.includes(facet)),
+        onClick: async () => {
+          note = "";
+          const saved = testFacets();
+          const next = saved.includes(facet) ? saved.filter((f) => f !== facet) : BASIC_FACETS.filter((f) => f === facet || saved.includes(f));
+          if (!next.some((f) => usable.includes(f))) note = "少なくとも1つは選んでおきます。ほかを選んでから外してください。";
+          else await setPreference("lessonFacets", next);
+          render(facet);
+        },
+      }, facetLabels[facet]);
+      const preset = (label: string, facets: Facet[]) => {
+        const picked = facets.filter((facet) => usable.includes(facet));
+        if (!picked.length) return "";
+        const on = picked.length === chosen.length && picked.every((facet) => chosen.includes(facet));
+        return h("button", {
+          class: on ? "chip on" : "chip", type: "button", "data-key": label, "aria-pressed": String(on),
+          onClick: async () => {
+            note = "";
+            await setPreference("lessonFacets", picked);
+            render(label);
+          },
+        }, label);
+      };
+      const start = h("button", { class: "primary", type: "button", "data-key": "start" }, rest ? `続きから（残り ${rest.length}語）` : "始める");
+      const restart = rest ? h("button", { class: "ghost-button", type: "button" }, `はじめから（${unit.terms.length}語）`) : null;
+      start.addEventListener("click", () => resolve(rest ?? unit.terms), { once: true });
+      restart?.addEventListener("click", () => resolve(unit.terms), { once: true });
+      const skipped = study.filter((facet) => !chosen.includes(facet));
+      showPanel(ctx,
+        h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title),
+          h("span", { class: "count" }, rest ? `${unit.terms.length - rest.length} / ${unit.terms.length}語 学んだ` : `${unit.terms.length}語`)),
+        unit.intro && !rest ? h("div", { class: "intro" }, ...unit.intro.map((text) => h("p", {}, text))) : "",
+        rest ? h("p", {}, "このレッスンは途中です。まだの語: ", rest.map((term) => term.ja).join("・"))
+          : h("p", { class: "muted lesson-terms" }, unit.terms.map((term) => term.ja).join("・")),
+        h("h3", {}, "確認テストで覚えること"),
+        usable.length > 1 ? h("div", { class: "chip-list lesson-presets" },
+          preset("場所から", ["locate", "point"]), preset("日本語→英語", ["ja2en"]), preset("英語→日本語", ["en2ja"]), preset("ぜんぶ", usable)) : "",
+        usable.length > 1 ? h("p", { class: "setting-label" }, "問い方を1つずつ選ぶ") : "",
+        h("div", { class: "chip-list" }, ...usable.map(chip)),
+        h("p", { class: "muted" },
+          "語を3Dで1つずつ見たあと、選んだ問い方を順に回して1語に1問ずつ出します。",
+          skipped.length ? `選ばなかった${skipped.map((facet) => `「${facetLabels[facet]}」`).join("")}は、あとで復習に新しい問題として出ます。` : "",
+          h("br"), "問い方そのものを外すときは ", h("a", { href: "#/settings" }, "設定の「学ぶ問い方」"), "で。"),
+        note ? h("p", { class: "drill-note" }, note) : "",
+        h("div", { class: "nav-row" }, restart ?? "", start),
+      );
+      ctx.panel.querySelector<HTMLElement>(`[data-key="${focusKey ?? "start"}"]`)?.focus({ preventScroll: true });
+    };
+    render();
+  });
 }
 
 /** 「前へ」「次へ」を待つ（PC では ← → キーでも）。進む数を返す。skip（確認テストへ飛ぶ）なら 0 */

@@ -14,7 +14,7 @@ import {
 } from "../exam";
 import { landmarkAt, type Vec3 } from "../landmarks";
 import { ORIGIN_COLOR } from "../viewer";
-import { dueLabel, Rating, recordReview, retrievability } from "../fsrs";
+import { dueLabel, Rating, recordReview, retrievability, type RecordedReview } from "../fsrs";
 import { facetLabels, pickChoices, practiceQueue, shuffle, termMastery, typesEnglish, type PracticeCandidate, type QueueItem } from "../study";
 import { sceneFor, type AppContext } from "./context";
 import { chooseOne, retryButton, showPanel, typeEnglish, waitResult, type Outcome } from "./quiz";
@@ -294,11 +294,11 @@ async function showTerms(ctx: AppContext, ids: string[], focus?: string): Promis
 }
 
 /** 答え合わせの画面（正解でなければ解き直し）。「次へ」なら false、解き直しなら true */
-async function showResult(ctx: AppContext, outcome: Outcome, nodes: (Node | string)[], due: string): Promise<boolean> {
+async function showResult(ctx: AppContext, outcome: Outcome, nodes: (Node | string)[], recorded: RecordedReview): Promise<boolean> {
   const next = h("button", { class: "primary", type: "button" }, "次へ");
   const retry = outcome === "correct" ? null : retryButton();
-  showPanel(ctx, ...nodes, h("p", { class: "next-due" }, `次の出題: ${due}`), retry ?? "", next);
-  return waitResult(ctx, next, retry, outcome === "correct");
+  showPanel(ctx, ...nodes, h("p", { class: "next-due" }, `次の出題: ${dueLabel(recorded.schedule)}`), retry ?? "", next);
+  return waitResult(ctx, next, retry, outcome === "correct", recorded);
 }
 
 const ratingOf: Record<Outcome, Grade> = { correct: Rating.Good, close: Rating.Hard, wrong: Rating.Again, skip: Rating.Again };
@@ -354,7 +354,7 @@ async function askCloze(ctx: AppContext, exam: ClozeItem, source: ReviewEvent["s
   const results = exam.blanks.map((blank, i) => (typed ? checkBlank(typed[i], blank.answers) : "wrong"));
   const rating = typed ? clozeRating(results) : Rating.Again;
   const outcome = outcomeOf(rating, !typed);
-  const { schedule, undo } = await recordReview(exam.key, "cloze", rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, "cloze", rating, { durationMs: Math.round(performance.now() - started), source });
   await showTerms(ctx, exam.show);
   const correct = results.filter((result) => result !== "wrong").length;
   const answer = (i: number) => {
@@ -373,9 +373,9 @@ async function askCloze(ctx: AppContext, exam: ClozeItem, source: ReviewEvent["s
     h("p", { class: "cloze" }, ...clozeText(exam, answer)),
     exam.blanks.some((blank) => blank.term) ? h("p", { class: "muted" }, "下線の語を押すと、3Dでその場所を示す。") : "",
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askCloze(ctx, exam, source, progress);
 }
 
@@ -429,7 +429,7 @@ async function askWord(ctx: AppContext, exam: WordItem, facet: Facet, source: Re
     }
   }
   const rating = ratingOf[outcome];
-  const { schedule, undo } = await recordReview(exam.key, facet, rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, facet, rating, { durationMs: Math.round(performance.now() - started), source });
   void showTerms(ctx, exam.show);
   const wrong = picked && picked !== exam.key ? word(picked) : null;
   const again = await showResult(ctx, outcome, [
@@ -440,9 +440,9 @@ async function askWord(ctx: AppContext, exam: WordItem, facet: Facet, source: Re
     wrong ? h("p", { class: "wrong-note" }, `あなたが選んだのは「${wrong.ja}」（${foreign(wrong.key)}）`) : "",
     wordCard(exam),
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askWord(ctx, exam, facet, source, progress);
 }
 
@@ -476,7 +476,7 @@ async function askEssay(ctx: AppContext, exam: EssayItem, source: ReviewEvent["s
   const checked = boxes.filter((box) => box.checked).length;
   const rating = ready ? essayRating(checked, exam.points.length) : Rating.Again;
   const outcome = outcomeOf(rating, !ready);
-  const { schedule, undo } = await recordReview(exam.key, "explain", rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, "explain", rating, { durationMs: Math.round(performance.now() - started), source });
   const term = exam.term ? termById.get(exam.term) : undefined;
   const again = await showResult(ctx, outcome, [
     head,
@@ -485,9 +485,9 @@ async function askEssay(ctx: AppContext, exam: EssayItem, source: ReviewEvent["s
     h("ul", { class: "points done" }, ...exam.points.map((point, i) => h("li", { class: boxes[i].checked ? "said" : "" }, point))),
     term ? termCard(term, { compact: true }) : "",
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askEssay(ctx, exam, source, progress);
 }
 
@@ -597,7 +597,7 @@ async function askLabel(ctx: AppContext, exam: DrawingItem, source: ReviewEvent[
   });
   const rating = typed ? labelRating(results.flat()) : Rating.Again;
   const outcome = outcomeOf(rating, !typed);
-  const { schedule, undo } = await recordReview(exam.key, "label", rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, "label", rating, { durationMs: Math.round(performance.now() - started), source });
   const mine = (text: string | undefined, result: EnglishResult) => (result !== "correct" && text?.trim() ? h("s", { class: "typed-ja" }, text.trim()) : "");
   const correct = results.flat().filter((result) => result !== "wrong").length;
   const again = await showResult(ctx, outcome, [
@@ -610,9 +610,9 @@ async function askLabel(ctx: AppContext, exam: DrawingItem, source: ReviewEvent[
       : undefined))),
     h("p", { class: "muted" }, "名前を押すと、3Dでその番号に寄る。"),
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askLabel(ctx, exam, source, progress);
 }
 
@@ -647,7 +647,7 @@ async function askAnnotate(ctx: AppContext, exam: DrawingItem, source: ReviewEve
   const checked = boxes.filter((box) => box.checked).length;
   const rating = ready ? annotateRating(checked, boxes.length) : Rating.Again;
   const outcome = outcomeOf(rating, !ready);
-  const { schedule, undo } = await recordReview(exam.key, "annotate", rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, "annotate", rating, { durationMs: Math.round(performance.now() - started), source });
   const said = (i: number) => (boxes[i].checked ? h("span", { class: "blank-answer correct" }, "✓") : h("span", { class: "blank-answer wrong" }, "書けなかった"));
   const again = await showResult(ctx, outcome, [
     head,
@@ -655,9 +655,9 @@ async function askAnnotate(ctx: AppContext, exam: DrawingItem, source: ReviewEve
     h("ul", { class: "points done" }, ...checks.map((text, i) => h("li", { class: boxes[i].checked ? "said" : "" }, text))),
     h("ol", { class: "drawing-names" }, ...exam.marks.map((mark, i) => markRow(ctx, mark, i, said(checks.length + i)))),
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askAnnotate(ctx, exam, source, progress);
 }
 
@@ -697,7 +697,7 @@ async function askOrient(ctx: AppContext, exam: DrawingItem, source: ReviewEvent
   const results: EnglishResult[] = answers.map((answer, i) => (typed && chosen[i] === answer ? "correct" : "wrong"));
   const rating = typed ? clozeRating(results) : Rating.Again;
   const outcome = outcomeOf(rating, !typed);
-  const { schedule, undo } = await recordReview(exam.key, "orient", rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, "orient", rating, { durationMs: Math.round(performance.now() - started), source });
   const text = (g: number, value: string) => groups[g].options.find(([v]) => v === value)?.[1] ?? value;
   const again = await showResult(ctx, outcome, [
     head,
@@ -707,9 +707,9 @@ async function askOrient(ctx: AppContext, exam: DrawingItem, source: ReviewEvent
     h("p", { class: "muted" }, `${question.side === "right" ? "右" : "左"}の${bone}を${faceLabels[question.view]}から見ていた。「向きを戻す」で上を上にして見られる。`),
     h("div", { class: "nav-row" }, h("button", { class: "ghost-button", type: "button", onClick: () => ctx.viewer.frameDrawing(viewFrom(question.view, question.side)) }, "向きを戻す")),
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askOrient(ctx, exam, source, progress);
 }
 
@@ -837,7 +837,7 @@ async function askContrast(ctx: AppContext, exam: PairItem, source: ReviewEvent[
   const results: EnglishResult[] = rows.map((row, r) => (answered && chosen[r] === row.term ? "correct" : "wrong"));
   const rating = answered ? clozeRating(results) : Rating.Again;
   const outcome = outcomeOf(rating, !answered);
-  const { schedule, undo } = await recordReview(exam.key, "contrast", rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, "contrast", rating, { durationMs: Math.round(performance.now() - started), source });
   void showTerms(ctx, exam.terms, target);
   const missed = rows.filter((_, r) => results[r] !== "correct");
   const again = await showResult(ctx, outcome, [
@@ -849,9 +849,9 @@ async function askContrast(ctx: AppContext, exam: PairItem, source: ReviewEvent[
     h("p", { class: "muted" }, "語の名前を押すと、3Dでその場所を示す。"),
     exam.note ? h("p", {}, exam.note) : "",
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askContrast(ctx, exam, source, progress);
 }
 
@@ -898,7 +898,7 @@ async function askOrder(ctx: AppContext, exam: SequenceItem, source: ReviewEvent
   const mistakes = answered ? orderMistakes(picked, exam.members, exam.ordered) : exam.members.length;
   const rating = answered ? orderRating(mistakes, exam.members.length) : Rating.Again;
   const outcome = outcomeOf(rating, !answered);
-  const { schedule, undo } = await recordReview(exam.key, "order", rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, "order", rating, { durationMs: Math.round(performance.now() - started), source });
   void showSequenceAnswer(ctx, exam);
   const extra = picked.filter((id) => !exam.members.includes(id));
   const again = await showResult(ctx, outcome, [
@@ -911,9 +911,9 @@ async function askOrder(ctx: AppContext, exam: SequenceItem, source: ReviewEvent
     extra.length && !exam.ordered ? h("p", { class: "wrong-note" }, `当てはまらないのに選んだもの: ${extra.map(name).join("・")}`) : "",
     h("p", {}, exam.note),
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askOrder(ctx, exam, source, progress);
 }
 
@@ -981,7 +981,7 @@ async function askTrace(ctx: AppContext, exam: SequenceItem, source: ReviewEvent
   ctx.hint("");
   const rating = completed ? traceRating(misses) : Rating.Again;
   const outcome = outcomeOf(rating, !completed);
-  const { schedule, undo } = await recordReview(exam.key, "trace", rating, { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, "trace", rating, { durationMs: Math.round(performance.now() - started), source });
   await showSequence(ctx, exam, true);
   const again = await showResult(ctx, outcome, [
     head,
@@ -992,9 +992,9 @@ async function askTrace(ctx: AppContext, exam: SequenceItem, source: ReviewEvent
     h("p", { class: "muted" }, "名前を押すと、3Dでその番号に寄る。"),
     h("p", {}, exam.note),
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askTrace(ctx, exam, source, progress);
 }
 
@@ -1014,7 +1014,7 @@ async function askLevel(ctx: AppContext, exam: LevelItem, facet: "level" | "land
   const picked = await chooseOne(ctx, head, prompt, shuffle([...choices]), display, undefined, "long");
   const outcome: Outcome = picked === answer ? "correct" : picked ? "wrong" : "skip";
   const wrongText = picked && picked !== answer ? display(picked) : "";
-  const { schedule, undo } = await recordReview(exam.key, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(exam.key, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
   await showLevel(ctx, exam, "both");
   const again = await showResult(ctx, outcome, [
     head,
@@ -1025,8 +1025,8 @@ async function askLevel(ctx: AppContext, exam: LevelItem, facet: "level" | "land
     h("p", {}, exam.note),
     h("p", { class: "muted" }, "橙が目安、緑が同じ高さの骨。"),
     countNote(exam),
-  ], dueLabel(schedule));
+  ], recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askLevel(ctx, exam, facet, source, progress);
 }

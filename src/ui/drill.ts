@@ -1,20 +1,12 @@
 import { systems, terms, units } from "../content";
-import { db, type Facet } from "../db";
+import { db } from "../db";
 import { h } from "../dom";
-import { retrievability, State } from "../fsrs";
-import { facetsFor, MUSCLE_FACETS, practiceQueue, type PracticeCandidate } from "../study";
+import { retrievability } from "../fsrs";
+import { preferences } from "../settings";
+import { facetsFor, practiceQueue, TERM_KINDS, unlockedTerms, type PracticeCandidate } from "../study";
 import type { AppContext } from "./context";
 import { ask, showPanel } from "./quiz";
 
-/** 演習で選べる問い方（筋の3つはまとめて1つ） */
-const KINDS: { label: string; facets: Facet[] }[] = [
-  { label: "位置→名前", facets: ["locate"] },
-  { label: "名前→位置", facets: ["point"] },
-  { label: "日本語→英語", facets: ["ja2en"] },
-  { label: "英語→日本語", facets: ["en2ja"] },
-  { label: "筋の起始・停止・神経・作用", facets: MUSCLE_FACETS },
-  { label: "孔・溝を通るもの", facets: ["passage"] },
-];
 const COUNTS = [10, 20, 40];
 
 /**
@@ -30,17 +22,19 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
   const learnedIds = new Set(learned.map((item) => item.termId));
   // 覚え具合は解くたびに変わるので、「もう一度」のときに読み直す
   let scheduleOf = new Map(schedules.map((s) => [s.cardId, s]));
-  let locateLearned = new Set(schedules.filter((s) => s.facet === "locate" && s.state === State.Review).map((s) => s.termId));
+  let unlocked = unlockedTerms(schedules, preferences.studyFacets);
   const reload = async () => {
     const fresh = await db.schedules.toArray();
     scheduleOf = new Map(fresh.map((s) => [s.cardId, s]));
-    locateLearned = new Set(fresh.filter((s) => s.facet === "locate" && s.state === State.Review).map((s) => s.termId));
+    unlocked = unlockedTerms(fresh, preferences.studyFacets);
   };
   const learnedTerms = terms.filter((term) => learnedIds.has(term.id));
   const available = systems.filter((system) => learnedTerms.some((term) => term.system === system.id));
 
   const chosen = new Set(available.map((system) => system.id));
-  const kinds = new Set(KINDS.map((kind) => kind.label));
+  // 問い方は、設定の「学ぶ問い方」で選んだものから始める（演習では外したものも選べる）
+  const studied = TERM_KINDS.filter((kind) => kind.facets.some((facet) => preferences.studyFacets.includes(facet)));
+  const kinds = new Set((studied.length ? studied : TERM_KINDS).map((kind) => kind.key));
   /** まとまり（骨格系の頭蓋など）。系統を1つだけ選んだときに絞れる。空なら全部 */
   const groups = new Set<string>();
   const groupOf = new Map(units.map((unit) => [unit.id, unit.group]));
@@ -54,8 +48,8 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
 
   const candidates = (): PracticeCandidate[] => learnedTerms
     .filter((term) => chosen.has(term.system) && inGroups(term.unit))
-    .flatMap((term) => facetsFor(term, locateLearned.has(term.id))
-      .filter((facet) => KINDS.some((kind) => kinds.has(kind.label) && kind.facets.includes(facet)))
+    .flatMap((term) => facetsFor(term, unlocked.has(term.id))
+      .filter((facet) => TERM_KINDS.some((kind) => kinds.has(kind.key) && kind.facets.includes(facet)))
       .map((facet) => {
         const schedule = scheduleOf.get(`${term.id}:${facet}`);
         return { termId: term.id, facet, recall: retrievability(schedule), lapses: schedule?.lapses ?? 0 };
@@ -97,7 +91,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
         else groups.add(key);
       }) : "",
       h("h3", {}, "問い方"),
-      chips(KINDS.map((kind) => ({ key: kind.label, label: kind.label })), (key) => kinds.has(key), (key) => toggle(kinds, key)),
+      chips(TERM_KINDS.map((kind) => ({ key: kind.key, label: kind.label })), (key) => kinds.has(key), (key) => toggle(kinds, key)),
       h("h3", {}, "問題の数"),
       chips(COUNTS.map((n) => ({ key: String(n), label: `${n}問` })), (key) => key === String(count), (key) => (count = Number(key))),
       h("h3", {}, "出し方"),

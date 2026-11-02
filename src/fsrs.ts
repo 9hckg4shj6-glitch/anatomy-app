@@ -60,10 +60,15 @@ export function nextSchedule(
   return cardToStored(termId, facet, scheduler.next(card, at, rating).card);
 }
 
-/** 記録した1回の答え。undo で押しまちがいを取り消せる（解いた記録を消し、覚え具合を解く前に戻す） */
+/**
+ * 記録した1回の答え。undo で押しまちがいを取り消せる（解いた記録を消し、覚え具合を解く前に戻す）。
+ * regrade は判定を付け直す（正解したけれど自信が無かったときに Hard へ）。付け直した覚え具合を返す
+ */
 export interface RecordedReview {
   schedule: StoredSchedule;
+  rating: Grade;
   undo: () => Promise<void>;
+  regrade: (rating: Grade) => Promise<StoredSchedule>;
 }
 
 export async function recordReview(
@@ -73,6 +78,29 @@ export async function recordReview(
   options: { durationMs: number | null; source: ReviewEvent["source"] },
   at = new Date(),
 ): Promise<RecordedReview> {
+  // 付け直したら、最後に書いた記録を取り消してから書く（解いた記録が重ならないように）
+  let latest = await writeReview(termId, facet, rating, options, at);
+  const recorded: RecordedReview = {
+    schedule: latest.schedule,
+    rating,
+    undo: () => latest.undo(),
+    regrade: async (next) => {
+      await latest.undo();
+      latest = await writeReview(termId, facet, next, options, at);
+      recorded.schedule = latest.schedule;
+      return latest.schedule;
+    },
+  };
+  return recorded;
+}
+
+async function writeReview(
+  termId: string,
+  facet: Facet,
+  rating: Grade,
+  options: { durationMs: number | null; source: ReviewEvent["source"] },
+  at: Date,
+): Promise<{ schedule: StoredSchedule; undo: () => Promise<void> }> {
   const cardId = `${termId}:${facet}`;
   const previous = await db.schedules.get(cardId);
   const schedule = nextSchedule(previous, termId, facet, rating, at);

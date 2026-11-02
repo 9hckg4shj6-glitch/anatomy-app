@@ -1,4 +1,5 @@
-import { db, nowIso } from "./db";
+import { db, nowIso, type Facet } from "./db";
+import { BASIC_FACETS, TERM_FACETS } from "./study";
 
 /** 設定の画面（#/settings）で変えられる設定。db.settings に1つずつ保存し、起動したときに読む */
 export interface Preferences {
@@ -16,6 +17,10 @@ export interface Preferences {
   examDate: string;
   /** 最後に記録を書き出した日時（空ならまだ）。しばらく書き出していなければホームで知らせる */
   lastBackupAt: string;
+  /** 学ぶ問い方（語の問い方。study.ts の TERM_FACETS から）。外した問い方は新しく始めず、復習にも出さない（記録は残る） */
+  studyFacets: Facet[];
+  /** レッスンの確認テストで出す問い方（基本の4つから。レッスンの始めに選んだものを覚える） */
+  lessonFacets: Facet[];
 }
 
 export const NEW_PER_DAY_OPTIONS = [10, 20, 30, 40];
@@ -26,7 +31,14 @@ export const TEXT_SIZES: Record<Preferences["textSize"], { label: string; zoom: 
   large: { label: "大", zoom: 1.15 },
 };
 
-export const preferences: Preferences = { autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "" };
+export const preferences: Preferences = {
+  autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
+  studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"],
+};
+
+/** 問い方の並び。基本の問い方を1つは含む（どれも外すと何も学べないので） */
+const facetList = (allowed: Facet[]) => (value: unknown): value is Facet[] =>
+  Array.isArray(value) && value.every((facet) => allowed.includes(facet)) && value.some((facet) => BASIC_FACETS.includes(facet));
 
 const valid: { [K in keyof Preferences]: (value: unknown) => value is Preferences[K] } = {
   autoSpeak: (value): value is boolean => typeof value === "boolean",
@@ -36,6 +48,8 @@ const valid: { [K in keyof Preferences]: (value: unknown) => value is Preference
   textSize: (value): value is Preferences["textSize"] => typeof value === "string" && value in TEXT_SIZES,
   examDate: (value): value is string => typeof value === "string" && (value === "" || /^\d{4}-\d{2}-\d{2}$/.test(value)),
   lastBackupAt: (value): value is string => typeof value === "string",
+  studyFacets: facetList(TERM_FACETS),
+  lessonFacets: facetList(BASIC_FACETS),
 };
 
 /** 起動したときと、記録を読み込んだときに呼ぶ */

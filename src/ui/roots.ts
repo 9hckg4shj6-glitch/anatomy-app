@@ -125,7 +125,7 @@ export async function askRoot(ctx: AppContext, item: QueueItem, source: ReviewEv
       example ? h("p", { class: "muted" }, `例: ${example.ja}`) : "");
   const picked = await chooseOne(ctx, header, prompt, choices, display, byMeaning ? undefined : "en");
   const outcome: Outcome = picked === item.termId ? "correct" : picked ? "wrong" : "skip";
-  const { schedule, undo } = await recordReview(item.termId, item.facet, outcome === "correct" ? Rating.Good : Rating.Again,
+  const recorded = await recordReview(item.termId, item.facet, outcome === "correct" ? Rating.Good : Rating.Again,
     { durationMs: Math.round(performance.now() - started), source });
   void showExamples(ctx, examplesOf(root));
   const wrong = picked && picked !== item.termId ? rootByKey.get(picked)! : null;
@@ -135,12 +135,12 @@ export async function askRoot(ctx: AppContext, item: QueueItem, source: ReviewEv
     outcome === "correct" ? h("div", { class: "result ok", role: "status" }, "正解") : h("div", { class: "result ng", role: "status" }, outcome === "skip" ? "答えを確認しよう" : "不正解"),
     wrong ? h("p", { class: "wrong-note" }, `あなたが選んだのは ${wrong.root}「${wrong.meaning}」`) : "",
     rootCard(root, { examples: 6 }),
-    h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`),
+    h("p", { class: "next-due" }, `次の出題: ${dueLabel(recorded.schedule)}`),
     retry ?? "",
     next,
   );
-  const again = await waitResult(ctx, next, retry, outcome === "correct");
+  const again = await waitResult(ctx, next, retry, outcome === "correct", recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return askRoot(ctx, item, source, progress);
 }

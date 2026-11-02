@@ -105,3 +105,45 @@ describe("基本の用語", () => {
     expect(facetsFor({ figure })).toEqual(["locate", "ja2en", "en2ja"]);
   });
 });
+
+describe("学ぶ問い方を選ぶ", () => {
+  it("外した問い方は出さない。筋の3つも外せる", async () => {
+    const { facetsFor } = await import("../src/study");
+    expect(facetsFor({}, false, ["locate", "point"])).toEqual(["locate", "point"]);
+    expect(facetsFor({ nerve: "腋窩神経" }, true, ["ja2en", "en2ja", "attach", "nerve", "action"])).toEqual(["ja2en", "en2ja", "attach", "nerve", "action"]);
+    expect(facetsFor({ nerve: "腋窩神経" }, true, ["locate", "point", "ja2en", "en2ja"])).toEqual(["locate", "point", "ja2en", "en2ja"]);
+  });
+
+  it("筋の3つは、位置→名前を学ぶならそれを、学ばないなら選んだ基本の問い方のどれかを覚えてから", async () => {
+    const { unlockedTerms } = await import("../src/study");
+    let ja2en = reviewed("biceps", "ja2en", Rating.Good, now);
+    for (let day = 1; day <= 2; day++) ja2en = nextSchedule(ja2en, "biceps", "ja2en", Rating.Good as never, new Date(now.getTime() + day * 86_400_000));
+    expect(ja2en.state).toBe(State.Review);
+    expect(unlockedTerms([ja2en]).has("biceps")).toBe(false);
+    expect(unlockedTerms([ja2en], ["ja2en", "en2ja", "attach", "nerve", "action"]).has("biceps")).toBe(true);
+  });
+
+  it("レッスンの確認テストは選んだ問い方を順に回し、その語に出せないものは飛ばす", async () => {
+    const { lessonFacet } = await import("../src/study");
+    const all = ["locate", "point", "ja2en", "en2ja"] as const;
+    expect([0, 1, 2, 3].map((i) => lessonFacet([...all], ["locate", "point"], i))).toEqual(["locate", "point", "locate", "point"]);
+    expect([0, 1].map((i) => lessonFacet([...all], ["ja2en"], i))).toEqual(["ja2en", "ja2en"]);
+    // 隠れた部位（名前→位置が無い）
+    expect([0, 1].map((i) => lessonFacet(["locate", "ja2en", "en2ja"], ["locate", "point"], i))).toEqual(["locate", "locate"]);
+    expect(lessonFacet(["locate", "ja2en", "en2ja"], ["point"], 0)).toBe("locate");
+  });
+});
+
+describe("まちがえた問題をもう一度", () => {
+  it("覚え直している途中の問題は、aheadUntil までに期限が来るものも出す。復習の段階のものは出さない", () => {
+    const missed = reviewed("femur", "locate", Rating.Again, now);
+    expect(missed.state).toBe(State.Learning);
+    const future = reviewed("tibia", "locate", Rating.Good, new Date(now.getTime() - 3 * 86_400_000));
+    const soonReview = { ...future, state: State.Review, due: new Date(now.getTime() + 5 * 60_000).toISOString() };
+    const learnedBoth = [learned("femur"), learned("tibia")];
+    const none = () => [] as never[];
+    expect(buildQueue(learnedBoth, [missed, soonReview], now, 0, none)).toEqual([]);
+    const ahead = buildQueue(learnedBoth, [missed, soonReview], now, 0, none, new Date(now.getTime() + 20 * 60_000));
+    expect(ahead).toEqual([{ termId: "femur", facet: "locate", isNew: false }]);
+  });
+});

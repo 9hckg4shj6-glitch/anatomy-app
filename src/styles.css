@@ -286,6 +286,18 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .text-button.skip-test { margin: 10px auto 0; }
 .drill-note { padding: 8px 12px; border-radius: 10px; background: color-mix(in srgb, var(--close) 12%, var(--surface)); font-size: 14px; }
 .review-size { flex-wrap: wrap; }
+.chip-count { margin-left: 6px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.chip.on .chip-count { color: rgb(255 255 255 / 0.75); }
+.review-more { margin: 14px 0 4px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.review-more summary { cursor: pointer; font-size: 15px; font-weight: 600; }
+.review-more summary .muted { margin-left: 6px; font-weight: 400; }
+.review-more h3 { margin: 12px 0 8px; }
+.review-start { margin-top: 12px; }
+.text-button.chips-reset { margin: 4px 0 0; padding-left: 0; }
+.lesson-terms { line-height: 1.7; }
+.lesson-presets { margin-bottom: 4px; }
+.text-button.unsure { margin-bottom: 8px; }
+.text-button.unsure[aria-pressed="true"] { color: var(--close); }
 /* ? で出すキーの一覧 */
 .key-help { max-width: min(420px, calc(100vw - 32px)); padding: 16px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); }
 .key-help::backdrop { background: rgb(0 0 0 / 0.35); }

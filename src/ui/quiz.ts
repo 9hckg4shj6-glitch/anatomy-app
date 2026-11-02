@@ -4,7 +4,7 @@ import { autoSpeak, speak } from "../audio";
 import { figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
 import { db, type Facet, type ReviewEvent } from "../db";
 import { h, onKeys, until } from "../dom";
-import { dueLabel, Rating, recordReview } from "../fsrs";
+import { dueLabel, Rating, recordReview, type RecordedReview } from "../fsrs";
 import { hitsPin, landmarkAt, nearbyLandmarks, nestedLandmarks, type Vec3 } from "../landmarks";
 import { facetLabels, pickChoices, typesEnglish, type QueueItem } from "../study";
 import { preferences } from "../settings";
@@ -217,7 +217,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       throw new Error(`語の問題ではない問い方: ${facet}`);
   }
 
-  const { schedule, undo } = await recordReview(term.id, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
+  const recorded = await recordReview(term.id, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
   if (facet === "attach") viewer.highlight([term.id], { isolate: true, marks: attachMarks(term), seeThrough: true });
   else viewer.reveal(term.id, wrongTerm, isolate, tapped);
   viewer.focus(term.id, 3.4, true, tapped?.point);
@@ -242,20 +242,23 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   // 正解なら語のカードは名前だけにして（「くわしく」で全部）、すぐ次へ進めるようにする
   const card = outcome === "correct" ? moreCard(term, () => termCard(term, { motion: motionPlayer(ctx, term) })) : termCard(term, { motion: motionPlayer(ctx, term) });
   showPanel(ctx, header, banner, wrongNote ?? "", card,
-    h("p", { class: "next-due" }, `次の出題: ${dueLabel(schedule)}`), retry ?? "", next);
-  const again = await waitResult(ctx, next, retry, outcome === "correct");
+    h("p", { class: "next-due" }, `次の出題: ${dueLabel(recorded.schedule)}`), retry ?? "", next);
+  const again = await waitResult(ctx, next, retry, outcome === "correct", recorded);
   if (!again) return outcome;
-  await undo();
+  await recorded.undo();
   return ask(ctx, item, source, progress);
 }
 
 /**
  * 答え合わせの画面で「次へ」か解き直しを待つ（語・語根・骨学試験で共通）。解き直しなら true。
  * キーボードでは Enter・→ で次へ、Backspace で解き直し（ボタンにフォーカスが無くても）。
+ * 正解なら「自信がなかった」（キーは H）で判定を Hard に付け直し、次の出題を早める（recorded を渡したとき）。
  * 設定の「正解したら自動で次へ」がオンなら、正解のとき1.5秒で次へ進む（画面に触れたりキーを押したりしたら止める）。
  */
-export function waitResult(ctx: AppContext, next: HTMLButtonElement, retry: HTMLButtonElement | null, correct: boolean): Promise<boolean> {
+export function waitResult(ctx: AppContext, next: HTMLButtonElement, retry: HTMLButtonElement | null, correct: boolean, recorded?: RecordedReview): Promise<boolean> {
   next.focus({ preventScroll: true });
+  const unsure = correct && recorded ? unsureButton(ctx, recorded) : null;
+  if (unsure) next.before(unsure.button);
   return until<boolean>(ctx.signal, (resolve) => {
     let timer = 0;
     const done = (again: boolean) => {
@@ -266,6 +269,7 @@ export function waitResult(ctx: AppContext, next: HTMLButtonElement, retry: HTML
     const stop = onKeys(ctx.signal, (key) => {
       if (key === "Enter" || key === "ArrowRight") done(false);
       else if (key === "Backspace" && retry) done(true);
+      else if ((key === "h" || key === "H") && unsure) unsure.toggle();
       else return false;
       return true;
     });
@@ -284,6 +288,30 @@ export function waitResult(ctx: AppContext, next: HTMLButtonElement, retry: HTML
       document.addEventListener("keydown", cancel, { once: true, signal: ctx.signal });
     }
   });
+}
+
+/**
+ * 正解したけれど当てずっぽうだった・思い出すのに時間がかかったとき。判定を Hard に付け直し、次の出題を書きかえる。
+ * もう一度押すと元（Good）に戻す
+ */
+function unsureButton(ctx: AppContext, recorded: RecordedReview): { button: HTMLButtonElement; toggle: () => void } {
+  const original = recorded.rating;
+  let unsure = false;
+  let busy = false;
+  const button = h("button", { class: "text-button unsure", type: "button", "aria-pressed": "false" }, "自信がなかった（早めにもう一度出す）");
+  const toggle = async () => {
+    if (busy) return;
+    busy = true;
+    unsure = !unsure;
+    const schedule = await recorded.regrade(unsure ? Rating.Hard : original);
+    busy = false;
+    button.textContent = unsure ? "自信なしにしました（押すと元に戻す）" : "自信がなかった（早めにもう一度出す）";
+    button.setAttribute("aria-pressed", String(unsure));
+    const due = ctx.panel.querySelector(".next-due");
+    if (due) due.textContent = `次の出題: ${dueLabel(schedule)}`;
+  };
+  button.addEventListener("click", () => void toggle());
+  return { button, toggle: () => void toggle() };
 }
 
 /** 正解のときの短い語のカード。「くわしく」で全部のカードに替える */

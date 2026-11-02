@@ -24,4 +24,20 @@ describe("押しまちがいの取り消し", () => {
     expect(await db.reviewEvents.count()).toBe(1);
     expect((await db.schedules.get("femur:point"))?.state).not.toBe(State.New);
   });
+
+  it("自信なしで付け直すと、記録は1回分のまま判定だけ替わり、何度押しても重ならない", async () => {
+    const at = new Date("2026-10-01T00:00:00Z");
+    const recorded = await recordReview("femur", "locate", Rating.Good, { durationMs: 1000, source: "review" }, at);
+    const good = recorded.schedule;
+    const hard = await recorded.regrade(Rating.Hard);
+    expect(new Date(hard.due).getTime()).toBeLessThanOrEqual(new Date(good.due).getTime());
+    expect(await db.reviewEvents.count()).toBe(1);
+    expect((await db.reviewEvents.toArray())[0].rating).toBe(Rating.Hard);
+    await recorded.regrade(Rating.Good);
+    expect(await db.reviewEvents.count()).toBe(1);
+    expect((await db.reviewEvents.toArray())[0].rating).toBe(Rating.Good);
+    await recorded.undo();
+    expect(await db.schedules.count()).toBe(0);
+    expect(await db.reviewEvents.count()).toBe(0);
+  });
 });

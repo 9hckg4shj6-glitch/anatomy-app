@@ -1,11 +1,12 @@
 import { exportBackup, importBackup, isBackup } from "../backup";
 import { systemById } from "../content";
-import { db, nowIso } from "../db";
+import { db, nowIso, type Facet } from "../db";
 import { canSaveOffline, offlineFiles, savedFiles, saveFiles } from "../offline";
 import { h } from "../dom";
 import {
   daysUntilExam, loadPreferences, NEW_PER_DAY_OPTIONS, preferences, REVIEW_SIZE_OPTIONS, setPreference, TEXT_SIZES, type Preferences,
 } from "../settings";
+import { BASIC_FACETS, TERM_KINDS } from "../study";
 import type { AppContext } from "./context";
 
 /** 設定の画面（#/settings）: 学び方・表示・骨学試験の日・記録の書き出しと読み込み */
@@ -78,6 +79,25 @@ function settingRows(render: () => void): HTMLElement[] {
       },
     }, option.label)));
   const days = daysUntilExam();
+  // 学ぶ問い方: 押すたびに足し外しする。基本の4つ（位置→名前・名前→位置・日→英・英→日）を1つは残す
+  const studied = (kind: (typeof TERM_KINDS)[number]) => kind.facets.every((facet) => preferences.studyFacets.includes(facet));
+  const studyNote = h("p", { class: "drill-note", hidden: true });
+  const studyChips = h("div", { class: "chip-list" }, ...TERM_KINDS.map((kind) => h("button", {
+    class: studied(kind) ? "chip on" : "chip", type: "button", "aria-pressed": String(studied(kind)),
+    onClick: async () => {
+      const next: Facet[] = studied(kind)
+        ? preferences.studyFacets.filter((facet) => !kind.facets.includes(facet))
+        : [...new Set([...preferences.studyFacets, ...kind.facets])];
+      if (!next.some((facet) => BASIC_FACETS.includes(facet))) {
+        studyNote.textContent = "位置→名前・名前→位置・日本語→英語・英語→日本語のどれか1つは残しておきます。";
+        studyNote.hidden = false;
+        return;
+      }
+      await setPreference("studyFacets", next);
+      window.dispatchEvent(new CustomEvent("anatomy:reviewed")); // 上の印の数を変える
+      render();
+    },
+  }, kind.label)));
   const examDate = h("input", {
     class: "date-input", type: "date", value: preferences.examDate, "aria-label": "骨学試験の日",
     onChange: async () => {
@@ -87,16 +107,23 @@ function settingRows(render: () => void): HTMLElement[] {
   }) as HTMLInputElement;
   return [
     h("section", { class: "settings" },
+      h("h3", {}, "学ぶ問い方"),
+      h("p", { class: "muted" }, "語の問題で出す問い方です。外した問い方は、新しく始めず、期限が来ても復習に出しません（覚え具合の記録は残るので、戻せば続きから出ます）。たとえば、まず場所だけを覚えるときは日本語→英語・英語→日本語を外します。"),
+      studyChips,
+      studyNote,
+      h("p", { class: "muted" }, "レッスンの確認テストでどれから覚えるかは、レッスンの始めの画面で選べます。語根カードと骨学試験の問題は、ここでは変わりません。"),
+    ),
+    h("section", { class: "settings" },
       h("h3", {}, "学び方"),
       h("p", { class: "setting-label" }, "1日に新しく始める問題"),
       chips(NEW_PER_DAY_OPTIONS.map((n) => ({ value: n, label: `${n}問` })), preferences.newPerDay, async (value) => {
         await setPreference("newPerDay", value);
         window.dispatchEvent(new CustomEvent("anatomy:reviewed")); // 上の印の数を変える
       }),
-      h("p", { class: "muted" }, "1つの語に問い方が4つ（筋は7つ）あり、別々に数えます。期限の来た復習はこの数に関係なくすべて出ます。"),
+      h("p", { class: "muted" }, "1つの語に、学ぶ問い方の数だけ問題があり（初めは4つ。筋は7つ）、別々に数えます。期限の来た復習はこの数に関係なくすべて出ます。"),
       h("p", { class: "setting-label" }, "復習の1回の区切り"),
       chips(REVIEW_SIZE_OPTIONS.map((n) => ({ value: n, label: n ? `${n}問` : "全部" })), preferences.reviewSize, (value) => setPreference("reviewSize", value)),
-      h("p", { class: "muted" }, "10問より多いときは、復習を始めるときにも選べます。途中で「ここでやめる」（Esc）もできます。"),
+      h("p", { class: "muted" }, "復習を始めるときにも選べます（範囲・問い方もそこで絞れます）。途中で「ここでやめる」（Esc）もできます。"),
       h("p", { class: "setting-label" }, "正解したら自動で次の問題へ"),
       chips([{ value: true, label: "進む（1.5秒）" }, { value: false, label: "自分で「次へ」" }], preferences.autoNext, (value) => setPreference("autoNext", value)),
       h("p", { class: "muted" }, "まちがえたときは、説明を読めるよう自動では進みません。正解の画面で3Dや説明に触れると止まります。"),
