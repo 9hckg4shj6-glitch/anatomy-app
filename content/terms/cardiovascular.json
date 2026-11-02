@@ -11,35 +11,35 @@
           "parts": ["wall of atrium", "wall of ventricle"], "level": 1, "color": "#b5443f",
           "kanji": "心＝こころ・中心",
           "etym": "heart（英語の固有語）。ラテン語 cor、ギリシャ語 kardia から cardiac「心臓の」",
-          "note": "胸の中央やや左にある握りこぶし大の筋の袋。2つの心房と2つの心室からなり、血液を全身と肺へ送り出す。"
+          "note": "胸の中央やや左にある握りこぶし大の筋の袋。2つの心房と2つの心室からなり、血液を全身と肺へ送り出す。壁は内側から心内膜・心筋層・心外膜。拍動は刺激伝導系がつくる: 右心房の上大静脈の口のそばの洞房結節（ペースメーカー）で起きた興奮が心房に広がり、冠状静脈洞の口のすぐ上の房室結節（田原結節）から房室束（ヒス束）を通って心室中隔で右脚・左脚に分かれ、プルキンエ線維で心室の壁に伝わる。"
         },
         {
           "id": "right-atrium", "ja": "右心房", "yomi": "うしんぼう", "en": "right atrium", "la": "atrium dextrum",
           "parts": ["cavity of right atrium"], "level": 1, "xray": true,
           "kanji": "房＝へや。血液を受け入れる部屋",
           "etym": "atrium ← ラテン語「玄関の広間」",
-          "note": "全身から戻った静脈血を上大静脈・下大静脈から受け取る部屋。図は内腔（血液の入る空間）を示す。"
+          "note": "全身から戻った静脈血を上大静脈・下大静脈から受け取る部屋。図は内腔（血液の入る空間）を示す。後ろの内面が滑らかな大静脈洞と、櫛状筋が並ぶ右心耳の境に分界稜がある。上大静脈口・下大静脈口・冠状静脈洞の口・右房室口が開き、左心房との間の心房中隔には胎児の卵円孔の名残の卵円窩がある。"
         },
         {
           "id": "right-ventricle", "ja": "右心室", "yomi": "うしんしつ", "en": "right ventricle", "la": "ventriculus dexter",
           "parts": ["cavity of right ventricle"], "level": 1, "xray": true,
           "kanji": "室＝へや。血液を送り出す部屋",
           "etym": "ventricle ← ラテン語 ventriculus「小さな腹」",
-          "note": "右心房から受けた血液を肺動脈へ送り出す部屋。心臓の前面の大部分をしめる。"
+          "note": "右心房から受けた血液を肺動脈へ送り出す部屋。心臓の前面の大部分をしめる。内面は肉柱で凹凸し、肺動脈口へ続く漏斗の形の滑らかな部分を動脈円錐という（流れこむ道との境が室上稜）。心室中隔から前乳頭筋の付け根へ、刺激伝導系の右脚が通る中隔縁柱が渡る。"
         },
         {
           "id": "left-atrium", "ja": "左心房", "yomi": "さしんぼう", "en": "left atrium", "la": "atrium sinistrum",
           "parts": ["cavity of left atrium"], "level": 1, "xray": true,
           "kanji": "房＝へや",
           "etym": "atrium「玄関の広間」",
-          "note": "肺で酸素を受け取った血液を肺静脈から受け取る部屋。心臓の最も後ろにある。"
+          "note": "肺で酸素を受け取った血液を肺静脈から受け取る部屋。心臓の最も後ろにある。後ろの壁の上部に左右2本ずつ計4本の肺静脈が開く。内面は左心耳を除いて滑らか。"
         },
         {
           "id": "left-ventricle", "ja": "左心室", "yomi": "さしんしつ", "en": "left ventricle", "la": "ventriculus sinister",
           "parts": ["cavity of left ventricle"], "level": 1, "xray": true,
           "kanji": "室＝へや",
           "etym": "ventricle「小さな腹」",
-          "note": "大動脈へ血液を全身に送り出す部屋。壁が最も厚い。"
+          "note": "大動脈へ血液を全身に送り出す部屋。壁が最も厚く、右心室の2〜3倍。内面に前・後の2つの大きな乳頭筋があり、腱索で僧帽弁につながる。"
         },
         {
           "id": "mitral-valve", "ja": "僧帽弁", "yomi": "そうぼうべん", "en": "mitral valve", "enAlt": ["left atrioventricular valve", "bicuspid valve"], "la": "valva mitralis",
@@ -70,25 +70,25 @@
           "note": "右心室と肺動脈幹の間の弁。3枚の半月弁からなる。"
         },
         {
-          "id": "right-coronary-artery", "check": true, "ja": "右冠状動脈", "yomi": "うかんじょうどうみゃく", "en": "right coronary artery", "la": "arteria coronaria dextra",
+          "id": "right-coronary-artery", "ja": "右冠状動脈", "yomi": "うかんじょうどうみゃく", "en": "right coronary artery", "la": "arteria coronaria dextra",
           "parts": ["*right coronary artery"], "level": 1,
           "kanji": "冠（かんむり）のように心臓を取り巻く動脈",
           "etym": "coronary ← ラテン語 corona「冠」",
-          "note": "大動脈の根もとから出て、心臓の右側から後ろへ回る。心筋に血液を送る。"
+          "note": "大動脈の根もとのふくらみ（大動脈洞）の前から出て、肺動脈と右心耳の間を通って冠状溝を右へ回り、心臓の後ろで後室間枝になる。途中で右心室の下の縁へ右縁枝を出す。右心房・右心室と心室中隔の後ろ1/3を養い、多くの人で洞房結節・房室結節への枝も出す。"
         },
         {
-          "id": "left-coronary-artery", "check": true, "ja": "左冠状動脈", "yomi": "さかんじょうどうみゃく", "en": "left coronary artery", "la": "arteria coronaria sinistra",
+          "id": "left-coronary-artery", "ja": "左冠状動脈", "yomi": "さかんじょうどうみゃく", "en": "left coronary artery", "la": "arteria coronaria sinistra",
           "parts": ["*left coronary artery"], "level": 1,
           "kanji": "冠のように心臓を取り巻く動脈",
           "etym": "coronary ← corona「冠」",
-          "note": "大動脈の根もとから出て、前室間枝と回旋枝に分かれる。ここが詰まると心筋梗塞の範囲が広い。"
+          "note": "大動脈洞の左から出て、肺動脈と左心耳の間を前へ進み、すぐ前室間枝と回旋枝に分かれる。左心房・左心室の前壁と後壁・心室中隔の大部分を養う。冠状動脈どうしの吻合は弱い（機能的終動脈）ので、急に詰まると先が壊死する（心筋梗塞）。詰まりやすいのは前室間枝の付け根で、範囲も広い。"
         },
         {
           "id": "coronary-sinus", "ja": "冠状静脈洞", "yomi": "かんじょうじょうみゃくどう", "en": "coronary sinus", "la": "sinus coronarius",
           "parts": ["coronary sinus"], "level": 2, "color": "#3b64b8",
           "kanji": "洞＝ほら穴。太くふくらんだ静脈",
           "etym": "sinus ← ラテン語「くぼみ・湾」",
-          "note": "心臓の後面を横に走る太い静脈。心臓の静脈血を集めて右心房へ注ぐ。"
+          "note": "心臓の後面で左心房と左心室の間の冠状溝を右へ走る太く短い静脈。大心静脈・中心臓静脈・小心臓静脈・左心室後静脈などを受け、心臓の静脈血の約6割を集めて右心房へ注ぐ。口には小さな弁（冠状静脈洞弁）がある。"
         }
       ]
     },
@@ -233,6 +233,13 @@
           "kanji": "心室中隔へ入る枝",
           "etym": "septal「仕切りの」（ラテン語 septum）",
           "note": "前室間枝と後室間枝から、心室中隔へ垂直に入りこむ枝。心室中隔の前の2/3は前室間枝の枝が、後ろの1/3は後室間枝の枝が養う。中隔の中を走る刺激伝導系（ヒス束・脚）もこの枝で養われる。"
+        },
+        {
+          "id": "right-marginal-branch", "ja": "右縁枝", "yomi": "うえんし", "en": "right marginal branch", "enAlt": ["acute marginal branch", "marginal branch of right coronary artery"], "la": "ramus marginalis dexter",
+          "parts": ["marginal branch of right coronary artery"], "level": 3,
+          "kanji": "心臓の右の縁（右心室の鋭い縁）を走る枝",
+          "etym": "marginal ← ラテン語 margo「ふち」",
+          "note": "右冠状動脈が冠状溝を右へ回る途中で出し、右心室の下の縁（鋭縁）にそって心尖の方へ下る枝。右心室の前壁と下壁を養う。鋭縁枝・右外縁枝ともいう（左冠状動脈の回旋枝からは、左心室の丸い縁へ鈍縁枝が出る）。"
         }
       ]
     },
@@ -313,14 +320,14 @@
           "parts": ["arch of aorta"], "level": 1,
           "kanji": "弓のように曲がった大動脈",
           "etym": "arch「弓・アーチ」",
-          "note": "上行大動脈から左後ろへ弓なりに曲がる部分。腕頭動脈・左総頚動脈・左鎖骨下動脈が出る。"
+          "note": "上行大動脈から左後ろへ弓なりに曲がる部分で、胸骨柄の後ろにある。腕頭動脈・左総頚動脈・左鎖骨下動脈が出る。下の面と左肺動脈の付け根の間を、胎児のときの動脈管の名残の動脈管索がつなぐ（左の反回神経がこの下をくぐる）。"
         },
         {
           "id": "thoracic-aorta", "ja": "胸大動脈", "yomi": "きょうだいどうみゃく", "en": "thoracic aorta", "enAlt": ["descending thoracic aorta"], "la": "aorta thoracica",
           "parts": ["descending thoracic aorta"], "level": 1,
           "kanji": "胸の中を下る大動脈",
           "etym": "thoracic「胸の」",
-          "note": "大動脈弓から脊柱の左前を下り、横隔膜を貫くまでの部分。"
+          "note": "大動脈弓から第4胸椎の左で続き、脊柱の左前を下って第12胸椎の高さで横隔膜（大動脈裂孔）を貫くまでの部分。肋間動脈・気管支動脈・食道動脈・上横隔動脈などを出す。"
         },
         {
           "id": "abdominal-aorta", "ja": "腹大動脈", "yomi": "ふくだいどうみゃく", "en": "abdominal aorta", "la": "aorta abdominalis",
@@ -341,35 +348,35 @@
           "parts": ["common carotid artery", "za:common carotid artery"], "level": 1,
           "kanji": "頚（くび）を上る動脈の共通の幹",
           "etym": "carotid ← ギリシャ語 karoun「深く眠らせる」。押さえると気を失うことから",
-          "note": "首の両側を上る動脈。のどぼとけの高さで内頚動脈と外頚動脈に分かれる。脈を触れる部位。"
+          "note": "首の両側を上る動脈。右は腕頭動脈から、左は大動脈弓から直接出る。甲状軟骨の上の縁の高さで内頚動脈と外頚動脈に分かれる。分かれ目には血液の酸素や二酸化炭素を感じる小さな頚動脈小体がある。脈を触れる部位。"
         },
         {
           "id": "internal-carotid-artery", "ja": "内頚動脈", "yomi": "ないけいどうみゃく", "en": "internal carotid artery", "la": "arteria carotis interna",
           "parts": ["internal carotid artery"], "level": 1,
           "kanji": "頭の内側（脳）へ行く頚動脈",
           "etym": "internal「内の」＋ carotid",
-          "note": "総頚動脈の枝。頭蓋の中に入り、脳の前半分と眼に血液を送る。"
+          "note": "総頚動脈の枝。首では枝を出さずに上り、頚動脈管から頭蓋に入って、トルコ鞍の横で海綿静脈洞を通りU字に曲がる（頚動脈サイフォン）。眼動脈を出したあと前大脳動脈と中大脳動脈に分かれ、脳の前の大部分と眼を養う。始まりのふくらみ（頚動脈洞）は血圧を感じ、押すと脈が遅くなり血圧が下がる（頚動脈洞反射）。"
         },
         {
           "id": "vertebral-artery", "ja": "椎骨動脈", "yomi": "ついこつどうみゃく", "en": "vertebral artery", "la": "arteria vertebralis",
           "parts": ["vertebral artery"], "level": 2,
           "kanji": "椎骨（頚椎）の中を上る動脈",
           "etym": "vertebral「椎骨の」",
-          "note": "鎖骨下動脈の枝。頚椎の横突孔を上って頭蓋に入り、左右が合流して脳底動脈になる。"
+          "note": "鎖骨下動脈の最初の枝。上の6つの頚椎の横突孔を上り、大後頭孔から頭蓋に入って、橋の下の縁で左右が合流して脳底動脈になる。頭蓋の中で前脊髄動脈・後脊髄動脈・後下小脳動脈を出す。"
         },
         {
           "id": "basilar-artery", "ja": "脳底動脈", "yomi": "のうていどうみゃく", "en": "basilar artery", "la": "arteria basilaris",
           "parts": ["basilar artery"], "level": 2,
           "kanji": "脳の底を走る動脈",
           "etym": "basilar ← basis「底」",
-          "note": "左右の椎骨動脈が合わさってできる。脳幹の前を上り、左右の後大脳動脈に分かれる。"
+          "note": "左右の椎骨動脈が橋の下の縁で合わさってできる。橋の前を上り、前下小脳動脈・迷路動脈（内耳へ）・橋枝・上小脳動脈を出して、橋の上の縁で左右の後大脳動脈に分かれる。"
         },
         {
           "id": "anterior-cerebral-artery", "ja": "前大脳動脈", "yomi": "ぜんだいのうどうみゃく", "en": "anterior cerebral artery", "la": "arteria cerebri anterior",
           "parts": ["anterior cerebral artery"], "level": 2,
           "kanji": "大脳の前（内側面）を養う動脈",
           "etym": "cerebral ← ラテン語 cerebrum「大脳」",
-          "note": "内頚動脈の枝。大脳の内側面を前から後ろへ走る。"
+          "note": "内頚動脈の枝。視神経の上を前内側へ進んで大脳縦裂に入り、前交通動脈で反対側とつながったあと、脳梁の上を前から後ろへ走る。大脳の内側面の大部分を養うので、詰まると反対側の脚のまひと感覚の障害が強い。"
         },
         {
           "id": "middle-cerebral-artery", "ja": "中大脳動脈", "yomi": "ちゅうだいのうどうみゃく", "en": "middle cerebral artery", "la": "arteria cerebri media",
@@ -474,7 +481,7 @@
           "parts": ["renal artery", "trunk of renal artery"], "level": 1,
           "kanji": "腎臓へ行く動脈",
           "etym": "renal ← ラテン語 ren「腎臓」",
-          "note": "腹大動脈から左右に出て腎臓へ入る。心拍出量の約4分の1が流れる。"
+          "note": "腹大動脈から左右に出て腎臓へ入る。心拍出量の約4分の1が流れる。右は下大静脈の後ろを通るので長い。腎門の近くで前枝と後枝に分かれ、上区・上前区・下前区・下区・後区の5つの区域動脈になる。区域動脈は互いにつながらない終動脈で、腎臓の中で葉間動脈・弓状動脈・小葉間動脈へ分かれる。"
         },
         {
           "id": "common-iliac-artery", "ja": "総腸骨動脈", "yomi": "そうちょうこつどうみゃく", "en": "common iliac artery", "la": "arteria iliaca communis",
@@ -530,14 +537,14 @@
           "parts": ["pulmonary trunk"], "level": 1, "color": "#3b64b8",
           "kanji": "肺動脈の幹",
           "etym": "pulmonary ← pulmo「肺」",
-          "note": "右心室から出て、左右の肺動脈に分かれる。中を流れるのは酸素の少ない静脈血。"
+          "note": "右心室から出て、左右の肺動脈に分かれる。中を流れるのは酸素の少ない静脈血。上行大動脈の左前を上り、大動脈弓の下（気管分岐部の前やや左下）で分かれる。胎児では動脈管で大動脈とつながり、肺を通らずに血液が流れる（生まれたあと閉じないと動脈管開存症）。"
         },
         {
           "id": "pulmonary-artery", "ja": "肺動脈", "yomi": "はいどうみゃく", "en": "pulmonary artery", "enAlt": ["pulmonary arteries"], "la": "arteria pulmonalis",
           "parts": ["pulmonary artery"], "level": 1, "color": "#3b64b8",
           "kanji": "肺へ行く動脈",
           "etym": "pulmonary「肺の」",
-          "note": "肺動脈幹から左右に分かれて肺へ入る。動脈だが静脈血が流れる。"
+          "note": "肺動脈幹から左右に分かれて肺へ入る（右肺動脈・左肺動脈）。動脈だが静脈血が流れる。肺の中では気管支と並んで枝分かれし、区域ごとの枝になる。右が太く長い。"
         }
       ]
     },
@@ -551,7 +558,7 @@
           "parts": ["superior vena cava"], "level": 1, "color": "#3b64b8",
           "kanji": "上半身の血液を集める大きな静脈",
           "etym": "vena cava ← ラテン語「中が空の静脈」",
-          "note": "頭・首・腕・胸の静脈血を集めて右心房へ注ぐ。"
+          "note": "頭・首・腕・胸の静脈血を集めて右心房へ注ぐ。左右の腕頭静脈が右の第1肋軟骨の後ろで合わさってでき、上行大動脈の右を下る。途中で後ろから奇静脈が注ぐ。弁は無い。"
         },
         {
           "id": "inferior-vena-cava", "ja": "下大静脈", "yomi": "かだいじょうみゃく", "en": "inferior vena cava", "la": "vena cava inferior",
@@ -572,14 +579,14 @@
           "parts": ["internal jugular vein", "za:internal jugular vein"], "level": 1, "color": "#3b64b8",
           "kanji": "頚の深くを下る静脈",
           "etym": "jugular ← ラテン語 jugulum「のど・鎖骨のくぼみ」",
-          "note": "脳と顔の静脈血を集めて首を下る太い静脈。総頚動脈の外側を並走する。中心静脈カテーテルの入口になる。"
+          "note": "脳と顔の静脈血を集めて首を下る太い静脈。頚静脈孔でS状静脈洞から続き、総頚動脈の外側を並走する。上と下の端がふくらむ（頚静脈上球・頚静脈下球）。途中で顔面静脈・舌静脈・上甲状腺静脈などを受け、鎖骨下静脈と合わさる（静脈角）。中心静脈カテーテルの入口になる。"
         },
         {
           "id": "subclavian-vein", "ja": "鎖骨下静脈", "yomi": "さこつかじょうみゃく", "en": "subclavian vein", "la": "vena subclavia",
           "parts": ["subclavian vein"], "level": 2, "color": "#3b64b8",
           "kanji": "鎖骨の下を通る静脈",
           "etym": "sub-「下」＋ clavis（鎖骨）",
-          "note": "腕の静脈血を集め、内頚静脈と合流して腕頭静脈になる。合流部（静脈角）に胸管が注ぐ。"
+          "note": "腕の静脈血を集め、内頚静脈と合流して腕頭静脈になる。合流部（静脈角）に、左は胸管、右は右リンパ本幹が注ぐ。鎖骨の下を通る太い静脈で、中心静脈カテーテル（高カロリー輸液など）の入口に使われる。"
         },
         {
           "id": "axillary-vein", "ja": "腋窩静脈", "yomi": "えきかじょうみゃく", "en": "axillary vein", "la": "vena axillaris",
@@ -621,7 +628,7 @@
           "parts": ["hepatic portal vein"], "level": 1, "color": "#3b64b8",
           "kanji": "肝門（肝臓の門）から入る静脈",
           "etym": "portal ← ラテン語 porta「門」",
-          "note": "胃・腸・脾臓などの静脈血を集めて肝臓へ運ぶ静脈。吸収した栄養をまず肝臓へ届ける。"
+          "note": "胃・腸・脾臓などの静脈血を集めて肝臓へ運ぶ静脈。吸収した栄養をまず肝臓へ届ける。膵頚の後ろで上腸間膜静脈と脾静脈が合わさってでき、小網の中を固有肝動脈・総胆管の後ろで上って肝門に入る。肝硬変などで門脈の圧が上がると、食道の静脈（食道静脈瘤）・へその周り（メドゥーサの頭）・直腸の静脈を通って大静脈へ逃げ道ができる。"
         },
         {
           "id": "splenic-vein", "ja": "脾静脈", "yomi": "ひじょうみゃく", "en": "splenic vein", "la": "vena splenica",
@@ -642,7 +649,7 @@
           "parts": ["hepatic vein", "middle hepatic vein"], "level": 2, "color": "#3b64b8",
           "kanji": "肝臓から出る静脈",
           "etym": "hepatic「肝臓の」",
-          "note": "肝臓で処理された血液を下大静脈へ送る3本の静脈（右・中・左）。"
+          "note": "肝臓で処理された血液を下大静脈へ送る3本の静脈（右肝静脈・中肝静脈・左肝静脈）。肝臓から出る唯一の血管で、肝臓の中の区域の境を走る。ほとんど肝臓の中にあり、肝臓の後ろの上（無漿膜野）で横隔膜のすぐ下の下大静脈に注ぐ。"
         },
         {
           "id": "renal-vein", "ja": "腎静脈", "yomi": "じんじょうみゃく", "en": "renal vein", "la": "vena renalis",
@@ -670,7 +677,7 @@
           "parts": ["great saphenous vein"], "level": 1, "color": "#3b64b8",
           "kanji": "伏在＝皮膚の下にひそむ。脚の内側を走る長い皮静脈",
           "etym": "saphenous ← ギリシャ語 saphenes「はっきり見える」とする説がある",
-          "note": "足の内側から脚の内側を上り、脚の付け根で大腿静脈へ注ぐ人体で最も長い静脈。静脈瘤ができやすい。"
+          "note": "足の内側から脚の内側を上り、脚の付け根で大腿静脈へ注ぐ人体で最も長い静脈。内くるぶしの前を通り、伏在神経と並ぶ。注ぐ直前に浅腹壁静脈・浅腸骨回旋静脈・外陰部静脈を受ける。静脈瘤ができやすく、心臓のバイパス手術に使われる。"
         },
         {
           "id": "small-saphenous-vein", "ja": "小伏在静脈", "yomi": "しょうふくざいじょうみゃく", "en": "small saphenous vein", "la": "vena saphena parva",
@@ -684,7 +691,7 @@
           "parts": ["superior pulmonary vein", "inferior pulmonary vein"], "level": 1, "color": "#c8323c",
           "kanji": "肺から心臓へ戻る静脈",
           "etym": "pulmonary「肺の」",
-          "note": "肺で酸素を受け取った血液を左心房へ運ぶ。左右2本ずつ計4本。静脈だが動脈血が流れる。"
+          "note": "肺で酸素を受け取った血液を左心房へ運ぶ。左右2本ずつ（上肺静脈・下肺静脈）計4本。静脈だが動脈血が流れる。右は右肺動脈の下で上大静脈の後ろを、左は左肺動脈の下で胸大動脈の前を通る。"
         },
         {
           "id": "spleen", "ja": "脾臓", "yomi": "ひぞう", "en": "spleen", "la": "splen",
@@ -752,6 +759,41 @@
       ]
     },
     {
+      "id": "cv-pulmonary-vessels",
+      "title": "左右の肺動脈と上下の肺静脈",
+      "group": "大きな血管",
+      "terms": [
+        {
+          "id": "right-pulmonary-artery", "ja": "右肺動脈", "yomi": "うはいどうみゃく", "en": "right pulmonary artery", "la": "arteria pulmonalis dextra",
+          "parts": ["right pulmonary artery"], "level": 2, "color": "#3b64b8",
+          "kanji": "右の肺へ行く動脈",
+          "etym": "pulmonary ← ラテン語 pulmo「肺」",
+          "note": "肺動脈幹が気管分岐部の前やや左下で分かれたうちの右の枝。上行大動脈と上大静脈の後ろを右へ横に走って右肺の肺門に入る。左肺動脈より太く長い。"
+        },
+        {
+          "id": "left-pulmonary-artery", "ja": "左肺動脈", "yomi": "さはいどうみゃく", "en": "left pulmonary artery", "la": "arteria pulmonalis sinistra",
+          "parts": ["left pulmonary artery"], "level": 2, "color": "#3b64b8",
+          "kanji": "左の肺へ行く動脈",
+          "etym": "pulmonary ← ラテン語 pulmo「肺」",
+          "note": "肺動脈幹から左へ分かれ、下行大動脈の前、左の主気管支の上を通って左肺の肺門に入る。右肺動脈より細く短い。付け根の上と大動脈弓の下の面を動脈管索（胎児のときの動脈管の名残）がつなぐ。"
+        },
+        {
+          "id": "superior-pulmonary-vein", "ja": "上肺静脈", "yomi": "じょうはいじょうみゃく", "en": "superior pulmonary vein", "enAlt": ["superior pulmonary veins"], "la": "vena pulmonalis superior",
+          "parts": ["superior pulmonary vein"], "level": 3, "color": "#c8323c",
+          "kanji": "上の肺静脈",
+          "etym": "superior「上の」＋ pulmonary「肺の」",
+          "note": "左右の肺から2本ずつ出る肺静脈のうち上の1本。右は上葉と中葉、左は上葉（舌区を含む）の血液を集める。肺門では最も前にあり、肺動脈・気管支より前。ほぼ水平に走って左心房の後ろの上部に注ぐ。"
+        },
+        {
+          "id": "inferior-pulmonary-vein", "ja": "下肺静脈", "yomi": "かはいじょうみゃく", "en": "inferior pulmonary vein", "enAlt": ["inferior pulmonary veins"], "la": "vena pulmonalis inferior",
+          "parts": ["inferior pulmonary vein"], "level": 3, "color": "#c8323c",
+          "kanji": "下の肺静脈",
+          "etym": "inferior「下の」＋ pulmonary「肺の」",
+          "note": "肺静脈のうち下の1本で、下葉の血液を集める。肺門の最も下（後ろ下）にあり、すぐ下に肺間膜が続く。左心房の後ろに注ぐ。"
+        }
+      ]
+    },
+    {
       "id": "cv-branch-trunk",
       "title": "心臓と胸腹部の動脈の枝",
       "group": "体幹",
@@ -778,11 +820,11 @@
           "note": "多くは右冠状動脈の枝。心臓の後面（横隔膜面）の後室間溝を心尖へ下り、心室中隔の後ろ1/3を養う。"
         },
         {
-          "id": "posterior-intercostal-arteries", "check": true, "ja": "肋間動脈", "yomi": "ろっかんどうみゃく", "en": "posterior intercostal arteries", "enAlt": ["posterior intercostal artery", "intercostal arteries"], "la": "arteriae intercostales posteriores",
+          "id": "posterior-intercostal-arteries", "ja": "肋間動脈", "yomi": "ろっかんどうみゃく", "en": "posterior intercostal arteries", "enAlt": ["posterior intercostal artery", "intercostal arteries"], "la": "arteriae intercostales posteriores",
           "parts": ["za:posterior intercostal arteries"], "level": 2,
           "kanji": "肋＝あばら。肋骨の間を走る動脈",
           "etym": "inter-「間」＋ costa「肋骨」",
-          "note": "胸大動脈から左右に出て、肋骨の下縁の溝（肋骨溝）に沿って前へ走る。肋間静脈・肋間神経と並ぶ（上から静脈・動脈・神経）。"
+          "note": "胸大動脈から左右に出て、肋骨の下縁の溝（肋骨溝）に沿って前へ走る。肋間静脈・肋間神経と並ぶ（上から静脈・動脈・神経）。第3〜第11肋間のもので、第1・第2肋間のものは最上肋間動脈から出る。前で内胸動脈の前肋間枝とつながる。"
         },
         {
           "id": "left-gastric-artery", "ja": "左胃動脈", "yomi": "さいどうみゃく", "en": "left gastric artery", "la": "arteria gastrica sinistra",
@@ -1264,6 +1306,62 @@
       ]
     },
     {
+      "id": "cv-diaphragm-liver-pancreas",
+      "title": "横隔膜・肝臓・膵臓の血管",
+      "group": "体幹",
+      "terms": [
+        {
+          "id": "supreme-intercostal-artery", "ja": "最上肋間動脈", "yomi": "さいじょうろっかんどうみゃく", "en": "supreme intercostal artery", "enAlt": ["superior intercostal artery"], "la": "arteria intercostalis suprema",
+          "parts": ["za:supreme intercostal artery", "first posterior intercostal artery", "second posterior intercostal artery"], "level": 3,
+          "kanji": "最も上の肋間動脈",
+          "etym": "supreme「最も上の」＋ intercostal「肋骨の間の」",
+          "note": "肋頚動脈の枝。第1肋骨の頚の前を下り、第1・第2肋間に肋間動脈（第1・第2肋間動脈）を出す。第3〜第11肋間の肋間動脈は胸大動脈から出るので、上の2つの肋間だけは鎖骨下動脈の枝で養われる。図は第1・第2肋間動脈を含む。"
+        },
+        {
+          "id": "superior-phrenic-arteries", "ja": "上横隔動脈", "yomi": "じょうおうかくどうみゃく", "en": "superior phrenic arteries", "enAlt": ["superior phrenic artery"], "la": "arteriae phrenicae superiores",
+          "parts": ["za:superior phrenic arteries"], "level": 3,
+          "kanji": "横隔膜の上の面へ行く動脈",
+          "etym": "phrenic ← ギリシャ語 phren「横隔膜」",
+          "note": "胸大動脈の下の端から出る小さな枝で、横隔膜の上の面の後部に分布する。横隔膜には、上から上横隔動脈・心膜横隔動脈と筋横隔動脈（ともに内胸動脈の枝）、下から下横隔動脈が来る。図は右側の枝だけ。"
+        },
+        {
+          "id": "inferior-phrenic-vein", "ja": "下横隔静脈", "yomi": "かおうかくじょうみゃく", "en": "inferior phrenic vein", "enAlt": ["inferior phrenic veins"], "la": "venae phrenicae inferiores",
+          "parts": ["inferior phrenic vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "横隔膜の下の面の静脈",
+          "etym": "inferior「下の」＋ phrenic「横隔膜の」",
+          "note": "下横隔動脈に伴う静脈で、横隔膜の下の面の血液を集める。右は下大静脈に、左は左腎静脈（または左副腎静脈）に注ぐ。左腎静脈は左の精巣静脈・副腎静脈・下横隔静脈を受ける。"
+        },
+        {
+          "id": "right-hepatic-vein", "ja": "右肝静脈", "yomi": "うかんじょうみゃく", "en": "right hepatic vein", "la": "vena hepatica dextra",
+          "parts": ["right hepatic vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "肝臓の右の静脈",
+          "etym": "hepatic ← ギリシャ語 hepar「肝臓」",
+          "note": "3本の肝静脈のうち最も太い1本。右葉の前区域（S5・S8）と後区域（S6・S7）の境を上り、肝臓の後ろの上（無漿膜野）で下大静脈に注ぐ。肝静脈は区域の境を走るので、手術で区域を分ける目印になる。"
+        },
+        {
+          "id": "middle-hepatic-vein", "ja": "中肝静脈", "yomi": "ちゅうかんじょうみゃく", "en": "middle hepatic vein", "enAlt": ["intermediate hepatic vein"], "la": "vena hepatica intermedia",
+          "parts": ["middle hepatic vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "肝臓の真ん中の静脈",
+          "etym": "middle「中の」＋ hepatic「肝臓の」",
+          "note": "肝臓の真ん中を上る肝静脈。胆嚢窩と下大静脈を結ぶ線（カントリー線）の面を通り、門脈の枝で分けた右葉と左葉の境になる。多くは左肝静脈と合わさって下大静脈に注ぐ。"
+        },
+        {
+          "id": "left-hepatic-vein", "ja": "左肝静脈", "yomi": "さかんじょうみゃく", "en": "left hepatic vein", "la": "vena hepatica sinistra",
+          "parts": ["left hepatic vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "肝臓の左の静脈",
+          "etym": "left「左の」＋ hepatic「肝臓の」",
+          "note": "左葉の血液を集める肝静脈。外側区域の S2 と S3 の間を右上へ進み、中肝静脈と合わさって横隔膜のすぐ下で下大静脈に注ぐことが多い。"
+        },
+        {
+          "id": "pancreatic-branches", "ja": "膵枝", "yomi": "すいし", "en": "pancreatic branches", "enAlt": ["pancreatic branches of splenic artery"], "la": "rami pancreatici",
+          "parts": ["*pancreatic artery"], "level": 3, "xray": true,
+          "kanji": "膵臓へ行く枝",
+          "etym": "pancreatic ← ギリシャ語 pan「すべて」＋ kreas「肉」",
+          "note": "脾動脈が膵臓の上の縁にそって進みながら出す枝。膵頚の後ろを下る背側膵動脈、膵体に入る大膵動脈、膵尾へ行く膵尾動脈があり、背側膵動脈からは膵臓の下の縁にそって左へ進む下膵動脈が出る。膵頭は上・下膵十二指腸動脈が養う。"
+        }
+      ]
+    },
+    {
       "id": "cv-branch-neck-arm",
       "title": "頚部・上肢・胸壁の動脈の枝",
       "group": "上肢",
@@ -1516,20 +1614,6 @@
           "note": "深掌動脈弓から出て、骨間筋の前を指の付け根へ下り、総掌側指動脈とつながる。浅・深の2つの動脈弓をつなぐ道。"
         },
         {
-          "id": "dorsal-carpal-arch", "ja": "背側手根動脈網", "yomi": "はいそくしゅこんどうみゃくもう", "en": "dorsal carpal arch", "enAlt": ["dorsal carpal network", "dorsal carpal rete"], "la": "rete carpale dorsale",
-          "parts": ["za:dorsal carpal anastomosis"], "level": 3,
-          "kanji": "手首の甲の側の動脈の網",
-          "etym": "dorsal「背側の」＋ carpal「手根の」＋ arch「弓」・rete「網」（ラテン語）",
-          "note": "手首の後ろで、橈骨動脈と尺骨動脈の背側手根枝、骨間動脈がつくる動脈の網。ここから背側中手動脈が出る。"
-        },
-        {
-          "id": "dorsal-metacarpal-arteries", "ja": "背側中手動脈", "yomi": "はいそくちゅうしゅどうみゃく", "en": "dorsal metacarpal arteries", "la": "arteriae metacarpales dorsales",
-          "parts": ["za:dorsal metacarpal arteries", "za:dorsal digital arteries of hand"], "level": 3,
-          "kanji": "手の甲の側で中手骨の間を走る動脈",
-          "etym": "dorsal「背側の」＋ metacarpal「中手の」",
-          "note": "背側手根動脈網から出て、手の甲の中手骨の間を指へ下り、指の付け根で背側指動脈に分かれる。"
-        },
-        {
           "id": "radial-veins", "ja": "橈骨静脈", "yomi": "とうこつじょうみゃく", "en": "radial veins", "enAlt": ["radial vein"], "la": "venae radiales",
           "parts": ["radial vein"], "level": 3, "color": "#3b64b8",
           "kanji": "橈骨にそう静脈",
@@ -1570,6 +1654,48 @@
           "kanji": "手の甲の静脈の網",
           "etym": "dorsal「背側（甲）の」＋ venous「静脈の」＋ network「網」",
           "note": "手の甲の皮下に見える静脈の網。親指側から橈側皮静脈、小指側から尺側皮静脈が始まる。点滴によく使う。"
+        }
+      ]
+    },
+    {
+      "id": "cv-wrist-dorsum-arteries",
+      "title": "手首と手の甲の動脈",
+      "group": "上肢",
+      "terms": [
+        {
+          "id": "dorsal-carpal-arch", "ja": "背側手根動脈網", "yomi": "はいそくしゅこんどうみゃくもう", "en": "dorsal carpal arch", "enAlt": ["dorsal carpal network", "dorsal carpal rete"], "la": "rete carpale dorsale",
+          "parts": ["za:dorsal carpal anastomosis"], "level": 3,
+          "kanji": "手首の甲の側の動脈の網",
+          "etym": "dorsal「背側の」＋ carpal「手根の」＋ arch「弓」・rete「網」（ラテン語）",
+          "note": "手首の後ろで、橈骨動脈と尺骨動脈の背側手根枝、骨間動脈がつくる動脈の網。ここから背側中手動脈が出る。"
+        },
+        {
+          "id": "dorsal-carpal-branches", "ja": "背側手根枝", "yomi": "はいそくしゅこんし", "en": "dorsal carpal branches", "enAlt": ["dorsal carpal branch"], "la": "rami carpales dorsales",
+          "parts": ["dorsal carpal branch of *"], "level": 3,
+          "kanji": "手根の甲の側へ行く枝",
+          "etym": "dorsal「背側の」＋ carpal「手根の」（ギリシャ語 karpos＝手首）",
+          "note": "橈骨動脈と尺骨動脈が手首の高さで手の甲の側へ出す枝。前・後骨間動脈の枝と合わさって手首の後ろに背側手根動脈網をつくり、手根の靱帯と関節を養う。"
+        },
+        {
+          "id": "palmar-carpal-branches", "ja": "掌側手根枝", "yomi": "しょうそくしゅこんし", "en": "palmar carpal branches", "enAlt": ["palmar carpal branch"], "la": "rami carpales palmares",
+          "parts": ["za:palmar carpal branch of radial artery"], "level": 3,
+          "kanji": "手根の手のひらの側へ行く枝",
+          "etym": "palmar「手のひらの」（ラテン語 palma）＋ carpal「手根の」",
+          "note": "橈骨動脈と尺骨動脈が方形回内筋の下の縁のあたりで手のひらの側へ出す細い枝。前骨間動脈・深掌動脈弓の枝とともに手首の前に掌側手根動脈網をつくる。図は橈骨動脈の枝。"
+        },
+        {
+          "id": "dorsal-metacarpal-arteries", "ja": "背側中手動脈", "yomi": "はいそくちゅうしゅどうみゃく", "en": "dorsal metacarpal arteries", "la": "arteriae metacarpales dorsales",
+          "parts": ["za:dorsal metacarpal arteries"], "level": 3,
+          "kanji": "手の甲の側で中手骨の間を走る動脈",
+          "etym": "dorsal「背側の」＋ metacarpal「中手の」",
+          "note": "背側手根動脈網から出て、手の甲の中手骨の間を指へ下り、指の付け根で背側指動脈に分かれる。"
+        },
+        {
+          "id": "dorsal-digital-arteries-of-hand", "ja": "背側指動脈", "yomi": "はいそくしどうみゃく", "en": "dorsal digital arteries", "enAlt": ["dorsal digital arteries of hand"], "la": "arteriae digitales dorsales",
+          "parts": ["za:dorsal digital arteries of hand"], "level": 3,
+          "kanji": "指の背の側を走る動脈",
+          "etym": "dorsal「背側の」＋ digital「指の」（ラテン語 digitus）",
+          "note": "背側中手動脈が指の付け根で2本ずつに分かれたもので、第2〜第5指の向かい合う縁の背の側を走る。掌側の固有掌側指動脈より細く、指の先の方（爪のまわりを含む）は掌側の動脈が養う。"
         }
       ]
     },
@@ -1724,20 +1850,6 @@
           "kanji": "足の裏の深くへ行く動脈",
           "etym": "deep「深い」＋ plantar「足の裏の」",
           "note": "足背動脈の終わりの枝。第1中足骨と第2中足骨の間を足の裏へ貫き、外側足底動脈とつながって足底動脈弓を完成させる。"
-        },
-        {
-          "id": "dorsal-metatarsal-arteries", "ja": "背側中足動脈", "yomi": "はいそくちゅうそくどうみゃく", "en": "dorsal metatarsal arteries", "la": "arteriae metatarsales dorsales",
-          "parts": ["za:dorsal metatarsal arteries"], "level": 3,
-          "kanji": "足の甲の側の、中足骨の間の動脈",
-          "etym": "dorsal「背側の」＋ metatarsal「中足骨の」",
-          "note": "弓状動脈（第1は足背動脈）から出て、中足骨の間を前へ走る4本の動脈。指の付け根で2本ずつの背側趾動脈に分かれる。"
-        },
-        {
-          "id": "plantar-metatarsal-arteries", "ja": "底側中足動脈", "yomi": "ていそくちゅうそくどうみゃく", "en": "plantar metatarsal arteries", "la": "arteriae metatarsales plantares",
-          "parts": ["plantar metatarsal artery"], "level": 3,
-          "kanji": "足の裏の側の、中足骨の間の動脈",
-          "etym": "plantar「足の裏の」＋ metatarsal「中足骨の」",
-          "note": "足底動脈弓から出て、中足骨の間を前へ走る4本の動脈。総底側趾動脈を経て指へ行く。"
         }
       ]
     },
@@ -1889,6 +2001,55 @@
           "kanji": "足の甲の静脈のアーチ",
           "etym": "dorsal「背側（甲）の」＋ venous「静脈の」＋ arch「弓」",
           "note": "足の甲の皮下を横に走る静脈の弓。内側の端から大伏在静脈、外側の端から小伏在静脈が始まる。"
+        },
+        {
+          "id": "external-pudendal-veins", "ja": "外陰部静脈", "yomi": "がいいんぶじょうみゃく", "en": "external pudendal veins", "enAlt": ["external pudendal vein"], "la": "venae pudendae externae",
+          "parts": ["za:external pudendal veins"], "level": 3, "color": "#3b64b8",
+          "kanji": "外陰部の皮膚の静脈",
+          "etym": "pudendal ← ラテン語 pudendum「外陰部」",
+          "note": "陰嚢（陰唇）と陰茎の皮膚の血液を集め、伏在裂孔のあたりで大伏在静脈に注ぐ静脈。浅腹壁静脈・浅腸骨回旋静脈とともに、大伏在静脈が大腿静脈に注ぐ直前に受ける浅い静脈で、外陰部動脈に伴う。"
+        }
+      ]
+    },
+    {
+      "id": "cv-toe-arteries",
+      "title": "足の指の動脈",
+      "group": "下肢",
+      "terms": [
+        {
+          "id": "dorsal-metatarsal-arteries", "ja": "背側中足動脈", "yomi": "はいそくちゅうそくどうみゃく", "en": "dorsal metatarsal arteries", "la": "arteriae metatarsales dorsales",
+          "parts": ["za:dorsal metatarsal arteries"], "level": 3,
+          "kanji": "足の甲の側の、中足骨の間の動脈",
+          "etym": "dorsal「背側の」＋ metatarsal「中足骨の」",
+          "note": "弓状動脈（第1は足背動脈）から出て、中足骨の間を前へ走る4本の動脈。指の付け根で2本ずつの背側趾動脈に分かれる。"
+        },
+        {
+          "id": "dorsal-digital-arteries-of-foot", "ja": "背側趾動脈", "yomi": "はいそくしどうみゃく", "en": "dorsal digital arteries of foot", "enAlt": ["dorsal digital arteries"], "la": "arteriae digitales dorsales pedis",
+          "parts": ["dorsal digital artery of foot"], "level": 3,
+          "kanji": "足の指（趾）の背の側を走る動脈",
+          "etym": "dorsal「背側の」＋ digital「指の」",
+          "note": "背側中足動脈が指の付け根で2本ずつに分かれ、足の指の向かい合う縁の背の側を走る動脈。第1背側中足動脈からは母趾の両側と第2趾の内側へ行く。"
+        },
+        {
+          "id": "plantar-metatarsal-arteries", "ja": "底側中足動脈", "yomi": "ていそくちゅうそくどうみゃく", "en": "plantar metatarsal arteries", "la": "arteriae metatarsales plantares",
+          "parts": ["plantar metatarsal artery"], "level": 3,
+          "kanji": "足の裏の側の、中足骨の間の動脈",
+          "etym": "plantar「足の裏の」＋ metatarsal「中足骨の」",
+          "note": "足底動脈弓から出て、中足骨の間を前へ走る4本の動脈。総底側趾動脈を経て指へ行く。"
+        },
+        {
+          "id": "common-plantar-digital-arteries", "ja": "総底側趾動脈", "yomi": "そうていそくしどうみゃく", "en": "common plantar digital arteries", "la": "arteriae digitales plantares communes",
+          "parts": ["set of common plantar digital arteries"], "level": 3,
+          "kanji": "足の裏の側の、指へ行く動脈の共通の幹",
+          "etym": "common「共通の」＋ plantar「足の裏の」（ラテン語 planta）＋ digital「指の」",
+          "note": "底側中足動脈が中足骨の頭の間で続いたもの。深足底動脈・背側中足動脈からの貫通枝とつながり、指の付け根で2本の固有底側趾動脈に分かれる。手の総掌側指動脈にあたる。"
+        },
+        {
+          "id": "proper-plantar-digital-arteries", "ja": "固有底側趾動脈", "yomi": "こゆうていそくしどうみゃく", "en": "proper plantar digital arteries", "enAlt": ["plantar digital arteries proper"], "la": "arteriae digitales plantares propriae",
+          "parts": ["set of plantar digital arteries proper"], "level": 3,
+          "kanji": "1本の指だけへ行く、足の裏の側の動脈",
+          "etym": "proper「固有の」＋ plantar「足の裏の」＋ digital「指の」",
+          "note": "足の指の両わき（足の裏の側）を指先まで走る動脈。指先で左右がつながる。足の指は背側より底側の動脈が太く、指の先を養う。"
         }
       ]
     },
@@ -1902,7 +2063,7 @@
           "parts": ["za:external carotid artery"], "level": 1,
           "kanji": "外＝頭蓋の外（顔・頭皮）へ向かう頚の動脈",
           "etym": "carotid ← ギリシャ語 karoun「深く眠らせる」。押さえると気を失うことから",
-          "note": "総頚動脈が甲状軟骨の上縁の高さで2つに分かれたうち、顔・頭皮・頚の前などを養う方。顔面動脈・浅側頭動脈・顎動脈などを出す。"
+          "note": "総頚動脈が甲状軟骨の上縁の高さで2つに分かれたうち、顔・頭皮・頚の前などを養う方。前へ上甲状腺動脈・舌動脈・顔面動脈、後ろへ後頭動脈・後耳介動脈、内側へ上行咽頭動脈を出し、耳下腺の中で浅側頭動脈と顎動脈に分かれて終わる。"
         },
         {
           "id": "facial-artery", "ja": "顔面動脈", "yomi": "がんめんどうみゃく", "en": "facial artery", "la": "arteria facialis",
@@ -1923,7 +2084,7 @@
           "parts": ["za:maxillary artery"], "level": 2,
           "kanji": "顎＝あご。あごの奥を通る動脈",
           "etym": "maxillary ← ラテン語 maxilla「上あご」",
-          "note": "外頚動脈のもう1つの終枝。下顎枝の内側を前へ進み、咀嚼筋・歯・鼻腔・硬膜（中硬膜動脈）など顔の深い所を養う。"
+          "note": "外頚動脈のもう1つの終枝。下顎枝の内側を前へ進み、咀嚼筋・歯・鼻腔・硬膜など顔の深い所を養う。中硬膜動脈は棘孔から頭蓋に入り、側頭部を打って骨が折れると破れて硬膜の外に出血する（硬膜外血腫）。翼口蓋窩で後上歯槽動脈・眼窩下動脈・下行口蓋動脈・翼突管動脈を出し、蝶口蓋動脈として鼻腔へ入って終わる。"
         },
         {
           "id": "occipital-artery", "ja": "後頭動脈", "yomi": "こうとうどうみゃく", "en": "occipital artery", "la": "arteria occipitalis",
@@ -2054,6 +2215,13 @@
           "kanji": "網膜の中心へ行く動脈",
           "etym": "central「中心の」＋ retinal「網膜の」（ラテン語 rete＝網）",
           "note": "眼動脈の最初の枝。眼球の後ろ約1cmで視神経の中に入り、視神経の中心を通って視神経乳頭から網膜に広がる。ほかとつながらない終動脈なので、詰まると急に片目が見えなくなる（網膜中心動脈閉塞症）。眼底鏡で直接見られる唯一の動脈。"
+        },
+        {
+          "id": "sphenopalatine-artery", "ja": "蝶口蓋動脈", "yomi": "ちょうこうがいどうみゃく", "en": "sphenopalatine artery", "la": "arteria sphenopalatina",
+          "parts": ["za:posterior lateral nasal branches of sphenopalatine artery", "za:posterior septal branches of sphenopalatine artery"], "level": 3, "xray": true,
+          "kanji": "蝶口蓋孔を通る動脈",
+          "etym": "spheno-「蝶形骨の」＋ palatine「口蓋の」",
+          "note": "顎動脈の終枝。翼口蓋窩から蝶口蓋孔を通って鼻腔の後ろに入り、外側の壁へ後外側鼻枝、鼻中隔へ中隔後鼻枝を出して鼻腔の大部分を養う。鼻の奥からの強い鼻血のもとになる。中隔の枝は切歯管で大口蓋動脈とつながる。図は鼻腔の中の枝。"
         }
       ]
     },
@@ -2197,6 +2365,13 @@
           "kanji": "脊髄の前を下る動脈",
           "etym": "anterior「前の」＋ spinal「脊髄の」",
           "note": "左右の椎骨動脈の枝が合わさって1本になり、脊髄の前正中裂にそって下る。脊髄の前2/3を養い、詰まると運動麻痺と痛みの感覚の消失が起こる（後索の感覚は残る）。"
+        },
+        {
+          "id": "pontine-arteries", "ja": "橋枝", "yomi": "きょうし", "en": "pontine arteries", "enAlt": ["pontine branches"], "la": "arteriae pontis",
+          "parts": ["*pontine artery"], "level": 3, "xray": true,
+          "kanji": "橋（脳幹）へ行く枝",
+          "etym": "pontine ← ラテン語 pons「橋」",
+          "note": "脳底動脈が橋の前を上る間に左右へ出す多数の細い枝。正中のわきから橋に入る内側の枝と、橋の外側へ回る外側の枝がある。橋の中の皮質脊髄路と脳神経の核を養い、詰まると反対側の手足のまひと同じ側の脳神経のまひが出る（交代性片まひ）。"
         }
       ]
     },
@@ -2214,7 +2389,7 @@
           "parts": ["za:superior sagittal sinus"], "level": 1, "color": "#3b64b8",
           "kanji": "上の、矢状の向きの静脈洞",
           "etym": "superior「上の」＋ sagittal「矢状の」（ラテン語 sagitta＝矢）＋ sinus「くぼみ・洞」",
-          "note": "大脳鎌の上のふちを前から後ろへ走る静脈洞。くも膜顆粒から脳脊髄液を吸収して血液へ戻す。"
+          "note": "大脳鎌の上のふちを前から後ろへ走る静脈洞。くも膜顆粒から脳脊髄液を吸収して血液へ戻す。両わきに外側裂孔というふくらみがある。大脳の表面から上大脳静脈が注ぐ。この静脈は硬膜の下で引っぱられて切れやすく、頭を打つと硬膜の下に出血する（硬膜下血腫）。"
         },
         {
           "id": "inferior-sagittal-sinus", "ja": "下矢状静脈洞", "yomi": "かしじょうじょうみゃくどう", "en": "inferior sagittal sinus", "la": "sinus sagittalis inferior",
@@ -2228,14 +2403,14 @@
           "parts": ["za:straight sinus"], "level": 2, "color": "#3b64b8",
           "kanji": "まっすぐな静脈洞",
           "etym": "straight「まっすぐな」。ラテン語 sinus rectus",
-          "note": "大脳鎌と小脳テントが合わさる線を後ろへまっすぐ下り、静脈洞交会へ注ぐ。"
+          "note": "大脳鎌と小脳テントが合わさる線を後ろへまっすぐ下り、静脈洞交会へ注ぐ。下矢状静脈洞と、脳の深い所の血液を集める大大脳静脈（ガレン静脈）が合わさってできる。"
         },
         {
           "id": "transverse-sinus", "ja": "横静脈洞", "yomi": "おうじょうみゃくどう", "en": "transverse sinus", "la": "sinus transversus",
           "parts": ["za:transverse sinus"], "level": 1, "color": "#3b64b8",
           "kanji": "横に走る静脈洞",
           "etym": "transverse「横の」＋ sinus「洞」",
-          "note": "静脈洞交会から小脳テントの後ろのふちを左右へ走り、S状静脈洞に続く。"
+          "note": "静脈洞交会から小脳テントの後ろのふちを左右へ走り、S状静脈洞に続く。右は上矢状静脈洞から、左は直静脈洞から続くことが多く、右の方が太い。S状静脈洞と合わせて外側静脈洞ともいう。"
         },
         {
           "id": "sigmoid-sinus", "ja": "S状静脈洞", "yomi": "えすじょうじょうみゃくどう", "en": "sigmoid sinus", "la": "sinus sigmoideus",
@@ -2249,7 +2424,7 @@
           "parts": ["za:cavernous sinus"], "level": 1, "color": "#3b64b8",
           "kanji": "スポンジ（海綿）のような静脈洞",
           "etym": "cavernous「洞穴の多い・海綿のような」",
-          "note": "トルコ鞍の両わきの静脈洞。中を内頚動脈と外転神経が通り、外側の壁を動眼・滑車・眼神経・上顎神経が走る。眼静脈と顔の静脈から血を受ける。"
+          "note": "トルコ鞍の両わきの静脈洞。中を内頚動脈と外転神経が通り、外側の壁を動眼・滑車・眼神経・上顎神経が走る。上眼静脈・下眼静脈と顔の静脈から血を受け、上・下錐体静脈洞へ流す。左右は海綿間静脈洞でつながる。顔の化膿が広がると血栓ができ、眼が飛び出たり眼を動かす神経がまひする。"
         },
         {
           "id": "superior-petrosal-sinus", "ja": "上錐体静脈洞", "yomi": "じょうすいたいじょうみゃくどう", "en": "superior petrosal sinus", "la": "sinus petrosus superior",
@@ -2299,6 +2474,55 @@
           "kanji": "椎骨（の横突孔）を通る静脈",
           "etym": "vertebral「椎骨の」",
           "note": "椎骨動脈のまわりの静脈の網が集まったもので、頚椎の横突孔を下って腕頭静脈へ注ぐ。"
+        }
+      ]
+    },
+    {
+      "id": "cv-head-veins-more",
+      "title": "頭蓋底の静脈洞と頭頚部の静脈の枝",
+      "group": "頭頚部と脳",
+      "terms": [
+        {
+          "id": "intercavernous-sinuses", "ja": "海綿間静脈洞", "yomi": "かいめんかんじょうみゃくどう", "en": "intercavernous sinuses", "enAlt": ["intercavernous sinus"], "la": "sinus intercavernosi",
+          "parts": ["za:anterior intercavernous sinus", "za:posterior intercavernous sinus"], "level": 3, "xray": true, "color": "#3b64b8",
+          "kanji": "左右の海綿静脈洞の間をつなぐ静脈洞",
+          "etym": "inter-「間」＋ cavernous「海綿（静脈洞）の」",
+          "note": "トルコ鞍の前と後ろのふちで左右の海綿静脈洞をつなぐ静脈洞。下垂体を輪のように囲む。下垂体の手術で蝶形骨洞からトルコ鞍の床を開けるとき、出血のもとになる。"
+        },
+        {
+          "id": "basilar-plexus", "ja": "脳底静脈叢", "yomi": "のうていじょうみゃくそう", "en": "basilar plexus", "enAlt": ["basilar venous plexus"], "la": "plexus basilaris",
+          "parts": ["za:basilar venous plexus"], "level": 3, "xray": true, "color": "#3b64b8",
+          "kanji": "脳の底（斜台）にある静脈の網",
+          "etym": "basilar「底の」＋ plexus「網・叢」（ラテン語 plectere＝編む）",
+          "note": "斜台の上の硬膜の中に広がる静脈の網。左右の海綿静脈洞・下錐体静脈洞をつなぎ、下は大後頭孔のまわりで脊柱管の中の静脈叢とつながる。"
+        },
+        {
+          "id": "occipital-sinus", "ja": "後頭静脈洞", "yomi": "こうとうじょうみゃくどう", "en": "occipital sinus", "la": "sinus occipitalis",
+          "parts": ["za:occipital sinus"], "level": 3, "xray": true, "color": "#3b64b8",
+          "kanji": "後頭骨の内面を走る静脈洞",
+          "etym": "occipital ← ラテン語 occiput「後頭」",
+          "note": "小脳鎌の付く縁（内後頭稜）にそって走る小さな静脈洞。上の端で静脈洞交会に注ぎ、下は大後頭孔の近くで椎骨静脈叢とつながる。内後頭隆起で上矢状静脈洞・直静脈洞・横静脈洞・後頭静脈洞が合わさる所を静脈洞交会という。"
+        },
+        {
+          "id": "inferior-ophthalmic-vein", "ja": "下眼静脈", "yomi": "かがんじょうみゃく", "en": "inferior ophthalmic vein", "la": "vena ophthalmica inferior",
+          "parts": ["za:inferior ophthalmic vein"], "level": 3, "xray": true, "color": "#3b64b8",
+          "kanji": "眼窩の下の部分の静脈",
+          "etym": "inferior「下の」＋ ophthalmic「眼の」（ギリシャ語 ophthalmos）",
+          "note": "眼窩の下の部分（下直筋・下斜筋のまわり）の血液を集めて後ろへ走り、上眼静脈と合わさるか直接に海綿静脈洞へ注ぐ。下眼窩裂を通る枝で翼突筋静脈叢ともつながる。"
+        },
+        {
+          "id": "occipital-vein", "ja": "後頭静脈", "yomi": "こうとうじょうみゃく", "en": "occipital vein", "la": "vena occipitalis",
+          "parts": ["za:occipital vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "後頭部の静脈",
+          "etym": "occipital ← ラテン語 occiput「後頭」",
+          "note": "後頭部の頭皮の血液を集め、後頭動脈と並んで下る静脈。うなじの深い静脈の網を経て椎骨静脈に注ぐ（外頚静脈に注ぐこともある）。外後頭隆起の後頭導出静脈で静脈洞交会と、乳突孔の乳突導出静脈でS状静脈洞とつながる。"
+        },
+        {
+          "id": "lingual-vein", "ja": "舌静脈", "yomi": "ぜつじょうみゃく", "en": "lingual vein", "la": "vena lingualis",
+          "parts": ["za:lingual vein"], "level": 3, "color": "#3b64b8",
+          "kanji": "舌の静脈",
+          "etym": "lingual ← ラテン語 lingua「舌」",
+          "note": "舌の血液を集め、舌動脈と並んで後ろへ進み、舌骨の大角のあたりで内頚静脈（または顔面静脈）に注ぐ。舌の下の面に透けて見える舌深静脈はこの枝。薬（ニトログリセリンなど）を舌の下に置くと速く吸収されるのは、この静脈の網のため。"
         }
       ]
     }
