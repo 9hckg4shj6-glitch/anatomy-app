@@ -79,49 +79,77 @@
           "parts": ["superior rectus"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の上をまっすぐ走る筋",
           "etym": "superior「上の」＋ rectus「まっすぐな」",
-          "note": "眼球を上へ向ける外眼筋。動眼神経が支配する。"
+          "note": "眼球を上へ向ける外眼筋。動眼神経が支配する。",
+          "origin": "総腱輪（視神経管のまわり）",
+          "insertion": "眼球の上面（赤道より前）",
+          "nerve": "動眼神経",
+          "action": "眼球の上転・内転・内旋"
         },
         {
           "id": "inferior-rectus", "ja": "下直筋", "yomi": "かちょっきん", "en": "inferior rectus", "la": "musculus rectus inferior",
           "parts": ["inferior rectus"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の下をまっすぐ走る筋",
           "etym": "inferior「下の」＋ rectus",
-          "note": "眼球を下へ向ける外眼筋。動眼神経が支配する。"
+          "note": "眼球を下へ向ける外眼筋。動眼神経が支配する。",
+          "origin": "総腱輪（視神経管のまわり）",
+          "insertion": "眼球の下面（赤道より前）",
+          "nerve": "動眼神経",
+          "action": "眼球の下転・内転・外旋"
         },
         {
           "id": "medial-rectus", "ja": "内側直筋", "yomi": "ないそくちょっきん", "en": "medial rectus", "la": "musculus rectus medialis",
           "parts": ["medial rectus"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の内側（鼻側）をまっすぐ走る筋",
           "etym": "medial「内側の」＋ rectus",
-          "note": "眼球を内側（鼻側）へ向ける外眼筋。動眼神経が支配する。"
+          "note": "眼球を内側（鼻側）へ向ける外眼筋。動眼神経が支配する。",
+          "origin": "総腱輪（視神経管のまわり）",
+          "insertion": "眼球の内側面（赤道より前）",
+          "nerve": "動眼神経",
+          "action": "眼球の内転"
         },
         {
           "id": "lateral-rectus", "ja": "外側直筋", "yomi": "がいそくちょっきん", "en": "lateral rectus", "la": "musculus rectus lateralis",
           "parts": ["lateral rectus"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の外側（耳側）をまっすぐ走る筋",
           "etym": "lateral「外側の」＋ rectus",
-          "note": "眼球を外側へ向ける外眼筋。外転神経が支配する。"
+          "note": "眼球を外側へ向ける外眼筋。外転神経が支配する。",
+          "origin": "総腱輪（視神経管のまわり）",
+          "insertion": "眼球の外側面（赤道より前）",
+          "nerve": "外転神経",
+          "action": "眼球の外転"
         },
         {
           "id": "superior-oblique", "ja": "上斜筋", "yomi": "じょうしゃきん", "en": "superior oblique", "la": "musculus obliquus superior",
           "parts": ["superior oblique"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の上を斜めにつく筋",
           "etym": "superior ＋ oblique「斜めの」",
-          "note": "滑車を通って向きを変え、眼球を下外方へ向ける外眼筋。滑車神経が支配する。"
+          "note": "滑車を通って向きを変え、眼球を下外方へ向ける外眼筋。滑車神経が支配する。",
+          "origin": "視神経管の上内側（蝶形骨体）",
+          "insertion": "滑車で向きを変え、眼球の上面の後外側（赤道より後ろ）",
+          "nerve": "滑車神経",
+          "action": "眼球の下転・外転・内旋"
         },
         {
           "id": "inferior-oblique", "ja": "下斜筋", "yomi": "かしゃきん", "en": "inferior oblique", "la": "musculus obliquus inferior",
           "parts": ["inferior oblique"], "level": 2, "color": "#c75b4f",
           "kanji": "眼球の下を斜めにつく筋",
           "etym": "inferior ＋ oblique",
-          "note": "眼球を上外方へ向ける外眼筋。動眼神経が支配する。"
+          "note": "眼球を上外方へ向ける外眼筋。動眼神経が支配する。",
+          "origin": "眼窩の下壁の前内側（鼻涙管の近くの上顎骨）",
+          "insertion": "眼球の下面の後外側（赤道より後ろ）",
+          "nerve": "動眼神経",
+          "action": "眼球の上転・外転・外旋"
         },
         {
           "id": "levator-palpebrae-superioris", "ja": "上眼瞼挙筋", "yomi": "じょうがんけんきょきん", "en": "levator palpebrae superioris", "la": "musculus levator palpebrae superioris",
           "parts": ["levator palpebrae superioris"], "level": 3, "color": "#c75b4f",
           "kanji": "上のまぶた（眼瞼）を挙げる筋",
           "etym": "levator「持ち上げるもの」＋ palpebrae「まぶたの」＋ superioris「上の」",
-          "note": "上まぶたを持ち上げて目を開く。動眼神経が支配し、まひすると眼瞼下垂になる。"
+          "note": "上まぶたを持ち上げて目を開く。動眼神経が支配し、まひすると眼瞼下垂になる。上眼瞼挙筋の下には平滑筋の上瞼板筋（ミュラー筋）があり、こちらは交感神経が支配する。",
+          "origin": "眼窩の後端（視神経管の近く）",
+          "insertion": "上眼瞼の瞼板と皮膚",
+          "nerve": "動眼神経",
+          "action": "上眼瞼を引き上げる（目を開く）"
         },
         {
           "id": "lacrimal-gland", "ja": "涙腺", "yomi": "るいせん", "en": "lacrimal gland", "la": "glandula lacrimalis",
