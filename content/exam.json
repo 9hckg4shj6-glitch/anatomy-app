@@ -135,7 +135,7 @@
     { "id": "anterior-fontanelle", "area": "general", "count": 0, "ja": "大泉門", "yomi": "だいせんもん", "en": "anterior fontanelle", "la": "fonticulus anterior", "note": "新生児の頭蓋で、前頭骨と左右の頭頂骨の間に残る、ひし形の膜の部分。1歳半〜2歳ごろに閉じる。", "show": ["bregma"] },
     { "id": "posterior-fontanelle", "area": "general", "count": 0, "ja": "小泉門", "yomi": "しょうせんもん", "en": "posterior fontanelle", "la": "fonticulus posterior", "note": "新生児の頭蓋で、後頭骨と左右の頭頂骨の間に残る三角形の膜の部分。生後まもなく閉じる。", "show": ["lambda"] },
     { "id": "nutrient-foramen", "area": "general", "count": 0, "ja": "栄養孔", "yomi": "えいようこう", "en": "nutrient foramen", "la": "foramen nutricium", "note": "骨の表面に開く小さな孔。骨の内部へ栄養動脈が入る。長骨では骨幹の中ほどにある。" },
-    { "id": "transverse-tarsal-joint", "area": "lower", "count": 1, "ja": "横足根関節", "yomi": "おうそっこんかんせつ", "en": "transverse tarsal joint", "enAlt": ["chopart joint"], "la": "articulatio tarsi transversa", "note": "距舟関節と踵立方関節をあわせた、足根を横切る関節（ショパール関節）。足の切断の位置にもなる。", "show": ["talus", "navicular", "calcaneus", "cuboid"] },
+    { "id": "transverse-tarsal-joint", "area": "lower", "count": 1, "term": "transverse-tarsal-joint" },
     { "id": "orbital-opening", "area": "skull", "count": 1, "ja": "眼窩口", "yomi": "がんかこう", "en": "orbital opening", "la": "aditus orbitalis", "note": "眼窩の前の入口。眼窩上縁・眼窩下縁・内側縁・外側縁で囲まれる。", "show": ["supra-orbital-margin", "infra-orbital-margin"] },
     { "id": "nasolacrimal-canal", "area": "skull", "count": 1, "ja": "鼻涙管", "yomi": "びるいかん", "en": "nasolacrimal canal", "enAlt": ["nasolacrimal duct"], "la": "canalis nasolacrimalis", "note": "涙嚢窩から下へ続き、下鼻道に開く骨の管。中を鼻涙管（涙の通り道）が通る。", "show": ["fossa-for-lacrimal-sac", "nasolacrimal-duct"] },
 

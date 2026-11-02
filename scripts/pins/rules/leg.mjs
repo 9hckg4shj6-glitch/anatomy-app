@@ -15,7 +15,8 @@ export const RULES = {
   "trochlea-of-talus": { ext: "sup", r: 0.012 },
   "head-of-talus": { ext: "ant+0.3med", r: 0.009 },
   "tuberosity-of-navicular": { ext: "med+0.3inf", r: 0.006 },
-  "tuberosity-of-fifth-metatarsal": { ext: "lat+0.3post", r: 0.006 },
+  // 5本の中足骨のうち最も外側の点にすると、つま先が外を向く足では第5中足骨の頭を拾う。第5中足骨の後ろ（底）で探す
+  "tuberosity-of-fifth-metatarsal": { part: "fifth metatarsal bone", ext: "lat+0.3post", box: { a: [0, 0.35] }, r: 0.006 },
 };
 export const CHECKS = [
   { name: "tibia", mesh: "tibia", views: ["ant", "post", "med"], ids: ["medial-condyle-of-tibia", "lateral-condyle-of-tibia", "intercondylar-eminence", "tibial-tuberosity", "anterior-border-of-tibia", "soleal-line", "medial-malleolus"] },

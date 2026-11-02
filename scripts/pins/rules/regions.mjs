@@ -59,7 +59,7 @@ export const REGIONS = {
   "sustentaculum-tali": { tip: { d: "med", h: 0.008, within: 0.008 }, cuts: [{ d: "sup", off: 0.006 }, { d: "post", off: 0.012 }, { d: "ant", off: 0.012 }] },
   "head-of-talus": { tip: { d: "ant+0.3med", h: 0.012 } },
   "posterior-process-of-talus": { tip: { d: "post", h: 0.006 } },
-  "tuberosity-of-fifth-metatarsal": { tip: { d: [-0.9578, 0, -0.2873], h: 0.008 } },
+  "tuberosity-of-fifth-metatarsal": { part: "fifth metatarsal bone", tip: { d: [-0.6, 0, -0.8], h: 0.007 } },
   "tuberosity-of-navicular": { tip: { d: "med", h: 0.006 } },
   "hook-of-hamate": { tip: { d: "ant", h: 0.005 } },
 };

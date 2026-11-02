@@ -226,6 +226,81 @@
       ]
     },
     {
+      "id": "joint-articulations-trunk",
+      "title": "脊柱・肋骨・骨盤の関節（向き合う関節面）",
+      "group": "体幹と頭",
+      "intro": [
+        "関節（滑膜性の連結）は、関節包に包まれた関節腔をはさんで、2つの骨の関節面が向き合う連結。晒した骨では関節包・関節軟骨・靱帯はなくなっているので、どの骨のどの面が向き合うかで関節を理解する。3Dでは向き合う関節面を橙色で示す。",
+        "骨の連結には、線維性の連結（縫合・靱帯結合）、軟骨性の連結（椎間円板・恥骨結合）、滑膜性の連結（関節）の3つがある。頭の回旋は環軸関節で、うなずきは環椎後頭関節で行い、脊柱の大きな動きは椎骨どうしの小さな動きの合計になる。"
+      ],
+      "terms": [
+        {
+          "id": "atlanto-occipital-joint", "ja": "環椎後頭関節", "yomi": "かんついこうとうかんせつ", "en": "atlanto-occipital joint", "la": "articulatio atlantooccipitalis",
+          "level": 2,
+          "kanji": "環椎と後頭骨の関節",
+          "etym": "atlanto-「環椎の」＋ occipital「後頭骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "後頭骨の後頭顆（関節頭）と環椎の上関節窩（関節窩）の間の左右1対の関節（顆状関節）。左右の関節の長軸は前で近づく。頭をうなずくように前後に曲げる（約10°）と少し横に傾ける（約7°）だけで、頭を回すことはできない（回すのは環軸関節）。",
+          "region": {"bounds": ["occipital-condyle", "superior-articular-facet-of-atlas"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0199, 1.4794, 0.0686], "from": [-1, -0.2, 0.5], "size": 0.06}, "prompt": "後頭顆と環椎の上関節窩がつくる関節は？"}
+        },
+        {
+          "id": "median-atlanto-axial-joint", "ja": "正中環軸関節", "yomi": "せいちゅうかんじくかんせつ", "en": "median atlanto-axial joint", "la": "articulatio atlantoaxialis mediana",
+          "level": 2,
+          "kanji": "正中にある環椎と軸椎の関節",
+          "etym": "atlanto-「環椎の」＋ axial「軸椎の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "軸椎の歯突起と、前は環椎の前弓の後面（歯突起窩）、後ろは環椎横靱帯の間の関節（車軸関節）。外側環軸関節と一緒に、頭をのせた環椎を歯突起のまわりに左右へ約30°ずつ回す。椎間円板は無い。",
+          "region": {"bounds": ["dens-of-axis", "facet-for-dens"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0024, 1.4725, 0.0787], "from": [-0.5, 0.6, 1], "size": 0.05}, "prompt": "歯突起と環椎の歯突起窩がつくる関節は？"}
+        },
+        {
+          "id": "lateral-atlanto-axial-joint", "ja": "外側環軸関節", "yomi": "がいそくかんじくかんせつ", "en": "lateral atlanto-axial joint", "la": "articulatio atlantoaxialis lateralis",
+          "level": 2,
+          "kanji": "外側にある環椎と軸椎の関節",
+          "etym": "atlanto-「環椎の」＋ axial「軸椎の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "環椎の下関節窩と軸椎の上関節面の間の左右1対の関節（平面関節）。頭を回すとき、環椎がこの面の上をすべる。左右の環椎後頭関節・正中環軸関節とまとめて頭関節ともいう。",
+          "region": {"bounds": ["inferior-articular-facet-of-atlas", "superior-articular-facet-of-axis"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0184, 1.4629, 0.0758], "from": [-1, 0, 0.4], "size": 0.05}, "prompt": "環椎の下関節窩と軸椎の上関節面がつくる関節は？"}
+        },
+        {
+          "id": "zygapophysial-joints", "ja": "椎間関節", "yomi": "ついかんかんせつ", "en": "zygapophysial joints", "enAlt": ["facet joints","intervertebral joints"], "la": "articulationes zygapophysiales",
+          "level": 2,
+          "kanji": "椎骨の間の関節",
+          "etym": "zygapophysis ← ギリシャ語 zygon「くびき」＋ apophysis「突起」（関節突起）。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "上の椎骨の下関節突起と、下の椎骨の上関節突起の関節面の間の関節（平面関節）。関節面の傾きが脊柱の動きを決める: 頚部では水平に近く（後屈と回旋が大きい）、胸部では前頭面に近く立ち（側屈しやすい）、腰部では矢状面に近く立つ（回旋がほとんどできない）。3Dでは第3腰椎の上関節突起と下関節突起を示す。",
+          "region": {"bounds": ["superior-articular-process", "inferior-articular-process"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0159, 0.9894, 0.0614], "from": [-1, 0, -0.7], "size": 0.08}, "prompt": "上下の椎骨の関節突起どうしがつくる関節は？"}
+        },
+        {
+          "id": "joint-of-head-of-rib", "ja": "肋骨頭関節", "yomi": "ろっこつとうかんせつ", "en": "joint of head of rib", "la": "articulatio capitis costae",
+          "level": 2,
+          "kanji": "肋骨頭の関節",
+          "etym": "head of rib「肋骨の頭」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "肋骨頭と胸椎の椎体の肋骨窩の間の関節。第2〜第10肋骨では、くさび形の肋骨頭が上下2つの椎体の肋骨窩（上の椎骨の下肋骨窩と同じ番号の椎骨の上肋骨窩）にまたがってはまる。第1・第11・第12肋骨は1つの椎体だけと関節する。",
+          "region": {"bounds": ["head-of-rib", "costal-facet"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0148, 1.2504, 0.0359], "from": [-1, 0.3, 0.6], "size": 0.06}, "prompt": "肋骨頭と胸椎の肋骨窩がつくる関節は？"}
+        },
+        {
+          "id": "costotransverse-joint", "ja": "肋横突関節", "yomi": "ろくおうとつかんせつ", "en": "costotransverse joint", "la": "articulatio costotransversaria",
+          "level": 2,
+          "kanji": "肋骨と横突起の関節",
+          "etym": "costo-「肋骨の」＋ transverse「横突起の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "肋骨結節の関節面と、同じ番号の胸椎の横突肋骨窩の間の関節。第11・第12肋骨には無い（線維性の連結になる）。肋骨頭関節とあわせて、肋骨頚を軸に肋骨がわずかに回ると、肋骨の前の端が大きく上下して胸郭が広がる（呼吸）。",
+          "region": {"bounds": ["tubercle-of-rib", "transverse-costal-facet"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0364, 1.2579, 0.0142], "from": [-0.6, 0.4, -1], "size": 0.06}, "prompt": "肋骨結節と胸椎の横突肋骨窩がつくる関節は？"}
+        },
+        {
+          "id": "sternocostal-joints", "ja": "胸肋関節", "yomi": "きょうろくかんせつ", "en": "sternocostal joints", "la": "articulationes sternocostales",
+          "level": 2,
+          "kanji": "胸骨と肋骨（肋軟骨）の関節",
+          "etym": "sterno-「胸骨の」＋ costal「肋骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "第2〜第7肋軟骨と胸骨の肋骨切痕の間の関節。第1肋軟骨は関節腔なしに胸骨柄と直接つながる（軟骨性の連結）。第2肋軟骨は胸骨柄と胸骨体の境（胸骨角）に関節する。第8〜第10肋軟骨は胸骨に届かず、すぐ上の肋軟骨と関節する（軟骨間関節）。",
+          "region": {"bounds": ["costal-notches"], "contents": ["costal-cartilages"], "boundsLabel": "向き合う関節面", "contentsLabel": "関節する軟骨", "view": {"target": [-0.0219, 1.2574, 0.1755], "from": [-0.4, 0, 1], "size": 0.12}, "prompt": "胸骨の肋骨切痕と肋軟骨がつくる関節は？"}
+        },
+        {
+          "id": "sacro-iliac-joint", "ja": "仙腸関節", "yomi": "せんちょうかんせつ", "en": "sacro-iliac joint", "enAlt": ["sacroiliac joint"], "la": "articulatio sacroiliaca",
+          "level": 1,
+          "kanji": "仙骨と腸骨の関節",
+          "etym": "sacro-「仙骨の」＋ iliac「腸骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "仙骨の耳状面と腸骨の耳状面の間の関節。両面はでこぼこでぴったりかみ合い、強い靱帯（前・後・骨間仙腸靱帯）で固められるので、ほとんど動かない。関節面をおおう軟骨は大部分が線維軟骨で、年とともに関節腔は狭くなる。脊柱にかかる体重を、ここから寛骨・下肢へ伝える。",
+          "region": {"bounds": ["auricular-surface-of-sacrum", "auricular-surface-of-ilium"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0488, 0.8889, 0.0416], "from": [-0.4, 0.2, 1], "size": 0.1}, "prompt": "仙骨と腸骨の耳状面がつくる関節は？"}
+        }
+      ]
+    },
+    {
       "id": "joint-upper",
       "title": "肩・肘・手首の関節と靱帯",
       "group": "上肢",
@@ -465,6 +540,57 @@
           "kanji": "尺骨（の関節円板）と三角骨をつなぐ靱帯",
           "etym": "ulno-「尺骨の」＋ triquetral「三角骨の」（ラテン語 triquetrus＝三角の）",
           "note": "下橈尺関節の関節円板の前の縁から三角骨へ張る靱帯。尺骨月状骨靱帯のすぐ内側に並び、ともに三角線維軟骨複合体（TFCC）の一部。"
+        }
+      ]
+    },
+    {
+      "id": "joint-articulations-upper",
+      "title": "肘と前腕・母指の関節（向き合う関節面）",
+      "group": "上肢",
+      "intro": [
+        "肘関節は、腕尺関節・腕橈関節・上橈尺関節の3つが1つの関節包に包まれた複関節。前腕の回内・回外は、上橈尺関節と下橈尺関節で橈骨が尺骨のまわりを回る動き（回外位で2つの骨は平行、回内位で交差する）。",
+        "上腕骨から脊柱までは、肩関節 → 肩甲骨 → 肩鎖関節 → 鎖骨 → 胸鎖関節 → 胸骨 → 胸肋関節 → 肋骨 → 肋骨頭関節・肋横突関節 → 胸椎と、回り道でつながる。上肢が体幹に対して自由に動くための仕組み。"
+      ],
+      "terms": [
+        {
+          "id": "humero-ulnar-joint", "ja": "腕尺関節", "yomi": "わんしゃくかんせつ", "en": "humero-ulnar joint", "enAlt": ["humeroulnar joint"], "la": "articulatio humeroulnaris",
+          "level": 2,
+          "kanji": "上腕骨と尺骨の関節",
+          "etym": "humero-「上腕骨の」＋ ulnar「尺骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "上腕骨滑車と尺骨の滑車切痕の間の関節（蝶番関節）。肘の屈伸だけを行う。伸ばすと肘頭が肘頭窩に、曲げると鈎状突起が鈎突窩にはまる。上腕と前腕の長軸は一直線ではなく、肘を伸ばして手のひらを前に向けると前腕が外へ約20°開く（運搬角。女性で大きい）。",
+          "region": {"bounds": ["trochlea-of-humerus", "trochlear-notch"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.2055, 1.0383, 0.0653], "from": [0.3, 0, 1], "size": 0.07}, "prompt": "上腕骨滑車と尺骨の滑車切痕がつくる関節は？"}
+        },
+        {
+          "id": "humeroradial-joint", "ja": "腕橈関節", "yomi": "わんとうかんせつ", "en": "humeroradial joint", "la": "articulatio humeroradialis",
+          "level": 2,
+          "kanji": "上腕骨と橈骨の関節",
+          "etym": "humero-「上腕骨の」＋ radial「橈骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "上腕骨小頭（関節頭）と橈骨頭の上面のくぼみ（関節窩）の間の関節。肘の屈伸に加わり、前腕を回すときは橈骨頭が小頭の上で回る。",
+          "region": {"bounds": ["capitulum-of-humerus", "head-of-radius"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.2287, 1.0368, 0.0704], "from": [-0.4, 0, 1], "size": 0.07}, "prompt": "上腕骨小頭と橈骨頭がつくる関節は？"}
+        },
+        {
+          "id": "proximal-radio-ulnar-joint", "ja": "上橈尺関節", "yomi": "じょうとうしゃくかんせつ", "en": "proximal radio-ulnar joint", "enAlt": ["superior radio-ulnar joint"], "la": "articulatio radioulnaris proximalis",
+          "level": 2,
+          "kanji": "上の橈骨と尺骨の関節",
+          "etym": "radio-「橈骨の」＋ ulnar「尺骨の」＋ proximal「近位の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "橈骨頭の関節環状面と尺骨の橈骨切痕の間の関節（車軸関節）。橈骨輪状靱帯が橈骨頭を輪のように包む。2〜6歳では橈骨頭が小さいので、手を急に引っぱると輪から抜けかける（肘内障）。下橈尺関節と一緒に回内・回外を行う。",
+          "region": {"bounds": ["articular-circumference-of-radius", "radial-notch"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.2272, 1.0233, 0.0669], "from": [-0.3, 0, 1], "size": 0.06}, "prompt": "橈骨頭の関節環状面と尺骨の橈骨切痕がつくる関節は？"}
+        },
+        {
+          "id": "distal-radio-ulnar-joint", "ja": "下橈尺関節", "yomi": "かとうしゃくかんせつ", "en": "distal radio-ulnar joint", "enAlt": ["inferior radio-ulnar joint"], "la": "articulatio radioulnaris distalis",
+          "level": 2,
+          "kanji": "下の橈骨と尺骨の関節",
+          "etym": "radio-「橈骨の」＋ ulnar「尺骨の」＋ distal「遠位の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "橈骨の尺骨切痕と尺骨頭の関節環状面の間の関節（車軸関節）。回内・回外では、橈骨の下端が尺骨頭のまわりをぐるりと回る。下は関節円板（三角線維軟骨）で橈骨手根関節と隔てられ、尺骨は手首の関節に直接加わらない。",
+          "region": {"bounds": ["ulnar-notch-of-radius", "articular-circumference-of-ulna"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.2466, 0.8167, 0.1189], "from": [0.4, 0, 1], "size": 0.06}, "prompt": "橈骨の尺骨切痕と尺骨頭の関節環状面がつくる関節は？"}
+        },
+        {
+          "id": "carpometacarpal-joint-of-thumb", "ja": "母指の手根中手関節", "yomi": "ぼしのしゅこんちゅうしゅかんせつ", "en": "carpometacarpal joint of thumb", "enAlt": ["first carpometacarpal joint","trapeziometacarpal joint"], "la": "articulatio carpometacarpalis pollicis",
+          "level": 1,
+          "kanji": "母指の手根骨と中手骨の関節",
+          "etym": "carpo-「手根の」＋ metacarpal「中手骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "大菱形骨と第1中手骨の底の間の関節。向かい合う2つの面がどちらも馬の鞍の形で、直角にずらして組み合う典型的な鞍関節。手根中手関節の中で例外的によく動き、母指の外転・内転と、母指をほかの指と向かい合わせる対立運動を行う（霊長類だけの仕組み）。第2〜第5の手根中手関節はほとんど動かない。",
+          "region": {"bounds": ["trapezium", "first-metacarpal"], "contents": [], "boundsLabel": "関節する骨", "view": {"target": [0, 0, 0], "from": [-1, 0, 0.7], "size": 0.07}, "prompt": "大菱形骨と第1中手骨がつくる鞍関節は？"}
         }
       ]
     },
@@ -808,6 +934,73 @@
           "kanji": "Y字の形の軟骨",
           "etym": "tri-「3つの」＋ radiate「放射状の」",
           "note": "寛骨臼の中で、腸骨・坐骨・恥骨の3つをつなぐY字の軟骨。ここで骨が伸び、思春期（15〜17歳ごろ）に骨になって3つの骨が1つの寛骨になる。寛骨臼の中の線として跡が残る。"
+        }
+      ]
+    },
+    {
+      "id": "joint-articulations-foot",
+      "title": "足首と足根の関節（向き合う関節面）",
+      "group": "下肢",
+      "intro": [
+        "足首（距腿関節）は足の背屈・底屈を、距骨下関節と距踵舟関節は足の内反・外反を行う。距舟関節と踵立方関節はほぼ一直線に並ぶので、あわせて横足根関節（ショパール関節）、足根骨と中足骨の間を足根中足関節（リスフラン関節）という。どちらも外科で足を切断する位置として考案された。",
+        "脛骨と腓骨は、上端の脛腓関節・骨幹の下腿骨間膜・下端の脛腓靱帯結合の3か所でつながり、前腕のような回内・回外はできない。"
+      ],
+      "terms": [
+        {
+          "id": "ankle-joint", "ja": "距腿関節", "yomi": "きょたいかんせつ", "en": "ankle joint", "enAlt": ["talocrural joint"], "la": "articulatio talocruralis",
+          "level": 1,
+          "kanji": "距骨と下腿の骨の関節",
+          "etym": "talo-「距骨の」＋ crural「下腿の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "脛骨の下関節面・内果関節面と腓骨の外果関節面がつくるくぼみに、距骨滑車がはまる関節（蝶番関節）。足首の背屈・底屈を行う。滑車は前が後ろより広いので、背屈（立って前へ傾く姿勢）では固くはまって安定し、底屈では少し横に動く。捻挫の多い関節。",
+          "region": {"bounds": ["trochlea-of-talus", "inferior-articular-surface-of-tibia", "articular-facet-of-medial-malleolus", "articular-facet-of-lateral-malleolus"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0702, -0.0015, 0.0743], "from": [-0.3, 0.2, 1], "size": 0.08}, "prompt": "脛骨・腓骨のくぼみに距骨滑車がはまる関節は？"}
+        },
+        {
+          "id": "subtalar-joint", "ja": "距骨下関節", "yomi": "きょこつかかんせつ", "en": "subtalar joint", "enAlt": ["talocalcaneal joint"], "la": "articulatio subtalaris",
+          "level": 2,
+          "kanji": "距骨の下の関節",
+          "etym": "sub-「下の」＋ talar「距骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "距骨の下面の後ろの関節面と、踵骨の後距骨関節面の間の関節。距踵舟関節と協力して、足の内反（足の裏を内へ向ける）・外反を行う。足根洞をはさんで前の距踵舟関節と分かれる。",
+          "region": {"bounds": ["posterior-talar-articular-surface"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0751, -0.0242, 0.0595], "from": [-1, 0.8, 0], "size": 0.07}, "prompt": "距骨と踵骨の後距骨関節面がつくる関節は？"}
+        },
+        {
+          "id": "talocalcaneonavicular-joint", "ja": "距踵舟関節", "yomi": "きょしょうしゅうかんせつ", "en": "talocalcaneonavicular joint", "la": "articulatio talocalcaneonavicularis",
+          "level": 3,
+          "kanji": "距骨・踵骨・舟状骨の関節",
+          "etym": "talo-「距骨の」＋ calcaneo-「踵骨の」＋ navicular「舟状骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "距骨頭を、前は舟状骨の後ろのくぼみ、下は踵骨の前・中距骨関節面（載距突起の上）と底側踵舟靱帯が受ける関節。1つの関節包に包まれる。距骨下関節とともに足の内反・外反を行う。",
+          "region": {"bounds": ["head-of-talus", "middle-talar-articular-surface", "anterior-talar-articular-surface"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0707, -0.0229, 0.0874], "from": [0.7, 0.6, 0.6], "size": 0.07}, "prompt": "距骨頭を舟状骨と踵骨の前・中距骨関節面が受ける関節は？"}
+        },
+        {
+          "id": "calcaneocuboid-joint", "ja": "踵立方関節", "yomi": "しょうりっぽうかんせつ", "en": "calcaneocuboid joint", "la": "articulatio calcaneocuboidea",
+          "level": 3,
+          "kanji": "踵骨と立方骨の関節",
+          "etym": "calcaneo-「踵骨の」＋ cuboid「立方骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "踵骨の前の端と立方骨の後ろの面の間の関節（不完全な鞍関節）。距舟関節とほぼ一直線に並び、あわせて横足根関節となる。",
+          "region": {"bounds": ["calcaneus", "cuboid"], "contents": [], "boundsLabel": "関節する骨", "view": {"target": [0, 0, 0], "from": [-1, 0.5, 0.3], "size": 0.08}, "prompt": "踵骨と立方骨がつくる関節は？"}
+        },
+        {
+          "id": "transverse-tarsal-joint", "ja": "横足根関節", "yomi": "おうそっこんかんせつ", "en": "transverse tarsal joint", "enAlt": ["chopart joint","midtarsal joint"], "la": "articulatio tarsi transversa",
+          "level": 2,
+          "kanji": "足根を横切る関節",
+          "etym": "transverse「横の」＋ tarsal「足根の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "距骨と舟状骨の間（距踵舟関節の一部）と、踵骨と立方骨の間（踵立方関節）をあわせた、足根を横にS字に横切る関節（ショパール関節）。外科で足を切断する位置として考案された。3Dでは関節の線を橙色の線で示す。",
+          "region": {"bounds": ["head-of-talus"], "contents": ["navicular", "calcaneus", "cuboid"], "boundsLabel": "向き合う関節面", "contentsLabel": "関節する骨", "outline": [[-0.065, -0.012, 0.104],[-0.075, -0.009, 0.103],[-0.0838, -0.0106, 0.1006],[-0.089, -0.02, 0.094],[-0.0935, -0.027, 0.087],[-0.1, -0.033, 0.082]], "open": true, "view": {"target": [-0.0728, -0.0154, 0.0976], "from": [0, 1, 0.3], "size": 0.09}, "prompt": "橙色の線で示す、足根を横切る関節は？"}
+        },
+        {
+          "id": "tarsometatarsal-joints", "ja": "足根中足関節", "yomi": "そっこんちゅうそくかんせつ", "en": "tarsometatarsal joints", "enAlt": ["lisfranc joint"], "la": "articulationes tarsometatarsales",
+          "level": 2,
+          "kanji": "足根骨と中足骨の関節",
+          "etym": "tarso-「足根の」＋ metatarsal「中足骨の」。articulatio ← ラテン語 articulus「小さな関節」",
+          "note": "3つの楔状骨・立方骨と5本の中足骨の底の間の関節（リスフラン関節）。ほぼ一列に並ぶが、第2中足骨の底だけは後ろへ入り込んで楔状骨の間にはまるので、動きはごく小さい。手根中手関節と同じく、足根骨と中足骨は1対1には対応しない。",
+          "region": {"bounds": ["base-of-metatarsal"], "contents": ["cuneiforms", "cuboid"], "boundsLabel": "向き合う関節面", "contentsLabel": "関節する足根骨", "outline": [[-0.075, -0.025, 0.142],[-0.083, -0.022, 0.136],[-0.088, -0.021, 0.13],[-0.094, -0.024, 0.133],[-0.1036, -0.03, 0.1227],[-0.109, -0.037, 0.112],[-0.115, -0.045, 0.099]], "open": true, "view": {"target": [-0.1048, -0.0307, 0.1178], "from": [0, 1, 0.3], "size": 0.1}, "prompt": "橙色の線で示す、足根骨と中足骨の間の関節は？"}
+        },
+        {
+          "id": "tibiofibular-syndesmosis", "ja": "脛腓靱帯結合", "yomi": "けいひじんたいけつごう", "en": "tibiofibular syndesmosis", "enAlt": ["distal tibiofibular joint","inferior tibiofibular joint"], "la": "syndesmosis tibiofibularis",
+          "level": 3,
+          "kanji": "脛骨と腓骨の靱帯による結合",
+          "etym": "syndesmosis ← ギリシャ語 syn-「一緒に」＋ desmos「ひも、靱帯」",
+          "note": "脛骨の下端の腓骨切痕に腓骨の下端がはまり、前・後脛腓靱帯と骨間の靱帯で固く結ばれた線維性の連結（靱帯結合）。関節腔は無い。距腿関節のくぼみの幅を保つ。",
+          "region": {"bounds": ["fibular-notch"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0961, 0.0168, 0.0754], "from": [-1, 0.2, 0.6], "size": 0.07}, "prompt": "脛骨の腓骨切痕に腓骨の下端がはまる線維性の連結は？"}
         }
       ]
     }
