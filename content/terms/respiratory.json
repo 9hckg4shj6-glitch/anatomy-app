@@ -408,10 +408,10 @@
       "terms": [
         {
           "id": "nasal-cavity", "ja": "鼻腔", "yomi": "びくう", "en": "nasal cavity", "la": "cavitas nasi",
-          "parts": ["za:mucosa of nasal cavity"], "level": 1, "xray": true, "veil": true,
+          "parts": ["nasal cavity proper", "inferior nasal meatus", "middle nasal meatus"], "level": 1, "xray": true, "veil": true,
           "kanji": "鼻の中の空所",
           "etym": "nasal ← ラテン語 nasus「鼻」。cavity ← cavus「うつろな」",
-          "note": "外鼻孔から後鼻孔までの空所で、後ろは咽頭鼻部に続く。鼻中隔で左右に分かれ、外側の壁から上・中・下の鼻甲介が張り出す。吸った空気を温め、湿らせ、ちりを除く。天井に嗅覚の粘膜がある。このアプリではふだん薄く見せている。"
+          "note": "外鼻孔から後鼻孔までの空所で、後ろは咽頭鼻部に続く。鼻中隔で左右に分かれ、外側の壁から上・中・下の鼻甲介が張り出す。吸った空気を温め、湿らせ、ちりを除く。天井に嗅覚の粘膜がある。このアプリの鼻腔は、CT から作った空気の通り道の型（鼻甲介のまわりに回り込む鼻道まで）で、ふだん薄く見せている。"
         },
         {
           "id": "lateral-nasal-cartilage", "ja": "外側鼻軟骨", "yomi": "がいそくびなんこつ", "en": "lateral nasal cartilage", "la": "cartilago nasi lateralis",
@@ -432,7 +432,14 @@
           "parts": ["za:sinus of frontal bone"], "level": 1, "xray": true,
           "kanji": "前頭骨の中の洞（空洞）",
           "etym": "sinus ← ラテン語「くぼみ・湾」",
-          "note": "眉の奥、前頭骨の中にある副鼻腔。中鼻道に開く。副鼻腔（上顎洞・前頭洞・篩骨蜂巣・蝶形骨洞）は鼻腔につながる骨の中の空洞で、頭蓋を軽くし、声を響かせる。上顎洞はこのモデルに無い。"
+          "note": "眉の奥、前頭骨の中にある副鼻腔。前頭鼻管を通って中鼻道に開く。副鼻腔（上顎洞・前頭洞・篩骨蜂巣・蝶形骨洞）は鼻腔につながる骨の中の空洞で、頭蓋を軽くし、声を響かせる。"
+        },
+        {
+          "id": "maxillary-sinus", "ja": "上顎洞", "yomi": "じょうがくどう", "en": "maxillary sinus", "la": "sinus maxillaris",
+          "parts": ["maxillary sinus"], "level": 1, "xray": true,
+          "kanji": "上顎骨の中の洞（空洞）",
+          "etym": "maxillary ← ラテン語 maxilla「あご（上あご）」。sinus ← ラテン語「くぼみ・湾」",
+          "note": "上顎骨体の中にある、いちばん大きい副鼻腔（大人で片側 約15mL）。上の壁は眼窩の床、下の壁（底）は上の奥歯の根に近く、内側の壁は鼻腔の外側の壁になる。内側の壁の高い所の開口から中鼻道（半月裂孔）に開く。開口が底より高いので分泌物が流れ出にくく、副鼻腔炎が起こりやすい。奥歯の根の炎症が広がることもある（歯性上顎洞炎）。"
         },
         {
           "id": "sphenoidal-sinus", "ja": "蝶形骨洞", "yomi": "ちょうけいこつどう", "en": "sphenoidal sinus", "enAlt": ["sphenoid sinus"], "la": "sinus sphenoidalis",
@@ -447,6 +454,45 @@
           "kanji": "篩骨の中の、蜂の巣のような小部屋",
           "etym": "ethmoid ← ギリシャ語 ethmos「ふるい」＋ -oid「〜の形」",
           "note": "左右の眼窩の間、篩骨の中にある小さな空洞の集まり（篩骨洞ともいう）。前・中のものは中鼻道に、後ろのものは上鼻道に開く。壁が薄く、炎症が眼窩に広がることがある。"
+        }
+      ]
+    },
+    {
+      "id": "resp-nose-wall",
+      "title": "鼻甲介と鼻道",
+      "group": "鼻腔と喉頭",
+      "intro": [
+        "鼻腔の外側の壁から、上・中・下の鼻甲介が棚のように張り出す。それぞれの鼻甲介の下と外側の空間が上・中・下鼻道で、鼻甲介と鼻中隔の間の縦に細長い空間が総鼻道。鼻道には副鼻腔と鼻涙管が開く。",
+        "このレッスンの鼻甲介と鼻道、鼻腔・上顎洞の形は、実際の人の CT（NasalSeg）から作った。上鼻甲介と上鼻道は小さく、この CT からは分けられないので形が無い（骨格系の「上鼻甲介」のピンで見る）。"
+      ],
+      "terms": [
+        {
+          "id": "nasal-inferior-concha", "ja": "下鼻甲介", "yomi": "かびこうかい", "en": "inferior nasal concha", "enAlt": ["inferior turbinate"], "la": "concha nasalis inferior",
+          "parts": ["inferior nasal concha (mucosa)"], "level": 1, "from": [0.25, -1, 0.35],
+          "kanji": "鼻の中の、下の貝がらのような張り出し",
+          "etym": "concha ← ギリシャ語 konchē「貝がら」。turbinate ← ラテン語 turbo「こま・渦巻き」",
+          "note": "鼻腔の外側の壁から張り出す、いちばん大きい鼻甲介。芯は独立した骨（骨格系の「下鼻甲介」）で、厚い粘膜におおわれる。粘膜の中の海綿のような静脈の網がふくらんだり縮んだりして、空気の通り道の広さを変える（鼻づまり）。下と外側が下鼻道。ここでは CT から粘膜ごとの形を作った。"
+        },
+        {
+          "id": "nasal-middle-concha", "ja": "中鼻甲介", "yomi": "ちゅうびこうかい", "en": "middle nasal concha", "enAlt": ["middle turbinate"], "la": "concha nasalis media",
+          "parts": ["middle nasal concha (mucosa)"], "level": 1, "xray": true,
+          "kanji": "鼻の中の、中ほどの貝がらのような張り出し",
+          "etym": "concha ← ギリシャ語 konchē「貝がら」",
+          "note": "篩骨の一部（骨格系の「中鼻甲介」）が粘膜におおわれた張り出しで、下鼻甲介の上にある。下と外側の中鼻道に上顎洞・前頭洞・前の篩骨蜂巣が開くので、内視鏡で副鼻腔の手術をするときの目印になる。ここでは CT から粘膜ごとの形を作った。"
+        },
+        {
+          "id": "inferior-nasal-meatus", "ja": "下鼻道", "yomi": "かびどう", "en": "inferior nasal meatus", "la": "meatus nasi inferior",
+          "parts": ["inferior nasal meatus"], "level": 1, "xray": true,
+          "kanji": "鼻の中の、下の通り道",
+          "etym": "meatus ← ラテン語「通り道」（meare「通る」）",
+          "note": "下鼻甲介の下と外側の空間で、鼻腔の底に沿う。前の方の天井（下鼻甲介の付け根の下）に鼻涙管が開き、涙が鼻へ流れる（泣くと鼻水が出るわけ）。副鼻腔は開かない。"
+        },
+        {
+          "id": "middle-nasal-meatus", "ja": "中鼻道", "yomi": "ちゅうびどう", "en": "middle nasal meatus", "la": "meatus nasi medius",
+          "parts": ["middle nasal meatus"], "level": 1, "xray": true,
+          "kanji": "鼻の中の、中ほどの通り道",
+          "etym": "meatus ← ラテン語「通り道」",
+          "note": "中鼻甲介の下と外側の空間（下鼻甲介の上）。外側の壁の三日月形のすき間（半月裂孔。篩骨の鉤状突起と篩骨胞の間）に、上顎洞・前頭洞・前の篩骨蜂巣が開く。副鼻腔炎の膿がたまりやすく、鼻の手術で最も大事な所。上鼻道には後ろの篩骨蜂巣、上鼻甲介の後ろ上の蝶篩陥凹には蝶形骨洞が開く。"
         }
       ]
     },

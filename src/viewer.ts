@@ -1220,12 +1220,13 @@ export class AnatomyViewer {
    * ガラスのような半透明（臓器の場面の、周りを透かして見せるとき）。正面を向く所はごく薄く、輪郭に近い所ほど濃くして、
    * 重なっても霧のようにならず形の丸みが分かるようにする。strength は輪郭の濃さ
    */
-  private glass(color: string, strength: number): THREE.Material {
-    return this.material(`glass:${color}:${strength}`, () => {
+  /** 正面ほど薄く輪郭ほど濃い半透明。base は正面の濃さ */
+  private glass(color: string, strength: number, base = 0.05): THREE.Material {
+    return this.material(`glass:${color}:${strength}:${base}`, () => {
       const material = new THREE.MeshStandardMaterial({ color, roughness: 0.6, transparent: true, depthWrite: false });
       material.onBeforeCompile = (shader) => {
         shader.fragmentShader = shader.fragmentShader.replace("#include <opaque_fragment>", `float glassFacing = abs(dot(normalize(normal), normalize(vViewPosition)));
-diffuseColor.a = clamp(0.05 + ${strength.toFixed(2)} * pow(1.0 - glassFacing, 2.0), 0.0, 0.9);
+diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - glassFacing, 2.0), 0.0, 0.9);
 #include <opaque_fragment>`);
       };
       return material;
@@ -1384,7 +1385,12 @@ diffuseColor.a = clamp(0.05 + ${strength.toFixed(2)} * pow(1.0 - glassFacing, 2.
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
       } else if (this.veiled.has(elementId) && !highlightedElements.has(elementId)) {
-        mesh.material = this.ghost(own(), 0.12);
+        // 臓器の場面では、輪郭ほど濃いガラスにして空所の形（鼻腔・口腔など）を追えるようにする。
+        // 空所の中の細かい語（鼻道）で色分けしている部品は、正面も濃くして色の区域が分かるようにする
+        const owners = this.elementTerms.get(elementId) ?? [];
+        const painted = this.colors ? owners.find((id) => this.colors!.has(id)) : undefined;
+        const inner = !!painted && !termById.get(painted)?.veil;
+        mesh.material = this.organ ? this.glass(own(), 0.9, inner ? 0.35 : 0.05) : this.ghost(own(), 0.12);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
       } else if (highlightedElements.has(elementId)) {

@@ -62,6 +62,11 @@ describe("臓器の場面", () => {
   it("鼻腔と副鼻腔は咽頭から分けた臓器で、咽頭の立体には鼻腔を添えるだけ", () => {
     expect(organOf("frontal-sinus")?.id).toBe("nose");
     expect(organOf("nasal-septal-cartilage")?.id).toBe("nose");
+    // CT から作った鼻甲介・鼻道・上顎洞のレッスンも鼻腔の場面。骨の下鼻甲介は鼻甲介（粘膜）の形で示すので場面に入れない
+    expect(sceneFor("respiratory", "resp-nose-wall").organ).toBe("nose");
+    expect(organOf("middle-nasal-meatus")?.id).toBe("nose");
+    expect(organOf("maxillary-sinus")?.id).toBe("nose");
+    expect(organTerms(organById.get("nose")!)).not.toContain("inferior-nasal-concha");
     expect(organTerms(organById.get("pharynx")!)).toContain("nasal-cavity");
     // 頭蓋の骨は添えるだけ（図鑑で骨を開いたときは今までどおり全身で見せる）
     expect(organTerms(organById.get("nose")!)).toContain("ethmoid-bone");

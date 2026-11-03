@@ -21,6 +21,7 @@ import { MeshoptEncoder, MeshoptSimplifier } from "meshoptimizer";
 import { attachedBones } from "./attach-bones.mjs";
 import { partitionMesh, splitMesh } from "./split-mesh.mjs";
 import { loadHires } from "./hires.mjs";
+import { loadNasal, nasalNames } from "./nasal/index.mjs";
 import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, relax, simplify, subdivide } from "./surface.mjs";
 import { loadZa } from "./za/index.mjs";
 
@@ -134,11 +135,14 @@ const AO_DISTANCE = { skeletal: 0.025, joints: 0.015, muscular: 0.02, cardiovasc
 /**
  * 形を減らし（ratio・error は surface.mjs の simplify）、くぼみの暗さ（_AO）と線維の向き（_FIBER）を付けて GLB に書く。
  * fiberOf(部品ID, 減らした形) は線維の向き（無ければ null）。occluders は AO で光線をさえぎる形に加える、ほかの GLB の形。
+ * clear(部品ID) が true の部品（veil の語＝空所の形や薄い膜。アプリではふだん透かす）は、光線をさえぎる形に入れない
+ * （鼻腔の空気の型が、中に包まれた鼻甲介を暗くしないように）。
  * extrasOf(部品ID) は部品に付ける印（アプリでは mesh.userData。軟骨は { cartilage: true }）。返り値の meshes は減らした形（部品ID → 形）。
  */
-async function writeGlb(stem, elements, { ratio, error, ao = null, fiberOf = () => null, occluders = [], extrasOf = () => null }) {
+async function writeGlb(stem, elements, { ratio, error, ao = null, fiberOf = () => null, occluders = [], extrasOf = () => null, clear = () => false }) {
   const meshes = new Map(elements.map(([id, mesh]) => [id, simplify(mesh, { ratio, error })]));
-  const shading = ao ? bakeAo([...meshes.values()], [...meshes.values(), ...occluders], { distance: ao }) : null;
+  const blocking = [...meshes].filter(([id]) => !clear(id)).map(([, mesh]) => mesh);
+  const shading = ao ? bakeAo([...meshes.values()], [...blocking, ...occluders], { distance: ao }) : null;
   const doc = new Document();
   const buffer = doc.createBuffer();
   const scene = doc.createScene();
@@ -278,6 +282,7 @@ const PARTITIONS = [
 ];
 
 // BodyParts3D には is-a と part-of の両方の木に同じ形が別IDで入っていることがある（脳の各部など）。
+// NasalSeg の CT から作った鼻腔などの形（部品ID が NS_…）もここで部品に足す（scripts/nasal/index.mjs）。
 // 名前と外接箱が同じ部品は1つにまとめ、同じ形を二重に描かない。
 // 返り値の readMesh(部品ID) は形を読む（CUTS で分けた部品は分けた形）。readWhole(部品ID) は分ける前の形で、
 // Z-Anatomy の骨・器官との合わせ込み（scripts/za/）に使う（Z-Anatomy の下行結腸は BodyParts3D で切った上側より長く、切ると合わない）。
@@ -328,8 +333,12 @@ export function readElements() {
     }
     elementNames.delete(source);
   }
+  // NasalSeg の CT から作った鼻腔・鼻道・鼻甲介・上顎洞（scripts/nasal/）。BodyParts3D の部品と同じように名前で指定する
+  for (const [id, name] of nasalNames()) elementNames.set(id, name);
   const cache = new Map();
+  const nasal = loadNasal({ elementNames, readWhole: (id) => readWhole(id) });
   const readMesh = (id) => {
+    if (id.startsWith("NS_")) return nasal(id);
     if (!cache.has(id)) {
       const [cut, half, source] = cutOf.get(id) ?? [];
       const [guides, i, whole, bias] = pieceOf.get(id) ?? [];
@@ -381,6 +390,7 @@ async function main() {
   for (const term of terms) for (const id of resolved.get(term.id)) if (!elementSystem.has(id)) elementSystem.set(id, term.system);
 
   const fiberOf = fibers(terms, resolved);
+  const veiled = new Set(terms.filter((term) => term.veil).flatMap((term) => resolved.get(term.id)));
   const index = { version: 1, source: za ? "BodyParts3D 4.0, Z-Anatomy" : "BodyParts3D 4.0", systems: {}, terms: {}, neighbors: {}, bounds: null };
   for (const system of systems) {
     const ids = [...elementSystem].filter(([, s]) => s === system.id).map(([id]) => id).sort();
@@ -389,7 +399,7 @@ async function main() {
     if (!ids.length) continue;
     // 骨格の中の軟骨（肋軟骨・椎間円板）と関節の線維軟骨（半月・関節円板など）は、アプリで骨と違う青みのある白にする
     const extrasOf = (id) => (["skeletal", "joints"].includes(system.id) && CARTILAGE.test(elementNames.get(id)) ? { cartilage: true } : null);
-    const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf };
+    const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) };
     let meshes = new Map();
     if (bp.length) {
       const glb = await writeGlb(system.id, bp.map((id) => [id, shown(id)]), shape);
@@ -404,7 +414,7 @@ async function main() {
       console.log(`${only.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(only.bytes / 1024 / 1024).toFixed(2)} MB`);
     } else if (fromZa.length) {
       // Z-Anatomy の形の AO は、同じ系統の BodyParts3D の形にもさえぎらせる（BodyParts3D の GLB には Z-Anatomy 由来のものを入れない）
-      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, shown(id)]), { ...shape, occluders: [...meshes.values()] });
+      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, shown(id)]), { ...shape, occluders: [...meshes].filter(([id]) => !veiled.has(id)).map(([, mesh]) => mesh) });
       index.systems[system.id].za = { url: extra.url, bytes: extra.bytes, elements: fromZa.length };
       console.log(`${extra.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(extra.bytes / 1024 / 1024).toFixed(2)} MB`);
     }

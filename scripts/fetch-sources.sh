@@ -33,3 +33,13 @@ mkdir -p data-raw/z-anatomy
 for f in SkeletalSystem100 MuscularSystem100 NervousSystem100 VisceralSystem100 CardioVascular41 Joints100 LymphoidOrgans100; do
   [ -s "data-raw/z-anatomy/$f.fbx" ] || curl -fSL "$ZA/$f.fbx" -o "data-raw/z-anatomy/$f.fbx"
 done
+
+# NasalSeg（CC BY 4.0。https://zenodo.org/records/13893419）。鼻腔・上顎洞のラベルつきの CT 130例（約224MB）。
+# 1例（scripts/nasal/index.mjs の NASAL_CASE）から scripts/nasal/nasalseg.py で鼻腔・鼻道・鼻甲介・上顎洞の形を作る（Python 3 の numpy と scipy が要る）。
+NS="data-raw/nasalseg"
+mkdir -p "$NS"
+if [ ! -d "$NS/labels" ]; then
+  [ -s "$NS/NasalSeg.zip" ] || curl -fSL "https://zenodo.org/records/13893419/files/NasalSeg.zip?download=1" -o "$NS/NasalSeg.zip"
+  (cd "$NS" && unzip -q -o NasalSeg.zip)
+fi
+[ -s "$NS/P065.json" ] || python3 scripts/nasal/nasalseg.py "$NS" P065 "$NS/P065.json"
