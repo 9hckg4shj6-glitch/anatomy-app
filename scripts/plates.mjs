@@ -264,12 +264,13 @@ function dropGroup(svg, needle, src) {
 }
 
 /**
- * 元の図を読む。SVG なら文字（text）と art.dropGroups の g 要素、art.drop の文字列を含む線（引き出し線など）を抜き、art.recolor の色を置きかえてから、長い辺 SVG_SIZE で描く。
+ * 元の図を読む（art.blur があればぼかす）。SVG なら文字（text）と art.dropGroups の g 要素、art.drop の文字列を含む線（引き出し線など）を抜き、art.recolor の色を置きかえてから、長い辺 SVG_SIZE で描く。
  * scale は px（元の図の座標）から描いた画像のピクセルへの倍率
  */
 async function artImage(art) {
   const file = await artSource(art.src);
-  if (!file.endsWith(".svg")) return { image: sharp(file), scale: 1 };
+  // art.blur は網点で刷った古い図譜のため。先にぼかして網点をならす（薄い所が背景として抜けず、消した跡もなじむ）
+  if (!file.endsWith(".svg")) return { image: art.blur ? sharp(file).blur(art.blur) : sharp(file), scale: 1 };
   let svg = fs.readFileSync(file, "utf8").replace(/<(text|flowRoot)\b[\s\S]*?<\/\1>/g, "");
   for (const [from, to] of Object.entries(art.recolor ?? {})) svg = svg.replaceAll(from, to);
   for (const needle of art.dropGroups ?? []) svg = dropGroup(svg, needle, art.src);
@@ -315,24 +316,33 @@ async function artPlate(plate) {
     }
     return sum;
   };
+  // 5つ目の数があれば、その半分の幅の太い帯として合わせ直さずに埋める（図の中に書き込まれた文字を、文字の並びにそった帯で消す）
   const erase = new Uint8Array(W0 * H0);
-  for (const segment of (art.erase ?? []).map((line) => line.map((v) => v * unit))) {
-    let best = -1, fit = segment;
-    for (let a = -8; a <= 8; a++) for (let b = -8; b <= 8; b++) for (let c = -8; c <= 8; c++) for (let d = -8; d <= 8; d++) {
-      const value = darkness(segment[0] + a, segment[1] + b, segment[2] + c, segment[3] + d);
-      if (value > best) [best, fit] = [value, [segment[0] + a, segment[1] + b, segment[2] + c, segment[3] + d]];
+  let reach = 40;
+  for (const line of art.erase ?? []) {
+    const segment = line.slice(0, 4).map((v) => v * unit);
+    const half = line[4] !== undefined ? line[4] * unit : width;
+    let fit = segment;
+    if (line[4] === undefined) {
+      let best = -1;
+      for (let a = -8; a <= 8; a++) for (let b = -8; b <= 8; b++) for (let c = -8; c <= 8; c++) for (let d = -8; d <= 8; d++) {
+        const value = darkness(segment[0] + a, segment[1] + b, segment[2] + c, segment[3] + d);
+        if (value > best) [best, fit] = [value, [segment[0] + a, segment[1] + b, segment[2] + c, segment[3] + d]];
+      }
     }
+    reach = Math.max(reach, Math.ceil(2 * half + 8));
     const [x1, y1, x2, y2] = fit;
     const len = Math.hypot(x2 - x1, y2 - y1), tx = (x2 - x1) / len, ty = (y2 - y1) / len;
-    for (let s = -width; s <= len + width; s += 0.5) for (let d = -width; d <= width; d += 0.5) erase[at(x1 + tx * s - ty * d, y1 + ty * s + tx * d) / 3] = 1;
+    for (let s = -half; s <= len + half; s += 0.5) for (let d = -half; d <= half; d += 0.5) erase[at(x1 + tx * s - ty * d, y1 + ty * s + tx * d) / 3] = 1;
   }
   // 図に重なった文字（art.eraseBoxes の四角）も同じように埋める
   for (const [bx0, by0, bx1, by1] of (art.eraseBoxes ?? []).map((box) => box.map((v) => Math.round(v * unit)))) {
     for (let y = Math.max(0, by0); y <= Math.min(H0 - 1, by1); y++) for (let x = Math.max(0, bx0); x <= Math.min(W0 - 1, bx1); x++) erase[y * W0 + x] = 1;
+    reach = Math.max(reach, Math.ceil(Math.min(bx1 - bx0, by1 - by0) + 8));
   }
   const directions = Array.from({ length: 24 }, (_, i) => [Math.cos((i * Math.PI) / 24), Math.sin((i * Math.PI) / 24)]);
   const march = (x, y, dx, dy) => {
-    for (let t = 1; t <= 40; t++) {
+    for (let t = 1; t <= reach; t++) {
       const xx = Math.round(x + dx * t), yy = Math.round(y + dy * t);
       if (xx < 0 || yy < 0 || xx >= W0 || yy >= H0) return null;
       if (!erase[yy * W0 + xx]) return [t, (yy * W0 + xx) * 3];
@@ -354,7 +364,8 @@ async function artPlate(plate) {
   }
   for (const [k, c] of filled) px.set(c, k);
   // 縁から続く背景（4近傍の塗りつぶし）
-  const isBack = BACKGROUND[art.background];
+  // art.white があれば、白い背景とみなす明るさの下限（ごく薄い色の部分を背景として抜かないように）
+  const isBack = art.background === "white" && art.white ? (r, g, b) => Math.min(r, g, b) > art.white : BACKGROUND[art.background];
   const back = new Uint8Array(W0 * H0);
   const stack = [];
   const push = (x, y) => {

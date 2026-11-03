@@ -217,7 +217,7 @@ export interface OrganCut {
 
 /**
  * 平面図の指定（content/organs.json）。ラベルは語ID か { term, pin } か、語の無い所の { ja, en, uv }。
- * art は元の図（イラスト）の出典で、ラベルは元の図のピクセル { term, px }。note は図の向きなどの添え書き
+ * art は元の図（イラスト）の出典で、ラベルは元の図のピクセル { term, px }。note は図の向きなどの添え書き、points はこの図で押さえる要点
  */
 export interface PlateSpec {
   id: string;
@@ -226,6 +226,7 @@ export interface PlateSpec {
   diagram?: string;
   art?: PlateArt;
   note?: string;
+  points?: string[];
   labels: (string | { term?: string; ja?: string; en?: string })[];
 }
 

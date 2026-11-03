@@ -40,7 +40,7 @@ describe("臓器の場面", () => {
   it("眼・耳・鼻腔と咽頭・喉頭・腸・男性生殖器・脊髄のレッスンもその臓器だけを見せる", () => {
     expect(sceneFor("sensory", "sens-eyeball").organ).toBe("eye");
     expect(sceneFor("sensory", "sens-ear").organ).toBe("ear");
-    expect(sceneFor("respiratory", "resp-nose").organ).toBe("pharynx");
+    expect(sceneFor("respiratory", "resp-nose").organ).toBe("nose");
     expect(sceneFor("digestive", "dig-mouth").organ).toBe("pharynx");
     expect(sceneFor("respiratory", "resp-larynx").organ).toBe("larynx");
     expect(sceneFor("digestive", "dig-intestine").organ).toBe("intestine");
@@ -57,6 +57,15 @@ describe("臓器の場面", () => {
     expect(organOf("sigmoid-colon")?.id).toBe("intestine");
     // 長く続く脊髄そのものは添えるだけ
     expect(organOf("spinal-cord")).toBeUndefined();
+  });
+
+  it("鼻腔と副鼻腔は咽頭から分けた臓器で、咽頭の立体には鼻腔を添えるだけ", () => {
+    expect(organOf("frontal-sinus")?.id).toBe("nose");
+    expect(organOf("nasal-septal-cartilage")?.id).toBe("nose");
+    expect(organTerms(organById.get("pharynx")!)).toContain("nasal-cavity");
+    // 頭蓋の骨は添えるだけ（図鑑で骨を開いたときは今までどおり全身で見せる）
+    expect(organTerms(organById.get("nose")!)).toContain("ethmoid-bone");
+    expect(organOf("ethmoid-bone")).toBeUndefined();
   });
 
   it("添えるだけの語（around）は場面に入るが、図鑑でその臓器だけの見せ方にはしない", () => {

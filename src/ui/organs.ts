@@ -332,6 +332,7 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
   body.replaceChildren(
     h("h3", { class: "plate-title" }, spec.title, h("span", { class: "en", lang: "en" }, `　${spec.en}`)),
     spec.note ? h("p", { class: "muted" }, spec.note) : "",
+    spec.points?.length ? h("div", { class: "plate-points" }, h("h3", {}, "この図の要点"), h("ul", {}, ...spec.points.map((point) => h("li", {}, point)))) : "",
     listBox,
     art ? h("p", { class: "plate-credit muted" }, "図: ",
       h("a", { href: art.page, target: "_blank", rel: "noopener" }, art.author), "（",

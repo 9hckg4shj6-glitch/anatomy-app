@@ -347,14 +347,14 @@ const PlateLabel = z.union([z.string(), z.strictObject({
 })]);
 // 元の図（イラスト）の出典と、作るときの手直し。出典・ライセンス・変えた所は画面に出す（CC BY の表示）
 const PlateArt = z.strictObject({
-  src: z.string().url(), page: z.string().url(), author: z.string().min(1), license: z.string().regex(/^CC BY(-SA)? \d\.\d$|^Public domain$/),
+  src: z.string().url(), page: z.string().url(), author: z.string().min(1), license: z.string().regex(/^CC BY(-SA)? \d\.\d( DE)?$|^Public domain$/),
   licenseUrl: z.string().url(), changes: z.string().min(1), background: z.enum(["dark", "red", "white"]), flip: z.literal("v").optional(),
-  erase: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), eraseWidth: z.number().optional(),
+  erase: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.number()])])).optional(), eraseWidth: z.number().optional(), white: z.number().int().min(200).max(254).optional(), blur: z.number().min(0.3).max(10).optional(),
   eraseBoxes: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
   drop: z.array(z.string().min(1)).optional(), dropGroups: z.array(z.string().min(1)).optional(), recolor: z.record(z.string(), z.string()).optional(),
 });
 const Plate = z.strictObject({
-  id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(),
+  id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(), points: z.array(z.string().min(1)).optional(),
   view: z.strictObject({ f: vec, u: vec }).optional(), cut: z.strictObject({ normal: vec, point: vec }).optional(),
   hide: z.array(z.string()).optional(), hideElements: z.array(z.string()).optional(), frameTerms: z.array(z.string()).optional(),
   box: z.tuple([vec, vec]).optional(), frame: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
