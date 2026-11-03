@@ -35,9 +35,28 @@ describe("臓器の場面", () => {
     expect(sceneFor("digestive", "dig-glands").organ).toBe("liver");
     expect(sceneFor("urogenital", "uro-urinary").organ).toBe("kidney");
     expect(sceneFor("nervous", "nerv-lobes").organ).toBe("brain");
-    // 鼻・喉頭や舌・咽頭のレッスンは今までどおり
-    expect(sceneFor("respiratory", "resp-larynx").organ).toBeUndefined();
-    expect(sceneFor("digestive", "dig-mouth").organ).toBeUndefined();
+  });
+
+  it("眼・耳・鼻腔と咽頭・喉頭・腸・男性生殖器・脊髄のレッスンもその臓器だけを見せる", () => {
+    expect(sceneFor("sensory", "sens-eyeball").organ).toBe("eye");
+    expect(sceneFor("sensory", "sens-ear").organ).toBe("ear");
+    expect(sceneFor("respiratory", "resp-nose").organ).toBe("pharynx");
+    expect(sceneFor("digestive", "dig-mouth").organ).toBe("pharynx");
+    expect(sceneFor("respiratory", "resp-larynx").organ).toBe("larynx");
+    expect(sceneFor("digestive", "dig-intestine").organ).toBe("intestine");
+    expect(sceneFor("urogenital", "uro-male").organ).toBe("male");
+    expect(sceneFor("nervous", "nerv-cord-inner").organ).toBe("spinal-cord");
+    // 体じゅうに散らばる語や、2つの臓器にまたがる語のレッスンは今までどおり
+    expect(sceneFor("sensory", "sens-accessory").organ).toBeUndefined();
+    expect(sceneFor("endocrine", "endo-glands").organ).toBeUndefined();
+    expect(sceneFor("digestive", "dig-tract").organ).toBeUndefined();
+    expect(sceneFor("nervous", "nerv-spinal").organ).toBeUndefined();
+    // レッスンの外の語（with）も、図鑑でその臓器の見せ方になる
+    expect(organOf("superior-rectus")?.id).toBe("eye");
+    expect(organOf("thyroid-gland")?.id).toBe("larynx");
+    expect(organOf("sigmoid-colon")?.id).toBe("intestine");
+    // 長く続く脊髄そのものは添えるだけ
+    expect(organOf("spinal-cord")).toBeUndefined();
   });
 
   it("添えるだけの語（around）は場面に入るが、図鑑でその臓器だけの見せ方にはしない", () => {

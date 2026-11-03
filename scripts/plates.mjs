@@ -247,8 +247,24 @@ async function artSource(url) {
 /** SVG の元の図を描く長い辺（px）。px は SVG の座標（幅・高さの単位）で書き、この倍率で合わせる */
 const SVG_SIZE = 2000;
 
+/** SVG から、開きタグに needle を含む最初の g 要素を中身ごと抜く（ラベルの層・引き出し線のまとまり・背景の層） */
+function dropGroup(svg, needle, src) {
+  const open = /<g\b[^>]*>/g;
+  let start = -1;
+  for (let m; (m = open.exec(svg));) if (m[0].includes(needle)) { start = m.index; break; }
+  if (start < 0) throw new Error(`${src}: dropGroups の ${needle} が見つかりません`);
+  const tag = /<g\b[^>]*?(\/)?>|<\/g>/g;
+  tag.lastIndex = start;
+  for (let depth = 0, m; (m = tag.exec(svg));) {
+    if (m[0] === "</g>") depth--;
+    else if (!m[1]) depth++;
+    if (depth === 0) return svg.slice(0, start) + svg.slice(tag.lastIndex);
+  }
+  throw new Error(`${src}: dropGroups の ${needle} が閉じていません`);
+}
+
 /**
- * 元の図を読む。SVG なら文字（text）と art.drop の文字列を含む線（引き出し線など）を抜き、art.recolor の色を置きかえてから、長い辺 SVG_SIZE で描く。
+ * 元の図を読む。SVG なら文字（text）と art.dropGroups の g 要素、art.drop の文字列を含む線（引き出し線など）を抜き、art.recolor の色を置きかえてから、長い辺 SVG_SIZE で描く。
  * scale は px（元の図の座標）から描いた画像のピクセルへの倍率
  */
 async function artImage(art) {
@@ -256,6 +272,7 @@ async function artImage(art) {
   if (!file.endsWith(".svg")) return { image: sharp(file), scale: 1 };
   let svg = fs.readFileSync(file, "utf8").replace(/<(text|flowRoot)\b[\s\S]*?<\/\1>/g, "");
   for (const [from, to] of Object.entries(art.recolor ?? {})) svg = svg.replaceAll(from, to);
+  for (const needle of art.dropGroups ?? []) svg = dropGroup(svg, needle, art.src);
   for (const needle of art.drop ?? []) {
     const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const before = svg.length;

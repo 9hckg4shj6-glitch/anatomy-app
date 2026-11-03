@@ -123,6 +123,35 @@
       ]
     },
     {
+      "id": "intestine",
+      "ja": "小腸と大腸",
+      "yomi": "しょうちょうとだいちょう",
+      "en": "small and large intestine",
+      "about": "小腸は十二指腸から空腸・回腸と続き、腸間膜で後腹壁からつり下げられて腹部の中央を占める。回腸は右下腹部で大腸に入る。大腸は盲腸（虫垂が付く）・上行結腸・横行結腸・下行結腸・S状結腸・直腸と腹部を額縁のように囲み、結腸の表面には3本の結腸ひもが縦に走る。胃の大弯から垂れる大網が小腸の前をおおう。",
+      "units": ["dig-intestine", "dig-mesocolon-rectum"],
+      "with": ["jejunum", "ileum", "cecum", "appendix", "ascending-colon", "transverse-colon", "descending-colon", "sigmoid-colon", "rectum"],
+      "around": ["duodenum"],
+      "box": [[-0.132, 0.75, 0.005], [0.122, 1.13, 0.202]],
+      "colors": {"jejunum": "#eeb5a3", "ileum": "#e6cf7a", "cecum": "#c3a2d6", "appendix": "#8e5fb0", "ascending-colon": "#8fb8d8", "transverse-colon": "#9fbf86", "descending-colon": "#e796a8", "sigmoid-colon": "#d89a5c", "rectum": "#b35a4c"},
+      "colorLabel": "部分ごとに色を分ける",
+      "colorNote": "小腸は空腸が桃、回腸が黄。大腸は盲腸と虫垂が紫、上行結腸が青、横行結腸が緑、下行結腸が桃、S状結腸が橙、直腸が赤茶。大網（薄く見せている膜）が小腸の前をおおう。",
+      "views": [
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "下", "from": [0, -1, 0.3]}
+      ],
+      "cuts": [
+        {"label": "大網を外す", "normal": [0, 0, -1], "point": [0, 0.94, 0.21], "from": [0, 0, 1], "hide": ["greater-omentum", "lesser-omentum"]},
+        {"label": "小腸を外して大腸を見る", "normal": [0, 0, -1], "point": [0, 0.94, 0.21], "from": [0, 0, 1], "hide": ["greater-omentum", "lesser-omentum", "small-intestine", "jejunum", "ileum", "mesentery", "root-of-mesentery", "duodenum"]}
+      ],
+      "plates": [
+        {"id": "intestine-anterior", "title": "前から見た小腸と大腸", "en": "small and large intestine, anterior view", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/6/62/Blausen_0603_LargeIntestine_Anatomy.png", "page": "https://commons.wikimedia.org/wiki/File:Blausen_0603_LargeIntestine_Anatomy.png", "author": "BruceBlaus（Blausen Medical）", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0/", "changes": "英語のラベルと引き出し線・表題を消し、腹部の所を切り出した", "background": "white", "crop": [470, 560, 1050, 1395], "erase": [[583, 707, 458, 365], [624, 848, 188, 428], [896, 580, 1094, 203], [836, 796, 1232, 540], [544, 928, 244, 908], [956, 1024, 1244, 952], [804, 1164, 1152, 1292], [754, 1244, 308, 1261], [748, 1352, 280, 1404]]}, "note": "前から見た図（図の左が体の右）。体を透かして、大腸が小腸のまわりを額縁のように囲むのを見せている。", "labels": [{"term": "stomach", "px": [896, 580]}, {"term": "right-colic-flexure", "px": [583, 712]}, {"term": "transverse-colon", "px": [836, 796]}, {"term": "left-colic-flexure", "px": [990, 722]}, {"term": "small-intestine", "px": [624, 848]}, {"term": "ascending-colon", "px": [544, 928]}, {"term": "descending-colon", "px": [956, 1024]}, {"term": "cecum", "px": [600, 1080]}, {"term": "appendix", "px": [698, 1092]}, {"term": "sigmoid-colon", "px": [804, 1164]}, {"term": "rectum", "px": [754, 1244]}, {"ja": "肛門", "en": "anus", "note": "消化管の出口。直腸から続く肛門管の下の口で、内肛門括約筋（平滑筋）と外肛門括約筋（骨格筋）が取り巻く。", "px": [748, 1352]}]}
+      ]
+    },
+    {
       "id": "kidney",
       "ja": "腎臓と尿路",
       "yomi": "じんぞうとにょうろ",
@@ -148,6 +177,34 @@
       "plates": [
         {"id": "kidney-section", "title": "腎臓の断面", "en": "kidney, coronal section", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/3/35/Blausen_0593_KidneyAnatomy_02.png", "page": "https://commons.wikimedia.org/wiki/File:Blausen_0593_KidneyAnatomy_02.png", "author": "BruceBlaus（Blausen Medical）", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0/", "changes": "英語のラベルと引き出し線・表題・全身の図を消し、背景を紙の色に", "background": "white", "erase": [[935, 125, 1100, 62], [920, 105, 920, 152], [908, 107, 932, 107], [908, 150, 932, 150], [950, 212, 1235, 178], [950, 155, 950, 262], [938, 155, 962, 155], [938, 260, 962, 260], [1022, 315, 1300, 292], [1165, 422, 1360, 445], [1190, 515, 1360, 447], [1210, 652, 1390, 712], [1165, 780, 1390, 714], [1235, 930, 1340, 960], [895, 1005, 1045, 830], [797, 933, 1025, 765], [640, 690, 800, 678], [750, 465, 900, 545], [630, 290, 920, 450], [948, 552, 947, 583], [947, 583, 945, 612], [945, 612, 942, 637], [942, 637, 938, 656], [938, 656, 934, 668], [934, 668, 929, 672], [929, 672, 924, 668], [924, 668, 920, 656], [920, 656, 916, 637], [916, 637, 913, 612], [913, 612, 911, 583], [911, 583, 910, 552], [910, 552, 911, 521], [911, 521, 913, 492], [913, 492, 916, 467], [916, 467, 920, 448], [920, 448, 924, 436], [924, 436, 929, 432], [929, 432, 934, 436], [934, 436, 938, 448], [938, 448, 942, 467], [942, 467, 945, 492], [945, 492, 947, 521], [947, 521, 948, 552]], "eraseBoxes": [[912, 425, 952, 475], [938, 470, 958, 660], [900, 630, 950, 682], [916, 120, 946, 136]]}, "note": "左の腎臓を前から縦に切った図（図の右が外側）。腎盤のまわりの黄色は腎洞の脂肪。", "labels": [{"ja": "線維被膜", "en": "fibrous capsule", "note": "腎臓の表面を包む薄く丈夫な膜。その外を脂肪被膜、さらに腎筋膜が包む。", "px": [1240, 930]}, {"ja": "腎皮質", "en": "renal cortex", "note": "腎臓の外側の層。腎小体（糸球体とボウマン嚢）と曲尿細管がある。腎錐体の間に入りこんだ所が腎柱。", "px": [878, 145]}, {"ja": "腎髄質", "en": "renal medulla", "note": "腎皮質の内側。十数個の腎錐体からなり、ヘンレのわなと集合管が通る。", "px": [950, 215]}, {"ja": "腎乳頭", "en": "renal papilla", "note": "腎錐体の先。乳頭管が開き、尿が小腎杯へ出る。", "px": [1022, 316]}, {"ja": "腎錐体", "en": "renal pyramid", "note": "腎髄質を作る円錐形の塊。底を腎皮質に、先（腎乳頭）を腎洞に向ける。", "px": [1165, 422]}, {"ja": "腎柱", "en": "renal column", "note": "腎錐体と腎錐体の間に入りこんだ腎皮質。葉間動脈・葉間静脈が通る。", "px": [1210, 652]}, {"term": "renal-hilum", "px": [908, 458]}, {"term": "renal-pelvis", "px": [870, 540]}, {"term": "ureter", "px": [780, 700]}, {"ja": "大腎杯", "en": "major calyx", "note": "小腎杯が集まったもの（ふつう2〜3本）。合わさって腎盤になる。", "px": [1025, 765]}, {"ja": "小腎杯", "en": "minor calyx", "note": "腎乳頭を受ける杯の形の管。いくつか集まって大腎杯になる。", "px": [1045, 830]}]},
         {"id": "urinary-system", "title": "腎臓から尿道まで（男性）", "en": "urinary system (male), anterior view", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/4/48/Urinary_System_%28Male%29_%28cropped%29.png", "page": "https://commons.wikimedia.org/wiki/File:Urinary_System_(Male)_(cropped).png", "author": "BruceBlaus", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/", "changes": "英語のラベルと引き出し線を消し、臓器の所を切り出した", "background": "white", "crop": [400, 240, 1100, 1210], "eraseBoxes": [[395, 555, 420, 615]], "erase": [[915, 468, 1090, 430], [415, 600, 650, 702], [770, 908, 1112, 772], [380, 878, 712, 968], [750, 1105, 1158, 1020]]}, "note": "前から見た図（図の左が体の右）。右の腎臓は肝臓に押されて左より少し低い。", "labels": [{"term": "kidney", "px": [910, 465]}, {"term": "renal-pelvis", "px": [630, 425]}, {"term": "ureter", "px": [650, 700]}, {"term": "urinary-bladder", "px": [770, 905]}, {"term": "prostate", "px": [715, 965]}, {"term": "urethra", "px": [748, 1100]}]}
+      ]
+    },
+    {
+      "id": "male",
+      "ja": "男性生殖器",
+      "yomi": "だんせいせいしょくき",
+      "en": "male reproductive organs",
+      "about": "精子は精巣で作られて精巣上体にためられ、精管で鼡径管を通って骨盤に入り、膀胱の後ろで精嚢の導管と合わさって射精管となり、前立腺を貫いて尿道に開く。前立腺は膀胱の下で尿道の始まりを囲む。陰茎は背側の左右の陰茎海綿体と、尿道を包む尿道海綿体からなり、尿道海綿体の後ろの端が尿道球、前の端が陰茎亀頭になる。",
+      "units": ["uro-male", "uro-pt-male", "uro-detail", "uro-pt-penis"],
+      "with": [],
+      "around": ["urinary-bladder", "urethra", "rectum"],
+      "box": [[-0.106, 0.685, 0.04], [0.106, 0.872, 0.206]],
+      "colors": {"testis": "#8e5fb0", "epididymis": "#3a9ad9", "ductus-deferens": "#3a9ad9", "seminal-gland": "#d65a9c", "prostate": "#d83a3a", "corpus-cavernosum": "#2f6b3a", "corpus-spongiosum": "#4caa4a", "glans-penis": "#4caa4a", "urinary-bladder": "#ecd97a"},
+      "colorLabel": "器官ごとに色を分ける",
+      "colorNote": "平面図と同じ色: 精巣は紫、精巣上体と精管は青、精嚢は桃、前立腺は赤、陰茎海綿体は濃い緑、尿道海綿体（尿道球と亀頭）は緑、膀胱は黄。",
+      "views": [
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "下", "from": [0, -1, 0.2]}
+      ],
+      "cuts": [
+        {"label": "正中断（左から見る）", "normal": [-1, 0, 0], "point": [0.001, 0, 0], "from": [1, 0, 0.05]}
+      ],
+      "plates": [
+        {"id": "male-sagittal", "title": "男性の骨盤の正中断", "en": "male pelvis, midsagittal section", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Male_genital_system_-_Sagittal_view.svg", "page": "https://commons.wikimedia.org/wiki/File:Male_genital_system_-_Sagittal_view.svg", "author": "R. Dewaele, J. Abdulcadir, C. Brockmann, O. Fillod, S. Valera-Kummer（Bioscope, Université de Genève）", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/", "changes": "英語のラベルと引き出し線を消した", "background": "white", "drop": ["class=\"al\"", "class=\"am\"", "d=\"M385.43,415.66", "d=\"M391.76,414.26", "d=\"M401.1,410.14", "d=\"M408.86,408.88", "d=\"M412.27,410.14", "d=\"M420,408.88", "d=\"M422.52,412", "d=\"M428.67,413.88", "d=\"M441.72,410.14", "d=\"M443.45,417.57"]}, "note": "体を正中で切り、左から見た模式図（図の左が前）。精管は精巣から上へのぼって膀胱の後ろへ回る。", "labels": [{"term": "urinary-bladder", "px": [352, 181]}, {"term": "ductus-deferens", "px": [348, 262]}, {"term": "seminal-gland", "px": [451.8, 243.4]}, {"term": "prostate", "px": [395, 272]}, {"term": "rectum", "px": [515, 230]}, {"ja": "尿道球腺", "en": "bulbourethral gland", "note": "尿道球の後ろにある豆粒ほどの1対の腺（カウパー腺）。導管が尿道に開き、射精の前に粘液を出す。", "px": [405.8, 306.7]}, {"term": "bulb-of-penis", "px": [399.2, 337.3]}, {"term": "urethra", "px": [323.2, 326.2]}, {"term": "corpus-cavernosum", "px": [209.4, 307]}, {"term": "corpus-spongiosum", "px": [284, 333]}, {"term": "epididymis", "px": [300, 396]}, {"term": "testis", "px": [276, 440]}, {"term": "glans-penis", "px": [190.7, 427.8]}, {"term": "external-urethral-orifice", "px": [222.6, 463.2]}, {"ja": "陰嚢", "en": "scrotum", "note": "精巣と精巣上体を入れる皮膚の袋。中の肉様膜（平滑筋）が縮んで温度を調節する。", "px": [322, 452]}]}
       ]
     },
     {
@@ -179,6 +236,154 @@
       "plates": [
         {"id": "brain-lateral", "title": "大脳の外側面と大脳葉", "en": "lobes of the cerebrum, lateral view", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Gray728.svg", "page": "https://commons.wikimedia.org/wiki/File:Gray728.svg", "author": "Mysid（Gray's Anatomy の図から）", "license": "Public domain", "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "changes": "英語のラベルと引き出し線を消し、背景を紙の色に", "background": "white", "drop": ["m907 254 13-8"]}, "note": "左の大脳半球を左から見た図（図の左が前）。太い線が中心溝・外側溝・頭頂後頭溝、点線は頭頂葉と側頭葉の仮の境。", "labels": [{"term": "central-sulcus", "px": [478, 190]}, {"term": "parietal-lobe", "px": [640, 230]}, {"term": "parieto-occipital-sulcus", "px": [880, 262]}, {"term": "frontal-lobe", "px": [230, 300]}, {"term": "occipital-lobe", "px": [885, 380]}, {"term": "lateral-sulcus", "px": [322, 418]}, {"term": "temporal-lobe", "px": [500, 480]}, {"term": "cerebellum", "px": [720, 600]}, {"term": "medulla-oblongata", "px": [600, 670]}]},
         {"id": "brain-sagittal", "title": "脳の正中断", "en": "midsagittal section of the brain", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/8/86/Brain_Anatomy_%28Sagittal%29.png", "page": "https://commons.wikimedia.org/wiki/File:Brain_Anatomy_(Sagittal).png", "author": "BruceBlaus", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/", "changes": "英語のラベルと引き出し線・表題を消し、背景を紙の色に", "background": "white", "erase": [[215, 186, 385, 210], [250, 312, 500, 328], [155, 409, 482, 380], [610, 421, 805, 472], [575, 495, 748, 562], [582, 590, 772, 656]]}, "note": "頭を正中で切り、左から見た図（図の左が前）。見えているのは右の大脳半球の内側面。", "labels": [{"term": "cerebrum", "px": [380, 210]}, {"term": "corpus-callosum", "px": [517, 224]}, {"term": "thalamus", "px": [545, 305]}, {"term": "hypothalamus", "px": [498, 327]}, {"term": "midbrain", "px": [545, 352]}, {"term": "pituitary-gland", "px": [482, 381]}, {"term": "pons", "px": [540, 405]}, {"term": "cerebellum", "px": [660, 440]}, {"term": "medulla-oblongata", "px": [570, 470]}, {"term": "spinal-cord", "px": [585, 600]}]}
+      ]
+    },
+    {
+      "id": "spinal-cord",
+      "ja": "脊髄",
+      "yomi": "せきずい",
+      "en": "spinal cord",
+      "about": "脊髄は大後頭孔から第1〜2腰椎の高さまでのび、その下は馬尾になる。横断面では中心管のまわりのH字形の灰白質（前角・後角）を白質（前索・側索・後索）が囲み、白質には上行する感覚の伝導路（後索の薄束・楔状束、脊髄視床路、脊髄小脳路）と、下行する運動の伝導路（皮質脊髄路・赤核脊髄路）が通る。前根（運動）と後根（感覚。脊髄神経節がある）が合わさって脊髄神経になる。",
+      "units": ["nerv-cord-inner"],
+      "with": [],
+      "around": ["spinal-cord", "spinal-dura-mater"],
+      "box": [[-0.024, 1.37, 0.05], [0.024, 1.41, 0.085]],
+      "colors": {"lateral-corticospinal-tract": "#e0303a", "anterior-corticospinal-tract": "#f07a6a", "rubrospinal-tract": "#f0a8a0", "gracile-fasciculus": "#2f7fd0", "cuneate-fasciculus": "#6fb0ec", "posterior-spinocerebellar-tract": "#3a56b8", "anterior-spinocerebellar-tract": "#8fb8f0", "lateral-spinothalamic-tract": "#4a6fd8", "anterior-spinothalamic-tract": "#a8c8f4", "anterior-horn": "#8a8a8a", "posterior-horn": "#a8a8a8", "anterior-root": "#e02020", "posterior-root": "#2040e0", "spinal-ganglion": "#2040e0"},
+      "colorLabel": "伝導路を上行と下行で分ける",
+      "colorNote": "下行する運動の伝導路は赤、上行する感覚の伝導路は青、灰白質（前角・後角）は灰。前根は赤、後根と脊髄神経節は青（平面図と同じ）。伝導路は白質の中にあるので、切り口か「白質を外す」で見る。",
+      "views": [
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "斜め上から", "from": [0.5, 0.8, 0.5]}
+      ],
+      "cuts": [
+        {"label": "水平断（上から見る）", "normal": [0, -1, 0], "point": [0, 1.39, 0], "from": [0, 1, 0.05]},
+        {"label": "白質を外して伝導路を見る", "normal": [-0.391, -0.304, -0.869], "point": [0.02, 1.405, 0.111], "from": [0.45, 0.35, 1], "hide": ["spinal-cord", "spinal-dura-mater"]}
+      ],
+      "plates": [
+        {"id": "cord-section", "title": "脊髄の横断面と神経根", "en": "cross section of the spinal cord with nerve roots", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Medulla_spinalis_-_Section_-_English.svg", "page": "https://commons.wikimedia.org/wiki/File:Medulla_spinalis_-_Section_-_English.svg", "author": "Polarlys", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "番号と凡例を消した", "background": "white", "drop": ["m439.165 263.817"]}, "note": "上が後ろ（背側）、下が前（腹側）。神経根は左側だけ描いてある。点線は根糸（前根・後根が脊髄に入る細い束）。", "labels": [{"term": "posterior-root", "px": [240, 72]}, {"ja": "後索", "en": "posterior funiculus", "note": "左右の後角の間の白質。薄束と楔状束が通り、触覚・振動覚・位置覚（深部感覚）を上へ伝える。", "px": [391, 113]}, {"ja": "後正中溝", "en": "posterior median sulcus", "note": "脊髄の後ろの正中の浅い溝。左右の後索の境。", "px": [438, 150]}, {"term": "posterior-horn", "px": [363, 169]}, {"term": "spinal-ganglion", "px": [77, 194]}, {"ja": "側索", "en": "lateral funiculus", "note": "前根と後根の間の白質。外側皮質脊髄路・脊髄視床路・脊髄小脳路などが通る。", "px": [277, 217]}, {"ja": "灰白交連", "en": "gray commissure", "note": "左右の灰白質をつなぐ横の橋で、中に中心管がある。", "px": [488, 262]}, {"term": "central-canal", "px": [439, 263]}, {"term": "anterior-horn", "px": [350, 292]}, {"ja": "前正中裂", "en": "anterior median fissure", "note": "脊髄の前の正中の深い裂け目。前脊髄動脈が走る。", "px": [438, 330]}, {"term": "anterior-root", "px": [164, 327]}, {"ja": "前索", "en": "anterior funiculus", "note": "前正中裂と前根の間の白質。前皮質脊髄路・前脊髄視床路などが通る。", "px": [365, 366]}]},
+        {"id": "cord-tracts", "title": "脊髄の伝導路", "en": "tracts of the spinal cord", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Spinal_cord_tracts_-_English.svg", "page": "https://commons.wikimedia.org/wiki/File:Spinal_cord_tracts_-_English.svg", "author": "Polarlys, Mikael Häggström", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/", "changes": "英語のラベルと引き出し線・矢印を消した", "background": "white", "drop": ["id=\"path5079\"", "id=\"path5081\"", "id=\"path5083\"", "id=\"path5085\"", "id=\"path5087\"", "id=\"path5089\"", "id=\"path5091\"", "id=\"path5093\"", "id=\"path5095\"", "id=\"path5097\"", "id=\"path5099\"", "id=\"path5178\"", "id=\"path5180\"", "id=\"path5182\"", "id=\"path31544-3\"", "id=\"path31552-3\"", "id=\"path31548-7\"", "id=\"path33306-5\""]}, "note": "上が後ろ（背側）。赤は下行する運動の伝導路、青は上行する感覚の伝導路で、どちらも左右両側にある（名前は下行路を左半分、上行路を右半分に付けた）。灰色は灰白質。", "labels": [{"term": "gracile-fasciculus", "px": [455, 90]}, {"term": "cuneate-fasciculus", "px": [512, 95]}, {"term": "lateral-corticospinal-tract", "px": [305, 135]}, {"term": "posterior-spinocerebellar-tract", "px": [624, 140]}, {"term": "rubrospinal-tract", "px": [275, 180]}, {"ja": "網様体脊髄路", "en": "reticulospinal tract", "note": "脳幹の網様体から下り、姿勢を保つ筋の緊張を調節する。", "px": [340, 182]}, {"term": "anterior-spinocerebellar-tract", "px": [637, 218]}, {"term": "lateral-spinothalamic-tract", "px": [605, 231]}, {"term": "anterior-corticospinal-tract", "px": [412, 268]}, {"term": "anterior-spinothalamic-tract", "px": [531, 272]}, {"ja": "前庭脊髄路", "en": "vestibulospinal tract", "note": "延髄の前庭神経核から下り、体の平衡を保つように伸筋を働かせる。", "px": [368, 306]}]}
+      ]
+    },
+    {
+      "id": "eye",
+      "ja": "眼球と眼窩",
+      "yomi": "がんきゅうとがんか",
+      "en": "eye and orbit",
+      "about": "眼球は眼窩の中にある直径約2.4cmの球で、壁は外から線維膜（強膜と角膜）、血管膜（脈絡膜・毛様体・虹彩。ぶどう膜）、網膜の3層からなる。中には水晶体と硝子体があり、角膜と水晶体の間を虹彩が前眼房と後眼房に分ける。眼球は総腱輪から起こる4つの直筋と、2つの斜筋で動く。涙は涙腺から出て、涙点・涙小管・涙嚢・鼻涙管と流れて下鼻道に出る。",
+      "units": ["sens-eyeball", "sens-eye-detail", "sens-orbit-more"],
+      "with": ["superior-rectus", "inferior-rectus", "medial-rectus", "lateral-rectus", "superior-oblique", "inferior-oblique", "levator-palpebrae-superioris", "lacrimal-gland", "lacrimal-sac", "nasolacrimal-duct"],
+      "around": ["optic-nerve", "ophthalmic-artery"],
+      "box": [[-0.055, 1.484, 0.1], [-0.003, 1.546, 0.172]],
+      "colors": {"sclera": "#f2efe8", "cornea": "#b9d3f0", "choroid": "#9b3d34", "ciliary-body": "#c0584a", "iris": "#86b33a", "lens": "#cfd6e6"},
+      "colorLabel": "眼球の層ごとに色を分ける",
+      "colorNote": "平面図の水平断と同じ色: 強膜は白、角膜は水色、脈絡膜は赤茶、毛様体は赤、虹彩は緑、水晶体は灰白。外から見えるのは強膜と角膜だけなので、切り口で中の層を見る。右の眼だけを見せている。",
+      "views": [
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "外側（右から）", "from": [-1, 0.1, 0.25]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "下", "from": [0, -1, 0.2]},
+        {"label": "内側（左から）", "from": [1, 0.1, 0.25]},
+        {"label": "後ろ", "from": [0, 0.1, -1]}
+      ],
+      "cuts": [
+        {"label": "水平断（上から見る）", "normal": [0, -1, 0], "point": [0, 1.518, 0], "from": [0, 1, -0.05]},
+        {"label": "前頭断（眼球の後ろ）", "normal": [0, 0, -1], "point": [0, 0, 0.136], "from": [0, 0, 1]},
+        {"label": "眼球を外して眼筋を見る", "normal": [0.493, -0.287, -0.821], "point": [-0.059, 1.532, 0.185], "from": [-0.6, 0.35, 1], "hide": ["eyeball", "cornea", "sclera", "iris", "ciliary-body", "lens", "vitreous-body", "retina", "choroid", "ciliary-zonule", "anterior-chamber-of-eyeball"]}
+      ],
+      "plates": [
+        {"id": "eye-horizontal", "title": "眼球の水平断", "en": "horizontal section of the eyeball", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Schematic_diagram_of_the_human_eye_en.svg", "page": "https://commons.wikimedia.org/wiki/File:Schematic_diagram_of_the_human_eye_en.svg", "author": "Rhcastilhos, Jmarchn", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/", "changes": "英語のラベルと引き出し線・背景を消した", "background": "white", "dropGroups": ["id=\"layer19\"", "id=\"layer18\""]}, "note": "右の眼球を水平に切って上から見た図（上が前、図の左が鼻側）。視神経は後極より鼻側から出て、そこ（視神経円板）には視細胞が無い。", "labels": [{"term": "cornea", "px": [184, 53]}, {"term": "anterior-chamber-of-eyeball", "px": [232, 70]}, {"ja": "瞳孔", "en": "pupil", "note": "虹彩の中央の穴。瞳孔括約筋（動眼神経の副交感神経）で小さくなり、瞳孔散大筋（交感神経）で大きくなる。", "px": [200, 88]}, {"term": "iris", "px": [150, 90]}, {"ja": "後眼房", "en": "posterior chamber", "note": "虹彩と水晶体の間のせまい部屋。毛様体が作った眼房水がここから瞳孔を通って前眼房へ流れる。", "px": [258, 98]}, {"term": "ciliary-zonule", "px": [140, 114]}, {"term": "ciliary-body", "px": [295, 112]}, {"term": "lens", "px": [200, 120]}, {"term": "sclera", "px": [81, 134]}, {"term": "vitreous-body", "px": [262, 160]}, {"term": "choroid", "px": [340, 209]}, {"term": "retina", "px": [295, 297]}, {"ja": "黄斑", "en": "macula", "note": "網膜の後極にある黄色みのある所。錐体が集まり、ものを細かく見る。", "px": [247, 318]}, {"ja": "中心窩", "en": "fovea centralis", "note": "黄斑の真ん中のくぼみ。錐体だけが並び、視力がいちばん良い。", "px": [220, 330]}, {"ja": "視神経円板", "en": "optic disc", "note": "視神経が眼球を出る所（視神経乳頭）。視細胞が無く、視野の盲点になる。網膜中心動脈・静脈が出入りする。", "px": [152, 316]}, {"term": "central-retinal-artery", "px": [130, 342]}, {"term": "optic-nerve", "px": [123, 371]}]},
+        {"id": "eye-muscles", "title": "眼筋（外眼筋）", "en": "extraocular muscles", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Extraocular_muscles_svg_hariadhi.svg", "page": "https://commons.wikimedia.org/wiki/File:Extraocular_muscles_svg_hariadhi.svg", "author": "Hariadhi", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/", "changes": "英語のラベルと引き出し線・帯を消した", "background": "white", "drop": ["class=\"st12\""]}, "note": "左の眼球を外側から見た模式図（図の左が前）。上斜筋は滑車で向きを変えて眼球の上に付き、下斜筋だけは眼窩の前の内側の床から起こる。", "labels": [{"term": "levator-palpebrae-superioris", "px": [400, 343]}, {"term": "trochlea-of-superior-oblique", "px": [340, 395]}, {"term": "superior-oblique", "px": [493, 400]}, {"term": "superior-rectus", "px": [600, 450]}, {"term": "common-tendinous-ring", "px": [804, 509]}, {"term": "lateral-rectus", "px": [646, 589]}, {"term": "medial-rectus", "px": [268, 631]}, {"term": "inferior-rectus", "px": [604, 661]}, {"term": "eyeball", "px": [445, 690]}, {"term": "inferior-oblique", "px": [329, 741]}]},
+        {"id": "eye-lacrimal", "title": "涙器", "en": "lacrimal apparatus", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Tear_system.svg", "page": "https://commons.wikimedia.org/wiki/File:Tear_system.svg", "author": "FML, Erin Silversmith", "license": "CC BY-SA 2.5", "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/", "changes": "記号と引き出し線を消した", "background": "white", "drop": ["stroke:#0000ff;stroke-width:2"]}, "note": "右の眼を前から見た図（図の右が鼻側）。涙腺は眼窩の外側上にあり、涙は目の表面を流れて内眼角の涙点から涙小管・涙嚢・鼻涙管へ入る。", "labels": [{"term": "lacrimal-gland", "px": [243, 270]}, {"ja": "上涙点", "en": "superior lacrimal punctum", "note": "上まぶたの内側の端の小さな穴。涙小管の入口。", "px": [1093, 505]}, {"term": "lacrimal-canaliculus", "px": [1214, 520]}, {"ja": "下涙点", "en": "inferior lacrimal punctum", "note": "下まぶたの内側の端の小さな穴。涙の多くはここから流れる。", "px": [1082, 664]}, {"term": "lacrimal-sac", "px": [1370, 727]}, {"term": "nasolacrimal-duct", "px": [1330, 1131]}]}
+      ]
+    },
+    {
+      "id": "ear",
+      "ja": "耳",
+      "yomi": "みみ",
+      "en": "ear",
+      "about": "耳は外耳・中耳・内耳に分かれる。外耳は耳介と外耳道で、鼓膜で中耳と境される。中耳の鼓室にはツチ骨・キヌタ骨・アブミ骨の耳小骨が連なって鼓膜の振動を前庭窓（卵円窓）へ伝え、鼓室は耳管で咽頭鼻部とつながる。内耳は側頭骨の錐体の中にあり、聴覚の蝸牛と、平衡覚の前庭・半規管からなる。",
+      "units": ["sens-ear"],
+      "with": ["external-ear"],
+      "around": ["vestibulocochlear-nerve", "cochlear-nerve", "vestibular-nerve", "chorda-tympani"],
+      "box": [[-0.088, 1.475, 0.06], [-0.006, 1.545, 0.11]],
+      "colors": {"external-ear": "#e7c3aa", "tympanic-membrane": "#4f9a2a", "malleus": "#e8e6e0", "incus": "#e8e6e0", "stapes": "#e8e6e0", "cochlea": "#a37bbd", "vestibule": "#b996cc", "auditory-tube": "#ef8a82"},
+      "colorLabel": "外耳・中耳・内耳を色で分ける",
+      "colorNote": "外耳は肌色、鼓膜は緑、耳小骨（ツチ骨・キヌタ骨・アブミ骨）は白、蝸牛と前庭は紫、耳管は赤（平面図と同じ色）。神経は黄。右の耳だけを見せている。",
+      "views": [
+        {"label": "外側（右から）", "from": [-1, 0.1, 0.1]},
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "下", "from": [0, -1, 0.1]},
+        {"label": "内側（左から）", "from": [1, 0.1, 0.1]}
+      ],
+      "cuts": [
+        {"label": "前頭断（外耳道を通る面）", "normal": [0, 0, -1], "point": [0, 0, 0.085], "from": [0, 0, 1]},
+        {"label": "外耳を外して中耳と内耳を見る", "normal": [0.894, -0.268, -0.358], "point": [-0.11, 1.529, 0.11], "from": [-1, 0.3, 0.4], "hide": ["external-ear"]}
+      ],
+      "plates": [
+        {"id": "ear-section", "title": "外耳・中耳・内耳", "en": "outer, middle and inner ear", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Anatomy_of_the_Human_Ear_blank.svg", "page": "https://commons.wikimedia.org/wiki/File:Anatomy_of_the_Human_Ear_blank.svg", "author": "Lars Chittka, Axel Brockmann（M•Komorniczak がラベルを外した版）", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を紙の色に", "background": "white"}, "note": "耳を縦に切った模式図（図の左が外側、右が内側）。耳管は前下内側へ下って咽頭鼻部に開く。", "labels": [{"term": "external-ear", "px": [62, 168]}, {"term": "temporal-bone", "px": [282, 221]}, {"ja": "外耳道", "en": "external acoustic meatus", "note": "耳介から鼓膜までの約2.5cmの管。外の1/3は軟骨、内の2/3は骨（側頭骨）でできている。", "px": [235, 282]}, {"term": "malleus", "px": [360, 236]}, {"term": "incus", "px": [392, 246]}, {"term": "stapes", "px": [432, 268]}, {"term": "tympanic-membrane", "px": [372, 301]}, {"ja": "鼓室", "en": "tympanic cavity", "note": "鼓膜の内側の空気の入った部屋（中耳）。耳小骨が入り、耳管で咽頭とつながる。", "px": [412, 328]}, {"ja": "半規管", "en": "semicircular canals", "note": "前・後・外側の3つの輪の管で、互いに直角に並ぶ。頭の回転を感じる。", "px": [466, 174]}, {"term": "vestibule", "px": [462, 230]}, {"term": "cochlea", "px": [494, 292]}, {"term": "vestibular-nerve", "px": [575, 243]}, {"term": "cochlear-nerve", "px": [600, 272]}, {"term": "auditory-tube", "px": [508, 391]}]}
+      ]
+    },
+    {
+      "id": "pharynx",
+      "ja": "鼻腔・口腔・咽頭",
+      "yomi": "びくうこうくういんとう",
+      "en": "nasal and oral cavities and pharynx",
+      "about": "鼻腔は鼻中隔で左右に分かれ、外側の壁から上・中・下鼻甲介が張り出し、まわりの骨の前頭洞・蝶形骨洞・篩骨蜂巣などの副鼻腔が開く。口腔の天井は前の硬口蓋と後ろの軟口蓋（先が口蓋垂）。咽頭は鼻腔・口腔・喉頭の後ろの管で、上から咽頭鼻部（耳管が開く）・咽頭口部・咽頭喉頭部に分かれ、下は食道に続く。咽頭の壁を上・中・下の咽頭収縮筋が囲む。",
+      "units": ["resp-nose", "dig-oral-pharynx", "dig-pharynx-muscles", "dig-pharynx-more", "dig-mouth", "dig-teeth"],
+      "with": ["nasal-septal-cartilage", "palatine-tonsil"],
+      "around": ["hyoid-bone", "larynx", "epiglottis", "esophagus", "trachea"],
+      "box": [[-0.07, 1.38, 0.08], [0.07, 1.566, 0.212]],
+      "colors": {"nasopharynx": "#8fb0e6", "oropharynx": "#9fbf86", "laryngopharynx": "#e6d672", "nasal-cavity": "#c98a8a", "oral-cavity": "#e8a2b2", "tongue": "#d4606e", "soft-palate": "#e39a8f"},
+      "colorLabel": "咽頭の3部と鼻腔・口腔を色で分ける",
+      "colorNote": "咽頭は上から鼻部（青）・口部（緑）・喉頭部（黄）。鼻腔は赤茶、口腔は桃、舌は赤、軟口蓋は橙。鼻腔と口腔は薄く透かしている。",
+      "views": [
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "下", "from": [0, -1, 0.2]}
+      ],
+      "cuts": [
+        {"label": "正中断（右から見る）", "normal": [1, 0, 0], "point": [-0.001, 0, 0], "from": [-1, 0, 0.05]}
+      ],
+      "plates": [
+        {"id": "pharynx-sagittal", "title": "鼻腔・口腔・咽頭の正中断", "en": "nasal cavity, oral cavity and pharynx, midsagittal section", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Blausen_0872_UpperRespiratorySystem.png", "page": "https://commons.wikimedia.org/wiki/File:Blausen_0872_UpperRespiratorySystem.png", "author": "BruceBlaus（Blausen Medical）", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0/", "changes": "英語のラベルと引き出し線・表題を消し、頭と首の所を切り出した", "background": "white", "crop": [930, 250, 2045, 1880], "eraseWidth": 7, "erase": [[1224, 497, 620, 238], [1315, 658, 572, 414], [1301, 582, 1352, 834], [1286, 701, 872, 646], [1196, 841, 564, 811], [1196, 1085, 702, 1032], [1160, 1345, 648, 1230], [1155, 1651, 749, 1534], [1812, 357, 2116, 118], [1608, 478, 2224, 410], [1712, 574, 2276, 513], [1764, 689, 2260, 610], [1928, 731, 2120, 776], [1965, 850, 2067, 915], [1709, 872, 2140, 1049], [1397, 881, 2164, 1195], [1304, 974, 2172, 1357], [1244, 1312, 1704, 1581], [1195, 1535, 1784, 1690], [1173, 1558, 1696, 1801]], "eraseBoxes": [[1700, 1530, 2045, 1632], [1780, 1640, 2045, 1736], [1690, 1750, 2045, 1840]]}, "note": "頭を正中で切り、右から見た図（図の右が前）。見えているのは左半分の内側面で、鼻中隔は外して鼻腔の外側の壁（鼻甲介）を見せている。", "labels": [{"term": "frontal-sinus", "px": [1812, 357]}, {"term": "superior-nasal-concha", "px": [1608, 478]}, {"term": "sphenoidal-sinus", "px": [1224, 497]}, {"term": "middle-nasal-concha", "px": [1712, 574]}, {"term": "inferior-nasal-concha", "px": [1764, 689]}, {"ja": "耳管咽頭口", "en": "pharyngeal opening of auditory tube", "note": "咽頭鼻部の外側の壁にある耳管の入口。まわりの高まりが耳管隆起、後ろに咽頭扁桃がある。", "px": [1286, 701]}, {"term": "nasal-cavity", "px": [1928, 731]}, {"term": "choanae", "px": [1360, 770]}, {"term": "nasopharynx", "px": [1196, 841]}, {"ja": "外鼻孔", "en": "naris (nostril)", "note": "鼻の穴。鼻腔の前の入口で、鼻前庭には鼻毛が生える。", "px": [1965, 850]}, {"ja": "硬口蓋", "en": "hard palate", "note": "口腔の天井の前2/3。上顎骨と口蓋骨（骨口蓋）を粘膜がおおう。", "px": [1709, 872]}, {"term": "soft-palate", "px": [1330, 880]}, {"term": "oral-cavity", "px": [1560, 935]}, {"term": "uvula", "px": [1228, 1005]}, {"term": "tongue", "px": [1490, 1100]}, {"term": "oropharynx", "px": [1190, 1120]}, {"term": "epiglottis", "px": [1244, 1312]}, {"term": "hyoid-bone", "px": [1437, 1337]}, {"term": "laryngopharynx", "px": [1148, 1420]}, {"ja": "声帯ひだ", "en": "vocal fold", "note": "喉頭の中の左右のひだ。中に声帯靱帯と声帯筋がある。その上の前庭ひだ（仮声帯）との間が喉頭室。", "px": [1170, 1562]}, {"term": "trachea", "px": [1150, 1700]}]}
+      ]
+    },
+    {
+      "id": "larynx",
+      "ja": "喉頭と甲状腺",
+      "yomi": "こうとうとこうじょうせん",
+      "en": "larynx and thyroid gland",
+      "about": "喉頭はおよそ第4〜6頚椎の高さで気道の入口をつくり、甲状軟骨・輪状軟骨・喉頭蓋軟骨・披裂軟骨などが靱帯と膜でつながる。甲状軟骨の前の突き出し（喉頭隆起）が「のどぼとけ」。中の左右の声帯ひだの間が声門で、喉頭の筋が披裂軟骨を動かして声門を開け閉めし、輪状甲状筋が声帯を張る。甲状腺は喉頭と気管の前に左右の葉と峡部でまたがり、その後ろに上皮小体が上下2対ある。",
+      "units": ["resp-larynx", "resp-larynx-muscles", "resp-larynx-ligaments", "resp-larynx-more"],
+      "with": ["epiglottis", "thyroid-cartilage", "cricoid-cartilage", "arytenoid-cartilage", "thyroid-gland", "right-lobe-of-thyroid", "left-lobe-of-thyroid", "isthmus-of-thyroid", "pyramidal-lobe", "parathyroid-gland", "superior-parathyroid-gland", "inferior-parathyroid-gland"],
+      "around": ["hyoid-bone", "trachea"],
+      "box": [[-0.032, 1.372, 0.078], [0.032, 1.446, 0.134]],
+      "colors": {"thyroid-cartilage": "#d8d3a8", "cricoid-cartilage": "#bfc98f", "arytenoid-cartilage": "#a7c4d8", "epiglottis": "#e8cf7a", "thyroid-gland": "#b8574c", "parathyroid-gland": "#e8a33a"},
+      "colorLabel": "軟骨と腺を色で分ける",
+      "colorNote": "甲状軟骨は淡い黄、輪状軟骨は淡い緑、披裂軟骨は水色、喉頭蓋は黄、甲状腺は赤茶、上皮小体は橙。筋と靱帯はふだんの色。",
+      "views": [
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "左斜め前", "from": [0.75, 0.1, 0.7]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "上", "from": [0, 1, -0.05]}
+      ],
+      "cuts": [
+        {"label": "正中断（左から見る）", "normal": [-1, 0, 0], "point": [0.001, 0, 0], "from": [1, 0, 0.05]},
+        {"label": "前頭断（声帯の高さ）", "normal": [0, 0, -1], "point": [0, 0, 0.106], "from": [0, 0, 1]},
+        {"label": "甲状腺を外して喉頭を見る", "normal": [-0.728, -0.097, -0.679], "point": [0.044, 1.415, 0.147], "from": [0.75, 0.1, 0.7], "hide": ["thyroid-gland", "right-lobe-of-thyroid", "left-lobe-of-thyroid", "isthmus-of-thyroid", "pyramidal-lobe", "parathyroid-gland", "superior-parathyroid-gland", "inferior-parathyroid-gland"]}
+      ],
+      "plates": [
+        {"id": "larynx-anterior", "title": "左斜め前から見た喉頭", "en": "larynx, anterolateral view", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Larynx_external_en.svg", "page": "https://commons.wikimedia.org/wiki/File:Larynx_external_en.svg", "author": "Olek Remesz", "license": "CC BY-SA 2.5", "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/", "changes": "英語のラベルと引き出し線を消した", "background": "white", "dropGroups": ["stroke-dasharray=\"6,2\"", "<g stroke=\"#000\" stroke-width=\"2\">"]}, "note": "左斜め前から見た図（図の右が体の左・後ろ）。甲状軟骨の上の切れこみが上甲状切痕で、その下の前の突き出しが喉頭隆起。", "labels": [{"term": "hyoid-bone", "px": [567, 91]}, {"term": "lateral-thyrohyoid-ligament", "px": [749, 167]}, {"term": "thyrohyoid-membrane", "px": [551, 178]}, {"term": "median-thyrohyoid-ligament", "px": [476, 221]}, {"term": "superior-horn-of-thyroid-cartilage", "px": [751, 274]}, {"term": "superior-thyroid-notch", "px": [446, 340]}, {"term": "thyroid-cartilage", "px": [456, 437]}, {"term": "oblique-line-of-thyroid-cartilage", "px": [702, 450]}, {"term": "median-cricothyroid-ligament", "px": [489, 544]}, {"term": "conus-elasticus", "px": [418, 585]}, {"term": "cricothyroid", "px": [600, 640]}, {"term": "inferior-horn-of-thyroid-cartilage", "px": [716, 634]}, {"ja": "輪状甲状関節", "en": "cricothyroid joint", "note": "甲状軟骨の下角と輪状軟骨の側面の関節。ここを軸に甲状軟骨が前へ傾くと声帯が張る。", "px": [668, 690]}, {"term": "cricoid-cartilage", "px": [480, 671]}, {"term": "trachea", "px": [500, 845]}]}
       ]
     }
   ]

@@ -1337,6 +1337,1059 @@
      "term": "spinal-cord"
     }
    ]
+  },
+  "intestine-anterior": {
+   "url": "plates/intestine-anterior.8679cd315d.webp",
+   "w": 580,
+   "h": 835,
+   "labels": [
+    {
+     "at": [
+      0.7345,
+      0.024
+     ],
+     "term": "stomach"
+    },
+    {
+     "at": [
+      0.1948,
+      0.182
+     ],
+     "term": "right-colic-flexure"
+    },
+    {
+     "at": [
+      0.631,
+      0.2826
+     ],
+     "term": "transverse-colon"
+    },
+    {
+     "at": [
+      0.8966,
+      0.194
+     ],
+     "term": "left-colic-flexure"
+    },
+    {
+     "at": [
+      0.2655,
+      0.3449
+     ],
+     "term": "small-intestine"
+    },
+    {
+     "at": [
+      0.1276,
+      0.4407
+     ],
+     "term": "ascending-colon"
+    },
+    {
+     "at": [
+      0.8379,
+      0.5557
+     ],
+     "term": "descending-colon"
+    },
+    {
+     "at": [
+      0.2241,
+      0.6228
+     ],
+     "term": "cecum"
+    },
+    {
+     "at": [
+      0.3931,
+      0.6371
+     ],
+     "term": "appendix"
+    },
+    {
+     "at": [
+      0.5759,
+      0.7234
+     ],
+     "term": "sigmoid-colon"
+    },
+    {
+     "at": [
+      0.4897,
+      0.8192
+     ],
+     "term": "rectum"
+    },
+    {
+     "at": [
+      0.4793,
+      0.9485
+     ],
+     "ja": "肛門",
+     "en": "anus",
+     "note": "消化管の出口。直腸から続く肛門管の下の口で、内肛門括約筋（平滑筋）と外肛門括約筋（骨格筋）が取り巻く。"
+    }
+   ]
+  },
+  "male-sagittal": {
+   "url": "plates/male-sagittal.06ad8136d4.webp",
+   "w": 1193,
+   "h": 1157,
+   "labels": [
+    {
+     "at": [
+      0.3982,
+      0.2952
+     ],
+     "term": "urinary-bladder"
+    },
+    {
+     "at": [
+      0.3898,
+      0.4702
+     ],
+     "term": "ductus-deferens"
+    },
+    {
+     "at": [
+      0.6073,
+      0.43
+     ],
+     "term": "seminal-gland"
+    },
+    {
+     "at": [
+      0.4883,
+      0.4918
+     ],
+     "term": "prostate"
+    },
+    {
+     "at": [
+      0.7397,
+      0.401
+     ],
+     "term": "rectum"
+    },
+    {
+     "at": [
+      0.5109,
+      0.5668
+     ],
+     "ja": "尿道球腺",
+     "en": "bulbourethral gland",
+     "note": "尿道球の後ろにある豆粒ほどの1対の腺（カウパー腺）。導管が尿道に開き、射精の前に粘液を出す。"
+    },
+    {
+     "at": [
+      0.4971,
+      0.6329
+     ],
+     "term": "bulb-of-penis"
+    },
+    {
+     "at": [
+      0.3378,
+      0.6089
+     ],
+     "term": "urethra"
+    },
+    {
+     "at": [
+      0.0993,
+      0.5674
+     ],
+     "term": "corpus-cavernosum"
+    },
+    {
+     "at": [
+      0.2557,
+      0.6236
+     ],
+     "term": "corpus-spongiosum"
+    },
+    {
+     "at": [
+      0.2892,
+      0.7597
+     ],
+     "term": "epididymis"
+    },
+    {
+     "at": [
+      0.2389,
+      0.8548
+     ],
+     "term": "testis"
+    },
+    {
+     "at": [
+      0.0601,
+      0.8284
+     ],
+     "term": "glans-penis"
+    },
+    {
+     "at": [
+      0.127,
+      0.9049
+     ],
+     "term": "external-urethral-orifice"
+    },
+    {
+     "at": [
+      0.3353,
+      0.8807
+     ],
+     "ja": "陰嚢",
+     "en": "scrotum",
+     "note": "精巣と精巣上体を入れる皮膚の袋。中の肉様膜（平滑筋）が縮んで温度を調節する。"
+    }
+   ]
+  },
+  "cord-section": {
+   "url": "plates/cord-section.5183cdc2bc.webp",
+   "w": 1400,
+   "h": 830,
+   "labels": [
+    {
+     "at": [
+      0.3412,
+      0.103
+     ],
+     "term": "posterior-root"
+    },
+    {
+     "at": [
+      0.5709,
+      0.2083
+     ],
+     "ja": "後索",
+     "en": "posterior funiculus",
+     "note": "左右の後角の間の白質。薄束と楔状束が通り、触覚・振動覚・位置覚（深部感覚）を上へ伝える。"
+    },
+    {
+     "at": [
+      0.6424,
+      0.3033
+     ],
+     "ja": "後正中溝",
+     "en": "posterior median sulcus",
+     "note": "脊髄の後ろの正中の浅い溝。左右の後索の境。"
+    },
+    {
+     "at": [
+      0.5283,
+      0.3521
+     ],
+     "term": "posterior-horn"
+    },
+    {
+     "at": [
+      0.0932,
+      0.4163
+     ],
+     "term": "spinal-ganglion"
+    },
+    {
+     "at": [
+      0.3975,
+      0.4753
+     ],
+     "ja": "側索",
+     "en": "lateral funiculus",
+     "note": "前根と後根の間の白質。外側皮質脊髄路・脊髄視床路・脊髄小脳路などが通る。"
+    },
+    {
+     "at": [
+      0.7185,
+      0.5908
+     ],
+     "ja": "灰白交連",
+     "en": "gray commissure",
+     "note": "左右の灰白質をつなぐ横の橋で、中に中心管がある。"
+    },
+    {
+     "at": [
+      0.6439,
+      0.5934
+     ],
+     "term": "central-canal"
+    },
+    {
+     "at": [
+      0.5085,
+      0.6679
+     ],
+     "term": "anterior-horn"
+    },
+    {
+     "at": [
+      0.6424,
+      0.7654
+     ],
+     "ja": "前正中裂",
+     "en": "anterior median fissure",
+     "note": "脊髄の前の正中の深い裂け目。前脊髄動脈が走る。"
+    },
+    {
+     "at": [
+      0.2255,
+      0.7577
+     ],
+     "term": "anterior-root"
+    },
+    {
+     "at": [
+      0.5313,
+      0.8579
+     ],
+     "ja": "前索",
+     "en": "anterior funiculus",
+     "note": "前正中裂と前根の間の白質。前皮質脊髄路・前脊髄視床路などが通る。"
+    }
+   ]
+  },
+  "cord-tracts": {
+   "url": "plates/cord-tracts.534a9b8816.webp",
+   "w": 1052,
+   "h": 820,
+   "labels": [
+    {
+     "at": [
+      0.5382,
+      0.2012
+     ],
+     "term": "gracile-fasciculus"
+    },
+    {
+     "at": [
+      0.6622,
+      0.2151
+     ],
+     "term": "cuneate-fasciculus"
+    },
+    {
+     "at": [
+      0.2119,
+      0.3267
+     ],
+     "term": "lateral-corticospinal-tract"
+    },
+    {
+     "at": [
+      0.9058,
+      0.3407
+     ],
+     "term": "posterior-spinocerebellar-tract"
+    },
+    {
+     "at": [
+      0.1467,
+      0.4523
+     ],
+     "term": "rubrospinal-tract"
+    },
+    {
+     "at": [
+      0.2881,
+      0.4579
+     ],
+     "ja": "網様体脊髄路",
+     "en": "reticulospinal tract",
+     "note": "脳幹の網様体から下り、姿勢を保つ筋の緊張を調節する。"
+    },
+    {
+     "at": [
+      0.9341,
+      0.5584
+     ],
+     "term": "anterior-spinocerebellar-tract"
+    },
+    {
+     "at": [
+      0.8645,
+      0.5946
+     ],
+     "term": "lateral-spinothalamic-tract"
+    },
+    {
+     "at": [
+      0.4447,
+      0.6979
+     ],
+     "term": "anterior-corticospinal-tract"
+    },
+    {
+     "at": [
+      0.7035,
+      0.7091
+     ],
+     "term": "anterior-spinothalamic-tract"
+    },
+    {
+     "at": [
+      0.349,
+      0.8039
+     ],
+     "ja": "前庭脊髄路",
+     "en": "vestibulospinal tract",
+     "note": "延髄の前庭神経核から下り、体の平衡を保つように伸筋を働かせる。"
+    }
+   ]
+  },
+  "eye-horizontal": {
+   "url": "plates/eye-horizontal.7b7a616c20.webp",
+   "w": 1268,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.4456,
+      0.0424
+     ],
+     "term": "cornea"
+    },
+    {
+     "at": [
+      0.5827,
+      0.0864
+     ],
+     "term": "anterior-chamber-of-eyeball"
+    },
+    {
+     "at": [
+      0.4913,
+      0.1329
+     ],
+     "ja": "瞳孔",
+     "en": "pupil",
+     "note": "虹彩の中央の穴。瞳孔括約筋（動眼神経の副交感神経）で小さくなり、瞳孔散大筋（交感神経）で大きくなる。"
+    },
+    {
+     "at": [
+      0.3486,
+      0.1381
+     ],
+     "term": "iris"
+    },
+    {
+     "at": [
+      0.6569,
+      0.1588
+     ],
+     "ja": "後眼房",
+     "en": "posterior chamber",
+     "note": "虹彩と水晶体の間のせまい部屋。毛様体が作った眼房水がここから瞳孔を通って前眼房へ流れる。"
+    },
+    {
+     "at": [
+      0.32,
+      0.2001
+     ],
+     "term": "ciliary-zonule"
+    },
+    {
+     "at": [
+      0.7626,
+      0.1949
+     ],
+     "term": "ciliary-body"
+    },
+    {
+     "at": [
+      0.4913,
+      0.2156
+     ],
+     "term": "lens"
+    },
+    {
+     "at": [
+      0.1516,
+      0.2518
+     ],
+     "term": "sclera"
+    },
+    {
+     "at": [
+      0.6683,
+      0.319
+     ],
+     "term": "vitreous-body"
+    },
+    {
+     "at": [
+      0.891,
+      0.4457
+     ],
+     "term": "choroid"
+    },
+    {
+     "at": [
+      0.7626,
+      0.6732
+     ],
+     "term": "retina"
+    },
+    {
+     "at": [
+      0.6255,
+      0.7275
+     ],
+     "ja": "黄斑",
+     "en": "macula",
+     "note": "網膜の後極にある黄色みのある所。錐体が集まり、ものを細かく見る。"
+    },
+    {
+     "at": [
+      0.5484,
+      0.7585
+     ],
+     "ja": "中心窩",
+     "en": "fovea centralis",
+     "note": "黄斑の真ん中のくぼみ。錐体だけが並び、視力がいちばん良い。"
+    },
+    {
+     "at": [
+      0.3543,
+      0.7223
+     ],
+     "ja": "視神経円板",
+     "en": "optic disc",
+     "note": "視神経が眼球を出る所（視神経乳頭）。視細胞が無く、視野の盲点になる。網膜中心動脈・静脈が出入りする。"
+    },
+    {
+     "at": [
+      0.2915,
+      0.7895
+     ],
+     "term": "central-retinal-artery"
+    },
+    {
+     "at": [
+      0.2715,
+      0.8645
+     ],
+     "term": "optic-nerve"
+    }
+   ]
+  },
+  "eye-muscles": {
+   "url": "plates/eye-muscles.22d2de0228.webp",
+   "w": 1168,
+   "h": 1040,
+   "labels": [
+    {
+     "at": [
+      0.2842,
+      0.1654
+     ],
+     "term": "levator-palpebrae-superioris"
+    },
+    {
+     "at": [
+      0.1815,
+      0.2654
+     ],
+     "term": "trochlea-of-superior-oblique"
+    },
+    {
+     "at": [
+      0.4435,
+      0.275
+     ],
+     "term": "superior-oblique"
+    },
+    {
+     "at": [
+      0.6267,
+      0.3712
+     ],
+     "term": "superior-rectus"
+    },
+    {
+     "at": [
+      0.976,
+      0.4846
+     ],
+     "term": "common-tendinous-ring"
+    },
+    {
+     "at": [
+      0.7055,
+      0.6385
+     ],
+     "term": "lateral-rectus"
+    },
+    {
+     "at": [
+      0.0582,
+      0.7192
+     ],
+     "term": "medial-rectus"
+    },
+    {
+     "at": [
+      0.6336,
+      0.7769
+     ],
+     "term": "inferior-rectus"
+    },
+    {
+     "at": [
+      0.3613,
+      0.8327
+     ],
+     "term": "eyeball"
+    },
+    {
+     "at": [
+      0.1627,
+      0.9308
+     ],
+     "term": "inferior-oblique"
+    }
+   ]
+  },
+  "eye-lacrimal": {
+   "url": "plates/eye-lacrimal.4d2ccf8554.webp",
+   "w": 1400,
+   "h": 1183,
+   "labels": [
+    {
+     "at": [
+      0.1511,
+      0.1987
+     ],
+     "term": "lacrimal-gland"
+    },
+    {
+     "at": [
+      0.6797,
+      0.3717
+     ],
+     "ja": "上涙点",
+     "en": "superior lacrimal punctum",
+     "note": "上まぶたの内側の端の小さな穴。涙小管の入口。"
+    },
+    {
+     "at": [
+      0.755,
+      0.3827
+     ],
+     "term": "lacrimal-canaliculus"
+    },
+    {
+     "at": [
+      0.6729,
+      0.4887
+     ],
+     "ja": "下涙点",
+     "en": "inferior lacrimal punctum",
+     "note": "下まぶたの内側の端の小さな穴。涙の多くはここから流れる。"
+    },
+    {
+     "at": [
+      0.852,
+      0.535
+     ],
+     "term": "lacrimal-sac"
+    },
+    {
+     "at": [
+      0.8271,
+      0.8324
+     ],
+     "term": "nasolacrimal-duct"
+    }
+   ]
+  },
+  "ear-section": {
+   "url": "plates/ear-section.b51bff190d.webp",
+   "w": 1400,
+   "h": 1098,
+   "labels": [
+    {
+     "at": [
+      0.0827,
+      0.3255
+     ],
+     "term": "external-ear"
+    },
+    {
+     "at": [
+      0.4209,
+      0.4294
+     ],
+     "term": "temporal-bone"
+    },
+    {
+     "at": [
+      0.3486,
+      0.549
+     ],
+     "ja": "外耳道",
+     "en": "external acoustic meatus",
+     "note": "耳介から鼓膜までの約2.5cmの管。外の1/3は軟骨、内の2/3は骨（側頭骨）でできている。"
+    },
+    {
+     "at": [
+      0.5408,
+      0.4588
+     ],
+     "term": "malleus"
+    },
+    {
+     "at": [
+      0.59,
+      0.4784
+     ],
+     "term": "incus"
+    },
+    {
+     "at": [
+      0.6515,
+      0.5215
+     ],
+     "term": "stapes"
+    },
+    {
+     "at": [
+      0.5593,
+      0.5862
+     ],
+     "term": "tympanic-membrane"
+    },
+    {
+     "at": [
+      0.6208,
+      0.6392
+     ],
+     "ja": "鼓室",
+     "en": "tympanic cavity",
+     "note": "鼓膜の内側の空気の入った部屋（中耳）。耳小骨が入り、耳管で咽頭とつながる。"
+    },
+    {
+     "at": [
+      0.7038,
+      0.3373
+     ],
+     "ja": "半規管",
+     "en": "semicircular canals",
+     "note": "前・後・外側の3つの輪の管で、互いに直角に並ぶ。頭の回転を感じる。"
+    },
+    {
+     "at": [
+      0.6976,
+      0.447
+     ],
+     "term": "vestibule"
+    },
+    {
+     "at": [
+      0.7468,
+      0.5686
+     ],
+     "term": "cochlea"
+    },
+    {
+     "at": [
+      0.8714,
+      0.4725
+     ],
+     "term": "vestibular-nerve"
+    },
+    {
+     "at": [
+      0.9098,
+      0.5294
+     ],
+     "term": "cochlear-nerve"
+    },
+    {
+     "at": [
+      0.7684,
+      0.7627
+     ],
+     "term": "auditory-tube"
+    }
+   ]
+  },
+  "pharynx-sagittal": {
+   "url": "plates/pharynx-sagittal.99844f14d3.webp",
+   "w": 958,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.791,
+      0.0656
+     ],
+     "term": "frontal-sinus"
+    },
+    {
+     "at": [
+      0.6081,
+      0.1399
+     ],
+     "term": "superior-nasal-concha"
+    },
+    {
+     "at": [
+      0.2637,
+      0.1515
+     ],
+     "term": "sphenoidal-sinus"
+    },
+    {
+     "at": [
+      0.7013,
+      0.1988
+     ],
+     "term": "middle-nasal-concha"
+    },
+    {
+     "at": [
+      0.748,
+      0.2693
+     ],
+     "term": "inferior-nasal-concha"
+    },
+    {
+     "at": [
+      0.3193,
+      0.2767
+     ],
+     "ja": "耳管咽頭口",
+     "en": "pharyngeal opening of auditory tube",
+     "note": "咽頭鼻部の外側の壁にある耳管の入口。まわりの高まりが耳管隆起、後ろに咽頭扁桃がある。"
+    },
+    {
+     "at": [
+      0.8951,
+      0.2951
+     ],
+     "term": "nasal-cavity"
+    },
+    {
+     "at": [
+      0.3857,
+      0.319
+     ],
+     "term": "choanae"
+    },
+    {
+     "at": [
+      0.2386,
+      0.3626
+     ],
+     "term": "nasopharynx"
+    },
+    {
+     "at": [
+      0.9283,
+      0.3681
+     ],
+     "ja": "外鼻孔",
+     "en": "naris (nostril)",
+     "note": "鼻の穴。鼻腔の前の入口で、鼻前庭には鼻毛が生える。"
+    },
+    {
+     "at": [
+      0.6987,
+      0.3816
+     ],
+     "ja": "硬口蓋",
+     "en": "hard palate",
+     "note": "口腔の天井の前2/3。上顎骨と口蓋骨（骨口蓋）を粘膜がおおう。"
+    },
+    {
+     "at": [
+      0.3587,
+      0.3865
+     ],
+     "term": "soft-palate"
+    },
+    {
+     "at": [
+      0.565,
+      0.4202
+     ],
+     "term": "oral-cavity"
+    },
+    {
+     "at": [
+      0.2673,
+      0.4632
+     ],
+     "term": "uvula"
+    },
+    {
+     "at": [
+      0.5022,
+      0.5215
+     ],
+     "term": "tongue"
+    },
+    {
+     "at": [
+      0.2332,
+      0.5337
+     ],
+     "term": "oropharynx"
+    },
+    {
+     "at": [
+      0.2816,
+      0.6515
+     ],
+     "term": "epiglottis"
+    },
+    {
+     "at": [
+      0.4547,
+      0.6669
+     ],
+     "term": "hyoid-bone"
+    },
+    {
+     "at": [
+      0.1955,
+      0.7178
+     ],
+     "term": "laryngopharynx"
+    },
+    {
+     "at": [
+      0.2152,
+      0.8049
+     ],
+     "ja": "声帯ひだ",
+     "en": "vocal fold",
+     "note": "喉頭の中の左右のひだ。中に声帯靱帯と声帯筋がある。その上の前庭ひだ（仮声帯）との間が喉頭室。"
+    },
+    {
+     "at": [
+      0.1973,
+      0.8896
+     ],
+     "term": "trachea"
+    }
+   ]
+  },
+  "larynx-anterior": {
+   "url": "plates/larynx-anterior.59ddb3f8ff.webp",
+   "w": 709,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.4804,
+      0.0958
+     ],
+     "term": "hyoid-bone"
+    },
+    {
+     "at": [
+      0.8591,
+      0.1758
+     ],
+     "term": "lateral-thyrohyoid-ligament"
+    },
+    {
+     "at": [
+      0.4472,
+      0.1874
+     ],
+     "term": "thyrohyoid-membrane"
+    },
+    {
+     "at": [
+      0.2911,
+      0.2327
+     ],
+     "term": "median-thyrohyoid-ligament"
+    },
+    {
+     "at": [
+      0.8632,
+      0.2885
+     ],
+     "term": "superior-horn-of-thyroid-cartilage"
+    },
+    {
+     "at": [
+      0.2287,
+      0.358
+     ],
+     "term": "superior-thyroid-notch"
+    },
+    {
+     "at": [
+      0.2495,
+      0.4601
+     ],
+     "term": "thyroid-cartilage"
+    },
+    {
+     "at": [
+      0.7613,
+      0.4738
+     ],
+     "term": "oblique-line-of-thyroid-cartilage"
+    },
+    {
+     "at": [
+      0.3182,
+      0.5727
+     ],
+     "term": "median-cricothyroid-ligament"
+    },
+    {
+     "at": [
+      0.1705,
+      0.6159
+     ],
+     "term": "conus-elasticus"
+    },
+    {
+     "at": [
+      0.5491,
+      0.6738
+     ],
+     "term": "cricothyroid"
+    },
+    {
+     "at": [
+      0.7904,
+      0.6675
+     ],
+     "term": "inferior-horn-of-thyroid-cartilage"
+    },
+    {
+     "at": [
+      0.6906,
+      0.7264
+     ],
+     "ja": "輪状甲状関節",
+     "en": "cricothyroid joint",
+     "note": "甲状軟骨の下角と輪状軟骨の側面の関節。ここを軸に甲状軟骨が前へ傾くと声帯が張る。"
+    },
+    {
+     "at": [
+      0.2995,
+      0.7064
+     ],
+     "term": "cricoid-cartilage"
+    },
+    {
+     "at": [
+      0.3411,
+      0.8896
+     ],
+     "term": "trachea"
+    }
+   ]
   }
  }
 }

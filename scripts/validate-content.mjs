@@ -351,7 +351,7 @@ const PlateArt = z.strictObject({
   licenseUrl: z.string().url(), changes: z.string().min(1), background: z.enum(["dark", "red", "white"]), flip: z.literal("v").optional(),
   erase: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), eraseWidth: z.number().optional(),
   eraseBoxes: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
-  drop: z.array(z.string().min(1)).optional(), recolor: z.record(z.string(), z.string()).optional(),
+  drop: z.array(z.string().min(1)).optional(), dropGroups: z.array(z.string().min(1)).optional(), recolor: z.record(z.string(), z.string()).optional(),
 });
 const Plate = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(),
