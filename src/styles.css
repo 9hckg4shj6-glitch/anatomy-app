@@ -284,6 +284,21 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .text-button.more { margin: 6px 0 0; }
 .text-button.skip-test { margin: 10px auto 0; }
 .drill-note { padding: 8px 12px; border-radius: 10px; background: color-mix(in srgb, var(--close) 12%, var(--surface)); font-size: 14px; }
+/* 演習の範囲: 系統・まとまり・レッスンのフォルダーと語にチェック。チェックは選ぶだけ、名前を押すと開く */
+.range-summary { margin: 0 0 4px; font-weight: 600; }
+.range-actions { display: flex; gap: 16px; }
+.range-actions .text-button { margin: 0; padding-left: 0; }
+.range-check { display: flex; align-items: center; justify-content: center; flex: none; width: 34px; height: 34px; margin: -8px -4px; cursor: pointer; }
+.range-check input, .range-term input { width: 20px; height: 20px; margin: 0; accent-color: var(--ink); cursor: pointer; flex: none; }
+.range-tree .units { gap: 6px; }
+.range-lesson { background: var(--surface); }
+.range-lesson summary { font-weight: 400; }
+.range-term { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 8px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.range-term > span:first-of-type { flex: 1; min-width: 0; }
+.range-term .en { color: var(--muted); font-size: 14px; text-align: right; }
+.term-list li:last-child .range-term { border-bottom: 0; }
+.search-results.range-tree > .term-list { padding: 0 4px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+@media (pointer: coarse) { .range-check { width: 44px; height: 44px; margin: -12px -8px; } }
 .review-size { flex-wrap: wrap; }
 .chip-count { margin-left: 6px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
 .chip.on .chip-count { color: rgb(255 255 255 / 0.75); }
