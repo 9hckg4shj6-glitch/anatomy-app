@@ -68,7 +68,7 @@ export default defineConfig({
         // GLB と音声は数MBになるのでプリキャッシュせず、開いたときに保存する。
         // どちらもファイル名に中身のハッシュが入っている（scripts/build-models.mjs, build-audio.mjs）ので、
         // CacheFirst でも作り直した版が古いまま残ることはない。
-        // 臓器の平面図（plates/*.webp、1枚 50〜75KB）は小さいのでプリキャッシュする（オフラインでも開ける）。
+        // 臓器の平面図（plates/*.webp、1枚 70〜130KB）は小さいのでプリキャッシュする（オフラインでも開ける）。
         globPatterns: ["**/*.{html,js,css,json,svg,png,webp,woff2}"],
         globIgnores: ["models/*.glb", "audio/*.m4a"],
         // 語の内容（content/terms）は JS に入るので、語が増えると既定の 2 MiB を超える。超えるとオフラインで開けなくなる

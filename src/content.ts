@@ -185,7 +185,7 @@ export interface Pin {
  * 臓器を詳しく見る画面（#/organs/<ID>。content/organs.json）。units のレッスンの語と with の語（大血管など）が臓器の場面で、
  * 3Dではそれだけを box の中に切って見せる（SceneSpec の organ）。colors は部屋の色分け、views は向き、cuts は切って中を見る面
  * （normal・point で、normal の向きの側を残す。hide は切るときに隠す語）。seamless は平面図で境に線を引かない語（心房・心室の壁）。
- * plates は平面図（scripts/plates.mjs が view・cut から描く。diagram があれば手で描いた模式図）
+ * plates は平面図（scripts/plates.mjs が art の元の図から作るか、view・cut から描く。diagram があれば手で描いた模式図）
  */
 export interface Organ {
   id: string;
@@ -211,13 +211,27 @@ export interface OrganCut {
   hide?: string[];
 }
 
-/** 平面図の指定（content/organs.json）。ラベルは語ID か { term, pin } か、語の無い所の { ja, en, uv } */
+/**
+ * 平面図の指定（content/organs.json）。ラベルは語ID か { term, pin } か、語の無い所の { ja, en, uv }。
+ * art は元の図（イラスト）の出典で、ラベルは元の図のピクセル { term, px }。note は図の向きなどの添え書き
+ */
 export interface PlateSpec {
   id: string;
   title: string;
   en: string;
   diagram?: string;
+  art?: PlateArt;
+  note?: string;
   labels: (string | { term?: string; ja?: string; en?: string })[];
+}
+
+/** 元の図の出典（画面に、作者・ライセンス・変えた所を出す） */
+export interface PlateArt {
+  page: string;
+  author: string;
+  license: string;
+  licenseUrl: string;
+  changes: string;
 }
 
 /** scripts/plates.mjs が書き出す public/plates/index.json。ラベルの at は画像の幅・高さに対する 0〜1 */

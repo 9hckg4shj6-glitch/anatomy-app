@@ -16,7 +16,7 @@ const LABEL_MODE = "plateLabelMode";
 /**
  * 臓器の図（#/organs）。臓器の一覧と、臓器ごとの画面（#/organs/<臓器ID>）。
  * 立体（#/organs/<臓器ID>/3d/<語ID>）は臓器と大血管だけを、部屋の色分け・向き・切り口を選んで見る。
- * 平面図（#/organs/<臓器ID>/<図ID>）は教科書のような図に、名前を日本語と英語で添える（scripts/plates.mjs が描いた図と、手で描いた模式図）
+ * 平面図（#/organs/<臓器ID>/<図ID>）は教科書のような図に、名前を日本語と英語で添える（scripts/plates.mjs が元のイラストから作った図・形から描いた図と、手で描いた模式図）
  */
 export async function organScreen(ctx: AppContext, arg: string): Promise<void> {
   const [organId, mode, termId] = arg.split("/");
@@ -332,9 +332,14 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
     );
   };
 
+  const art = spec.art;
   body.replaceChildren(
     h("h3", { class: "plate-title" }, spec.title, h("span", { class: "en", lang: "en" }, `　${spec.en}`)),
+    spec.note ? h("p", { class: "muted" }, spec.note) : "",
     listBox,
+    art ? h("p", { class: "plate-credit muted" }, "図: ",
+      h("a", { href: art.page, target: "_blank", rel: "noopener" }, art.author), "（",
+      h("a", { href: art.licenseUrl, target: "_blank", rel: "noopener" }, art.license), `）。${art.changes}`) : "",
   );
   renderList();
   // 3Dの欄の大きさ（境目のつまみ・⤢）が変わったら描き直す

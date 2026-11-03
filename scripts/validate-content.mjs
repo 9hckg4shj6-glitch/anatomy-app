@@ -338,19 +338,27 @@ else {
   }
 }
 
-// 臓器の図: 語・レッスンの参照先と、平面図（scripts/plates.mjs が描く。模式図の diagram は描かない）
+// 臓器の図: 語・レッスンの参照先と、平面図（scripts/plates.mjs が描くか、元の図 art から作る。模式図の diagram は描かない）
 const OrganCut = z.strictObject({ label: z.string().min(1), normal: vec, point: vec, from: vec, hide: z.array(z.string()).optional() });
 const PlateLabel = z.union([z.string(), z.strictObject({
   term: z.string().optional(), pin: z.number().int().optional(), ja: z.string().optional(), en: z.string().optional(), note: z.string().optional(),
   uv: z.tuple([z.number(), z.number()]).optional(), point: vec.optional(), side: z.enum(["left", "right"]).optional(),
+  px: z.tuple([z.number(), z.number()]).optional(),
 })]);
+// 元の図（イラスト）の出典と、作るときの手直し。出典・ライセンス・変えた所は画面に出す（CC BY の表示）
+const PlateArt = z.strictObject({
+  src: z.string().url(), page: z.string().url(), author: z.string().min(1), license: z.string().regex(/^CC BY(-SA)? \d\.\d$|^Public domain$/),
+  licenseUrl: z.string().url(), changes: z.string().min(1), background: z.enum(["dark", "red", "white"]), flip: z.literal("v").optional(),
+  erase: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), eraseWidth: z.number().optional(),
+});
 const Plate = z.strictObject({
-  id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(),
+  id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(),
   view: z.strictObject({ f: vec, u: vec }).optional(), cut: z.strictObject({ normal: vec, point: vec }).optional(),
   hide: z.array(z.string()).optional(), hideElements: z.array(z.string()).optional(), frameTerms: z.array(z.string()).optional(),
   box: z.tuple([vec, vec]).optional(), frame: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
   colors: z.record(z.string(), z.string()).optional(), terms: z.array(z.string()).optional(), labels: z.array(PlateLabel),
-}).refine((plate) => plate.diagram || plate.view, "平面図には view（描く向き）か diagram（模式図）が要る");
+}).refine((plate) => plate.diagram || plate.view || plate.art, "平面図には view（描く向き）か art（元の図）か diagram（模式図）が要る")
+  .refine((plate) => !plate.art || plate.labels.every((label) => typeof label !== "string" && label.px), "元の図（art）のラベルには px（元の図のピクセル）が要る");
 const Organ = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), ja: z.string().min(1), yomi: z.string().regex(/^[ぁ-ゖー]+$/), en: word, about: z.string().min(10),
   units: z.array(z.string()).min(1), with: z.array(z.string()), box: z.tuple([vec, vec]), seamless: z.array(z.string()).optional(),

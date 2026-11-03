@@ -1,4 +1,5 @@
-// 臓器の平面図（content/organs.json の plates）を、BodyParts3D の形から教科書の図のような絵に描く。
+// 臓器の平面図（content/organs.json の plates）を作る。art があれば元の図（Wikimedia Commons などのイラスト）を取り寄せ、
+// 背景を抜いて紙の色に重ねる（ラベルの点は元の図のピクセル px）。無ければ BodyParts3D の形から教科書の図のような絵に描く:
 // なめらかな陰影・部品の境と輪郭の線・切り口の平らな塗りで描き、ラベルの指す点（語の見えている所の真ん中、骨・器官の部位はピン）を求める。
 // 出力: public/plates/<図ID>.<ハッシュ>.webp と public/plates/index.json（画像の大きさ・ラベルの点 0〜1）。
 // 使い方: node scripts/plates.mjs [図ID…]（無ければ全部）。--check を付けると、ラベルの点に印を付けた確認画像を data-raw/plate-check/ に書く
@@ -228,6 +229,196 @@ function innerPoint(owner, SW, SH, indices) {
   return [(bestK % SW) + 0.5, Math.floor(bestK / SW) + 0.5];
 }
 
+/** 元の図（art）の取り置き。data-raw/ は git の対象外なので、無ければ取り寄せる */
+const ART = path.join(ROOT, "data-raw/plate-art");
+const ART_SIZE = 1400;
+
+async function artSource(url) {
+  const file = path.join(ART, decodeURIComponent(new URL(url).pathname.split("/").pop()));
+  if (!fs.existsSync(file)) {
+    fs.mkdirSync(ART, { recursive: true });
+    const response = await fetch(url, { headers: { "User-Agent": "anatomy-app-plates/1.0 (https://github.com/9hckg4shj6-glitch/anatomy-app)" } });
+    if (!response.ok) throw new Error(`${url}: ${response.status}`);
+    fs.writeFileSync(file, Buffer.from(await response.arrayBuffer()));
+  }
+  return file;
+}
+
+/** 背景の色か（art.background）。dark は黒、red は暗い赤のグラデーション、white は白 */
+const BACKGROUND = {
+  dark: (r, g, b) => Math.max(r, g, b) < 28,
+  red: (r, g, b) => g < 24 && b < 30,
+  white: (r, g, b) => Math.min(r, g, b) > 236,
+};
+
+/**
+ * 元の図（イラスト）から平面図を作る。焼き込まれた引き出し線（art.erase の線分）を両脇の色で埋め、
+ * 縁から続く背景を抜いて、いちばん大きい塊（図そのもの）だけを残す（焼き込まれた文字は離れた塊なので消える）。
+ * 紙の色に重ね、図の範囲で切り詰め、art.flip が "v" なら上下を返す。ラベルの px は元の図のピクセル
+ */
+async function artPlate(plate) {
+  const art = plate.art;
+  const { data, info } = await sharp(await artSource(art.src)).flatten({ background: "#ffffff" }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const W0 = info.width, H0 = info.height;
+  const px = new Float32Array(data);
+  const at = (x, y) => (Math.min(H0 - 1, Math.max(0, Math.round(y))) * W0 + Math.min(W0 - 1, Math.max(0, Math.round(x)))) * 3;
+  // 引き出し線: 書いた端を ±8px の範囲で、線に沿って最も暗くなる所へ合わせ直し、線から width の内側を埋める。
+  // 埋める点ごとに24の向きで両側の埋めない点まで進み、両端の色が最も近い向きで間を補う（線が横切った輪郭は輪郭の向きにつながる）
+  const width = art.eraseWidth ?? 5;
+  const darkness = (x1, y1, x2, y2) => {
+    let sum = 0;
+    for (let i = 0; i <= 100; i++) {
+      const k = at(x1 + ((x2 - x1) * i) / 100, y1 + ((y2 - y1) * i) / 100);
+      sum += 765 - px[k] - px[k + 1] - px[k + 2];
+    }
+    return sum;
+  };
+  const erase = new Uint8Array(W0 * H0);
+  for (const segment of art.erase ?? []) {
+    let best = -1, fit = segment;
+    for (let a = -8; a <= 8; a++) for (let b = -8; b <= 8; b++) for (let c = -8; c <= 8; c++) for (let d = -8; d <= 8; d++) {
+      const value = darkness(segment[0] + a, segment[1] + b, segment[2] + c, segment[3] + d);
+      if (value > best) [best, fit] = [value, [segment[0] + a, segment[1] + b, segment[2] + c, segment[3] + d]];
+    }
+    const [x1, y1, x2, y2] = fit;
+    const len = Math.hypot(x2 - x1, y2 - y1), tx = (x2 - x1) / len, ty = (y2 - y1) / len;
+    for (let s = -width; s <= len + width; s += 0.5) for (let d = -width; d <= width; d += 0.5) erase[at(x1 + tx * s - ty * d, y1 + ty * s + tx * d) / 3] = 1;
+  }
+  const directions = Array.from({ length: 24 }, (_, i) => [Math.cos((i * Math.PI) / 24), Math.sin((i * Math.PI) / 24)]);
+  const march = (x, y, dx, dy) => {
+    for (let t = 1; t <= 40; t++) {
+      const xx = Math.round(x + dx * t), yy = Math.round(y + dy * t);
+      if (xx < 0 || yy < 0 || xx >= W0 || yy >= H0) return null;
+      if (!erase[yy * W0 + xx]) return [t, (yy * W0 + xx) * 3];
+    }
+    return null;
+  };
+  const filled = [];
+  for (let k = 0; k < W0 * H0; k++) {
+    if (!erase[k]) continue;
+    const x = k % W0, y = (k - x) / W0;
+    let best = Infinity, color = null;
+    for (const [dx, dy] of directions) {
+      const a = march(x, y, dx, dy), b = march(x, y, -dx, -dy);
+      if (!a || !b) continue;
+      const score = [0, 1, 2].reduce((sum, ch) => sum + Math.abs(px[a[1] + ch] - px[b[1] + ch]), 0) + 2 * (a[0] + b[0]);
+      if (score < best) [best, color] = [score, [0, 1, 2].map((ch) => (px[a[1] + ch] * b[0] + px[b[1] + ch] * a[0]) / (a[0] + b[0]))];
+    }
+    if (color) filled.push([k * 3, color]);
+  }
+  for (const [k, c] of filled) px.set(c, k);
+  // 縁から続く背景（4近傍の塗りつぶし）
+  const isBack = BACKGROUND[art.background];
+  const back = new Uint8Array(W0 * H0);
+  const stack = [];
+  const push = (x, y) => {
+    const k = y * W0 + x;
+    if (back[k] || !isBack(px[k * 3], px[k * 3 + 1], px[k * 3 + 2])) return;
+    back[k] = 1;
+    stack.push(k);
+  };
+  for (let x = 0; x < W0; x++) { push(x, 0); push(x, H0 - 1); }
+  for (let y = 0; y < H0; y++) { push(0, y); push(W0 - 1, y); }
+  while (stack.length) {
+    const k = stack.pop(), x = k % W0, y = (k - x) / W0;
+    if (x > 0) push(x - 1, y);
+    if (x < W0 - 1) push(x + 1, y);
+    if (y > 0) push(x, y - 1);
+    if (y < H0 - 1) push(x, y + 1);
+  }
+  // 背景でない所の塊（8近傍）のうち、いちばん大きいものだけを残す
+  const label = new Int32Array(W0 * H0).fill(-1);
+  let best = -1, bestSize = 0;
+  for (let k0 = 0, id = 0; k0 < W0 * H0; k0++) {
+    if (back[k0] || label[k0] >= 0) continue;
+    let size = 0;
+    label[k0] = id;
+    stack.push(k0);
+    while (stack.length) {
+      const k = stack.pop(), x = k % W0, y = (k - x) / W0;
+      size++;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        const xx = x + dx, yy = y + dy;
+        if (xx < 0 || yy < 0 || xx >= W0 || yy >= H0) continue;
+        const k2 = yy * W0 + xx;
+        if (!back[k2] && label[k2] < 0) { label[k2] = id; stack.push(k2); }
+      }
+    }
+    if (size > bestSize) [best, bestSize] = [id, size];
+    id++;
+  }
+  // 紙に重ねる。白い背景は掛け合わせ（縁のなじみが白のまま残らない）、暗い背景は縁を少しぼかした型で重ねる
+  const keep = new Float32Array(W0 * H0);
+  let x0 = W0, x1 = 0, y0 = H0, y1 = 0;
+  for (let k = 0; k < W0 * H0; k++) {
+    if (label[k] !== best) continue;
+    keep[k] = 1;
+    const x = k % W0, y = (k - x) / W0;
+    x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+  }
+  const soft = new Float32Array(W0 * H0);
+  for (let k = 0; k < W0 * H0; k++) {
+    const x = k % W0, y = (k - x) / W0;
+    let sum = 0, n = 0;
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+      const xx = x + dx, yy = y + dy;
+      if (xx < 0 || yy < 0 || xx >= W0 || yy >= H0) continue;
+      sum += keep[yy * W0 + xx] * (dx || dy ? 1 : 2);
+      n += dx || dy ? 1 : 2;
+    }
+    soft[k] = sum / n;
+  }
+  const out = Buffer.alloc(W0 * H0 * 3);
+  for (let k = 0; k < W0 * H0; k++) {
+    for (let ch = 0; ch < 3; ch++) {
+      const c = px[k * 3 + ch];
+      out[k * 3 + ch] = Math.round(art.background === "white"
+        ? (keep[k] ? c : 255) * PAPER[ch] / 255
+        : PAPER[ch] * (1 - soft[k]) + c * soft[k]);
+    }
+  }
+  const margin = Math.round(0.025 * Math.max(x1 - x0, y1 - y0));
+  const crop = { left: Math.max(0, x0 - margin), top: Math.max(0, y0 - margin) };
+  crop.width = Math.min(W0, x1 + margin + 1) - crop.left;
+  crop.height = Math.min(H0, y1 + margin + 1) - crop.top;
+  const scale = Math.min(1, ART_SIZE / Math.max(crop.width, crop.height));
+  const W = Math.round(crop.width * scale), H = Math.round(crop.height * scale);
+  let image = sharp(out, { raw: { width: W0, height: H0, channels: 3 } }).extract(crop);
+  if (art.flip === "v") image = image.flip();
+  const pixels = await image.resize(W, H).raw().toBuffer();
+  const labels = plate.labels.map((spec) => {
+    let [u, v] = [(spec.px[0] - crop.left) / crop.width, (spec.px[1] - crop.top) / crop.height];
+    if (art.flip === "v") v = 1 - v;
+    const entry = { at: [+u.toFixed(4), +v.toFixed(4)] };
+    for (const key of ["term", "ja", "en", "note"]) if (spec[key]) entry[key] = spec[key];
+    return entry;
+  });
+  return { W, H, pixels, labels };
+}
+
+/** 確認画像（ラベルの点に番号と名前） */
+async function writeCheck(id, pixels, W, H, labels) {
+  fs.mkdirSync(CHECK, { recursive: true });
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">`;
+  for (const [i, l] of labels.entries()) {
+    const [x, y] = [l.at[0] * W, l.at[1] * H];
+    const name = l.ja ?? termById.get(l.term)?.ja ?? l.term;
+    svg += `<circle cx="${x}" cy="${y}" r="5" fill="#111" stroke="#fff" stroke-width="2"/><text x="${x + 7}" y="${y - 6}" font-size="17" font-family="Hiragino Sans" fill="#000" stroke="#fff" stroke-width="3" paint-order="stroke">${i + 1} ${name}</text>`;
+  }
+  svg += "</svg>";
+  await sharp(pixels, { raw: { width: W, height: H, channels: 3 } }).composite([{ input: Buffer.from(svg) }]).png().toFile(path.join(CHECK, `${id}.png`));
+}
+
+async function writePlate(plate, { W, H, pixels, labels }, quality) {
+  const webp = await sharp(pixels, { raw: { width: W, height: H, channels: 3 } }).webp({ quality }).toBuffer();
+  const hash = createHash("sha1").update(webp).digest("hex").slice(0, 10);
+  for (const old of fs.readdirSync(OUT)) if (old.startsWith(`${plate.id}.`) && old.endsWith(".webp")) fs.rmSync(path.join(OUT, old));
+  fs.writeFileSync(path.join(OUT, `${plate.id}.${hash}.webp`), webp);
+  index.plates[plate.id] = { url: `plates/${plate.id}.${hash}.webp`, w: W, h: H, labels };
+  console.log(`${plate.id}: ${W}×${H} ${(webp.length / 1024).toFixed(0)}KB ラベル${labels.length}`);
+  if (check) await writeCheck(plate.id, pixels, W, H, labels);
+}
+
 fs.mkdirSync(OUT, { recursive: true });
 const indexFile = path.join(OUT, "index.json");
 const index = fs.existsSync(indexFile) ? JSON.parse(fs.readFileSync(indexFile, "utf8")) : { plates: {} };
@@ -235,6 +426,10 @@ for (const organ of organs) {
   const ids = organTerms(organ);
   for (const plate of organ.plates ?? []) {
     if (only.size && !only.has(plate.id)) continue;
+    if (plate.art) {
+      await writePlate(plate, await artPlate(plate), 84);
+      continue;
+    }
     if (!plate.view) continue; // 模式図（SVG を手で描いたもの）は描かない
     const items = drawList(plate.terms ?? ids, plate);
     const { W, H, SW, SH, pixels, owner, depth, toScreen } = render(plate, items, plate.box ?? organ.box, new Set(organ.seamless ?? []));
@@ -264,23 +459,7 @@ for (const organ of organs) {
       for (const key of ["ja", "en", "note", "side"]) if (spec[key]) entry[key] = spec[key];
       labels.push(entry);
     }
-    const webp = await sharp(pixels, { raw: { width: W, height: H, channels: 3 } }).webp({ quality: 88 }).toBuffer();
-    const hash = createHash("sha1").update(webp).digest("hex").slice(0, 10);
-    for (const old of fs.readdirSync(OUT)) if (old.startsWith(`${plate.id}.`) && old.endsWith(".webp")) fs.rmSync(path.join(OUT, old));
-    fs.writeFileSync(path.join(OUT, `${plate.id}.${hash}.webp`), webp);
-    index.plates[plate.id] = { url: `plates/${plate.id}.${hash}.webp`, w: W, h: H, labels };
-    console.log(`${plate.id}: ${W}×${H} ${(webp.length / 1024).toFixed(0)}KB ラベル${labels.length}`);
-    if (check) {
-      fs.mkdirSync(CHECK, { recursive: true });
-      let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">`;
-      for (const [i, l] of labels.entries()) {
-        const [x, y] = [l.at[0] * W, l.at[1] * H];
-        const name = l.ja ?? termById.get(l.term)?.ja ?? l.term;
-        svg += `<circle cx="${x}" cy="${y}" r="4" fill="#111"/><text x="${x + 6}" y="${y - 5}" font-size="15" font-family="Hiragino Sans" fill="#000" stroke="#fff" stroke-width="3" paint-order="stroke">${i + 1} ${name}</text>`;
-      }
-      svg += "</svg>";
-      await sharp(pixels, { raw: { width: W, height: H, channels: 3 } }).composite([{ input: Buffer.from(svg) }]).png().toFile(path.join(CHECK, `${plate.id}.png`));
-    }
+    await writePlate(plate, { W, H, pixels, labels }, 88);
   }
 }
 // 今の organs.json に無い図は index から除く

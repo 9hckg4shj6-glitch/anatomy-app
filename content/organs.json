@@ -31,57 +31,11 @@
       ],
       "plates": [
         { "id": "heart-flow", "title": "血液の流れ（模式図）", "en": "blood flow through the heart (diagram)", "diagram": "flow", "labels": [] },
-        {
-          "id": "heart-anterior", "title": "前から見た心臓", "en": "anterior view (sternocostal surface)",
-          "view": { "f": [0, 0, -1], "u": [0, 1, 0] },
-          "labels": [
-            "superior-vena-cava", "brachiocephalic-trunk", "aortic-arch", "ascending-aorta", "pulmonary-trunk", "right-auricle", "left-auricle",
-            "right-atrium", "right-ventricle", "left-ventricle", "apex-of-heart", "inferior-vena-cava",
-            "right-coronary-artery", "right-marginal-branch", "anterior-interventricular-branch",
-            { "term": "coronary-sulcus", "pin": 0 }, "anterior-interventricular-sulcus"
-          ]
-        },
-        {
-          "id": "heart-posterior", "title": "後ろ下から見た心臓", "en": "posteroinferior view (base and diaphragmatic surface)",
-          "view": { "f": [0.05, 0.6, 1], "u": [0, 1, 0] },
-          "hide": ["thoracic-aorta"],
-          "labels": [
-            "aortic-arch", "left-pulmonary-artery", "right-pulmonary-artery", "superior-vena-cava", "superior-pulmonary-vein", "inferior-pulmonary-vein",
-            "left-atrium", "right-atrium", "left-ventricle", "right-ventricle", "inferior-vena-cava",
-            "coronary-sinus", "circumflex-branch", "great-cardiac-vein", "posterior-vein-of-left-ventricle", "middle-cardiac-vein", "posterior-interventricular-branch",
-            "small-cardiac-vein", "posterior-interventricular-sulcus"
-          ]
-        },
-        {
-          "id": "heart-frontal", "title": "前の壁を外した心臓", "en": "frontal section",
-          "view": { "f": [0, 0, -1], "u": [0, 1, 0] },
-          "cut": { "normal": [0, 0, -1], "point": [0, 0, 0.126] },
-          "labels": [
-            "superior-vena-cava", "ascending-aorta", "aortic-valve", "left-atrium", "right-atrium", "tricuspid-valve", "mitral-valve",
-            "right-ventricle", "left-ventricle", "papillary-muscles", "inferior-vena-cava"
-          ]
-        },
-        {
-          "id": "heart-four-chamber", "title": "水平に切った心臓（四腔断）", "en": "four-chamber section (horizontal)",
-          "view": { "f": [0, 1, 0], "u": [0, 0, 1] },
-          "cut": { "normal": [0, 1, 0], "point": [0, 1.214, 0] },
-          "hide": ["inferior-vena-cava", "superior-vena-cava"],
-          "labels": ["right-atrium", "right-ventricle", "left-atrium", "left-ventricle", "tricuspid-valve", "mitral-valve", "superior-pulmonary-vein", "thoracic-aorta"]
-        },
-        {
-          "id": "heart-base", "title": "心房を外して上から見た弁", "en": "valves viewed from above (base of heart)",
-          "view": { "f": [0, -1, 0.6], "u": [0, 0.6, 1] },
-          "cut": { "normal": [0, -1, 0.6], "point": [0, 1.255, 0.12] },
-          "hide": ["right-atrium", "left-atrium", "superior-vena-cava", "inferior-vena-cava", "superior-pulmonary-vein", "inferior-pulmonary-vein", "coronary-sinus", "thoracic-aorta", "great-cardiac-vein"],
-          "labels": [
-            "anterior-semilunar-cusp-of-pulmonary-valve", "right-semilunar-cusp-of-pulmonary-valve", "left-semilunar-cusp-of-pulmonary-valve",
-            "right-semilunar-cusp-of-aortic-valve", "left-semilunar-cusp-of-aortic-valve", "posterior-semilunar-cusp-of-aortic-valve",
-            "anterior-cusp-of-mitral-valve", "posterior-cusp-of-mitral-valve",
-            "anterior-cusp-of-tricuspid-valve", "posterior-cusp-of-tricuspid-valve", "septal-cusp-of-tricuspid-valve",
-            "left-coronary-artery"
-          ],
-          "frameTerms": ["right-ventricle", "left-ventricle", "pulmonary-trunk", "ascending-aorta"]
-        }
+        {"id": "heart-anterior", "title": "前から見た心臓", "en": "anterior view (sternocostal surface)", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Heart_anterior_exterior_view.jpg", "page": "https://commons.wikimedia.org/wiki/File:Heart_anterior_exterior_view.jpg", "author": "Patrick J. Lynch, medical illustrator", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を切り抜き", "background": "red"}, "labels": [{"term": "superior-vena-cava", "px": [440, 250]}, {"term": "brachiocephalic-vein", "px": [600, 150]}, {"term": "brachiocephalic-trunk", "px": [565, 85]}, {"term": "common-carotid-artery", "px": [672, 95]}, {"term": "subclavian-artery", "px": [745, 100]}, {"term": "aortic-arch", "px": [720, 250]}, {"term": "ascending-aorta", "px": [572, 385]}, {"term": "pulmonary-trunk", "px": [717, 425]}, {"term": "left-pulmonary-artery", "px": [995, 455]}, {"term": "superior-pulmonary-vein", "px": [1050, 575]}, {"term": "inferior-pulmonary-vein", "px": [1062, 640]}, {"term": "right-auricle", "px": [450, 550]}, {"term": "left-auricle", "px": [900, 560]}, {"term": "right-atrium", "px": [328, 772]}, {"term": "right-ventricle", "px": [672, 739]}, {"term": "left-ventricle", "px": [1000, 850]}, {"term": "apex-of-heart", "px": [960, 1180]}, {"term": "inferior-vena-cava", "px": [470, 1090]}, {"term": "right-coronary-artery", "px": [400, 872]}, {"term": "coronary-sulcus", "px": [455, 683]}, {"term": "anterior-interventricular-branch", "px": [883, 780]}, {"term": "anterior-interventricular-sulcus", "px": [892, 1017]}]},
+        {"id": "heart-posterior", "title": "後ろから見た心臓", "en": "posterior view (base and diaphragmatic surface)", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Rear_view_of_a_human_heart_%2A_Vista_posterior_de_un_coraz%C3%B3n_humano.png", "page": "https://commons.wikimedia.org/wiki/File:Rear_view_of_a_human_heart_*_Vista_posterior_de_un_coraz%C3%B3n_humano.png", "author": "BruceBlaus（Blausen Medical の図から）", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/", "changes": "背景を紙の色に", "background": "white"}, "labels": [{"term": "aortic-arch", "px": [1082, 529]}, {"term": "left-pulmonary-artery", "px": [752, 917]}, {"term": "right-pulmonary-artery", "px": [1528, 940]}, {"term": "superior-vena-cava", "px": [1563, 470]}, {"term": "superior-pulmonary-vein", "px": [764, 1129]}, {"term": "inferior-pulmonary-vein", "px": [705, 1352]}, {"term": "left-auricle", "px": [529, 1176]}, {"term": "left-atrium", "px": [1176, 1293]}, {"term": "right-atrium", "px": [1646, 1705]}, {"term": "left-ventricle", "px": [500, 1950]}, {"term": "apex-of-heart", "px": [50, 1983]}, {"term": "inferior-vena-cava", "px": [1411, 2116]}, {"term": "great-cardiac-vein", "px": [633, 1450]}, {"term": "circumflex-branch", "px": [533, 1467]}, {"term": "coronary-sinus", "px": [1083, 1775]}, {"term": "middle-cardiac-vein", "px": [867, 1950]}, {"term": "posterior-interventricular-branch", "px": [933, 2067]}]},
+        {"id": "heart-frontal", "title": "前の壁を外した心臓", "en": "interior from the front (anterior wall removed)", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/2/28/Heart_anterior_normal_anatomy.jpg", "page": "https://commons.wikimedia.org/wiki/File:Heart_anterior_normal_anatomy.jpg", "author": "Patrick J. Lynch, medical illustrator", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を切り抜き", "background": "dark"}, "labels": [{"term": "superior-vena-cava", "px": [450, 250]}, {"term": "aortic-arch", "px": [720, 250]}, {"term": "ascending-aorta", "px": [570, 400]}, {"term": "pulmonary-valve", "px": [690, 545]}, {"term": "aortic-valve", "px": [720, 695]}, {"term": "right-atrium", "px": [380, 620]}, {"term": "tricuspid-valve", "px": [552, 800]}, {"term": "mitral-valve", "px": [842, 733]}, {"term": "left-auricle", "px": [900, 560]}, {"term": "right-ventricle", "px": [560, 1000]}, {"term": "left-ventricle", "px": [970, 850]}, {"term": "papillary-muscles", "px": [862, 1023]}, {"ja": "腱索", "en": "chordae tendineae", "px": [880, 820]}, {"term": "inferior-vena-cava", "px": [470, 1080]}]},
+        {"id": "heart-four-chamber", "title": "四腔断（4つの部屋を通る断面）", "en": "four-chamber section", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Heart_apical_4c_anatomy.jpg", "page": "https://commons.wikimedia.org/wiki/File:Heart_apical_4c_anatomy.jpg", "author": "Patrick J. Lynch, medical illustrator", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を切り抜き、心尖が下になるよう上下を反転", "background": "dark", "flip": "v"}, "labels": [{"term": "right-atrium", "px": [504, 1418]}, {"term": "left-atrium", "px": [998, 1418]}, {"term": "tricuspid-valve", "px": [441, 1134]}, {"term": "mitral-valve", "px": [1029, 1050]}, {"term": "aortic-valve", "px": [772, 1239]}, {"term": "right-ventricle", "px": [441, 945]}, {"term": "left-ventricle", "px": [819, 893]}, {"term": "papillary-muscles", "px": [882, 651]}, {"ja": "腱索", "en": "chordae tendineae", "px": [945, 893]}, {"ja": "心室中隔", "en": "interventricular septum", "px": [630, 735]}, {"ja": "心房中隔", "en": "interatrial septum", "px": [725, 1523]}, {"term": "apex-of-heart", "px": [735, 179]}]},
+        {"id": "heart-base", "title": "心房を外して上から見た弁", "en": "valves viewed from above (base of heart)", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/b/b9/2011_Heart_Valves.jpg", "page": "https://commons.wikimedia.org/wiki/File:2011_Heart_Valves.jpg", "author": "OpenStax College, Anatomy & Physiology", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0/", "changes": "英語のラベルと引き出し線を消し、背景を紙の色に", "background": "white", "erase": [[415, 100, 527, 282], [1175, 100, 998, 347], [370, 1010, 634, 678], [808, 960, 1175, 1020]]}, "note": "上が後ろ、下が前。図の左が体の右。三尖弁・僧帽弁は弁の付け根の輪（弁輪）を指す。", "labels": [{"term": "tricuspid-valve", "px": [348, 470]}, {"term": "posterior-cusp-of-tricuspid-valve", "px": [390, 380]}, {"term": "septal-cusp-of-tricuspid-valve", "px": [570, 290]}, {"term": "anterior-cusp-of-tricuspid-valve", "px": [520, 480]}, {"term": "mitral-valve", "px": [1128, 470]}, {"term": "anterior-cusp-of-mitral-valve", "px": [880, 480]}, {"term": "posterior-cusp-of-mitral-valve", "px": [1020, 400]}, {"term": "posterior-semilunar-cusp-of-aortic-valve", "px": [625, 640]}, {"term": "left-semilunar-cusp-of-aortic-valve", "px": [715, 625]}, {"term": "right-semilunar-cusp-of-aortic-valve", "px": [690, 720]}, {"term": "right-semilunar-cusp-of-pulmonary-valve", "px": [700, 915]}, {"term": "left-semilunar-cusp-of-pulmonary-valve", "px": [790, 860]}, {"term": "anterior-semilunar-cusp-of-pulmonary-valve", "px": [785, 965]}, {"term": "left-coronary-artery", "px": [842, 762]}, {"term": "right-coronary-artery", "px": [530, 930]}]}
       ]
     }
   ]
