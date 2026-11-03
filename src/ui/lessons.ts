@@ -4,8 +4,11 @@ import { h } from "../dom";
 import { normalize, searchTerms, searchUnits } from "../search";
 import { termAt, type AppContext } from "./context";
 
-/** レッスンの一覧（#/lessons）。系統→まとまり→レッスンのフォルダーと、最近のレッスン・検索 */
-export async function lessons(ctx: AppContext): Promise<void> {
+/**
+ * レッスンの一覧（#/lessons）。系統→まとまり→レッスンのフォルダーと、最近のレッスン・検索。
+ * "#/lessons/<系統ID>"（ホームの系統から）は、その系統のフォルダーを開いて見せる
+ */
+export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   // 皮膚と骨格だけを読み込む（全系統だと初めて開いたとき約25MB。ほかの系統は使う画面で読み込む）
@@ -22,9 +25,11 @@ export async function lessons(ctx: AppContext): Promise<void> {
   const learnedIds = new Set(learned.map((item) => item.termId));
   // 開いたフォルダーは覚えておき、レッスンから戻ったときも開いたままにする
   const openIds = new Set(Array.isArray(openSetting?.value) ? (openSetting.value as string[]) : []);
+  if (systemId) openIds.add(systemId);
   const folder = (id: string, title: (Node | string)[], summary: string, allDone: boolean, list: HTMLElement, kind = "system folder"): HTMLElement =>
     h("details", {
       class: allDone ? `${kind} done` : kind,
+      "data-folder": id,
       open: openIds.has(id),
       ontoggle: (event: Event) => {
         if ((event.currentTarget as HTMLDetailsElement).open) openIds.add(id);
@@ -111,6 +116,7 @@ export async function lessons(ctx: AppContext): Promise<void> {
     folders,
     h("p", { class: "muted lessons-note" }, "語根カード・臓器の図・骨学試験は、ホームのそれぞれの項目から開きます。"),
   );
+  if (systemId) folders.querySelector(`[data-folder="${CSS.escape(systemId)}"]`)?.scrollIntoView({ block: "start" });
 }
 
 const OPEN_FOLDERS = "homeOpenFolders";

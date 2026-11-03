@@ -487,7 +487,10 @@ export class AnatomyViewer {
     this.controls.zoomToCursor = true;
     // 指やマウスで実際に視点を動かしたときだけ「視点を戻す」を出す（タップしただけでは出さない）
     let handling = false;
-    this.controls.addEventListener("start", () => (handling = true));
+    this.controls.addEventListener("start", () => {
+      handling = true;
+      this.controls.autoRotate = false;
+    });
     this.controls.addEventListener("end", () => (handling = false));
     this.controls.addEventListener("change", () => {
       this.dirty = true;
@@ -1017,6 +1020,12 @@ export class AnatomyViewer {
     // 真上・真下からだと回転の操作がしにくいので少し傾ける
     if (Math.abs(direction.y) > 0.96) direction.z += direction.y > 0 ? -0.05 : 0.05;
     this.moveTo(target, target.clone().add(direction.normalize().multiplyScalar(half / tan / Math.min(1, this.camera.aspect))), animate);
+  }
+
+  /** 体の縦の軸のまわりにゆっくり回し続ける（ホーム）。指やマウスで動かすと止まる */
+  spin(on: boolean): void {
+    this.controls.autoRotate = on;
+    this.controls.autoRotateSpeed = 0.6;
   }
 
   /** アプリが最後に決めた視点へ戻る（自分で回して迷ったとき） */

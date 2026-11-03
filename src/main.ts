@@ -171,6 +171,7 @@ async function start(): Promise<void> {
     };
     viewer.onPick = null;
     viewer.onHover = null;
+    viewer.spin(false);
     viewer.setPeel([], []);
     viewer.setDrawing(null);
     viewer.setSection(null);
@@ -185,14 +186,14 @@ async function start(): Promise<void> {
 
     const [name, arg] = parseHash();
     currentName = name;
-    // ホームは3Dを出さず、項目を画面いっぱいに並べる
+    // ホームは3Dの人体を大きく、境目のつまみは出さない
     layout.classList.toggle("is-home", !PAGES[name]);
     if (!PAGES[name]) document.title = "解剖学 3D単語帳";
     showCrumbs(name);
     window.scrollTo(0, 0);
     try {
       if (name === "learn") await lesson(ctx, arg);
-      else if (name === "lessons") await lessons(ctx);
+      else if (name === "lessons") await lessons(ctx, arg);
       else if (name === "review") await review(ctx);
       else if (name === "explore") await explore(ctx, arg);
       // "#/roots/<レッスンID>" は語根のレッスン、"#/roots/root/<語根のキー>" は一覧でその語根を開く
