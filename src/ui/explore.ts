@@ -1,13 +1,12 @@
 import { autoSpeak } from "../audio";
-import { isDrawn, landmarksOf, loadAttachments, organOf, pins, regionSystems, systems, termById, terms, units, type Term, type Unit } from "../content";
+import { isDrawn, landmarksOf, loadAttachments, organOf, regionSystems, systems, termById, units, type Term, type Unit } from "../content";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
-import { landmarkAt } from "../landmarks";
 import { relatedTerms } from "../related";
 import { normalize, searchTerms } from "../search";
 import type { Vec3 } from "../landmarks";
 import type { Section } from "../viewer";
-import { motionPlayer, type AppContext } from "./context";
+import { motionPlayer, termAt, type AppContext } from "./context";
 import { attachMarks } from "./quiz";
 import { termCard } from "./term-card";
 
@@ -433,15 +432,8 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   };
   search.addEventListener("input", renderList);
 
-  /** 部品のその点にある語。骨・器官の部位（ピン）の上なら、骨・器官ではなく部位 */
-  const termAt = (elementId: string | null, point: Vec3 | null): Term | null => {
-    const termId = elementId ? viewer.termsOf(elementId)[0] : null;
-    const parts = elementId && point ? terms.filter((term) => term.of && pins[term.id] && index.terms[term.id]?.elements.includes(elementId)) : [];
-    const part = point ? landmarkAt(point, parts, 0.002) : null;
-    return part ?? (termId ? termById.get(termId) ?? null : null);
-  };
-  viewer.onPick = (elementId, point) => select(termAt(elementId, point), false, true);
-  viewer.onHover = (elementId, point) => termAt(elementId, point)?.ja ?? null;
+  viewer.onPick = (elementId, point) => select(termAt(ctx, elementId, point), false, true);
+  viewer.onHover = (elementId, point) => termAt(ctx, elementId, point)?.ja ?? null;
   ctx.hint("タップで名前を表示");
   panel.replaceChildren(search, sectionBox, peelBox, detail, list);
   renderList();

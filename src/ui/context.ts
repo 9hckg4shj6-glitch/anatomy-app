@@ -1,4 +1,5 @@
-import { organOfUnit, regionSystems, unitById, type ModelIndex, type Term } from "../content";
+import { organOfUnit, pins, regionSystems, termById, terms, unitById, type ModelIndex, type Term } from "../content";
+import { landmarkAt, type Vec3 } from "../landmarks";
 import type { AnatomyViewer, SceneSpec } from "../viewer";
 
 export interface AppContext {
@@ -22,6 +23,20 @@ export interface AppContext {
 
 /** レッスンの途中で画面を離れるときの確認 */
 export const LEAVE_LESSON = "レッスンの途中です。ここでやめると、このレッスンは学んだことにならず、復習にも入りません。やめますか？";
+
+/**
+ * 3Dでタップした部品のその点にある語。骨・器官の部位（ピン）の上なら、骨・器官ではなく部位。
+ * within があれば、その語（臓器の図の語など）を先に選ぶ
+ */
+export function termAt(ctx: AppContext, elementId: string | null, point: Vec3 | null, within?: Set<string>): Term | null {
+  const ids = elementId ? ctx.viewer.termsOf(elementId) : [];
+  const termId = (within && ids.find((id) => within.has(id))) ?? ids[0];
+  const parts = elementId && point
+    ? terms.filter((term) => term.of && (!within || within.has(term.id)) && pins[term.id] && ctx.index.terms[term.id]?.elements.includes(elementId))
+    : [];
+  const part = point ? landmarkAt(point, parts, 0.002) : null;
+  return part ?? (termId ? termById.get(termId) ?? null : null);
+}
 
 /**
  * 筋の「動きを見る」（term-card の motion）。骨を動かし、起始〜停止の距離の文を返す。やめたら筋に寄り直す。

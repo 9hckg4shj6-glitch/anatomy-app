@@ -1,10 +1,9 @@
 import { autoSpeak } from "../audio";
-import { loadPlateIndex, organById, organs, organTerms, pins, termById, terms, unitById, type Organ, type PlateIndex, type PlateLabel, type PlateSpec, type Term } from "../content";
+import { loadPlateIndex, organById, organs, organTerms, termById, unitById, type Organ, type PlateIndex, type PlateLabel, type PlateSpec, type Term } from "../content";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
-import { landmarkAt, type Vec3 } from "../landmarks";
 import type { Section } from "../viewer";
-import type { AppContext } from "./context";
+import { termAt, type AppContext } from "./context";
 import { flowDiagram } from "./diagrams";
 import { termCard } from "./term-card";
 
@@ -107,14 +106,8 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
     if (location.hash !== hash) history.replaceState(null, "", hash);
     render();
   };
-  const termAt = (elementId: string | null, point: Vec3 | null): Term | null => {
-    const termId = elementId ? viewer.termsOf(elementId).find((id) => ids.has(id)) ?? viewer.termsOf(elementId)[0] : null;
-    const parts = elementId && point ? terms.filter((term) => term.of && ids.has(term.id) && pins[term.id] && ctx.index.terms[term.id]?.elements.includes(elementId)) : [];
-    const part = point ? landmarkAt(point, parts, 0.002) : null;
-    return part ?? (termId ? termById.get(termId) ?? null : null);
-  };
-  viewer.onPick = (elementId, point) => select(termAt(elementId, point), false);
-  viewer.onHover = (elementId, point) => termAt(elementId, point)?.ja ?? null;
+  viewer.onPick = (elementId, point) => select(termAt(ctx, elementId, point, ids), false);
+  viewer.onHover = (elementId, point) => termAt(ctx, elementId, point, ids)?.ja ?? null;
   ctx.hint("タップで名前を表示");
 
   const legend = () => h("div", { class: "organ-legend" },

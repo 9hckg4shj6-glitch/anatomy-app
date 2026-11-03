@@ -7,14 +7,20 @@ import { rootKey, rootUnits } from "../roots";
 import { normalize, searchTerms, searchUnits } from "../search";
 import { daysUntilExam, preferences } from "../settings";
 import { todayCounts } from "./review";
-import type { AppContext } from "./context";
+import { termAt, type AppContext } from "./context";
 
 export async function home(ctx: AppContext): Promise<void> {
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   // ホームでは皮膚と骨格だけを読み込む（全系統だと初めて開いたとき約25MB。ほかの系統は使う画面で読み込む）
   void ctx.viewer.show({ systems: ["skeletal"], body: true });
-  ctx.hint("ドラッグで回転・ダブルタップで拡大");
+  // 骨や骨の部位をタップしたら、図鑑でその語を開く
+  ctx.viewer.onPick = (elementId, point) => {
+    const term = termAt(ctx, elementId, point);
+    if (term) location.hash = `#/explore/${term.id}`;
+  };
+  ctx.viewer.onHover = (elementId, point) => termAt(ctx, elementId, point)?.ja ?? null;
+  ctx.hint("タップで図鑑を開く・ドラッグで回転");
 
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);

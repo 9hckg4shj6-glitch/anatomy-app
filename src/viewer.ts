@@ -516,7 +516,7 @@ export class AnatomyViewer {
         this.onPick(hit?.element ?? null, hit?.point ?? null, hit?.normal ?? null);
         return;
       }
-      // タップで答えたり選んだりしない画面（ホームなど）では、ダブルタップした所に寄る
+      // タップで答えたり選んだりしない画面（レッスンの説明など）では、ダブルタップした所に寄る
       const now = performance.now();
       if (lastTap && now - lastTap.t < 350 && Math.hypot(event.clientX - lastTap.x, event.clientY - lastTap.y) < 40) {
         lastTap = null;
