@@ -350,6 +350,8 @@ const PlateArt = z.strictObject({
   src: z.string().url(), page: z.string().url(), author: z.string().min(1), license: z.string().regex(/^CC BY(-SA)? \d\.\d$|^Public domain$/),
   licenseUrl: z.string().url(), changes: z.string().min(1), background: z.enum(["dark", "red", "white"]), flip: z.literal("v").optional(),
   erase: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), eraseWidth: z.number().optional(),
+  eraseBoxes: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
+  drop: z.array(z.string().min(1)).optional(), recolor: z.record(z.string(), z.string()).optional(),
 });
 const Plate = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(),
@@ -361,8 +363,8 @@ const Plate = z.strictObject({
   .refine((plate) => !plate.art || plate.labels.every((label) => typeof label !== "string" && label.px), "元の図（art）のラベルには px（元の図のピクセル）が要る");
 const Organ = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), ja: z.string().min(1), yomi: z.string().regex(/^[ぁ-ゖー]+$/), en: word, about: z.string().min(10),
-  units: z.array(z.string()).min(1), with: z.array(z.string()), box: z.tuple([vec, vec]), seamless: z.array(z.string()).optional(),
-  colors: z.record(z.string(), z.string().regex(/^#[0-9a-f]{6}$/)), views: z.array(z.strictObject({ label: z.string().min(1), from: vec })).min(1),
+  units: z.array(z.string()).min(1), with: z.array(z.string()), around: z.array(z.string()).optional(), box: z.tuple([vec, vec]), seamless: z.array(z.string()).optional(),
+  colors: z.record(z.string(), z.string().regex(/^#[0-9a-f]{6}$/)), colorLabel: z.string().min(1).optional(), colorNote: z.string().min(1).optional(), views: z.array(z.strictObject({ label: z.string().min(1), from: vec })).min(1),
   cuts: z.array(OrganCut), plates: z.array(Plate),
 });
 const organsParsed = z.strictObject({ organs: z.array(Organ) }).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/organs.json"), "utf8")));
@@ -371,7 +373,9 @@ const plateIndexFile = path.join(ROOT, "public/plates/index.json");
 const plateIndex = fs.existsSync(plateIndexFile) ? JSON.parse(fs.readFileSync(plateIndexFile, "utf8")) : { plates: {} };
 for (const organ of organsParsed.success ? organsParsed.data.organs : []) {
   for (const id of organ.units) if (!unitIds.has(id)) errors.push(`organs.json ${organ.id}: レッスンが無い: ${id}`);
-  const named = [...organ.with, ...Object.keys(organ.colors), ...(organ.seamless ?? []), ...organ.cuts.flatMap((cut) => cut.hide ?? []),
+  // レッスンの場面は最初に見つかった臓器になるので、レッスンは1つの臓器にだけ入れる
+  for (const other of organsParsed.data.organs.slice(organsParsed.data.organs.indexOf(organ) + 1)) for (const id of organ.units) if (other.units.includes(id)) errors.push(`organs.json: レッスン ${id} が ${organ.id} と ${other.id} の両方にある`);
+  const named = [...organ.with, ...(organ.around ?? []), ...Object.keys(organ.colors), ...(organ.seamless ?? []), ...organ.cuts.flatMap((cut) => cut.hide ?? []),
     ...organ.plates.flatMap((plate) => [...(plate.hide ?? []), ...(plate.frameTerms ?? []), ...(plate.terms ?? []), ...Object.keys(plate.colors ?? {}),
       ...plate.labels.flatMap((label) => (typeof label === "string" ? [label] : label.term ? [label.term] : []))])];
   for (const id of named) if (!seen.has(id)) errors.push(`organs.json ${organ.id}: 語が無い: ${id}`);

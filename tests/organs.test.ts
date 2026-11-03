@@ -28,6 +28,25 @@ describe("臓器の場面", () => {
     expect(sceneFor("cardiovascular", "cv-heart")).toEqual({ systems: ["cardiovascular"], organ: "heart" });
     expect(sceneFor("cardiovascular", "cv-vein").organ).toBeUndefined();
   });
+
+  it("肺・胃・肝臓・腎臓・脳のレッスンもその臓器だけを見せる", () => {
+    expect(sceneFor("respiratory", "resp-lobes").organ).toBe("lung");
+    expect(sceneFor("digestive", "dig-pt-gi").organ).toBe("stomach");
+    expect(sceneFor("digestive", "dig-glands").organ).toBe("liver");
+    expect(sceneFor("urogenital", "uro-urinary").organ).toBe("kidney");
+    expect(sceneFor("nervous", "nerv-lobes").organ).toBe("brain");
+    // 鼻・喉頭や舌・咽頭のレッスンは今までどおり
+    expect(sceneFor("respiratory", "resp-larynx").organ).toBeUndefined();
+    expect(sceneFor("digestive", "dig-mouth").organ).toBeUndefined();
+  });
+
+  it("添えるだけの語（around）は場面に入るが、図鑑でその臓器だけの見せ方にはしない", () => {
+    const stomach = organById.get("stomach")!;
+    expect(organTerms(stomach)).toContain("esophagus");
+    expect(organOf("esophagus")).toBeUndefined();
+    expect(organOf("trachea")?.id).toBe("lung");
+    expect(organOf("frontal-lobe")?.id).toBe("brain");
+  });
 });
 
 describe("近い目印の形で分ける", () => {

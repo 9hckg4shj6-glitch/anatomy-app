@@ -7,35 +7,178 @@
       "en": "heart",
       "about": "心臓は握りこぶしほどの大きさで、胸の中央からやや左にあり、心尖を左前下に向けて傾いている。前から見ると大部分は右心室で、左心室は左の縁と心尖だけ、左心房は後ろにかくれる。",
       "units": ["cv-heart", "cv-heart-inner", "cv-heart-cusps", "cv-pt-heart"],
-      "with": [
-        "ascending-aorta", "aortic-arch", "brachiocephalic-trunk", "common-carotid-artery", "subclavian-artery", "thoracic-aorta",
-        "pulmonary-trunk", "right-pulmonary-artery", "left-pulmonary-artery", "superior-pulmonary-vein", "inferior-pulmonary-vein",
-        "superior-vena-cava", "inferior-vena-cava",
-        "anterior-interventricular-branch", "circumflex-branch", "posterior-interventricular-branch", "great-cardiac-vein"
-      ],
+      "with": ["ascending-aorta", "aortic-arch", "brachiocephalic-trunk", "common-carotid-artery", "subclavian-artery", "thoracic-aorta", "pulmonary-trunk", "right-pulmonary-artery", "left-pulmonary-artery", "superior-pulmonary-vein", "inferior-pulmonary-vein", "superior-vena-cava", "inferior-vena-cava", "anterior-interventricular-branch", "circumflex-branch", "posterior-interventricular-branch", "great-cardiac-vein"],
       "box": [[-0.062, 1.158, 0.052], [0.098, 1.322, 0.196]],
       "seamless": ["right-atrium", "left-atrium", "right-ventricle", "left-ventricle"],
-      "colors": { "right-atrium": "#8fb0e6", "right-ventricle": "#4f78c8", "left-atrium": "#eea0ae", "left-ventricle": "#c4485e" },
+      "colors": {"right-atrium": "#8fb0e6", "right-ventricle": "#4f78c8", "left-atrium": "#eea0ae", "left-ventricle": "#c4485e"},
+      "colorLabel": "部屋ごとに色を分ける",
+      "colorNote": "血管は、赤が酸素の多い血液（動脈血）、青が酸素の少ない血液（静脈血）の通る所。肺動脈は静脈血を運ぶので青、肺静脈は動脈血を運ぶので赤。弁は白。",
       "views": [
-        { "label": "前", "from": [0, 0, 1] },
-        { "label": "後ろ", "from": [0, 0.1, -1] },
-        { "label": "下（横隔面）", "from": [0.15, -1, 0.45] },
-        { "label": "右", "from": [-1, 0.1, 0.25] },
-        { "label": "左", "from": [1, 0.1, 0.1] },
-        { "label": "上（心底）", "from": [0, 1, -0.05] }
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "下（横隔面）", "from": [0.15, -1, 0.45]},
+        {"label": "右", "from": [-1, 0.1, 0.25]},
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "上（心底）", "from": [0, 1, -0.05]}
       ],
       "cuts": [
-        { "label": "前の壁を外す（前頭断）", "normal": [0, 0, -1], "point": [0, 0, 0.126], "from": [0, 0, 1] },
-        { "label": "四腔断（水平断）", "normal": [0, 1, 0], "point": [0, 1.214, 0], "from": [0, -1, 0.03] },
-        { "label": "弁を上から（心底）", "normal": [0, -1, 0.6], "point": [0, 1.255, 0.12], "from": [0, 1, -0.6], "hide": ["right-atrium", "left-atrium", "superior-vena-cava", "inferior-vena-cava", "superior-pulmonary-vein", "inferior-pulmonary-vein", "coronary-sinus", "thoracic-aorta"] }
+        {"label": "前の壁を外す（前頭断）", "normal": [0, 0, -1], "point": [0, 0, 0.126], "from": [0, 0, 1]},
+        {"label": "四腔断（水平断）", "normal": [0, 1, 0], "point": [0, 1.214, 0], "from": [0, -1, 0.03]},
+        {"label": "弁を上から（心底）", "normal": [0, -1, 0.6], "point": [0, 1.255, 0.12], "from": [0, 1, -0.6], "hide": ["right-atrium", "left-atrium", "superior-vena-cava", "inferior-vena-cava", "superior-pulmonary-vein", "inferior-pulmonary-vein", "coronary-sinus", "thoracic-aorta"]}
       ],
       "plates": [
-        { "id": "heart-flow", "title": "血液の流れ（模式図）", "en": "blood flow through the heart (diagram)", "diagram": "flow", "labels": [] },
+        {"id": "heart-flow", "title": "血液の流れ（模式図）", "en": "blood flow through the heart (diagram)", "diagram": "flow", "labels": []},
         {"id": "heart-anterior", "title": "前から見た心臓", "en": "anterior view (sternocostal surface)", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Heart_anterior_exterior_view.jpg", "page": "https://commons.wikimedia.org/wiki/File:Heart_anterior_exterior_view.jpg", "author": "Patrick J. Lynch, medical illustrator", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を切り抜き", "background": "red"}, "labels": [{"term": "superior-vena-cava", "px": [440, 250]}, {"term": "brachiocephalic-vein", "px": [600, 150]}, {"term": "brachiocephalic-trunk", "px": [565, 85]}, {"term": "common-carotid-artery", "px": [672, 95]}, {"term": "subclavian-artery", "px": [745, 100]}, {"term": "aortic-arch", "px": [720, 250]}, {"term": "ascending-aorta", "px": [572, 385]}, {"term": "pulmonary-trunk", "px": [717, 425]}, {"term": "left-pulmonary-artery", "px": [995, 455]}, {"term": "superior-pulmonary-vein", "px": [1050, 575]}, {"term": "inferior-pulmonary-vein", "px": [1062, 640]}, {"term": "right-auricle", "px": [450, 550]}, {"term": "left-auricle", "px": [900, 560]}, {"term": "right-atrium", "px": [328, 772]}, {"term": "right-ventricle", "px": [672, 739]}, {"term": "left-ventricle", "px": [1000, 850]}, {"term": "apex-of-heart", "px": [960, 1180]}, {"term": "inferior-vena-cava", "px": [470, 1090]}, {"term": "right-coronary-artery", "px": [400, 872]}, {"term": "coronary-sulcus", "px": [455, 683]}, {"term": "anterior-interventricular-branch", "px": [883, 780]}, {"term": "anterior-interventricular-sulcus", "px": [892, 1017]}]},
         {"id": "heart-posterior", "title": "後ろから見た心臓", "en": "posterior view (base and diaphragmatic surface)", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Rear_view_of_a_human_heart_%2A_Vista_posterior_de_un_coraz%C3%B3n_humano.png", "page": "https://commons.wikimedia.org/wiki/File:Rear_view_of_a_human_heart_*_Vista_posterior_de_un_coraz%C3%B3n_humano.png", "author": "BruceBlaus（Blausen Medical の図から）", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/", "changes": "背景を紙の色に", "background": "white"}, "labels": [{"term": "aortic-arch", "px": [1082, 529]}, {"term": "left-pulmonary-artery", "px": [752, 917]}, {"term": "right-pulmonary-artery", "px": [1528, 940]}, {"term": "superior-vena-cava", "px": [1563, 470]}, {"term": "superior-pulmonary-vein", "px": [764, 1129]}, {"term": "inferior-pulmonary-vein", "px": [705, 1352]}, {"term": "left-auricle", "px": [529, 1176]}, {"term": "left-atrium", "px": [1176, 1293]}, {"term": "right-atrium", "px": [1646, 1705]}, {"term": "left-ventricle", "px": [500, 1950]}, {"term": "apex-of-heart", "px": [50, 1983]}, {"term": "inferior-vena-cava", "px": [1411, 2116]}, {"term": "great-cardiac-vein", "px": [633, 1450]}, {"term": "circumflex-branch", "px": [533, 1467]}, {"term": "coronary-sinus", "px": [1083, 1775]}, {"term": "middle-cardiac-vein", "px": [867, 1950]}, {"term": "posterior-interventricular-branch", "px": [933, 2067]}]},
         {"id": "heart-frontal", "title": "前の壁を外した心臓", "en": "interior from the front (anterior wall removed)", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/2/28/Heart_anterior_normal_anatomy.jpg", "page": "https://commons.wikimedia.org/wiki/File:Heart_anterior_normal_anatomy.jpg", "author": "Patrick J. Lynch, medical illustrator", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を切り抜き", "background": "dark"}, "labels": [{"term": "superior-vena-cava", "px": [450, 250]}, {"term": "aortic-arch", "px": [720, 250]}, {"term": "ascending-aorta", "px": [570, 400]}, {"term": "pulmonary-valve", "px": [690, 545]}, {"term": "aortic-valve", "px": [720, 695]}, {"term": "right-atrium", "px": [380, 620]}, {"term": "tricuspid-valve", "px": [552, 800]}, {"term": "mitral-valve", "px": [842, 733]}, {"term": "left-auricle", "px": [900, 560]}, {"term": "right-ventricle", "px": [560, 1000]}, {"term": "left-ventricle", "px": [970, 850]}, {"term": "papillary-muscles", "px": [862, 1023]}, {"ja": "腱索", "en": "chordae tendineae", "px": [880, 820]}, {"term": "inferior-vena-cava", "px": [470, 1080]}]},
         {"id": "heart-four-chamber", "title": "四腔断（4つの部屋を通る断面）", "en": "four-chamber section", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Heart_apical_4c_anatomy.jpg", "page": "https://commons.wikimedia.org/wiki/File:Heart_apical_4c_anatomy.jpg", "author": "Patrick J. Lynch, medical illustrator", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を切り抜き、心尖が下になるよう上下を反転", "background": "dark", "flip": "v"}, "labels": [{"term": "right-atrium", "px": [504, 1418]}, {"term": "left-atrium", "px": [998, 1418]}, {"term": "tricuspid-valve", "px": [441, 1134]}, {"term": "mitral-valve", "px": [1029, 1050]}, {"term": "aortic-valve", "px": [772, 1239]}, {"term": "right-ventricle", "px": [441, 945]}, {"term": "left-ventricle", "px": [819, 893]}, {"term": "papillary-muscles", "px": [882, 651]}, {"ja": "腱索", "en": "chordae tendineae", "px": [945, 893]}, {"ja": "心室中隔", "en": "interventricular septum", "px": [630, 735]}, {"ja": "心房中隔", "en": "interatrial septum", "px": [725, 1523]}, {"term": "apex-of-heart", "px": [735, 179]}]},
         {"id": "heart-base", "title": "心房を外して上から見た弁", "en": "valves viewed from above (base of heart)", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/b/b9/2011_Heart_Valves.jpg", "page": "https://commons.wikimedia.org/wiki/File:2011_Heart_Valves.jpg", "author": "OpenStax College, Anatomy & Physiology", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0/", "changes": "英語のラベルと引き出し線を消し、背景を紙の色に", "background": "white", "erase": [[415, 100, 527, 282], [1175, 100, 998, 347], [370, 1010, 634, 678], [808, 960, 1175, 1020]]}, "note": "上が後ろ、下が前。図の左が体の右。三尖弁・僧帽弁は弁の付け根の輪（弁輪）を指す。", "labels": [{"term": "tricuspid-valve", "px": [348, 470]}, {"term": "posterior-cusp-of-tricuspid-valve", "px": [390, 380]}, {"term": "septal-cusp-of-tricuspid-valve", "px": [570, 290]}, {"term": "anterior-cusp-of-tricuspid-valve", "px": [520, 480]}, {"term": "mitral-valve", "px": [1128, 470]}, {"term": "anterior-cusp-of-mitral-valve", "px": [880, 480]}, {"term": "posterior-cusp-of-mitral-valve", "px": [1020, 400]}, {"term": "posterior-semilunar-cusp-of-aortic-valve", "px": [625, 640]}, {"term": "left-semilunar-cusp-of-aortic-valve", "px": [715, 625]}, {"term": "right-semilunar-cusp-of-aortic-valve", "px": [690, 720]}, {"term": "right-semilunar-cusp-of-pulmonary-valve", "px": [700, 915]}, {"term": "left-semilunar-cusp-of-pulmonary-valve", "px": [790, 860]}, {"term": "anterior-semilunar-cusp-of-pulmonary-valve", "px": [785, 965]}, {"term": "left-coronary-artery", "px": [842, 762]}, {"term": "right-coronary-artery", "px": [530, 930]}]}
+      ]
+    },
+    {
+      "id": "lung",
+      "ja": "肺",
+      "yomi": "はい",
+      "en": "lung",
+      "about": "肺は胸腔の左右にあり、心臓をはさむ。右肺は水平裂と斜裂で上葉・中葉・下葉の3葉、左肺は斜裂で上葉・下葉の2葉に分かれ、心臓が左に寄る分だけ左肺が小さい（心切痕）。気管は気管分岐部で左右の主気管支に分かれ、葉気管支・区域気管支と枝分かれして肺に入る。",
+      "units": ["resp-lobes", "resp-lung-parts", "resp-lobar-bronchi", "resp-segmental-bronchi-upper", "resp-segmental-bronchi-lower", "resp-pt-lung-surfaces"],
+      "with": ["trachea", "main-bronchus", "right-lung", "left-lung"],
+      "around": ["pulmonary-trunk", "right-pulmonary-artery", "left-pulmonary-artery", "superior-pulmonary-vein", "inferior-pulmonary-vein"],
+      "box": [[-0.132, 1.09, 0.01], [0.13, 1.4, 0.21]],
+      "colors": {"superior-lobe-of-right-lung": "#e39a8f", "middle-lobe-of-right-lung": "#e3c76a", "inferior-lobe-of-right-lung": "#8fa9d8", "superior-lobe-of-left-lung": "#e39a8f", "inferior-lobe-of-left-lung": "#8fa9d8"},
+      "colorLabel": "葉ごとに色を分ける",
+      "colorNote": "上葉は赤、中葉は黄、下葉は青（平面図の気管支の色と同じ）。右肺は水平裂と斜裂で3葉、左肺は斜裂で2葉。左肺の上葉の下の舌のような所が小舌で、右肺の中葉にあたる。",
+      "views": [
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "下", "from": [0, -1, 0.3]}
+      ],
+      "cuts": [
+        {"label": "肺を外して気管支を見る", "normal": [0, 0, -1], "point": [0, 1.25, 0.22], "from": [0, 0, 1], "hide": ["superior-lobe-of-right-lung", "middle-lobe-of-right-lung", "inferior-lobe-of-right-lung", "superior-lobe-of-left-lung", "inferior-lobe-of-left-lung", "right-lung", "left-lung", "lung"]},
+        {"label": "前頭断（前半分を外す）", "normal": [0, 0, -1], "point": [0, 0, 0.09], "from": [0, 0, 1]},
+        {"label": "水平断（肺門の高さ）", "normal": [0, 1, 0], "point": [0, 1.235, 0], "from": [0, -1, 0.03]}
+      ],
+      "plates": [
+        {"id": "lung-anterior", "title": "前から見た肺と気管支", "en": "lungs and bronchial tree, anterior view", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Lungs_diagram_detailed.svg", "page": "https://commons.wikimedia.org/wiki/File:Lungs_diagram_detailed.svg", "author": "Patrick J. Lynch, medical illustrator", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を紙の色に", "background": "white"}, "note": "図の左が体の右。肺を透かして気管支を描き、気管支の色は入る葉ごと（上葉は赤、中葉は黄、下葉は青）。", "labels": [{"term": "thyroid-cartilage", "px": [228, 65]}, {"term": "thyroid-gland", "px": [222, 155]}, {"term": "trachea", "px": [255, 240]}, {"term": "apex-of-lung", "px": [160, 205]}, {"term": "superior-lobe-of-right-lung", "px": [90, 300]}, {"term": "superior-lobe-of-left-lung", "px": [395, 260]}, {"term": "tracheal-bifurcation", "px": [256, 366]}, {"term": "main-bronchus", "px": [215, 385]}, {"term": "right-superior-lobar-bronchus", "px": [170, 388]}, {"term": "left-superior-lobar-bronchus", "px": [365, 377]}, {"term": "horizontal-fissure", "px": [100, 411]}, {"term": "middle-lobar-bronchus", "px": [150, 428]}, {"term": "right-inferior-lobar-bronchus", "px": [155, 455]}, {"term": "left-inferior-lobar-bronchus", "px": [385, 440]}, {"term": "cardiac-notch", "px": [340, 475]}, {"term": "oblique-fissure", "px": [455, 497]}, {"term": "middle-lobe-of-right-lung", "px": [195, 505]}, {"term": "lingula", "px": [345, 535]}, {"term": "base-of-lung", "px": [130, 566]}, {"term": "inferior-lobe-of-right-lung", "px": [40, 600]}, {"term": "inferior-lobe-of-left-lung", "px": [478, 565]}]}
+      ]
+    },
+    {
+      "id": "stomach",
+      "ja": "胃と十二指腸",
+      "yomi": "いとじゅうにしちょう",
+      "en": "stomach and duodenum",
+      "about": "胃は左上腹部にあり、食道から噴門で入り、胃底・胃体・幽門部を経て幽門で十二指腸へ続く。右上の縁が小弯、左下の縁が大弯で、小弯の曲がり角が角切痕。十二指腸は膵頭を C の字に囲み、上部・下行部・水平部・上行部と回って十二指腸空腸曲で空腸になる。",
+      "units": ["dig-pt-gi", "dig-pt-stomach-duodenum"],
+      "with": ["stomach", "duodenum"],
+      "around": ["esophagus", "colon", "pancreas"],
+      "box": [[-0.13, 0.975, 0.045], [0.125, 1.18, 0.205]],
+      "colors": {"esophagus": "#c98a80", "stomach": "#dd8a73", "duodenum": "#e2b45c", "colon": "#a99272", "pancreas": "#e8d396"},
+      "colorLabel": "臓器ごとに色を分ける",
+      "colorNote": "食道は赤茶、胃は桃、十二指腸は黄、膵臓は薄い黄、結腸は茶。十二指腸は膵頭を C の字に囲み、横行結腸は胃の大弯の下に垂れる。",
+      "views": [
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "下", "from": [0, -1, 0.3]}
+      ],
+      "cuts": [
+        {"label": "前の壁を外す（前頭断）", "normal": [0, 0, -1], "point": [0, 0, 0.14], "from": [0, 0, 1]}
+      ],
+      "plates": [
+        {"id": "stomach-parts", "title": "胃の区分", "en": "parts of the stomach", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/3/31/Gray1046.svg", "page": "https://commons.wikimedia.org/wiki/File:Gray1046.svg", "author": "Henry Vandyke Carter（Gray's Anatomy の図を SVG にしたもの）", "license": "Public domain", "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "changes": "英語のラベルと引き出し線を消し、胃に色を付けた", "background": "white", "drop": ["id=\"path5414\"", "id=\"path5416\"", "id=\"path5418\"", "id=\"path5420\"", "id=\"path5422\"", "id=\"path5424\"", "id=\"path5500\"", "id=\"path6629\""], "recolor": {"#fff5f5": "#f3d3c9"}}, "note": "胃を前から見た模式図（図の右が体の左）。点線は区分の境で、上から胃底と胃体、角切痕から幽門部（幽門洞と幽門管）。", "labels": [{"term": "esophagus", "px": [632, 118]}, {"term": "cardial-notch", "px": [693, 143]}, {"term": "fundus-of-stomach", "px": [830, 95]}, {"term": "cardia", "px": [668, 160]}, {"term": "lesser-curvature", "px": [648, 281]}, {"term": "body-of-stomach", "px": [850, 330]}, {"term": "greater-curvature", "px": [938, 430]}, {"term": "duodenum", "px": [395, 432]}, {"term": "pylorus", "px": [428, 437]}, {"term": "pyloric-canal", "px": [468, 458]}, {"term": "angular-incisure", "px": [552, 494]}, {"term": "pyloric-antrum", "px": [530, 560]}]}
+      ]
+    },
+    {
+      "id": "liver",
+      "ja": "肝臓・胆道・膵臓",
+      "yomi": "かんぞうたんどうすいぞう",
+      "en": "hepatobiliary system and pancreas",
+      "about": "肝臓は右上腹部で横隔膜の下にある最大の腺で、前から見ると肝鎌状間膜を境に大きな右葉と小さな左葉、下から見ると方形葉と尾状葉も見える。胆汁は左右の肝管→総肝管と流れ、胆嚢管から胆嚢にためられ、総胆管を通って膵管と合わさり大十二指腸乳頭に開く。膵臓は十二指腸に囲まれた膵頭から膵体・膵尾と脾臓の方へのびる。",
+      "units": ["dig-glands", "dig-hepatobiliary", "dig-pt-liver", "dig-liver-segments", "dig-liver-couinaud"],
+      "with": [],
+      "around": ["hepatic-portal-vein", "hepatic-veins", "proper-hepatic-artery", "inferior-vena-cava", "duodenum"],
+      "box": [[-0.122, 0.98, 0.04], [0.1, 1.19, 0.207]],
+      "colors": {"right-lobe-of-liver": "#b35a4c", "left-lobe-of-liver": "#d79a63", "quadrate-lobe": "#93ad6c", "caudate-lobe": "#d8bf5c"},
+      "colorLabel": "葉ごとに色を分ける",
+      "colorNote": "右葉は赤茶、左葉は橙、方形葉は緑、尾状葉は黄。方形葉と尾状葉は肝臓を下（臓側面）から見ると見える。",
+      "views": [
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "下（臓側面）", "from": [0, -1, 0.35]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "上（横隔面）", "from": [0, 1, 0.3]}
+      ],
+      "cuts": [
+        {"label": "肝臓を外して胆道と膵臓を見る", "normal": [0, 0, -1], "point": [0, 1.08, 0.215], "from": [0, 0, 1], "hide": ["liver", "right-lobe-of-liver", "left-lobe-of-liver", "quadrate-lobe", "caudate-lobe"]},
+        {"label": "水平断（肝門の高さ）", "normal": [0, 1, 0], "point": [0, 1.105, 0], "from": [0, -1, 0.03]}
+      ],
+      "plates": [
+        {"id": "liver-anterior", "title": "前から見た肝臓", "en": "liver, anterior view", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/5/58/Liver_%28organ%29.png", "page": "https://commons.wikimedia.org/wiki/File:Liver_(organ).png", "author": "BruceBlaus", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/", "changes": "表題と全身の図を除き、背景を紙の色に", "background": "white"}, "note": "図の左が体の右。肝臓の後ろを下大静脈と腹大動脈が縦に通る。", "labels": [{"term": "inferior-vena-cava", "px": [735, 120]}, {"term": "diaphragmatic-surface-of-liver", "px": [560, 230]}, {"term": "right-lobe-of-liver", "px": [480, 420]}, {"term": "left-lobe-of-liver", "px": [900, 420]}, {"term": "celiac-trunk", "px": [865, 568]}, {"term": "splenic-artery", "px": [1010, 572]}, {"term": "hepatic-portal-vein", "px": [668, 630]}, {"term": "splenic-vein", "px": [820, 680]}, {"term": "abdominal-aorta", "px": [855, 720]}]},
+        {"id": "liver-biliary", "title": "胆道と膵臓", "en": "biliary tract and pancreas", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Gallbladder_%28organ%29.png", "page": "https://commons.wikimedia.org/wiki/File:Gallbladder_(organ).png", "author": "BruceBlaus", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/", "changes": "英語のラベルと引き出し線・表題・全身の図を消し、背景を紙の色に", "background": "white", "erase": [[125, 222, 272, 297], [420, 78, 530, 278], [740, 132, 592, 310], [190, 507, 478, 535]]}, "note": "前から見た図（図の左が体の右）。胃と膵臓を透かし、十二指腸は前の壁を開いて大十二指腸乳頭を見せている。", "labels": [{"term": "right-hepatic-duct", "px": [574, 175]}, {"term": "left-hepatic-duct", "px": [655, 203]}, {"term": "stomach", "px": [1000, 150]}, {"term": "body-of-gallbladder", "px": [330, 248]}, {"term": "neck-of-gallbladder", "px": [452, 243]}, {"term": "cystic-duct", "px": [528, 278]}, {"term": "common-hepatic-duct", "px": [592, 308]}, {"term": "tail-of-pancreas", "px": [1100, 330]}, {"term": "fundus-of-gallbladder", "px": [250, 385]}, {"term": "pancreatic-duct", "px": [870, 395]}, {"term": "body-of-pancreas", "px": [960, 470]}, {"term": "bile-duct", "px": [478, 535]}, {"ja": "大十二指腸乳頭", "en": "major duodenal papilla", "note": "十二指腸の下行部の内側の壁の小さな高まり。総胆管と膵管が合わさって（胆膵管膨大部）ここに開き、オディ括約筋が取り巻く。", "px": [368, 560]}, {"term": "descending-part-of-duodenum", "px": [285, 620]}, {"term": "ascending-part-of-duodenum", "px": [880, 660]}, {"term": "head-of-pancreas", "px": [580, 720]}, {"term": "horizontal-part-of-duodenum", "px": [600, 890]}]}
+      ]
+    },
+    {
+      "id": "kidney",
+      "ja": "腎臓と尿路",
+      "yomi": "じんぞうとにょうろ",
+      "en": "kidney and urinary tract",
+      "about": "腎臓は腹膜の後ろ、第12胸椎〜第3腰椎の高さに左右1対あり、右は肝臓に押されて左より少し低い。内側のくぼみ（腎門）から腎動脈・腎静脈・尿管が出入りする。断面では外側の腎皮質と内側の腎髄質（腎錐体）が分かれ、尿は腎乳頭→小腎杯→大腎杯→腎盤→尿管→膀胱→尿道と流れる。",
+      "units": ["uro-urinary", "uro-pt"],
+      "with": [],
+      "around": ["adrenal-gland", "renal-artery", "renal-vein", "abdominal-aorta", "inferior-vena-cava", "prostate"],
+      "box": [[-0.097, 0.7, 0.05], [0.097, 1.115, 0.19]],
+      "colors": {},
+      "views": [
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "下", "from": [0, -1, 0.3]}
+      ],
+      "cuts": [
+        {"label": "前頭断（腎臓の中を見る）", "normal": [0, 0, -1], "point": [0, 0, 0.086], "from": [0, 0, 1]},
+        {"label": "正中断（膀胱と尿道）", "normal": [-1, 0, 0], "point": [0.001, 0, 0], "from": [1, 0, 0.05]}
+      ],
+      "plates": [
+        {"id": "kidney-section", "title": "腎臓の断面", "en": "kidney, coronal section", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/3/35/Blausen_0593_KidneyAnatomy_02.png", "page": "https://commons.wikimedia.org/wiki/File:Blausen_0593_KidneyAnatomy_02.png", "author": "BruceBlaus（Blausen Medical）", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0/", "changes": "英語のラベルと引き出し線・表題・全身の図を消し、背景を紙の色に", "background": "white", "erase": [[935, 125, 1100, 62], [920, 105, 920, 152], [908, 107, 932, 107], [908, 150, 932, 150], [950, 212, 1235, 178], [950, 155, 950, 262], [938, 155, 962, 155], [938, 260, 962, 260], [1022, 315, 1300, 292], [1165, 422, 1360, 445], [1190, 515, 1360, 447], [1210, 652, 1390, 712], [1165, 780, 1390, 714], [1235, 930, 1340, 960], [895, 1005, 1045, 830], [797, 933, 1025, 765], [640, 690, 800, 678], [750, 465, 900, 545], [630, 290, 920, 450], [948, 552, 947, 583], [947, 583, 945, 612], [945, 612, 942, 637], [942, 637, 938, 656], [938, 656, 934, 668], [934, 668, 929, 672], [929, 672, 924, 668], [924, 668, 920, 656], [920, 656, 916, 637], [916, 637, 913, 612], [913, 612, 911, 583], [911, 583, 910, 552], [910, 552, 911, 521], [911, 521, 913, 492], [913, 492, 916, 467], [916, 467, 920, 448], [920, 448, 924, 436], [924, 436, 929, 432], [929, 432, 934, 436], [934, 436, 938, 448], [938, 448, 942, 467], [942, 467, 945, 492], [945, 492, 947, 521], [947, 521, 948, 552]], "eraseBoxes": [[912, 425, 952, 475], [938, 470, 958, 660], [900, 630, 950, 682], [916, 120, 946, 136]]}, "note": "左の腎臓を前から縦に切った図（図の右が外側）。腎盤のまわりの黄色は腎洞の脂肪。", "labels": [{"ja": "線維被膜", "en": "fibrous capsule", "note": "腎臓の表面を包む薄く丈夫な膜。その外を脂肪被膜、さらに腎筋膜が包む。", "px": [1240, 930]}, {"ja": "腎皮質", "en": "renal cortex", "note": "腎臓の外側の層。腎小体（糸球体とボウマン嚢）と曲尿細管がある。腎錐体の間に入りこんだ所が腎柱。", "px": [878, 145]}, {"ja": "腎髄質", "en": "renal medulla", "note": "腎皮質の内側。十数個の腎錐体からなり、ヘンレのわなと集合管が通る。", "px": [950, 215]}, {"ja": "腎乳頭", "en": "renal papilla", "note": "腎錐体の先。乳頭管が開き、尿が小腎杯へ出る。", "px": [1022, 316]}, {"ja": "腎錐体", "en": "renal pyramid", "note": "腎髄質を作る円錐形の塊。底を腎皮質に、先（腎乳頭）を腎洞に向ける。", "px": [1165, 422]}, {"ja": "腎柱", "en": "renal column", "note": "腎錐体と腎錐体の間に入りこんだ腎皮質。葉間動脈・葉間静脈が通る。", "px": [1210, 652]}, {"term": "renal-hilum", "px": [908, 458]}, {"term": "renal-pelvis", "px": [870, 540]}, {"term": "ureter", "px": [780, 700]}, {"ja": "大腎杯", "en": "major calyx", "note": "小腎杯が集まったもの（ふつう2〜3本）。合わさって腎盤になる。", "px": [1025, 765]}, {"ja": "小腎杯", "en": "minor calyx", "note": "腎乳頭を受ける杯の形の管。いくつか集まって大腎杯になる。", "px": [1045, 830]}]},
+        {"id": "urinary-system", "title": "腎臓から尿道まで（男性）", "en": "urinary system (male), anterior view", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/4/48/Urinary_System_%28Male%29_%28cropped%29.png", "page": "https://commons.wikimedia.org/wiki/File:Urinary_System_(Male)_(cropped).png", "author": "BruceBlaus", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/", "changes": "英語のラベルと引き出し線を消し、臓器の所を切り出した", "background": "white", "crop": [400, 240, 1100, 1210], "eraseBoxes": [[395, 555, 420, 615]], "erase": [[915, 468, 1090, 430], [415, 600, 650, 702], [770, 908, 1112, 772], [380, 878, 712, 968], [750, 1105, 1158, 1020]]}, "note": "前から見た図（図の左が体の右）。右の腎臓は肝臓に押されて左より少し低い。", "labels": [{"term": "kidney", "px": [910, 465]}, {"term": "renal-pelvis", "px": [630, 425]}, {"term": "ureter", "px": [650, 700]}, {"term": "urinary-bladder", "px": [770, 905]}, {"term": "prostate", "px": [715, 965]}, {"term": "urethra", "px": [748, 1100]}]}
+      ]
+    },
+    {
+      "id": "brain",
+      "ja": "脳",
+      "yomi": "のう",
+      "en": "brain",
+      "about": "脳は大脳・間脳・脳幹（中脳・橋・延髄）・小脳からなる。大脳の表面は中心溝・外側溝・頭頂後頭溝で前頭葉・頭頂葉・側頭葉・後頭葉に分かれ、外側溝の奥に島がかくれる。正中で切ると、左右の大脳半球をつなぐ脳梁、その下の視床と視床下部、下垂体、脳幹と小脳が見える。",
+      "units": ["nerv-lobes", "nerv-gyri", "nerv-sulci", "nerv-cortex-parts", "nerv-deep", "nerv-pt-cerebellum"],
+      "with": ["cerebellum", "midbrain", "pons", "medulla-oblongata"],
+      "around": ["pituitary-gland", "spinal-cord"],
+      "box": [[-0.076, 1.455, -0.016], [0.076, 1.636, 0.176]],
+      "colors": {"frontal-lobe": "#8fb8d8", "parietal-lobe": "#e6d672", "temporal-lobe": "#9fbf86", "occipital-lobe": "#e796a8", "insula": "#c3a2d6"},
+      "colorLabel": "大脳葉ごとに色を分ける",
+      "colorNote": "前頭葉は青、頭頂葉は黄、側頭葉は緑、後頭葉は桃（平面図の外側面の図と同じ色）、島は紫。島は外側溝の奥にかくれている。",
+      "views": [
+        {"label": "左", "from": [1, 0.1, 0.1]},
+        {"label": "右", "from": [-1, 0.1, 0.1]},
+        {"label": "上", "from": [0, 1, -0.05]},
+        {"label": "下（脳底）", "from": [0, -1, 0.15]},
+        {"label": "前", "from": [0, 0, 1]},
+        {"label": "後ろ", "from": [0, 0.1, -1]}
+      ],
+      "cuts": [
+        {"label": "正中断（右半分の内側面）", "normal": [-1, 0, 0], "point": [0.001, 0, 0], "from": [1, 0, 0.05]},
+        {"label": "水平断（大脳基底核と脳室）", "normal": [0, -1, 0], "point": [0, 1.56, 0], "from": [0, 1, -0.05]},
+        {"label": "前頭断（視床の高さ）", "normal": [0, 0, -1], "point": [0, 0, 0.085], "from": [0, 0, 1]}
+      ],
+      "plates": [
+        {"id": "brain-lateral", "title": "大脳の外側面と大脳葉", "en": "lobes of the cerebrum, lateral view", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Gray728.svg", "page": "https://commons.wikimedia.org/wiki/File:Gray728.svg", "author": "Mysid（Gray's Anatomy の図から）", "license": "Public domain", "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/", "changes": "英語のラベルと引き出し線を消し、背景を紙の色に", "background": "white", "drop": ["m907 254 13-8"]}, "note": "左の大脳半球を左から見た図（図の左が前）。太い線が中心溝・外側溝・頭頂後頭溝、点線は頭頂葉と側頭葉の仮の境。", "labels": [{"term": "central-sulcus", "px": [478, 190]}, {"term": "parietal-lobe", "px": [640, 230]}, {"term": "parieto-occipital-sulcus", "px": [880, 262]}, {"term": "frontal-lobe", "px": [230, 300]}, {"term": "occipital-lobe", "px": [885, 380]}, {"term": "lateral-sulcus", "px": [322, 418]}, {"term": "temporal-lobe", "px": [500, 480]}, {"term": "cerebellum", "px": [720, 600]}, {"term": "medulla-oblongata", "px": [600, 670]}]},
+        {"id": "brain-sagittal", "title": "脳の正中断", "en": "midsagittal section of the brain", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/8/86/Brain_Anatomy_%28Sagittal%29.png", "page": "https://commons.wikimedia.org/wiki/File:Brain_Anatomy_(Sagittal).png", "author": "BruceBlaus", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/", "changes": "英語のラベルと引き出し線・表題を消し、背景を紙の色に", "background": "white", "erase": [[215, 186, 385, 210], [250, 312, 500, 328], [155, 409, 482, 380], [610, 421, 805, 472], [575, 495, 748, 562], [582, 590, 772, 656]]}, "note": "頭を正中で切り、左から見た図（図の左が前）。見えているのは右の大脳半球の内側面。", "labels": [{"term": "cerebrum", "px": [380, 210]}, {"term": "corpus-callosum", "px": [517, 224]}, {"term": "thalamus", "px": [545, 305]}, {"term": "hypothalamus", "px": [498, 327]}, {"term": "midbrain", "px": [545, 352]}, {"term": "pituitary-gland", "px": [482, 381]}, {"term": "pons", "px": [540, 405]}, {"term": "cerebellum", "px": [660, 440]}, {"term": "medulla-oblongata", "px": [570, 470]}, {"term": "spinal-cord", "px": [585, 600]}]}
       ]
     }
   ]

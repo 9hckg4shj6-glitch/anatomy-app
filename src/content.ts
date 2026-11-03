@@ -183,7 +183,8 @@ export interface Pin {
 
 /**
  * 臓器を詳しく見る画面（#/organs/<ID>。content/organs.json）。units のレッスンの語と with の語（大血管など）が臓器の場面で、
- * 3Dではそれだけを box の中に切って見せる（SceneSpec の organ）。colors は部屋の色分け、views は向き、cuts は切って中を見る面
+ * 3Dではそれだけを box の中に切って見せる（SceneSpec の organ）。around は場面に添えるだけの語（食道・結腸のように箱の外へ長く続き、
+ * 図鑑でその語を選んでもこの臓器だけの見せ方にはしない）。colors は部屋・葉の色分け（colorLabel はその切りかえの名前、colorNote は凡例の下の説明）、views は向き、cuts は切って中を見る面
  * （normal・point で、normal の向きの側を残す。hide は切るときに隠す語）。seamless は平面図で境に線を引かない語（心房・心室の壁）。
  * plates は平面図（scripts/plates.mjs が art の元の図から作るか、view・cut から描く。diagram があれば手で描いた模式図）
  */
@@ -195,9 +196,12 @@ export interface Organ {
   about: string;
   units: string[];
   with: string[];
+  around?: string[];
   box: [Vec3, Vec3];
   seamless?: string[];
   colors: Record<string, string>;
+  colorLabel?: string;
+  colorNote?: string;
   views: { label: string; from: Vec3 }[];
   cuts: OrganCut[];
   plates: PlateSpec[];
@@ -288,14 +292,19 @@ export const joints = jointsJson as unknown as Record<string, Joint>;
 export const organs = (organsJson as unknown as { organs: Organ[] }).organs;
 export const organById = new Map(organs.map((organ) => [organ.id, organ]));
 
-/** 臓器の場面の語（レッスンの語・器官の部位と、添える大血管など） */
-export function organTerms(organ: Organ): string[] {
+/** 臓器の語（レッスンの語・器官の部位と、添える大血管など） */
+function ownTerms(organ: Organ): string[] {
   return [...organ.units.flatMap((id) => unitById.get(id)?.terms.map((term) => term.id) ?? []), ...organ.with];
 }
 
-/** 語が入る臓器の場面（無ければ undefined） */
+/** 臓器の場面の語（臓器の語と、場面に添えるだけの語） */
+export function organTerms(organ: Organ): string[] {
+  return [...ownTerms(organ), ...(organ.around ?? [])];
+}
+
+/** 語が入る臓器の場面（無ければ undefined。添えるだけの語は入れない） */
 export function organOf(termId: string): Organ | undefined {
-  return organs.find((organ) => organTerms(organ).includes(termId));
+  return organs.find((organ) => ownTerms(organ).includes(termId));
 }
 
 /** レッスンが臓器の場面のものなら、その臓器 */

@@ -1332,9 +1332,12 @@ diffuseColor.a = clamp(0.05 + ${strength.toFixed(2)} * pow(1.0 - glassFacing, 2.
     for (const [elementId, mesh] of this.meshes) {
       const system = mesh.userData.system as string;
       const base = systemById.get(system)?.color ?? "#cccccc";
+      // 色分け（colorTerms）は、部品を含む語のうち色の指定がある語で塗る（肝臓の葉のように、もっと細かい区域の語があっても）
       const own = () => {
-        const termId = this.elementTerms.get(elementId)?.[0];
-        return (termId && (this.colors?.get(termId) ?? termById.get(termId)?.color)) || base;
+        const owners = this.elementTerms.get(elementId) ?? [];
+        const painted = this.colors ? owners.find((id) => this.colors!.has(id)) : undefined;
+        if (painted) return this.colors!.get(painted)!;
+        return (owners[0] && termById.get(owners[0])?.color) || base;
       };
       mesh.renderOrder = 0;
       // 関節の動きを示すときは、動く骨を光らせ、動かない皮膚は消す。筋の動きでは骨だけを見せる。

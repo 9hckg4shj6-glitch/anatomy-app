@@ -43,7 +43,7 @@ function organTerms(organ) {
       if (organ.units.includes(unit.id)) ids.push(...unit.terms.filter((t) => !t.of).map((t) => t.id));
     }
   }
-  return [...ids, ...organ.with];
+  return [...ids, ...organ.with, ...(organ.around ?? [])];
 }
 
 /**
@@ -244,6 +244,30 @@ async function artSource(url) {
   return file;
 }
 
+/** SVG の元の図を描く長い辺（px）。px は SVG の座標（幅・高さの単位）で書き、この倍率で合わせる */
+const SVG_SIZE = 2000;
+
+/**
+ * 元の図を読む。SVG なら文字（text）と art.drop の文字列を含む線（引き出し線など）を抜き、art.recolor の色を置きかえてから、長い辺 SVG_SIZE で描く。
+ * scale は px（元の図の座標）から描いた画像のピクセルへの倍率
+ */
+async function artImage(art) {
+  const file = await artSource(art.src);
+  if (!file.endsWith(".svg")) return { image: sharp(file), scale: 1 };
+  let svg = fs.readFileSync(file, "utf8").replace(/<(text|flowRoot)\b[\s\S]*?<\/\1>/g, "");
+  for (const [from, to] of Object.entries(art.recolor ?? {})) svg = svg.replaceAll(from, to);
+  for (const needle of art.drop ?? []) {
+    const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const before = svg.length;
+    svg = svg.replace(new RegExp(`<(path|line|polyline|polygon)\\b[^>]*${escaped}[^>]*/>`, "g"), "");
+    if (svg.length === before) throw new Error(`${art.src}: drop の ${needle} が見つかりません`);
+  }
+  const buffer = Buffer.from(svg);
+  const { width, height } = await sharp(buffer).metadata();
+  const scale = SVG_SIZE / Math.max(width, height);
+  return { image: sharp(buffer, { density: 72 * scale }), scale };
+}
+
 /** 背景の色か（art.background）。dark は黒、red は暗い赤のグラデーション、white は白 */
 const BACKGROUND = {
   dark: (r, g, b) => Math.max(r, g, b) < 28,
@@ -254,11 +278,12 @@ const BACKGROUND = {
 /**
  * 元の図（イラスト）から平面図を作る。焼き込まれた引き出し線（art.erase の線分）を両脇の色で埋め、
  * 縁から続く背景を抜いて、いちばん大きい塊（図そのもの）だけを残す（焼き込まれた文字は離れた塊なので消える）。
- * 紙の色に重ね、図の範囲で切り詰め、art.flip が "v" なら上下を返す。ラベルの px は元の図のピクセル
+ * 紙の色に重ね、図の範囲で切り詰め、art.flip が "v" なら上下を返す。ラベルの px は元の図のピクセル（SVG は SVG の座標）
  */
 async function artPlate(plate) {
   const art = plate.art;
-  const { data, info } = await sharp(await artSource(art.src)).flatten({ background: "#ffffff" }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { image: source, scale: unit } = await artImage(art);
+  const { data, info } = await source.flatten({ background: "#ffffff" }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const W0 = info.width, H0 = info.height;
   const px = new Float32Array(data);
   const at = (x, y) => (Math.min(H0 - 1, Math.max(0, Math.round(y))) * W0 + Math.min(W0 - 1, Math.max(0, Math.round(x)))) * 3;
@@ -274,7 +299,7 @@ async function artPlate(plate) {
     return sum;
   };
   const erase = new Uint8Array(W0 * H0);
-  for (const segment of art.erase ?? []) {
+  for (const segment of (art.erase ?? []).map((line) => line.map((v) => v * unit))) {
     let best = -1, fit = segment;
     for (let a = -8; a <= 8; a++) for (let b = -8; b <= 8; b++) for (let c = -8; c <= 8; c++) for (let d = -8; d <= 8; d++) {
       const value = darkness(segment[0] + a, segment[1] + b, segment[2] + c, segment[3] + d);
@@ -283,6 +308,10 @@ async function artPlate(plate) {
     const [x1, y1, x2, y2] = fit;
     const len = Math.hypot(x2 - x1, y2 - y1), tx = (x2 - x1) / len, ty = (y2 - y1) / len;
     for (let s = -width; s <= len + width; s += 0.5) for (let d = -width; d <= width; d += 0.5) erase[at(x1 + tx * s - ty * d, y1 + ty * s + tx * d) / 3] = 1;
+  }
+  // 図に重なった文字（art.eraseBoxes の四角）も同じように埋める
+  for (const [bx0, by0, bx1, by1] of (art.eraseBoxes ?? []).map((box) => box.map((v) => Math.round(v * unit)))) {
+    for (let y = Math.max(0, by0); y <= Math.min(H0 - 1, by1); y++) for (let x = Math.max(0, bx0); x <= Math.min(W0 - 1, bx1); x++) erase[y * W0 + x] = 1;
   }
   const directions = Array.from({ length: 24 }, (_, i) => [Math.cos((i * Math.PI) / 24), Math.sin((i * Math.PI) / 24)]);
   const march = (x, y, dx, dy) => {
@@ -377,17 +406,22 @@ async function artPlate(plate) {
         : PAPER[ch] * (1 - soft[k]) + c * soft[k]);
     }
   }
+  // 切り詰める範囲は図の塊の外枠（art.crop があればその四角。体の輪郭など広い背景から臓器の所だけを切り出す）
   const margin = Math.round(0.025 * Math.max(x1 - x0, y1 - y0));
-  const crop = { left: Math.max(0, x0 - margin), top: Math.max(0, y0 - margin) };
-  crop.width = Math.min(W0, x1 + margin + 1) - crop.left;
-  crop.height = Math.min(H0, y1 + margin + 1) - crop.top;
+  const crop = art.crop
+    ? { left: Math.round(art.crop[0] * unit), top: Math.round(art.crop[1] * unit), width: Math.round((art.crop[2] - art.crop[0]) * unit), height: Math.round((art.crop[3] - art.crop[1]) * unit) }
+    : { left: Math.max(0, x0 - margin), top: Math.max(0, y0 - margin) };
+  if (!art.crop) {
+    crop.width = Math.min(W0, x1 + margin + 1) - crop.left;
+    crop.height = Math.min(H0, y1 + margin + 1) - crop.top;
+  }
   const scale = Math.min(1, ART_SIZE / Math.max(crop.width, crop.height));
   const W = Math.round(crop.width * scale), H = Math.round(crop.height * scale);
   let image = sharp(out, { raw: { width: W0, height: H0, channels: 3 } }).extract(crop);
   if (art.flip === "v") image = image.flip();
   const pixels = await image.resize(W, H).raw().toBuffer();
   const labels = plate.labels.map((spec) => {
-    let [u, v] = [(spec.px[0] - crop.left) / crop.width, (spec.px[1] - crop.top) / crop.height];
+    let [u, v] = [(spec.px[0] * unit - crop.left) / crop.width, (spec.px[1] * unit - crop.top) / crop.height];
     if (art.flip === "v") v = 1 - v;
     const entry = { at: [+u.toFixed(4), +v.toFixed(4)] };
     for (const key of ["term", "ja", "en", "note"]) if (spec[key]) entry[key] = spec[key];

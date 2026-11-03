@@ -598,6 +598,745 @@
      "term": "right-coronary-artery"
     }
    ]
+  },
+  "lung-anterior": {
+   "url": "plates/lung-anterior.a930af9c5b.webp",
+   "w": 1095,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.4475,
+      0.0997
+     ],
+     "term": "thyroid-cartilage"
+    },
+    {
+     "at": [
+      0.4357,
+      0.2378
+     ],
+     "term": "thyroid-gland"
+    },
+    {
+     "at": [
+      0.5005,
+      0.3683
+     ],
+     "term": "trachea"
+    },
+    {
+     "at": [
+      0.314,
+      0.3146
+     ],
+     "term": "apex-of-lung"
+    },
+    {
+     "at": [
+      0.1766,
+      0.4604
+     ],
+     "term": "superior-lobe-of-right-lung"
+    },
+    {
+     "at": [
+      0.7752,
+      0.399
+     ],
+     "term": "superior-lobe-of-left-lung"
+    },
+    {
+     "at": [
+      0.5024,
+      0.5616
+     ],
+     "term": "tracheal-bifurcation"
+    },
+    {
+     "at": [
+      0.422,
+      0.5908
+     ],
+     "term": "main-bronchus"
+    },
+    {
+     "at": [
+      0.3336,
+      0.5954
+     ],
+     "term": "right-superior-lobar-bronchus"
+    },
+    {
+     "at": [
+      0.7163,
+      0.5785
+     ],
+     "term": "left-superior-lobar-bronchus"
+    },
+    {
+     "at": [
+      0.1963,
+      0.6307
+     ],
+     "term": "horizontal-fissure"
+    },
+    {
+     "at": [
+      0.2944,
+      0.6568
+     ],
+     "term": "middle-lobar-bronchus"
+    },
+    {
+     "at": [
+      0.3042,
+      0.6982
+     ],
+     "term": "right-inferior-lobar-bronchus"
+    },
+    {
+     "at": [
+      0.7556,
+      0.6752
+     ],
+     "term": "left-inferior-lobar-bronchus"
+    },
+    {
+     "at": [
+      0.6673,
+      0.7289
+     ],
+     "term": "cardiac-notch"
+    },
+    {
+     "at": [
+      0.893,
+      0.7627
+     ],
+     "term": "oblique-fissure"
+    },
+    {
+     "at": [
+      0.3827,
+      0.7749
+     ],
+     "term": "middle-lobe-of-right-lung"
+    },
+    {
+     "at": [
+      0.6771,
+      0.821
+     ],
+     "term": "lingula"
+    },
+    {
+     "at": [
+      0.2551,
+      0.8685
+     ],
+     "term": "base-of-lung"
+    },
+    {
+     "at": [
+      0.0785,
+      0.9207
+     ],
+     "term": "inferior-lobe-of-right-lung"
+    },
+    {
+     "at": [
+      0.9381,
+      0.867
+     ],
+     "term": "inferior-lobe-of-left-lung"
+    }
+   ]
+  },
+  "stomach-parts": {
+   "url": "plates/stomach-parts.425db8b18b.webp",
+   "w": 1289,
+   "h": 1237,
+   "labels": [
+    {
+     "at": [
+      0.4279,
+      0.1639
+     ],
+     "term": "esophagus"
+    },
+    {
+     "at": [
+      0.5204,
+      0.2034
+     ],
+     "term": "cardial-notch"
+    },
+    {
+     "at": [
+      0.7282,
+      0.1275
+     ],
+     "term": "fundus-of-stomach"
+    },
+    {
+     "at": [
+      0.4825,
+      0.2302
+     ],
+     "term": "cardia"
+    },
+    {
+     "at": [
+      0.4522,
+      0.4215
+     ],
+     "term": "lesser-curvature"
+    },
+    {
+     "at": [
+      0.7586,
+      0.4989
+     ],
+     "term": "body-of-stomach"
+    },
+    {
+     "at": [
+      0.892,
+      0.657
+     ],
+     "term": "greater-curvature"
+    },
+    {
+     "at": [
+      0.0685,
+      0.6601
+     ],
+     "term": "duodenum"
+    },
+    {
+     "at": [
+      0.1185,
+      0.668
+     ],
+     "term": "pylorus"
+    },
+    {
+     "at": [
+      0.1792,
+      0.7012
+     ],
+     "term": "pyloric-canal"
+    },
+    {
+     "at": [
+      0.3066,
+      0.7581
+     ],
+     "term": "angular-incisure"
+    },
+    {
+     "at": [
+      0.2732,
+      0.8624
+     ],
+     "term": "pyloric-antrum"
+    }
+   ]
+  },
+  "liver-anterior": {
+   "url": "plates/liver-anterior.481c43a1fa.webp",
+   "w": 883,
+   "h": 773,
+   "labels": [
+    {
+     "at": [
+      0.4734,
+      0.1138
+     ],
+     "term": "inferior-vena-cava"
+    },
+    {
+     "at": [
+      0.2752,
+      0.2561
+     ],
+     "term": "diaphragmatic-surface-of-liver"
+    },
+    {
+     "at": [
+      0.1846,
+      0.5019
+     ],
+     "term": "right-lobe-of-liver"
+    },
+    {
+     "at": [
+      0.6602,
+      0.5019
+     ],
+     "term": "left-lobe-of-liver"
+    },
+    {
+     "at": [
+      0.6206,
+      0.6934
+     ],
+     "term": "celiac-trunk"
+    },
+    {
+     "at": [
+      0.7848,
+      0.6986
+     ],
+     "term": "splenic-artery"
+    },
+    {
+     "at": [
+      0.3975,
+      0.7736
+     ],
+     "term": "hepatic-portal-vein"
+    },
+    {
+     "at": [
+      0.5696,
+      0.8383
+     ],
+     "term": "splenic-vein"
+    },
+    {
+     "at": [
+      0.6093,
+      0.89
+     ],
+     "term": "abdominal-aorta"
+    }
+   ]
+  },
+  "liver-biliary": {
+   "url": "plates/liver-biliary.a0f9b7898c.webp",
+   "w": 1011,
+   "h": 969,
+   "labels": [
+    {
+     "at": [
+      0.3808,
+      0.1806
+     ],
+     "term": "right-hepatic-duct"
+    },
+    {
+     "at": [
+      0.4609,
+      0.2095
+     ],
+     "term": "left-hepatic-duct"
+    },
+    {
+     "at": [
+      0.8022,
+      0.1548
+     ],
+     "term": "stomach"
+    },
+    {
+     "at": [
+      0.1395,
+      0.2559
+     ],
+     "term": "body-of-gallbladder"
+    },
+    {
+     "at": [
+      0.2601,
+      0.2508
+     ],
+     "term": "neck-of-gallbladder"
+    },
+    {
+     "at": [
+      0.3353,
+      0.2869
+     ],
+     "term": "cystic-duct"
+    },
+    {
+     "at": [
+      0.3986,
+      0.3179
+     ],
+     "term": "common-hepatic-duct"
+    },
+    {
+     "at": [
+      0.9011,
+      0.3406
+     ],
+     "term": "tail-of-pancreas"
+    },
+    {
+     "at": [
+      0.0603,
+      0.3973
+     ],
+     "term": "fundus-of-gallbladder"
+    },
+    {
+     "at": [
+      0.6736,
+      0.4076
+     ],
+     "term": "pancreatic-duct"
+    },
+    {
+     "at": [
+      0.7626,
+      0.485
+     ],
+     "term": "body-of-pancreas"
+    },
+    {
+     "at": [
+      0.2859,
+      0.5521
+     ],
+     "term": "bile-duct"
+    },
+    {
+     "at": [
+      0.1771,
+      0.5779
+     ],
+     "ja": "大十二指腸乳頭",
+     "en": "major duodenal papilla",
+     "note": "十二指腸の下行部の内側の壁の小さな高まり。総胆管と膵管が合わさって（胆膵管膨大部）ここに開き、オディ括約筋が取り巻く。"
+    },
+    {
+     "at": [
+      0.095,
+      0.6398
+     ],
+     "term": "descending-part-of-duodenum"
+    },
+    {
+     "at": [
+      0.6835,
+      0.6811
+     ],
+     "term": "ascending-part-of-duodenum"
+    },
+    {
+     "at": [
+      0.3867,
+      0.743
+     ],
+     "term": "head-of-pancreas"
+    },
+    {
+     "at": [
+      0.4065,
+      0.9185
+     ],
+     "term": "horizontal-part-of-duodenum"
+    }
+   ]
+  },
+  "kidney-section": {
+   "url": "plates/kidney-section.909f35d282.webp",
+   "w": 608,
+   "h": 982,
+   "labels": [
+    {
+     "at": [
+      0.8273,
+      0.8635
+     ],
+     "ja": "線維被膜",
+     "en": "fibrous capsule",
+     "note": "腎臓の表面を包む薄く丈夫な膜。その外を脂肪被膜、さらに腎筋膜が包む。"
+    },
+    {
+     "at": [
+      0.2319,
+      0.0642
+     ],
+     "ja": "腎皮質",
+     "en": "renal cortex",
+     "note": "腎臓の外側の層。腎小体（糸球体とボウマン嚢）と曲尿細管がある。腎錐体の間に入りこんだ所が腎柱。"
+    },
+    {
+     "at": [
+      0.3503,
+      0.1354
+     ],
+     "ja": "腎髄質",
+     "en": "renal medulla",
+     "note": "腎皮質の内側。十数個の腎錐体からなり、ヘンレのわなと集合管が通る。"
+    },
+    {
+     "at": [
+      0.4688,
+      0.2383
+     ],
+     "ja": "腎乳頭",
+     "en": "renal papilla",
+     "note": "腎錐体の先。乳頭管が開き、尿が小腎杯へ出る。"
+    },
+    {
+     "at": [
+      0.7039,
+      0.3462
+     ],
+     "ja": "腎錐体",
+     "en": "renal pyramid",
+     "note": "腎髄質を作る円錐形の塊。底を腎皮質に、先（腎乳頭）を腎洞に向ける。"
+    },
+    {
+     "at": [
+      0.778,
+      0.5804
+     ],
+     "ja": "腎柱",
+     "en": "renal column",
+     "note": "腎錐体と腎錐体の間に入りこんだ腎皮質。葉間動脈・葉間静脈が通る。"
+    },
+    {
+     "at": [
+      0.2813,
+      0.3829
+     ],
+     "term": "renal-hilum"
+    },
+    {
+     "at": [
+      0.2188,
+      0.4664
+     ],
+     "term": "renal-pelvis"
+    },
+    {
+     "at": [
+      0.0707,
+      0.6293
+     ],
+     "term": "ureter"
+    },
+    {
+     "at": [
+      0.4737,
+      0.6955
+     ],
+     "ja": "大腎杯",
+     "en": "major calyx",
+     "note": "小腎杯が集まったもの（ふつう2〜3本）。合わさって腎盤になる。"
+    },
+    {
+     "at": [
+      0.5066,
+      0.7617
+     ],
+     "ja": "小腎杯",
+     "en": "minor calyx",
+     "note": "腎乳頭を受ける杯の形の管。いくつか集まって大腎杯になる。"
+    }
+   ]
+  },
+  "urinary-system": {
+   "url": "plates/urinary-system.037e02cde4.webp",
+   "w": 700,
+   "h": 970,
+   "labels": [
+    {
+     "at": [
+      0.7286,
+      0.232
+     ],
+     "term": "kidney"
+    },
+    {
+     "at": [
+      0.3286,
+      0.1907
+     ],
+     "term": "renal-pelvis"
+    },
+    {
+     "at": [
+      0.3571,
+      0.4742
+     ],
+     "term": "ureter"
+    },
+    {
+     "at": [
+      0.5286,
+      0.6856
+     ],
+     "term": "urinary-bladder"
+    },
+    {
+     "at": [
+      0.45,
+      0.7474
+     ],
+     "term": "prostate"
+    },
+    {
+     "at": [
+      0.4971,
+      0.8866
+     ],
+     "term": "urethra"
+    }
+   ]
+  },
+  "brain-lateral": {
+   "url": "plates/brain-lateral.2b49fbb5b5.webp",
+   "w": 1400,
+   "h": 999,
+   "labels": [
+    {
+     "at": [
+      0.4697,
+      0.2374
+     ],
+     "term": "central-sulcus"
+    },
+    {
+     "at": [
+      0.6325,
+      0.2938
+     ],
+     "term": "parietal-lobe"
+    },
+    {
+     "at": [
+      0.8738,
+      0.3389
+     ],
+     "term": "parieto-occipital-sulcus"
+    },
+    {
+     "at": [
+      0.2204,
+      0.3925
+     ],
+     "term": "frontal-lobe"
+    },
+    {
+     "at": [
+      0.8788,
+      0.5052
+     ],
+     "term": "occipital-lobe"
+    },
+    {
+     "at": [
+      0.3129,
+      0.5587
+     ],
+     "term": "lateral-sulcus"
+    },
+    {
+     "at": [
+      0.4918,
+      0.6461
+     ],
+     "term": "temporal-lobe"
+    },
+    {
+     "at": [
+      0.7129,
+      0.8152
+     ],
+     "term": "cerebellum"
+    },
+    {
+     "at": [
+      0.5923,
+      0.9138
+     ],
+     "term": "medulla-oblongata"
+    }
+   ]
+  },
+  "brain-sagittal": {
+   "url": "plates/brain-sagittal.091dd7dc8b.webp",
+   "w": 661,
+   "h": 711,
+   "labels": [
+    {
+     "at": [
+      0.3056,
+      0.2152
+     ],
+     "term": "cerebrum"
+    },
+    {
+     "at": [
+      0.5129,
+      0.2349
+     ],
+     "term": "corpus-callosum"
+    },
+    {
+     "at": [
+      0.5552,
+      0.3488
+     ],
+     "term": "thalamus"
+    },
+    {
+     "at": [
+      0.4841,
+      0.3797
+     ],
+     "term": "hypothalamus"
+    },
+    {
+     "at": [
+      0.5552,
+      0.4149
+     ],
+     "term": "midbrain"
+    },
+    {
+     "at": [
+      0.4599,
+      0.4557
+     ],
+     "term": "pituitary-gland"
+    },
+    {
+     "at": [
+      0.5477,
+      0.4895
+     ],
+     "term": "pons"
+    },
+    {
+     "at": [
+      0.7292,
+      0.5387
+     ],
+     "term": "cerebellum"
+    },
+    {
+     "at": [
+      0.593,
+      0.5809
+     ],
+     "term": "medulla-oblongata"
+    },
+    {
+     "at": [
+      0.6157,
+      0.7637
+     ],
+     "term": "spinal-cord"
+    }
+   ]
   }
  }
 }

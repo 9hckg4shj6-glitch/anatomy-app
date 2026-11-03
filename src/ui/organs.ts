@@ -75,8 +75,9 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
     return;
   }
 
-  // 立体: 臓器と大血管だけを見せ、部屋の色分け・向き・切り口を選ぶ
-  let colored = true;
+  // 立体: 臓器と大血管だけを見せ、部屋・葉の色分け・向き・切り口を選ぶ
+  const colorable = Object.keys(organ.colors).length > 0;
+  let colored = colorable;
   let cut: number | null = null;
   let selected: Term | null = null;
   await viewer.show({ systems: [...new Set(organTerms(organ).map((id) => termById.get(id)?.system ?? "").filter(Boolean))], organ: organ.id });
@@ -94,7 +95,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
     viewer.setSection(section);
     viewer.setPeel(spec?.hide ?? [], []);
     if (section) viewer.viewSection();
-    else viewer.viewOrgan([0, 0, 1]);
+    else viewer.viewOrgan(organ.views[0]?.from ?? [0, 0, 1]);
     paint();
   };
   const select = (term: Term | null, move = true) => {
@@ -117,8 +118,10 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
         h("span", { class: "swatch", style: `background:${color}` }), term?.ja ?? id, h("span", { class: "en", lang: "en" }, term?.en ?? ""));
     }),
   );
+  const lessons = organ.units.flatMap((id) => unitById.get(id) ?? []);
+  const inLessons = new Set(lessons.flatMap((unit) => unit.terms.map((term) => term.id)));
+  const withTerms = organ.with.filter((id) => !inLessons.has(id)).flatMap((id) => termById.get(id) ?? []);
   const render = () => {
-    const lessons = organ.units.flatMap((id) => unitById.get(id) ?? []);
     body.replaceChildren(
       h("h3", {}, "向き"),
       h("div", { class: "chip-list" }, ...organ.views.map((view) => h("button", {
@@ -140,11 +143,11 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
           onClick: () => { cut = i; applyCut(); render(); },
         }, item.label)),
       ),
-      h("label", { class: "switch-row" },
+      colorable ? h("label", { class: "switch-row" },
         h("input", { type: "checkbox", checked: colored, onChange: (event: Event) => { colored = (event.target as HTMLInputElement).checked; paint(); render(); } }),
-        "部屋ごとに色を分ける"),
+        organ.colorLabel ?? "色を分ける") : "",
       colored ? legend() : "",
-      h("p", { class: "muted" }, "血管は、赤が酸素の多い血液（動脈血）、青が酸素の少ない血液（静脈血）の通る所。肺動脈は静脈血を運ぶので青、肺静脈は動脈血を運ぶので赤。弁は白。"),
+      organ.colorNote ? h("p", { class: "muted" }, organ.colorNote) : "",
       selected ? h("div", { class: "detail" },
         termCard(selected, { open: (word) => (ids.has(word.id) ? select(word) : (location.hash = `#/explore/${word.id}`)) }),
         h("div", { class: "nav-row" },
@@ -152,9 +155,9 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
           h("button", { class: "ghost-button", type: "button", onClick: () => select(null) }, "選択をやめる"),
         ),
       ) : h("p", { class: "muted" }, "3Dの部位をタップするか、下の語を選んでください。"),
-      ...lessons.flatMap((unit) => [
-        h("h3", {}, unit.title),
-        h("div", { class: "chip-list" }, ...unit.terms.map((term) => h("button", {
+      ...[...lessons.map((unit) => [unit.title, unit.terms] as const), ["いっしょに見せる語", withTerms] as const].filter(([, list]) => list.length).flatMap(([title, list]) => [
+        h("h3", {}, title),
+        h("div", { class: "chip-list" }, ...list.map((term) => h("button", {
           class: term === selected ? "chip on" : "chip", type: "button", onClick: () => select(term),
         }, term.ja))),
       ]),
