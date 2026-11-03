@@ -17,14 +17,13 @@
   <body>
     <div id="app">
       <header class="topbar">
-        <a class="brand" href="#/">解剖3D</a>
-        <nav class="tabs">
-          <a href="#/" data-tab="home">ホーム</a>
-          <a href="#/review" data-tab="review">復習<span class="badge" id="due-badge" hidden></span></a>
-          <a href="#/explore" data-tab="explore">図鑑</a>
-          <a href="#/progress" data-tab="progress">進捗</a>
-          <a href="#/settings" data-tab="settings" aria-label="設定" title="設定">⚙</a>
-        </nav>
+        <!-- ホームでは名前、ほかのページでは「‹ ホーム」と今いるページ（src/main.ts の showCrumbs） -->
+        <a class="brand" href="#/" aria-label="ホームへ">
+          <svg class="brand-mark" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#1f6f78"/><g transform="rotate(-45 256 256)" fill="#fffdf8"><rect x="150" y="228" width="212" height="56" rx="18"/><circle cx="150" cy="220" r="42"/><circle cx="150" cy="292" r="42"/><circle cx="362" cy="220" r="42"/><circle cx="362" cy="292" r="42"/></g><circle cx="392" cy="120" r="34" fill="#ff7a1a"/></svg>
+          <span class="brand-name">解剖3D</span><span class="brand-back">ホーム</span>
+        </a>
+        <nav class="crumbs" id="crumbs" aria-label="今いる所"></nav>
+        <a class="topbar-settings" href="#/settings" aria-label="設定" title="設定">⚙</a>
       </header>
       <main class="layout">
         <section class="stage" id="stage">

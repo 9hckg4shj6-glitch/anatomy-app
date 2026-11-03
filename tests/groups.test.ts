@@ -2,7 +2,7 @@ import { systems, termById, units } from "../src/content";
 import { areaLabels } from "../src/exam";
 import type { LearnedTerm } from "../src/db";
 import { normalize, searchTerms, searchUnits } from "../src/search";
-import { nextLesson } from "../src/ui/home";
+import { nextLesson } from "../src/ui/lessons";
 
 const learnedAll = (unitId: string, at: string): LearnedTerm[] =>
   units.find((unit) => unit.id === unitId)!.terms.map((term) => ({ termId: term.id, unitId, learnedAt: at }));

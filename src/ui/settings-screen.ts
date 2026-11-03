@@ -94,7 +94,7 @@ function settingRows(render: () => void): HTMLElement[] {
         return;
       }
       await setPreference("studyFacets", next);
-      window.dispatchEvent(new CustomEvent("anatomy:reviewed")); // 上の印の数を変える
+      window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
       render();
     },
   }, kind.label)));
@@ -118,7 +118,7 @@ function settingRows(render: () => void): HTMLElement[] {
       h("p", { class: "setting-label" }, "1日に新しく始める問題"),
       chips(NEW_PER_DAY_OPTIONS.map((n) => ({ value: n, label: `${n}問` })), preferences.newPerDay, async (value) => {
         await setPreference("newPerDay", value);
-        window.dispatchEvent(new CustomEvent("anatomy:reviewed")); // 上の印の数を変える
+        window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
       }),
       h("p", { class: "muted" }, "1つの語に、学ぶ問い方の数だけ問題があり（初めは4つ。筋は7つ）、別々に数えます。期限の来た復習はこの数に関係なくすべて出ます。"),
       h("p", { class: "setting-label" }, "復習の1回の区切り"),

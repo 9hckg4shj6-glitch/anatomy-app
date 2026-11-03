@@ -5,7 +5,7 @@ import { h, onKeys, until } from "../dom";
 import { preferences, setPreference } from "../settings";
 import { BASIC_FACETS, facetLabels, facetsFor, lessonFacet, shuffle, type QueueItem } from "../study";
 import { motionPlayer, sceneFor, type AppContext } from "./context";
-import { nextLesson } from "./home";
+import { nextLesson } from "./lessons";
 import { ask, showPanel } from "./quiz";
 import { termCard } from "./term-card";
 
@@ -16,7 +16,7 @@ import { termCard } from "./term-card";
 export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   const unit = unitById.get(unitId);
   if (!unit) {
-    ctx.panel.replaceChildren(h("p", {}, "レッスンが見つかりません。"), h("a", { href: "#/" }, "ホームへ"));
+    ctx.panel.replaceChildren(h("p", {}, "レッスンが見つかりません。"), h("a", { href: "#/lessons" }, "レッスンの一覧へ"));
     return;
   }
   const { viewer, signal } = ctx;
@@ -83,7 +83,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     unit.terms.some((term) => term.passes) && studies("passage") ? h("p", {}, "孔・溝を通るもの（入るもの）は、場所を覚えたころに復習で出ます。") : "",
     h("p", {}, h("a", { href: "#/review" }, "今日の復習へ")),
     h("div", { class: "nav-row" },
-      h("a", { class: next ? "ghost-button" : "primary", href: "#/" }, "ホームへ"),
+      h("a", { class: next ? "ghost-button" : "primary", href: "#/lessons" }, "レッスンの一覧へ"),
       next ? h("a", { class: "primary", href: `#/learn/${next.id}` }, `次のレッスン「${next.title}」`) : "",
     ),
   );

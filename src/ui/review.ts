@@ -7,7 +7,7 @@ import { isRootKey, rootByKey } from "../roots";
 import { preferences, REVIEW_SIZE_OPTIONS, setPreference } from "../settings";
 import { buildQueue, facetLabels, facetsFor, ROOT_FACETS, TERM_KINDS, unlockedTerms, type QueueItem } from "../study";
 import type { AppContext } from "./context";
-import { nextLesson } from "./home";
+import { nextLesson } from "./lessons";
 import { ask, showPanel, type Outcome } from "./quiz";
 import { askExam, itemHref } from "./exam";
 import { askRoot } from "./roots";

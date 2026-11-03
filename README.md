@@ -46,7 +46,7 @@ node scripts/visibility.mjs <系統> # 隠れて見えない語（xray を付け
 
 ## 骨の部位のピンを直す
 
-`npm run dev` のあと `http://localhost:5173/?admin=1#/admin` を開く（「ピン」タブが出る）。部位を選んで骨をクリックし、「保存」で `content/pins.json` が書きかわる。くわしくは docs/設計.md の「骨の部位（ピン）」。
+`npm run dev` のあと `http://localhost:5173/?admin=1#/admin` を開く（ホームに「ピン」の項目が出る）。部位を選んで骨をクリックし、「保存」で `content/pins.json` が書きかわる。くわしくは docs/設計.md の「骨の部位（ピン）」。
 
 ## 出典
 
