@@ -4,13 +4,13 @@ import { h } from "../dom";
 import { retrievability } from "../fsrs";
 import { normalize, searchTerms, searchUnits } from "../search";
 import { preferences } from "../settings";
-import { facetsFor, practiceQueue, TERM_KINDS, unlockedTerms, type PracticeCandidate } from "../study";
+import { facetsFor, practiceQueue, TERM_KINDS, type PracticeCandidate } from "../study";
 import type { AppContext } from "./context";
 import { ask, showPanel } from "./quiz";
 
 const COUNTS = [10, 20, 40];
 
-/** 範囲のチェック。ids はその下の学んだ語、count は「選んだ数/語の数」を出す所 */
+/** 範囲のチェック。ids はその下の語、count は「選んだ数/語の数」を出す所 */
 interface RangeBox {
   box: HTMLInputElement;
   ids: string[];
@@ -18,7 +18,8 @@ interface RangeBox {
 }
 
 /**
- * 演習：範囲（系統→まとまり→レッスン→語のチェック）と問い方を選んで、レッスンで学んだ語から解く（試験前の総ざらい）。
+ * 演習：範囲（系統→まとまり→レッスン→語のチェック）と問い方を選んで解く（試験前の総ざらい）。
+ * レッスンでまだ学んでいない語も選べる（初めに選んでおくのは学んだ語）。
  * mode が "weak" なら苦手な順に出す。答えは復習と同じく記録し、次に出る日にも反映する。
  */
 export async function drill(ctx: AppContext, mode: string): Promise<void> {
@@ -30,11 +31,8 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
   const learnedIds = new Set(learned.map((item) => item.termId));
   // 覚え具合は解くたびに変わるので、「もう一度」のときに読み直す
   let scheduleOf = new Map(schedules.map((s) => [s.cardId, s]));
-  let unlocked = unlockedTerms(schedules, preferences.studyFacets);
   const reload = async () => {
-    const fresh = await db.schedules.toArray();
-    scheduleOf = new Map(fresh.map((s) => [s.cardId, s]));
-    unlocked = unlockedTerms(fresh, preferences.studyFacets);
+    scheduleOf = new Map((await db.schedules.toArray()).map((s) => [s.cardId, s]));
   };
   const learnedTerms = terms.filter((term) => learnedIds.has(term.id));
 
@@ -47,9 +45,10 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
   let weak = mode === "weak";
   let note = "";
 
-  const candidates = (): PracticeCandidate[] => learnedTerms
+  // 演習では筋の3つと通るものも、場所を覚える前から出す（解く順は自分で決める）
+  const candidates = (): PracticeCandidate[] => terms
     .filter((term) => selected.has(term.id))
-    .flatMap((term) => facetsFor(term, unlocked.has(term.id))
+    .flatMap((term) => facetsFor(term, true)
       .filter((facet) => TERM_KINDS.some((kind) => kinds.has(kind.key) && kind.facets.includes(facet)))
       .map((facet) => {
         const schedule = scheduleOf.get(`${term.id}:${facet}`);
@@ -76,12 +75,13 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
     list.push({ box, ids, count });
     return box;
   };
-  const learnedIn = (list: Term[]) => list.filter((term) => learnedIds.has(term.id)).map((term) => term.id);
+  const idsOf = (list: Term[]) => list.map((term) => term.id);
   /** 語の行（押すとチェックが切り替わる） */
   const termRow = (list: RangeBox[], term: Term, where = "") => h("li", {},
     h("label", { class: "range-term" },
       checkbox(list, [term.id], term.ja),
-      h("span", {}, term.ja, where ? h("span", { class: "term-where" }, where) : ""),
+      h("span", {}, term.ja, where ? h("span", { class: "term-where" }, where) : "",
+        learnedIds.has(term.id) ? h("span", { class: "term-where" }, "学んだ") : ""),
       h("span", { class: "en", lang: "en" }, term.en)));
   /** フォルダー（系統・まとまり・レッスン）。チェックは選ぶだけ、名前を押すと開く */
   const folder = (list: RangeBox[], ids: string[], title: (Node | string)[], kind: string, content: HTMLElement) => {
@@ -96,14 +96,14 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
       content);
   };
   const lessonFolder = (list: RangeBox[], unit: (typeof units)[number], where = "") => {
-    const inUnit = unit.terms.filter((term) => learnedIds.has(term.id));
-    return h("li", {}, folder(list, inUnit.map((term) => term.id),
+    const inUnit = unit.terms;
+    return h("li", {}, folder(list, idsOf(inUnit),
       [unit.title, where ? h("span", { class: "term-where" }, where) : ""], "subfolder range-lesson",
       h("ul", { class: "term-list" }, ...inUnit.map((term) => termRow(list, term)))));
   };
 
   const tree = h("div", { class: "range-tree" }, ...systems.flatMap((system) => {
-    const list = units.filter((unit) => unit.system === system.id && unit.terms.some((term) => learnedIds.has(term.id)));
+    const list = units.filter((unit) => unit.system === system.id && unit.terms.length);
     if (!list.length) return [];
     const lessonList = (inList: typeof list) => h("ul", { class: "units" }, ...inList.map((unit) => lessonFolder(boxes, unit)));
     // まとまり（骨格系の体幹・上肢など）のある系統は、系統→まとまり→レッスンの入れ子にする
@@ -111,10 +111,10 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
     const content = groups[0]
       ? h("div", { class: "subfolders" }, ...groups.map((group) => {
         const inGroup = list.filter((unit) => unit.group === group);
-        return folder(boxes, learnedIn(inGroup.flatMap((unit) => unit.terms)), [group ?? ""], "subfolder", lessonList(inGroup));
+        return folder(boxes, idsOf(inGroup.flatMap((unit) => unit.terms)), [group ?? ""], "subfolder", lessonList(inGroup));
       }))
       : lessonList(list);
-    return [folder(boxes, learnedIn(list.flatMap((unit) => unit.terms)),
+    return [folder(boxes, idsOf(list.flatMap((unit) => unit.terms)),
       [h("span", { class: "swatch", style: `background:${system.color}` }), system.ja], "folder", content)];
   }));
 
@@ -128,8 +128,8 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
       results.hidden = !query;
       foundBoxes = [];
       if (!query) return results.replaceChildren();
-      const lessons = searchUnits(query).filter((unit) => unit.terms.some((term) => learnedIds.has(term.id)));
-      const found = searchTerms(query).filter((term) => learnedIds.has(term.id));
+      const lessons = searchUnits(query).filter((unit) => unit.terms.length);
+      const found = searchTerms(query);
       const where = (system: string, unitId: string) =>
         `${systems.find((s) => s.id === system)?.ja ?? ""}・${units.find((unit) => unit.id === unitId)?.title ?? ""}`;
       results.replaceChildren(
@@ -138,7 +138,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
           lessonFolder(foundBoxes, unit, systems.find((s) => s.id === unit.system)?.ja ?? ""))) : "",
         found.length ? h("h3", {}, `語 ${found.length}`, found.length > 40 ? h("span", { class: "muted" }, "（はじめの40）") : "") : "",
         found.length ? h("ul", { class: "term-list" }, ...found.slice(0, 40).map((term) => termRow(foundBoxes, term, where(term.system, term.unit)))) : "",
-        lessons.length || found.length ? "" : h("p", { class: "muted" }, "学んだ語の中には見つかりませんでした。"),
+        lessons.length || found.length ? "" : h("p", { class: "muted" }, "見つかりませんでした。"),
       );
       refresh();
     },
@@ -159,8 +159,9 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
       box.indeterminate = on > 0 && on < ids.length;
       if (counter) counter.textContent = on && on < ids.length ? `${on}/${ids.length}語` : `${ids.length}語`;
     }
-    summary.textContent = selected.size === learnedTerms.length ? `学んだ語すべて（${learnedTerms.length}語）`
-      : `${selected.size}語を選んでいます（学んだ ${learnedTerms.length}語のうち）`;
+    const learnedOn = learnedTerms.filter((term) => selected.has(term.id)).length;
+    summary.textContent = selected.size === terms.length ? `すべての語（${terms.length}語）`
+      : `${selected.size}語を選んでいます（全 ${terms.length}語のうち${learnedTerms.length ? `。学んだ語 ${learnedOn}/${learnedTerms.length}` : ""}）`;
     const pool = candidates();
     start.disabled = !pool.length;
     start.textContent = pool.length ? `始める（${Math.min(count, pool.length)}問）` : "始める";
@@ -198,16 +199,16 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
     const nodes = [
       h("div", { class: "quiz-head" }, h("a", { href: "#/" }, "← ホーム"), ""),
       h("h2", {}, weak ? "苦手な語を解く" : "範囲を選んで解く"),
-      learnedTerms.length ? "" : h("p", {}, "まだレッスンで学んだ語がありません。ホームからレッスンを始めましょう。"),
       h("h3", {}, "範囲"),
       summary,
-      learnedTerms.length ? h("div", { class: "range-actions" },
-        rangeButton("all", "すべて選ぶ", () => learnedTerms.map((term) => term.id)),
-        rangeButton("none", "すべて外す", () => [])) : "",
-      learnedTerms.length ? search : "",
+      h("div", { class: "range-actions" },
+        rangeButton("all", "すべて選ぶ", () => idsOf(terms)),
+        learnedTerms.length ? rangeButton("learned", "学んだ語だけ", () => idsOf(learnedTerms)) : "",
+        rangeButton("none", "すべて外す", () => [])),
+      search,
       results,
       tree,
-      learnedTerms.length ? h("p", { class: "muted" }, "系統・まとまり・レッスンを開くと、レッスンや語を1つずつ選べます。出るのはレッスンで学んだ語だけです。") : "",
+      h("p", { class: "muted" }, "系統・まとまり・レッスンを開くと、レッスンや語を1つずつ選べます。レッスンでまだ学んでいない語も選べます。"),
       h("h3", {}, "問い方"),
       chips(TERM_KINDS.map((kind) => ({ key: kind.key, label: kind.label })), (key) => kinds.has(key), (key) => toggle(kinds, key)),
       h("h3", {}, "問題の数"),
