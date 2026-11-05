@@ -166,6 +166,7 @@ async function start(): Promise<void> {
         hintBox.textContent = text;
         hintBox.hidden = !text;
       },
+      fold: (on) => splitter.fold(on),
       guard: (message) => (leaveWarning = message),
       stay: (handler) => (stayHandler = handler),
     };

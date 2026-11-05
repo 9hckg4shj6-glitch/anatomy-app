@@ -32,6 +32,7 @@ const SOURCES: [string, string, string][] = [
 ];
 
 export function credits(ctx: AppContext): void {
+  ctx.fold(true);
   ctx.hint("");
   ctx.panel.replaceChildren(
     h("h2", {}, "出典・クレジット"),

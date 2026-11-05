@@ -25,6 +25,7 @@ interface RangeBox {
  */
 export async function drill(ctx: AppContext, mode: string): Promise<void> {
   const { viewer } = ctx;
+  ctx.fold(true);
   viewer.highlight([]);
   viewer.overview();
   ctx.hint("");
@@ -221,7 +222,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
       chips([{ key: "mix", label: "まぜる" }, { key: "weak", label: "苦手な順" }], (key) => (key === "weak") === weak, (key) => (weak = key === "weak")),
       note ? h("p", { class: "drill-note" }, note) : "",
       status,
-      start,
+      h("div", { class: "panel-foot" }, start),
     ];
     if (!focusKey) showPanel(ctx, ...nodes);
     else {
@@ -235,6 +236,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
   };
 
   const run = async (queue: ReturnType<typeof practiceQueue>) => {
+    ctx.fold(false);
     const missed = new Set<string>();
     let correct = 0;
     for (const [i, item] of queue.entries()) {

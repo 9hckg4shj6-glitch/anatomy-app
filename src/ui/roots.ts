@@ -6,7 +6,7 @@ import { examplesOf, exampleFor, rootByKey, rootKey, roots, rootUnitById, rootUn
 import { facetLabels, pickChoices, shuffle, type QueueItem } from "../study";
 import { LEAVE_LESSON, type AppContext } from "./context";
 import { turnPage } from "./lesson";
-import { chooseOne, retryButton, showPanel, waitResult, type Outcome } from "./quiz";
+import { answeredChoices, chooseOne, retryButton, showPanel, waitResult, type Outcome } from "./quiz";
 import { markedRoot as marked } from "./term-card";
 
 /** 例の語の3Dを光らせる（部位を持つ語だけ。系統は3つまで読む） */
@@ -128,12 +128,11 @@ export async function askRoot(ctx: AppContext, item: QueueItem, source: ReviewEv
   const recorded = await recordReview(item.termId, item.facet, outcome === "correct" ? Rating.Good : Rating.Again,
     { durationMs: Math.round(performance.now() - started), source });
   void showExamples(ctx, examplesOf(root));
-  const wrong = picked && picked !== item.termId ? rootByKey.get(picked)! : null;
   const next = h("button", { class: "primary", type: "button" }, "次へ");
   const retry = outcome === "correct" ? null : retryButton();
   showPanel(ctx, header,
     outcome === "correct" ? h("div", { class: "result ok", role: "status" }, "正解") : h("div", { class: "result ng", role: "status" }, outcome === "skip" ? "答えを確認しよう" : "不正解"),
-    wrong ? h("p", { class: "wrong-note" }, `あなたが選んだのは ${wrong.root}「${wrong.meaning}」`) : "",
+    outcome === "correct" ? "" : answeredChoices(choices, display, item.termId, picked, { lang: byMeaning ? undefined : "en", aside: byMeaning ? formOf : meaningOf }),
     rootCard(root, { examples: 6 }),
     h("p", { class: "next-due" }, `次の出題: ${dueLabel(recorded.schedule)}`),
     retry ?? "",

@@ -110,6 +110,7 @@ export async function review(ctx: AppContext): Promise<void> {
  * 1回に解く数は前に選んだものを覚える。範囲と問い方は毎回すべてから始める（ホームの数と食いちがわないように）
  */
 function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
+  ctx.fold(true);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   ctx.hint("");
@@ -203,6 +204,7 @@ function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
  * 回の中でもう一度出る。ほかに出す問題が無くなったら、まちがえてまだ正解していない問題を、期限を待たずに（20分先までのものを）出す。
  */
 async function session(ctx: AppContext, setup: Setup): Promise<void> {
+  ctx.fold(false);
   const { limit, pending } = setup;
   const nextQueue = () => remaining(setup);
   let answered = 0;
@@ -307,6 +309,7 @@ async function finish(ctx: AppContext, setup: Setup, answered: number, correct: 
 
 /** 今日の問題が無いとき: 次の復習がいつ来るか、新しい問題の上限に届いたか、次の一手 */
 async function nothingToday(ctx: AppContext): Promise<void> {
+  ctx.fold(true);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   ctx.hint("");

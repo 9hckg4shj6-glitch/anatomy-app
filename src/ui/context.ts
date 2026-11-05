@@ -11,6 +11,8 @@ export interface AppContext {
   hint: (text: string) => void;
   /** 3Dの右下に置くボタン類 */
   tools: HTMLElement;
+  /** スマホの縦向きで3Dを細い帯にたたむ（false で戻す）。一覧や設定など3Dを使わない画面で。画面を移ると戻る */
+  fold: (on: boolean) => void;
   /** 画面を離れると abort される */
   signal: AbortSignal;
   /** ほかの画面へ移る前に確かめる文（null でやめる）。レッスンの途中で、うっかりタブを押して進み具合を失わないように */

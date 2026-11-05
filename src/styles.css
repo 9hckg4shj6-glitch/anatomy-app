@@ -212,10 +212,16 @@ a.crumb::after { content: " ›"; color: var(--muted); font-weight: 400; }
 .nav-row { display: flex; gap: 10px; margin-top: 16px; }
 .nav-row > * { flex: 1; }
 /* 「次へ」などは画面の下に留めて、説明を読んでいる途中でも押せるようにする。
-   留めるのは欄の最後の行だけ（途中の行を留めると、スクロールしたとき上の3Dに重なる） */
-.panel > .nav-row:last-child, .panel > .primary:last-child { position: sticky; z-index: 2; }
-.panel > .primary:last-child { bottom: calc(10px + var(--safe-bottom)); box-shadow: 0 4px 14px rgb(43 42 39 / 0.16); }
-.panel > .nav-row:last-child { bottom: 0; padding: 10px 0 calc(10px + var(--safe-bottom)); background: linear-gradient(to bottom, transparent, var(--bg) 10px); }
+   留めるのは欄の最後の行だけ（途中の行を留めると、スクロールしたとき上の3Dに重なる）。
+   1つだけの主ボタンは showPanel が .panel-foot で包む。帯は不透明にして、下を流れる説明が透けて重ならないようにする */
+.panel > .nav-row:last-child, .panel > .panel-foot:last-child {
+  position: sticky; z-index: 2; bottom: 0; padding: 10px 0 calc(10px + var(--safe-bottom));
+  background: linear-gradient(to bottom, transparent, var(--bg) 10px);
+}
+.panel-foot { margin-top: 8px; }
+.panel-foot > .primary { width: 100%; }
+/* 長い一覧の終わりの「ホームへ」は留めない（上の帯にもホームがあり、留めると一覧のボタンに重なる） */
+.panel > .nav-row.list-end:last-child { position: static; padding: 0; background: none; }
 
 .today-count { font-size: 28px; font-weight: 700; margin: 4px 0 12px; }
 .panel > .next-lesson { width: 100%; }
@@ -287,7 +293,11 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .term-more > summary { cursor: pointer; font-size: 14px; color: var(--muted); }
 .term-more > .root-chips { margin-top: 10px; }
 
-.quiz-head { display: flex; justify-content: space-between; color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+.quiz-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+.quiz-head .facet { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.quiz-head .count { flex: none; display: flex; align-items: center; gap: 12px; }
+/* レッスンで残りを飛ばして確認テストへ（見出しの行の右） */
+.head-skip { min-height: 44px; margin: -12px 0; padding: 0 2px; border: 0; background: none; color: var(--accent); font-size: 14px; font-weight: 600; cursor: pointer; }
 .facet { font-weight: 600; color: var(--accent); }
 .prompt { font-size: 18px; font-weight: 600; margin: 8px 0 12px; }
 .prompt-ja { display: block; font-size: 30px; font-weight: 700; margin: 12px 0; ruby-position: over; }
@@ -305,10 +315,24 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .result.close { background: var(--close); }
 .typed { font-weight: 400; text-decoration: line-through; opacity: 0.9; }
 .wrong-note { color: #3d7bd9; font-size: 14px; margin: 0 0 10px; }
+/* まちがえたときの答え合わせ: 4択を残して、正解に ✓、選んだものに ✕（quiz.ts の answeredChoices） */
+.answered { display: grid; gap: 6px; margin: 0 0 12px; padding: 0; list-style: none; }
+.answered:has(.direction) { grid-template-columns: 1fr 1fr; }
+.answered-choice {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; padding: 8px 12px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--muted); font-size: 15px; line-height: 1.45;
+}
+.answered-mark { flex: none; width: 1em; font-weight: 700; }
+.answered-text { flex: 1; min-width: 0; }
+.answered-tag { flex: none; font-size: 12px; font-weight: 700; }
+.answered-aside { flex-basis: 100%; padding-left: calc(1em + 8px); color: var(--muted); font-size: 13px; }
+.answered-choice.is-answer { border: 1.5px solid var(--ok); background: color-mix(in srgb, var(--ok) 9%, var(--surface)); color: var(--ink); font-weight: 600; }
+.answered-choice.is-answer :is(.answered-mark, .answered-tag) { color: var(--ok); }
+.answered-choice.is-picked { border: 1.5px solid var(--ng); background: color-mix(in srgb, var(--ng) 7%, var(--surface)); color: var(--ink); }
+.answered-choice.is-picked :is(.answered-mark, .answered-tag) { color: var(--ng); }
 .next-due { color: var(--muted); font-size: 14px; }
 .auto-next { margin: 0 0 6px; color: var(--muted); font-size: 13px; text-align: center; }
 .text-button.more { margin: 6px 0 0; }
-.text-button.skip-test { margin: 10px auto 0; }
 .drill-note { padding: 8px 12px; border-radius: 10px; background: color-mix(in srgb, var(--close) 12%, var(--surface)); font-size: 14px; }
 /* 演習の範囲: 系統・まとまり・レッスンのフォルダーと語にチェック。チェックは選ぶだけ、名前を押すと開く */
 .range-summary { margin: 0 0 4px; font-weight: 600; }
@@ -728,6 +752,18 @@ a.term-row { color: var(--ink); text-decoration: none; }
   .home-caption { top: 26px; left: calc(28px + var(--safe-left)); }
   .home-caption-title { font-size: 38px; }
   .layout.is-home .stage-tools { left: 20px; right: 20px; bottom: 18px; }
+}
+/* 3Dをたたむ（src/ui/splitter.ts の fold）。スマホの縦で、一覧や設定など3Dを使わない画面。
+   3Dの大きさは変えず、説明の欄を3Dに重ねて、上の 52px の帯（「3Dを出す」）だけを見せる */
+.stage-unfold { display: none; }
+@media (max-width: 767px) and (orientation: portrait), (max-width: 767px) and (min-height: 541px) {
+  .layout.stage-folded .stage { position: relative; top: 0; }
+  .layout.stage-folded .splitter { display: none; }
+  .layout.stage-folded .panel { position: relative; z-index: 2; margin-top: calc(52px - max(200px, var(--stage-height, 46svh))); }
+  .layout.stage-folded .stage-unfold {
+    display: flex; align-items: center; justify-content: center; position: absolute; z-index: 6; top: 0; left: 0; right: 0; height: 52px;
+    border: 0; background: #1d1f23; color: #f1eee8; font-size: 15px; font-weight: 600; cursor: pointer;
+  }
 }
 /* スマホ: 3Dはスクロールで流し、説明の欄を3Dの下の縁に重ねる */
 @media (max-width: 767px) and (orientation: portrait), (max-width: 767px) and (min-height: 541px) {

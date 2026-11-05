@@ -25,6 +25,7 @@ export async function organScreen(ctx: AppContext, arg: string): Promise<void> {
 }
 
 function organList(ctx: AppContext): void {
+  ctx.fold(true);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   void ctx.viewer.show({ systems: ["skeletal"], body: true });

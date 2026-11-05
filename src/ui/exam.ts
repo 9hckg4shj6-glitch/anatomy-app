@@ -17,7 +17,7 @@ import { ORIGIN_COLOR } from "../viewer";
 import { dueLabel, Rating, recordReview, retrievability, type RecordedReview } from "../fsrs";
 import { facetLabels, pickChoices, practiceQueue, shuffle, termMastery, typesEnglish, type PracticeCandidate, type QueueItem } from "../study";
 import { sceneFor, type AppContext } from "./context";
-import { chooseOne, retryButton, showPanel, typeEnglish, waitResult, type Outcome } from "./quiz";
+import { answeredChoices, chooseOne, retryButton, showPanel, typeEnglish, waitResult, type Outcome } from "./quiz";
 import { termCard } from "./term-card";
 
 /** 1回に新しく学ぶ数（D は図1枚が重いので少なく）と、苦手を解く数 */
@@ -58,6 +58,7 @@ export async function exam(ctx: AppContext, arg: string): Promise<void> {
 const percent = (value: number | null) => (value === null ? "" : `・覚え ${Math.round(value * 100)}%`);
 
 async function examIndex(ctx: AppContext): Promise<void> {
+  ctx.fold(true);
   await showTerms(ctx, []);
   ctx.hint("");
   const [learned, schedules] = await Promise.all([db.learned.toArray(), db.schedules.toArray()]);
@@ -69,7 +70,7 @@ async function examIndex(ctx: AppContext): Promise<void> {
     h("h3", { class: "exam-group" }, "整理して覚える"),
     h("p", { class: "muted" }, "試験の形式ではないが、A〜D で問われる点を、比べる・並べる・高さで覚える。関係する問題が多く出た順に解く。"),
     ...SORT_KINDS.map(kindSection),
-    h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/" }, "ホームへ")),
+    h("div", { class: "nav-row list-end" }, h("a", { class: "ghost-button", href: "#/" }, "ホームへ")),
   );
 
   function kindSection(kind: ExamKind): HTMLElement {
@@ -160,6 +161,7 @@ export function itemHref(item: ExamItem): string {
  * まちがえた項目や語のカードの「試験 N回」から、目当ての項目へすぐ行けるように
  */
 async function itemList(ctx: AppContext, items: ExamItem[], title: string, back: string, areas = false): Promise<void> {
+  ctx.fold(true);
   await showTerms(ctx, []);
   ctx.hint("");
   const [learned, schedules] = await Promise.all([db.learned.toArray(), db.schedules.toArray()]);
@@ -414,9 +416,13 @@ async function askWord(ctx: AppContext, exam: WordItem, facet: Facet, source: Re
   let picked: string | null = null;
   let typed = "";
   let outcome: Outcome;
+  // 4択で答えたら、まちがえたときの答え合わせで選択肢を残す（answeredChoices）
+  let choices: string[] = [];
+  const ja = (key: string) => word(key).ja;
   if (facet === "read") {
     const prompt = h("div", {}, h("p", { class: "prompt" }, "日本語では？"), h("p", { class: "prompt-en exam-foreign", lang: "la" }, exam.la ?? exam.en));
-    picked = await chooseOne(ctx, head, prompt, pickChoices(exam.key, near, pool, (key) => word(key).ja), (key) => word(key).ja);
+    choices = pickChoices(exam.key, near, pool, ja);
+    picked = await chooseOne(ctx, head, prompt, choices, ja);
     outcome = picked === exam.key ? "correct" : picked ? "wrong" : "skip";
   } else {
     const prompt = h("ruby", { class: "prompt-ja" }, exam.ja, h("rt", {}, exam.yomi));
@@ -424,20 +430,22 @@ async function askWord(ctx: AppContext, exam: WordItem, facet: Facet, source: Re
       typed = await typeEnglish(ctx, head, prompt, "英語かラテン語で書くと？", "英語かラテン語でつづりを入力");
       outcome = typed ? checkEnglish(typed, [exam.en, ...exam.enAlt, ...(exam.la ? [exam.la] : [])]) : "skip";
     } else {
-      picked = await chooseOne(ctx, head, prompt, pickChoices(exam.key, near, pool, foreign), foreign, "en");
+      choices = pickChoices(exam.key, near, pool, foreign);
+      picked = await chooseOne(ctx, head, prompt, choices, foreign, "en");
       outcome = picked === exam.key ? "correct" : picked ? "wrong" : "skip";
     }
   }
   const rating = ratingOf[outcome];
   const recorded = await recordReview(exam.key, facet, rating, { durationMs: Math.round(performance.now() - started), source });
   void showTerms(ctx, exam.show);
-  const wrong = picked && picked !== exam.key ? word(picked) : null;
   const again = await showResult(ctx, outcome, [
     head,
     outcome === "close"
       ? h("div", { class: "result close" }, "惜しい（1文字ちがい）", h("span", { class: "typed", lang: "en" }, typed))
       : outcome === "wrong" && typed ? h("div", { class: "result ng" }, "不正解", h("span", { class: "typed", lang: "en" }, typed)) : banner(outcome),
-    wrong ? h("p", { class: "wrong-note" }, `あなたが選んだのは「${wrong.ja}」（${foreign(wrong.key)}）`) : "",
+    choices.length && outcome !== "correct"
+      ? answeredChoices(choices, facet === "read" ? ja : foreign, exam.key, picked, facet === "read" ? { aside: foreign } : { lang: "en", aside: ja })
+      : "",
     wordCard(exam),
     countNote(exam),
   ], recorded);
@@ -1014,15 +1022,15 @@ async function askLevel(ctx: AppContext, exam: LevelItem, facet: "level" | "land
       [exam.answer, ...exam.foils], exam.answer, (text: string) => text] as const
     : [h("div", {}, h("p", { class: "prompt" }, "この高さ（3Dの緑の骨）にある体表の目安は？"), h("p", { class: "prompt-ja level-answer" }, exam.answer)),
       [exam.key, ...shuffle(examItemsOf("l").filter((other) => other.key !== exam.key)).slice(0, 3).map((other) => other.key)], exam.key, title] as const;
-  const picked = await chooseOne(ctx, head, prompt, shuffle([...choices]), display, undefined, "long");
+  const options = shuffle([...choices]);
+  const picked = await chooseOne(ctx, head, prompt, options, display, undefined, "long");
   const outcome: Outcome = picked === answer ? "correct" : picked ? "wrong" : "skip";
-  const wrongText = picked && picked !== answer ? display(picked) : "";
   const recorded = await recordReview(exam.key, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
   await showLevel(ctx, exam, "both");
   const again = await showResult(ctx, outcome, [
     head,
     banner(outcome),
-    wrongText ? h("p", { class: "wrong-note" }, `あなたが選んだのは「${wrongText}」`) : "",
+    outcome === "correct" ? "" : answeredChoices(options, display, answer, picked, { variant: "long" }),
     h("h3", {}, exam.title),
     h("p", { class: "level-answer" }, exam.answer),
     h("p", {}, exam.note),

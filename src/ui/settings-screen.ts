@@ -12,6 +12,7 @@ import type { AppContext } from "./context";
 
 /** 設定の画面（#/settings）: 学び方・表示・骨学試験の日・記録の書き出しと読み込み */
 export async function settingsScreen(ctx: AppContext): Promise<void> {
+  ctx.fold(true);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   void ctx.viewer.show({ systems: ["skeletal"], body: true });

@@ -29,6 +29,9 @@ const muscleText: Partial<Record<Facet, (term: Term) => string>> = {
   action: (term) => term.action ?? "",
 };
 
+/** 起始・停止・神経・作用・通るものの選択肢が、どの語のものか（まちがえた選択肢に添える） */
+const ownerOf = (id: string) => `「${termById.get(id)!.ja}」のもの`;
+
 const muscleQuestion: Partial<Record<Facet, string>> = {
   attach: "起始 → 停止は？",
   nerve: "支配神経は？",
@@ -152,6 +155,13 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
 
   let outcome: Outcome;
   let wrongTerm: string | null = null;
+  // 4択で答えた問題は、まちがえたときの答え合わせで選択肢を残す（answeredChoices）
+  let asked = null as { choices: string[]; display: (id: string) => string; picked: string | null; lang?: string; variant?: string; aside?: (id: string) => string } | null;
+  const choose = async (prompt: string | HTMLElement, choices: string[], display: (id: string) => string, lang?: string, variant?: string, aside?: (id: string) => string) => {
+    const picked = await chooseOne(ctx, header, prompt, choices, display, lang, variant);
+    asked = { choices, display, picked, lang, variant, aside };
+    return picked;
+  };
   let tapped: { element: string; point: Vec3 } | null = null;
   let typed = "";
 
@@ -161,7 +171,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       viewer.focus(term.id, 3.4);
       const question = term.figure ? figurePrompt(term.figure) : term.region ? regionPrompt(term.region) : "オレンジ色の部位の名前は？";
       ctx.hint(question);
-      const picked = await chooseOne(ctx, header, question, choicesOf((id) => termById.get(id)!.ja, undefined, true), (id) => termById.get(id)!.ja);
+      const picked = await choose(question, choicesOf((id) => termById.get(id)!.ja, undefined, true), (id) => termById.get(id)!.ja);
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
       // 基本の用語の図・局所解剖は1つずつしか描かないので、選んだ語を青で示さない
       wrongTerm = picked && picked !== term.id && !isDrawn(term) ? picked : null;
@@ -206,8 +216,9 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
         typed = await typeEnglish(ctx, header, prompt);
         outcome = typed ? checkEnglish(typed, [term.en, ...(term.enAlt ?? [])]) : "skip";
       } else {
-        const picked = await chooseOne(ctx, header, prompt, choicesOf((id) => termById.get(id)!.en), (id) => termById.get(id)!.en, "en");
+        const picked = await choose(prompt, choicesOf((id) => termById.get(id)!.en), (id) => termById.get(id)!.en, "en", "", (id) => termById.get(id)!.ja);
         outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
+        wrongTerm = picked && picked !== term.id && !isDrawn(term) ? picked : null;
       }
       break;
     }
@@ -220,8 +231,9 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
         h("button", { class: "speak big", type: "button", "aria-label": "英語を聞く", onClick: () => void speak(term) }, "🔊"),
         reveal,
       );
-      const picked = await chooseOne(ctx, header, prompt, choicesOf((id) => termById.get(id)!.ja), (id) => termById.get(id)!.ja);
+      const picked = await choose(prompt, choicesOf((id) => termById.get(id)!.ja), (id) => termById.get(id)!.ja, undefined, "", (id) => termById.get(id)!.en);
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
+      wrongTerm = picked && picked !== term.id && !isDrawn(term) ? picked : null;
       break;
     }
     case "attach":
@@ -236,7 +248,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
         h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi)),
         h("p", { class: "prompt" }, muscleQuestion[facet]),
       );
-      const picked = await chooseOne(ctx, header, prompt, choicesOf((id) => text(termById.get(id)!), (other) => !!other.nerve), (id) => text(termById.get(id)!), undefined, "long");
+      const picked = await choose(prompt, choicesOf((id) => text(termById.get(id)!), (other) => !!other.nerve), (id) => text(termById.get(id)!), undefined, "long", ownerOf);
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
       break;
     }
@@ -250,7 +262,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
         h("p", { class: "prompt" }, "ここを通る（入る）ものは？"),
       );
       const text = (id: string) => termById.get(id)!.passes ?? "";
-      const picked = await chooseOne(ctx, header, prompt, choicesOf(text, (other) => !!other.passes), text, undefined, "long");
+      const picked = await choose(prompt, choicesOf(text, (other) => !!other.passes), text, undefined, "long", ownerOf);
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
       break;
     }
@@ -264,7 +276,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
         h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi)),
         h("p", { class: "prompt" }, "は「", other.ja, "」の どちら側？"),
       );
-      const picked = await chooseOne(ctx, header, prompt, DIRECTIONS, (id) => termById.get(id)!.ja, undefined, "direction");
+      const picked = await choose(prompt, DIRECTIONS, (id) => termById.get(id)!.ja, undefined, "direction");
       outcome = picked === term.toward!.dir ? "correct" : picked ? "wrong" : "skip";
       break;
     }
@@ -292,7 +304,12 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     skip: h("div", { class: "result ng", role: "status" }, "答えを確認しよう"),
   }[outcome];
   const relationNote = facet === "relation" ? relationAnswer(term) : null;
-  const wrongNote = wrongTerm
+  // 4択でまちがえたら、選択肢を残して正解と選んだものを並べる（3Dで青く光らせた語には、その色も添える）
+  const review = asked && outcome !== "correct"
+    ? answeredChoices(asked.choices, asked.display, facet === "relation" ? term.toward!.dir : term.id, asked.picked,
+      { lang: asked.lang, variant: asked.variant, aside: asked.aside, colored: !!wrongTerm && wrongTerm === asked.picked })
+    : null;
+  const wrongNote = review ? null : wrongTerm
     ? h("p", { class: "wrong-note" }, "青い所はあなたが選んだ「", termById.get(wrongTerm)!.ja, "」")
     : tapped
       ? h("p", { class: "wrong-note" }, "青い点はあなたがタップした所")
@@ -302,7 +319,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const retry = outcome === "correct" ? null : retryButton();
   // 正解なら語のカードは名前だけにして（「くわしく」で全部）、すぐ次へ進めるようにする
   const card = outcome === "correct" ? moreCard(term, () => termCard(term, { motion: motionPlayer(ctx, term) })) : termCard(term, { motion: motionPlayer(ctx, term) });
-  showPanel(ctx, header, banner, relationNote ?? wrongNote ?? "", card,
+  showPanel(ctx, header, banner, review ?? "", relationNote ?? wrongNote ?? "", card,
     h("p", { class: "next-due" }, `次の出題: ${dueLabel(recorded.schedule)}`), retry ?? "", next);
   const again = await waitResult(ctx, next, retry, outcome === "correct", recorded);
   if (!again) return outcome;
@@ -385,6 +402,29 @@ function moreCard(term: Term, full: () => HTMLElement): HTMLElement {
 /** 解き直しを出すときの共通の文言（語根の問題でも使う） */
 export function retryButton(): HTMLButtonElement {
   return h("button", { class: "text-button", type: "button" }, "押しまちがえた（取り消して解き直す）");
+}
+
+/**
+ * まちがえたとき（「わからない」も）の答え合わせで、4択を残して正解に ✓、選んだものに ✕ を付ける。何とまちがえたかが分かるように。
+ * aside は選んだ選択肢に添える一言（英語の選択肢なら日本語名など）。colored なら3Dの色（正解＝橙、選んだ語＝青）を添える
+ */
+export function answeredChoices(
+  choices: string[],
+  display: (id: string) => string,
+  answer: string,
+  picked: string | null,
+  { lang, variant = "", aside, colored = false }: { lang?: string; variant?: string; aside?: (id: string) => string; colored?: boolean } = {},
+): HTMLElement {
+  return h("ul", { class: "answered" }, ...choices.map((id) => {
+    const state = id === answer ? "is-answer" : id === picked ? "is-picked" : "";
+    return h("li", { class: `answered-choice ${variant} ${state}`.trim() },
+      h("span", { class: "answered-mark", "aria-hidden": "true" }, state === "is-answer" ? "✓" : state === "is-picked" ? "✕" : ""),
+      h("span", { class: "answered-text", lang }, display(id)),
+      state === "is-answer" ? h("span", { class: "answered-tag" }, colored ? "正解・3Dの橙" : "正解") : "",
+      state === "is-picked" ? h("span", { class: "answered-tag" }, colored ? "あなたの答え・3Dの青" : "あなたの答え") : "",
+      state === "is-picked" && aside ? h("span", { class: "answered-aside" }, aside(id)) : "",
+    );
+  }));
 }
 
 /** 4択を出して、選んだもの（「わからない」なら null）を返す */
@@ -478,6 +518,11 @@ export async function typeEnglish(ctx: AppContext, header: HTMLElement, prompt: 
 
 /** 問題を差し替えたら先頭から見せる（スマホでは画面全体、PCでは右の欄がスクロールする） */
 export function showPanel(ctx: AppContext, ...nodes: (Node | string)[]): void {
+  // 最後の主ボタン（「次へ」「始める」など）は、下に留める帯に入れる。帯は不透明なので、スクロールした説明が透けて重ならない。
+  // 「自信がなかった」「1.5秒で次へ」（waitResult）もボタンの前に足すので、帯の中に入る
+  while (nodes.at(-1) === "") nodes.pop();
+  const last = nodes.at(-1);
+  if (last instanceof HTMLElement && last.classList.contains("primary")) nodes[nodes.length - 1] = h("div", { class: "panel-foot" }, last);
   ctx.panel.replaceChildren(...nodes);
   ctx.panel.scrollTop = 0;
   window.scrollTo({ top: 0 });

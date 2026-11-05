@@ -43,12 +43,13 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     autoSpeak(term);
     const back = h("button", { class: "ghost-button", type: "button", disabled: i === 0 }, "前へ");
     const next = h("button", { class: "primary", type: "button" }, i === list.length - 1 ? "確認テストへ" : "次へ");
-    // 知っている語ばかりなら、残りをめくらずに確認テストへ
-    const skip = i < list.length - 1 ? h("button", { class: "text-button skip-test", type: "button" }, "残りを飛ばして確認テストへ") : null;
+    // 知っている語ばかりなら、残りをめくらずに確認テストへ。下の「次へ」の帯に隠れないよう、見出しの行に置く
+    const skip = i < list.length - 1
+      ? h("button", { class: "head-skip", type: "button", title: "残りの語を飛ばして確認テストへ" }, "確認テストへ ›")
+      : null;
     showPanel(ctx,
-      h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, `${i + 1} / ${list.length}`)),
+      h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, skip ?? "", `${i + 1} / ${list.length}`)),
       termCard(term, { motion: motionPlayer(ctx, term) }),
-      skip ?? "",
       h("div", { class: "nav-row" }, back, next),
     );
     next.focus({ preventScroll: true });

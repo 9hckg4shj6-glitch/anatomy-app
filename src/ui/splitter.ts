@@ -34,8 +34,10 @@ function save(saved: Saved): void {
 }
 
 export interface Splitter {
-  /** 説明をたたんでいたら戻す（画面を移ったとき） */
+  /** 説明をたたんでいたら戻し、3Dもたたんでいたら戻す（画面を移ったとき） */
   restore(): void;
+  /** 縦に並ぶとき（スマホ）だけ、3Dを細い帯にたたむ（false で戻す）。左右に並ぶときは何も変わらない */
+  fold(on: boolean): void;
 }
 
 export function setupSplitter(layout: HTMLElement, stage: HTMLElement, panel: HTMLElement): Splitter {
@@ -119,7 +121,12 @@ export function setupSplitter(layout: HTMLElement, stage: HTMLElement, panel: HT
   expand.addEventListener("click", () => setExpanded(!layout.classList.contains("stage-only")));
   setExpanded(false);
 
-  stage.append(expand);
+  // 一覧や設定など3Dを使わない画面では、説明を3Dに重ねて上の帯だけを見せる（3Dの大きさは変えないので、描き直しも視点のずれも無い）。
+  // 帯を押すと3Dを出す
+  const unfold = h("button", { class: "stage-unfold", type: "button", onClick: () => setFolded(false) }, "3Dを出す ▾");
+  const setFolded = (on: boolean) => layout.classList.toggle("stage-folded", on);
+
+  stage.append(expand, unfold);
   stage.after(handle);
   sync();
   apply();
@@ -128,5 +135,11 @@ export function setupSplitter(layout: HTMLElement, stage: HTMLElement, panel: HT
     sync();
     apply();
   });
-  return { restore: () => setExpanded(false) };
+  return {
+    restore: () => {
+      setExpanded(false);
+      setFolded(false);
+    },
+    fold: setFolded,
+  };
 }
