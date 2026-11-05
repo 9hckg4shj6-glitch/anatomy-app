@@ -1,14 +1,34 @@
-import { DIRECTIONS, pins, termById, terms } from "../src/content";
+import { BODY_DIRECTIONS, DIRECTIONS, pins, termById, terms } from "../src/content";
 
 describe("向きの問い方（content/directions.json）", () => {
   it("答えの向きは方向の用語で、比べる語がある", () => {
     const facts = terms.filter((term) => term.toward);
     expect(facts.length).toBeGreaterThanOrEqual(60);
     for (const term of facts) {
-      expect(DIRECTIONS).toContain(term.toward!.dir);
+      expect(term.toward!.at ? BODY_DIRECTIONS : DIRECTIONS).toContain(term.toward!.dir);
       expect(termById.get(term.toward!.than)).toBeTruthy();
     }
     expect(DIRECTIONS.map((id) => termById.get(id)?.ja)).toEqual(["上", "下", "前", "後", "内側", "外側"]);
+    expect(BODY_DIRECTIONS.map((id) => termById.get(id)?.ja)).toEqual(["上", "下", "前", "後", "内側", "外側", "右", "左"]);
+  });
+
+  it("臓器・血管・神経・筋の組は比べた2つの位置を持ち、右・左は骨どうしでは使わない", () => {
+    const body = terms.filter((term) => term.toward?.at);
+    expect(body.length).toBeGreaterThanOrEqual(45);
+    for (const term of terms.filter((term) => term.toward)) {
+      const bones = term.system === "skeletal" && termById.get(term.toward!.than)!.system === "skeletal";
+      if (bones) expect(["right", "left"]).not.toContain(term.toward!.dir);
+      else expect(term.toward!.at).toHaveLength(2);
+    }
+  });
+
+  it("腹大動脈は下大静脈の左、食道は気管の後ろ、左心房は食道の前（解剖学的正位で本人から見て）", () => {
+    expect(termById.get("abdominal-aorta")?.toward).toMatchObject({ than: "inferior-vena-cava", dir: "left" });
+    expect(termById.get("esophagus")?.toward).toMatchObject({ than: "trachea", dir: "posterior" });
+    expect(termById.get("left-atrium")?.toward).toMatchObject({ than: "esophagus", dir: "anterior" });
+    // 本人の右は x < 0（腹大動脈の位置は下大静脈より x が大きい）
+    const [aorta, cava] = termById.get("abdominal-aorta")!.toward!.at!;
+    expect(aorta[0]).toBeGreaterThan(cava[0]);
   });
 
   it("大腿骨頭は大転子の内側、橈骨は尺骨の外側（解剖学的正位）", () => {

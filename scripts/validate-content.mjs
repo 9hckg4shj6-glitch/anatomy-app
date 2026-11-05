@@ -5,7 +5,7 @@
 // - 語根カード（content/roots.json）の形と、例の語があるか
 // - 骨学試験（content/exam.json）の形と、空欄・語・3Dで示す語の参照先
 // - 臓器の図（content/organs.json）の形と語・レッスンの参照先、平面図（public/plates/index.json）が作られているか
-// - 向きの問い方（content/directions.json）の語と、答えの向きが3D（ピンと部品の中心）で見た向きと合うか
+// - 向きの問い方（content/directions.json）の語と、答えの向きが3D（ピンと部品の中心、臓器・血管などは at）で見た向きと合うか
 // - public/models/index.json が今の内容から作られているか（語を足したら npm run build:models が要る）
 // - check: true の語と、Wikidata（data-raw/wikidata.json があれば）と表記が違う語を一覧にする
 import fs from "node:fs";
@@ -321,11 +321,13 @@ const indexFile = path.join(ROOT, "public/models/index.json");
 if (!fs.existsSync(indexFile)) errors.push("public/models/index.json がありません。npm run build:models を実行してください");
 else {
   const index = JSON.parse(fs.readFileSync(indexFile, "utf8"));
-  // 向きの問い方（content/directions.json）: 語は3Dの部品のある骨格系の語で1つの語に1件。答えの向き dir が、
-  // ピン（骨の部位）か部品の中心（骨）を右側にそろえて見た向きのいちばん強い成分と同じで、2番目の成分がその 0.7 倍以下（どちらとも言える組は出さない）
-  const DIR_AXIS = { superior: [1, 1], inferior: [1, -1], anterior: [2, 1], posterior: [2, -1], medial: [0, 1], lateral: [0, -1] };
+  // 向きの問い方（content/directions.json）: 語は3Dの部品のある語で1つの語に1件。答えの向き dir が、2つの位置の差の
+  // いちばん強い成分と同じで、2番目の成分がその 0.7 倍以下（どちらとも言える組は出さない）。位置は、骨格系どうしなら
+  // ピン（骨の部位）か部品の中心（骨）を右側にそろえたもの、ほか（臓器・血管・神経・筋）は scripts/directions.mjs が書いた at
+  const DIR_AXIS = { superior: [1, 1], inferior: [1, -1], anterior: [2, 1], posterior: [2, -1], medial: [0, 1], lateral: [0, -1], right: [0, -1], left: [0, 1] };
   const directions = z.strictObject({ facts: z.array(z.strictObject({
     term: z.string(), than: z.string(), dir: z.enum(Object.keys(DIR_AXIS)), why: z.string().min(10),
+    box: z.tuple([vec, vec]).optional(), at: z.tuple([vec, vec]).optional(),
   })).min(1) }).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/directions.json"), "utf8")));
   if (!directions.success) for (const issue of directions.error.issues) errors.push(`directions.json ${issue.path.join(".")}: ${issue.message}`);
   const placeOf = (id) => {
@@ -338,8 +340,12 @@ else {
     const name = `directions.json ${fact.term}`;
     if (toward.has(fact.term)) errors.push(`${name}: 1つの語に向きは1件だけ`);
     toward.add(fact.term);
-    for (const id of [fact.term, fact.than]) if (seen.get(id)?.system !== "skeletal" || !index.terms[id]?.elements.length) errors.push(`${name}: 「${id}」は3Dの部品のある骨格系の語ではありません`);
-    const a = placeOf(fact.term), b = placeOf(fact.than);
+    for (const id of [fact.term, fact.than]) if (!index.terms[id]?.elements.length) errors.push(`${name}: 「${id}」は3Dの部品のある語ではありません`);
+    const bones = [fact.term, fact.than].every((id) => seen.get(id)?.system === "skeletal") && !fact.box;
+    if (!bones && !fact.at) errors.push(`${name}: 位置 at が無い。node scripts/directions.mjs を実行してください`);
+    if (bones && (fact.dir === "right" || fact.dir === "left")) errors.push(`${name}: 骨の部位どうしは右・左でなく内側・外側で答える`);
+    const lateral = fact.dir === "medial" || fact.dir === "lateral";
+    const [a, b] = bones ? [placeOf(fact.term), placeOf(fact.than)] : (fact.at ?? []).map((p) => (lateral ? [-Math.abs(p[0]), p[1], p[2]] : p));
     if (!a || !b) continue;
     const v = a.map((x, k) => x - b[k]);
     const [first, second] = [0, 1, 2].sort((i, j) => Math.abs(v[j]) - Math.abs(v[i]));

@@ -1,7 +1,7 @@
 import type { Grade } from "ts-fsrs";
 import { checkEnglish, type EnglishResult } from "../answer";
 import { autoSpeak, speak } from "../audio";
-import { DIRECTIONS, figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
+import { BODY_DIRECTIONS, DIRECTIONS, figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
 import { inCourse, isBeginner } from "../course";
 import { db, type Facet, type ReviewEvent } from "../db";
 import { h, onKeys, until } from "../dom";
@@ -104,7 +104,21 @@ function placeOf(ctx: AppContext, id: string): Vec3 {
   return [-Math.abs(c[0]), c[1], c[2]];
 }
 
-/** 向きの問い方で見せる骨（その語と比べる語の骨。橈骨と尺骨のように語が骨そのものなら、その骨） */
+/** 向きの問い方で比べる2つの位置。臓器・血管などは比べた場所 at（その高さの断面の中心など）、骨の部位はピンか部品の中心 */
+function relationPlaces(ctx: AppContext, term: Term): [Vec3, Vec3] {
+  return term.toward!.at ?? [placeOf(ctx, term.id), placeOf(ctx, term.toward!.than)];
+}
+
+/**
+ * 向きの問い方の場面。臓器・血管などの組は、2つの語の系統を読み込む（食道と気管、尺骨神経と上腕骨の内側上顆のように系統がまたがる）。
+ * 臓器の場面（箱で切る）にはしない
+ */
+function relationScene(term: Term) {
+  const systems = [...new Set([term.system, termById.get(term.toward!.than)!.system])];
+  return { systems, context: systems.includes("skeletal") ? [] : ["skeletal"], body: true };
+}
+
+/** 向きの問い方で見せる骨（その語と比べる語の骨。橈骨と尺骨のように語が骨そのものなら、その骨）。臓器・血管などはその2つ */
 function relationBones(term: Term): string[] {
   const other = termById.get(term.toward!.than)!;
   return [...new Set([term.of ?? term.id, other.of ?? other.id])];
@@ -138,7 +152,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const term = termById.get(item.termId)!;
   const { viewer } = ctx;
   const started = performance.now();
-  await viewer.show(sceneFor(term.system, term.unit));
+  await viewer.show(item.facet === "relation" && term.toward?.at ? relationScene(term) : sceneFor(term.system, term.unit));
   viewer.setLabel(null);
   viewer.highlight([]);
 
@@ -267,16 +281,19 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       break;
     }
     case "relation": {
-      // 部位（骨）どうしの向き。骨だけを見せ、部位は光らせずに、解剖学的正位での向きを思い出して答える
+      // 部位（骨）どうしの向き。骨だけを見せ、部位は光らせずに、解剖学的正位での向きを思い出して答える。
+      // 臓器・血管・神経・筋の組はその2つだけを見せ、比べる場所に寄る。選択肢に右・左を足す（1つしかない器官は右・左、左右に1つずつあるものは内側・外側）
       const other = termById.get(term.toward!.than)!;
+      const body = !!term.toward!.at;
       viewer.only(relationBones(term));
-      viewer.focusWhole(term.of ?? term.id, 1.3, true, relationFrom(term));
-      ctx.hint("解剖学的正位（手のひらが前）で考える");
+      if (body) viewer.focusPair(...relationPlaces(ctx, term), relationFrom(term));
+      else viewer.focusWhole(term.of ?? term.id, 1.3, true, relationFrom(term));
+      ctx.hint(body ? "解剖学的正位で、本人から見た右・左で考える" : "解剖学的正位（手のひらが前）で考える");
       const prompt = h("div", {},
         h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi)),
         h("p", { class: "prompt" }, "は「", other.ja, "」の どちら側？"),
       );
-      const picked = await choose(prompt, DIRECTIONS, (id) => termById.get(id)!.ja, undefined, "direction");
+      const picked = await choose(prompt, body ? BODY_DIRECTIONS : DIRECTIONS, (id) => termById.get(id)!.ja, undefined, "direction");
       outcome = picked === term.toward!.dir ? "correct" : picked ? "wrong" : "skip";
       break;
     }
@@ -291,7 +308,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   // 向き: この語を橙、比べた語を青で示し、両方が入るように寄る
   else if (facet === "relation") viewer.reveal(term.id, term.toward!.than, true);
   else viewer.reveal(term.id, wrongTerm, isolate, tapped);
-  if (facet === "relation") viewer.focusPair(placeOf(ctx, term.id), placeOf(ctx, term.toward!.than), relationFrom(term));
+  if (facet === "relation") viewer.focusPair(...relationPlaces(ctx, term), relationFrom(term));
   else viewer.focus(term.id, 3.4, true, tapped?.point);
   viewer.setLabel(term.id, term.ja);
   ctx.hint("");

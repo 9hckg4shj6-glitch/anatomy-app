@@ -69,18 +69,23 @@ export interface Term {
   unit: string;
 }
 
-/** 方向の用語の語ID（基本の用語の上・下・前・後・内側・外側） */
-export type Direction = "superior" | "inferior" | "anterior" | "posterior" | "medial" | "lateral";
+/** 方向の用語の語ID（基本の用語の上・下・前・後・内側・外側・右・左） */
+export type Direction = "superior" | "inferior" | "anterior" | "posterior" | "medial" | "lateral" | "right" | "left";
 
-/** 向きの問い方の答え（content/directions.json の1件）。語 term は、than の語の dir の側にある（解剖学的正位で）。why はそのわけ */
+/**
+ * 向きの問い方の答え（content/directions.json の1件）。語 term は、than の語の dir の側にある（解剖学的正位で）。why はそのわけ。
+ * 臓器・血管・神経・筋の組は、比べた2つの位置 at（[この語, than の語]。scripts/directions.mjs が box の中の形から求める）を持つ
+ */
 export interface Toward {
   than: string;
   dir: Direction;
   why: string;
+  at?: [Vec3, Vec3];
 }
 
-/** 向きの問い方の選択肢の並び（対ごと） */
+/** 向きの問い方の選択肢の並び（対ごと）。骨の部位どうしは6つ、臓器・血管などは右・左を足した8つ（toward.at があるもの） */
 export const DIRECTIONS: Direction[] = ["superior", "inferior", "anterior", "posterior", "medial", "lateral"];
+export const BODY_DIRECTIONS: Direction[] = [...DIRECTIONS, "right", "left"];
 
 export type Tissue = "clear" | "sclera" | "iris" | "retina" | "tooth" | "mucosa" | "tongue" | "gland" | "ligament";
 
@@ -299,9 +304,9 @@ export const units: Unit[] = systems.flatMap((system) => {
 });
 
 export const terms: Term[] = units.flatMap((unit) => unit.terms);
-for (const { term, ...toward } of (directionsJson as { facts: (Toward & { term: string })[] }).facts) {
+for (const { term, than, dir, why, at } of (directionsJson as { facts: (Toward & { term: string })[] }).facts) {
   const found = terms.find((other) => other.id === term);
-  if (found) found.toward = toward;
+  if (found) found.toward = { than, dir, why, ...(at ? { at } : {}) };
 }
 export const termById = new Map(terms.map((term) => [term.id, term]));
 export const unitById = new Map(units.map((unit) => [unit.id, unit]));
