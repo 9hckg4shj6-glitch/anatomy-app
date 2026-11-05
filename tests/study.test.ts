@@ -88,6 +88,16 @@ describe("孔・溝を通るもの", () => {
   });
 });
 
+describe("向き（前後・左右・上下）", () => {
+  it("toward のある語だけに付き、位置→名前を覚えてから出す", async () => {
+    const { facetsFor } = await import("../src/study");
+    const toward = { than: "greater-trochanter", dir: "medial" as const, why: "骨頭は内側を向く" };
+    expect(facetsFor({ toward }, false)).toEqual(["locate", "point", "ja2en", "en2ja"]);
+    expect(facetsFor({ toward }, true)).toEqual(["locate", "point", "ja2en", "en2ja", "relation"]);
+    expect(facetsFor({ toward }, true, ["locate", "point"])).toEqual(["locate", "point"]);
+  });
+});
+
 describe("隠れた部位", () => {
   it("xray の語には「名前→位置」を出さない", async () => {
     const { facetsFor } = await import("../src/study");

@@ -5,6 +5,44 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 import { joints, loadAttachments, loadModelIndex, organById, organTerms, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex, type Motion, type Term, type View } from "./content";
 import { drawingUp, pinCenter, pinSpread, type Cut, type Vec3 } from "./landmarks";
+import { preferences } from "./settings";
+
+/** 向きの目印の字と、その向き（モデル座標。本人の右は -x） */
+const COMPASS_WORDS: [string, Vec3][] = [["上", [0, 1, 0]], ["下", [0, -1, 0]], ["前", [0, 0, 1]], ["後", [0, 0, -1]], ["右", [-1, 0, 0]], ["左", [1, 0, 0]]];
+/** 見ている向きの言い方（カメラのある側。後ろだけ「後ろ」と読ませる） */
+const COMPASS_SIDES: [string, string, number, number][] = [["右", "左", 0, -1], ["前", "後ろ", 2, 1], ["上", "下", 1, 1]];
+/**
+ * 向きの目印の小さな人（解剖学的正位）。胴（箱を正射影した輪郭）に、腕・脚・前を向いた足と、顔の向きを示す鼻。
+ * 本人の右の手足は「右」の字と同じ色にする
+ */
+const COMPASS_TORSO: Vec3[] = [-1, 1].flatMap((z) => [[-0.2, 0.6, z * 0.1], [0.2, 0.6, z * 0.1], [0.13, 0.04, z * 0.09], [-0.13, 0.04, z * 0.09]] as Vec3[]);
+const COMPASS_FIGURE: { from: Vec3; to: Vec3; side: "right" | "left" | "nose" }[] = [
+  { from: [0, 0.8, 0.1], to: [0, 0.77, 0.22], side: "nose" },
+  { from: [-0.24, 0.55, 0], to: [-0.31, 0.02, 0.03], side: "right" },
+  { from: [-0.12, 0.05, 0], to: [-0.13, -0.78, 0], side: "right" },
+  { from: [-0.13, -0.78, 0], to: [-0.14, -0.8, 0.17], side: "right" },
+  { from: [0.24, 0.55, 0], to: [0.31, 0.02, 0.03], side: "left" },
+  { from: [0.12, 0.05, 0], to: [0.13, -0.78, 0], side: "left" },
+  { from: [0.13, -0.78, 0], to: [0.14, -0.8, 0.17], side: "left" },
+];
+const COMPASS_HEAD: Vec3 = [0, 0.8, 0];
+const SVG = "http://www.w3.org/2000/svg";
+
+/** 平面の点の凸包（向きの目印の胴の輪郭） */
+function hull(points: readonly (readonly [number, number, ...number[]])[]): [number, number][] {
+  const sorted = points.map(([x, y]) => [x, y] as [number, number]).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cross = (o: [number, number], a: [number, number], b: [number, number]) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const half = (list: [number, number][]) => {
+    const out: [number, number][] = [];
+    for (const p of list) {
+      while (out.length >= 2 && cross(out[out.length - 2], out[out.length - 1], p) <= 0) out.pop();
+      out.push(p);
+    }
+    out.pop();
+    return out;
+  };
+  return [...half(sorted), ...half([...sorted].reverse())];
+}
 
 export interface SceneSpec {
   /** 表示してタップで選べる系統 */
@@ -428,6 +466,11 @@ export class AnatomyViewer {
   private homeView: [THREE.Vector3, THREE.Vector3] | null = null;
   /** 「視点を戻す」ボタン。自分で回したり拡大したりしたときだけ出す */
   private readonly resetButton: HTMLButtonElement;
+  /** 向きの目印（右上の小さな人と上・下・前・後・右・左の字、「〜から見ている」） */
+  private readonly compass: { box: HTMLDivElement; svg: SVGSVGElement; caption: HTMLSpanElement };
+  /** 向きを答える問題の間は目印を隠す（hideCompass） */
+  private compassHidden = false;
+  private compassShown = false;
 
   constructor(private readonly host: HTMLElement) {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -457,6 +500,8 @@ export class AnatomyViewer {
     this.resetButton.hidden = true;
     this.resetButton.addEventListener("click", () => this.resetView());
     host.append(this.resetButton);
+    this.compass = this.makeCompass();
+    host.append(this.compass.box);
     this.loadingBox = document.createElement("div");
     this.loadingBox.className = "stage-loading";
     this.loadingBox.setAttribute("role", "status");
@@ -997,6 +1042,16 @@ export class AnatomyViewer {
     this.moveTo(target, target.clone().add(direction.multiplyScalar(Math.max(0.06, term.radius * zoom) / tan)), animate);
   }
 
+  /** 2つの点（向きの問い方の2つの部位）が並んで入る近さで、from の向きから見る */
+  focusPair(a: Vec3, b: Vec3, from: Vec3, animate = true): void {
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    const pa = new THREE.Vector3(...a), pb = new THREE.Vector3(...b);
+    const target = pa.clone().add(pb).multiplyScalar(0.5);
+    const half = Math.max(0.05, pa.distanceTo(pb) * 0.9);
+    const direction = new THREE.Vector3(...from).normalize();
+    this.moveTo(target, target.clone().add(direction.multiplyScalar(half / tan / Math.min(1, this.camera.aspect))), animate);
+  }
+
   /** 全身を正面から（臓器の場面では臓器を正面から） */
   overview(animate = true): void {
     if (this.organ) {
@@ -1020,6 +1075,15 @@ export class AnatomyViewer {
     // 真上・真下からだと回転の操作がしにくいので少し傾ける
     if (Math.abs(direction.y) > 0.96) direction.z += direction.y > 0 ? -0.05 : 0.05;
     this.moveTo(target, target.clone().add(direction.normalize().multiplyScalar(half / tan / Math.min(1, this.camera.aspect))), animate);
+  }
+
+  /**
+   * 向きの目印を隠す（向きを答える問題の間・ホーム）。設定で出さないときは、hidden が false でも出さない。
+   * 画面を移るときに main.ts が戻す
+   */
+  hideCompass(hidden: boolean): void {
+    this.compassHidden = hidden;
+    this.dirty = true;
   }
 
   /** 体の縦の軸のまわりにゆっくり回し続ける（ホーム）。指やマウスで動かすと止まる */
@@ -1823,6 +1887,8 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
       this.dirty = true;
     }
     if (this.controls.update()) this.dirty = true;
+    // 設定で目印を出し入れしたとき・問題で隠したときも描き直す
+    if (this.compassShown !== (preferences.compass && !this.compassHidden)) this.dirty = true;
     this.animateMotion();
     if (!this.dirty) {
       // 止まったら、動かしている間だけ下げていた画素の細かさを戻して描き直す
@@ -1838,6 +1904,82 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
     this.renderer.render(this.scene, this.camera);
     this.placeLabel();
     this.placeMarks();
+    this.placeCompass();
+  }
+
+  private makeCompass(): { box: HTMLDivElement; svg: SVGSVGElement; caption: HTMLSpanElement } {
+    const box = document.createElement("div");
+    box.className = "stage-compass";
+    box.setAttribute("role", "img");
+    const svg = document.createElementNS(SVG, "svg");
+    svg.setAttribute("viewBox", "-1 -1 2 2");
+    svg.setAttribute("aria-hidden", "true");
+    const caption = document.createElement("span");
+    caption.className = "stage-compass-caption";
+    box.append(svg, caption);
+    return { box, svg, caption };
+  }
+
+  /**
+   * 向きの目印を今のカメラの向きに合わせる。小さな人を正射影で描き（奥の線ほど薄く）、6つの字は、その向きが画面の上で指す方の縁に置く
+   * （手前・奥を向く字は消える）。下に、カメラが体のどちら側にあるか（「右前から見ている」）
+   */
+  private placeCompass(): void {
+    const show = preferences.compass && !this.compassHidden;
+    this.compassShown = show;
+    this.compass.box.hidden = !show;
+    if (!show) return;
+    const e = this.camera.matrixWorld.elements;
+    const right: Vec3 = [e[0], e[1], e[2]], up: Vec3 = [e[4], e[5], e[6]], toward: Vec3 = [e[8], e[9], e[10]];
+    const dot = (a: Vec3, b: Vec3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+    const scale = 0.66;
+    const at = (p: Vec3) => [dot(p, right) * scale, -dot(p, up) * scale, dot(p, toward)] as const;
+    const parts: { depth: number; node: SVGElement }[] = [];
+    const torso = document.createElementNS(SVG, "polygon");
+    torso.setAttribute("points", hull(COMPASS_TORSO.map((p) => at(p))).map(([x, y]) => `${x.toFixed(3)},${y.toFixed(3)}`).join(" "));
+    torso.setAttribute("class", "compass-torso");
+    parts.push({ depth: 0, node: torso });
+    for (const line of COMPASS_FIGURE) {
+      const [x1, y1, d1] = at(line.from), [x2, y2, d2] = at(line.to);
+      const node = document.createElementNS(SVG, "line");
+      for (const [key, value] of [["x1", x1], ["y1", y1], ["x2", x2], ["y2", y2]] as const) node.setAttribute(key, value.toFixed(3));
+      node.setAttribute("class", `compass-${line.side}`);
+      const depth = (d1 + d2) / 2;
+      node.setAttribute("opacity", (depth < 0 ? 0.45 : 1).toString());
+      parts.push({ depth, node });
+    }
+    const [hx, hy, hd] = at(COMPASS_HEAD);
+    const head = document.createElementNS(SVG, "circle");
+    head.setAttribute("cx", hx.toFixed(3));
+    head.setAttribute("cy", hy.toFixed(3));
+    head.setAttribute("r", (0.14 * scale).toFixed(3));
+    head.setAttribute("class", "compass-head");
+    parts.push({ depth: hd, node: head });
+    parts.sort((a, b) => a.depth - b.depth);
+    const words = COMPASS_WORDS.flatMap(([word, v]) => {
+      const x = dot(v, right), y = -dot(v, up);
+      const length = Math.hypot(x, y);
+      if (length < 0.35) return [];
+      const text = document.createElementNS(SVG, "text");
+      text.setAttribute("x", ((x / length) * 0.8).toFixed(3));
+      text.setAttribute("y", ((y / length) * 0.8).toFixed(3));
+      text.setAttribute("opacity", Math.min(1, (length - 0.35) / 0.35).toFixed(2));
+      text.setAttribute("class", word === "右" ? "compass-word compass-right" : "compass-word");
+      text.textContent = word;
+      return [text];
+    });
+    const ring = document.createElementNS(SVG, "circle");
+    ring.setAttribute("r", "0.98");
+    ring.setAttribute("class", "compass-ring");
+    this.compass.svg.replaceChildren(ring, ...parts.map((part) => part.node), ...words);
+    // カメラのある側。いちばん強い向きと、その 0.38 倍を超える向きをつなげる（右前・左後ろ上 など）
+    const strongest = Math.max(...toward.map(Math.abs));
+    const from = COMPASS_SIDES.flatMap(([plus, minus, axis, sign]) => {
+      const value = toward[axis] * sign;
+      return Math.abs(value) >= 0.38 && Math.abs(value) >= strongest * 0.38 ? [value > 0 ? plus : minus] : [];
+    }).join("");
+    this.compass.caption.textContent = `${from}から見ている`;
+    this.compass.box.setAttribute("aria-label", `向き: ${from}から見ている`);
   }
 
   /**

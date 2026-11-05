@@ -109,6 +109,25 @@ a.crumb::after { content: " ›"; color: var(--muted); font-weight: 400; }
 .stage-mark-line { position: absolute; top: 0; left: 0; height: 1.5px; margin-top: -0.75px; transform-origin: 0 50%; background: rgb(250 247 241 / 0.9); }
 .stage-mark-line::before { content: ""; position: absolute; left: -3px; top: -2.25px; width: 6px; height: 6px; border-radius: 50%; background: var(--highlight); }
 .stage-mark.back, .stage-mark-line.back { opacity: 0.22; }
+/* 向きの目印（src/viewer.ts の placeCompass）。右上の ⤢・? の下に、小さな人と上・下・前・後・右・左の字。本人の右の手足と「右」は同じ色 */
+.stage-compass {
+  position: absolute; top: 92px; right: calc(6px + var(--safe-right)); width: 84px; pointer-events: none;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+}
+.stage-compass[hidden] { display: none; }
+.stage-compass svg { width: 84px; height: 84px; overflow: visible; }
+.stage-compass .compass-ring { fill: rgb(20 22 25 / 0.55); stroke: rgb(255 255 255 / 0.2); stroke-width: 0.02; }
+.stage-compass line { stroke-width: 0.1; stroke-linecap: round; }
+.stage-compass .compass-torso { fill: rgb(233 228 218 / 0.85); stroke: #e9e4da; stroke-width: 0.03; stroke-linejoin: round; }
+.stage-compass .compass-left { stroke: #e9e4da; }
+.stage-compass .compass-nose { stroke: #e9e4da; stroke-width: 0.08; }
+.stage-compass .compass-right { stroke: #ffb066; fill: #ffb066; }
+.stage-compass .compass-head { fill: #e9e4da; }
+.stage-compass .compass-word { fill: #f7f4ee; font-size: 0.3px; font-weight: 700; text-anchor: middle; dominant-baseline: central; stroke: none; }
+.stage-compass .compass-word.compass-right { fill: #ffb066; }
+.stage-compass-caption {
+  padding: 1px 7px; border-radius: 8px; background: rgb(20 22 25 / 0.55); color: #f1eee8; font-size: 11px; line-height: 1.5; white-space: nowrap;
+}
 /* PC でマウスを重ねた所の名前（カーソルの右下に出す） */
 .stage-hover {
   position: absolute; top: 0; left: 0; pointer-events: none; margin: 16px 0 0 14px;
@@ -377,6 +396,14 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .credits dd { margin: 4px 0 0; }
 
 .choice.long { font-size: 15px; line-height: 1.45; text-align: left; padding: 10px 14px; }
+/* 向きの問い方: 上・下／前・後／内側・外側を対にして2列に並べる */
+.choices:has(.choice.direction) { grid-template-columns: 1fr 1fr; }
+.choice.direction { justify-content: center; }
+/* 向きの答え。この語は橙、比べた語は青（答え合わせの3Dと同じ色） */
+.relation-answer { margin: 0 0 12px; }
+.relation-answer p { margin: 0 0 4px; }
+.relation-answer .relation-this { color: var(--highlight); }
+.relation-answer .relation-than { color: #3d7bd9; }
 .chip-list { display: flex; flex-wrap: wrap; gap: 6px; }
 .ghost-button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
 .muscle-notes { padding-top: 12px; border-top: 1px dashed var(--line); }

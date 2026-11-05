@@ -1,7 +1,7 @@
 import type { Grade } from "ts-fsrs";
 import { checkEnglish, type EnglishResult } from "../answer";
 import { autoSpeak, speak } from "../audio";
-import { figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
+import { DIRECTIONS, figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
 import { inCourse, isBeginner } from "../course";
 import { db, type Facet, type ReviewEvent } from "../db";
 import { h, onKeys, until } from "../dom";
@@ -101,6 +101,35 @@ function placeOf(ctx: AppContext, id: string): Vec3 {
   return [-Math.abs(c[0]), c[1], c[2]];
 }
 
+/** 向きの問い方で見せる骨（その語と比べる語の骨。橈骨と尺骨のように語が骨そのものなら、その骨） */
+function relationBones(term: Term): string[] {
+  const other = termById.get(term.toward!.than)!;
+  return [...new Set([term.of ?? term.id, other.of ?? other.id])];
+}
+
+/**
+ * 向きの答え合わせでカメラを置く向き。答えの向き（上下なら y）と直角に見て、2つの部位の並びが画面の上で見えるようにする。
+ * 部位の面の向き（ピン）からその軸の成分を除いた向き。横の成分が残らなければ（真上・真下は見にくい）、前後の答えは右の横から、ほかは前から
+ */
+function relationFrom(term: Term): Vec3 {
+  const { than, dir } = term.toward!;
+  const axis = dir === "superior" || dir === "inferior" ? 1 : dir === "anterior" || dir === "posterior" ? 2 : 0;
+  const pin = pins[term.id] ?? pins[than];
+  const v = [...(pin?.cam ?? pin?.n ?? pin?.v ?? [0, 0, 0])] as Vec3;
+  v[axis] = 0;
+  if (Math.hypot(v[0], v[2]) < 0.3) return axis === 2 ? [-1, 0.15, 0] : [0, 0.15, 1];
+  return [v[0], Math.max(-0.5, Math.min(0.5, v[1])), v[2]];
+}
+
+/** 向きの問い方の答え（「大腿骨頭は大転子の内側」とそのわけ）。色は答え合わせの3Dと同じ（この語が橙、比べた語が青） */
+export function relationAnswer(term: Term): HTMLElement {
+  const { than, dir, why } = term.toward!;
+  return h("div", { class: "relation-answer" },
+    h("p", {}, h("b", { class: "relation-this" }, term.ja), "は", h("b", { class: "relation-than" }, termById.get(than)!.ja), "の", h("b", {}, termById.get(dir)!.ja)),
+    h("p", { class: "muted" }, why),
+  );
+}
+
 /** 1問出して、答え合わせと記録まで行う。「次へ」を押したら終わる。 */
 export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent["source"], progress = ""): Promise<Outcome> {
   const term = termById.get(item.termId)!;
@@ -118,6 +147,8 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const isolate = !!term.xray || landmark;
   const facet = item.facet === "point" && (term.xray || isDrawn(term)) ? "locate" : item.facet;
   const header = h("div", { class: "quiz-head" }, h("span", { class: "facet" }, facetLabels[facet]), h("span", { class: "count" }, progress));
+  // 向きの目印は、基本の用語（矢印の向き・面）と向きの問い方では答えになるので、答えるまで隠す
+  viewer.hideCompass(term.system === "basics" || facet === "relation");
 
   let outcome: Outcome;
   let wrongTerm: string | null = null;
@@ -223,15 +254,33 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
       break;
     }
+    case "relation": {
+      // 部位（骨）どうしの向き。骨だけを見せ、部位は光らせずに、解剖学的正位での向きを思い出して答える
+      const other = termById.get(term.toward!.than)!;
+      viewer.only(relationBones(term));
+      viewer.focusWhole(term.of ?? term.id, 1.3, true, relationFrom(term));
+      ctx.hint("解剖学的正位（手のひらが前）で考える");
+      const prompt = h("div", {},
+        h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi)),
+        h("p", { class: "prompt" }, "は「", other.ja, "」の どちら側？"),
+      );
+      const picked = await chooseOne(ctx, header, prompt, DIRECTIONS, (id) => termById.get(id)!.ja, undefined, "direction");
+      outcome = picked === term.toward!.dir ? "correct" : picked ? "wrong" : "skip";
+      break;
+    }
     default:
       // 語根カードの問い方は ui/roots.ts の askRoot で出す
       throw new Error(`語の問題ではない問い方: ${facet}`);
   }
 
   const recorded = await recordReview(term.id, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
+  viewer.hideCompass(false);
   if (facet === "attach") viewer.highlight([term.id], { isolate: true, marks: attachMarks(term), seeThrough: true });
+  // 向き: この語を橙、比べた語を青で示し、両方が入るように寄る
+  else if (facet === "relation") viewer.reveal(term.id, term.toward!.than, true);
   else viewer.reveal(term.id, wrongTerm, isolate, tapped);
-  viewer.focus(term.id, 3.4, true, tapped?.point);
+  if (facet === "relation") viewer.focusPair(placeOf(ctx, term.id), placeOf(ctx, term.toward!.than), relationFrom(term));
+  else viewer.focus(term.id, 3.4, true, tapped?.point);
   viewer.setLabel(term.id, term.ja);
   ctx.hint("");
   if (facet === "ja2en" || facet === "en2ja") autoSpeak(term);
@@ -242,6 +291,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     wrong: h("div", { class: "result ng", role: "status" }, "不正解", typed ? h("span", { class: "typed", lang: "en" }, typed) : null),
     skip: h("div", { class: "result ng", role: "status" }, "答えを確認しよう"),
   }[outcome];
+  const relationNote = facet === "relation" ? relationAnswer(term) : null;
   const wrongNote = wrongTerm
     ? h("p", { class: "wrong-note" }, "青い所はあなたが選んだ「", termById.get(wrongTerm)!.ja, "」")
     : tapped
@@ -252,7 +302,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const retry = outcome === "correct" ? null : retryButton();
   // 正解なら語のカードは名前だけにして（「くわしく」で全部）、すぐ次へ進めるようにする
   const card = outcome === "correct" ? moreCard(term, () => termCard(term, { motion: motionPlayer(ctx, term) })) : termCard(term, { motion: motionPlayer(ctx, term) });
-  showPanel(ctx, header, banner, wrongNote ?? "", card,
+  showPanel(ctx, header, banner, relationNote ?? wrongNote ?? "", card,
     h("p", { class: "next-due" }, `次の出題: ${dueLabel(recorded.schedule)}`), retry ?? "", next);
   const again = await waitResult(ctx, next, retry, outcome === "correct", recorded);
   if (!again) return outcome;

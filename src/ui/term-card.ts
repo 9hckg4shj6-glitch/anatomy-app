@@ -140,6 +140,9 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
       term.etym ? h("div", {}, h("dt", {}, "語源"), h("dd", {}, term.etym)) : null,
       term.la && term.la.toLowerCase() !== term.en.toLowerCase() && beginner ? h("div", {}, h("dt", {}, "ラテン"), h("dd", { lang: "la" }, term.la)) : null,
       h("div", {}, h("dt", {}, "説明"), h("dd", {}, ...linked(term.note))),
+      // 骨の置き方（解剖学的正位の上下・前後・内外）と、ほかの部位から見た向き（向きの問い方の答え）
+      term.placing ? h("div", {}, h("dt", {}, "置き方"), h("dd", {}, ...linked(term.placing))) : null,
+      term.toward ? h("div", {}, h("dt", {}, "向き"), h("dd", {}, ...linked(`${termById.get(term.toward.than)?.ja}の${termById.get(term.toward.dir)?.ja}。${term.toward.why}`))) : null,
     ),
     !term.nerve ? null : h("dl", { class: "term-notes muscle-notes" },
       h("div", {}, h("dt", {}, h("span", { class: "swatch", style: `background:${ORIGIN_COLOR}` }), "起始"), h("dd", {}, term.origin)),

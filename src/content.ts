@@ -1,4 +1,5 @@
 import attachmentsJson from "../content/attachments.json";
+import directionsJson from "../content/directions.json";
 import jointsJson from "../content/joints.json";
 import organsJson from "../content/organs.json";
 import pinsJson from "../content/pins.json";
@@ -59,10 +60,27 @@ export interface Term {
   region?: Region;
   /** 語に寄るときにカメラを置く向き（モデル座標。無ければ今の向きのまま）。胸椎のように前からは胸骨・肋骨の陰になる語に書く */
   from?: [number, number, number];
+  /** 骨の置き方（解剖学的正位の上下・前後・内外の決め方。左右のある骨では、これで右か左かが決まる）。『解剖学講義』による */
+  placing?: string;
   /** 以下は読み込み時に付ける */
+  /** 向きの問い方（content/directions.json）。この語が than の語のどちら側にあるか */
+  toward?: Toward;
   system: string;
   unit: string;
 }
+
+/** 方向の用語の語ID（基本の用語の上・下・前・後・内側・外側） */
+export type Direction = "superior" | "inferior" | "anterior" | "posterior" | "medial" | "lateral";
+
+/** 向きの問い方の答え（content/directions.json の1件）。語 term は、than の語の dir の側にある（解剖学的正位で）。why はそのわけ */
+export interface Toward {
+  than: string;
+  dir: Direction;
+  why: string;
+}
+
+/** 向きの問い方の選択肢の並び（対ごと） */
+export const DIRECTIONS: Direction[] = ["superior", "inferior", "anterior", "posterior", "medial", "lateral"];
 
 export type Tissue = "clear" | "sclera" | "iris" | "retina" | "tooth" | "mucosa" | "tongue" | "gland" | "ligament";
 
@@ -281,6 +299,10 @@ export const units: Unit[] = systems.flatMap((system) => {
 });
 
 export const terms: Term[] = units.flatMap((unit) => unit.terms);
+for (const { term, ...toward } of (directionsJson as { facts: (Toward & { term: string })[] }).facts) {
+  const found = terms.find((other) => other.id === term);
+  if (found) found.toward = toward;
+}
 export const termById = new Map(terms.map((term) => [term.id, term]));
 export const unitById = new Map(units.map((unit) => [unit.id, unit]));
 export const systemById = new Map(systems.map((system) => [system.id, system]));

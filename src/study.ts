@@ -3,7 +3,7 @@ import type { Facet, LearnedTerm, StoredSchedule } from "./db";
 import { retrievability, State } from "./fsrs";
 
 export const FACETS: Facet[] = [
-  "locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "rootMeaning", "rootForm",
+  "locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "relation", "rootMeaning", "rootForm",
   "cloze", "read", "spell", "explain", "label", "annotate", "orient", "contrast", "order", "trace", "level", "landmark",
 ];
 
@@ -27,6 +27,7 @@ export const TERM_KINDS: { key: string; label: string; facets: Facet[] }[] = [
   { key: "en2ja", label: "英語→日本語", facets: ["en2ja"] },
   { key: "muscle", label: "筋の起始・停止・神経・作用", facets: MUSCLE_FACETS },
   { key: "passage", label: "孔・溝を通るもの", facets: ["passage"] },
+  { key: "relation", label: "向き（前後・左右・上下）", facets: ["relation"] },
 ];
 
 /** 語に付く問い方すべて（設定の「学ぶ問い方」の初め） */
@@ -41,6 +42,7 @@ export const facetLabels: Record<Facet, string> = {
   nerve: "支配神経",
   action: "作用",
   passage: "通るもの",
+  relation: "向き",
   rootMeaning: "語根→意味",
   rootForm: "意味→語根",
   cloze: "穴埋め",
@@ -60,11 +62,11 @@ export const facetLabels: Record<Facet, string> = {
 /**
  * その語に出す問い方。隠れた部位（xray）と、部品を持たない基本の用語（figure。矢印・面・動きの図）・局所解剖（region）は
  * タップできないので「名前→位置」を出さない。
- * 筋の起始・停止・支配神経・作用と、孔・溝を通るもの（passes）は、場所を覚えてから（unlocked。unlockedTerms を見る）出す。
+ * 筋の起始・停止・支配神経・作用と、孔・溝を通るもの（passes）、向き（toward）は、場所を覚えてから（unlocked。unlockedTerms を見る）出す。
  * chosen は学ぶ問い方（設定の「学ぶ問い方」）。外した問い方は出さない。
  */
 export function facetsFor(
-  term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "passes"> | undefined,
+  term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "passes" | "toward"> | undefined,
   unlocked = false,
   chosen: readonly Facet[] = FACETS,
 ): Facet[] {
@@ -72,6 +74,7 @@ export function facetsFor(
     if (ROOT_FACETS.includes(facet) || EXAM_FACETS.includes(facet) || !chosen.includes(facet)) return false;
     if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && unlocked;
     if (facet === "passage") return !!term?.passes && unlocked;
+    if (facet === "relation") return !!term?.toward && unlocked;
     return !(facet === "point" && (term?.xray || term?.figure || term?.region));
   });
 }

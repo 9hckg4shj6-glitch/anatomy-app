@@ -26,6 +26,8 @@ export interface Preferences {
   studyFacets: Facet[];
   /** レッスンの確認テストで出す問い方（基本の4つから。レッスンの始めに選んだものを覚える） */
   lessonFacets: Facet[];
+  /** 3Dの右上に向きの目印（小さな人と上・下・前・後・右・左）を出す。骨や臓器だけを見るときに前後左右が分かるように */
+  compass: boolean;
 }
 
 export const NEW_PER_DAY_OPTIONS = [10, 20, 30, 40];
@@ -38,8 +40,13 @@ export const TEXT_SIZES: Record<Preferences["textSize"], { label: string; zoom: 
 
 export const preferences: Preferences = {
   mode: "detail", autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
-  studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"],
+  studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"], compass: true,
 };
+
+/** 学ぶ問い方を保存したときにあった問い方を覚えておく設定のキー。あとから増えた問い方（向き）を学ぶ側に入れるため */
+const SEEN_FACETS = "seenFacets";
+/** SEEN_FACETS を覚え始める前からあった問い方 */
+const OLD_FACETS: Facet[] = TERM_FACETS.filter((facet) => facet !== "relation");
 
 /** 問い方の並び。基本の問い方を1つは含む（どれも外すと何も学べないので） */
 const facetList = (allowed: Facet[]) => (value: unknown): value is Facet[] =>
@@ -56,6 +63,7 @@ const valid: { [K in keyof Preferences]: (value: unknown) => value is Preference
   lastBackupAt: (value): value is string => typeof value === "string",
   studyFacets: facetList(TERM_FACETS),
   lessonFacets: facetList(BASIC_FACETS),
+  compass: (value): value is boolean => typeof value === "boolean",
 };
 
 /** 起動したときと、記録を読み込んだときに呼ぶ */
@@ -68,6 +76,13 @@ export async function loadPreferences(): Promise<void> {
   });
   // モードを一度も選んでいなければ、今までに学んだ人は詳細モード（これまでどおり）、はじめての人は初心者モードにして覚える
   if (!valid.mode(records[keys.indexOf("mode")]?.value)) await setPreference("mode", (await db.learned.count()) ? "detail" : "beginner");
+  // 学ぶ問い方を選んで保存したあとに増えた問い方は、学ぶ側に入れる（外したければ設定で外す）
+  const seen = (await db.settings.get(SEEN_FACETS))?.value;
+  const added = TERM_FACETS.filter((facet) => !(Array.isArray(seen) ? seen : OLD_FACETS).includes(facet));
+  if (added.length) {
+    if (valid.studyFacets(records[keys.indexOf("studyFacets")]?.value)) await setPreference("studyFacets", [...new Set([...preferences.studyFacets, ...added])]);
+    await db.settings.put({ key: SEEN_FACETS, value: TERM_FACETS, updatedAt: nowIso() });
+  }
   applyTextSize();
 }
 

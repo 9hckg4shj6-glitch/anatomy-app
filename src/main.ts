@@ -186,8 +186,9 @@ async function start(): Promise<void> {
 
     const [name, arg] = parseHash();
     currentName = name;
-    // ホームは3Dの人体を大きく、境目のつまみは出さない
+    // ホームは3Dの人体を大きく、境目のつまみは出さない。回る人体が主役なので向きの目印も出さない
     layout.classList.toggle("is-home", !PAGES[name]);
+    viewer.hideCompass(!PAGES[name]);
     if (!PAGES[name]) document.title = "解剖学 3D単語帳";
     showCrumbs(name);
     window.scrollTo(0, 0);

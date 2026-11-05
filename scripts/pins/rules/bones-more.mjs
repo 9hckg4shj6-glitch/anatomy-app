@@ -53,7 +53,8 @@ export const RULES2 = {
   "medial-supracondylar-line": { ridge: { dir: "post+med", along: "s", from: 0.12, to: 0.28, k: 3 }, r: 0.004 },
   "lateral-supracondylar-line": { ridge: { dir: "post+lat", along: "s", from: 0.12, to: 0.28, k: 3 }, r: 0.004 },
   "anterior-intercondylar-area": { ray: ["sup", 0.5, 0.72], r: 0.006, n: "sup" },
-  "posterior-intercondylar-area": { ray: ["sup", 0.45, 0.14], r: 0.005, n: "sup+post" },
+  // 上からの光線（["sup", 0.45, 0.14]）は高原の後ろの縁をはずれて脛骨の下端に当たっていた。顆間隆起の後ろ下の表面の点にする
+  "posterior-intercondylar-area": { near: [-0.0765, 0.372, 0.056], r: 0.005, n: "sup+post" },
   "medial-intercondylar-tubercle": { ext: "sup", box: { m: [0.38, 0.5], a: [0.3, 0.7] }, r: 0.004, n: "sup" },
   "lateral-intercondylar-tubercle": { ext: "sup", box: { m: [0.5, 0.62], a: [0.3, 0.7] }, r: 0.004, n: "sup" },
   "apex-of-head-of-fibula": { ext: "sup", r: 0.004, n: "sup" },

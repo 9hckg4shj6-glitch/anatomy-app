@@ -82,6 +82,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     h("p", {}, "この語は復習に入りました。復習では ", reviewKinds(unit), " が出ます。"),
     unit.terms.some((term) => term.nerve) && studies("attach") ? h("p", {}, "筋の起始・停止・支配神経・作用は、場所を覚えたころに復習で出ます。") : "",
     unit.terms.some((term) => term.passes) && studies("passage") ? h("p", {}, "孔・溝を通るもの（入るもの）は、場所を覚えたころに復習で出ます。") : "",
+    unit.terms.some((term) => term.toward) && studies("relation") ? h("p", {}, "部位どうしの向き（前後・左右・上下）は、場所を覚えたころに復習で出ます。") : "",
     h("p", {}, h("a", { href: "#/review" }, "今日の復習へ")),
     h("div", { class: "nav-row" },
       h("a", { class: next ? "ghost-button" : "primary", href: "#/lessons" }, "レッスンの一覧へ"),

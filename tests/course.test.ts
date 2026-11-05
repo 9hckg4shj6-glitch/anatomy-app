@@ -127,4 +127,15 @@ describe("初心者モードの復習と、モードの初め", () => {
     await loadPreferences();
     expect(preferences.mode).toBe("detail");
   });
+
+  it("学ぶ問い方を保存したあとに増えた問い方（向き）は学ぶ側に入り、外したものは外したまま", async () => {
+    await db.settings.clear();
+    await db.settings.put({ key: "studyFacets", value: ["locate", "point", "attach", "nerve", "action"], updatedAt: "2026-11-01T00:00:00.000Z" });
+    await loadPreferences();
+    expect(preferences.studyFacets).toEqual(["locate", "point", "attach", "nerve", "action", "relation"]);
+    // 2回目からは足さない（設定で向きを外したら外したまま）
+    await db.settings.put({ key: "studyFacets", value: ["locate", "point"], updatedAt: "2026-11-02T00:00:00.000Z" });
+    await loadPreferences();
+    expect(preferences.studyFacets).toEqual(["locate", "point"]);
+  });
 });

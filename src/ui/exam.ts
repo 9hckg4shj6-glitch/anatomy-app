@@ -666,6 +666,8 @@ async function askOrient(ctx: AppContext, exam: DrawingItem, source: ReviewEvent
   const started = performance.now();
   const question = orientQuestion(exam);
   await showDrawing(ctx, exam, { side: question.side, view: question.view, roll: question.roll });
+  // 向きの目印は答えになるので、答えるまで隠す
+  ctx.viewer.hideCompass(true);
   ctx.hint("回さずに見て答える（拡大はできる）");
   const head = header(exam, "orient", progress);
   const bone = plainJa(exam.title);
@@ -694,6 +696,7 @@ async function askOrient(ctx: AppContext, exam: DrawingItem, source: ReviewEvent
     );
   });
   ctx.hint("");
+  ctx.viewer.hideCompass(false);
   const results: EnglishResult[] = answers.map((answer, i) => (typed && chosen[i] === answer ? "correct" : "wrong"));
   const rating = typed ? clozeRating(results) : Rating.Again;
   const outcome = outcomeOf(rating, !typed);

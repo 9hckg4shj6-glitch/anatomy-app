@@ -151,6 +151,9 @@ function settingRows(render: () => void): HTMLElement[] {
       chips((Object.keys(TEXT_SIZES) as Preferences["textSize"][]).map((value) => ({ value, label: TEXT_SIZES[value].label })), preferences.textSize,
         (value) => setPreference("textSize", value)),
       h("p", { class: "muted" }, "3Dと説明の境目はドラッグで動かせます（ダブルクリックで元に戻す）。3Dの右上の ⤢ で3Dを大きくできます。"),
+      h("p", { class: "setting-label" }, "3Dの向きの目印"),
+      chips([{ value: true, label: "出す" }, { value: false, label: "出さない" }], preferences.compass, (value) => setPreference("compass", value)),
+      h("p", { class: "muted" }, "3Dの右上の小さな人と「上・下・前・後・右・左」の字で、いま体をどちらから見ているかを示します。骨や臓器だけを出して回したときも、前後左右が分かります。向きを答える問題の間は消えます。"),
       h("button", {
         class: "ghost-button", type: "button",
         onClick: async (event: Event) => {
