@@ -15,7 +15,7 @@ let shownSystem = "skeletal";
 
 /**
  * ホーム（#/）。3Dの人体を大きく見せ、ゆっくり回す。3Dの下の系統のボタンでその系統を見せ、説明の欄にその系統の進み具合と次のレッスン。
- * 欄の上は今日の復習と続き（次の一手は1つだけ大きく）、下はほかの学び方の一覧。3Dの部位をタップすると図鑑で開く
+ * 欄の上は今日の復習と続き（次の一手は1つだけ大きく）、下は学び方の一覧（レッスン・演習・図鑑など）。3Dの部位をタップすると図鑑で開く
  */
 export async function home(ctx: AppContext): Promise<void> {
   const { viewer, signal } = ctx;
@@ -165,8 +165,10 @@ function systemDetail(systemId: string, name: string, color: string, learnedIds:
   ];
 }
 
-/** ほかの学び方（演習・骨学試験・臓器の図・図鑑・語根カード・進捗）。1行ずつの一覧。骨学試験と語根カードは詳細モードだけ */
+/** 学び方の一覧（レッスン・演習・骨学試験・臓器の図・図鑑・語根カード・進捗）。1行ずつ。骨学試験と語根カードは詳細モードだけ */
 function more(learnedIds: Set<string>, schedules: StoredSchedule[]): HTMLElement {
+  const units = courseUnits();
+  const unitsDone = units.filter((unit) => unit.terms.every((term) => learnedIds.has(term.id))).length;
   const exam = EXAM_KINDS.map((kind) => examProgress(kind, learnedIds, schedules));
   const examDone = exam.reduce((sum, p) => sum + p.done, 0);
   const examTotal = exam.reduce((sum, p) => sum + p.total, 0);
@@ -185,8 +187,9 @@ function more(learnedIds: Set<string>, schedules: StoredSchedule[]): HTMLElement
     ));
   };
   return h("section", { class: "home-more", "aria-labelledby": "home-more-title" },
-    h("h2", { id: "home-more-title" }, "ほかの学び方"),
+    h("h2", { id: "home-more-title" }, "学び方"),
     h("ul", { class: "home-card home-list" },
+      item("#/lessons", "lessons", "#a8572f", "レッスン", "系統ごとに選ぶ・検索", unitsDone ? `${unitsDone}/${units.length}` : `${units.length}レッスン`),
       beginner ? "" : item("#/exam", "exam", "#b07d10", "骨学試験", "A〜D の形式と、整理して覚える", examDone ? `${examDone}/${examTotal}` : `${examTotal}項目`),
       item("#/drill", "drill", "#6b5fb5", "演習", "範囲を選んで解く・苦手を解く"),
       item("#/organs", "organ", "#c2493a", "臓器の図", `${organs.length}臓器の色分け・切り口・平面図 ${plates}枚`),
@@ -222,6 +225,7 @@ function modeSwitch(): HTMLElement {
 
 /** 一覧の絵（線で描く。色は CSS の currentColor） */
 const ICONS = {
+  lessons: `<path d="M12 6.5C10 5 7.3 4.5 4 4.8v13.4c3.3-.3 6 .2 8 1.7 2-1.5 4.7-2 8-1.7V4.8c-3.3-.3-6 .2-8 1.7Z"/><path d="M12 6.5v13.4"/>`,
   drill: `<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1" fill="currentColor"/>`,
   exam: `<rect x="5" y="4" width="14" height="17" rx="2.2"/><path d="M9 3h6v2.5H9z"/><path d="m8.8 13.2 2.2 2.2 4.2-4.4"/>`,
   explore: `<circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5 5"/><path d="M8 10.5h5M10.5 8v5"/>`,

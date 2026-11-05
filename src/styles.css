@@ -588,7 +588,7 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .flow-caption.en { font-size: 13px; }
 
 /* ホーム（#/。src/ui/home.ts）: 3Dの人体を大きく見せ（ゆっくり回る）、下に系統のボタン、左上に見ている系統の名前。
-   説明の欄は今日の復習・選んだ系統・ほかの学び方の3つだけ。PC は右に、スマホは3Dの下から重ねて出す */
+   説明の欄は今日の復習・選んだ系統・学び方（先頭にレッスン）の3つだけ。PC は右に、スマホは3Dの下から重ねて出す */
 .layout.is-home .splitter, .layout.is-home .stage-hint { display: none; }
 .home-caption {
   position: absolute; top: 18px; left: calc(20px + var(--safe-left)); max-width: calc(100% - 110px); display: grid; gap: 2px;
