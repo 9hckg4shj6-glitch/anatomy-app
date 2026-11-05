@@ -205,6 +205,30 @@ for (const root of rootsParsed.success ? rootsParsed.data.groups.flatMap((group)
   }
 }
 
+// 初心者コース（content/beginner.json）: レッスンIDは詳細モードのものと重ならず b- で始める、語は1つの系統の語で、コースの中で重ならない。
+// 1レッスンは12語まで、覚えること（point）は短く（70字まで）
+const BeginnerUnit = z.strictObject({
+  id: z.string().regex(/^b-[a-z0-9-]+$/), title: z.string().min(1), system: z.string(), intro: z.array(z.string().min(1)).optional(),
+  terms: z.array(z.strictObject({ id: z.string(), point: z.string().min(1).max(70) })).min(1).max(12),
+});
+const beginnerParsed = z.strictObject({ units: z.array(BeginnerUnit).min(1) })
+  .safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/beginner.json"), "utf8")));
+if (!beginnerParsed.success) for (const issue of beginnerParsed.error.issues) errors.push(`beginner.json ${issue.path.join(".")}: ${issue.message}`);
+const beginnerIds = new Set();
+let beginnerCount = 0;
+for (const unit of beginnerParsed.success ? beginnerParsed.data.units : []) {
+  if (unitIds.has(unit.id) || beginnerIds.has(unit.id)) errors.push(`beginner.json: レッスンIDが重複: ${unit.id}`);
+  beginnerIds.add(unit.id);
+  for (const { id } of unit.terms) {
+    const term = seen.get(id);
+    if (!term) errors.push(`beginner.json: ${unit.id} の「${id}」は語のIDではありません`);
+    else if (term.system !== unit.system) errors.push(`beginner.json: ${unit.id} は ${unit.system} のレッスンなのに「${id}」は ${term.system} の語`);
+    if (beginnerIds.has(`term:${id}`)) errors.push(`beginner.json: 「${id}」が2つのレッスンにあります`);
+    beginnerIds.add(`term:${id}`);
+    beginnerCount++;
+  }
+}
+
 // 骨学試験（content/exam.json）: 種類ごとの ID の重複、A の空欄（{語ID} か {=答え|別解}）、B・C の語と3Dで示す語。
 // B の総論の語（term の無い語）は日本語・読み・英語・説明を直接書く。D の図の番号は、ピンか骨の語のID、点を書いた語、語に無い名前（点と名前）。
 // 整理の項目（pairs・sequences・levels）は語の参照先、対の特徴の数と重なり、並びの語の重なり、目安の答えの重なり
@@ -439,4 +463,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 語根 ${rootIds.size} / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0}・D${examCounts.drawings ?? 0}・対${examCounts.pairs ?? 0}・並び${examCounts.sequences ?? 0}・目安${examCounts.levels ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);
+console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 初心者コース ${beginnerCount}語 / 語根 ${rootIds.size} / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0}・D${examCounts.drawings ?? 0}・対${examCounts.pairs ?? 0}・並び${examCounts.sequences ?? 0}・目安${examCounts.levels ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);

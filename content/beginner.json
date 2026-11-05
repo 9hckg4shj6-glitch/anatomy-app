@@ -1,0 +1,672 @@
+{
+  "units": [
+    {
+      "id": "b-basic-direction", "title": "体の向きの言葉", "system": "basics",
+      "intro": ["解剖学では、気をつけの姿勢で手のひらを前に向けた形（解剖学的正位）を基準に向きを言います。まずこの10語を覚えると、ほかの名前が読めるようになります。"],
+      "terms": [
+        { "id": "superior", "point": "頭の方向。" },
+        { "id": "inferior", "point": "足の方向。" },
+        { "id": "anterior", "point": "体のおなかの側。腹側とも言う。" },
+        { "id": "posterior", "point": "体の背中の側。背側とも言う。" },
+        { "id": "medial", "point": "体のまん中の線（正中）に近い側。" },
+        { "id": "lateral", "point": "体のまん中の線（正中）から遠い側。" },
+        { "id": "proximal", "point": "手足で、体の付け根に近い側。" },
+        { "id": "distal", "point": "手足で、体の付け根から遠い（指先に近い）側。" },
+        { "id": "superficial", "point": "体の表面（皮膚）に近いこと。" },
+        { "id": "deep", "point": "体の表面から遠い（奥にある）こと。" }
+      ]
+    },
+    {
+      "id": "b-basic-plane", "title": "体の面", "system": "basics",
+      "intro": ["体を切る面は3種類です。CT や MRI の画像もこの面で切って見ます。"],
+      "terms": [
+        { "id": "median-plane", "point": "体を左右のまん中で2つに分ける面。" },
+        { "id": "sagittal-plane", "point": "体を左右に分ける面（正中矢状面に平行な面すべて）。" },
+        { "id": "frontal-plane", "point": "体を前と後ろに分ける面。冠状面とも言う。" },
+        { "id": "horizontal-plane", "point": "体を上と下に分ける面。CT の輪切りの面。" }
+      ]
+    },
+    {
+      "id": "b-basic-motion", "title": "関節の動き①（曲げる・開く・回す）", "system": "basics",
+      "intro": ["関節の動きは、反対の動きと対にして覚えます（屈曲⇔伸展、外転⇔内転、内旋⇔外旋）。"],
+      "terms": [
+        { "id": "flexion", "point": "関節を曲げる動き。" },
+        { "id": "extension", "point": "曲げた関節を伸ばす動き（屈曲の反対）。" },
+        { "id": "abduction", "point": "手足を体のまん中から遠ざける（横へ開く）動き。" },
+        { "id": "adduction", "point": "手足を体のまん中に近づける（閉じる）動き。" },
+        { "id": "rotation", "point": "骨をその長い軸のまわりに回す動き。" },
+        { "id": "medial-rotation", "point": "前の面を内側へ向けるように回す動き。" },
+        { "id": "lateral-rotation", "point": "前の面を外側へ向けるように回す動き。" }
+      ]
+    },
+    {
+      "id": "b-basic-motion-2", "title": "関節の動き②（前腕・足首・肩）", "system": "basics",
+      "intro": ["前腕・足首・肩には、その場所だけの動きの名前があります。"],
+      "terms": [
+        { "id": "pronation", "point": "手のひらを下（後ろ）へ向ける前腕の動き。" },
+        { "id": "supination", "point": "手のひらを上（前）へ向ける前腕の動き。" },
+        { "id": "dorsiflexion", "point": "足首で、つま先をすねの方へ上げる動き。" },
+        { "id": "plantar-flexion", "point": "足首で、つま先を下へ伸ばす動き（背伸び）。" },
+        { "id": "elevation", "point": "肩をすくめるように上げる動き。" },
+        { "id": "depression", "point": "上げた肩などを下げる動き。" }
+      ]
+    },
+    {
+      "id": "b-skel-spine", "title": "背骨と胸の骨", "system": "skeletal",
+      "intro": ["背骨（脊柱）は上から頚椎7・胸椎12・腰椎5・仙骨・尾骨。数を「7・12・5」で覚えます。"],
+      "terms": [
+        { "id": "cervical-vertebrae", "point": "首の骨。7個（C1〜C7）。" },
+        { "id": "thoracic-vertebrae", "point": "胸の背骨。12個（T1〜T12）。肋骨とつながる。" },
+        { "id": "lumbar-vertebrae", "point": "腰の背骨。5個（L1〜L5）。椎骨の中でいちばん大きい。" },
+        { "id": "sacrum", "point": "5個の仙椎が1つにくっついた骨。骨盤の後ろの壁になる。" },
+        { "id": "coccyx", "point": "背骨のいちばん下の小さな骨。しっぽの名残。" },
+        { "id": "sternum", "point": "胸の前のまん中にある平たい骨。肋骨が付く。" },
+        { "id": "ribs", "point": "胸を囲む弓の形の骨。左右12対。" },
+        { "id": "thoracic-cage", "point": "胸椎・肋骨・胸骨でできたかご。心臓と肺を守る。" }
+      ]
+    },
+    {
+      "id": "b-skel-vertebra", "title": "椎骨のつくり", "system": "skeletal",
+      "intro": ["椎骨は、前の椎体と後ろの椎弓が穴（椎孔）を囲む形が基本です。この穴が重なって脊髄の通り道になります。"],
+      "terms": [
+        { "id": "atlas", "point": "第1頚椎。輪の形で頭を支える（うなずく動き）。" },
+        { "id": "axis", "point": "第2頚椎。歯突起を軸に環椎が回る（首を横に振る動き）。" },
+        { "id": "vertebral-body", "point": "椎骨の前の円柱の部分。体重を支える。" },
+        { "id": "vertebral-arch", "point": "椎体の後ろのアーチ。椎孔を囲む。" },
+        { "id": "vertebral-foramen", "point": "椎体と椎弓に囲まれた穴。重なって脊柱管になり、脊髄が通る。" },
+        { "id": "spinous-process", "point": "椎弓から後ろへ出る突起。背中のまん中で触れる。" },
+        { "id": "transverse-process", "point": "椎弓から左右へ出る突起。" },
+        { "id": "intervertebral-foramen", "point": "上下の椎骨の間のすき間。脊髄神経が出る。" }
+      ]
+    },
+    {
+      "id": "b-skel-arm", "title": "腕の骨", "system": "skeletal",
+      "intro": ["前腕の2本は、親指側が橈骨・小指側が尺骨。手は手首から先へ手根骨・中手骨・指骨の順です。"],
+      "terms": [
+        { "id": "clavicle", "point": "胸骨と肩甲骨をつなぐS字の骨。体の表から触れる。" },
+        { "id": "scapula", "point": "背中の上にある三角形の平たい骨。腕の付け根になる。" },
+        { "id": "humerus", "point": "肩から肘までの1本の長い骨。" },
+        { "id": "radius", "point": "前腕の親指側の骨。" },
+        { "id": "ulna", "point": "前腕の小指側の骨。肘の後ろの出っぱりをつくる。" },
+        { "id": "carpal-bones", "point": "手首にある8個の小さな骨。" },
+        { "id": "metacarpals", "point": "手のひらの5本の骨。" },
+        { "id": "phalanges-hand", "point": "指の骨。親指は2個、ほかの指は3個。" }
+      ]
+    },
+    {
+      "id": "b-skel-arm-parts", "title": "肩と腕の骨の目印", "system": "skeletal",
+      "intro": ["骨の出っぱりやくぼみは、筋が付く所・関節をつくる所・体の表から触れる目印になります。"],
+      "terms": [
+        { "id": "acromion", "point": "肩甲骨の、肩のいちばん高い所の突起。鎖骨とつながる。" },
+        { "id": "coracoid-process", "point": "肩甲骨から前へ曲がって出る突起。筋や靱帯が付く。" },
+        { "id": "glenoid-cavity", "point": "肩甲骨の浅いくぼみ。上腕骨頭と肩関節をつくる。" },
+        { "id": "spine-of-scapula", "point": "肩甲骨の背中側を横切る高まり。外側の端が肩峰。" },
+        { "id": "head-of-humerus", "point": "上腕骨の上の端の丸い所。肩関節をつくる。" },
+        { "id": "greater-tubercle", "point": "上腕骨頭の外側の高まり。棘上筋などが付く。" },
+        { "id": "surgical-neck", "point": "上腕骨の上の端のすぐ下の細い所。骨折しやすい。" },
+        { "id": "medial-epicondyle-of-humerus", "point": "肘の内側の出っぱり。後ろを尺骨神経が通る。" },
+        { "id": "lateral-epicondyle-of-humerus", "point": "肘の外側の出っぱり。" },
+        { "id": "olecranon", "point": "尺骨の上の端。肘の後ろの出っぱり。" }
+      ]
+    },
+    {
+      "id": "b-skel-pelvis", "title": "骨盤", "system": "skeletal",
+      "intro": ["寛骨は腸骨・坐骨・恥骨の3つが合わさった骨です。左右の寛骨と仙骨・尾骨で骨盤になります。"],
+      "terms": [
+        { "id": "pelvis", "point": "左右の寛骨と仙骨・尾骨でできた輪。内臓を下から支える。" },
+        { "id": "hip-bone", "point": "骨盤の左右の大きな骨。腸骨・坐骨・恥骨が合わさってできる。" },
+        { "id": "ilium", "point": "寛骨の上の、翼のように広がった部分。" },
+        { "id": "ischium", "point": "寛骨の下の後ろの部分。" },
+        { "id": "pubis", "point": "寛骨の前の部分。左右が恥骨結合でつながる。" },
+        { "id": "iliac-crest", "point": "腸骨の上の縁。腰に手を当てると触れる。" },
+        { "id": "anterior-superior-iliac-spine", "point": "腸骨稜の前の端の出っぱり。体の表の大事な目印。" },
+        { "id": "ischial-tuberosity", "point": "坐骨の下の太い高まり。座ったとき体重を受ける。" },
+        { "id": "acetabulum", "point": "寛骨の外側の深いくぼみ。大腿骨頭と股関節をつくる。" },
+        { "id": "obturator-foramen", "point": "坐骨と恥骨に囲まれた大きな穴。" }
+      ]
+    },
+    {
+      "id": "b-skel-leg", "title": "脚の骨", "system": "skeletal",
+      "intro": ["すねの2本は、内側の太い脛骨と外側の細い腓骨。足は足根骨・中足骨・指骨の順です。"],
+      "terms": [
+        { "id": "femur", "point": "太ももの骨。体でいちばん長い骨。" },
+        { "id": "patella", "point": "膝の前の皿の形の骨。大腿四頭筋の腱の中にある。" },
+        { "id": "tibia", "point": "すねの内側の太い骨。体重を支える。" },
+        { "id": "fibula", "point": "すねの外側の細い骨。" },
+        { "id": "tarsal-bones", "point": "かかとから足の甲の後ろ半分にある7個の骨。" },
+        { "id": "talus", "point": "足根骨のいちばん上の骨。脛骨・腓骨と足首の関節をつくる。" },
+        { "id": "calcaneus", "point": "かかとの骨。足根骨でいちばん大きい。" },
+        { "id": "metatarsals", "point": "足の甲の5本の骨。" },
+        { "id": "phalanges-foot", "point": "足の指の骨。" }
+      ]
+    },
+    {
+      "id": "b-skel-leg-parts", "title": "脚の骨の目印", "system": "skeletal",
+      "intro": ["くるぶしは、内側が脛骨（内果）、外側が腓骨（外果）です。"],
+      "terms": [
+        { "id": "head-of-femur", "point": "大腿骨の上の端の丸い所。股関節をつくる。" },
+        { "id": "neck-of-femur", "point": "大腿骨頭の下の細い所。お年寄りが転ぶと折れやすい。" },
+        { "id": "greater-trochanter", "point": "大腿骨の上の外側の大きな出っぱり。太ももの付け根の外側で触れる。" },
+        { "id": "tibial-tuberosity", "point": "膝の下、すねの前の高まり。膝蓋靱帯が付く。" },
+        { "id": "head-of-fibula", "point": "腓骨の上の端。膝の外側で触れ、すぐ下を総腓骨神経が通る。" },
+        { "id": "medial-malleolus", "point": "脛骨の下の端。足首の内側のくるぶし。" },
+        { "id": "lateral-malleolus", "point": "腓骨の下の端。足首の外側のくるぶし（内果より低い）。" }
+      ]
+    },
+    {
+      "id": "b-skel-skull", "title": "頭の骨", "system": "skeletal",
+      "intro": ["頭蓋は、脳を包む骨（前頭骨・頭頂骨・側頭骨・後頭骨など）と顔の骨に分けて見ると覚えやすくなります。"],
+      "terms": [
+        { "id": "frontal-bone", "point": "額の骨。" },
+        { "id": "parietal-bone", "point": "頭のてっぺんにある左右1対の骨。" },
+        { "id": "temporal-bone", "point": "耳のまわりの骨。中に耳（中耳・内耳）がある。" },
+        { "id": "occipital-bone", "point": "後頭部の骨。大後頭孔がある。" },
+        { "id": "sphenoid-bone", "point": "頭蓋の底のまん中にある、蝶の形の骨。" },
+        { "id": "maxilla", "point": "上あごの骨。上の歯が生える。" },
+        { "id": "mandible", "point": "下あごの骨。頭蓋でただ1つ大きく動く骨。下の歯が生える。" },
+        { "id": "zygomatic-bone", "point": "ほお骨。" },
+        { "id": "nasal-bone", "point": "鼻すじの上にある小さな骨。" },
+        { "id": "hyoid-bone", "point": "のどにあるU字の骨。ほかの骨と関節をつくらない。" }
+      ]
+    },
+    {
+      "id": "b-skel-skull-parts", "title": "頭の骨の目印", "system": "skeletal",
+      "intro": ["頭の骨どうしは縫合という縫い目でつながっています。"],
+      "terms": [
+        { "id": "coronal-suture", "point": "前頭骨と頭頂骨の間の縫い目。" },
+        { "id": "sagittal-suture", "point": "左右の頭頂骨の間の縫い目。" },
+        { "id": "lambdoid-suture", "point": "頭頂骨と後頭骨の間の縫い目。λ（ラムダ）の形。" },
+        { "id": "orbit", "point": "眼球の入る骨のくぼみ。" },
+        { "id": "external-acoustic-opening", "point": "側頭骨にある耳の穴。" },
+        { "id": "mastoid-process", "point": "耳の後ろ下の出っぱり。胸鎖乳突筋が付く。" },
+        { "id": "zygomatic-arch", "point": "頬骨と側頭骨がつくる橋の形の部分。耳の前で触れる。" },
+        { "id": "foramen-magnum", "point": "後頭骨の大きな穴。延髄と脊髄がつながる所。" },
+        { "id": "angle-of-mandible", "point": "下あごの後ろの角。" },
+        { "id": "head-of-mandible", "point": "下顎骨の上の端。耳の前で顎関節をつくる。" }
+      ]
+    },
+    {
+      "id": "b-joint-major", "title": "体の大きな関節", "system": "joints",
+      "intro": ["関節の名前は、つながる骨の名前から付いたものが多くあります（橈骨＋手根骨＝橈骨手根関節）。"],
+      "terms": [
+        { "id": "shoulder-joint", "point": "上腕骨頭と肩甲骨の関節窩の関節。よく動くが外れやすい。" },
+        { "id": "elbow-joint", "point": "上腕骨と橈骨・尺骨の関節。肘の曲げ伸ばしをする。" },
+        { "id": "radiocarpal-joint", "point": "手首の関節。橈骨と手根骨がつくる。" },
+        { "id": "hip-joint", "point": "大腿骨頭と寛骨臼の関節。深くはまって安定している。" },
+        { "id": "knee-joint", "point": "大腿骨と脛骨（と膝蓋骨）の関節。体でいちばん大きい関節。" },
+        { "id": "ankle-joint", "point": "足首の関節。脛骨・腓骨と距骨がつくる。" },
+        { "id": "temporomandibular-joint", "point": "下顎頭と側頭骨の関節。口を開け閉めする。" },
+        { "id": "intervertebral-disc", "point": "上下の椎体の間のクッション。飛び出すと椎間板ヘルニア。" },
+        { "id": "pubic-symphysis", "point": "左右の恥骨を軟骨でつなぐ所。" },
+        { "id": "sacro-iliac-joint", "point": "仙骨と腸骨の関節。ほとんど動かない。" }
+      ]
+    },
+    {
+      "id": "b-joint-ligaments", "title": "膝と足首の靱帯", "system": "joints",
+      "intro": ["膝はけがの多い関節です。中に十字靱帯と半月、両わきに側副靱帯があります。"],
+      "terms": [
+        { "id": "anterior-cruciate-ligament", "point": "膝の中の靱帯。脛骨が前へずれるのを防ぐ。スポーツで切れやすい。" },
+        { "id": "posterior-cruciate-ligament", "point": "膝の中の靱帯。脛骨が後ろへずれるのを防ぐ。" },
+        { "id": "medial-meniscus", "point": "膝の内側の三日月の形の軟骨。クッションになる。" },
+        { "id": "lateral-meniscus", "point": "膝の外側の、輪に近い形の軟骨。" },
+        { "id": "tibial-collateral-ligament", "point": "膝の内側の靱帯。膝を外から押されると傷みやすい。" },
+        { "id": "fibular-collateral-ligament", "point": "膝の外側のひもの形の靱帯。大腿骨と腓骨頭をつなぐ。" },
+        { "id": "patellar-ligament", "point": "膝蓋骨から脛骨粗面への靱帯。膝蓋腱反射でたたく所。" },
+        { "id": "anterior-talofibular-ligament", "point": "足首の外側の靱帯。足首の捻挫でいちばん傷みやすい。" }
+      ]
+    },
+    {
+      "id": "b-mus-chest-abdomen", "title": "胸とおなかの筋", "system": "muscular",
+      "intro": ["筋は「どこにあって、何をするか」をまず覚えます。息を吸う筋（横隔膜・外肋間筋）もここで。"],
+      "terms": [
+        { "id": "pectoralis-major", "point": "胸の大きな筋。腕を前・内側へ動かす。" },
+        { "id": "serratus-anterior", "point": "胸の横の、のこぎりの歯の形の筋。肩甲骨を前へ引く。" },
+        { "id": "external-intercostal", "point": "肋骨の間の筋。肋骨を上げて息を吸う。" },
+        { "id": "diaphragm", "point": "胸とおなかを分けるドームの形の筋。縮むと下がって息を吸う。いちばん大事な呼吸の筋。" },
+        { "id": "rectus-abdominis", "point": "おなかの前を縦に走る筋（腹筋）。体を前に曲げる。" },
+        { "id": "external-oblique", "point": "おなかの横の、いちばん外側の筋。体をひねる・前に曲げる。" }
+      ]
+    },
+    {
+      "id": "b-mus-neck-back", "title": "首と背中の筋", "system": "muscular",
+      "intro": ["背中の浅い所には肩甲骨と腕を動かす筋、深い所には背骨を支える筋があります。"],
+      "terms": [
+        { "id": "sternocleidomastoid", "point": "首の横を斜めに走る筋。顔を反対側へ向ける。" },
+        { "id": "trapezius", "point": "首から背中の上をおおう大きな筋。肩甲骨を動かす（肩をすくめる）。" },
+        { "id": "latissimus-dorsi", "point": "背中の下の広い筋。腕を後ろ・下へ引く。" },
+        { "id": "rhomboid-major", "point": "僧帽筋の下にある筋。肩甲骨を背骨の方へ寄せる。" },
+        { "id": "erector-spinae", "point": "背骨の両わきを縦に走る筋。背すじを伸ばす。" }
+      ]
+    },
+    {
+      "id": "b-mus-arm", "title": "肩と腕の筋", "system": "muscular",
+      "intro": ["上腕の前は肘を曲げる筋、後ろは肘を伸ばす筋です。"],
+      "terms": [
+        { "id": "deltoid", "point": "肩をおおう筋。腕を横に上げる（外転）。" },
+        { "id": "rotator-cuff", "point": "肩関節を包む4つの筋の腱（棘上筋・棘下筋・小円筋・肩甲下筋）。肩を安定させる。" },
+        { "id": "biceps-brachii", "point": "力こぶの筋。肘を曲げ、前腕を回外する。" },
+        { "id": "brachialis", "point": "上腕二頭筋の下にある筋。肘を曲げる。" },
+        { "id": "triceps-brachii", "point": "上腕の後ろの筋。肘を伸ばす。" },
+        { "id": "brachioradialis", "point": "前腕の親指側の筋。肘を曲げる。" }
+      ]
+    },
+    {
+      "id": "b-mus-hip-thigh", "title": "お尻と太ももの筋", "system": "muscular",
+      "intro": ["太ももの前は膝を伸ばす筋（大腿四頭筋）、後ろは膝を曲げる筋（ハムストリング）、内側は脚を閉じる筋です。"],
+      "terms": [
+        { "id": "gluteus-maximus", "point": "お尻のふくらみの筋。股関節を伸ばす（立ち上がる・階段を上る）。" },
+        { "id": "gluteus-medius", "point": "お尻の横の筋。脚を外へ開く。歩くとき骨盤を水平に保つ。" },
+        { "id": "iliopsoas", "point": "腰とおなかの奥から大腿骨へ行く筋。股関節を曲げる（脚を前に上げる）。" },
+        { "id": "sartorius", "point": "太ももの前を斜めに走る、体でいちばん長い筋。" },
+        { "id": "quadriceps-femoris", "point": "太ももの前の4つの筋。膝を伸ばす。" },
+        { "id": "adductor-longus", "point": "太ももの内側の筋。脚を閉じる（内転）。" },
+        { "id": "hamstrings", "point": "太ももの後ろの3つの筋。膝を曲げ、股関節を伸ばす。" }
+      ]
+    },
+    {
+      "id": "b-mus-leg", "title": "すねとふくらはぎの筋", "system": "muscular",
+      "intro": ["すねの前はつま先を上げる筋、ふくらはぎはつま先を下げる（背伸びする）筋です。"],
+      "terms": [
+        { "id": "tibialis-anterior", "point": "すねの前の筋。足首を背屈する（つま先を上げる）。" },
+        { "id": "fibularis-longus", "point": "すねの外側の筋。足の裏を外へ向ける。" },
+        { "id": "triceps-surae", "point": "ふくらはぎの筋（腓腹筋とヒラメ筋）。足首を底屈する（背伸び）。" },
+        { "id": "gastrocnemius", "point": "ふくらはぎの表面の筋。膝と足首の2つの関節をまたぐ。" },
+        { "id": "soleus", "point": "腓腹筋の奥の平たい筋。足首を底屈する。" },
+        { "id": "calcaneal-tendon", "point": "下腿三頭筋の腱。かかとの骨に付く。アキレス腱とも言う。" }
+      ]
+    },
+    {
+      "id": "b-mus-head", "title": "顔と噛む筋", "system": "muscular",
+      "intro": ["顔の表情をつくる筋（表情筋）は顔面神経、噛む筋（咀嚼筋）は三叉神経が動かします。"],
+      "terms": [
+        { "id": "frontalis", "point": "額の筋。眉を上げ、額にしわを寄せる。" },
+        { "id": "orbicularis-oculi", "point": "目のまわりの輪の形の筋。目を閉じる。" },
+        { "id": "orbicularis-oris", "point": "口のまわりの輪の形の筋。口を閉じ、唇をすぼめる。" },
+        { "id": "zygomaticus-major", "point": "口の端を斜め上に引く筋。笑顔をつくる。" },
+        { "id": "temporalis", "point": "こめかみの筋。下あごを上げて噛む。" },
+        { "id": "masseter", "point": "ほおの奥の厚い筋。下あごを上げて強く噛む。" }
+      ]
+    },
+    {
+      "id": "b-cv-heart", "title": "心臓", "system": "cardiovascular",
+      "intro": ["血液は 全身 → 右心房 → 右心室 → 肺 → 左心房 → 左心室 → 全身 と流れます。心房は血液を受ける部屋、心室は送り出す部屋です。"],
+      "terms": [
+        { "id": "heart", "point": "胸のまん中やや左にある、血液を送り出すポンプ。4つの部屋がある。" },
+        { "id": "right-atrium", "point": "全身から戻った血液（上大静脈・下大静脈から）を受ける部屋。" },
+        { "id": "right-ventricle", "point": "血液を肺へ送り出す部屋。" },
+        { "id": "left-atrium", "point": "肺から戻った血液（肺静脈から）を受ける部屋。" },
+        { "id": "left-ventricle", "point": "血液を全身へ送り出す部屋。壁がいちばん厚い。" },
+        { "id": "tricuspid-valve", "point": "右心房と右心室の間の弁。" },
+        { "id": "mitral-valve", "point": "左心房と左心室の間の弁。" },
+        { "id": "pulmonary-valve", "point": "右心室の出口（肺動脈幹への入口）の弁。" },
+        { "id": "aortic-valve", "point": "左心室の出口（大動脈への入口）の弁。" },
+        { "id": "apex-of-heart", "point": "心臓の左下の先。左胸で拍動を触れる。" }
+      ]
+    },
+    {
+      "id": "b-cv-great-vessels", "title": "心臓につながる血管", "system": "cardiovascular",
+      "intro": ["心臓から出る血管が動脈、心臓へ戻る血管が静脈です。肺へ行く肺動脈には酸素の少ない血液が流れます。"],
+      "terms": [
+        { "id": "ascending-aorta", "point": "左心室から出て上へ向かう、大動脈の始まり。" },
+        { "id": "aortic-arch", "point": "大動脈が左後ろへ曲がるアーチ。頭と腕への動脈が出る。" },
+        { "id": "thoracic-aorta", "point": "胸の中を下る大動脈。" },
+        { "id": "abdominal-aorta", "point": "横隔膜より下の大動脈。おなかの臓器への動脈を出し、へその高さで左右に分かれる。" },
+        { "id": "pulmonary-trunk", "point": "右心室から出て、左右の肺動脈に分かれる。血液を肺へ運ぶ。" },
+        { "id": "pulmonary-veins", "point": "肺から左心房へ、酸素の多い血液を運ぶ。" },
+        { "id": "superior-vena-cava", "point": "上半身の血液を右心房へ戻す太い静脈。" },
+        { "id": "inferior-vena-cava", "point": "下半身の血液を右心房へ戻す、体でいちばん太い静脈。" },
+        { "id": "right-coronary-artery", "point": "心臓そのものに血液を送る動脈（右）。大動脈の根元から出る。" },
+        { "id": "left-coronary-artery", "point": "心臓そのものに血液を送る動脈（左）。大動脈の根元から出る。" }
+      ]
+    },
+    {
+      "id": "b-cv-arteries-upper", "title": "頭と腕の動脈", "system": "cardiovascular",
+      "intro": ["腕の動脈は、鎖骨下動脈 → 腋窩動脈 → 上腕動脈 → 橈骨動脈・尺骨動脈と、通る場所で名前が変わります。"],
+      "terms": [
+        { "id": "brachiocephalic-trunk", "point": "大動脈弓の右の最初の枝。右の総頚動脈と鎖骨下動脈に分かれる。" },
+        { "id": "common-carotid-artery", "point": "首を上る動脈。首の横で脈を触れる。内頚動脈と外頚動脈に分かれる。" },
+        { "id": "internal-carotid-artery", "point": "頭蓋の中へ入り、脳と眼に血液を送る。" },
+        { "id": "external-carotid-artery", "point": "顔・首など、頭蓋の外に血液を送る。" },
+        { "id": "vertebral-artery", "point": "頚椎の横の穴を上り、脳の後ろの方に血液を送る。" },
+        { "id": "subclavian-artery", "point": "鎖骨の下を通って腕へ向かう動脈。" },
+        { "id": "axillary-artery", "point": "わきの下（腋窩）の動脈。鎖骨下動脈の続き。" },
+        { "id": "brachial-artery", "point": "上腕の内側の動脈。血圧を測る所。" },
+        { "id": "radial-artery", "point": "手首の親指側で脈を測る動脈。" },
+        { "id": "ulnar-artery", "point": "前腕の小指側の動脈。" }
+      ]
+    },
+    {
+      "id": "b-cv-arteries-lower", "title": "おなかと脚の動脈", "system": "cardiovascular",
+      "intro": ["腹大動脈から前へ出る3本（腹腔動脈・上腸間膜動脈・下腸間膜動脈）が、胃から直腸までの消化管を受け持ちます。"],
+      "terms": [
+        { "id": "celiac-trunk", "point": "腹大動脈の最初の枝。胃・肝臓・脾臓に血液を送る。" },
+        { "id": "superior-mesenteric-artery", "point": "小腸と大腸の前半に血液を送る。" },
+        { "id": "inferior-mesenteric-artery", "point": "大腸の後半（下行結腸〜直腸）に血液を送る。" },
+        { "id": "renal-artery", "point": "腹大動脈から左右の腎臓へ行く動脈。" },
+        { "id": "common-iliac-artery", "point": "腹大動脈が左右に分かれたもの。" },
+        { "id": "internal-iliac-artery", "point": "骨盤の中の臓器とお尻に血液を送る。" },
+        { "id": "external-iliac-artery", "point": "脚へ向かう動脈。鼡径靱帯をくぐると大腿動脈になる。" },
+        { "id": "femoral-artery", "point": "太ももの前の動脈。脚の付け根で脈を触れる。" },
+        { "id": "popliteal-artery", "point": "膝の裏の動脈。大腿動脈の続き。" },
+        { "id": "dorsalis-pedis-artery", "point": "足の甲で脈を触れる動脈。" }
+      ]
+    },
+    {
+      "id": "b-cv-veins", "title": "静脈と脾臓", "system": "cardiovascular",
+      "intro": ["胃や腸の血液は、門脈を通っていったん肝臓へ入ってから心臓へ戻ります。"],
+      "terms": [
+        { "id": "internal-jugular-vein", "point": "脳と首の血液を集める、首の太い静脈。" },
+        { "id": "subclavian-vein", "point": "腕の血液を集め、鎖骨の下を通る静脈。" },
+        { "id": "brachiocephalic-vein", "point": "内頚静脈と鎖骨下静脈が合わさった静脈。左右が合わさって上大静脈になる。" },
+        { "id": "median-cubital-vein", "point": "肘の前の、皮膚のすぐ下の静脈。採血でよく使う。" },
+        { "id": "hepatic-portal-vein", "point": "胃・腸・脾臓の血液を肝臓へ運ぶ静脈。" },
+        { "id": "renal-vein", "point": "腎臓の血液を下大静脈へ戻す。" },
+        { "id": "great-saphenous-vein", "point": "脚の内側の皮膚の下を上る長い静脈。" },
+        { "id": "spleen", "point": "左上腹部の奥にある器官。古い赤血球を壊し、免疫にはたらく。" }
+      ]
+    },
+    {
+      "id": "b-lymph", "title": "リンパ節と扁桃", "system": "lymphatic",
+      "intro": ["リンパ節は首・わきの下・脚の付け根に集まっています。かぜやけがで腫れて触れるのもこの3か所です。"],
+      "terms": [
+        { "id": "palatine-tonsil", "point": "のどの奥の左右にあるリンパの組織（いわゆる扁桃腺）。" },
+        { "id": "submandibular-nodes", "point": "下あごの下のリンパ節。口や顔のリンパが集まる。" },
+        { "id": "deep-cervical-nodes", "point": "首の太い静脈に沿って並ぶリンパ節。頭と首のリンパが集まる。" },
+        { "id": "supraclavicular-nodes", "point": "鎖骨のすぐ上のリンパ節。胸や腹のがんの転移で腫れることがある。" },
+        { "id": "axillary-nodes", "point": "わきの下のリンパ節。腕と乳房のリンパが集まる。" },
+        { "id": "superficial-inguinal-nodes", "point": "脚の付け根の皮膚の下のリンパ節。脚と下腹部のリンパが集まる。" }
+      ]
+    },
+    {
+      "id": "b-resp-upper", "title": "鼻からのど", "system": "respiratory",
+      "intro": ["空気は 鼻腔 → 咽頭 → 喉頭 → 気管 と進みます。喉頭は空気の通り道の入口で、声を出す所です。"],
+      "terms": [
+        { "id": "nasal-cavity", "point": "鼻の中の空間。吸った空気を温め、湿らせる。" },
+        { "id": "maxillary-sinus", "point": "上顎骨の中の空洞。いちばん大きい副鼻腔。" },
+        { "id": "frontal-sinus", "point": "額の骨の中の空洞。副鼻腔の1つ。" },
+        { "id": "larynx", "point": "気管の入口。声帯があって声を出す。" },
+        { "id": "epiglottis", "point": "喉頭の入口のふた。飲み込むとき閉じて、食べ物が気管に入るのを防ぐ。" },
+        { "id": "thyroid-cartilage", "point": "喉頭でいちばん大きな軟骨。のど仏をつくる。" },
+        { "id": "cricoid-cartilage", "point": "甲状軟骨の下の、指輪の形の軟骨。" }
+      ]
+    },
+    {
+      "id": "b-resp-lung", "title": "気管と肺", "system": "respiratory",
+      "intro": ["右肺は3つ、左肺は2つの葉に分かれます。左は心臓があるぶん小さくなっています。"],
+      "terms": [
+        { "id": "trachea", "point": "のどから胸へ下る空気の管。C字形の軟骨で支えられる。" },
+        { "id": "main-bronchus", "point": "気管が左右に分かれた管。右の方が太く短く縦に近いので、異物が入りやすい。" },
+        { "id": "lung", "point": "胸の左右にある、酸素と二酸化炭素を交換する器官。" },
+        { "id": "right-lung", "point": "上葉・中葉・下葉の3つの葉。" },
+        { "id": "left-lung", "point": "上葉・下葉の2つの葉。右肺より小さい。" },
+        { "id": "apex-of-lung", "point": "肺の上の先。鎖骨より少し上まで出る。" },
+        { "id": "hilum-of-lung", "point": "肺の内側の入口。気管支・肺動脈・肺静脈が出入りする。" },
+        { "id": "oblique-fissure", "point": "肺を上葉と下葉に分ける深い切れ込み。左右の肺にある。" },
+        { "id": "horizontal-fissure", "point": "右肺の上葉と中葉を分ける切れ込み。右肺だけにある。" }
+      ]
+    },
+    {
+      "id": "b-resp-lobes", "title": "肺の葉", "system": "respiratory",
+      "intro": ["中葉は右肺だけにあります。"],
+      "terms": [
+        { "id": "superior-lobe-of-right-lung", "point": "右肺の上の葉。" },
+        { "id": "middle-lobe-of-right-lung", "point": "右肺だけにある、まん中の葉。" },
+        { "id": "inferior-lobe-of-right-lung", "point": "右肺の下の葉。" },
+        { "id": "superior-lobe-of-left-lung", "point": "左肺の上の葉。" },
+        { "id": "inferior-lobe-of-left-lung", "point": "左肺の下の葉。" }
+      ]
+    },
+    {
+      "id": "b-dig-mouth", "title": "口とのど", "system": "digestive",
+      "intro": ["食べ物は 口腔 → 咽頭 → 食道 と進みます。咽頭は空気と食べ物の両方が通る所です。"],
+      "terms": [
+        { "id": "oral-cavity", "point": "口の中の空間。消化の始まり。" },
+        { "id": "tongue", "point": "口の中の筋のかたまり。味を感じ、食べ物を動かす。" },
+        { "id": "incisors", "point": "前歯。食べ物をかみ切る。" },
+        { "id": "canines", "point": "切歯の横のとがった歯。" },
+        { "id": "molars", "point": "奥歯。食べ物をすりつぶす。" },
+        { "id": "parotid-gland", "point": "耳の前下にある、いちばん大きな唾液腺。おたふくかぜで腫れる。" },
+        { "id": "submandibular-gland", "point": "下あごの内側にある唾液腺。" },
+        { "id": "soft-palate", "point": "口の天井の後ろのやわらかい部分。飲み込むとき鼻への道をふさぐ。" },
+        { "id": "pharynx", "point": "鼻と口の奥から、食道と喉頭へ続くのど。" }
+      ]
+    },
+    {
+      "id": "b-dig-tract", "title": "食道・胃・小腸", "system": "digestive",
+      "intro": ["小腸は 十二指腸 → 空腸 → 回腸 の順。栄養はおもに小腸で吸収されます。"],
+      "terms": [
+        { "id": "esophagus", "point": "咽頭から胃へ食べ物を運ぶ管。気管の後ろを下る。" },
+        { "id": "stomach", "point": "左上腹部の袋。食べ物をためて胃酸で消化する。" },
+        { "id": "small-intestine", "point": "十二指腸・空腸・回腸からなる長い管。栄養を吸収する。" },
+        { "id": "duodenum", "point": "胃に続くC字の、小腸の始まり。胆汁と膵液が出てくる。" },
+        { "id": "jejunum", "point": "小腸の前の約2/5。" },
+        { "id": "ileum", "point": "小腸の後ろの約3/5。大腸（盲腸）へつながる。" }
+      ]
+    },
+    {
+      "id": "b-dig-colon", "title": "大腸", "system": "digestive",
+      "intro": ["大腸は、おなかの右下の盲腸から時計回りに 上行 → 横行 → 下行 → S状結腸 → 直腸 と進みます。"],
+      "terms": [
+        { "id": "large-intestine", "point": "盲腸・結腸・直腸からなる。水分を吸収して便をつくる。" },
+        { "id": "cecum", "point": "大腸の始まりの袋。回腸がつながり、虫垂が出る。" },
+        { "id": "appendix", "point": "盲腸から出る細い管。炎症を起こすと虫垂炎。" },
+        { "id": "ascending-colon", "point": "おなかの右側を上る結腸。" },
+        { "id": "transverse-colon", "point": "おなかの上の方を右から左へ横切る結腸。" },
+        { "id": "descending-colon", "point": "おなかの左側を下る結腸。" },
+        { "id": "sigmoid-colon", "point": "左下腹部でS字に曲がる結腸。直腸へ続く。" },
+        { "id": "rectum", "point": "大腸の終わり。便をためて肛門から出す。" }
+      ]
+    },
+    {
+      "id": "b-dig-stomach-parts", "title": "胃の部位と腹膜", "system": "digestive",
+      "intro": ["胃の入口が噴門、出口が幽門です。胃や腸は、腹膜でできた膜（網・間膜）でつながっています。"],
+      "terms": [
+        { "id": "cardia", "point": "胃の入口。食道とつながる。" },
+        { "id": "fundus-of-stomach", "point": "噴門より上にふくらんだ、胃のいちばん上の部分。" },
+        { "id": "body-of-stomach", "point": "胃のまん中の大きな部分。" },
+        { "id": "pylorus", "point": "胃の出口。十二指腸とつながる。" },
+        { "id": "lesser-curvature", "point": "胃の右上の短い縁。" },
+        { "id": "greater-curvature", "point": "胃の左下の長い縁。" },
+        { "id": "greater-omentum", "point": "胃の大弯から垂れ下がって、腸の前をおおう膜。" },
+        { "id": "lesser-omentum", "point": "胃の小弯と肝臓の間の膜。" },
+        { "id": "mesentery", "point": "小腸（空腸・回腸）をおなかの後ろの壁につるす膜。血管が通る。" }
+      ]
+    },
+    {
+      "id": "b-dig-glands", "title": "肝臓・胆嚢・膵臓", "system": "digestive",
+      "intro": ["胆汁は肝臓でつくられて胆嚢にたまり、総胆管を通って十二指腸へ出ます。"],
+      "terms": [
+        { "id": "liver", "point": "右上腹部にある最大の臓器。栄養をたくわえ、毒を分解し、胆汁をつくる。" },
+        { "id": "right-lobe-of-liver", "point": "肝臓の大きい右の部分。" },
+        { "id": "left-lobe-of-liver", "point": "肝臓の小さい左の部分。" },
+        { "id": "porta-hepatis", "point": "肝臓の下の面の入口。門脈・肝動脈・肝管が出入りする。" },
+        { "id": "gallbladder", "point": "肝臓の下の面にある袋。胆汁をためて濃くする。" },
+        { "id": "bile-duct", "point": "胆汁を十二指腸へ運ぶ管。" },
+        { "id": "pancreas", "point": "胃の後ろにある横長の臓器。消化液（膵液）とインスリンをつくる。" },
+        { "id": "head-of-pancreas", "point": "膵臓の右の太い部分。十二指腸に囲まれる。" },
+        { "id": "tail-of-pancreas", "point": "膵臓の左の先。脾臓の近くまでのびる。" }
+      ]
+    },
+    {
+      "id": "b-uro-urinary", "title": "尿の通り道", "system": "urogenital",
+      "intro": ["尿は 腎臓 → 腎盤 → 尿管 → 膀胱 → 尿道 と流れます。"],
+      "terms": [
+        { "id": "kidney", "point": "腰の高さの背中側にある、左右1対のそら豆の形の臓器。血液から尿をつくる。" },
+        { "id": "renal-hilum", "point": "腎臓の内側のくぼみ。腎動脈・腎静脈・尿管が出入りする。" },
+        { "id": "renal-pelvis", "point": "腎臓でできた尿を集めるじょうご。尿管へ続く。" },
+        { "id": "ureter", "point": "腎臓から膀胱へ尿を運ぶ管。" },
+        { "id": "urinary-bladder", "point": "尿をためる袋。恥骨のすぐ後ろにある。" },
+        { "id": "urethra", "point": "膀胱から体の外へ尿を出す管。" }
+      ]
+    },
+    {
+      "id": "b-uro-male", "title": "男性の生殖器", "system": "urogenital",
+      "intro": ["精子は 精巣 → 精巣上体 → 精管 と進み、尿道から外へ出ます（このアプリの3Dは男性のモデルだけです）。"],
+      "terms": [
+        { "id": "testis", "point": "陰嚢の中で、精子と男性ホルモンをつくる。" },
+        { "id": "epididymis", "point": "精巣の後ろにあり、精子をためて成熟させる。" },
+        { "id": "ductus-deferens", "point": "精巣上体から精子を運ぶ管。" },
+        { "id": "seminal-gland", "point": "膀胱の後ろにある腺。精液の多くをつくる。" },
+        { "id": "prostate", "point": "膀胱の下で尿道を囲む腺。年をとると大きくなり、尿が出にくくなる。" },
+        { "id": "penis", "point": "尿道が通る、男性の外生殖器。" }
+      ]
+    },
+    {
+      "id": "b-endo", "title": "ホルモンを出す腺", "system": "endocrine",
+      "intro": ["内分泌腺はホルモンを血液の中へ出します。場所と、出すホルモンの代表を1つずつ覚えます。"],
+      "terms": [
+        { "id": "pituitary-gland", "point": "脳の下にぶら下がる腺。ほかの内分泌腺に指令するホルモンを出す。" },
+        { "id": "pineal-gland", "point": "脳のまん中の後ろの小さな腺。眠りに関わるメラトニンを出す。" },
+        { "id": "thyroid-gland", "point": "のど仏の下にある蝶の形の腺。代謝を高める甲状腺ホルモンを出す。" },
+        { "id": "parathyroid-gland", "point": "甲状腺の後ろの米粒ほどの腺（ふつう4個）。血液のカルシウムを上げる。副甲状腺とも言う。" },
+        { "id": "thymus", "point": "胸骨の後ろにある。リンパ球（T細胞）を育てる。子どもで大きい。" },
+        { "id": "adrenal-gland", "point": "腎臓の上にのる小さな腺。アドレナリンやステロイドホルモンを出す。" }
+      ]
+    },
+    {
+      "id": "b-nerv-cerebrum", "title": "大脳", "system": "nervous",
+      "intro": ["大脳は前頭葉・頭頂葉・側頭葉・後頭葉の4つの葉に分かれます。中心溝の前が「動かす」、後ろが「感じる」所です。"],
+      "terms": [
+        { "id": "cerebrum", "point": "脳でいちばん大きい部分。考える・感じる・体を動かす中心。" },
+        { "id": "frontal-lobe", "point": "大脳の前の部分。体を動かすことと、考えることにはたらく。" },
+        { "id": "parietal-lobe", "point": "大脳のてっぺんの部分。体の感覚を受ける。" },
+        { "id": "temporal-lobe", "point": "大脳の横の部分。聞くことと記憶にはたらく。" },
+        { "id": "occipital-lobe", "point": "大脳の後ろの部分。見ること（視覚）の中心。" },
+        { "id": "central-sulcus", "point": "前頭葉と頭頂葉の境の溝。" },
+        { "id": "lateral-sulcus", "point": "側頭葉の上の境の、深い溝。" },
+        { "id": "precentral-gyrus", "point": "中心溝のすぐ前のしわ。体を動かす命令を出す（運動野）。" },
+        { "id": "postcentral-gyrus", "point": "中心溝のすぐ後ろのしわ。体の感覚を受ける（感覚野）。" }
+      ]
+    },
+    {
+      "id": "b-nerv-brainstem", "title": "脳の中と脳幹・小脳", "system": "nervous",
+      "intro": ["脳幹は上から 中脳 → 橋 → 延髄 の順で、脊髄へ続きます。延髄には呼吸の中枢があります。"],
+      "terms": [
+        { "id": "corpus-callosum", "point": "左右の大脳をつなぐ太い線維の束。" },
+        { "id": "thalamus", "point": "脳の中心にある卵の形の部分。感覚を大脳へ中継する。" },
+        { "id": "hypothalamus", "point": "視床の下。体温・食欲・ホルモンを調節する。下垂体につながる。" },
+        { "id": "hippocampus", "point": "側頭葉の内側にある、記憶にはたらく部分。" },
+        { "id": "lateral-ventricle", "point": "大脳の中にある、脳脊髄液の入った部屋（左右1対）。" },
+        { "id": "midbrain", "point": "脳幹のいちばん上の部分。" },
+        { "id": "pons", "point": "脳幹のまん中のふくらみ。小脳の前にある。" },
+        { "id": "medulla-oblongata", "point": "脳幹のいちばん下。呼吸と心臓の中枢があり、脊髄に続く。" },
+        { "id": "cerebellum", "point": "大脳の後ろの下。体のバランスと動きの調節をする。" }
+      ]
+    },
+    {
+      "id": "b-nerv-cranial-1", "title": "脳神経（Ⅰ〜Ⅵ）", "system": "nervous",
+      "intro": ["脳から直接出る神経（脳神経）は12対で、番号で呼ぶこともあります。目を動かす神経はⅢ・Ⅳ・Ⅵの3つです。"],
+      "terms": [
+        { "id": "olfactory-nerve", "point": "第Ⅰ脳神経。においを伝える。" },
+        { "id": "optic-nerve", "point": "第Ⅱ脳神経。網膜から、見たものを伝える。" },
+        { "id": "oculomotor-nerve", "point": "第Ⅲ脳神経。眼球を動かす筋の多くと、瞳を小さくする筋を動かす。" },
+        { "id": "trochlear-nerve", "point": "第Ⅳ脳神経。眼球を動かす筋の1つ（上斜筋）を動かす。" },
+        { "id": "trigeminal-nerve", "point": "第Ⅴ脳神経。顔の感覚を伝え、噛む筋を動かす。" },
+        { "id": "abducens-nerve", "point": "第Ⅵ脳神経。目を外へ向ける筋（外側直筋）を動かす。" }
+      ]
+    },
+    {
+      "id": "b-nerv-cranial-2", "title": "脳神経（Ⅶ〜Ⅻ）", "system": "nervous",
+      "intro": ["迷走神経（Ⅹ）は首を下って胸やおなかの内臓まで届く、とくに長い脳神経です。"],
+      "terms": [
+        { "id": "facial-nerve", "point": "第Ⅶ脳神経。顔の表情をつくる筋（表情筋）を動かす。" },
+        { "id": "vestibulocochlear-nerve", "point": "第Ⅷ脳神経。聞こえと、体のバランス（平衡）を伝える。" },
+        { "id": "glossopharyngeal-nerve", "point": "第Ⅸ脳神経。舌の後ろの味と、のどの感覚を伝える。" },
+        { "id": "vagus-nerve", "point": "第Ⅹ脳神経。首・胸・おなかの内臓まで広く届く（副交感神経）。" },
+        { "id": "accessory-nerve", "point": "第Ⅺ脳神経。胸鎖乳突筋と僧帽筋を動かす。" },
+        { "id": "hypoglossal-nerve", "point": "第Ⅻ脳神経。舌を動かす。" }
+      ]
+    },
+    {
+      "id": "b-nerv-spinal", "title": "脊髄", "system": "nervous",
+      "intro": ["脊髄の前から出る根は「動かす」信号、後ろから入る根は「感じる」信号を通します。"],
+      "terms": [
+        { "id": "spinal-cord", "point": "脊柱管の中を下る神経の束。脳と体の間で信号を伝える。" },
+        { "id": "anterior-horn", "point": "脊髄の中の灰白質の前の部分。筋を動かす神経細胞がある。" },
+        { "id": "posterior-horn", "point": "脊髄の中の灰白質の後ろの部分。感覚の信号を受ける。" },
+        { "id": "anterior-root", "point": "脊髄の前から出る根。筋を動かす信号を出す。" },
+        { "id": "posterior-root", "point": "脊髄の後ろに入る根。感覚の信号が入る。" },
+        { "id": "spinal-ganglion", "point": "後根のふくらみ。感覚の神経細胞が集まる。" },
+        { "id": "cauda-equina", "point": "脊髄の下の端から下へのびる神経の根の束。馬のしっぽに似る。" },
+        { "id": "sympathetic-trunk", "point": "背骨の両わきに並ぶ、交感神経の鎖。" }
+      ]
+    },
+    {
+      "id": "b-nerv-arm", "title": "腕の神経", "system": "nervous",
+      "intro": ["腕の神経はすべて腕神経叢から出ます。まず「どの筋を動かすか」と「どこを通るか」を1つずつ。"],
+      "terms": [
+        { "id": "brachial-plexus", "point": "首から腕へ行く神経が、網のように組み合わさった所。" },
+        { "id": "musculocutaneous-nerve", "point": "上腕の前の筋（上腕二頭筋など）を動かす。" },
+        { "id": "axillary-nerve", "point": "三角筋を動かす。上腕骨の外科頚のまわりを通る。" },
+        { "id": "radial-nerve", "point": "腕の後ろの、伸ばす筋を動かす。まひすると手首が垂れる（下垂手）。" },
+        { "id": "median-nerve", "point": "前腕の曲げる筋の多くと、親指の付け根の筋を動かす。手根管を通る。" },
+        { "id": "ulnar-nerve", "point": "手の細かい筋の多くを動かす。肘の内側（ぶつけるとしびれる所）を通る。" }
+      ]
+    },
+    {
+      "id": "b-nerv-trunk-leg", "title": "体幹と脚の神経", "system": "nervous",
+      "intro": ["坐骨神経は体でいちばん太い神経で、膝の裏の近くで脛骨神経と総腓骨神経に分かれます。"],
+      "terms": [
+        { "id": "intercostal-nerves", "point": "肋骨の間を走る神経。胸とおなかの壁の筋を動かし、感覚を伝える。" },
+        { "id": "femoral-nerve", "point": "太ももの前の筋（大腿四頭筋など）を動かす。" },
+        { "id": "obturator-nerve", "point": "太ももの内側の、脚を閉じる筋を動かす。閉鎖孔を通る。" },
+        { "id": "sciatic-nerve", "point": "お尻から太ももの後ろを下る、体でいちばん太い神経。" },
+        { "id": "tibial-nerve", "point": "坐骨神経の枝。ふくらはぎと足の裏の筋を動かす。" },
+        { "id": "common-fibular-nerve", "point": "坐骨神経の枝。腓骨頭のそばを回り、すねの前と外側の筋を動かす。" }
+      ]
+    },
+    {
+      "id": "b-sens-eye", "title": "眼", "system": "sensory",
+      "intro": ["眼はカメラに似ています。角膜と水晶体がレンズ、虹彩がしぼり、網膜がフィルムです。"],
+      "terms": [
+        { "id": "eyeball", "point": "眼窩の中にある、直径約2.4cmの球。" },
+        { "id": "cornea", "point": "眼球の前の透明な膜。光を曲げる。" },
+        { "id": "sclera", "point": "眼球を包む白くて丈夫な膜（白目）。" },
+        { "id": "iris", "point": "角膜の奥の、色の付いた膜。まん中の穴（瞳孔）の大きさで光の量を調節する。" },
+        { "id": "ciliary-body", "point": "水晶体の厚さを変えて、ピントを合わせる。" },
+        { "id": "lens", "point": "虹彩の後ろの透明なレンズ。濁ると白内障。" },
+        { "id": "vitreous-body", "point": "眼球の中を満たす、ゼリーのような透明なもの。" },
+        { "id": "retina", "point": "眼球のいちばん内側の膜。光を感じる。" }
+      ]
+    },
+    {
+      "id": "b-sens-ear", "title": "耳", "system": "sensory",
+      "intro": ["耳は外耳・中耳・内耳の3つ。音は 鼓膜 → 耳小骨（ツチ骨・キヌタ骨・アブミ骨）→ 蝸牛 と伝わります。"],
+      "terms": [
+        { "id": "external-ear", "point": "耳介と、鼓膜までの耳の穴（外耳道）。音を集めて鼓膜へ送る。" },
+        { "id": "tympanic-membrane", "point": "外耳と中耳の境の薄い膜。音で振動する。" },
+        { "id": "malleus", "point": "鼓膜に付いている耳小骨。" },
+        { "id": "incus", "point": "ツチ骨とアブミ骨の間の耳小骨。" },
+        { "id": "stapes", "point": "内耳の窓にはまる耳小骨。体でいちばん小さい骨。" },
+        { "id": "auditory-tube", "point": "中耳とのど（咽頭）をつなぐ管。中耳の気圧を外と同じにする。" },
+        { "id": "cochlea", "point": "内耳の、かたつむりの形の部分。音を感じる。" },
+        { "id": "vestibule", "point": "内耳のまん中の部分。体の傾きを感じる。" }
+      ]
+    },
+    {
+      "id": "b-reg-passages", "title": "体のくぼみと通り道", "system": "regional",
+      "intro": ["くぼみや通り道には、大事な血管や神経がまとまって通ります。「何が通るか」を1つ覚えます。"],
+      "terms": [
+        { "id": "vertebral-canal", "point": "椎孔が上下に重なってできた管。脊髄が通る。" },
+        { "id": "axilla", "point": "わきの下のくぼみ。腕へ行く血管と神経が通る。" },
+        { "id": "cubital-fossa", "point": "肘の前のくぼみ。上腕動脈と正中神経が通る。" },
+        { "id": "carpal-tunnel", "point": "手首の手のひら側のトンネル。正中神経と、指を曲げる筋の腱が通る。" },
+        { "id": "inguinal-canal", "point": "脚の付け根の少し上で、おなかの壁を斜めに通る道。男性では精索が通る。" },
+        { "id": "femoral-triangle", "point": "太ももの付け根の前の三角。大腿動脈・大腿静脈・大腿神経が通る。" },
+        { "id": "popliteal-fossa", "point": "膝の裏のくぼみ。膝窩動脈・膝窩静脈と脛骨神経が通る。" }
+      ]
+    },
+    {
+      "id": "b-reg-mediastinum", "title": "縦隔と骨盤の中", "system": "regional",
+      "intro": ["縦隔は左右の肺にはさまれた胸のまん中の場所です。心臓はそのうちの中縦隔にあります。"],
+      "terms": [
+        { "id": "superior-mediastinum", "point": "縦隔の上の部分。大動脈弓や気管がある。" },
+        { "id": "anterior-mediastinum", "point": "心臓の前の、胸骨との間の狭い部分。" },
+        { "id": "middle-mediastinum", "point": "心臓と、心臓を包む膜（心膜）のある部分。" },
+        { "id": "posterior-mediastinum", "point": "心臓の後ろの部分。食道や胸大動脈が通る。" },
+        { "id": "greater-pelvis", "point": "骨盤の、分界線より上の広い部分。おなか（腹腔）の下の部分になる。" },
+        { "id": "lesser-pelvis", "point": "骨盤の、分界線より下の部分。膀胱や直腸が入る。" }
+      ]
+    }
+  ]
+}

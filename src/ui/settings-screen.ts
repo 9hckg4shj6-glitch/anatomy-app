@@ -1,5 +1,6 @@
 import { exportBackup, importBackup, isBackup } from "../backup";
-import { systemById } from "../content";
+import { systemById, terms } from "../content";
+import { beginnerTermCount } from "../course";
 import { db, nowIso, type Facet } from "../db";
 import { canSaveOffline, offlineFiles, savedFiles, saveFiles } from "../offline";
 import { h } from "../dom";
@@ -105,12 +106,25 @@ function settingRows(render: () => void): HTMLElement[] {
       render();
     },
   }) as HTMLInputElement;
+  const beginner = preferences.mode === "beginner";
   return [
+    h("section", { class: "settings" },
+      h("h3", {}, "モード"),
+      chips([{ value: "beginner" as const, label: "初心者モード" }, { value: "detail" as const, label: "詳細モード" }], preferences.mode, async (value) => {
+        await setPreference("mode", value);
+        window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
+      }),
+      h("p", { class: "muted" }, beginner
+        ? `初心者モードでは、解剖学をはじめて学ぶ人が最低限覚える ${beginnerTermCount}語だけを、短い「覚えること」と一緒に学びます。問い方は位置・名前・英語の4つだけで、語根カードと骨学試験は出しません。`
+        : `詳細モードでは、全 ${terms.length.toLocaleString()}語と、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、語根カード・骨学試験を学びます。`),
+      h("p", { class: "muted" }, "学んだ記録は語ごとに残るので、どちらのモードで学んでも続きになります（初心者モードで学んだ語は、詳細モードでも学んだ語です）。"),
+    ),
     h("section", { class: "settings" },
       h("h3", {}, "学ぶ問い方"),
       h("p", { class: "muted" }, "語の問題で出す問い方です。外した問い方は、新しく始めず、期限が来ても復習に出しません（覚え具合の記録は残るので、戻せば続きから出ます）。たとえば、まず場所だけを覚えるときは日本語→英語・英語→日本語を外します。"),
       studyChips,
       studyNote,
+      beginner ? h("p", { class: "muted" }, "初心者モードでは、筋の起始・停止・神経・作用と孔・溝を通るものは出しません（詳細モードで出ます）。") : "",
       h("p", { class: "muted" }, "レッスンの確認テストでどれから覚えるかは、レッスンの始めの画面で選べます。語根カードと骨学試験の問題は、ここでは変わりません。"),
     ),
     h("section", { class: "settings" },

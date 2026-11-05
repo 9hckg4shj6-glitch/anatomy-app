@@ -260,6 +260,13 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .term-notes div { display: grid; grid-template-columns: 3em 1fr; gap: 8px; }
 .term-notes dt { color: var(--muted); font-size: 13px; padding-top: 2px; }
 .term-notes dd { margin: 0; font-size: 15px; line-height: 1.6; }
+/* 初心者モードの語のカード: 覚えることを大きく、ほかは「くわしく」の中 */
+.term-point { margin-top: 14px; padding: 12px 14px; border-radius: 12px; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
+.term-point-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
+.term-point p { margin: 4px 0 0; font-size: 17px; line-height: 1.7; }
+.term-more { margin-top: 12px; }
+.term-more > summary { cursor: pointer; font-size: 14px; color: var(--muted); }
+.term-more > .root-chips { margin-top: 10px; }
 
 .quiz-head { display: flex; justify-content: space-between; color: var(--muted); font-size: 14px; margin-bottom: 10px; }
 .facet { font-weight: 600; color: var(--accent); }
@@ -636,6 +643,13 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .home-meter-text span { margin-left: auto; }
 .home-link { display: inline-block; margin-top: 12px; font-size: 14px; font-weight: 600; text-decoration: none; }
 .home-link::after { content: " ›"; }
+
+/* 初心者モード・詳細モードの切りかえ（ホームのいちばん上） */
+.mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 14px; background: color-mix(in srgb, var(--ink) 6%, var(--surface)); }
+.mode-option { display: grid; gap: 2px; padding: 8px 12px; border: 0; border-radius: 10px; background: none; color: var(--muted); font: inherit; text-align: left; cursor: pointer; }
+.mode-option.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgb(43 42 39 / 0.14); }
+.mode-label { font-size: 14px; font-weight: 700; }
+.mode-sub { font-size: 12px; }
 
 .panel .home-more h2 { margin: 14px 4px 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); }
 .home-list { margin: 0; padding: 4px 0; list-style: none; }

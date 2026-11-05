@@ -1,4 +1,5 @@
-import { systems, termById, units, type Unit } from "../content";
+import { systems, type Unit } from "../content";
+import { courseUnitOf, courseUnits, isBeginner, lessonById } from "../course";
 import { db, nowIso, type LearnedTerm } from "../db";
 import { h } from "../dom";
 import { normalize, searchTerms, searchUnits } from "../search";
@@ -75,14 +76,14 @@ export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
       found.length ? h("h3", {}, `語 ${found.length}`, found.length > 40 ? h("span", { class: "muted" }, "（はじめの40）") : "") : "",
       found.length ? h("ul", { class: "term-list" }, ...found.slice(0, 40).map((term) => h("li", {},
         h("a", { class: "term-row", href: `#/explore/${term.id}` },
-          h("span", {}, term.ja, h("span", { class: "term-where" }, `${systems.find((s) => s.id === term.system)?.ja ?? ""}・${unitTitle(term.unit)}`)),
+          h("span", {}, term.ja, h("span", { class: "term-where" }, `${systems.find((s) => s.id === term.system)?.ja ?? ""}・${unitTitle(term.id)}`)),
           h("span", { class: "en", lang: "en" }, term.en))))) : "",
       lessons.length || found.length ? "" : h("p", { class: "muted" }, "見つかりませんでした。"),
     );
   };
 
   const folders = h("div", {}, ...systems.flatMap((system) => {
-      const list = units.filter((unit) => unit.system === system.id);
+      const list = courseUnits().filter((unit) => unit.system === system.id);
       if (!list.length) return [];
       const total = list.reduce((sum, unit) => sum + unit.terms.length, 0);
       const done = list.reduce((sum, unit) => sum + unit.terms.filter((term) => learnedIds.has(term.id)).length, 0);
@@ -114,7 +115,9 @@ export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
     ) : "",
     results,
     folders,
-    h("p", { class: "muted lessons-note" }, "語根カード・臓器の図・骨学試験は、ホームのそれぞれの項目から開きます。"),
+    isBeginner()
+      ? h("p", { class: "muted lessons-note" }, "初心者モードのレッスンです（最低限覚える語だけ）。全部の語は ", h("a", { href: "#/settings" }, "設定"), " で詳細モードにすると学べます。")
+      : h("p", { class: "muted lessons-note" }, "語根カード・臓器の図・骨学試験は、ホームのそれぞれの項目から開きます。"),
   );
   if (systemId) folders.querySelector(`[data-folder="${CSS.escape(systemId)}"]`)?.scrollIntoView({ block: "start" });
 }
@@ -126,6 +129,7 @@ const OPEN_FOLDERS = "homeOpenFolders";
  * 同じまとまり→同じ系統の、後ろにあるまだ終えていないレッスン。何も学んでいなければ最初のレッスン。
  */
 export function nextLesson(learned: LearnedTerm[]): Unit | undefined {
+  const units = courseUnits();
   const learnedIds = new Set(learned.map((item) => item.termId));
   const open = (unit: Unit) => unit.terms.some((term) => !learnedIds.has(term.id));
   const last = recentLessons(learned)[0];
@@ -140,16 +144,20 @@ export function nextLesson(learned: LearnedTerm[]): Unit | undefined {
   return units.find(open);
 }
 
-/** 最近学んだレッスン（新しい順に3つまで）。記録のレッスンIDは並べ直しで変わるので、語から今のレッスンを引く */
+/**
+ * 最近学んだレッスン（新しい順に3つまで）。記録のレッスンIDは並べ直しで変わるので、語から今のモードのレッスンを引く
+ * （初心者モードでは初心者コースのレッスン。コースの外の語は数えない）
+ */
 function recentLessons(learned: LearnedTerm[]): Unit[] {
   const latest = new Map<string, string>();
   for (const item of learned) {
-    const unit = termById.get(item.termId)?.unit;
+    const unit = courseUnitOf(item.termId)?.id;
     if (unit && (latest.get(unit) ?? "") < item.learnedAt) latest.set(unit, item.learnedAt);
   }
-  return [...latest].sort((a, b) => b[1].localeCompare(a[1])).slice(0, 3).flatMap(([id]) => units.filter((unit) => unit.id === id));
+  return [...latest].sort((a, b) => b[1].localeCompare(a[1])).slice(0, 3).flatMap(([id]) => lessonById.get(id) ?? []);
 }
 
-function unitTitle(unitId: string): string {
-  return units.find((unit) => unit.id === unitId)?.title ?? "";
+/** 検索の結果に添えるレッスンの名前（今のモードで語の入るレッスン） */
+function unitTitle(termId: string): string {
+  return courseUnitOf(termId)?.title ?? "";
 }

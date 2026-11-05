@@ -1,4 +1,5 @@
-import { organOfUnit, pins, regionSystems, termById, terms, unitById, type ModelIndex, type Term } from "../content";
+import { organOfUnit, pins, regionSystems, termById, terms, type ModelIndex, type Term } from "../content";
+import { beginnerOrgan, inCourse, lessonById } from "../course";
 import { landmarkAt, type Vec3 } from "../landmarks";
 import type { AnatomyViewer, SceneSpec } from "../viewer";
 
@@ -26,13 +27,13 @@ export const LEAVE_LESSON = "レッスンの途中です。ここでやめると
 
 /**
  * 3Dでタップした部品のその点にある語。骨・器官の部位（ピン）の上なら、骨・器官ではなく部位。
- * within があれば、その語（臓器の図の語など）を先に選ぶ
+ * within があれば、その語（臓器の図の語など）を先に選ぶ。初心者モードでは、初心者コースの外の部位は選ばない（骨・器官になる）
  */
 export function termAt(ctx: AppContext, elementId: string | null, point: Vec3 | null, within?: Set<string>): Term | null {
   const ids = elementId ? ctx.viewer.termsOf(elementId) : [];
   const termId = (within && ids.find((id) => within.has(id))) ?? ids[0];
   const parts = elementId && point
-    ? terms.filter((term) => term.of && (!within || within.has(term.id)) && pins[term.id] && ctx.index.terms[term.id]?.elements.includes(elementId))
+    ? terms.filter((term) => term.of && (within ? within.has(term.id) : inCourse(term.id)) && pins[term.id] && ctx.index.terms[term.id]?.elements.includes(elementId))
     : [];
   const part = point ? landmarkAt(point, parts, 0.002) : null;
   return part ?? (termId ? termById.get(termId) ?? null : null);
@@ -67,14 +68,15 @@ export function motionPlayer(ctx: AppContext, term: Term, before?: () => Promise
  * 基本の用語（方向・面・運動）は骨格の上に図を描く。関節・靱帯は、どの骨をつなぐかが分かるよう骨を少し濃く添える。
  * 局所解剖は、そのレッスン（無ければ系統全体）の語の境界と中を通る語の系統を読み込む（ほかの語は隠して見せる）。
  * 臓器の場面のレッスン（心臓など。content/organs.json）は、その臓器と大血管だけを見せる（体の中の血管に埋もれないように）。
+ * 初心者コースのレッスンも、語がみな1つの臓器のものなら同じ（beginnerOrgan）。
  */
 export function sceneFor(system: string, unitId?: string): SceneSpec {
-  const organ = organOfUnit(unitId);
+  const organ = organOfUnit(unitId) ?? beginnerOrgan(unitId);
   if (organ) return { systems: [system], organ: organ.id };
   if (system === "basics") return { systems: ["skeletal"], body: true };
   if (system === "joints") return { systems: ["joints"], context: ["skeletal"], body: true, contextOpacity: 0.34 };
   if (system === "regional") {
-    const unit = unitId ? unitById.get(unitId) : undefined;
+    const unit = unitId ? lessonById.get(unitId) : undefined;
     const regions = (unit?.terms ?? []).flatMap((term) => (term.region ? [term.region] : []));
     const needed = regions.length ? [...new Set(regions.flatMap(regionSystems))] : ["muscular", "nervous", "cardiovascular", "joints", "lymphatic"];
     return { systems: needed, context: ["skeletal"], body: true, contextOpacity: 0.3 };

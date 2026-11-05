@@ -1,10 +1,11 @@
-import { organs, systems, terms, units, type Unit } from "../content";
+import { organs, systems, terms, type Unit } from "../content";
+import { beginnerTermCount, courseTerms, courseUnits, isBeginner } from "../course";
 import { db, nowIso, type LearnedTerm, type StoredSchedule } from "../db";
 import { EXAM_KINDS, examProgress, SECTION_KINDS, SORT_KINDS } from "../exam";
 import { h } from "../dom";
 import { installHint } from "../install";
 import { rootKey, rootUnits } from "../roots";
-import { daysUntilExam, preferences } from "../settings";
+import { daysUntilExam, preferences, setPreference } from "../settings";
 import { nextLesson } from "./lessons";
 import { todayCounts } from "./review";
 import { sceneFor, termAt, type AppContext } from "./context";
@@ -54,7 +55,7 @@ export async function home(ctx: AppContext): Promise<void> {
       chips[i].setAttribute("aria-pressed", String(system.id === systemId));
     }
     const system = bodySystems.find((item) => item.id === systemId)!;
-    const inSystem = terms.filter((term) => term.system === systemId);
+    const inSystem = courseTerms().filter((term) => term.system === systemId);
     const done = inSystem.filter((term) => learnedIds.has(term.id)).length;
     caption.replaceChildren(
       h("span", { class: "home-caption-kicker" }, "3Dで見る"),
@@ -82,11 +83,12 @@ export async function home(ctx: AppContext): Promise<void> {
   viewer.onHover = (elementId, point) => termAt(ctx, elementId, point)?.ja ?? null;
 
   const notices = [
-    examCountdown(learnedIds, schedules),
+    isBeginner() ? "" : examCountdown(learnedIds, schedules),
     backupReminder(learned),
     hintClosed ? "" : installHint(signal, () => void db.settings.put({ key: "installHintClosed", value: true, updatedAt: nowIso() })),
   ];
   ctx.panel.replaceChildren(h("div", { class: "home" },
+    modeSwitch(),
     today(counts, nextLesson(learned), learnedIds, streakOf(days), answeredToday, !learned.length),
     systemCard,
     more(learnedIds, schedules),
@@ -106,7 +108,8 @@ function today(counts: { review: number; fresh: number }, nextUnit: Unit | undef
     return h("section", { class: "home-card home-today" },
       h("p", { class: "home-kicker" }, "はじめに"),
       h("h2", { class: "home-title" }, "3Dを見ながら、名前を覚える"),
-      h("p", { class: "home-lead" }, "レッスンで部位の名前を覚え、確認テストに答えると、その語が毎日の復習に入ります。忘れかけたころにもう一度出ます。"),
+      h("p", { class: "home-lead" }, "レッスンで部位の名前を覚え、確認テストに答えると、その語が毎日の復習に入ります。忘れかけたころにもう一度出ます。",
+        isBeginner() ? "初心者モードでは、まず絶対に覚える語だけを学びます。" : ""),
       nextUnit ? h("a", { class: "home-primary", href: `#/learn/${nextUnit.id}` }, `最初のレッスン「${nextUnit.title}」`) : "",
       h("p", { class: "home-note" }, "3Dは1本指で回し、2本指でつまんで拡大。部位をタップすると図鑑で開きます。"),
     );
@@ -137,7 +140,7 @@ function continueRow(unit: Unit, learnedIds: Set<string>): HTMLElement {
 
 /** 選んだ系統の進み具合と、その系統の次のレッスン */
 function systemDetail(systemId: string, name: string, color: string, learnedIds: Set<string>): (HTMLElement | string)[] {
-  const list = units.filter((unit) => unit.system === systemId);
+  const list = courseUnits().filter((unit) => unit.system === systemId);
   const total = list.reduce((sum, unit) => sum + unit.terms.length, 0);
   const done = list.reduce((sum, unit) => sum + unit.terms.filter((term) => learnedIds.has(term.id)).length, 0);
   const next = list.find((unit) => unit.terms.some((term) => !learnedIds.has(term.id)));
@@ -162,7 +165,7 @@ function systemDetail(systemId: string, name: string, color: string, learnedIds:
   ];
 }
 
-/** ほかの学び方（演習・骨学試験・臓器の図・図鑑・語根カード・進捗）。1行ずつの一覧 */
+/** ほかの学び方（演習・骨学試験・臓器の図・図鑑・語根カード・進捗）。1行ずつの一覧。骨学試験と語根カードは詳細モードだけ */
 function more(learnedIds: Set<string>, schedules: StoredSchedule[]): HTMLElement {
   const exam = EXAM_KINDS.map((kind) => examProgress(kind, learnedIds, schedules));
   const examDone = exam.reduce((sum, p) => sum + p.done, 0);
@@ -171,6 +174,7 @@ function more(learnedIds: Set<string>, schedules: StoredSchedule[]): HTMLElement
   const rootDone = rootUnits.reduce((sum, unit) => sum + unit.roots.filter((root) => learnedIds.has(rootKey(root))).length, 0);
   const plates = organs.reduce((sum, organ) => sum + organ.plates.length, 0);
   const admin = new URLSearchParams(location.search).has("admin");
+  const beginner = isBeginner();
   const item = (href: string, icon: keyof typeof ICONS, color: string, title: string, sub: string, meta = "") => {
     const mark = h("span", { class: "home-item-icon", style: `--item:${color}`, "aria-hidden": "true" });
     mark.innerHTML = `<svg viewBox="0 0 24 24">${ICONS[icon]}</svg>`;
@@ -183,14 +187,36 @@ function more(learnedIds: Set<string>, schedules: StoredSchedule[]): HTMLElement
   return h("section", { class: "home-more", "aria-labelledby": "home-more-title" },
     h("h2", { id: "home-more-title" }, "ほかの学び方"),
     h("ul", { class: "home-card home-list" },
-      item("#/exam", "exam", "#b07d10", "骨学試験", "A〜D の形式と、整理して覚える", examDone ? `${examDone}/${examTotal}` : `${examTotal}項目`),
+      beginner ? "" : item("#/exam", "exam", "#b07d10", "骨学試験", "A〜D の形式と、整理して覚える", examDone ? `${examDone}/${examTotal}` : `${examTotal}項目`),
       item("#/drill", "drill", "#6b5fb5", "演習", "範囲を選んで解く・苦手を解く"),
       item("#/organs", "organ", "#c2493a", "臓器の図", `${organs.length}臓器の色分け・切り口・平面図 ${plates}枚`),
-      item("#/explore", "explore", "#2f78b0", "図鑑", `${terms.length.toLocaleString()}語を3Dで引く`),
-      item("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む", rootDone ? `${rootDone}/${rootTotal}` : `${rootTotal}個`),
+      item("#/explore", "explore", "#2f78b0", "図鑑", `${courseTerms().length.toLocaleString()}語を3Dで引く`),
+      beginner ? "" : item("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む", rootDone ? `${rootDone}/${rootTotal}` : `${rootTotal}個`),
       item("#/progress", "progress", "#4f6d8f", "進捗", "覚え具合を人体の色で見る"),
       admin ? item("#/admin", "settings", "#77736a", "ピン", "部位のピンを打つ（管理用）") : "",
     ),
+  );
+}
+
+/**
+ * 初心者モードと詳細モードの切りかえ（ホームのいちばん上）。押すとそのモードでホームを作り直す。
+ * 学んだ記録は語ごとなので、どちらのモードで学んでも続く
+ */
+function modeSwitch(): HTMLElement {
+  const option = (mode: "beginner" | "detail", label: string, sub: string) => {
+    const on = preferences.mode === mode;
+    return h("button", {
+      class: on ? "mode-option on" : "mode-option", type: "button", "aria-pressed": String(on),
+      onClick: async () => {
+        if (on) return;
+        await setPreference("mode", mode);
+        window.dispatchEvent(new HashChangeEvent("hashchange"));
+      },
+    }, h("span", { class: "mode-label" }, label), h("span", { class: "mode-sub" }, sub));
+  };
+  return h("div", { class: "mode-switch", role: "group", "aria-label": "学ぶ範囲" },
+    option("beginner", "初心者モード", `最低限の ${beginnerTermCount}語・短い説明`),
+    option("detail", "詳細モード", `全 ${terms.length.toLocaleString()}語・くわしい説明`),
   );
 }
 

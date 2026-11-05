@@ -1,4 +1,5 @@
 import { systems, termById, terms } from "../content";
+import { courseTerms, inCourse, isBeginner } from "../course";
 import { db, type ReviewEvent, type StoredSchedule } from "../db";
 import { h } from "../dom";
 import { EXAM_KINDS, examProgress, isExamKey, kindLabels } from "../exam";
@@ -41,7 +42,7 @@ export async function progress(ctx: AppContext): Promise<void> {
 
 
   const weakest = [...mastery]
-    .filter((entry): entry is [string, number] => entry[1] !== null)
+    .filter((entry): entry is [string, number] => entry[1] !== null && inCourse(entry[0]))
     .sort((a, b) => a[1] - b[1])
     .slice(0, 10);
 
@@ -55,14 +56,15 @@ export async function progress(ctx: AppContext): Promise<void> {
     ),
     h("table", { class: "progress-table" },
       h("thead", {}, h("tr", {}, h("th", {}, "系統"), h("th", {}, "学んだ語"), h("th", {}, "平均"))),
-      h("tbody", {}, ...systems.filter((system) => terms.some((term) => term.system === system.id)).map((system) => {
-        const list = terms.filter((term) => term.system === system.id);
+      // 初心者モードでは初心者コースの語の数（語根カード・骨学試験の行は詳細モードで）
+      h("tbody", {}, ...systems.filter((system) => courseTerms().some((term) => term.system === system.id)).map((system) => {
+        const list = courseTerms().filter((term) => term.system === system.id);
         const values = list.map((term) => mastery.get(term.id)).filter((v): v is number => v != null);
         return h("tr", {},
           h("td", {}, system.ja),
           h("td", {}, `${list.filter((term) => learnedIds.has(term.id)).length} / ${list.length}`),
           h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
-      }), rootRow(), ...EXAM_KINDS.map(examRow)),
+      }), ...(isBeginner() ? [] : [rootRow(), ...EXAM_KINDS.map(examRow)])),
     ),
     weakest.length ? h("h3", {}, "覚え具合の低い語（押すと図鑑）") : "",
     weakest.length ? h("ul", { class: "term-list" }, ...weakest.map(([id, value]) => {

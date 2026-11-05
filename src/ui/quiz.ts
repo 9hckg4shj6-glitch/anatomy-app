@@ -2,6 +2,7 @@ import type { Grade } from "ts-fsrs";
 import { checkEnglish, type EnglishResult } from "../answer";
 import { autoSpeak, speak } from "../audio";
 import { figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
+import { inCourse, isBeginner } from "../course";
 import { db, type Facet, type ReviewEvent } from "../db";
 import { h, onKeys, until } from "../dom";
 import { dueLabel, Rating, recordReview, type RecordedReview } from "../fsrs";
@@ -83,6 +84,16 @@ function candidates(ctx: AppContext, term: Term, needs?: (other: Term) => boolea
   ];
 }
 
+/**
+ * 初心者モードでは、選択肢を初心者コースの語から選ぶ（まだ習わない細かい名前を並べない）。
+ * コースの語だけでは3つそろわなければ、今までどおりすべての語から
+ */
+function preferCourse(answerId: string, [near, pool]: [string[], string[]]): [string[], string[]] {
+  if (!isBeginner()) return [near, pool];
+  const own = pool.filter((id) => id !== answerId && inCourse(id));
+  return own.length >= 3 ? [near.filter(inCourse), own] : [near, pool];
+}
+
 /** 語の位置（骨の部位はピンの中心、ほかは部品の中心）。右側（x < 0）にそろえる */
 function placeOf(ctx: AppContext, id: string): Vec3 {
   const pin = pins[id];
@@ -100,7 +111,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   viewer.highlight([]);
 
   const choicesOf = (display: (id: string) => string, needs?: (other: Term) => boolean, byFigure = false) =>
-    pickChoices(term.id, ...candidates(ctx, term, needs, byFigure), display);
+    pickChoices(term.id, ...preferCourse(term.id, candidates(ctx, term, needs, byFigure)), display);
   // 隠れた部位は周りを半透明にして見せる。タップでは答えられないので「名前→位置」は位置当てに替える（基本の用語の図も同じ）。
   // 骨・器官の部位も、骨・器官をはっきり見せるため周りを半透明にする。
   const landmark = !!term.of;

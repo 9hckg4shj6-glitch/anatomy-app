@@ -1,5 +1,6 @@
 import { speak } from "../audio";
 import { systemById, termById, terms, type Term } from "../content";
+import { beginnerPoints, isBeginner } from "../course";
 import { h } from "../dom";
 import { examCountOf } from "../exam";
 import { rootsOf, splitAtRoot, type Root } from "../roots";
@@ -99,8 +100,10 @@ function motionButton(play: (on: boolean) => string | Promise<string>): HTMLElem
  * 説明・作用の中の基本の用語はタップで意味を出す。open を渡すと（図鑑）、その用語を3Dで見るボタンも出す。
  * 英語名に含まれる語根（brachi-「腕」など）もタップで意味を出す。
  * motion を渡すと、作用の動きのある筋に「動きを見る」を出す（骨を動かし、起始と停止を結ぶ帯が縮むのを示す）。
+ * 初心者モードでは、日本語・読み・英語と「覚えること」（初心者コースの point）だけを出し、ほかは「くわしく」の中にたたむ。
  */
 export function termCard(term: Term, options: { compact?: boolean; open?: (word: Term) => void; motion?: (on: boolean) => string | Promise<string> } = {}): HTMLElement {
+  const beginner = isBeginner();
   const where = term.of ? `${termById.get(term.of)?.ja ?? ""}の部位` : systemById.get(term.system)?.ja ?? "";
   const gloss = h("div", { class: "gloss-box", hidden: true });
   const show = (word: Term) => {
@@ -110,41 +113,56 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
         h("b", {}, word.ja), h("span", { lang: "en" }, word.en),
         h("button", { class: "gloss-close", type: "button", "aria-label": "閉じる", onClick: () => (gloss.hidden = true) }, "×"),
       ),
-      h("p", {}, word.note),
+      h("p", {}, (beginner && beginnerPoints.get(word.id)) || word.note),
       options.open ? h("button", { class: "ghost-button", type: "button", onClick: () => options.open!(word) }, word.figure?.motion ? "動きを3Dで見る" : "3Dで見る") : "",
     );
   };
   const linked = (text: string) => linkGlossary(text, term.id, show);
-  const examCount = examCountOf(term.id);
-  return h("article", { class: "term-card" },
-    h("div", { class: "term-head" },
-      h("ruby", { class: "term-ja" }, term.ja, h("rt", {}, term.yomi)),
-      h("span", { class: "term-system" },
-        examCount ? h("a", { class: "exam-mark", href: `#/exam/about/${term.id}`, title: "骨学試験に出た回数（A・B・C の合計）。押すとこの語の出る項目" }, `試験 ${examCount}回`) : null,
-        where),
-    ),
-    h("div", { class: "term-en" },
-      h("button", { class: "speak", type: "button", "aria-label": "英語の発音を聞く", onClick: () => void speak(term) }, "🔊"),
-      h("span", { lang: "en" }, term.en),
-      term.la && term.la.toLowerCase() !== term.en.toLowerCase() ? h("span", { class: "term-la", lang: "la" }, `（ラ）${term.la}`) : null,
-    ),
-    options.compact ? null : rootChips(term),
-    options.compact ? null : h("dl", { class: "term-notes" },
+  const examCount = beginner ? 0 : examCountOf(term.id);
+  const head = h("div", { class: "term-head" },
+    h("ruby", { class: "term-ja" }, term.ja, h("rt", {}, term.yomi)),
+    h("span", { class: "term-system" },
+      examCount ? h("a", { class: "exam-mark", href: `#/exam/about/${term.id}`, title: "骨学試験に出た回数（A・B・C の合計）。押すとこの語の出る項目" }, `試験 ${examCount}回`) : null,
+      where),
+  );
+  const english = h("div", { class: "term-en" },
+    h("button", { class: "speak", type: "button", "aria-label": "英語の発音を聞く", onClick: () => void speak(term) }, "🔊"),
+    h("span", { lang: "en" }, term.en),
+    !beginner && term.la && term.la.toLowerCase() !== term.en.toLowerCase() ? h("span", { class: "term-la", lang: "la" }, `（ラ）${term.la}`) : null,
+  );
+  if (options.compact) return h("article", { class: "term-card" }, head, english, gloss);
+
+  /** 詳しい中身（語根・漢字・語源・説明、筋の起始・停止・神経・作用、通るもの） */
+  const details = () => [
+    rootChips(term),
+    h("dl", { class: "term-notes" },
       term.kanji ? h("div", {}, h("dt", {}, "漢字"), h("dd", {}, term.kanji)) : null,
       term.etym ? h("div", {}, h("dt", {}, "語源"), h("dd", {}, term.etym)) : null,
+      term.la && term.la.toLowerCase() !== term.en.toLowerCase() && beginner ? h("div", {}, h("dt", {}, "ラテン"), h("dd", { lang: "la" }, term.la)) : null,
       h("div", {}, h("dt", {}, "説明"), h("dd", {}, ...linked(term.note))),
     ),
-    options.compact || !term.nerve ? null : h("dl", { class: "term-notes muscle-notes" },
+    !term.nerve ? null : h("dl", { class: "term-notes muscle-notes" },
       h("div", {}, h("dt", {}, h("span", { class: "swatch", style: `background:${ORIGIN_COLOR}` }), "起始"), h("dd", {}, term.origin)),
       h("div", {}, h("dt", {}, h("span", { class: "swatch", style: `background:${INSERTION_COLOR}` }), "停止"), h("dd", {}, term.insertion)),
       h("div", {}, h("dt", {}, "神経"), h("dd", {}, term.nerve)),
       h("div", {}, h("dt", {}, "作用"), h("dd", {}, ...linked(term.action ?? ""))),
     ),
-    options.compact || !term.passes ? null : h("dl", { class: "term-notes" },
+    !term.passes ? null : h("dl", { class: "term-notes" },
       h("div", {}, h("dt", {}, "通るもの"), h("dd", {}, ...linked(term.passes))),
     ),
-    !options.compact && term.motion && options.motion ? motionButton(options.motion) : null,
-    options.compact ? null : regionNotes(term, options.open),
-    gloss,
-  );
+  ];
+  const motion = term.motion && options.motion ? motionButton(options.motion) : null;
+  if (!beginner) return h("article", { class: "term-card" }, head, english, ...details(), motion, regionNotes(term, options.open), gloss);
+
+  // 初心者モード: 覚えることだけを見せ、詳しい中身は開いたときに作る
+  const point = beginnerPoints.get(term.id);
+  const more = h("details", { class: "term-more" }, h("summary", {}, "くわしく（漢字・語源・説明）"));
+  more.addEventListener("toggle", () => {
+    if (more.open && more.children.length < 2) more.append(...details().filter((node) => node !== null), regionNotes(term, options.open) ?? "");
+  });
+  return h("article", { class: "term-card is-beginner" }, head, english,
+    h("div", { class: "term-point" },
+      h("span", { class: "term-point-label" }, "覚えること"),
+      point ? h("p", {}, ...linked(point)) : h("p", { class: "muted" }, "初心者コースには入っていない語です。くわしい説明は下から。")),
+    motion, more, gloss);
 }

@@ -1,4 +1,5 @@
 import { systems, termById } from "../content";
+import { inCourse, isBeginner, studyFacets } from "../course";
 import { db, type ReviewEvent } from "../db";
 import { dueLabel, State } from "../fsrs";
 import { h, onKeys, until } from "../dom";
@@ -18,6 +19,7 @@ const AHEAD_MS = 20 * 60_000;
 /**
  * 今日の出題（期限の来た復習と、1日の上限までの新しい問題）。keep で範囲・問い方を絞る（新しい問題の上限は絞る前に数える）。
  * 設定の「学ぶ問い方」で外した語の問い方は、新しく始めず、期限が来ていても出さない。
+ * 初心者モードでは初心者コースの語だけを出す（ほかの語・語根カード・骨学試験の記録は残り、詳細モードで出る）。
  */
 async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean = () => true, aheadUntil?: Date): Promise<QueueItem[]> {
   const startOfDay = new Date(now);
@@ -29,8 +31,8 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
   ]);
   const newToday = today.filter((event) => event.isNew && event.source === "review").length;
   // 内容の更新で消えた語の記録は出さない。語根カード（"root:…"）と骨学試験（"exam:…"）も一緒に出す
-  const known = learned.filter((item) => termById.has(item.termId) || rootByKey.has(item.termId) || examByKey.has(item.termId));
-  const study = preferences.studyFacets;
+  const known = learned.filter((item) => inReview(item.termId));
+  const study = studyFacets();
   const unlocked = unlockedTerms(schedules, study);
   // 骨学試験 D の「図に書き込む」は番号→名前が、数と並びの「3Dで押す」は並べる・選ぶが、復習の段階に入ってから
   const firstLearned = new Set(schedules.filter((s) => FIRST_FACETS.includes(s.facet) && s.state === State.Review).map((s) => s.termId));
@@ -41,6 +43,12 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
   };
   return buildQueue(known, schedules, now, preferences.newPerDay - newToday, facetsOf, aheadUntil)
     .filter((item) => (isRootKey(item.termId) || isExamKey(item.termId) || study.includes(item.facet)) && keep(item));
+}
+
+/** 今のモードの復習に出す語・語根カード・骨学試験の項目か（内容の更新で消えた語は出さない） */
+function inReview(id: string): boolean {
+  if (termById.has(id)) return inCourse(id);
+  return !isBeginner() && (rootByKey.has(id) || examByKey.has(id));
 }
 
 /** 語の問題か語根の問題か骨学試験の問題かで出し分ける */
@@ -309,8 +317,8 @@ async function nothingToday(ctx: AppContext): Promise<void> {
     db.schedules.toArray(),
     db.reviewEvents.where("reviewedAt").aboveOrEqual(startOfDay.toISOString()).filter((event) => event.isNew && event.source === "review").count(),
   ]);
-  const learnedIds = new Set(learned.map((item) => item.termId));
-  const study = preferences.studyFacets;
+  const learnedIds = new Set(learned.filter((item) => inReview(item.termId)).map((item) => item.termId));
+  const study = studyFacets();
   const upcoming = schedules
     .filter((s) => learnedIds.has(s.termId) && s.state !== State.New && (isRootKey(s.termId) || isExamKey(s.termId) || study.includes(s.facet)))
     .sort((a, b) => a.due.localeCompare(b.due));

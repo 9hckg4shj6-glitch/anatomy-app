@@ -1,5 +1,6 @@
 import { autoSpeak } from "../audio";
-import { unitById, type Term, type Unit } from "../content";
+import type { Term, Unit } from "../content";
+import { isBeginner, lessonById, studyFacets } from "../course";
 import { db, nowIso, type Facet } from "../db";
 import { h, onKeys, until } from "../dom";
 import { preferences, setPreference } from "../settings";
@@ -14,7 +15,7 @@ import { termCard } from "./term-card";
  * 確認テストで答えた語から1つずつ「学んだ」に入れるので、途中でやめても答えた語は復習に入り、次に開くと残りの語から続ける。
  */
 export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
-  const unit = unitById.get(unitId);
+  const unit = lessonById.get(unitId);
   if (!unit) {
     ctx.panel.replaceChildren(h("p", {}, "レッスンが見つかりません。"), h("a", { href: "#/lessons" }, "レッスンの一覧へ"));
     return;
@@ -59,7 +60,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   viewer.setLabel(null);
   // 確認テストは、選んだ問い方を語ごとに順に回す（初めは位置→名前と名前→位置を交互に）
   const chosen = testFacets();
-  const items: QueueItem[] = shuffle(list).map((term, i) => ({ termId: term.id, facet: lessonFacet(facetsFor(term, false, preferences.studyFacets), chosen, i), isNew: true }));
+  const items: QueueItem[] = shuffle(list).map((term, i) => ({ termId: term.id, facet: lessonFacet(facetsFor(term, false, studyFacets()), chosen, i), isNew: true }));
   let correct = 0;
   for (const [i, item] of items.entries()) {
     const outcome = await ask(ctx, item, "lesson", `確認 ${i + 1} / ${items.length}`);
@@ -91,16 +92,16 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
 
 /** 確認テストで出す問い方（レッスンの始めに選んだもの）。設定の「学ぶ問い方」で外したものは除く */
 function testFacets(): Facet[] {
-  const study = preferences.studyFacets.filter((facet) => BASIC_FACETS.includes(facet));
+  const study = studyFacets().filter((facet) => BASIC_FACETS.includes(facet));
   const chosen = preferences.lessonFacets.filter((facet) => study.includes(facet));
   return chosen.length ? chosen : study.slice(0, 1);
 }
 
-const studies = (facet: Facet) => preferences.studyFacets.includes(facet);
+const studies = (facet: Facet) => studyFacets().includes(facet);
 
 /** 復習で出る問い方の名前（このレッスンの語に出せて、学ぶ問い方に選んだ基本の問い方） */
 function reviewKinds(unit: Unit): string {
-  const facets = BASIC_FACETS.filter((facet) => unit.terms.some((term) => facetsFor(term, false, preferences.studyFacets).includes(facet)));
+  const facets = BASIC_FACETS.filter((facet) => unit.terms.some((term) => facetsFor(term, false, studyFacets()).includes(facet)));
   return facets.map((facet) => `「${facetLabels[facet]}」`).join("");
 }
 
@@ -111,7 +112,8 @@ function reviewKinds(unit: Unit): string {
 async function startScreen(ctx: AppContext, unit: Unit, rest: Term[] | null): Promise<Term[]> {
   const study = BASIC_FACETS.filter((facet) => studies(facet));
   // このレッスンの語のどれにも出せない問い方（基本の用語の図の「名前→位置」など）は並べない
-  const usable = study.filter((facet) => unit.terms.some((term) => facetsFor(term, false, preferences.studyFacets).includes(facet)));
+  const usable = study.filter((facet) => unit.terms.some((term) => facetsFor(term, false, studyFacets()).includes(facet)));
+  const beginner = isBeginner();
   let note = "";
   return until<Term[]>(ctx.signal, (resolve) => {
     const render = (focusKey?: string) => {
@@ -155,12 +157,15 @@ async function startScreen(ctx: AppContext, unit: Unit, rest: Term[] | null): Pr
         h("h3", {}, "確認テストで覚えること"),
         usable.length > 1 ? h("div", { class: "chip-list lesson-presets" },
           preset("場所から", ["locate", "point"]), preset("日本語→英語", ["ja2en"]), preset("英語→日本語", ["en2ja"]), preset("ぜんぶ", usable)) : "",
-        usable.length > 1 ? h("p", { class: "setting-label" }, "問い方を1つずつ選ぶ") : "",
-        h("div", { class: "chip-list" }, ...usable.map(chip)),
-        h("p", { class: "muted" },
-          "語を3Dで1つずつ見たあと、選んだ問い方を順に回して1語に1問ずつ出します。",
-          skipped.length ? `選ばなかった${skipped.map((facet) => `「${facetLabels[facet]}」`).join("")}は、あとで復習に新しい問題として出ます。` : "",
-          h("br"), "問い方そのものを外すときは ", h("a", { href: "#/settings" }, "設定の「学ぶ問い方」"), "で。"),
+        // 初心者モードでは、問い方を1つずつ選ぶ欄と設定への案内は出さない（まとめた選び方だけ）
+        usable.length > 1 && !beginner ? h("p", { class: "setting-label" }, "問い方を1つずつ選ぶ") : "",
+        beginner && usable.length > 1 ? "" : h("div", { class: "chip-list" }, ...usable.map(chip)),
+        beginner
+          ? h("p", { class: "muted" }, "語を3Dで1つずつ見たあと、1語に1問ずつ確認します。")
+          : h("p", { class: "muted" },
+            "語を3Dで1つずつ見たあと、選んだ問い方を順に回して1語に1問ずつ出します。",
+            skipped.length ? `選ばなかった${skipped.map((facet) => `「${facetLabels[facet]}」`).join("")}は、あとで復習に新しい問題として出ます。` : "",
+            h("br"), "問い方そのものを外すときは ", h("a", { href: "#/settings" }, "設定の「学ぶ問い方」"), "で。"),
         note ? h("p", { class: "drill-note" }, note) : "",
         h("div", { class: "nav-row" }, restart ?? "", start),
       );

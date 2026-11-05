@@ -1,5 +1,6 @@
 import { autoSpeak } from "../audio";
-import { isDrawn, landmarksOf, loadAttachments, organOf, regionSystems, systems, termById, units, type Term, type Unit } from "../content";
+import { isDrawn, landmarksOf, loadAttachments, organOf, regionSystems, systems, termById, type Term, type Unit } from "../content";
+import { courseUnitOf, courseUnits, inCourse } from "../course";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
 import { relatedTerms } from "../related";
@@ -331,7 +332,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
       return;
     }
     list.replaceChildren(folder(VIEWS, "system folder", ["保存した表示"], `${views.length}件`, viewRows), ...systems.flatMap((system) => {
-      const inSystem = units.filter((unit) => unit.system === system.id);
+      const inSystem = courseUnits().filter((unit) => unit.system === system.id);
       if (!inSystem.length) return [];
       const total = inSystem.reduce((sum, unit) => sum + unit.terms.length, 0);
       return [folder(system.id, "system folder",
@@ -362,10 +363,13 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
       return;
     }
     const term = selected;
-    const parts = landmarksOf(term.id);
+    // 初心者モードでは、部位と関係する語も初心者コースの語だけ
+    const parts = landmarksOf(term.id).filter((part) => inCourse(part.id));
     const parent = term.of ? termById.get(term.of) : null;
     const attachable = !!(term.originAt?.length || term.insertionAt?.length || viewer.hasAttachments(term.id));
-    const related = relatedTerms(term, attachments, index.attachedBones).filter((relation) => relation.list.length);
+    const related = relatedTerms(term, attachments, index.attachedBones)
+      .map((relation) => ({ ...relation, list: relation.list.filter((word) => inCourse(word.id)) }))
+      .filter((relation) => relation.list.length);
     // 骨の部位は骨ごとはがす。基本の用語・局所解剖は3Dの部品を持たないのではがせない
     const peelTarget = parent ?? term;
     const peelable = !isDrawn(peelTarget) && !!index.terms[peelTarget.id]?.elements.length;
@@ -456,6 +460,6 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
 function placeOf(term: Term): string {
   const system = systems.find((item) => item.id === term.system)?.ja ?? "";
   const parent = term.of ? termById.get(term.of)?.ja : undefined;
-  const unit = units.find((item) => item.id === term.unit)?.title ?? "";
+  const unit = courseUnitOf(term.id)?.title ?? "";
   return [system, parent ? `${parent}の部位` : unit].filter(Boolean).join("・");
 }

@@ -3,6 +3,11 @@ import { BASIC_FACETS, TERM_FACETS } from "./study";
 
 /** 設定の画面（#/settings）で変えられる設定。db.settings に1つずつ保存し、起動したときに読む */
 export interface Preferences {
+  /**
+   * 初心者モード（beginner）は初心者コース（content/beginner.json の約370語）と短い「覚えること」だけ、
+   * 詳細モード（detail）は全部の語と詳しい説明（src/course.ts）。保存が無ければ、まだ何も学んでいない人は初心者モード
+   */
+  mode: "beginner" | "detail";
   /** レッスン・図鑑・答え合わせで英語の発音を自動で鳴らす（🔊を押せばいつでも鳴る） */
   autoSpeak: boolean;
   /** 1日に新しく始める問い方の数（4つの問い方を別々に数える） */
@@ -32,7 +37,7 @@ export const TEXT_SIZES: Record<Preferences["textSize"], { label: string; zoom: 
 };
 
 export const preferences: Preferences = {
-  autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
+  mode: "detail", autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
   studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"],
 };
 
@@ -41,6 +46,7 @@ const facetList = (allowed: Facet[]) => (value: unknown): value is Facet[] =>
   Array.isArray(value) && value.every((facet) => allowed.includes(facet)) && value.some((facet) => BASIC_FACETS.includes(facet));
 
 const valid: { [K in keyof Preferences]: (value: unknown) => value is Preferences[K] } = {
+  mode: (value): value is Preferences["mode"] => value === "beginner" || value === "detail",
   autoSpeak: (value): value is boolean => typeof value === "boolean",
   newPerDay: (value): value is number => typeof value === "number" && NEW_PER_DAY_OPTIONS.includes(value),
   autoNext: (value): value is boolean => typeof value === "boolean",
@@ -60,6 +66,8 @@ export async function loadPreferences(): Promise<void> {
     const value = records[i]?.value;
     if (valid[key](value)) (preferences as unknown as Record<string, unknown>)[key] = value;
   });
+  // モードを一度も選んでいなければ、今までに学んだ人は詳細モード（これまでどおり）、はじめての人は初心者モードにして覚える
+  if (!valid.mode(records[keys.indexOf("mode")]?.value)) await setPreference("mode", (await db.learned.count()) ? "detail" : "beginner");
   applyTextSize();
 }
 
