@@ -153,6 +153,9 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
     !term.passes ? null : h("dl", { class: "term-notes" },
       h("div", {}, h("dt", {}, "通るもの"), h("dd", {}, ...linked(term.passes))),
     ),
+    !term.hormones ? null : h("dl", { class: "term-notes" },
+      h("div", {}, h("dt", {}, "ホルモン"), h("dd", {}, ...linked(term.hormones))),
+    ),
   ];
   const motion = term.motion && options.motion ? motionButton(options.motion) : null;
   if (!beginner) return h("article", { class: "term-card" }, head, english, ...details(), motion, regionNotes(term, options.open), gloss);

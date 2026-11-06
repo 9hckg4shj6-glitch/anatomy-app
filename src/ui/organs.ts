@@ -5,10 +5,9 @@ import { h } from "../dom";
 import type { Section } from "../viewer";
 import { termAt, type AppContext } from "./context";
 import { flowDiagram } from "./diagrams";
+import { drawPlate, labelName, type LabelMode } from "./plate-view";
 import { termCard } from "./term-card";
 
-/** 平面図の名前の出し方: 日本語と英語・日本語だけ・英語だけ・隠す（押すと出る。覚えたかを確かめる） */
-type LabelMode = "both" | "ja" | "en" | "hide";
 const LABEL_MODES: [LabelMode, string][] = [["both", "日本語と英語"], ["ja", "日本語"], ["en", "英語"], ["hide", "隠して確かめる"]];
 const LABEL_MODE = "plateLabelMode";
 
@@ -45,7 +44,8 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
   const [plateIndex, modeSetting] = await Promise.all([loadPlateIndex().catch((): PlateIndex => ({ plates: {} })), db.settings.get(LABEL_MODE)]);
   let labelMode: LabelMode = LABEL_MODES.some(([key]) => key === modeSetting?.value) ? (modeSetting!.value as LabelMode) : "both";
   const ids = new Set(organTerms(organ));
-  const plate = organ.plates.find((item) => item.id === mode) ?? null;
+  // 3Dの無い臓器（皮膚）は平面図だけ（初めは最初の図）
+  const plate = organ.plates.find((item) => item.id === mode) ?? (organ.box ? null : organ.plates[0]);
 
   // 平面図は3Dの上に重ねる紙（画面を離れたら外す）
   const layer = h("div", { class: "plate-layer", hidden: true });
@@ -58,7 +58,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
     h("p", { class: "muted" }, organ.about),
   );
   const tabs = h("div", { class: "organ-tabs", role: "tablist" },
-    h("a", { class: plate ? "chip" : "chip on", href: `#/organs/${organ.id}/3d`, role: "tab", "aria-selected": String(!plate) }, "立体（3D）"),
+    organ.box ? h("a", { class: plate ? "chip" : "chip on", href: `#/organs/${organ.id}/3d`, role: "tab", "aria-selected": String(!plate) }, "立体（3D）") : "",
     ...organ.plates.map((item) => h("a", {
       class: item === plate ? "chip on" : "chip", href: `#/organs/${organ.id}/${item.id}`, role: "tab", "aria-selected": String(item === plate),
     }, item.title)),
@@ -68,6 +68,8 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
 
   if (plate) {
     viewer.highlight([]);
+    // 3Dの向きの目印は図のラベルに重なるので隠す（画面を移ると main.ts が戻す）
+    viewer.hideCompass(true);
     layer.hidden = false;
     showPlate(ctx, organ, plate, plateIndex, layer, body, labelMode, (next) => {
       labelMode = next;
@@ -169,8 +171,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
 }
 
 /**
- * 平面図を紙（layer）に描き、名前のラベルを左右に並べて引き出し線で指す。欄（body）には図の題・名前の出し方・名前の一覧と、
- * 選んだ語の説明。狭い画面（ラベルを並べる幅が無い）では図に番号だけを置き、名前は欄の一覧で見る
+ * 平面図を紙（layer）に描く（plate-view.ts の drawPlate）。欄（body）には図の題・名前の出し方・名前の一覧と、選んだ語の説明
  */
 function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateIndex, layer: HTMLElement, body: HTMLElement, startMode: LabelMode, saveMode: (mode: LabelMode) => void): void {
   let labelMode = startMode;
@@ -179,10 +180,7 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
   const entry = index.plates[spec.id];
   const diagram = spec.diagram === "flow" ? flowDiagram() : null;
   const labels: PlateLabel[] = diagram ? diagram.labels : entry?.labels ?? [];
-  const nameOf = (label: PlateLabel) => {
-    const term = label.term ? termById.get(label.term) : undefined;
-    return { ja: label.ja ?? term?.ja ?? "", en: label.en ?? term?.en ?? "", term };
-  };
+  const nameOf = labelName;
   ctx.hint("");
 
   const paper = h("div", { class: "plate-paper" });
@@ -208,19 +206,7 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
     if (term) autoSpeak(term);
   };
 
-  /** 名前の札の中身（隠すときは番号と「？」） */
-  const labelText = (i: number) => {
-    const { ja, en } = nameOf(labels[i]);
-    if (labelMode === "hide" && !revealed.has(i)) return [h("span", { class: "plate-ja" }, `${i + 1}　？`)];
-    return [
-      labelMode !== "en" ? h("span", { class: "plate-ja" }, ja) : "",
-      labelMode !== "ja" ? h("span", { class: "plate-en", lang: "en" }, en) : "",
-    ];
-  };
-
   const draw = () => {
-    const width = layer.clientWidth, height = layer.clientHeight;
-    if (!width || !height) return;
     if (diagram) {
       paper.replaceChildren(diagram.svg((i) => choose(i), labelMode, revealed, chosen));
       return;
@@ -230,77 +216,7 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
       return;
     }
     // 図は名前の出し方のボタンの下から（狭い画面ではボタンが2行になる）
-    const top = Math.max(52, toolbar.offsetTop + toolbar.offsetHeight + 8), pad = 10;
-    // ラベルを並べる列の幅。狭い画面では列を作らず番号だけにする
-    const wide = width >= 560;
-    const column = wide ? Math.min(230, Math.max(130, width * 0.24)) : 0;
-    const areaW = width - 2 * column - 2 * pad, areaH = height - top - pad;
-    const scale = Math.min(areaW / entry.w, areaH / entry.h);
-    const imgW = entry.w * scale, imgH = entry.h * scale;
-    const left = (width - imgW) / 2, imgTop = top + (areaH - imgH) / 2;
-    const img = h("img", { class: "plate-image", src: `${import.meta.env.BASE_URL}${entry.url}`, alt: spec.title, style: `left:${left}px;top:${imgTop}px;width:${imgW}px;height:${imgH}px` });
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("class", "plate-lines");
-    svg.setAttribute("width", String(width));
-    svg.setAttribute("height", String(height));
-    const nodes: Node[] = [img, svg];
-    const points = labels.map((label) => [left + label.at[0] * imgW, imgTop + label.at[1] * imgH] as const);
-    const line = (x1: number, y1: number, x2: number, y2: number, on: boolean) => {
-      const element = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      for (const [key, value] of Object.entries({ x1, y1, x2, y2 })) element.setAttribute(key, String(value));
-      element.setAttribute("class", on ? "on" : "");
-      svg.append(element);
-      const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      for (const [key, value] of Object.entries({ cx: x2, cy: y2, r: on ? 4 : 2.6 })) dot.setAttribute(key, String(value));
-      dot.setAttribute("class", on ? "on" : "");
-      svg.append(dot);
-    };
-    if (!wide) {
-      // 番号だけ（名前は欄の一覧で）
-      for (const [i, [x, y]] of points.entries()) {
-        nodes.push(h("button", { class: i === chosen ? "plate-num on" : "plate-num", type: "button", style: `left:${x}px;top:${y}px`, onClick: () => choose(i) }, String(i + 1)));
-      }
-      paper.replaceChildren(...nodes);
-      return;
-    }
-    // 左右の列: 指す点が図の真ん中より左なら左の列。片方に寄りすぎたら、真ん中に近いものから反対の列へ移す。
-    // 列の中は指す点の高さの順に並べ、重ならないように押し下げ（はみ出したら押し上げ）る。英語は2行まで折り返す
-    const center = left + imgW / 2;
-    const lines = (i: number) => {
-      if (labelMode === "hide" && !revealed.has(i)) return 0;
-      return labelMode === "ja" ? 0 : Math.min(2, Math.ceil((nameOf(labels[i]).en.length * 6.1) / (column - 14)));
-    };
-    const rowOf = (i: number) => (labelMode === "en" ? 8 + 14 * Math.max(1, lines(i)) : 21 + 14 * lines(i));
-    const sides = points.map((p) => (p[0] < center ? "left" : "right"));
-    for (let guard = 0; guard < labels.length; guard++) {
-      const count = (side: string) => sides.filter((item) => item === side).length;
-      const heavy = count("left") - count("right") > 2 ? "left" : count("right") - count("left") > 2 ? "right" : null;
-      if (!heavy) break;
-      const move = sides.map((side, i) => ({ side, i })).filter(({ side }) => side === heavy)
-        .sort((a, b) => Math.abs(points[a.i][0] - center) - Math.abs(points[b.i][0] - center))[0];
-      sides[move.i] = heavy === "left" ? "right" : "left";
-    }
-    for (const side of ["left", "right"] as const) {
-      const list = points.map((p, i) => ({ i, y: p[1] })).filter(({ i }) => sides[i] === side).sort((a, b) => a.y - b.y);
-      const hs = list.map(({ i }) => rowOf(i));
-      const ys = list.map((item, k) => item.y - hs[k] / 2);
-      // 右の列は、右上の ⤢・? のボタンの下から
-      const first = side === "right" ? 92 : top;
-      for (let k = 0; k < ys.length; k++) ys[k] = Math.max(ys[k], k ? ys[k - 1] + hs[k - 1] + 2 : first);
-      for (let k = ys.length - 1; k >= 0; k--) ys[k] = Math.min(ys[k], k === ys.length - 1 ? height - pad - hs[k] : ys[k + 1] - hs[k] - 2);
-      for (let k = 0; k < ys.length; k++) ys[k] = Math.max(ys[k], k ? ys[k - 1] + hs[k - 1] + 2 : first);
-      for (const [k, { i }] of list.entries()) {
-        const y = ys[k];
-        const x = side === "left" ? pad : width - pad - column;
-        const on = i === chosen;
-        nodes.push(h("button", {
-          class: `plate-label ${side}${on ? " on" : ""}${labelMode === "hide" && !revealed.has(i) ? " hidden-name" : ""}`, type: "button",
-          style: `left:${x}px;top:${y}px;width:${column}px;height:${hs[k]}px`, onClick: () => choose(i),
-        }, ...labelText(i)));
-        line(side === "left" ? x + column : x, y + hs[k] / 2, points[i][0], points[i][1], on);
-      }
-    }
-    paper.replaceChildren(...nodes);
+    drawPlate(layer, paper, { entry, spec, labels, labelMode, revealed, chosen, choose, top: Math.max(52, toolbar.offsetTop + toolbar.offsetHeight + 8) });
   };
 
   const listBox = h("div", {});
@@ -314,7 +230,7 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
           h("div", { class: "term-en" }, h("span", { lang: "en" }, nameOf(chosenLabel).en)),
           chosenLabel.note ? h("p", {}, chosenLabel.note) : ""),
         chosenTerm ? h("div", { class: "nav-row" },
-          organTerms(organ).includes(chosenTerm.id) || chosenTerm.of ? h("a", { class: "ghost-button", href: `#/organs/${organ.id}/3d/${chosenTerm.id}` }, "立体で見る") : null,
+          organ.box && (organTerms(organ).includes(chosenTerm.id) || chosenTerm.of) ? h("a", { class: "ghost-button", href: `#/organs/${organ.id}/3d/${chosenTerm.id}` }, "立体で見る") : null,
           h("a", { class: "ghost-button", href: `#/explore/${chosenTerm.id}` }, "図鑑で開く"),
         ) : "",
       ) : h("p", { class: "muted" }, labelMode === "hide" ? "名前を隠しています。番号を押すと名前が出ます。" : "名前を押すと説明が出ます。"),

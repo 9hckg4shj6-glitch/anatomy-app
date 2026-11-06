@@ -3,7 +3,7 @@ import type { Facet, LearnedTerm, StoredSchedule } from "./db";
 import { retrievability, State } from "./fsrs";
 
 export const FACETS: Facet[] = [
-  "locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "relation", "rootMeaning", "rootForm",
+  "locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "relation", "hormone", "rootMeaning", "rootForm",
   "cloze", "read", "spell", "explain", "label", "annotate", "orient", "contrast", "order", "trace", "level", "landmark",
 ];
 
@@ -28,6 +28,7 @@ export const TERM_KINDS: { key: string; label: string; facets: Facet[] }[] = [
   { key: "muscle", label: "筋の起始・停止・神経・作用", facets: MUSCLE_FACETS },
   { key: "passage", label: "孔・溝を通るもの", facets: ["passage"] },
   { key: "relation", label: "向き（前後・左右・上下）", facets: ["relation"] },
+  { key: "hormone", label: "ホルモン（どこから出る？）", facets: ["hormone"] },
 ];
 
 /** 語に付く問い方すべて（設定の「学ぶ問い方」の初め） */
@@ -43,6 +44,7 @@ export const facetLabels: Record<Facet, string> = {
   action: "作用",
   passage: "通るもの",
   relation: "向き",
+  hormone: "ホルモン",
   rootMeaning: "語根→意味",
   rootForm: "意味→語根",
   cloze: "穴埋め",
@@ -60,13 +62,13 @@ export const facetLabels: Record<Facet, string> = {
 };
 
 /**
- * その語に出す問い方。隠れた部位（xray）と、部品を持たない基本の用語（figure。矢印・面・動きの図）・局所解剖（region）は
+ * その語に出す問い方。隠れた部位（xray）と、部品を持たない基本の用語（figure。矢印・面・動きの図）・局所解剖（region）・平面図の語（plate）は
  * タップできないので「名前→位置」を出さない。
- * 筋の起始・停止・支配神経・作用と、孔・溝を通るもの（passes）、向き（toward）は、場所を覚えてから（unlocked。unlockedTerms を見る）出す。
+ * 筋の起始・停止・支配神経・作用と、孔・溝を通るもの（passes）、向き（toward）、ホルモン（hormones）は、場所を覚えてから（unlocked。unlockedTerms を見る）出す。
  * chosen は学ぶ問い方（設定の「学ぶ問い方」）。外した問い方は出さない。
  */
 export function facetsFor(
-  term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "passes" | "toward"> | undefined,
+  term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "plate" | "passes" | "toward" | "hormones"> | undefined,
   unlocked = false,
   chosen: readonly Facet[] = FACETS,
 ): Facet[] {
@@ -75,7 +77,8 @@ export function facetsFor(
     if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && unlocked;
     if (facet === "passage") return !!term?.passes && unlocked;
     if (facet === "relation") return !!term?.toward && unlocked;
-    return !(facet === "point" && (term?.xray || term?.figure || term?.region));
+    if (facet === "hormone") return !!term?.hormones && unlocked;
+    return !(facet === "point" && (term?.xray || term?.figure || term?.region || term?.plate));
   });
 }
 

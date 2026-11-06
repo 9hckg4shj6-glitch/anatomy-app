@@ -7,6 +7,7 @@ import { preferences, setPreference } from "../settings";
 import { BASIC_FACETS, facetLabels, facetsFor, lessonFacet, shuffle, type QueueItem } from "../study";
 import { motionPlayer, sceneFor, type AppContext } from "./context";
 import { nextLesson } from "./lessons";
+import { plateOverlay } from "./plate-view";
 import { ask, showPanel } from "./quiz";
 import { termCard } from "./term-card";
 
@@ -31,6 +32,10 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   viewer.highlight((partial ? rest : unit.terms).map((term) => term.id), { isolate: !unit.terms.some((term) => term.figure) });
   viewer.overview();
   ctx.hint(unit.title);
+  // 平面図の語（皮膚の層など）は3Dの上に図を重ねて示す
+  const plates = plateOverlay(ctx);
+  const firstOnPlate = unit.terms.find((term) => term.plate);
+  if (firstOnPlate) void plates.show(firstOnPlate, { names: true, mark: false });
   const list = await startScreen(ctx, unit, partial ? rest : null);
 
   for (let i = 0; i < list.length; ) {
@@ -39,6 +44,8 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     viewer.highlight([term.id], { isolate: !term.figure });
     viewer.focus(term.id, 3.2);
     viewer.setLabel(term.id, term.ja);
+    if (term.plate) void plates.show(term, { names: true, mark: true });
+    else plates.hide();
     ctx.hint("");
     autoSpeak(term);
     const back = h("button", { class: "ghost-button", type: "button", disabled: i === 0 }, "前へ");
@@ -75,6 +82,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   viewer.setLabel(null);
   viewer.highlight(unit.terms.map((term) => term.id), { isolate: !unit.terms.some((term) => term.figure) });
   viewer.overview();
+  plates.hide();
   ctx.hint("");
   const next = nextLesson(await db.learned.toArray());
   showPanel(ctx,

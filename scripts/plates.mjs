@@ -383,9 +383,9 @@ async function artPlate(plate) {
     if (y > 0) push(x, y - 1);
     if (y < H0 - 1) push(x, y + 1);
   }
-  // 背景でない所の塊（8近傍）のうち、いちばん大きいものだけを残す
+  // 背景でない所の塊（8近傍）のうち、いちばん大きいもの（art.blobs があれば大きい順にその数）だけを残す
   const label = new Int32Array(W0 * H0).fill(-1);
-  let best = -1, bestSize = 0;
+  const sizes = [];
   for (let k0 = 0, id = 0; k0 < W0 * H0; k0++) {
     if (back[k0] || label[k0] >= 0) continue;
     let size = 0;
@@ -401,14 +401,15 @@ async function artPlate(plate) {
         if (!back[k2] && label[k2] < 0) { label[k2] = id; stack.push(k2); }
       }
     }
-    if (size > bestSize) [best, bestSize] = [id, size];
+    sizes.push(size);
     id++;
   }
+  const kept = new Set(sizes.map((size, id) => [size, id]).sort((a, b) => b[0] - a[0]).slice(0, art.blobs ?? 1).map(([, id]) => id));
   // 紙に重ねる。白い背景は掛け合わせ（縁のなじみが白のまま残らない）、暗い背景は縁を少しぼかした型で重ねる
   const keep = new Float32Array(W0 * H0);
   let x0 = W0, x1 = 0, y0 = H0, y1 = 0;
   for (let k = 0; k < W0 * H0; k++) {
-    if (label[k] !== best) continue;
+    if (!kept.has(label[k])) continue;
     keep[k] = 1;
     const x = k % W0, y = (k - x) / W0;
     x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);

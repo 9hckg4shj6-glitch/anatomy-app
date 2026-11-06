@@ -64,13 +64,15 @@ const Term = z.strictObject({
   nerve: z.string().min(2).optional(),
   action: z.string().min(2).optional(),
   passes: z.string().min(2).optional(),
+  hormones: z.string().min(2).optional(),
   figure: Figure.optional(),
   foils: z.array(z.string()).min(2).optional(),
   motion: Motion.optional(),
   region: Region.optional(),
   from: vec.optional(),
   placing: z.string().min(10).optional(),
-}).refine((term) => [term.parts || term.of, term.figure, term.region].filter(Boolean).length === 1, "parts か of（3Dの部品）か figure（基本の用語の図）か region（局所解剖）のどれかが要る")
+  plate: z.string().regex(/^[a-z0-9-]+$/).optional(),
+}).refine((term) => [term.parts || term.of, term.figure, term.region, term.plate].filter(Boolean).length === 1, "parts か of（3Dの部品）か figure（基本の用語の図）か region（局所解剖）か plate（平面図の語）のどれかが要る")
   .refine((term) => !term.motion || term.nerve, "motion（作用の動き）は筋の語だけに書く")
   .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける");
 const TermFile = z.strictObject({
@@ -353,8 +355,8 @@ else {
     if (first !== axis || Math.sign(v[axis]) !== sign) errors.push(`${name}: 3Dでは「${fact.than}」の ${fact.dir} ではない（差 ${v.map((x) => Math.round(x * 1000)).join(", ")} mm）`);
     else if (Math.abs(v[second]) > Math.abs(v[first]) * 0.7) errors.push(`${name}: 向きが2つの方向にまたがる（差 ${v.map((x) => Math.round(x * 1000)).join(", ")} mm）`);
   }
-  // 基本の用語（figure）と局所解剖（region）は3Dの部品を持たない
-  const stale = terms.filter((term) => !term.figure && !term.region && !index.terms[term.id]?.elements.length).map((term) => term.id);
+  // 基本の用語（figure）と局所解剖（region）と平面図の語（plate）は3Dの部品を持たない
+  const stale = terms.filter((term) => !term.figure && !term.region && !term.plate && !index.terms[term.id]?.elements.length).map((term) => term.id);
   const removed = Object.keys(index.terms).filter((id) => !seen.has(id));
   if (stale.length || removed.length) {
     errors.push(`3Dモデルが内容と合っていません（未作成: ${stale.join(", ") || "なし"} / 削除済み: ${removed.join(", ") || "なし"}）。npm run build:models を実行してください`);
@@ -410,6 +412,7 @@ const PlateArt = z.strictObject({
   erase: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.number()])])).optional(), eraseWidth: z.number().optional(), white: z.number().int().min(200).max(254).optional(), blur: z.number().min(0.3).max(10).optional(),
   eraseBoxes: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
   drop: z.array(z.string().min(1)).optional(), dropGroups: z.array(z.string().min(1)).optional(), recolor: z.record(z.string(), z.string()).optional(),
+  blobs: z.number().int().min(2).max(5).optional(),
 });
 const Plate = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(), points: z.array(z.string().min(1)).optional(),
@@ -421,10 +424,11 @@ const Plate = z.strictObject({
   .refine((plate) => !plate.art || plate.labels.every((label) => typeof label !== "string" && label.px), "元の図（art）のラベルには px（元の図のピクセル）が要る");
 const Organ = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), ja: z.string().min(1), yomi: z.string().regex(/^[ぁ-ゖー]+$/), en: word, about: z.string().min(10),
-  units: z.array(z.string()).min(1), with: z.array(z.string()), around: z.array(z.string()).optional(), box: z.tuple([vec, vec]), seamless: z.array(z.string()).optional(),
-  colors: z.record(z.string(), z.string().regex(/^#[0-9a-f]{6}$/)), colorLabel: z.string().min(1).optional(), colorNote: z.string().min(1).optional(), views: z.array(z.strictObject({ label: z.string().min(1), from: vec })).min(1),
+  units: z.array(z.string()).min(1), with: z.array(z.string()), around: z.array(z.string()).optional(), box: z.tuple([vec, vec]).optional(), seamless: z.array(z.string()).optional(),
+  colors: z.record(z.string(), z.string().regex(/^#[0-9a-f]{6}$/)), colorLabel: z.string().min(1).optional(), colorNote: z.string().min(1).optional(), views: z.array(z.strictObject({ label: z.string().min(1), from: vec })),
   cuts: z.array(OrganCut), plates: z.array(Plate),
-});
+// box の無い臓器（皮膚）は3Dの形が無く、平面図だけ
+}).refine((organ) => (organ.box ? organ.views.length > 0 : organ.plates.length > 0 && !organ.cuts.length), "3Dのある臓器（box）には views が、box の無い臓器には平面図が要る");
 const organsParsed = z.strictObject({ organs: z.array(Organ) }).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/organs.json"), "utf8")));
 if (!organsParsed.success) errors.push(`content/organs.json: ${organsParsed.error.issues.map((issue) => `${issue.path.join(".")}: ${issue.message}`).join(" / ")}`);
 const plateIndexFile = path.join(ROOT, "public/plates/index.json");
@@ -444,6 +448,13 @@ for (const organ of organsParsed.success ? organsParsed.data.organs : []) {
     else if (!fs.existsSync(path.join(ROOT, "public", entry.url))) errors.push(`平面図 ${plate.id} の画像がありません: ${entry.url}`);
     else for (const label of entry.labels) if (label.term && !seen.has(label.term)) errors.push(`平面図 ${plate.id}: 語が無い: ${label.term}`);
   }
+}
+// 平面図の語（plate）は、その図のラベルにある
+const platesById = new Map((organsParsed.success ? organsParsed.data.organs : []).flatMap((organ) => organ.plates.map((plate) => [plate.id, plate])));
+for (const term of terms.filter((t) => t.plate)) {
+  const plate = platesById.get(term.plate);
+  if (!plate) errors.push(`${term.id}: 平面図 ${term.plate} が content/organs.json に無い`);
+  else if (!plate.labels.some((label) => (typeof label === "string" ? label : label.term) === term.id)) errors.push(`${term.id}: 平面図 ${term.plate} のラベルに無い`);
 }
 
 // docs/要確認用語.md

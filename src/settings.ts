@@ -43,10 +43,10 @@ export const preferences: Preferences = {
   studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"], compass: true,
 };
 
-/** 学ぶ問い方を保存したときにあった問い方を覚えておく設定のキー。あとから増えた問い方（向き）を学ぶ側に入れるため */
+/** 学ぶ問い方を保存したときにあった問い方を覚えておく設定のキー。あとから増えた問い方（向き・ホルモン）を学ぶ側に入れるため */
 const SEEN_FACETS = "seenFacets";
 /** SEEN_FACETS を覚え始める前からあった問い方 */
-const OLD_FACETS: Facet[] = TERM_FACETS.filter((facet) => facet !== "relation");
+const OLD_FACETS: Facet[] = TERM_FACETS.filter((facet) => facet !== "relation" && facet !== "hormone");
 
 /** 問い方の並び。基本の問い方を1つは含む（どれも外すと何も学べないので） */
 const facetList = (allowed: Facet[]) => (value: unknown): value is Facet[] =>

@@ -3585,6 +3585,244 @@
      "term": "vestibulocochlear-nerve"
     }
    ]
+  },
+  "skin-section": {
+   "url": "plates/skin-section.aa32719ad0.webp",
+   "w": 1136,
+   "h": 1172,
+   "labels": [
+    {
+     "at": [
+      0.3948,
+      0.3818
+     ],
+     "term": "skin"
+    },
+    {
+     "at": [
+      0.2123,
+      0.2865
+     ],
+     "term": "epidermis"
+    },
+    {
+     "at": [
+      0.1164,
+      0.4351
+     ],
+     "term": "papillary-layer"
+    },
+    {
+     "at": [
+      0.1772,
+      0.6085
+     ],
+     "term": "reticular-layer"
+    },
+    {
+     "at": [
+      0.2919,
+      0.6085
+     ],
+     "term": "dermis"
+    },
+    {
+     "at": [
+      0.1141,
+      0.79
+     ],
+     "term": "subcutaneous-tissue"
+    },
+    {
+     "at": [
+      0.3457,
+      0.5042
+     ],
+     "term": "tactile-corpuscle"
+    },
+    {
+     "at": [
+      0.4322,
+      0.8467
+     ],
+     "term": "lamellar-corpuscle"
+    },
+    {
+     "at": [
+      0.6346,
+      0.1323
+     ],
+     "term": "hair-shaft"
+    },
+    {
+     "at": [
+      0.5761,
+      0.316
+     ],
+     "term": "sweat-pore"
+    },
+    {
+     "at": [
+      0.8978,
+      0.3682
+     ],
+     "term": "dermal-papillae"
+    },
+    {
+     "at": [
+      0.8218,
+      0.5008
+     ],
+     "term": "arrector-pili"
+    },
+    {
+     "at": [
+      0.7399,
+      0.5689
+     ],
+     "term": "sebaceous-gland"
+    },
+    {
+     "at": [
+      0.7118,
+      0.6788
+     ],
+     "term": "hair-root"
+    },
+    {
+     "at": [
+      0.6112,
+      0.79
+     ],
+     "term": "sweat-gland"
+    },
+    {
+     "at": [
+      0.6791,
+      0.7661
+     ],
+     "term": "hair-follicle"
+    }
+   ]
+  },
+  "skin-epidermis": {
+   "url": "plates/skin-epidermis.44ecb2067b.webp",
+   "w": 403,
+   "h": 599,
+   "labels": [
+    {
+     "at": [
+      0.4665,
+      0.0785
+     ],
+     "term": "stratum-corneum"
+    },
+    {
+     "at": [
+      0.4665,
+      0.2053
+     ],
+     "term": "stratum-lucidum"
+    },
+    {
+     "at": [
+      0.4665,
+      0.3122
+     ],
+     "term": "stratum-granulosum"
+    },
+    {
+     "at": [
+      0.4665,
+      0.5292
+     ],
+     "term": "stratum-spinosum"
+    },
+    {
+     "at": [
+      0.5012,
+      0.813
+     ],
+     "term": "stratum-basale"
+    },
+    {
+     "at": [
+      0.7767,
+      0.788
+     ],
+     "term": "melanocyte"
+    },
+    {
+     "at": [
+      0.2134,
+      0.8497
+     ],
+     "term": "merkel-cell"
+    },
+    {
+     "at": [
+      0.3424,
+      0.9432
+     ],
+     "term": "dermis"
+    }
+   ]
+  },
+  "nail": {
+   "url": "plates/nail.a8f643b357.webp",
+   "w": 819,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.675,
+      0.0975
+     ],
+     "term": "nail"
+    },
+    {
+     "at": [
+      0.7,
+      0.1559
+     ],
+     "term": "lunula"
+    },
+    {
+     "at": [
+      0.6417,
+      0.1735
+     ],
+     "term": "eponychium"
+    },
+    {
+     "at": [
+      0.5167,
+      0.6706
+     ],
+     "term": "nail-fold"
+    },
+    {
+     "at": [
+      0.5583,
+      0.7164
+     ],
+     "term": "nail-matrix"
+    },
+    {
+     "at": [
+      0.2167,
+      0.7719
+     ],
+     "term": "nail-plate"
+    },
+    {
+     "at": [
+      0.2833,
+      0.8012
+     ],
+     "term": "nail-bed"
+    }
+   ]
   }
  }
 }

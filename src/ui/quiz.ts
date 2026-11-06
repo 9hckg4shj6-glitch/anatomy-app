@@ -11,6 +11,7 @@ import { facetLabels, pickChoices, typesEnglish, type QueueItem } from "../study
 import { preferences } from "../settings";
 import { INSERTION_COLOR, ORIGIN_COLOR } from "../viewer";
 import { motionPlayer, sceneFor, type AppContext } from "./context";
+import { plateOverlay } from "./plate-view";
 import { termCard } from "./term-card";
 
 export type Outcome = EnglishResult | "skip";
@@ -164,8 +165,12 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const isolate = !!term.xray || landmark;
   const facet = item.facet === "point" && (term.xray || isDrawn(term)) ? "locate" : item.facet;
   const header = h("div", { class: "quiz-head" }, h("span", { class: "facet" }, facetLabels[facet]), h("span", { class: "count" }, progress));
-  // 向きの目印は、基本の用語（矢印の向き・面）と向きの問い方では答えになるので、答えるまで隠す
-  viewer.hideCompass(term.system === "basics" || facet === "relation");
+  // 平面図の語は3Dの上に図を重ね、答えるまで名前を隠す（英語→日本語のほかは、その語の番号を光らせる）
+  const plates = plateOverlay(ctx);
+  if (term.plate) await plates.show(term, { names: false, mark: facet !== "en2ja" });
+  else plates.hide();
+  // 向きの目印は、基本の用語（矢印の向き・面）と向きの問い方では答えになるので、答えるまで隠す（平面図を重ねている間も隠す）
+  viewer.hideCompass(term.system === "basics" || facet === "relation" || !!term.plate);
 
   let outcome: Outcome;
   let wrongTerm: string | null = null;
@@ -183,7 +188,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     case "locate": {
       viewer.highlight([term.id], { isolate });
       viewer.focus(term.id, 3.4);
-      const question = term.figure ? figurePrompt(term.figure) : term.region ? regionPrompt(term.region) : "オレンジ色の部位の名前は？";
+      const question = term.figure ? figurePrompt(term.figure) : term.region ? regionPrompt(term.region) : term.plate ? "図のオレンジ色の番号の名前は？" : "オレンジ色の部位の名前は？";
       ctx.hint(question);
       const picked = await choose(question, choicesOf((id) => termById.get(id)!.ja, undefined, true), (id) => termById.get(id)!.ja);
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
@@ -280,6 +285,21 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
       break;
     }
+    case "hormone": {
+      // ホルモンから器官を答える。器官を光らせると答えになるので、全体を見せて答えたあとに示す。選択肢はホルモンを出すほかの器官
+      viewer.highlight([]);
+      viewer.overview();
+      ctx.hint("");
+      const prompt = h("div", {},
+        h("p", { class: "prompt-text" }, term.hormones!),
+        h("p", { class: "prompt" }, "を出すのは？"),
+      );
+      const picked = await choose(prompt, choicesOf((id) => termById.get(id)!.ja, (other) => !!other.hormones), (id) => termById.get(id)!.ja);
+      outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
+      // 選んだ器官は、同じ系統（3Dに読み込んである）なら青で示す
+      wrongTerm = picked && picked !== term.id && termById.get(picked)!.system === term.system ? picked : null;
+      break;
+    }
     case "relation": {
       // 部位（骨）どうしの向き。骨だけを見せ、部位は光らせずに、解剖学的正位での向きを思い出して答える。
       // 臓器・血管・神経・筋の組はその2つだけを見せ、比べる場所に寄る。選択肢に右・左を足す（1つしかない器官は右・左、左右に1つずつあるものは内側・外側）
@@ -303,7 +323,8 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   }
 
   const recorded = await recordReview(term.id, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
-  viewer.hideCompass(false);
+  viewer.hideCompass(!!term.plate);
+  if (term.plate) void plates.show(term, { names: true, mark: true });
   if (facet === "attach") viewer.highlight([term.id], { isolate: true, marks: attachMarks(term), seeThrough: true });
   // 向き: この語を橙、比べた語を青で示し、両方が入るように寄る
   else if (facet === "relation") viewer.reveal(term.id, term.toward!.than, true);

@@ -666,7 +666,7 @@ export class AnatomyViewer {
   private setOrgan(id: string | null): void {
     if ((this.organ?.id ?? null) === id) return;
     const organ = id ? organById.get(id) : undefined;
-    if (!organ) {
+    if (!organ?.box) {
       this.organ = null;
     } else {
       const [lo, hi] = organ.box;

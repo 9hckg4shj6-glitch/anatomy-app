@@ -50,6 +50,8 @@ export interface Term {
   action?: string;
   /** 孔・管・溝・裂を通るもの（入るもの）。「通るもの」の問い方の答えと選択肢になる */
   passes?: string;
+  /** 出すホルモン（内分泌腺と、ホルモンを出す器官）。「ホルモン」の問い方（このホルモンを出すのは？）の問題と答えになる */
+  hormones?: string;
   /** 基本の用語（方向・面・運動）の3Dの図。部品を持たず、骨格の上に矢印・面を描いたり骨を動かしたりして示す */
   figure?: Figure;
   /** 図から名前を答える問題で選択肢に出してよい語（「近位」の図に「上」を出すと、どちらも正しくなるため） */
@@ -62,6 +64,8 @@ export interface Term {
   from?: [number, number, number];
   /** 骨の置き方（解剖学的正位の上下・前後・内外の決め方。左右のある骨では、これで右か左かが決まる）。『解剖学講義』による */
   placing?: string;
+  /** 平面図の語（皮膚の層・汗腺など3Dに形の無い語）。臓器の図の平面図（この図ID）の名前で場所を示し、レッスン・問題では3Dの上に図を重ねる */
+  plate?: string;
   /** 以下は読み込み時に付ける */
   /** 向きの問い方（content/directions.json）。この語が than の語のどちら側にあるか */
   toward?: Toward;
@@ -220,7 +224,8 @@ export interface Organ {
   units: string[];
   with: string[];
   around?: string[];
-  box: [Vec3, Vec3];
+  /** 3Dで見せる箱。無い臓器（皮膚）は平面図だけ */
+  box?: [Vec3, Vec3];
   seamless?: string[];
   colors: Record<string, string>;
   colorLabel?: string;
@@ -330,14 +335,20 @@ export function organTerms(organ: Organ): string[] {
   return [...ownTerms(organ), ...(organ.around ?? [])];
 }
 
-/** 語が入る臓器の場面（無ければ undefined。添えるだけの語は入れない） */
+/** 語が入る臓器の場面（無ければ undefined。添えるだけの語は入れない。3Dの無い臓器＝皮膚は場面にならない） */
 export function organOf(termId: string): Organ | undefined {
-  return organs.find((organ) => ownTerms(organ).includes(termId));
+  return organs.find((organ) => organ.box && ownTerms(organ).includes(termId));
 }
 
 /** レッスンが臓器の場面のものなら、その臓器 */
 export function organOfUnit(unitId: string | undefined): Organ | undefined {
-  return unitId ? organs.find((organ) => organ.units.includes(unitId)) : undefined;
+  return unitId ? organs.find((organ) => organ.box && organ.units.includes(unitId)) : undefined;
+}
+
+/** 平面図の語（term.plate）の図と、その図のある臓器 */
+export function plateOfTerm(term: Pick<Term, "plate">): { organ: Organ; plate: PlateSpec } | undefined {
+  for (const organ of organs) for (const plate of organ.plates) if (plate.id === term.plate) return { organ, plate };
+  return undefined;
 }
 
 /** 基本の用語の図から名前を答える問題の文 */
@@ -357,9 +368,9 @@ export function regionSystems(region: Region): string[] {
   return [...new Set([...region.bounds, ...region.contents].map((id) => termById.get(id)?.system ?? "").filter((id) => id && id !== "skeletal"))];
 }
 
-/** 部品を持たない語（基本の用語の図・局所解剖）。タップでは答えられない */
-export function isDrawn(term: Pick<Term, "figure" | "region"> | undefined): boolean {
-  return !!(term?.figure || term?.region);
+/** 部品を持たない語（基本の用語の図・局所解剖・平面図の語）。タップでは答えられない */
+export function isDrawn(term: Pick<Term, "figure" | "region" | "plate"> | undefined): boolean {
+  return !!(term?.figure || term?.region || term?.plate);
 }
 
 export function isLandmark(term: Pick<Term, "of"> | undefined): boolean {

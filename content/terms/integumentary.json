@@ -1,0 +1,213 @@
+{
+  "system": "integumentary",
+  "units": [
+    {
+      "id": "integ-skin",
+      "title": "皮膚の層",
+      "intro": ["皮膚は外から表皮・真皮の2層で、その下に皮下組織が続く。3Dには皮膚の層の形が無いので、皮膚の断面の図で場所を示す。左は手のひら・足の裏の毛の無い厚い皮膚、右は毛のある薄い皮膚。"],
+      "terms": [
+        {
+          "id": "skin", "ja": "皮膚", "yomi": "ひふ", "en": "skin", "la": "cutis", "plate": "skin-section", "level": 1,
+          "kanji": "皮（かわ）と膚（はだ）",
+          "etym": "skin ← 古ノルド語 skinn。cutis（ラテン語）から cutaneous「皮膚の」",
+          "note": "体の表面をおおう最大の器官（大人で約1.6m²、体重の約16%）。表皮と真皮からなり、体を守る・体温を調節する・感覚を受ける・ビタミンDをつくるなどのはたらきをもつ。毛・爪・汗腺・脂腺は皮膚の付属器。"
+        },
+        {
+          "id": "epidermis", "ja": "表皮", "yomi": "ひょうひ", "en": "epidermis", "la": "epidermis", "plate": "skin-section", "level": 1,
+          "kanji": "表（おもて）の皮",
+          "etym": "epi-「上」＋ derma「皮膚」（ギリシャ語）",
+          "note": "皮膚のいちばん外の層で、重層扁平上皮（角化する）。血管が無く、栄養は真皮から届く。下の基底層で生まれた細胞が上へ押し上げられて角化し、約4週間で垢としてはがれる。厚さは0.1mm前後、手のひら・足の裏では厚い。"
+        },
+        {
+          "id": "dermis", "ja": "真皮", "yomi": "しんぴ", "en": "dermis", "enAlt": ["corium"], "la": "dermis", "plate": "skin-section", "level": 1,
+          "kanji": "真（まこと）の皮（表皮の下の本体）",
+          "etym": "derma「皮膚」（ギリシャ語）。corium ← ラテン語「革」",
+          "note": "表皮の下の密な結合組織の層（膠原線維と弾性線維）。血管・神経・感覚の受容器・毛包・汗腺・脂腺がある。浅い乳頭層と深い網状層に分かれる。革製品の「革」はこの層。"
+        },
+        {
+          "id": "subcutaneous-tissue", "ja": "皮下組織", "yomi": "ひかそしき", "en": "subcutaneous tissue", "enAlt": ["hypodermis", "subcutis"], "la": "tela subcutanea", "plate": "skin-section", "level": 1,
+          "kanji": "皮膚の下の組織",
+          "etym": "sub-「下」＋ cutis「皮膚」。hypo-「下」＋ derma",
+          "note": "真皮の下の疎性結合組織で、脂肪組織（皮下脂肪）が多い。熱を逃がさず、衝撃をやわらげ、エネルギーをたくわえる。皮下注射はこの層に打つ。厳密には皮膚に含めない。"
+        },
+        {
+          "id": "papillary-layer", "ja": "乳頭層", "yomi": "にゅうとうそう", "en": "papillary layer", "la": "stratum papillare", "plate": "skin-section", "level": 2,
+          "kanji": "乳頭（小さな突起）の並ぶ層",
+          "etym": "papilla「乳頭・小さな突起」（ラテン語）",
+          "note": "真皮の浅い層。表皮の下に向かって真皮乳頭が突き出し、毛細血管の係蹄と触覚小体（マイスネル小体）が入る。疎性結合組織。"
+        },
+        {
+          "id": "reticular-layer", "ja": "網状層", "yomi": "もうじょうそう", "en": "reticular layer", "la": "stratum reticulare", "plate": "skin-section", "level": 2,
+          "kanji": "網の目のような層",
+          "etym": "reticulum「小さな網」（ラテン語）",
+          "note": "真皮の深い大部分。太い膠原線維の束が網の目に交わる密な結合組織で、皮膚の強さと弾力のもと。線維の向きがそろう方向が皮膚割線（ランガー線）で、これに沿って切ると傷あとが目立ちにくい。"
+        },
+        {
+          "id": "dermal-papillae", "ja": "真皮乳頭", "yomi": "しんぴにゅうとう", "en": "dermal papillae", "enAlt": ["dermal papilla"], "la": "papillae dermis", "plate": "skin-section", "level": 3,
+          "kanji": "真皮の乳頭（突起）",
+          "etym": "dermis ＋ papilla「小さな突起」",
+          "note": "真皮が表皮の下面へ指のように突き出した所。表皮との境を波うたせて、はがれにくくし、毛細血管から表皮へ栄養を届ける。手のひら・指では列に並び、その上の皮膚の隆起が指紋をつくる。"
+        }
+      ]
+    },
+    {
+      "id": "integ-epidermis",
+      "title": "表皮の層と細胞",
+      "intro": ["表皮は深い方から基底層・有棘層・顆粒層・淡明層・角質層の5層（淡明層は手のひら・足の裏の厚い皮膚だけ）。図は厚い皮膚の表皮で、上が体の外。"],
+      "terms": [
+        {
+          "id": "stratum-basale", "ja": "基底層", "yomi": "きていそう", "en": "stratum basale", "enAlt": ["basal layer", "stratum germinativum"], "la": "stratum basale", "plate": "skin-epidermis", "level": 2,
+          "kanji": "基底（いちばん底）の層",
+          "etym": "basis「土台」（ラテン語）。germinativum「芽を出す」",
+          "note": "表皮のいちばん深い1列の細胞の層で、基底膜をはさんで真皮に接する。細胞が分裂して上の層へ送り出す（胚芽層）。メラニン細胞とメルケル細胞もここにある。"
+        },
+        {
+          "id": "stratum-spinosum", "ja": "有棘層", "yomi": "ゆうきょくそう", "en": "stratum spinosum", "enAlt": ["prickle cell layer"], "la": "stratum spinosum", "plate": "skin-epidermis", "level": 2,
+          "kanji": "棘（とげ）の有る細胞の層",
+          "etym": "spina「とげ」（ラテン語）",
+          "note": "基底層の上の数層〜十数層で、表皮でいちばん厚い。細胞どうしがデスモソームで強くつながり、標本では縮んだ細胞の間のつながりがとげのように見える。免疫をになうランゲルハンス細胞がいる。"
+        },
+        {
+          "id": "stratum-granulosum", "ja": "顆粒層", "yomi": "かりゅうそう", "en": "stratum granulosum", "enAlt": ["granular layer"], "la": "stratum granulosum", "plate": "skin-epidermis", "level": 2,
+          "kanji": "顆粒（つぶ）をもつ細胞の層",
+          "etym": "granulum「小さな粒」（ラテン語）",
+          "note": "有棘層の上の2〜5層の平たい細胞。ケラトヒアリン顆粒と、脂質を出す層板顆粒をもち、ここで細胞が死んで角化に向かう。層板顆粒の脂質が水を通さない壁をつくる。"
+        },
+        {
+          "id": "stratum-lucidum", "ja": "淡明層", "yomi": "たんめいそう", "en": "stratum lucidum", "enAlt": ["clear layer"], "la": "stratum lucidum", "plate": "skin-epidermis", "level": 3,
+          "kanji": "淡く明るい（透き通った）層",
+          "etym": "lucidus「明るい・透明な」（ラテン語）",
+          "note": "顆粒層と角質層の間の薄く透き通った層。手のひらと足の裏の厚い皮膚にだけある。核の無い平たい細胞からなる。"
+        },
+        {
+          "id": "stratum-corneum", "ja": "角質層", "yomi": "かくしつそう", "en": "stratum corneum", "enAlt": ["horny layer"], "la": "stratum corneum", "plate": "skin-epidermis", "level": 2,
+          "kanji": "角（つの）の質の層（ケラチンで固い）",
+          "etym": "corneus「角（つの）の」（ラテン語）。keratin も「角」",
+          "note": "表皮のいちばん外の層。核の無い死んだ細胞（角質細胞）がケラチンで満ちて何十層も重なり、水分が逃げるのと病原体が入るのを防ぐ。表面から少しずつ垢としてはがれる。"
+        },
+        {
+          "id": "melanocyte", "ja": "メラニン細胞", "yomi": "めらにんさいぼう", "en": "melanocyte", "la": "melanocytus", "plate": "skin-epidermis", "level": 2,
+          "kanji": "メラニン（黒い色素）をつくる細胞",
+          "etym": "melas「黒い」＋ -cyte「細胞」（ギリシャ語）",
+          "note": "基底層にある、突起をのばした細胞（神経堤から来る）。メラニンをつくって周りの表皮の細胞へ渡し、紫外線から核を守る。肌の色の違いは細胞の数でなく、つくるメラニンの量で決まる。"
+        },
+        {
+          "id": "merkel-cell", "ja": "メルケル細胞", "yomi": "めるけるさいぼう", "en": "merkel cell", "enAlt": ["tactile epithelial cell"], "la": "epitheliocytus tactus", "plate": "skin-epidermis", "level": 3,
+          "kanji": "メルケル（ドイツの解剖学者）の細胞",
+          "etym": "Friedrich Merkel（1845〜1919）にちなむ",
+          "note": "基底層にある触覚の細胞。下に感覚神経の終末が円板のように付き（メルケル盤）、軽い圧と物の形・手ざわりを伝える。指先に多い。"
+        }
+      ]
+    },
+    {
+      "id": "integ-appendages",
+      "title": "毛と皮膚の腺・感覚の受容器",
+      "intro": ["毛・汗腺・脂腺は表皮が真皮の中へ落ちこんでできた皮膚の付属器。真皮には触覚・圧覚を受ける小体もある。"],
+      "terms": [
+        {
+          "id": "hair-shaft", "ja": "毛幹", "yomi": "もうかん", "en": "hair shaft", "la": "scapus pili", "plate": "skin-section", "level": 2,
+          "kanji": "毛の幹（皮膚の外に出た部分）",
+          "etym": "shaft「柄・幹」。pilus「毛」（ラテン語）",
+          "note": "毛のうち皮膚の表面から外に出ている部分。角化した死んだ細胞でできていて、切っても痛くない。"
+        },
+        {
+          "id": "hair-root", "ja": "毛根", "yomi": "もうこん", "en": "hair root", "la": "radix pili", "plate": "skin-section", "level": 2,
+          "kanji": "毛の根（皮膚の中の部分）",
+          "etym": "radix「根」（ラテン語）",
+          "note": "毛のうち皮膚の中に埋まっている部分で、毛包に包まれる。下の端はふくらんで毛球となり、そのくぼみに真皮の毛乳頭が入って血管から栄養を受け、毛母基の細胞が分裂して毛がのびる。"
+        },
+        {
+          "id": "hair-follicle", "ja": "毛包", "yomi": "もうほう", "en": "hair follicle", "la": "folliculus pili", "plate": "skin-section", "level": 2,
+          "kanji": "毛を包むさや",
+          "etym": "folliculus「小さな袋」（ラテン語）",
+          "note": "毛根を包むさやで、表皮が真皮（ときに皮下組織）まで落ちこんでできる。脂腺が開き、立毛筋が付く。毛の生えかわりは毛包の周期による。毛包の根もとはななめに傾いている。"
+        },
+        {
+          "id": "arrector-pili", "ja": "立毛筋", "yomi": "りつもうきん", "en": "arrector pili muscle", "enAlt": ["arrector pili"], "la": "musculus arrector pili", "plate": "skin-section", "level": 2,
+          "kanji": "毛を立てる筋",
+          "etym": "arrector「立てるもの」＋ pilus「毛」（ラテン語）",
+          "note": "毛包の中ほどから真皮乳頭層へななめに張る小さな平滑筋。交感神経で縮み、傾いた毛を立てて皮膚をもり上げる（鳥肌）。縮むとき脂腺をしぼって皮脂を出す。"
+        },
+        {
+          "id": "sebaceous-gland", "ja": "脂腺", "yomi": "しせん", "en": "sebaceous gland", "la": "glandula sebacea", "plate": "skin-section", "level": 2,
+          "kanji": "脂（あぶら）を出す腺",
+          "etym": "sebum「脂」（ラテン語）",
+          "note": "毛包に開く袋状の腺で、細胞ごとこわれて皮脂になる（全分泌）。皮脂は皮膚と毛をなめらかにし、水をはじく。毛の無い手のひら・足の裏には無い。思春期に男性ホルモンで大きくなり、つまるとにきびになる。"
+        },
+        {
+          "id": "sweat-gland", "ja": "汗腺", "yomi": "かんせん", "en": "sweat gland", "enAlt": ["eccrine sweat gland", "eccrine gland"], "la": "glandula sudorifera", "plate": "skin-section", "level": 1,
+          "kanji": "汗を出す腺",
+          "etym": "sudor「汗」（ラテン語）。eccrine「外へ分泌する」",
+          "note": "真皮の深い所（皮下組織との境）で糸玉のように丸まった管状の腺で、導管がらせん状に表皮を通って汗孔に開く。全身にあるのはエクリン腺（小汗腺）で、薄い汗を出して体温を下げる。腋窩・乳輪・外陰部にはアポクリン腺（大汗腺）があり、毛包に開いて、においのもとになる汗を出す。どちらも交感神経（エクリン腺はアセチルコリン）で出る。"
+        },
+        {
+          "id": "sweat-pore", "ja": "汗孔", "yomi": "かんこう", "en": "sweat pore", "la": "porus sudoriferus", "plate": "skin-section", "level": 3,
+          "kanji": "汗の出る孔（あな）",
+          "etym": "porus「孔」（ラテン語）",
+          "note": "エクリン腺の導管が皮膚の表面に開く小さな孔。指紋の隆線の上に並ぶ。"
+        },
+        {
+          "id": "tactile-corpuscle", "ja": "触覚小体", "yomi": "しょっかくしょうたい", "en": "tactile corpuscle", "enAlt": ["meissner corpuscle", "meissner's corpuscle"], "la": "corpusculum tactus", "plate": "skin-section", "level": 2,
+          "kanji": "触覚を受ける小さな体",
+          "etym": "マイスネル小体（Georg Meissner にちなむ）",
+          "note": "真皮乳頭の中にある楕円の小体で、軽い触覚とその変化を感じる。指先・手のひら・唇など毛の無い所に多い。"
+        },
+        {
+          "id": "lamellar-corpuscle", "ja": "層板小体", "yomi": "そうばんしょうたい", "en": "lamellar corpuscle", "enAlt": ["pacinian corpuscle"], "la": "corpusculum lamellosum", "plate": "skin-section", "level": 2,
+          "kanji": "層板（うすい膜）が重なった小体",
+          "etym": "lamella「うすい板」（ラテン語）。パチニ小体（Filippo Pacini にちなむ）",
+          "note": "皮下組織などにある大きな（1〜数mm）小体で、神経の終末を玉ねぎのような層板が包む。圧と速い振動を感じる。断面では玉ねぎの輪切りのように見える。"
+        }
+      ]
+    },
+    {
+      "id": "integ-nail",
+      "title": "爪",
+      "intro": ["爪は表皮の角質層が変化した固い板。上の図は指先を背側から、下の図は指先の縦の断面（左が指先）。"],
+      "terms": [
+        {
+          "id": "nail", "ja": "爪", "yomi": "つめ", "en": "nail", "la": "unguis", "plate": "nail", "level": 1,
+          "kanji": "爪（指先をおおう固いもの）",
+          "etym": "unguis「爪」（ラテン語）。ungual「爪の」",
+          "note": "手足の指の末節の背側をおおう、ケラチンでできた固い板（表皮の付属器）。指先を守り、細かい物をつまむのを助ける。手の爪は1日に約0.1mmのびる。爪の色（爪床の血の色）は貧血やチアノーゼを見る手がかり。"
+        },
+        {
+          "id": "nail-plate", "ja": "爪甲", "yomi": "そうこう", "en": "nail plate", "la": "corpus unguis", "plate": "nail", "level": 2,
+          "kanji": "爪の甲（よろい・板）",
+          "etym": "plate「板」",
+          "note": "ふつう「爪」と呼ぶ固い板の部分。死んだ角化細胞が固く重なってでき、下の爪床の上をすべるように先へのびる。"
+        },
+        {
+          "id": "nail-bed", "ja": "爪床", "yomi": "そうしょう", "en": "nail bed", "la": "lectus unguis", "plate": "nail", "level": 2,
+          "kanji": "爪の床（爪甲がのる所）",
+          "etym": "lectus「寝床」（ラテン語）",
+          "note": "爪甲の下の表皮と真皮。血管が多く、爪がピンク色に見えるのはこの血の色。爪甲としっかり付いている。"
+        },
+        {
+          "id": "nail-matrix", "ja": "爪母", "yomi": "そうぼ", "en": "nail matrix", "la": "matrix unguis", "plate": "nail", "level": 2,
+          "kanji": "爪を生む母（もと）",
+          "etym": "matrix「母体・子宮」（ラテン語）",
+          "note": "爪の根もと（爪根）の下にある、細胞が盛んに分裂して爪甲をつくる所。ここが傷つくと爪が生えなくなったり変形したりする。前の端が爪半月として白く見える。"
+        },
+        {
+          "id": "lunula", "ja": "爪半月", "yomi": "そうはんげつ", "en": "lunula", "la": "lunula", "plate": "nail", "level": 3,
+          "kanji": "爪の半月の形をした白い所",
+          "etym": "lunula「小さな月」（ラテン語 luna「月」）",
+          "note": "爪の根もとに見える半月形の白い所。下の爪母が厚く、血の色が透けにくいので白く見える。親指でよく見える。"
+        },
+        {
+          "id": "eponychium", "ja": "爪上皮", "yomi": "そうじょうひ", "en": "eponychium", "enAlt": ["cuticle"], "la": "eponychium", "plate": "nail", "level": 3,
+          "kanji": "爪の上の皮",
+          "etym": "epi-「上」＋ onyx「爪」（ギリシャ語）",
+          "note": "爪の根もとをおおう爪郭の縁から、爪甲の上にのびる薄い角質（いわゆる甘皮）。爪の根もとに水や病原体が入るのを防ぐ。"
+        },
+        {
+          "id": "nail-fold", "ja": "爪郭", "yomi": "そうかく", "en": "nail fold", "enAlt": ["proximal nail fold"], "la": "vallum unguis", "plate": "nail", "level": 3,
+          "kanji": "爪をかこむ郭（かこい）",
+          "etym": "vallum「土手・塁」（ラテン語）",
+          "note": "爪甲の根もとと両わきをかこむ皮膚のひだ。根もとのひだ（後爪郭）の下に爪根と爪母が入りこむ。爪郭が化膿したものが爪囲炎（ひょう疽）。"
+        }
+      ]
+    }
+  ]
+}

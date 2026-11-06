@@ -1,5 +1,5 @@
 import { autoSpeak } from "../audio";
-import { isDrawn, landmarksOf, loadAttachments, organOf, regionSystems, systems, termById, type Term, type Unit } from "../content";
+import { isDrawn, landmarksOf, loadAttachments, organOf, plateOfTerm, regionSystems, systems, termById, type Term, type Unit } from "../content";
 import { courseUnitOf, courseUnits, inCourse } from "../course";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
@@ -8,6 +8,7 @@ import { normalize, searchTerms } from "../search";
 import type { Vec3 } from "../landmarks";
 import type { Section } from "../viewer";
 import { motionPlayer, termAt, type AppContext } from "./context";
+import { plateOverlay } from "./plate-view";
 import { attachMarks } from "./quiz";
 import { termCard } from "./term-card";
 
@@ -264,6 +265,9 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     group = [];
     paint();
     viewer.setLabel(term?.id ?? null, term?.ja ?? "");
+    // 平面図の語（皮膚の層など）は3Dの上に図を重ねて示す
+    if (term?.plate) void plateOverlay(ctx).show(term, { names: true, mark: true });
+    else plateOverlay(ctx).hide();
     if (term) {
       // 基本の用語（方向・面・運動）は骨格の上に図を描く。局所解剖は境界と中を通る語の系統と骨格を見せる
       const needed = term.figure ? ["skeletal"] : term.region ? [term.system, "skeletal", ...regionSystems(term.region)] : [term.system];
@@ -376,7 +380,11 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     const peeledNow = peeled.some((item) => item.id === peelTarget.id);
     const whose = parent ? `${parent.ja}を` : "";
     const organ = organOf(term.id);
+    const onPlate = plateOfTerm(term);
     detail.replaceChildren(h("div", {},
+      // 平面図の語は、その図の臓器の図（平面図）へ
+      onPlate ? h("div", { class: "organ-switch" },
+        h("a", { class: "ghost-button", href: `#/organs/${onPlate.organ.id}/${onPlate.plate.id}` }, `${onPlate.organ.ja}の図（${onPlate.plate.title}）`)) : "",
       organ ? h("div", { class: "organ-switch" },
         h("button", {
           class: organMode ? "ghost-button on" : "ghost-button", type: "button",
