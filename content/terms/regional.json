@@ -11,7 +11,7 @@
           "level": 1,
           "kanji": "鼡径部（足の付け根）の管",
           "etym": "inguinal ← ラテン語 inguen「鼡径部」＋ canal「管」",
-          "note": "鼡径靱帯の内側半分のすぐ上を、外上の深鼡径輪から内下の浅鼡径輪へ斜めに通る約4cmの管。前の壁は外腹斜筋の腱膜、後ろの壁は横筋筋膜、床は鼡径靱帯、天井は内腹斜筋と腹横筋の下の縁。男性は精索（精管・精巣動脈・精巣静脈）、女性は子宮円索が通り、腸骨鼡径神経も通る。腸がここへ出てくるのが鼡径ヘルニア。",
+          "note": "鼡径靱帯（inguinal ligament）の内側半分（medial half）のすぐ上を、外上の深鼡径輪（deep inguinal ring）から内下（inferomedial）の浅鼡径輪（superficial inguinal ring）へ斜めに通る約4cmの管。前の壁は外腹斜筋（external oblique）の腱膜（aponeurosis）、後ろの壁は横筋筋膜（transversalis fascia）、床は鼡径靱帯、天井は内腹斜筋（internal oblique）と腹横筋（transversus abdominis）の下の縁。男性は精索（spermatic cord）（精管（ductus deferens）・精巣動脈（testicular artery）・精巣静脈（testicular vein））、女性は子宮円索（round ligament of uterus）が通り、腸骨鼡径神経（ilio-inguinal nerve）も通る。腸（intestine）がここへ出てくるのが鼡径ヘルニア（inguinal hernia）。",
           "region": { "bounds": ["external-oblique", "internal-oblique", "transversus-abdominis", "inguinal-ligament", "transversalis-fascia"], "contents": ["ductus-deferens", "testicular-artery", "testicular-vein", "ilio-inguinal-nerve", "genitofemoral-nerve"], "boundsLabel": "壁をつくるもの", "outline": [[-0.083,0.866,0.13],[-0.058,0.842,0.15],[-0.031,0.815,0.155],[-0.034,0.8,0.15],[-0.062,0.828,0.145],[-0.08,0.852,0.13]], "view": { "target": [-0.058,0.833,0.14], "from": [-0.3,0.1,1], "size": 0.055 }, "prompt": "精管が腹壁を斜めに抜ける通り道は？" }
         },
         {
@@ -19,7 +19,7 @@
           "level": 2,
           "kanji": "聴診器を当てる三角",
           "etym": "auscultation ← ラテン語 auscultare「耳を傾ける」",
-          "note": "背中で、僧帽筋の外側縁・広背筋の上縁・肩甲骨の内側縁（大菱形筋）で囲まれた三角。筋が薄いので、ここに聴診器を当てると肺の音がよく聞こえる。腕を前で組んで肩甲骨を外へ出すと広がる。",
+          "note": "背中（back）で、僧帽筋（trapezius）の外側縁（lateral border）・広背筋（latissimus dorsi）の上縁（superior border）・肩甲骨（scapula）の内側縁（medial border）（大菱形筋（rhomboid major））で囲まれた三角。筋（muscle）が薄いので、ここに聴診器（stethoscope）を当てると肺（lung）の音がよく聞こえる。腕（arm）を前で組んで肩甲骨を外へ出すと広がる。",
           "region": { "bounds": ["trapezius", "latissimus-dorsi", "medial-border-of-scapula"], "contents": ["rhomboid-major"], "contentsLabel": "床の筋", "outline": [[-0.0753,1.2215,-0.021],[-0.0698,1.2061,-0.019],[-0.0841,1.2136,-0.004]], "view": { "target": [-0.076,1.214,-0.015], "from": [-0.3,0.15,-1], "size": 0.045 } }
         },
         {
@@ -27,7 +27,7 @@
           "level": 2,
           "kanji": "腰の三角",
           "etym": "lumbar「腰の」（ラテン語 lumbus）＋ triangle「三角」。プチの三角ともいう",
-          "note": "腰の外側で、広背筋の前縁・外腹斜筋の後縁・腸骨稜で囲まれた三角。床は内腹斜筋で、腹壁の弱い所なのでまれにヘルニアが起こる（腰ヘルニア）。",
+          "note": "腰（lower back）の外側（lateral）で、広背筋（latissimus dorsi）の前縁（anterior border）・外腹斜筋（external oblique）の後縁（posterior border）・腸骨稜（iliac crest）で囲まれた三角。床は内腹斜筋（internal oblique）で、腹壁（abdominal wall）の弱い所なのでまれにヘルニア（hernia）が起こる（腰ヘルニア（lumbar hernia））。",
           "region": { "bounds": ["latissimus-dorsi", "external-oblique", "iliac-crest"], "contents": ["internal-oblique"], "contentsLabel": "床の筋", "outline": [[-0.104,1.011,0.066],[-0.0914,0.9552,0.049],[-0.1217,0.9539,0.0741]], "view": { "target": [-0.105,0.98,0.06], "from": [-0.6,0.1,-0.8], "size": 0.06 } }
         },
         {
@@ -35,7 +35,7 @@
           "level": 2,
           "kanji": "尿道と生殖器の通る三角",
           "etym": "urogenital「尿と生殖の」＋ triangle「三角」",
-          "note": "会陰（骨盤の出口をふさぐ、恥骨結合・左右の坐骨結節・尾骨で囲まれたひし形の部分）を、左右の坐骨結節を結ぶ線で前後に分けた前の三角。恥骨結合と左右の恥骨下枝・坐骨枝で囲まれる。会陰膜（尿生殖隔膜）が張り、男性では尿道、女性では尿道と腟が通る。その下の浅会陰隙に陰茎根（陰茎脚・尿道球）と坐骨海綿体筋・球海綿体筋がある。",
+          "note": "会陰（perineum）（骨盤（pelvis）の出口をふさぐ、恥骨結合（pubic symphysis）・左右の坐骨結節（ischial tuberosity）・尾骨（coccyx）で囲まれたひし形の部分）を、左右の坐骨結節を結ぶ線で前後に分けた前の三角。恥骨結合と左右の恥骨下枝（inferior pubic ramus）・坐骨枝（ramus of ischium）で囲まれる。会陰膜（perineal membrane）（尿生殖隔膜（urogenital diaphragm））が張り、男性では尿道（urethra）、女性では尿道と腟（vagina）が通る。その下の浅会陰隙（superficial perineal pouch）に陰茎根（root of penis）（陰茎脚（crus of penis）・尿道球（bulb of penis））と坐骨海綿体筋（ischiocavernosus）・球海綿体筋（bulbospongiosus）がある。",
           "region": { "bounds": ["pubic-symphysis", "inferior-pubic-ramus", "ramus-of-ischium", "ischial-tuberosity"], "contents": ["corpus-cavernosum", "corpus-spongiosum", "urethra"], "boundsLabel": "境界の骨", "outline": [[0,0.787,0.128],[-0.03,0.768,0.095],[-0.0525,0.757,0.045],[0,0.754,0.045],[0.0525,0.757,0.045],[0.03,0.768,0.095]], "view": { "target": [0,0.765,0.07], "from": [0,-1,0.25], "size": 0.07 }, "prompt": "会陰のうち、左右の坐骨結節を結ぶ線より前の三角は？" }
         },
         {
@@ -43,7 +43,7 @@
           "level": 2,
           "kanji": "肛門のある三角",
           "etym": "anal「肛門の」（ラテン語 anus）＋ triangle「三角」",
-          "note": "会陰を左右の坐骨結節を結ぶ線で分けた後ろの三角。左右の坐骨結節・仙結節靱帯と尾骨で囲まれ、中央を肛門管が通って肛門が開き、まわりを外肛門括約筋が囲む。肛門管の両わきは脂肪で満ちた坐骨肛門窩（坐骨直腸窩）で、その外側の壁の陰部神経管（アルコック管）を陰部神経と内陰部動静脈が通る。",
+          "note": "会陰（perineum）を左右の坐骨結節（ischial tuberosity）を結ぶ線で分けた後ろの三角。左右の坐骨結節・仙結節靱帯（sacrotuberous ligament）と尾骨（coccyx）で囲まれ、中央を肛門管（anal canal）が通って肛門（anus）が開き、まわりを外肛門括約筋（external anal sphincter）が囲む。肛門管の両わきは脂肪（fat）で満ちた坐骨肛門窩（ischio-anal fossa）（坐骨直腸窩（ischiorectal fossa））で、その外側（lateral）の壁の陰部神経管（pudendal canal）（アルコック管（Alcock canal））を陰部神経（pudendal nerve）と内陰部動静脈（internal pudendal vessels）が通る。",
           "region": { "bounds": ["ischial-tuberosity", "sacrotuberous-ligament", "coccyx"], "contents": ["external-anal-sphincter", "rectum", "levator-ani"], "boundsLabel": "境界", "outline": [[-0.0525,0.757,0.045],[0,0.754,0.045],[0.0525,0.757,0.045],[0.025,0.772,0.025],[0,0.784,0.012],[-0.025,0.772,0.025]], "view": { "target": [0,0.765,0.04], "from": [0,-1,-0.15], "size": 0.06 }, "prompt": "会陰のうち、肛門のある後ろの三角は？" }
         }
       ]
@@ -53,8 +53,8 @@
       "title": "縦隔",
       "group": "体幹と頭頚部",
       "intro": [
-        "縦隔は左右の肺（胸膜腔）の間の部分で、心臓・大血管・気管・食道・胸腺などが入る。胸骨角と第4・第5胸椎の間を結ぶ面で上縦隔と下縦隔に分け、下縦隔はさらに心膜（心臓）の前・心膜・心膜の後ろで前縦隔・中縦隔・後縦隔に分ける。",
-        "3Dでは右から見て、体の正中の面に区分の線を引く。それぞれの区分に入るものをもとの色で示す（胸管はこのアプリの3Dに無い）。"
+        "縦隔（mediastinum）は左右の肺（lung）（胸膜腔（pleural cavity））の間の部分で、心臓（heart）・大血管（great vessels）・気管（trachea）・食道（esophagus）・胸腺（thymus）などが入る。胸骨角（sternal angle）と第4・第5胸椎（fourth and fifth thoracic vertebrae）の間を結ぶ面で上縦隔（superior mediastinum）と下縦隔（inferior mediastinum）に分け、下縦隔はさらに心膜（pericardium）（心臓）の前・心膜・心膜の後ろで前縦隔（anterior mediastinum）・中縦隔（middle mediastinum）・後縦隔（posterior mediastinum）に分ける。",
+        "3Dでは右から見て、体の正中（median）の面に区分の線を引く。それぞれの区分に入るものをもとの色で示す（胸管（thoracic duct）はこのアプリの3Dに無い）。"
       ],
       "terms": [
         {
@@ -62,7 +62,7 @@
           "level": 1,
           "kanji": "縦隔の上の部分",
           "etym": "superior「上の」＋ mediastinum ← ラテン語「真ん中にあるもの」",
-          "note": "胸郭の上の口から、胸骨角と第4・5胸椎の間を結ぶ面までの部分。胸腺、大動脈弓とその3本の枝、腕頭静脈と上大静脈の上の部分、気管、食道、迷走神経・横隔神経・左の反回神経、胸管が入る。",
+          "note": "胸郭（thoracic cage）の上の口から、胸骨角（sternal angle）と第4・5胸椎（fourth and fifth thoracic vertebrae）の間を結ぶ面までの部分。胸腺（thymus）、大動脈弓（arch of aorta）とその3本の枝（branch）、腕頭静脈（brachiocephalic vein）と上大静脈（superior vena cava）の上の部分、気管（trachea）、食道（esophagus）、迷走神経（vagus nerve）・横隔神経（phrenic nerve）・左の反回神経（recurrent laryngeal nerve）、胸管（thoracic duct）が入る。",
           "region": { "bounds": ["manubrium", "thoracic-vertebrae", "sternal-angle"], "contents": ["thymus", "aortic-arch", "brachiocephalic-trunk", "brachiocephalic-vein", "superior-vena-cava", "trachea", "esophagus", "vagus-nerve"], "boundsLabel": "境界の骨", "outline": [[0,1.326,0.136],[0,1.287,0.157],[0,1.287,0.067],[0,1.338,0.082]], "view": { "target": [0,1.24,0.12], "from": [-1,0.05,0.1], "size": 0.1 }, "prompt": "胸骨角の面より上の、縦隔の部分は？" }
         },
         {
@@ -70,7 +70,7 @@
           "level": 2,
           "kanji": "下縦隔のうち心膜の前の部分",
           "etym": "anterior「前の」＋ mediastinum「縦隔」",
-          "note": "胸骨体と心膜の間の狭い部分。疎性結合組織と、心膜前リンパ節・胸骨傍リンパ節、子どもでは大きな胸腺の下の部分が入る。胸腺腫などの腫瘍ができる場所として大切。",
+          "note": "胸骨体（body of sternum）と心膜（pericardium）の間の狭い部分。疎性結合組織（loose connective tissue）と、心膜前リンパ節（prepericardial nodes）・胸骨傍リンパ節（parasternal nodes）、子どもでは大きな胸腺（thymus）の下の部分が入る。胸腺腫（thymoma）などの腫瘍（tumor）ができる場所として大切。",
           "region": { "bounds": ["body-of-sternum", "heart"], "contents": ["prepericardial-nodes", "thymus"], "boundsLabel": "前と後ろの境界", "outline": [[0,1.287,0.157],[0,1.24,0.178],[0,1.185,0.196],[0,1.183,0.165],[0,1.22,0.176],[0,1.26,0.163],[0,1.285,0.13]], "view": { "target": [0,1.24,0.12], "from": [-1,0.05,0.1], "size": 0.1 }, "prompt": "胸骨と心臓の間の、縦隔の部分は？" }
         },
         {
@@ -78,7 +78,7 @@
           "level": 1,
           "kanji": "下縦隔のうち心膜とその中",
           "etym": "middle「中の」＋ mediastinum「縦隔」",
-          "note": "心膜に包まれた部分。心臓、上行大動脈、肺動脈幹、上大静脈の下の部分、肺静脈、主気管支の根もと、横隔神経が入る。",
+          "note": "心膜（pericardium）に包まれた部分。心臓（heart）、上行大動脈（ascending aorta）、肺動脈幹（pulmonary trunk）、上大静脈（superior vena cava）の下の部分、肺静脈（pulmonary veins）、主気管支（main bronchus）の根もと、横隔神経（phrenic nerve）が入る。",
           "region": { "bounds": ["sternal-angle", "diaphragm"], "contents": ["heart", "ascending-aorta", "pulmonary-trunk", "pulmonary-veins", "main-bronchus"], "boundsLabel": "上と下の境界", "outline": [[0,1.285,0.13],[0,1.26,0.163],[0,1.22,0.176],[0,1.18,0.156],[0,1.18,0.103],[0,1.22,0.075],[0,1.26,0.0765],[0,1.285,0.1]], "view": { "target": [0,1.24,0.12], "from": [-1,0.05,0.1], "size": 0.1 }, "prompt": "心臓とそれを包む心膜の部分は？" }
         },
         {
@@ -86,7 +86,7 @@
           "level": 1,
           "kanji": "下縦隔のうち心膜の後ろの部分",
           "etym": "posterior「後ろの」＋ mediastinum「縦隔」",
-          "note": "心膜と第5〜12胸椎の間で、横隔膜より上の部分。胸大動脈、食道と迷走神経、奇静脈と半奇静脈、胸管、交感神経幹、食道傍リンパ節が縦に走る。",
+          "note": "心膜（pericardium）と第5〜12胸椎（fifth to twelfth thoracic vertebrae）の間で、横隔膜（diaphragm）より上の部分。胸大動脈（thoracic aorta）、食道（esophagus）と迷走神経（vagus nerve）、奇静脈（azygos vein）と半奇静脈（hemiazygos vein）、胸管（thoracic duct）、交感神経幹（sympathetic trunk）、食道傍リンパ節（juxta-esophageal nodes）が縦に走る。",
           "region": { "bounds": ["thoracic-vertebrae", "diaphragm"], "contents": ["thoracic-aorta", "esophagus", "azygos-vein", "hemiazygos-vein", "sympathetic-trunk", "juxta-esophageal-nodes"], "boundsLabel": "後ろと下の境界", "outline": [[0,1.285,0.1],[0,1.26,0.0765],[0,1.22,0.075],[0,1.18,0.103],[0,1.12,0.104],[0,1.1,0.0976],[0,1.14,0.0835],[0,1.2,0.0693],[0,1.24,0.0661],[0,1.287,0.067]], "view": { "target": [0,1.24,0.12], "from": [-1,0.05,0.1], "size": 0.1 }, "prompt": "心臓の後ろ、胸椎の前の縦隔の部分は？" }
         }
       ]
@@ -96,7 +96,7 @@
       "title": "骨がつくる管と線",
       "group": "体幹と頭頚部",
       "intro": [
-        "骨が組み合わさってつくる管と線。脊柱管は椎骨の椎孔が連なった管、分界線は骨盤を上下に分ける線、ヤコビー線と胸骨下角は体の表面から骨の高さを知る目安（ヤコビー線＝第4腰椎、胸骨下角＝第9〜第10胸椎）。"
+        "骨（bone）が組み合わさってつくる管と線。脊柱管（vertebral canal）は椎骨（vertebra）の椎孔（vertebral foramen）が連なった管、分界線（linea terminalis）は骨盤（pelvis）を上下に分ける線、ヤコビー線（supracristal line）と胸骨下角（infrasternal angle）は体の表面から骨の高さを知る目安（ヤコビー線＝第4腰椎（fourth lumbar vertebra）、胸骨下角＝第9〜第10胸椎（ninth to tenth thoracic vertebrae））。"
       ],
       "terms": [
         {
@@ -104,7 +104,7 @@
           "level": 1,
           "kanji": "脊柱の中を通る管",
           "etym": "vertebral ← ラテン語 vertebra「関節、回るもの」＋ canal「管」",
-          "note": "椎骨の椎孔が上下に連なってできる管。上は大後頭孔で頭蓋腔に、下は仙骨管を経て仙骨裂孔に開く。脊髄と、それを包む髄膜（硬膜・クモ膜・軟膜）が入る。脊髄は第1〜第2腰椎の高さで終わり、その下は馬尾になる。前の壁は椎体と椎間円板、後ろの壁は椎弓と黄色靱帯。3Dでは正中で切って内側から見る。",
+          "note": "椎骨（vertebra）の椎孔（vertebral foramen）が上下に連なってできる管。上は大後頭孔（foramen magnum）で頭蓋腔（cranial cavity）に、下は仙骨管（sacral canal）を経て仙骨裂孔（sacral hiatus）に開く。脊髄（spinal cord）と、それを包む髄膜（meninges）（硬膜（dura mater）・クモ膜（arachnoid mater）・軟膜（pia mater））が入る。脊髄は第1〜第2腰椎（first to second lumbar vertebrae）の高さで終わり、その下は馬尾（cauda equina）になる。前の壁は椎体（vertebral body）と椎間円板（intervertebral disc）、後ろの壁は椎弓（vertebral arch）と黄色靱帯（ligamentum flavum）。3Dでは正中（median）で切って内側（medial）から見る。",
           "passes": "脊髄（と髄膜）・馬尾",
           "region": {"bounds": ["cervical-vertebrae", "thoracic-vertebrae", "lumbar-vertebrae", "sacrum"], "contents": ["spinal-cord", "cauda-equina"], "boundsLabel": "囲む骨", "contentsLabel": "中に入るもの", "section": {"axis": "x", "at": 0, "keep": -1}, "view": {"target": [0, 1.15, 0.04], "from": [1, 0.05, 0.15], "size": 0.4}, "prompt": "椎骨が上下に連なってつくる、脊髄の入る管は？"}
         },
@@ -113,7 +113,7 @@
           "level": 1,
           "kanji": "大骨盤と小骨盤を分ける境の線",
           "etym": "linea「線」＋ terminalis ← ラテン語 terminus「境」",
-          "note": "仙骨の岬角から、仙骨の上の縁（外側部）・腸骨の弓状線・恥骨櫛を経て、恥骨結合の上の縁に至る、骨盤の内面をぐるりと一周する線。これより上が大骨盤（腹部の内臓が入る）、下が小骨盤（膀胱・直腸・生殖器が入る）。分界線で囲まれる口が骨盤上口で、男性はハート形、女性は横に長い楕円形のことが多い。3Dでは右半分を示す。",
+          "note": "仙骨（sacrum）の岬角（promontory）から、仙骨の上の縁（外側部（lateral part））・腸骨（ilium）の弓状線（arcuate line）・恥骨櫛（pecten pubis）を経て、恥骨結合（pubic symphysis）の上の縁に至る、骨盤（pelvis）の内面（internal surface）をぐるりと一周する線。これより上が大骨盤（greater pelvis）（腹部（abdomen）の内臓（viscera）が入る）、下が小骨盤（lesser pelvis）（膀胱（urinary bladder）・直腸（rectum）・生殖器（genital organs）が入る）。分界線で囲まれる口が骨盤上口（pelvic inlet）で、男性はハート形、女性は横に長い楕円形のことが多い。3Dでは右半分を示す。",
           "region": {"bounds": ["promontory", "arcuate-line-of-ilium", "pecten-pubis", "symphysial-surface"], "contents": [], "boundsLabel": "たどる骨の部位", "outline": [[0, 0.8976, 0.0802],[-0.0201, 0.9003, 0.0751],[-0.042, 0.884, 0.062],[-0.0615, 0.8502, 0.0508],[-0.0581, 0.8311, 0.0701],[-0.0527, 0.8168, 0.0861],[-0.045, 0.812, 0.103],[-0.031, 0.8081, 0.1211],[-0.0202, 0.8062, 0.1272],[0, 0.8063, 0.1286]], "open": true, "view": {"target": [-0.02, 0.85, 0.08], "from": [0, 0.8, 0.6], "size": 0.1}, "prompt": "骨盤を大骨盤と小骨盤に分けるオレンジの線は？"}
         },
         {
@@ -121,7 +121,7 @@
           "level": 1,
           "kanji": "腸骨稜の最も高い所を結ぶ線（Jacoby の名から）",
           "etym": "supracristal ← supra-「上の」＋ crista「稜（腸骨稜）」",
-          "note": "背中で、左右の腸骨稜の最も高い所を結ぶ線。ほぼ第4腰椎の棘突起（または第4・第5腰椎の間）の高さを通る。脊髄は第1〜第2腰椎の高さで終わるので、この線を目安に第3・第4腰椎の間か第4・第5腰椎の間に針を刺せば、脊髄を傷つけずに脳脊髄液を取れる（腰椎穿刺）。",
+          "note": "背中（back）で、左右の腸骨稜（iliac crest）の最も高い所を結ぶ線。ほぼ第4腰椎（fourth lumbar vertebra）の棘突起（spinous process）（または第4・第5腰椎（fourth and fifth lumbar vertebrae）の間）の高さを通る。脊髄（spinal cord）は第1〜第2腰椎（first to second lumbar vertebrae）の高さで終わるので、この線を目安に第3・第4腰椎（third and fourth lumbar vertebrae）の間か第4・第5腰椎の間に針を刺せば、脊髄を傷つけずに脳脊髄液（cerebrospinal fluid）を取れる（腰椎穿刺（lumbar puncture））。",
           "region": {"bounds": ["iliac-crest", "fourth-lumbar-vertebra"], "contents": [], "boundsLabel": "結ぶ骨と通る高さ", "outline": [[-0.1013, 0.9579, 0.0587],[-0.05, 0.957, 0.035],[0, 0.9555, 0.02],[0.05, 0.957, 0.035],[0.1013, 0.9579, 0.0587]], "open": true, "view": {"target": [0, 0.95, 0.04], "from": [0, 0.15, -1], "size": 0.13}, "prompt": "左右の腸骨稜の最も高い所を結ぶオレンジの線は？"}
         },
         {
@@ -129,7 +129,7 @@
           "level": 1,
           "kanji": "胸骨の下の角",
           "etym": "infra-「下の」＋ sternal「胸骨の」＋ angle「角」",
-          "note": "左右の肋骨弓（第7〜第10肋軟骨の下の縁がつながった弓）が、胸骨体の下の端（剣状突起の付け根）で合わさってつくる角。約70〜80°で、頂点はほぼ第9〜第10胸椎の高さ（剣胸結合は第9胸椎）。やせ型の人は小さく、がっしりした人は大きい。3Dでは肋骨弓の下の縁を線でなぞって示す。",
+          "note": "左右の肋骨弓（costal arch）（第7〜第10肋軟骨（seventh to tenth costal cartilages）の下の縁がつながった弓）が、胸骨体（body of sternum）の下の端（剣状突起（xiphoid process）の付け根）で合わさってつくる角。約70〜80°で、頂点はほぼ第9〜第10胸椎（ninth to tenth thoracic vertebrae）の高さ（剣胸結合（xiphisternal joint）は第9胸椎（ninth thoracic vertebra））。やせ型の人は小さく、がっしりした人は大きい。3Dでは肋骨弓の下の縁を線でなぞって示す。",
           "region": {"bounds": ["xiphoid-process", "costal-arch"], "contents": [], "boundsLabel": "つくる骨と軟骨", "outline": [[0.1207, 1.0353, 0.1177],[0.11, 1.07, 0.16],[0.093, 1.1026, 0.1881],[0.06, 1.135, 0.198],[0.03, 1.16, 0.203],[0, 1.18, 0.206],[-0.03, 1.16, 0.203],[-0.06, 1.135, 0.198],[-0.093, 1.1026, 0.1881],[-0.11, 1.07, 0.16],[-0.1207, 1.0353, 0.1177]], "open": true, "view": {"target": [0, 1.12, 0.17], "from": [0, 0.1, 1], "size": 0.12}, "prompt": "左右の肋骨弓がつくるオレンジの角は？"}
         }
       ]
@@ -139,8 +139,8 @@
       "title": "胸郭と骨盤の口・腔と角",
       "group": "体幹と頭頚部",
       "intro": [
-        "胸郭と骨盤は、骨が輪になって口を囲む。胸郭上口（第1胸椎・第1肋骨・胸骨柄）は狭く、胸郭下口（第12胸椎・第11と第12肋骨・肋骨弓・剣状突起）は広い。骨盤は分界線で上の大骨盤と下の小骨盤に分かれ、小骨盤の入口が骨盤上口、出口が骨盤下口。",
-        "骨盤は全身の骨格で性差が最も大きい: 女性では骨盤上口が横に長い楕円形、骨盤腔が広く円筒形に近く、恥骨下角が大きい（約80°、U字形）。男性では骨盤上口がハート形、骨盤腔が狭く漏斗形に近く、恥骨下角が小さい（約60°、V字形）。"
+        "胸郭（thoracic cage）と骨盤（pelvis）は、骨（bone）が輪になって口を囲む。胸郭上口（superior thoracic aperture）（第1胸椎（first thoracic vertebra）・第1肋骨（first rib）・胸骨柄（manubrium of sternum））は狭く、胸郭下口（inferior thoracic aperture）（第12胸椎（twelfth thoracic vertebra）・第11と第12肋骨（twelfth rib）・肋骨弓（costal arch）・剣状突起（xiphoid process））は広い。骨盤は分界線（linea terminalis）で上の大骨盤（greater pelvis）と下の小骨盤（lesser pelvis）に分かれ、小骨盤の入口が骨盤上口（pelvic inlet）、出口が骨盤下口（pelvic outlet）。",
+        "骨盤は全身（whole body）の骨格（skeleton）で性差が最も大きい: 女性では骨盤上口が横に長い楕円形、骨盤腔（pelvic cavity）が広く円筒形に近く、恥骨下角（subpubic angle）が大きい（約80°、U字形）。男性では骨盤上口がハート形、骨盤腔が狭く漏斗形に近く、恥骨下角が小さい（約60°、V字形）。"
       ],
       "terms": [
         {
@@ -148,7 +148,7 @@
           "level": 1,
           "kanji": "胸郭の上の口",
           "etym": "aperture ← ラテン語 apertura「開いた所」",
-          "note": "胸郭の上の狭い口。第1胸椎の椎体・左右の第1肋骨（と肋軟骨）・胸骨柄の上の縁で囲まれ、前が後ろより低く傾く。気管・食道・総頚動脈・鎖骨下動静脈・腕頭静脈・迷走神経・横隔神経が通り、肺尖がここから頚の根もとへ出る。3Dでは口のふちを線で示す。",
+          "note": "胸郭（thoracic cage）の上の狭い口。第1胸椎（first thoracic vertebra）の椎体（vertebral body）・左右の第1肋骨（first rib）（と肋軟骨（costal cartilages））・胸骨柄（manubrium of sternum）の上の縁で囲まれ、前が後ろより低く傾く。気管（trachea）・食道（esophagus）・総頚動脈（common carotid artery）・鎖骨下動静脈（subclavian vessels）・腕頭静脈（brachiocephalic vein）・迷走神経（vagus nerve）・横隔神経（phrenic nerve）が通り、肺尖（apex of lung）がここから頚（neck）の根もとへ出る。3Dでは口のふちを線で示す。",
           "region": {"bounds": ["first-thoracic-vertebra", "first-rib", "manubrium"], "contents": [], "boundsLabel": "囲む骨", "outline": [[0, 1.3177, 0.1354],[-0.0109, 1.3167, 0.1319],[-0.0409, 1.3183, 0.1232],[-0.0468, 1.328, 0.1111],[-0.0493, 1.3389, 0.0981],[-0.0352, 1.355, 0.0786],[-0.0229, 1.3594, 0.0757],[-0.0118, 1.3618, 0.0816],[0, 1.36, 0.0869],[0.0118, 1.3618, 0.0816],[0.0229, 1.3594, 0.0757],[0.0352, 1.355, 0.0786],[0.0493, 1.3389, 0.0981],[0.0468, 1.328, 0.1111],[0.0409, 1.3183, 0.1232],[0.0109, 1.3167, 0.1319]], "view": {"target": [0, 1.34, 0.105], "from": [-0.2, 1, 0.5], "size": 0.12}, "prompt": "第1胸椎・第1肋骨・胸骨柄が囲むオレンジの口は？"}
         },
         {
@@ -156,7 +156,7 @@
           "level": 1,
           "kanji": "胸郭の下の口",
           "etym": "aperture ← ラテン語 apertura「開いた所」",
-          "note": "胸郭の下の広い口。第12胸椎・第12肋骨・第11肋骨の先・肋骨弓（第7〜第10肋軟骨）・剣状突起で囲まれる。横隔膜でふさがれ、大動脈・食道・下大静脈は横隔膜の孔を通る。3Dでは口のふちを線で示す。",
+          "note": "胸郭（thoracic cage）の下の広い口。第12胸椎（twelfth thoracic vertebra）・第12肋骨（twelfth rib）・第11肋骨（eleventh rib）の先・肋骨弓（costal arch）（第7〜第10肋軟骨（seventh to tenth costal cartilages））・剣状突起（xiphoid process）で囲まれる。横隔膜（diaphragm）でふさがれ、大動脈（aorta）・食道（esophagus）・下大静脈（inferior vena cava）は横隔膜の孔を通る。3Dでは口のふちを線で示す。",
           "region": {"bounds": ["twelfth-thoracic-vertebra", "twelfth-rib", "eleventh-rib", "costal-arch", "xiphoid-process"], "contents": [], "boundsLabel": "囲む骨と軟骨", "outline": [[0, 1.164, 0.2059],[-0.03, 1.16, 0.203],[-0.06, 1.135, 0.198],[-0.093, 1.1026, 0.1881],[-0.11, 1.07, 0.16],[-0.1207, 1.0353, 0.1177],[-0.106, 1.0081, 0.0911],[-0.0842, 1.0113, 0.059],[-0.0543, 1.0501, 0.0312],[-0.0342, 1.0659, 0.0454],[-0.018, 1.06, 0.088],[0, 1.056, 0.099],[0.018, 1.06, 0.088],[0.0342, 1.0659, 0.0454],[0.0543, 1.0501, 0.0312],[0.0842, 1.0113, 0.059],[0.106, 1.0081, 0.0911],[0.1207, 1.0353, 0.1177],[0.11, 1.07, 0.16],[0.093, 1.1026, 0.1881],[0.06, 1.135, 0.198],[0.03, 1.16, 0.203]], "view": {"target": [0, 1.09, 0.12], "from": [-0.3, -0.6, 1], "size": 0.22}, "prompt": "第12胸椎・肋骨弓・剣状突起などが囲むオレンジの口は？"}
         },
         {
@@ -164,7 +164,7 @@
           "level": 1,
           "kanji": "骨盤の上の口",
           "etym": "pelvic ← ラテン語 pelvis「たらい」",
-          "note": "小骨盤（骨盤腔）の入口で、分界線（岬角・弓状線・恥骨櫛・恥骨結合の上の縁）がそのふち。女性では横に長い楕円形、男性ではハート形が多い。前後の径（岬角から恥骨結合の後ろまでの真結合線。日本人女性で約11cm）が出産で最も大切。立った姿勢では、骨盤上口は水平面に対して50〜60°前へ傾く。",
+          "note": "小骨盤（lesser pelvis）（骨盤腔（pelvic cavity））の入口で、分界線（linea terminalis）（岬角（promontory）・弓状線（arcuate line）・恥骨櫛（pecten pubis）・恥骨結合（pubic symphysis）の上の縁）がそのふち。女性では横に長い楕円形、男性ではハート形が多い。前後の径（岬角から恥骨結合の後ろまでの真結合線（true conjugate）。日本人女性で約11cm）が出産で最も大切。立った姿勢では、骨盤上口は水平面（horizontal plane）に対して50〜60°前へ傾く。",
           "region": {"bounds": ["promontory", "arcuate-line-of-ilium", "pecten-pubis", "symphysial-surface"], "contents": [], "boundsLabel": "ふちをつくる骨の部位", "outline": [[0, 0.8976, 0.0802],[-0.0201, 0.9003, 0.0751],[-0.042, 0.884, 0.062],[-0.0615, 0.8502, 0.0508],[-0.0581, 0.8311, 0.0701],[-0.0527, 0.8168, 0.0861],[-0.045, 0.812, 0.103],[-0.031, 0.8081, 0.1211],[-0.0202, 0.8062, 0.1272],[0, 0.8063, 0.1286],[0.0202, 0.8062, 0.1272],[0.031, 0.8081, 0.1211],[0.045, 0.812, 0.103],[0.0527, 0.8168, 0.0861],[0.0581, 0.8311, 0.0701],[0.0615, 0.8502, 0.0508],[0.042, 0.884, 0.062],[0.0201, 0.9003, 0.0751]], "view": {"target": [0, 0.85, 0.08], "from": [0, 1, 0.7], "size": 0.13}, "prompt": "分界線で囲まれる、小骨盤の入口は？"}
         },
         {
@@ -172,7 +172,7 @@
           "level": 2,
           "kanji": "骨盤の下の口",
           "etym": "pelvic ← ラテン語 pelvis「たらい」",
-          "note": "小骨盤の出口。恥骨結合の下の縁・恥骨弓（恥骨下枝と坐骨枝）・坐骨結節・仙結節靱帯・尾骨の先で囲まれる、でこぼこのひし形。前後に長いので、出産では胎児の頭が向きを約90°変えて出てくる。骨盤底の筋（骨盤隔膜）でふさがれる。3Dでは靱帯の部分も線でつないで示す。",
+          "note": "小骨盤（lesser pelvis）の出口。恥骨結合（pubic symphysis）の下の縁・恥骨弓（pubic arch）（恥骨下枝（inferior pubic ramus）と坐骨枝（ramus of ischium））・坐骨結節（ischial tuberosity）・仙結節靱帯（sacrotuberous ligament）・尾骨（coccyx）の先で囲まれる、でこぼこのひし形。前後に長いので、出産では胎児（fetus）の頭が向きを約90°変えて出てくる。骨盤底（pelvic floor）の筋（muscle）（骨盤隔膜（pelvic diaphragm））でふさがれる。3Dでは靱帯（ligament）の部分も線でつないで示す。",
           "region": {"bounds": ["inferior-pubic-ramus", "ramus-of-ischium", "ischial-tuberosity", "coccyx"], "contents": [], "boundsLabel": "囲む骨の部位", "outline": [[0, 0.7865, 0.1102],[-0.0157, 0.7809, 0.1085],[-0.0185, 0.7714, 0.0957],[-0.0274, 0.7642, 0.0797],[-0.0343, 0.7618, 0.0669],[-0.048, 0.756, 0.045],[-0.032, 0.766, 0.03],[-0.016, 0.776, 0.022],[0, 0.784, 0.018],[0.016, 0.776, 0.022],[0.032, 0.766, 0.03],[0.048, 0.756, 0.045],[0.0343, 0.7618, 0.0669],[0.0274, 0.7642, 0.0797],[0.0185, 0.7714, 0.0957],[0.0157, 0.7809, 0.1085]], "view": {"target": [0, 0.77, 0.065], "from": [0, -1, 0.4], "size": 0.13}, "prompt": "恥骨弓・坐骨結節・尾骨の先が囲む、小骨盤の出口は？"}
         },
         {
@@ -180,7 +180,7 @@
           "level": 1,
           "kanji": "恥骨の下の角",
           "etym": "sub-「下の」＋ pubic「恥骨の」＋ angle「角」",
-          "note": "左右の恥骨弓（恥骨下枝と坐骨枝の下の縁）が、恥骨結合のすぐ下で合わさってつくる角。男性で約60°（V字形）、女性で約80°（U字形）と性差が大きく、骨盤の男女を見分ける目安になる（胸骨下角と取り違えない）。3Dでは恥骨弓の下の縁を線でなぞって示す。",
+          "note": "左右の恥骨弓（pubic arch）（恥骨下枝（inferior pubic ramus）と坐骨枝（ramus of ischium）の下の縁）が、恥骨結合（pubic symphysis）のすぐ下で合わさってつくる角。男性で約60°（V字形）、女性で約80°（U字形）と性差が大きく、骨盤（pelvis）の男女を見分ける目安になる（胸骨下角（infrasternal angle）と取り違えない）。3Dでは恥骨弓の下の縁を線でなぞって示す。",
           "region": {"bounds": ["inferior-pubic-ramus", "ramus-of-ischium"], "contents": [], "boundsLabel": "つくる骨の部位", "outline": [[-0.0343, 0.7618, 0.0669],[-0.0274, 0.7642, 0.0797],[-0.0185, 0.7714, 0.0957],[-0.0108, 0.7716, 0.0997],[0, 0.7865, 0.1102],[0.0108, 0.7716, 0.0997],[0.0185, 0.7714, 0.0957],[0.0274, 0.7642, 0.0797],[0.0343, 0.7618, 0.0669]], "open": true, "view": {"target": [0, 0.775, 0.09], "from": [0, -0.5, 1], "size": 0.09}, "prompt": "左右の恥骨弓がつくるオレンジの角は？"}
         },
         {
@@ -188,7 +188,7 @@
           "level": 1,
           "kanji": "大きい骨盤",
           "etym": "pelvis ← ラテン語「たらい」＋ major「大きい」",
-          "note": "骨盤のうち分界線より上の、左右の腸骨翼が広がる部分。前の壁は骨が無く腹壁。生きた体では腹腔の下部で、腹部の内臓（回腸・盲腸・S状結腸など）が入る。",
+          "note": "骨盤（pelvis）のうち分界線（linea terminalis）より上の、左右の腸骨翼（ala of ilium）が広がる部分。前の壁は骨（bone）が無く腹壁（abdominal wall）。生きた体では腹腔（abdominal cavity）の下部で、腹部（abdomen）の内臓（viscera）（回腸（ileum）・盲腸（cecum）・S状結腸（sigmoid colon）など）が入る。",
           "region": {"bounds": ["ala-of-ilium", "iliac-fossa"], "contents": [], "boundsLabel": "囲む骨の部位", "outline": [[0, 0.8976, 0.0802],[-0.0201, 0.9003, 0.0751],[-0.042, 0.884, 0.062],[-0.0615, 0.8502, 0.0508],[-0.0581, 0.8311, 0.0701],[-0.0527, 0.8168, 0.0861],[-0.045, 0.812, 0.103],[-0.031, 0.8081, 0.1211],[-0.0202, 0.8062, 0.1272],[0, 0.8063, 0.1286],[0.0202, 0.8062, 0.1272],[0.031, 0.8081, 0.1211],[0.045, 0.812, 0.103],[0.0527, 0.8168, 0.0861],[0.0581, 0.8311, 0.0701],[0.0615, 0.8502, 0.0508],[0.042, 0.884, 0.062],[0.0201, 0.9003, 0.0751]], "view": {"target": [0, 0.88, 0.07], "from": [0, 0.6, 1], "size": 0.16}, "prompt": "分界線より上の、腸骨翼に囲まれた部分は？"}
         },
         {
@@ -196,7 +196,7 @@
           "level": 1,
           "kanji": "小さい骨盤",
           "etym": "pelvis ← ラテン語「たらい」＋ minor「小さい」",
-          "note": "骨盤のうち分界線より下の部分で、本来の骨盤。囲まれた空間が骨盤腔で、膀胱・直腸・子宮などの骨盤内臓が入る。上の口が骨盤上口、下の口が骨盤下口。出産で胎児が通る産道になるので、女性では広く円筒形に近く、男性では狭く漏斗形に近い。",
+          "note": "骨盤（pelvis）のうち分界線（linea terminalis）より下の部分で、本来の骨盤。囲まれた空間が骨盤腔（pelvic cavity）で、膀胱（urinary bladder）・直腸（rectum）・子宮（uterus）などの骨盤内臓（pelvic viscera）が入る。上の口が骨盤上口（pelvic inlet）、下の口が骨盤下口（pelvic outlet）。出産で胎児（fetus）が通る産道（birth canal）になるので、女性では広く円筒形に近く、男性では狭く漏斗形に近い。",
           "region": {"bounds": ["symphysial-surface", "ischial-spine", "obturator-foramen", "transverse-ridges-of-sacrum"], "contents": [], "boundsLabel": "囲む骨の部位", "outline": [[0, 0.8976, 0.0802],[-0.0201, 0.9003, 0.0751],[-0.042, 0.884, 0.062],[-0.0615, 0.8502, 0.0508],[-0.0581, 0.8311, 0.0701],[-0.0527, 0.8168, 0.0861],[-0.045, 0.812, 0.103],[-0.031, 0.8081, 0.1211],[-0.0202, 0.8062, 0.1272],[0, 0.8063, 0.1286],[0.0202, 0.8062, 0.1272],[0.031, 0.8081, 0.1211],[0.045, 0.812, 0.103],[0.0527, 0.8168, 0.0861],[0.0581, 0.8311, 0.0701],[0.0615, 0.8502, 0.0508],[0.042, 0.884, 0.062],[0.0201, 0.9003, 0.0751]], "view": {"target": [0, 0.82, 0.07], "from": [0, 0.6, 1], "size": 0.13}, "prompt": "分界線より下の、骨盤腔を囲む部分は？"}
         }
       ]
@@ -206,8 +206,8 @@
       "title": "頚部の三角",
       "group": "体幹と頭頚部",
       "intro": [
-        "頚の横の部分は、胸鎖乳突筋で前頚三角と後頚三角に分かれる。前頚三角は顎二腹筋と肩甲舌骨筋で、さらに顎下三角・オトガイ下三角・頚動脈三角・筋三角の4つに分かれる。",
-        "三角は、手術や診察のときに「どの膜の下に何があるか」を探す目印になる。頚動脈三角では総頚動脈の拍動をふれ、後頚三角では副神経を傷つけないよう気をつける。"
+        "頚（neck）の横の部分は、胸鎖乳突筋（sternocleidomastoid）で前頚三角（anterior triangle of neck）と後頚三角（posterior triangle of neck）に分かれる。前頚三角は顎二腹筋（digastric）と肩甲舌骨筋（omohyoid）で、さらに顎下三角（submandibular triangle）・オトガイ下三角（submental triangle）・頚動脈三角（carotid triangle）・筋三角（muscular triangle）の4つに分かれる。",
+        "三角は、手術や診察のときに「どの膜（membrane）の下に何があるか」を探す目印になる。頚動脈三角では総頚動脈（common carotid artery）の拍動（pulsation）をふれ、後頚三角では副神経（accessory nerve）を傷つけないよう気をつける。"
       ],
       "terms": [
         {
@@ -215,7 +215,7 @@
           "level": 1,
           "kanji": "頚の前の三角",
           "etym": "anterior「前の」＋ triangle「三角」＋ neck「頚」",
-          "note": "胸鎖乳突筋の前縁・下顎骨の下縁・頚の正中線で囲まれた三角。頂点は胸骨の頚切痕。中に舌骨の上下の筋、甲状腺・喉頭・気管、総頚動脈と内頚静脈・迷走神経（頚動脈鞘）、顎下腺が入る。",
+          "note": "胸鎖乳突筋（sternocleidomastoid）の前縁（anterior border）・下顎骨（mandible）の下縁（inferior border）・頚（neck）の正中線（midline）で囲まれた三角。頂点は胸骨（sternum）の頚切痕（jugular notch）。中に舌骨（hyoid bone）の上下の筋（muscle）、甲状腺（thyroid gland）・喉頭（larynx）・気管（trachea）、総頚動脈（common carotid artery）と内頚静脈（internal jugular vein）・迷走神経（vagus nerve）（頚動脈鞘（carotid sheath））、顎下腺（submandibular gland）が入る。",
           "region": { "bounds": ["sternocleidomastoid", "body-of-mandible"], "contents": ["submandibular-gland", "thyroid-gland", "sternohyoid", "common-carotid-artery", "internal-jugular-vein", "vagus-nerve", "hypoglossal-nerve"], "outline": [[-0.002,1.423,0.168],[-0.028,1.433,0.137],[-0.0402,1.4504,0.1024],[-0.0416,1.4373,0.1032],[-0.0292,1.3981,0.1187],[-0.0222,1.3586,0.1336],[-0.0105,1.3036,0.1553],[0,1.326,0.137],[0,1.38,0.13],[0,1.4297,0.129]], "view": { "target": [-0.02,1.39,0.12], "from": [-0.6,-0.05,0.8], "size": 0.08 }, "prompt": "胸鎖乳突筋の前、下顎骨の下の三角は？" }
         },
         {
@@ -223,7 +223,7 @@
           "level": 1, "check": true,
           "kanji": "頚の後ろ（外側）の三角",
           "etym": "posterior「後ろの」＋ triangle「三角」＋ neck「頚」。解剖学用語では外側頚部",
-          "note": "胸鎖乳突筋の後縁・僧帽筋の前縁・鎖骨の中1/3で囲まれた三角。床は頭板状筋・肩甲挙筋・斜角筋。副神経が斜めに横切り（リンパ節の生検で傷つきやすい）、下の部分を腕神経叢・鎖骨下動脈・頚横動脈・肩甲舌骨筋の下腹が通る。外頚静脈が表面を下る。",
+          "note": "胸鎖乳突筋（sternocleidomastoid）の後縁（posterior border）・僧帽筋（trapezius）の前縁（anterior border）・鎖骨（clavicle）の中1/3で囲まれた三角。床は頭板状筋（splenius capitis）・肩甲挙筋（levator scapulae）・斜角筋（scalene muscles）。副神経（accessory nerve）が斜めに横切り（リンパ節（lymph node）の生検で傷つきやすい）、下の部分を腕神経叢（brachial plexus）・鎖骨下動脈（subclavian artery）・頚横動脈（transverse cervical artery）・肩甲舌骨筋（omohyoid）の下腹が通る。外頚静脈（external jugular vein）が表面を下る。",
           "region": { "bounds": ["sternocleidomastoid", "trapezius", "clavicle"], "contents": ["accessory-nerve", "brachial-plexus", "transverse-cervical-artery", "external-jugular-vein", "omohyoid", "levator-scapulae", "middle-scalene"], "contentsLabel": "通るものと床の筋", "outline": [[-0.0583,1.5,0.0415],[-0.0525,1.4629,0.0633],[-0.043,1.4224,0.0826],[-0.0383,1.3827,0.1007],[-0.0476,1.3365,0.1357],[-0.0723,1.3392,0.1165],[-0.0929,1.3494,0.0841],[-0.0658,1.3572,0.0922],[-0.0477,1.397,0.0753],[-0.0372,1.4411,0.0551],[-0.0345,1.4822,0.0291]], "view": { "target": [-0.06,1.42,0.07], "from": [-1,0.1,0.25], "size": 0.09 }, "prompt": "胸鎖乳突筋・僧帽筋・鎖骨で囲まれた三角は？" }
         },
         {
@@ -231,7 +231,7 @@
           "level": 2,
           "kanji": "下顎の下の三角",
           "etym": "sub-「下の」＋ mandibular「下顎の」＋ triangle「三角」",
-          "note": "下顎骨の下縁と、顎二腹筋の前腹・後腹で囲まれた三角。床は顎舌骨筋と舌骨舌筋。顎下腺と顎下リンパ節が入り、顔面動脈・顔面静脈が下顎の縁を越える。舌下神経が舌骨舌筋の表面を前へ走る。",
+          "note": "下顎骨（mandible）の下縁（inferior border）と、顎二腹筋（digastric）の前腹（anterior belly）・後腹で囲まれた三角。床は顎舌骨筋（mylohyoid）と舌骨舌筋（hyoglossus）。顎下腺（submandibular gland）と顎下リンパ節（submandibular nodes）が入り、顔面動脈（facial artery）・顔面静脈（facial vein）が下顎（mandible）の縁を越える。舌下神経（hypoglossal nerve）が舌骨舌筋の表面を前へ走る。",
           "region": { "bounds": ["body-of-mandible", "anterior-belly-of-digastric", "posterior-belly-of-digastric"], "contents": ["submandibular-gland", "submandibular-nodes", "facial-artery", "facial-vein", "hypoglossal-nerve", "mylohyoid"], "outline": [[-0.0402,1.4504,0.1024],[-0.036,1.462,0.094],[-0.0127,1.4345,0.1251],[-0.0048,1.4251,0.1558],[-0.02,1.428,0.15],[-0.032,1.435,0.128]], "view": { "target": [-0.025,1.44,0.12], "from": [-0.6,-0.6,0.5], "size": 0.05 }, "prompt": "下顎骨と顎二腹筋の2つの腹で囲まれた三角は？" }
         },
         {
@@ -239,7 +239,7 @@
           "level": 2,
           "kanji": "オトガイ（あご先）の下の三角",
           "etym": "sub-「下の」＋ mental「オトガイの」（ラテン語 mentum＝あご先）＋ triangle「三角」",
-          "note": "左右の顎二腹筋の前腹と舌骨体で囲まれた、正中の三角（3Dでは右半分を示す）。床は左右の顎舌骨筋。オトガイ下リンパ節が入り、下唇の中央・あご先・舌の先のリンパを受ける。",
+          "note": "左右の顎二腹筋（digastric）の前腹（anterior belly）と舌骨体（body of hyoid bone）で囲まれた、正中（median）の三角（3Dでは右半分を示す）。床は左右の顎舌骨筋（mylohyoid）。オトガイ下リンパ節（submental nodes）が入り、下唇（lower lip）の中央・あご先（chin）・舌（tongue）の先のリンパ（lymph）を受ける。",
           "region": { "bounds": ["anterior-belly-of-digastric", "body-of-hyoid-bone"], "contents": ["submental-nodes", "mylohyoid"], "outline": [[0,1.423,0.163],[-0.0055,1.425,0.155],[-0.0138,1.4353,0.1236],[0,1.4297,0.129]], "view": { "target": [-0.005,1.43,0.14], "from": [-0.25,-1,0.35], "size": 0.035 }, "prompt": "左右の顎二腹筋前腹と舌骨で囲まれた三角は？" }
         },
         {
@@ -247,7 +247,7 @@
           "level": 1,
           "kanji": "頚動脈がある三角",
           "etym": "carotid「頚動脈の」（ギリシャ語 karoun＝眠らせる。押すと気を失うことから）＋ triangle「三角」",
-          "note": "胸鎖乳突筋の前縁・顎二腹筋の後腹・肩甲舌骨筋の上腹で囲まれた三角。総頚動脈が内頚動脈と外頚動脈に分かれる所（頚動脈洞・頚動脈小体）があり、拍動をふれる。内頚静脈・迷走神経・舌下神経も通る。",
+          "note": "胸鎖乳突筋（sternocleidomastoid）の前縁（anterior border）・顎二腹筋（digastric）の後腹・肩甲舌骨筋（omohyoid）の上腹で囲まれた三角。総頚動脈（common carotid artery）が内頚動脈（internal carotid artery）と外頚動脈（external carotid artery）に分かれる所（頚動脈洞（carotid sinus）・頚動脈小体（carotid body））があり、拍動（pulsation）をふれる。内頚静脈（internal jugular vein）・迷走神経（vagus nerve）・舌下神経（hypoglossal nerve）も通る。",
           "region": { "bounds": ["sternocleidomastoid", "posterior-belly-of-digastric", "omohyoid"], "contents": ["common-carotid-artery", "internal-carotid-artery", "external-carotid-artery", "internal-jugular-vein", "vagus-nerve", "hypoglossal-nerve"], "outline": [[-0.047,1.477,0.081],[-0.0464,1.458,0.093],[-0.0322,1.4175,0.1122],[-0.027,1.385,0.12],[-0.0137,1.4264,0.1206],[-0.0127,1.4345,0.1251],[-0.03,1.456,0.098]], "view": { "target": [-0.03,1.43,0.1], "from": [-0.8,0,0.6], "size": 0.055 }, "prompt": "頚動脈が枝分かれする三角は？" }
         },
         {
@@ -255,7 +255,7 @@
           "level": 2,
           "kanji": "舌骨下筋がある三角",
           "etym": "muscular「筋の」＋ triangle「三角」",
-          "note": "胸鎖乳突筋の前縁（下の部分）・肩甲舌骨筋の上腹・頚の正中線で囲まれた三角。胸骨舌骨筋・胸骨甲状筋などの舌骨下筋と、その下の甲状腺・喉頭・気管が入る。",
+          "note": "胸鎖乳突筋（sternocleidomastoid）の前縁（anterior border）（下の部分）・肩甲舌骨筋（omohyoid）の上腹・頚（neck）の正中線（midline）で囲まれた三角。胸骨舌骨筋（sternohyoid）・胸骨甲状筋（sternothyroid）などの舌骨下筋（infrahyoid muscles）と、その下の甲状腺（thyroid gland）・喉頭（larynx）・気管（trachea）が入る。",
           "region": { "bounds": ["sternocleidomastoid", "omohyoid"], "contents": ["sternohyoid", "sternothyroid", "thyroid-gland"], "contentsLabel": "中の筋と器官", "outline": [[-0.0137,1.4264,0.1206],[-0.027,1.385,0.12],[-0.0222,1.3586,0.1336],[-0.0105,1.3036,0.1553],[0,1.326,0.137],[0,1.38,0.13],[0,1.4297,0.129]], "view": { "target": [-0.015,1.37,0.13], "from": [-0.5,0,0.9], "size": 0.06 }, "prompt": "肩甲舌骨筋の下、正中までの三角は？" }
         },
         {
@@ -263,7 +263,7 @@
           "level": 2, "check": true,
           "kanji": "後頭骨の下の三角",
           "etym": "sub-「下の」＋ occipital「後頭の」＋ triangle「三角」",
-          "note": "項部の深い所で、大後頭直筋・上頭斜筋・下頭斜筋で囲まれた三角。床は環椎の後弓と後環椎後頭膜。椎骨動脈が環椎の上を横に走って大後頭孔へ向かい、後頭下神経（第1頚神経の後枝）が出る（このアプリの3Dには無い）。",
+          "note": "項部（nuchal region）の深い所で、大後頭直筋（rectus capitis posterior major）・上頭斜筋（obliquus capitis superior）・下頭斜筋（obliquus capitis inferior）で囲まれた三角。床は環椎（atlas）の後弓（posterior arch）と後環椎後頭膜（posterior atlanto-occipital membrane）。椎骨動脈（vertebral artery）が環椎の上を横に走って大後頭孔（foramen magnum）へ向かい、後頭下神経（suboccipital nerve）（第1頚神経（first cervical nerve）の後枝（posterior ramus））が出る（このアプリの3Dには無い）。",
           "region": { "bounds": ["rectus-capitis-posterior-major", "obliquus-capitis-superior", "obliquus-capitis-inferior"], "contents": ["vertebral-artery"], "outline": [[-0.0022,1.4376,0.0374],[-0.0393,1.4668,0.0735],[-0.031,1.489,0.025]], "view": { "target": [-0.025,1.465,0.035], "from": [-0.35,0.15,-1], "size": 0.04 }, "prompt": "後頭下の3つの筋に囲まれ、椎骨動脈が通る三角は？" }
         }
       ]
@@ -273,7 +273,7 @@
       "title": "頭蓋窩",
       "group": "体幹と頭頚部",
       "intro": [
-        "頭蓋の底の内面は、前から前頭蓋窩・中頭蓋窩・後頭蓋窩の3段の階段になっている。前頭蓋窩には前頭葉、中頭蓋窩には側頭葉、後頭蓋窩には小脳と脳幹がのる。3Dでは頭蓋の天井を切り取って上から見る（前が下）。"
+        "頭蓋（skull）の底の内面（internal surface）は、前から前頭蓋窩（anterior cranial fossa）・中頭蓋窩（middle cranial fossa）・後頭蓋窩（posterior cranial fossa）の3段の階段になっている。前頭蓋窩には前頭葉（frontal lobe）、中頭蓋窩には側頭葉（temporal lobe）、後頭蓋窩には小脳（cerebellum）と脳幹（brainstem）がのる。3Dでは頭蓋の天井を切り取って上から見る（前が下）。"
       ],
       "terms": [
         {
@@ -281,7 +281,7 @@
           "level": 2,
           "kanji": "頭蓋の底の前のくぼみ",
           "etym": "anterior「前の」＋ cranial「頭蓋の」（ギリシャ語 kranion）＋ fossa「くぼみ」",
-          "note": "頭蓋底のいちばん高い前の段。前頭骨（眼窩の天井）・篩骨の篩板・蝶形骨の小翼でできる。前頭葉がのり、篩板の小さな孔を嗅神経が通って鼻腔へ行く。後ろの縁は蝶形骨の小翼。",
+          "note": "頭蓋底（cranial base）のいちばん高い前の段。前頭骨（frontal bone）（眼窩（orbit）の天井）・篩骨（ethmoid bone）の篩板（cribriform plate）・蝶形骨（sphenoid bone）の小翼（lesser wing of sphenoid）でできる。前頭葉（frontal lobe）がのり、篩板の小さな孔を嗅神経（olfactory nerve）が通って鼻腔（nasal cavity）へ行く。後ろの縁は蝶形骨の小翼。",
           "region": { "bounds": ["cribriform-plate", "crista-galli"], "contents": ["olfactory-nerve"], "boundsLabel": "底の骨", "outline": [[0,1.525,0.166],[-0.027,1.543,0.167],[-0.0505,1.5536,0.155],[-0.056,1.545,0.127],[-0.027,1.5373,0.1216],[-0.009,1.5305,0.1143],[0,1.5326,0.1171]], "section": { "axis": "y", "at": 1.57, "keep": -1 }, "view": { "target": [-0.02,1.54,0.135], "from": [0,1,0.3], "size": 0.06 }, "prompt": "オレンジの線が囲む頭蓋の底のくぼみは？" }
         },
         {
@@ -289,7 +289,7 @@
           "level": 2,
           "kanji": "頭蓋の底の中ほどのくぼみ",
           "etym": "middle「中の」＋ cranial「頭蓋の」＋ fossa「くぼみ」",
-          "note": "蝶形骨の小翼から側頭骨の錐体の上の縁までの、蝶の形のくぼみ。中央のトルコ鞍に下垂体がのり、左右の深い所に側頭葉が入る。視神経管・上眼窩裂・正円孔・卵円孔・棘孔が開き、視神経・動眼神経・三叉神経の枝などが出ていく。",
+          "note": "蝶形骨（sphenoid bone）の小翼（lesser wing of sphenoid）から側頭骨（temporal bone）の錐体（petrous part）の上の縁までの、蝶の形のくぼみ。中央のトルコ鞍（sella turcica）に下垂体（pituitary gland）がのり、左右の深い所に側頭葉（temporal lobe）が入る。視神経管（optic canal）・上眼窩裂（superior orbital fissure）・正円孔（foramen rotundum）・卵円孔（foramen ovale）・棘孔（foramen spinosum）が開き、視神経（optic nerve）・動眼神経（oculomotor nerve）・三叉神経（trigeminal nerve）の枝などが出ていく。",
           "region": { "bounds": ["sella-turcica", "greater-wing-of-sphenoid", "petrous-part-of-temporal-bone"], "contents": ["pituitary-gland", "optic-chiasm", "internal-carotid-artery", "trigeminal-nerve", "maxillary-nerve", "mandibular-nerve"], "boundsLabel": "底と縁の骨", "outline": [[0,1.5326,0.1171],[-0.009,1.5305,0.1143],[-0.027,1.5373,0.1216],[-0.056,1.545,0.127],[-0.063,1.535,0.105],[-0.0505,1.5173,0.0829],[-0.036,1.515,0.0868],[-0.018,1.5127,0.0975],[-0.0072,1.5272,0.0988],[0,1.5282,0.0991]], "section": { "axis": "y", "at": 1.57, "keep": -1 }, "view": { "target": [-0.03,1.53,0.1], "from": [0,1,0.3], "size": 0.06 }, "prompt": "オレンジの線が囲む頭蓋の底のくぼみは？" }
         },
         {
@@ -297,7 +297,7 @@
           "level": 2,
           "kanji": "頭蓋の底の後ろのくぼみ",
           "etym": "posterior「後ろの」＋ cranial「頭蓋の」＋ fossa「くぼみ」",
-          "note": "錐体の上の縁と鞍背より後ろの、いちばん深いくぼみ。前は斜台、中央に大後頭孔がある。小脳・橋・延髄が入り、上を小脳テントがおおう。内耳孔（顔面神経・内耳神経）、頚静脈孔（舌咽・迷走・副神経）、舌下神経管が開く。",
+          "note": "錐体の上の縁と鞍背（dorsum sellae）より後ろの、いちばん深いくぼみ。前は斜台（clivus）、中央に大後頭孔（foramen magnum）がある。小脳（cerebellum）・橋・延髄（medulla oblongata）が入り、上を小脳テント（tentorium cerebelli）がおおう。内耳孔（internal acoustic opening）（顔面神経（facial nerve）・内耳神経（vestibulocochlear nerve））、頚静脈孔（jugular foramen）（舌咽（glossopharyngeal）・迷走（vagus）・副神経（accessory nerve））、舌下神経管（hypoglossal canal）が開く。",
           "region": { "bounds": ["clivus", "petrous-part-of-temporal-bone", "internal-occipital-protuberance", "foramen-magnum"], "contents": ["pons", "medulla-oblongata", "facial-nerve", "vestibulocochlear-nerve", "glossopharyngeal-nerve", "vagus-nerve", "hypoglossal-nerve"], "boundsLabel": "底と縁の骨", "outline": [[0,1.5282,0.0991],[-0.0072,1.5272,0.0988],[-0.018,1.5127,0.0975],[-0.036,1.515,0.0868],[-0.0505,1.5173,0.0829],[-0.062,1.525,0.07],[-0.0649,1.5302,0.0613],[-0.0631,1.5336,0.0396],[-0.0451,1.527,0.0154],[-0.018,1.5111,0.0002],[0,1.5169,-0.0006]], "section": { "axis": "y", "at": 1.57, "keep": -1 }, "view": { "target": [-0.03,1.525,0.05], "from": [0,1,0.3], "size": 0.06 }, "prompt": "オレンジの線が囲む頭蓋の底のくぼみは？" }
         }
       ]
@@ -307,8 +307,8 @@
       "title": "腋窩と肩・首の通り道",
       "group": "上肢",
       "intro": [
-        "上肢へ行く血管と神経は、首の斜角筋の間（斜角筋隙）を抜け、鎖骨の下を通って腋窩に入り、腕へ下る。腋窩は前・後ろ・内側・外側の4つの壁に囲まれたピラミッドの形の空間。",
-        "腋窩の後ろの壁では、小円筋・大円筋・上腕三頭筋の長頭・上腕骨の間に隙間ができ、肩の後ろへ神経と血管が抜ける（外側腋窩隙・内側腋窩隙・上腕三頭筋裂孔）。後ろから見た形で覚える。"
+        "上肢（upper limb）へ行く血管（blood vessel）と神経（nerve）は、首（neck）の斜角筋（scalene muscles）の間（斜角筋隙（scalene hiatus））を抜け、鎖骨（clavicle）の下を通って腋窩（axilla）に入り、腕（arm）へ下る。腋窩は前・後ろ・内側（medial）・外側（lateral）の4つの壁に囲まれたピラミッドの形の空間。",
+        "腋窩の後ろの壁では、小円筋（teres minor）・大円筋（teres major）・上腕三頭筋（triceps brachii）の長頭（long head）・上腕骨（humerus）の間に隙間ができ、肩（shoulder）の後ろへ神経と血管が抜ける（外側腋窩隙（quadrangular space）・内側腋窩隙（triangular space）・上腕三頭筋裂孔（triangular interval））。後ろから見た形で覚える。"
       ],
       "terms": [
         {
@@ -316,7 +316,7 @@
           "level": 1,
           "kanji": "わきの下のくぼみ（腋＝わき、窩＝くぼみ）",
           "etym": "axilla ← ラテン語「わきの下」",
-          "note": "腕の付け根の内側の、ピラミッドの形の空間。前の壁は大胸筋・小胸筋、後ろの壁は肩甲下筋・大円筋・広背筋、内側の壁は前鋸筋（と肋骨）、外側の壁は上腕骨の結節間溝。腋窩動脈・腋窩静脈・腕神経叢と、たくさんの腋窩リンパ節が入る（乳がんの転移先として大事）。",
+          "note": "腕（arm）の付け根の内側（medial）の、ピラミッドの形の空間。前の壁は大胸筋（pectoralis major）・小胸筋（pectoralis minor）、後ろの壁は肩甲下筋（subscapularis）・大円筋（teres major）・広背筋（latissimus dorsi）、内側の壁は前鋸筋（serratus anterior）（と肋骨（ribs））、外側（lateral）の壁は上腕骨（humerus）の結節間溝（intertubercular sulcus）。腋窩動脈（axillary artery）・腋窩静脈（axillary vein）・腕神経叢（brachial plexus）と、たくさんの腋窩リンパ節（axillary nodes）が入る（乳がんの転移先として大事）。",
           "region": { "bounds": ["pectoralis-major", "pectoralis-minor", "subscapularis", "teres-major", "latissimus-dorsi", "serratus-anterior"], "contents": ["axillary-artery", "axillary-vein", "brachial-plexus", "axillary-nodes"], "boundsLabel": "壁をつくる筋", "view": { "target": [-0.13, 1.26, 0.07], "from": [-0.45, -0.75, 0.55], "size": 0.12 }, "prompt": "オレンジの筋に囲まれ、血管と神経が通る所は？" }
         },
         {
@@ -324,7 +324,7 @@
           "level": 2,
           "kanji": "腋窩の後ろの外側の隙間",
           "etym": "quadrangular「四角形の」＋ space「すき間」。四角間隙ともいう",
-          "note": "後ろから見て、上を小円筋、下を大円筋、内側を上腕三頭筋の長頭、外側を上腕骨の外科頚で囲まれた四角形の隙間。腋窩神経と後上腕回旋動脈が抜けて三角筋へ行く。外科頚の骨折や肩の脱臼で腋窩神経が傷むのはこのため。",
+          "note": "後ろから見て、上を小円筋（teres minor）、下を大円筋（teres major）、内側（medial）を上腕三頭筋（triceps brachii）の長頭（long head）、外側（lateral）を上腕骨（humerus）の外科頚（surgical neck）で囲まれた四角形の隙間。腋窩神経（axillary nerve）と後上腕回旋動脈（posterior circumflex humeral artery）が抜けて三角筋（deltoid）へ行く。外科頚の骨折（fracture）や肩（shoulder）の脱臼（dislocation）で腋窩神経が傷むのはこのため。",
           "region": { "bounds": ["teres-minor", "teres-major", "long-head-of-triceps-brachii", "surgical-neck"], "contents": ["axillary-nerve", "posterior-circumflex-humeral-artery"], "outline": [[-0.1626, 1.2799, 0.035], [-0.1701, 1.2841, 0.035], [-0.1708, 1.2683, 0.035], [-0.1694, 1.26, 0.035], [-0.1639, 1.2683, 0.035]], "view": { "target": [-0.167, 1.272, 0.035], "from": [-0.25, 0.05, -1], "size": 0.07 } }
         },
         {
@@ -332,7 +332,7 @@
           "level": 2,
           "kanji": "腋窩の後ろの内側の隙間",
           "etym": "triangular「三角形の」＋ space「すき間」。三角間隙ともいう",
-          "note": "後ろから見て、上を小円筋、下を大円筋、外側を上腕三頭筋の長頭で囲まれた三角形の隙間。肩甲回旋動脈が抜けて肩甲骨の後ろへ回る。",
+          "note": "後ろから見て、上を小円筋（teres minor）、下を大円筋（teres major）、外側（lateral）を上腕三頭筋（triceps brachii）の長頭（long head）で囲まれた三角形の隙間。肩甲回旋動脈（circumflex scapular artery）が抜けて肩甲骨（scapula）の後ろへ回る。",
           "region": { "bounds": ["teres-minor", "teres-major", "long-head-of-triceps-brachii"], "contents": ["circumflex-scapular-artery"], "outline": [[-0.1428, 1.2612, 0.035], [-0.1517, 1.2708, 0.035], [-0.1524, 1.2591, 0.035]], "view": { "target": [-0.149, 1.264, 0.035], "from": [-0.15, 0.05, -1], "size": 0.07 } }
         },
         {
@@ -340,7 +340,7 @@
           "level": 3, "check": true,
           "kanji": "上腕三頭筋の頭の間の裂け目",
           "etym": "triangular「三角形の」＋ interval「間」",
-          "note": "後ろから見て、上を大円筋、内側を上腕三頭筋の長頭、外側を上腕三頭筋の外側頭（上腕骨）で囲まれた三角形の隙間。橈骨神経と上腕深動脈が腋窩から上腕の後ろへ抜け、上腕骨の橈骨神経溝へ向かう。",
+          "note": "後ろから見て、上を大円筋（teres major）、内側（medial）を上腕三頭筋（triceps brachii）の長頭（long head）、外側（lateral）を上腕三頭筋の外側頭（lateral head）（上腕骨（humerus））で囲まれた三角形の隙間。橈骨神経（radial nerve）と上腕深動脈（deep brachial artery）が腋窩（axilla）から上腕（arm）の後ろへ抜け、上腕骨の橈骨神経溝（radial groove）へ向かう。",
           "region": { "bounds": ["teres-major", "long-head-of-triceps-brachii", "lateral-head-of-triceps-brachii"], "contents": ["radial-nerve", "deep-brachial-artery"], "outline": [[-0.1639, 1.2536, 0.035], [-0.1714, 1.255, 0.035], [-0.1742, 1.2358, 0.035]], "view": { "target": [-0.17, 1.248, 0.035], "from": [-0.25, 0.0, -1], "size": 0.08 } }
         },
         {
@@ -348,7 +348,7 @@
           "level": 2, "check": true,
           "kanji": "鎖骨と胸の筋（大胸筋）と三角筋で囲まれた三角",
           "etym": "clavi-「鎖骨の」＋ pectoral「胸の」＋ triangle「三角形」",
-          "note": "鎖骨の下で、外側を三角筋、内側を大胸筋、上を鎖骨で囲まれた小さな三角のくぼみ（モーレンハイム窩）。三角筋と大胸筋の間の溝（三角筋胸筋溝）を上ってきた橈側皮静脈が、ここで深くへ入って腋窩静脈に注ぐ。胸肩峰動脈もここに出てくる。",
+          "note": "鎖骨（clavicle）の下で、外側（lateral）を三角筋（deltoid）、内側（medial）を大胸筋（pectoralis major）、上を鎖骨で囲まれた小さな三角のくぼみ（モーレンハイム窩（Mohrenheim fossa））。三角筋と大胸筋の間の溝（三角筋胸筋溝（deltopectoral groove））を上ってきた橈側皮静脈（cephalic vein）が、ここで深くへ入って腋窩静脈（axillary vein）に注ぐ。胸肩峰動脈（thoracoacromial artery）もここに出てくる。",
           "region": { "bounds": ["clavicle", "clavicular-part-of-deltoid", "clavicular-part-of-pectoralis-major"], "contents": ["cephalic-vein", "thoracoacromial-artery"], "outline": [[-0.1224, 1.3404, 0.0923], [-0.0931, 1.3439, 0.0979], [-0.1404, 1.3096, 0.0664]], "view": { "target": [-0.119, 1.331, 0.086], "from": [-0.25, 0.15, 1], "size": 0.07 } }
         },
         {
@@ -356,7 +356,7 @@
           "level": 2, "check": true,
           "kanji": "斜角筋の間の隙間",
           "etym": "scalene ← ギリシャ語 skalenos「不等辺の（三角形）」＋ hiatus「すき間」",
-          "note": "首の横で、前斜角筋と中斜角筋と第1肋骨で囲まれた三角形の隙間。腕神経叢と鎖骨下動脈が通る（鎖骨下静脈は前斜角筋の前を通るので通らない）。ここで神経と動脈が締めつけられると腕がしびれる（斜角筋症候群・胸郭出口症候群）。",
+          "note": "首（neck）の横で、前斜角筋（anterior scalene）と中斜角筋（middle scalene）と第1肋骨（first rib）で囲まれた三角形の隙間。腕神経叢（brachial plexus）と鎖骨下動脈（subclavian artery）が通る（鎖骨下静脈（subclavian vein）は前斜角筋の前を通るので通らない）。ここで神経（nerve）と動脈（artery）が締めつけられると腕（arm）がしびれる（斜角筋症候群（scalenus syndrome）・胸郭出口症候群（thoracic outlet syndrome））。",
           "region": { "bounds": ["anterior-scalene", "middle-scalene"], "contents": ["brachial-plexus", "subclavian-artery"], "outline": [[-0.036, 1.405, 0.083], [-0.072, 1.346, 0.104], [-0.054, 1.346, 0.1062]], "view": { "target": [-0.054, 1.366, 0.098], "from": [-0.75, 0.1, 0.7], "size": 0.08 } }
         }
       ]
@@ -366,8 +366,8 @@
       "title": "肘と手首の通り道",
       "group": "上肢",
       "intro": [
-        "肘の前のくぼみ（肘窩）では、上腕動脈と正中神経が上腕二頭筋の腱の内側を通って前腕へ入る。肘の内側の後ろ（肘部管）は尺骨神経の通り道で、ぶつけるとしびれる所。",
-        "手首の前では、手根骨と屈筋支帯がつくるトンネル（手根管）を正中神経と9本の屈筋の腱が通り、その小指側の浅い所（尺骨神経管）を尺骨神経と尺骨動脈が通る。手首の親指側の後ろのくぼみ（解剖学的嗅ぎタバコ入れ）では橈骨動脈の脈を触れる。"
+        "肘（elbow）の前のくぼみ（肘窩（cubital fossa））では、上腕動脈（brachial artery）と正中神経（median nerve）が上腕二頭筋（biceps brachii）の腱（tendon）の内側（medial）を通って前腕（forearm）へ入る。肘の内側の後ろ（肘部管（cubital tunnel））は尺骨神経（ulnar nerve）の通り道で、ぶつけるとしびれる所。",
+        "手首（wrist）の前では、手根骨（carpal bones）と屈筋支帯（flexor retinaculum）がつくるトンネル（手根管（carpal tunnel））を正中神経と9本の屈筋（flexor）の腱が通り、その小指側（ulnar side）の浅い所（尺骨神経管（ulnar canal））を尺骨神経と尺骨動脈（ulnar artery）が通る。手首の親指側（radial side）の後ろのくぼみ（解剖学的嗅ぎタバコ入れ（anatomical snuffbox））では橈骨動脈（radial artery）の脈を触れる。"
       ],
       "terms": [
         {
@@ -375,7 +375,7 @@
           "level": 1,
           "kanji": "肘（の前）のくぼみ",
           "etym": "cubital ← ラテン語 cubitus「肘」＋ fossa「くぼみ」",
-          "note": "肘の前の三角形のくぼみ。上は内側上顆と外側上顆を結ぶ線、外側は腕橈骨筋、内側は円回内筋。外側から上腕二頭筋の腱・上腕動脈・正中神経が並ぶ（外側の深くを橈骨神経）。上を肘正中皮静脈がまたぎ、採血や血圧の聴診（上腕動脈）に使う。",
+          "note": "肘（elbow）の前の三角形のくぼみ。上は内側上顆（medial epicondyle）と外側上顆（lateral epicondyle）を結ぶ線、外側（lateral）は腕橈骨筋（brachioradialis）、内側（medial）は円回内筋（pronator teres）。外側から上腕二頭筋（biceps brachii）の腱（tendon）・上腕動脈（brachial artery）・正中神経（median nerve）が並ぶ（外側の深くを橈骨神経（radial nerve））。上を肘正中皮静脈（median cubital vein）がまたぎ、採血（blood sampling）や血圧（blood pressure）の聴診（auscultation）（上腕動脈）に使う。",
           "region": { "bounds": ["brachioradialis", "pronator-teres", "lateral-epicondyle-of-humerus", "medial-epicondyle-of-humerus"], "contents": ["biceps-brachii", "brachial-artery", "median-nerve", "radial-nerve"], "outline": [[-0.2351, 1.0486, 0.0941], [-0.1875, 1.0486, 0.0745], [-0.2297, 1.0086, 0.0995]], "view": { "target": [-0.217, 1.035, 0.089], "from": [-0.1, 0.05, 1], "size": 0.08 } }
         },
         {
@@ -383,7 +383,7 @@
           "level": 2, "check": true,
           "kanji": "肘の部分の管",
           "etym": "cubital「肘の」＋ tunnel「トンネル」",
-          "note": "肘の内側の後ろで、上腕骨の内側上顆の後ろの尺骨神経溝と、尺側手根屈筋の2つの頭の間に張る膜（オズボーン靱帯）でできるトンネル。尺骨神経が通る。肘をぶつけて小指がしびれるのはここ。締めつけられると小指側がしびれ、手の細かい動きが悪くなる（肘部管症候群）。",
+          "note": "肘（elbow）の内側（medial）の後ろで、上腕骨（humerus）の内側上顆（medial epicondyle）の後ろの尺骨神経溝（groove for ulnar nerve）と、尺側手根屈筋（flexor carpi ulnaris）の2つの頭の間に張る膜（membrane）（オズボーン靱帯（Osborne ligament））でできるトンネル。尺骨神経（ulnar nerve）が通る。肘をぶつけて小指（little finger）がしびれるのはここ。締めつけられると小指側（ulnar side）がしびれ、手（hand）の細かい動きが悪くなる（肘部管症候群（cubital tunnel syndrome））。",
           "region": { "bounds": ["medial-epicondyle-of-humerus", "groove-for-ulnar-nerve", "olecranon", "flexor-carpi-ulnaris"], "contents": ["ulnar-nerve"], "view": { "target": [-0.19, 1.04, 0.055], "from": [0.65, 0.1, -0.75], "size": 0.07 } }
         },
         {
@@ -391,7 +391,7 @@
           "level": 1,
           "kanji": "手根（手首の骨）の管",
           "etym": "carpal「手根の」（ギリシャ語 karpos＝手首）＋ tunnel「トンネル」",
-          "note": "手首の前で、手根骨がつくる溝の上に屈筋支帯が屋根のように張ってできるトンネル。正中神経と、浅指屈筋・深指屈筋の8本と長母指屈筋の腱が通る。ここで正中神経が圧迫されると、母指から環指の母指側のしびれと母指球のやせが起こる（手根管症候群）。",
+          "note": "手首（wrist）の前で、手根骨（carpal bones）がつくる溝の上に屈筋支帯（flexor retinaculum）が屋根のように張ってできるトンネル。正中神経（median nerve）と、浅指屈筋（flexor digitorum superficialis）・深指屈筋（flexor digitorum profundus）の8本と長母指屈筋（flexor pollicis longus）の腱（tendon）が通る。ここで正中神経が圧迫されると、母指（thumb）から環指（ring finger）の母指側（radial side）のしびれと母指球（thenar eminence）のやせが起こる（手根管症候群（carpal tunnel syndrome））。",
           "region": { "bounds": ["flexor-retinaculum-of-wrist", "carpal-bones"], "contents": ["median-nerve", "flexor-digitorum-superficialis", "flexor-digitorum-profundus", "flexor-pollicis-longus"], "boundsLabel": "壁と屋根", "section": { "axis": "y", "at": 0.79, "keep": 1 }, "view": { "target": [-0.258, 0.79, 0.125], "from": [0, -1, 0.02], "size": 0.045 }, "prompt": "手根骨と屈筋支帯に囲まれ、正中神経と屈筋の腱が通る所は？" }
         },
         {
@@ -399,7 +399,7 @@
           "level": 2,
           "kanji": "尺骨神経が通る管",
           "etym": "ulnar「尺骨の」＋ canal「管」。ギヨン管ともいう",
-          "note": "手首の小指側で、豆状骨と有鈎骨鈎の間、屈筋支帯の前（浅い所）にある短いトンネル。尺骨神経と尺骨動脈が通り、中で尺骨神経が浅枝と深枝に分かれる。自転車のハンドルで圧迫されると小指側がしびれ、手の筋がやせる。",
+          "note": "手首（wrist）の小指側（ulnar side）で、豆状骨（pisiform）と有鈎骨鈎（hook of hamate）の間、屈筋支帯（flexor retinaculum）の前（浅い所）にある短いトンネル。尺骨神経（ulnar nerve）と尺骨動脈（ulnar artery）が通り、中で尺骨神経が浅枝（superficial branch）と深枝（deep branch）に分かれる。自転車のハンドルで圧迫されると小指側がしびれ、手（hand）の筋（muscle）がやせる。",
           "region": { "bounds": ["pisiform", "hook-of-hamate", "flexor-retinaculum-of-wrist"], "contents": ["ulnar-nerve", "ulnar-artery"], "outline": [[-0.2441, 0.7958, 0.1381], [-0.236, 0.798, 0.1366], [-0.2349, 0.7916, 0.1357], [-0.2435, 0.7895, 0.1379]], "view": { "target": [-0.24, 0.794, 0.137], "from": [0.2, 0.05, 1], "size": 0.05 } }
         },
         {
@@ -407,7 +407,7 @@
           "level": 2, "check": true,
           "kanji": "嗅ぎタバコをのせたくぼみ",
           "etym": "anatomical「解剖学の」＋ snuffbox「嗅ぎタバコ入れ」。親指を反らすと出るくぼみに嗅ぎタバコをのせて吸ったことから",
-          "note": "親指を反らすと手首の親指側の後ろに出る三角形のくぼみ。手のひら側の縁は長母指外転筋と短母指伸筋の腱、手の甲側の縁は長母指伸筋の腱。底に舟状骨があり、橈骨動脈が通る（脈を触れる）。転んで手をついたあとここが痛むときは舟状骨の骨折を疑う。",
+          "note": "親指（thumb）を反らすと手首（wrist）の親指側（radial side）の後ろに出る三角形のくぼみ。手のひら（palm）側の縁は長母指外転筋（abductor pollicis longus）と短母指伸筋（extensor pollicis brevis）の腱（tendon）、手（hand）の甲側（dorsal side）の縁は長母指伸筋（extensor pollicis longus）の腱。底に舟状骨（scaphoid）があり、橈骨動脈（radial artery）が通る（脈を触れる）。転んで手をついたあとここが痛むときは舟状骨の骨折（fracture）を疑う。",
           "region": { "bounds": ["abductor-pollicis-longus", "extensor-pollicis-brevis", "extensor-pollicis-longus", "scaphoid"], "contents": ["radial-artery"], "outline": [[-0.2688, 0.8178, 0.1064], [-0.261, 0.7905, 0.1107], [-0.2885, 0.7948, 0.1226]], "view": { "target": [-0.273, 0.801, 0.113], "from": [-1, 0.1, -0.25], "size": 0.06 } }
         }
       ]
@@ -417,8 +417,8 @@
       "title": "上腕と前腕の区画",
       "group": "上肢",
       "intro": [
-        "上腕は内側・外側の上腕筋間中隔で前と後ろの2つに、前腕は骨間膜と橈骨・尺骨で前と後ろの2つに仕切られる。前（屈筋区画）は肘・手首・指を曲げ、後ろ（伸筋区画）は伸ばす。",
-        "支配神経も区画で決まる。上腕の前は筋皮神経、上腕の後ろは橈骨神経、前腕の前は正中神経（尺側手根屈筋と深指屈筋の尺側半分は尺骨神経）、前腕の後ろは橈骨神経（深枝・後骨間神経）。",
+        "上腕（arm）は内側（medial）・外側（lateral）の上腕筋間中隔（intermuscular septum of arm）で前と後ろの2つに、前腕（forearm）は骨間膜（interosseous membrane）と橈骨（radius）・尺骨（ulna）で前と後ろの2つに仕切られる。前（屈筋区画（flexor compartment））は肘（elbow）・手首（wrist）・指（finger）を曲げ、後ろ（伸筋区画（extensor compartment））は伸ばす。",
+        "支配神経（innervating nerve）も区画（compartment）で決まる。上腕の前は筋皮神経（musculocutaneous nerve）、上腕の後ろは橈骨神経（radial nerve）、前腕の前は正中神経（median nerve）（尺側手根屈筋（flexor carpi ulnaris）と深指屈筋（flexor digitorum profundus）の尺側半分（ulnar half）は尺骨神経（ulnar nerve））、前腕の後ろは橈骨神経（深枝（deep branch）・後骨間神経（posterior interosseous nerve））。",
         "区画は水平断（CT と同じく下から見る。前が上、本人の右が左）で示す。"
       ],
       "terms": [
@@ -427,7 +427,7 @@
           "level": 2,
           "kanji": "上腕の前の仕切られた部屋",
           "etym": "anterior「前の」＋ compartment「区画」＋ arm「上腕」",
-          "note": "上腕の前の区画（屈筋区画）。上腕二頭筋・上腕筋・烏口腕筋が入り、筋皮神経が支配する。肘を曲げる。",
+          "note": "上腕（arm）の前の区画（compartment）（屈筋区画（flexor compartment））。上腕二頭筋（biceps brachii）・上腕筋（brachialis）・烏口腕筋（coracobrachialis）が入り、筋皮神経（musculocutaneous nerve）が支配（innervation）する。肘（elbow）を曲げる。",
           "region": { "bounds": ["medial-intermuscular-septum-of-arm", "lateral-intermuscular-septum-of-arm"], "contents": ["biceps-brachii", "brachialis", "coracobrachialis", "musculocutaneous-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 1.19, "keep": 1 }, "view": { "target": [-0.19, 1.19, 0.065], "from": [0, -1, 0.02], "size": 0.06 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         },
         {
@@ -435,7 +435,7 @@
           "level": 2,
           "kanji": "上腕の後ろの仕切られた部屋",
           "etym": "posterior「後ろの」＋ compartment「区画」＋ arm「上腕」",
-          "note": "上腕の後ろの区画（伸筋区画）。上腕三頭筋が入り、橈骨神経が支配する。肘を伸ばす。橈骨神経と上腕深動脈が上腕骨の後ろの橈骨神経溝を回る。",
+          "note": "上腕（arm）の後ろの区画（compartment）（伸筋区画（extensor compartment））。上腕三頭筋（triceps brachii）が入り、橈骨神経（radial nerve）が支配（innervation）する。肘（elbow）を伸ばす。橈骨神経と上腕深動脈（deep brachial artery）が上腕骨（humerus）の後ろの橈骨神経溝（radial groove）を回る。",
           "region": { "bounds": ["medial-intermuscular-septum-of-arm", "lateral-intermuscular-septum-of-arm"], "contents": ["triceps-brachii", "radial-nerve", "deep-brachial-artery"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 1.19, "keep": 1 }, "view": { "target": [-0.19, 1.19, 0.065], "from": [0, -1, 0.02], "size": 0.06 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         },
         {
@@ -443,7 +443,7 @@
           "level": 2,
           "kanji": "前腕の前の仕切られた部屋",
           "etym": "anterior「前の」＋ compartment「区画」＋ forearm「前腕」",
-          "note": "前腕の前の区画（屈筋区画）。手首と指を曲げる筋（橈側手根屈筋・長掌筋・尺側手根屈筋・浅指屈筋・深指屈筋・長母指屈筋）と回内筋が入る。おもに正中神経、尺側手根屈筋と深指屈筋の尺側半分は尺骨神経が支配する。",
+          "note": "前腕（forearm）の前の区画（compartment）（屈筋区画（flexor compartment））。手首（wrist）と指（finger）を曲げる筋（muscle）（橈側手根屈筋（flexor carpi radialis）・長掌筋（palmaris longus）・尺側手根屈筋（flexor carpi ulnaris）・浅指屈筋（flexor digitorum superficialis）・深指屈筋（flexor digitorum profundus）・長母指屈筋（flexor pollicis longus））と回内筋（pronator）が入る。おもに正中神経（median nerve）、尺側手根屈筋と深指屈筋の尺側半分（ulnar half）は尺骨神経（ulnar nerve）が支配（innervation）する。",
           "region": { "bounds": ["interosseous-membrane-of-forearm"], "contents": ["flexor-carpi-radialis", "palmaris-longus", "flexor-carpi-ulnaris", "flexor-digitorum-superficialis", "flexor-digitorum-profundus", "flexor-pollicis-longus", "median-nerve", "ulnar-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.93, "keep": 1 }, "view": { "target": [-0.24, 0.93, 0.095], "from": [0, -1, 0.02], "size": 0.055 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         },
         {
@@ -451,7 +451,7 @@
           "level": 2,
           "kanji": "前腕の後ろの仕切られた部屋",
           "etym": "posterior「後ろの」＋ compartment「区画」＋ forearm「前腕」",
-          "note": "前腕の後ろの区画（伸筋区画）。手首と指を伸ばす筋（指伸筋・小指伸筋・尺側手根伸筋・長母指外転筋・短母指伸筋・長母指伸筋など）と、外側の腕橈骨筋・長橈側手根伸筋・短橈側手根伸筋が入る。すべて橈骨神経（深枝・後骨間神経）が支配する。",
+          "note": "前腕（forearm）の後ろの区画（compartment）（伸筋区画（extensor compartment））。手首（wrist）と指（finger）を伸ばす筋（muscle）（指伸筋（extensor digitorum）・小指伸筋（extensor digiti minimi）・尺側手根伸筋（extensor carpi ulnaris）・長母指外転筋（abductor pollicis longus）・短母指伸筋（extensor pollicis brevis）・長母指伸筋（extensor pollicis longus）など）と、外側（lateral）の腕橈骨筋（brachioradialis）・長橈側手根伸筋（extensor carpi radialis longus）・短橈側手根伸筋（extensor carpi radialis brevis）が入る。すべて橈骨神経（radial nerve）（深枝（deep branch）・後骨間神経（posterior interosseous nerve））が支配（innervation）する。",
           "region": { "bounds": ["interosseous-membrane-of-forearm"], "contents": ["brachioradialis", "extensor-carpi-radialis-longus", "extensor-carpi-radialis-brevis", "extensor-digitorum", "extensor-digiti-minimi", "extensor-carpi-ulnaris", "abductor-pollicis-longus", "extensor-pollicis-brevis", "extensor-pollicis-longus", "posterior-interosseous-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.93, "keep": 1 }, "view": { "target": [-0.24, 0.93, 0.095], "from": [0, -1, 0.02], "size": 0.055 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         }
       ]
@@ -461,8 +461,8 @@
       "title": "大腿の領域と通り道",
       "group": "下肢",
       "intro": [
-        "局所解剖では、体の中の「場所」を、まわりを囲むもの（境界）と、そこを通るもの（内容）で覚える。このアプリでは境界をオレンジ（筋・靱帯は半透明）、通る神経・血管・筋をもとの色（神経は黄・動脈は赤・静脈は青）で示す。",
-        "脚の付け根では、鼡径靱帯の下を、外側から腸腰筋と大腿神経（筋裂孔）、大腿動脈と大腿静脈（血管裂孔）が通って、太ももの前の大腿三角に出る。大腿動静脈はそこから内転筋管を下り、内転筋腱裂孔を抜けて膝の裏（膝窩）へ回る。"
+        "局所解剖（regional anatomy）では、体の中の「場所」を、まわりを囲むもの（境界）と、そこを通るもの（内容）で覚える。このアプリでは境界をオレンジ（筋（muscle）・靱帯（ligament）は半透明）、通る神経（nerve）・血管（blood vessel）・筋をもとの色（神経は黄・動脈（artery）は赤・静脈（vein）は青）で示す。",
+        "脚の付け根では、鼡径靱帯（inguinal ligament）の下を、外側（lateral）から腸腰筋（iliopsoas）と大腿神経（femoral nerve）（筋裂孔（muscular lacuna））、大腿動脈（femoral artery）と大腿静脈（femoral vein）（血管裂孔（vascular lacuna））が通って、太もも（thigh）の前の大腿三角（femoral triangle）に出る。大腿動静脈（femoral vessels）はそこから内転筋管（adductor canal）を下り、内転筋腱裂孔（adductor hiatus）を抜けて膝（knee）の裏（膝窩（popliteal fossa））へ回る。"
       ],
       "terms": [
         {
@@ -470,7 +470,7 @@
           "level": 1,
           "kanji": "大腿の前上部の三角形の領域",
           "etym": "femoral「大腿の」＋ triangle「三角形」。スカルパ三角ともいう",
-          "note": "鼡径靱帯・縫工筋・長内転筋で囲まれる、脚の付け根の三角形のくぼみ。外側から大腿神経・大腿動脈・大腿静脈が並び（NAV）、脈を触れたりカテーテルを入れたりする所。大伏在静脈がここで大腿静脈に注ぐ。",
+          "note": "鼡径靱帯（inguinal ligament）・縫工筋（sartorius）・長内転筋（adductor longus）で囲まれる、脚の付け根の三角形のくぼみ。外側（lateral）から大腿神経（femoral nerve）・大腿動脈（femoral artery）・大腿静脈（femoral vein）が並び（NAV）、脈を触れたりカテーテルを入れたりする所。大伏在静脈（great saphenous vein）がここで大腿静脈に注ぐ。",
           "region": { "bounds": ["inguinal-ligament", "sartorius", "adductor-longus"], "contents": ["femoral-nerve", "femoral-artery", "femoral-vein", "deep-femoral-artery", "great-saphenous-vein"], "outline": [[-0.1255, 0.8975, 0.142], [-0.058, 0.841, 0.141], [-0.0165, 0.8025, 0.141], [-0.028, 0.72, 0.142], [-0.045, 0.63, 0.142], [-0.075, 0.73, 0.143], [-0.105, 0.83, 0.142]], "view": { "target": [-0.07, 0.76, 0.13], "from": [-0.15, 0.05, 1], "size": 0.13 } }
         },
         {
@@ -478,7 +478,7 @@
           "level": 2,
           "kanji": "内転筋（長内転筋・大内転筋）に沿う管",
           "etym": "adductor「内転筋の」＋ canal「管」。ハンター管ともいう",
-          "note": "大腿の中ほどで、前を縫工筋、外側を内側広筋、後ろを長内転筋と大内転筋に囲まれた溝。大腿三角の先から内転筋腱裂孔まで続き、大腿動脈・大腿静脈・伏在神経が通る。",
+          "note": "大腿（thigh）の中ほどで、前を縫工筋（sartorius）、外側（lateral）を内側広筋（vastus medialis）、後ろを長内転筋（adductor longus）と大内転筋（adductor magnus）に囲まれた溝。大腿三角（femoral triangle）の先から内転筋腱裂孔（adductor hiatus）まで続き、大腿動脈（femoral artery）・大腿静脈（femoral vein）・伏在神経（saphenous nerve）が通る。",
           "region": { "bounds": ["sartorius", "vastus-medialis", "adductor-longus", "adductor-magnus"], "contents": ["femoral-artery", "femoral-vein", "saphenous-nerve", "descending-genicular-artery"], "view": { "target": [-0.05, 0.57, 0.11], "from": [0.55, 0.05, 1], "size": 0.16 } }
         },
         {
@@ -486,7 +486,7 @@
           "level": 3,
           "kanji": "内転筋の腱の間の裂け目",
           "etym": "adductor「内転筋の」＋ hiatus「すき間」",
-          "note": "大内転筋の停止腱の間のすき間。内転筋管の出口で、ここを抜けると大腿動脈・大腿静脈は膝窩動脈・膝窩静脈と名前を変える。",
+          "note": "大内転筋（adductor magnus）の停止腱（tendon of insertion）の間のすき間。内転筋管（adductor canal）の出口で、ここを抜けると大腿動脈（femoral artery）・大腿静脈（femoral vein）は膝窩動脈（popliteal artery）・膝窩静脈（popliteal vein）と名前を変える。",
           "region": { "bounds": ["adductor-magnus"], "contents": ["femoral-artery", "popliteal-artery", "femoral-vein", "popliteal-vein"], "outline": [[-0.0498, 0.481, 0.0869], [-0.0488, 0.477, 0.0942], [-0.0538, 0.4753, 0.1008], [-0.0618, 0.477, 0.1029], [-0.0682, 0.481, 0.0991], [-0.0692, 0.485, 0.0918], [-0.0642, 0.4867, 0.0852], [-0.0562, 0.485, 0.0831]], "view": { "target": [-0.06, 0.49, 0.09], "from": [0.8, 0.1, 0.25], "size": 0.09 } }
         },
         {
@@ -494,7 +494,7 @@
           "level": 3,
           "kanji": "筋が通る裂け目",
           "etym": "muscular「筋の」＋ lacuna「すき間・くぼみ」",
-          "note": "鼡径靱帯と寛骨の間のすき間のうち外側の部分（内側の血管裂孔とは腸恥筋膜弓で分かれる）。腸腰筋・大腿神経・外側大腿皮神経が通る。",
+          "note": "鼡径靱帯（inguinal ligament）と寛骨（hip bone）の間のすき間のうち外側（lateral）の部分（内側（medial）の血管裂孔（vascular lacuna）とは腸恥筋膜弓（iliopectineal arch）で分かれる）。腸腰筋（iliopsoas）・大腿神経（femoral nerve）・外側大腿皮神経（lateral femoral cutaneous nerve）が通る。",
           "region": { "bounds": ["inguinal-ligament", "anterior-inferior-iliac-spine"], "contents": ["iliopsoas", "femoral-nerve", "lateral-femoral-cutaneous-nerve"], "outline": [[-0.1255, 0.8975, 0.142], [-0.058, 0.841, 0.141], [-0.062, 0.818, 0.11], [-0.095, 0.84, 0.118], [-0.1255, 0.8789, 0.1278]], "view": { "target": [-0.085, 0.85, 0.13], "from": [-0.2, 0.15, 1], "size": 0.08 } }
         },
         {
@@ -502,7 +502,7 @@
           "level": 3,
           "kanji": "血管が通る裂け目",
           "etym": "vascular「血管の」＋ lacuna「すき間」",
-          "note": "鼡径靱帯と恥骨の間のすき間のうち内側の部分。外側から大腿動脈・大腿静脈が通り、いちばん内側の大腿輪（大腿管の入口）にはリンパ節がある。大腿輪から腸が出るのが大腿ヘルニア（中年以降の女性に多い）。",
+          "note": "鼡径靱帯（inguinal ligament）と恥骨（pubis）の間のすき間のうち内側（medial）の部分。外側（lateral）から大腿動脈（femoral artery）・大腿静脈（femoral vein）が通り、いちばん内側の大腿輪（femoral ring）（大腿管（femoral canal）の入口）にはリンパ節（lymph node）がある。大腿輪から腸（intestine）が出るのが大腿ヘルニア（femoral hernia）（中年以降の女性に多い）。",
           "region": { "bounds": ["inguinal-ligament", "pecten-pubis", "pubic-tubercle"], "contents": ["femoral-artery", "femoral-vein", "deep-inguinal-nodes", "genitofemoral-nerve"], "outline": [[-0.058, 0.841, 0.141], [-0.0165, 0.8025, 0.141], [-0.0202, 0.8062, 0.1272], [-0.031, 0.8081, 0.1211], [-0.062, 0.818, 0.11]], "view": { "target": [-0.04, 0.825, 0.13], "from": [0.1, 0.15, 1], "size": 0.07 } }
         },
         {
@@ -510,7 +510,7 @@
           "level": 3,
           "kanji": "閉鎖孔の上のすみの管",
           "etym": "obturator「ふさぐもの（閉鎖膜）の」＋ canal「管」",
-          "note": "閉鎖孔の上のすみで、閉鎖膜がふさいでいない小さなトンネル。骨盤から大腿の内側へ、閉鎖神経・閉鎖動脈・閉鎖静脈が抜ける。",
+          "note": "閉鎖孔（obturator foramen）の上のすみで、閉鎖膜（obturator membrane）がふさいでいない小さなトンネル。骨盤（pelvis）から大腿（thigh）の内側（medial）へ、閉鎖神経（obturator nerve）・閉鎖動脈（obturator artery）・閉鎖静脈（obturator veins）が抜ける。",
           "region": { "bounds": ["obturator-membrane", "superior-pubic-ramus"], "contents": ["obturator-nerve", "obturator-artery", "obturator-veins"], "outline": [[-0.0497, 0.8045, 0.0974], [-0.0494, 0.7996, 0.0954], [-0.0487, 0.7975, 0.0905], [-0.048, 0.7996, 0.0856], [-0.0477, 0.8045, 0.0836], [-0.048, 0.8094, 0.0856], [-0.0487, 0.8115, 0.0905], [-0.0494, 0.8094, 0.0954]], "view": { "target": [-0.05, 0.795, 0.09], "from": [-0.25, -0.15, 1], "size": 0.06 } }
         }
       ]
@@ -520,8 +520,8 @@
       "title": "殿部・膝窩・足首の通り道",
       "group": "下肢",
       "intro": [
-        "骨盤の後ろの大坐骨切痕・小坐骨切痕は、仙棘靱帯と仙結節靱帯で囲まれて大坐骨孔・小坐骨孔になる。大坐骨孔は梨状筋で上下に分かれ（梨状筋上孔・梨状筋下孔）、骨盤から殿部への神経・血管が通る。",
-        "膝の裏の膝窩、内くるぶしの後ろの足根管も、大きな神経と血管の通り道。"
+        "骨盤（pelvis）の後ろの大坐骨切痕（greater sciatic notch）・小坐骨切痕（lesser sciatic notch）は、仙棘靱帯（sacrospinous ligament）と仙結節靱帯（sacrotuberous ligament）で囲まれて大坐骨孔（greater sciatic foramen）・小坐骨孔（lesser sciatic foramen）になる。大坐骨孔は梨状筋（piriformis）で上下に分かれ（梨状筋上孔（suprapiriform foramen）・梨状筋下孔（infrapiriform foramen））、骨盤から殿部（gluteal region）への神経（nerve）・血管（blood vessel）が通る。",
+        "膝（knee）の裏の膝窩（popliteal fossa）、内くるぶし（medial malleolus）の後ろの足根管（tarsal tunnel）も、大きな神経と血管の通り道。"
       ],
       "terms": [
         {
@@ -529,7 +529,7 @@
           "level": 2,
           "kanji": "坐骨のそばの大きな孔",
           "etym": "greater「大きい」＋ sciatic「坐骨の」（ischium の変化した形）＋ foramen「孔」",
-          "note": "大坐骨切痕が仙棘靱帯と仙結節靱帯で囲まれてできる孔。梨状筋が通り、その上（梨状筋上孔）と下（梨状筋下孔）を骨盤から殿部への神経・血管が抜ける。",
+          "note": "大坐骨切痕（greater sciatic notch）が仙棘靱帯（sacrospinous ligament）と仙結節靱帯（sacrotuberous ligament）で囲まれてできる孔。梨状筋（piriformis）が通り、その上（梨状筋上孔（suprapiriform foramen））と下（梨状筋下孔（infrapiriform foramen））を骨盤（pelvis）から殿部（gluteal region）への神経（nerve）・血管（blood vessel）が抜ける。",
           "region": { "bounds": ["greater-sciatic-notch", "sacrospinous-ligament", "sacrotuberous-ligament"], "contents": ["piriformis", "sciatic-nerve", "superior-gluteal-nerve", "superior-gluteal-artery", "inferior-gluteal-artery", "pudendal-nerve", "internal-pudendal-artery", "posterior-femoral-cutaneous-nerve"], "outline": [[-0.0471, 0.8788, 0.0194], [-0.0785, 0.8574, 0.0548], [-0.0462, 0.8177, 0.0342], [-0.025, 0.835, 0.02], [-0.0411, 0.8605, 0.0182]], "view": { "target": [-0.055, 0.845, 0.035], "from": [-0.45, 0.15, -1], "size": 0.08 } }
         },
         {
@@ -537,7 +537,7 @@
           "level": 2,
           "kanji": "坐骨のそばの小さな孔",
           "etym": "lesser「小さい」＋ sciatic「坐骨の」＋ foramen「孔」",
-          "note": "小坐骨切痕が仙棘靱帯と仙結節靱帯で囲まれてできる孔。内閉鎖筋の腱が骨盤から出ていき、陰部神経・内陰部動脈が大坐骨孔からいったん出て、ここから入り直して会陰へ向かう。",
+          "note": "小坐骨切痕（lesser sciatic notch）が仙棘靱帯（sacrospinous ligament）と仙結節靱帯（sacrotuberous ligament）で囲まれてできる孔。内閉鎖筋（obturator internus）の腱（tendon）が骨盤（pelvis）から出ていき、陰部神経（pudendal nerve）・内陰部動脈（internal pudendal artery）が大坐骨孔（greater sciatic foramen）からいったん出て、ここから入り直して会陰（perineum）へ向かう。",
           "region": { "bounds": ["lesser-sciatic-notch", "sacrospinous-ligament", "sacrotuberous-ligament"], "contents": ["obturator-internus", "pudendal-nerve", "internal-pudendal-artery"], "outline": [[-0.0462, 0.8177, 0.0342], [-0.0729, 0.7929, 0.0332], [-0.058, 0.771, 0.036], [-0.042, 0.798, 0.026]], "view": { "target": [-0.055, 0.8, 0.03], "from": [-0.35, 0.05, -1], "size": 0.065 } }
         },
         {
@@ -545,7 +545,7 @@
           "level": 3, "check": true,
           "kanji": "梨状筋の上のすき間",
           "etym": "supra-「上」＋ piriform「梨の形の（梨状筋）」＋ foramen「孔」",
-          "note": "大坐骨孔のうち梨状筋より上のすき間。上殿神経・上殿動静脈が通り、中殿筋・小殿筋・大腿筋膜張筋へ行く。",
+          "note": "大坐骨孔（greater sciatic foramen）のうち梨状筋（piriformis）より上のすき間。上殿神経（superior gluteal nerve）・上殿動静脈（superior gluteal vessels）が通り、中殿筋（gluteus medius）・小殿筋（gluteus minimus）・大腿筋膜張筋（tensor fasciae latae）へ行く。",
           "region": { "bounds": ["piriformis", "greater-sciatic-notch"], "contents": ["superior-gluteal-nerve", "superior-gluteal-artery", "superior-gluteal-veins"], "view": { "target": [-0.06, 0.855, 0.035], "from": [-0.45, 0.2, -1], "size": 0.075 }, "prompt": "オレンジ色の筋（梨状筋）のどちら側のすき間？" }
         },
         {
@@ -553,7 +553,7 @@
           "level": 3, "check": true,
           "kanji": "梨状筋の下のすき間",
           "etym": "infra-「下」＋ piriform「梨の形の（梨状筋）」＋ foramen「孔」",
-          "note": "大坐骨孔のうち梨状筋より下のすき間。坐骨神経・下殿神経・下殿動静脈・陰部神経・内陰部動静脈・後大腿皮神経が通る。殿部の注射は坐骨神経を避けて上外側に打つ。",
+          "note": "大坐骨孔（greater sciatic foramen）のうち梨状筋（piriformis）より下のすき間。坐骨神経（sciatic nerve）・下殿神経（inferior gluteal nerve）・下殿動静脈（inferior gluteal vessels）・陰部神経（pudendal nerve）・内陰部動静脈（internal pudendal vessels）・後大腿皮神経（posterior femoral cutaneous nerve）が通る。殿部（gluteal region）の注射は坐骨神経を避けて上外側（superolateral）に打つ。",
           "region": { "bounds": ["piriformis", "sacrospinous-ligament"], "contents": ["sciatic-nerve", "inferior-gluteal-artery", "inferior-gluteal-veins", "pudendal-nerve", "internal-pudendal-artery", "posterior-femoral-cutaneous-nerve"], "view": { "target": [-0.055, 0.83, 0.035], "from": [-0.45, 0.05, -1], "size": 0.08 }, "prompt": "オレンジ色の筋（梨状筋）のどちら側のすき間？" }
         },
         {
@@ -561,7 +561,7 @@
           "level": 1,
           "kanji": "膝の裏のくぼみ",
           "etym": "popliteal ← ラテン語 poples「膝の裏」＋ fossa「くぼみ」",
-          "note": "膝の裏のひし形のくぼみ。上は大腿二頭筋（外側）と半腱様筋・半膜様筋（内側）、下は腓腹筋の内側頭・外側頭で囲まれる。浅い所から脛骨神経・膝窩静脈・膝窩動脈の順に並び、総腓骨神経は大腿二頭筋に沿って外へ出る。",
+          "note": "膝（knee）の裏のひし形のくぼみ。上は大腿二頭筋（biceps femoris）（外側（lateral））と半腱様筋（semitendinosus）・半膜様筋（semimembranosus）（内側（medial））、下は腓腹筋（gastrocnemius）の内側頭（medial head）・外側頭（lateral head）で囲まれる。浅い所から脛骨神経（tibial nerve）・膝窩静脈（popliteal vein）・膝窩動脈（popliteal artery）の順に並び、総腓骨神経（common fibular nerve）は大腿二頭筋に沿って外へ出る。",
           "region": { "bounds": ["biceps-femoris", "semitendinosus", "semimembranosus", "gastrocnemius"], "contents": ["tibial-nerve", "common-fibular-nerve", "popliteal-vein", "popliteal-artery", "small-saphenous-vein", "popliteal-nodes"], "outline": [[-0.072, 0.475, 0.032], [-0.106, 0.385, 0.03], [-0.072, 0.315, 0.02], [-0.04, 0.385, 0.035]], "view": { "target": [-0.072, 0.395, 0.04], "from": [-0.15, 0.08, -1], "size": 0.12 } }
         },
         {
@@ -569,7 +569,7 @@
           "level": 2,
           "kanji": "足根骨のそばの管",
           "etym": "tarsal「足根の」＋ tunnel「トンネル」",
-          "note": "内果の後ろで、屈筋支帯におおわれた通り道。前から後脛骨筋・長趾屈筋の腱、後脛骨動静脈と脛骨神経、長母趾屈筋の腱の順に通る。脛骨神経がここで圧迫されると足の裏がしびれる（足根管症候群）。",
+          "note": "内果（medial malleolus）の後ろで、屈筋支帯（flexor retinaculum）におおわれた通り道。前から後脛骨筋（tibialis posterior）・長趾屈筋（flexor digitorum longus）の腱（tendon）、後脛骨動静脈（posterior tibial vessels）と脛骨神経（tibial nerve）、長母趾屈筋（flexor hallucis longus）の腱の順に通る。脛骨神経がここで圧迫されると足の裏（sole）がしびれる（足根管症候群（tarsal tunnel syndrome））。",
           "region": { "bounds": ["flexor-retinaculum-of-ankle", "medial-malleolus"], "contents": ["tibialis-posterior", "flexor-digitorum-longus", "posterior-tibial-artery", "posterior-tibial-veins", "tibial-nerve", "flexor-hallucis-longus"], "outline": [[-0.0446, 0.0056, 0.0786], [-0.04, -0.03, 0.052], [-0.049, -0.066, 0.05], [-0.0551, -0.0249, 0.0754]], "view": { "target": [-0.048, -0.025, 0.065], "from": [1, 0.15, 0.1], "size": 0.07 } }
         }
       ]
@@ -579,8 +579,8 @@
       "title": "大腿と下腿の区画",
       "group": "下肢",
       "intro": [
-        "大腿と下腿の筋は、筋間中隔・骨間膜・骨で区画に仕切られる。同じ区画の筋は同じ神経に支配され、似たはたらきをするので、区画ごとに覚えると支配神経と作用がまとめて覚えられる。",
-        "大腿：前（膝を伸ばす・大腿神経）、内側（股関節を内転する・閉鎖神経）、後ろ（膝を曲げる・坐骨神経）。下腿：前（足を背屈する・深腓骨神経）、外側（足を外反する・浅腓骨神経）、後ろ（足を底屈する・脛骨神経）。",
+        "大腿（thigh）と下腿（leg）の筋（muscle）は、筋間中隔（intermuscular septum）・骨間膜（interosseous membrane）・骨（bone）で区画（compartment）に仕切られる。同じ区画の筋は同じ神経（nerve）に支配（innervation）され、似たはたらきをするので、区画ごとに覚えると支配神経（innervating nerve）と作用がまとめて覚えられる。",
+        "大腿：前（膝（knee）を伸ばす・大腿神経（femoral nerve））、内側（medial）（股関節（hip joint）を内転（adduction）する・閉鎖神経（obturator nerve））、後ろ（膝を曲げる・坐骨神経（sciatic nerve））。下腿：前（足（foot）を背屈（dorsiflexion）する・深腓骨神経（deep fibular nerve））、外側（lateral）（足を外反（eversion）する・浅腓骨神経（superficial fibular nerve））、後ろ（足を底屈（plantar flexion）する・脛骨神経（tibial nerve））。",
         "区画は水平断（CT と同じく下から見る。前が上、本人の右が左）で示す。オレンジの線が筋間中隔。"
       ],
       "terms": [
@@ -589,7 +589,7 @@
           "level": 2,
           "kanji": "大腿の前の仕切られた部屋",
           "etym": "anterior「前の」＋ compartment「区画」＋ thigh「大腿」",
-          "note": "大腿の前の区画（伸筋区画）。大腿四頭筋・縫工筋が入り、大腿神経が支配する。膝を伸ばし、股関節を曲げる。",
+          "note": "大腿（thigh）の前の区画（compartment）（伸筋区画（extensor compartment））。大腿四頭筋（quadriceps femoris）・縫工筋（sartorius）が入り、大腿神経（femoral nerve）が支配（innervation）する。膝（knee）を伸ばし、股関節（hip joint）を曲げる。",
           "region": { "bounds": ["lateral-intermuscular-septum-of-thigh", "medial-intermuscular-septum-of-thigh"], "contents": ["quadriceps-femoris", "sartorius", "femoral-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.6, "keep": 1 }, "view": { "target": [-0.075, 0.6, 0.085], "from": [0, -1, 0.02], "size": 0.1 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         },
         {
@@ -597,7 +597,7 @@
           "level": 2,
           "kanji": "大腿の内側の仕切られた部屋",
           "etym": "medial「内側の」＋ compartment「区画」",
-          "note": "大腿の内側の区画（内転筋区画）。長内転筋・短内転筋・大内転筋・薄筋・外閉鎖筋（恥骨筋も）が入り、おもに閉鎖神経が支配する（恥骨筋は大腿神経、大内転筋の一部は坐骨神経も）。股関節を内転する。",
+          "note": "大腿（thigh）の内側（medial）の区画（compartment）（内転筋区画（adductor compartment））。長内転筋（adductor longus）・短内転筋（adductor brevis）・大内転筋（adductor magnus）・薄筋（gracilis）・外閉鎖筋（obturator externus）（恥骨筋（pectineus）も）が入り、おもに閉鎖神経（obturator nerve）が支配（innervation）する（恥骨筋は大腿神経（femoral nerve）、大内転筋の一部は坐骨神経（sciatic nerve）も）。股関節（hip joint）を内転（adduction）する。",
           "region": { "bounds": ["medial-intermuscular-septum-of-thigh"], "contents": ["adductor-longus", "adductor-brevis", "adductor-magnus", "gracilis", "pectineus", "obturator-externus", "obturator-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.6, "keep": 1 }, "view": { "target": [-0.075, 0.6, 0.085], "from": [0, -1, 0.02], "size": 0.1 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         },
         {
@@ -605,7 +605,7 @@
           "level": 2,
           "kanji": "大腿の後ろの仕切られた部屋",
           "etym": "posterior「後ろの」＋ compartment「区画」",
-          "note": "大腿の後ろの区画（屈筋区画）。ハムストリング（大腿二頭筋・半腱様筋・半膜様筋）が入り、坐骨神経が支配する。膝を曲げ、股関節を伸ばす。",
+          "note": "大腿（thigh）の後ろの区画（compartment）（屈筋区画（flexor compartment））。ハムストリング（hamstrings）（大腿二頭筋（biceps femoris）・半腱様筋（semitendinosus）・半膜様筋（semimembranosus））が入り、坐骨神経（sciatic nerve）が支配（innervation）する。膝（knee）を曲げ、股関節（hip joint）を伸ばす。",
           "region": { "bounds": ["lateral-intermuscular-septum-of-thigh"], "contents": ["biceps-femoris", "semitendinosus", "semimembranosus", "sciatic-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.6, "keep": 1 }, "view": { "target": [-0.075, 0.6, 0.085], "from": [0, -1, 0.02], "size": 0.1 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         },
         {
@@ -613,7 +613,7 @@
           "level": 2,
           "kanji": "下腿の前の仕切られた部屋",
           "etym": "anterior「前の」＋ compartment「区画」＋ leg「下腿」",
-          "note": "下腿の前の区画（伸筋区画）。前脛骨筋・長趾伸筋・長母趾伸筋・第三腓骨筋が入り、深腓骨神経が支配する。足を背屈し、指を伸ばす。前脛骨動脈が通る。狭い区画で、コンパートメント症候群が最も起こりやすい。",
+          "note": "下腿（leg）の前の区画（compartment）（伸筋区画（extensor compartment））。前脛骨筋（tibialis anterior）・長趾伸筋（extensor digitorum longus）・長母趾伸筋（extensor hallucis longus）・第三腓骨筋（fibularis tertius）が入り、深腓骨神経（deep fibular nerve）が支配（innervation）する。足（foot）を背屈（dorsiflexion）し、指（finger）を伸ばす。前脛骨動脈（anterior tibial artery）が通る。狭い区画で、コンパートメント症候群（compartment syndrome）が最も起こりやすい。",
           "region": { "bounds": ["anterior-intermuscular-septum-of-leg", "interosseous-membrane-of-leg"], "contents": ["tibialis-anterior", "extensor-digitorum-longus", "extensor-hallucis-longus", "fibularis-tertius", "deep-fibular-nerve", "anterior-tibial-artery"], "contentsLabel": "中の筋・神経・血管", "section": { "axis": "y", "at": 0.2, "keep": 1 }, "view": { "target": [-0.085, 0.2, 0.07], "from": [0, -1, 0.02], "size": 0.075 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         },
         {
@@ -621,7 +621,7 @@
           "level": 2,
           "kanji": "下腿の外側の仕切られた部屋",
           "etym": "lateral「外側の」＋ compartment「区画」",
-          "note": "下腿の外側の区画（腓骨筋区画）。長腓骨筋・短腓骨筋が入り、浅腓骨神経が支配する。足を外反する。",
+          "note": "下腿（leg）の外側（lateral）の区画（compartment）（腓骨筋区画（fibular compartment））。長腓骨筋（fibularis longus）・短腓骨筋（fibularis brevis）が入り、浅腓骨神経（superficial fibular nerve）が支配（innervation）する。足（foot）を外反（eversion）する。",
           "region": { "bounds": ["anterior-intermuscular-septum-of-leg", "posterior-intermuscular-septum-of-leg"], "contents": ["fibularis-longus", "fibularis-brevis", "superficial-fibular-nerve"], "contentsLabel": "中の筋と神経", "section": { "axis": "y", "at": 0.2, "keep": 1 }, "view": { "target": [-0.085, 0.2, 0.07], "from": [0, -1, 0.02], "size": 0.075 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         },
         {
@@ -629,7 +629,7 @@
           "level": 2,
           "kanji": "下腿の後ろの仕切られた部屋",
           "etym": "posterior「後ろの」＋ compartment「区画」",
-          "note": "下腿の後ろの区画（屈筋区画）。浅い層に下腿三頭筋・足底筋、深い層に膝窩筋・後脛骨筋・長趾屈筋・長母趾屈筋が入り、脛骨神経が支配する。足を底屈し、指を曲げる。後脛骨動脈・腓骨動脈が通る。",
+          "note": "下腿（leg）の後ろの区画（compartment）（屈筋区画（flexor compartment））。浅い層に下腿三頭筋（triceps surae）・足底筋（plantaris）、深い層に膝窩筋（popliteus）・後脛骨筋（tibialis posterior）・長趾屈筋（flexor digitorum longus）・長母趾屈筋（flexor hallucis longus）が入り、脛骨神経（tibial nerve）が支配（innervation）する。足（foot）を底屈（plantar flexion）し、指（finger）を曲げる。後脛骨動脈（posterior tibial artery）・腓骨動脈（fibular artery）が通る。",
           "region": { "bounds": ["posterior-intermuscular-septum-of-leg", "interosseous-membrane-of-leg"], "contents": ["triceps-surae", "plantaris", "popliteus", "tibialis-posterior", "flexor-digitorum-longus", "flexor-hallucis-longus", "tibial-nerve", "posterior-tibial-artery", "fibular-artery"], "contentsLabel": "中の筋・神経・血管", "section": { "axis": "y", "at": 0.2, "keep": 1 }, "view": { "target": [-0.085, 0.2, 0.07], "from": [0, -1, 0.02], "size": 0.075 }, "prompt": "色の付いた筋と神経が入る区画は？" }
         }
       ]
@@ -639,8 +639,8 @@
       "title": "足のアーチ（足弓）",
       "group": "下肢",
       "intro": [
-        "足の骨は弓（アーチ）のように組まれ、体重を受け止めるばね・歩くときのてこになる。縦の2つのアーチ（内側・外側）と横のアーチがある。",
-        "アーチは骨の形のほか、靱帯（底側踵舟靱帯・長足底靱帯）、足底腱膜、筋（後脛骨筋・長腓骨筋・足の裏の筋）が支える。内側縦足弓が低くなったのが扁平足。"
+        "足（foot）の骨（bone）は弓（アーチ（arch））のように組まれ、体重を受け止めるばね・歩くときのてこになる。縦の2つのアーチ（内側（medial）・外側（lateral））と横のアーチがある。",
+        "アーチは骨の形のほか、靱帯（ligament）（底側踵舟靱帯（plantar calcaneonavicular ligament）・長足底靱帯（long plantar ligament））、足底腱膜（plantar aponeurosis）、筋（muscle）（後脛骨筋（tibialis posterior）・長腓骨筋（fibularis longus）・足の裏（sole）の筋）が支える。内側縦足弓（medial longitudinal arch of foot）が低くなったのが扁平足（flat foot）。"
       ],
       "terms": [
         {
@@ -648,7 +648,7 @@
           "level": 2,
           "kanji": "足の内側の縦の弓",
           "etym": "medial「内側の」＋ longitudinal「縦の」＋ arch「弓」",
-          "note": "踵骨・距骨・舟状骨・3つの楔状骨・第1〜3中足骨がつくる、足の内側の高いアーチ（土踏まず）。頂点は距骨頭。底側踵舟靱帯（スプリング靱帯）・足底腱膜・後脛骨筋が支える。",
+          "note": "踵骨（calcaneus）・距骨（talus）・舟状骨（scaphoid）・3つの楔状骨（cuneiform bones）・第1〜3中足骨（first to third metatarsals）がつくる、足（foot）の内側（medial）の高いアーチ（arch）（土踏まず（arch of foot））。頂点は距骨頭（head of talus）。底側踵舟靱帯（plantar calcaneonavicular ligament）（スプリング靱帯（spring ligament））・足底腱膜（plantar aponeurosis）・後脛骨筋（tibialis posterior）が支える。",
           "region": { "bounds": ["calcaneus", "talus", "navicular", "cuneiforms"], "contents": ["plantar-calcaneonavicular-ligament", "plantar-aponeurosis", "tibialis-posterior"], "boundsLabel": "つくる骨", "contentsLabel": "支えるもの", "outline": [[-0.062, -0.068, 0.045], [-0.064, -0.035, 0.075], [-0.065, -0.014, 0.1], [-0.07, -0.026, 0.13], [-0.085, -0.048, 0.165], [-0.092, -0.062, 0.19]], "open": true, "view": { "target": [-0.07, -0.035, 0.11], "from": [1, 0.1, 0.05], "size": 0.09 }, "prompt": "オレンジ色の骨と線がつくるアーチは？" }
         },
         {
@@ -656,7 +656,7 @@
           "level": 2,
           "kanji": "足の外側の縦の弓",
           "etym": "lateral「外側の」＋ longitudinal「縦の」＋ arch「弓」",
-          "note": "踵骨・立方骨・第4〜5中足骨がつくる、足の外側の低いアーチ。立つと地面に近く、体重を受ける。長足底靱帯・底側踵立方靱帯・長腓骨筋の腱が支える。",
+          "note": "踵骨（calcaneus）・立方骨（cuboid）・第4〜5中足骨（fourth to fifth metatarsals）がつくる、足（foot）の外側（lateral）の低いアーチ（arch）。立つと地面に近く、体重を受ける。長足底靱帯（long plantar ligament）・底側踵立方靱帯（plantar calcaneocuboid ligament）・長腓骨筋（fibularis longus）の腱（tendon）が支える。",
           "region": { "bounds": ["calcaneus", "cuboid", "tuberosity-of-fifth-metatarsal"], "contents": ["long-plantar-ligament", "plantar-calcaneocuboid-ligament", "fibularis-longus"], "boundsLabel": "つくる骨", "contentsLabel": "支えるもの", "outline": [[-0.075, -0.069, 0.045], [-0.095, -0.05, 0.09], [-0.115, -0.048, 0.12], [-0.148, -0.06, 0.146], [-0.143, -0.065, 0.16]], "open": true, "view": { "target": [-0.105, -0.045, 0.1], "from": [-1, 0.15, 0.05], "size": 0.09 }, "prompt": "オレンジ色の骨と線がつくるアーチは？" }
         },
         {
@@ -664,7 +664,7 @@
           "level": 2,
           "kanji": "足の横の弓",
           "etym": "transverse「横の」＋ arch「弓」",
-          "note": "楔状骨・立方骨と中足骨の底がつくる横のアーチ。前の中足骨頭では平らになる。足の裏を横切る長腓骨筋の腱が下から支え、後脛骨筋・母趾内転筋の横頭も助ける。",
+          "note": "楔状骨（cuneiform bones）・立方骨（cuboid）と中足骨（metatarsals）の底がつくる横のアーチ（arch）。前の中足骨頭（head of metatarsal bone）では平らになる。足の裏（sole）を横切る長腓骨筋（fibularis longus）の腱（tendon）が下から支え、後脛骨筋（tibialis posterior）・母趾内転筋（adductor hallucis）の横頭（transverse head）も助ける。",
           "region": { "bounds": ["cuneiforms", "cuboid"], "contents": ["fibularis-longus", "tibialis-posterior", "adductor-hallucis"], "boundsLabel": "つくる骨", "contentsLabel": "支えるもの", "outline": [[-0.068, -0.045, 0.12], [-0.08, -0.02, 0.118], [-0.092, -0.012, 0.115], [-0.104, -0.022, 0.11], [-0.114, -0.045, 0.105]], "open": true, "section": { "axis": "z", "at": 0.12, "keep": -1 }, "view": { "target": [-0.09, -0.03, 0.115], "from": [0, 0.1, 1], "size": 0.06 }, "prompt": "オレンジ色の骨と線がつくるアーチは？" }
         }
       ]

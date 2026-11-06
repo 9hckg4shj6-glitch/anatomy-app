@@ -11,14 +11,14 @@
           "parts": ["esophagus"], "level": 1,
           "kanji": "食べ物の通る道",
           "etym": "esophagus ← ギリシャ語 oisein「運ぶ」＋ phagein「食べる」",
-          "note": "咽頭から胃まで、気管の後ろを下る約25cmの管。輪状軟骨の高さ（第6頚椎）で始まり、頚部・胸部・腹部に分かれる。第10胸椎の高さで横隔膜の食道裂孔を通り、第11胸椎の左前で胃の噴門に続く。始まりの所・大動脈弓と左の主気管支が前を横切る所・横隔膜を貫く所の3か所が生理的に狭く、飲みこんだ物がつかえやすく、食道癌もできやすい（切歯から約15・25・40cm）。下部の静脈は左胃静脈（門脈）と奇静脈の両方につながるので、門脈の圧が上がると食道静脈瘤ができる。"
+          "note": "咽頭（pharynx）から胃まで、気管（trachea）の後ろを下る約25cmの管。輪状軟骨（cricoid cartilage）の高さ（第6頚椎（sixth cervical vertebra））で始まり、頚部（cervical part）・胸部（thoracic part）・腹部（abdominal part）に分かれる。第10胸椎（tenth thoracic vertebra）の高さで横隔膜（diaphragm）の食道裂孔（esophageal hiatus）を通り、第11胸椎（eleventh thoracic vertebra）の左前で胃（stomach）の噴門（cardia）に続く。始まりの所・大動脈弓（arch of aorta）と左の主気管支（main bronchus）が前を横切る所・横隔膜を貫く所の3か所が生理的に狭く、飲みこんだ物がつかえやすく、食道癌（esophageal cancer）もできやすい（切歯（incisors）から約15・25・40cm）。下部の静脈（vein）は左胃静脈（left gastric vein）（門脈（hepatic portal vein））と奇静脈（azygos vein）の両方につながるので、門脈の圧が上がると食道静脈瘤（esophageal varices）ができる。"
         },
         {
           "id": "stomach", "ja": "胃", "yomi": "い", "en": "stomach", "la": "gaster",
           "parts": ["stomach"], "level": 1,
           "kanji": "い",
           "etym": "stomach ← ギリシャ語 stomachos「のど・胃の入口」(stoma 口)。gaster から gastric「胃の」",
-          "note": "左上腹部にある袋状の器官（容量1,200〜1,500mL）。入口が噴門、出口が幽門で、前壁と後壁、上の縁の小弯と下の縁の大弯がある。噴門・胃底・胃体・幽門部に分かれる。小弯からは小網、大弯からは大網が出る。後ろには網嚢をへだてて膵臓・左の腎臓と副腎・脾臓がある。胃酸と消化酵素で食べ物を消化する。潰瘍や癌は幽門部の小弯側に多い。",
+          "note": "左上腹部（left upper abdomen）にある袋状の器官（organ）（容量1,200〜1,500mL）。入口が噴門（cardia）、出口が幽門（pylorus）で、前壁（anterior wall）と後壁（posterior wall）、上の縁の小弯（lesser curvature）と下の縁の大弯（greater curvature）がある。噴門・胃底（fundus of stomach）・胃体（body of stomach）・幽門部（pyloric part）に分かれる。小弯からは小網（lesser omentum）、大弯からは大網（greater omentum）が出る。後ろには網嚢（omental bursa）をへだてて膵臓（pancreas）・左の腎臓（kidney）と副腎（suprarenal gland）・脾臓（spleen）がある。胃酸（gastric acid）と消化酵素（digestive enzyme）で食べ物を消化（digestion）する。潰瘍（ulcer）や癌は幽門部の小弯側（lesser curvature side）に多い。",
           "hormones": "ガストリン（幽門部のG細胞。胃酸を出させる）・グレリン（食欲を高める）"
         },
         {
@@ -26,7 +26,7 @@
           "parts": ["duodenum"], "level": 1,
           "kanji": "指12本分の長さの腸",
           "etym": "duodenum ← ラテン語 duodeni digitorum「指12本分」",
-          "note": "胃に続く小腸の最初の部分（約25cm）。上部・下行部・水平部・上行部に分かれ、C字形に膵頭を囲む。ほとんどが後腹壁に固定された後腹膜器官。下行部の内側の壁の大十二指腸乳頭に、総胆管と膵管が合わさった胆膵管膨大部が開き（まわりを膨大部括約筋＝オディ括約筋が囲む）、その少し上の小十二指腸乳頭に副膵管が開く。終わりの十二指腸空腸曲は十二指腸提筋（トライツ靱帯）で後腹壁につり下げられる。",
+          "note": "胃（stomach）に続く小腸（small intestine）の最初の部分（約25cm）。上部・下行部（descending part）・水平部（horizontal part）・上行部（ascending part）に分かれ、C字形に膵頭（head of pancreas）を囲む。ほとんどが後腹壁（posterior abdominal wall）に固定された後腹膜器官（retroperitoneal organ）。下行部の内側（medial）の壁の大十二指腸乳頭（major duodenal papilla）に、総胆管（bile duct）と膵管（pancreatic duct）が合わさった胆膵管膨大部（hepatopancreatic ampulla）が開き（まわりを膨大部括約筋（sphincter of ampulla）＝オディ括約筋（sphincter of Oddi）が囲む）、その少し上の小十二指腸乳頭（minor duodenal papilla）に副膵管（accessory pancreatic duct）が開く。終わりの十二指腸空腸曲（duodenojejunal flexure）は十二指腸提筋（suspensory muscle of duodenum）（トライツ靱帯（ligament of Treitz））で後腹壁につり下げられる。",
           "hormones": "セクレチン（膵液の重炭酸を出させる）・コレシストキニン（胆嚢を縮め、膵液の酵素を出させる）"
         },
         {
@@ -34,63 +34,63 @@
           "parts": ["* part of jejunum"], "level": 1,
           "kanji": "死後に空（から）のことが多い腸",
           "etym": "jejunum ← ラテン語 jejunus「空腹の・空の」",
-          "note": "十二指腸に続く小腸の前半約5分の2で、主に左上腹部にある。回腸との間にはっきりした境は無いが、空腸は太く、壁が厚く、内面の輪状ひだが大きく密に並ぶ。"
+          "note": "十二指腸（duodenum）に続く小腸（small intestine）の前半約5分の2で、主に左上腹部（left upper abdomen）にある。回腸（ileum）との間にはっきりした境は無いが、空腸は太く、壁が厚く、内面（internal surface）の輪状ひだ（circular folds）が大きく密に並ぶ。"
         },
         {
           "id": "ileum", "ja": "回腸", "yomi": "かいちょう", "en": "ileum", "la": "ileum",
           "parts": ["* part of ileum"], "level": 1,
           "kanji": "曲がりくねって回る腸",
           "etym": "ileum ← ギリシャ語 eilein「巻く・ねじる」",
-          "note": "空腸に続く小腸の後半約5分の3で、主に右下腹部にあり、回腸口で大腸（盲腸）に開く。空腸より細く壁がやや薄く、輪状ひだは小さくまばらで、終わりの部分では消える。腸間膜が付く側の反対側に、リンパ小節が集まった集合リンパ小節（パイエル板）が20〜30個ある。終わりから0.3〜1m手前に、胎児の卵黄腸管のなごりのメッケル憩室が見られることがある（約1〜2%）。"
+          "note": "空腸（jejunum）に続く小腸（small intestine）の後半約5分の3で、主に右下腹部（right lower abdomen）にあり、回腸口（ileal orifice）で大腸（large intestine）（盲腸（cecum））に開く。空腸より細く壁がやや薄く、輪状ひだ（circular folds）は小さくまばらで、終わりの部分では消える。腸間膜（mesentery）が付く側の反対側（contralateral side）に、リンパ小節（lymphoid nodule）が集まった集合リンパ小節（aggregated lymphoid nodules）（パイエル板（Peyer patches））が20〜30個ある。終わりから0.3〜1m手前に、胎児（fetus）の卵黄腸管（vitelline duct）のなごりのメッケル憩室（Meckel diverticulum）が見られることがある（約1〜2%）。"
         },
         {
           "id": "cecum", "check": true, "ja": "盲腸", "yomi": "もうちょう", "en": "cecum", "enAlt": ["caecum"], "la": "caecum",
           "parts": ["ileocecal junction"], "level": 1,
           "kanji": "一方が行き止まり（盲）の腸",
           "etym": "cecum ← ラテン語 caecus「盲目の・行き止まりの」",
-          "note": "大腸の始まりで、回腸が開く回腸口より下の、長さ5〜6cmの行き止まりの袋。右腸骨窩で腸腰筋の前にあり、下に虫垂がつく。回腸口では回腸の終わりが大腸の中へ突き出し、上下のひだ（回盲弁）と回腸の輪走筋が大腸からの逆流を防ぐ。乳幼児では回腸が盲腸に入りこむ腸重積が起こりやすい。このモデルでは回盲部として示す。"
+          "note": "大腸（large intestine）の始まりで、回腸（ileum）が開く回腸口（ileal orifice）より下の、長さ5〜6cmの行き止まりの袋。右腸骨窩（right iliac fossa）で腸腰筋（iliopsoas）の前にあり、下に虫垂（appendix）がつく。回腸口では回腸の終わりが大腸の中へ突き出し、上下のひだ（fold）（回盲弁（ileocecal valve））と回腸の輪走筋（circular muscle）が大腸からの逆流を防ぐ。乳幼児では回腸が盲腸に入りこむ腸重積（intussusception）が起こりやすい。このモデルでは回盲部（ileocecal region）として示す。"
         },
         {
           "id": "appendix", "ja": "虫垂", "yomi": "ちゅうすい", "en": "appendix", "enAlt": ["vermiform appendix"], "la": "appendix vermiformis",
           "parts": ["appendix"], "level": 1,
           "kanji": "虫のように垂れ下がったもの",
           "etym": "appendix ← ラテン語「付属物」、vermiform「虫の形の」",
-          "note": "盲腸から垂れ下がる細い管。炎症を起こしたものが虫垂炎（いわゆる盲腸）。"
+          "note": "盲腸（cecum）から垂れ下がる細い管。炎症（inflammation）を起こしたものが虫垂炎（appendicitis）（いわゆる盲腸）。"
         },
         {
           "id": "ascending-colon", "ja": "上行結腸", "yomi": "じょうこうけっちょう", "en": "ascending colon", "la": "colon ascendens",
           "parts": ["ascending colon"], "level": 1,
           "kanji": "上に行く結腸",
           "etym": "colon ← ギリシャ語 kolon「大腸」",
-          "note": "盲腸から右の腹壁に沿って上る結腸。肝臓の下で左へ曲がり横行結腸になる。"
+          "note": "盲腸（cecum）から右の腹壁（abdominal wall）に沿って上る結腸（colon）。肝臓（liver）の下で左へ曲がり横行結腸（transverse colon）になる。"
         },
         {
           "id": "transverse-colon", "ja": "横行結腸", "yomi": "おうこうけっちょう", "en": "transverse colon", "la": "colon transversum",
           "parts": ["transverse colon"], "level": 1,
           "kanji": "横に行く結腸",
           "etym": "transverse「横の」＋ colon",
-          "note": "腹部を右から左へ横切る結腸。横行結腸間膜で後腹壁につり下げられ、垂れ下がるように動く。前には大網が付く（胃結腸間膜）。"
+          "note": "腹部（abdomen）を右から左へ横切る結腸（colon）。横行結腸間膜（transverse mesocolon）で後腹壁（posterior abdominal wall）につり下げられ、垂れ下がるように動く。前には大網（greater omentum）が付く（胃結腸間膜（gastrocolic ligament））。"
         },
         {
           "id": "descending-colon", "ja": "下行結腸", "yomi": "かこうけっちょう", "en": "descending colon", "la": "colon descendens",
           "parts": ["descending colon"], "level": 1,
           "kanji": "下に行く結腸",
           "etym": "descending「下る」＋ colon",
-          "note": "左の腹壁に沿って下る結腸。左腸骨窩でS状結腸に続く。"
+          "note": "左の腹壁（abdominal wall）に沿って下る結腸（colon）。左腸骨窩（left iliac fossa）でS状結腸（sigmoid colon）に続く。"
         },
         {
           "id": "sigmoid-colon", "ja": "S状結腸", "yomi": "えすじょうけっちょう", "en": "sigmoid colon", "la": "colon sigmoideum",
           "parts": ["sigmoid colon"], "level": 1,
           "kanji": "S字の形に曲がる結腸",
           "etym": "sigmoid ← ギリシャ文字シグマ（ς）＋ -oid「〜の形」",
-          "note": "左腸骨窩で下行結腸に続き、S字に曲がって骨盤に入り、第2〜3仙椎の高さで直腸に続く。S状結腸間膜をもち、よく動く（ねじれると腸捻転）。"
+          "note": "左腸骨窩（left iliac fossa）で下行結腸（descending colon）に続き、S字に曲がって骨盤（pelvis）に入り、第2〜3仙椎（second to third sacral vertebrae）の高さで直腸（rectum）に続く。S状結腸間膜（sigmoid mesocolon）をもち、よく動く（ねじれると腸捻転（volvulus））。"
         },
         {
           "id": "rectum", "ja": "直腸", "yomi": "ちょくちょう", "en": "rectum", "la": "rectum",
           "parts": ["rectum"], "level": 1,
           "kanji": "まっすぐな腸",
           "etym": "rectum ← ラテン語 rectus「まっすぐな」",
-          "note": "大腸の最後の長さ12〜14cmの部分。第2〜3仙椎の高さでS状結腸から続き、仙骨の前をその弯曲に沿って下り（仙骨曲）、尾骨の先の前でほぼ直角に後ろへ曲がって（会陰曲）、骨盤隔膜を貫いて肛門管に移る。下の方は広がって直腸膨大部となる。結腸ひも・結腸膨起・腹膜垂は無い。上部は前と横、中部は前だけが腹膜におおわれ、下部は腹膜の外にある。前の腹膜のくぼみ（男性では直腸膀胱窩、女性では直腸子宮窩＝ダグラス窩）は腹膜腔でいちばん低く、膿や血液がたまりやすい。"
+          "note": "大腸（large intestine）の最後の長さ12〜14cmの部分。第2〜3仙椎（second to third sacral vertebrae）の高さでS状結腸（sigmoid colon）から続き、仙骨（sacrum）の前をその弯曲に沿って下り（仙骨曲（sacral flexure））、尾骨（coccyx）の先の前でほぼ直角に後ろへ曲がって（会陰曲（perineal flexure））、骨盤隔膜（pelvic diaphragm）を貫いて肛門管（anal canal）に移る。下の方は広がって直腸膨大部（rectal ampulla）となる。結腸ひも（taeniae coli）・結腸膨起（haustra of colon）・腹膜垂（omental appendices）は無い。上部は前と横、中部は前だけが腹膜（peritoneum）におおわれ、下部は腹膜の外にある。前の腹膜のくぼみ（男性では直腸膀胱窩（rectovesical pouch）、女性では直腸子宮窩（recto-uterine pouch）＝ダグラス窩（pouch of Douglas））は腹膜腔（peritoneal cavity）でいちばん低く、膿や血液（blood）がたまりやすい。"
         }
       ]
     },
@@ -104,76 +104,76 @@
           "parts": ["duodenum", "* part of jejunum", "* part of ileum"], "level": 1,
           "kanji": "細い腸",
           "etym": "intestine ← ラテン語 intestinus「内側の」。tenue「細い」",
-          "note": "胃に続く長さ6〜7mの消化管で、十二指腸・空腸・回腸からなる。内面の輪状ひだと絨毛で表面積を広げ、栄養の大部分を吸収する。"
+          "note": "胃（stomach）に続く長さ6〜7mの消化管（digestive tract）で、十二指腸（duodenum）・空腸（jejunum）・回腸（ileum）からなる。内面（internal surface）の輪状ひだ（circular folds）と絨毛（villi）で表面積を広げ、栄養の大部分を吸収する。"
         },
         {
           "id": "large-intestine", "ja": "大腸", "yomi": "だいちょう", "en": "large intestine", "la": "intestinum crassum",
           "parts": ["ileocecal junction", "appendix", "ascending colon", "transverse colon", "descending colon", "sigmoid colon", "rectum"], "level": 1,
           "kanji": "太い腸",
           "etym": "intestine ← ラテン語 intestinus「内側の」。crassum「太い」",
-          "note": "回腸に続く長さ約1.5mの消化管で、盲腸・虫垂・結腸・直腸からなる。水分を吸収して便をつくる。結腸の表面には結腸ひも・結腸膨起・腹膜垂がある。"
+          "note": "回腸（ileum）に続く長さ約1.5mの消化管（digestive tract）で、盲腸（cecum）・虫垂（appendix）・結腸（colon）・直腸（rectum）からなる。水分を吸収して便をつくる。結腸の表面には結腸ひも（taeniae coli）・結腸膨起（haustra of colon）・腹膜垂（omental appendices）がある。"
         },
         {
           "id": "colon", "ja": "結腸", "yomi": "けっちょう", "en": "colon", "la": "colon",
           "parts": ["ascending colon", "transverse colon", "descending colon", "sigmoid colon"], "level": 1,
           "etym": "colon ← ギリシャ語 kolon「大腸」。colic「結腸の」",
-          "note": "盲腸と直腸の間の大腸で、上行結腸・横行結腸・下行結腸・S状結腸からなり、腹腔の周りを額縁のように囲む。横行結腸と S状結腸は間膜をもってよく動き、上行結腸と下行結腸は後腹壁に固定されている。"
+          "note": "盲腸（cecum）と直腸（rectum）の間の大腸（large intestine）で、上行結腸（ascending colon）・横行結腸（transverse colon）・下行結腸（descending colon）・S状結腸（sigmoid colon）からなり、腹腔（abdominal cavity）の周りを額縁のように囲む。横行結腸と S状結腸は間膜（mesentery）をもってよく動き、上行結腸と下行結腸は後腹壁（posterior abdominal wall）に固定されている。"
         },
         {
           "id": "greater-omentum", "ja": "大網", "yomi": "だいもう", "en": "greater omentum", "la": "omentum majus",
           "parts": ["za:greater omentum"], "level": 1, "xray": true, "veil": true,
           "kanji": "大きな網（あみ）",
           "etym": "omentum ← ラテン語「腸をおおう膜」",
-          "note": "胃の大弯から垂れ下がって小腸の前をエプロンのようにおおい、折り返して横行結腸につく腹膜。脂肪が多く、炎症のある所に寄っていって広がりを防ぐ。このアプリではふだん薄く見せている。"
+          "note": "胃（stomach）の大弯（greater curvature）から垂れ下がって小腸（small intestine）の前をエプロンのようにおおい、折り返して横行結腸（transverse colon）につく腹膜（peritoneum）。脂肪（fat）が多く、炎症（inflammation）のある所に寄っていって広がりを防ぐ。このアプリではふだん薄く見せている。"
         },
         {
           "id": "lesser-omentum", "ja": "小網", "yomi": "しょうもう", "en": "lesser omentum", "la": "omentum minus",
           "parts": ["za:lesser omentum"], "level": 1,
           "kanji": "小さな網（あみ）",
           "etym": "omentum ← ラテン語「腸をおおう膜」",
-          "note": "肝臓の下面（肝門）と胃の小弯・十二指腸の上部を結ぶ腹膜。右の縁の肝十二指腸間膜の中を、固有肝動脈・門脈・総胆管が通る。"
+          "note": "肝臓（liver）の下面（inferior surface）（肝門（porta hepatis））と胃（stomach）の小弯（lesser curvature）・十二指腸（duodenum）の上部を結ぶ腹膜（peritoneum）。右の縁の肝十二指腸間膜（hepatoduodenal ligament）の中を、固有肝動脈（proper hepatic artery）・門脈（hepatic portal vein）・総胆管（bile duct）が通る。"
         },
         {
           "id": "mesentery", "ja": "腸間膜", "yomi": "ちょうかんまく", "en": "mesentery", "la": "mesenterium",
           "parts": ["mesentery of small intestine"], "level": 1, "xray": true,
           "kanji": "腸をつり下げる間膜",
           "etym": "mesentery ← ギリシャ語 mesos「中間」＋ enteron「腸」",
-          "note": "空腸と回腸を後腹壁につり下げる扇形の腹膜。根は第2腰椎の左から右の仙腸関節の前まで斜めに約15cm、腸に付く縁は約6mある。中を上腸間膜動静脈の枝・リンパ管・神経が通る。"
+          "note": "空腸（jejunum）と回腸（ileum）を後腹壁（posterior abdominal wall）につり下げる扇形の腹膜（peritoneum）。根は第2腰椎（second lumbar vertebra）の左から右の仙腸関節（sacro-iliac joint）の前まで斜めに約15cm、腸（intestine）に付く縁は約6mある。中を上腸間膜動静脈（superior mesenteric vessels）の枝（branch）・リンパ管（lymphatic vessel）・神経（nerve）が通る。"
         },
         {
           "id": "mesoappendix", "ja": "虫垂間膜", "yomi": "ちゅうすいかんまく", "en": "mesoappendix", "la": "mesoappendix",
           "parts": ["mesoappendix"], "level": 3, "xray": true,
           "kanji": "虫垂をつり下げる間膜",
           "etym": "meso-「間」＋ appendix",
-          "note": "虫垂を回腸の終わりの部分の腸間膜につなぐ三角形の小さな腹膜。中を虫垂動脈が通る。"
+          "note": "虫垂（appendix）を回腸（ileum）の終わりの部分の腸間膜（mesentery）につなぐ三角形の小さな腹膜（peritoneum）。中を虫垂動脈（appendicular artery）が通る。"
         },
         {
           "id": "taeniae-coli", "ja": "結腸ひも", "yomi": "けっちょうひも", "en": "taeniae coli", "enAlt": ["taenia coli"], "la": "taeniae coli",
           "parts": ["taenia libera", "taenia mesocolica", "taenia omentalis"], "level": 2,
           "kanji": "結腸の表面のひも",
           "etym": "taenia ← ラテン語「ひも・帯」",
-          "note": "大腸の縦走筋が3か所に集まってできた幅約1cmの帯。盲腸から S状結腸まで走り、虫垂の根もとに集まる（手術で虫垂を探す目じるし）。ひもが腸より短いので、間に結腸膨起（ふくらみ）ができる。"
+          "note": "大腸（large intestine）の縦走筋（longitudinal muscle）が3か所に集まってできた幅約1cmの帯。盲腸（cecum）から S状結腸（sigmoid colon）まで走り、虫垂（appendix）の根もとに集まる（手術で虫垂を探す目じるし）。ひもが腸より短いので、間に結腸膨起（haustra of colon）（ふくらみ）ができる。"
         },
         {
           "id": "free-taenia", "ja": "自由ひも", "yomi": "じゆうひも", "en": "free taenia", "enAlt": ["taenia libera"], "la": "taenia libera",
           "parts": ["taenia libera"], "level": 3,
           "kanji": "どこにも付かない自由なひも",
           "etym": "taenia「ひも」＋ libera「自由な」",
-          "note": "結腸ひものうち前にあって、どこにも付かず外から見えるもの。"
+          "note": "結腸ひも（taeniae coli）のうち前にあって、どこにも付かず外から見えるもの。"
         },
         {
           "id": "mesocolic-taenia", "ja": "間膜ひも", "yomi": "かんまくひも", "en": "mesocolic taenia", "enAlt": ["taenia mesocolica"], "la": "taenia mesocolica",
           "parts": ["taenia mesocolica"], "level": 3,
           "kanji": "結腸間膜が付く所のひも",
           "etym": "taenia「ひも」＋ mesocolica「結腸間膜の」",
-          "note": "横行結腸間膜・S状結腸間膜が付く所（上行結腸・下行結腸では後ろ内側）にある結腸ひも。"
+          "note": "横行結腸間膜（transverse mesocolon）・S状結腸間膜（sigmoid mesocolon）が付く所（上行結腸（ascending colon）・下行結腸（descending colon）では後ろ内側（medial））にある結腸ひも（taeniae coli）。"
         },
         {
           "id": "omental-taenia", "ja": "大網ひも", "yomi": "だいもうひも", "en": "omental taenia", "enAlt": ["taenia omentalis"], "la": "taenia omentalis",
           "parts": ["taenia omentalis"], "level": 3,
           "kanji": "大網が付く所のひも",
           "etym": "taenia「ひも」＋ omentalis「大網の」",
-          "note": "横行結腸で大網が付く所（上行結腸・下行結腸では後ろ外側）にある結腸ひも。"
+          "note": "横行結腸（transverse colon）で大網（greater omentum）が付く所（上行結腸（ascending colon）・下行結腸（descending colon）では後ろ外側（lateral））にある結腸ひも（taeniae coli）。"
         }
       ]
     },
@@ -187,105 +187,105 @@
           "of": "stomach", "level": 1,
           "kanji": "胃の入口の門",
           "etym": "cardia ← ギリシャ語 kardia「心臓」（心臓の近くにあるため）",
-          "note": "食道が胃につながる入口（第11胸椎の高さ、正中のやや左）。食道の下の端の括約部のはたらきで、胃の内容が食道へ逆流しにくい。"
+          "note": "食道（esophagus）が胃（stomach）につながる入口（第11胸椎（eleventh thoracic vertebra）の高さ、正中（median）のやや左）。食道の下の端の括約部（sphincter part）のはたらきで、胃の内容が食道へ逆流しにくい。"
         },
         {
           "id": "fundus-of-stomach", "ja": "胃底", "yomi": "いてい", "en": "fundus of stomach", "la": "fundus gastricus",
           "of": "stomach", "level": 1,
           "kanji": "胃の底（立つと上にあるが、こう呼ぶ）",
           "etym": "fundus ← ラテン語「底」",
-          "note": "噴門より上にふくらんだ部分。横隔膜の左のドームの下にあり、立った姿勢では飲みこんだ空気がたまる（X線写真の胃泡）。"
+          "note": "噴門（cardia）より上にふくらんだ部分。横隔膜（diaphragm）の左のドームの下にあり、立った姿勢では飲みこんだ空気がたまる（X線写真（radiograph）の胃泡（gastric air bubble））。"
         },
         {
           "id": "body-of-stomach", "ja": "胃体", "yomi": "いたい", "en": "body of stomach", "la": "corpus gastricum",
           "of": "stomach", "level": 1,
           "kanji": "胃の本体",
           "etym": "body「からだ・本体」。ラテン語 corpus",
-          "note": "胃底と幽門部の間の、胃の大部分。胃酸を出す壁細胞とペプシノゲンを出す主細胞が多い。"
+          "note": "胃底（fundus of stomach）と幽門部（pyloric part）の間の、胃（stomach）の大部分。胃酸（gastric acid）を出す壁細胞（parietal cell）とペプシノゲン（pepsinogen）を出す主細胞（chief cell）が多い。"
         },
         {
           "id": "pyloric-part", "ja": "幽門部", "yomi": "ゆうもんぶ", "en": "pyloric part", "la": "pars pylorica",
           "of": "stomach", "level": 2,
           "kanji": "幽門の手前の部分",
           "etym": "pyloric「幽門の」",
-          "note": "角切痕より先の、幽門へ向かって細くなる部分（幽門洞と幽門管）。ガストリンを出す G細胞がある。胃潰瘍・胃癌のできやすい所。"
+          "note": "角切痕（angular incisure）より先の、幽門（pylorus）へ向かって細くなる部分（幽門洞（pyloric antrum）と幽門管（pyloric canal））。ガストリン（gastrin）を出す G細胞（G cell）がある。胃潰瘍（gastric ulcer）・胃癌（gastric cancer）のできやすい所。"
         },
         {
           "id": "pylorus", "ja": "幽門", "yomi": "ゆうもん", "en": "pylorus", "la": "pylorus",
           "of": "stomach", "level": 1,
           "kanji": "奥まった（幽）所の門（胃の出口）",
           "etym": "pylorus ← ギリシャ語 pyloros「門番」",
-          "note": "胃の出口。厚い輪走筋（幽門括約筋）が、こなれた食べ物を少しずつ十二指腸へ送り出す。第1腰椎の高さ、正中のやや右。"
+          "note": "胃（stomach）の出口。厚い輪走筋（circular muscle）（幽門括約筋（pyloric sphincter））が、こなれた食べ物を少しずつ十二指腸（duodenum）へ送り出す。第1腰椎（first lumbar vertebra）の高さ、正中（median）のやや右。"
         },
         {
           "id": "lesser-curvature", "ja": "小弯", "yomi": "しょうわん", "en": "lesser curvature", "la": "curvatura minor",
           "of": "stomach", "level": 1,
           "kanji": "小さく弯曲した縁",
           "etym": "curvature ← ラテン語 curvus「曲がった」",
-          "note": "胃の右上の、短く内側にへこんだ縁。小網が付き、左胃動脈と右胃動脈が沿って走る。"
+          "note": "胃（stomach）の右上の、短く内側（medial）にへこんだ縁。小網（lesser omentum）が付き、左胃動脈（left gastric artery）と右胃動脈（right gastric artery）が沿って走る。"
         },
         {
           "id": "greater-curvature", "ja": "大弯", "yomi": "だいわん", "en": "greater curvature", "la": "curvatura major",
           "of": "stomach", "level": 1,
           "kanji": "大きく弯曲した縁",
           "etym": "curvature ← ラテン語 curvus「曲がった」",
-          "note": "胃の左下の、長く外側にふくらんだ縁。大網が付き、左右の胃大網動脈が沿って走る。"
+          "note": "胃（stomach）の左下の、長く外側（lateral）にふくらんだ縁。大網（greater omentum）が付き、左右の胃大網動脈（gastro-omental artery）が沿って走る。"
         },
         {
           "id": "angular-incisure", "ja": "角切痕", "yomi": "かくせっこん", "en": "angular incisure", "enAlt": ["angular notch"], "la": "incisura angularis",
           "of": "stomach", "level": 2,
           "kanji": "角（かど）のように曲がった所の切れこみ",
           "etym": "angular「角の」＋ incisure ← ラテン語 incisura「切れこみ」",
-          "note": "小弯が下向きから右向きに曲がる所のくぼみ。胃体と幽門部の境の目じるしで、胃潰瘍のできやすい所。"
+          "note": "小弯（lesser curvature）が下向きから右向きに曲がる所のくぼみ。胃体（body of stomach）と幽門部（pyloric part）の境の目じるしで、胃潰瘍（gastric ulcer）のできやすい所。"
         },
         {
           "id": "superior-part-of-duodenum", "ja": "上部（十二指腸）", "yomi": "じょうぶ", "en": "superior part of duodenum", "enAlt": ["duodenal bulb"], "la": "pars superior duodeni",
           "of": "duodenum", "level": 2,
           "kanji": "十二指腸の上の部分",
           "etym": "superior「上の」",
-          "note": "幽門から右後ろへ向かう約5cmの部分。始めのふくらみは十二指腸球部と呼ばれ、十二指腸潰瘍の大部分がここにできる。"
+          "note": "幽門（pylorus）から右後ろへ向かう約5cmの部分。始めのふくらみは十二指腸球部（duodenal bulb）と呼ばれ、十二指腸潰瘍（duodenal ulcer）の大部分がここにできる。"
         },
         {
           "id": "descending-part-of-duodenum", "ja": "下行部（十二指腸）", "yomi": "かこうぶ", "en": "descending part of duodenum", "la": "pars descendens duodeni",
           "of": "duodenum", "level": 2,
           "kanji": "十二指腸の下っていく部分",
           "etym": "descending「下っていく」",
-          "note": "右の腎臓の前を下る約8cmの部分。内側の壁に大十二指腸乳頭があり、総胆管と膵管が開く。"
+          "note": "右の腎臓（kidney）の前を下る約8cmの部分。内側（medial）の壁に大十二指腸乳頭（major duodenal papilla）があり、総胆管（bile duct）と膵管（pancreatic duct）が開く。"
         },
         {
           "id": "horizontal-part-of-duodenum", "ja": "水平部（十二指腸）", "yomi": "すいへいぶ", "en": "horizontal part of duodenum", "la": "pars horizontalis duodeni",
           "of": "duodenum", "level": 2,
           "kanji": "十二指腸の水平に横切る部分",
           "etym": "horizontal「水平の」",
-          "note": "第3腰椎の高さで、下大静脈と大動脈の前を左へ横切る部分。前を上腸間膜動静脈が下る。"
+          "note": "第3腰椎（third lumbar vertebra）の高さで、下大静脈（inferior vena cava）と大動脈（aorta）の前を左へ横切る部分。前を上腸間膜動静脈（superior mesenteric vessels）が下る。"
         },
         {
           "id": "ascending-part-of-duodenum", "ja": "上行部（十二指腸）", "yomi": "じょうこうぶ", "en": "ascending part of duodenum", "la": "pars ascendens duodeni",
           "of": "duodenum", "level": 2,
           "kanji": "十二指腸の上っていく部分",
           "etym": "ascending「上っていく」",
-          "note": "大動脈の左を上がり、十二指腸空腸曲で空腸に続く短い部分。"
+          "note": "大動脈（aorta）の左を上がり、十二指腸空腸曲（duodenojejunal flexure）で空腸（jejunum）に続く短い部分。"
         },
         {
           "id": "duodenojejunal-flexure", "ja": "十二指腸空腸曲", "yomi": "じゅうにしちょうくうちょうきょく", "en": "duodenojejunal flexure", "la": "flexura duodenojejunalis",
           "of": "duodenum", "level": 2,
           "kanji": "十二指腸が空腸へ曲がる所",
           "etym": "flexure ← ラテン語 flectere「曲げる」",
-          "note": "十二指腸が空腸に続く所の急な曲がり（第2腰椎の左）。十二指腸提筋（トライツ靱帯）でつり下げられ、上部消化管と下部消化管の境とされる。"
+          "note": "十二指腸（duodenum）が空腸（jejunum）に続く所の急な曲がり（第2腰椎（second lumbar vertebra）の左）。十二指腸提筋（suspensory muscle of duodenum）（トライツ靱帯（ligament of Treitz））でつり下げられ、上部消化管（upper gastrointestinal tract）と下部消化管（lower gastrointestinal tract）の境とされる。"
         },
         {
           "id": "right-colic-flexure", "ja": "右結腸曲", "yomi": "うけっちょうきょく", "en": "right colic flexure", "enAlt": ["hepatic flexure"], "la": "flexura coli dextra",
           "of": "colon", "level": 2,
           "kanji": "結腸の右の曲がり",
           "etym": "colic「結腸の」＋ flexure「曲がり」",
-          "note": "上行結腸が横行結腸に続く所の曲がり。肝臓の右葉の下にあるので肝弯曲ともいう。"
+          "note": "上行結腸（ascending colon）が横行結腸（transverse colon）に続く所の曲がり。肝臓（liver）の右葉（right lobe）の下にあるので肝弯曲（hepatic flexure）ともいう。"
         },
         {
           "id": "left-colic-flexure", "ja": "左結腸曲", "yomi": "さけっちょうきょく", "en": "left colic flexure", "enAlt": ["splenic flexure"], "la": "flexura coli sinistra",
           "of": "colon", "level": 2,
           "kanji": "結腸の左の曲がり",
           "etym": "colic「結腸の」＋ flexure「曲がり」",
-          "note": "横行結腸が下行結腸に続く所の曲がり。脾臓の下にあり、右結腸曲より高い。脾弯曲ともいう。"
+          "note": "横行結腸（transverse colon）が下行結腸（descending colon）に続く所の曲がり。脾臓（spleen）の下にあり、右結腸曲（right colic flexure）より高い。脾弯曲（splenic flexure）ともいう。"
         }
       ]
     },
@@ -299,42 +299,42 @@
           "of": "stomach", "level": 3,
           "kanji": "噴門のわきの切れこみ",
           "etym": "cardial「噴門の」（ギリシャ語 kardia「心臓」）＋ notch「切れこみ」",
-          "note": "食道の左の縁と胃底の間の鋭い角（50〜80°）の切れこみ。胃の内容が食道へ逆流しにくくするしくみの一つ（ヒス角）。"
+          "note": "食道（esophagus）の左の縁と胃底（fundus of stomach）の間の鋭い角（50〜80°）の切れこみ。胃（stomach）の内容が食道へ逆流しにくくするしくみの一つ（ヒス角（angle of His））。"
         },
         {
           "id": "pyloric-antrum", "ja": "幽門洞", "yomi": "ゆうもんどう", "en": "pyloric antrum", "la": "antrum pyloricum",
           "of": "stomach", "level": 3,
           "kanji": "幽門部の手前の洞（ほら穴）",
           "etym": "pyloric「幽門の」＋ antrum ← ラテン語「ほら穴」",
-          "note": "幽門部の初めの、壁の薄いふくらんだ部分。胃体との境は小弯の角切痕のあたり（はっきりしないことが多い）。前庭部ともいい、潰瘍や癌のできやすい所。"
+          "note": "幽門部（pyloric part）の初めの、壁の薄いふくらんだ部分。胃体（body of stomach）との境は小弯（lesser curvature）の角切痕（angular incisure）のあたり（はっきりしないことが多い）。前庭部（antrum）ともいい、潰瘍（ulcer）や癌のできやすい所。"
         },
         {
           "id": "pyloric-canal", "ja": "幽門管", "yomi": "ゆうもんかん", "en": "pyloric canal", "la": "canalis pyloricus",
           "of": "stomach", "level": 3,
           "kanji": "幽門の手前の管",
           "etym": "pyloric「幽門の」＋ canal「管」",
-          "note": "幽門部の終わりの長さ2〜3cmの管状の部分で、幽門口で十二指腸に開く。壁の筋の蠕動で、内容物を少しずつ十二指腸へ送る。"
+          "note": "幽門部（pyloric part）の終わりの長さ2〜3cmの管状の部分で、幽門口（pyloric orifice）で十二指腸（duodenum）に開く。壁の筋（muscle）の蠕動（peristalsis）で、内容物を少しずつ十二指腸へ送る。"
         },
         {
           "id": "duodenal-bulb", "ja": "十二指腸球部", "yomi": "じゅうにしちょうきゅうぶ", "en": "duodenal bulb", "enAlt": ["duodenal cap", "ampulla of duodenum"], "la": "ampulla duodeni",
           "of": "duodenum", "level": 2,
           "kanji": "十二指腸の初めの球のような部分",
           "etym": "duodenal「十二指腸の」＋ bulb「球根」",
-          "note": "十二指腸の上部の初めのふくらんだ部分で、X線写真で球のように見える。内面に輪状ひだが無く、十二指腸潰瘍の多くがここにできる。"
+          "note": "十二指腸（duodenum）の上部の初めのふくらんだ部分で、X線写真（radiograph）で球のように見える。内面（internal surface）に輪状ひだ（circular folds）が無く、十二指腸潰瘍（duodenal ulcer）の多くがここにできる。"
         },
         {
           "id": "superior-duodenal-flexure", "ja": "上十二指腸曲", "yomi": "じょうじゅうにしちょうきょく", "en": "superior duodenal flexure", "la": "flexura duodeni superior",
           "of": "duodenum", "level": 3,
           "kanji": "十二指腸の上の曲がり",
           "etym": "superior「上の」＋ duodenal「十二指腸の」＋ flexure「曲がり」",
-          "note": "十二指腸の上部が下へ曲がって下行部に移る所。胆嚢の頚の近くにある。"
+          "note": "十二指腸（duodenum）の上部が下へ曲がって下行部（descending part）に移る所。胆嚢（gallbladder）の頚（neck）の近くにある。"
         },
         {
           "id": "inferior-duodenal-flexure", "ja": "下十二指腸曲", "yomi": "かじゅうにしちょうきょく", "en": "inferior duodenal flexure", "la": "flexura duodeni inferior",
           "of": "duodenum", "level": 3,
           "kanji": "十二指腸の下の曲がり",
           "etym": "inferior「下の」＋ duodenal「十二指腸の」＋ flexure「曲がり」",
-          "note": "十二指腸の下行部が左へ曲がって水平部に移る所（第3腰椎の高さ）。水平部は腹大動脈と上腸間膜動脈の間をくぐる。"
+          "note": "十二指腸（duodenum）の下行部（descending part）が左へ曲がって水平部（horizontal part）に移る所（第3腰椎（third lumbar vertebra）の高さ）。水平部は腹大動脈（abdominal aorta）と上腸間膜動脈（superior mesenteric artery）の間をくぐる。"
         }
       ]
     },
@@ -348,35 +348,35 @@
           "parts": ["za:mesocolon"], "level": 2, "xray": true,
           "kanji": "横行結腸をつり下げる膜",
           "etym": "transverse「横の」＋ meso-「間の」＋ colon「結腸」",
-          "note": "横行結腸を後腹壁につり下げる腹膜。根は膵臓の前を右から左へ横切り、腹腔を上（肝臓・胃・脾臓）と下（小腸）に分ける。大網の後ろの葉と癒合している。中を中結腸動静脈が通る。3Dでは正中から左の大部分を示す。"
+          "note": "横行結腸（transverse colon）を後腹壁（posterior abdominal wall）につり下げる腹膜（peritoneum）。根は膵臓（pancreas）の前を右から左へ横切り、腹腔（abdominal cavity）を上（肝臓（liver）・胃（stomach）・脾臓（spleen））と下（小腸（small intestine））に分ける。大網（greater omentum）の後ろの葉（layer）と癒合（fusion）している。中を中結腸動静脈（middle colic vessels）が通る。3Dでは正中（median）から左の大部分を示す。"
         },
         {
           "id": "root-of-mesentery", "ja": "腸間膜根", "yomi": "ちょうかんまくこん", "en": "root of mesentery", "la": "radix mesenterii",
           "of": "mesentery", "level": 2,
           "kanji": "腸間膜の根もと",
           "etym": "root「根」＋ mesentery ← ギリシャ語 mesos「間」＋ enteron「腸」",
-          "note": "腸間膜が後腹壁に付く所。第2腰椎の左から右下へ、腹大動脈・下大静脈・十二指腸の水平部の前を斜めに横切って右の仙腸関節の前まで、約15cmの線になる。ここから扇のように広がって、約6mの空腸と回腸を包む。"
+          "note": "腸間膜（mesentery）が後腹壁（posterior abdominal wall）に付く所。第2腰椎（second lumbar vertebra）の左から右下へ、腹大動脈（abdominal aorta）・下大静脈（inferior vena cava）・十二指腸（duodenum）の水平部（horizontal part）の前を斜めに横切って右の仙腸関節（sacro-iliac joint）の前まで、約15cmの線になる。ここから扇のように広がって、約6mの空腸（jejunum）と回腸（ileum）を包む。"
         },
         {
           "id": "rectal-ampulla", "ja": "直腸膨大部", "yomi": "ちょくちょうぼうだいぶ", "en": "rectal ampulla", "enAlt": ["ampulla of rectum"], "la": "ampulla recti",
           "of": "rectum", "level": 2,
           "kanji": "直腸のふくらんだ部分",
           "etym": "rectal「直腸の」＋ ampulla ← ラテン語「つぼ」",
-          "note": "骨盤隔膜を貫くすぐ上で直腸が広がった部分で、便をためる。内面に上・中・下3本の直腸横ひだがあり、中のもの（コールラウシュひだ）は肛門から約6cm上の右前の壁にあってとくに大きい。前には男性では膀胱・前立腺・精嚢があり、直腸からの指診で触れる。"
+          "note": "骨盤隔膜（pelvic diaphragm）を貫くすぐ上で直腸（rectum）が広がった部分で、便をためる。内面（internal surface）に上・中・下3本の直腸横ひだ（transverse rectal folds）があり、中のもの（コールラウシュひだ（Kohlrausch fold））は肛門（anus）から約6cm上の右前の壁にあってとくに大きい。前には男性では膀胱（urinary bladder）・前立腺（prostate）・精嚢（seminal gland）があり、直腸からの指診（digital examination）で触れる。"
         },
         {
           "id": "sacral-flexure-of-rectum", "ja": "仙骨曲（直腸）", "yomi": "せんこつきょく", "en": "sacral flexure of rectum", "la": "flexura sacralis recti",
           "of": "rectum", "level": 3,
           "kanji": "仙骨に沿う曲がり",
           "etym": "sacral「仙骨の」＋ flexure「曲がり」",
-          "note": "直腸が仙骨と尾骨の前面の弯曲に沿って、後ろへふくらむように曲がる所。"
+          "note": "直腸（rectum）が仙骨（sacrum）と尾骨（coccyx）の前面（anterior surface）の弯曲に沿って、後ろへふくらむように曲がる所。"
         },
         {
           "id": "perineal-flexure-of-rectum", "ja": "会陰曲（直腸）", "yomi": "えいんきょく", "en": "perineal flexure of rectum", "enAlt": ["anorectal flexure"], "la": "flexura perinealis recti",
           "of": "rectum", "level": 3,
           "kanji": "会陰の所の曲がり",
           "etym": "perineal「会陰の」（ギリシャ語 perineos）＋ flexure「曲がり」",
-          "note": "尾骨の先の3〜4cm前で、直腸がほぼ直角に後ろ下へ曲がって肛門管に移る所。恥骨直腸筋が後ろから前へ引いてつくる角で、便がもれないように働き、排便のときはゆるんでまっすぐに近づく。"
+          "note": "尾骨（coccyx）の先の3〜4cm前で、直腸（rectum）がほぼ直角に後ろ下へ曲がって肛門管（anal canal）に移る所。恥骨直腸筋（puborectalis）が後ろから前へ引いてつくる角で、便がもれないように働き、排便（defecation）のときはゆるんでまっすぐに近づく。"
         }
       ]
     },
@@ -390,42 +390,42 @@
           "parts": ["hepatovenous segment *", "quadrate lobe of liver", "caudate lobe of liver"], "level": 1,
           "kanji": "肝＝きも",
           "etym": "liver（英語の固有語）。ギリシャ語 hepar から hepatic「肝臓の」",
-          "note": "右上腹部、横隔膜の下にある人体最大の実質臓器（男性で約1,500g、女性で約1,350g）。上の横隔面は肝鎌状間膜で右葉と左葉（約4：1）に、下の臓側面はH字形の溝で右葉・左葉・方形葉・尾状葉に分かれる。H の横棒の肝門を通って固有肝動脈・門脈が入り、肝管が出る。横隔面の後ろの無漿膜野を除いて腹膜におおわれる。栄養の代謝・解毒・胆汁の生成などを行う。ふつうは肋骨弓に隠れて触れず、腫れると肋骨弓の下に触れる。"
+          "note": "右上腹部（right upper abdomen）、横隔膜（diaphragm）の下にある人体最大の実質臓器（solid organ）（男性で約1,500g、女性で約1,350g）。上の横隔面（diaphragmatic surface）は肝鎌状間膜（falciform ligament of liver）で右葉（right lobe）と左葉（left lobe）（約4：1）に、下の臓側面（visceral surface）はH字形の溝で右葉・左葉・方形葉（quadrate lobe）・尾状葉（caudate lobe）に分かれる。H の横棒の肝門（porta hepatis）を通って固有肝動脈（proper hepatic artery）・門脈（hepatic portal vein）が入り、肝管（hepatic duct）が出る。横隔面の後ろの無漿膜野（bare area of liver）を除いて腹膜（peritoneum）におおわれる。栄養の代謝（metabolism）・解毒（detoxification）・胆汁（bile）の生成などを行う。ふつうは肋骨弓（costal arch）に隠れて触れず、腫れると肋骨弓の下に触れる。"
         },
         {
           "id": "caudate-lobe", "ja": "尾状葉", "yomi": "びじょうよう", "en": "caudate lobe", "la": "lobus caudatus",
           "parts": ["caudate lobe of liver"], "level": 3,
           "kanji": "尾のような形の葉",
           "etym": "caudate ← ラテン語 cauda「尾」",
-          "note": "肝臓の下後面、下大静脈の左にある小さな部分。"
+          "note": "肝臓（liver）の下後面（posteroinferior surface）、下大静脈（inferior vena cava）の左にある小さな部分。"
         },
         {
           "id": "gallbladder", "ja": "胆嚢", "yomi": "たんのう", "en": "gallbladder", "la": "vesica biliaris",
           "parts": ["gallbladder"], "level": 1,
           "kanji": "胆汁をためる袋（嚢）",
           "etym": "gall「胆汁」＋ bladder「袋」",
-          "note": "肝臓の下面（臓側面）の胆嚢窩にはまるナス形の袋（長さ7〜9cm、容積30〜50mL）。底・体・頚に分かれ、頚から胆嚢管が出る。胆汁をためて濃くし、食事のときに十二指腸へ送る。底は右の肋骨弓と右の腹直筋の外側縁が交わる所で前腹壁に接する（胆嚢炎で押すと痛む所）。"
+          "note": "肝臓（liver）の下面（inferior surface）（臓側面（visceral surface））の胆嚢窩（fossa for gallbladder）にはまるナス形の袋（長さ7〜9cm、容積30〜50mL）。底・体・頚（neck）に分かれ、頚から胆嚢管（cystic duct）が出る。胆汁（bile）をためて濃くし、食事のときに十二指腸（duodenum）へ送る。底は右の肋骨弓（costal arch）と右の腹直筋（rectus abdominis）の外側縁（lateral border）が交わる所で前腹壁（anterior abdominal wall）に接する（胆嚢炎（cholecystitis）で押すと痛む所）。"
         },
         {
           "id": "common-hepatic-duct", "ja": "総肝管", "yomi": "そうかんかん", "en": "common hepatic duct", "la": "ductus hepaticus communis",
           "parts": ["common hepatic duct"], "level": 2, "xray": true,
           "kanji": "肝臓からの胆汁が通る共通の管",
           "etym": "hepatic「肝臓の」＋ duct「管」",
-          "note": "左右の肝管が合わさった管。胆嚢管と合流して総胆管になる。"
+          "note": "左右の肝管（hepatic duct）が合わさった管。胆嚢管（cystic duct）と合流して総胆管（bile duct）になる。"
         },
         {
           "id": "cystic-duct", "ja": "胆嚢管", "yomi": "たんのうかん", "en": "cystic duct", "la": "ductus cysticus",
           "parts": ["cystic duct"], "level": 3, "xray": true,
           "kanji": "胆嚢から出る管",
           "etym": "cystic ← ギリシャ語 kystis「袋・膀胱」",
-          "note": "胆嚢の首から出て総肝管と合流する短い管。"
+          "note": "胆嚢（gallbladder）の首から出て総肝管（common hepatic duct）と合流する短い管。"
         },
         {
           "id": "pancreas", "ja": "膵臓", "yomi": "すいぞう", "en": "pancreas", "la": "pancreas",
           "parts": ["pancreas"], "level": 1,
           "kanji": "膵＝すい（「萃」＝あつまる）。蘭学者がつくった字",
           "etym": "pancreas ← ギリシャ語 pan「すべて」＋ kreas「肉」",
-          "note": "胃の後ろを横に走る細長い臓器。消化酵素を含む膵液を出し（外分泌）、インスリンなどのホルモンも出す（内分泌）。",
+          "note": "胃（stomach）の後ろを横に走る細長い臓器（organ）。消化酵素（digestive enzyme）を含む膵液（pancreatic juice）を出し（外分泌（exocrine））、インスリン（insulin）などのホルモンも出す（内分泌（endocrine））。",
           "hormones": "膵島（ランゲルハンス島）から インスリン（B細胞）・グルカゴン（A細胞）・ソマトスタチン（D細胞）"
         },
         {
@@ -433,7 +433,7 @@
           "parts": ["pancreatic duct"], "level": 3, "xray": true,
           "kanji": "膵液の通る管",
           "etym": "pancreatic「膵臓の」＋ duct",
-          "note": "膵臓の中を尾から頭へ走る管。総胆管と合流して十二指腸に開く。"
+          "note": "膵臓（pancreas）の中を尾から頭へ走る管。総胆管（bile duct）と合流して十二指腸（duodenum）に開く。"
         }
       ]
     },
@@ -447,49 +447,49 @@
           "parts": ["hepatovenous segment iv", "hepatovenous segment v", "hepatovenous segment vi", "hepatovenous segment vii", "hepatovenous segment viii", "hepatovenous segment ix"], "level": 2,
           "kanji": "右の葉",
           "etym": "lobe ← ギリシャ語 lobos「丸くふくらんだ部分」",
-          "note": "肝鎌状間膜より右の大きな部分（下面の方形葉・尾状葉を除いて示す）。臨床では胆嚢と下大静脈を結ぶ線（カントリー線）で左右に分けることが多く、境が違うので注意。"
+          "note": "肝鎌状間膜（falciform ligament of liver）より右の大きな部分（下面（inferior surface）の方形葉（quadrate lobe）・尾状葉（caudate lobe）を除いて示す）。臨床では胆嚢（gallbladder）と下大静脈（inferior vena cava）を結ぶ線（カントリー線（Cantlie line））で左右に分けることが多く、境が違うので注意。"
         },
         {
           "id": "left-lobe-of-liver", "ja": "左葉（肝臓）", "yomi": "さよう", "en": "left lobe of liver", "la": "lobus hepatis sinister",
           "parts": ["hepatovenous segment ii", "hepatovenous segment iii"], "level": 2,
           "kanji": "左の葉",
           "etym": "lobe ← ギリシャ語 lobos「丸くふくらんだ部分」",
-          "note": "肝鎌状間膜より左の薄い部分。胃の前をおおい、左の先は脾臓の近くまで伸びる。"
+          "note": "肝鎌状間膜（falciform ligament of liver）より左の薄い部分。胃（stomach）の前をおおい、左の先は脾臓（spleen）の近くまで伸びる。"
         },
         {
           "id": "quadrate-lobe", "ja": "方形葉", "yomi": "ほうけいよう", "en": "quadrate lobe", "la": "lobus quadratus",
           "parts": ["quadrate lobe of liver"], "level": 3,
           "kanji": "四角い葉",
           "etym": "quadrate ← ラテン語 quadratus「四角の」",
-          "note": "肝臓の下面で、胆嚢と肝円索の間にある四角い部分。後ろは肝門で尾状葉と分かれる。このモデルでは第IV区域の肝門より下の部分で示す。"
+          "note": "肝臓（liver）の下面（inferior surface）で、胆嚢（gallbladder）と肝円索（round ligament of liver）の間にある四角い部分。後ろは肝門（porta hepatis）で尾状葉（caudate lobe）と分かれる。このモデルでは第IV区域（segment IV）の肝門より下の部分で示す。"
         },
         {
           "id": "right-hepatic-duct", "ja": "右肝管", "yomi": "うかんかん", "en": "right hepatic duct", "la": "ductus hepaticus dexter",
           "parts": ["right hepatic duct"], "level": 3, "xray": true,
           "kanji": "肝臓の右半分の胆汁を集める管",
           "etym": "hepatic ← ギリシャ語 hepar「肝臓」",
-          "note": "肝臓の右半分から胆汁を集める管。肝門で左肝管と合わさって総肝管になる。"
+          "note": "肝臓（liver）の右半分から胆汁（bile）を集める管。肝門（porta hepatis）で左肝管（left hepatic duct）と合わさって総肝管（common hepatic duct）になる。"
         },
         {
           "id": "left-hepatic-duct", "ja": "左肝管", "yomi": "さかんかん", "en": "left hepatic duct", "la": "ductus hepaticus sinister",
           "parts": ["left hepatic duct"], "level": 3, "xray": true,
           "kanji": "肝臓の左半分の胆汁を集める管",
           "etym": "hepatic ← ギリシャ語 hepar「肝臓」",
-          "note": "肝臓の左半分（方形葉・尾状葉の一部を含む）から胆汁を集める管。右肝管より長い。肝門で右肝管と合わさって総肝管になる。"
+          "note": "肝臓（liver）の左半分（方形葉（quadrate lobe）・尾状葉（caudate lobe）の一部を含む）から胆汁（bile）を集める管。右肝管（right hepatic duct）より長い。肝門（porta hepatis）で右肝管と合わさって総肝管（common hepatic duct）になる。"
         },
         {
           "id": "bile-duct", "ja": "総胆管", "yomi": "そうたんかん", "en": "bile duct", "enAlt": ["common bile duct"], "la": "ductus choledochus",
           "parts": ["bile duct"], "level": 1, "xray": true,
           "kanji": "胆汁を運ぶ、まとまった（総）管",
           "etym": "choledochus ← ギリシャ語 chole「胆汁」＋ dochos「受けるもの」",
-          "note": "総肝管に胆嚢管が合わさってできる長さ約7cmの管。小網の右の縁を下り、十二指腸の上部と膵頭の後ろを通って膵管と合わさり、大十二指腸乳頭（ファーター乳頭）に開く。"
+          "note": "総肝管（common hepatic duct）に胆嚢管（cystic duct）が合わさってできる長さ約7cmの管。小網（lesser omentum）の右の縁を下り、十二指腸（duodenum）の上部と膵頭（head of pancreas）の後ろを通って膵管（pancreatic duct）と合わさり、大十二指腸乳頭（major duodenal papilla）（ファーター乳頭（papilla of Vater））に開く。"
         },
         {
           "id": "accessory-pancreatic-duct", "ja": "副膵管", "yomi": "ふくすいかん", "en": "accessory pancreatic duct", "la": "ductus pancreaticus accessorius",
           "parts": ["za:accessory pancreatic duct"], "level": 3, "xray": true,
           "kanji": "副（そえ）の膵管",
           "etym": "accessory「付け加わった」＋ pancreatic「膵臓の」",
-          "note": "膵頭の上の部分を通り、大十二指腸乳頭より約2cm上の小十二指腸乳頭に開く細い管（サントリーニ管）。"
+          "note": "膵頭（head of pancreas）の上の部分を通り、大十二指腸乳頭（major duodenal papilla）より約2cm上の小十二指腸乳頭（minor duodenal papilla）に開く細い管（サントリーニ管（duct of Santorini））。"
         }
       ]
     },
@@ -498,8 +498,8 @@
       "title": "肝臓の区域",
       "group": "肝臓・胆道・膵臓",
       "intro": [
-        "肝臓は表から見た形（右葉・左葉など）とは別に、中の血管（門脈・肝動脈・胆管が一緒に入り、肝静脈が出る）で区域に分けられる。手術でまとめて切り取れる単位なので、CTや手術で使う。",
-        "クイノーの分類では8つの亜区域（S1〜S8）に分け、尾状葉がS1、外側区域がS2・S3、内側区域がS4、前区域がS5・S8、後区域がS6・S7。左葉と右葉（機能的な）の境は胆嚢と下大静脈を結ぶ線（カントリー線）。"
+        "肝臓（liver）は表から見た形（右葉（right lobe）・左葉（left lobe）など）とは別に、中の血管（blood vessel）（門脈（hepatic portal vein）・肝動脈（hepatic artery）・胆管（bile duct）が一緒に入り、肝静脈（hepatic veins）が出る）で区域（segment）に分けられる。手術でまとめて切り取れる単位なので、CTや手術で使う。",
+        "クイノー（Couinaud）の分類では8つの亜区域（S1〜S8）に分け、尾状葉（caudate lobe）がS1、外側区域（lateral segment）がS2・S3、内側区域（medial segment）がS4、前区域（anterior segment）がS5・S8、後区域（posterior segment）がS6・S7。左葉と右葉（機能的な）の境は胆嚢（gallbladder）と下大静脈（inferior vena cava）を結ぶ線（カントリー線（Cantlie line））。"
       ],
       "terms": [
         {
@@ -507,28 +507,28 @@
           "parts": ["hepatovenous segment ii", "hepatovenous segment iii"], "level": 2,
           "kanji": "左葉の外側の区域",
           "etym": "lateral「外側の」＋ section「区域」",
-          "note": "肝鎌状間膜より左の部分で、S2（上）とS3（下）からなる。表から見た左葉にあたる。"
+          "note": "肝鎌状間膜（falciform ligament of liver）より左の部分で、S2（上）とS3（下）からなる。表から見た左葉（left lobe）にあたる。"
         },
         {
           "id": "medial-segment-of-liver", "ja": "内側区域（肝臓）", "yomi": "ないそくくいき", "en": "left medial section of liver", "enAlt": ["left medial section", "segment iv"], "la": "divisio medialis sinistra hepatis",
           "parts": ["hepatovenous segment iv", "quadrate lobe of liver"], "level": 2,
           "kanji": "左葉の内側の区域",
           "etym": "medial「内側の」＋ section「区域」",
-          "note": "S4にあたる区域。肝鎌状間膜と、胆嚢と下大静脈を結ぶ線の間。表から見た方形葉はこの区域の下部。血管の上では左葉に入る。"
+          "note": "S4にあたる区域（segment）。肝鎌状間膜（falciform ligament of liver）と、胆嚢（gallbladder）と下大静脈（inferior vena cava）を結ぶ線の間。表から見た方形葉（quadrate lobe）はこの区域の下部。血管（blood vessel）の上では左葉（left lobe）に入る。"
         },
         {
           "id": "anterior-segment-of-liver", "ja": "前区域（肝臓）", "yomi": "ぜんくいき", "en": "right anterior section of liver", "enAlt": ["right anterior section"], "la": "divisio medialis dextra hepatis",
           "parts": ["hepatovenous segment v", "hepatovenous segment viii"], "level": 2,
           "kanji": "右葉の前の区域",
           "etym": "anterior「前の」＋ section「区域」",
-          "note": "右葉の前の部分で、S5（下）とS8（上）からなる。胆嚢はS4とS5の境の下面にある。"
+          "note": "右葉（right lobe）の前の部分で、S5（下）とS8（上）からなる。胆嚢（gallbladder）はS4とS5の境の下面（inferior surface）にある。"
         },
         {
           "id": "posterior-segment-of-liver", "ja": "後区域（肝臓）", "yomi": "こうくいき", "en": "right posterior section of liver", "enAlt": ["right posterior section"], "la": "divisio lateralis dextra hepatis",
           "parts": ["hepatovenous segment vi", "hepatovenous segment vii"], "level": 2,
           "kanji": "右葉の後ろの区域",
           "etym": "posterior「後ろの」＋ section「区域」",
-          "note": "右葉の後ろ外側の部分で、S6（下）とS7（上）からなる。右肝静脈が前区域との境を走る。"
+          "note": "右葉（right lobe）の後ろ外側（lateral）の部分で、S6（下）とS7（上）からなる。右肝静脈（right hepatic vein）が前区域（anterior segment）との境を走る。"
         }
       ]
     },
@@ -542,56 +542,56 @@
           "parts": ["caudate lobe of liver"], "level": 3,
           "kanji": "クイノーの肝区域の1番",
           "etym": "S ← segment「区域」。フランスの外科医クイノー（Couinaud）の分け方",
-          "note": "尾状葉にあたる区域。肝門の後ろ、下大静脈の前にあり、左右どちらの門脈・肝動脈の枝からも血液を受ける。クイノーの肝区域は、門脈の枝の分かれ方で肝臓を S1〜S8（S9を加えることもある）に分けたもので、癌の場所や切除の範囲を示すのに使う。S2・S3が外側区域、S4が内側区域、S5・S8が前区域、S6・S7が後区域にあたる。"
+          "note": "尾状葉（caudate lobe）にあたる区域（segment）。肝門（porta hepatis）の後ろ、下大静脈（inferior vena cava）の前にあり、左右どちらの門脈（hepatic portal vein）・肝動脈（hepatic artery）の枝からも血液（blood）を受ける。クイノー（Couinaud）の肝区域（hepatic segment）は、門脈の枝（branch）の分かれ方で肝臓（liver）を S1〜S8（S9を加えることもある）に分けたもので、癌の場所や切除の範囲を示すのに使う。S2・S3が外側区域（lateral segment）、S4が内側区域（medial segment）、S5・S8が前区域（anterior segment）、S6・S7が後区域（posterior segment）にあたる。"
         },
         {
           "id": "liver-segment-2", "ja": "S2（肝臓）", "yomi": "えすに", "en": "left posterior lateral hepatic segment", "la": "segmentum posterius laterale sinistrum hepatis II",
           "parts": ["hepatovenous segment ii"], "level": 3,
           "kanji": "クイノーの肝区域の2番",
           "etym": "S ← segment「区域」",
-          "note": "外側区域（左葉）の後ろ上の部分。左肝静脈より後ろにある。"
+          "note": "外側区域（lateral segment）（左葉（left lobe））の後ろ上の部分。左肝静脈（left hepatic vein）より後ろにある。"
         },
         {
           "id": "liver-segment-3", "ja": "S3（肝臓）", "yomi": "えすさん", "en": "left anterior lateral hepatic segment", "la": "segmentum anterius laterale sinistrum hepatis III",
           "parts": ["hepatovenous segment iii"], "level": 3,
           "kanji": "クイノーの肝区域の3番",
           "etym": "S ← segment「区域」",
-          "note": "外側区域（左葉）の前下の部分。肝円索裂のすぐ左にある。"
+          "note": "外側区域（lateral segment）（左葉（left lobe））の前下（anteroinferior）の部分。肝円索裂（fissure for ligamentum teres）のすぐ左にある。"
         },
         {
           "id": "liver-segment-4", "ja": "S4（肝臓）", "yomi": "えすよん", "en": "left medial hepatic segment", "la": "segmentum mediale sinistrum hepatis IV",
           "parts": ["hepatovenous segment iv", "quadrate lobe of liver"], "level": 3,
           "kanji": "クイノーの肝区域の4番",
           "etym": "S ← segment「区域」",
-          "note": "内側区域にあたる区域。左は肝円索裂と肝鎌状間膜、右は胆嚢窩と下大静脈を結ぶ線（カントリー線。中肝静脈が走る）の間にあり、下の部分が方形葉。解剖学的には右葉に入るが、血管の上では機能的な左葉に属する。"
+          "note": "内側区域（medial segment）にあたる区域（segment）。左は肝円索裂（fissure for ligamentum teres）と肝鎌状間膜（falciform ligament of liver）、右は胆嚢窩（fossa for gallbladder）と下大静脈（inferior vena cava）を結ぶ線（カントリー線（Cantlie line）。中肝静脈（middle hepatic vein）が走る）の間にあり、下の部分が方形葉（quadrate lobe）。解剖学的には右葉（right lobe）に入るが、血管（blood vessel）の上では機能的な左葉（left lobe）に属する。"
         },
         {
           "id": "liver-segment-5", "ja": "S5（肝臓）", "yomi": "えすご", "en": "right anterior medial hepatic segment", "la": "segmentum anterius mediale dextrum hepatis V",
           "parts": ["hepatovenous segment v"], "level": 3,
           "kanji": "クイノーの肝区域の5番",
           "etym": "S ← segment「区域」",
-          "note": "前区域の下の部分。胆嚢窩のすぐ右にある。"
+          "note": "前区域（anterior segment）の下の部分。胆嚢窩（fossa for gallbladder）のすぐ右にある。"
         },
         {
           "id": "liver-segment-6", "ja": "S6（肝臓）", "yomi": "えすろく", "en": "right anterior lateral hepatic segment", "la": "segmentum anterius laterale dextrum hepatis VI",
           "parts": ["hepatovenous segment vi"], "level": 3,
           "kanji": "クイノーの肝区域の6番",
           "etym": "S ← segment「区域」",
-          "note": "後区域の下の部分。右の腎臓と右結腸曲に接する。"
+          "note": "後区域（posterior segment）の下の部分。右の腎臓（kidney）と右結腸曲（right colic flexure）に接する。"
         },
         {
           "id": "liver-segment-7", "ja": "S7（肝臓）", "yomi": "えすなな", "en": "right posterior lateral hepatic segment", "la": "segmentum posterius laterale dextrum hepatis VII",
           "parts": ["hepatovenous segment vii"], "level": 3,
           "kanji": "クイノーの肝区域の7番",
           "etym": "S ← segment「区域」",
-          "note": "後区域の上の部分。右の横隔膜のドームの後ろの下にある。"
+          "note": "後区域（posterior segment）の上の部分。右の横隔膜（diaphragm）のドームの後ろの下にある。"
         },
         {
           "id": "liver-segment-8", "ja": "S8（肝臓）", "yomi": "えすはち", "en": "right posterior medial hepatic segment", "la": "segmentum posterius mediale dextrum hepatis VIII",
           "parts": ["hepatovenous segment viii"], "level": 3,
           "kanji": "クイノーの肝区域の8番",
           "etym": "S ← segment「区域」",
-          "note": "前区域の上の部分。横隔膜のドームの下にあり、後ろで中・右肝静脈が下大静脈に注ぐ。"
+          "note": "前区域（anterior segment）の上の部分。横隔膜（diaphragm）のドームの下にあり、後ろで中・右肝静脈（right hepatic vein）が下大静脈（inferior vena cava）に注ぐ。"
         }
       ]
     },
@@ -605,63 +605,63 @@
           "of": "liver", "level": 2,
           "kanji": "横隔膜に面する面",
           "etym": "diaphragmatic「横隔膜の」＋ surface「面」",
-          "note": "肝臓の上・前・右・後ろの、横隔膜に沿ってドーム形にふくらんだ面。前上の部分は肝鎌状間膜で右葉と左葉に分けられる（右：左＝約4：1）。上の縁は右の鎖骨中線で第5肋骨の高さ。"
+          "note": "肝臓（liver）の上・前・右・後ろの、横隔膜（diaphragm）に沿ってドーム形にふくらんだ面。前上（anterosuperior）の部分は肝鎌状間膜（falciform ligament of liver）で右葉（right lobe）と左葉（left lobe）に分けられる（右：左＝約4：1）。上の縁は右の鎖骨中線（midclavicular line）で第5肋骨（fifth rib）の高さ。"
         },
         {
           "id": "visceral-surface-of-liver", "ja": "臓側面（肝臓）", "yomi": "ぞうそくめん", "en": "visceral surface of liver", "la": "facies visceralis hepatis",
           "of": "liver", "level": 2,
           "kanji": "ほかの臓器に面する面",
           "etym": "visceral「内臓の」（ラテン語 viscera）＋ surface「面」",
-          "note": "肝臓の後ろ下の平らな面。胃・食道・十二指腸・右結腸曲・右の腎臓と副腎に接して浅いくぼみ（胃圧痕・十二指腸圧痕・結腸圧痕・腎圧痕など）ができる。中央に、肝門を横棒とするH字形の溝（肝円索裂・静脈管索裂・胆嚢窩・大静脈溝）がある。"
+          "note": "肝臓（liver）の後ろ下の平らな面。胃（stomach）・食道（esophagus）・十二指腸（duodenum）・右結腸曲（right colic flexure）・右の腎臓（kidney）と副腎（suprarenal gland）に接して浅いくぼみ（胃圧痕（gastric impression）・十二指腸圧痕（duodenal impression）・結腸圧痕（colic impression）・腎圧痕（renal impression）など）ができる。中央に、肝門（porta hepatis）を横棒とするH字形の溝（肝円索裂（fissure for ligamentum teres）・静脈管索裂（fissure for ligamentum venosum）・胆嚢窩（fossa for gallbladder）・大静脈溝（groove for vena cava））がある。"
         },
         {
           "id": "bare-area-of-liver", "ja": "無漿膜野", "yomi": "むしょうまくや", "en": "bare area of liver", "la": "area nuda hepatis",
           "of": "liver", "level": 3,
           "kanji": "漿膜（腹膜）の無い場所",
           "etym": "bare「むき出しの」＋ area「場所」",
-          "note": "横隔面の後ろで、大静脈溝の右にある、腹膜におおわれない三角形の部分。ここで肝臓は横隔膜（腱中心のあたり）に直接つく。まわりを冠状間膜が囲み、左右の端は三角間膜になる。"
+          "note": "横隔面（diaphragmatic surface）の後ろで、大静脈溝（groove for vena cava）の右にある、腹膜（peritoneum）におおわれない三角形の部分。ここで肝臓（liver）は横隔膜（diaphragm）（腱中心（central tendon）のあたり）に直接つく。まわりを冠状間膜（coronary ligament）が囲み、左右の端は三角間膜（triangular ligament）になる。"
         },
         {
           "id": "groove-for-vena-cava", "ja": "大静脈溝", "yomi": "だいじょうみゃくこう", "en": "groove for vena cava", "la": "sulcus venae cavae",
           "of": "liver", "level": 3,
           "kanji": "大静脈が入る溝",
           "etym": "groove「溝」＋ vena cava ← ラテン語「中空の静脈」",
-          "note": "肝臓の後ろにある縦の深い溝で、下大静脈が入りこむ。左・中・右の肝静脈がここで下大静脈に注ぐ。H字形の溝の右の脚の後ろの部分。"
+          "note": "肝臓（liver）の後ろにある縦の深い溝で、下大静脈（inferior vena cava）が入りこむ。左・中・右の肝静脈（hepatic veins）がここで下大静脈に注ぐ。H字形の溝の右の脚の後ろの部分。"
         },
         {
           "id": "fossa-for-gallbladder", "ja": "胆嚢窩", "yomi": "たんのうか", "en": "fossa for gallbladder", "la": "fossa vesicae biliaris",
           "of": "liver", "level": 2,
           "kanji": "胆嚢が入るくぼみ",
           "etym": "fossa ← ラテン語「くぼみ」＋ gallbladder「胆嚢」",
-          "note": "臓側面の、胆嚢がはまる浅いくぼみ。H字形の溝の右の脚の前の部分で、方形葉と右葉の境。胆嚢窩と下大静脈を結ぶ線（カントリー線）が、血管で分けた機能的な右葉と左葉の境になる。"
+          "note": "臓側面（visceral surface）の、胆嚢（gallbladder）がはまる浅いくぼみ。H字形の溝の右の脚の前の部分で、方形葉（quadrate lobe）と右葉（right lobe）の境。胆嚢窩と下大静脈（inferior vena cava）を結ぶ線（カントリー線（Cantlie line））が、血管（blood vessel）で分けた機能的な右葉と左葉（left lobe）の境になる。"
         },
         {
           "id": "fissure-for-round-ligament", "ja": "肝円索裂", "yomi": "かんえんさくれつ", "en": "fissure for ligamentum teres", "enAlt": ["fissure for round ligament of liver"], "la": "fissura ligamenti teretis",
           "of": "liver", "level": 3,
           "kanji": "肝円索が入る裂け目",
           "etym": "fissure「裂け目」＋ ligamentum teres ← ラテン語「丸い靱帯」",
-          "note": "H字形の溝の左の脚の前の部分で、肝円索（胎児の臍静脈のなごり。肝鎌状間膜の下の縁を臍まで走る）が入る。左葉と方形葉の境。"
+          "note": "H字形の溝の左の脚の前の部分で、肝円索（round ligament of liver）（胎児（fetus）の臍静脈（umbilical vein）のなごり。肝鎌状間膜（falciform ligament of liver）の下の縁を臍まで走る）が入る。左葉（left lobe）と方形葉（quadrate lobe）の境。"
         },
         {
           "id": "fissure-for-ligamentum-venosum", "ja": "静脈管索裂", "yomi": "じょうみゃくかんさくれつ", "en": "fissure for ligamentum venosum", "la": "fissura ligamenti venosi",
           "of": "liver", "level": 3,
           "kanji": "静脈管索が入る裂け目",
           "etym": "fissure「裂け目」＋ ligamentum venosum ← ラテン語「静脈の靱帯」",
-          "note": "H字形の溝の左の脚の後ろの部分で、静脈管索（胎児の静脈管＝臍静脈から下大静脈への近道のなごり）が入る。左葉と尾状葉の境で、小網が付く。"
+          "note": "H字形の溝の左の脚の後ろの部分で、静脈管索（ligamentum venosum）（胎児（fetus）の静脈管（ductus venosus）＝臍静脈（umbilical vein）から下大静脈（inferior vena cava）への近道のなごり）が入る。左葉（left lobe）と尾状葉（caudate lobe）の境で、小網（lesser omentum）が付く。"
         },
         {
           "id": "papillary-process", "ja": "乳頭突起", "yomi": "にゅうとうとっき", "en": "papillary process of caudate lobe", "enAlt": ["papillary process"], "la": "processus papillaris",
           "of": "liver", "level": 3,
           "kanji": "乳頭のような小さな突起",
           "etym": "papillary「乳頭の」（ラテン語 papilla）＋ process「突起」",
-          "note": "尾状葉の下の端から前へ出る小さな突起。小網の後ろで網嚢に面する。"
+          "note": "尾状葉（caudate lobe）の下の端から前へ出る小さな突起（process）。小網（lesser omentum）の後ろで網嚢（omental bursa）に面する。"
         },
         {
           "id": "caudate-process", "ja": "尾状突起", "yomi": "びじょうとっき", "en": "caudate process", "la": "processus caudatus",
           "of": "liver", "level": 3,
           "kanji": "尾状葉から出る突起",
           "etym": "caudate ← ラテン語 cauda「尾」＋ process「突起」",
-          "note": "尾状葉から右前へ出て、肝門と下大静脈の間で右葉につながる細い部分。網嚢孔の上の壁になる。"
+          "note": "尾状葉（caudate lobe）から右前へ出て、肝門（porta hepatis）と下大静脈（inferior vena cava）の間で右葉（right lobe）につながる細い部分。網嚢孔（omental foramen）の上の壁になる。"
         }
       ]
     },
@@ -675,56 +675,56 @@
           "of": "liver", "level": 1,
           "kanji": "肝臓の門（出入口）",
           "etym": "porta ← ラテン語「門」。hepatis「肝臓の」",
-          "note": "肝臓の下面の中央にある横長の溝。固有肝動脈と門脈が入り、左右の肝管が出る。前は方形葉、後ろは尾状葉。"
+          "note": "肝臓（liver）の下面（inferior surface）の中央にある横長の溝。固有肝動脈（proper hepatic artery）と門脈（hepatic portal vein）が入り、左右の肝管（hepatic duct）が出る。前は方形葉（quadrate lobe）、後ろは尾状葉（caudate lobe）。"
         },
         {
           "id": "head-of-pancreas", "ja": "膵頭", "yomi": "すいとう", "en": "head of pancreas", "la": "caput pancreatis",
           "of": "pancreas", "level": 1,
           "kanji": "膵臓の頭",
           "etym": "head「頭」。ラテン語 caput",
-          "note": "十二指腸の C字形のくぼみにはまる、膵臓の右の太い部分。後ろを総胆管が通るので、膵頭の癌は黄疸で見つかることが多い。"
+          "note": "十二指腸（duodenum）の C字形のくぼみにはまる、膵臓（pancreas）の右の太い部分。後ろを総胆管（bile duct）が通るので、膵頭の癌は黄疸（jaundice）で見つかることが多い。"
         },
         {
           "id": "uncinate-process", "ja": "鈎状突起（膵臓）", "yomi": "こうじょうとっき", "en": "uncinate process", "la": "processus uncinatus pancreatis",
           "of": "pancreas", "level": 3,
           "kanji": "鈎（かぎ）の形の突起",
           "etym": "uncinate ← ラテン語 uncus「鈎」",
-          "note": "膵頭の下から左へ鈎のように回りこむ部分。上腸間膜動静脈の後ろに入りこむ。"
+          "note": "膵頭（head of pancreas）の下から左へ鈎のように回りこむ部分。上腸間膜動静脈（superior mesenteric vessels）の後ろに入りこむ。"
         },
         {
           "id": "body-of-pancreas", "ja": "膵体", "yomi": "すいたい", "en": "body of pancreas", "la": "corpus pancreatis",
           "of": "pancreas", "level": 1,
           "kanji": "膵臓の本体",
           "etym": "body「本体」。ラテン語 corpus",
-          "note": "第1〜2腰椎の前を左へ横切る、膵臓の中央の部分。前は網嚢をへだてて胃の後ろの壁に接する。"
+          "note": "第1〜2腰椎（first to second lumbar vertebrae）の前を左へ横切る、膵臓（pancreas）の中央の部分。前は網嚢（omental bursa）をへだてて胃（stomach）の後ろの壁に接する。"
         },
         {
           "id": "tail-of-pancreas", "ja": "膵尾", "yomi": "すいび", "en": "tail of pancreas", "la": "cauda pancreatis",
           "of": "pancreas", "level": 1,
           "kanji": "膵臓の尾",
           "etym": "tail「尾」。ラテン語 cauda",
-          "note": "膵臓の左の先で、脾臓の門の近くまで届く。ランゲルハンス島（膵島）が多い。"
+          "note": "膵臓（pancreas）の左の先で、脾臓（spleen）の門の近くまで届く。ランゲルハンス島（islets of Langerhans）（膵島（pancreatic islets））が多い。"
         },
         {
           "id": "apex-of-tongue", "ja": "舌尖", "yomi": "ぜっせん", "en": "apex of tongue", "enAlt": ["tip of tongue"], "la": "apex linguae",
           "of": "tongue", "level": 2,
           "kanji": "舌の先（尖）",
           "etym": "apex ← ラテン語「先端」。linguae「舌の」",
-          "note": "舌の先端。舌の前3分の2（舌尖と舌体）の一般の感覚は舌神経（三叉神経）、味覚は鼓索神経（顔面神経）が伝える。"
+          "note": "舌（tongue）の先端（tip）。舌の前3分の2（舌尖と舌体（body of tongue））の一般の感覚（sensation）は舌神経（lingual nerve）（三叉神経（trigeminal nerve））、味覚（taste）は鼓索神経（chorda tympani）（顔面神経（facial nerve））が伝える。"
         },
         {
           "id": "body-of-tongue", "ja": "舌体", "yomi": "ぜったい", "en": "body of tongue", "la": "corpus linguae",
           "of": "tongue", "level": 2,
           "kanji": "舌の本体",
           "etym": "body「本体」。ラテン語 corpus",
-          "note": "舌の前3分の2で、口腔の中に見える部分。上面（舌背）に糸状乳頭・茸状乳頭などがあり、後ろの V字形の分界溝の前に有郭乳頭が並ぶ。"
+          "note": "舌（tongue）の前3分の2で、口腔（oral cavity）の中に見える部分。上面（superior surface）（舌背（dorsum of tongue））に糸状乳頭（filiform papillae）・茸状乳頭（fungiform papillae）などがあり、後ろの V字形の分界溝（terminal sulcus of tongue）の前に有郭乳頭（vallate papillae）が並ぶ。"
         },
         {
           "id": "root-of-tongue", "ja": "舌根", "yomi": "ぜっこん", "en": "root of tongue", "la": "radix linguae",
           "of": "tongue", "level": 2,
           "kanji": "舌の根もと",
           "etym": "root「根」。ラテン語 radix",
-          "note": "分界溝より後ろの、舌の後ろ3分の1。咽頭口部の前の壁をつくり、表面に舌扁桃がある。感覚と味覚は舌咽神経が伝える。"
+          "note": "分界溝（terminal sulcus of tongue）より後ろの、舌（tongue）の後ろ3分の1。咽頭口部（oropharynx）の前の壁をつくり、表面に舌扁桃（lingual tonsil）がある。感覚（sensation）と味覚（taste）は舌咽神経（glossopharyngeal nerve）が伝える。"
         }
       ]
     },
@@ -738,56 +738,56 @@
           "of": "gallbladder", "level": 2,
           "kanji": "胆嚢の底（ふくらんだ先）",
           "etym": "fundus ← ラテン語「底」＋ gallbladder「胆汁の袋」",
-          "note": "胆嚢の丸くふくらんだ前の先。肝臓の下縁から少し前に出て、右の第9肋軟骨と腹直筋の外縁が交わる所で腹壁に接する。胆嚢炎ではここを押さえて息を吸わせると痛みで止まる（マーフィー徴候）。"
+          "note": "胆嚢（gallbladder）の丸くふくらんだ前の先。肝臓（liver）の下縁（inferior border）から少し前に出て、右の第9肋軟骨（ninth costal cartilage）と腹直筋（rectus abdominis）の外縁（lateral margin）が交わる所で腹壁（abdominal wall）に接する。胆嚢炎（cholecystitis）ではここを押さえて息を吸わせると痛みで止まる（マーフィー徴候（Murphy sign））。"
         },
         {
           "id": "body-of-gallbladder", "ja": "胆嚢体", "yomi": "たんのうたい", "en": "body of gallbladder", "la": "corpus vesicae biliaris",
           "of": "gallbladder", "level": 3,
           "kanji": "胆嚢の胴の部分",
           "etym": "body「体」＋ gallbladder「胆嚢」",
-          "note": "胆嚢の中ほどの部分。上の面は肝臓の下面の胆嚢窩に付き、下の面は十二指腸の上部と横行結腸に接する。"
+          "note": "胆嚢（gallbladder）の中ほどの部分。上の面は肝臓（liver）の下面（inferior surface）の胆嚢窩（fossa for gallbladder）に付き、下の面は十二指腸（duodenum）の上部と横行結腸（transverse colon）に接する。"
         },
         {
           "id": "neck-of-gallbladder", "ja": "胆嚢頚", "yomi": "たんのうけい", "en": "neck of gallbladder", "la": "collum vesicae biliaris",
           "of": "gallbladder", "level": 2,
           "kanji": "胆嚢の首（細くなった所）",
           "etym": "neck「首」＋ gallbladder「胆嚢」",
-          "note": "胆嚢の後ろ上の細い部分で、S字に曲がって胆嚢管に続く。中の粘膜はらせん状のひだ（らせんヒダ）をつくる。胆石がつまりやすい所。"
+          "note": "胆嚢（gallbladder）の後ろ上の細い部分で、S字に曲がって胆嚢管（cystic duct）に続く。中の粘膜（mucosa）はらせん状のひだ（fold）（らせんヒダ（fold））をつくる。胆石（gallstone）がつまりやすい所。"
         },
         {
           "id": "neck-of-pancreas", "ja": "膵頚", "yomi": "すいけい", "en": "neck of pancreas", "la": "collum pancreatis",
           "of": "pancreas", "level": 2,
           "kanji": "膵臓の首（膵頭と膵体の間）",
           "etym": "neck「首」＋ pancreas ← ギリシャ語 pan「すべて」＋ kreas「肉」",
-          "note": "膵頭と膵体の間の細い部分。この後ろで上腸間膜静脈と脾静脈が合わさって門脈になる。前は胃の幽門部。膵臓の手術ではここで膵臓を切り分ける。"
+          "note": "膵頭（head of pancreas）と膵体（body of pancreas）の間の細い部分。この後ろで上腸間膜静脈（superior mesenteric vein）と脾静脈（splenic vein）が合わさって門脈（hepatic portal vein）になる。前は胃（stomach）の幽門部（pyloric part）。膵臓（pancreas）の手術ではここで膵臓を切り分ける。"
         },
         {
           "id": "terminal-sulcus-of-tongue", "ja": "分界溝", "yomi": "ぶんかいこう", "en": "terminal sulcus of tongue", "enAlt": ["sulcus terminalis"], "la": "sulcus terminalis linguae",
           "of": "tongue", "level": 2,
           "kanji": "舌体と舌根の境を分ける溝",
           "etym": "terminal「境の」＋ sulcus「溝」＋ linguae「舌の」",
-          "note": "舌の背の後ろの方にある、後ろに頂点を向けたV字の浅い溝。前の舌体（前2/3）と後ろの舌根（後ろ1/3）を分ける。すぐ前に大きな有郭乳頭が1列に並ぶ。前2/3と後ろ1/3で、感覚の神経（舌神経と舌咽神経）も味覚の神経（鼓索神経と舌咽神経）も違う。"
+          "note": "舌（tongue）の背（back）の後ろの方にある、後ろに頂点を向けたV字の浅い溝。前の舌体（body of tongue）（前2/3）と後ろの舌根（root of tongue）（後ろ1/3）を分ける。すぐ前に大きな有郭乳頭（vallate papillae）が1列に並ぶ。前2/3と後ろ1/3で、感覚（sensation）の神経（nerve）（舌神経（lingual nerve）と舌咽神経（glossopharyngeal nerve））も味覚（taste）の神経（鼓索神経（chorda tympani）と舌咽神経）も違う。"
         },
         {
           "id": "foramen-caecum-of-tongue", "ja": "舌盲孔", "yomi": "ぜつもうこう", "en": "foramen caecum of tongue", "enAlt": ["foramen cecum of tongue"], "la": "foramen caecum linguae",
           "of": "tongue", "level": 3,
           "kanji": "舌の行き止まりの孔",
           "etym": "foramen「孔」＋ caecum ← ラテン語「見えない・行き止まりの」",
-          "note": "分界溝の頂点にある小さなくぼみ。胎児のとき、甲状腺のもとがここから首の前へ下りていった跡（甲状舌管の上の端）。管が残ると首の正中に袋（甲状舌管嚢胞）ができる。"
+          "note": "分界溝（terminal sulcus of tongue）の頂点にある小さなくぼみ。胎児（fetus）のとき、甲状腺（thyroid gland）のもとがここから首（neck）の前へ下りていった跡（甲状舌管（thyroglossal duct）の上の端）。管が残ると首の正中（median）に袋（甲状舌管嚢胞（thyroglossal duct cyst））ができる。"
         },
         {
           "id": "dorsum-of-tongue", "ja": "舌背", "yomi": "ぜっぱい", "en": "dorsum of tongue", "la": "dorsum linguae",
           "of": "tongue", "level": 2,
           "kanji": "舌の背（上の面）",
           "etym": "dorsum ← ラテン語「背中」＋ linguae「舌の」",
-          "note": "舌の上と後ろの面。分界溝より前（口部）には舌乳頭が密に並んでざらざらし、後ろ（咽頭部）には舌扁桃のリンパ小節が並んででこぼこする。"
+          "note": "舌（tongue）の上と後ろの面。分界溝（terminal sulcus of tongue）より前（口部（oral part））には舌乳頭（lingual papillae）が密に並んでざらざらし、後ろ（咽頭部（pharyngeal part））には舌扁桃（lingual tonsil）のリンパ小節（lymphoid nodule）が並んででこぼこする。"
         },
         {
           "id": "median-sulcus-of-tongue", "ja": "舌正中溝", "yomi": "ぜつせいちゅうこう", "en": "median sulcus of tongue", "la": "sulcus medianus linguae",
           "of": "tongue", "level": 3,
           "kanji": "舌の正中の溝",
           "etym": "median「正中の」＋ sulcus「溝」",
-          "note": "舌背の正中を前後に走る浅い溝。後ろは舌盲孔の近くまで続き、舌の中の舌中隔の位置にあたる（舌が左右2つのもとから合わさってできた跡）。"
+          "note": "舌背（dorsum of tongue）の正中（median）を前後に走る浅い溝。後ろは舌盲孔（foramen caecum of tongue）の近くまで続き、舌（tongue）の中の舌中隔（lingual septum）の位置にあたる（舌が左右2つのもとから合わさってできた跡）。"
         }
       ]
     },
@@ -801,70 +801,70 @@
           "parts": ["lip"], "level": 2, "color": "#c9706c", "tissue": "mucosa",
           "kanji": "くちびる",
           "etym": "lip（英語の固有語）。ラテン語 labium から labial「唇の」",
-          "note": "口の入口をつくるやわらかいひだ。中に口輪筋がある。"
+          "note": "口の入口をつくるやわらかいひだ（fold）。中に口輪筋（orbicularis oris）がある。"
         },
         {
           "id": "tongue", "ja": "舌", "yomi": "した", "en": "tongue", "la": "lingua",
           "parts": ["tongue"], "level": 1, "color": "#d27f78", "tissue": "tongue",
           "kanji": "した。熟語では「ぜつ」と読む（舌骨・舌下腺）",
           "etym": "tongue（英語の固有語）。ラテン語 lingua から lingual「舌の」、ギリシャ語 glossa から glossal",
-          "note": "筋でできた器官。前の3分の2の舌体と後ろの3分の1の舌根が、舌背のV字形の分界溝で分かれる。舌背の前の部分には舌乳頭（糸状乳頭・茸状乳頭・有郭乳頭・葉状乳頭）が並び、糸状乳頭のほかには味蕾がある。舌の下面の正中は舌小帯で口腔底につく。味を感じ、食べ物を混ぜて飲み込み、ことばを話すのに働く。"
+          "note": "筋（muscle）でできた器官（organ）。前の3分の2の舌体（body of tongue）と後ろの3分の1の舌根（root of tongue）が、舌背（dorsum of tongue）のV字形の分界溝（terminal sulcus of tongue）で分かれる。舌背の前の部分には舌乳頭（lingual papillae）（糸状乳頭（filiform papillae）・茸状乳頭（fungiform papillae）・有郭乳頭（vallate papillae）・葉状乳頭（foliate papillae））が並び、糸状乳頭のほかには味蕾（taste bud）がある。舌の下面（inferior surface）の正中（median）は舌小帯（frenulum of tongue）で口腔底（floor of mouth）につく。味を感じ、食べ物を混ぜて飲み込み、ことばを話すのに働く。"
         },
         {
           "id": "incisors", "ja": "切歯", "yomi": "せっし", "en": "incisors", "enAlt": ["incisor", "incisor teeth"], "la": "dentes incisivi",
           "parts": ["* incisor tooth"], "level": 1, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "切る歯（前歯）",
           "etym": "incisor ← ラテン語 incidere「切り込む」",
-          "note": "前歯。上下左右に2本ずつ計8本（永久歯）。食べ物をかみ切る。"
+          "note": "前歯（anterior teeth）。上下左右に2本ずつ計8本（永久歯（permanent teeth））。食べ物をかみ切る。"
         },
         {
           "id": "canines", "ja": "犬歯", "yomi": "けんし", "en": "canines", "enAlt": ["canine", "canine teeth"], "la": "dentes canini",
           "parts": ["* canine tooth"], "level": 1, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "犬のきばのような歯（糸切り歯）",
           "etym": "canine ← ラテン語 canis「犬」",
-          "note": "切歯のとなりのとがった歯。上下左右に1本ずつ計4本。根が最も長い。"
+          "note": "切歯（incisors）のとなりのとがった歯（tooth）。上下左右に1本ずつ計4本。根が最も長い。"
         },
         {
           "id": "premolars", "ja": "小臼歯", "yomi": "しょうきゅうし", "en": "premolars", "enAlt": ["premolar", "premolar teeth"], "la": "dentes premolares",
           "parts": ["* premolar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "臼（うす）のような小さい歯",
           "etym": "pre-「前」＋ molar「臼歯」",
-          "note": "犬歯の後ろの歯。上下左右に2本ずつ計8本。"
+          "note": "犬歯（canines）の後ろの歯（tooth）。上下左右に2本ずつ計8本。"
         },
         {
           "id": "molars", "ja": "大臼歯", "yomi": "だいきゅうし", "en": "molars", "enAlt": ["molar", "molar teeth"], "la": "dentes molares",
           "parts": ["* molar tooth"], "level": 1, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "臼（うす）のような大きい歯（奥歯）",
           "etym": "molar ← ラテン語 mola「石臼」",
-          "note": "奥歯。上下左右に3本ずつ計12本（第3大臼歯＝親知らずを含む）。食べ物をすりつぶす。このモデルは第1・第2大臼歯のみ。"
+          "note": "奥歯（molars）。上下左右に3本ずつ計12本（第3大臼歯（third molar）＝親知らず（wisdom tooth）を含む）。食べ物をすりつぶす。このモデルは第1・第2大臼歯（first and second molars）のみ。"
         },
         {
           "id": "gingiva", "ja": "歯肉", "yomi": "しにく", "en": "gingiva", "enAlt": ["gums", "gum"], "la": "gingiva",
           "parts": ["gingiva of upper jaw", "gingiva of lower jaw"], "level": 2, "color": "#e2948e", "tissue": "mucosa",
           "kanji": "歯ぐき",
           "etym": "gingiva ← ラテン語「歯ぐき」",
-          "note": "歯の根もとと歯槽骨をおおう粘膜。"
+          "note": "歯（tooth）の根もとと歯槽骨（alveolar bone）をおおう粘膜（mucosa）。"
         },
         {
           "id": "parotid-gland", "ja": "耳下腺", "yomi": "じかせん", "en": "parotid gland", "la": "glandula parotidea",
           "parts": ["za:parotid gland", "za:(accessory parotid gland)"], "level": 1, "color": "#e0b48a", "tissue": "gland",
           "kanji": "耳の下にある腺",
           "etym": "parotid ← ギリシャ語 para-「そば」＋ otos「耳の」",
-          "note": "耳の前下方にある最大の唾液腺。耳下腺管が咬筋の表面を前へ走り、頬筋を貫いて上の第2大臼歯の向かいの頬の粘膜に開く。中を顔面神経が通る。おたふくかぜで腫れる。"
+          "note": "耳（ear）の前下方（anteroinferior）にある最大の唾液腺（salivary gland）。耳下腺管（parotid duct）が咬筋（masseter）の表面を前へ走り、頬筋（buccinator）を貫いて上の第2大臼歯（second molar）の向かいの頬（cheek）の粘膜（mucosa）に開く。中を顔面神経（facial nerve）が通る。おたふくかぜで腫れる。"
         },
         {
           "id": "submandibular-gland", "ja": "顎下腺", "yomi": "がっかせん", "en": "submandibular gland", "la": "glandula submandibularis",
           "parts": ["submandibular gland"], "level": 2, "color": "#e0b48a", "tissue": "gland",
           "kanji": "下顎骨の下にある腺",
           "etym": "sub-「下」＋ mandibular「下顎の」",
-          "note": "三大唾液腺の一つ。あごの下にあり、舌の下に唾液を出す。"
+          "note": "三大唾液腺（major salivary glands）の一つ。あご（jaw）の下にあり、舌（tongue）の下に唾液（saliva）を出す。"
         },
         {
           "id": "sublingual-gland", "ja": "舌下腺", "yomi": "ぜっかせん", "en": "sublingual gland", "la": "glandula sublingualis",
           "parts": ["sublingual gland"], "level": 2, "color": "#e0b48a", "tissue": "gland",
           "kanji": "舌の下にある腺",
           "etym": "sub-「下」＋ lingual「舌の」",
-          "note": "三大唾液腺で最も小さい。舌の下の口の底にある。"
+          "note": "三大唾液腺（major salivary glands）で最も小さい。舌（tongue）の下の口の底にある。"
         }
       ]
     },
@@ -873,7 +873,7 @@
       "title": "歯を1本ずつ",
       "group": "口と咽頭",
       "intro": [
-        "永久歯は上下左右に8本ずつ（計32本）。正中から順に、中切歯・側切歯・犬歯・第1小臼歯・第2小臼歯・第1大臼歯・第2大臼歯・第3大臼歯（親知らず）。歯科ではこの順に1〜8の番号で呼ぶ（右上の第1大臼歯は「右上6番」）。",
+        "永久歯（permanent teeth）は上下左右に8本ずつ（計32本）。正中（median）から順に、中切歯（central incisor）・側切歯（lateral incisor）・犬歯（canines）・第1小臼歯（first premolar）・第2小臼歯（second premolar）・第1大臼歯（first molar）・第2大臼歯（second molar）・第3大臼歯（third molar）（親知らず（wisdom tooth））。歯科ではこの順に1〜8の番号で呼ぶ（右上の第1大臼歯は「右上6番」）。",
         "このモデルには第3大臼歯が無い（生えない人も多い）。"
       ],
       "terms": [
@@ -882,42 +882,42 @@
           "parts": ["* central secondary incisor tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "中央（正中のとなり）の切歯",
           "etym": "central「中央の」＋ incisor「切る歯」（ラテン語 incidere「切り込む」）",
-          "note": "正中のすぐ両わきの前歯（1番）。上顎の中切歯は切歯の中で最も大きい。下顎の中切歯は、第1大臼歯とともに最も早く（6〜7歳ごろ）生える永久歯。"
+          "note": "正中（median）のすぐ両わきの前歯（anterior teeth）（1番）。上顎（maxilla）の中切歯は切歯（incisors）の中で最も大きい。下顎（mandible）の中切歯は、第1大臼歯（first molar）とともに最も早く（6〜7歳ごろ）生える永久歯（permanent teeth）。"
         },
         {
           "id": "lateral-incisor", "ja": "側切歯", "yomi": "そくせっし", "en": "lateral incisor", "enAlt": ["lateral incisor tooth"], "la": "dens incisivus lateralis",
           "parts": ["* lateral secondary incisor tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "中切歯の側（外側）の切歯",
           "etym": "lateral「外側の」＋ incisor「切る歯」",
-          "note": "中切歯の外側の前歯（2番）。上顎の側切歯は中切歯より小さく、形の変異が多い（小さくとがった形や、生まれつき無いこともある）。"
+          "note": "中切歯（central incisor）の外側（lateral）の前歯（anterior teeth）（2番）。上顎（maxilla）の側切歯は中切歯より小さく、形の変異が多い（小さくとがった形や、生まれつき無いこともある）。"
         },
         {
           "id": "first-premolar", "ja": "第1小臼歯", "yomi": "だいいちしょうきゅうし", "en": "first premolar", "enAlt": ["first premolar tooth"], "la": "dens premolaris primus",
           "parts": ["* first secondary premolar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "犬歯のすぐ後ろの小さな臼歯",
           "etym": "first「1番目の」＋ premolar（pre-「前の」＋ molar「臼歯」）",
-          "note": "犬歯のすぐ後ろの歯（4番）。かむ面に頬側と舌側の2つの山（咬頭）がある。上顎の第1小臼歯は根が2本に分かれることが多い。歯並びの矯正で抜くことの多い歯。"
+          "note": "犬歯（canines）のすぐ後ろの歯（tooth）（4番）。かむ面に頬側（buccal side）と舌側（lingual side）の2つの山（咬頭（cusp））がある。上顎（maxilla）の第1小臼歯は根が2本に分かれることが多い。歯並びの矯正で抜くことの多い歯。"
         },
         {
           "id": "second-premolar", "ja": "第2小臼歯", "yomi": "だいにしょうきゅうし", "en": "second premolar", "enAlt": ["second premolar tooth"], "la": "dens premolaris secundus",
           "parts": ["* second secondary premolar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "2番目の小さな臼歯",
           "etym": "second「2番目の」＋ premolar（pre-「前の」＋ molar「臼歯」）",
-          "note": "第1小臼歯の後ろの歯（5番）。乳歯の第2乳臼歯の下から、11〜12歳ごろに生えかわる。根はふつう1本。"
+          "note": "第1小臼歯（first premolar）の後ろの歯（tooth）（5番）。乳歯（deciduous teeth）の第2乳臼歯（second deciduous molar）の下から、11〜12歳ごろに生えかわる。根はふつう1本。"
         },
         {
           "id": "first-molar", "ja": "第1大臼歯", "yomi": "だいいちだいきゅうし", "en": "first molar", "enAlt": ["first molar tooth"], "la": "dens molaris primus",
           "parts": ["* first secondary molar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "1番目の大きな臼歯",
           "etym": "first「1番目の」＋ molar（ラテン語 mola「石臼」）",
-          "note": "6番の歯。6歳ごろ、乳歯の列の後ろに最初に生える永久歯（6歳臼歯）。最も大きく、かむ力の中心になる。根は上顎で3本、下顎で2本。むし歯になりやすい。"
+          "note": "6番の歯（tooth）。6歳ごろ、乳歯（deciduous teeth）の列の後ろに最初に生える永久歯（permanent teeth）（6歳臼歯（first molar））。最も大きく、かむ力の中心になる。根は上顎（maxilla）で3本、下顎（mandible）で2本。むし歯になりやすい。"
         },
         {
           "id": "second-molar", "ja": "第2大臼歯", "yomi": "だいにだいきゅうし", "en": "second molar", "enAlt": ["second molar tooth"], "la": "dens molaris secundus",
           "parts": ["* second secondary molar tooth"], "level": 2, "color": "#f1ead9", "tissue": "tooth",
           "kanji": "2番目の大きな臼歯",
           "etym": "second「2番目の」＋ molar（ラテン語 mola「石臼」）",
-          "note": "7番の歯。12歳ごろに生える（12歳臼歯）。第1大臼歯より少し小さい。根は上顎で3本、下顎で2本（根がくっついていることも多い）。"
+          "note": "7番の歯（tooth）。12歳ごろに生える（12歳臼歯（second molar））。第1大臼歯（first molar）より少し小さい。根は上顎（maxilla）で3本、下顎（mandible）で2本（根がくっついていることも多い）。"
         }
       ]
     },
@@ -931,63 +931,63 @@
           "parts": ["za:oral cavity"], "level": 1, "color": "#d98b86", "xray": true, "veil": true,
           "kanji": "口の中の空所（腔＝体の中の空所）",
           "etym": "oral ← ラテン語 os, oris「口」。cavity ← ラテン語 cavus「うつろな」",
-          "note": "口唇から口峡（口蓋舌弓）までの空所。歯列より外の口腔前庭と、内の固有口腔に分かれる。上は口蓋、下は舌と口腔底。このモデルでは舌と口蓋の間の空間で示し、ふだんは薄く見せている。"
+          "note": "口唇（lips）から口峡（fauces）（口蓋舌弓（palatoglossal arch））までの空所。歯列（dental arch）より外の口腔前庭（oral vestibule）と、内の固有口腔（oral cavity proper）に分かれる。上は口蓋（palate）、下は舌（tongue）と口腔底（floor of mouth）。このモデルでは舌と口蓋の間の空間で示し、ふだんは薄く見せている。"
         },
         {
           "id": "soft-palate", "ja": "軟口蓋", "yomi": "なんこうがい", "en": "soft palate", "la": "palatum molle",
           "parts": ["za:soft palate"], "level": 1, "color": "#d98b86", "tissue": "mucosa", "xray": true, "veil": true,
           "kanji": "やわらかい口蓋（口の天井）",
           "etym": "palate ← ラテン語 palatum「口蓋」。palatine「口蓋の」",
-          "note": "口蓋の後ろ約3分の1で、骨が無く筋と粘膜でできた部分。飲み込むときに持ち上がって咽頭鼻部との境をふさぎ、食べ物が鼻に入るのを防ぐ。後ろの縁の中央から口蓋垂が垂れる。"
+          "note": "口蓋（palate）の後ろ約3分の1で、骨（bone）が無く筋（muscle）と粘膜（mucosa）でできた部分。飲み込むときに持ち上がって咽頭鼻部（nasopharynx）との境をふさぎ、食べ物が鼻（nose）に入るのを防ぐ。後ろの縁の中央から口蓋垂（uvula）が垂れる。"
         },
         {
           "id": "uvula", "ja": "口蓋垂", "yomi": "こうがいすい", "en": "uvula", "enAlt": ["palatine uvula"], "la": "uvula palatina",
           "parts": ["za:uvula of palate"], "level": 1, "color": "#d98b86", "tissue": "mucosa", "xray": true, "veil": true,
           "kanji": "口蓋から垂れ下がるもの",
           "etym": "uvula ← ラテン語「小さなぶどうの房」(uva ぶどう)",
-          "note": "軟口蓋の後ろの縁の中央から垂れ下がる小さな突起（いわゆる「のどちんこ」）。片側の迷走神経がまひすると、声を出したとき口蓋垂は健康な側へ引かれる。"
+          "note": "軟口蓋（soft palate）の後ろの縁の中央から垂れ下がる小さな突起（process）（いわゆる「のどちんこ」）。片側の迷走神経（vagus nerve）がまひすると、声を出したとき口蓋垂は健康な側へ引かれる。"
         },
         {
           "id": "pharynx", "ja": "咽頭", "yomi": "いんとう", "en": "pharynx", "la": "pharynx",
           "parts": ["za:nasopharynx", "za:oropharynx", "za:laryngopharynx"], "level": 1,
           "kanji": "のど（咽）の上の部分",
           "etym": "pharynx ← ギリシャ語「のど」。pharyngeal「咽頭の」",
-          "note": "鼻腔と口腔の後ろから食道の入口まで、頚椎の前を下る長さ約12cmの筋の管。空気と食べ物の通り道が交わる所で、上から咽頭鼻部・咽頭口部・咽頭喉頭部に分かれる。"
+          "note": "鼻腔（nasal cavity）と口腔（oral cavity）の後ろから食道（esophagus）の入口まで、頚椎（cervical vertebrae）の前を下る長さ約12cmの筋（muscle）の管。空気と食べ物の通り道が交わる所で、上から咽頭鼻部（nasopharynx）・咽頭口部（oropharynx）・咽頭喉頭部（laryngopharynx）に分かれる。"
         },
         {
           "id": "nasopharynx", "ja": "咽頭鼻部", "yomi": "いんとうびぶ", "en": "nasopharynx", "enAlt": ["nasal part of pharynx"], "la": "pars nasalis pharyngis",
           "parts": ["za:nasopharynx"], "level": 2,
           "kanji": "咽頭のうち鼻の後ろの部分",
           "etym": "naso-「鼻」（ラテン語 nasus）＋ pharynx",
-          "note": "軟口蓋より上で、鼻腔の後ろにある部分（上咽頭）。側壁に耳管が開き、後ろ上の壁に咽頭扁桃（アデノイド）がある。"
+          "note": "軟口蓋（soft palate）より上で、鼻腔（nasal cavity）の後ろにある部分（上咽頭（nasopharynx））。側壁（lateral wall）に耳管（auditory tube）が開き、後ろ上の壁に咽頭扁桃（pharyngeal tonsil）（アデノイド（adenoids））がある。"
         },
         {
           "id": "oropharynx", "ja": "咽頭口部", "yomi": "いんとうこうぶ", "en": "oropharynx", "enAlt": ["oral part of pharynx"], "la": "pars oralis pharyngis",
           "parts": ["za:oropharynx"], "level": 2,
           "kanji": "咽頭のうち口の奥の部分",
           "etym": "oro-「口」（ラテン語 os, oris）＋ pharynx",
-          "note": "軟口蓋から喉頭蓋の上の縁までの、口の奥にあたる部分（中咽頭）。口峡で口腔と通じ、両わきの口蓋舌弓と口蓋咽頭弓の間に口蓋扁桃がある。"
+          "note": "軟口蓋（soft palate）から喉頭蓋（epiglottis）の上の縁までの、口の奥にあたる部分（中咽頭（oropharynx））。口峡（fauces）で口腔（oral cavity）と通じ、両わきの口蓋舌弓（palatoglossal arch）と口蓋咽頭弓（palatopharyngeal arch）の間に口蓋扁桃（palatine tonsil）がある。"
         },
         {
           "id": "laryngopharynx", "ja": "咽頭喉頭部", "yomi": "いんとうこうとうぶ", "en": "laryngopharynx", "enAlt": ["hypopharynx", "laryngeal part of pharynx"], "la": "pars laryngea pharyngis",
           "parts": ["za:laryngopharynx"], "level": 2,
           "kanji": "咽頭のうち喉頭の後ろの部分",
           "etym": "laryngo-「喉頭」（ギリシャ語 larynx）＋ pharynx",
-          "note": "喉頭蓋の上の縁から輪状軟骨の下の縁（第6頚椎の高さ）までの部分（下咽頭）。喉頭の後ろにあり、下で食道に続く。喉頭の入口の両わきのくぼみ（梨状陥凹）に魚の骨などが引っかかりやすい。"
+          "note": "喉頭蓋（epiglottis）の上の縁から輪状軟骨（cricoid cartilage）の下の縁（第6頚椎（sixth cervical vertebra）の高さ）までの部分（下咽頭（laryngopharynx））。喉頭（larynx）の後ろにあり、下で食道（esophagus）に続く。喉頭の入口の両わきのくぼみ（梨状陥凹（piriform fossa））に魚の骨などが引っかかりやすい。"
         },
         {
           "id": "parotid-duct", "ja": "耳下腺管", "yomi": "じかせんかん", "en": "parotid duct", "la": "ductus parotideus",
           "parts": ["za:parotid duct"], "level": 2, "color": "#ead9c6",
           "kanji": "耳下腺の唾液を運ぶ管",
           "etym": "parotid「耳下腺の」＋ duct ← ラテン語 ducere「導く」",
-          "note": "耳下腺の前の縁から出て咬筋の表面を前へ走り、頬筋を貫いて、上の第2大臼歯に向かい合う頬の粘膜に開く管（ステノン管）。"
+          "note": "耳下腺（parotid gland）の前の縁から出て咬筋（masseter）の表面を前へ走り、頬筋（buccinator）を貫いて、上の第2大臼歯（second molar）に向かい合う頬（cheek）の粘膜（mucosa）に開く管（ステノン管（Stensen duct））。"
         },
         {
           "id": "submandibular-duct", "ja": "顎下腺管", "yomi": "がっかせんかん", "en": "submandibular duct", "la": "ductus submandibularis",
           "parts": ["za:submandibular duct"], "level": 3, "color": "#ead9c6", "xray": true,
           "kanji": "顎下腺の唾液を運ぶ管",
           "etym": "submandibular「顎下腺の」＋ duct",
-          "note": "顎下腺から出て口腔底を前へ走り、舌小帯の両わきの舌下小丘に開く管（ワルトン管）。唾液の石（唾石）ができやすい。"
+          "note": "顎下腺（submandibular gland）から出て口腔底（floor of mouth）を前へ走り、舌小帯（frenulum of tongue）の両わきの舌下小丘（sublingual caruncle）に開く管（ワルトン管（Wharton duct））。唾液（saliva）の石（唾石（salivary stone））ができやすい。"
         }
       ]
     },
@@ -1001,7 +1001,7 @@
           "parts": ["superior pharyngeal constrictor"], "level": 3, "color": "#c75b4f",
           "kanji": "咽頭の上部を締める（収縮させる）筋",
           "etym": "constrictor ← ラテン語 constringere「締めつける」",
-          "note": "咽頭の上部を後ろから囲む薄い筋。3つの咽頭収縮筋は下のものが上のものの外に重なり、後ろの正中の咽頭縫線で左右がつながる。",
+          "note": "咽頭（pharynx）の上部を後ろから囲む薄い筋（muscle）。3つの咽頭収縮筋（pharyngeal constrictors）は下のものが上のものの外に重なり、後ろの正中（median）の咽頭縫線（pharyngeal raphe）で左右がつながる。",
           "origin": "翼突鈎・翼突下顎縫線・下顎骨の顎舌骨筋線の後端",
           "insertion": "咽頭縫線・後頭骨の咽頭結節",
           "originAt": ["pterygoid-process"],
@@ -1013,7 +1013,7 @@
           "parts": ["middle pharyngeal constrictor"], "level": 3, "color": "#c75b4f",
           "kanji": "咽頭の中部を締める筋",
           "etym": "constrictor ← ラテン語 constringere「締めつける」",
-          "note": "舌骨から扇形に後ろへ広がり、上咽頭収縮筋の外に重なる筋。",
+          "note": "舌骨（hyoid bone）から扇形に後ろへ広がり、上咽頭収縮筋（superior pharyngeal constrictor）の外に重なる筋（muscle）。",
           "origin": "舌骨の大角・小角・茎突舌骨靱帯",
           "insertion": "咽頭縫線",
           "nerve": "迷走神経（咽頭神経叢）",
@@ -1024,7 +1024,7 @@
           "parts": ["inferior pharyngeal constrictor"], "level": 3, "color": "#c75b4f",
           "kanji": "咽頭の下部を締める筋",
           "etym": "constrictor ← ラテン語 constringere「締めつける」",
-          "note": "3つの咽頭収縮筋で最も厚い。甲状軟骨から出る甲状咽頭部と、輪状軟骨から出る輪状咽頭部からなり、その間の弱い所から憩室（ツェンカー憩室）ができることがある。",
+          "note": "3つの咽頭収縮筋（pharyngeal constrictors）で最も厚い。甲状軟骨（thyroid cartilage）から出る甲状咽頭部（thyropharyngeal part）と、輪状軟骨（cricoid cartilage）から出る輪状咽頭部（cricopharyngeal part）からなり、その間の弱い所から憩室（diverticulum）（ツェンカー憩室（Zenker diverticulum））ができることがある。",
           "origin": "甲状軟骨の斜線・輪状軟骨の外側面",
           "insertion": "咽頭縫線",
           "nerve": "迷走神経（咽頭神経叢）",
@@ -1035,7 +1035,7 @@
           "parts": ["stylopharyngeus"], "level": 3, "color": "#c75b4f",
           "kanji": "茎状突起から咽頭へ行く筋",
           "etym": "stylo-「茎状突起」（ギリシャ語 stylos 柱）＋ pharyngeus「咽頭の」",
-          "note": "茎状突起から下り、上咽頭収縮筋と中咽頭収縮筋の間から咽頭に入る細長い筋。舌咽神経に支配される唯一の筋。",
+          "note": "茎状突起（styloid process）から下り、上咽頭収縮筋（superior pharyngeal constrictor）と中咽頭収縮筋（middle pharyngeal constrictor）の間から咽頭（pharynx）に入る細長い筋（muscle）。舌咽神経（glossopharyngeal nerve）に支配（innervation）される唯一の筋。",
           "origin": "側頭骨の茎状突起",
           "insertion": "甲状軟骨の後縁・咽頭の側壁",
           "originAt": ["styloid-process-of-temporal-bone"],
@@ -1047,7 +1047,7 @@
           "parts": ["levator veli palatini"], "level": 3, "color": "#c75b4f",
           "kanji": "口蓋帆（軟口蓋）を挙げる筋",
           "etym": "levator「持ち上げるもの」＋ veli palatini「口蓋の帆の」(velum 帆)",
-          "note": "頭蓋底から斜め前下へ走って軟口蓋に入る筋。軟口蓋を持ち上げて、飲み込むときや話すときに咽頭鼻部との境をふさぐ。",
+          "note": "頭蓋底（cranial base）から斜め前下（anteroinferior）へ走って軟口蓋（soft palate）に入る筋（muscle）。軟口蓋を持ち上げて、飲み込むときや話すときに咽頭鼻部（nasopharynx）との境をふさぐ。",
           "origin": "側頭骨の錐体の下面・耳管軟骨",
           "insertion": "口蓋腱膜（軟口蓋）",
           "nerve": "迷走神経（咽頭神経叢）",
@@ -1058,7 +1058,7 @@
           "parts": ["tensor veli palatini"], "level": 3, "color": "#c75b4f",
           "kanji": "口蓋帆（軟口蓋）を張る筋",
           "etym": "tensor「張るもの」＋ veli palatini「口蓋の帆の」",
-          "note": "蝶形骨から下り、腱が翼突鈎で向きを変えて軟口蓋に広がる筋。軟口蓋の筋で唯一、下顎神経に支配される。あくびや飲み込みで耳管を開く。",
+          "note": "蝶形骨（sphenoid bone）から下り、腱（tendon）が翼突鈎（pterygoid hamulus）で向きを変えて軟口蓋（soft palate）に広がる筋（muscle）。軟口蓋の筋で唯一、下顎神経（mandibular nerve）に支配（innervation）される。あくびや飲み込みで耳管（auditory tube）を開く。",
           "origin": "蝶形骨の舟状窩・蝶形骨棘・耳管軟骨",
           "insertion": "翼突鈎で向きを変えて口蓋腱膜",
           "nerve": "下顎神経",
@@ -1069,7 +1069,7 @@
           "parts": ["palatopharyngeus"], "level": 3, "color": "#c75b4f",
           "kanji": "口蓋から咽頭へ行く筋",
           "etym": "palato-「口蓋」＋ pharyngeus「咽頭の」",
-          "note": "軟口蓋から咽頭の側壁を下る筋。粘膜を持ち上げて口蓋咽頭弓（口蓋扁桃の後ろのひだ）をつくる。",
+          "note": "軟口蓋（soft palate）から咽頭（pharynx）の側壁（lateral wall）を下る筋（muscle）。粘膜（mucosa）を持ち上げて口蓋咽頭弓（palatopharyngeal arch）（口蓋扁桃（palatine tonsil）の後ろのひだ（fold））をつくる。",
           "origin": "口蓋腱膜（軟口蓋）",
           "insertion": "甲状軟骨の後縁・咽頭の側壁",
           "nerve": "迷走神経（咽頭神経叢）",
@@ -1080,7 +1080,7 @@
           "parts": ["genioglossus"], "level": 2, "xray": true, "veil": true, "color": "#c75b4f",
           "kanji": "オトガイ（下あごの先）から舌へ行く筋",
           "etym": "genio-「あご」（ギリシャ語 geneion）＋ glossus「舌の」(glossa 舌)",
-          "note": "下顎骨の内面から扇形に後ろへ広がって舌の大部分をつくる筋。片側の舌下神経がまひすると、舌を出したとき舌の先がまひした側へ曲がる。",
+          "note": "下顎骨（mandible）の内面（internal surface）から扇形に後ろへ広がって舌（tongue）の大部分をつくる筋（muscle）。片側の舌下神経（hypoglossal nerve）がまひすると、舌を出したとき舌の先がまひした側へ曲がる。",
           "origin": "下顎骨のオトガイ棘",
           "insertion": "舌の内部（舌尖から舌根まで）・舌骨体",
           "nerve": "舌下神経",
@@ -1092,7 +1092,7 @@
           "parts": ["hyoglossus"], "level": 3, "color": "#c75b4f",
           "kanji": "舌骨から舌へ行く筋",
           "etym": "hyo-「舌骨」（ギリシャ語 hyoeides U字形の）＋ glossus「舌の」",
-          "note": "舌骨から舌の側面へ上る四角い薄い筋。外側を舌神経と舌下神経が、内側を舌動脈が通る目じるしになる。",
+          "note": "舌骨（hyoid bone）から舌（tongue）の側面へ上る四角い薄い筋（muscle）。外側（lateral）を舌神経（lingual nerve）と舌下神経（hypoglossal nerve）が、内側（medial）を舌動脈（lingual artery）が通る目じるしになる。",
           "origin": "舌骨の体と大角",
           "insertion": "舌の側部",
           "nerve": "舌下神経",
@@ -1110,7 +1110,7 @@
           "parts": ["salpingopharyngeus"], "level": 3, "color": "#c75b4f",
           "kanji": "耳管から咽頭へ下る筋",
           "etym": "salpingo- ← ギリシャ語 salpinx「らっぱ（耳管）」＋ pharyngeus「咽頭の」",
-          "note": "耳管の咽頭の口の下の縁から下へ伸びる細い筋。粘膜をもり上げて耳管咽頭ひだをつくり、下で口蓋咽頭筋と合わさる。飲み込むとき咽頭を引き上げる。",
+          "note": "耳管（auditory tube）の咽頭（pharynx）の口の下の縁から下へ伸びる細い筋（muscle）。粘膜（mucosa）をもり上げて耳管咽頭ひだ（salpingopharyngeal fold）をつくり、下で口蓋咽頭筋（palatopharyngeus）と合わさる。飲み込むとき咽頭を引き上げる。",
           "origin": "耳管軟骨の下端",
           "insertion": "口蓋咽頭筋と合わさり咽頭の側壁",
           "nerve": "迷走神経（咽頭神経叢）",
@@ -1121,7 +1121,7 @@
           "parts": ["uvular muscle"], "level": 3, "xray": true, "color": "#c75b4f",
           "kanji": "口蓋垂の中の筋",
           "etym": "uvulae ← ラテン語 uvula「小さなぶどうの房（のどちんこ）」",
-          "note": "口蓋垂の中を縦に走る左右1対の細い筋。口蓋垂を縮めて持ち上げ、飲み込むとき咽頭鼻部をふさぐのを助ける。迷走神経がまひすると口蓋垂は健康な側へ引かれる。",
+          "note": "口蓋垂（uvula）の中を縦に走る左右1対の細い筋（muscle）。口蓋垂を縮めて持ち上げ、飲み込むとき咽頭鼻部（nasopharynx）をふさぐのを助ける。迷走神経（vagus nerve）がまひすると口蓋垂は健康な側へ引かれる。",
           "origin": "後鼻棘・口蓋腱膜",
           "insertion": "口蓋垂の粘膜",
           "nerve": "迷走神経（咽頭神経叢）",
@@ -1132,14 +1132,14 @@
           "parts": ["pterygomandibular raphe"], "level": 3, "color": "#d6cdb8",
           "kanji": "翼突鈎と下顎をつなぐ縫い目の線",
           "etym": "pterygo-「翼の（翼状突起）」＋ mandibular「下顎の」＋ raphe ← ギリシャ語「縫い目」",
-          "note": "蝶形骨の翼突鈎から下顎骨の顎舌骨筋線の後ろの端へ張る腱の帯。前に頬筋が、後ろに上咽頭収縮筋が付き、2つの筋がここでつながる。口を大きく開けると口の中で粘膜のひだとして見え、下歯槽神経の麻酔の目印にする。"
+          "note": "蝶形骨（sphenoid bone）の翼突鈎（pterygoid hamulus）から下顎骨（mandible）の顎舌骨筋線（mylohyoid line）の後ろの端へ張る腱（tendon）の帯。前に頬筋（buccinator）が、後ろに上咽頭収縮筋（superior pharyngeal constrictor）が付き、2つの筋（muscle）がここでつながる。口を大きく開けると口の中で粘膜（mucosa）のひだ（fold）として見え、下歯槽神経（inferior alveolar nerve）の麻酔（anesthesia）の目印にする。"
         },
         {
           "id": "pharyngeal-raphe", "ja": "咽頭縫線", "yomi": "いんとうほうせん", "en": "pharyngeal raphe", "la": "raphe pharyngis",
           "parts": ["pharyngeal raphe"], "level": 3, "color": "#d6cdb8",
           "kanji": "咽頭の後ろの正中の縫い目",
           "etym": "pharyngeal「咽頭の」＋ raphe「縫い目」",
-          "note": "咽頭の後ろの壁の正中を縦に走る腱の線。後頭骨の咽頭結節から下がり、左右の上・中・下咽頭収縮筋がここで合わさる。"
+          "note": "咽頭（pharynx）の後ろの壁の正中（median）を縦に走る腱（tendon）の線。後頭骨（occipital bone）の咽頭結節（pharyngeal tubercle）から下がり、左右の上・中・下咽頭収縮筋（inferior pharyngeal constrictor）がここで合わさる。"
         }
       ]
     }

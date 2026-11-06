@@ -10,6 +10,7 @@
     "build:attachments": "node scripts/za/attachments.mjs",
     "build:audio": "node scripts/build-audio.mjs",
     "build:icons": "node scripts/build-icons.mjs",
+    "build:en-notes": "node scripts/en-notes.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "build": "npm run validate:content && tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",

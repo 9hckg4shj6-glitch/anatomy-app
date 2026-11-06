@@ -11,7 +11,7 @@
           "parts": ["kidney"], "level": 1,
           "kanji": "腎＝じん",
           "etym": "kidney（英語の固有語）。ラテン語 ren から renal、ギリシャ語 nephros から nephro-",
-          "note": "腰の高さ、背骨の両側の後腹膜にあるそら豆形の臓器（長さ約10cm・幅約5cm・厚さ約3cm、約140〜160g）。第12胸椎〜第3腰椎の高さにあり、右腎は肝臓のために左より約1.5cm低い。外から順に線維被膜・脂肪被膜・腎筋膜（ジェロタ筋膜）に包まれ、腎筋膜が横隔膜につくので息とともに上下する。断面では表層の腎皮質と深層の腎髄質に分かれ、髄質は十数個の腎錐体からなる。錐体の先の腎乳頭から尿が小腎杯へ出て、大腎杯・腎盤に集まる。錐体の間に入りこむ皮質が腎柱。血液をろ過して尿をつくる。",
+          "note": "腰（lower back）の高さ、背骨（backbone）の両側（bilateral）の後腹膜（retroperitoneum）にあるそら豆形の臓器（organ）（長さ約10cm・幅約5cm・厚さ約3cm、約140〜160g）。第12胸椎（twelfth thoracic vertebra）〜第3腰椎（third lumbar vertebra）の高さにあり、右腎（right kidney）は肝臓（liver）のために左より約1.5cm低い。外から順に線維被膜（fibrous capsule）・脂肪被膜（perirenal fat capsule）・腎筋膜（renal fascia）（ジェロタ筋膜（Gerota fascia））に包まれ、腎筋膜が横隔膜（diaphragm）につくので息とともに上下する。断面（section）では表層の腎皮質（renal cortex）と深層（deep layer）の腎髄質（renal medulla）に分かれ、髄質（medulla）は十数個の腎錐体（renal pyramid）からなる。錐体（renal pyramid）の先の腎乳頭（renal papilla）から尿が小腎杯（minor calyx）へ出て、大腎杯（major calyx）・腎盤（renal pelvis）に集まる。錐体の間に入りこむ皮質（cortex）が腎柱（renal column）。血液（blood）をろ過して尿をつくる。",
           "hormones": "レニン（傍糸球体細胞）・エリスロポエチン（赤血球を増やす）・活性型ビタミンD"
         },
         {
@@ -19,28 +19,28 @@
           "parts": ["za:renal pelvis"], "level": 1,
           "kanji": "腎臓の中の、たらい（盤）のような部分",
           "etym": "pelvis ← ラテン語「たらい・鉢」",
-          "note": "腎臓の中で、腎杯から尿を集める漏斗形の部分。腎乳頭を囲む小腎杯が2〜3個の大腎杯にまとまり、それが合わさって腎盤になる。腎門を出て下へ細くなり尿管に続く。臨床では腎盂（じんう）ということが多い。"
+          "note": "腎臓（kidney）の中で、腎杯（renal calyx）から尿を集める漏斗形の部分。腎乳頭（renal papilla）を囲む小腎杯（minor calyx）が2〜3個の大腎杯（major calyx）にまとまり、それが合わさって腎盤になる。腎門（renal hilum）を出て下へ細くなり尿管（ureter）に続く。臨床では腎盂（renal pelvis）（じんう）ということが多い。"
         },
         {
           "id": "ureter", "ja": "尿管", "yomi": "にょうかん", "en": "ureter", "la": "ureter",
           "parts": ["ureter"], "level": 1,
           "kanji": "尿を運ぶ管",
           "etym": "ureter ← ギリシャ語 ouron「尿」",
-          "note": "腎盤から膀胱へ尿を運ぶ長さ25〜27cmの管（腹部と骨盤部に分ける）。大腰筋の前を下り、精巣（卵巣）動静脈の後ろを交差し、第4腰椎の高さで総腸骨動静脈の前を越えて骨盤に入り、膀胱底の壁を斜めに貫いて尿管口に開く。腎盤から尿管に移る所・総腸骨動静脈と交差する所・膀胱の壁を貫く所の3か所が生理的に狭く、結石がつかえやすい。骨盤の中で、男性では精管の下を、女性では子宮頚の外側で子宮動脈の下をくぐる（子宮の手術で傷つけないよう注意する所）。"
+          "note": "腎盤（renal pelvis）から膀胱（urinary bladder）へ尿を運ぶ長さ25〜27cmの管（腹部（abdominal part）と骨盤部（pelvic part）に分ける）。大腰筋（psoas major）の前を下り、精巣（testis）（卵巣（ovary））動静脈（artery and vein）の後ろを交差し、第4腰椎（fourth lumbar vertebra）の高さで総腸骨動静脈（common iliac vessels）の前を越えて骨盤（pelvis）に入り、膀胱底（fundus of bladder）の壁を斜めに貫いて尿管口（ureteric orifice）に開く。腎盤から尿管に移る所・総腸骨動静脈と交差する所・膀胱の壁を貫く所の3か所が生理的に狭く、結石（calculus）がつかえやすい。骨盤の中で、男性では精管（ductus deferens）の下を、女性では子宮頚（cervix of uterus）の外側（lateral）で子宮動脈（uterine artery）の下をくぐる（子宮（uterus）の手術で傷つけないよう注意する所）。"
         },
         {
           "id": "urinary-bladder", "ja": "膀胱", "yomi": "ぼうこう", "en": "urinary bladder", "enAlt": ["bladder"], "la": "vesica urinaria",
           "parts": ["urinary bladder"], "level": 1,
           "kanji": "膀胱＝尿をためる袋",
           "etym": "bladder「袋」。ラテン語 vesica から vesical「膀胱の」",
-          "note": "恥骨のすぐ後ろにある袋（容量300〜500mL）。膀胱尖・膀胱体・膀胱底・膀胱頚に分かれ、尿がたまると上へふくらむ。上の面だけが腹膜におおわれ、前は恥骨との間の恥骨後隙、後ろは男性では精管膨大部・精嚢と直腸、女性では子宮と腟に接する。膀胱底の内面には、左右の尿管口と内尿道口を結ぶ三角形の膀胱三角があり、ここだけは粘膜が筋層に固く付いてひだができない。尿管は膀胱の壁を斜めに貫くので、膀胱から尿管への逆流は防がれる。"
+          "note": "恥骨（pubis）のすぐ後ろにある袋（容量300〜500mL）。膀胱尖（apex of bladder）・膀胱体（body of bladder）・膀胱底（fundus of bladder）・膀胱頚（neck of bladder）に分かれ、尿がたまると上へふくらむ。上の面だけが腹膜（peritoneum）におおわれ、前は恥骨との間の恥骨後隙（retropubic space）、後ろは男性では精管膨大部（ampulla of ductus deferens）・精嚢（seminal gland）と直腸（rectum）、女性では子宮（uterus）と腟（vagina）に接する。膀胱底の内面（internal surface）には、左右の尿管口（ureteric orifice）と内尿道口（internal urethral orifice）を結ぶ三角形の膀胱三角（trigone of bladder）があり、ここだけは粘膜（mucosa）が筋層（muscular layer）に固く付いてひだ（fold）ができない。尿管（ureter）は膀胱の壁を斜めに貫くので、膀胱から尿管への逆流は防がれる。"
         },
         {
           "id": "urethra", "ja": "尿道", "yomi": "にょうどう", "en": "urethra", "la": "urethra",
           "parts": ["urethra"], "level": 1, "xray": true,
           "kanji": "尿の通る道",
           "etym": "urethra ← ギリシャ語 ourein「排尿する」",
-          "note": "膀胱の内尿道口から体外の外尿道口へ尿を出す管。男性は約16〜20cmで、前立腺部・隔膜部・海綿体部に分かれ、精液の通り道も兼ねる。女性は約4cmと短く、腟の前を通って腟前庭に開くので、膀胱炎を起こしやすい。"
+          "note": "膀胱（urinary bladder）の内尿道口（internal urethral orifice）から体外の外尿道口（external urethral orifice）へ尿を出す管。男性は約16〜20cmで、前立腺部（prostatic part）・隔膜部（membranous part）・海綿体部（spongy part）に分かれ、精液（semen）の通り道も兼ねる。女性は約4cmと短く、腟（vagina）の前を通って腟前庭（vestibule of vagina）に開くので、膀胱炎（cystitis）を起こしやすい。"
         }
       ]
     },
@@ -54,56 +54,56 @@
           "of": "kidney", "level": 1,
           "kanji": "腎臓の門（出入口）",
           "etym": "renal ← ラテン語 ren「腎臓」。hilum「へそ」",
-          "note": "腎臓の内側の縁の中央のくぼみ。前から腎静脈・腎動脈・腎盤（尿管）の順に並んで出入りする。奥は腎洞という空所。"
+          "note": "腎臓（kidney）の内側（medial）の縁の中央のくぼみ。前から腎静脈（renal vein）・腎動脈（renal artery）・腎盤（renal pelvis）（尿管（ureter））の順に並んで出入りする。奥は腎洞（renal sinus）という空所。"
         },
         {
           "id": "apex-of-bladder", "ja": "膀胱尖", "yomi": "ぼうこうせん", "en": "apex of bladder", "la": "apex vesicae",
           "of": "urinary-bladder", "level": 3,
           "kanji": "膀胱の先（尖）",
           "etym": "apex「先端」＋ vesicae「膀胱の」(vesica 袋)",
-          "note": "膀胱の前上の先端。正中臍索（胎児の尿膜管のなごり）で臍とつながる。"
+          "note": "膀胱（urinary bladder）の前上（anterosuperior）の先端（tip）。正中臍索（median umbilical ligament）（胎児（fetus）の尿膜管（urachus）のなごり）で臍（umbilicus）とつながる。"
         },
         {
           "id": "body-of-bladder", "ja": "膀胱体", "yomi": "ぼうこうたい", "en": "body of bladder", "la": "corpus vesicae",
           "of": "urinary-bladder", "level": 3,
           "kanji": "膀胱の胴の部分",
           "etym": "body「体」。ラテン語 corpus vesicae「膀胱の体」",
-          "note": "膀胱尖と膀胱底の間の大部分。上の面は腹膜におおわれて小腸（女性では子宮体）が乗り、下外側の面は恥骨・肛門挙筋・内閉鎖筋に接する。尿がたまると上の面が恥骨結合の上へふくらむ。"
+          "note": "膀胱尖（apex of bladder）と膀胱底（fundus of bladder）の間の大部分。上の面は腹膜（peritoneum）におおわれて小腸（small intestine）（女性では子宮体（body of uterus））が乗り、下外側（inferolateral）の面は恥骨（pubis）・肛門挙筋（levator ani）・内閉鎖筋（obturator internus）に接する。尿がたまると上の面が恥骨結合（pubic symphysis）の上へふくらむ。"
         },
         {
           "id": "fundus-of-bladder", "ja": "膀胱底", "yomi": "ぼうこうてい", "en": "fundus of bladder", "enAlt": ["base of bladder"], "la": "fundus vesicae",
           "of": "urinary-bladder", "level": 2,
           "kanji": "膀胱の底",
           "etym": "fundus ← ラテン語「底」",
-          "note": "膀胱の後ろ下の面。内面に、左右の尿管口と内尿道口を結ぶ三角形の膀胱三角があり、ここにはひだができない。男性では後ろに精嚢と精管膨大部がある。"
+          "note": "膀胱（urinary bladder）の後ろ下の面。内面（internal surface）に、左右の尿管口（ureteric orifice）と内尿道口（internal urethral orifice）を結ぶ三角形の膀胱三角（trigone of bladder）があり、ここにはひだ（fold）ができない。男性では後ろに精嚢（seminal gland）と精管膨大部（ampulla of ductus deferens）がある。"
         },
         {
           "id": "neck-of-bladder", "ja": "膀胱頚", "yomi": "ぼうこうけい", "en": "neck of bladder", "la": "cervix vesicae",
           "of": "urinary-bladder", "level": 3,
           "kanji": "膀胱の首",
           "etym": "neck「首」。ラテン語 cervix",
-          "note": "膀胱の最も下の、内尿道口のある部分。男性では前立腺の上にのる。"
+          "note": "膀胱（urinary bladder）の最も下の、内尿道口（internal urethral orifice）のある部分。男性では前立腺（prostate）の上にのる。"
         },
         {
           "id": "prostatic-urethra", "ja": "前立腺部（尿道）", "yomi": "ぜんりつせんぶ", "en": "prostatic urethra", "la": "pars prostatica urethrae",
           "of": "urethra", "level": 2,
           "kanji": "尿道の、前立腺を通る部分",
           "etym": "prostatic「前立腺の」",
-          "note": "男性の尿道で前立腺を貫く約3cmの部分。後ろの壁の精丘に射精管と前立腺の導管が開く。前立腺肥大で狭くなる。"
+          "note": "男性の尿道（urethra）で前立腺（prostate）を貫く約3cmの部分。後ろの壁の精丘（seminal colliculus）に射精管（ejaculatory duct）と前立腺の導管（duct）が開く。前立腺肥大（prostatic hyperplasia）で狭くなる。"
         },
         {
           "id": "membranous-urethra", "ja": "隔膜部（尿道）", "yomi": "かくまくぶ", "en": "membranous urethra", "enAlt": ["intermediate part of urethra"], "la": "pars membranacea urethrae",
           "of": "urethra", "level": 2,
           "kanji": "尿道の、尿生殖隔膜を通る部分",
           "etym": "membranous「膜の」",
-          "note": "前立腺の下から尿道球までの約1cmの部分で、尿道で最も狭い。周りを尿道括約筋（意識して締められる筋）が囲む。中間部ともいう。"
+          "note": "前立腺（prostate）の下から尿道球（bulb of penis）までの約1cmの部分で、尿道（urethra）で最も狭い。周りを尿道括約筋（urethral sphincter）（意識して締められる筋（muscle））が囲む。中間部（intermediate part）ともいう。"
         },
         {
           "id": "spongy-urethra", "ja": "海綿体部（尿道）", "yomi": "かいめんたいぶ", "en": "spongy urethra", "la": "pars spongiosa urethrae",
           "of": "urethra", "level": 2,
           "kanji": "尿道の、尿道海綿体を通る部分",
           "etym": "spongy「海綿の」",
-          "note": "尿道海綿体の中を通る約15cmの部分。尿道球の中で広がり、亀頭の中で舟状窩となって外尿道口に開く。尿道球腺が開く。"
+          "note": "尿道海綿体（corpus spongiosum of penis）の中を通る約15cmの部分。尿道球（bulb of penis）の中で広がり、亀頭（glans）の中で舟状窩（navicular fossa）となって外尿道口（external urethral orifice）に開く。尿道球腺（bulbo-urethral gland）が開く。"
         }
       ]
     },
@@ -117,7 +117,7 @@
           "parts": ["testis"], "level": 1,
           "kanji": "精子の巣",
           "etym": "testis ← ラテン語「証人」とする説がある",
-          "note": "陰嚢の中にある左右1対の楕円形の器官（重さ10〜14g）。表面は精巣鞘膜の臓側板、その下の厚い白膜に包まれ、後ろの縁で白膜が厚くなって精巣縦隔となり、そこから出る中隔で200〜300個の精巣小葉に分かれる。小葉の中の曲精細管で精子が、間の細胞で男性ホルモン（テストステロン）がつくられる。体温より約2℃低い陰嚢の中で精子がつくられ、まわりの蔓状静脈叢が動脈の血を冷やす。左の精巣静脈は左腎静脈に注ぐので、精索静脈瘤は左に多い。",
+          "note": "陰嚢（scrotum）の中にある左右1対の楕円形の器官（organ）（重さ10〜14g）。表面は精巣鞘膜（tunica vaginalis）の臓側板（visceral layer）、その下の厚い白膜（tunica albuginea）に包まれ、後ろの縁で白膜が厚くなって精巣縦隔（mediastinum of testis）となり、そこから出る中隔（septum）で200〜300個の精巣小葉（lobules of testis）に分かれる。小葉（lobule）の中の曲精細管（convoluted seminiferous tubules）で精子（sperm）が、間の細胞（cell）で男性ホルモン（androgen）（テストステロン（testosterone））がつくられる。体温（body temperature）より約2℃低い陰嚢の中で精子がつくられ、まわりの蔓状静脈叢（pampiniform plexus）が動脈（artery）の血を冷やす。左の精巣静脈（testicular vein）は左腎静脈（left renal vein）に注ぐので、精索静脈瘤（varicocele）は左に多い。",
           "hormones": "テストステロン（間質細胞＝ライディッヒ細胞）・インヒビン（セルトリ細胞）"
         },
         {
@@ -125,35 +125,35 @@
           "parts": ["epididymis"], "level": 2,
           "kanji": "精巣の上にのる体",
           "etym": "epi-「上」＋ didymos「双子（精巣）」",
-          "note": "精巣の後ろ上にのる細長い器官で、頭・体・尾に分かれる。精巣から出た15〜20本の精巣輸出管が頭に入り、1本の精巣上体管（のばすと約4m）にまとまって強く曲がりくねりながら尾へ下り、精管に続く。精子は頭と体を通る間に成熟し、尾にためられる。"
+          "note": "精巣（testis）の後ろ上にのる細長い器官（organ）で、頭・体・尾に分かれる。精巣から出た15〜20本の精巣輸出管（efferent ductules）が頭に入り、1本の精巣上体管（duct of epididymis）（のばすと約4m）にまとまって強く曲がりくねりながら尾へ下り、精管（ductus deferens）に続く。精子（sperm）は頭と体を通る間に成熟し、尾にためられる。"
         },
         {
           "id": "ductus-deferens", "ja": "精管", "yomi": "せいかん", "en": "ductus deferens", "enAlt": ["vas deferens", "deferent duct"], "la": "ductus deferens",
           "parts": ["deferent duct"], "level": 2,
           "kanji": "精子を運ぶ管",
           "etym": "deferens ← ラテン語 deferre「運び去る」",
-          "note": "精巣上体から精子を運ぶ長さ40〜50cmの管。精巣上体尾から始まり、精索の中を上って浅鼡径輪から鼡径管を通り、深鼡径輪で精索の血管と分かれて骨盤の側壁を後ろへ下り、尿管の上を越えて膀胱の後ろで精管膨大部となる。前立腺のすぐ上で精嚢の導管と合わさって射精管になる。壁の厚い平滑筋で、触ると硬いひものように感じる。"
+          "note": "精巣上体（epididymis）から精子（sperm）を運ぶ長さ40〜50cmの管。精巣上体尾（tail of epididymis）から始まり、精索（spermatic cord）の中を上って浅鼡径輪（superficial inguinal ring）から鼡径管（inguinal canal）を通り、深鼡径輪（deep inguinal ring）で精索の血管（blood vessel）と分かれて骨盤（pelvis）の側壁（lateral wall）を後ろへ下り、尿管（ureter）の上を越えて膀胱（urinary bladder）の後ろで精管膨大部（ampulla of ductus deferens）となる。前立腺（prostate）のすぐ上で精嚢（seminal gland）の導管（duct）と合わさって射精管（ejaculatory duct）になる。壁の厚い平滑筋（smooth muscle）で、触ると硬いひものように感じる。"
         },
         {
           "id": "seminal-gland", "ja": "精嚢", "yomi": "せいのう", "en": "seminal gland", "enAlt": ["seminal vesicle"], "la": "glandula seminalis",
           "parts": ["seminal vesicle"], "level": 2,
           "kanji": "精液の袋",
           "etym": "seminal ← ラテン語 semen「種」",
-          "note": "膀胱底と直腸の間で、精管膨大部の外側にある長さ約4cmの袋状の腺。果糖に富む淡黄色の弱アルカリ性の液を出し、精液の40〜80%を占める（果糖は精子のエネルギー源）。導管は精管と合わさって射精管になる。男性ホルモンで発達し、年をとると縮む。"
+          "note": "膀胱底（fundus of bladder）と直腸（rectum）の間で、精管膨大部（ampulla of ductus deferens）の外側（lateral）にある長さ約4cmの袋状の腺（gland）。果糖に富む淡黄色の弱アルカリ性の液を出し、精液（semen）の40〜80%を占める（果糖は精子（sperm）のエネルギー源）。導管（duct）は精管（ductus deferens）と合わさって射精管（ejaculatory duct）になる。男性ホルモン（androgen）で発達し、年をとると縮む。"
         },
         {
           "id": "ejaculatory-duct", "ja": "射精管", "yomi": "しゃせいかん", "en": "ejaculatory duct", "la": "ductus ejaculatorius",
           "parts": ["za:ejaculatory duct"], "level": 2, "xray": true,
           "kanji": "精液を射出する管",
           "etym": "ejaculatory ← ラテン語 ejaculari「投げ出す」",
-          "note": "精管の終わり（精管膨大部）と精嚢の導管が合わさってできる長さ約2cmの管。前立腺を貫いて、尿道の前立腺部（精丘）に開く。"
+          "note": "精管（ductus deferens）の終わり（精管膨大部（ampulla of ductus deferens））と精嚢（seminal gland）の導管（duct）が合わさってできる長さ約2cmの管。前立腺（prostate）を貫いて、尿道（urethra）の前立腺部（prostatic part）（精丘（seminal colliculus））に開く。"
         },
         {
           "id": "prostate", "ja": "前立腺", "yomi": "ぜんりつせん", "en": "prostate", "enAlt": ["prostate gland"], "la": "prostata",
           "parts": ["prostate"], "level": 1,
           "kanji": "（膀胱の）前に立つ腺",
           "etym": "prostate ← ギリシャ語 prostates「前に立つもの」",
-          "note": "膀胱の下で尿道を囲み、骨盤底（尿生殖隔膜）にのる栗の実の形の腺（約15g）。上の広い前立腺底が膀胱頚に、前下の前立腺尖が尿生殖隔膜に接する。後ろの面は直腸膨大部に面し、直腸からの指診で肛門から約5cm上に触れる。中を尿道と左右の射精管が通る。尿道のまわりの内腺が年とともに大きくなるのが前立腺肥大症（尿が出にくくなる）、前立腺癌はおもに外側の外腺にでき、まわりの静脈叢から椎骨へ転移しやすい。"
+          "note": "膀胱（urinary bladder）の下で尿道（urethra）を囲み、骨盤底（pelvic floor）（尿生殖隔膜（urogenital diaphragm））にのる栗の実の形の腺（gland）（約15g）。上の広い前立腺底（base of prostate）が膀胱頚（neck of bladder）に、前下（anteroinferior）の前立腺尖（apex of prostate）が尿生殖隔膜に接する。後ろの面は直腸膨大部（rectal ampulla）に面し、直腸（rectum）からの指診（digital examination）で肛門（anus）から約5cm上に触れる。中を尿道と左右の射精管（ejaculatory duct）が通る。尿道のまわりの内腺（inner gland）が年とともに大きくなるのが前立腺肥大症（benign prostatic hyperplasia）（尿が出にくくなる）、前立腺癌（prostate cancer）はおもに外側（lateral）の外腺（outer gland）にでき、まわりの静脈叢（venous plexus）から椎骨（vertebra）へ転移（metastasis）しやすい。"
         }
       ]
     },
@@ -167,42 +167,42 @@
           "of": "epididymis", "level": 3,
           "kanji": "精巣上体の頭（上の部分）",
           "etym": "head「頭」＋ epididymis「精巣上体」",
-          "note": "精巣の上の端を帽子のようにおおう、精巣上体のいちばん太い部分。精巣から出た15〜20本の精巣輸出管がここに入る。"
+          "note": "精巣（testis）の上の端を帽子のようにおおう、精巣上体（epididymis）のいちばん太い部分。精巣から出た15〜20本の精巣輸出管（efferent ductules）がここに入る。"
         },
         {
           "id": "body-of-epididymis", "ja": "精巣上体体", "yomi": "せいそうじょうたいたい", "en": "body of epididymis", "la": "corpus epididymidis",
           "of": "epididymis", "level": 3,
           "kanji": "精巣上体の胴の部分",
           "etym": "body「体」＋ epididymis「精巣上体」",
-          "note": "精巣の後ろの縁に沿って下る中ほどの部分。中を1本の精巣上体管が強く曲がりくねって走り、精子はここを通る間に成熟する。"
+          "note": "精巣（testis）の後ろの縁に沿って下る中ほどの部分。中を1本の精巣上体管（duct of epididymis）が強く曲がりくねって走り、精子（sperm）はここを通る間に成熟する。"
         },
         {
           "id": "tail-of-epididymis", "ja": "精巣上体尾", "yomi": "せいそうじょうたいび", "en": "tail of epididymis", "la": "cauda epididymidis",
           "of": "epididymis", "level": 3,
           "kanji": "精巣上体の尾（下の部分）",
           "etym": "tail「尾」＋ epididymis「精巣上体」",
-          "note": "精巣の下の端の後ろにある精巣上体の下の部分。成熟した精子をためておき、ここから精管が始まって上へ折れ返る。"
+          "note": "精巣（testis）の下の端の後ろにある精巣上体（epididymis）の下の部分。成熟した精子（sperm）をためておき、ここから精管（ductus deferens）が始まって上へ折れ返る。"
         },
         {
           "id": "ampulla-of-ductus-deferens", "ja": "精管膨大部", "yomi": "せいかんぼうだいぶ", "en": "ampulla of ductus deferens", "enAlt": ["ampulla of vas deferens"], "la": "ampulla ductus deferentis",
           "of": "ductus-deferens", "level": 3,
           "kanji": "精管のふくらんだ部分",
           "etym": "ampulla ← ラテン語「つぼ」＋ ductus deferens「精管」",
-          "note": "膀胱底の後ろで、左右の精管が並んで下りながら紡錘形にふくらんだ部分。外側に精嚢があり、下で細くなって前立腺のすぐ上で精嚢の導管と合わさり、射精管になる。"
+          "note": "膀胱底（fundus of bladder）の後ろで、左右の精管（ductus deferens）が並んで下りながら紡錘形にふくらんだ部分。外側（lateral）に精嚢（seminal gland）があり、下で細くなって前立腺（prostate）のすぐ上で精嚢の導管（duct）と合わさり、射精管（ejaculatory duct）になる。"
         },
         {
           "id": "base-of-prostate", "ja": "前立腺底", "yomi": "ぜんりつせんてい", "en": "base of prostate", "la": "basis prostatae",
           "of": "prostate", "level": 3,
           "kanji": "前立腺の底（上の広い面）",
           "etym": "base ← ラテン語 basis「土台」＋ prostate「前立腺」",
-          "note": "前立腺の上の広い面で、膀胱頚のすぐ下に接する。尿道がほぼ中央から入り、後ろの縁のすぐ前から左右の射精管が入る。"
+          "note": "前立腺（prostate）の上の広い面で、膀胱頚（neck of bladder）のすぐ下に接する。尿道（urethra）がほぼ中央から入り、後ろの縁のすぐ前から左右の射精管（ejaculatory duct）が入る。"
         },
         {
           "id": "apex-of-prostate", "ja": "前立腺尖", "yomi": "ぜんりつせんせん", "en": "apex of prostate", "la": "apex prostatae",
           "of": "prostate", "level": 3,
           "kanji": "前立腺の先（尖）",
           "etym": "apex ← ラテン語「先端」＋ prostate「前立腺」",
-          "note": "前立腺の前下のとがった先で、尿生殖隔膜（会陰膜）の上にのる。尿道はこのすぐ上の前の面から出て隔膜部に続く。"
+          "note": "前立腺（prostate）の前下（anteroinferior）のとがった先で、尿生殖隔膜（urogenital diaphragm）（会陰膜（perineal membrane））の上にのる。尿道（urethra）はこのすぐ上の前の面から出て隔膜部（membranous part）に続く。"
         }
       ]
     },
@@ -216,28 +216,28 @@
           "parts": ["corpus cavernosum of penis", "corpus spongiosum of penis", "glans penis"], "level": 1,
           "kanji": "陰部の茎",
           "etym": "penis ← ラテン語「尾」",
-          "note": "左右1対の陰茎海綿体と、尿道を包む尿道海綿体からなる。根もと（陰茎根）は恥骨と会陰につき、先端は亀頭。中を尿道の海綿体部が通る。"
+          "note": "左右1対の陰茎海綿体（corpus cavernosum of penis）と、尿道（urethra）を包む尿道海綿体（corpus spongiosum of penis）からなる。根もと（陰茎根（root of penis））は恥骨（pubis）と会陰（perineum）につき、先端（tip）は亀頭（glans）。中を尿道の海綿体部（spongy part）が通る。"
         },
         {
           "id": "corpus-cavernosum", "ja": "陰茎海綿体", "yomi": "いんけいかいめんたい", "en": "corpus cavernosum of penis", "enAlt": ["corpus cavernosum"], "la": "corpus cavernosum penis",
           "parts": ["corpus cavernosum of penis"], "level": 3,
           "kanji": "海綿（スポンジ）のような組織の体",
           "etym": "corpus「体」＋ cavernosum「洞穴の多い」",
-          "note": "陰茎の背側の左右1対の海綿体。血液が満ちると勃起する。"
+          "note": "陰茎（penis）の背側（dorsal）の左右1対の海綿体（cavernous body）。血液（blood）が満ちると勃起（erection）する。"
         },
         {
           "id": "corpus-spongiosum", "ja": "尿道海綿体", "yomi": "にょうどうかいめんたい", "en": "corpus spongiosum of penis", "enAlt": ["corpus spongiosum"], "la": "corpus spongiosum penis",
           "parts": ["corpus spongiosum of penis", "glans penis"], "level": 3,
           "kanji": "尿道を包む海綿体",
           "etym": "corpus「体」＋ spongiosum「スポンジ状の」",
-          "note": "陰茎の腹側で尿道を包む海綿体。先端がふくらんで亀頭になる。"
+          "note": "陰茎（penis）の腹側（ventral）で尿道（urethra）を包む海綿体（cavernous body）。先端（tip）がふくらんで亀頭（glans）になる。"
         },
         {
           "id": "glans-penis", "ja": "陰茎亀頭", "yomi": "いんけいきとう", "en": "glans penis", "la": "glans penis",
           "parts": ["glans penis"], "level": 2,
           "kanji": "亀の頭のような形の部分",
           "etym": "glans ← ラテン語「どんぐり」",
-          "note": "尿道海綿体の先端がふくらんだ部分。先に外尿道口が開く。"
+          "note": "尿道海綿体（corpus spongiosum of penis）の先端（tip）がふくらんだ部分。先に外尿道口（external urethral orifice）が開く。"
         }
       ]
     },
@@ -251,42 +251,42 @@
           "parts": ["corpus cavernosum of penis", "corpus spongiosum of penis"], "of": "penis", "level": 2,
           "kanji": "陰茎の根もと",
           "etym": "root「根」＋ penis ← ラテン語「尾」",
-          "note": "陰茎の、会陰（尿生殖三角）に固定された根もとの部分。左右の陰茎脚と正中の尿道球からなり、陰茎提靱帯（恥骨結合から）と陰茎ワナ靱帯（白線の下の端から）が支える。"
+          "note": "陰茎（penis）の、会陰（perineum）（尿生殖三角（urogenital triangle））に固定された根もとの部分。左右の陰茎脚（crus of penis）と正中（median）の尿道球（bulb of penis）からなり、陰茎提靱帯（suspensory ligament of penis）（恥骨結合（pubic symphysis）から）と陰茎ワナ靱帯（fundiform ligament of penis）（白線（linea alba）の下の端から）が支える。"
         },
         {
           "id": "body-of-penis", "ja": "陰茎体", "yomi": "いんけいたい", "en": "body of penis", "la": "corpus penis",
           "of": "penis", "level": 3,
           "kanji": "陰茎の胴の部分",
           "etym": "body「体」＋ penis「陰茎」",
-          "note": "陰茎根から先の、体から垂れ下がる部分。上（前）の面を陰茎背、下の面を尿道面という。背側に左右の陰茎海綿体、腹側に尿道海綿体があり、3つを深陰茎筋膜が共通に包む。"
+          "note": "陰茎根（root of penis）から先の、体から垂れ下がる部分。上（前）の面を陰茎背（dorsum of penis）、下の面を尿道面（urethral surface）という。背側（dorsal）に左右の陰茎海綿体（corpus cavernosum of penis）、腹側（ventral）に尿道海綿体（corpus spongiosum of penis）があり、3つを深陰茎筋膜（deep fascia of penis）が共通に包む。"
         },
         {
           "id": "crus-of-penis", "ja": "陰茎脚", "yomi": "いんけいきゃく", "en": "crus of penis", "la": "crus penis",
           "parts": ["corpus cavernosum of penis"], "of": "penis", "level": 3,
           "kanji": "陰茎の脚",
           "etym": "crus ← ラテン語「脚」＋ penis「陰茎」",
-          "note": "左右の陰茎海綿体が恥骨結合の下で分かれ、恥骨弓（恥骨下枝・坐骨枝）に沿って後ろへ伸びて付く部分。坐骨海綿体筋におおわれる。"
+          "note": "左右の陰茎海綿体（corpus cavernosum of penis）が恥骨結合（pubic symphysis）の下で分かれ、恥骨弓（pubic arch）（恥骨下枝（inferior pubic ramus）・坐骨枝（ramus of ischium））に沿って後ろへ伸びて付く部分。坐骨海綿体筋（ischiocavernosus）におおわれる。"
         },
         {
           "id": "bulb-of-penis", "ja": "尿道球", "yomi": "にょうどうきゅう", "en": "bulb of penis", "la": "bulbus penis",
           "parts": ["corpus spongiosum of penis"], "of": "penis", "level": 3,
           "kanji": "尿道海綿体の根もとの球",
           "etym": "bulb「球根」＋ penis「陰茎」",
-          "note": "尿道海綿体の根もとが左右の陰茎脚の間でふくらんだ部分。会陰膜（尿生殖隔膜）の下の面に付き、球海綿体筋におおわれる。尿道は上の面から入り、この中で広がる。"
+          "note": "尿道海綿体（corpus spongiosum of penis）の根もとが左右の陰茎脚（crus of penis）の間でふくらんだ部分。会陰膜（perineal membrane）（尿生殖隔膜（urogenital diaphragm））の下の面に付き、球海綿体筋（bulbospongiosus）におおわれる。尿道（urethra）は上の面から入り、この中で広がる。"
         },
         {
           "id": "corona-of-glans", "ja": "亀頭冠", "yomi": "きとうかん", "en": "corona of glans penis", "enAlt": ["corona of glans"], "la": "corona glandis",
           "of": "glans-penis", "level": 3,
           "kanji": "亀頭の冠（後ろの縁）",
           "etym": "corona ← ラテン語「冠」＋ glans「どんぐり」",
-          "note": "陰茎亀頭の後ろの縁の、太くもり上がった部分。そのすぐ後ろのくびれを亀頭頚という。"
+          "note": "陰茎亀頭（glans penis）の後ろの縁の、太くもり上がった部分。そのすぐ後ろのくびれを亀頭頚（neck of glans）という。"
         },
         {
           "id": "external-urethral-orifice", "ja": "外尿道口", "yomi": "がいにょうどうこう", "en": "external urethral orifice", "la": "ostium urethrae externum",
           "of": "glans-penis", "level": 2,
           "kanji": "尿道の外の口",
           "etym": "external「外の」＋ urethral「尿道の」＋ orifice ← ラテン語 orificium「口」",
-          "note": "尿道の出口。男性では陰茎亀頭の先に縦の裂け目として開き、すぐ奥の尿道は舟状窩として広がる。女性では腟口の前、陰核の後ろの腟前庭に開く。"
+          "note": "尿道（urethra）の出口。男性では陰茎亀頭（glans penis）の先に縦の裂け目として開き、すぐ奥の尿道は舟状窩（navicular fossa）として広がる。女性では腟口（vaginal orifice）の前、陰核（clitoris）の後ろの腟前庭（vestibule of vagina）に開く。"
         }
       ]
     },
@@ -300,7 +300,7 @@
           "parts": ["pubococcygeus", "puborectalis", "iliococcygeus", "!FJ1457M", "!FJ1458M", "!FJ1453M"], "level": 2, "color": "#c75b4f",
           "kanji": "肛門を挙げる筋",
           "etym": "levator「持ち上げるもの」＋ ani「肛門の」(anus)",
-          "note": "骨盤の底をハンモックのようにふさぐ筋（尾骨筋とあわせて骨盤隔膜）。恥骨直腸筋・恥骨尾骨筋・腸骨尾骨筋からなり、間を尿道・直腸（女性では腟も）が通る。出産などで傷むと尿もれや骨盤臓器脱の原因になる。",
+          "note": "骨盤（pelvis）の底をハンモックのようにふさぐ筋（muscle）（尾骨筋（coccygeus）とあわせて骨盤隔膜（pelvic diaphragm））。恥骨直腸筋（puborectalis）・恥骨尾骨筋（pubococcygeus）・腸骨尾骨筋（iliococcygeus）からなり、間を尿道（urethra）・直腸（rectum）（女性では腟（vagina）も）が通る。出産などで傷むと尿もれや骨盤臓器脱（pelvic organ prolapse）の原因になる。",
           "origin": "恥骨の後面・肛門挙筋腱弓・坐骨棘",
           "insertion": "会陰腱中心・肛門尾骨靱帯・尾骨",
           "originAt": ["ischial-spine"],
@@ -312,7 +312,7 @@
           "parts": ["puborectalis", "!FJ1458M"], "level": 3, "color": "#c75b4f",
           "kanji": "恥骨から直腸の後ろへ回る筋",
           "etym": "pubo-「恥骨」（ラテン語 pubis）＋ rectalis「直腸の」",
-          "note": "肛門挙筋の内側の部分で、左右が直腸の後ろで U字形につながる。直腸を前へ引いて曲げ（肛門直腸角）、便がもれるのを防ぐ。排便のときはゆるむ。",
+          "note": "肛門挙筋（levator ani）の内側（medial）の部分で、左右が直腸（rectum）の後ろで U字形につながる。直腸を前へ引いて曲げ（肛門直腸角（anorectal angle））、便がもれるのを防ぐ。排便（defecation）のときはゆるむ。",
           "origin": "恥骨結合の近くの恥骨の後面",
           "insertion": "直腸の後ろで反対側の同じ筋とつながる",
           "nerve": "陰部神経・仙骨神経叢の枝",
@@ -323,7 +323,7 @@
           "parts": ["coccygeus", "!FJ1449M"], "level": 3, "color": "#c75b4f",
           "kanji": "尾骨に付く筋",
           "etym": "coccygeus ← ギリシャ語 kokkyx「カッコウ（尾骨の形がくちばしに似る）」",
-          "note": "坐骨棘から仙骨・尾骨の縁へ扇形に広がる筋。肛門挙筋の後ろに並び、骨盤隔膜の後ろの部分をつくる。仙棘靱帯の骨盤側に重なる。",
+          "note": "坐骨棘（ischial spine）から仙骨（sacrum）・尾骨（coccyx）の縁へ扇形に広がる筋（muscle）。肛門挙筋（levator ani）の後ろに並び、骨盤隔膜（pelvic diaphragm）の後ろの部分をつくる。仙棘靱帯（sacrospinous ligament）の骨盤（pelvis）側に重なる。",
           "origin": "坐骨棘",
           "insertion": "仙骨の下部と尾骨の外側縁",
           "originAt": ["ischial-spine"],
@@ -335,7 +335,7 @@
           "parts": ["external anal sphincter", "!FJ1450M"], "level": 2, "color": "#c75b4f",
           "kanji": "肛門の外側を締めくくる筋",
           "etym": "sphincter ← ギリシャ語 sphinkter「締めるもの」",
-          "note": "肛門管を外から輪のように囲む骨格筋。意識して肛門を締められるのはこの筋のおかげ（内側の内肛門括約筋は平滑筋で、意識では動かせない）。",
+          "note": "肛門管（anal canal）を外から輪のように囲む骨格筋（skeletal muscle）。意識して肛門（anus）を締められるのはこの筋（muscle）のおかげ（内側（medial）の内肛門括約筋（internal anal sphincter）は平滑筋（smooth muscle）で、意識では動かせない）。",
           "origin": "肛門尾骨靱帯・尾骨の先端",
           "insertion": "会陰腱中心",
           "nerve": "陰部神経",
@@ -353,7 +353,7 @@
           "parts": ["pubococcygeus","!FJ1457M"], "level": 3, "color": "#c75b4f",
           "kanji": "恥骨から尾骨へ行く筋",
           "etym": "pubo-「恥骨の」＋ coccygeus「尾骨の」",
-          "note": "肛門挙筋の中ほどの部分。恥骨の後ろの面から後ろへ走り、肛門の後ろの肛門尾骨靱帯と尾骨に付く。前立腺（女性では腟）と直腸の壁にも線維を送る。骨盤底の筋の体操で鍛えるのはおもにこの筋。",
+          "note": "肛門挙筋（levator ani）の中ほどの部分。恥骨（pubis）の後ろの面から後ろへ走り、肛門（anus）の後ろの肛門尾骨靱帯（anococcygeal ligament）と尾骨（coccyx）に付く。前立腺（prostate）（女性では腟（vagina））と直腸（rectum）の壁にも線維（fiber）を送る。骨盤底（pelvic floor）の筋（muscle）の体操で鍛えるのはおもにこの筋。",
           "origin": "恥骨の後面・肛門挙筋腱弓の前部",
           "insertion": "肛門尾骨靱帯・尾骨",
           "nerve": "陰部神経・仙骨神経叢の枝",
@@ -364,7 +364,7 @@
           "parts": ["iliococcygeus","!FJ1453M"], "level": 3, "color": "#c75b4f",
           "kanji": "腸骨（の側）から尾骨へ行く筋",
           "etym": "ilio-「腸骨の」＋ coccygeus「尾骨の」",
-          "note": "肛門挙筋の後ろ外側の薄い部分。骨盤の側壁の肛門挙筋腱弓と坐骨棘から起こり、尾骨と肛門尾骨靱帯に付く。名前と違い、腸骨からは直接起こらない。",
+          "note": "肛門挙筋（levator ani）の後ろ外側（lateral）の薄い部分。骨盤（pelvis）の側壁（lateral wall）の肛門挙筋腱弓（tendinous arch of levator ani）と坐骨棘（ischial spine）から起こり、尾骨（coccyx）と肛門尾骨靱帯（anococcygeal ligament）に付く。名前と違い、腸骨（ilium）からは直接起こらない。",
           "origin": "肛門挙筋腱弓の後部・坐骨棘",
           "insertion": "肛門尾骨靱帯・尾骨",
           "originAt": ["ischial-spine"],
@@ -376,7 +376,7 @@
           "parts": ["tendinous arch of levator ani","!FJ1465M"], "level": 3, "color": "#d6cdb8",
           "kanji": "肛門挙筋が起こる腱の弓",
           "etym": "tendinous「腱の」＋ arch「弓」＋ levator ani「肛門挙筋」",
-          "note": "内閉鎖筋の筋膜が厚くなってできた弓。恥骨の後ろから坐骨棘まで、骨盤の側壁を前後に走り、肛門挙筋（恥骨尾骨筋・腸骨尾骨筋）がここから起こる。"
+          "note": "内閉鎖筋（obturator internus）の筋膜（fascia）が厚くなってできた弓。恥骨（pubis）の後ろから坐骨棘（ischial spine）まで、骨盤（pelvis）の側壁（lateral wall）を前後に走り、肛門挙筋（levator ani）（恥骨尾骨筋（pubococcygeus）・腸骨尾骨筋（iliococcygeus））がここから起こる。"
         }
       ]
     }

@@ -1,0 +1,2169 @@
+# 説明（詳細モード）の解剖の語に添える英語。scripts/en-notes.mjs が使う。
+# 1行に「日本語|英語」。語の見出し（content/terms の ja と en）と同じ語は書かなくてよい（見出しより先にこちらを使う）。
+# 「日本語|=書き換え」は、その語をそのまま書き換える（「直接右心房|=直接右心房（right atrium）」のように、語の途中に英語を入れるとき）。
+# 「日本語|-」は英語を添えない。1文字の語は、後ろが助詞か句読点のときだけ添える。ひらがなを含む語は文字列のまま探す。
+
+# 1文字の体の部分
+肺|lung
+胃|stomach
+舌|tongue
+爪|nail
+骨|bone
+筋|muscle
+腱|tendon
+枝|branch
+手|hand
+足|foot
+指|finger
+肘|elbow
+腕|arm
+膝|knee
+頚|neck
+首|neck
+胸|chest
+肩|shoulder
+歯|tooth
+顔|face
+鼻|nose
+脳|brain
+耳|ear
+腰|lower back
+眼|eye
+頬|cheek
+腹|abdomen
+腸|intestine
+背|back
+臍|umbilicus
+眉|eyebrow
+腟|vagina
+額|forehead
+唇|lip
+踵|heel
+顎|jaw
+掌|palm
+毛|hair
+髪|hair
+涙|tears
+汗|sweat
+弁|valve
+膜|membrane
+核|nucleus
+腺|gland
+葉|lobe
+
+# ひらがなを含む語
+手のひら|palm
+手の甲|back of hand
+足の裏|sole
+足の甲|dorsum of foot
+太もも|thigh
+ふくらはぎ|calf
+くるぶし|malleolus
+内くるぶし|medial malleolus
+外くるぶし|lateral malleolus
+すね|shin
+むこうずね|shin
+かかと|heel
+つま先|tips of toes
+土踏まず|arch of foot
+わきの下|axilla
+あご|jaw
+のど|throat
+のどぼとけ|laryngeal prominence
+まぶた|eyelid
+うなじ|nape
+こめかみ|temple
+へそ|umbilicus
+みぞおち|epigastric fossa
+おなか|abdomen
+おしり|buttock
+ほお|cheek
+耳たぶ|earlobe
+指の腹|finger pad
+えくぼ|dimple
+ひだ|fold
+まひ|paralysis
+片まひ|hemiplegia
+親知らず|wisdom tooth
+6歳臼歯|first molar
+12歳臼歯|second molar
+くも膜|arachnoid mater
+くも膜下腔|subarachnoid space
+くも膜顆粒|arachnoid granulations
+乳び|chyle
+乳び槽|cisterna chyli
+中心乳び腔|central lacteal
+声帯ひだ|vocal fold
+輪状ひだ|circular folds
+胃粘膜ひだ|gastric folds
+胃ひだ|gastric folds
+直腸横ひだ|transverse rectal folds
+前庭ひだ|vestibular fold
+コールラウシュひだ|Kohlrausch fold
+披裂喉頭蓋ひだ|aryepiglottic fold
+耳管咽頭ひだ|salpingopharyngeal fold
+半月ひだ|semilunar fold
+前腋窩ひだ|anterior axillary fold
+尺骨神経まひ|ulnar nerve palsy
+顔面神経まひ|facial palsy
+半身まひ|hemiplegia
+交代性片まひ|alternating hemiplegia
+
+# 文脈で英語の変わる語
+前枝@神経の|anterior ramus
+前枝@閉鎖神経の|anterior branch
+前枝@ の|anterior ramus
+前枝@脊髄神経（|anterior ramus
+前枝@などは|anterior ramus
+前枝@外側溝の|anterior ramus
+後枝|posterior branch
+後枝@神経の|posterior ramus
+後枝@閉鎖神経の|posterior branch
+後枝@から、|posterior ramus
+錐体#skeletal,sensory,exam|petrous part
+錐体@側頭骨の|petrous part
+錐体#nervous|pyramid
+錐体#urogenital|renal pyramid
+滑車|trochlea
+滑車@動眼・|trochlear
+眼@滑車・|ophthalmic
+動眼|oculomotor
+葉@大網の後ろの|layer
+頭頂@前頭・|parietal
+前頭|frontal
+側頭|temporal
+後頭|occipital
+乳頭突起#skeletal,exam|mammillary process
+乳頭突起#digestive,organs|papillary process
+筋突起#skeletal,exam,muscular,joints|coronoid process
+筋突起#respiratory|muscular process
+盲孔|foramen caecum
+顔面・|=顔面（facial）・
+前部@部（|anterior division
+後部@前部・|posterior division
+後部@順に組み替わる。|posterior division
+後部@神経幹の|posterior division
+前部@上と中の|anterior division
+前部@下の|anterior division
+あご先|chin
+腹部@胸肋部・|abdominal part
+頚部@で始まり、|cervical part
+胸部@頚部・|thoracic part
+腹部@胸部・|abdominal part
+腹部@管（|abdominal part
+
+# 見出しにない語
+関節|joint
+靱帯|ligament
+静脈|vein
+動脈|artery
+正中|median
+感覚|sensation
+下端|inferior end
+前腕|forearm
+関節面|articular surface
+内面|internal surface
+リンパ節|lymph node
+血液|blood
+神経|nerve
+突起|process
+椎骨|vertebra
+手首|wrist
+後面|posterior surface
+頭蓋|skull
+リンパ|lymph
+血管|blood vessel
+前面|anterior surface
+線維|fiber
+支配|innervation
+母指|thumb
+下面|inferior surface
+粘膜|mucosa
+舟状骨|scaphoid
+下腿|leg
+軟骨|cartilage
+上端|superior end
+小指側|ulnar side
+上腕|arm
+大腿|thigh
+反対側|contralateral side
+癒合|fusion
+内側面|medial surface
+内側上顆|medial epicondyle
+骨折|fracture
+前下|anteroinferior
+下縁|inferior border
+前枝|anterior branch
+縫合|suture
+区画|compartment
+解剖学的正位|anatomical position
+区域|segment
+指先|fingertip
+中耳|middle ear
+背側|dorsal
+母趾|great toe
+親指側|radial side
+鼻中隔|nasal septum
+脳神経|cranial nerve
+細胞|cell
+筋膜|fascia
+親指|thumb
+前内側|anteromedial
+関節包|joint capsule
+胎児|fetus
+中葉|middle lobe
+上面|superior surface
+背中|back
+体幹|trunk
+足首|ankle
+脂肪|fat
+脊柱|vertebral column
+内耳|internal ear
+上縁|superior border
+炎症|inflammation
+アーチ|arch
+小指|little finger
+腹膜|peritoneum
+左葉|left lobe
+副鼻腔|paranasal sinuses
+外面|external surface
+外側面|lateral surface
+上葉|superior lobe
+右葉|right lobe
+外側顆|lateral condyle
+声帯|vocal cord
+茎状突起|styloid process
+静脈血|venous blood
+大動脈|aorta
+屈筋|flexor
+長頭|long head
+器官|organ
+下葉|inferior lobe
+硬膜|dura mater
+中硬膜動脈|middle meningeal artery
+表情筋|muscles of facial expression
+外側上顆|lateral epicondyle
+基節骨|proximal phalanx
+腹部|abdomen
+皮下|subcutaneous
+伸筋|extensor
+線維軟骨|fibrocartilage
+後外側|posterolateral
+脊髄神経|spinal nerve
+関節円板|articular disc
+屈筋支帯|flexor retinaculum
+前縁|anterior border
+脳幹|brainstem
+鼻甲介|nasal concha
+部位|region
+手足|limbs
+下顎|mandible
+断面|section
+起始|origin
+骨間縁|interosseous border
+種子骨|sesamoid bone
+大脳半球|cerebral hemisphere
+末節骨|distal phalanx
+後腹壁|posterior abdominal wall
+腹壁|abdominal wall
+頭蓋底|cranial base
+前弓|anterior arch
+停止|insertion
+関節突起|articular process
+結節|tubercle
+両側|bilateral
+外側縁|lateral border
+殿部|gluteal region
+終枝|terminal branch
+会陰|perineum
+内側縁|medial border
+下肢|lower limb
+内側顆|medial condyle
+耳状面|auricular surface
+上肢|upper limb
+聴覚|hearing
+副交感|parasympathetic
+前結節|anterior tubercle
+母指側|radial side
+心室中隔|interventricular septum
+頭皮|scalp
+後頭部|occipital region
+母指球|thenar eminence
+上外側|superolateral
+前外側|anterolateral
+灰白質|gray matter
+半規管|semicircular canal
+鼓室|tympanic cavity
+声門|glottis
+耳小骨|auditory ossicles
+体表|body surface
+遠位列|distal row
+吻合|anastomosis
+横隔面|diaphragmatic surface
+気管支|bronchus
+後部|posterior part
+第2趾|second toe
+口角|angle of mouth
+脳脊髄液|cerebrospinal fluid
+肛門管|anal canal
+肝鎌状間膜|falciform ligament of liver
+前上|anterosuperior
+味覚|taste
+振動|vibration
+背骨|backbone
+腰椎穿刺|lumbar puncture
+心膜|pericardium
+後縁|posterior border
+後弓|posterior arch
+仙椎|sacral vertebra
+外側塊|lateral mass
+外頭蓋底|external surface of cranial base
+臓器|organ
+左腎静脈|left renal vein
+中指|middle finger
+反回神経|recurrent laryngeal nerve
+胸管|thoracic duct
+側壁|lateral wall
+第7頚椎|seventh cervical vertebra
+肛門|anus
+上唇|upper lip
+前腹|anterior belly
+静脈洞|venous sinus
+先端|tip
+結合組織|connective tissue
+導管|duct
+第11・第12肋骨|eleventh and twelfth ribs
+呼吸|respiration
+滑液|synovial fluid
+外側頭|lateral head
+後結節|posterior tubercle
+神経核|nucleus
+伝導路|tract
+第1〜第2腰椎|first to second lumbar vertebrae
+縦隔面|mediastinal surface
+外耳道|external acoustic meatus
+近位列|proximal row
+新生児|newborn
+精子|sperm
+腹側|ventral
+中節骨|middle phalanx
+手関節|wrist joint
+内転筋群|adductor muscles
+心室|ventricle
+全身|whole body
+弁尖|cusp
+冠状動脈|coronary artery
+視覚|vision
+上顎|maxilla
+静脈洞交会|confluence of sinuses
+隆起|eminence
+触覚|touch
+平滑筋|smooth muscle
+脱臼|dislocation
+手根中手関節|carpometacarpal joint
+骨幹|shaft
+支配神経|innervating nerve
+腱膜|aponeurosis
+手根管症候群|carpal tunnel syndrome
+大脳皮質|cerebral cortex
+白質|white matter
+瞳孔|pupil
+外眼筋|extraocular muscles
+仙骨神経|sacral nerve
+内側神経束|medial cord
+上鼻道|superior nasal meatus
+鱗部|squamous part
+小趾|little toe
+心房|atrium
+血圧|blood pressure
+中枢|center
+胸壁|thoracic wall
+精索|spermatic cord
+頚部|neck
+恥骨弓|pubic arch
+前区域|anterior segment
+外側壁|lateral wall
+内側頭|medial head
+骨間膜|interosseous membrane
+示指|index finger
+咀嚼筋|muscles of mastication
+側頭部|temporal region
+口蓋|palate
+眼窩下神経|infra-orbital nerve
+下唇|lower lip
+後索|posterior funiculus
+大十二指腸乳頭|major duodenal papilla
+絨毛|villi
+リンパ管|lymphatic vessel
+前葉|anterior lobe
+上内側|superomedial
+蝶番関節|hinge joint
+リスフラン関節|Lisfranc joint
+前部|anterior part
+筋層|muscular layer
+下外側|inferolateral
+短頭|short head
+小指球|hypothenar eminence
+前区画|anterior compartment
+外側唇|lateral lip
+舌骨下筋|infrahyoid muscles
+内臓|viscera
+内耳道|internal acoustic meatus
+外側部|lateral part
+神経幹|trunk
+上行路|ascending tract
+仙骨神経叢|sacral plexus
+第4・第5腰椎|fourth and fifth lumbar vertebrae
+第3・第4腰椎|third and fourth lumbar vertebrae
+肋骨面|costal surface
+上葉気管支|superior lobar bronchus
+鼻道|nasal meatus
+長骨|long bone
+水平板|horizontal plate
+消化管|digestive tract
+足底|sole
+大動脈洞|aortic sinus
+壊死|necrosis
+食道静脈瘤|esophageal varices
+臓側面|visceral surface
+肋間静脈|intercostal vein
+舌区|lingula
+S状結腸間膜|sigmoid mesocolon
+血流|blood flow
+静脈叢|venous plexus
+乳房|breast
+亀頭|glans
+陰嚢|scrotum
+後区域|posterior segment
+カントリー線|Cantlie line
+外側区域|lateral segment
+深枝|deep branch
+上行枝|ascending branch
+目頭|medial angle of eye
+下歯槽神経|inferior alveolar nerve
+硬口蓋|hard palate
+皮質脊髄路|corticospinal tract
+胸部|thorax
+下行部|descending part
+水平部|horizontal part
+骨盤隔膜|pelvic diaphragm
+結腸膨起|haustra of colon
+胆汁|bile
+麻酔|anesthesia
+上皮|epithelium
+発生|development
+角化|keratinization
+基底膜|basement membrane
+交感神経|sympathetic nerve
+関節腔|joint cavity
+線維性|fibrous
+縦隔|mediastinum
+胸腔|thoracic cavity
+横突棘筋|transversospinales
+横頭|transverse head
+甲側|dorsal side
+アキレス腱|Achilles tendon
+内側唇|medial lip
+眼窩部|orbital part
+前頭突起|frontal process
+中間腱|intermediate tendon
+ブローカ野|Broca area
+情動|emotion
+反射|reflex
+虫部|vermis
+腫瘍|tumor
+内側壁|medial wall
+尿生殖隔膜|urogenital diaphragm
+第4・第5胸椎|fourth and fifth thoracic vertebrae
+屈筋区画|flexor compartment
+伸筋区画|extensor compartment
+蝶篩陥凹|sphenoethmoidal recess
+気道|airway
+涙点|lacrimal punctum
+耳介|auricle
+前庭窓|oval window
+骨化|ossification
+小泉門|posterior fontanelle
+耳眼平面|Frankfort plane
+頬骨突起|zygomatic process
+前庭階|scala vestibuli
+蝸牛管|cochlear duct
+鼓室階|scala tympani
+骨格|skeleton
+指骨|phalanges
+手根|carpus
+前屈|flexion
+環軸関節|atlanto-axial joint
+足関節|ankle joint
+拍動|pulsation
+刺激伝導系|conducting system of heart
+漏斗|infundibulum
+半月弁|semilunar valve
+前壁|anterior wall
+後壁|posterior wall
+内腔|lumen
+左半月弁|left semilunar cusp
+中隔|septum
+前上部|anterosuperior part
+動脈弓|arterial arch
+静脈角|venous angle
+左上腹部|left upper abdomen
+虫垂炎|appendicitis
+組織|tissue
+外陰部|external genitalia
+菱形筋|rhomboid muscles
+腹直筋鞘|rectus sheath
+骨間筋|interossei
+十字靱帯|cruciate ligaments
+硬膜外血腫|epidural hematoma
+眼窩下管|infra-orbital canal
+前歯|anterior teeth
+奥歯|molars
+大口蓋管|greater palatine canal
+切歯管|incisive canal
+切痕|notch
+鼻血|epistaxis
+中耳炎|otitis media
+大角|greater horn
+網嚢|omental bursa
+輪走筋|circular muscle
+腹膜垂|omental appendices
+腹腔|abdominal cavity
+肝管|hepatic duct
+舌神経|lingual nerve
+舌扁桃|lingual tonsil
+口腔底|floor of mouth
+永久歯|permanent teeth
+第3大臼歯|third molar
+前下方|anteroinferior
+咽頭扁桃|pharyngeal tonsil
+後葉|posterior lobe
+間脳|diencephalon
+峡部|isthmus
+体温|body temperature
+付属器|appendages
+疎性結合組織|loose connective tissue
+産道|birth canal
+上関節窩|superior articular facet
+車軸関節|pivot joint
+下関節窩|inferior articular facet
+上関節面|superior articular surface
+平面関節|plane joint
+関節唇|labrum
+外側側副靱帯|lateral collateral ligament
+肘内障|pulled elbow
+外側端|lateral end
+MP関節|MP joint
+小頭|capitulum
+鞍関節|saddle joint
+後突起|posterior process
+外側結節|lateral tubercle
+ショパール関節|Chopart joint
+転移|metastasis
+胸膜|pleura
+子宮|uterus
+肋間動静脈|intercostal vessels
+対立|opposition
+麻痺|paralysis
+後区画|posterior compartment
+鼻翼|ala of nose
+斜角筋|scalene muscles
+前弯|lordosis
+外側板|lateral plate
+一次視覚野|primary visual cortex
+嗅球|olfactory bulb
+視野|visual field
+大脳基底核|basal ganglia
+脳室|ventricle
+錐体路|pyramidal tract
+嗅覚|olfaction
+対光反射|pupillary light reflex
+交叉|decussation
+第1枝|first division
+舌咽|glossopharyngeal
+分泌|secretion
+毛様体筋|ciliary muscle
+神経束|cord
+骨盤腔|pelvic cavity
+輪状靱帯|annular ligament
+小舌|lingula
+肺区域|bronchopulmonary segment
+外鼻孔|nostril
+半月裂孔|semilunar hiatus
+副鼻腔炎|sinusitis
+鼓膜張筋|tensor tympani
+直立二足歩行|upright bipedalism
+第10肋軟骨|tenth costal cartilage
+肋骨下平面|subcostal plane
+第1頚椎|first cervical vertebra
+前端|anterior end
+第4・第5中足骨|fourth and fifth metatarsals
+上壁|superior wall
+岩様部|petrous part
+垂直板|perpendicular plate
+大泉門|anterior fontanelle
+翼口蓋神経節|pterygopalatine ganglion
+導出静脈|emissary vein
+顔面神経管|facial canal
+内尿道口|internal urethral orifice
+骨迷路|bony labyrinth
+膜迷路|membranous labyrinth
+内リンパ|endolymph
+骨端|epiphysis
+粗面|tuberosity
+右脚|right bundle branch
+心房中隔|interatrial septum
+下後|posteroinferior
+右半月弁|right semilunar cusp
+下壁|inferior wall
+鎖骨中線|midclavicular line
+血栓|thrombus
+動脈管|ductus arteriosus
+終動脈|end artery
+採血|blood sampling
+肝硬変|cirrhosis
+大静脈|vena cava
+動脈血|arterial blood
+胃脾間膜|gastrosplenic ligament
+十二指腸潰瘍|duodenal ulcer
+白膜|tunica albuginea
+海綿体|cavernous body
+陰唇|labia
+肋間|intercostal space
+下腹部|lower abdomen
+深部静脈|deep vein
+舌動脈|lingual artery
+大口蓋動脈|greater palatine artery
+キーゼルバッハ部位|Kiesselbach area
+運動野|motor area
+前正中裂|anterior median fissure
+硬膜静脈洞|dural venous sinus
+顔面|face
+翼突筋静脈叢|pterygoid venous plexus
+乳突導出静脈|mastoid emissary vein
+胃酸|gastric acid
+潰瘍|ulcer
+回腸口|ileal orifice
+リンパ小節|lymphoid nodule
+上腸間膜動静脈|superior mesenteric vessels
+X線写真|radiograph
+胃潰瘍|gastric ulcer
+幽門括約筋|pyloric sphincter
+内側区域|medial segment
+糸状乳頭|filiform papillae
+有郭乳頭|vallate papillae
+口蓋舌弓|palatoglossal arch
+口蓋咽頭弓|palatopharyngeal arch
+咽頭収縮筋|pharyngeal constrictors
+腎筋膜|renal fascia
+皮質|cortex
+毛細血管|capillary
+皮脂|sebum
+思春期|puberty
+男性ホルモン|androgen
+エクリン腺|eccrine gland
+椎間板ヘルニア|herniated disc
+滑膜性|synovial
+第8〜第10肋軟骨|eighth to tenth costal cartilages
+球関節|ball-and-socket joint
+内側側副靱帯|medial collateral ligament
+三角線維軟骨複合体|triangular fibrocartilage complex
+三角線維軟骨|triangular fibrocartilage
+虫様筋|lumbricals
+第2〜第5中手骨|second to fifth metacarpals
+関節環状面|articular circumference
+前下部|anteroinferior part
+距舟関節|talonavicular joint
+内反捻挫|inversion sprain
+内側結節|medial tubercle
+下関節面|inferior articular surface
+付着部|attachment
+総腸骨動静脈|common iliac vessels
+大腿輪|femoral ring
+固有背筋|intrinsic back muscles
+局所解剖|regional anatomy
+深鼡径輪|deep inguinal ring
+鼡径ヘルニア|inguinal hernia
+頭頂|vertex
+筋肉注射|intramuscular injection
+ローテーターカフ|rotator cuff
+第2〜5指|second to fifth digits
+腱鞘|tendon sheath
+支帯|retinaculum
+滑液包|bursa
+筋間中隔|intermuscular septum
+腓骨筋|fibularis muscles
+骨膜|periosteum
+鼻孔|nostril
+後頭下筋|suboccipital muscles
+舌骨上筋|suprahyoid muscles
+椎前筋|prevertebral muscles
+後端|posterior end
+三角部|triangular part
+弁蓋部|opercular part
+後内側|posteromedial
+背面|dorsal surface
+第2仙椎|second sacral vertebra
+平衡覚|equilibrium
+神経節|ganglion
+上枝|superior branch
+下枝|inferior branch
+眼窩上切痕|supra-orbital notch
+頬骨神経|zygomatic nerve
+鼻根|root of nose
+外側神経束|lateral cord
+下行路|descending tract
+骨格筋|skeletal muscle
+運動ニューロン|motor neuron
+側索|lateral funiculus
+環指|ring finger
+腰神経叢|lumbar plexus
+会陰膜|perineal membrane
+坐骨肛門窩|ischio-anal fossa
+下縦隔|inferior mediastinum
+横隔神経|phrenic nerve
+第9〜第10胸椎|ninth to tenth thoracic vertebrae
+頭蓋腔|cranial cavity
+髄膜|meninges
+剣胸結合|xiphisternal joint
+骨盤底|pelvic floor
+頚動脈鞘|carotid sheath
+水平断|horizontal section
+壁側胸膜|parietal pleura
+葉気管支|lobar bronchus
+肺尖後枝|apicoposterior segmental bronchus
+誤嚥|aspiration
+肺底枝|basal segmental bronchi
+篩骨洞|ethmoidal cells
+総鼻道|common nasal meatus
+骨格系|skeletal system
+声門裂|rima glottidis
+披裂喉頭蓋|aryepiglottic
+第4〜第5頚椎|fourth to fifth cervical vertebrae
+アブミ骨筋|stapedius
+卵形嚢|utricle
+球形嚢|saccule
+後弯|kyphosis
+第2頚椎|second cervical vertebra
+第1仙椎|first sacral vertebra
+第1〜第7肋骨|first to seventh ribs
+第8〜第12肋骨|eighth to twelfth ribs
+疲労骨折|stress fracture
+神経根|nerve root
+薬指|ring finger
+滑車上孔|supratrochlear foramen
+下肢帯|pelvic girdle
+腓骨関節面|fibular articular surface
+第1〜第3中足骨|first to third metatarsals
+外果面|lateral malleolar surface
+内果面|medial malleolar surface
+距骨体|body of talus
+海綿質|spongy bone
+歯槽部|alveolar part
+乳突蜂巣|mastoid cells
+眼窩下動静脈|infra-orbital vessels
+錐体突起|pyramidal process
+内側板|medial plate
+内側端|medial end
+乳突部|mastoid part
+腎乳頭|renal papilla
+小腎杯|minor calyx
+大腎杯|major calyx
+尿管口|ureteric orifice
+漿膜|serosa
+輪走筋層|circular layer
+直動脈|vasa recta
+粘膜下組織|submucosa
+外リンパ|perilymph
+解剖学|anatomy
+横断面|transverse section
+足背|dorsum of foot
+内側手根隆起|medial carpal eminence
+掌屈|palmar flexion
+洞房結節|sinu-atrial node
+興奮|excitation
+房室結節|atrioventricular node
+房室束|atrioventricular bundle
+ヒス束|bundle of His
+左脚|left bundle branch
+櫛状筋|pectinate muscles
+動脈円錐|conus arteriosus
+腱索|chordae tendineae
+心筋梗塞|myocardial infarction
+弁輪|valve annulus
+無冠尖|non-coronary cusp
+聴診|auscultation
+第5肋間|fifth intercostal space
+心尖拍動|apex beat
+左前下行枝|left anterior descending branch
+脳梗塞|cerebral infarction
+動脈管索|ligamentum arteriosum
+大動脈裂孔|aortic hiatus
+頚動脈小体|carotid body
+頚動脈洞|carotid sinus
+迷路動脈|labyrinthine artery
+大脳縦裂|longitudinal cerebral fissure
+聴診器|stethoscope
+区域動脈|segmental artery
+第1肋軟骨|first costal cartilage
+中心静脈カテーテル|central venous catheter
+右リンパ本幹|right lymphatic duct
+浅腸骨回旋静脈|superficial circumflex iliac vein
+バイパス手術|bypass surgery
+免疫|immunity
+蔓状静脈叢|pampiniform plexus
+精索静脈瘤|varicocele
+第3〜第11肋間|third to eleventh intercostal spaces
+第1・第2肋間|first and second intercostal spaces
+上膵十二指腸動脈|superior pancreaticoduodenal artery
+辺縁動脈|marginal artery
+大静脈系|caval system
+内痔核|internal hemorrhoid
+左腕頭静脈|left brachiocephalic vein
+上甲状腺動脈|superior thyroid artery
+陰部神経管|pudendal canal
+アルコック管|Alcock canal
+勃起|erection
+伏在裂孔|saphenous opening
+第1・第2肋間動脈|first and second intercostal arteries
+背側膵動脈|dorsal pancreatic artery
+乳腺|mammary gland
+尺動脈|ulnar artery
+内転筋|adductor
+下行枝|descending branch
+膝動脈|genicular artery
+滑膜|synovial membrane
+深部静脈血栓症|deep vein thrombosis
+穿通枝|perforating branch
+深部|deep part
+翼突管動脈|artery of pterygoid canal
+大脳動脈輪|cerebral arterial circle
+下顎管|mandibular canal
+顎静脈|maxillary vein
+中心枝|central branch
+高血圧|hypertension
+脳出血|cerebral hemorrhage
+後有孔質|posterior perforated substance
+大大脳静脈|great cerebral vein
+眼角静脈|angular vein
+内眼角|medial angle of eye
+気管切開|tracheotomy
+小脳鎌|falx cerebelli
+内後頭稜|internal occipital crest
+食道裂孔|esophageal hiatus
+消化酵素|digestive enzyme
+上行部|ascending part
+後腹膜器官|retroperitoneal organ
+小十二指腸乳頭|minor duodenal papilla
+十二指腸提筋|suspensory muscle of duodenum
+トライツ靱帯|ligament of Treitz
+右下腹部|right lower abdomen
+パイエル板|Peyer patches
+左腸骨窩|left iliac fossa
+第2〜3仙椎|second to third sacral vertebrae
+間膜|mesentery
+肝十二指腸間膜|hepatoduodenal ligament
+縦走筋|longitudinal muscle
+胃泡|gastric air bubble
+壁細胞|parietal cell
+ペプシノゲン|pepsinogen
+主細胞|chief cell
+胃大網動脈|gastro-omental artery
+ヒス角|angle of His
+コールラウシュ|Kohlrausch
+指診|digital examination
+排便|defecation
+右上腹部|right upper abdomen
+代謝|metabolism
+胆嚢炎|cholecystitis
+肝円索|round ligament of liver
+肝動脈|hepatic artery
+クイノー|Couinaud
+臍静脈|umbilical vein
+茸状乳頭|fungiform papillae
+甲状舌管|thyroglossal duct
+口部|oral part
+舌乳頭|lingual papillae
+舌小帯|frenulum of tongue
+唾液腺|salivary gland
+三大唾液腺|major salivary glands
+唾液|saliva
+乳歯|deciduous teeth
+口峡|fauces
+アデノイド|adenoids
+梨状陥凹|piriform fossa
+成長ホルモン|growth hormone
+髄質|medulla
+神経細胞|neuron
+膠原線維|collagen fiber
+弾性線維|elastic fiber
+指紋|fingerprint
+層板顆粒|lamellar granule
+ケラチン|keratin
+メラニン|melanin
+圧覚|pressure sensation
+隆線|ridge
+爪根|nail root
+角質|stratum corneum
+甘皮|cuticle
+線維輪|anulus fibrosus
+腰部|lumbar region
+側屈|lateral flexion
+恥骨間円板|interpubic disc
+下歯槽神経ブロック|inferior alveolar nerve block
+関節軟骨|articular cartilage
+靱帯結合|syndesmosis
+軟骨性|cartilaginous
+関節頭|articular head
+環椎横靱帯|transverse ligament of atlas
+第2〜第10肋骨|second to tenth ribs
+第1・第11・第12肋骨|first, eleventh and twelfth ribs
+第2〜第7肋軟骨|second to seventh costal cartilages
+第2肋軟骨|second costal cartilage
+円錐靱帯|conoid ligament
+菱形靱帯|trapezoid ligament
+外端|lateral end
+内端|medial end
+複関節|compound joint
+第2・第3中手骨|second and third metacarpals
+回外位|supinated position
+回内位|pronated position
+屈伸|flexion and extension
+前下面|anteroinferior surface
+外反母趾|hallux valgus
+捻挫|sprain
+扁桃|tonsil
+リンパ組織|lymphoid tissue
+ワルダイエル|Waldeyer
+咽頭輪|pharyngeal ring
+頭頚部|head and neck
+卵巣|ovary
+上膵リンパ節|superior pancreatic lymph nodes
+直腸間膜|mesorectum
+鎖骨部|clavicular part
+胸肋部|sternocostal part
+腹圧|intra-abdominal pressure
+頚神経|cervical nerve
+頚神経叢|cervical plexus
+上位胸椎|upper thoracic vertebrae
+子宮円索|round ligament of uterus
+腸恥筋膜弓|iliopectineal arch
+大腿動静脈|femoral vessels
+腱鞘炎|tenosynovitis
+ドケルバン病|de Quervain disease
+背側結節|dorsal tubercle
+テニス肘|tennis elbow
+深頭|deep head
+斜頭|oblique head
+フロマン徴候|Froment sign
+三角筋胸筋溝|deltopectoral groove
+内側部|medial part
+上腕頭|humeral head
+オズボーン靱帯|Osborne ligament
+上腕筋間中隔|intermuscular septum of arm
+伸筋支帯|extensor retinaculum
+滑液鞘|synovial sheath
+深層外旋六筋|deep lateral rotators
+第2〜5趾|second to fifth toes
+第3〜5趾|third to fifth toes
+コンパートメント症候群|compartment syndrome
+外側区画|lateral compartment
+後脛骨動静脈|posterior tibial vessels
+足根管症候群|tarsal tunnel syndrome
+後頭前頭筋|occipitofrontalis
+眼瞼部|palpebral part
+顔面神経麻痺|facial palsy
+内下方|inferomedial
+外上方|superolateral
+オトガイ|chin
+斜筋|oblique muscle
+下頭|inferior head
+顎舌骨筋神経|nerve to mylohyoid
+側頭下面|infratemporal surface
+ウェルニッケ野|Wernicke area
+一次運動野|primary motor cortex
+一次体性感覚野|primary somatosensory cortex
+視放線|optic radiation
+縁部|marginal part
+運動性言語野|motor speech area
+一次聴覚野|primary auditory cortex
+神経線維|nerve fiber
+自律神経|autonomic nerve
+被蓋|tegmentum
+軟膜|pia mater
+視蓋前域|pretectal area
+心拍|heart rate
+顔面神経丘|facial colliculus
+舌下神経三角|hypoglossal trigone
+小節|nodule
+片葉小節葉|flocculonodular lobe
+副交感神経|parasympathetic nerve
+第2枝|second division
+第3枝|third division
+瞳孔括約筋|sphincter pupillae
+眼筋|extraocular muscles
+交通枝|communicating branch
+鼻背|dorsum of nose
+鼻尖|tip of nose
+眼瞼下垂|ptosis
+第5頚神経|fifth cervical nerve
+第1胸神経|first thoracic nerve
+肋間筋|intercostal muscles
+脊髄視床路|spinothalamic tract
+脊髄小脳路|spinocerebellar tract
+細胞体|cell body
+ニューロン|neuron
+下垂足|foot drop
+陰部枝|genital branch
+皮神経|cutaneous nerve
+内下|inferomedial
+浅鼡径輪|superficial inguinal ring
+坐骨海綿体筋|ischiocavernosus
+球海綿体筋|bulbospongiosus
+内陰部動静脈|internal pudendal vessels
+胸膜腔|pleural cavity
+大血管|great vessels
+生殖器|genital organs
+真結合線|true conjugate
+正中線|midline
+後頭下神経|suboccipital nerve
+迷走|vagus
+大腿管|femoral canal
+大腿ヘルニア|femoral hernia
+気管軟骨|tracheal cartilage
+膜性壁|membranous wall
+第4〜5胸椎|fourth to fifth thoracic vertebrae
+肺胸膜|pulmonary pleura
+縦隔胸膜|mediastinal pleura
+肺根|root of lung
+中葉症候群|middle lobe syndrome
+X線|X-ray
+下葉気管支|inferior lobar bronchus
+肋骨横隔洞|costodiaphragmatic recess
+歯性上顎洞炎|odontogenic maxillary sinusitis
+第4〜6頚椎|fourth to sixth cervical vertebrae
+輪状甲状靱帯切開|cricothyrotomy
+上喉頭神経|superior laryngeal nerve
+線維膜|fibrous layer
+血管膜|vascular layer
+視細胞|photoreceptor cell
+色素|pigment
+卵円窓|oval window
+コルチ器|organ of Corti
+基部|base
+小帯|zonule
+直筋|rectus muscle
+眼房水|aqueous humor
+後眼房|posterior chamber
+尾椎|coccygeal vertebra
+第7肋軟骨|seventh costal cartilage
+第3〜第6頚椎|third to sixth cervical vertebrae
+骨盤面|pelvic surface
+硝子軟骨|hyaline cartilage
+第1〜第7肋軟骨|first to seventh costal cartilages
+第5肋間隙|fifth intercostal space
+第8〜第10肋骨|eighth to tenth ribs
+側腹部|flank
+止血|hemostasis
+第11・第12胸椎|eleventh and twelfth thoracic vertebrae
+仙骨麻酔|caudal anesthesia
+尾骨神経|coccygeal nerve
+終糸|filum terminale
+仙骨硬膜外麻酔|caudal epidural anesthesia
+鈎椎関節|uncovertebral joint
+第1尾椎|first coccygeal vertebra
+上後|posterosuperior
+自由上肢|free upper limb
+第3趾|third toe
+第4趾|fourth toe
+ボクサー骨折|boxer's fracture
+上肩甲横靱帯|superior transverse scapular ligament
+尺骨側|ulnar side
+扁平骨|flat bone
+前外下方|anterolateral and inferior
+内上方|superomedial
+大腿骨体|shaft of femur
+後外下側|posterolateral and inferior
+恥骨体|body of pubis
+前下内側|anteroinferomedial
+骨髄|bone marrow
+脳頭蓋|neurocranium
+外板|outer table
+内板|inner table
+緻密質|compact bone
+板間層|diploe
+前頭縫合|frontal suture
+泉門|fontanelle
+前頭鼻骨縫合|frontonasal suture
+側頭突起|temporal process
+翼上顎裂|pterygomaxillary fissure
+鼻部|nasal part
+脊髄根|spinal root
+顆導出静脈|condylar emissary vein
+嗅糸|olfactory nerve fibers
+三叉神経節|trigeminal ganglion
+前半規管|anterior semicircular canal
+クモ膜顆粒|arachnoid granulations
+オトガイ神経|mental nerve
+胎児期|fetal period
+頚静脈切痕|jugular notch
+眼窩面|orbital surface
+蝶口蓋切痕|sphenopalatine notch
+翼突管神経|nerve of pterygoid canal
+腎皮質|renal cortex
+腎髄質|renal medulla
+腎錐体|renal pyramid
+膀胱三角|trigone of bladder
+前立腺部|prostatic part
+隔膜部|membranous part
+海綿体部|spongy part
+精液|semen
+腟前庭|vestibule of vagina
+腎洞|renal sinus
+精丘|seminal colliculus
+舟状窩|navicular fossa
+精巣輸出管|efferent ductules
+精巣上体管|duct of epididymis
+内肛門括約筋|internal anal sphincter
+肛門尾骨靱帯|anococcygeal ligament
+縦走筋層|longitudinal layer
+斜走筋|oblique muscle fibers
+胃粘膜|gastric mucosa
+内因子|intrinsic factor
+粘液|mucus
+櫛状線|pectinate line
+ラセン器|spiral organ
+アブミ骨底|base of stapes
+ラセン神経節|spiral ganglion
+内有毛細胞|inner hair cell
+外有毛細胞|outer hair cell
+嗅部|olfactory part
+骨髄腔|medullary cavity
+頭側|cranial
+発生学|embryology
+吻側|rostral
+尾側|caudal
+正中面|median plane
+冠状面|coronal plane
+横断像|transverse section
+手背側|dorsal side of hand
+足背側|dorsal side of foot
+母趾側|tibial side
+小趾側|fibular side
+手背|dorsum of hand
+背側骨間筋|dorsal interossei
+第2指|second digit
+心内膜|endocardium
+心筋層|myocardium
+心外膜|epicardium
+ペースメーカー|pacemaker
+田原結節|Tawara node
+プルキンエ線維|Purkinje fibers
+大静脈洞|sinus venarum
+分界稜|crista terminalis
+上大静脈口|opening of superior vena cava
+下大静脈口|opening of inferior vena cava
+右房室口|right atrioventricular orifice
+卵円窩|fossa ovalis
+肉柱|trabeculae carneae
+肺動脈口|opening of pulmonary trunk
+室上稜|supraventricular crest
+前乳頭筋|anterior papillary muscle
+中隔縁柱|septomarginal trabecula
+二尖弁|bicuspid valve
+機能的終動脈|functional end artery
+冠状静脈洞弁|valve of coronary sinus
+房室弁|atrioventricular valve
+僧帽弁逸脱|mitral valve prolapse
+後尖|posterior cusp
+右縁|right border
+後半月弁|posterior semilunar cusp
+前半月弁|anterior semilunar cusp
+右冠尖|right coronary cusp
+心エコー|echocardiography
+左冠尖|left coronary cusp
+拡張期|diastole
+前尖|anterior cusp
+第3肋軟骨|third costal cartilage
+第2肋間胸骨左縁|=第2肋間（second intercostal space）胸骨左縁（left sternal border）
+自由縁|free border
+半月弁結節|nodule of semilunar cusp
+直接右心房|=直接右心房（right atrium）
+直接下大静脈|=直接下大静脈（inferior vena cava）
+最小心臓静脈|smallest cardiac veins
+ヴィユサン|Vieussens
+鋭縁|acute margin
+鋭縁枝|right marginal branch
+右外縁枝|right marginal branch
+鈍縁枝|left marginal branch
+心耳|auricle
+胸肋面|sternocostal surface
+心尖切痕|cardiac apical notch
+心房細動|atrial fibrillation
+左総頚動脈|left common carotid artery
+左鎖骨下動脈|left subclavian artery
+右鎖骨下動脈|right subclavian artery
+右総頚動脈|right common carotid artery
+頚動脈サイフォン|carotid siphon
+頚動脈洞反射|carotid sinus reflex
+後脊髄動脈|posterior spinal artery
+冠動脈バイパス手術|coronary artery bypass surgery
+心拍出量|cardiac output
+上区|superior segment
+上前区|anterior superior segment
+下前区|anterior inferior segment
+下区|inferior segment
+後区|posterior segment
+葉間動脈|interlobar artery
+小葉間動脈|interlobular artery
+鼠径靱帯|inguinal ligament
+カテーテル検査|catheterization
+動脈管開存症|patent ductus arteriosus
+頚静脈上球|superior bulb of jugular vein
+頚静脈下球|inferior bulb of jugular vein
+高カロリー輸液|total parenteral nutrition
+静脈注射|intravenous injection
+静脈瘤|varix
+リンパ性|lymphoid
+赤血球|red blood cell
+脾腎ヒダ|splenorenal ligament
+脾腎間膜|splenorenal ligament
+心不全|heart failure
+第8〜9胸椎|eighth to ninth thoracic vertebrae
+下行大動脈|descending aorta
+横隔膜面|diaphragmatic surface
+前肋間枝|anterior intercostal branches
+卵巣動脈|ovarian artery
+上副腎動脈|superior suprarenal artery
+腰枝|lumbar branch
+腸骨枝|iliac branch
+食道下部|lower esophagus
+痔核|hemorrhoid
+幽門前静脈|prepyloric vein
+胃結腸静脈幹|gastrocolic trunk
+下直腸静脈|inferior rectal vein
+卵巣静脈|ovarian vein
+壁側枝|parietal branches
+第1肋間静脈|first intercostal vein
+胸腹壁静脈|thoraco-epigastric vein
+肩甲回旋静脈|circumflex scapular vein
+上腹壁静脈|superior epigastric vein
+栄養血管|nutrient vessels
+喀血|hemoptysis
+左総腸骨静脈|left common iliac vein
+陰茎背神経|dorsal nerve of penis
+ラセン動脈|helicine arteries
+前立腺静脈叢|prostatic venous plexus
+浅腸骨回旋動脈|superficial circumflex iliac artery
+心膜横隔動脈|pericardiacophrenic artery
+左副腎静脈|left suprarenal vein
+大膵動脈|great pancreatic artery
+膵尾動脈|artery to tail of pancreas
+下膵動脈|inferior pancreatic artery
+肩甲横靱帯|transverse scapular ligament
+第1・2肋間|first and second intercostal spaces
+胸筋枝|pectoral branch
+肩峰枝|acromial branch
+三角筋枝|deltoid branch
+広背筋皮弁|latissimus dorsi flap
+三角間隙|triangular space
+四角間隙|quadrangular space
+側副動脈|collateral artery
+反回動脈|recurrent artery
+肘関節動脈網|cubital anastomosis
+後尺側反回動脈|posterior ulnar recurrent artery
+前尺側反回動脈|anterior ulnar recurrent artery
+動脈網|arterial network
+屈筋腱|flexor tendon
+深掌静脈弓|deep palmar venous arch
+静脈網|venous network
+皮静脈|cutaneous vein
+点滴|intravenous drip
+骨間動脈|interosseous artery
+掌側手根動脈網|palmar carpal arch
+第2〜第5指|second to fifth digits
+内側鼡径ヘルニア|direct inguinal hernia
+外側鼡径ヘルニア|indirect inguinal hernia
+大腿回旋動脈|circumflex femoral artery
+長母趾伸筋腱|extensor hallucis longus tendon
+横枝|transverse branch
+側副循環|collateral circulation
+伴行静脈|venae comitantes
+外側足底静脈|lateral plantar vein
+静脈ポンプ|venous pump
+内転筋裂孔|adductor hiatus
+筋ポンプ|muscle pump
+外陰部動脈|external pudendal artery
+第1背側中足動脈|first dorsal metatarsal artery
+貫通枝|perforating branch
+後耳介動脈|posterior auricular artery
+ウィリス動脈輪|circle of Willis
+脳動脈瘤|cerebral aneurysm
+篩骨動脈|ethmoidal artery
+オトガイ枝|mental branch
+オトガイ動脈|mental artery
+頬神経|buccal nerve
+視神経乳頭|optic disc
+網膜中心動脈閉塞症|central retinal artery occlusion
+眼底鏡|ophthalmoscope
+後外側鼻枝|posterior lateral nasal branches
+中隔後鼻枝|posterior septal branches
+鼻背動脈|dorsal nasal artery
+皮質枝|cortical branches
+感覚野|sensory area
+後脚|posterior limb
+前有孔質|anterior perforated substance
+脳出血動脈|artery of cerebral hemorrhage
+膝状体|geniculate body
+視床痛|thalamic pain
+ワレンベルク症候群|Wallenberg syndrome
+運動麻痺|motor paralysis
+外側裂孔|lateral lacunae
+上大脳静脈|superior cerebral veins
+硬膜下血腫|subdural hematoma
+ガレン静脈|vein of Galen
+外側静脈洞|lateral sinus
+眼静脈|ophthalmic vein
+危険三角|danger triangle
+椎骨静脈叢|vertebral venous plexus
+後頭導出静脈|occipital emissary vein
+舌深静脈|deep lingual vein
+ニトログリセリン|nitroglycerin
+食道癌|esophageal cancer
+消化|digestion
+小弯側|lesser curvature side
+胆膵管膨大部|hepatopancreatic ampulla
+膨大部括約筋|sphincter of ampulla
+オディ括約筋|sphincter of Oddi
+集合リンパ小節|aggregated lymphoid nodules
+卵黄腸管|vitelline duct
+メッケル憩室|Meckel diverticulum
+右腸骨窩|right iliac fossa
+回盲弁|ileocecal valve
+腸重積|intussusception
+回盲部|ileocecal region
+胃結腸間膜|gastrocolic ligament
+腸捻転|volvulus
+仙骨曲|sacral flexure
+会陰曲|perineal flexure
+直腸膀胱窩|rectovesical pouch
+直腸子宮窩|recto-uterine pouch
+ダグラス窩|pouch of Douglas
+腹膜腔|peritoneal cavity
+括約部|sphincter part
+ガストリン|gastrin
+G細胞|G cell
+胃癌|gastric cancer
+上部消化管|upper gastrointestinal tract
+下部消化管|lower gastrointestinal tract
+肝弯曲|hepatic flexure
+脾弯曲|splenic flexure
+前庭部|antrum
+幽門口|pyloric orifice
+蠕動|peristalsis
+中結腸動静脈|middle colic vessels
+実質臓器|solid organ
+解毒|detoxification
+下後面|posteroinferior surface
+前腹壁|anterior abdominal wall
+膵液|pancreatic juice
+外分泌|exocrine
+インスリン|insulin
+内分泌|endocrine
+IV区域|segment IV
+ファーター乳頭|papilla of Vater
+サントリーニ管|duct of Santorini
+胆管|bile duct
+亜区域|subsegment
+肝区域|hepatic segment
+胃圧痕|gastric impression
+十二指腸圧痕|duodenal impression
+結腸圧痕|colic impression
+腎圧痕|renal impression
+腱中心|central tendon
+冠状間膜|coronary ligament
+三角間膜|triangular ligament
+静脈管索|ligamentum venosum
+静脈管|ductus venosus
+網嚢孔|omental foramen
+黄疸|jaundice
+ランゲルハンス島|islets of Langerhans
+膵島|pancreatic islets
+第9肋軟骨|ninth costal cartilage
+外縁|lateral margin
+マーフィー徴候|Murphy sign
+ヒダ|fold
+胆石|gallstone
+甲状舌管嚢胞|thyroglossal duct cyst
+咽頭部|pharyngeal part
+舌中隔|lingual septum
+葉状乳頭|foliate papillae
+味蕾|taste bud
+第1・第2大臼歯|first and second molars
+歯槽骨|alveolar bone
+頬側|buccal side
+舌側|lingual side
+咬頭|cusp
+第2乳臼歯|second deciduous molar
+歯列|dental arch
+口腔前庭|oral vestibule
+固有口腔|oral cavity proper
+上咽頭|nasopharynx
+中咽頭|oropharynx
+下咽頭|laryngopharynx
+ステノン管|Stensen duct
+舌下小丘|sublingual caruncle
+ワルトン管|Wharton duct
+唾石|salivary stone
+甲状咽頭部|thyropharyngeal part
+輪状咽頭部|cricopharyngeal part
+憩室|diverticulum
+ツェンカー憩室|Zenker diverticulum
+耳管咽頭|eustachian pharynx
+内分泌腺|endocrine gland
+メラトニン|melatonin
+甲状腺ホルモン|thyroid hormone
+カルシトニン|calcitonin
+副甲状腺|parathyroid gland
+パラトルモン|parathyroid hormone
+ステロイドホルモン|steroid hormone
+アドレナリン|adrenaline
+T細胞|T cell
+リンパ性器官|lymphoid organ
+プロラクチン|prolactin
+甲状腺刺激ホルモン|thyroid-stimulating hormone
+副腎皮質刺激ホルモン|adrenocorticotropic hormone
+性腺刺激ホルモン|gonadotropin
+下垂体門脈|hypophysial portal system
+バソプレシン|vasopressin
+抗利尿ホルモン|antidiuretic hormone
+オキシトシン|oxytocin
+第2〜4気管軟骨|second to fourth tracheal cartilages
+テタニー|tetany
+重層扁平上皮|stratified squamous epithelium
+受容器|receptor
+脂肪組織|adipose tissue
+皮下脂肪|subcutaneous fat
+皮下注射|subcutaneous injection
+マイスネル小体|Meissner corpuscle
+皮膚割線|cleavage lines
+ランガー線|Langer lines
+胚芽層|germinative layer
+デスモソーム|desmosome
+ランゲルハンス細胞|Langerhans cell
+ケラトヒアリン顆粒|keratohyalin granule
+角質細胞|corneocyte
+神経堤|neural crest
+感覚神経|sensory nerve
+メルケル盤|Merkel disc
+毛球|hair bulb
+毛乳頭|hair papilla
+毛母基|hair matrix
+真皮乳頭層|papillary layer of dermis
+鳥肌|goose bumps
+全分泌|holocrine secretion
+小汗腺|eccrine sweat gland
+乳輪|areola
+アポクリン腺|apocrine gland
+大汗腺|apocrine sweat gland
+アセチルコリン|acetylcholine
+チアノーゼ|cyanosis
+角化細胞|keratinocyte
+後爪郭|proximal nail fold
+爪囲炎|paronychia
+後縦靱帯骨化症|ossification of posterior longitudinal ligament
+第1・11・12肋骨|first, eleventh and twelfth ribs
+結合面|symphysial surface
+妊娠|pregnancy
+第4・5腰椎|fourth and fifth lumbar vertebrae
+仙骨粗面|sacral tuberosity
+顎関節症|temporomandibular disorder
+小角|lesser horn
+イーグル症候群|Eagle syndrome
+顆状関節|condylar joint
+頭関節|craniovertebral joints
+後屈|extension
+軟骨間関節|interchondral joints
+SLAP損傷|SLAP lesion
+肩関節包|shoulder joint capsule
+下関節上腕靱帯|inferior glenohumeral ligament
+前方脱臼|anterior dislocation
+野球肘|baseball elbow
+楕円関節|ellipsoid joint
+肩鎖関節脱臼|acromioclavicular dislocation
+PIP関節|PIP joint
+関節リウマチ|rheumatoid arthritis
+DIP関節|DIP joint
+変形性関節症|osteoarthritis
+ヘバーデン結節|Heberden nodes
+第2〜5中手骨|second to fifth metacarpals
+第4・第5中手骨|fourth and fifth metacarpals
+運搬角|carrying angle
+対立運動|opposition
+霊長類|primates
+Y靱帯|Y ligament
+側副靱帯|collateral ligament
+ACL損傷|ACL injury
+内側下|inferomedial
+膝蓋腱反射|patellar reflex
+冠状靱帯|coronary ligament
+短足底靱帯|short plantar ligament
+モートン病|Morton neuroma
+趾節骨|phalanges of foot
+内側靱帯|medial ligament
+高位足関節捻挫|high ankle sprain
+第2〜5中足骨|second to fifth metatarsals
+外側突起|lateral process
+足根|tarsus
+骨間|interosseous
+組織液|interstitial fluid
+リンパ節転移|lymph node metastasis
+循環器系|cardiovascular system
+内分泌系|endocrine system
+扁桃腺|tonsil
+舌先|tip of tongue
+風疹|rubella
+耳介後リンパ節|retro-auricular lymph nodes
+頚リンパ本幹|jugular trunk
+頚静脈二腹筋リンパ節|jugulodigastric lymph node
+ウィルヒョウ|Virchow
+胸筋|pectoral muscles
+肩甲下|subscapular
+センチネルリンパ節|sentinel lymph node
+三角筋胸筋三角|deltopectoral triangle
+ロッテル|Rotter
+滑車上リンパ節|supratrochlear lymph nodes
+内胸動静脈|internal thoracic vessels
+前胸壁|anterior thoracic wall
+下気管気管支リンパ節|inferior tracheobronchial lymph nodes
+気管分岐部リンパ節|subcarinal lymph nodes
+気管支肺リンパ節|bronchopulmonary lymph nodes
+胃動脈|gastric artery
+リンパ節郭清|lymph node dissection
+腰リンパ本幹|lumbar trunk
+外腸骨|external iliac
+外腸骨動静脈|external iliac vessels
+鼡径リンパ節|inguinal lymph nodes
+子宮頚部|cervix of uterus
+ローゼンミュラー|Rosenmüller
+頬筋リンパ節|buccinator lymph node
+鼻唇溝|nasolabial groove
+鼻唇リンパ節|nasolabial lymph node
+下顎リンパ節|mandibular lymph node
+前縦隔リンパ節|anterior mediastinal lymph nodes
+下膵リンパ節|inferior pancreatic lymph nodes
+左結腸リンパ節|left colic lymph nodes
+S状結腸リンパ節|sigmoid lymph nodes
+上直腸リンパ節|superior rectal lymph nodes
+回結腸リンパ節|ileocolic lymph nodes
+直腸間膜全切除|total mesorectal excision
+外層|outer layer
+吸気|inspiration
+呼気|expiration
+呼吸筋|respiratory muscles
+筋群|muscle group
+腱画|tendinous intersections
+第5〜7肋軟骨|fifth to seventh costal cartilages
+腰痛|low back pain
+上位頚椎|upper cervical vertebrae
+第9〜11肋骨|ninth to eleventh ribs
+大後頭神経|greater occipital nerve
+下位胸椎|lower thoracic vertebrae
+頚筋膜|cervical fascia
+腹膜外|extraperitoneal
+乳房後隙|retromammary space
+浅葉|superficial layer
+深葉|deep layer
+耳下腺筋膜|parotid fascia
+耳下腺咬筋筋膜|parotideomasseteric fascia
+腸骨筋膜|iliac fascia
+結核|tuberculosis
+流注膿瘍|psoas abscess
+腰背部|lower back
+後層|posterior layer
+中層|middle layer
+前層|anterior layer
+腹筋|abdominal muscles
+開腹|laparotomy
+上腕骨外側上顆炎|lateral epicondylitis
+手内筋|intrinsic hand muscles
+浅頭|superficial head
+羽状筋|pennate muscle
+上方回旋|upward rotation
+前腋窩|anterior axillary
+長頭腱炎|long head tendinitis
+下内側|inferomedial
+円回内筋症候群|pronator teres syndrome
+総屈筋腱|common flexor tendon
+腱板断裂|rotator cuff tear
+短掌筋|palmaris brevis
+第2〜4指|second to fourth digits
+尺側滑液包|ulnar bursa
+橈側滑液包|radial bursa
+第1区画|first compartment
+デュピュイトラン拘縮|Dupuytren contracture
+烏口肩峰靱帯|coraco-acromial ligament
+肩峰下滑液包炎|subacromial bursitis
+インピンジメント|impingement
+外側前方|anterolateral
+内側上方|superomedial
+内側前方|anteromedial
+外側前面|anterolateral surface
+第5腰神経|fifth lumbar nerve
+外側下部|inferolateral part
+筋腹|muscle belly
+足内筋|intrinsic foot muscles
+第2〜4趾|second to fourth toes
+ハムストリングス|hamstrings
+腓骨神経部|common fibular part
+第3〜5中足骨|third to fifth metatarsals
+ファベラ|fabella
+エックス線写真|radiograph
+第2〜第4中足骨|second to fourth metatarsals
+第3〜第5趾|third to fifth toes
+内側区画|medial compartment
+下腿筋間中隔|intermuscular septum of leg
+広筋|vastus muscles
+内側膝蓋支帯|medial patellar retinaculum
+外側膝蓋支帯|lateral patellar retinaculum
+踵骨後部滑液包炎|retrocalcaneal bursitis
+足底腱膜炎|plantar fasciitis
+腓骨筋腱脱臼|peroneal tendon dislocation
+ガーディー結節|Gerdy tubercle
+腸脛靱帯炎|iliotibial band syndrome
+ランナー膝|runner's knee
+大転子滑液包炎|trochanteric bursitis
+前頭筋腹|frontal belly
+咀嚼|mastication
+横部|transverse part
+翼部|alar part
+表情|facial expression
+前上方|anterosuperior
+第2〜7頚椎|second to seventh cervical vertebrae
+第1咽頭弓|first pharyngeal arch
+第2咽頭弓|second pharyngeal arch
+咽頭弓|pharyngeal arch
+浅部|superficial part
+上頭|superior head
+内側眼瞼靱帯|medial palpebral ligament
+外側眼瞼縫線|lateral palpebral raphe
+兎眼|lagophthalmos
+鼻柱|columella
+頭蓋表筋|epicranius
+前頭眼野|frontal eye field
+作業記憶|working memory
+運動性言語中枢|motor speech center
+感覚性言語中枢|sensory speech center
+辺縁系|limbic system
+内側下面|inferomedial surface
+大脳葉|cerebral lobe
+下頭頂小葉|inferior parietal lobule
+嗅索|olfactory tract
+運動性失語|motor aphasia
+体部位局在|somatotopy
+視覚野|visual cortex
+黄斑|macula
+水頭症|hydrocephalus
+大脳辺縁系|limbic system
+外包|external capsule
+パペッツ|Papez
+ウェルニッケ脳症|Wernicke encephalopathy
+視床上部|epithalamus
+中脳蓋|tectum of midbrain
+四丘体|corpora quadrigemina
+テント|tentorium
+テント切痕|tentorial notch
+テント切痕ヘルニア|transtentorial herniation
+硬膜外麻酔|epidural anesthesia
+閉塞性水頭症|obstructive hydrocephalus
+弓状核|arcuate nucleus
+神経管|neural tube
+脳室周囲器官|circumventricular organs
+外側毛帯|lateral lemniscus
+エディンガー|Edinger
+ウェストファル核|Westphal nucleus
+網様体|reticular formation
+発声|phonation
+迷走神経三角|vagal trigone
+上位頚髄|upper cervical spinal cord
+小脳回|cerebellar folia
+体幹失調|truncal ataxia
+指鼻試験|finger-nose test
+小脳扁桃ヘルニア|tonsillar herniation
+上半月小葉|superior semilunar lobule
+下半月小葉|inferior semilunar lobule
+錐体交叉|pyramidal decussation
+下オリーブ核|inferior olivary nucleus
+小脳脚|cerebellar peduncle
+橋核|pontine nuclei
+嗅上皮|olfactory epithelium
+頭蓋内圧|intracranial pressure
+頚髄|cervical spinal cord
+平衡感覚|sense of balance
+前庭神経鞘腫|vestibular schwannoma
+聴力|hearing
+圧痛点|tender point
+外鼻枝|external nasal branch
+瞳孔散大筋|dilator pupillae
+角膜反射|corneal reflex
+動眼神経根|oculomotor root
+中枢神経|central nervous system
+頚膨大|cervical enlargement
+腰膨大|lumbosacral enlargement
+腰神経|lumbar nerve
+骨幹部|diaphysis
+下垂手|wrist drop
+鷲手|claw hand
+第5〜7頚神経|fifth to seventh cervical nerves
+翼状肩甲|winged scapula
+胸神経|thoracic nerve
+筋萎縮性側索硬化症|amyotrophic lateral sclerosis
+随意運動|voluntary movement
+ブラウン|Brown
+セカール症候群|Séquard syndrome
+第6胸髄|sixth thoracic segment
+薄束核|gracile nucleus
+楔状束核|cuneate nucleus
+胸髄|thoracic spinal cord
+ベル|Bell
+マジャンディ|Magendie
+感覚ニューロン|sensory neuron
+偽単極性ニューロン|pseudounipolar neuron
+帯状疱疹|herpes zoster
+第5・6頚神経|fifth and sixth cervical nerves
+エルプ麻痺|Erb palsy
+第7頚神経|seventh cervical nerve
+第8頚神経|eighth cervical nerve
+クルンプケ麻痺|Klumpke palsy
+下垂指|finger drop
+後骨間神経麻痺|posterior interosseous nerve palsy
+ギヨン管|Guyon canal
+指ブロック|digital nerve block
+皮枝|cutaneous branch
+外尿道括約筋|external urethral sphincter
+トレンデレンブルグ徴候|Trendelenburg sign
+第1腰神経|first lumbar nerve
+陰部|genital region
+大腿枝|femoral branch
+精巣挙筋|cremaster
+挙睾筋反射|cremasteric reflex
+第1〜4趾|first to fourth toes
+内転筋部|adductor part
+第2〜3趾|second to third toes
+第1趾|great toe
+ヘルニア|hernia
+腰ヘルニア|lumbar hernia
+浅会陰隙|superficial perineal pouch
+坐骨直腸窩|ischiorectal fossa
+第4・5胸椎|fourth and fifth thoracic vertebrae
+胸腺腫|thymoma
+第5〜12胸椎|fifth to twelfth thoracic vertebrae
+クモ膜|arachnoid mater
+鎖骨下動静脈|subclavian vessels
+骨盤内臓|pelvic viscera
+項部|nuchal region
+後環椎後頭膜|posterior atlanto-occipital membrane
+第1頚神経|first cervical nerve
+モーレンハイム窩|Mohrenheim fossa
+斜角筋症候群|scalenus syndrome
+胸郭出口症候群|thoracic outlet syndrome
+肘部管症候群|cubital tunnel syndrome
+浅枝|superficial branch
+回内筋|pronator
+停止腱|tendon of insertion
+上殿動静脈|superior gluteal vessels
+下殿神経|inferior gluteal nerve
+下殿動静脈|inferior gluteal vessels
+内転筋区画|adductor compartment
+腓骨筋区画|fibular compartment
+扁平足|flat foot
+第1〜3中足骨|first to third metatarsals
+スプリング靱帯|spring ligament
+第4〜5中足骨|fourth to fifth metatarsals
+肺胞|alveolus
+臓側胸膜|visceral pleura
+肋骨胸膜|costal pleura
+横隔胸膜|diaphragmatic pleura
+胸膜頂|cervical pleura
+陰圧|negative pressure
+パンコースト腫瘍|Pancoast tumor
+気管支動静脈|bronchial vessels
+第3〜4胸椎|third to fourth thoracic vertebrae
+第6肋軟骨|sixth costal cartilage
+気管竜骨|carina of trachea
+肺結核|pulmonary tuberculosis
+シルエットサイン|silhouette sign
+病変|lesion
+心臓枝|cardiac branch
+側胸部|lateral thorax
+誤嚥性肺炎|aspiration pneumonia
+中腋窩線|midaxillary line
+胸水|pleural effusion
+気管筋|trachealis
+前頭鼻管|frontonasal duct
+内視鏡|endoscope
+鉤状突起|uncinate process
+篩骨胞|ethmoidal bulla
+喉頭腔|laryngeal cavity
+喉頭前庭|laryngeal vestibule
+喉頭室|laryngeal ventricle
+声門下|subglottis
+喉頭口|laryngeal inlet
+窒息|asphyxia
+上喉頭動脈|superior laryngeal artery
+内枝|internal branch
+外枝|external branch
+弾性膜|elastic membrane
+披裂喉頭蓋ヒダ|aryepiglottic fold
+前庭靱帯|vestibular ligament
+室ヒダ|vestibular fold
+麦粒軟骨|triticeous cartilage
+喉頭蓋谷|epiglottic vallecula
+喉頭蓋茎|stalk of epiglottis
+斜部|oblique part
+輪状甲状関節|cricothyroid joint
+輪状甲状膜|cricothyroid membrane
+輪状甲状膜切開|cricothyrotomy
+白目|white of eye
+房水|aqueous humor
+白内障|cataract
+下外方|inferolateral
+上外方|superolateral
+上瞼板筋|superior tarsal muscle
+ミュラー筋|Müller muscle
+耳鏡|otoscope
+光錐|cone of light
+チン小帯|zonule of Zinn
+瞼板腺|tarsal glands
+マイボーム腺|meibomian glands
+上瞼板|superior tarsus
+隅角|iridocorneal angle
+強膜静脈洞|scleral venous sinus
+シュレム管|canal of Schlemm
+眼圧|intraocular pressure
+緑内障|glaucoma
+滑車窩|trochlear fovea
+眼窩結節|orbital tubercle
+制動靱帯|check ligament
+脊椎|spine
+解剖学用語|anatomical term
+第5〜第8胸椎|fifth to eighth thoracic vertebrae
+原基|primordium
+第4〜第9肋骨|fourth to ninth ribs
+石灰化|calcification
+第1〜第12肋骨|first to twelfth ribs
+肋間隙|intercostal space
+第3〜第5肋骨|third to fifth ribs
+乳頭|nipple
+第4肋間隙|fourth intercostal space
+第8肋軟骨|eighth costal cartilage
+第9〜第11肋骨|ninth to eleventh ribs
+腹斜筋|oblique abdominal muscles
+第2・第3胸椎|second and third thoracic vertebrae
+大静脈孔|caval opening
+幽門平面|transpyloric plane
+脊髄円錐|conus medullaris
+第1〜第3腰椎|first to third lumbar vertebrae
+腰仙連結|lumbosacral junction
+仙骨化|sacralization
+関節突起間部|pars interarticularis
+腰椎分離症|spondylolysis
+椎弓切除術|laminectomy
+第10〜第12胸椎|tenth to twelfth thoracic vertebrae
+横線|transverse ridges
+狭骨盤|contracted pelvis
+仙骨翼|ala of sacrum
+後上方|posterosuperior
+第5仙骨神経|fifth sacral nerve
+筋束|muscle fascicle
+第2〜第9肋骨|second to ninth ribs
+第3〜第7頚椎|third to seventh cervical vertebrae
+ルシュカ関節|Luschka joint
+頚椎症|cervical spondylosis
+肋骨要素|costal element
+肋硬骨|bony part of rib
+第2尾椎|second coccygeal vertebra
+自由上肢骨|bones of free upper limb
+第7〜第8肋骨|seventh to eighth ribs
+外側角|lateral angle
+顆上骨折|supracondylar fracture
+コーレス骨折|Colles fracture
+キーンベック病|Kienböck disease
+CM関節|CM joint
+第1〜第5中手骨|first to fifth metacarpals
+末節骨粗面|tuberosity of distal phalanx
+第5中手骨頚|neck of fifth metacarpal
+肋鎖靱帯|costoclavicular ligament
+リスター結節|Lister tubercle
+指節骨|phalanges
+背側面|dorsal surface
+中手間関節|intermetacarpal joints
+指腹|finger pad
+自由下肢骨|bones of free lower limb
+頚体角|neck-shaft angle
+第1〜第5中足骨|first to fifth metatarsals
+第5指|fifth digit
+行軍骨折|march fracture
+外側縦アーチ|lateral longitudinal arch
+下駄骨折|Jones fracture
+脆弱性骨折|fragility fracture
+坐骨恥骨枝|ischiopubic ramus
+坐骨体|body of ischium
+陰核脚|crus of clitoris
+閉鎖動静脈|obturator vessels
+大腿骨頚部骨折|femoral neck fracture
+第3転子|third trochanter
+オスグッド病|Osgood-Schlatter disease
+足根洞症候群|sinus tarsi syndrome
+第1中足骨頭|head of first metatarsal
+母趾球|ball of great toe
+殿筋|gluteal muscles
+双子筋|gemelli
+鵞足炎|pes anserinus bursitis
+後下外側|posteroinferolateral
+腓骨側|fibular side
+脛骨側|tibial side
+上腓骨筋支帯|superior fibular retinaculum
+内側稜|medial crest
+殿筋線|gluteal lines
+踵骨溝|calcaneal sulcus
+第2〜第5中足骨|second to fifth metatarsals
+顔面頭蓋|viscerocranium
+二分頬骨|bipartite zygomatic bone
+日本骨|os japonicum
+冠状|coronal
+矢状|sagittal
+最大頭長|maximum cranial length
+顎関節脱臼|dislocation of temporomandibular joint
+眼窩上動静脈|supra-orbital vessels
+外鼻|external nose
+犬歯隆起|canine eminence
+歯槽孔|alveolar foramina
+頬骨歯槽稜|zygomaticoalveolar crest
+前頭頬骨縫合|frontozygomatic suture
+口蓋裂|cleft palate
+口蓋腱膜|palatine aponeurosis
+切歯孔|incisive foramen
+鼻口蓋神経|nasopalatine nerve
+大口蓋神経|greater palatine nerve
+大口蓋動静脈|greater palatine vessels
+小口蓋神経|lesser palatine nerves
+小口蓋動静脈|lesser palatine vessels
+移行部|junction
+顆窩|condylar fossa
+眼窩尖|orbital apex
+内頚動脈神経叢|internal carotid plexus
+迷路動静脈|labyrinthine vessels
+茎乳突孔動脈|stylomastoid artery
+横溝|groove for transverse sinus
+視神経交叉|optic chiasm
+鞍隔膜|diaphragma sellae
+内頚動脈溝|carotid sulcus
+上矢状洞|superior sagittal sinus
+オトガイ動静脈|mental vessels
+下歯槽動静脈|inferior alveolar vessels
+歯槽|dental alveolus
+歯根|root of tooth
+歯槽隆起|alveolar yokes
+篩骨切痕|ethmoidal notch
+側頭線|temporal line
+膜性骨化|intramembranous ossification
+インカ骨|Inca bone
+骨結合|synostosis
+軟骨結合|synchondrosis
+蝶形骨稜|sphenoidal crest
+鼓室輪|tympanic ring
+鼻腔面|nasal surface
+篩骨迷路|ethmoidal labyrinth
+縫合骨|sutural bone
+頭頂導出静脈|parietal emissary vein
+脳硬膜|cranial dura mater
+前篩骨動静脈|anterior ethmoidal vessels
+後篩骨動静脈|posterior ethmoidal vessels
+頬骨眼窩孔|zygomatico-orbital foramen
+頬骨顔面枝|zygomaticofacial branch
+後鼻枝|posterior nasal branches
+大錐体神経|greater petrosal nerve
+深錐体神経|deep petrosal nerve
+耳管溝|sulcus of auditory tube
+鼓膜張筋半管|canal for tensor tympani
+耳管半管|canal for auditory tube
+後腹膜|retroperitoneum
+右腎|right kidney
+線維被膜|fibrous capsule
+脂肪被膜|perirenal fat capsule
+ジェロタ筋膜|Gerota fascia
+深層|deep layer
+腎柱|renal column
+腎杯|renal calyx
+腎盂|renal pelvis
+骨盤部|pelvic part
+動静脈|artery and vein
+結石|calculus
+子宮頚|cervix of uterus
+子宮動脈|uterine artery
+恥骨後隙|retropubic space
+膀胱炎|cystitis
+正中臍索|median umbilical ligament
+尿膜管|urachus
+子宮体|body of uterus
+前立腺肥大|prostatic hyperplasia
+尿道括約筋|urethral sphincter
+中間部|intermediate part
+尿道球腺|bulbo-urethral gland
+精巣鞘膜|tunica vaginalis
+臓側板|visceral layer
+精巣縦隔|mediastinum of testis
+精巣小葉|lobules of testis
+小葉|lobule
+曲精細管|convoluted seminiferous tubules
+テストステロン|testosterone
+内腺|inner gland
+前立腺肥大症|benign prostatic hyperplasia
+前立腺癌|prostate cancer
+外腺|outer gland
+陰茎提靱帯|suspensory ligament of penis
+陰茎ワナ靱帯|fundiform ligament of penis
+陰茎背|dorsum of penis
+尿道面|urethral surface
+深陰茎筋膜|deep fascia of penis
+亀頭頚|neck of glans
+腟口|vaginal orifice
+陰核|clitoris
+骨盤臓器脱|pelvic organ prolapse
+肛門直腸角|anorectal angle
+縦走|longitudinal
+輪走|circular
+斜走|oblique
+肥厚性幽門狭窄症|hypertrophic pyloric stenosis
+胃腺|gastric glands
+塩酸|hydrochloric acid
+短胃動脈|short gastric arteries
+門脈圧|portal pressure
+二次的腹膜後器官|secondarily retroperitoneal organ
+マックバーネー点|McBurney point
+右上前腸骨棘|right anterior superior iliac spine
+中腸|midgut
+空腸動脈|jejunal arteries
+回腸動脈|ileal arteries
+後腸|hindgut
+微絨毛|microvilli
+上皮細胞|epithelial cell
+刷子縁|brush border
+吸収上皮細胞|absorptive cell
+杯細胞|goblet cell
+カイロミクロン|chylomicron
+腸陰窩|intestinal crypts
+腸腺|intestinal glands
+リーベルキューン腺|crypts of Lieberkühn
+パネート細胞|Paneth cell
+幹細胞|stem cell
+十二指腸腺|duodenal glands
+ブルンナー腺|Brunner glands
+粘膜固有層|lamina propria
+粘膜筋板|muscularis mucosae
+前頭断|frontal section
+肛門柱|anal columns
+歯状線|dentate line
+内胚葉|endoderm
+外胚葉|ectoderm
+門脈系|portal system
+下直腸動脈|inferior rectal artery
+外痔核|external hemorrhoid
+肛門周囲膿瘍|perianal abscess
+前索|anterior funiculus
+根糸|rootlets
+後極|posterior pole
+視神経円板|optic disc
+乳突洞|mastoid antrum
+VIII脳神経|cranial nerve VIII
+耳小骨筋|muscles of auditory ossicles
+聴覚過敏|hyperacusis
+前庭神経節|vestibular ganglion
+細胞外液|extracellular fluid
+感覚細胞|sensory cell
+平衡斑|macula
+耳石器|otolith organs
+膨大部|ampulla
+膨大部稜|ampullary crest
+蝸牛窓|round window
+第二鼓膜|secondary tympanic membrane
+蝸牛軸|modiolus
+中央階|scala media
+血管条|stria vascularis
+前庭膜|vestibular membrane
+ライスネル膜|Reissner membrane
+蓋膜|tectorial membrane
+有毛細胞|hair cell
+後篩骨蜂巣|posterior ethmoidal cells
+嗅細胞|olfactory receptor cell
+髄液|cerebrospinal fluid
+鼻漏|rhinorrhea
+鼻前庭|nasal vestibule
+鼻毛|nasal hairs
+呼吸部|respiratory part
+多列線毛上皮|pseudostratified ciliated epithelium
+眼窩板|orbital plate
+鼻出血|epistaxis
+喉頭部|laryngeal part
+耳管扁桃|tubal tonsil
+喉頭蓋軟骨|epiglottic cartilage
+マイスネル|Meissner
+パチニ|Pacini
+骨芽細胞|osteoblast
+骨単位|osteon
+ハバース系|Haversian system
+骨梁|trabeculae
+短骨|short bone
+血球|blood cells
+赤色骨髄|red bone marrow
+黄色骨髄|yellow bone marrow
+骨端軟骨|epiphysial cartilage
+成長板|growth plate
+栄養動脈|nutrient artery
+仙椎化|sacralization
+自由下肢|free lower limb
+第5仙椎|fifth sacral vertebra
+転子|trochanter
+恥骨稜|pubic crest
+第2肋間|second intercostal space
+第7肋間|seventh intercostal space
+クモ膜下腔|subarachnoid space
+前外方|anterolateral
+上腕骨体|shaft of humerus
+外上側|superolateral
+上顆|epicondyle
+顆間結節|intercondylar tubercles
+後下方|posteroinferior
+超音波|ultrasound
+精巣動静脈|testicular vessels
+直腸診|digital rectal examination
+両耳側半盲|bitemporal hemianopia
+動脈上気管支|eparterial bronchus
+左主気管支|left main bronchus
+第7〜第10肋軟骨|seventh to tenth costal cartilages
+第1〜2腰椎|first to second lumbar vertebrae
+内側上|superomedial
+外側上|superolateral
+外側下|inferolateral
+内側上部|superomedial part
+内側半分|medial half
+外側半分|lateral half
+尺側半分|ulnar half
+胸骨左縁|left sternal border
+外側直筋以外|=外側直筋（lateral rectus）以外
+肋骨側|=肋骨（rib）側
+手首側|=手首（wrist）側
+指先側|=指先（fingertip）側
+左心房側|=左心房（left atrium）側
+大動脈側|=大動脈（aorta）側
+脊柱側|=脊柱（vertebral column）側
+腋窩側|=腋窩（axilla）側
+橈骨側|=橈骨（radius）側
+手根骨側|=手根骨（carpal bones）側
+骨盤側|=骨盤（pelvis）側
+背中側|=背中（back）側
+背中上部|upper back
+正中点|midpoint
+開口部|opening
+分泌物|secretion

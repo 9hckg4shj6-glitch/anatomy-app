@@ -11,77 +11,77 @@
           "parts": ["intervertebral disk of *"], "level": 1,
           "kanji": "椎骨の間の円い板",
           "etym": "inter-「間」＋ vertebral「椎骨の」＋ disc「円板」",
-          "note": "上下の椎体の間にある線維軟骨の板。外側の線維輪と中心の髄核からなり、背骨にかかる衝撃をやわらげる。線維輪が破れて髄核が飛び出すのが椎間板ヘルニア。"
+          "note": "上下の椎体（vertebral body）の間にある線維軟骨（fibrocartilage）の板。外側（lateral）の線維輪（anulus fibrosus）と中心の髄核（nucleus pulposus）からなり、背骨（backbone）にかかる衝撃をやわらげる。線維輪が破れて髄核が飛び出すのが椎間板ヘルニア（herniated disc）。"
         },
         {
           "id": "nucleus-pulposus", "ja": "髄核", "yomi": "ずいかく", "en": "nucleus pulposus", "la": "nucleus pulposus",
           "parts": ["za:nucleus pulposus *"], "level": 2, "xray": true,
           "kanji": "椎間円板の中心の柔らかい芯",
           "etym": "nucleus「核」＋ pulposus「果肉のような・柔らかい」",
-          "note": "椎間円板の中心にあるゼリー状の芯。圧力を四方へ分ける。年とともに水分が減る。後外側へ飛び出すと脊髄神経の根を圧迫する（椎間板ヘルニア）。"
+          "note": "椎間円板（intervertebral disc）の中心にあるゼリー状の芯。圧力を四方へ分ける。年とともに水分が減る。後外側（posterolateral）へ飛び出すと脊髄神経（spinal nerve）の根を圧迫する（椎間板ヘルニア（herniated disc））。"
         },
         {
           "id": "anterior-longitudinal-ligament", "ja": "前縦靱帯", "yomi": "ぜんじゅうじんたい", "en": "anterior longitudinal ligament", "la": "ligamentum longitudinale anterius",
           "parts": ["za:anterior longitudinal ligament"], "level": 1,
           "kanji": "前の、縦に走る靱帯",
           "etym": "anterior「前の」＋ longitudinal「縦の」",
-          "note": "椎体と椎間円板の前面を後頭骨から仙骨まで縦に走る幅広い靱帯。脊柱が後ろへ反りすぎるのを防ぐ。"
+          "note": "椎体（vertebral body）と椎間円板（intervertebral disc）の前面（anterior surface）を後頭骨（occipital bone）から仙骨（sacrum）まで縦に走る幅広い靱帯（ligament）。脊柱（vertebral column）が後ろへ反りすぎるのを防ぐ。"
         },
         {
           "id": "posterior-longitudinal-ligament", "ja": "後縦靱帯", "yomi": "こうじゅうじんたい", "en": "posterior longitudinal ligament", "la": "ligamentum longitudinale posterius",
           "parts": ["za:posterior longitudinal ligament"], "level": 1,
           "kanji": "後ろの、縦に走る靱帯",
           "etym": "posterior「後ろの」＋ longitudinal「縦の」",
-          "note": "椎体の後面（椎孔の前の壁）を縦に走る靱帯。脊柱の前屈をおさえ、髄核が真後ろへ飛び出すのを防ぐ。骨のように硬くなると脊髄を圧迫する（後縦靱帯骨化症）。"
+          "note": "椎体（vertebral body）の後面（posterior surface）（椎孔（vertebral foramen）の前の壁）を縦に走る靱帯（ligament）。脊柱（vertebral column）の前屈（flexion）をおさえ、髄核（nucleus pulposus）が真後ろへ飛び出すのを防ぐ。骨（bone）のように硬くなると脊髄（spinal cord）を圧迫する（後縦靱帯骨化症（ossification of posterior longitudinal ligament））。"
         },
         {
           "id": "ligamenta-flava", "ja": "黄色靱帯", "yomi": "おうしょくじんたい", "en": "ligamentum flavum", "enAlt": ["ligamenta flava"], "la": "ligamenta flava",
           "parts": ["za:ligamenta flava"], "level": 1,
           "kanji": "黄色い靱帯",
           "etym": "ligamentum「靱帯」＋ flavum「黄色い」（弾性線維が多く黄色く見える）",
-          "note": "上下の椎弓板の間をつなぐ、弾性線維の多い黄色い靱帯。椎孔の後ろの壁になる。前屈で伸び、戻るときに縮んで姿勢を戻す。腰椎穿刺では針がここを通るときに抵抗がある。"
+          "note": "上下の椎弓板（lamina of vertebral arch）の間をつなぐ、弾性線維（elastic fiber）の多い黄色い靱帯（ligament）。椎孔（vertebral foramen）の後ろの壁になる。前屈（flexion）で伸び、戻るときに縮んで姿勢を戻す。腰椎穿刺（lumbar puncture）では針がここを通るときに抵抗がある。"
         },
         {
           "id": "supraspinous-ligament", "ja": "棘上靱帯", "yomi": "きょくじょうじんたい", "en": "supraspinous ligament", "la": "ligamentum supraspinale",
           "parts": ["za:supraspinous ligament"], "level": 2,
           "kanji": "棘突起の上（先端）をつなぐ靱帯",
           "etym": "supra-「上」＋ spinous「棘突起の」",
-          "note": "棘突起の先を縦につなぐ丈夫な靱帯。頚では項靱帯に続く。前屈しすぎるのを防ぐ。"
+          "note": "棘突起（spinous process）の先を縦につなぐ丈夫な靱帯（ligament）。頚（neck）では項靱帯（nuchal ligament）に続く。前屈（flexion）しすぎるのを防ぐ。"
         },
         {
           "id": "interspinous-ligament", "ja": "棘間靱帯", "yomi": "きょくかんじんたい", "en": "interspinous ligament", "enAlt": ["interspinous ligaments"], "la": "ligamenta interspinalia",
           "parts": ["za:interspinous ligaments"], "level": 2,
           "kanji": "棘突起の間の靱帯",
           "etym": "inter-「間」＋ spinous「棘突起の」",
-          "note": "上下の棘突起の間を埋める薄い靱帯。後ろは棘上靱帯、前は黄色靱帯につながる。"
+          "note": "上下の棘突起（spinous process）の間を埋める薄い靱帯（ligament）。後ろは棘上靱帯（supraspinous ligament）、前は黄色靱帯（ligamentum flavum）につながる。"
         },
         {
           "id": "nuchal-ligament", "ja": "項靱帯", "yomi": "こうじんたい", "en": "nuchal ligament", "la": "ligamentum nuchae",
           "parts": ["za:nuchal ligament"], "level": 2,
           "kanji": "うなじの靱帯",
           "etym": "nuchal「うなじの」（アラビア語 nukhā＝脊髄 から）",
-          "note": "外後頭隆起から第7頚椎の棘突起まで、うなじの正中に張る三角形の膜のような靱帯。僧帽筋や頭板状筋の付着になる。四足の動物ではとても太く頭を支える。"
+          "note": "外後頭隆起（external occipital protuberance）から第7頚椎（seventh cervical vertebra）の棘突起（spinous process）まで、うなじ（nape）の正中（median）に張る三角形の膜（membrane）のような靱帯（ligament）。僧帽筋（trapezius）や頭板状筋（splenius capitis）の付着になる。四足の動物ではとても太く頭を支える。"
         },
         {
           "id": "intertransverse-ligaments", "ja": "横突間靱帯", "yomi": "おうとつかんじんたい", "en": "intertransverse ligaments", "la": "ligamenta intertransversaria",
           "parts": ["za:intertransverse ligaments"], "level": 3,
           "kanji": "横突起の間の靱帯",
           "etym": "inter-「間」＋ transverse「横突起の」",
-          "note": "上下の横突起の間をつなぐ靱帯。腰部で発達し、反対側への側屈をおさえる。"
+          "note": "上下の横突起（transverse process）の間をつなぐ靱帯（ligament）。腰部（lumbar region）で発達し、反対側（contralateral side）への側屈（lateral flexion）をおさえる。"
         },
         {
           "id": "radiate-ligament-of-head-of-rib", "ja": "放線状肋骨頭靱帯", "yomi": "ほうせんじょうろっこつとうじんたい", "en": "radiate ligament of head of rib", "la": "ligamentum capitis costae radiatum",
           "parts": ["za:radiate ligament of head of rib"], "level": 3,
           "kanji": "肋骨頭から放射状に広がる靱帯",
           "etym": "radiate「放射状の」＋ head of rib「肋骨頭」",
-          "note": "肋骨頭から上下の椎体と椎間円板へ扇形に広がる靱帯。肋骨頭関節を補強する。"
+          "note": "肋骨頭（head of rib）から上下の椎体（vertebral body）と椎間円板（intervertebral disc）へ扇形に広がる靱帯（ligament）。肋骨頭関節（joint of head of rib）を補強する。"
         },
         {
           "id": "costotransverse-ligament", "ja": "肋横突靱帯", "yomi": "ろくおうとつじんたい", "en": "costotransverse ligament", "la": "ligamentum costotransversarium",
           "parts": ["za:costotransverse ligament"], "level": 3,
           "kanji": "肋骨と横突起をつなぐ靱帯",
           "etym": "costo-「肋骨の」＋ transverse「横突起の」",
-          "note": "肋骨頚と同じ高さの胸椎の横突起をつなぐ靱帯。肋横突関節を補強する。"
+          "note": "肋骨頚（neck of rib）と同じ高さの胸椎（thoracic vertebrae）の横突起（transverse process）をつなぐ靱帯（ligament）。肋横突関節（costotransverse joint）を補強する。"
         }
       ]
     },
@@ -95,28 +95,28 @@
           "parts": ["za:external intercostal membrane"], "level": 3,
           "kanji": "肋骨の間の外側の膜",
           "etym": "external「外の」＋ intercostal「肋骨の間の」（inter-「間」＋ costa「肋骨」）＋ membrane「膜」",
-          "note": "肋軟骨の間（肋骨の前の部分）で、外肋間筋の代わりに張る膜。外肋間筋は前では肋軟骨の間まで届かず、この膜に続く。"
+          "note": "肋軟骨（costal cartilages）の間（肋骨（ribs）の前の部分）で、外肋間筋（external intercostal muscles）の代わりに張る膜（membrane）。外肋間筋は前では肋軟骨の間まで届かず、この膜に続く。"
         },
         {
           "id": "internal-intercostal-membrane", "ja": "内肋間膜", "yomi": "ないろっかんまく", "en": "internal intercostal membrane", "la": "membrana intercostalis interna",
           "parts": ["za:internal intercostal membrane"], "level": 3,
           "kanji": "肋骨の間の内側の膜",
           "etym": "internal「内の」＋ intercostal「肋骨の間の」＋ membrane「膜」",
-          "note": "肋骨角から脊柱まで（肋骨の後ろの部分）で、内肋間筋の代わりに張る膜。内肋間筋は後ろでは肋骨角までで、この膜に続く。"
+          "note": "肋骨角（angle of rib）から脊柱（vertebral column）まで（肋骨（ribs）の後ろの部分）で、内肋間筋（internal intercostal muscles）の代わりに張る膜（membrane）。内肋間筋は後ろでは肋骨角までで、この膜に続く。"
         },
         {
           "id": "intra-articular-ligament-of-head-of-rib", "ja": "関節内肋骨頭靱帯", "yomi": "かんせつないろっこつとうじんたい", "en": "intra-articular ligament of head of rib", "la": "ligamentum capitis costae intraarticulare",
           "parts": ["za:intra-articular ligament of head of rib*"], "level": 3, "xray": true,
           "kanji": "肋骨頭の関節の中の靱帯",
           "etym": "intra-articular「関節の中の」＋ head of rib「肋骨頭」",
-          "note": "肋骨頭の稜（上下の関節面の間）から椎間円板へ張り、肋骨頭関節を上下の2つの腔に分ける短い靱帯。1つの椎骨とだけ関節する第1・11・12肋骨には無い。"
+          "note": "肋骨頭（head of rib）の稜（上下の関節面（articular surface）の間）から椎間円板（intervertebral disc）へ張り、肋骨頭関節（joint of head of rib）を上下の2つの腔に分ける短い靱帯（ligament）。1つの椎骨（vertebra）とだけ関節（joint）する第1・11・12肋骨（first, eleventh and twelfth ribs）には無い。"
         },
         {
           "id": "sacrococcygeal-joint", "ja": "仙尾連結", "yomi": "せんびれんけつ", "en": "sacrococcygeal joint", "enAlt": ["sacrococcygeal symphysis"], "la": "junctura sacrococcygea",
           "parts": ["za:sacrococcygeal symphysis"], "level": 3, "check": true,
           "kanji": "仙骨と尾骨のつなぎ目",
           "etym": "sacro-「仙骨の」（ラテン語 os sacrum＝聖なる骨）＋ coccygeal「尾骨の」（ギリシャ語 kokkyx＝カッコウのくちばし）",
-          "note": "仙骨の尖と尾骨の間の線維軟骨の連結。少し動き、出産のときには尾骨が後ろへ押されて産道が広がる。"
+          "note": "仙骨（sacrum）の尖と尾骨（coccyx）の間の線維軟骨（fibrocartilage）の連結。少し動き、出産のときには尾骨が後ろへ押されて産道（birth canal）が広がる。"
         }
       ]
     },
@@ -130,98 +130,98 @@
           "parts": ["za:pubic symphysis", "za:interpubic disc", "za:superior pubic ligament", "za:inferior pubic ligament"], "level": 1,
           "kanji": "左右の恥骨の結合",
           "etym": "pubic「恥骨の」＋ symphysis「結合」（ギリシャ語 syn-「一緒に」＋ phyein「育つ」）",
-          "note": "左右の恥骨の結合面が、線維軟骨の恥骨間円板でつながったもの。ほとんど動かないが、妊娠の終わりにはホルモンでゆるむ。"
+          "note": "左右の恥骨（pubis）の結合面（symphysial surface）が、線維軟骨（fibrocartilage）の恥骨間円板（interpubic disc）でつながったもの。ほとんど動かないが、妊娠（pregnancy）の終わりにはホルモンでゆるむ。"
         },
         {
           "id": "sacrospinous-ligament", "ja": "仙棘靱帯", "yomi": "せんきょくじんたい", "en": "sacrospinous ligament", "la": "ligamentum sacrospinale",
           "parts": ["za:sacrospinous ligament"], "level": 1,
           "kanji": "仙骨と坐骨棘をつなぐ靱帯",
           "etym": "sacro-「仙骨の」＋ spinous「棘の（坐骨棘の）」",
-          "note": "仙骨・尾骨の外側縁から坐骨棘へ張る三角形の靱帯。仙結節靱帯とともに大坐骨切痕・小坐骨切痕を大坐骨孔・小坐骨孔に変える。"
+          "note": "仙骨（sacrum）・尾骨（coccyx）の外側縁（lateral border）から坐骨棘（ischial spine）へ張る三角形の靱帯（ligament）。仙結節靱帯（sacrotuberous ligament）とともに大坐骨切痕（greater sciatic notch）・小坐骨切痕（lesser sciatic notch）を大坐骨孔（greater sciatic foramen）・小坐骨孔（lesser sciatic foramen）に変える。"
         },
         {
           "id": "sacrotuberous-ligament", "ja": "仙結節靱帯", "yomi": "せんけっせつじんたい", "en": "sacrotuberous ligament", "la": "ligamentum sacrotuberale",
           "parts": ["za:sacrotuberous ligament"], "level": 1,
           "kanji": "仙骨と坐骨結節をつなぐ靱帯",
           "etym": "sacro-「仙骨の」＋ tuberous「結節の（坐骨結節の）」",
-          "note": "仙骨・腸骨の後ろから坐骨結節へ張る強い靱帯。仙骨の上部が前へ傾くのを防ぐ。大殿筋の一部の起始になる。"
+          "note": "仙骨（sacrum）・腸骨（ilium）の後ろから坐骨結節（ischial tuberosity）へ張る強い靱帯（ligament）。仙骨の上部が前へ傾くのを防ぐ。大殿筋（gluteus maximus）の一部の起始（origin）になる。"
         },
         {
           "id": "iliolumbar-ligament", "ja": "腸腰靱帯", "yomi": "ちょうようじんたい", "en": "iliolumbar ligament", "la": "ligamentum iliolumbale",
           "parts": ["za:iliolumbar ligament"], "level": 2,
           "kanji": "腸骨と腰椎をつなぐ靱帯",
           "etym": "ilio-「腸骨の」＋ lumbar「腰の」",
-          "note": "第4・5腰椎の横突起から腸骨稜の後部へ張る強い靱帯。腰椎が仙骨の上で前へずれるのを防ぐ。"
+          "note": "第4・5腰椎（fourth and fifth lumbar vertebrae）の横突起（transverse process）から腸骨稜（iliac crest）の後部（posterior part）へ張る強い靱帯（ligament）。腰椎（lumbar vertebrae）が仙骨（sacrum）の上で前へずれるのを防ぐ。"
         },
         {
           "id": "anterior-sacro-iliac-ligament", "ja": "前仙腸靱帯", "yomi": "ぜんせんちょうじんたい", "en": "anterior sacro-iliac ligament", "la": "ligamentum sacroiliacum anterius",
           "parts": ["za:anterior sacro-iliac ligament"], "level": 2,
           "kanji": "前の、仙骨と腸骨をつなぐ靱帯",
           "etym": "anterior「前の」＋ sacro-「仙骨の」＋ iliac「腸骨の」",
-          "note": "仙腸関節の前面をおおう薄い靱帯。仙腸関節は耳状面どうしの関節で、ほとんど動かない。"
+          "note": "仙腸関節（sacro-iliac joint）の前面（anterior surface）をおおう薄い靱帯（ligament）。仙腸関節は耳状面（auricular surface）どうしの関節（joint）で、ほとんど動かない。"
         },
         {
           "id": "posterior-sacro-iliac-ligament", "ja": "後仙腸靱帯", "yomi": "こうせんちょうじんたい", "en": "posterior sacro-iliac ligament", "la": "ligamentum sacroiliacum posterius",
           "parts": ["za:posterior sacro-iliac ligament"], "level": 2,
           "kanji": "後ろの、仙骨と腸骨をつなぐ靱帯",
           "etym": "posterior「後ろの」＋ sacro-「仙骨の」＋ iliac「腸骨の」",
-          "note": "仙骨の後面と上後腸骨棘の間に張る靱帯。上半身の重さで仙骨が沈むのを、深くの骨間仙腸靱帯とともにつり下げて支える。"
+          "note": "仙骨（sacrum）の後面（posterior surface）と上後腸骨棘（posterior superior iliac spine）の間に張る靱帯（ligament）。上半身の重さで仙骨が沈むのを、深くの骨間仙腸靱帯（interosseous sacro-iliac ligament）とともにつり下げて支える。"
         },
         {
           "id": "interosseous-sacro-iliac-ligament", "ja": "骨間仙腸靱帯", "yomi": "こっかんせんちょうじんたい", "en": "interosseous sacro-iliac ligament", "la": "ligamentum sacroiliacum interosseum",
           "parts": ["za:interosseous sacro-iliac ligament"], "level": 3,
           "kanji": "仙骨と腸骨の間をつなぐ靱帯",
           "etym": "interosseous「骨の間の」＋ sacro-iliac「仙腸の」",
-          "note": "仙骨粗面と腸骨粗面の間を埋める、人体で最も強い靱帯の一つ。仙腸関節の後ろ上を固める。"
+          "note": "仙骨粗面（sacral tuberosity）と腸骨粗面（iliac tuberosity）の間を埋める、人体で最も強い靱帯（ligament）の一つ。仙腸関節（sacro-iliac joint）の後ろ上を固める。"
         },
         {
           "id": "obturator-membrane", "ja": "閉鎖膜", "yomi": "へいさまく", "en": "obturator membrane", "la": "membrana obturatoria",
           "parts": ["za:obturator membrane"], "level": 2,
           "kanji": "閉鎖孔をふさぐ膜",
           "etym": "obturator「ふさぐもの」（ラテン語 obturare＝ふさぐ）＋ membrane「膜」",
-          "note": "寛骨の閉鎖孔をふさぐ線維の膜。上の端に閉鎖管のすき間が残り、閉鎖動脈・閉鎖神経が通る。内面と外面から内閉鎖筋・外閉鎖筋が起こる。"
+          "note": "寛骨（hip bone）の閉鎖孔（obturator foramen）をふさぐ線維（fiber）の膜（membrane）。上の端に閉鎖管（obturator canal）のすき間が残り、閉鎖動脈（obturator artery）・閉鎖神経（obturator nerve）が通る。内面（internal surface）と外面（external surface）から内閉鎖筋（obturator internus）・外閉鎖筋（obturator externus）が起こる。"
         },
         {
           "id": "temporomandibular-joint", "ja": "顎関節", "yomi": "がくかんせつ", "en": "temporomandibular joint", "la": "articulatio temporomandibularis",
           "parts": ["za:articular capsule of temporomandibular joint"], "level": 1, "xray": true, "veil": true,
           "kanji": "あごの関節",
           "etym": "temporo-「側頭骨の」＋ mandibular「下顎骨の」",
-          "note": "側頭骨の下顎窩と下顎頭の間の関節。中の関節円板で上下2つの部屋に分かれ、口を開くとき下顎頭が蝶番のように回りながら前へすべる。"
+          "note": "側頭骨（temporal bone）の下顎窩（mandibular fossa）と下顎頭（head of mandible）の間の関節（joint）。中の関節円板（articular disc）で上下2つの部屋に分かれ、口を開くとき下顎頭が蝶番のように回りながら前へすべる。"
         },
         {
           "id": "articular-disc-of-temporomandibular-joint", "ja": "関節円板（顎関節）", "yomi": "かんせつえんばん", "en": "articular disc of temporomandibular joint", "la": "discus articularis articulationis temporomandibularis",
           "parts": ["za:articular disc of temporomandibular joint"], "level": 2,
           "kanji": "関節の間にはさまる円い板",
           "etym": "articular「関節の」＋ disc「円板」",
-          "note": "下顎頭と下顎窩の間にはさまる線維軟骨の板。前に外側翼突筋が付き、口を開くと下顎頭と一緒に前へ動く。ずれると口を開くときに音が鳴る（顎関節症）。"
+          "note": "下顎頭（head of mandible）と下顎窩（mandibular fossa）の間にはさまる線維軟骨（fibrocartilage）の板。前に外側翼突筋（lateral pterygoid）が付き、口を開くと下顎頭と一緒に前へ動く。ずれると口を開くときに音が鳴る（顎関節症（temporomandibular disorder））。"
         },
         {
           "id": "lateral-ligament-of-temporomandibular-joint", "ja": "外側靱帯（顎関節）", "yomi": "がいそくじんたい", "en": "lateral ligament of temporomandibular joint", "enAlt": ["lateral temporomandibular ligament"], "la": "ligamentum laterale articulationis temporomandibularis",
           "parts": ["za:lateral temporomandibular ligament"], "level": 2,
           "kanji": "顎関節の外側の靱帯",
           "etym": "lateral「外側の」＋ ligament「靱帯」",
-          "note": "頬骨弓の根もとから下顎頭の頚へ斜め後ろに張る。顎関節の外側を補強し、下顎頭が後ろへずれるのを防ぐ。"
+          "note": "頬骨弓（zygomatic arch）の根もとから下顎頭（head of mandible）の頚（neck）へ斜め後ろに張る。顎関節（temporomandibular joint）の外側（lateral）を補強し、下顎頭が後ろへずれるのを防ぐ。"
         },
         {
           "id": "stylomandibular-ligament", "ja": "茎突下顎靱帯", "yomi": "けいとつかがくじんたい", "en": "stylomandibular ligament", "la": "ligamentum stylomandibulare",
           "parts": ["za:stylomandibular ligament"], "level": 3,
           "kanji": "茎状突起と下顎骨をつなぐ靱帯",
           "etym": "stylo-「茎状突起の」（ギリシャ語 stylos＝柱）＋ mandibular「下顎骨の」",
-          "note": "側頭骨の茎状突起から下顎角の後ろへ張る。耳下腺と顎下腺の間を分ける。"
+          "note": "側頭骨（temporal bone）の茎状突起（styloid process）から下顎角（angle of mandible）の後ろへ張る。耳下腺（parotid gland）と顎下腺（submandibular gland）の間を分ける。"
         },
         {
           "id": "sphenomandibular-ligament", "ja": "蝶下顎靱帯", "yomi": "ちょうかがくじんたい", "en": "sphenomandibular ligament", "la": "ligamentum sphenomandibulare",
           "parts": ["za:sphenomandibular ligament"], "level": 3,
           "kanji": "蝶形骨と下顎骨をつなぐ靱帯",
           "etym": "spheno-「蝶形骨の」＋ mandibular「下顎骨の」",
-          "note": "蝶形骨棘から下顎孔のふち（下顎小舌）へ張る。下歯槽神経ブロックの針はこの靱帯のそばを通る。"
+          "note": "蝶形骨棘（spine of sphenoid）から下顎孔（mandibular foramen）のふち（下顎小舌（lingula of mandible））へ張る。下歯槽神経ブロック（inferior alveolar nerve block）の針はこの靱帯（ligament）のそばを通る。"
         },
         {
           "id": "stylohyoid-ligament", "ja": "茎突舌骨靱帯", "yomi": "けいとつぜっこつじんたい", "en": "stylohyoid ligament", "la": "ligamentum stylohyoideum",
           "parts": ["stylohyoid ligament"], "level": 3,
           "kanji": "茎状突起と舌骨をつなぐ靱帯",
           "etym": "stylo-「茎状突起の」＋ hyoid「舌骨の」",
-          "note": "側頭骨の茎状突起の先から舌骨の小角へ張る細い靱帯。骨のように硬くなることがある（イーグル症候群）。"
+          "note": "側頭骨（temporal bone）の茎状突起（styloid process）の先から舌骨（hyoid bone）の小角（lesser horn）へ張る細い靱帯（ligament）。骨（bone）のように硬くなることがある（イーグル症候群（Eagle syndrome））。"
         }
       ]
     },
@@ -230,8 +230,8 @@
       "title": "脊柱・肋骨・骨盤の関節（向き合う関節面）",
       "group": "体幹と頭",
       "intro": [
-        "関節（滑膜性の連結）は、関節包に包まれた関節腔をはさんで、2つの骨の関節面が向き合う連結。晒した骨では関節包・関節軟骨・靱帯はなくなっているので、どの骨のどの面が向き合うかで関節を理解する。3Dでは向き合う関節面を橙色で示す。",
-        "骨の連結には、線維性の連結（縫合・靱帯結合）、軟骨性の連結（椎間円板・恥骨結合）、滑膜性の連結（関節）の3つがある。頭の回旋は環軸関節で、うなずきは環椎後頭関節で行い、脊柱の大きな動きは椎骨どうしの小さな動きの合計になる。"
+        "関節（joint）（滑膜性（synovial）の連結）は、関節包（joint capsule）に包まれた関節腔（joint cavity）をはさんで、2つの骨（bone）の関節面（articular surface）が向き合う連結。晒した骨では関節包・関節軟骨（articular cartilage）・靱帯（ligament）はなくなっているので、どの骨のどの面が向き合うかで関節を理解する。3Dでは向き合う関節面を橙色で示す。",
+        "骨の連結には、線維性（fibrous）の連結（縫合（suture）・靱帯結合（syndesmosis））、軟骨性（cartilaginous）の連結（椎間円板（intervertebral disc）・恥骨結合（pubic symphysis））、滑膜性の連結（関節）の3つがある。頭の回旋（rotation）は環軸関節（atlanto-axial joint）で、うなずきは環椎後頭関節（atlanto-occipital joint）で行い、脊柱（vertebral column）の大きな動きは椎骨（vertebra）どうしの小さな動きの合計になる。"
       ],
       "terms": [
         {
@@ -239,7 +239,7 @@
           "level": 2,
           "kanji": "環椎と後頭骨の関節",
           "etym": "atlanto-「環椎の」＋ occipital「後頭骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "後頭骨の後頭顆（関節頭）と環椎の上関節窩（関節窩）の間の左右1対の関節（顆状関節）。左右の関節の長軸は前で近づく。頭をうなずくように前後に曲げる（約10°）と少し横に傾ける（約7°）だけで、頭を回すことはできない（回すのは環軸関節）。",
+          "note": "後頭骨（occipital bone）の後頭顆（occipital condyle）（関節頭（articular head））と環椎（atlas）の上関節窩（superior articular facet）（関節窩（glenoid cavity））の間の左右1対の関節（joint）（顆状関節（condylar joint））。左右の関節の長軸は前で近づく。頭をうなずくように前後に曲げる（約10°）と少し横に傾ける（約7°）だけで、頭を回すことはできない（回すのは環軸関節（atlanto-axial joint））。",
           "region": {"bounds": ["occipital-condyle", "superior-articular-facet-of-atlas"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0199, 1.4794, 0.0686], "from": [-1, -0.2, 0.5], "size": 0.06}, "prompt": "後頭顆と環椎の上関節窩がつくる関節は？"}
         },
         {
@@ -247,7 +247,7 @@
           "level": 2,
           "kanji": "正中にある環椎と軸椎の関節",
           "etym": "atlanto-「環椎の」＋ axial「軸椎の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "軸椎の歯突起と、前は環椎の前弓の後面（歯突起窩）、後ろは環椎横靱帯の間の関節（車軸関節）。外側環軸関節と一緒に、頭をのせた環椎を歯突起のまわりに左右へ約30°ずつ回す。椎間円板は無い。",
+          "note": "軸椎（axis）の歯突起（dens）と、前は環椎（atlas）の前弓（anterior arch）の後面（posterior surface）（歯突起窩（facet for dens））、後ろは環椎横靱帯（transverse ligament of atlas）の間の関節（joint）（車軸関節（pivot joint））。外側環軸関節（lateral atlanto-axial joint）と一緒に、頭をのせた環椎を歯突起のまわりに左右へ約30°ずつ回す。椎間円板（intervertebral disc）は無い。",
           "region": {"bounds": ["dens-of-axis", "facet-for-dens"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0024, 1.4725, 0.0787], "from": [-0.5, 0.6, 1], "size": 0.05}, "prompt": "歯突起と環椎の歯突起窩がつくる関節は？"}
         },
         {
@@ -255,7 +255,7 @@
           "level": 2,
           "kanji": "外側にある環椎と軸椎の関節",
           "etym": "atlanto-「環椎の」＋ axial「軸椎の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "環椎の下関節窩と軸椎の上関節面の間の左右1対の関節（平面関節）。頭を回すとき、環椎がこの面の上をすべる。左右の環椎後頭関節・正中環軸関節とまとめて頭関節ともいう。",
+          "note": "環椎（atlas）の下関節窩（inferior articular facet）と軸椎（axis）の上関節面（superior articular surface）の間の左右1対の関節（joint）（平面関節（plane joint））。頭を回すとき、環椎がこの面の上をすべる。左右の環椎後頭関節（atlanto-occipital joint）・正中環軸関節（median atlanto-axial joint）とまとめて頭関節（craniovertebral joints）ともいう。",
           "region": {"bounds": ["inferior-articular-facet-of-atlas", "superior-articular-facet-of-axis"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0184, 1.4629, 0.0758], "from": [-1, 0, 0.4], "size": 0.05}, "prompt": "環椎の下関節窩と軸椎の上関節面がつくる関節は？"}
         },
         {
@@ -263,7 +263,7 @@
           "level": 2,
           "kanji": "椎骨の間の関節",
           "etym": "zygapophysis ← ギリシャ語 zygon「くびき」＋ apophysis「突起」（関節突起）。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "上の椎骨の下関節突起と、下の椎骨の上関節突起の関節面の間の関節（平面関節）。関節面の傾きが脊柱の動きを決める: 頚部では水平に近く（後屈と回旋が大きい）、胸部では前頭面に近く立ち（側屈しやすい）、腰部では矢状面に近く立つ（回旋がほとんどできない）。3Dでは第3腰椎の上関節突起と下関節突起を示す。",
+          "note": "上の椎骨（vertebra）の下関節突起（inferior articular process）と、下の椎骨の上関節突起（superior articular process）の関節面（articular surface）の間の関節（joint）（平面関節（plane joint））。関節面の傾きが脊柱（vertebral column）の動きを決める: 頚部（neck）では水平に近く（後屈（extension）と回旋（rotation）が大きい）、胸部（thorax）では前頭面（frontal plane）に近く立ち（側屈（lateral flexion）しやすい）、腰部（lumbar region）では矢状面（sagittal plane）に近く立つ（回旋がほとんどできない）。3Dでは第3腰椎（third lumbar vertebra）の上関節突起と下関節突起を示す。",
           "region": {"bounds": ["superior-articular-process", "inferior-articular-process"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0159, 0.9894, 0.0614], "from": [-1, 0, -0.7], "size": 0.08}, "prompt": "上下の椎骨の関節突起どうしがつくる関節は？"}
         },
         {
@@ -271,7 +271,7 @@
           "level": 2,
           "kanji": "肋骨頭の関節",
           "etym": "head of rib「肋骨の頭」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "肋骨頭と胸椎の椎体の肋骨窩の間の関節。第2〜第10肋骨では、くさび形の肋骨頭が上下2つの椎体の肋骨窩（上の椎骨の下肋骨窩と同じ番号の椎骨の上肋骨窩）にまたがってはまる。第1・第11・第12肋骨は1つの椎体だけと関節する。",
+          "note": "肋骨頭（head of rib）と胸椎（thoracic vertebrae）の椎体（vertebral body）の肋骨窩（costal facet）の間の関節（joint）。第2〜第10肋骨（second to tenth ribs）では、くさび形の肋骨頭が上下2つの椎体の肋骨窩（上の椎骨（vertebra）の下肋骨窩（inferior costal facet）と同じ番号の椎骨の上肋骨窩（superior costal facet））にまたがってはまる。第1・第11・第12肋骨（first, eleventh and twelfth ribs）は1つの椎体だけと関節する。",
           "region": {"bounds": ["head-of-rib", "costal-facet"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0148, 1.2504, 0.0359], "from": [-1, 0.3, 0.6], "size": 0.06}, "prompt": "肋骨頭と胸椎の肋骨窩がつくる関節は？"}
         },
         {
@@ -279,7 +279,7 @@
           "level": 2,
           "kanji": "肋骨と横突起の関節",
           "etym": "costo-「肋骨の」＋ transverse「横突起の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "肋骨結節の関節面と、同じ番号の胸椎の横突肋骨窩の間の関節。第11・第12肋骨には無い（線維性の連結になる）。肋骨頭関節とあわせて、肋骨頚を軸に肋骨がわずかに回ると、肋骨の前の端が大きく上下して胸郭が広がる（呼吸）。",
+          "note": "肋骨結節（tubercle of rib）の関節面（articular surface）と、同じ番号の胸椎（thoracic vertebrae）の横突肋骨窩（transverse costal facet）の間の関節（joint）。第11・第12肋骨（eleventh and twelfth ribs）には無い（線維性（fibrous）の連結になる）。肋骨頭関節（joint of head of rib）とあわせて、肋骨頚（neck of rib）を軸に肋骨（ribs）がわずかに回ると、肋骨の前の端が大きく上下して胸郭（thoracic cage）が広がる（呼吸（respiration））。",
           "region": {"bounds": ["tubercle-of-rib", "transverse-costal-facet"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0364, 1.2579, 0.0142], "from": [-0.6, 0.4, -1], "size": 0.06}, "prompt": "肋骨結節と胸椎の横突肋骨窩がつくる関節は？"}
         },
         {
@@ -287,7 +287,7 @@
           "level": 2,
           "kanji": "胸骨と肋骨（肋軟骨）の関節",
           "etym": "sterno-「胸骨の」＋ costal「肋骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "第2〜第7肋軟骨と胸骨の肋骨切痕の間の関節。第1肋軟骨は関節腔なしに胸骨柄と直接つながる（軟骨性の連結）。第2肋軟骨は胸骨柄と胸骨体の境（胸骨角）に関節する。第8〜第10肋軟骨は胸骨に届かず、すぐ上の肋軟骨と関節する（軟骨間関節）。",
+          "note": "第2〜第7肋軟骨（second to seventh costal cartilages）と胸骨（sternum）の肋骨切痕（costal notches）の間の関節（joint）。第1肋軟骨（first costal cartilage）は関節腔（joint cavity）なしに胸骨柄（manubrium of sternum）と直接つながる（軟骨性（cartilaginous）の連結）。第2肋軟骨（second costal cartilage）は胸骨柄と胸骨体（body of sternum）の境（胸骨角（sternal angle））に関節する。第8〜第10肋軟骨（eighth to tenth costal cartilages）は胸骨に届かず、すぐ上の肋軟骨（costal cartilages）と関節する（軟骨間関節（interchondral joints））。",
           "region": {"bounds": ["costal-notches"], "contents": ["costal-cartilages"], "boundsLabel": "向き合う関節面", "contentsLabel": "関節する軟骨", "view": {"target": [-0.0219, 1.2574, 0.1755], "from": [-0.4, 0, 1], "size": 0.12}, "prompt": "胸骨の肋骨切痕と肋軟骨がつくる関節は？"}
         },
         {
@@ -295,7 +295,7 @@
           "level": 1,
           "kanji": "仙骨と腸骨の関節",
           "etym": "sacro-「仙骨の」＋ iliac「腸骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "仙骨の耳状面と腸骨の耳状面の間の関節。両面はでこぼこでぴったりかみ合い、強い靱帯（前・後・骨間仙腸靱帯）で固められるので、ほとんど動かない。関節面をおおう軟骨は大部分が線維軟骨で、年とともに関節腔は狭くなる。脊柱にかかる体重を、ここから寛骨・下肢へ伝える。",
+          "note": "仙骨（sacrum）の耳状面（auricular surface）と腸骨（ilium）の耳状面の間の関節（joint）。両面はでこぼこでぴったりかみ合い、強い靱帯（ligament）（前・後・骨間仙腸靱帯（interosseous sacro-iliac ligament））で固められるので、ほとんど動かない。関節面（articular surface）をおおう軟骨（cartilage）は大部分が線維軟骨（fibrocartilage）で、年とともに関節腔（joint cavity）は狭くなる。脊柱（vertebral column）にかかる体重を、ここから寛骨（hip bone）・下肢（lower limb）へ伝える。",
           "region": {"bounds": ["auricular-surface-of-sacrum", "auricular-surface-of-ilium"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0488, 0.8889, 0.0416], "from": [-0.4, 0.2, 1], "size": 0.1}, "prompt": "仙骨と腸骨の耳状面がつくる関節は？"}
         }
       ]
@@ -305,9 +305,9 @@
       "title": "肩・肘・手首の関節と靱帯",
       "group": "上肢",
       "intro": [
-        "骨と骨のつながりを連結といい、よく動くつながりを関節（滑膜性の連結）という。関節は関節包に包まれ、中は滑液で満たされる。",
-        "関節包の外や中には靱帯があり、骨どうしをつなぎとめて動きすぎを防ぐ。関節の形で動き方が決まる（球関節＝肩・股、蝶番関節＝腕尺関節、車軸関節＝上橈尺関節など）。",
-        "この系統では骨を半透明で添えて示す。関節包はふだんは薄く見せ、中の靱帯や関節唇が見えるようにしている。"
+        "骨（bone）と骨のつながりを連結といい、よく動くつながりを関節（joint）（滑膜性（synovial）の連結）という。関節は関節包（joint capsule）に包まれ、中は滑液（synovial fluid）で満たされる。",
+        "関節包の外や中には靱帯（ligament）があり、骨どうしをつなぎとめて動きすぎを防ぐ。関節の形で動き方が決まる（球関節（ball-and-socket joint）＝肩（shoulder）・股、蝶番関節（hinge joint）＝腕尺関節（humero-ulnar joint）、車軸関節（pivot joint）＝上橈尺関節（proximal radio-ulnar joint）など）。",
+        "この系統では骨を半透明で添えて示す。関節包はふだんは薄く見せ、中の靱帯や関節唇（labrum）が見えるようにしている。"
       ],
       "terms": [
         {
@@ -315,105 +315,105 @@
           "parts": ["za:articular capsule of glenohumeral joint"], "level": 1, "xray": true, "veil": true,
           "kanji": "肩の関節",
           "etym": "shoulder「肩」。glenohumeral joint＝glenoid（関節窩）＋humerus（上腕骨）の関節",
-          "note": "肩甲骨の関節窩と上腕骨頭の球関節。関節窩が浅いので最もよく動くが、最も脱臼しやすい（多くは前下方へ）。"
+          "note": "肩甲骨（scapula）の関節窩（glenoid cavity）と上腕骨頭（head of humerus）の球関節（ball-and-socket joint）。関節窩が浅いので最もよく動くが、最も脱臼（dislocation）しやすい（多くは前下方（anteroinferior）へ）。"
         },
         {
           "id": "glenoid-labrum", "ja": "関節唇（肩関節）", "yomi": "かんせつしん", "en": "glenoid labrum", "la": "labrum glenoidale",
           "parts": ["za:glenoid labrum"], "level": 2,
           "kanji": "関節窩のふちの唇のような線維軟骨",
           "etym": "labrum「唇」＋ glenoid「浅いくぼみの（関節窩の）」",
-          "note": "肩甲骨の関節窩のふちを取り巻く線維軟骨の輪。浅い関節窩を深くして上腕骨頭を受ける。投球動作などで傷む（SLAP損傷）。"
+          "note": "肩甲骨（scapula）の関節窩（glenoid cavity）のふちを取り巻く線維軟骨（fibrocartilage）の輪。浅い関節窩を深くして上腕骨頭（head of humerus）を受ける。投球動作などで傷む（SLAP損傷（SLAP lesion））。"
         },
         {
           "id": "coracohumeral-ligament", "ja": "烏口上腕靱帯", "yomi": "うこうじょうわんじんたい", "en": "coracohumeral ligament", "la": "ligamentum coracohumerale",
           "parts": ["za:coracohumeral ligament"], "level": 2,
           "kanji": "烏口突起と上腕骨をつなぐ靱帯",
           "etym": "coraco-「烏口突起の」（ギリシャ語 korax＝カラス）＋ humeral「上腕骨の」",
-          "note": "烏口突起の根もとから上腕骨の大結節・小結節へ張り、関節包の上を補強する。腕が下へ抜けるのを防ぐ。"
+          "note": "烏口突起（coracoid process）の根もとから上腕骨（humerus）の大結節（greater tubercle）・小結節（lesser tubercle）へ張り、関節包（joint capsule）の上を補強する。腕（arm）が下へ抜けるのを防ぐ。"
         },
         {
           "id": "glenohumeral-ligaments", "ja": "関節上腕靱帯", "yomi": "かんせつじょうわんじんたい", "en": "glenohumeral ligaments", "la": "ligamenta glenohumeralia",
           "parts": ["za:superior glenohumeral ligament", "za:middle glenohumeral ligament", "za:inferior glenohumeral ligament"], "level": 2,
           "kanji": "関節窩と上腕骨をつなぐ靱帯",
           "etym": "gleno-「関節窩の」＋ humeral「上腕骨の」",
-          "note": "肩関節包の前面が厚くなった上・中・下の3本。肩関節の前を補強し、下関節上腕靱帯は腕を上げたときの前方脱臼を防ぐ。"
+          "note": "肩関節包（shoulder joint capsule）の前面（anterior surface）が厚くなった上・中・下の3本。肩関節（shoulder joint）の前を補強し、下関節上腕靱帯（inferior glenohumeral ligament）は腕（arm）を上げたときの前方脱臼（anterior dislocation）を防ぐ。"
         },
         {
           "id": "coracoclavicular-ligament", "ja": "烏口鎖骨靱帯", "yomi": "うこうさこつじんたい", "en": "coracoclavicular ligament", "la": "ligamentum coracoclaviculare",
           "parts": ["za:conoid ligament", "za:trapezoid ligament"], "level": 1,
           "kanji": "烏口突起と鎖骨をつなぐ靱帯",
           "etym": "coraco-「烏口突起の」＋ clavicular「鎖骨の」",
-          "note": "烏口突起から鎖骨の下面へ張る強い靱帯。内側の円錐靱帯と外側の菱形靱帯からなる。肩鎖関節の脱臼でこの靱帯まで切れると鎖骨の外端が大きく浮き上がる。"
+          "note": "烏口突起（coracoid process）から鎖骨（clavicle）の下面（inferior surface）へ張る強い靱帯（ligament）。内側（medial）の円錐靱帯（conoid ligament）と外側（lateral）の菱形靱帯（trapezoid ligament）からなる。肩鎖関節（acromioclavicular joint）の脱臼（dislocation）でこの靱帯まで切れると鎖骨の外端（lateral end）が大きく浮き上がる。"
         },
         {
           "id": "acromioclavicular-joint", "ja": "肩鎖関節", "yomi": "けんさかんせつ", "en": "acromioclavicular joint", "la": "articulatio acromioclavicularis",
           "parts": ["za:articular capsule of acromioclavicular joint", "za:acromioclavicular ligament", "za:articular disc of acromioclavicular joint"], "level": 2,
           "kanji": "肩峰と鎖骨の関節",
           "etym": "acromio-「肩峰の」＋ clavicular「鎖骨の」",
-          "note": "鎖骨の外端（肩峰端）と肩甲骨の肩峰の間の平面関節。上を肩鎖靱帯が補強する。転倒して肩を打つと脱臼しやすい。"
+          "note": "鎖骨（clavicle）の外端（lateral end）（肩峰端（acromial end））と肩甲骨（scapula）の肩峰（acromion）の間の平面関節（plane joint）。上を肩鎖靱帯（acromioclavicular ligament）が補強する。転倒して肩（shoulder）を打つと脱臼（dislocation）しやすい。"
         },
         {
           "id": "sternoclavicular-joint", "ja": "胸鎖関節", "yomi": "きょうさかんせつ", "en": "sternoclavicular joint", "la": "articulatio sternoclavicularis",
           "parts": ["za:articular capsule of sternoclavicular joint", "za:anterior sternoclavicular ligament", "za:posterior sternoclavicular ligament", "za:articular disc of sternoclavicular joint"], "level": 1,
           "kanji": "胸骨と鎖骨の関節",
           "etym": "sterno-「胸骨の」＋ clavicular「鎖骨の」",
-          "note": "鎖骨の内端と胸骨柄の鎖骨切痕の間の関節。中に関節円板がある。上肢と体幹をつなぐ唯一の関節。"
+          "note": "鎖骨（clavicle）の内端（medial end）と胸骨柄（manubrium of sternum）の鎖骨切痕（clavicular notch）の間の関節（joint）。中に関節円板（articular disc）がある。上肢（upper limb）と体幹（trunk）をつなぐ唯一の関節。"
         },
         {
           "id": "interclavicular-ligament", "ja": "鎖骨間靱帯", "yomi": "さこつかんじんたい", "en": "interclavicular ligament", "la": "ligamentum interclaviculare",
           "parts": ["za:interclavicular ligament"], "level": 3,
           "kanji": "左右の鎖骨の間の靱帯",
           "etym": "inter-「間」＋ clavicular「鎖骨の」",
-          "note": "頚切痕の上で左右の鎖骨の内端をつなぐ靱帯。胸鎖関節の上を補強する。"
+          "note": "頚切痕（jugular notch）の上で左右の鎖骨（clavicle）の内端（medial end）をつなぐ靱帯（ligament）。胸鎖関節（sternoclavicular joint）の上を補強する。"
         },
         {
           "id": "elbow-joint", "ja": "肘関節", "yomi": "ちゅうかんせつ", "en": "elbow joint", "la": "articulatio cubiti",
           "parts": ["za:articular capsule of elbow joint"], "level": 1, "xray": true, "veil": true,
           "kanji": "肘の関節",
           "etym": "elbow「肘」。cubitus（ラテン語）＝肘",
-          "note": "上腕骨・尺骨・橈骨の3つの骨の関節（腕尺関節・腕橈関節・上橈尺関節）が1つの関節包に包まれた複関節。屈曲・伸展と、前腕の回内・回外を行う。"
+          "note": "上腕骨（humerus）・尺骨（ulna）・橈骨（radius）の3つの骨（bone）の関節（joint）（腕尺関節（humero-ulnar joint）・腕橈関節（humeroradial joint）・上橈尺関節（proximal radio-ulnar joint））が1つの関節包（joint capsule）に包まれた複関節（compound joint）。屈曲（flexion）・伸展（extension）と、前腕（forearm）の回内（pronation）・回外（supination）を行う。"
         },
         {
           "id": "ulnar-collateral-ligament", "ja": "尺側側副靱帯", "yomi": "しゃくそくそくふくじんたい", "en": "ulnar collateral ligament", "la": "ligamentum collaterale ulnare",
           "parts": ["za:ulnar collateral ligament"], "level": 1,
           "kanji": "尺骨側（内側）の、わきを補う靱帯",
           "etym": "ulnar「尺骨の」＋ collateral「わきの・並んだ」",
-          "note": "上腕骨の内側上顆から尺骨の鈎状突起・肘頭へ扇形に張る。肘の内側を補強し、外反を防ぐ。投球で傷みやすい（野球肘）。内側側副靱帯ともいう。"
+          "note": "上腕骨（humerus）の内側上顆（medial epicondyle）から尺骨（ulna）の鈎状突起（coronoid process of ulna）・肘頭（olecranon）へ扇形に張る。肘（elbow）の内側（medial）を補強し、外反（eversion）を防ぐ。投球で傷みやすい（野球肘（baseball elbow））。内側側副靱帯（medial collateral ligament）ともいう。"
         },
         {
           "id": "radial-collateral-ligament", "ja": "橈側側副靱帯", "yomi": "とうそくそくふくじんたい", "en": "radial collateral ligament", "la": "ligamentum collaterale radiale",
           "parts": ["za:radial collateral ligament"], "level": 1,
           "kanji": "橈骨側（外側）の、わきを補う靱帯",
           "etym": "radial「橈骨の」＋ collateral「わきの」",
-          "note": "上腕骨の外側上顆から橈骨輪状靱帯へ張り、肘の外側を補強する。外側側副靱帯ともいう。"
+          "note": "上腕骨（humerus）の外側上顆（lateral epicondyle）から橈骨輪状靱帯（annular ligament of radius）へ張り、肘（elbow）の外側（lateral）を補強する。外側側副靱帯（lateral collateral ligament）ともいう。"
         },
         {
           "id": "annular-ligament-of-radius", "ja": "橈骨輪状靱帯", "yomi": "とうこつりんじょうじんたい", "en": "annular ligament of radius", "la": "ligamentum anulare radii",
           "parts": ["za:annular ligament of radius"], "level": 1,
           "kanji": "橈骨頭を輪のように囲む靱帯",
           "etym": "annular「輪の」（ラテン語 anulus＝小さな輪）",
-          "note": "尺骨の橈骨切痕の前後のふちに付き、橈骨頭を輪のように囲んで上橈尺関節をつくる。幼児の腕を急に引くと橈骨頭がこの輪から外れかける（肘内障）。"
+          "note": "尺骨（ulna）の橈骨切痕（radial notch）の前後のふちに付き、橈骨頭（head of radius）を輪のように囲んで上橈尺関節（proximal radio-ulnar joint）をつくる。幼児の腕（arm）を急に引くと橈骨頭がこの輪から外れかける（肘内障（pulled elbow））。"
         },
         {
           "id": "interosseous-membrane-of-forearm", "ja": "前腕骨間膜", "yomi": "ぜんわんこっかんまく", "en": "interosseous membrane of forearm", "la": "membrana interossea antebrachii",
           "parts": ["interosseous membrane of forearm"], "level": 2,
           "kanji": "前腕の骨の間の膜",
           "etym": "inter-「間」＋ osseous「骨の」＋ membrane「膜」",
-          "note": "橈骨と尺骨の骨間縁の間に張る丈夫な膜。2本の骨をつなぎ、手から橈骨へ伝わった力を尺骨へ分ける。前腕の屈筋・伸筋の起始にもなる。"
+          "note": "橈骨（radius）と尺骨（ulna）の骨間縁（interosseous border）の間に張る丈夫な膜（membrane）。2本の骨（bone）をつなぎ、手から橈骨へ伝わった力を尺骨へ分ける。前腕（forearm）の屈筋（flexor）・伸筋（extensor）の起始（origin）にもなる。"
         },
         {
           "id": "radiocarpal-joint", "ja": "橈骨手根関節", "yomi": "とうこつしゅこんかんせつ", "en": "radiocarpal joint", "enAlt": ["wrist joint"], "la": "articulatio radiocarpalis",
           "parts": ["za:articular capsule of radiocarpal joint"], "level": 1, "xray": true, "veil": true,
           "kanji": "橈骨と手根骨の関節",
           "etym": "radio-「橈骨の」＋ carpal「手根の」（ギリシャ語 karpos＝手首）",
-          "note": "橈骨（と関節円板）と、舟状骨・月状骨・三角骨の間の楕円関節。手首の屈曲・伸展（掌屈・背屈）と橈屈・尺屈を行う。いわゆる手関節。"
+          "note": "橈骨（radius）（と関節円板（articular disc））と、舟状骨（scaphoid）・月状骨（lunate）・三角骨（triquetrum）の間の楕円関節（ellipsoid joint）。手首（wrist）の屈曲（flexion）・伸展（extension）（掌屈（palmar flexion）・背屈（dorsiflexion））と橈屈（radial deviation）・尺屈（ulnar deviation）を行う。いわゆる手関節（wrist joint）。"
         },
         {
           "id": "articular-disc-of-distal-radio-ulnar-joint", "ja": "関節円板（下橈尺関節）", "yomi": "かんせつえんばん", "en": "articular disc of distal radio-ulnar joint", "enAlt": ["triangular fibrocartilage"], "la": "discus articularis articulationis radioulnaris distalis",
           "parts": ["za:articular disc of distal radio-ulnar joint"], "level": 2,
           "kanji": "関節の間にはさまる円い板（線維軟骨）",
           "etym": "articular「関節の」＋ disc「円板」",
-          "note": "尺骨頭と手根骨（月状骨・三角骨）の間にはさまる三角形の線維軟骨。下橈尺関節を安定させる。臨床では三角線維軟骨複合体（TFCC）の中心で、手首の小指側の痛みの原因になる。"
+          "note": "尺骨頭（head of ulna）と手根骨（carpal bones）（月状骨（lunate）・三角骨（triquetrum））の間にはさまる三角形の線維軟骨（fibrocartilage）。下橈尺関節（distal radio-ulnar joint）を安定させる。臨床では三角線維軟骨複合体（TFCC）の中心で、手首（wrist）の小指側（ulnar side）の痛みの原因になる。"
         }
       ]
     },
@@ -427,119 +427,119 @@
           "parts": ["za:acromioclavicular ligament"], "level": 2,
           "kanji": "肩峰と鎖骨をつなぐ靱帯",
           "etym": "acromio-「肩峰の」＋ clavicular「鎖骨の」",
-          "note": "肩鎖関節の関節包の上を補強する靱帯。肩から落ちて強く打つと切れ、鎖骨の外側端が上へ浮き上がる（肩鎖関節脱臼）。上下のずれを大きく止めるのは烏口鎖骨靱帯。"
+          "note": "肩鎖関節（acromioclavicular joint）の関節包（joint capsule）の上を補強する靱帯（ligament）。肩から落ちて強く打つと切れ、鎖骨（clavicle）の外側端（lateral end）が上へ浮き上がる（肩鎖関節脱臼（acromioclavicular dislocation））。上下のずれを大きく止めるのは烏口鎖骨靱帯（coracoclavicular ligament）。"
         },
         {
           "id": "transverse-humeral-ligament", "ja": "上腕横靱帯", "yomi": "じょうわんおうじんたい", "en": "transverse humeral ligament", "la": "ligamentum transversum humeri",
           "parts": ["za:transverse humeral ligament"], "level": 3, "check": true,
           "kanji": "上腕骨の上で横に張る靱帯",
           "etym": "transverse「横の」＋ humeral「上腕骨の」",
-          "note": "上腕骨の大結節と小結節の間に張り、結節間溝を屋根のようにおおう。中を通る上腕二頭筋長頭の腱が溝から外れないよう押さえる。"
+          "note": "上腕骨（humerus）の大結節（greater tubercle）と小結節（lesser tubercle）の間に張り、結節間溝（intertubercular sulcus）を屋根のようにおおう。中を通る上腕二頭筋長頭（long head of biceps brachii）の腱（tendon）が溝から外れないよう押さえる。"
         },
         {
           "id": "radiate-carpal-ligament", "ja": "放線状手根靱帯", "yomi": "ほうせんじょうしゅこんじんたい", "en": "radiate carpal ligament", "la": "ligamentum carpi radiatum",
           "parts": ["za:radiate carpal ligament"], "level": 3,
           "kanji": "手根で放射状（放線状）に広がる靱帯",
           "etym": "radiate「放射状の」＋ carpal「手根の」",
-          "note": "手根の掌側で、有頭骨の頭から周りの手根骨へ放射状に広がる靱帯。手根骨どうしをつなぎとめる。"
+          "note": "手根（carpus）の掌側（palmar）で、有頭骨（capitate）の頭から周りの手根骨（carpal bones）へ放射状に広がる靱帯（ligament）。手根骨どうしをつなぎとめる。"
         },
         {
           "id": "dorsal-radiocarpal-ligament", "ja": "背側橈骨手根靱帯", "yomi": "はいそくとうこつしゅこんじんたい", "en": "dorsal radiocarpal ligament", "la": "ligamentum radiocarpale dorsale",
           "parts": ["za:dorsal radiocarpal ligament"], "level": 3,
           "kanji": "手の甲の側で橈骨と手根骨をつなぐ靱帯",
           "etym": "dorsal「背側の」＋ radio-「橈骨の」＋ carpal「手根の」",
-          "note": "橈骨の下端の後ろから、手根骨（おもに月状骨と三角骨）へ斜めに張る靱帯。手首の後ろを補強し、手が橈骨から前へずれないよう支える。"
+          "note": "橈骨（radius）の下端（inferior end）の後ろから、手根骨（carpal bones）（おもに月状骨（lunate）と三角骨（triquetrum））へ斜めに張る靱帯（ligament）。手首（wrist）の後ろを補強し、手（hand）が橈骨から前へずれないよう支える。"
         },
         {
           "id": "ulnar-collateral-ligament-of-wrist-joint", "ja": "尺側手根側副靱帯", "yomi": "しゃくそくしゅこんそくふくじんたい", "en": "ulnar collateral ligament of wrist joint", "la": "ligamentum collaterale carpi ulnare",
           "parts": ["za:ulnar collateral ligament of wrist joint"], "level": 3,
           "kanji": "手根の尺側（小指側）のわきの靱帯",
           "etym": "ulnar「尺骨の」＋ collateral「わきの」＋ wrist joint「手関節」",
-          "note": "尺骨の茎状突起から三角骨・豆状骨へ張る、手首の小指側の靱帯。手が橈側へ曲がりすぎないようにする。"
+          "note": "尺骨（ulna）の茎状突起（styloid process）から三角骨（triquetrum）・豆状骨（pisiform）へ張る、手首（wrist）の小指側（ulnar side）の靱帯（ligament）。手（hand）が橈側（radial）へ曲がりすぎないようにする。"
         },
         {
           "id": "radial-collateral-ligament-of-wrist-joint", "ja": "橈側手根側副靱帯", "yomi": "とうそくしゅこんそくふくじんたい", "en": "radial collateral ligament of wrist joint", "la": "ligamentum collaterale carpi radiale",
           "parts": ["za:radial collateral ligament of wrist joint"], "level": 3,
           "kanji": "手根の橈側（親指側）のわきの靱帯",
           "etym": "radial「橈骨の」＋ collateral「わきの」＋ wrist joint「手関節」",
-          "note": "橈骨の茎状突起から舟状骨へ張る、手首の親指側の靱帯。手が尺側へ曲がりすぎないようにする。"
+          "note": "橈骨（radius）の茎状突起（styloid process）から舟状骨（scaphoid）へ張る、手首（wrist）の親指側（radial side）の靱帯（ligament）。手（hand）が尺側（ulnar）へ曲がりすぎないようにする。"
         },
         {
           "id": "dorsal-intercarpal-ligaments", "ja": "背側手根間靱帯", "yomi": "はいそくしゅこんかんじんたい", "en": "dorsal intercarpal ligaments", "la": "ligamenta intercarpalia dorsalia",
           "parts": ["za:dorsal intercarpal ligaments", "za:dorsal scaphotriquetral ligament"], "level": 3,
           "kanji": "手の甲の側で手根骨どうしをつなぐ靱帯",
           "etym": "dorsal「背側の」＋ inter-「間の」＋ carpal「手根の」",
-          "note": "手の甲の側で、手根骨どうしをつなぐ靱帯の群れ。舟状骨と三角骨の間に横に張る帯が目立つ。"
+          "note": "手の甲（back of hand）の側で、手根骨（carpal bones）どうしをつなぐ靱帯（ligament）の群れ。舟状骨（scaphoid）と三角骨（triquetrum）の間に横に張る帯が目立つ。"
         },
         {
           "id": "palmar-radio-ulnar-ligament", "ja": "掌側橈尺靱帯", "yomi": "しょうそくとうしゃくじんたい", "en": "palmar radio-ulnar ligament", "la": "ligamentum radioulnare palmare",
           "parts": ["za:palmar radio-ulnar ligament"], "level": 3,
           "kanji": "手のひらの側で橈骨と尺骨をつなぐ靱帯",
           "etym": "palmar「手のひらの」＋ radio-「橈骨の」＋ ulnar「尺骨の」",
-          "note": "下橈尺関節の前を補強する靱帯。関節円板（三角線維軟骨）の縁と一緒に、回内・回外で橈骨が尺骨頭のまわりを回るのを支える。"
+          "note": "下橈尺関節（distal radio-ulnar joint）の前を補強する靱帯（ligament）。関節円板（articular disc）（三角線維軟骨（triangular fibrocartilage））の縁と一緒に、回内（pronation）・回外（supination）で橈骨（radius）が尺骨頭（head of ulna）のまわりを回るのを支える。"
         },
         {
           "id": "metacarpophalangeal-joints", "ja": "中手指節関節", "yomi": "ちゅうしゅしせつかんせつ", "en": "metacarpophalangeal joints", "enAlt": ["mcp joints", "mp joints"], "la": "articulationes metacarpophalangeae",
           "parts": ["za:articular capsules of metacarpophalangeal joints"], "level": 1, "xray": true, "veil": true,
           "kanji": "中手骨と指節骨（基節骨）の関節",
           "etym": "metacarpo-「中手骨の」＋ phalangeal「指節骨の」（ギリシャ語 phalanx＝兵の隊列）",
-          "note": "中手骨頭と基節骨の底の関節（MP関節）。こぶしの山（ナックル）の所。指の屈曲・伸展のほか、指を開く・閉じる動き（外転・内転）もできる。"
+          "note": "中手骨頭（head of metacarpal bone）と基節骨（proximal phalanx）の底の関節（MP関節（MP joint））。こぶしの山（ナックル）の所。指（finger）の屈曲（flexion）・伸展（extension）のほか、指を開く・閉じる動き（外転（abduction）・内転（adduction））もできる。"
         },
         {
           "id": "proximal-interphalangeal-joints-of-hand", "ja": "近位指節間関節（手）", "yomi": "きんいしせつかんかんせつ", "en": "proximal interphalangeal joints of hand", "enAlt": ["pip joints"], "la": "articulationes interphalangeae proximales manus",
           "parts": ["za:articular capsules of proximal interphalangeal joints"], "level": 2, "xray": true, "veil": true,
           "kanji": "指節骨の間の、近い方の関節",
           "etym": "proximal「近位の」＋ inter-「間の」＋ phalangeal「指節骨の」",
-          "note": "基節骨と中節骨の間の蝶番関節（PIP関節）。曲げ・伸ばしだけを行う。浅指屈筋が曲げる。関節リウマチでよく腫れる。"
+          "note": "基節骨（proximal phalanx）と中節骨（middle phalanx）の間の蝶番関節（PIP関節（PIP joint））。曲げ・伸ばしだけを行う。浅指屈筋（flexor digitorum superficialis）が曲げる。関節リウマチ（rheumatoid arthritis）でよく腫れる。"
         },
         {
           "id": "distal-interphalangeal-joints-of-hand", "ja": "遠位指節間関節（手）", "yomi": "えんいしせつかんかんせつ", "en": "distal interphalangeal joints of hand", "enAlt": ["dip joints"], "la": "articulationes interphalangeae distales manus",
           "parts": ["za:articular capsules of distal interphalangeal joints"], "level": 2, "xray": true, "veil": true,
           "kanji": "指節骨の間の、遠い方の関節",
           "etym": "distal「遠位の」＋ inter-「間の」＋ phalangeal「指節骨の」",
-          "note": "中節骨と末節骨の間の蝶番関節（DIP関節）。深指屈筋が曲げる。変形性関節症で骨のこぶができやすい（ヘバーデン結節）。"
+          "note": "中節骨（middle phalanx）と末節骨（distal phalanx）の間の蝶番関節（DIP関節（DIP joint））。深指屈筋（flexor digitorum profundus）が曲げる。変形性関節症（osteoarthritis）で骨（bone）のこぶができやすい（ヘバーデン結節（Heberden nodes））。"
         },
         {
           "id": "collateral-ligaments-of-metacarpophalangeal-joints", "ja": "側副靱帯（中手指節関節）", "yomi": "そくふくじんたい", "en": "collateral ligaments of metacarpophalangeal joints", "la": "ligamenta collateralia articulationum metacarpophalangearum",
           "parts": ["za:collateral metacarpophalangeal ligaments"], "level": 3,
           "kanji": "MP関節のわきの靱帯",
           "etym": "collateral「わきの」＋ metacarpophalangeal「中手指節の」",
-          "note": "MP関節の両わきの靱帯。指を曲げると張り、伸ばすとゆるむので、伸ばしたときだけ指を大きく開ける。手を固定するときは MP関節を曲げた形にする（靱帯が縮んで固まらないように）。"
+          "note": "MP関節（MP joint）の両わきの靱帯（ligament）。指（finger）を曲げると張り、伸ばすとゆるむので、伸ばしたときだけ指を大きく開ける。手（hand）を固定するときは MP関節を曲げた形にする（靱帯が縮んで固まらないように）。"
         },
         {
           "id": "deep-transverse-metacarpal-ligament", "ja": "深横中手靱帯", "yomi": "しんおうちゅうしゅじんたい", "en": "deep transverse metacarpal ligament", "la": "ligamentum metacarpale transversum profundum",
           "parts": ["za:deep transverse metacarpal ligament"], "level": 3,
           "kanji": "中手骨の頭の間を深くで横につなぐ靱帯",
           "etym": "deep「深い」＋ transverse「横の」＋ metacarpal「中手の」",
-          "note": "第2〜5中手骨の頭の間を横につなぐ靱帯。中手骨頭が広がらないようにする。骨間筋の腱はこの後ろを、虫様筋の腱はこの前を通る。"
+          "note": "第2〜5中手骨（second to fifth metacarpals）の頭の間を横につなぐ靱帯（ligament）。中手骨頭（head of metacarpal bone）が広がらないようにする。骨間筋（interossei）の腱（tendon）はこの後ろを、虫様筋（lumbricals）の腱はこの前を通る。"
         },
         {
           "id": "dorsal-carpometacarpal-ligaments", "ja": "背側手根中手靱帯", "yomi": "はいそくしゅこんちゅうしゅじんたい", "en": "dorsal carpometacarpal ligaments", "la": "ligamenta carpometacarpalia dorsalia",
           "parts": ["za:dorsal carpometacarpal ligaments"], "level": 3,
           "kanji": "手の甲の側で手根骨と中手骨をつなぐ靱帯",
           "etym": "dorsal「背側の」＋ carpo-「手根の」＋ metacarpal「中手の」",
-          "note": "遠位の手根骨と第2〜第5中手骨の底を、手の甲の側でつなぐ短い靱帯。第2・第3中手骨はこれで強く固められてほとんど動かず、第4・第5中手骨は少し動く（物を握るとき小指側が手のひらへ曲がる）。"
+          "note": "遠位（distal）の手根骨（carpal bones）と第2〜第5中手骨（second to fifth metacarpals）の底を、手の甲（back of hand）の側でつなぐ短い靱帯（ligament）。第2・第3中手骨（second and third metacarpals）はこれで強く固められてほとんど動かず、第4・第5中手骨（fourth and fifth metacarpals）は少し動く（物を握るとき小指側（ulnar side）が手のひら（palm）へ曲がる）。"
         },
         {
           "id": "palmar-carpometacarpal-ligaments", "ja": "掌側手根中手靱帯", "yomi": "しょうそくしゅこんちゅうしゅじんたい", "en": "palmar carpometacarpal ligaments", "la": "ligamenta carpometacarpalia palmaria",
           "parts": ["za:palmar carpometacarpal ligaments"], "level": 3,
           "kanji": "手のひらの側で手根骨と中手骨をつなぐ靱帯",
           "etym": "palmar「手のひらの」（ラテン語 palma）＋ carpometacarpal「手根と中手の」",
-          "note": "遠位の手根骨と第2〜第5中手骨の底を、手のひらの側でつなぐ靱帯。手根管の床の一部になる。"
+          "note": "遠位（distal）の手根骨（carpal bones）と第2〜第5中手骨（second to fifth metacarpals）の底を、手のひら（palm）の側でつなぐ靱帯（ligament）。手根管（carpal tunnel）の床の一部になる。"
         },
         {
           "id": "ulnolunate-ligament", "ja": "尺骨月状骨靱帯", "yomi": "しゃっこつげつじょうこつじんたい", "en": "ulnolunate ligament", "la": "ligamentum ulnolunatum",
           "parts": ["za:ulnolunate ligament"], "level": 3, "check": true,
           "kanji": "尺骨（の関節円板）と月状骨をつなぐ靱帯",
           "etym": "ulno-「尺骨の」＋ lunate「月状骨」（ラテン語 luna＝月）",
-          "note": "手首の小指側で、下橈尺関節の関節円板の前の縁から月状骨へ張る靱帯。関節円板とともに三角線維軟骨複合体（TFCC）をつくり、手首の小指側を支える。手をついて転ぶと傷みやすい。"
+          "note": "手首（wrist）の小指側（ulnar side）で、下橈尺関節（distal radio-ulnar joint）の関節円板（articular disc）の前の縁から月状骨（lunate）へ張る靱帯（ligament）。関節円板とともに三角線維軟骨複合体（TFCC）をつくり、手首の小指側を支える。手（hand）をついて転ぶと傷みやすい。"
         },
         {
           "id": "ulnotriquetral-ligament", "ja": "尺骨三角骨靱帯", "yomi": "しゃっこつさんかくこつじんたい", "en": "ulnotriquetral ligament", "la": "ligamentum ulnotriquetrum",
           "parts": ["za:ulnotriquetral ligament"], "level": 3, "xray": true, "check": true,
           "kanji": "尺骨（の関節円板）と三角骨をつなぐ靱帯",
           "etym": "ulno-「尺骨の」＋ triquetral「三角骨の」（ラテン語 triquetrus＝三角の）",
-          "note": "下橈尺関節の関節円板の前の縁から三角骨へ張る靱帯。尺骨月状骨靱帯のすぐ内側に並び、ともに三角線維軟骨複合体（TFCC）の一部。"
+          "note": "下橈尺関節（distal radio-ulnar joint）の関節円板（articular disc）の前の縁から三角骨（triquetrum）へ張る靱帯（ligament）。尺骨月状骨靱帯（ulnolunate ligament）のすぐ内側（medial）に並び、ともに三角線維軟骨複合体（TFCC）の一部。"
         }
       ]
     },
@@ -548,8 +548,8 @@
       "title": "肘と前腕・母指の関節（向き合う関節面）",
       "group": "上肢",
       "intro": [
-        "肘関節は、腕尺関節・腕橈関節・上橈尺関節の3つが1つの関節包に包まれた複関節。前腕の回内・回外は、上橈尺関節と下橈尺関節で橈骨が尺骨のまわりを回る動き（回外位で2つの骨は平行、回内位で交差する）。",
-        "上腕骨から脊柱までは、肩関節 → 肩甲骨 → 肩鎖関節 → 鎖骨 → 胸鎖関節 → 胸骨 → 胸肋関節 → 肋骨 → 肋骨頭関節・肋横突関節 → 胸椎と、回り道でつながる。上肢が体幹に対して自由に動くための仕組み。"
+        "肘関節（elbow joint）は、腕尺関節（humero-ulnar joint）・腕橈関節（humeroradial joint）・上橈尺関節（proximal radio-ulnar joint）の3つが1つの関節包（joint capsule）に包まれた複関節（compound joint）。前腕（forearm）の回内（pronation）・回外（supination）は、上橈尺関節と下橈尺関節（distal radio-ulnar joint）で橈骨（radius）が尺骨（ulna）のまわりを回る動き（回外位（supinated position）で2つの骨（bone）は平行、回内位（pronated position）で交差する）。",
+        "上腕骨（humerus）から脊柱（vertebral column）までは、肩関節（shoulder joint） → 肩甲骨（scapula） → 肩鎖関節（acromioclavicular joint） → 鎖骨（clavicle） → 胸鎖関節（sternoclavicular joint） → 胸骨（sternum） → 胸肋関節（sternocostal joints） → 肋骨（ribs） → 肋骨頭関節（joint of head of rib）・肋横突関節（costotransverse joint） → 胸椎（thoracic vertebrae）と、回り道でつながる。上肢（upper limb）が体幹（trunk）に対して自由に動くための仕組み。"
       ],
       "terms": [
         {
@@ -557,7 +557,7 @@
           "level": 2,
           "kanji": "上腕骨と尺骨の関節",
           "etym": "humero-「上腕骨の」＋ ulnar「尺骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "上腕骨滑車と尺骨の滑車切痕の間の関節（蝶番関節）。肘の屈伸だけを行う。伸ばすと肘頭が肘頭窩に、曲げると鈎状突起が鈎突窩にはまる。上腕と前腕の長軸は一直線ではなく、肘を伸ばして手のひらを前に向けると前腕が外へ約20°開く（運搬角。女性で大きい）。",
+          "note": "上腕骨滑車（trochlea of humerus）と尺骨（ulna）の滑車切痕（trochlear notch）の間の関節（joint）（蝶番関節（hinge joint））。肘（elbow）の屈伸（flexion and extension）だけを行う。伸ばすと肘頭（olecranon）が肘頭窩（olecranon fossa）に、曲げると鈎状突起（coronoid process of ulna）が鈎突窩（coronoid fossa）にはまる。上腕（arm）と前腕（forearm）の長軸は一直線ではなく、肘を伸ばして手のひら（palm）を前に向けると前腕が外へ約20°開く（運搬角（carrying angle）。女性で大きい）。",
           "region": {"bounds": ["trochlea-of-humerus", "trochlear-notch"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.2055, 1.0383, 0.0653], "from": [0.3, 0, 1], "size": 0.07}, "prompt": "上腕骨滑車と尺骨の滑車切痕がつくる関節は？"}
         },
         {
@@ -565,7 +565,7 @@
           "level": 2,
           "kanji": "上腕骨と橈骨の関節",
           "etym": "humero-「上腕骨の」＋ radial「橈骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "上腕骨小頭（関節頭）と橈骨頭の上面のくぼみ（関節窩）の間の関節。肘の屈伸に加わり、前腕を回すときは橈骨頭が小頭の上で回る。",
+          "note": "上腕骨小頭（capitulum of humerus）（関節頭（articular head））と橈骨頭（head of radius）の上面（superior surface）のくぼみ（関節窩（glenoid cavity））の間の関節（joint）。肘（elbow）の屈伸（flexion and extension）に加わり、前腕（forearm）を回すときは橈骨頭が小頭（capitulum）の上で回る。",
           "region": {"bounds": ["capitulum-of-humerus", "head-of-radius"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.2287, 1.0368, 0.0704], "from": [-0.4, 0, 1], "size": 0.07}, "prompt": "上腕骨小頭と橈骨頭がつくる関節は？"}
         },
         {
@@ -573,7 +573,7 @@
           "level": 2,
           "kanji": "上の橈骨と尺骨の関節",
           "etym": "radio-「橈骨の」＋ ulnar「尺骨の」＋ proximal「近位の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "橈骨頭の関節環状面と尺骨の橈骨切痕の間の関節（車軸関節）。橈骨輪状靱帯が橈骨頭を輪のように包む。2〜6歳では橈骨頭が小さいので、手を急に引っぱると輪から抜けかける（肘内障）。下橈尺関節と一緒に回内・回外を行う。",
+          "note": "橈骨頭（head of radius）の関節環状面（articular circumference）と尺骨（ulna）の橈骨切痕（radial notch）の間の関節（joint）（車軸関節（pivot joint））。橈骨輪状靱帯（annular ligament of radius）が橈骨頭を輪のように包む。2〜6歳では橈骨頭が小さいので、手（hand）を急に引っぱると輪から抜けかける（肘内障（pulled elbow））。下橈尺関節（distal radio-ulnar joint）と一緒に回内（pronation）・回外（supination）を行う。",
           "region": {"bounds": ["articular-circumference-of-radius", "radial-notch"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.2272, 1.0233, 0.0669], "from": [-0.3, 0, 1], "size": 0.06}, "prompt": "橈骨頭の関節環状面と尺骨の橈骨切痕がつくる関節は？"}
         },
         {
@@ -581,7 +581,7 @@
           "level": 2,
           "kanji": "下の橈骨と尺骨の関節",
           "etym": "radio-「橈骨の」＋ ulnar「尺骨の」＋ distal「遠位の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "橈骨の尺骨切痕と尺骨頭の関節環状面の間の関節（車軸関節）。回内・回外では、橈骨の下端が尺骨頭のまわりをぐるりと回る。下は関節円板（三角線維軟骨）で橈骨手根関節と隔てられ、尺骨は手首の関節に直接加わらない。",
+          "note": "橈骨（radius）の尺骨切痕（ulnar notch of radius）と尺骨頭（head of ulna）の関節環状面（articular circumference）の間の関節（joint）（車軸関節（pivot joint））。回内（pronation）・回外（supination）では、橈骨の下端（inferior end）が尺骨頭のまわりをぐるりと回る。下は関節円板（articular disc）（三角線維軟骨（triangular fibrocartilage））で橈骨手根関節（radiocarpal joint）と隔てられ、尺骨（ulna）は手首（wrist）の関節に直接加わらない。",
           "region": {"bounds": ["ulnar-notch-of-radius", "articular-circumference-of-ulna"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.2466, 0.8167, 0.1189], "from": [0.4, 0, 1], "size": 0.06}, "prompt": "橈骨の尺骨切痕と尺骨頭の関節環状面がつくる関節は？"}
         },
         {
@@ -589,7 +589,7 @@
           "level": 1,
           "kanji": "母指の手根骨と中手骨の関節",
           "etym": "carpo-「手根の」＋ metacarpal「中手骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "大菱形骨と第1中手骨の底の間の関節。向かい合う2つの面がどちらも馬の鞍の形で、直角にずらして組み合う典型的な鞍関節。手根中手関節の中で例外的によく動き、母指の外転・内転と、母指をほかの指と向かい合わせる対立運動を行う（霊長類だけの仕組み）。第2〜第5の手根中手関節はほとんど動かない。",
+          "note": "大菱形骨（trapezium）と第1中手骨（first metacarpal）の底の間の関節（joint）。向かい合う2つの面がどちらも馬の鞍の形で、直角にずらして組み合う典型的な鞍関節（saddle joint）。手根中手関節（carpometacarpal joint）の中で例外的によく動き、母指（thumb）の外転（abduction）・内転（adduction）と、母指をほかの指（finger）と向かい合わせる対立運動（opposition）を行う（霊長類（primates）だけの仕組み）。第2〜第5の手根中手関節はほとんど動かない。",
           "region": {"bounds": ["trapezium", "first-metacarpal"], "contents": [], "boundsLabel": "関節する骨", "view": {"target": [0, 0, 0], "from": [-1, 0, 0.7], "size": 0.07}, "prompt": "大菱形骨と第1中手骨がつくる鞍関節は？"}
         }
       ]
@@ -604,119 +604,119 @@
           "parts": ["za:articular capsule of hip joint", "za:zona orbicularis"], "level": 1, "xray": true, "veil": true,
           "kanji": "股（もも）のつけ根の関節",
           "etym": "hip「腰・股」。coxa（ラテン語）＝腰",
-          "note": "寛骨臼と大腿骨頭の球関節。寛骨臼が深く靱帯も強いので、肩関節より動きは小さいが安定している。体重を支える。"
+          "note": "寛骨臼（acetabulum）と大腿骨頭（head of femur）の球関節（ball-and-socket joint）。寛骨臼が深く靱帯（ligament）も強いので、肩関節（shoulder joint）より動きは小さいが安定している。体重を支える。"
         },
         {
           "id": "acetabular-labrum", "ja": "関節唇（股関節）", "yomi": "かんせつしん", "en": "acetabular labrum", "la": "labrum acetabuli",
           "parts": ["za:acetabular labrum"], "level": 2,
           "kanji": "寛骨臼のふちの唇のような線維軟骨",
           "etym": "labrum「唇」＋ acetabular「寛骨臼の」（ラテン語 acetabulum＝酢を入れる小皿）",
-          "note": "寛骨臼のふちを取り巻く線維軟骨の輪。臼を深くして大腿骨頭を包み込む。寛骨臼の切れ目は寛骨臼横靱帯が渡す。"
+          "note": "寛骨臼（acetabulum）のふちを取り巻く線維軟骨（fibrocartilage）の輪。臼を深くして大腿骨頭（head of femur）を包み込む。寛骨臼の切れ目は寛骨臼横靱帯（transverse acetabular ligament）が渡す。"
         },
         {
           "id": "transverse-acetabular-ligament", "ja": "寛骨臼横靱帯", "yomi": "かんこつきゅうおうじんたい", "en": "transverse acetabular ligament", "la": "ligamentum transversum acetabuli",
           "parts": ["za:transverse acetabular ligament"], "level": 3,
           "kanji": "寛骨臼の切れ目を横に渡る靱帯",
           "etym": "transverse「横の」＋ acetabular「寛骨臼の」",
-          "note": "寛骨臼の下の切れ目（寛骨臼切痕）を橋のように渡る靱帯。関節唇とつながって輪を閉じる。下を大腿骨頭へ行く血管が通る。"
+          "note": "寛骨臼（acetabulum）の下の切れ目（寛骨臼切痕（acetabular notch））を橋のように渡る靱帯（ligament）。関節唇（labrum）とつながって輪を閉じる。下を大腿骨頭（head of femur）へ行く血管（blood vessel）が通る。"
         },
         {
           "id": "iliofemoral-ligament", "ja": "腸骨大腿靱帯", "yomi": "ちょうこつだいたいじんたい", "en": "iliofemoral ligament", "la": "ligamentum iliofemorale",
           "parts": ["za:transverse part of iliofemoral ligament", "za:descending part of iliofemoral ligament"], "level": 1,
           "kanji": "腸骨と大腿骨をつなぐ靱帯",
           "etym": "ilio-「腸骨の」＋ femoral「大腿骨の」",
-          "note": "下前腸骨棘から転子間線へ逆Y字形に張る、人体で最も強い靱帯（Y靱帯）。股関節の前を補強し、立っているときに体が後ろへ倒れる（股関節が伸びすぎる）のを防ぐ。"
+          "note": "下前腸骨棘（anterior inferior iliac spine）から転子間線（intertrochanteric line）へ逆Y字形に張る、人体で最も強い靱帯（Y靱帯（Y ligament））。股関節（hip joint）の前を補強し、立っているときに体が後ろへ倒れる（股関節が伸びすぎる）のを防ぐ。"
         },
         {
           "id": "pubofemoral-ligament", "ja": "恥骨大腿靱帯", "yomi": "ちこつだいたいじんたい", "en": "pubofemoral ligament", "la": "ligamentum pubofemorale",
           "parts": ["za:pubofemoral ligament"], "level": 2,
           "kanji": "恥骨と大腿骨をつなぐ靱帯",
           "etym": "pubo-「恥骨の」＋ femoral「大腿骨の」",
-          "note": "恥骨上枝から関節包の前下部へ張る。股関節の外転と伸展をおさえる。"
+          "note": "恥骨上枝（superior pubic ramus）から関節包（joint capsule）の前下部（anteroinferior part）へ張る。股関節（hip joint）の外転（abduction）と伸展（extension）をおさえる。"
         },
         {
           "id": "ischiofemoral-ligament", "ja": "坐骨大腿靱帯", "yomi": "ざこつだいたいじんたい", "en": "ischiofemoral ligament", "la": "ligamentum ischiofemorale",
           "parts": ["za:ischiofemoral ligament"], "level": 2,
           "kanji": "坐骨と大腿骨をつなぐ靱帯",
           "etym": "ischio-「坐骨の」＋ femoral「大腿骨の」",
-          "note": "寛骨臼の後ろの坐骨から大腿骨頚の上をらせん状に回って大転子へ張る。股関節の後ろを補強し、内旋をおさえる。"
+          "note": "寛骨臼（acetabulum）の後ろの坐骨（ischium）から大腿骨頚（neck of femur）の上をらせん状に回って大転子（greater trochanter）へ張る。股関節（hip joint）の後ろを補強し、内旋（medial rotation）をおさえる。"
         },
         {
           "id": "ligament-of-head-of-femur", "ja": "大腿骨頭靱帯", "yomi": "だいたいこっとうじんたい", "en": "ligament of head of femur", "la": "ligamentum capitis femoris",
           "parts": ["za:ligament of head of femur"], "level": 1,
           "kanji": "大腿骨頭から出る靱帯",
           "etym": "ligament「靱帯」＋ head of femur「大腿骨頭」",
-          "note": "大腿骨頭窩から寛骨臼の切れ目へ向かう関節の中の靱帯。中を大腿骨頭へ行く細い動脈（閉鎖動脈の枝）が通る。関節を支える力は弱い。"
+          "note": "大腿骨頭窩（fovea for ligament of head）から寛骨臼（acetabulum）の切れ目へ向かう関節（joint）の中の靱帯（ligament）。中を大腿骨頭（head of femur）へ行く細い動脈（artery）（閉鎖動脈（obturator artery）の枝（branch））が通る。関節を支える力は弱い。"
         },
         {
           "id": "knee-joint", "ja": "膝関節", "yomi": "しつかんせつ", "en": "knee joint", "la": "articulatio genus",
           "parts": ["za:articular capsule of knee joint"], "level": 1, "xray": true, "veil": true,
           "kanji": "膝の関節",
           "etym": "knee「膝」。genu（ラテン語）＝膝",
-          "note": "大腿骨・脛骨・膝蓋骨の間の、人体で最も大きい関節。おもに屈曲・伸展し、曲げたときは少し回旋もできる。骨の形だけでは安定しないので、十字靱帯・側副靱帯・半月が支える。"
+          "note": "大腿骨（femur）・脛骨（tibia）・膝蓋骨（patella）の間の、人体で最も大きい関節（joint）。おもに屈曲（flexion）・伸展（extension）し、曲げたときは少し回旋（rotation）もできる。骨（bone）の形だけでは安定しないので、十字靱帯（cruciate ligaments）・側副靱帯（collateral ligament）・半月が支える。"
         },
         {
           "id": "anterior-cruciate-ligament", "ja": "前十字靱帯", "yomi": "ぜんじゅうじじんたい", "en": "anterior cruciate ligament", "la": "ligamentum cruciatum anterius",
           "parts": ["za:anterior cruciate ligament"], "level": 1,
           "kanji": "前の、十字に交わる靱帯",
           "etym": "anterior「前の」＋ cruciate「十字の」（ラテン語 crux＝十字架）",
-          "note": "脛骨の前顆間区から大腿骨の外側顆の内面へ斜めに張る。脛骨が前へずれるのを防ぐ。スポーツの着地や切り返しで切れやすい（ACL損傷）。"
+          "note": "脛骨（tibia）の前顆間区（anterior intercondylar area）から大腿骨（femur）の外側顆（lateral condyle）の内面（internal surface）へ斜めに張る。脛骨が前へずれるのを防ぐ。スポーツの着地や切り返しで切れやすい（ACL損傷（ACL injury））。"
         },
         {
           "id": "posterior-cruciate-ligament", "ja": "後十字靱帯", "yomi": "こうじゅうじじんたい", "en": "posterior cruciate ligament", "la": "ligamentum cruciatum posterius",
           "parts": ["za:posterior cruciate ligament"], "level": 1,
           "kanji": "後ろの、十字に交わる靱帯",
           "etym": "posterior「後ろの」＋ cruciate「十字の」",
-          "note": "脛骨の後顆間区から大腿骨の内側顆の内面へ張る。前十字靱帯より太く、脛骨が後ろへずれるのを防ぐ。膝を曲げてダッシュボードに打ちつけると切れる。"
+          "note": "脛骨（tibia）の後顆間区（posterior intercondylar area）から大腿骨（femur）の内側顆（medial condyle）の内面（internal surface）へ張る。前十字靱帯（anterior cruciate ligament）より太く、脛骨が後ろへずれるのを防ぐ。膝（knee）を曲げてダッシュボードに打ちつけると切れる。"
         },
         {
           "id": "medial-meniscus", "ja": "内側半月", "yomi": "ないそくはんげつ", "en": "medial meniscus", "la": "meniscus medialis",
           "parts": ["za:medial meniscus"], "level": 1,
           "kanji": "内側の半月形の線維軟骨",
           "etym": "meniscus ← ギリシャ語 mēniskos「三日月」",
-          "note": "脛骨の内側顆の上にのるC字形の線維軟骨。大腿骨と脛骨の間のクッションになり、関節面の合わさりをよくする。脛側側副靱帯とくっついているので外側半月より傷みやすい。"
+          "note": "脛骨（tibia）の内側顆（medial condyle）の上にのるC字形の線維軟骨（fibrocartilage）。大腿骨（femur）と脛骨の間のクッションになり、関節面（articular surface）の合わさりをよくする。脛側側副靱帯（tibial collateral ligament）とくっついているので外側半月（lateral meniscus）より傷みやすい。"
         },
         {
           "id": "lateral-meniscus", "ja": "外側半月", "yomi": "がいそくはんげつ", "en": "lateral meniscus", "la": "meniscus lateralis",
           "parts": ["za:lateral meniscus"], "level": 1,
           "kanji": "外側の半月形の線維軟骨",
           "etym": "lateral「外側の」＋ meniscus「三日月」",
-          "note": "脛骨の外側顆の上にのる、ほぼO字形の線維軟骨。内側半月より小さく、よく動く。"
+          "note": "脛骨（tibia）の外側顆（lateral condyle）の上にのる、ほぼO字形の線維軟骨（fibrocartilage）。内側半月（medial meniscus）より小さく、よく動く。"
         },
         {
           "id": "tibial-collateral-ligament", "ja": "脛側側副靱帯", "yomi": "けいそくそくふくじんたい", "en": "tibial collateral ligament", "enAlt": ["medial collateral ligament"], "la": "ligamentum collaterale tibiale",
           "parts": ["za:superficial part of tibial collateral ligament", "za:deep part of tibial collateral ligament"], "level": 1,
           "kanji": "脛骨側（内側）の、わきを補う靱帯",
           "etym": "tibial「脛骨の」＋ collateral「わきの」",
-          "note": "大腿骨の内側上顆から脛骨の内側面へ張る平たい靱帯。膝の内側を補強し、外反（膝が内へ入る動き）を防ぐ。臨床では内側側副靱帯（MCL）とよび、膝の靱帯で最も傷みやすい。"
+          "note": "大腿骨（femur）の内側上顆（medial epicondyle）から脛骨（tibia）の内側面（medial surface）へ張る平たい靱帯（ligament）。膝（knee）の内側（medial）を補強し、外反（eversion）（膝が内へ入る動き）を防ぐ。臨床では内側側副靱帯（MCL）とよび、膝の靱帯で最も傷みやすい。"
         },
         {
           "id": "fibular-collateral-ligament", "ja": "腓側側副靱帯", "yomi": "ひそくそくふくじんたい", "en": "fibular collateral ligament", "enAlt": ["lateral collateral ligament"], "la": "ligamentum collaterale fibulare",
           "parts": ["za:fibular collateral ligament"], "level": 1,
           "kanji": "腓骨側（外側）の、わきを補う靱帯",
           "etym": "fibular「腓骨の」＋ collateral「わきの」",
-          "note": "大腿骨の外側上顆から腓骨頭へ張る、ひものように丸い靱帯。膝の外側を補強し、内反を防ぐ。関節包とは離れている。臨床では外側側副靱帯（LCL）とよぶ。"
+          "note": "大腿骨（femur）の外側上顆（lateral epicondyle）から腓骨頭（head of fibula）へ張る、ひものように丸い靱帯（ligament）。膝（knee）の外側（lateral）を補強し、内反（inversion）を防ぐ。関節包（joint capsule）とは離れている。臨床では外側側副靱帯（LCL）とよぶ。"
         },
         {
           "id": "transverse-ligament-of-knee", "ja": "膝横靱帯", "yomi": "しつおうじんたい", "en": "transverse ligament of knee", "la": "ligamentum transversum genus",
           "parts": ["za:transverse ligament of knee"], "level": 3,
           "kanji": "膝の中を横に渡る靱帯",
           "etym": "transverse「横の」＋ knee「膝」",
-          "note": "内側半月と外側半月の前の端をつなぐ細い靱帯。"
+          "note": "内側半月（medial meniscus）と外側半月（lateral meniscus）の前の端をつなぐ細い靱帯（ligament）。"
         },
         {
           "id": "oblique-popliteal-ligament", "ja": "斜膝窩靱帯", "yomi": "しゃしつかじんたい", "en": "oblique popliteal ligament", "la": "ligamentum popliteum obliquum",
           "parts": ["za:oblique popliteal ligament"], "level": 3,
           "kanji": "膝窩を斜めに走る靱帯",
           "etym": "oblique「斜めの」＋ popliteal「膝窩の」（ラテン語 poples＝ひかがみ）",
-          "note": "半膜様筋の腱の続きが、関節包の後面を内側下から外側上へ斜めに走るもの。膝関節の後ろを補強する。"
+          "note": "半膜様筋（semimembranosus）の腱（tendon）の続きが、関節包（joint capsule）の後面（posterior surface）を内側下（inferomedial）から外側上（superolateral）へ斜めに走るもの。膝関節（knee joint）の後ろを補強する。"
         },
         {
           "id": "interosseous-membrane-of-leg", "ja": "下腿骨間膜", "yomi": "かたいこっかんまく", "en": "interosseous membrane of leg", "la": "membrana interossea cruris",
           "parts": ["interosseous membrane of leg"], "level": 2,
           "kanji": "下腿の骨の間の膜",
           "etym": "inter-「間」＋ osseous「骨の」＋ membrane「膜」",
-          "note": "脛骨と腓骨の骨間縁の間に張る膜。下腿の前の筋（伸筋）と後ろの筋（屈筋）を分け、それぞれの起始になる。"
+          "note": "脛骨（tibia）と腓骨（fibula）の骨間縁（interosseous border）の間に張る膜（membrane）。下腿（leg）の前の筋（muscle）（伸筋（extensor））と後ろの筋（屈筋（flexor））を分け、それぞれの起始（origin）になる。"
         }
       ]
     },
@@ -730,84 +730,84 @@
           "parts": ["patellar ligament"], "level": 1,
           "kanji": "膝蓋骨から下へ伸びる靱帯",
           "etym": "patellar ← ラテン語 patella「小さな皿」＋ ligament「靱帯」",
-          "note": "膝蓋骨の下端（膝蓋骨尖）から脛骨粗面へ張る太い帯。大腿四頭筋の腱の続きで、膝を伸ばす力を脛骨へ伝える。ここをハンマーでたたくと膝が伸びる（膝蓋腱反射）。"
+          "note": "膝蓋骨（patella）の下端（inferior end）（膝蓋骨尖（apex of patella））から脛骨粗面（tibial tuberosity）へ張る太い帯。大腿四頭筋（quadriceps femoris）の腱（tendon）の続きで、膝（knee）を伸ばす力を脛骨（tibia）へ伝える。ここをハンマーでたたくと膝が伸びる（膝蓋腱反射（patellar reflex））。"
         },
         {
           "id": "infrapatellar-fat-pad", "ja": "膝蓋下脂肪体", "yomi": "しつがいかしぼうたい", "en": "infrapatellar fat pad", "la": "corpus adiposum infrapatellare",
           "parts": ["za:infrapatellar fat pad"], "level": 2, "color": "#e3c96f",
           "kanji": "膝蓋骨の下の脂肪のかたまり",
           "etym": "infra-「下」＋ patellar「膝蓋骨の」＋ fat pad「脂肪のクッション」",
-          "note": "膝蓋靱帯の後ろで、関節包と滑膜の間をうめる脂肪のかたまり。関節が動くときのクッションになる。膝の前の痛みの原因になることがある。"
+          "note": "膝蓋靱帯（patellar ligament）の後ろで、関節包（joint capsule）と滑膜（synovial membrane）の間をうめる脂肪（fat）のかたまり。関節（joint）が動くときのクッションになる。膝（knee）の前の痛みの原因になることがある。"
         },
         {
           "id": "arcuate-popliteal-ligament", "ja": "弓状膝窩靱帯", "yomi": "きゅうじょうしっかじんたい", "en": "arcuate popliteal ligament", "la": "ligamentum popliteum arcuatum",
           "parts": ["za:arcuate popliteal ligament"], "level": 3,
           "kanji": "膝窩にある弓の形の靱帯",
           "etym": "arcuate「弓の形の」＋ popliteal「膝窩の」",
-          "note": "腓骨頭から膝の関節包の後面へ弓のように張る靱帯。下を膝窩筋の腱が通る。膝の後外側を補強する。"
+          "note": "腓骨頭（head of fibula）から膝（knee）の関節包（joint capsule）の後面（posterior surface）へ弓のように張る靱帯（ligament）。下を膝窩筋（popliteus）の腱（tendon）が通る。膝の後外側（posterolateral）を補強する。"
         },
         {
           "id": "popliteofibular-ligament", "ja": "膝窩腓骨靱帯", "yomi": "しっかひこつじんたい", "en": "popliteofibular ligament", "la": "ligamentum popliteofibulare",
           "parts": ["za:popliteofibular ligament"], "level": 3,
           "kanji": "膝窩筋の腱と腓骨をつなぐ靱帯",
           "etym": "popliteo-「膝窩（筋）の」＋ fibular「腓骨の」",
-          "note": "膝窩筋の腱から腓骨頭へ張る靱帯。腓側側副靱帯とともに膝の後外側を支え、脛骨が外へねじれすぎるのを防ぐ。"
+          "note": "膝窩筋（popliteus）の腱から腓骨頭（head of fibula）へ張る靱帯（ligament）。腓側側副靱帯（fibular collateral ligament）とともに膝（knee）の後外側（posterolateral）を支え、脛骨（tibia）が外へねじれすぎるのを防ぐ。"
         },
         {
           "id": "meniscotibial-ligaments", "ja": "半月脛骨靱帯", "yomi": "はんげつけいこつじんたい", "en": "meniscotibial ligaments", "enAlt": ["coronary ligaments of knee"], "la": "ligamenta meniscotibialia",
           "parts": ["za:*meniscotibial ligament*"], "level": 3, "check": true,
           "kanji": "半月と脛骨をつなぐ靱帯",
           "etym": "menisco-「半月の」（ギリシャ語 meniskos＝三日月）＋ tibial「脛骨の」",
-          "note": "内側半月・外側半月の前と後ろの端を脛骨の上端につなぐ短い線維（冠状靱帯ともいう）。半月が動きすぎないようにする。"
+          "note": "内側半月（medial meniscus）・外側半月（lateral meniscus）の前と後ろの端を脛骨（tibia）の上端（superior end）につなぐ短い線維（fiber）（冠状靱帯（coronary ligament）ともいう）。半月が動きすぎないようにする。"
         },
         {
           "id": "tibiofibular-joint", "ja": "脛腓関節", "yomi": "けいひかんせつ", "en": "tibiofibular joint", "enAlt": ["superior tibiofibular joint", "proximal tibiofibular joint"], "la": "articulatio tibiofibularis",
           "parts": ["za:articular capsule of superior tibiofibular joint"], "level": 3,
           "kanji": "脛骨と腓骨の間の関節",
           "etym": "tibio-「脛骨の」＋ fibular「腓骨の」＋ joint「関節」",
-          "note": "脛骨の外側顆と腓骨頭の間の小さな平面関節。わずかにすべるだけで、足首を動かすと腓骨が少し動く。下端の脛骨と腓骨は関節ではなく靱帯で結ばれる（脛腓靱帯結合）。"
+          "note": "脛骨（tibia）の外側顆（lateral condyle）と腓骨頭（head of fibula）の間の小さな平面関節（plane joint）。わずかにすべるだけで、足首（ankle）を動かすと腓骨（fibula）が少し動く。下端（inferior end）の脛骨と腓骨は関節（joint）ではなく靱帯（ligament）で結ばれる（脛腓靱帯結合（tibiofibular syndesmosis））。"
         },
         {
           "id": "plantar-calcaneocuboid-ligament", "ja": "底側踵立方靱帯", "yomi": "ていそくしょうりっぽうじんたい", "en": "plantar calcaneocuboid ligament", "enAlt": ["short plantar ligament"], "la": "ligamentum calcaneocuboideum plantare",
           "parts": ["za:plantar calcaneocuboid ligament"], "level": 3,
           "kanji": "足の裏で踵骨と立方骨をつなぐ靱帯",
           "etym": "plantar「足の裏の」＋ calcaneo-「踵骨の」＋ cuboid「立方骨の」",
-          "note": "踵骨の前下面から立方骨の下面へ張る短く強い靱帯（短足底靱帯）。長足底靱帯の深くにあり、外側縦足弓を支える。"
+          "note": "踵骨（calcaneus）の前下面（anteroinferior surface）から立方骨（cuboid）の下面（inferior surface）へ張る短く強い靱帯（ligament）（短足底靱帯（short plantar ligament））。長足底靱帯（long plantar ligament）の深くにあり、外側縦足弓（lateral longitudinal arch of foot）を支える。"
         },
         {
           "id": "talonavicular-ligament", "ja": "距舟靱帯", "yomi": "きょしゅうじんたい", "en": "talonavicular ligament", "enAlt": ["dorsal talonavicular ligament"], "la": "ligamentum talonaviculare",
           "parts": ["za:talonavicular ligament"], "level": 3,
           "kanji": "距骨と舟状骨をつなぐ靱帯",
           "etym": "talo-「距骨の」＋ navicular「舟状骨の」",
-          "note": "距骨頚の上面から舟状骨の上面へ張る薄い靱帯。距舟関節（横足根関節の内側半分）の上をおおう。"
+          "note": "距骨頚（neck of talus）の上面（superior surface）から舟状骨（scaphoid）の上面へ張る薄い靱帯（ligament）。距舟関節（talonavicular joint）（横足根関節（transverse tarsal joint）の内側半分（medial half））の上をおおう。"
         },
         {
           "id": "dorsal-tarsometatarsal-ligaments", "ja": "背側足根中足靱帯", "yomi": "はいそくそっこんちゅうそくじんたい", "en": "dorsal tarsometatarsal ligaments", "la": "ligamenta tarsometatarsalia dorsalia",
           "parts": ["za:dorsal tarsometatarsal ligaments"], "level": 3,
           "kanji": "足の甲の側で足根骨と中足骨をつなぐ靱帯",
           "etym": "dorsal「背側の」＋ tarso-「足根の」＋ metatarsal「中足骨の」",
-          "note": "楔状骨・立方骨と中足骨の底を足の甲の側でつなぐ短い靱帯。足根中足関節（リスフラン関節）を補強する。"
+          "note": "楔状骨（cuneiform bones）・立方骨（cuboid）と中足骨（metatarsals）の底を足の甲（dorsum of foot）の側でつなぐ短い靱帯（ligament）。足根中足関節（tarsometatarsal joints）（リスフラン関節（Lisfranc joint））を補強する。"
         },
         {
           "id": "deep-transverse-metatarsal-ligament", "ja": "深横中足靱帯", "yomi": "しんおうちゅうそくじんたい", "en": "deep transverse metatarsal ligament", "la": "ligamentum metatarsale transversum profundum",
           "parts": ["za:deep transverse metatarsal ligament"], "level": 3,
           "kanji": "中足骨の頭を深い所で横につなぐ靱帯",
           "etym": "deep「深い」＋ transverse「横の」＋ metatarsal「中足骨の」",
-          "note": "5つの中足骨頭の下を横につなぐ靱帯。中足骨頭が左右に広がるのを防ぐ。足の指へ行く神経がこの下で圧迫されるのがモートン病。"
+          "note": "5つの中足骨頭（head of metatarsal bone）の下を横につなぐ靱帯（ligament）。中足骨頭が左右に広がるのを防ぐ。足（foot）の指（finger）へ行く神経（nerve）がこの下で圧迫されるのがモートン病（Morton neuroma）。"
         },
         {
           "id": "metatarsophalangeal-joints", "ja": "中足趾節関節", "yomi": "ちゅうそくしせつかんせつ", "en": "metatarsophalangeal joints", "la": "articulationes metatarsophalangeae",
           "parts": ["za:articular capsules of metatarsophalangeal joints"], "level": 2,
           "kanji": "中足骨と趾節骨（足の指の骨）の間の関節",
           "etym": "metatarso-「中足骨の」＋ phalangeal「指節骨の」",
-          "note": "中足骨頭と基節骨の底の間の関節。つま先立ちや歩くとき、ここで指が背屈する。母趾のこの関節で母趾が外へ曲がるのが外反母趾。"
+          "note": "中足骨頭（head of metatarsal bone）と基節骨（proximal phalanx）の底の間の関節（joint）。つま先立ちや歩くとき、ここで指（finger）が背屈（dorsiflexion）する。母趾（great toe）のこの関節で母趾が外へ曲がるのが外反母趾（hallux valgus）。"
         },
         {
           "id": "interphalangeal-joints-of-foot", "ja": "趾節間関節", "yomi": "しせつかんかんせつ", "en": "interphalangeal joints of foot", "la": "articulationes interphalangeae pedis",
           "parts": ["za:articular capsules of proximal interphalangeal joints of foot", "za:articular capsules of distal interphalangeal joints of foot", "za:articular capsule of interphalangeal joint of great toe"], "level": 3,
           "kanji": "足の指の骨の間の関節",
           "etym": "inter-「間の」＋ phalangeal「指節骨の」",
-          "note": "足の指の骨（趾節骨）の間の蝶番関節。母趾は1つ、ほかの指は近位・遠位の2つずつ。"
+          "note": "足（foot）の指（finger）の骨（bone）（趾節骨（phalanges of foot））の間の蝶番関節（hinge joint）。母趾（great toe）は1つ、ほかの指は近位（proximal）・遠位（distal）の2つずつ。"
         }
       ]
     },
@@ -821,70 +821,70 @@
           "parts": ["za:anterior talofibular ligament"], "level": 1,
           "kanji": "前の、距骨と腓骨をつなぐ靱帯",
           "etym": "anterior「前の」＋ talo-「距骨の」＋ fibular「腓骨の」",
-          "note": "外果の前から距骨の頚へほぼ水平に張る。足首の外側の靱帯で最も弱く、足を内へひねる捻挫（内反捻挫）でまず傷む。"
+          "note": "外果（lateral malleolus）の前から距骨（talus）の頚（neck）へほぼ水平に張る。足首（ankle）の外側（lateral）の靱帯（ligament）で最も弱く、足（foot）を内へひねる捻挫（sprain）（内反捻挫（inversion sprain））でまず傷む。"
         },
         {
           "id": "calcaneofibular-ligament", "ja": "踵腓靱帯", "yomi": "しょうひじんたい", "en": "calcaneofibular ligament", "la": "ligamentum calcaneofibulare",
           "parts": ["za:calcaneofibular ligament"], "level": 1,
           "kanji": "踵骨と腓骨をつなぐ靱帯",
           "etym": "calcaneo-「踵骨の」＋ fibular「腓骨の」",
-          "note": "外果の先から下後ろへ踵骨の外側面へ張る。前距腓靱帯に次いで内反捻挫で傷む。"
+          "note": "外果（lateral malleolus）の先から下後（posteroinferior）ろへ踵骨（calcaneus）の外側面（lateral surface）へ張る。前距腓靱帯（anterior talofibular ligament）に次いで内反捻挫（inversion sprain）で傷む。"
         },
         {
           "id": "posterior-talofibular-ligament", "ja": "後距腓靱帯", "yomi": "こうきょひじんたい", "en": "posterior talofibular ligament", "la": "ligamentum talofibulare posterius",
           "parts": ["za:posterior talofibular ligament"], "level": 2,
           "kanji": "後ろの、距骨と腓骨をつなぐ靱帯",
           "etym": "posterior「後ろの」＋ talo-「距骨の」＋ fibular「腓骨の」",
-          "note": "外果の内側の窩から距骨の後突起へ水平に張る。足首の外側の靱帯で最も強い。"
+          "note": "外果（lateral malleolus）の内側（medial）の窩から距骨（talus）の後突起（posterior process）へ水平に張る。足首（ankle）の外側（lateral）の靱帯（ligament）で最も強い。"
         },
         {
           "id": "deltoid-ligament", "ja": "三角靱帯", "yomi": "さんかくじんたい", "en": "deltoid ligament", "enAlt": ["medial ligament of ankle"], "la": "ligamentum deltoideum",
           "parts": ["za:tibionavicular ligament", "za:tibiocalcaneal ligament", "za:posterior tibiotalar ligament"], "level": 1,
           "kanji": "三角形に広がる靱帯",
           "etym": "deltoid ← ギリシャ文字 Δ（デルタ）の形",
-          "note": "内果から舟状骨・踵骨の載距突起・距骨へ扇形に広がる強い靱帯（内側靱帯）。足首の内側を補強し、外反を防ぐ。とても強く、切れるより先に内果が折れることが多い。"
+          "note": "内果（medial malleolus）から舟状骨（scaphoid）・踵骨（calcaneus）の載距突起（sustentaculum tali）・距骨（talus）へ扇形に広がる強い靱帯（ligament）（内側靱帯（medial ligament））。足首（ankle）の内側（medial）を補強し、外反（eversion）を防ぐ。とても強く、切れるより先に内果が折れることが多い。"
         },
         {
           "id": "anterior-tibiofibular-ligament", "ja": "前脛腓靱帯", "yomi": "ぜんけいひじんたい", "en": "anterior tibiofibular ligament", "la": "ligamentum tibiofibulare anterius",
           "parts": ["za:anterior tibiofibular ligament"], "level": 2,
           "kanji": "前の、脛骨と腓骨をつなぐ靱帯",
           "etym": "anterior「前の」＋ tibio-「脛骨の」＋ fibular「腓骨の」",
-          "note": "脛骨と腓骨の下端を前でつなぐ靱帯。2つの骨で距骨をはさむ形（距腿関節のほぞ穴）を保つ。足を外へひねると傷む（高位足関節捻挫）。"
+          "note": "脛骨（tibia）と腓骨（fibula）の下端（inferior end）を前でつなぐ靱帯（ligament）。2つの骨（bone）で距骨（talus）をはさむ形（距腿関節（ankle joint）のほぞ穴）を保つ。足（foot）を外へひねると傷む（高位足関節捻挫（high ankle sprain））。"
         },
         {
           "id": "posterior-tibiofibular-ligament", "ja": "後脛腓靱帯", "yomi": "こうけいひじんたい", "en": "posterior tibiofibular ligament", "la": "ligamentum tibiofibulare posterius",
           "parts": ["za:posterior tibiofibular ligament", "za:transverse tibiofibular ligament"], "level": 3,
           "kanji": "後ろの、脛骨と腓骨をつなぐ靱帯",
           "etym": "posterior「後ろの」＋ tibio-「脛骨の」＋ fibular「腓骨の」",
-          "note": "脛骨と腓骨の下端を後ろでつなぐ靱帯。前脛腓靱帯と一緒に脛腓靱帯結合をつくる。"
+          "note": "脛骨（tibia）と腓骨（fibula）の下端（inferior end）を後ろでつなぐ靱帯（ligament）。前脛腓靱帯（anterior tibiofibular ligament）と一緒に脛腓靱帯結合（tibiofibular syndesmosis）をつくる。"
         },
         {
           "id": "long-plantar-ligament", "ja": "長足底靱帯", "yomi": "ちょうそくていじんたい", "en": "long plantar ligament", "la": "ligamentum plantare longum",
           "parts": ["long plantar ligament"], "level": 2,
           "kanji": "足の裏の長い靱帯",
           "etym": "long「長い」＋ plantar「足底の」（ラテン語 planta＝足の裏）",
-          "note": "踵骨の下面から立方骨と第2〜5中足骨の底へ張る、足の裏で最も長い靱帯。足の縦のアーチ（外側）を支える。"
+          "note": "踵骨（calcaneus）の下面（inferior surface）から立方骨（cuboid）と第2〜5中足骨（second to fifth metatarsals）の底へ張る、足の裏（sole）で最も長い靱帯（ligament）。足（foot）の縦のアーチ（arch）（外側（lateral））を支える。"
         },
         {
           "id": "plantar-calcaneonavicular-ligament", "ja": "底側踵舟靱帯", "yomi": "ていそくしょうしゅうじんたい", "en": "plantar calcaneonavicular ligament", "enAlt": ["spring ligament"], "la": "ligamentum calcaneonaviculare plantare",
           "parts": ["za:plantar calcaneonavicular ligament"], "level": 2,
           "kanji": "足の裏で踵骨と舟状骨をつなぐ靱帯",
           "etym": "plantar「足底の」＋ calcaneo-「踵骨の」＋ navicular「舟状骨の」",
-          "note": "踵骨の載距突起から舟状骨の下面へ張る厚い靱帯。距骨頭を下から受け、土踏まず（内側の縦のアーチ）を支える。ばね靱帯ともいう。"
+          "note": "踵骨（calcaneus）の載距突起（sustentaculum tali）から舟状骨（scaphoid）の下面（inferior surface）へ張る厚い靱帯（ligament）。距骨頭（head of talus）を下から受け、土踏まず（arch of foot）（内側（medial）の縦のアーチ（arch））を支える。ばね靱帯ともいう。"
         },
         {
           "id": "bifurcate-ligament", "ja": "二分靱帯", "yomi": "にぶんじんたい", "en": "bifurcate ligament", "la": "ligamentum bifurcatum",
           "parts": ["za:calcaneonavicular ligament", "za:calcaneocuboid ligament"], "level": 3,
           "kanji": "二つに分かれる靱帯",
           "etym": "bifurcate「二股に分かれた」（ラテン語 bi-「2」＋ furca「フォーク」）",
-          "note": "踵骨の前上部から出て、舟状骨へ行く部分と立方骨へ行く部分の2つに分かれるY字形の靱帯。足の内反捻挫で傷むことがある。"
+          "note": "踵骨（calcaneus）の前上部（anterosuperior part）から出て、舟状骨（scaphoid）へ行く部分と立方骨（cuboid）へ行く部分の2つに分かれるY字形の靱帯（ligament）。足（foot）の内反捻挫（inversion sprain）で傷むことがある。"
         },
         {
           "id": "interosseous-talocalcaneal-ligament", "ja": "骨間距踵靱帯", "yomi": "こっかんきょしょうじんたい", "en": "interosseous talocalcaneal ligament", "la": "ligamentum talocalcaneum interosseum",
           "parts": ["za:talocalcaneal interosseous ligament"], "level": 3,
           "kanji": "距骨と踵骨の間をつなぐ靱帯",
           "etym": "interosseous「骨の間の」＋ talo-「距骨の」＋ calcaneal「踵骨の」",
-          "note": "距骨と踵骨の間のすき間（足根洞）の中にある強い靱帯。距骨下関節を安定させる。"
+          "note": "距骨（talus）と踵骨（calcaneus）の間のすき間（足根洞（tarsal sinus））の中にある強い靱帯（ligament）。距骨下関節（subtalar joint）を安定させる。"
         }
       ]
     },
@@ -898,42 +898,42 @@
           "parts": ["za:anterior ligament of fibular head"], "level": 3,
           "kanji": "腓骨頭の前の靱帯",
           "etym": "anterior「前の」＋ fibular head「腓骨頭」（ラテン語 fibula＝留め金）",
-          "note": "脛腓関節（上の脛骨と腓骨の関節）の前の面を補強する靱帯。腓骨頭の前から斜め上内側へ脛骨の外側顆に付く。"
+          "note": "脛腓関節（tibiofibular joint）（上の脛骨（tibia）と腓骨（fibula）の関節（joint））の前の面を補強する靱帯（ligament）。腓骨頭（head of fibula）の前から斜め上内側（superomedial）へ脛骨の外側顆（lateral condyle）に付く。"
         },
         {
           "id": "posterior-ligament-of-fibular-head", "ja": "後腓骨頭靱帯", "yomi": "こうひこつとうじんたい", "en": "posterior ligament of fibular head", "la": "ligamentum capitis fibulae posterius",
           "parts": ["za:posterior ligament of fibular head"], "level": 3,
           "kanji": "腓骨頭の後ろの靱帯",
           "etym": "posterior「後ろの」＋ fibular head「腓骨頭」",
-          "note": "脛腓関節の後ろの面を補強する靱帯。腓骨頭の後ろから脛骨の外側顆の後ろへ張る。すぐ上を膝窩筋の腱が通る。"
+          "note": "脛腓関節（tibiofibular joint）の後ろの面を補強する靱帯（ligament）。腓骨頭（head of fibula）の後ろから脛骨（tibia）の外側顆（lateral condyle）の後ろへ張る。すぐ上を膝窩筋（popliteus）の腱（tendon）が通る。"
         },
         {
           "id": "lateral-talocalcaneal-ligament", "ja": "外側距踵靱帯", "yomi": "がいそくきょしょうじんたい", "en": "lateral talocalcaneal ligament", "la": "ligamentum talocalcaneum laterale",
           "parts": ["za:lateral talocalcaneal ligament"], "level": 3,
           "kanji": "距骨と踵骨を外側でつなぐ靱帯",
           "etym": "talo-「距骨の」（ラテン語 talus＝くるぶし）＋ calcaneal「踵骨の」（calx＝かかと）",
-          "note": "距骨下関節の外側の短い靱帯。距骨の外側突起から踵骨の外側面へ、踵腓靱帯のすぐ前を平行に走る。"
+          "note": "距骨下関節（subtalar joint）の外側（lateral）の短い靱帯（ligament）。距骨（talus）の外側突起（lateral process）から踵骨（calcaneus）の外側面（lateral surface）へ、踵腓靱帯（calcaneofibular ligament）のすぐ前を平行に走る。"
         },
         {
           "id": "medial-talocalcaneal-ligament", "ja": "内側距踵靱帯", "yomi": "ないそくきょしょうじんたい", "en": "medial talocalcaneal ligament", "la": "ligamentum talocalcaneum mediale",
           "parts": ["za:medial talocalcaneal ligament"], "level": 3,
           "kanji": "距骨と踵骨を内側でつなぐ靱帯",
           "etym": "medial「内側の」＋ talocalcaneal「距骨と踵骨の」",
-          "note": "距骨下関節の内側の靱帯。距骨の後突起の内側結節から、踵骨の載距突起の後ろへ張る。"
+          "note": "距骨下関節（subtalar joint）の内側（medial）の靱帯（ligament）。距骨（talus）の後突起（posterior process）の内側結節（medial tubercle）から、踵骨（calcaneus）の載距突起（sustentaculum tali）の後ろへ張る。"
         },
         {
           "id": "posterior-talocalcaneal-ligament", "ja": "後距踵靱帯", "yomi": "こうきょしょうじんたい", "en": "posterior talocalcaneal ligament", "la": "ligamentum talocalcaneum posterius",
           "parts": ["za:posterior talocalcaneal ligament"], "level": 3,
           "kanji": "距骨と踵骨を後ろでつなぐ靱帯",
           "etym": "posterior「後ろの」＋ talocalcaneal「距骨と踵骨の」",
-          "note": "距骨の後突起の外側結節から踵骨の上の面へ張る短い靱帯。距骨下関節の後ろを閉じる。"
+          "note": "距骨（talus）の後突起（posterior process）の外側結節（lateral tubercle）から踵骨（calcaneus）の上の面へ張る短い靱帯（ligament）。距骨下関節（subtalar joint）の後ろを閉じる。"
         },
         {
           "id": "triradiate-cartilage", "ja": "Y軟骨", "yomi": "わいなんこつ", "en": "triradiate cartilage", "enAlt": ["y-shaped cartilage"], "la": "cartilago triradiata",
           "parts": ["za:triradiate cartilage"], "level": 2, "xray": true,
           "kanji": "Y字の形の軟骨",
           "etym": "tri-「3つの」＋ radiate「放射状の」",
-          "note": "寛骨臼の中で、腸骨・坐骨・恥骨の3つをつなぐY字の軟骨。ここで骨が伸び、思春期（15〜17歳ごろ）に骨になって3つの骨が1つの寛骨になる。寛骨臼の中の線として跡が残る。"
+          "note": "寛骨臼（acetabulum）の中で、腸骨（ilium）・坐骨（ischium）・恥骨（pubis）の3つをつなぐY字の軟骨（cartilage）。ここで骨（bone）が伸び、思春期（puberty）（15〜17歳ごろ）に骨になって3つの骨が1つの寛骨（hip bone）になる。寛骨臼の中の線として跡が残る。"
         }
       ]
     },
@@ -942,8 +942,8 @@
       "title": "足首と足根の関節（向き合う関節面）",
       "group": "下肢",
       "intro": [
-        "足首（距腿関節）は足の背屈・底屈を、距骨下関節と距踵舟関節は足の内反・外反を行う。距舟関節と踵立方関節はほぼ一直線に並ぶので、あわせて横足根関節（ショパール関節）、足根骨と中足骨の間を足根中足関節（リスフラン関節）という。どちらも外科で足を切断する位置として考案された。",
-        "脛骨と腓骨は、上端の脛腓関節・骨幹の下腿骨間膜・下端の脛腓靱帯結合の3か所でつながり、前腕のような回内・回外はできない。"
+        "足首（ankle）（距腿関節（ankle joint））は足（foot）の背屈（dorsiflexion）・底屈（plantar flexion）を、距骨下関節（subtalar joint）と距踵舟関節（talocalcaneonavicular joint）は足の内反（inversion）・外反（eversion）を行う。距舟関節（talonavicular joint）と踵立方関節（calcaneocuboid joint）はほぼ一直線に並ぶので、あわせて横足根関節（transverse tarsal joint）（ショパール関節（Chopart joint））、足根骨（tarsal bones）と中足骨（metatarsals）の間を足根中足関節（tarsometatarsal joints）（リスフラン関節（Lisfranc joint））という。どちらも外科で足を切断する位置として考案された。",
+        "脛骨（tibia）と腓骨（fibula）は、上端（superior end）の脛腓関節（tibiofibular joint）・骨幹（shaft）の下腿骨間膜（interosseous membrane of leg）・下端（inferior end）の脛腓靱帯結合（tibiofibular syndesmosis）の3か所でつながり、前腕（forearm）のような回内（pronation）・回外（supination）はできない。"
       ],
       "terms": [
         {
@@ -951,7 +951,7 @@
           "level": 1,
           "kanji": "距骨と下腿の骨の関節",
           "etym": "talo-「距骨の」＋ crural「下腿の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "脛骨の下関節面・内果関節面と腓骨の外果関節面がつくるくぼみに、距骨滑車がはまる関節（蝶番関節）。足首の背屈・底屈を行う。滑車は前が後ろより広いので、背屈（立って前へ傾く姿勢）では固くはまって安定し、底屈では少し横に動く。捻挫の多い関節。",
+          "note": "脛骨（tibia）の下関節面（inferior articular surface）・内果関節面（articular facet of medial malleolus）と腓骨（fibula）の外果関節面（articular facet of lateral malleolus）がつくるくぼみに、距骨滑車（trochlea of talus）がはまる関節（joint）（蝶番関節（hinge joint））。足首（ankle）の背屈（dorsiflexion）・底屈（plantar flexion）を行う。滑車（trochlea）は前が後ろより広いので、背屈（立って前へ傾く姿勢）では固くはまって安定し、底屈では少し横に動く。捻挫（sprain）の多い関節。",
           "region": {"bounds": ["trochlea-of-talus", "inferior-articular-surface-of-tibia", "articular-facet-of-medial-malleolus", "articular-facet-of-lateral-malleolus"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0702, -0.0015, 0.0743], "from": [-0.3, 0.2, 1], "size": 0.08}, "prompt": "脛骨・腓骨のくぼみに距骨滑車がはまる関節は？"}
         },
         {
@@ -959,7 +959,7 @@
           "level": 2,
           "kanji": "距骨の下の関節",
           "etym": "sub-「下の」＋ talar「距骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "距骨の下面の後ろの関節面と、踵骨の後距骨関節面の間の関節。距踵舟関節と協力して、足の内反（足の裏を内へ向ける）・外反を行う。足根洞をはさんで前の距踵舟関節と分かれる。",
+          "note": "距骨（talus）の下面（inferior surface）の後ろの関節面（articular surface）と、踵骨（calcaneus）の後距骨関節面（posterior talar articular surface）の間の関節（joint）。距踵舟関節（talocalcaneonavicular joint）と協力して、足（foot）の内反（inversion）（足の裏（sole）を内へ向ける）・外反（eversion）を行う。足根洞（tarsal sinus）をはさんで前の距踵舟関節と分かれる。",
           "region": {"bounds": ["posterior-talar-articular-surface"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0751, -0.0242, 0.0595], "from": [-1, 0.8, 0], "size": 0.07}, "prompt": "距骨と踵骨の後距骨関節面がつくる関節は？"}
         },
         {
@@ -967,7 +967,7 @@
           "level": 3,
           "kanji": "距骨・踵骨・舟状骨の関節",
           "etym": "talo-「距骨の」＋ calcaneo-「踵骨の」＋ navicular「舟状骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "距骨頭を、前は舟状骨の後ろのくぼみ、下は踵骨の前・中距骨関節面（載距突起の上）と底側踵舟靱帯が受ける関節。1つの関節包に包まれる。距骨下関節とともに足の内反・外反を行う。",
+          "note": "距骨頭（head of talus）を、前は舟状骨（scaphoid）の後ろのくぼみ、下は踵骨（calcaneus）の前・中距骨関節面（middle talar articular surface）（載距突起（sustentaculum tali）の上）と底側踵舟靱帯（plantar calcaneonavicular ligament）が受ける関節（joint）。1つの関節包（joint capsule）に包まれる。距骨下関節（subtalar joint）とともに足（foot）の内反（inversion）・外反（eversion）を行う。",
           "region": {"bounds": ["head-of-talus", "middle-talar-articular-surface", "anterior-talar-articular-surface"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0707, -0.0229, 0.0874], "from": [0.7, 0.6, 0.6], "size": 0.07}, "prompt": "距骨頭を舟状骨と踵骨の前・中距骨関節面が受ける関節は？"}
         },
         {
@@ -975,7 +975,7 @@
           "level": 3,
           "kanji": "踵骨と立方骨の関節",
           "etym": "calcaneo-「踵骨の」＋ cuboid「立方骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "踵骨の前の端と立方骨の後ろの面の間の関節（不完全な鞍関節）。距舟関節とほぼ一直線に並び、あわせて横足根関節となる。",
+          "note": "踵骨（calcaneus）の前の端と立方骨（cuboid）の後ろの面の間の関節（joint）（不完全な鞍関節（saddle joint））。距舟関節（talonavicular joint）とほぼ一直線に並び、あわせて横足根関節（transverse tarsal joint）となる。",
           "region": {"bounds": ["calcaneus", "cuboid"], "contents": [], "boundsLabel": "関節する骨", "view": {"target": [0, 0, 0], "from": [-1, 0.5, 0.3], "size": 0.08}, "prompt": "踵骨と立方骨がつくる関節は？"}
         },
         {
@@ -983,7 +983,7 @@
           "level": 2,
           "kanji": "足根を横切る関節",
           "etym": "transverse「横の」＋ tarsal「足根の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "距骨と舟状骨の間（距踵舟関節の一部）と、踵骨と立方骨の間（踵立方関節）をあわせた、足根を横にS字に横切る関節（ショパール関節）。外科で足を切断する位置として考案された。3Dでは関節の線を橙色の線で示す。",
+          "note": "距骨（talus）と舟状骨（scaphoid）の間（距踵舟関節（talocalcaneonavicular joint）の一部）と、踵骨（calcaneus）と立方骨（cuboid）の間（踵立方関節（calcaneocuboid joint））をあわせた、足根（tarsus）を横にS字に横切る関節（joint）（ショパール関節（Chopart joint））。外科で足（foot）を切断する位置として考案された。3Dでは関節の線を橙色の線で示す。",
           "region": {"bounds": ["head-of-talus"], "contents": ["navicular", "calcaneus", "cuboid"], "boundsLabel": "向き合う関節面", "contentsLabel": "関節する骨", "outline": [[-0.065, -0.012, 0.104],[-0.075, -0.009, 0.103],[-0.0838, -0.0106, 0.1006],[-0.089, -0.02, 0.094],[-0.0935, -0.027, 0.087],[-0.1, -0.033, 0.082]], "open": true, "view": {"target": [-0.0728, -0.0154, 0.0976], "from": [0, 1, 0.3], "size": 0.09}, "prompt": "橙色の線で示す、足根を横切る関節は？"}
         },
         {
@@ -991,7 +991,7 @@
           "level": 2,
           "kanji": "足根骨と中足骨の関節",
           "etym": "tarso-「足根の」＋ metatarsal「中足骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "3つの楔状骨・立方骨と5本の中足骨の底の間の関節（リスフラン関節）。ほぼ一列に並ぶが、第2中足骨の底だけは後ろへ入り込んで楔状骨の間にはまるので、動きはごく小さい。手根中手関節と同じく、足根骨と中足骨は1対1には対応しない。",
+          "note": "3つの楔状骨（cuneiform bones）・立方骨（cuboid）と5本の中足骨（metatarsals）の底の間の関節（joint）（リスフラン関節（Lisfranc joint））。ほぼ一列に並ぶが、第2中足骨（second metatarsal）の底だけは後ろへ入り込んで楔状骨の間にはまるので、動きはごく小さい。手根中手関節（carpometacarpal joint）と同じく、足根骨（tarsal bones）と中足骨は1対1には対応しない。",
           "region": {"bounds": ["base-of-metatarsal"], "contents": ["cuneiforms", "cuboid"], "boundsLabel": "向き合う関節面", "contentsLabel": "関節する足根骨", "outline": [[-0.075, -0.025, 0.142],[-0.083, -0.022, 0.136],[-0.088, -0.021, 0.13],[-0.094, -0.024, 0.133],[-0.1036, -0.03, 0.1227],[-0.109, -0.037, 0.112],[-0.115, -0.045, 0.099]], "open": true, "view": {"target": [-0.1048, -0.0307, 0.1178], "from": [0, 1, 0.3], "size": 0.1}, "prompt": "橙色の線で示す、足根骨と中足骨の間の関節は？"}
         },
         {
@@ -999,7 +999,7 @@
           "level": 3,
           "kanji": "脛骨と腓骨の靱帯による結合",
           "etym": "syndesmosis ← ギリシャ語 syn-「一緒に」＋ desmos「ひも、靱帯」",
-          "note": "脛骨の下端の腓骨切痕に腓骨の下端がはまり、前・後脛腓靱帯と骨間の靱帯で固く結ばれた線維性の連結（靱帯結合）。関節腔は無い。距腿関節のくぼみの幅を保つ。",
+          "note": "脛骨（tibia）の下端（inferior end）の腓骨切痕（fibular notch）に腓骨（fibula）の下端がはまり、前・後脛腓靱帯（posterior tibiofibular ligament）と骨間（interosseous）の靱帯（ligament）で固く結ばれた線維性（fibrous）の連結（靱帯結合（syndesmosis））。関節腔（joint cavity）は無い。距腿関節（ankle joint）のくぼみの幅を保つ。",
           "region": {"bounds": ["fibular-notch"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0961, 0.0168, 0.0754], "from": [-1, 0.2, 0.6], "size": 0.07}, "prompt": "脛骨の腓骨切痕に腓骨の下端がはまる線維性の連結は？"}
         }
       ]

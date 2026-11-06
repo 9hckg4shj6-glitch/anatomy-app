@@ -10,14 +10,14 @@
           "parts": ["za:adenohypophysis", "za:neurohypophysis"], "level": 1,
           "kanji": "（脳から）下に垂れ下がった体",
           "etym": "pituitary ← ラテン語 pituita「粘液」（鼻汁を出すと誤解されていた）。hypophysis ← 「下に生えたもの」",
-          "note": "脳の下、蝶形骨のトルコ鞍にのる豆粒大の器官。前の腺下垂体（前葉）と後ろの神経下垂体（後葉）からなり、成長ホルモンなど多くのホルモンを出してほかの内分泌腺を調節する。"
+          "note": "脳（brain）の下、蝶形骨（sphenoid bone）のトルコ鞍（sella turcica）にのる豆粒大の器官（organ）。前の腺下垂体（adenohypophysis）（前葉（anterior lobe））と後ろの神経下垂体（neurohypophysis）（後葉（posterior lobe））からなり、成長ホルモン（growth hormone）など多くのホルモンを出してほかの内分泌腺（endocrine gland）を調節する。"
         },
         {
           "id": "pineal-gland", "ja": "松果体", "yomi": "しょうかたい", "en": "pineal gland", "enAlt": ["pineal body", "pineal"], "la": "glandula pinealis",
           "parts": ["pineal body"], "level": 2, "xray": true,
           "kanji": "松かさ（松果）の形をした体",
           "etym": "pineal ← ラテン語 pinea「松かさ」",
-          "note": "間脳の後ろ上にある小さな器官。メラトニンを出し、睡眠のリズムにかかわる。",
+          "note": "間脳（diencephalon）の後ろ上にある小さな器官（organ）。メラトニン（melatonin）を出し、睡眠のリズムにかかわる。",
           "hormones": "メラトニン（夜に多く出て、眠りと1日のリズムにかかわる）"
         },
         {
@@ -25,7 +25,7 @@
           "parts": ["za:thyroid gland"], "level": 1,
           "kanji": "甲状（盾の形の）軟骨のそばの腺",
           "etym": "thyroid ← ギリシャ語 thyreos「盾」＋ -oid「〜の形」",
-          "note": "喉頭の下、気管の前にある蝶の形をした腺。右葉・左葉と、それをつなぐ峡部からなる。代謝を高める甲状腺ホルモンと、血液のカルシウムを下げるカルシトニンを出す。",
+          "note": "喉頭（larynx）の下、気管（trachea）の前にある蝶の形をした腺（gland）。右葉（right lobe）・左葉（left lobe）と、それをつなぐ峡部（isthmus）からなる。代謝（metabolism）を高める甲状腺ホルモン（thyroid hormone）と、血液（blood）のカルシウムを下げるカルシトニン（calcitonin）を出す。",
           "hormones": "甲状腺ホルモン（サイロキシン・トリヨードサイロニン。濾胞の上皮細胞）と、血液のカルシウムを下げるカルシトニン（傍濾胞細胞＝C細胞）"
         },
         {
@@ -33,7 +33,7 @@
           "parts": ["za:*parathyroid gland"], "level": 2, "xray": true,
           "kanji": "上皮でできた小さな体（ドイツ語 Epithelkörperchen の訳）",
           "etym": "para-「そば」＋ thyroid「甲状腺」",
-          "note": "甲状腺の後ろにある米粒大（径3〜6mm）の腺で、上下2対・計4つ（上上皮小体・下上皮小体）。臨床では副甲状腺ということが多い。パラトルモンを出し、血液のカルシウムを上げる。",
+          "note": "甲状腺（thyroid gland）の後ろにある米粒大（径3〜6mm）の腺（gland）で、上下2対・計4つ（上上皮小体（superior parathyroid gland）・下上皮小体（inferior parathyroid gland））。臨床では副甲状腺（parathyroid gland）ということが多い。パラトルモン（parathyroid hormone）を出し、血液（blood）のカルシウムを上げる。",
           "hormones": "パラトルモン（副甲状腺ホルモン。血液のカルシウムを上げる）"
         },
         {
@@ -41,7 +41,7 @@
           "parts": ["adrenal gland"], "level": 1,
           "kanji": "腎臓に副（そ）う器官",
           "etym": "adrenal ← ad-「そば」＋ renal「腎臓の」。suprarenal ← supra-「上」＋ renal",
-          "note": "左右の腎臓の上内側の端にのる器官（長さ約5cm・幅約3cm、5〜6g）で、腎臓と一緒に腎筋膜に包まれる。右は三角形で下大静脈のすぐ右後ろ、左は半月形。外側の皮質からステロイドホルモン、内側の髄質からアドレナリンを出す。上・中・下副腎動脈の3本が入るが、出るのは副腎静脈1本で、右は直接下大静脈へ、左は左腎静脈へ注ぐ。",
+          "note": "左右の腎臓（kidney）の上内側（superomedial）の端にのる器官（organ）（長さ約5cm・幅約3cm、5〜6g）で、腎臓と一緒に腎筋膜（renal fascia）に包まれる。右は三角形で下大静脈（inferior vena cava）のすぐ右後ろ、左は半月形。外側（lateral）の皮質（cortex）からステロイドホルモン（steroid hormone）、内側（medial）の髄質（medulla）からアドレナリン（adrenaline）を出す。上・中・下副腎動脈（inferior suprarenal artery）の3本が入るが、出るのは副腎静脈（suprarenal vein）1本で、右は直接下大静脈（inferior vena cava）へ、左は左腎静脈（left renal vein）へ注ぐ。",
           "hormones": "皮質の球状帯からアルドステロン（鉱質コルチコイド）、束状帯からコルチゾール（糖質コルチコイド）、網状帯から副腎アンドロゲン。髄質からアドレナリン・ノルアドレナリン"
         },
         {
@@ -49,7 +49,7 @@
           "parts": ["lobe of thymus"], "level": 2,
           "kanji": "胸にある腺",
           "etym": "thymus ← ギリシャ語 thymos（ハーブのタイムの葉に形が似る、とする説）",
-          "note": "胸骨の後ろ、心臓の上にある器官。T細胞を育てるリンパ性器官でもある。子どもで大きく、大人では脂肪に置きかわる。",
+          "note": "胸骨（sternum）の後ろ、心臓（heart）の上にある器官（organ）。T細胞（T cell）を育てるリンパ性器官（lymphoid organ）でもある。子どもで大きく、大人では脂肪（fat）に置きかわる。",
           "hormones": "サイモシンなど（T細胞が育つのを助ける）"
         }
       ]
@@ -63,7 +63,7 @@
           "parts": ["za:adenohypophysis"], "level": 1,
           "kanji": "腺でできた下垂体（前葉）",
           "etym": "adeno-「腺」（ギリシャ語 aden）＋ hypophysis「下に生えたもの」",
-          "note": "下垂体の前の部分（前葉）。胎児の口の天井の上皮からできた腺で、成長ホルモン・プロラクチン・甲状腺刺激ホルモン・副腎皮質刺激ホルモン・性腺刺激ホルモンを出す。視床下部のホルモンが下垂体門脈で届いて調節する。",
+          "note": "下垂体（pituitary gland）の前の部分（前葉（anterior lobe））。胎児（fetus）の口の天井の上皮（epithelium）からできた腺（gland）で、成長ホルモン（growth hormone）・プロラクチン（prolactin）・甲状腺刺激ホルモン（thyroid-stimulating hormone）・副腎皮質刺激ホルモン（adrenocorticotropic hormone）・性腺刺激ホルモン（gonadotropin）を出す。視床下部（hypothalamus）のホルモンが下垂体門脈（hypophysial portal system）で届いて調節する。",
           "hormones": "成長ホルモン・プロラクチン・甲状腺刺激ホルモン（TSH）・副腎皮質刺激ホルモン（ACTH）・卵胞刺激ホルモン（FSH）・黄体形成ホルモン（LH）"
         },
         {
@@ -71,7 +71,7 @@
           "parts": ["za:neurohypophysis"], "level": 1,
           "kanji": "神経（脳）でできた下垂体（後葉）",
           "etym": "neuro-「神経」＋ hypophysis",
-          "note": "下垂体の後ろの部分（後葉）と漏斗。間脳が下へ伸びたもので、視床下部の神経細胞がつくったバソプレシン（抗利尿ホルモン）とオキシトシンを、神経の突起の先から血液に出す。",
+          "note": "下垂体（pituitary gland）の後ろの部分（後葉（posterior lobe））と漏斗（infundibulum）。間脳（diencephalon）が下へ伸びたもので、視床下部（hypothalamus）の神経細胞（neuron）がつくったバソプレシン（vasopressin）（抗利尿ホルモン（antidiuretic hormone））とオキシトシン（oxytocin）を、神経（nerve）の突起（process）の先から血液（blood）に出す。",
           "hormones": "バソプレシン（抗利尿ホルモン）・オキシトシン。どちらも視床下部の神経細胞がつくり、突起の先のここから血液へ出す"
         },
         {
@@ -79,42 +79,42 @@
           "of": "thyroid-gland", "level": 2,
           "kanji": "甲状腺の右の葉",
           "etym": "lobe ← ギリシャ語 lobos「丸くふくらんだ部分」",
-          "note": "気管と喉頭の右わきにある葉。後ろに上皮小体（上下2つ）が付き、後ろ内側を右の反回神経が上る。"
+          "note": "気管（trachea）と喉頭（larynx）の右わきにある葉（lobe）。後ろに上皮小体（parathyroid gland）（上下2つ）が付き、後ろ内側（medial）を右の反回神経（recurrent laryngeal nerve）が上る。"
         },
         {
           "id": "left-lobe-of-thyroid", "ja": "左葉（甲状腺）", "yomi": "さよう", "en": "left lobe of thyroid gland", "la": "lobus sinister glandulae thyroideae",
           "of": "thyroid-gland", "level": 2,
           "kanji": "甲状腺の左の葉",
           "etym": "lobe ← ギリシャ語 lobos「丸くふくらんだ部分」",
-          "note": "気管と喉頭の左わきにある葉。左の反回神経は大動脈弓の下を回って、気管と食道の間の溝を上る。"
+          "note": "気管（trachea）と喉頭（larynx）の左わきにある葉（lobe）。左の反回神経（recurrent laryngeal nerve）は大動脈弓（arch of aorta）の下を回って、気管と食道（esophagus）の間の溝を上る。"
         },
         {
           "id": "isthmus-of-thyroid", "ja": "峡部（甲状腺）", "yomi": "きょうぶ", "en": "isthmus of thyroid gland", "la": "isthmus glandulae thyroideae",
           "of": "thyroid-gland", "level": 2,
           "kanji": "甲状腺の、狭くくびれた（峡）部分",
           "etym": "isthmus ← ギリシャ語「細い地峡」",
-          "note": "左右の葉を気管の前でつなぐ細い部分（第2〜4気管軟骨の前）。気管切開のときの目じるし。上へ錐体葉が伸びることがある。"
+          "note": "左右の葉（lobe）を気管（trachea）の前でつなぐ細い部分（第2〜4気管軟骨（second to fourth tracheal cartilages）の前）。気管切開（tracheotomy）のときの目じるし。上へ錐体葉（pyramidal lobe）が伸びることがある。"
         },
         {
           "id": "pyramidal-lobe", "ja": "錐体葉", "yomi": "すいたいよう", "en": "pyramidal lobe", "la": "lobus pyramidalis",
           "of": "thyroid-gland", "level": 3,
           "kanji": "錐（きり）の形の葉",
           "etym": "pyramidal ← ギリシャ語 pyramis「ピラミッド」",
-          "note": "峡部から上へ伸びる細い葉。発生のときに甲状腺が舌の根もとから下りてきた通り道（甲状舌管）のなごりで、ある人とない人がいる。このモデルにはある。"
+          "note": "峡部（isthmus）から上へ伸びる細い葉（lobe）。発生（development）のときに甲状腺（thyroid gland）が舌（tongue）の根もとから下りてきた通り道（甲状舌管（thyroglossal duct））のなごりで、ある人とない人がいる。このモデルにはある。"
         },
         {
           "id": "superior-parathyroid-gland", "ja": "上上皮小体", "yomi": "じょうじょうひしょうたい", "en": "superior parathyroid gland", "la": "glandula parathyroidea superior",
           "parts": ["za:superior parathyroid gland"], "level": 3, "xray": true,
           "kanji": "上の上皮小体",
           "etym": "superior「上の」＋ parathyroid「甲状腺のそばの」",
-          "note": "上の1対の上皮小体で、甲状腺の左右の葉の後ろの縁の、ほぼ中ほどの高さにある。位置は比較的一定。"
+          "note": "上の1対の上皮小体（parathyroid gland）で、甲状腺（thyroid gland）の左右の葉（lobe）の後ろの縁の、ほぼ中ほどの高さにある。位置は比較的一定。"
         },
         {
           "id": "inferior-parathyroid-gland", "ja": "下上皮小体", "yomi": "かじょうひしょうたい", "en": "inferior parathyroid gland", "la": "glandula parathyroidea inferior",
           "parts": ["za:inferior parathyroid gland"], "level": 3, "xray": true,
           "kanji": "下の上皮小体",
           "etym": "inferior「下の」＋ parathyroid「甲状腺のそばの」",
-          "note": "下の1対の上皮小体で、甲状腺の左右の葉の下の端の近くにある。発生のときに胸腺と一緒に下りてくるので、甲状腺から離れた所（胸腺の中など）にあることも多い。下甲状腺動脈の枝を受け、甲状腺の手術で傷つくと血液のカルシウムが下がって手足がしびれる（テタニー）。"
+          "note": "下の1対の上皮小体（parathyroid gland）で、甲状腺（thyroid gland）の左右の葉（lobe）の下の端の近くにある。発生（development）のときに胸腺（thymus）と一緒に下りてくるので、甲状腺から離れた所（胸腺の中など）にあることも多い。下甲状腺動脈（inferior thyroid artery）の枝（branch）を受け、甲状腺の手術で傷つくと血液（blood）のカルシウムが下がって手足（limbs）がしびれる（テタニー（tetany））。"
         }
       ]
     }

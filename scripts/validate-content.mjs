@@ -7,7 +7,9 @@
 // - 臓器の図（content/organs.json）の形と語・レッスンの参照先、平面図（public/plates/index.json）が作られているか
 // - 向きの問い方（content/directions.json）の語と、答えの向きが3D（ピンと部品の中心、臓器・血管などは at）で見た向きと合うか
 // - public/models/index.json が今の内容から作られているか（語を足したら npm run build:models が要る）
+// - 説明の解剖の語に英語が添えてあるか（説明を書いたら npm run build:en-notes が要る）
 // - check: true の語と、Wikidata（data-raw/wikidata.json があれば）と表記が違う語を一覧にする
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
@@ -503,6 +505,9 @@ if (wikidata) {
 }
 fs.mkdirSync(path.join(ROOT, "docs"), { recursive: true });
 fs.writeFileSync(path.join(ROOT, "docs/要確認用語.md"), `${lines.join("\n")}`);
+
+const enNotes = spawnSync(process.execPath, [path.join(ROOT, "scripts/en-notes.mjs"), "--check"], { encoding: "utf8" });
+if (enNotes.status !== 0) errors.push(`説明の英語が今の表（scripts/en-gloss.txt）と合いません。npm run build:en-notes を実行してください（${(enNotes.stdout + enNotes.stderr).trim()}）`);
 
 if (errors.length) {
   console.error(errors.join("\n"));

@@ -11,42 +11,42 @@
           "parts": ["* frontal gyrus", "precentral gyrus", "postcentral gyrus", "* part of superior temporal gyrus", "middle temporal gyrus", "inferior temporal gyrus", "superior parietal lobule", "supramarginal gyrus", "angular gyrus", "occipital lobe", "insula", "cingulate gyrus", "parahippocampal gyrus", "fusiform gyrus", "orbital gyrus", "white matter of cerebral hemisphere"], "level": 1,
           "kanji": "大きな脳",
           "etym": "cerebrum ← ラテン語「脳」。cerebral「大脳の」",
-          "note": "左右の大脳半球からなる脳の最大の部分。表面の大脳皮質で運動・感覚・言語・思考などを担う。"
+          "note": "左右の大脳半球（cerebral hemisphere）からなる脳（brain）の最大の部分。表面の大脳皮質（cerebral cortex）で運動・感覚（sensation）・言語・思考などを担う。"
         },
         {
           "id": "frontal-lobe", "ja": "前頭葉", "yomi": "ぜんとうよう", "en": "frontal lobe", "la": "lobus frontalis",
           "parts": ["* frontal gyrus", "precentral gyrus", "orbital gyrus"], "level": 1,
           "kanji": "頭の前にある葉",
           "etym": "frontal ← frons「ひたい」、lobe ← ギリシャ語 lobos「耳たぶ・ふくらみ」",
-          "note": "中心溝より前の部分。運動の指令（中心前回）、話すこと（ブローカ野）、考え・判断・感情の抑制などを担う。"
+          "note": "中心溝（central sulcus）より前の部分。運動の指令（中心前回（precentral gyrus））、話すこと（ブローカ野（Broca area））、考え・判断・感情の抑制などを担う。"
         },
         {
           "id": "parietal-lobe", "ja": "頭頂葉", "yomi": "とうちょうよう", "en": "parietal lobe", "la": "lobus parietalis",
           "parts": ["postcentral gyrus", "superior parietal lobule", "supramarginal gyrus", "angular gyrus"], "level": 1,
           "kanji": "頭のてっぺんの葉",
           "etym": "parietal ← paries「壁」",
-          "note": "中心溝の後ろ。体の感覚（中心後回）と、空間の把握・読み書きなどを担う。"
+          "note": "中心溝（central sulcus）の後ろ。体の感覚（sensation）（中心後回（postcentral gyrus））と、空間の把握・読み書きなどを担う。"
         },
         {
           "id": "temporal-lobe", "ja": "側頭葉", "yomi": "そくとうよう", "en": "temporal lobe", "la": "lobus temporalis",
           "parts": ["* part of superior temporal gyrus", "middle temporal gyrus", "inferior temporal gyrus", "fusiform gyrus", "parahippocampal gyrus"], "level": 1,
           "kanji": "頭の側面の葉",
           "etym": "temporal ← tempus「こめかみ」",
-          "note": "外側溝より下の部分。聴覚、ことばの理解（ウェルニッケ野）、記憶（内側の海馬）などを担う。"
+          "note": "外側溝（lateral sulcus）より下の部分。聴覚（hearing）、ことばの理解（ウェルニッケ野（Wernicke area））、記憶（内側（medial）の海馬（hippocampus））などを担う。"
         },
         {
           "id": "occipital-lobe", "ja": "後頭葉", "yomi": "こうとうよう", "en": "occipital lobe", "la": "lobus occipitalis",
           "parts": ["occipital lobe"], "level": 1,
           "kanji": "頭の後ろの葉",
           "etym": "occipital ← occiput「後頭部」",
-          "note": "大脳のいちばん後ろ。目から入った情報を処理する視覚の中枢。"
+          "note": "大脳（cerebrum）のいちばん後ろ。目から入った情報を処理する視覚（vision）の中枢（center）。"
         },
         {
           "id": "insula", "ja": "島", "yomi": "とう", "en": "insula", "enAlt": ["insular lobe"], "la": "insula",
           "parts": ["insula"], "level": 2, "xray": true,
           "kanji": "（外側溝の奥に）島のように隠れた皮質",
           "etym": "insula ← ラテン語「島」",
-          "note": "外側溝の奥に隠れた大脳皮質。味覚や内臓の感覚、情動にかかわる。"
+          "note": "外側溝（lateral sulcus）の奥に隠れた大脳皮質（cerebral cortex）。味覚（taste）や内臓（viscera）の感覚（sensation）、情動（emotion）にかかわる。"
         }
       ]
     },
@@ -60,105 +60,105 @@
           "parts": ["precentral gyrus"], "level": 1,
           "kanji": "中心溝の前の回（脳のしわの盛り上がり）",
           "etym": "pre-「前」＋ central「中心（溝）の」、gyrus ← ギリシャ語 gyros「輪・回転」",
-          "note": "一次運動野。体を動かす指令を出す。反対側の体を支配する。"
+          "note": "一次運動野（primary motor cortex）。体を動かす指令を出す。反対側（contralateral side）の体を支配（innervation）する。"
         },
         {
           "id": "postcentral-gyrus", "ja": "中心後回", "yomi": "ちゅうしんこうかい", "en": "postcentral gyrus", "la": "gyrus postcentralis",
           "parts": ["postcentral gyrus"], "level": 1,
           "kanji": "中心溝の後ろの回",
           "etym": "post-「後ろ」＋ central",
-          "note": "一次体性感覚野。皮膚などからの感覚を受け取る。反対側の体の感覚を担当する。"
+          "note": "一次体性感覚野（primary somatosensory cortex）。皮膚（skin）などからの感覚（sensation）を受け取る。反対側（contralateral side）の体の感覚を担当する。"
         },
         {
           "id": "superior-frontal-gyrus", "ja": "上前頭回", "yomi": "じょうぜんとうかい", "en": "superior frontal gyrus", "la": "gyrus frontalis superior",
           "parts": ["superior frontal gyrus"], "level": 3,
           "kanji": "前頭葉の上の回",
           "etym": "superior「上の」＋ frontal ＋ gyrus",
-          "note": "前頭葉の最も上の回。正中に面し、運動の計画などにかかわる。"
+          "note": "前頭葉（frontal lobe）の最も上の回。正中（median）に面し、運動の計画などにかかわる。"
         },
         {
           "id": "middle-frontal-gyrus", "ja": "中前頭回", "yomi": "ちゅうぜんとうかい", "en": "middle frontal gyrus", "la": "gyrus frontalis medius",
           "parts": ["middle frontal gyrus"], "level": 3,
           "kanji": "前頭葉の中ほどの回",
           "etym": "middle ＋ frontal ＋ gyrus",
-          "note": "前頭葉の中央を前後に走る回。目の動き（前頭眼野）や作業記憶にかかわる。"
+          "note": "前頭葉（frontal lobe）の中央を前後に走る回。目の動き（前頭眼野（frontal eye field））や作業記憶（working memory）にかかわる。"
         },
         {
           "id": "inferior-frontal-gyrus", "ja": "下前頭回", "yomi": "かぜんとうかい", "en": "inferior frontal gyrus", "la": "gyrus frontalis inferior",
           "parts": ["inferior frontal gyrus"], "level": 2,
           "kanji": "前頭葉の下の回",
           "etym": "inferior「下の」＋ frontal ＋ gyrus",
-          "note": "左側の後部が運動性言語中枢（ブローカ野）。傷つくとうまく話せなくなる。"
+          "note": "左側の後部（posterior part）が運動性言語中枢（motor speech center）（ブローカ野（Broca area））。傷つくとうまく話せなくなる。"
         },
         {
           "id": "superior-temporal-gyrus", "ja": "上側頭回", "yomi": "じょうそくとうかい", "en": "superior temporal gyrus", "la": "gyrus temporalis superior",
           "parts": ["* part of superior temporal gyrus"], "level": 2,
           "kanji": "側頭葉の上の回",
           "etym": "superior ＋ temporal ＋ gyrus",
-          "note": "聴覚の中枢がある。左側の後部が感覚性言語中枢（ウェルニッケ野）で、ことばの理解を担う。"
+          "note": "聴覚（hearing）の中枢（center）がある。左側の後部（posterior part）が感覚性言語中枢（sensory speech center）（ウェルニッケ野（Wernicke area））で、ことばの理解を担う。"
         },
         {
           "id": "middle-temporal-gyrus", "ja": "中側頭回", "yomi": "ちゅうそくとうかい", "en": "middle temporal gyrus", "la": "gyrus temporalis medius",
           "parts": ["middle temporal gyrus"], "level": 3,
           "kanji": "側頭葉の中ほどの回",
           "etym": "middle ＋ temporal ＋ gyrus",
-          "note": "側頭葉の外側面の中央の回。動きの知覚やことばの意味の処理にかかわる。"
+          "note": "側頭葉（temporal lobe）の外側面（lateral surface）の中央の回。動きの知覚やことばの意味の処理にかかわる。"
         },
         {
           "id": "inferior-temporal-gyrus", "ja": "下側頭回", "yomi": "かそくとうかい", "en": "inferior temporal gyrus", "la": "gyrus temporalis inferior",
           "parts": ["inferior temporal gyrus"], "level": 3,
           "kanji": "側頭葉の下の回",
           "etym": "inferior ＋ temporal ＋ gyrus",
-          "note": "側頭葉の下縁の回。物の形を見分けることにかかわる。"
+          "note": "側頭葉（temporal lobe）の下縁（inferior border）の回。物の形を見分けることにかかわる。"
         },
         {
           "id": "superior-parietal-lobule", "ja": "上頭頂小葉", "yomi": "じょうとうちょうしょうよう", "en": "superior parietal lobule", "la": "lobulus parietalis superior",
           "parts": ["superior parietal lobule"], "level": 3,
           "kanji": "頭頂葉の上の小さな葉",
           "etym": "superior ＋ parietal ＋ lobule「小葉」",
-          "note": "頭頂葉の上部。体の位置や空間の把握にかかわる。"
+          "note": "頭頂葉（parietal lobe）の上部。体の位置や空間の把握にかかわる。"
         },
         {
           "id": "supramarginal-gyrus", "ja": "縁上回", "yomi": "えんじょうかい", "en": "supramarginal gyrus", "la": "gyrus supramarginalis",
           "parts": ["supramarginal gyrus"], "level": 3,
           "kanji": "（外側溝の）縁の上の回",
           "etym": "supra-「上」＋ marginal「縁の」",
-          "note": "外側溝の後端を囲む回。ことばや動作の処理にかかわる。"
+          "note": "外側溝（lateral sulcus）の後端（posterior end）を囲む回。ことばや動作の処理にかかわる。"
         },
         {
           "id": "angular-gyrus", "ja": "角回", "yomi": "かくかい", "en": "angular gyrus", "la": "gyrus angularis",
           "parts": ["angular gyrus"], "level": 3,
           "kanji": "（上側頭溝の）角を囲む回",
           "etym": "angular「角の」",
-          "note": "縁上回の後ろの回。読み書きや計算にかかわる。"
+          "note": "縁上回（supramarginal gyrus）の後ろの回。読み書きや計算にかかわる。"
         },
         {
           "id": "cingulate-gyrus", "ja": "帯状回", "yomi": "たいじょうかい", "en": "cingulate gyrus", "la": "gyrus cinguli",
           "parts": ["cingulate gyrus"], "level": 2, "xray": true,
           "kanji": "帯のように脳梁を取り巻く回",
           "etym": "cingulate ← ラテン語 cingulum「帯」",
-          "note": "大脳の内側面で脳梁を囲む回。辺縁系の一部で、情動や意欲にかかわる。"
+          "note": "大脳（cerebrum）の内側面（medial surface）で脳梁（corpus callosum）を囲む回。辺縁系（limbic system）の一部で、情動（emotion）や意欲にかかわる。"
         },
         {
           "id": "parahippocampal-gyrus", "ja": "海馬傍回", "yomi": "かいばぼうかい", "en": "parahippocampal gyrus", "la": "gyrus parahippocampalis",
           "parts": ["parahippocampal gyrus"], "level": 3, "xray": true,
           "kanji": "海馬の傍（かたわら）の回",
           "etym": "para-「そば」＋ hippocampal「海馬の」",
-          "note": "側頭葉の内側下面で海馬のそばにある回。記憶にかかわる。"
+          "note": "側頭葉（temporal lobe）の内側下面（inferomedial surface）で海馬（hippocampus）のそばにある回。記憶にかかわる。"
         },
         {
           "id": "fusiform-gyrus", "check": true, "ja": "紡錘状回", "yomi": "ぼうすいじょうかい", "en": "fusiform gyrus", "enAlt": ["lateral occipitotemporal gyrus"], "la": "gyrus fusiformis",
           "parts": ["fusiform gyrus"], "level": 3,
           "kanji": "紡錘（糸を巻く道具）の形の回",
           "etym": "fusiform ← ラテン語 fusus「紡錘」＋ form",
-          "note": "側頭葉の下面の回。顔や文字を見分けることにかかわる。"
+          "note": "側頭葉（temporal lobe）の下面（inferior surface）の回。顔（face）や文字を見分けることにかかわる。"
         },
         {
           "id": "orbital-gyri", "check": true, "ja": "眼窩回", "yomi": "がんかかい", "en": "orbital gyri", "enAlt": ["orbital gyrus"], "la": "gyri orbitales",
           "parts": ["orbital gyrus"], "level": 3,
           "kanji": "眼窩の上にのる回",
           "etym": "orbital ← orbita「眼窩」",
-          "note": "前頭葉の下面で眼窩の天井にのる回。意思決定や情動の調節にかかわる。"
+          "note": "前頭葉（frontal lobe）の下面（inferior surface）で眼窩（orbit）の天井にのる回。意思決定や情動（emotion）の調節にかかわる。"
         }
       ]
     },
@@ -167,8 +167,8 @@
       "title": "大脳の溝",
       "group": "脳",
       "intro": [
-        "大脳の表面のしわのうち、へこんだ所を溝（こう）、盛り上がった所を回（かい）という。大きな溝は大脳葉の境目になる。中心溝は前頭葉と頭頂葉を、外側溝は側頭葉を前頭葉・頭頂葉から、頭頂後頭溝は頭頂葉と後頭葉を分ける。",
-        "3Dモデルは回ごとの形なので、溝は回と回の境目の上に色を付けて示す。内側面の溝は右の大脳半球だけを見せて、内側から映す。"
+        "大脳（cerebrum）の表面のしわのうち、へこんだ所を溝（こう）、盛り上がった所を回（かい）という。大きな溝は大脳葉（cerebral lobe）の境目になる。中心溝（central sulcus）は前頭葉（frontal lobe）と頭頂葉（parietal lobe）を、外側溝（lateral sulcus）は側頭葉（temporal lobe）を前頭葉・頭頂葉から、頭頂後頭溝（parieto-occipital sulcus）は頭頂葉と後頭葉（occipital lobe）を分ける。",
+        "3Dモデルは回ごとの形なので、溝は回と回の境目の上に色を付けて示す。内側面（medial surface）の溝は右の大脳半球（cerebral hemisphere）だけを見せて、内側（medial）から映す。"
       ],
       "terms": [
         {
@@ -176,91 +176,91 @@
           "of": "cerebrum", "level": 1,
           "kanji": "大脳の外側面の中ほどの溝",
           "etym": "central「中心の」＋ sulcus ← ラテン語「溝（畝と畝の間）」。ローランド溝ともいう",
-          "note": "大脳の外側面を、上の縁から前下へ斜めに走る溝。前の中心前回（一次運動野）と後ろの中心後回（一次体性感覚野）を分け、前頭葉と頭頂葉の境目になる。下の端は外側溝の少し上で止まる。"
+          "note": "大脳（cerebrum）の外側面（lateral surface）を、上の縁から前下（anteroinferior）へ斜めに走る溝。前の中心前回（precentral gyrus）（一次運動野（primary motor cortex））と後ろの中心後回（postcentral gyrus）（一次体性感覚野（primary somatosensory cortex））を分け、前頭葉（frontal lobe）と頭頂葉（parietal lobe）の境目になる。下の端は外側溝（lateral sulcus）の少し上で止まる。"
         },
         {
           "id": "lateral-sulcus", "ja": "外側溝", "yomi": "がいそくこう", "en": "lateral sulcus", "enAlt": ["sylvian fissure", "lateral fissure"], "la": "sulcus lateralis",
           "of": "cerebrum", "level": 1,
           "kanji": "大脳の外側面の深い溝",
           "etym": "lateral「外側の」＋ sulcus「溝」。シルビウス裂ともいう",
-          "note": "大脳の外側面で、側頭葉を前頭葉・頭頂葉から分ける深い溝。前で短い前枝と上行枝を出し、長い後枝は後ろ上へ向かって縁上回に囲まれて終わる。溝の奥に島が隠れていて、中大脳動脈がこの中を走る。"
+          "note": "大脳（cerebrum）の外側面（lateral surface）で、側頭葉（temporal lobe）を前頭葉（frontal lobe）・頭頂葉（parietal lobe）から分ける深い溝。前で短い前枝（anterior branch）と上行枝（ascending branch）を出し、長い後枝（posterior branch）は後ろ上へ向かって縁上回（supramarginal gyrus）に囲まれて終わる。溝の奥に島が隠れていて、中大脳動脈（middle cerebral artery）がこの中を走る。"
         },
         {
           "id": "parieto-occipital-sulcus", "ja": "頭頂後頭溝", "yomi": "とうちょうこうとうこう", "en": "parieto-occipital sulcus", "la": "sulcus parietooccipitalis",
           "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 1,
           "kanji": "頭頂葉と後頭葉の間の溝",
           "etym": "parieto-「頭頂の」（ラテン語 paries＝壁）＋ occipital「後頭の」＋ sulcus「溝」",
-          "note": "大脳半球の内側面で、上の縁から前下へ走る深い溝。頭頂葉（楔前部）と後頭葉（楔部）の境目。下の端で鳥距溝と合わさり、内側から見てY字になる。"
+          "note": "大脳半球（cerebral hemisphere）の内側面（medial surface）で、上の縁から前下（anteroinferior）へ走る深い溝。頭頂葉（parietal lobe）（楔前部（precuneus））と後頭葉（occipital lobe）（楔部（cuneus））の境目。下の端で鳥距溝（calcarine sulcus）と合わさり、内側（medial）から見てY字になる。"
         },
         {
           "id": "calcarine-sulcus", "ja": "鳥距溝", "yomi": "ちょうきょこう", "en": "calcarine sulcus", "enAlt": ["calcarine fissure"], "la": "sulcus calcarinus",
           "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 1,
           "kanji": "鳥のけづめの形の溝（距＝けづめ）",
           "etym": "calcarine ← ラテン語 calcar「けづめ・拍車」",
-          "note": "後頭葉の内側面を、後頭極から前へ水平に走る溝。上の楔部と下の舌状回を分ける。溝の両側の皮質が一次視覚野で、外側膝状体からの視放線がここに届く。"
+          "note": "後頭葉（occipital lobe）の内側面（medial surface）を、後頭極（occipital pole）から前へ水平に走る溝。上の楔部（cuneus）と下の舌状回（lingual gyrus）を分ける。溝の両側（bilateral）の皮質（cortex）が一次視覚野（primary visual cortex）で、外側膝状体（lateral geniculate body）からの視放線（optic radiation）がここに届く。"
         },
         {
           "id": "cingulate-sulcus", "ja": "帯状溝", "yomi": "たいじょうこう", "en": "cingulate sulcus", "la": "sulcus cinguli",
           "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
           "kanji": "帯状回の上の溝",
           "etym": "cingulate ← ラテン語 cingulum「帯」＋ sulcus「溝」",
-          "note": "内側面で、帯状回の上を脳梁にそって弓なりに走る溝。帯状回を上前頭回（の内側面）と傍中心小葉から分ける。後ろの端（縁部）は上へ曲がって、中心溝のすぐ後ろで上の縁に達する。"
+          "note": "内側面（medial surface）で、帯状回（cingulate gyrus）の上を脳梁（corpus callosum）にそって弓なりに走る溝。帯状回を上前頭回（superior frontal gyrus）（の内側面）と傍中心小葉（paracentral lobule）から分ける。後ろの端（縁部（marginal part））は上へ曲がって、中心溝（central sulcus）のすぐ後ろで上の縁に達する。"
         },
         {
           "id": "precentral-sulcus", "ja": "中心前溝", "yomi": "ちゅうしんぜんこう", "en": "precentral sulcus", "la": "sulcus precentralis",
           "of": "cerebrum", "level": 2,
           "kanji": "中心溝の前の溝",
           "etym": "pre-「前の」＋ central「中心の」＋ sulcus「溝」",
-          "note": "中心溝の前を平行に走る溝。中心前回の前の境目で、ここから前へ上前頭溝と下前頭溝が出る。"
+          "note": "中心溝（central sulcus）の前を平行に走る溝。中心前回（precentral gyrus）の前の境目で、ここから前へ上前頭溝（superior frontal sulcus）と下前頭溝（inferior frontal sulcus）が出る。"
         },
         {
           "id": "postcentral-sulcus", "ja": "中心後溝", "yomi": "ちゅうしんこうこう", "en": "postcentral sulcus", "la": "sulcus postcentralis",
           "of": "cerebrum", "level": 2,
           "kanji": "中心溝の後ろの溝",
           "etym": "post-「後ろの」＋ central「中心の」＋ sulcus「溝」",
-          "note": "中心溝の後ろを平行に走る溝。中心後回の後ろの境目で、ここから後ろへ頭頂間溝が続く。"
+          "note": "中心溝（central sulcus）の後ろを平行に走る溝。中心後回（postcentral gyrus）の後ろの境目で、ここから後ろへ頭頂間溝（intraparietal sulcus）が続く。"
         },
         {
           "id": "superior-frontal-sulcus", "ja": "上前頭溝", "yomi": "じょうぜんとうこう", "en": "superior frontal sulcus", "la": "sulcus frontalis superior",
           "of": "cerebrum", "level": 3,
           "kanji": "前頭葉の上の溝",
           "etym": "superior「上の」＋ frontal「前頭の」＋ sulcus「溝」",
-          "note": "中心前溝から前へ走り、上前頭回と中前頭回を分ける溝。"
+          "note": "中心前溝（precentral sulcus）から前へ走り、上前頭回（superior frontal gyrus）と中前頭回（middle frontal gyrus）を分ける溝。"
         },
         {
           "id": "inferior-frontal-sulcus", "ja": "下前頭溝", "yomi": "かぜんとうこう", "en": "inferior frontal sulcus", "la": "sulcus frontalis inferior",
           "of": "cerebrum", "level": 3,
           "kanji": "前頭葉の下の溝",
           "etym": "inferior「下の」＋ frontal「前頭の」＋ sulcus「溝」",
-          "note": "中心前溝から前へ走り、中前頭回と下前頭回を分ける溝。"
+          "note": "中心前溝（precentral sulcus）から前へ走り、中前頭回（middle frontal gyrus）と下前頭回（inferior frontal gyrus）を分ける溝。"
         },
         {
           "id": "superior-temporal-sulcus", "ja": "上側頭溝", "yomi": "じょうそくとうこう", "en": "superior temporal sulcus", "la": "sulcus temporalis superior",
           "of": "cerebrum", "level": 2,
           "kanji": "側頭葉の上の溝",
           "etym": "superior「上の」＋ temporal「側頭の」（ラテン語 tempora＝こめかみ）＋ sulcus「溝」",
-          "note": "外側溝と平行に前後に走り、上側頭回と中側頭回を分ける溝。後ろの端は上へ曲がって角回に囲まれる。"
+          "note": "外側溝（lateral sulcus）と平行に前後に走り、上側頭回（superior temporal gyrus）と中側頭回（middle temporal gyrus）を分ける溝。後ろの端は上へ曲がって角回（angular gyrus）に囲まれる。"
         },
         {
           "id": "intraparietal-sulcus", "ja": "頭頂間溝", "yomi": "とうちょうかんこう", "en": "intraparietal sulcus", "la": "sulcus intraparietalis",
           "of": "cerebrum", "level": 2,
           "kanji": "頭頂葉の中を走る溝",
           "etym": "intra-「中の」＋ parietal「頭頂の」＋ sulcus「溝」",
-          "note": "中心後溝から後ろへ走り、頭頂葉を上頭頂小葉と下頭頂小葉（縁上回・角回）に分ける溝。目で見た物に手を伸ばす動きなど、空間の情報を扱う所。"
+          "note": "中心後溝（postcentral sulcus）から後ろへ走り、頭頂葉（parietal lobe）を上頭頂小葉（superior parietal lobule）と下頭頂小葉（inferior parietal lobule）（縁上回（supramarginal gyrus）・角回（angular gyrus））に分ける溝。目で見た物に手（hand）を伸ばす動きなど、空間の情報を扱う所。"
         },
         {
           "id": "collateral-sulcus", "ja": "側副溝", "yomi": "そくふくこう", "en": "collateral sulcus", "la": "sulcus collateralis",
           "of": "cerebrum", "level": 3,
           "kanji": "わきに並んで走る溝",
           "etym": "collateral「わきの・並んだ」（col-「共に」＋ latus「わき」）＋ sulcus「溝」",
-          "note": "大脳の下面を前後に走る溝。内側の海馬傍回と舌状回を、外側の紡錘状回から分ける。"
+          "note": "大脳（cerebrum）の下面（inferior surface）を前後に走る溝。内側（medial）の海馬傍回（parahippocampal gyrus）と舌状回（lingual gyrus）を、外側（lateral）の紡錘状回（fusiform gyrus）から分ける。"
         },
         {
           "id": "olfactory-sulcus", "ja": "嗅溝", "yomi": "きゅうこう", "en": "olfactory sulcus", "la": "sulcus olfactorius",
           "of": "cerebrum", "level": 3,
           "kanji": "嗅索がのる溝",
           "etym": "olfactory「嗅覚の」（ラテン語 olfacere＝においをかぐ）＋ sulcus「溝」",
-          "note": "前頭葉の下面の内側を前後に走る溝。嗅球と嗅索がのる。内側の直回と外側の眼窩回を分ける。"
+          "note": "前頭葉（frontal lobe）の下面（inferior surface）の内側（medial）を前後に走る溝。嗅球（olfactory bulb）と嗅索（olfactory tract）がのる。内側の直回（straight gyrus）と外側（lateral）の眼窩回（orbital gyri）を分ける。"
         }
       ]
     },
@@ -269,8 +269,8 @@
       "title": "大脳の内側面・下面の回と下前頭回の部",
       "group": "脳",
       "intro": [
-        "大脳半球の内側面にも回がある。帯状回のまわりに、前から上前頭回の内側部・傍中心小葉・楔前部・楔部・舌状回が並ぶ。内側面の語は、右の大脳半球だけを見せて内側から映す。",
-        "下前頭回は、外側溝の前枝と上行枝で、前から眼窩部・三角部・弁蓋部の3つに分かれる。左の三角部と弁蓋部はブローカ野（運動性言語野）で、ここが傷むと言葉を話しにくくなる（運動性失語）。"
+        "大脳半球（cerebral hemisphere）の内側面（medial surface）にも回がある。帯状回（cingulate gyrus）のまわりに、前から上前頭回（superior frontal gyrus）の内側部（medial part）・傍中心小葉（paracentral lobule）・楔前部（precuneus）・楔部（cuneus）・舌状回（lingual gyrus）が並ぶ。内側面の語は、右の大脳半球だけを見せて内側（medial）から映す。",
+        "下前頭回（inferior frontal gyrus）は、外側溝（lateral sulcus）の前枝（anterior ramus）と上行枝（ascending branch）で、前から眼窩部（orbital part）・三角部（triangular part）・弁蓋部（opercular part）の3つに分かれる。左の三角部と弁蓋部はブローカ野（Broca area）（運動性言語野（motor speech area））で、ここが傷むと言葉を話しにくくなる（運動性失語（motor aphasia））。"
       ],
       "terms": [
         {
@@ -278,84 +278,84 @@
           "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
           "kanji": "くさび形の部分（楔＝くさび）",
           "etym": "cuneus ← ラテン語「くさび」",
-          "note": "後頭葉の内側面で、頭頂後頭溝と鳥距溝にはさまれたくさび形の部分。鳥距溝に面した下の部分は一次視覚野で、視野の下半分を見る。"
+          "note": "後頭葉（occipital lobe）の内側面（medial surface）で、頭頂後頭溝（parieto-occipital sulcus）と鳥距溝（calcarine sulcus）にはさまれたくさび形の部分。鳥距溝に面した下の部分は一次視覚野（primary visual cortex）で、視野（visual field）の下半分を見る。"
         },
         {
           "id": "precuneus", "ja": "楔前部", "yomi": "けつぜんぶ", "en": "precuneus", "la": "precuneus",
           "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
           "kanji": "楔部の前の部分",
           "etym": "pre-「前の」＋ cuneus「くさび」",
-          "note": "頭頂葉の内側面で、楔部の前の部分。前は帯状溝の縁部、後ろは頭頂後頭溝で区切られる。自分の体と空間の位置の認識や、記憶を思い出すことにかかわる。"
+          "note": "頭頂葉（parietal lobe）の内側面（medial surface）で、楔部（cuneus）の前の部分。前は帯状溝（cingulate sulcus）の縁部（marginal part）、後ろは頭頂後頭溝（parieto-occipital sulcus）で区切られる。自分の体と空間の位置の認識や、記憶を思い出すことにかかわる。"
         },
         {
           "id": "lingual-gyrus", "ja": "舌状回", "yomi": "ぜつじょうかい", "en": "lingual gyrus", "la": "gyrus lingualis",
           "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
           "kanji": "舌の形の回",
           "etym": "lingual「舌の」（ラテン語 lingua）＋ gyrus「回・輪」",
-          "note": "後頭葉の内側面の下で、鳥距溝の下の回。前は海馬傍回に続く。鳥距溝に面した上の部分は一次視覚野で、視野の上半分を見る。"
+          "note": "後頭葉（occipital lobe）の内側面（medial surface）の下で、鳥距溝（calcarine sulcus）の下の回。前は海馬傍回（parahippocampal gyrus）に続く。鳥距溝に面した上の部分は一次視覚野（primary visual cortex）で、視野（visual field）の上半分を見る。"
         },
         {
           "id": "paracentral-lobule", "ja": "傍中心小葉", "yomi": "ぼうちゅうしんしょうよう", "en": "paracentral lobule", "la": "lobulus paracentralis",
           "parts": ["right superior frontal gyrus", "right middle frontal gyrus", "right inferior frontal gyrus", "right precentral gyrus", "right postcentral gyrus", "* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right superior parietal lobule", "right supramarginal gyrus", "right angular gyrus", "right occipital lobe", "right insula", "right cingulate gyrus", "right parahippocampal gyrus", "right fusiform gyrus"], "of": "cerebrum", "level": 2,
           "kanji": "中心溝のそばの小さな葉",
           "etym": "para-「そばの」＋ central「中心の」＋ lobule「小葉」",
-          "note": "内側面で、中心前回と中心後回が上の縁を越えて続く部分（中心溝の上の端を囲む）。下肢の運動と感覚を受けもつ（体部位局在では足が内側面にある）。"
+          "note": "内側面（medial surface）で、中心前回（precentral gyrus）と中心後回（postcentral gyrus）が上の縁を越えて続く部分（中心溝（central sulcus）の上の端を囲む）。下肢（lower limb）の運動と感覚（sensation）を受けもつ（体部位局在（somatotopy）では足（foot）が内側面にある）。"
         },
         {
           "id": "straight-gyrus", "ja": "直回", "yomi": "ちょっかい", "en": "straight gyrus", "enAlt": ["gyrus rectus"], "la": "gyrus rectus",
           "of": "cerebrum", "level": 3,
           "kanji": "まっすぐな回",
           "etym": "ラテン語 rectus「まっすぐな」＋ gyrus「回」",
-          "note": "前頭葉の下面のいちばん内側で、嗅溝の内側をまっすぐ前後に走る回。"
+          "note": "前頭葉（frontal lobe）の下面（inferior surface）のいちばん内側（medial）で、嗅溝（olfactory sulcus）の内側をまっすぐ前後に走る回。"
         },
         {
           "id": "opercular-part-of-inferior-frontal-gyrus", "ja": "弁蓋部（下前頭回）", "yomi": "べんがいぶ", "en": "opercular part of inferior frontal gyrus", "enAlt": ["pars opercularis"], "la": "pars opercularis gyri frontalis inferioris",
           "of": "cerebrum", "level": 2,
           "kanji": "ふたの部分（弁蓋＝ふた）。島にふたをする",
           "etym": "opercular ← ラテン語 operculum「ふた」",
-          "note": "下前頭回の後ろの部分で、中心前回のすぐ前。外側溝の上行枝の後ろにあり、島を上からおおう。左では三角部とともにブローカ野（運動性言語野）をつくる。"
+          "note": "下前頭回（inferior frontal gyrus）の後ろの部分で、中心前回（precentral gyrus）のすぐ前。外側溝（lateral sulcus）の上行枝（ascending branch）の後ろにあり、島を上からおおう。左では三角部（triangular part）とともにブローカ野（Broca area）（運動性言語野（motor speech area））をつくる。"
         },
         {
           "id": "triangular-part-of-inferior-frontal-gyrus", "ja": "三角部（下前頭回）", "yomi": "さんかくぶ", "en": "triangular part of inferior frontal gyrus", "enAlt": ["pars triangularis"], "la": "pars triangularis gyri frontalis inferioris",
           "of": "cerebrum", "level": 2,
           "kanji": "三角形の部分",
           "etym": "triangular「三角形の」",
-          "note": "下前頭回の中ほどで、外側溝の前枝と上行枝にはさまれた三角形の部分。左では弁蓋部とともにブローカ野をつくる。"
+          "note": "下前頭回（inferior frontal gyrus）の中ほどで、外側溝（lateral sulcus）の前枝（anterior ramus）と上行枝（ascending branch）にはさまれた三角形の部分。左では弁蓋部（opercular part）とともにブローカ野（Broca area）をつくる。"
         },
         {
           "id": "orbital-part-of-inferior-frontal-gyrus", "ja": "眼窩部（下前頭回）", "yomi": "がんかぶ", "en": "orbital part of inferior frontal gyrus", "enAlt": ["pars orbitalis"], "la": "pars orbitalis gyri frontalis inferioris",
           "of": "cerebrum", "level": 3,
           "kanji": "眼窩の上にのる部分",
           "etym": "orbital「眼窩の」（ラテン語 orbita＝わだち・輪）",
-          "note": "下前頭回の前下の部分で、外側溝の前枝より下。前頭葉の下面（眼窩の上にのる面）へ続く。"
+          "note": "下前頭回（inferior frontal gyrus）の前下（anteroinferior）の部分で、外側溝（lateral sulcus）の前枝（anterior ramus）より下。前頭葉（frontal lobe）の下面（inferior surface）（眼窩（orbit）の上にのる面）へ続く。"
         },
         {
           "id": "transverse-temporal-gyri", "ja": "横側頭回", "yomi": "おうそくとうかい", "en": "transverse temporal gyri", "enAlt": ["heschl gyri"], "la": "gyri temporales transversi",
           "parts": ["* part of right superior temporal gyrus", "right middle temporal gyrus", "right inferior temporal gyrus", "right fusiform gyrus", "right parahippocampal gyrus"], "of": "cerebrum", "level": 2,
           "kanji": "側頭葉を横に走る回",
           "etym": "transverse「横の」＋ temporal「側頭の」＋ gyri「回」（複数）。ヘシュル回ともいう",
-          "note": "上側頭回の上の面（外側溝の中に隠れた面）を、前外側から後内側へ斜めに走る1〜2本の回。一次聴覚野。外からは見えないので、3Dでは側頭葉だけを見せて上から映す。"
+          "note": "上側頭回（superior temporal gyrus）の上の面（外側溝（lateral sulcus）の中に隠れた面）を、前外側（anterolateral）から後内側（posteromedial）へ斜めに走る1〜2本の回。一次聴覚野（primary auditory cortex）。外からは見えないので、3Dでは側頭葉（temporal lobe）だけを見せて上から映す。"
         },
         {
           "id": "frontal-pole", "ja": "前頭極", "yomi": "ぜんとうきょく", "en": "frontal pole", "la": "polus frontalis",
           "of": "cerebrum", "level": 3,
           "kanji": "前頭葉の前の端",
           "etym": "frontal「前頭の」＋ pole「極・端」",
-          "note": "大脳半球の前の端。前頭骨（前頭洞の後ろ）の内側に収まる。"
+          "note": "大脳半球（cerebral hemisphere）の前の端。前頭骨（frontal bone）（前頭洞（frontal sinus）の後ろ）の内側（medial）に収まる。"
         },
         {
           "id": "temporal-pole", "ja": "側頭極", "yomi": "そくとうきょく", "en": "temporal pole", "la": "polus temporalis",
           "of": "cerebrum", "level": 3,
           "kanji": "側頭葉の前の端",
           "etym": "temporal「側頭の」＋ pole「極・端」",
-          "note": "側頭葉の前の端。中頭蓋窩の前の端（蝶形骨の大翼の後ろ）に収まる。"
+          "note": "側頭葉（temporal lobe）の前の端。中頭蓋窩（middle cranial fossa）の前の端（蝶形骨（sphenoid bone）の大翼（greater wing）の後ろ）に収まる。"
         },
         {
           "id": "occipital-pole", "ja": "後頭極", "yomi": "こうとうきょく", "en": "occipital pole", "la": "polus occipitalis",
           "of": "cerebrum", "level": 3,
           "kanji": "後頭葉の後ろの端",
           "etym": "occipital「後頭の」＋ pole「極・端」",
-          "note": "大脳半球の後ろの端。鳥距溝はここから前へ走る。後頭極のあたりの視覚野は、視野の中心（黄斑で見る所）を受けもつ。"
+          "note": "大脳半球（cerebral hemisphere）の後ろの端。鳥距溝（calcarine sulcus）はここから前へ走る。後頭極のあたりの視覚野（visual cortex）は、視野（visual field）の中心（黄斑（macula）で見る所）を受けもつ。"
         }
       ]
     },
@@ -369,21 +369,21 @@
           "parts": ["corpus callosum"], "level": 1, "xray": true,
           "kanji": "脳の梁（はり）。左右の大脳半球を橋渡しする",
           "etym": "corpus「体」＋ callosum「硬い」",
-          "note": "左右の大脳半球をつなぐ神経線維の太い束。"
+          "note": "左右の大脳半球（cerebral hemisphere）をつなぐ神経線維（nerve fiber）の太い束。"
         },
         {
           "id": "thalamus", "ja": "視床", "yomi": "ししょう", "en": "thalamus", "la": "thalamus",
           "parts": ["thalamus"], "level": 1, "xray": true,
           "kanji": "床＝寝床。視神経の出る所と考えられて名づけられた",
           "etym": "thalamus ← ギリシャ語 thalamos「奥の部屋」",
-          "note": "間脳の大部分をしめる卵形の灰白質。嗅覚以外の感覚を大脳皮質へ中継する。"
+          "note": "間脳（diencephalon）の大部分をしめる卵形の灰白質（gray matter）。嗅覚以外の感覚（sensation）を大脳皮質（cerebral cortex）へ中継する。"
         },
         {
           "id": "hypothalamus", "ja": "視床下部", "yomi": "ししょうかぶ", "en": "hypothalamus", "la": "hypothalamus",
           "parts": ["hypothalamus"], "level": 1, "xray": true,
           "kanji": "視床の下の部分",
           "etym": "hypo-「下」＋ thalamus",
-          "note": "視床の下にある小さな部分。体温・食欲・水分・ホルモン（下垂体）などを調節する自律神経の中枢。",
+          "note": "視床（thalamus）の下にある小さな部分。体温（body temperature）・食欲・水分・ホルモン（下垂体（pituitary gland））などを調節する自律神経（autonomic nerve）の中枢（center）。",
           "hormones": "下垂体前葉のはたらきを調節する放出ホルモン・抑制ホルモン（甲状腺刺激ホルモン放出ホルモン・副腎皮質刺激ホルモン放出ホルモン・性腺刺激ホルモン放出ホルモン・成長ホルモン放出ホルモン・ソマトスタチン・ドーパミン）。下垂体門脈で前葉へ届く"
         },
         {
@@ -391,77 +391,77 @@
           "parts": ["caudate nucleus"], "level": 2, "xray": true,
           "kanji": "尾のような形の神経核",
           "etym": "caudate ← cauda「尾」",
-          "note": "側脳室の壁に沿って弓なりに曲がる大脳基底核の一つ。運動の調節にかかわる。"
+          "note": "側脳室（lateral ventricle）の壁に沿って弓なりに曲がる大脳基底核（basal ganglia）の一つ。運動の調節にかかわる。"
         },
         {
           "id": "putamen", "ja": "被殻", "yomi": "ひかく", "en": "putamen", "la": "putamen",
           "parts": ["putamen"], "level": 2, "xray": true,
           "kanji": "殻（から）をかぶったように外側をおおう核",
           "etym": "putamen ← ラテン語「殻・皮」",
-          "note": "大脳基底核の一つ。淡蒼球の外側にある。脳出血が最も多い部位。"
+          "note": "大脳基底核（basal ganglia）の一つ。淡蒼球（globus pallidus）の外側（lateral）にある。脳出血（cerebral hemorrhage）が最も多い部位（region）。"
         },
         {
           "id": "globus-pallidus", "ja": "淡蒼球", "yomi": "たんそうきゅう", "en": "globus pallidus", "la": "globus pallidus",
           "parts": ["globus pallidus"], "level": 3, "xray": true,
           "kanji": "淡く青白い球",
           "etym": "globus「球」＋ pallidus「青白い」",
-          "note": "被殻の内側にある大脳基底核の一つ。運動の調節にかかわる。"
+          "note": "被殻（putamen）の内側（medial）にある大脳基底核（basal ganglia）の一つ。運動の調節にかかわる。"
         },
         {
           "id": "hippocampus", "ja": "海馬", "yomi": "かいば", "en": "hippocampus", "la": "hippocampus",
           "parts": ["hippocampus"], "level": 1, "xray": true,
           "kanji": "海馬＝タツノオトシゴ。形が似ている",
           "etym": "hippocampus ← ギリシャ語 hippos「馬」＋ kampos「海の怪物」",
-          "note": "側頭葉の内側にある。新しいことを記憶するのに欠かせない。"
+          "note": "側頭葉（temporal lobe）の内側（medial）にある。新しいことを記憶するのに欠かせない。"
         },
         {
           "id": "amygdala", "ja": "扁桃体", "yomi": "へんとうたい", "en": "amygdaloid body", "enAlt": ["amygdala"], "la": "corpus amygdaloideum",
           "parts": ["amygdala"], "level": 2, "xray": true,
           "kanji": "扁桃＝アーモンド。形が似ている",
           "etym": "amygdala ← ギリシャ語「アーモンド」",
-          "note": "海馬の前にある神経核。恐怖などの情動にかかわる。"
+          "note": "海馬（hippocampus）の前にある神経核（nucleus）。恐怖などの情動（emotion）にかかわる。"
         },
         {
           "id": "internal-capsule", "ja": "内包", "yomi": "ないほう", "en": "internal capsule", "la": "capsula interna",
           "parts": ["internal capsule"], "level": 2, "xray": true,
           "kanji": "（基底核と視床を）内側で包む白質",
           "etym": "internal ＋ capsule「小箱・包み」",
-          "note": "大脳皮質と脳幹・脊髄を結ぶ神経線維が集まる白質の帯。ここの出血で反対側の半身まひが起こる。"
+          "note": "大脳皮質（cerebral cortex）と脳幹（brainstem）・脊髄（spinal cord）を結ぶ神経線維（nerve fiber）が集まる白質（white matter）の帯。ここの出血で反対側（contralateral side）の半身まひ（hemiplegia）が起こる。"
         },
         {
           "id": "fornix", "ja": "脳弓", "yomi": "のうきゅう", "en": "fornix", "la": "fornix",
           "parts": ["fornix of forebrain", "commissure of fornix of forebrain"], "level": 3, "xray": true,
           "kanji": "脳の中の弓（アーチ）",
           "etym": "fornix ← ラテン語「アーチ・丸天井」",
-          "note": "海馬から出て弓なりに前へ向かう線維の束。記憶の回路の一部。"
+          "note": "海馬（hippocampus）から出て弓なりに前へ向かう線維（fiber）の束。記憶の回路の一部。"
         },
         {
           "id": "lateral-ventricle", "ja": "側脳室", "yomi": "そくのうしつ", "en": "lateral ventricle", "la": "ventriculus lateralis",
           "parts": ["lateral ventricle"], "level": 1, "xray": true,
           "kanji": "脳の側方にある部屋",
           "etym": "lateral「横の」＋ ventricle「小さな腹・部屋」",
-          "note": "左右の大脳半球の中にある脳室。脳脊髄液で満たされ、脈絡叢で液がつくられる。"
+          "note": "左右の大脳半球（cerebral hemisphere）の中にある脳室（ventricle）。脳脊髄液（cerebrospinal fluid）で満たされ、脈絡叢（choroid plexus）で液がつくられる。"
         },
         {
           "id": "third-ventricle", "ja": "第三脳室", "yomi": "だいさんのうしつ", "en": "third ventricle", "la": "ventriculus tertius",
           "parts": ["third ventricle"], "level": 2, "xray": true,
           "kanji": "3番目の脳室",
           "etym": "third ＋ ventricle",
-          "note": "左右の視床の間にある細い脳室。中脳水道で第四脳室とつながる。"
+          "note": "左右の視床（thalamus）の間にある細い脳室（ventricle）。中脳水道（cerebral aqueduct）で第四脳室（fourth ventricle）とつながる。"
         },
         {
           "id": "cerebral-aqueduct", "ja": "中脳水道", "yomi": "ちゅうのうすいどう", "en": "cerebral aqueduct", "enAlt": ["aqueduct of midbrain"], "la": "aqueductus mesencephali",
           "parts": ["cerebral aqueduct"], "level": 3, "xray": true,
           "kanji": "中脳の中の水道",
           "etym": "aqueduct ← ラテン語 aqua「水」＋ ducere「導く」",
-          "note": "中脳を貫いて第三脳室と第四脳室をつなぐ細い管。詰まると水頭症になる。"
+          "note": "中脳（midbrain）を貫いて第三脳室（third ventricle）と第四脳室（fourth ventricle）をつなぐ細い管。詰まると水頭症（hydrocephalus）になる。"
         },
         {
           "id": "fourth-ventricle", "ja": "第四脳室", "yomi": "だいよんのうしつ", "en": "fourth ventricle", "la": "ventriculus quartus",
           "parts": ["fourth ventricle"], "level": 2, "xray": true,
           "kanji": "4番目の脳室",
           "etym": "fourth ＋ ventricle",
-          "note": "橋・延髄と小脳の間にある脳室。ここから脳脊髄液がくも膜下腔へ出る。"
+          "note": "橋・延髄（medulla oblongata）と小脳（cerebellum）の間にある脳室（ventricle）。ここから脳脊髄液（cerebrospinal fluid）がくも膜下腔（subarachnoid space）へ出る。"
         }
       ]
     },
@@ -475,35 +475,35 @@
           "parts": ["za:septum pellucidum"], "level": 2, "xray": true,
           "kanji": "透けて見えるほど薄い仕切り",
           "etym": "septum「仕切り」＋ pellucidum ← ラテン語「透き通った」",
-          "note": "左右の側脳室の前角の間を仕切る、薄い2枚の板。上は脳梁、下は脳弓に付く。"
+          "note": "左右の側脳室（lateral ventricle）の前角（anterior horn）の間を仕切る、薄い2枚の板。上は脳梁（corpus callosum）、下は脳弓（fornix）に付く。"
         },
         {
           "id": "septal-nuclei", "ja": "中隔核", "yomi": "ちゅうかくかく", "en": "septal nuclei", "la": "nuclei septales",
           "parts": ["za:septal nuclei"], "level": 3, "xray": true,
           "kanji": "中隔（透明中隔の下）の核",
           "etym": "septal「中隔の」＋ nuclei「核」（複数）",
-          "note": "透明中隔の下、前交連の前にある灰白質の核。海馬・扁桃体・視床下部とつながる大脳辺縁系の一部で、情動や快の感覚にかかわる。"
+          "note": "透明中隔（septum pellucidum）の下、前交連（anterior commissure）の前にある灰白質（gray matter）の核（nucleus）。海馬（hippocampus）・扁桃体（amygdaloid body）・視床下部（hypothalamus）とつながる大脳辺縁系（limbic system）の一部で、情動（emotion）や快の感覚（sensation）にかかわる。"
         },
         {
           "id": "stria-terminalis", "ja": "分界条", "yomi": "ぶんかいじょう", "en": "stria terminalis", "la": "stria terminalis",
           "parts": ["za:stria terminalis"], "level": 3, "xray": true,
           "kanji": "境界をつくる線（条＝すじ）",
           "etym": "stria「すじ」＋ terminalis「境の」",
-          "note": "扁桃体から出て、側脳室の壁で尾状核と視床の境目を弓なりに走り、視床下部と中隔へ向かう線維の束。"
+          "note": "扁桃体（amygdaloid body）から出て、側脳室（lateral ventricle）の壁で尾状核（caudate nucleus）と視床（thalamus）の境目を弓なりに走り、視床下部（hypothalamus）と中隔（septum）へ向かう線維（fiber）の束。"
         },
         {
           "id": "stria-medullaris-of-thalamus", "ja": "視床髄条", "yomi": "ししょうずいじょう", "en": "stria medullaris of thalamus", "enAlt": ["stria medullaris thalami"], "la": "stria medullaris thalami",
           "parts": ["za:stria medullaris thalami"], "level": 3, "xray": true,
           "kanji": "視床の上の白いすじ（髄＝白質）",
           "etym": "stria「すじ」＋ medullaris「髄（白質）の」＋ thalami「視床の」",
-          "note": "視床の上内側の縁を前後に走る線維の束。中隔核などから手綱へ向かう。"
+          "note": "視床（thalamus）の上内側（superomedial）の縁を前後に走る線維（fiber）の束。中隔核（septal nuclei）などから手綱（habenula）へ向かう。"
         },
         {
           "id": "lentiform-nucleus", "ja": "レンズ核", "yomi": "れんずかく", "en": "lentiform nucleus", "enAlt": ["lenticular nucleus"], "la": "nucleus lentiformis",
           "parts": ["putamen", "globus pallidus"], "level": 2, "xray": true,
           "kanji": "凸レンズの形の核",
           "etym": "lentiform ← ラテン語 lens「レンズ豆」＋ forma「形」",
-          "note": "外側の被殻と内側の淡蒼球を合わせた、凸レンズの形のかたまり。内側を内包、外側を外包に囲まれる。尾状核とともに大脳基底核の中心で、運動の調節にかかわる。"
+          "note": "外側（lateral）の被殻（putamen）と内側（medial）の淡蒼球（globus pallidus）を合わせた、凸レンズの形のかたまり。内側を内包（internal capsule）、外側を外包（external capsule）に囲まれる。尾状核（caudate nucleus）とともに大脳基底核（basal ganglia）の中心で、運動の調節にかかわる。"
         }
       ]
     },
@@ -517,98 +517,98 @@
           "parts": ["mammillary body"], "level": 2, "xray": true,
           "kanji": "乳首のような小さなふくらみ",
           "etym": "mammillary「乳頭の」（ラテン語 mammilla＝乳首）",
-          "note": "視床下部の底にある左右1対の丸いふくらみ。脳弓を通って海馬から情報を受け、記憶の回路（パペッツの回路）の一部。ビタミンB1が欠けると傷む（ウェルニッケ脳症）。"
+          "note": "視床下部（hypothalamus）の底にある左右1対の丸いふくらみ。脳弓（fornix）を通って海馬（hippocampus）から情報を受け、記憶の回路（パペッツ（Papez）の回路）の一部。ビタミンB1が欠けると傷む（ウェルニッケ脳症（Wernicke encephalopathy））。"
         },
         {
           "id": "lateral-geniculate-body", "ja": "外側膝状体", "yomi": "がいそくしつじょうたい", "en": "lateral geniculate body", "la": "corpus geniculatum laterale",
           "parts": ["lateral geniculate body"], "level": 1, "xray": true,
           "kanji": "外側の、膝のように曲がったふくらみ",
           "etym": "lateral「外側の」＋ geniculate「膝のように曲がった」（ラテン語 genu＝膝）",
-          "note": "視床の後ろ下のふくらみ。視索が終わる所で、視覚の中継点。ここから視放線が後頭葉の一次視覚野（鳥距溝のまわり）へ行く。"
+          "note": "視床（thalamus）の後ろ下のふくらみ。視索（optic tract）が終わる所で、視覚（vision）の中継点。ここから視放線（optic radiation）が後頭葉（occipital lobe）の一次視覚野（primary visual cortex）（鳥距溝（calcarine sulcus）のまわり）へ行く。"
         },
         {
           "id": "medial-geniculate-body", "ja": "内側膝状体", "yomi": "ないそくしつじょうたい", "en": "medial geniculate body", "la": "corpus geniculatum mediale",
           "parts": ["medial geniculate body"], "level": 1, "xray": true,
           "kanji": "内側の、膝のように曲がったふくらみ",
           "etym": "medial「内側の」＋ geniculate「膝のように曲がった」",
-          "note": "外側膝状体の内側にあるふくらみ。聴覚の中継点で、下丘から音の情報を受けて側頭葉の一次聴覚野（横側頭回）へ送る。"
+          "note": "外側膝状体（lateral geniculate body）の内側（medial）にあるふくらみ。聴覚（hearing）の中継点で、下丘（inferior colliculus）から音の情報を受けて側頭葉（temporal lobe）の一次聴覚野（primary auditory cortex）（横側頭回（transverse temporal gyri））へ送る。"
         },
         {
           "id": "habenula", "ja": "手綱", "yomi": "たづな", "en": "habenula", "la": "habenula",
           "parts": ["habenula"], "level": 3, "xray": true,
           "kanji": "馬の手綱のようなひも",
           "etym": "habenula ← ラテン語 habena「手綱」の小さいもの",
-          "note": "第三脳室の後ろの上で、松果体の根もとにつながる小さな部分（視床上部）。報酬や嫌なことへの反応にかかわる。"
+          "note": "第三脳室（third ventricle）の後ろの上で、松果体（pineal gland）の根もとにつながる小さな部分（視床上部（epithalamus））。報酬や嫌なことへの反応にかかわる。"
         },
         {
           "id": "superior-colliculus", "ja": "上丘", "yomi": "じょうきゅう", "en": "superior colliculus", "la": "colliculus superior",
           "parts": ["superior colliculus"], "level": 1, "xray": true,
           "kanji": "上の小さな丘",
           "etym": "superior「上の」＋ colliculus「小さな丘」（ラテン語 collis＝丘）",
-          "note": "中脳の背面（中脳蓋）にある上の1対のふくらみ。視覚の反射（見えたものへ目と頭を向ける）の中枢。"
+          "note": "中脳（midbrain）の背面（dorsal surface）（中脳蓋（tectum of midbrain））にある上の1対のふくらみ。視覚（vision）の反射（reflex）（見えたものへ目と頭を向ける）の中枢（center）。"
         },
         {
           "id": "inferior-colliculus", "ja": "下丘", "yomi": "かきゅう", "en": "inferior colliculus", "la": "colliculus inferior",
           "parts": ["inferior colliculus"], "level": 1, "xray": true,
           "kanji": "下の小さな丘",
           "etym": "inferior「下の」＋ colliculus「小さな丘」",
-          "note": "中脳の背面の下の1対のふくらみ。聴覚の中継点で、内側膝状体へ送る。上丘・下丘の4つを合わせて四丘体という。"
+          "note": "中脳（midbrain）の背面（dorsal surface）の下の1対のふくらみ。聴覚（hearing）の中継点で、内側膝状体（medial geniculate body）へ送る。上丘（superior colliculus）・下丘の4つを合わせて四丘体（corpora quadrigemina）という。"
         },
         {
           "id": "cerebral-peduncle", "ja": "大脳脚", "yomi": "だいのうきゃく", "en": "cerebral peduncle", "la": "pedunculus cerebri",
           "parts": ["peduncle of midbrain"], "level": 2, "xray": true,
           "kanji": "大脳の脚",
           "etym": "cerebral「大脳の」＋ peduncle「脚・柄」（ラテン語 pedunculus＝小さな足）",
-          "note": "中脳の腹側にある左右の太い柱。大脳皮質から脊髄・脳幹へ下る線維（錐体路など）が通る。左右の脚の間のくぼみから動眼神経が出る。"
+          "note": "中脳（midbrain）の腹側（ventral）にある左右の太い柱。大脳皮質（cerebral cortex）から脊髄（spinal cord）・脳幹（brainstem）へ下る線維（fiber）（錐体路（pyramidal tract）など）が通る。左右の脚の間のくぼみから動眼神経（oculomotor nerve）が出る。"
         },
         {
           "id": "anterior-commissure", "ja": "前交連", "yomi": "ぜんこうれん", "en": "anterior commissure", "la": "commissura anterior",
           "parts": ["anterior commissure"], "level": 2, "xray": true,
           "kanji": "前の、左右をつなぐ線維の束",
           "etym": "anterior「前の」＋ commissure「つなぎ目」（ラテン語 committere＝合わせる）",
-          "note": "第三脳室の前の壁を左右に横切る線維の束。左右の側頭葉と嗅覚の部分をつなぐ。脳の断面で位置の目印になる（前交連と後交連を結ぶ線）。"
+          "note": "第三脳室（third ventricle）の前の壁を左右に横切る線維（fiber）の束。左右の側頭葉（temporal lobe）と嗅覚（olfaction）の部分をつなぐ。脳（brain）の断面（section）で位置の目印になる（前交連と後交連（posterior commissure）を結ぶ線）。"
         },
         {
           "id": "posterior-commissure", "ja": "後交連", "yomi": "こうこうれん", "en": "posterior commissure", "la": "commissura posterior",
           "parts": ["posterior commissure"], "level": 3, "xray": true,
           "kanji": "後ろの、左右をつなぐ線維の束",
           "etym": "posterior「後ろの」＋ commissure「つなぎ目」",
-          "note": "中脳水道の入口の上を左右に横切る線維の束。対光反射（光で両方の瞳が縮む）の線維が通る。"
+          "note": "中脳水道（cerebral aqueduct）の入口の上を左右に横切る線維（fiber）の束。対光反射（pupillary light reflex）（光で両方の瞳が縮む）の線維が通る。"
         },
         {
           "id": "red-nucleus", "ja": "赤核", "yomi": "せきかく", "en": "red nucleus", "la": "nucleus ruber",
           "parts": ["za:red nucleus"], "level": 2, "xray": true,
           "kanji": "赤い神経核",
           "etym": "red「赤い」。ラテン語 nucleus ruber。鉄を多く含み生の脳で赤っぽく見える",
-          "note": "中脳の被蓋にある丸い神経核。小脳と大脳から入力を受け、運動の調節にかかわる。赤核脊髄路を出す。"
+          "note": "中脳（midbrain）の被蓋（tegmentum）にある丸い神経核（nucleus）。小脳（cerebellum）と大脳（cerebrum）から入力を受け、運動の調節にかかわる。赤核脊髄路（rubrospinal tract）を出す。"
         },
         {
           "id": "choroid-plexus", "ja": "脈絡叢", "yomi": "みゃくらくそう", "en": "choroid plexus", "la": "plexus choroideus",
           "parts": ["za:choroid plexus"], "level": 2, "xray": true,
           "kanji": "脈絡（血管の膜）の叢（網）",
           "etym": "choroid ← ギリシャ語 chorion「膜」＋ -oid「〜のような」＋ plexus「網」",
-          "note": "脳室の壁から房のように垂れる血管の多い組織。血液から脳脊髄液を作る（1日に約500mL）。側脳室・第三脳室・第四脳室にある。"
+          "note": "脳室（ventricle）の壁から房のように垂れる血管（blood vessel）の多い組織（tissue）。血液（blood）から脳脊髄液（cerebrospinal fluid）を作る（1日に約500mL）。側脳室（lateral ventricle）・第三脳室（third ventricle）・第四脳室（fourth ventricle）にある。"
         },
         {
           "id": "tentorium-cerebelli", "ja": "小脳テント", "yomi": "しょうのうてんと", "en": "tentorium cerebelli", "la": "tentorium cerebelli",
           "parts": ["tentorium cerebelli"], "level": 2, "xray": true, "veil": true,
           "kanji": "小脳の上に張るテント",
           "etym": "tentorium「テント」（ラテン語 tendere＝張る）＋ cerebelli「小脳の」",
-          "note": "大脳の後頭葉と小脳の間にテントのように張る硬膜のしきり。前のふちのすき間（テント切痕）を中脳が通る。脳がはれるとここへ押し出される（テント切痕ヘルニア）。"
+          "note": "大脳（cerebrum）の後頭葉（occipital lobe）と小脳（cerebellum）の間にテント（tentorium）のように張る硬膜（dura mater）のしきり。前のふちのすき間（テント切痕（tentorial notch））を中脳（midbrain）が通る。脳（brain）がはれるとここへ押し出される（テント切痕ヘルニア（transtentorial herniation））。"
         },
         {
           "id": "falx-cerebri", "ja": "大脳鎌", "yomi": "だいのうかま", "en": "falx cerebri", "la": "falx cerebri",
           "parts": ["za:falx cerebri"], "level": 2, "xray": true, "veil": true,
           "kanji": "大脳の間の鎌の形のしきり",
           "etym": "falx「鎌」＋ cerebri「大脳の」",
-          "note": "左右の大脳半球の間（大脳縦裂）に垂れる鎌の形の硬膜のしきり。上のふちに上矢状静脈洞、下のふちに下矢状静脈洞がある。"
+          "note": "左右の大脳半球（cerebral hemisphere）の間（大脳縦裂（longitudinal cerebral fissure））に垂れる鎌の形の硬膜（dura mater）のしきり。上のふちに上矢状静脈洞（superior sagittal sinus）、下のふちに下矢状静脈洞（inferior sagittal sinus）がある。"
         },
         {
           "id": "spinal-dura-mater", "ja": "脊髄硬膜", "yomi": "せきずいこうまく", "en": "spinal dura mater", "enAlt": ["spinal dura"], "la": "dura mater spinalis",
           "parts": ["za:spinal dura"], "level": 2, "xray": true, "veil": true,
           "kanji": "脊髄の硬い膜",
           "etym": "dura mater「硬い母」（脳を包む膜を母にたとえた）＋ spinal「脊髄の」",
-          "note": "脊髄を包む3枚の膜（硬膜・くも膜・軟膜）のいちばん外側の袋。第2仙椎の高さで終わるので、その上の腰椎の間から針を入れて脳脊髄液をとる（腰椎穿刺）。硬膜の外の空間に麻酔薬を入れるのが硬膜外麻酔。"
+          "note": "脊髄（spinal cord）を包む3枚の膜（membrane）（硬膜（dura mater）・くも膜（arachnoid mater）・軟膜（pia mater））のいちばん外側（lateral）の袋。第2仙椎（second sacral vertebra）の高さで終わるので、その上の腰椎（lumbar vertebrae）の間から針を入れて脳脊髄液（cerebrospinal fluid）をとる（腰椎穿刺（lumbar puncture））。硬膜の外の空間に麻酔薬を入れるのが硬膜外麻酔（epidural anesthesia）。"
         }
       ]
     },
@@ -617,8 +617,8 @@
       "title": "脳室のつながりと脳の底の小さな構造",
       "group": "脳",
       "intro": [
-        "左右の側脳室は室間孔で第三脳室につながり、第三脳室は中脳水道で第四脳室につながる。脳脊髄液はこの順に流れる。",
-        "脳を下から見ると、視交叉の後ろに灰白隆起（下垂体の茎＝漏斗が出る所）と1対の乳頭体があり、その後ろの左右の大脳脚の間が脚間窩になる。中脳の背側の上丘・下丘は、上丘腕・下丘腕で視覚・聴覚の中継点（外側膝状体・内側膝状体）とつながる。"
+        "左右の側脳室（lateral ventricle）は室間孔（interventricular foramen）で第三脳室（third ventricle）につながり、第三脳室は中脳水道（cerebral aqueduct）で第四脳室（fourth ventricle）につながる。脳脊髄液（cerebrospinal fluid）はこの順に流れる。",
+        "脳（brain）を下から見ると、視交叉（optic chiasm）の後ろに灰白隆起（tuber cinereum）（下垂体（pituitary gland）の茎＝漏斗（infundibulum）が出る所）と1対の乳頭体（mammillary body）があり、その後ろの左右の大脳脚（cerebral peduncle）の間が脚間窩（interpeduncular fossa）になる。中脳（midbrain）の背側（dorsal）の上丘（superior colliculus）・下丘（inferior colliculus）は、上丘腕（brachium of superior colliculus）・下丘腕（brachium of inferior colliculus）で視覚（vision）・聴覚（hearing）の中継点（外側膝状体（lateral geniculate body）・内側膝状体（medial geniculate body））とつながる。"
       ],
       "terms": [
         {
@@ -626,42 +626,42 @@
           "parts": ["interventricular foramen"], "level": 2, "xray": true,
           "kanji": "脳室と脳室の間の孔",
           "etym": "inter「間の」＋ ventricular「脳室の」（ラテン語 ventriculus＝小さな腹）。モンロー孔ともいう",
-          "note": "側脳室の前角と第三脳室をつなぐ左右1対の孔。脳弓の柱の後ろ、視床の前の端にある。ここがふさがると、その側の側脳室だけが広がる（閉塞性水頭症）。"
+          "note": "側脳室（lateral ventricle）の前角（anterior horn）と第三脳室（third ventricle）をつなぐ左右1対の孔。脳弓（fornix）の柱の後ろ、視床（thalamus）の前の端にある。ここがふさがると、その側の側脳室だけが広がる（閉塞性水頭症（obstructive hydrocephalus））。"
         },
         {
           "id": "tuber-cinereum", "ja": "灰白隆起", "yomi": "かいはくりゅうき", "en": "tuber cinereum", "la": "tuber cinereum",
           "parts": ["tuber cinereum"], "level": 3,
           "kanji": "灰色のふくらみ",
           "etym": "tuber「こぶ」＋ cinereum ← ラテン語 cinis「灰」",
-          "note": "脳の底で、視交叉と乳頭体の間にある視床下部の小さな高まり。ここから漏斗が下へ伸びて下垂体につながる。中に下垂体の働きを調節する神経核（弓状核など）がある。"
+          "note": "脳（brain）の底で、視交叉（optic chiasm）と乳頭体（mammillary body）の間にある視床下部（hypothalamus）の小さな高まり。ここから漏斗（infundibulum）が下へ伸びて下垂体（pituitary gland）につながる。中に下垂体の働きを調節する神経核（nucleus）（弓状核（arcuate nucleus）など）がある。"
         },
         {
           "id": "lamina-terminalis", "ja": "終板", "yomi": "しゅうばん", "en": "lamina terminalis", "la": "lamina terminalis",
           "parts": ["lamina terminalis"], "level": 3, "xray": true,
           "kanji": "終わりの板",
           "etym": "lamina「板」＋ terminalis「終わりの・境の」",
-          "note": "第三脳室の前の壁をつくる薄い板。視交叉の上から前交連まで張る。発生のとき神経管の前の端が閉じた所で、のどの渇き・体液の調節にかかわる小さな部分（脳室周囲器官）がある。"
+          "note": "第三脳室（third ventricle）の前の壁をつくる薄い板。視交叉（optic chiasm）の上から前交連（anterior commissure）まで張る。発生（development）のとき神経管（neural tube）の前の端が閉じた所で、のど（throat）の渇き・体液の調節にかかわる小さな部分（脳室周囲器官（circumventricular organs））がある。"
         },
         {
           "id": "interpeduncular-fossa", "ja": "脚間窩", "yomi": "きゃくかんか", "en": "interpeduncular fossa", "la": "fossa interpeduncularis",
           "parts": ["interpeduncular fossa"], "level": 3, "xray": true,
           "kanji": "大脳脚と大脳脚の間のくぼみ",
           "etym": "inter「間の」＋ peduncular「脚の」（ラテン語 pedunculus＝小さな足）",
-          "note": "中脳の腹側で、左右の大脳脚の間の深いくぼみ。乳頭体のすぐ後ろ。底は血管の通る小孔がたくさんあいた後有孔質で、ここから動眼神経が出る。後大脳動脈の枝がここから脳に入る。"
+          "note": "中脳（midbrain）の腹側（ventral）で、左右の大脳脚（cerebral peduncle）の間の深いくぼみ。乳頭体（mammillary body）のすぐ後ろ。底は血管（blood vessel）の通る小孔がたくさんあいた後有孔質（posterior perforated substance）で、ここから動眼神経（oculomotor nerve）が出る。後大脳動脈（posterior cerebral artery）の枝（branch）がここから脳（brain）に入る。"
         },
         {
           "id": "brachium-of-superior-colliculus", "ja": "上丘腕", "yomi": "じょうきゅうわん", "en": "brachium of superior colliculus", "la": "brachium colliculi superioris",
           "parts": ["brachium of superior colliculus"], "level": 3, "xray": true,
           "kanji": "上丘へ続く腕",
           "etym": "brachium ← ラテン語「腕」＋ colliculus「小さな丘」",
-          "note": "視索から外側膝状体のわきを通って上丘と視蓋前域へ行く線維の束。目を光や動くものへ向ける反射と、対光反射の経路（視蓋前域へ）にかかわる。"
+          "note": "視索（optic tract）から外側膝状体（lateral geniculate body）のわきを通って上丘（superior colliculus）と視蓋前域（pretectal area）へ行く線維（fiber）の束。目を光や動くものへ向ける反射（reflex）と、対光反射（pupillary light reflex）の経路（視蓋前域へ）にかかわる。"
         },
         {
           "id": "brachium-of-inferior-colliculus", "ja": "下丘腕", "yomi": "かきゅうわん", "en": "brachium of inferior colliculus", "la": "brachium colliculi inferioris",
           "parts": ["brachium of inferior colliculus"], "level": 3, "xray": true,
           "kanji": "下丘から出る腕",
           "etym": "brachium「腕」＋ inferior colliculus「下の小さな丘」",
-          "note": "下丘から内側膝状体へ行く線維の束。聴覚の経路（蝸牛神経核→外側毛帯→下丘→内側膝状体→側頭葉の横側頭回）の一部。"
+          "note": "下丘（inferior colliculus）から内側膝状体（medial geniculate body）へ行く線維（fiber）の束。聴覚（hearing）の経路（蝸牛神経核（cochlear nuclei）→外側毛帯（lateral lemniscus）→下丘→内側膝状体→側頭葉（temporal lobe）の横側頭回（transverse temporal gyri））の一部。"
         }
       ]
     },
@@ -675,63 +675,63 @@
           "parts": ["midbrain", "peduncle of midbrain"], "level": 1,
           "kanji": "脳の中ほどの部分",
           "etym": "mid-「中間」＋ brain。mesencephalon ← meso-「中」＋ enkephalos「脳」",
-          "note": "脳幹の最も上の部分。眼の動きや瞳孔の反射、姿勢の調節にかかわる。"
+          "note": "脳幹（brainstem）の最も上の部分。眼（eye）の動きや瞳孔（pupil）の反射（reflex）、姿勢の調節にかかわる。"
         },
         {
           "id": "pons", "ja": "橋", "yomi": "きょう", "en": "pons", "la": "pons",
           "parts": ["pons"], "level": 1,
           "kanji": "橋＝はし。左右の小脳をつなぐ橋のように見える",
           "etym": "pons ← ラテン語「橋」",
-          "note": "中脳と延髄の間で前にふくらむ脳幹の部分。大脳と小脳を中継し、呼吸の調節にもかかわる。"
+          "note": "中脳（midbrain）と延髄（medulla oblongata）の間で前にふくらむ脳幹（brainstem）の部分。大脳（cerebrum）と小脳（cerebellum）を中継し、呼吸（respiration）の調節にもかかわる。"
         },
         {
           "id": "medulla-oblongata", "ja": "延髄", "yomi": "えんずい", "en": "medulla oblongata", "la": "medulla oblongata",
           "parts": ["medulla oblongata"], "level": 1,
           "kanji": "（脊髄が）延びた髄",
           "etym": "medulla「髄」＋ oblongata「長くのびた」",
-          "note": "脳幹の最も下で脊髄に続く。呼吸・心拍・血圧など生命維持の中枢がある。"
+          "note": "脳幹（brainstem）の最も下で脊髄（spinal cord）に続く。呼吸（respiration）・心拍（heart rate）・血圧（blood pressure）など生命維持の中枢（center）がある。"
         },
         {
           "id": "cerebellum", "ja": "小脳", "yomi": "しょうのう", "en": "cerebellum", "la": "cerebellum",
           "parts": ["cerebellum"], "level": 1,
           "kanji": "小さな脳",
           "etym": "cerebellum ← ラテン語「小さな脳」(cerebrum ＋ 縮小辞)",
-          "note": "大脳の後ろ下、脳幹の後ろにある。体のバランスや、なめらかな運動の調節を担う。"
+          "note": "大脳（cerebrum）の後ろ下、脳幹（brainstem）の後ろにある。体のバランスや、なめらかな運動の調節を担う。"
         },
         {
           "id": "optic-nerve", "ja": "視神経", "yomi": "ししんけい", "en": "optic nerve", "la": "nervus opticus",
           "parts": ["optic nerve"], "level": 1,
           "kanji": "視る（見る）ための神経",
           "etym": "optic ← ギリシャ語 optikos「見ることの」",
-          "note": "第Ⅱ脳神経。眼球の後ろから出て、網膜からの視覚の情報を脳へ送る。"
+          "note": "第Ⅱ脳神経（cranial nerve）。眼球（eyeball）の後ろから出て、網膜（retina）からの視覚（vision）の情報を脳（brain）へ送る。"
         },
         {
           "id": "optic-chiasm", "ja": "視交叉", "yomi": "しこうさ", "en": "optic chiasm", "enAlt": ["optic chiasma"], "la": "chiasma opticum",
           "parts": ["optic chiasm"], "level": 2,
           "kanji": "視神経が交叉する所",
           "etym": "chiasm ← ギリシャ文字 χ（カイ）の形に交わること",
-          "note": "左右の視神経が合わさり、網膜の内側半分からの線維が反対側へ交叉する所。下垂体のすぐ上にある。"
+          "note": "左右の視神経（optic nerve）が合わさり、網膜（retina）の内側半分（medial half）からの線維（fiber）が反対側（contralateral side）へ交叉（decussation）する所。下垂体（pituitary gland）のすぐ上にある。"
         },
         {
           "id": "optic-tract", "ja": "視索", "yomi": "しさく", "en": "optic tract", "la": "tractus opticus",
           "parts": ["optic tract"], "level": 3,
           "kanji": "視覚の線維の索（なわ）",
           "etym": "optic ＋ tract「道・束」",
-          "note": "視交叉から外側膝状体へ向かう視覚の線維の束。"
+          "note": "視交叉（optic chiasm）から外側膝状体（lateral geniculate body）へ向かう視覚（vision）の線維（fiber）の束。"
         },
         {
           "id": "trochlear-nerve", "ja": "滑車神経", "yomi": "かっしゃしんけい", "en": "trochlear nerve", "la": "nervus trochlearis",
           "parts": ["trochlear nerve"], "level": 3,
           "kanji": "滑車（を通る筋）へ行く神経",
           "etym": "trochlear ← ラテン語 trochlea「滑車」",
-          "note": "第Ⅳ脳神経。眼の上斜筋（滑車を通る筋）を動かす。脳幹の背側から出る唯一の脳神経。"
+          "note": "第Ⅳ脳神経（cranial nerve）。眼（eye）の上斜筋（superior oblique）（滑車（trochlea）を通る筋（muscle））を動かす。脳幹（brainstem）の背側（dorsal）から出る唯一の脳神経。"
         },
         {
           "id": "ophthalmic-nerve", "ja": "眼神経", "yomi": "がんしんけい", "en": "ophthalmic nerve", "la": "nervus ophthalmicus",
           "parts": ["ophthalmic nerve"], "level": 3,
           "kanji": "眼のあたりの感覚を伝える神経",
           "etym": "ophthalmic ← ギリシャ語 ophthalmos「眼」",
-          "note": "三叉神経（第Ⅴ脳神経）の第1枝。眼球・ひたい・鼻の感覚を伝える。"
+          "note": "三叉神経（trigeminal nerve）（第Ⅴ脳神経（cranial nerve））の第1枝（first division）。眼球（eyeball）・ひたい・鼻（nose）の感覚（sensation）を伝える。"
         }
       ]
     },
@@ -740,7 +740,7 @@
       "title": "脳幹の神経核",
       "group": "脳",
       "intro": [
-        "脳神経の線維は、脳幹の中の神経核から出る（運動）か、神経核に入る（感覚）。神経核はおおまかに、中脳にⅢ・Ⅳ、橋にⅤ〜Ⅷ、延髄にⅨ〜Ⅻがある。",
+        "脳神経（cranial nerve）の線維（fiber）は、脳幹（brainstem）の中の神経核（nucleus）から出る（運動）か、神経核に入る（感覚（sensation））。神経核はおおまかに、中脳（midbrain）にⅢ・Ⅳ、橋にⅤ〜Ⅷ、延髄（medulla oblongata）にⅨ〜Ⅻがある。",
         "ここの神経核はどれも脳幹の中に埋もれているので、示すときは周りを半透明にする。"
       ],
       "terms": [
@@ -749,98 +749,98 @@
           "parts": ["za:nucleus of oculomotor nerve"], "level": 2, "xray": true,
           "kanji": "動眼神経の神経核",
           "etym": "oculo-「眼の」＋ motor「動かすもの」＋ nucleus「核」",
-          "note": "中脳の上丘の高さで中脳水道の前にある。上斜筋と外側直筋以外の外眼筋と、上眼瞼挙筋を動かす。"
+          "note": "中脳（midbrain）の上丘（superior colliculus）の高さで中脳水道（cerebral aqueduct）の前にある。上斜筋（superior oblique）と外側直筋（lateral rectus）以外の外眼筋（extraocular muscles）と、上眼瞼挙筋（levator palpebrae superioris）を動かす。"
         },
         {
           "id": "accessory-oculomotor-nucleus", "ja": "動眼神経副核", "yomi": "どうがんしんけいふくかく", "en": "accessory oculomotor nucleus", "enAlt": ["edinger westphal nucleus"], "la": "nucleus accessorius nervi oculomotorii",
           "parts": ["za:accessory nucleus of oculomotor nerve"], "level": 3, "xray": true,
           "kanji": "動眼神経のそえの神経核",
           "etym": "accessory「付け加えの」＋ oculomotor「動眼神経の」",
-          "note": "動眼神経核の背側にある副交感の神経核（エディンガー・ウェストファル核）。毛様体神経節を経て、瞳を縮め（対光反射）水晶体を厚くする。"
+          "note": "動眼神経核（oculomotor nucleus）の背側（dorsal）にある副交感（parasympathetic）の神経核（nucleus）（エディンガー（Edinger）・ウェストファル核（Westphal nucleus））。毛様体神経節（ciliary ganglion）を経て、瞳を縮め（対光反射（pupillary light reflex））水晶体（lens）を厚くする。"
         },
         {
           "id": "trochlear-nucleus", "ja": "滑車神経核", "yomi": "かっしゃしんけいかく", "en": "trochlear nucleus", "enAlt": ["nucleus of trochlear nerve"], "la": "nucleus nervi trochlearis",
           "parts": ["za:nucleus of trochlear nerve"], "level": 2, "xray": true,
           "kanji": "滑車神経の神経核",
           "etym": "trochlear「滑車の」＋ nucleus「核」",
-          "note": "中脳の下丘の高さにある。上斜筋を動かす。線維は背側へ回って反対側から脳を出る（背側から出る唯一の脳神経）。"
+          "note": "中脳（midbrain）の下丘（inferior colliculus）の高さにある。上斜筋（superior oblique）を動かす。線維（fiber）は背側（dorsal）へ回って反対側（contralateral side）から脳（brain）を出る（背側から出る唯一の脳神経（cranial nerve））。"
         },
         {
           "id": "abducens-nucleus", "ja": "外転神経核", "yomi": "がいてんしんけいかく", "en": "abducens nucleus", "enAlt": ["nucleus of abducens nerve"], "la": "nucleus nervi abducentis",
           "parts": ["za:nucleus of abducens nerve"], "level": 2, "xray": true,
           "kanji": "外転神経の神経核",
           "etym": "abducens「外へ引くもの」＋ nucleus「核」",
-          "note": "橋の第四脳室の底（顔面神経丘）にある。外側直筋を動かして目を外へ向ける。顔面神経の線維がこの核を回り込む。"
+          "note": "橋の第四脳室（fourth ventricle）の底（顔面神経丘（facial colliculus））にある。外側直筋（lateral rectus）を動かして目を外へ向ける。顔面神経（facial nerve）の線維（fiber）がこの核（nucleus）を回り込む。"
         },
         {
           "id": "facial-motor-nucleus", "ja": "顔面神経核", "yomi": "がんめんしんけいかく", "en": "facial motor nucleus", "enAlt": ["motor nucleus of facial nerve"], "la": "nucleus nervi facialis",
           "parts": ["za:motor nucleus of facial nerve"], "level": 2, "xray": true,
           "kanji": "顔面神経の運動の神経核",
           "etym": "facial「顔の」＋ motor「運動の」＋ nucleus「核」",
-          "note": "橋の下部の被蓋にある。表情筋を動かす。額を動かす部分は両側の大脳から入力を受けるので、大脳の障害では額のしわ寄せが残る。"
+          "note": "橋の下部の被蓋（tegmentum）にある。表情筋（muscles of facial expression）を動かす。額（forehead）を動かす部分は両側（bilateral）の大脳（cerebrum）から入力を受けるので、大脳の障害では額のしわ寄せが残る。"
         },
         {
           "id": "vestibular-nuclei", "ja": "前庭神経核", "yomi": "ぜんていしんけいかく", "en": "vestibular nuclei", "la": "nuclei vestibulares",
           "parts": ["za:vestibular nuclei"], "level": 2, "xray": true,
           "kanji": "前庭神経の神経核",
           "etym": "vestibular「前庭の」（ラテン語 vestibulum＝玄関）＋ nuclei「核（複数）」",
-          "note": "第四脳室の底の外側にある4つの核。内耳の前庭・半規管から体の傾きと回転の情報を受け、目の動きと姿勢を調節する。"
+          "note": "第四脳室（fourth ventricle）の底の外側（lateral）にある4つの核（nucleus）。内耳（internal ear）の前庭（vestibule）・半規管（semicircular canal）から体の傾きと回転の情報を受け、目の動きと姿勢を調節する。"
         },
         {
           "id": "cochlear-nuclei", "ja": "蝸牛神経核", "yomi": "かぎゅうしんけいかく", "en": "cochlear nuclei", "la": "nuclei cochleares",
           "parts": ["za:anterior cochlear nucleus", "za:posterior cochlear nucleus"], "level": 2, "xray": true,
           "kanji": "蝸牛神経の神経核",
           "etym": "cochlear「蝸牛の」（ラテン語 cochlea＝かたつむり）＋ nuclei「核」",
-          "note": "延髄と橋の境の外側にある前・後の2つの核。蝸牛神経から音の情報を受け、下丘へ送る。"
+          "note": "延髄（medulla oblongata）と橋の境の外側（lateral）にある前・後の2つの核（nucleus）。蝸牛神経（cochlear nerve）から音の情報を受け、下丘（inferior colliculus）へ送る。"
         },
         {
           "id": "solitary-nucleus", "ja": "孤束核", "yomi": "こそくかく", "en": "solitary nucleus", "enAlt": ["nucleus of solitary tract"], "la": "nucleus tractus solitarii",
           "parts": ["za:nucleus of solitary tract"], "level": 2, "xray": true,
           "kanji": "孤束（ひとりぼっちの束）のまわりの核",
           "etym": "solitary「ひとりの・孤立した」＋ nucleus「核」",
-          "note": "延髄にある感覚の核。顔面・舌咽・迷走神経から味覚と内臓の感覚（血圧・呼吸など）を受ける。"
+          "note": "延髄（medulla oblongata）にある感覚（sensation）の核（nucleus）。顔面（facial）・舌咽（glossopharyngeal）・迷走神経（vagus nerve）から味覚（taste）と内臓（viscera）の感覚（血圧（blood pressure）・呼吸（respiration）など）を受ける。"
         },
         {
           "id": "nucleus-ambiguus", "ja": "疑核", "yomi": "ぎかく", "en": "nucleus ambiguus", "la": "nucleus ambiguus",
           "parts": ["za:nucleus ambiguus"], "level": 2, "xray": true,
           "kanji": "はっきりしない（疑わしい）核",
           "etym": "ambiguus「あいまいな」（ラテン語）。境がはっきり見えないため",
-          "note": "延髄の網様体の中にある運動の核。舌咽・迷走神経を通して咽頭・喉頭の筋（飲み込み・発声）を動かす。"
+          "note": "延髄（medulla oblongata）の網様体（reticular formation）の中にある運動の核（nucleus）。舌咽（glossopharyngeal）・迷走神経（vagus nerve）を通して咽頭（pharynx）・喉頭（larynx）の筋（muscle）（飲み込み・発声（phonation））を動かす。"
         },
         {
           "id": "dorsal-nucleus-of-vagus-nerve", "ja": "迷走神経背側核", "yomi": "めいそうしんけいはいそくかく", "en": "dorsal nucleus of vagus nerve", "enAlt": ["posterior nucleus of vagus nerve"], "la": "nucleus posterior nervi vagi",
           "parts": ["za:posterior nucleus of vagus nerve"], "level": 2, "xray": true,
           "kanji": "迷走神経の背側の核",
           "etym": "dorsal「背側の」＋ vagus「さまよう」（迷走神経）",
-          "note": "第四脳室の底（迷走神経三角）にある副交感の核。心臓・肺・消化管へ副交感の線維を出す。"
+          "note": "第四脳室（fourth ventricle）の底（迷走神経三角（vagal trigone））にある副交感（parasympathetic）の核（nucleus）。心臓（heart）・肺（lung）・消化管（digestive tract）へ副交感の線維（fiber）を出す。"
         },
         {
           "id": "hypoglossal-nucleus", "ja": "舌下神経核", "yomi": "ぜっかしんけいかく", "en": "hypoglossal nucleus", "enAlt": ["nucleus of hypoglossal nerve"], "la": "nucleus nervi hypoglossi",
           "parts": ["za:nucleus of hypoglossal nerve"], "level": 2, "xray": true,
           "kanji": "舌下神経の神経核",
           "etym": "hypo-「下」＋ glossal「舌の」＋ nucleus「核」",
-          "note": "延髄の第四脳室の底の正中近く（舌下神経三角）にある。舌の筋を動かす。"
+          "note": "延髄（medulla oblongata）の第四脳室（fourth ventricle）の底の正中近く（舌下神経三角（hypoglossal trigone））にある。舌（tongue）の筋（muscle）を動かす。"
         },
         {
           "id": "superior-salivatory-nucleus", "ja": "上唾液核", "yomi": "じょうだえきかく", "en": "superior salivatory nucleus", "la": "nucleus salivatorius superior",
           "parts": ["za:superior salivatory nucleus"], "level": 3, "xray": true,
           "kanji": "上の、唾液を出させる核",
           "etym": "superior「上の」＋ salivatory「唾液の」",
-          "note": "橋の副交感の核。顔面神経を通して顎下腺・舌下腺と涙腺を働かせる。"
+          "note": "橋の副交感（parasympathetic）の核（nucleus）。顔面神経（facial nerve）を通して顎下腺（submandibular gland）・舌下腺（sublingual gland）と涙腺（lacrimal gland）を働かせる。"
         },
         {
           "id": "inferior-salivatory-nucleus", "ja": "下唾液核", "yomi": "かだえきかく", "en": "inferior salivatory nucleus", "la": "nucleus salivatorius inferior",
           "parts": ["za:inferior salivatory nucleus"], "level": 3, "xray": true,
           "kanji": "下の、唾液を出させる核",
           "etym": "inferior「下の」＋ salivatory「唾液の」",
-          "note": "延髄の副交感の核。舌咽神経を通して耳下腺を働かせる。"
+          "note": "延髄（medulla oblongata）の副交感（parasympathetic）の核（nucleus）。舌咽神経（glossopharyngeal nerve）を通して耳下腺（parotid gland）を働かせる。"
         },
         {
           "id": "nucleus-of-accessory-nerve", "ja": "副神経核", "yomi": "ふくしんけいかく", "en": "nucleus of accessory nerve", "la": "nucleus nervi accessorii",
           "parts": ["za:nucleus of accessory nerve"], "level": 3, "xray": true,
           "kanji": "副神経の神経核",
           "etym": "accessory「付け加えの」＋ nucleus「核」",
-          "note": "上位頚髄の前角の外側にある運動の核。胸鎖乳突筋と僧帽筋を動かす。"
+          "note": "上位頚髄（upper cervical spinal cord）の前角（anterior horn）の外側（lateral）にある運動の核（nucleus）。胸鎖乳突筋（sternocleidomastoid）と僧帽筋（trapezius）を動かす。"
         }
       ]
     },
@@ -849,8 +849,8 @@
       "title": "小脳と脳幹の表面の部位",
       "group": "脳",
       "intro": [
-        "小脳は真ん中の細い虫部と、左右の大きな小脳半球からなる。表面は細い横のしわ（小脳回）で、深い裂で葉に分かれる。上の面の第一裂より前が前葉、後ろが後葉。下の面の前には片葉と虫部の小節があり（片葉小節葉）、体の平衡にかかわる。",
-        "延髄の前の面には、正中のわきに縦の高まりの錐体（皮質脊髄路が通る）、その外側に楕円の高まりのオリーブがある。橋の両わきは太い中小脳脚になって小脳に入る。小脳を外すと、橋と延髄の背側の菱形のくぼみ（菱形窩）が第四脳室の床として見える。"
+        "小脳（cerebellum）は真ん中の細い虫部（vermis）と、左右の大きな小脳半球（cerebellar hemisphere）からなる。表面は細い横のしわ（小脳回（cerebellar folia））で、深い裂で葉（lobe）に分かれる。上の面の第一裂（primary fissure）より前が前葉（anterior lobe）、後ろが後葉（posterior lobe）。下の面の前には片葉（flocculus）と虫部の小節（nodule）があり（片葉小節葉（flocculonodular lobe））、体の平衡にかかわる。",
+        "延髄（medulla oblongata）の前の面には、正中（median）のわきに縦の高まりの錐体（pyramid）（皮質脊髄路（corticospinal tract）が通る）、その外側（lateral）に楕円の高まりのオリーブ（olive）がある。橋の両わきは太い中小脳脚（middle cerebellar peduncle）になって小脳に入る。小脳を外すと、橋と延髄の背側（dorsal）の菱形のくぼみ（菱形窩（rhomboid fossa））が第四脳室（fourth ventricle）の床として見える。"
       ],
       "terms": [
         {
@@ -858,70 +858,70 @@
           "of": "cerebellum", "level": 1,
           "kanji": "小脳の真ん中の、虫のような部分",
           "etym": "vermis ← ラテン語「虫（いも虫）」",
-          "note": "左右の小脳半球の間の、正中の細い部分。横のしわが連なって、いも虫のように見える。体幹の姿勢と歩行の調節にかかわり、ここが傷むと立っているとき体がゆれる（体幹失調）。アルコールで傷みやすい。"
+          "note": "左右の小脳半球（cerebellar hemisphere）の間の、正中（median）の細い部分。横のしわが連なって、いも虫のように見える。体幹（trunk）の姿勢と歩行の調節にかかわり、ここが傷むと立っているとき体がゆれる（体幹失調（truncal ataxia））。アルコールで傷みやすい。"
         },
         {
           "id": "cerebellar-hemisphere", "ja": "小脳半球", "yomi": "しょうのうはんきゅう", "en": "cerebellar hemisphere", "la": "hemispherium cerebelli",
           "of": "cerebellum", "level": 1,
           "kanji": "小脳の左右の大きな半分",
           "etym": "cerebellar「小脳の」＋ hemisphere「半球」",
-          "note": "虫部の左右に広がる小脳の大部分。手足の動きを細かく調節し、同じ側の手足の運動にかかわる（右の半球は右の手足）。傷むと同じ側の手足がうまく動かない（指鼻試験で指がふるえる・ずれる）。"
+          "note": "虫部（vermis）の左右に広がる小脳（cerebellum）の大部分。手足（limbs）の動きを細かく調節し、同じ側の手足の運動にかかわる（右の半球は右の手足）。傷むと同じ側の手足がうまく動かない（指鼻試験（finger-nose test）で指（finger）がふるえる・ずれる）。"
         },
         {
           "id": "flocculus", "ja": "片葉", "yomi": "へんよう", "en": "flocculus", "la": "flocculus",
           "of": "cerebellum", "level": 2,
           "kanji": "小さな切れはしのような葉",
           "etym": "flocculus ← ラテン語「小さな羊毛の房」",
-          "note": "小脳の下の面の前、中小脳脚のすぐ後ろにある小さな房。虫部の小節と合わせて片葉小節葉といい、前庭神経核とつながって体の平衡と眼球の動き（頭を動かしても視線を保つ）にかかわる。"
+          "note": "小脳（cerebellum）の下の面の前、中小脳脚（middle cerebellar peduncle）のすぐ後ろにある小さな房。虫部（vermis）の小節（nodule）と合わせて片葉小節葉（flocculonodular lobe）といい、前庭神経核（vestibular nuclei）とつながって体の平衡と眼球（eyeball）の動き（頭を動かしても視線を保つ）にかかわる。"
         },
         {
           "id": "tonsil-of-cerebellum", "ja": "小脳扁桃", "yomi": "しょうのうへんとう", "en": "tonsil of cerebellum", "enAlt": ["cerebellar tonsil"], "la": "tonsilla cerebelli",
           "of": "cerebellum", "level": 2,
           "kanji": "小脳の下の面の、扁桃のようなふくらみ",
           "etym": "tonsil ← ラテン語 tonsilla「扁桃」",
-          "note": "小脳の下の面で、虫部の両わきにある丸いふくらみ。大後頭孔のすぐ上にある。頭蓋の中の圧が上がると、ここが大後頭孔に押しこまれて延髄を圧迫し、呼吸が止まる（小脳扁桃ヘルニア）。"
+          "note": "小脳（cerebellum）の下の面で、虫部（vermis）の両わきにある丸いふくらみ。大後頭孔（foramen magnum）のすぐ上にある。頭蓋（skull）の中の圧が上がると、ここが大後頭孔に押しこまれて延髄（medulla oblongata）を圧迫し、呼吸（respiration）が止まる（小脳扁桃ヘルニア（tonsillar herniation））。"
         },
         {
           "id": "primary-fissure", "ja": "第一裂", "yomi": "だいいちれつ", "en": "primary fissure", "la": "fissura prima",
           "of": "cerebellum", "level": 3,
           "kanji": "最初にできる小脳の深い裂",
           "etym": "primary「最初の」＋ fissure「裂け目」（ラテン語 fissura）",
-          "note": "小脳の上の面を横切るV字の深い裂。胎児のとき最初にできる。これより前が前葉、後ろが後葉。前葉はおもに脊髄から体の位置の情報を受ける。"
+          "note": "小脳（cerebellum）の上の面を横切るV字の深い裂。胎児（fetus）のとき最初にできる。これより前が前葉（anterior lobe）、後ろが後葉（posterior lobe）。前葉はおもに脊髄（spinal cord）から体の位置の情報を受ける。"
         },
         {
           "id": "horizontal-fissure-of-cerebellum", "ja": "水平裂（小脳）", "yomi": "すいへいれつ", "en": "horizontal fissure of cerebellum", "la": "fissura horizontalis cerebelli",
           "of": "cerebellum", "level": 3,
           "kanji": "小脳の縁をぐるりと水平に走る裂",
           "etym": "horizontal「水平の」＋ fissure「裂け目」",
-          "note": "小脳の後ろと外側の縁を、ほぼ水平に回る深い裂。上の面と下の面の境で、上半月小葉と下半月小葉を分ける。"
+          "note": "小脳（cerebellum）の後ろと外側（lateral）の縁を、ほぼ水平に回る深い裂。上の面と下の面の境で、上半月小葉（superior semilunar lobule）と下半月小葉（inferior semilunar lobule）を分ける。"
         },
         {
           "id": "pyramid-of-medulla-oblongata", "ja": "錐体（延髄）", "yomi": "すいたい", "en": "pyramid of medulla oblongata", "la": "pyramis medullae oblongatae",
           "of": "medulla-oblongata", "level": 1,
           "kanji": "延髄の前の、ピラミッドのような高まり",
           "etym": "pyramid ← ギリシャ語 pyramis「ピラミッド」",
-          "note": "延髄の前の面で、前正中裂の両わきを縦に走る細長い高まり。中を大脳の運動野から来る皮質脊髄路（錐体路）が通る。下の端でほとんどの線維が反対側へ交わり（錐体交叉）、だから右の大脳は左の手足を動かす。"
+          "note": "延髄（medulla oblongata）の前の面で、前正中裂（anterior median fissure）の両わきを縦に走る細長い高まり。中を大脳（cerebrum）の運動野（motor area）から来る皮質脊髄路（corticospinal tract）（錐体路（pyramidal tract））が通る。下の端でほとんどの線維（fiber）が反対側（contralateral side）へ交わり（錐体交叉（pyramidal decussation））、だから右の大脳は左の手足（limbs）を動かす。"
         },
         {
           "id": "olive", "ja": "オリーブ", "yomi": "おりーぶ", "en": "olive", "la": "oliva",
           "of": "medulla-oblongata", "level": 2,
           "kanji": "オリーブの実のような高まり",
           "etym": "olive ← ラテン語 oliva「オリーブの実」",
-          "note": "延髄の前外側で、錐体の外側にある楕円形の高まり。中に下オリーブ核があり、小脳へ運動の学習の信号を送る。錐体とオリーブの間の溝から舌下神経が、オリーブの後ろから舌咽神経・迷走神経・副神経が出る。"
+          "note": "延髄（medulla oblongata）の前外側（anterolateral）で、錐体（pyramid）の外側（lateral）にある楕円形の高まり。中に下オリーブ核（inferior olivary nucleus）があり、小脳（cerebellum）へ運動の学習の信号を送る。錐体とオリーブの間の溝から舌下神経（hypoglossal nerve）が、オリーブの後ろから舌咽神経（glossopharyngeal nerve）・迷走神経（vagus nerve）・副神経（accessory nerve）が出る。"
         },
         {
           "id": "middle-cerebellar-peduncle", "ja": "中小脳脚", "yomi": "ちゅうしょうのうきゃく", "en": "middle cerebellar peduncle", "la": "pedunculus cerebellaris medius",
           "of": "pons", "level": 2,
           "kanji": "小脳の真ん中の脚（橋から小脳へ）",
           "etym": "middle「中の」＋ cerebellar「小脳の」＋ peduncle「脚」（ラテン語 pedunculus）",
-          "note": "橋の両わきが後ろへ太い束になって小脳に入る所。3つの小脳脚のうち最も太い。大脳皮質から橋核を経て、反対側の小脳へ行く線維が通る。三叉神経がこの根もとから出る。"
+          "note": "橋の両わきが後ろへ太い束になって小脳（cerebellum）に入る所。3つの小脳脚（cerebellar peduncle）のうち最も太い。大脳皮質（cerebral cortex）から橋核（pontine nuclei）を経て、反対側（contralateral side）の小脳へ行く線維（fiber）が通る。三叉神経（trigeminal nerve）がこの根もとから出る。"
         },
         {
           "id": "rhomboid-fossa", "ja": "菱形窩", "yomi": "りょうけいか", "en": "rhomboid fossa", "la": "fossa rhomboidea",
           "of": "pons", "parts": ["pons","medulla oblongata"], "level": 2,
           "kanji": "ひし形のくぼみ",
           "etym": "rhomboid「ひし形の」（ギリシャ語 rhombos）＋ fossa「くぼみ」",
-          "note": "橋と延髄の上半分の背側の面にある、ひし形のくぼみ。第四脳室の床で、小脳を外すと見える。ここに脳神経の核（外転神経核・舌下神経核・迷走神経背側核など）が並び、正中のわきの小さな高まり（顔面神経丘・舌下神経三角）で外から位置が分かる。"
+          "note": "橋と延髄（medulla oblongata）の上半分の背側（dorsal）の面にある、ひし形のくぼみ。第四脳室（fourth ventricle）の床で、小脳（cerebellum）を外すと見える。ここに脳神経（cranial nerve）の核（nucleus）（外転神経核（abducens nucleus）・舌下神経核（hypoglossal nucleus）・迷走神経背側核（dorsal nucleus of vagus nerve）など）が並び、正中（median）のわきの小さな高まり（顔面神経丘（facial colliculus）・舌下神経三角（hypoglossal trigone））で外から位置が分かる。"
         }
       ]
     },
@@ -935,84 +935,84 @@
           "parts": ["za:olfactory nerve (i)"], "level": 1,
           "kanji": "嗅ぐ（におう）ための神経",
           "etym": "olfactory ← ラテン語 olfacere「においをかぐ」",
-          "note": "第Ⅰ脳神経。鼻腔の天井の嗅上皮から、篩骨の篩板の小さな孔を通って嗅球に入り、においを伝える。"
+          "note": "第Ⅰ脳神経（cranial nerve）。鼻腔（nasal cavity）の天井の嗅上皮（olfactory epithelium）から、篩骨（ethmoid bone）の篩板（cribriform plate）の小さな孔を通って嗅球（olfactory bulb）に入り、においを伝える。"
         },
         {
           "id": "oculomotor-nerve", "ja": "動眼神経", "yomi": "どうがんしんけい", "en": "oculomotor nerve", "la": "nervus oculomotorius",
           "parts": ["za:oculomotor nerve (iii)"], "level": 1,
           "kanji": "眼を動かす神経",
           "etym": "oculo-「眼」＋ motor「動かすもの」",
-          "note": "第Ⅲ脳神経。中脳から出て、上直筋・下直筋・内側直筋・下斜筋・上眼瞼挙筋を動かす。瞳孔を縮める副交感神経の線維も含む。"
+          "note": "第Ⅲ脳神経（cranial nerve）。中脳（midbrain）から出て、上直筋（superior rectus）・下直筋（inferior rectus）・内側直筋（medial rectus）・下斜筋（inferior oblique）・上眼瞼挙筋（levator palpebrae superioris）を動かす。瞳孔（pupil）を縮める副交感神経（parasympathetic nerve）の線維（fiber）も含む。"
         },
         {
           "id": "trigeminal-nerve", "ja": "三叉神経", "yomi": "さんさしんけい", "en": "trigeminal nerve", "la": "nervus trigeminus",
           "parts": ["za:trigeminal nerve (v)", "za:*root of trigeminal nerve", "ophthalmic nerve", "za:maxillary nerve", "za:meningeal branch of maxillary nerve", "za:*division of mandibular nerve", "za:buccal nerve", "za:inferior alveolar nerve", "za:mental nerve", "za:nerve to mylohyoid muscle", "za:lingual nerve"], "level": 1,
           "kanji": "3つに叉（わか）れる神経",
           "etym": "trigeminal ← ラテン語 trigeminus「三つ子の」",
-          "note": "第Ⅴ脳神経で、最も太い脳神経。橋から出て、眼神経・上顎神経・下顎神経の3枝に分かれ、顔の皮膚・口・鼻の感覚を伝える。下顎神経は咀嚼筋も動かす。"
+          "note": "第Ⅴ脳神経（cranial nerve）で、最も太い脳神経。橋から出て、眼神経（ophthalmic nerve）・上顎神経（maxillary nerve）・下顎神経（mandibular nerve）の3枝に分かれ、顔（face）の皮膚（skin）・口・鼻（nose）の感覚（sensation）を伝える。下顎神経は咀嚼筋（muscles of mastication）も動かす。"
         },
         {
           "id": "maxillary-nerve", "ja": "上顎神経", "yomi": "じょうがくしんけい", "en": "maxillary nerve", "la": "nervus maxillaris",
           "parts": ["za:maxillary nerve", "za:meningeal branch of maxillary nerve"], "level": 2,
           "kanji": "上顎へ行く神経",
           "etym": "maxillary「上顎の」← ラテン語 maxilla「あご」",
-          "note": "三叉神経の第2枝。正円孔を通り、頬・上唇・上の歯・鼻の粘膜の感覚を伝える。"
+          "note": "三叉神経（trigeminal nerve）の第2枝（second division）。正円孔（foramen rotundum）を通り、頬（cheek）・上唇（upper lip）・上の歯（tooth）・鼻（nose）の粘膜（mucosa）の感覚（sensation）を伝える。"
         },
         {
           "id": "mandibular-nerve", "ja": "下顎神経", "yomi": "かがくしんけい", "en": "mandibular nerve", "la": "nervus mandibularis",
           "parts": ["za:*division of mandibular nerve", "za:buccal nerve", "za:inferior alveolar nerve", "za:mental nerve", "za:nerve to mylohyoid muscle", "za:lingual nerve"], "level": 2,
           "kanji": "下顎へ行く神経",
           "etym": "mandibular「下顎の」← ラテン語 mandere「かむ」",
-          "note": "三叉神経の第3枝。卵円孔を通り、下の歯・下唇・舌の前2/3の感覚を伝え、咀嚼筋を動かす。枝の下歯槽神経は下顎孔から下顎管に入る（歯科の麻酔の場所）。"
+          "note": "三叉神経（trigeminal nerve）の第3枝（third division）。卵円孔（foramen ovale）を通り、下の歯（tooth）・下唇（lower lip）・舌（tongue）の前2/3の感覚（sensation）を伝え、咀嚼筋（muscles of mastication）を動かす。枝（branch）の下歯槽神経（inferior alveolar nerve）は下顎孔（mandibular foramen）から下顎管（mandibular canal）に入る（歯科の麻酔（anesthesia）の場所）。"
         },
         {
           "id": "abducens-nerve", "ja": "外転神経", "yomi": "がいてんしんけい", "en": "abducens nerve", "enAlt": ["abducent nerve"], "la": "nervus abducens",
           "parts": ["za:abducens nerve (vi)"], "level": 1,
           "kanji": "眼を外転させる（外へ向ける）神経",
           "etym": "abducens ← ラテン語 abducere「引き離す」",
-          "note": "第Ⅵ脳神経。橋と延髄の境から出て、外側直筋を動かし眼を外へ向ける。頭蓋の中を長く走るので、頭蓋内圧が上がると傷つきやすい。"
+          "note": "第Ⅵ脳神経（cranial nerve）。橋と延髄（medulla oblongata）の境から出て、外側直筋（lateral rectus）を動かし眼（eye）を外へ向ける。頭蓋（skull）の中を長く走るので、頭蓋内圧（intracranial pressure）が上がると傷つきやすい。"
         },
         {
           "id": "facial-nerve", "ja": "顔面神経", "yomi": "がんめんしんけい", "en": "facial nerve", "la": "nervus facialis",
           "parts": ["za:facial nerve (vii)", "za:chorda tympani"], "level": 1,
           "kanji": "顔面の筋へ行く神経",
           "etym": "facial「顔の」← ラテン語 facies「顔」",
-          "note": "第Ⅶ脳神経。内耳道から側頭骨の中を通って茎乳突孔から出て、耳下腺の中で枝分かれして表情筋を動かす。涙腺・唾液腺の分泌と、舌の前2/3の味覚（鼓索神経）も担う。"
+          "note": "第Ⅶ脳神経（cranial nerve）。内耳道（internal acoustic meatus）から側頭骨（temporal bone）の中を通って茎乳突孔（stylomastoid foramen）から出て、耳下腺（parotid gland）の中で枝分かれして表情筋（muscles of facial expression）を動かす。涙腺（lacrimal gland）・唾液腺（salivary gland）の分泌（secretion）と、舌（tongue）の前2/3の味覚（taste）（鼓索神経（chorda tympani））も担う。"
         },
         {
           "id": "vestibulocochlear-nerve", "ja": "内耳神経", "yomi": "ないじしんけい", "en": "vestibulocochlear nerve", "la": "nervus vestibulocochlearis",
           "parts": ["za:vestibulocochlear nerve (viii)", "za:cochlear nerve", "za:vestibular nerve"], "level": 1,
           "kanji": "内耳から来る神経",
           "etym": "vestibulo-「前庭の」＋ cochlear「蝸牛の」（ギリシャ語 kochlias「かたつむり」）",
-          "note": "第Ⅷ脳神経。内耳の蝸牛から聴覚を伝える蝸牛神経と、前庭・半規管から平衡覚を伝える前庭神経からなる。顔面神経と並んで内耳道を通る。"
+          "note": "第Ⅷ脳神経（cranial nerve）。内耳（internal ear）の蝸牛（cochlea）から聴覚（hearing）を伝える蝸牛神経（cochlear nerve）と、前庭（vestibule）・半規管（semicircular canal）から平衡覚（equilibrium）を伝える前庭神経（vestibular nerve）からなる。顔面神経（facial nerve）と並んで内耳道（internal acoustic meatus）を通る。"
         },
         {
           "id": "glossopharyngeal-nerve", "ja": "舌咽神経", "yomi": "ぜついんしんけい", "en": "glossopharyngeal nerve", "la": "nervus glossopharyngeus",
           "parts": ["za:glossopharyngeal nerve (ix)"], "level": 1,
           "kanji": "舌と咽頭へ行く神経",
           "etym": "glosso-「舌」＋ pharyngeal「咽頭の」",
-          "note": "第Ⅸ脳神経。頚静脈孔を通り、舌の後ろ1/3の味覚と感覚、咽頭の感覚を伝える。耳下腺の分泌も担う。"
+          "note": "第Ⅸ脳神経（cranial nerve）。頚静脈孔（jugular foramen）を通り、舌（tongue）の後ろ1/3の味覚（taste）と感覚（sensation）、咽頭（pharynx）の感覚を伝える。耳下腺（parotid gland）の分泌（secretion）も担う。"
         },
         {
           "id": "vagus-nerve", "ja": "迷走神経", "yomi": "めいそうしんけい", "en": "vagus nerve", "la": "nervus vagus",
           "parts": ["za:vagus nerve (x)"], "level": 1,
           "kanji": "迷うように広く走る神経",
           "etym": "vagus ← ラテン語 vagus「さまよう」",
-          "note": "第Ⅹ脳神経。頚静脈孔を出て首を下り、胸・腹の内臓まで広く分布する。副交感神経の大部分を担い、心拍を落とし消化管を動かす。枝の反回神経が喉頭の筋を動かす。"
+          "note": "第Ⅹ脳神経（cranial nerve）。頚静脈孔（jugular foramen）を出て首（neck）を下り、胸（chest）・腹（abdomen）の内臓（viscera）まで広く分布する。副交感神経（parasympathetic nerve）の大部分を担い、心拍（heart rate）を落とし消化管（digestive tract）を動かす。枝（branch）の反回神経（recurrent laryngeal nerve）が喉頭（larynx）の筋（muscle）を動かす。"
         },
         {
           "id": "accessory-nerve", "ja": "副神経", "yomi": "ふくしんけい", "en": "accessory nerve", "la": "nervus accessorius",
           "parts": ["za:accessory nerve (xi)"], "level": 1,
           "kanji": "副（そ）えの神経",
           "etym": "accessory「付け加えられた」",
-          "note": "第Ⅺ脳神経。頚髄から出た根が大後頭孔から頭蓋に入り、頚静脈孔から出る。胸鎖乳突筋と僧帽筋を動かす。"
+          "note": "第Ⅺ脳神経（cranial nerve）。頚髄（cervical spinal cord）から出た根が大後頭孔（foramen magnum）から頭蓋（skull）に入り、頚静脈孔（jugular foramen）から出る。胸鎖乳突筋（sternocleidomastoid）と僧帽筋（trapezius）を動かす。"
         },
         {
           "id": "hypoglossal-nerve", "ja": "舌下神経", "yomi": "ぜっかしんけい", "en": "hypoglossal nerve", "la": "nervus hypoglossus",
           "parts": ["za:hypoglossal nerve (xii)"], "level": 1,
           "kanji": "舌の下を走る神経",
           "etym": "hypo-「下」＋ glossal「舌の」",
-          "note": "第Ⅻ脳神経。延髄から出て舌下神経管を通り、舌の筋を動かす。傷つくと、舌を出したとき傷ついた側へ曲がる。"
+          "note": "第Ⅻ脳神経（cranial nerve）。延髄（medulla oblongata）から出て舌下神経管（hypoglossal canal）を通り、舌（tongue）の筋（muscle）を動かす。傷つくと、舌を出したとき傷ついた側へ曲がる。"
         }
       ]
     },
@@ -1026,28 +1026,28 @@
           "parts": ["za:chorda tympani"], "level": 2, "xray": true,
           "kanji": "鼓室を通るひものような神経",
           "etym": "chorda「ひも・弦」＋ tympani「鼓室の」（ギリシャ語 tympanon＝太鼓）",
-          "note": "顔面神経の枝。中耳の鼓室で鼓膜の内側を横切り、舌神経に合わさる。舌の前2/3の味覚と、顎下腺・舌下腺の分泌の線維を運ぶ。"
+          "note": "顔面神経（facial nerve）の枝（branch）。中耳（middle ear）の鼓室（tympanic cavity）で鼓膜（tympanic membrane）の内側（medial）を横切り、舌神経（lingual nerve）に合わさる。舌（tongue）の前2/3の味覚（taste）と、顎下腺（submandibular gland）・舌下腺（sublingual gland）の分泌（secretion）の線維（fiber）を運ぶ。"
         },
         {
           "id": "cochlear-nerve", "ja": "蝸牛神経", "yomi": "かぎゅうしんけい", "en": "cochlear nerve", "la": "nervus cochlearis",
           "parts": ["za:cochlear nerve*"], "level": 2,
           "kanji": "蝸牛から来る神経",
           "etym": "cochlear「蝸牛の」（ラテン語 cochlea＝かたつむり）",
-          "note": "内耳神経のうち聴覚を伝える部分。蝸牛のらせん神経節から出て、内耳道を通り延髄と橋の境で脳に入り、蝸牛神経核へ行く。"
+          "note": "内耳神経（vestibulocochlear nerve）のうち聴覚（hearing）を伝える部分。蝸牛（cochlea）のらせん神経節（ganglion）から出て、内耳道（internal acoustic meatus）を通り延髄（medulla oblongata）と橋の境で脳（brain）に入り、蝸牛神経核（cochlear nuclei）へ行く。"
         },
         {
           "id": "vestibular-nerve", "ja": "前庭神経", "yomi": "ぜんていしんけい", "en": "vestibular nerve", "la": "nervus vestibularis",
           "parts": ["za:vestibular nerve"], "level": 2, "xray": true,
           "kanji": "前庭から来る神経",
           "etym": "vestibular「前庭の」（ラテン語 vestibulum＝玄関）",
-          "note": "内耳神経のうち平衡感覚を伝える部分。前庭と半規管から出て前庭神経核へ行く。この神経にできる腫瘍（前庭神経鞘腫）は聴力も落とす。"
+          "note": "内耳神経（vestibulocochlear nerve）のうち平衡感覚（sense of balance）を伝える部分。前庭（vestibule）と半規管（semicircular canal）から出て前庭神経核（vestibular nuclei）へ行く。この神経（nerve）にできる腫瘍（tumor）（前庭神経鞘腫（vestibular schwannoma））は聴力（hearing）も落とす。"
         },
         {
           "id": "ciliary-ganglion", "ja": "毛様体神経節", "yomi": "もうようたいしんけいせつ", "en": "ciliary ganglion", "la": "ganglion ciliare",
           "parts": ["ciliary ganglion"], "level": 3, "xray": true,
           "kanji": "毛様体へ行く神経の節",
           "etym": "ciliary「毛様体の」（ラテン語 cilium＝まつげ）＋ ganglion「節」",
-          "note": "眼窩の奥、視神経の外側にある小さな副交感の神経節。動眼神経の副交感の線維がここで替わり、瞳孔括約筋と毛様体筋へ行く。"
+          "note": "眼窩（orbit）の奥、視神経（optic nerve）の外側（lateral）にある小さな副交感（parasympathetic）の神経節（ganglion）。動眼神経（oculomotor nerve）の副交感の線維（fiber）がここで替わり、瞳孔括約筋（sphincter pupillae）と毛様体筋（ciliary muscle）へ行く。"
         }
       ]
     },
@@ -1056,8 +1056,8 @@
       "title": "眼窩の神経（眼神経と動眼神経の枝）",
       "group": "脳神経",
       "intro": [
-        "三叉神経の第1枝の眼神経は、上眼窩裂を通って眼窩に入るとすぐに3本に分かれる。上眼瞼挙筋の上を前へ進む前頭神経、外側の涙腺へ向かう涙腺神経、視神経の上を内側へ横切る鼻毛様体神経。どれも感覚の神経で、ひたい・上まぶた・鼻・眼球の感覚を伝える。",
-        "動眼神経は上枝と下枝に分かれて眼筋へ行く。下枝から毛様体神経節へ副交感の線維が入り、短毛様体神経として眼球に入って瞳孔を縮め、水晶体の厚さを変える。"
+        "三叉神経（trigeminal nerve）の第1枝（first division）の眼神経（ophthalmic nerve）は、上眼窩裂（superior orbital fissure）を通って眼窩（orbit）に入るとすぐに3本に分かれる。上眼瞼挙筋（levator palpebrae superioris）の上を前へ進む前頭神経（frontal nerve）、外側（lateral）の涙腺（lacrimal gland）へ向かう涙腺神経（lacrimal nerve）、視神経（optic nerve）の上を内側（medial）へ横切る鼻毛様体神経（nasociliary nerve）。どれも感覚（sensation）の神経（nerve）で、ひたい・上まぶた・鼻（nose）・眼球（eyeball）の感覚を伝える。",
+        "動眼神経（oculomotor nerve）は上枝（superior branch）と下枝（inferior branch）に分かれて眼筋（extraocular muscles）へ行く。下枝から毛様体神経節（ciliary ganglion）へ副交感（parasympathetic）の線維（fiber）が入り、短毛様体神経（short ciliary nerves）として眼球に入って瞳孔（pupil）を縮め、水晶体（lens）の厚さを変える。"
       ],
       "terms": [
         {
@@ -1065,84 +1065,84 @@
           "parts": ["frontal nerve"], "level": 3,
           "kanji": "ひたい（前頭）へ行く神経",
           "etym": "frontal ← ラテン語 frons「ひたい」",
-          "note": "眼神経の3本の枝のうち最も太い。上眼窩裂を総腱輪の外で通り、眼窩の天井と上眼瞼挙筋の間を前へ進み、眼窩上神経と滑車上神経に分かれる。"
+          "note": "眼神経（ophthalmic nerve）の3本の枝（branch）のうち最も太い。上眼窩裂（superior orbital fissure）を総腱輪（common tendinous ring）の外で通り、眼窩（orbit）の天井と上眼瞼挙筋（levator palpebrae superioris）の間を前へ進み、眼窩上神経（supra-orbital nerve）と滑車上神経（supratrochlear nerve）に分かれる。"
         },
         {
           "id": "supra-orbital-nerve", "ja": "眼窩上神経", "yomi": "がんかじょうしんけい", "en": "supra-orbital nerve", "enAlt": ["supraorbital nerve"], "la": "nervus supraorbitalis",
           "parts": ["supra-orbital nerve"], "level": 3,
           "kanji": "眼窩の上の縁を越える神経",
           "etym": "supra「上の」＋ orbital「眼窩の」（ラテン語 orbita＝わだち・輪）",
-          "note": "前頭神経の外側の枝。眼窩上孔（または眼窩上切痕）を通って眼窩を出て、ひたいから頭頂までの皮膚と上まぶたの感覚を伝える。眼窩上孔は三叉神経の第1枝の圧痛点。"
+          "note": "前頭神経（frontal nerve）の外側（lateral）の枝（branch）。眼窩上孔（supra-orbital foramen）（または眼窩上切痕（supra-orbital notch））を通って眼窩（orbit）を出て、ひたいから頭頂（vertex）までの皮膚（skin）と上まぶたの感覚（sensation）を伝える。眼窩上孔は三叉神経（trigeminal nerve）の第1枝（first division）の圧痛点（tender point）。"
         },
         {
           "id": "supratrochlear-nerve", "ja": "滑車上神経", "yomi": "かっしゃじょうしんけい", "en": "supratrochlear nerve", "la": "nervus supratrochlearis",
           "parts": ["supratrochlear nerve"], "level": 3,
           "kanji": "滑車の上を通る神経",
           "etym": "supra「上の」＋ trochlear「滑車の」（ギリシャ語 trochilia＝滑車）",
-          "note": "前頭神経の内側の細い枝。上斜筋の滑車の上を通って眼窩の内側上の角から出て、眉間に近いひたいと上まぶたの内側の皮膚の感覚を伝える。"
+          "note": "前頭神経（frontal nerve）の内側（medial）の細い枝（branch）。上斜筋の滑車（trochlea of superior oblique）の上を通って眼窩（orbit）の内側上（superomedial）の角から出て、眉間（glabella）に近いひたいと上まぶたの内側の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "lacrimal-nerve", "ja": "涙腺神経", "yomi": "るいせんしんけい", "en": "lacrimal nerve", "la": "nervus lacrimalis",
           "parts": ["lacrimal nerve"], "level": 3,
           "kanji": "涙腺へ行く神経",
           "etym": "lacrimal ← ラテン語 lacrima「なみだ」",
-          "note": "眼神経の最も細い枝。上眼窩裂の外側部を通り、外側直筋の上の縁にそって涙腺へ行き、上まぶたの外側の皮膚の感覚を伝える。涙を出させる副交感の線維（顔面神経から来る）は、頬骨神経との交通枝からこの神経に乗って涙腺へ届く。"
+          "note": "眼神経（ophthalmic nerve）の最も細い枝（branch）。上眼窩裂（superior orbital fissure）の外側部（lateral part）を通り、外側直筋（lateral rectus）の上の縁にそって涙腺（lacrimal gland）へ行き、上まぶたの外側（lateral）の皮膚（skin）の感覚（sensation）を伝える。涙（tears）を出させる副交感（parasympathetic）の線維（fiber）（顔面神経（facial nerve）から来る）は、頬骨神経（zygomatic nerve）との交通枝（communicating branch）からこの神経（nerve）に乗って涙腺へ届く。"
         },
         {
           "id": "nasociliary-nerve", "ja": "鼻毛様体神経", "yomi": "びもうようたいしんけい", "en": "nasociliary nerve", "la": "nervus nasociliaris",
           "parts": ["nasociliary nerve"], "level": 3,
           "kanji": "鼻と毛様体（眼球）へ行く神経",
           "etym": "naso-「鼻の」（ラテン語 nasus）＋ ciliary「毛様体の」",
-          "note": "眼神経の枝で、ただ1本、総腱輪の中を通る。視神経の上を外側から内側へ横切り、長毛様体神経（眼球）・前篩骨神経と後篩骨神経（鼻腔と副鼻腔）・滑車下神経（目頭）を出す。毛様体神経節に感覚の線維を送る。"
+          "note": "眼神経（ophthalmic nerve）の枝（branch）で、ただ1本、総腱輪（common tendinous ring）の中を通る。視神経（optic nerve）の上を外側（lateral）から内側（medial）へ横切り、長毛様体神経（long ciliary nerves）（眼球（eyeball））・前篩骨神経（anterior ethmoidal nerve）と後篩骨神経（posterior ethmoidal nerve）（鼻腔（nasal cavity）と副鼻腔（paranasal sinuses））・滑車下神経（infratrochlear nerve）（目頭（medial angle of eye））を出す。毛様体神経節（ciliary ganglion）に感覚（sensation）の線維（fiber）を送る。"
         },
         {
           "id": "infratrochlear-nerve", "ja": "滑車下神経", "yomi": "かっしゃかしんけい", "en": "infratrochlear nerve", "la": "nervus infratrochlearis",
           "parts": ["infratrochlear nerve"], "level": 3, "xray": true,
           "kanji": "滑車の下を通る神経",
           "etym": "infra「下の」＋ trochlear「滑車の」",
-          "note": "鼻毛様体神経の終わりの枝。上斜筋の滑車の下を通って眼窩の内側から出て、目頭のまわりの皮膚・涙嚢・鼻根の感覚を伝える。"
+          "note": "鼻毛様体神経（nasociliary nerve）の終わりの枝（branch）。上斜筋の滑車（trochlea of superior oblique）の下を通って眼窩（orbit）の内側（medial）から出て、目頭（medial angle of eye）のまわりの皮膚（skin）・涙嚢（lacrimal sac）・鼻根（root of nose）の感覚（sensation）を伝える。"
         },
         {
           "id": "anterior-ethmoidal-nerve", "ja": "前篩骨神経", "yomi": "ぜんしこつしんけい", "en": "anterior ethmoidal nerve", "la": "nervus ethmoidalis anterior",
           "parts": ["anterior ethmoidal nerve"], "level": 3, "xray": true,
           "kanji": "前の篩骨の孔を通る神経",
           "etym": "ethmoidal ← ギリシャ語 ethmos「ふるい」＋ -eides「〜の形」",
-          "note": "鼻毛様体神経の枝。眼窩の内側壁の前篩骨孔を通っていったん前頭蓋窩に出て、篩板のわきから鼻腔に下り、鼻腔の前上部の粘膜と、鼻背から鼻尖の皮膚（外鼻枝）の感覚を伝える。"
+          "note": "鼻毛様体神経（nasociliary nerve）の枝（branch）。眼窩（orbit）の内側壁（medial wall）の前篩骨孔（anterior ethmoidal foramen）を通っていったん前頭蓋窩（anterior cranial fossa）に出て、篩板（cribriform plate）のわきから鼻腔（nasal cavity）に下り、鼻腔の前上部（anterosuperior part）の粘膜（mucosa）と、鼻背（dorsum of nose）から鼻尖（tip of nose）の皮膚（skin）（外鼻枝（external nasal branch））の感覚（sensation）を伝える。"
         },
         {
           "id": "posterior-ethmoidal-nerve", "ja": "後篩骨神経", "yomi": "こうしこつしんけい", "en": "posterior ethmoidal nerve", "la": "nervus ethmoidalis posterior",
           "parts": ["posterior ethmoidal nerve"], "level": 3, "xray": true,
           "kanji": "後ろの篩骨の孔を通る神経",
           "etym": "posterior「後ろの」＋ ethmoidal「篩骨の」",
-          "note": "鼻毛様体神経の細い枝。眼窩の内側壁の後篩骨孔を通り、後ろの篩骨蜂巣と蝶形骨洞の粘膜の感覚を伝える。ない人もいる。"
+          "note": "鼻毛様体神経（nasociliary nerve）の細い枝（branch）。眼窩（orbit）の内側壁（medial wall）の後篩骨孔（posterior ethmoidal foramen）を通り、後ろの篩骨蜂巣（ethmoidal cells）と蝶形骨洞（sphenoidal sinus）の粘膜（mucosa）の感覚（sensation）を伝える。ない人もいる。"
         },
         {
           "id": "long-ciliary-nerves", "ja": "長毛様体神経", "yomi": "ちょうもうようたいしんけい", "en": "long ciliary nerves", "enAlt": ["long ciliary nerve"], "la": "nervi ciliares longi",
           "parts": ["long ciliary nerve"], "level": 3, "xray": true,
           "kanji": "長い、毛様体へ行く神経",
           "etym": "long「長い」＋ ciliary「毛様体の」（ラテン語 cilium＝まつげ）",
-          "note": "鼻毛様体神経から出る2〜3本の神経。毛様体神経節を通らずに視神経のわきで眼球の後ろから入り、角膜・虹彩・毛様体の感覚を伝える。瞳孔を広げる交感神経の線維（瞳孔散大筋へ）もこれに乗る。角膜反射の入り口。"
+          "note": "鼻毛様体神経（nasociliary nerve）から出る2〜3本の神経（nerve）。毛様体神経節（ciliary ganglion）を通らずに視神経（optic nerve）のわきで眼球（eyeball）の後ろから入り、角膜（cornea）・虹彩（iris）・毛様体（ciliary body）の感覚（sensation）を伝える。瞳孔（pupil）を広げる交感神経（sympathetic nerve）の線維（fiber）（瞳孔散大筋（dilator pupillae）へ）もこれに乗る。角膜反射（corneal reflex）の入り口。"
         },
         {
           "id": "short-ciliary-nerves", "ja": "短毛様体神経", "yomi": "たんもうようたいしんけい", "en": "short ciliary nerves", "enAlt": ["short ciliary nerve"], "la": "nervi ciliares breves",
           "parts": ["short ciliary nerve"], "level": 3, "xray": true,
           "kanji": "短い、毛様体へ行く神経",
           "etym": "short「短い」＋ ciliary「毛様体の」",
-          "note": "毛様体神経節から出る6〜10本の細い神経。視神経をとりまいて眼球の後ろから入る。動眼神経の副交感の線維を瞳孔括約筋（瞳孔を縮める）と毛様体筋（近くを見るとき水晶体を厚くする）へ運ぶ。対光反射の出口。"
+          "note": "毛様体神経節（ciliary ganglion）から出る6〜10本の細い神経（nerve）。視神経（optic nerve）をとりまいて眼球（eyeball）の後ろから入る。動眼神経（oculomotor nerve）の副交感（parasympathetic）の線維（fiber）を瞳孔括約筋（sphincter pupillae）（瞳孔（pupil）を縮める）と毛様体筋（ciliary muscle）（近くを見るとき水晶体（lens）を厚くする）へ運ぶ。対光反射（pupillary light reflex）の出口。"
         },
         {
           "id": "superior-branch-of-oculomotor-nerve", "ja": "動眼神経の上枝", "yomi": "どうがんしんけいのじょうし", "en": "superior branch of oculomotor nerve", "la": "ramus superior nervi oculomotorii",
           "parts": ["superior branch of oculomotor nerve"], "level": 3,
           "kanji": "動眼神経の上の枝",
           "etym": "oculomotor ← ラテン語 oculus「眼」＋ motor「動かすもの」",
-          "note": "動眼神経が上眼窩裂の総腱輪の中で分かれた上の枝。視神経の上を通って上直筋と上眼瞼挙筋へ行く。動眼神経がまひすると、まぶたが下がる（眼瞼下垂）のはこの枝の働きがなくなるため。"
+          "note": "動眼神経（oculomotor nerve）が上眼窩裂（superior orbital fissure）の総腱輪（common tendinous ring）の中で分かれた上の枝（branch）。視神経（optic nerve）の上を通って上直筋（superior rectus）と上眼瞼挙筋（levator palpebrae superioris）へ行く。動眼神経がまひすると、まぶた（eyelid）が下がる（眼瞼下垂（ptosis））のはこの枝の働きがなくなるため。"
         },
         {
           "id": "inferior-branch-of-oculomotor-nerve", "ja": "動眼神経の下枝", "yomi": "どうがんしんけいのかし", "en": "inferior branch of oculomotor nerve", "la": "ramus inferior nervi oculomotorii",
           "parts": ["inferior branch of oculomotor nerve"], "level": 3,
           "kanji": "動眼神経の下の枝",
           "etym": "inferior「下の」＋ oculomotor「眼を動かす」",
-          "note": "動眼神経の下の太い枝。内側直筋・下直筋・下斜筋へ行き、毛様体神経節へ副交感の線維（動眼神経根）を送る。上斜筋（滑車神経）と外側直筋（外転神経）のほかの眼筋は、上枝とこの枝で動かす。"
+          "note": "動眼神経（oculomotor nerve）の下の太い枝（branch）。内側直筋（medial rectus）・下直筋（inferior rectus）・下斜筋（inferior oblique）へ行き、毛様体神経節（ciliary ganglion）へ副交感（parasympathetic）の線維（fiber）（動眼神経根（oculomotor root））を送る。上斜筋（superior oblique）（滑車神経（trochlear nerve））と外側直筋（lateral rectus）（外転神経（abducens nerve））のほかの眼筋（extraocular muscles）は、上枝（superior branch）とこの枝で動かす。"
         }
       ]
     },
@@ -1156,84 +1156,84 @@
           "parts": ["za:white matter of spinal cord"], "level": 1,
           "kanji": "脊柱の中の髄",
           "etym": "spinal「脊柱の」（ラテン語 spina「とげ・背骨」）＋ cord「ひも」",
-          "note": "脊柱管の中を、延髄から第1〜2腰椎の高さまで伸びる中枢神経。31対の脊髄神経が出入りする。手足への神経が出る所は太く、頚膨大・腰膨大という。"
+          "note": "脊柱管（vertebral canal）の中を、延髄（medulla oblongata）から第1〜2腰椎（first to second lumbar vertebrae）の高さまで伸びる中枢神経（central nervous system）。31対の脊髄神経（spinal nerve）が出入りする。手足（limbs）への神経（nerve）が出る所は太く、頚膨大（cervical enlargement）・腰膨大（lumbosacral enlargement）という。"
         },
         {
           "id": "cauda-equina", "ja": "馬尾", "yomi": "ばび", "en": "cauda equina", "la": "cauda equina",
           "parts": ["za:cauda equina"], "level": 2,
           "kanji": "馬の尾",
           "etym": "ラテン語 cauda「尾」＋ equina「馬の」",
-          "note": "脊髄の下端より下で、腰神経・仙骨神経の根が脊柱管の中を束になって下る部分。馬の尾のように見える。腰椎穿刺はこの高さで行う。"
+          "note": "脊髄（spinal cord）の下端（inferior end）より下で、腰神経（lumbar nerve）・仙骨神経（sacral nerve）の根が脊柱管（vertebral canal）の中を束になって下る部分。馬の尾のように見える。腰椎穿刺（lumbar puncture）はこの高さで行う。"
         },
         {
           "id": "sympathetic-trunk", "ja": "交感神経幹", "yomi": "こうかんしんけいかん", "en": "sympathetic trunk", "la": "truncus sympathicus",
           "parts": ["za:sympathetic trunk", "za:ganglia of sympathetic trunk"], "level": 2,
           "kanji": "交感神経の幹（みき）",
           "etym": "sympathetic ← ギリシャ語 sym-「共に」＋ pathos「感じる」（体の各部を共に感じさせると考えられた）",
-          "note": "脊柱の両わきを頭蓋底から尾骨まで縦に走る、神経節が数珠のようにつながった索。交感神経の線維がここで乗りかえて全身へ向かう。"
+          "note": "脊柱（vertebral column）の両わきを頭蓋底（cranial base）から尾骨（coccyx）まで縦に走る、神経節（ganglion）が数珠のようにつながった索。交感神経（sympathetic nerve）の線維（fiber）がここで乗りかえて全身（whole body）へ向かう。"
         },
         {
           "id": "brachial-plexus", "ja": "腕神経叢", "yomi": "わんしんけいそう", "en": "brachial plexus", "la": "plexus brachialis",
           "parts": ["za:roots of brachial plexus", "za:*trunk of brachial plexus", "za:posterior cord of brachial plexus"], "level": 1,
           "kanji": "腕へ行く神経の叢（くさむら＝網の目）",
           "etym": "brachial「腕の」（ラテン語 brachium）＋ plexus「編んだもの・網」",
-          "note": "第5頚神経〜第1胸神経の前枝が、根→神経幹→部→神経束と合わさり分かれて作る網。斜角筋の間から鎖骨の後ろを通って腋窩へ入り、上肢の神経を出す。"
+          "note": "第5頚神経（fifth cervical nerve）〜第1胸神経（first thoracic nerve）の前枝（anterior ramus）が、根→神経幹（trunk）→部→神経束（cord）と合わさり分かれて作る網。斜角筋（scalene muscles）の間から鎖骨（clavicle）の後ろを通って腋窩（axilla）へ入り、上肢（upper limb）の神経（nerve）を出す。"
         },
         {
           "id": "musculocutaneous-nerve", "ja": "筋皮神経", "yomi": "きんぴしんけい", "en": "musculocutaneous nerve", "la": "nervus musculocutaneus",
           "parts": ["za:musculocutaneous nerve", "za:lateral antebrachial cutaneous nerve"], "level": 1,
           "kanji": "筋と皮膚へ行く神経",
           "etym": "musculo-「筋」＋ cutaneous「皮膚の」",
-          "note": "外側神経束から出て烏口腕筋を貫き、上腕の屈筋（上腕二頭筋・上腕筋・烏口腕筋）を動かす。その先は前腕の外側の皮膚の感覚を伝える。"
+          "note": "外側神経束（lateral cord）から出て烏口腕筋（coracobrachialis）を貫き、上腕（arm）の屈筋（flexor）（上腕二頭筋（biceps brachii）・上腕筋（brachialis）・烏口腕筋）を動かす。その先は前腕（forearm）の外側（lateral）の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "axillary-nerve", "ja": "腋窩神経", "yomi": "えきかしんけい", "en": "axillary nerve", "la": "nervus axillaris",
           "parts": ["za:axillary nerve", "za:*of axillary nerve", "za:superior lateral brachial cutaneous nerve"], "level": 1,
           "kanji": "腋窩（わきの下）を通る神経",
           "etym": "axillary ← ラテン語 axilla「わきの下」",
-          "note": "後神経束から出て、上腕骨の外科頚の後ろを回り、三角筋と小円筋を動かす。外科頚の骨折や肩の脱臼で傷つきやすい。"
+          "note": "後神経束（posterior cord of brachial plexus）から出て、上腕骨（humerus）の外科頚（surgical neck）の後ろを回り、三角筋（deltoid）と小円筋（teres minor）を動かす。外科頚の骨折（fracture）や肩（shoulder）の脱臼（dislocation）で傷つきやすい。"
         },
         {
           "id": "radial-nerve", "ja": "橈骨神経", "yomi": "とうこつしんけい", "en": "radial nerve", "la": "nervus radialis",
           "parts": ["za:radial nerve", "za:*of radial nerve", "za:inferior lateral brachial cutaneous nerve", "za:posterior antebrachial cutaneous nerve", "za:posterior interosseous nerve of forearm"], "level": 1,
           "kanji": "橈骨の側を走る神経",
           "etym": "radial「橈骨の」← ラテン語 radius「車輪の輻（や）」",
-          "note": "後神経束から出て、上腕骨の後ろの橈骨神経溝をらせん状に回る。上腕三頭筋と前腕の伸筋を動かす。上腕骨の骨幹部の骨折で傷つくと手首が垂れる（下垂手）。"
+          "note": "後神経束（posterior cord of brachial plexus）から出て、上腕骨（humerus）の後ろの橈骨神経溝（radial groove）をらせん状に回る。上腕三頭筋（triceps brachii）と前腕（forearm）の伸筋（extensor）を動かす。上腕骨の骨幹部（diaphysis）の骨折（fracture）で傷つくと手首（wrist）が垂れる（下垂手（wrist drop））。"
         },
         {
           "id": "median-nerve", "ja": "正中神経", "yomi": "せいちゅうしんけい", "en": "median nerve", "la": "nervus medianus",
           "parts": ["za:median nerve", "za:*of median nerve", "za:anterior interosseous nerve of forearm"], "level": 1,
           "kanji": "腕のまん中（正中）を走る神経",
           "etym": "median「まん中の」",
-          "note": "外側・内側神経束から出て上腕の内側を下り、前腕の中央を通って手根管をくぐる。前腕の屈筋の多くと母指球の筋を動かす。手根管症候群で圧迫される。"
+          "note": "外側（lateral）・内側神経束（medial cord）から出て上腕（arm）の内側（medial）を下り、前腕（forearm）の中央を通って手根管（carpal tunnel）をくぐる。前腕の屈筋（flexor）の多くと母指球（thenar eminence）の筋（muscle）を動かす。手根管症候群（carpal tunnel syndrome）で圧迫される。"
         },
         {
           "id": "ulnar-nerve", "ja": "尺骨神経", "yomi": "しゃっこつしんけい", "en": "ulnar nerve", "la": "nervus ulnaris",
           "parts": ["za:ulnar nerve", "za:*of ulnar nerve"], "level": 1,
           "kanji": "尺骨の側を走る神経",
           "etym": "ulnar「尺骨の」← ラテン語 ulna「肘・前腕」",
-          "note": "内側神経束から出て、上腕骨の内側上顆の後ろ（尺骨神経溝）を通る。肘をぶつけて小指までしびれるのはこの神経。手の細かい筋の多くを動かし、傷つくと鷲手になる。"
+          "note": "内側神経束（medial cord）から出て、上腕骨（humerus）の内側上顆（medial epicondyle）の後ろ（尺骨神経溝（groove for ulnar nerve））を通る。肘（elbow）をぶつけて小指（little finger）までしびれるのはこの神経（nerve）。手（hand）の細かい筋（muscle）の多くを動かし、傷つくと鷲手（claw hand）になる。"
         },
         {
           "id": "long-thoracic-nerve", "ja": "長胸神経", "yomi": "ちょうきょうしんけい", "en": "long thoracic nerve", "la": "nervus thoracicus longus",
           "parts": ["za:long thoracic nerve"], "level": 2,
           "kanji": "胸の側面を長く下る神経",
           "etym": "long「長い」＋ thoracic「胸の」",
-          "note": "第5〜7頚神経の根から出て胸の側面を下り、前鋸筋を動かす。傷つくと肩甲骨の内側縁が浮き上がる（翼状肩甲）。"
+          "note": "第5〜7頚神経（fifth to seventh cervical nerves）の根から出て胸（chest）の側面を下り、前鋸筋（serratus anterior）を動かす。傷つくと肩甲骨（scapula）の内側縁（medial border）が浮き上がる（翼状肩甲（winged scapula））。"
         },
         {
           "id": "thoracodorsal-nerve", "ja": "胸背神経", "yomi": "きょうはいしんけい", "en": "thoracodorsal nerve", "la": "nervus thoracodorsalis",
           "parts": ["za:thoracodorsal nerve"], "level": 3,
           "kanji": "胸と背中の間を下る神経",
           "etym": "thoraco-「胸」＋ dorsal「背中の」",
-          "note": "後神経束から出て腋窩の後ろの壁を下り、広背筋を動かす。"
+          "note": "後神経束（posterior cord of brachial plexus）から出て腋窩（axilla）の後ろの壁を下り、広背筋（latissimus dorsi）を動かす。"
         },
         {
           "id": "intercostal-nerves", "ja": "肋間神経", "yomi": "ろっかんしんけい", "en": "intercostal nerves", "enAlt": ["intercostal nerve"], "la": "nervi intercostales",
           "parts": ["za:intercostal nerves"], "level": 2,
           "kanji": "肋骨の間を走る神経",
           "etym": "inter-「間」＋ costa「肋骨」",
-          "note": "胸神経の前枝。肋骨の下縁の肋骨溝を肋間動静脈と並んで走り、肋間筋と腹壁の筋、胸と腹の皮膚に分布する。"
+          "note": "胸神経（thoracic nerve）の前枝（anterior ramus）。肋骨（ribs）の下縁（inferior border）の肋骨溝（costal groove）を肋間動静脈（intercostal vessels）と並んで走り、肋間筋（intercostal muscles）と腹壁（abdominal wall）の筋（muscle）、胸（chest）と腹（abdomen）の皮膚（skin）に分布する。"
         }
       ]
     },
@@ -1242,9 +1242,9 @@
       "title": "脊髄の内部と神経根",
       "group": "脊髄と上肢・体幹の神経",
       "intro": [
-        "脊髄の断面では、中心にH字形の灰白質（神経細胞が集まる）、まわりに白質（線維の通り道）がある。灰白質の前の突き出しが前角（運動）、後ろが後角（感覚）。",
-        "白質には、上の脳へ感覚を伝える上行路（後索＝薄束・楔状束、脊髄視床路、脊髄小脳路）と、脳から下る下行路（皮質脊髄路など）が決まった場所を走る。",
-        "図鑑の「断面」で脊髄を水平に切ると、伝導路のならびを断面で見られる。"
+        "脊髄（spinal cord）の断面（section）では、中心にH字形の灰白質（gray matter）（神経細胞（neuron）が集まる）、まわりに白質（white matter）（線維（fiber）の通り道）がある。灰白質の前の突き出しが前角（anterior horn）（運動）、後ろが後角（posterior horn）（感覚（sensation））。",
+        "白質には、上の脳（brain）へ感覚を伝える上行路（ascending tract）（後索（posterior funiculus）＝薄束（gracile fasciculus）・楔状束（cuneate fasciculus）、脊髄視床路（spinothalamic tract）、脊髄小脳路（spinocerebellar tract））と、脳から下る下行路（descending tract）（皮質脊髄路（corticospinal tract）など）が決まった場所を走る。",
+        "図鑑の「断面」で脊髄を水平に切ると、伝導路（tract）のならびを断面で見られる。"
       ],
       "terms": [
         {
@@ -1252,105 +1252,105 @@
           "parts": ["za:anterior horn of spinal cord"], "level": 1, "xray": true,
           "kanji": "灰白質の前の角",
           "etym": "anterior「前の」＋ horn「角（つの）」",
-          "note": "脊髄の灰白質の前の突き出し。骨格筋を動かす運動ニューロンの細胞体が集まり、前根へ線維を出す。ポリオ・筋萎縮性側索硬化症（ALS）で傷む。"
+          "note": "脊髄（spinal cord）の灰白質（gray matter）の前の突き出し。骨格筋（skeletal muscle）を動かす運動ニューロン（motor neuron）の細胞体（cell body）が集まり、前根（anterior root）へ線維（fiber）を出す。ポリオ・筋萎縮性側索硬化症（ALS）で傷む。"
         },
         {
           "id": "posterior-horn", "ja": "後角", "yomi": "こうかく", "en": "posterior horn", "enAlt": ["posterior horn of spinal cord"], "la": "cornu posterius",
           "parts": ["za:posterior horn of spinal cord"], "level": 1, "xray": true,
           "kanji": "灰白質の後ろの角",
           "etym": "posterior「後ろの」＋ horn「角」",
-          "note": "脊髄の灰白質の後ろの突き出し。後根から入った痛み・温度などの感覚を受けて、次のニューロンへ伝える。"
+          "note": "脊髄（spinal cord）の灰白質（gray matter）の後ろの突き出し。後根（posterior root）から入った痛み・温度などの感覚（sensation）を受けて、次のニューロン（neuron）へ伝える。"
         },
         {
           "id": "central-canal", "ja": "中心管", "yomi": "ちゅうしんかん", "en": "central canal", "la": "canalis centralis",
           "parts": ["za:central canal*"], "level": 2, "xray": true,
           "kanji": "脊髄の中心の管",
           "etym": "central「中心の」＋ canal「管」",
-          "note": "脊髄の灰白質の真ん中を縦に通る細い管。上は第四脳室に続き、脳脊髄液が入る。大人では一部がふさがっている。"
+          "note": "脊髄（spinal cord）の灰白質（gray matter）の真ん中を縦に通る細い管。上は第四脳室（fourth ventricle）に続き、脳脊髄液（cerebrospinal fluid）が入る。大人では一部がふさがっている。"
         },
         {
           "id": "lateral-corticospinal-tract", "ja": "外側皮質脊髄路", "yomi": "がいそくひしつせきずいろ", "en": "lateral corticospinal tract", "la": "tractus corticospinalis lateralis",
           "parts": ["za:lateral corticospinal tract"], "level": 1, "xray": true,
           "kanji": "外側を通る、皮質から脊髄への道",
           "etym": "lateral「外側の」＋ cortico-「皮質の」＋ spinal「脊髄の」＋ tract「道」",
-          "note": "大脳皮質の運動野から下る随意運動の道（錐体路）の大部分。延髄の錐体で反対側へ交叉し、脊髄の側索を下って前角の運動ニューロンへ伝える。"
+          "note": "大脳皮質（cerebral cortex）の運動野（motor area）から下る随意運動（voluntary movement）の道（錐体路（pyramidal tract））の大部分。延髄（medulla oblongata）の錐体（pyramid）で反対側（contralateral side）へ交叉（decussation）し、脊髄（spinal cord）の側索（lateral funiculus）を下って前角（anterior horn）の運動ニューロン（motor neuron）へ伝える。"
         },
         {
           "id": "anterior-corticospinal-tract", "ja": "前皮質脊髄路", "yomi": "ぜんひしつせきずいろ", "en": "anterior corticospinal tract", "la": "tractus corticospinalis anterior",
           "parts": ["za:anterior corticospinal tract"], "level": 2, "xray": true,
           "kanji": "前を通る、皮質から脊髄への道",
           "etym": "anterior「前の」＋ cortico-「皮質の」＋ spinal「脊髄の」",
-          "note": "錐体路のうち延髄で交叉しなかった一部。前正中裂のわきを下り、脊髄の中で反対側へ渡る。体幹の筋を動かす。"
+          "note": "錐体路（pyramidal tract）のうち延髄（medulla oblongata）で交叉（decussation）しなかった一部。前正中裂（anterior median fissure）のわきを下り、脊髄（spinal cord）の中で反対側（contralateral side）へ渡る。体幹（trunk）の筋（muscle）を動かす。"
         },
         {
           "id": "lateral-spinothalamic-tract", "ja": "外側脊髄視床路", "yomi": "がいそくせきずいししょうろ", "en": "lateral spinothalamic tract", "la": "tractus spinothalamicus lateralis",
           "parts": ["za:lateral spinothalamic tract"], "level": 1, "xray": true,
           "kanji": "外側を通る、脊髄から視床への道",
           "etym": "lateral「外側の」＋ spino-「脊髄の」＋ thalamic「視床の」",
-          "note": "痛み・温度の感覚を伝える上行路。後角で次のニューロンに替わるとすぐ反対側へ渡って上る。脊髄の半側が傷むと、傷と反対側で痛みが分からなくなる（ブラウン・セカール症候群）。"
+          "note": "痛み・温度の感覚（sensation）を伝える上行路（ascending tract）。後角（posterior horn）で次のニューロン（neuron）に替わるとすぐ反対側（contralateral side）へ渡って上る。脊髄（spinal cord）の半側が傷むと、傷と反対側で痛みが分からなくなる（ブラウン（Brown）・セカール症候群（Séquard syndrome））。"
         },
         {
           "id": "anterior-spinothalamic-tract", "ja": "前脊髄視床路", "yomi": "ぜんせきずいししょうろ", "en": "anterior spinothalamic tract", "la": "tractus spinothalamicus anterior",
           "parts": ["za:anterior spinothalamic tract"], "level": 3, "xray": true,
           "kanji": "前を通る、脊髄から視床への道",
           "etym": "anterior「前の」＋ spino-「脊髄の」＋ thalamic「視床の」",
-          "note": "粗い触覚と圧覚を伝える上行路。外側脊髄視床路と同じく反対側を上る。"
+          "note": "粗い触覚（touch）と圧覚（pressure sensation）を伝える上行路（ascending tract）。外側脊髄視床路（lateral spinothalamic tract）と同じく反対側（contralateral side）を上る。"
         },
         {
           "id": "gracile-fasciculus", "ja": "薄束", "yomi": "はくそく", "en": "gracile fasciculus", "la": "fasciculus gracilis",
           "parts": ["za:gracile fasciculus"], "level": 1, "xray": true,
           "kanji": "細い束",
           "etym": "gracile「細い」（ラテン語 gracilis）＋ fasciculus「小さな束」",
-          "note": "後索の内側の部分。下半身（第6胸髄より下）の細かい触覚・振動・関節の位置の感覚を、同じ側のまま延髄の薄束核へ伝える。"
+          "note": "後索（posterior funiculus）の内側（medial）の部分。下半身（第6胸髄（sixth thoracic segment）より下）の細かい触覚（touch）・振動（vibration）・関節（joint）の位置の感覚（sensation）を、同じ側のまま延髄（medulla oblongata）の薄束核（gracile nucleus）へ伝える。"
         },
         {
           "id": "cuneate-fasciculus", "ja": "楔状束", "yomi": "けつじょうそく", "en": "cuneate fasciculus", "la": "fasciculus cuneatus",
           "parts": ["za:cuneate fasciculus"], "level": 1, "xray": true,
           "kanji": "くさびの形の束",
           "etym": "cuneate「くさびの形の」（ラテン語 cuneus＝くさび）＋ fasciculus「束」",
-          "note": "後索の外側の部分で、上半身から入る。上肢・上半身の細かい触覚・位置の感覚を延髄の楔状束核へ伝える。胸髄より上にだけある。"
+          "note": "後索（posterior funiculus）の外側（lateral）の部分で、上半身から入る。上肢（upper limb）・上半身の細かい触覚（touch）・位置の感覚（sensation）を延髄（medulla oblongata）の楔状束核（cuneate nucleus）へ伝える。胸髄（thoracic spinal cord）より上にだけある。"
         },
         {
           "id": "posterior-spinocerebellar-tract", "ja": "後脊髄小脳路", "yomi": "こうせきずいしょうのうろ", "en": "posterior spinocerebellar tract", "la": "tractus spinocerebellaris posterior",
           "parts": ["za:posterior spinocerebellar tract"], "level": 3, "xray": true,
           "kanji": "後ろを通る、脊髄から小脳への道",
           "etym": "posterior「後ろの」＋ spino-「脊髄の」＋ cerebellar「小脳の」",
-          "note": "下肢の筋や腱の状態（無意識の位置の感覚）を、同じ側の小脳へ伝える上行路。側索の後ろの表面を走る。"
+          "note": "下肢（lower limb）の筋（muscle）や腱（tendon）の状態（無意識の位置の感覚（sensation））を、同じ側の小脳（cerebellum）へ伝える上行路（ascending tract）。側索（lateral funiculus）の後ろの表面を走る。"
         },
         {
           "id": "anterior-spinocerebellar-tract", "ja": "前脊髄小脳路", "yomi": "ぜんせきずいしょうのうろ", "en": "anterior spinocerebellar tract", "la": "tractus spinocerebellaris anterior",
           "parts": ["za:anterior spinocerebellar tract"], "level": 3, "xray": true,
           "kanji": "前を通る、脊髄から小脳への道",
           "etym": "anterior「前の」＋ spino-「脊髄の」＋ cerebellar「小脳の」",
-          "note": "下肢の運動の状態を小脳へ伝える上行路。後脊髄小脳路の前の表面を走る。"
+          "note": "下肢（lower limb）の運動の状態を小脳（cerebellum）へ伝える上行路（ascending tract）。後脊髄小脳路（posterior spinocerebellar tract）の前の表面を走る。"
         },
         {
           "id": "rubrospinal-tract", "ja": "赤核脊髄路", "yomi": "せきかくせきずいろ", "en": "rubrospinal tract", "la": "tractus rubrospinalis",
           "parts": ["za:rubrospinal tract"], "level": 3, "xray": true,
           "kanji": "赤核から脊髄への道",
           "etym": "rubro-「赤い（赤核の）」（ラテン語 ruber）＋ spinal「脊髄の」",
-          "note": "中脳の赤核から出てすぐ反対側へ渡り、外側皮質脊髄路の前を下る下行路。上肢の屈筋の働きを助ける。"
+          "note": "中脳（midbrain）の赤核（red nucleus）から出てすぐ反対側（contralateral side）へ渡り、外側皮質脊髄路（lateral corticospinal tract）の前を下る下行路（descending tract）。上肢（upper limb）の屈筋（flexor）の働きを助ける。"
         },
         {
           "id": "anterior-root", "ja": "前根", "yomi": "ぜんこん", "en": "anterior root", "enAlt": ["ventral root"], "la": "radix anterior",
           "parts": ["za:anterior root of spinal nerve"], "level": 1,
           "kanji": "前の根",
           "etym": "anterior「前の」＋ root「根」",
-          "note": "脊髄の前外側から出る神経の根。前角の運動ニューロンの線維（運動）が通る。後根と合わさって脊髄神経になる（ベル・マジャンディの法則）。"
+          "note": "脊髄（spinal cord）の前外側（anterolateral）から出る神経（nerve）の根。前角（anterior horn）の運動ニューロン（motor neuron）の線維（fiber）（運動）が通る。後根（posterior root）と合わさって脊髄神経（spinal nerve）になる（ベル（Bell）・マジャンディ（Magendie）の法則）。"
         },
         {
           "id": "posterior-root", "ja": "後根", "yomi": "こうこん", "en": "posterior root", "enAlt": ["dorsal root"], "la": "radix posterior",
           "parts": ["za:posterior root of spinal nerve"], "level": 1,
           "kanji": "後ろの根",
           "etym": "posterior「後ろの」＋ root「根」",
-          "note": "脊髄の後外側に入る神経の根。皮膚や筋からの感覚の線維が通り、途中に脊髄神経節のふくらみがある。"
+          "note": "脊髄（spinal cord）の後外側（posterolateral）に入る神経（nerve）の根。皮膚（skin）や筋からの感覚（sensation）の線維（fiber）が通り、途中に脊髄神経節（spinal ganglion）のふくらみがある。"
         },
         {
           "id": "spinal-ganglion", "ja": "脊髄神経節", "yomi": "せきずいしんけいせつ", "en": "spinal ganglion", "enAlt": ["dorsal root ganglion"], "la": "ganglion sensorium nervi spinalis",
           "parts": ["za:spinal ganglion"], "level": 1,
           "kanji": "脊髄神経のふくらみ（神経細胞の集まり）",
           "etym": "spinal「脊髄の」＋ ganglion「こぶ・節」（ギリシャ語）",
-          "note": "後根の途中のふくらみ。感覚ニューロンの細胞体が集まる（偽単極性ニューロン）。椎間孔の中にあり、帯状疱疹のウイルスがここにひそむ。"
+          "note": "後根（posterior root）の途中のふくらみ。感覚ニューロン（sensory neuron）の細胞体（cell body）が集まる（偽単極性ニューロン（pseudounipolar neuron））。椎間孔（intervertebral foramen）の中にあり、帯状疱疹（herpes zoster）のウイルスがここにひそむ。"
         }
       ]
     },
@@ -1359,8 +1359,8 @@
       "title": "腕神経叢と上肢の神経の枝",
       "group": "脊髄と上肢・体幹の神経",
       "intro": [
-        "腕神経叢は、根（C5〜T1）→ 神経幹（上・中・下）→ 部（前部・後部）→ 神経束（外側・内側・後）と合わさり分かれて、上肢の神経を出す。",
-        "神経幹や根からも、肩の筋へ行く枝（肩甲背神経・肩甲上神経・長胸神経など）が出る。"
+        "腕神経叢（brachial plexus）は、根（C5〜T1）→ 神経幹（trunk）（上・中・下）→ 部（前部（anterior division）・後部（posterior division））→ 神経束（cord）（外側（lateral）・内側（medial）・後）と合わさり分かれて、上肢（upper limb）の神経（nerve）を出す。",
+        "神経幹や根からも、肩（shoulder）の筋（muscle）へ行く枝（branch）（肩甲背神経（dorsal scapular nerve）・肩甲上神経（suprascapular nerve）・長胸神経（long thoracic nerve）など）が出る。"
       ],
       "terms": [
         {
@@ -1368,98 +1368,98 @@
           "parts": ["za:superior trunk of brachial plexus"], "level": 2,
           "kanji": "上の神経の幹",
           "etym": "superior「上の」＋ trunk「幹」",
-          "note": "第5・6頚神経の前枝が合わさった腕神経叢の上の幹。出産のときに肩が引かれて傷むと、腕が内へ回って垂れる（エルプ麻痺）。"
+          "note": "第5・6頚神経（fifth and sixth cervical nerves）の前枝（anterior ramus）が合わさった腕神経叢（brachial plexus）の上の幹。出産のときに肩（shoulder）が引かれて傷むと、腕（arm）が内へ回って垂れる（エルプ麻痺（Erb palsy））。"
         },
         {
           "id": "middle-trunk-of-brachial-plexus", "ja": "中神経幹", "yomi": "ちゅうしんけいかん", "en": "middle trunk of brachial plexus", "la": "truncus medius plexus brachialis",
           "parts": ["za:middle trunk of brachial plexus"], "level": 2,
           "kanji": "中の神経の幹",
           "etym": "middle「中の」＋ trunk「幹」",
-          "note": "第7頚神経の前枝がそのまま続いた腕神経叢の中の幹。"
+          "note": "第7頚神経（seventh cervical nerve）の前枝（anterior ramus）がそのまま続いた腕神経叢（brachial plexus）の中の幹。"
         },
         {
           "id": "inferior-trunk-of-brachial-plexus", "ja": "下神経幹", "yomi": "かしんけいかん", "en": "inferior trunk of brachial plexus", "enAlt": ["lower trunk"], "la": "truncus inferior plexus brachialis",
           "parts": ["za:inferior trunk of brachial plexus"], "level": 2,
           "kanji": "下の神経の幹",
           "etym": "inferior「下の」＋ trunk「幹」",
-          "note": "第8頚神経と第1胸神経の前枝が合わさった下の幹。第1肋骨の上を通る。傷むと手の小さな筋が麻痺する（クルンプケ麻痺）。"
+          "note": "第8頚神経（eighth cervical nerve）と第1胸神経（first thoracic nerve）の前枝（anterior ramus）が合わさった下の幹。第1肋骨（first rib）の上を通る。傷むと手（hand）の小さな筋（muscle）が麻痺（paralysis）する（クルンプケ麻痺（Klumpke palsy））。"
         },
         {
           "id": "suprascapular-nerve", "ja": "肩甲上神経", "yomi": "けんこうじょうしんけい", "en": "suprascapular nerve", "la": "nervus suprascapularis",
           "parts": ["za:suprascapular nerve"], "level": 1,
           "kanji": "肩甲骨の上へ行く神経",
           "etym": "supra-「上」＋ scapular「肩甲骨の」",
-          "note": "上神経幹から出て、肩甲切痕を通って棘上筋・棘下筋を動かす。肩甲切痕で締めつけられることがある。"
+          "note": "上神経幹（superior trunk of brachial plexus）から出て、肩甲切痕（suprascapular notch）を通って棘上筋（supraspinatus）・棘下筋（infraspinatus）を動かす。肩甲切痕で締めつけられることがある。"
         },
         {
           "id": "dorsal-scapular-nerve", "ja": "肩甲背神経", "yomi": "けんこうはいしんけい", "en": "dorsal scapular nerve", "la": "nervus dorsalis scapulae",
           "parts": ["za:dorsal scapular nerve"], "level": 2,
           "kanji": "肩甲骨の背側へ行く神経",
           "etym": "dorsal「背側の」＋ scapular「肩甲骨の」",
-          "note": "第5頚神経の根から出て中斜角筋を貫き、肩甲挙筋と菱形筋を動かす。"
+          "note": "第5頚神経（fifth cervical nerve）の根から出て中斜角筋（middle scalene）を貫き、肩甲挙筋（levator scapulae）と菱形筋（rhomboid muscles）を動かす。"
         },
         {
           "id": "lateral-pectoral-nerve", "ja": "外側胸筋神経", "yomi": "がいそくきょうきんしんけい", "en": "lateral pectoral nerve", "la": "nervus pectoralis lateralis",
           "parts": ["za:lateral pectoral nerve"], "level": 2,
           "kanji": "外側神経束から出る胸の筋の神経",
           "etym": "lateral「外側の（神経束から出る）」＋ pectoral「胸の」",
-          "note": "外側神経束から出て、大胸筋（おもに鎖骨部）を動かす。位置は内側胸筋神経より内側だが、出る神経束の名前で外側とよぶ。"
+          "note": "外側神経束（lateral cord）から出て、大胸筋（pectoralis major）（おもに鎖骨部（clavicular part））を動かす。位置は内側胸筋神経（medial pectoral nerve）より内側（medial）だが、出る神経束（cord）の名前で外側（lateral）とよぶ。"
         },
         {
           "id": "medial-pectoral-nerve", "ja": "内側胸筋神経", "yomi": "ないそくきょうきんしんけい", "en": "medial pectoral nerve", "la": "nervus pectoralis medialis",
           "parts": ["za:medial pectoral nerve"], "level": 2,
           "kanji": "内側神経束から出る胸の筋の神経",
           "etym": "medial「内側の（神経束から出る）」＋ pectoral「胸の」",
-          "note": "内側神経束から出て、小胸筋を貫いて小胸筋と大胸筋（胸肋部）を動かす。"
+          "note": "内側神経束（medial cord）から出て、小胸筋（pectoralis minor）を貫いて小胸筋と大胸筋（pectoralis major）（胸肋部（sternocostal part））を動かす。"
         },
         {
           "id": "subscapular-nerves", "ja": "肩甲下神経", "yomi": "けんこうかしんけい", "en": "subscapular nerves", "enAlt": ["subscapular nerve"], "la": "nervi subscapulares",
           "parts": ["za:superior subscapular nerve", "za:inferior subscapular nerve"], "level": 2,
           "kanji": "肩甲骨の前（下）へ行く神経",
           "etym": "sub-「下」＋ scapular「肩甲骨の」",
-          "note": "後神経束から出る上・下の枝。肩甲下筋と大円筋を動かす。"
+          "note": "後神経束（posterior cord of brachial plexus）から出る上・下の枝（branch）。肩甲下筋（subscapularis）と大円筋（teres major）を動かす。"
         },
         {
           "id": "medial-brachial-cutaneous-nerve", "ja": "内側上腕皮神経", "yomi": "ないそくじょうわんひしんけい", "en": "medial brachial cutaneous nerve", "la": "nervus cutaneus brachii medialis",
           "parts": ["za:medial brachial cutaneous nerve"], "level": 3,
           "kanji": "上腕の内側の皮膚の神経",
           "etym": "medial「内側の」＋ brachial「上腕の」＋ cutaneous「皮膚の」",
-          "note": "内側神経束から出て、上腕の内側の皮膚の感覚を伝える。"
+          "note": "内側神経束（medial cord）から出て、上腕（arm）の内側（medial）の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "medial-antebrachial-cutaneous-nerve", "ja": "内側前腕皮神経", "yomi": "ないそくぜんわんひしんけい", "en": "medial antebrachial cutaneous nerve", "la": "nervus cutaneus antebrachii medialis",
           "parts": ["za:medial antebrachial cutaneous nerve", "za:* branch of medial antebrachial cutaneous nerve"], "level": 2,
           "kanji": "前腕の内側の皮膚の神経",
           "etym": "medial「内側の」＋ antebrachial「前腕の」（ante-「前」＋brachium「腕」）＋ cutaneous「皮膚の」",
-          "note": "内側神経束から出て尺側皮静脈にそって下り、前腕の内側の皮膚の感覚を伝える。"
+          "note": "内側神経束（medial cord）から出て尺側皮静脈（basilic vein）にそって下り、前腕（forearm）の内側（medial）の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "superficial-branch-of-radial-nerve", "ja": "橈骨神経浅枝", "yomi": "とうこつしんけいせんし", "en": "superficial branch of radial nerve", "la": "ramus superficialis nervi radialis",
           "parts": ["za:superficial branch of radial nerve", "za:dorsal digital branches of radial nerve"], "level": 2,
           "kanji": "橈骨神経の浅い枝",
           "etym": "superficial「浅い」＋ branch「枝」＋ radial「橈骨の」",
-          "note": "肘で橈骨神経から分かれ、腕橈骨筋の下を通って手の甲の親指側の皮膚へ行く感覚の枝。"
+          "note": "肘（elbow）で橈骨神経（radial nerve）から分かれ、腕橈骨筋（brachioradialis）の下を通って手の甲（back of hand）の親指側（radial side）の皮膚（skin）へ行く感覚（sensation）の枝（branch）。"
         },
         {
           "id": "deep-branch-of-radial-nerve", "ja": "橈骨神経深枝", "yomi": "とうこつしんけいしんし", "en": "deep branch of radial nerve", "enAlt": ["posterior interosseous nerve"], "la": "ramus profundus nervi radialis",
           "parts": ["za:deep branch of radial nerve", "za:posterior interosseous nerve of forearm"], "level": 2,
           "kanji": "橈骨神経の深い枝",
           "etym": "deep「深い」＋ branch「枝」＋ radial「橈骨の」",
-          "note": "肘で分かれて回外筋を貫き、前腕の後ろの伸筋を動かす運動の枝。その続きが後骨間神経。傷むと指がのばせない（下垂指）が、手首は少し上がる。"
+          "note": "肘（elbow）で分かれて回外筋（supinator）を貫き、前腕（forearm）の後ろの伸筋（extensor）を動かす運動の枝（branch）。その続きが後骨間神経（posterior interosseous nerve）。傷むと指（finger）がのばせない（下垂指（finger drop））が、手首（wrist）は少し上がる。"
         },
         {
           "id": "anterior-interosseous-nerve", "ja": "前骨間神経", "yomi": "ぜんこっかんしんけい", "en": "anterior interosseous nerve", "la": "nervus interosseus antebrachii anterior",
           "parts": ["za:anterior interosseous nerve of forearm"], "level": 2,
           "kanji": "前の、骨の間の神経",
           "etym": "anterior「前の」＋ interosseous「骨の間の」",
-          "note": "正中神経の枝。前腕骨間膜の前を下り、長母指屈筋・深指屈筋（外側）・方形回内筋を動かす。麻痺すると親指と人さし指で丸（OKサイン）が作れない。"
+          "note": "正中神経（median nerve）の枝（branch）。前腕骨間膜（interosseous membrane of forearm）の前を下り、長母指屈筋（flexor pollicis longus）・深指屈筋（flexor digitorum profundus）（外側（lateral））・方形回内筋（pronator quadratus）を動かす。麻痺（paralysis）すると親指（thumb）と人さし指（finger）で丸（OKサイン）が作れない。"
         },
         {
           "id": "deep-branch-of-ulnar-nerve", "ja": "尺骨神経深枝", "yomi": "しゃっこつしんけいしんし", "en": "deep branch of ulnar nerve", "la": "ramus profundus nervi ulnaris",
           "parts": ["za:deep branch of ulnar nerve"], "level": 3,
           "kanji": "尺骨神経の深い枝",
           "etym": "deep「深い」＋ branch「枝」＋ ulnar「尺骨の」",
-          "note": "手首で尺骨神経から分かれ、手のひらの深くで小指球の筋・骨間筋・母指内転筋などを動かす。"
+          "note": "手首（wrist）で尺骨神経（ulnar nerve）から分かれ、手のひら（palm）の深くで小指球（hypothenar eminence）の筋（muscle）・骨間筋（interossei）・母指内転筋（adductor pollicis）などを動かす。"
         }
       ]
     },
@@ -1468,7 +1468,7 @@
       "title": "腕神経叢の部と上肢の神経の枝",
       "group": "脊髄と上肢・体幹の神経",
       "intro": [
-        "腕神経叢は、根（C5〜T1 の前枝）→ 幹（上・中・下）→ 部（前部・後部）→ 束（外側・内側・後）→ 枝 の順に組み替わる。後部はすべて後神経束になって腕の後ろ（伸筋）へ、前部は外側・内側神経束になって腕の前（屈筋）へ行く。"
+        "腕神経叢（brachial plexus）は、根（C5〜T1 の前枝（anterior ramus））→ 幹（上・中・下）→ 部（前部（anterior division）・後部（posterior division））→ 束（外側（lateral）・内側（medial）・後）→ 枝 の順に組み替わる。後部はすべて後神経束（posterior cord of brachial plexus）になって腕（arm）の後ろ（伸筋（extensor））へ、前部は外側・内側神経束（medial cord）になって腕の前（屈筋（flexor））へ行く。"
       ],
       "terms": [
         {
@@ -1476,91 +1476,91 @@
           "parts": ["za:anterior division of * trunk of brachial plexus"], "level": 3, "check": true,
           "kanji": "腕神経叢の神経幹が分かれた前の部分",
           "etym": "anterior「前の」＋ division「分かれ」",
-          "note": "上・中・下の神経幹が鎖骨の後ろでそれぞれ前と後ろに分かれた、前の分かれ。上と中の前部は外側神経束に、下の前部は内側神経束になり、腕の前（屈筋）の神経（筋皮神経・正中神経・尺骨神経）になる。"
+          "note": "上・中・下の神経幹（trunk）が鎖骨（clavicle）の後ろでそれぞれ前と後ろに分かれた、前の分かれ。上と中の前部（anterior division）は外側神経束（lateral cord）に、下の前部は内側神経束（medial cord）になり、腕（arm）の前（屈筋（flexor））の神経（nerve）（筋皮神経（musculocutaneous nerve）・正中神経（median nerve）・尺骨神経（ulnar nerve））になる。"
         },
         {
           "id": "posterior-divisions-of-brachial-plexus", "ja": "腕神経叢の後部", "yomi": "わんしんけいそうのこうぶ", "en": "posterior divisions of brachial plexus", "la": "divisiones posteriores plexus brachialis",
           "parts": ["za:posterior division of * trunk of brachial plexus"], "level": 3, "check": true,
           "kanji": "腕神経叢の神経幹が分かれた後ろの部分",
           "etym": "posterior「後ろの」＋ division「分かれ」",
-          "note": "上・中・下の神経幹の後ろの分かれ。3つとも合わさって後神経束になり、腕の後ろ（伸筋）の神経（腋窩神経・橈骨神経）になる。"
+          "note": "上・中・下の神経幹（trunk）の後ろの分かれ。3つとも合わさって後神経束（posterior cord of brachial plexus）になり、腕（arm）の後ろ（伸筋（extensor））の神経（nerve）（腋窩神経（axillary nerve）・橈骨神経（radial nerve））になる。"
         },
         {
           "id": "posterior-cord-of-brachial-plexus", "ja": "後神経束", "yomi": "こうしんけいそく", "en": "posterior cord of brachial plexus", "la": "fasciculus posterior plexus brachialis",
           "parts": ["za:posterior cord of brachial plexus"], "level": 2,
           "kanji": "腕神経叢の後ろの神経の束",
           "etym": "posterior「後ろの」＋ cord「ひも・束」",
-          "note": "腕神経叢の3つの神経束（外側・内側・後）の1つで、腋窩動脈の後ろにある。3つの神経幹の後部が合わさってでき、肩甲下神経・胸背神経を出したあと、腋窩神経と橈骨神経に分かれる。"
+          "note": "腕神経叢（brachial plexus）の3つの神経束（cord）（外側（lateral）・内側（medial）・後）の1つで、腋窩動脈（axillary artery）の後ろにある。3つの神経幹（trunk）の後部（posterior division）が合わさってでき、肩甲下神経（subscapular nerves）・胸背神経（thoracodorsal nerve）を出したあと、腋窩神経（axillary nerve）と橈骨神経（radial nerve）に分かれる。"
         },
         {
           "id": "lateral-antebrachial-cutaneous-nerve", "ja": "外側前腕皮神経", "yomi": "がいそくぜんわんひしんけい", "en": "lateral antebrachial cutaneous nerve", "enAlt": ["lateral cutaneous nerve of forearm"], "la": "nervus cutaneus antebrachii lateralis",
           "parts": ["za:lateral antebrachial cutaneous nerve"], "level": 2,
           "kanji": "前腕の外側の皮膚の神経",
           "etym": "lateral「外側の」＋ antebrachial「前腕の」＋ cutaneous「皮膚の」（ラテン語 cutis）",
-          "note": "筋皮神経の終わりの枝。肘の外側で上腕二頭筋の腱の外側から皮下に出て、前腕の外側（親指側）の皮膚の感覚を受けもつ。肘の静脈の採血で傷むことがある。"
+          "note": "筋皮神経（musculocutaneous nerve）の終わりの枝（branch）。肘（elbow）の外側（lateral）で上腕二頭筋（biceps brachii）の腱（tendon）の外側から皮下（subcutaneous）に出て、前腕（forearm）の外側（親指側（radial side））の皮膚（skin）の感覚（sensation）を受けもつ。肘の静脈（vein）の採血（blood sampling）で傷むことがある。"
         },
         {
           "id": "posterior-antebrachial-cutaneous-nerve", "ja": "後前腕皮神経", "yomi": "こうぜんわんひしんけい", "en": "posterior antebrachial cutaneous nerve", "enAlt": ["posterior cutaneous nerve of forearm"], "la": "nervus cutaneus antebrachii posterior",
           "parts": ["za:posterior antebrachial cutaneous nerve"], "level": 3,
           "kanji": "前腕の後ろの皮膚の神経",
           "etym": "posterior「後ろの」＋ antebrachial「前腕の」＋ cutaneous「皮膚の」",
-          "note": "上腕の後ろで橈骨神経から分かれ、前腕の後ろの皮膚の感覚を受けもつ。"
+          "note": "上腕（arm）の後ろで橈骨神経（radial nerve）から分かれ、前腕（forearm）の後ろの皮膚（skin）の感覚（sensation）を受けもつ。"
         },
         {
           "id": "superior-lateral-brachial-cutaneous-nerve", "ja": "上外側上腕皮神経", "yomi": "じょうがいそくじょうわんひしんけい", "en": "superior lateral brachial cutaneous nerve", "enAlt": ["superior lateral cutaneous nerve of arm"], "la": "nervus cutaneus brachii lateralis superior",
           "parts": ["za:superior lateral brachial cutaneous nerve"], "level": 3,
           "kanji": "上腕の外側の上部の皮膚の神経",
           "etym": "superior「上の」＋ lateral「外側の」＋ brachial「上腕の」＋ cutaneous「皮膚の」",
-          "note": "腋窩神経の皮膚の枝。三角筋の後縁から出て、肩の外側（三角筋の上）の皮膚の感覚を受けもつ。肩の脱臼や外科頚の骨折で腋窩神経が傷むと、ここの感覚がなくなる。"
+          "note": "腋窩神経（axillary nerve）の皮膚（skin）の枝（branch）。三角筋（deltoid）の後縁（posterior border）から出て、肩（shoulder）の外側（lateral）（三角筋の上）の皮膚の感覚（sensation）を受けもつ。肩の脱臼（dislocation）や外科頚（surgical neck）の骨折（fracture）で腋窩神経が傷むと、ここの感覚がなくなる。"
         },
         {
           "id": "inferior-lateral-brachial-cutaneous-nerve", "ja": "下外側上腕皮神経", "yomi": "かがいそくじょうわんひしんけい", "en": "inferior lateral brachial cutaneous nerve", "enAlt": ["inferior lateral cutaneous nerve of arm"], "la": "nervus cutaneus brachii lateralis inferior",
           "parts": ["za:inferior lateral brachial cutaneous nerve"], "level": 3,
           "kanji": "上腕の外側の下部の皮膚の神経",
           "etym": "inferior「下の」＋ lateral「外側の」＋ brachial「上腕の」＋ cutaneous「皮膚の」",
-          "note": "橈骨神経の皮膚の枝。上腕の下半分の外側の皮膚の感覚を受けもつ。"
+          "note": "橈骨神経（radial nerve）の皮膚（skin）の枝（branch）。上腕（arm）の下半分の外側（lateral）の皮膚の感覚（sensation）を受けもつ。"
         },
         {
           "id": "posterior-interosseous-nerve", "ja": "後骨間神経", "yomi": "こうこっかんしんけい", "en": "posterior interosseous nerve", "la": "nervus interosseus antebrachii posterior",
           "parts": ["za:posterior interosseous nerve of forearm"], "level": 2,
           "kanji": "前腕の骨の間の後ろを走る神経",
           "etym": "posterior「後ろの」＋ interosseous「骨の間の」",
-          "note": "橈骨神経深枝が回外筋を貫いたあとの続き。前腕の後ろの深くを下り、指と母指の伸筋を動かす。回外筋の入口で締めつけられると指が伸ばせなくなる（後骨間神経麻痺。手首は伸ばせる）。"
+          "note": "橈骨神経深枝（deep branch of radial nerve）が回外筋（supinator）を貫いたあとの続き。前腕（forearm）の後ろの深くを下り、指（finger）と母指（thumb）の伸筋（extensor）を動かす。回外筋の入口で締めつけられると指が伸ばせなくなる（後骨間神経麻痺（posterior interosseous nerve palsy）。手首（wrist）は伸ばせる）。"
         },
         {
           "id": "palmar-branch-of-median-nerve", "ja": "正中神経の掌枝", "yomi": "せいちゅうしんけいのしょうし", "en": "palmar branch of median nerve", "la": "ramus palmaris nervi mediani",
           "parts": ["za:palmar branch of median nerve"], "level": 3,
           "kanji": "正中神経の手のひらへの枝",
           "etym": "palmar「手のひらの」＋ branch「枝」＋ median「正中の」",
-          "note": "手首の少し上で正中神経から分かれ、屈筋支帯の上（手根管の外）を通って手のひらの中央の皮膚へ行く枝。手根管症候群でもこの領域の感覚は残る。"
+          "note": "手首（wrist）の少し上で正中神経（median nerve）から分かれ、屈筋支帯（flexor retinaculum）の上（手根管（carpal tunnel）の外）を通って手のひら（palm）の中央の皮膚（skin）へ行く枝（branch）。手根管症候群（carpal tunnel syndrome）でもこの領域の感覚（sensation）は残る。"
         },
         {
           "id": "dorsal-branch-of-ulnar-nerve", "ja": "尺骨神経の手背枝", "yomi": "しゃっこつしんけいのしゅはいし", "en": "dorsal branch of ulnar nerve", "la": "ramus dorsalis nervi ulnaris",
           "parts": ["za:dorsal branch of ulnar nerve", "za:dorsal digital branches of ulnar nerve"], "level": 3,
           "kanji": "尺骨神経の手の甲への枝",
           "etym": "dorsal「背側の」＋ branch「枝」＋ ulnar「尺骨の」",
-          "note": "前腕の下部で尺骨神経から分かれ、尺骨の下端を回って手の甲の小指側の皮膚へ行く枝。尺骨神経管（ギヨン管）での障害ではこの領域の感覚は残る。"
+          "note": "前腕（forearm）の下部で尺骨神経（ulnar nerve）から分かれ、尺骨（ulna）の下端（inferior end）を回って手の甲（back of hand）の小指側（ulnar side）の皮膚（skin）へ行く枝（branch）。尺骨神経管（ulnar canal）（ギヨン管（Guyon canal））での障害ではこの領域の感覚（sensation）は残る。"
         },
         {
           "id": "superficial-branch-of-ulnar-nerve", "ja": "尺骨神経浅枝", "yomi": "しゃっこつしんけいせんし", "en": "superficial branch of ulnar nerve", "la": "ramus superficialis nervi ulnaris",
           "parts": ["za:superficial branch of ulnar nerve"], "level": 3,
           "kanji": "尺骨神経の浅い枝",
           "etym": "superficial「浅い」＋ branch「枝」＋ ulnar「尺骨の」",
-          "note": "尺骨神経管の中で尺骨神経が深枝と分かれた浅い方の枝。小指と環指の小指側の手のひらの皮膚の感覚を受けもつ。"
+          "note": "尺骨神経管（ulnar canal）の中で尺骨神経（ulnar nerve）が深枝（deep branch）と分かれた浅い方の枝（branch）。小指（little finger）と環指（ring finger）の小指側（ulnar side）の手のひら（palm）の皮膚（skin）の感覚（sensation）を受けもつ。"
         },
         {
           "id": "common-palmar-digital-nerves", "ja": "総掌側指神経", "yomi": "そうしょうそくししんけい", "en": "common palmar digital nerves", "la": "nervi digitales palmares communes",
           "parts": ["za:common palmar digital branches of median nerve", "za:common palmar digital branches of ulnar nerve"], "level": 3,
           "kanji": "手のひらの側の、指へ向かう共通の神経",
           "etym": "common「共通の」＋ palmar「手のひらの」＋ digital「指の」",
-          "note": "手のひらで正中神経と尺骨神経浅枝から出て、指の間へ向かう枝。指の付け根で2本ずつの固有掌側指神経に分かれる。正中神経は母指から環指の母指側まで、尺骨神経は残りを受けもつ。"
+          "note": "手のひら（palm）で正中神経（median nerve）と尺骨神経浅枝（superficial branch of ulnar nerve）から出て、指（finger）の間へ向かう枝（branch）。指の付け根で2本ずつの固有掌側指神経（proper palmar digital nerves）に分かれる。正中神経は母指（thumb）から環指（ring finger）の母指側（radial side）まで、尺骨神経（ulnar nerve）は残りを受けもつ。"
         },
         {
           "id": "proper-palmar-digital-nerves", "ja": "固有掌側指神経", "yomi": "こゆうしょうそくししんけい", "en": "proper palmar digital nerves", "la": "nervi digitales palmares proprii",
           "parts": ["za:proper palmar digital branches of median nerve", "za:proper palmar digital branches of ulnar nerve"], "level": 3,
           "kanji": "それぞれの指の、手のひらの側の神経",
           "etym": "proper「固有の（その指だけの）」＋ palmar「手のひらの」＋ digital「指の」",
-          "note": "指の両わき（掌側）を指先まで走る細い神経。指先の細かい感覚を受けもつ。指の麻酔（指ブロック）では指の付け根の両わきに注射する。"
+          "note": "指（finger）の両わき（掌側（palmar））を指先（fingertip）まで走る細い神経（nerve）。指先の細かい感覚（sensation）を受けもつ。指の麻酔（anesthesia）（指ブロック（digital nerve block））では指の付け根の両わきに注射する。"
         }
       ]
     },
@@ -1574,70 +1574,70 @@
           "parts": ["za:femoral nerve", "za:anterior cutaneous branches of femoral nerve"], "level": 1,
           "kanji": "大腿へ行く神経",
           "etym": "femoral「大腿の」← ラテン語 femur「もも」",
-          "note": "腰神経叢の最大の枝。大腰筋の外側を下り、鼡径靱帯の下をくぐって大腿の前に出る。大腿四頭筋・縫工筋・腸骨筋を動かす。"
+          "note": "腰神経叢（lumbar plexus）の最大の枝（branch）。大腰筋（psoas major）の外側（lateral）を下り、鼡径靱帯（inguinal ligament）の下をくぐって大腿（thigh）の前に出る。大腿四頭筋（quadriceps femoris）・縫工筋（sartorius）・腸骨筋（iliacus）を動かす。"
         },
         {
           "id": "saphenous-nerve", "ja": "伏在神経", "yomi": "ふくざいしんけい", "en": "saphenous nerve", "la": "nervus saphenus",
           "parts": ["za:saphenous nerve", "za:*of saphenous nerve"], "level": 2,
           "kanji": "皮下に伏せて在る（伏在静脈に沿う）神経",
           "etym": "saphenous ← 伏在静脈（saphenous vein）に沿う神経。語源はギリシャ語「よく見える」とアラビア語「隠れた」の2説",
-          "note": "大腿神経の最も長い皮枝。大伏在静脈と並んで下腿の内側を下り、下腿と足の内側の皮膚の感覚を伝える。"
+          "note": "大腿神経（femoral nerve）の最も長い皮枝（cutaneous branch）。大伏在静脈（great saphenous vein）と並んで下腿（leg）の内側（medial）を下り、下腿と足（foot）の内側の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "obturator-nerve", "ja": "閉鎖神経", "yomi": "へいさしんけい", "en": "obturator nerve", "la": "nervus obturatorius",
           "parts": ["za:obturator nerve", "za:*of obturator nerve"], "level": 1,
           "kanji": "閉鎖孔を通る神経",
           "etym": "obturator ← ラテン語 obturare「ふさぐ」（閉鎖孔をふさぐ膜から）",
-          "note": "腰神経叢から出て骨盤の側壁を下り、閉鎖孔の上部（閉鎖管）を抜けて大腿の内側に出る。内転筋群を動かす。"
+          "note": "腰神経叢（lumbar plexus）から出て骨盤（pelvis）の側壁（lateral wall）を下り、閉鎖孔（obturator foramen）の上部（閉鎖管（obturator canal））を抜けて大腿（thigh）の内側（medial）に出る。内転筋群（adductor muscles）を動かす。"
         },
         {
           "id": "sciatic-nerve", "ja": "坐骨神経", "yomi": "ざこつしんけい", "en": "sciatic nerve", "la": "nervus ischiadicus",
           "parts": ["za:sciatic nerve"], "level": 1,
           "kanji": "坐骨のそばを通る神経",
           "etym": "sciatic ← ラテン語 ischiadicus（ギリシャ語 ischion「腰・坐骨」）",
-          "note": "人体で最も太く長い神経。仙骨神経叢から出て大坐骨孔（梨状筋の下）を抜け、大腿の後ろを下る。ハムストリングを動かし、膝の上で脛骨神経と総腓骨神経に分かれる。"
+          "note": "人体で最も太く長い神経（nerve）。仙骨神経叢（sacral plexus）から出て大坐骨孔（greater sciatic foramen）（梨状筋（piriformis）の下）を抜け、大腿（thigh）の後ろを下る。ハムストリング（hamstrings）を動かし、膝（knee）の上で脛骨神経（tibial nerve）と総腓骨神経（common fibular nerve）に分かれる。"
         },
         {
           "id": "tibial-nerve", "ja": "脛骨神経", "yomi": "けいこつしんけい", "en": "tibial nerve", "la": "nervus tibialis",
           "parts": ["za:tibial nerve", "za:medial sural cutaneous nerve", "za:sural nerve", "za:*plantar nerve"], "level": 1,
           "kanji": "脛骨のそばを下る神経",
           "etym": "tibial「脛骨の」← ラテン語 tibia「すね・笛」",
-          "note": "坐骨神経の枝。膝窩の中央を下り、ふくらはぎの深くを通って内果の後ろから足の裏へ入る。下腿の後ろの筋（下腿三頭筋など）と足の裏の筋を動かす。"
+          "note": "坐骨神経（sciatic nerve）の枝（branch）。膝窩（popliteal fossa）の中央を下り、ふくらはぎ（calf）の深くを通って内果（medial malleolus）の後ろから足の裏（sole）へ入る。下腿（leg）の後ろの筋（muscle）（下腿三頭筋（triceps surae）など）と足の裏の筋を動かす。"
         },
         {
           "id": "common-fibular-nerve", "ja": "総腓骨神経", "yomi": "そうひこつしんけい", "en": "common fibular nerve", "enAlt": ["common peroneal nerve"], "la": "nervus fibularis communis",
           "parts": ["za:common fibular nerve", "za:sural communicating branch of common fibular nerve"], "level": 1,
           "kanji": "腓骨のそばを通る神経の総（もと）",
           "etym": "fibular「腓骨の」← ラテン語 fibula「留め金」。peroneal ← ギリシャ語 perone「腓骨」",
-          "note": "坐骨神経の枝。膝窩の外側を下り、腓骨頭の下（腓骨頚）を回って浅腓骨神経と深腓骨神経に分かれる。腓骨頚で圧迫されやすく、傷つくと足先が垂れる（下垂足）。"
+          "note": "坐骨神経（sciatic nerve）の枝（branch）。膝窩（popliteal fossa）の外側（lateral）を下り、腓骨頭（head of fibula）の下（腓骨頚（neck of fibula））を回って浅腓骨神経（superficial fibular nerve）と深腓骨神経（deep fibular nerve）に分かれる。腓骨頚で圧迫されやすく、傷つくと足先が垂れる（下垂足（foot drop））。"
         },
         {
           "id": "superficial-fibular-nerve", "ja": "浅腓骨神経", "yomi": "せんひこつしんけい", "en": "superficial fibular nerve", "enAlt": ["superficial peroneal nerve"], "la": "nervus fibularis superficialis",
           "parts": ["za:superficial fibular nerve", "za:*dorsal cutaneous nerve of foot", "za:*of superficial fibular nerve"], "level": 2,
           "kanji": "浅い所を走る腓骨神経",
           "etym": "superficial「浅い」＋ fibular「腓骨の」",
-          "note": "総腓骨神経の枝。下腿の外側を下り、長・短腓骨筋を動かす。足の甲の大部分の皮膚の感覚を伝える。"
+          "note": "総腓骨神経（common fibular nerve）の枝（branch）。下腿（leg）の外側（lateral）を下り、長・短腓骨筋（fibularis brevis）を動かす。足の甲（dorsum of foot）の大部分の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "deep-fibular-nerve", "ja": "深腓骨神経", "yomi": "しんひこつしんけい", "en": "deep fibular nerve", "enAlt": ["deep peroneal nerve"], "la": "nervus fibularis profundus",
           "parts": ["za:deep fibular nerve", "za:*of deep fibular nerve"], "level": 2,
           "kanji": "深い所を走る腓骨神経",
           "etym": "deep「深い」＋ fibular「腓骨の」",
-          "note": "総腓骨神経の枝。下腿の前の深くを前脛骨動脈と並んで下り、前脛骨筋など下腿の前の筋（伸筋）を動かす。母趾と第2趾の間の皮膚の感覚を伝える。"
+          "note": "総腓骨神経（common fibular nerve）の枝（branch）。下腿（leg）の前の深くを前脛骨動脈（anterior tibial artery）と並んで下り、前脛骨筋（tibialis anterior）など下腿の前の筋（muscle）（伸筋（extensor））を動かす。母趾（great toe）と第2趾（second toe）の間の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "pudendal-nerve", "ja": "陰部神経", "yomi": "いんぶしんけい", "en": "pudendal nerve", "la": "nervus pudendus",
           "parts": ["za:pudendal nerve"], "level": 2,
           "kanji": "陰部へ行く神経",
           "etym": "pudendal ← ラテン語 pudere「恥じる」（pudenda「陰部」）",
-          "note": "仙骨神経叢から出て、大坐骨孔から骨盤を出て小坐骨孔から会陰へ入る。外肛門括約筋・外尿道括約筋を動かし、会陰の感覚を伝える。"
+          "note": "仙骨神経叢（sacral plexus）から出て、大坐骨孔（greater sciatic foramen）から骨盤（pelvis）を出て小坐骨孔（lesser sciatic foramen）から会陰（perineum）へ入る。外肛門括約筋（external anal sphincter）・外尿道括約筋（external urethral sphincter）を動かし、会陰の感覚（sensation）を伝える。"
         },
         {
           "id": "superior-gluteal-nerve", "ja": "上殿神経", "yomi": "じょうでんしんけい", "en": "superior gluteal nerve", "la": "nervus gluteus superior",
           "parts": ["za:superior gluteal nerve"], "level": 3,
           "kanji": "殿部の上のほうを通る神経",
           "etym": "superior「上の」＋ gluteal「殿部の」（ギリシャ語 gloutos「尻」）",
-          "note": "仙骨神経叢から出て梨状筋の上を抜け、中殿筋・小殿筋・大腿筋膜張筋を動かす。傷つくと片足で立ったとき反対側の骨盤が下がる（トレンデレンブルグ徴候）。"
+          "note": "仙骨神経叢（sacral plexus）から出て梨状筋（piriformis）の上を抜け、中殿筋（gluteus medius）・小殿筋（gluteus minimus）・大腿筋膜張筋（tensor fasciae latae）を動かす。傷つくと片足で立ったとき反対側（contralateral side）の骨盤（pelvis）が下がる（トレンデレンブルグ徴候（Trendelenburg sign））。"
         }
       ]
     },
@@ -1651,49 +1651,49 @@
           "parts": ["za:iliohypogastric nerve"], "level": 2,
           "kanji": "腸骨と下腹部へ行く神経",
           "etym": "ilio-「腸骨の」＋ hypo-「下」＋ gastric「腹の」",
-          "note": "腰神経叢のいちばん上の枝（第1腰神経）。腹壁の筋の下部と、下腹部・殿部の外側の皮膚へ行く。"
+          "note": "腰神経叢（lumbar plexus）のいちばん上の枝（branch）（第1腰神経（first lumbar nerve））。腹壁（abdominal wall）の筋（muscle）の下部と、下腹部（lower abdomen）・殿部（gluteal region）の外側（lateral）の皮膚（skin）へ行く。"
         },
         {
           "id": "ilio-inguinal-nerve", "ja": "腸骨鼡径神経", "yomi": "ちょうこつそけいしんけい", "en": "ilio-inguinal nerve", "enAlt": ["ilioinguinal nerve"], "la": "nervus ilioinguinalis",
           "parts": ["za:ilio-inguinal nerve"], "level": 2,
           "kanji": "腸骨と鼡径部へ行く神経",
           "etym": "ilio-「腸骨の」＋ inguinal「鼡径の」",
-          "note": "腸骨下腹神経のすぐ下を走り、鼡径管を通って陰部と大腿の内側上部の皮膚へ行く。鼡径ヘルニアの手術で傷めないよう注意する。"
+          "note": "腸骨下腹神経（iliohypogastric nerve）のすぐ下を走り、鼡径管（inguinal canal）を通って陰部（genital region）と大腿（thigh）の内側上部（superomedial part）の皮膚（skin）へ行く。鼡径ヘルニア（inguinal hernia）の手術で傷めないよう注意する。"
         },
         {
           "id": "genitofemoral-nerve", "ja": "陰部大腿神経", "yomi": "いんぶだいたいしんけい", "en": "genitofemoral nerve", "la": "nervus genitofemoralis",
           "parts": ["za:genitofemoral nerve", "za:genital branch of genitofemoral nerve", "za:femoral branch of genitofemoral nerve"], "level": 2,
           "kanji": "陰部と大腿へ行く神経",
           "etym": "genito-「陰部の」＋ femoral「大腿の」",
-          "note": "大腰筋の前面を貫いて下り、陰部枝と大腿枝に分かれる。陰部枝は精巣挙筋を動かす（太ももの内側をなでると精巣が上がる＝挙睾筋反射）。"
+          "note": "大腰筋（psoas major）の前面（anterior surface）を貫いて下り、陰部枝（genital branch）と大腿枝（femoral branch）に分かれる。陰部枝は精巣挙筋（cremaster）を動かす（太もも（thigh）の内側（medial）をなでると精巣（testis）が上がる＝挙睾筋反射（cremasteric reflex））。"
         },
         {
           "id": "lateral-femoral-cutaneous-nerve", "ja": "外側大腿皮神経", "yomi": "がいそくだいたいひしんけい", "en": "lateral femoral cutaneous nerve", "la": "nervus cutaneus femoris lateralis",
           "parts": ["za:lateral femoral cutaneous nerve"], "level": 2,
           "kanji": "大腿の外側の皮膚の神経",
           "etym": "lateral「外側の」＋ femoral「大腿の」＋ cutaneous「皮膚の」",
-          "note": "上前腸骨棘の内側で鼡径靱帯の下をくぐり、大腿の外側の皮膚へ行く感覚の神経。きついベルトなどで締めつけられると太ももの外側がしびれる。"
+          "note": "上前腸骨棘（anterior superior iliac spine）の内側（medial）で鼡径靱帯（inguinal ligament）の下をくぐり、大腿（thigh）の外側（lateral）の皮膚（skin）へ行く感覚（sensation）の神経（nerve）。きついベルトなどで締めつけられると太もも（thigh）の外側がしびれる。"
         },
         {
           "id": "posterior-femoral-cutaneous-nerve", "ja": "後大腿皮神経", "yomi": "こうだいたいひしんけい", "en": "posterior femoral cutaneous nerve", "la": "nervus cutaneus femoris posterior",
           "parts": ["za:posterior femoral cutaneous nerve", "za:* root of posterior femoral cutaneous nerve"], "level": 2,
           "kanji": "大腿の後ろの皮膚の神経",
           "etym": "posterior「後ろの」＋ femoral「大腿の」＋ cutaneous「皮膚の」",
-          "note": "仙骨神経叢の枝。梨状筋の下を通り、大殿筋の下から太ももの後ろの皮膚へ行く。"
+          "note": "仙骨神経叢（sacral plexus）の枝（branch）。梨状筋（piriformis）の下を通り、大殿筋（gluteus maximus）の下から太もも（thigh）の後ろの皮膚（skin）へ行く。"
         },
         {
           "id": "medial-plantar-nerve", "ja": "内側足底神経", "yomi": "ないそくそくていしんけい", "en": "medial plantar nerve", "la": "nervus plantaris medialis",
           "parts": ["za:*medial plantar nerve*"], "level": 2,
           "kanji": "足の裏の内側の神経",
           "etym": "medial「内側の」＋ plantar「足底の」",
-          "note": "脛骨神経が足根管の中で分かれた太い方の枝。母趾外転筋・短趾屈筋などを動かし、足の裏の内側（第1〜4趾の内側）の皮膚へ行く。手の正中神経にあたる。"
+          "note": "脛骨神経（tibial nerve）が足根管（tarsal tunnel）の中で分かれた太い方の枝（branch）。母趾外転筋（abductor hallucis）・短趾屈筋（flexor digitorum brevis）などを動かし、足の裏（sole）の内側（medial）（第1〜4趾（first to fourth toes）の内側）の皮膚（skin）へ行く。手（hand）の正中神経（median nerve）にあたる。"
         },
         {
           "id": "lateral-plantar-nerve", "ja": "外側足底神経", "yomi": "がいそくそくていしんけい", "en": "lateral plantar nerve", "la": "nervus plantaris lateralis",
           "parts": ["za:*lateral plantar nerve*"], "level": 2,
           "kanji": "足の裏の外側の神経",
           "etym": "lateral「外側の」＋ plantar「足底の」",
-          "note": "脛骨神経の細い方の枝。足の裏の多くの小さな筋を動かし、外側の皮膚へ行く。手の尺骨神経にあたる。"
+          "note": "脛骨神経（tibial nerve）の細い方の枝（branch）。足の裏（sole）の多くの小さな筋（muscle）を動かし、外側（lateral）の皮膚（skin）へ行く。手（hand）の尺骨神経（ulnar nerve）にあたる。"
         }
       ]
     },
@@ -1707,63 +1707,63 @@
           "parts": ["za:sural nerve"], "level": 2,
           "kanji": "腓腹（ふくらはぎ）の神経",
           "etym": "sural ← ラテン語 sura「ふくらはぎ」",
-          "note": "脛骨神経の内側腓腹皮神経と、総腓骨神経からの交通枝が合わさった皮神経。小伏在静脈と並んで外果の後ろを回り、足の外側の皮膚の感覚を伝える。神経の生検に使われる。"
+          "note": "脛骨神経（tibial nerve）の内側腓腹皮神経（medial sural cutaneous nerve）と、総腓骨神経（common fibular nerve）からの交通枝（communicating branch）が合わさった皮神経（cutaneous nerve）。小伏在静脈（small saphenous vein）と並んで外果（lateral malleolus）の後ろを回り、足（foot）の外側（lateral）の皮膚（skin）の感覚（sensation）を伝える。神経（nerve）の生検に使われる。"
         },
         {
           "id": "medial-sural-cutaneous-nerve", "ja": "内側腓腹皮神経", "yomi": "ないそくひふくひしんけい", "en": "medial sural cutaneous nerve", "la": "nervus cutaneus surae medialis",
           "parts": ["za:medial sural cutaneous nerve"], "level": 3,
           "kanji": "ふくらはぎの内側の皮膚の神経",
           "etym": "medial「内側の」＋ sural「ふくらはぎの」＋ cutaneous「皮膚の」",
-          "note": "膝窩で脛骨神経から出て、腓腹筋の2つの頭の間を下る皮神経。ふくらはぎの中ほどで総腓骨神経からの枝と合わさり腓腹神経になる。"
+          "note": "膝窩（popliteal fossa）で脛骨神経（tibial nerve）から出て、腓腹筋（gastrocnemius）の2つの頭の間を下る皮神経（cutaneous nerve）。ふくらはぎ（calf）の中ほどで総腓骨神経（common fibular nerve）からの枝（branch）と合わさり腓腹神経（sural nerve）になる。"
         },
         {
           "id": "anterior-branch-of-obturator-nerve", "ja": "閉鎖神経の前枝", "yomi": "へいさしんけいのぜんし", "en": "anterior branch of obturator nerve", "la": "ramus anterior nervi obturatorii",
           "parts": ["za:anterior branch of obturator nerve"], "level": 3,
           "kanji": "閉鎖神経の前の枝",
           "etym": "anterior branch「前枝」＋ obturator「閉鎖（孔）の」",
-          "note": "閉鎖管を出た閉鎖神経のうち、短内転筋の前を下る枝。長内転筋・短内転筋・薄筋を動かし、大腿の内側の皮膚の感覚を伝える。"
+          "note": "閉鎖管（obturator canal）を出た閉鎖神経（obturator nerve）のうち、短内転筋（adductor brevis）の前を下る枝（branch）。長内転筋（adductor longus）・短内転筋・薄筋（gracilis）を動かし、大腿（thigh）の内側（medial）の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "posterior-branch-of-obturator-nerve", "ja": "閉鎖神経の後枝", "yomi": "へいさしんけいのこうし", "en": "posterior branch of obturator nerve", "la": "ramus posterior nervi obturatorii",
           "parts": ["za:posterior branch of obturator nerve"], "level": 3,
           "kanji": "閉鎖神経の後ろの枝",
           "etym": "posterior branch「後枝」＋ obturator「閉鎖（孔）の」",
-          "note": "外閉鎖筋を貫いて短内転筋の後ろを下る枝。外閉鎖筋と大内転筋（の内転筋部）を動かす。"
+          "note": "外閉鎖筋（obturator externus）を貫いて短内転筋（adductor brevis）の後ろを下る枝（branch）。外閉鎖筋と大内転筋（adductor magnus）（の内転筋部（adductor part））を動かす。"
         },
         {
           "id": "medial-dorsal-cutaneous-nerve-of-foot", "ja": "内側足背皮神経", "yomi": "ないそくそくはいひしんけい", "en": "medial dorsal cutaneous nerve of foot", "la": "nervus cutaneus dorsalis medialis",
           "parts": ["za:medial dorsal cutaneous nerve of foot"], "level": 3,
           "kanji": "足の甲の内側の皮膚の神経",
           "etym": "medial「内側の」＋ dorsal「背側（甲）の」＋ cutaneous「皮膚の」",
-          "note": "浅腓骨神経の2本の終枝のうち内側の枝。足の甲の内側と、母趾の内側・第2〜3趾の向かい合う側の皮膚の感覚を伝える（第1趾と第2趾の間は深腓骨神経）。"
+          "note": "浅腓骨神経（superficial fibular nerve）の2本の終枝（terminal branch）のうち内側（medial）の枝（branch）。足の甲（dorsum of foot）の内側と、母趾（great toe）の内側・第2〜3趾（second to third toes）の向かい合う側の皮膚（skin）の感覚（sensation）を伝える（第1趾（great toe）と第2趾（second toe）の間は深腓骨神経（deep fibular nerve））。"
         },
         {
           "id": "intermediate-dorsal-cutaneous-nerve-of-foot", "ja": "中間足背皮神経", "yomi": "ちゅうかんそくはいひしんけい", "en": "intermediate dorsal cutaneous nerve of foot", "la": "nervus cutaneus dorsalis intermedius",
           "parts": ["za:intermediate dorsal cutaneous nerve of foot"], "level": 3,
           "kanji": "足の甲の中ほどの皮膚の神経",
           "etym": "intermediate「中間の」＋ dorsal「背側（甲）の」＋ cutaneous「皮膚の」",
-          "note": "浅腓骨神経の外側の終枝。足の甲の外側寄りと、第3〜5趾の向かい合う側の皮膚の感覚を伝える。"
+          "note": "浅腓骨神経（superficial fibular nerve）の外側（lateral）の終枝（terminal branch）。足の甲（dorsum of foot）の外側寄りと、第3〜5趾（third to fifth toes）の向かい合う側の皮膚（skin）の感覚（sensation）を伝える。"
         },
         {
           "id": "infrapatellar-branch-of-saphenous-nerve", "ja": "伏在神経の膝蓋下枝", "yomi": "ふくざいしんけいのしつがいかし", "en": "infrapatellar branch of saphenous nerve", "la": "ramus infrapatellaris nervi sapheni",
           "parts": ["za:infrapatellar branch of saphenous nerve"], "level": 3,
           "kanji": "伏在神経の、膝蓋骨の下へ行く枝",
           "etym": "infra-「下」＋ patellar「膝蓋骨の」＋ branch「枝」",
-          "note": "伏在神経の枝で、縫工筋を貫いて膝の前の下へ回る。膝の前内側の皮膚の感覚を伝える。膝の手術の切開で傷つくと、膝の下がしびれる。"
+          "note": "伏在神経（saphenous nerve）の枝（branch）で、縫工筋（sartorius）を貫いて膝（knee）の前の下へ回る。膝の前内側（anteromedial）の皮膚（skin）の感覚（sensation）を伝える。膝の手術の切開で傷つくと、膝の下がしびれる。"
         },
         {
           "id": "nerve-to-quadratus-femoris", "ja": "大腿方形筋神経", "yomi": "だいたいほうけいきんしんけい", "en": "nerve to quadratus femoris", "la": "nervus musculi quadrati femoris",
           "parts": ["za:nerve to quadratus femoris muscle"], "level": 3,
           "kanji": "大腿方形筋へ行く神経",
           "etym": "nerve to「〜への神経」＋ quadratus femoris「大腿方形筋」",
-          "note": "仙骨神経叢（L4〜S1）の枝。梨状筋の下から骨盤を出て、大腿方形筋と下双子筋を動かす。"
+          "note": "仙骨神経叢（L4〜S1）の枝（branch）。梨状筋（piriformis）の下から骨盤（pelvis）を出て、大腿方形筋（quadratus femoris）と下双子筋（inferior gemellus）を動かす。"
         },
         {
           "id": "nerve-to-piriformis", "ja": "梨状筋神経", "yomi": "りじょうきんしんけい", "en": "nerve to piriformis", "la": "nervus musculi piriformis",
           "parts": ["za:nerve to piriformis muscle"], "level": 3,
           "kanji": "梨状筋へ行く神経",
           "etym": "nerve to「〜への神経」＋ piriformis「梨の形の（筋）」",
-          "note": "仙骨神経叢（S1〜S2）の短い枝。骨盤の中で梨状筋の前面に入る。"
+          "note": "仙骨神経叢（S1〜S2）の短い枝（branch）。骨盤（pelvis）の中で梨状筋（piriformis）の前面（anterior surface）に入る。"
         }
       ]
     }
