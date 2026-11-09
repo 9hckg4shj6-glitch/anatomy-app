@@ -821,6 +821,177 @@
       ]
     },
     {
+      "id": "cv-pulmonary-segmental-arteries",
+      "title": "肺動脈の区域枝（A1〜A10）",
+      "group": "大きな血管",
+      "intro": [
+        "左右の肺動脈（pulmonary artery）は肺門（hilum of lung）で気管支（bronchus）に沿って枝分かれし、肺区域（bronchopulmonary segment）ごとに1本ずつ区域動脈（A）を出す。区域動脈は区域気管支（B）とそろって区域（segment）の中央を走り、番号も同じ（A1 は B1 とともに S1 に入る）。",
+        "右肺動脈（right pulmonary artery）は肺門の前で上葉（superior lobe）への枝（A1〜A3）を出し、気管支の前外側（anterolateral）を下って中葉（A4・A5）と下葉（A6〜A10）へ。左肺動脈（left pulmonary artery）は左の主気管支（main bronchus）の上を後ろへ越え、気管支の後ろ外側（lateral）を下りながら上葉・舌区（A1+2〜A5）と下葉（A6〜A10）へ枝を出す。",
+        "肺動脈は静脈血（venous blood）（酸素の少ない血液（blood））を運ぶので、図では静脈（vein）と同じ青で描く。肺（lung）の組織（tissue）そのものを養うのは大動脈（aorta）から出る気管支動脈（bronchial arteries）。"
+      ],
+      "terms": [
+        {
+          "id": "apical-segmental-artery", "ja": "肺尖枝（A1）", "yomi": "はいせんし", "en": "apical segmental artery", "la": "ramus apicalis",
+          "parts": ["za:apical segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "肺尖の区域へ行く肺動脈の枝（A1）",
+          "etym": "apical「頂点の」（ラテン語 apex）＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "肺動脈（pulmonary artery）の上葉（superior lobe）への枝（branch）のうち、肺尖区（S1）へ上る枝。肺尖枝（B1）に沿う。右では上葉への最初の太い幹（上幹）から出る。左では後上葉枝（A2）と並んで S1+2 に入る。"
+        },
+        {
+          "id": "posterior-segmental-artery", "ja": "後上葉枝（A2）", "yomi": "こうじょうようし", "en": "posterior segmental artery", "la": "ramus posterior",
+          "parts": ["za:posterior segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "上葉の後ろの区域へ行く肺動脈の枝（A2）",
+          "etym": "posterior「後ろの」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "上葉（superior lobe）の後ろの区域（segment）（右は S2、左は S1+2 の後ろの部分）へ行く肺動脈（pulmonary artery）の枝（branch）。後上葉枝（B2）に沿う。左では肺動脈が気管支（bronchus）の後ろを回るので、何本かに分かれて出ることが多い。"
+        },
+        {
+          "id": "anterior-segmental-artery", "ja": "前上葉枝（A3）", "yomi": "ぜんじょうようし", "en": "anterior segmental artery", "la": "ramus anterior",
+          "parts": ["za:anterior segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "上葉の前の区域へ行く肺動脈の枝（A3）",
+          "etym": "anterior「前の」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "上葉（superior lobe）の前の区域（segment）（前上葉区（S3））へ行く肺動脈（pulmonary artery）の枝（branch）。前上葉枝（B3）に沿って前へ向かう。"
+        },
+        {
+          "id": "lateral-segmental-artery", "ja": "外側中葉枝（A4）", "yomi": "がいそくちゅうようし", "en": "lateral segmental artery", "la": "ramus lobi medii lateralis",
+          "parts": ["za:lateral segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "中葉の外側の区域へ行く肺動脈の枝（右の A4）",
+          "etym": "lateral「外側の」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "右肺動脈（right pulmonary artery）の中葉（middle lobe）への枝（branch）のうち、外側中葉区（S4）へ行く枝。外側中葉枝（B4）に沿う。"
+        },
+        {
+          "id": "medial-segmental-artery", "ja": "内側中葉枝（A5）", "yomi": "ないそくちゅうようし", "en": "medial segmental artery", "la": "ramus lobi medii medialis",
+          "parts": ["za:medial segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "中葉の内側の区域へ行く肺動脈の枝（右の A5）",
+          "etym": "medial「内側の」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "右肺動脈（right pulmonary artery）の中葉（middle lobe）への枝（branch）のうち、内側中葉区（S5）へ行く枝。内側中葉枝（B5）に沿う。A4 と共通の幹（中葉動脈）で出ることが多い。"
+        },
+        {
+          "id": "superior-lingular-artery", "ja": "上舌枝（A4）", "yomi": "じょうぜつし", "en": "superior lingular artery", "la": "ramus lingularis superior",
+          "parts": ["za:superior lingular artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "舌区の上の区域へ行く肺動脈の枝（左の A4）",
+          "etym": "superior「上の」＋ lingular「小舌の」（ラテン語 lingula）。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "左肺動脈（left pulmonary artery）の舌区（lingula）への枝（branch）のうち、上舌区（S4）へ行く枝。上舌枝（B4）に沿う。右の A4 にあたる。"
+        },
+        {
+          "id": "inferior-lingular-artery", "ja": "下舌枝（A5）", "yomi": "かぜつし", "en": "inferior lingular artery", "la": "ramus lingularis inferior",
+          "parts": ["za:inferior lingular artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "舌区の下の区域へ行く肺動脈の枝（左の A5）",
+          "etym": "inferior「下の」＋ lingular「小舌の」（ラテン語 lingula）。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "左肺動脈（left pulmonary artery）の舌区（lingula）への枝（branch）のうち、下舌区（S5）へ行く枝。下舌枝（B5）に沿う。"
+        },
+        {
+          "id": "superior-segmental-artery", "ja": "上下葉枝（A6）", "yomi": "じょうかようし", "en": "superior segmental artery", "la": "ramus superior lobi inferioris",
+          "parts": ["za:superior segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "下葉の上の区域へ行く肺動脈の枝（A6）",
+          "etym": "superior「上の」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "下葉（inferior lobe）への肺動脈（pulmonary artery）から最初に後ろへ出て、上下葉区（S6）へ行く枝（branch）。上下葉枝（B6）に沿う。"
+        },
+        {
+          "id": "medial-basal-segmental-artery", "ja": "内側肺底枝（A7）", "yomi": "ないそくはいていし", "en": "medial basal segmental artery", "la": "ramus basalis medialis",
+          "parts": ["za:medial basal segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "肺底の内側の区域へ行く肺動脈の枝（A7）",
+          "etym": "medial「内側の」＋ basal「底の」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "下葉（inferior lobe）の肺底（base of lung）への肺動脈（pulmonary artery）（肺底部）から、内側肺底区（S7）へ行く枝（branch）。内側肺底枝（B7）に沿う。"
+        },
+        {
+          "id": "anterior-basal-segmental-artery", "ja": "前肺底枝（A8）", "yomi": "ぜんはいていし", "en": "anterior basal segmental artery", "la": "ramus basalis anterior",
+          "parts": ["za:anterior basal segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "肺底の前の区域へ行く肺動脈の枝（A8）",
+          "etym": "anterior「前の」＋ basal「底の」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "下葉（inferior lobe）の肺底（base of lung）への肺動脈（pulmonary artery）から、前肺底区（S8）へ行く枝（branch）。前肺底枝（B8）に沿う。"
+        },
+        {
+          "id": "lateral-basal-segmental-artery", "ja": "外側肺底枝（A9）", "yomi": "がいそくはいていし", "en": "lateral basal segmental artery", "la": "ramus basalis lateralis",
+          "parts": ["za:lateral basal segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "肺底の外側の区域へ行く肺動脈の枝（A9）",
+          "etym": "lateral「外側の」＋ basal「底の」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "下葉（inferior lobe）の肺底（base of lung）への肺動脈（pulmonary artery）から、外側肺底区（S9）へ行く枝（branch）。外側肺底枝（B9）に沿う。"
+        },
+        {
+          "id": "posterior-basal-segmental-artery", "ja": "後肺底枝（A10）", "yomi": "こうはいていし", "en": "posterior basal segmental artery", "la": "ramus basalis posterior",
+          "parts": ["za:posterior basal segmental artery of lung"], "level": 3, "color": "#3b64b8", "xray": true,
+          "kanji": "肺底の後ろの区域へ行く肺動脈の枝（A10）",
+          "etym": "posterior「後ろの」＋ basal「底の」＋ segmental「区域の」。ramus「枝」（ラテン語）。pulmonary ← ラテン語 pulmo「肺」",
+          "note": "下葉（inferior lobe）への肺動脈（pulmonary artery）の続き（終わりの枝（branch））で、後肺底区（S10）へ行く。後肺底枝（B10）に沿う。"
+        }
+      ]
+    },
+    {
+      "id": "cv-pulmonary-segmental-veins",
+      "title": "肺静脈の枝（V1〜V10）",
+      "group": "大きな血管",
+      "intro": [
+        "肺静脈（pulmonary veins）の枝（V）も区域（S）の番号でよぶが、気管支（bronchus）・動脈（artery）には沿わず、区域と区域の間（区域間）を走る。区域を切り取る手術（区域切除）では、区域間を走る静脈（vein）が区域の境の目印になる。",
+        "上肺静脈（superior pulmonary vein）は右では上葉（superior lobe）と中葉（V1〜V5）、左では上葉と舌区（V1+2〜V5）の静脈を集める。下肺静脈（inferior pulmonary vein）は左右とも下葉（inferior lobe）の静脈を集め、上下葉枝（V6）と総肺底静脈（上肺底静脈（superior basal vein）と下肺底静脈（inferior basal vein）が合わさったもの）が注ぐ。",
+        "肺静脈は動脈血（arterial blood）（酸素の多い血液（blood））を左心房（left atrium）へ運ぶので、図では動脈と同じ赤で描く。"
+      ],
+      "terms": [
+        {
+          "id": "apical-vein-of-lung", "ja": "肺尖枝（V1）", "yomi": "はいせんし", "en": "apical vein", "la": "ramus apicalis venae pulmonalis",
+          "parts": ["za:apical vein of right lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "肺尖の区域から来る肺静脈の枝（右の V1）",
+          "etym": "apical「頂点の」（ラテン語 apex）＋ vein「静脈」（ラテン語 vena）",
+          "note": "右の上肺静脈（superior pulmonary vein）に注ぐ枝（branch）のうち、肺尖区（S1）とそのまわりの静脈（vein）を集める枝。区域（segment）の間を下って上肺静脈へ。"
+        },
+        {
+          "id": "posterior-vein-of-lung", "ja": "後上葉枝（V2）", "yomi": "こうじょうようし", "en": "posterior vein", "la": "ramus posterior venae pulmonalis",
+          "parts": ["za:posterior vein of right lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "上葉の後ろの区域から来る肺静脈の枝（右の V2）",
+          "etym": "posterior「後ろの」＋ vein「静脈」（ラテン語 vena）",
+          "note": "右の上肺静脈（superior pulmonary vein）に注ぐ枝（branch）のうち、後上葉区（S2）から来る枝。上葉（superior lobe）の後ろから区域（segment）の間を前へ走って肺門（hilum of lung）へ向かう。"
+        },
+        {
+          "id": "apicoposterior-vein-of-lung", "ja": "肺尖後枝（V1+2）", "yomi": "はいせんこうし", "en": "apicoposterior vein", "la": "ramus apicoposterior venae pulmonalis",
+          "parts": ["za:apicoposterior vein of left lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "肺尖と後ろの区域から来る肺静脈の枝（左の V1+2）",
+          "etym": "apico-「頂点の」＋ posterior「後ろの」＋ vein「静脈」",
+          "note": "左の上肺静脈（superior pulmonary vein）に注ぐ枝（branch）のうち、肺尖後区（S1+2）の静脈（vein）を集める枝。"
+        },
+        {
+          "id": "anterior-vein-of-lung", "ja": "前上葉枝（V3）", "yomi": "ぜんじょうようし", "en": "anterior vein", "la": "ramus anterior venae pulmonalis",
+          "parts": ["za:anterior vein of lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "上葉の前の区域から来る肺静脈の枝（V3）",
+          "etym": "anterior「前の」＋ vein「静脈」（ラテン語 vena）",
+          "note": "上肺静脈（superior pulmonary vein）に注ぐ枝（branch）のうち、前上葉区（S3）の静脈（vein）を集める枝。左右にあり、肺門（hilum of lung）ではいちばん前を走る上肺静脈の上の枝になる。"
+        },
+        {
+          "id": "middle-lobe-vein", "ja": "中葉枝（V4・V5）", "yomi": "ちゅうようし", "en": "middle lobe vein", "la": "ramus lobi medii venae pulmonalis",
+          "parts": ["za:lateral vein of right lung", "za:medial vein of right lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "中葉から来る肺静脈の枝（右の V4・V5）",
+          "etym": "middle「中の」＋ lobe「葉」＋ vein「静脈」",
+          "note": "右の上肺静脈（superior pulmonary vein）に注ぐ枝（branch）のうち、中葉（middle lobe）の外側中葉区（S4）と内側中葉区（S5）から来る枝。右の上肺静脈のいちばん下の枝。"
+        },
+        {
+          "id": "lingular-vein", "ja": "舌枝（V4・V5）", "yomi": "ぜつし", "en": "lingular vein", "la": "ramus lingularis venae pulmonalis",
+          "parts": ["za:lingular vein of left lung", "za:superior lingular vein of left lung", "za:inferior lingular vein of left lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "舌区から来る肺静脈の枝（左の V4・V5）",
+          "etym": "lingular「小舌の」（ラテン語 lingula「小さな舌」）＋ vein「静脈」",
+          "note": "左の上肺静脈（superior pulmonary vein）に注ぐ枝（branch）のうち、舌区（lingula）の上舌区（S4）と下舌区（S5）から来る枝。右の中葉枝にあたる。"
+        },
+        {
+          "id": "superior-vein-of-lower-lobe", "ja": "上下葉枝（V6）", "yomi": "じょうかようし", "en": "superior vein of lower lobe", "la": "ramus superior venae pulmonalis inferioris",
+          "parts": ["za:superior vein of lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "下葉の上の区域から来る肺静脈の枝（V6）",
+          "etym": "superior「上の」＋ vein「静脈」（ラテン語 vena）",
+          "note": "下肺静脈（inferior pulmonary vein）に注ぐ枝（branch）のうち、上下葉区（S6）から来る枝。左右にあり、下肺静脈のいちばん上（後ろ）に注ぐ。"
+        },
+        {
+          "id": "superior-basal-vein", "ja": "上肺底静脈", "yomi": "じょうはいていじょうみゃく", "en": "superior basal vein", "la": "vena basalis superior",
+          "parts": ["za:superior basal vein of lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "肺底の上（前）の静脈",
+          "etym": "superior「上の」＋ basal「底の」＋ vein「静脈」",
+          "note": "下葉（inferior lobe）の肺底（S7〜S9 の前の部分）の静脈（vein）を集め、下肺底静脈（inferior basal vein）と合わさって総肺底静脈になり、下肺静脈（inferior pulmonary vein）に注ぐ。前肺底区（S8）と外側肺底区（S9）の間の静脈が主な枝（branch）。"
+        },
+        {
+          "id": "inferior-basal-vein", "ja": "下肺底静脈", "yomi": "かはいていじょうみゃく", "en": "inferior basal vein", "la": "vena basalis inferior",
+          "parts": ["za:inferior basal vein of lung"], "level": 3, "color": "#c8323c", "xray": true,
+          "kanji": "肺底の下（後ろ）の静脈",
+          "etym": "inferior「下の」＋ basal「底の」＋ vein「静脈」",
+          "note": "下葉（inferior lobe）の肺底（base of lung）の後ろ（主に後肺底区（S10））の静脈（vein）を集め、上肺底静脈（superior basal vein）と合わさって総肺底静脈になり、下肺静脈（inferior pulmonary vein）に注ぐ。"
+        }
+      ]
+    },
+    {
       "id": "cv-branch-trunk",
       "title": "心臓と胸腹部の動脈の枝",
       "group": "体幹",

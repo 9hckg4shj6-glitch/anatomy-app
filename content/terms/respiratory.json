@@ -56,14 +56,14 @@
         },
         {
           "id": "right-lung", "ja": "右肺", "yomi": "うはい", "en": "right lung", "la": "pulmo dexter",
-          "parts": ["za:*lobe of right lung"], "level": 1,
+          "parts": ["za:right * segment of lung (*)"], "level": 1,
           "kanji": "右の肺",
           "etym": "lung（英語の固有語）。ラテン語 pulmo から pulmonary「肺の」",
           "note": "水平裂（horizontal fissure）と斜裂（oblique fissure）で上葉（superior lobe）・中葉（middle lobe）・下葉（inferior lobe）の3葉に分かれる。左肺（left lung）より大きい。下面（inferior surface）は横隔膜（diaphragm）にのる。"
         },
         {
           "id": "left-lung", "ja": "左肺", "yomi": "さはい", "en": "left lung", "la": "pulmo sinister",
-          "parts": ["za:*lobe of left lung"], "level": 1,
+          "parts": ["za:left * segment of lung (*)"], "level": 1,
           "kanji": "左の肺",
           "etym": "lung。ラテン語 pulmo",
           "note": "斜裂（oblique fissure）で上葉（superior lobe）・下葉（inferior lobe）の2葉に分かれる。心臓（heart）が左に寄っているぶん右肺（right lung）より小さく、前縁（anterior border）に心切痕（cardiac notch）がある。"
@@ -77,35 +77,35 @@
       "terms": [
         {
           "id": "superior-lobe-of-right-lung", "ja": "右肺上葉", "yomi": "うはいじょうよう", "en": "superior lobe of right lung", "enAlt": ["right upper lobe"], "la": "lobus superior pulmonis dextri",
-          "parts": ["za:superior lobe of right lung"], "level": 2,
+          "parts": ["za:right * segment of lung (s1)", "za:right * segment of lung (s2)", "za:right * segment of lung (s3)"], "level": 2,
           "kanji": "右の肺の上の葉",
           "etym": "lobe ← ギリシャ語 lobos「耳たぶ・丸くふくらんだもの」",
           "note": "右肺（right lung）の上の葉（lobe）。肺尖（apex of lung）を含み、水平裂（horizontal fissure）で中葉（middle lobe）と、斜裂（oblique fissure）で下葉（inferior lobe）と分かれる。"
         },
         {
           "id": "middle-lobe-of-right-lung", "ja": "右肺中葉", "yomi": "うはいちゅうよう", "en": "middle lobe of right lung", "enAlt": ["right middle lobe"], "la": "lobus medius pulmonis dextri",
-          "parts": ["za:middle lobe of right lung"], "level": 2,
+          "parts": ["za:right * segment of lung (s4)", "za:right * segment of lung (s5)"], "level": 2,
           "kanji": "右の肺のまん中の葉",
           "etym": "middle「まん中の」＋ lobe「葉」",
           "note": "水平裂（horizontal fissure）と斜裂（oblique fissure）の間で、右肺（right lung）の前下（anteroinferior）にある小さな葉（lobe）。左肺（left lung）には中葉（middle lobe）が無い（左肺上葉（superior lobe of left lung）の小舌（lingula）がこれにあたる）。"
         },
         {
           "id": "inferior-lobe-of-right-lung", "ja": "右肺下葉", "yomi": "うはいかよう", "en": "inferior lobe of right lung", "enAlt": ["right lower lobe"], "la": "lobus inferior pulmonis dextri",
-          "parts": ["za:inferior lobe of right lung"], "level": 2,
+          "parts": ["za:right * segment of lung (s6)", "za:right * segment of lung (s7)", "za:right * segment of lung (s8)", "za:right * segment of lung (s9)", "za:right * segment of lung (s10)"], "level": 2,
           "kanji": "右の肺の下の葉",
           "etym": "inferior「下の」＋ lobe「葉」",
           "note": "斜裂（oblique fissure）より後ろ下の葉（lobe）。横隔膜（diaphragm）の上にのり、背中（back）側に大きく広がる。"
         },
         {
           "id": "superior-lobe-of-left-lung", "ja": "左肺上葉", "yomi": "さはいじょうよう", "en": "superior lobe of left lung", "enAlt": ["left upper lobe"], "la": "lobus superior pulmonis sinistri",
-          "parts": ["za:superior lobe of left lung"], "level": 2,
+          "parts": ["za:left * segment of lung (s1+2)", "za:left * segment of lung (s3)", "za:left * segment of lung (s4)", "za:left * segment of lung (s5)"], "level": 2,
           "kanji": "左の肺の上の葉",
           "etym": "superior「上の」＋ lobe「葉」",
           "note": "斜裂（oblique fissure）より前上（anterosuperior）の葉（lobe）。前縁（anterior border）に心臓（heart）の形の切れこみ（心切痕（cardiac notch））があり、その下の舌（tongue）のような部分（小舌（lingula））が右肺（right lung）の中葉（middle lobe）にあたる。"
         },
         {
           "id": "inferior-lobe-of-left-lung", "ja": "左肺下葉", "yomi": "さはいかよう", "en": "inferior lobe of left lung", "enAlt": ["left lower lobe"], "la": "lobus inferior pulmonis sinistri",
-          "parts": ["za:inferior lobe of left lung"], "level": 2,
+          "parts": ["za:left * segment of lung (s6)", "za:left * segment of lung (s7)", "za:left * segment of lung (s8)", "za:left * segment of lung (s9)", "za:left * segment of lung (s10)"], "level": 2,
           "kanji": "左の肺の下の葉",
           "etym": "inferior「下の」＋ lobe「葉」",
           "note": "斜裂（oblique fissure）より後ろ下の葉（lobe）。横隔膜（diaphragm）の上にのる。"
@@ -119,7 +119,7 @@
       "terms": [
         {
           "id": "lung", "ja": "肺", "yomi": "はい", "en": "lung", "enAlt": ["lungs"], "la": "pulmo",
-          "parts": ["za:*lobe of right lung", "za:*lobe of left lung"], "level": 1,
+          "parts": ["za:* segment of lung (*)"], "level": 1,
           "kanji": "はい",
           "etym": "lung（英語の固有語）。ラテン語 pulmo から pulmonary「肺の」、ギリシャ語 pneumon から pneumonia「肺炎」",
           "note": "胸腔（thoracic cavity）の左右にある半円錐形の器官（organ）。肺胞（alveolus）で酸素と二酸化炭素を交換する。右肺（right lung）は約500g（3葉）、左肺（left lung）は心臓（heart）のために小さく約450g（2葉）。上下の肺尖（apex of lung）・肺底（base of lung）、3つの面（肋骨面（costal surface）・縦隔面（mediastinal surface）・横隔面（diaphragmatic surface））、2つの縁（前縁（anterior border）・下縁（inferior border））を区別する。表面は肺胸膜（pulmonary pleura）（臓側胸膜（visceral pleura））におおわれ、肺門（hilum of lung）で折れ返って胸壁（thoracic wall）の内面（internal surface）の壁側胸膜（parietal pleura）（肋骨胸膜（costal pleura）・縦隔胸膜（mediastinal pleura）・横隔胸膜（diaphragmatic pleura）・胸膜頂（cervical pleura））に続く。間の胸膜腔（pleural cavity）にはわずかな液があり、陰圧（negative pressure）に保たれる。"
@@ -140,7 +140,7 @@
         },
         {
           "id": "hilum-of-lung", "ja": "肺門", "yomi": "はいもん", "en": "hilum of lung", "la": "hilum pulmonis",
-          "parts": ["za:*lobe of right lung"], "of": "lung", "level": 1,
+          "parts": ["za:right * segment of lung (*)"], "of": "lung", "level": 1,
           "kanji": "肺の門（出入口）",
           "etym": "hilum ← ラテン語「小さなもの・へそ」",
           "note": "肺（lung）の内側（medial）の面（縦隔面（mediastinal surface））の中央の出入口。主気管支（main bronchus）・肺動脈（pulmonary artery）・肺静脈（pulmonary veins）・気管支動静脈（bronchial vessels）・神経（nerve）・リンパ管（lymphatic vessel）が出入りし、まとめて肺根（root of lung）という。3Dでは右肺（right lung）で示す（左肺（left lung）を半透明にして内側から見る）。"
@@ -359,7 +359,7 @@
         },
         {
           "id": "mediastinal-surface-of-lung", "ja": "縦隔面（肺）", "yomi": "じゅうかくめん", "en": "mediastinal surface of lung", "enAlt": ["medial surface of lung"], "la": "facies mediastinalis pulmonis",
-          "parts": ["za:*lobe of right lung"], "of": "lung", "level": 2,
+          "parts": ["za:right * segment of lung (*)"], "of": "lung", "level": 2,
           "kanji": "縦隔に面する面",
           "etym": "mediastinal「縦隔の」（ラテン語 mediastinum「真ん中にあるもの」）＋ surface「面」",
           "note": "左右の肺（lung）の間の縦隔（mediastinum）に向く内側（medial）の面（内側面（medial surface）ともいう）。中央に肺門（hilum of lung）があり、その前下（anteroinferior）は心臓（heart）に接してくぼむ（心圧痕（cardiac impression））。右肺（right lung）には上大静脈（superior vena cava）・奇静脈（azygos vein）・食道（esophagus）、左肺（left lung）には大動脈弓（arch of aorta）・胸大動脈（thoracic aorta）による溝がある。3Dでは右肺で示す。"
@@ -387,7 +387,7 @@
         },
         {
           "id": "pulmonary-ligament", "ja": "肺間膜", "yomi": "はいかんまく", "en": "pulmonary ligament", "la": "ligamentum pulmonale",
-          "parts": ["za:*lobe of right lung"], "of": "lung", "level": 3,
+          "parts": ["za:right * segment of lung (*)"], "of": "lung", "level": 3,
           "kanji": "肺と縦隔の間の膜",
           "etym": "pulmonary「肺の」＋ ligament ← ラテン語 ligamentum「結ぶもの」",
           "note": "肺門（hilum of lung）で肺根（root of lung）を包んだ肺胸膜（pulmonary pleura）が壁側胸膜（parietal pleura）（縦隔胸膜（mediastinal pleura））へ移る所で、肺門の下で前後の胸膜（pleura）が合わさって下へ垂れるひだ（fold）。縦隔面（mediastinal surface）と縦隔（mediastinum）をつなぐ。3Dでは右肺（right lung）の縦隔面に付く線で示す。"
@@ -398,6 +398,279 @@
           "kanji": "軟骨の無い、膜でできた壁",
           "etym": "membranous「膜の」（ラテン語 membrana）＋ wall「壁」",
           "note": "気管（trachea）の後ろの壁。気管軟骨（tracheal cartilage）は後ろが開いた馬蹄形で、そこを平滑筋（smooth muscle）（気管筋（trachealis））と結合組織（connective tissue）の膜（membrane）がふさぐ。すぐ後ろに食道（esophagus）が接し、食べ物が通るときは前へふくらめる。軟骨（cartilage）は息を吸うときに気管がつぶれないように保ち、平滑筋は内腔（lumen）を狭める。"
+        }
+      ]
+    },
+    {
+      "id": "resp-segments-upper",
+      "title": "肺区域（上葉・中葉・舌区）",
+      "group": "気管支と肺",
+      "intro": [
+        "肺区域（bronchopulmonary segment）は、1本の区域気管支（B）が届く範囲（S）。区域気管支と区域動脈（A）は区域（segment）の中央をそろって走り、区域静脈（V）は区域と区域の間を走る（『解剖学講義』）。番号は B・A・S でそろい、B1 と A1 が入るのが S1。",
+        "右肺（right lung）は上葉（superior lobe）が S1〜S3、中葉（middle lobe）が S4（外側（lateral））・S5（内側（medial））。左肺（left lung）は上葉が S1+2（肺尖後区）・S3 と、舌区（lingula）の S4（上）・S5（下）。左には中葉が無く、舌区が右の中葉にあたる。",
+        "立体は、肺葉の中を区域気管支と区域動脈にいちばん近いかで分けた模式の形（実際の区域の境とは数 mm〜1cm ずれうる）。臓器（organ）の図「肺区域」で区域ごとの色分けと、区域を外して気管支（bronchus）と血管（blood vessel）を見られる。"
+      ],
+      "terms": [
+        {
+          "id": "apical-segment-of-lung", "ja": "肺尖区（S1）", "yomi": "はいせんく", "en": "apical segment", "la": "segmentum apicale",
+          "parts": ["za:right apical segment of lung (s1)"], "level": 2,
+          "kanji": "肺尖（肺の上の先）の区域（S1）",
+          "etym": "apical「頂点の」（ラテン語 apex）＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "右肺（right lung）の上葉（superior lobe）のいちばん上の区域（segment）で、肺尖（apex of lung）をつくる。肺尖枝（B1）と肺動脈（pulmonary artery）の肺尖枝（A1）が入る。左肺（left lung）では後上葉区（S2）と1つになって肺尖後区（S1+2）になる。S1・S2・S6 は肺結核（pulmonary tuberculosis）の好発部位。"
+        },
+        {
+          "id": "posterior-segment-of-lung", "ja": "後上葉区（S2）", "yomi": "こうじょうようく", "en": "posterior segment", "la": "segmentum posterius",
+          "parts": ["za:right posterior segment of lung (s2)"], "level": 2,
+          "kanji": "上葉の後ろの区域（S2）",
+          "etym": "posterior「後ろの」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "右肺（right lung）の上葉（superior lobe）の後ろの区域（segment）。後上葉枝（B2）が入る。後ろで斜裂（oblique fissure）をはさんで下葉（inferior lobe）の上下葉区（S6）と接する。あおむけで誤嚥（aspiration）したものが入りやすい区域の1つ。"
+        },
+        {
+          "id": "apicoposterior-segment", "ja": "肺尖後区（S1+2）", "yomi": "はいせんこうく", "en": "apicoposterior segment", "la": "segmentum apicoposterius",
+          "parts": ["za:left apicoposterior segment of lung (s1+2)"], "level": 2,
+          "kanji": "肺尖と後ろを合わせた区域（S1+2）",
+          "etym": "apico-「頂点の」＋ posterior「後ろの」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "左肺（left lung）の上葉（superior lobe）の上と後ろの区域（segment）。左では肺尖枝（B1）と後上葉枝（B2）が共通の幹（B1+2）で出るので、S1 と S2 を合わせて S1+2 とよぶ（『解剖学講義』）。"
+        },
+        {
+          "id": "anterior-segment-of-lung", "ja": "前上葉区（S3）", "yomi": "ぜんじょうようく", "en": "anterior segment", "la": "segmentum anterius",
+          "parts": ["za:anterior segment of lung (s3)"], "level": 2,
+          "kanji": "上葉の前の区域（S3）",
+          "etym": "anterior「前の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "上葉（superior lobe）の前の区域（segment）で、左右の肺（lung）にある。前上葉枝（B3）が入る。前から見ると上葉の大部分を占め、右では下を水平裂（horizontal fissure）で中葉（middle lobe）と、左では下で舌区（lingula）と接する。"
+        },
+        {
+          "id": "lateral-segment-of-lung", "ja": "外側中葉区（S4）", "yomi": "がいそくちゅうようく", "en": "lateral segment", "la": "segmentum laterale",
+          "parts": ["za:right lateral segment of lung (s4)"], "level": 2,
+          "kanji": "中葉の外側の区域（右の S4）",
+          "etym": "lateral「外側の」（ラテン語 latus「わき」）＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "右肺（right lung）の中葉（middle lobe）の外側（lateral）（後ろ外側）の区域（segment）。外側中葉枝（B4）が入る。横から見ると水平裂（horizontal fissure）と斜裂（oblique fissure）の間に見える。"
+        },
+        {
+          "id": "medial-segment-of-lung", "ja": "内側中葉区（S5）", "yomi": "ないそくちゅうようく", "en": "medial segment", "la": "segmentum mediale",
+          "parts": ["za:right medial segment of lung (s5)"], "level": 2,
+          "kanji": "中葉の内側の区域（右の S5）",
+          "etym": "medial「内側の」（ラテン語 medius「真ん中」）＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "右肺（right lung）の中葉（middle lobe）の内側（medial）（前内側（anteromedial））の区域（segment）。内側中葉枝（B5）が入る。心臓（heart）の右の縁に接するので、胸部（thorax）X線（X-ray）で右の心臓の縁が見えなくなると（シルエットサイン（silhouette sign））ここの病変（lesion）を考える。"
+        },
+        {
+          "id": "superior-lingular-segment", "ja": "上舌区（S4）", "yomi": "じょうぜつく", "en": "superior lingular segment", "la": "segmentum lingulare superius",
+          "parts": ["za:left superior lingular segment of lung (s4)"], "level": 2,
+          "kanji": "舌区の上の区域（左の S4）",
+          "etym": "superior「上の」＋ lingular「小舌の」（ラテン語 lingula「小さな舌」）＋ segment「区域」",
+          "note": "左肺（left lung）の上葉（superior lobe）の下の部分（舌区（lingula））のうち、上の区域（segment）。上舌枝（B4）が入る。右の外側中葉区（S4）にあたる。"
+        },
+        {
+          "id": "inferior-lingular-segment", "ja": "下舌区（S5）", "yomi": "かぜつく", "en": "inferior lingular segment", "la": "segmentum lingulare inferius",
+          "parts": ["za:left inferior lingular segment of lung (s5)"], "level": 2,
+          "kanji": "舌区の下の区域（左の S5）",
+          "etym": "inferior「下の」＋ lingular「小舌の」（ラテン語 lingula「小さな舌」）＋ segment「区域」",
+          "note": "左肺（left lung）の舌区（lingula）の下の区域（segment）。下舌枝（B5）が入る。心切痕（cardiac notch）の下を回って前から下へのび、右の内側中葉区（S5）にあたる。心臓（heart）の左の縁に接する。"
+        }
+      ]
+    },
+    {
+      "id": "resp-segments-lower",
+      "title": "肺区域（下葉）",
+      "group": "気管支と肺",
+      "intro": [
+        "下葉（inferior lobe）は左右とも、上の S6（上下葉区）と、肺底（base of lung）の4つ（S7 内側（medial）・S8 前・S9 外側（lateral）・S10 後ろ）に分かれる。",
+        "左の S7 は小さく、無いことも多い（B7 が B8 と共通の幹（B7+8）で出ることもある）。立体の左の S7 は BodyParts3D の内側肺底枝（medial basal segmental bronchus）をもとにした模式の形。",
+        "後ろから見ると肺（lung）の大部分は下葉で、あおむけで誤嚥（aspiration）したものは後ろへ向かう S6・S10 に入りやすい。"
+      ],
+      "terms": [
+        {
+          "id": "superior-segment-of-lung", "ja": "上下葉区（S6）", "yomi": "じょうかようく", "en": "superior segment", "la": "segmentum superius",
+          "parts": ["za:superior segment of lung (s6)"], "level": 2,
+          "kanji": "下葉の上の区域（S6）",
+          "etym": "superior「上の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "下葉（inferior lobe）のいちばん上の区域（segment）で、左右の肺（lung）にある。上下葉枝（B6）が入る。後ろで斜裂（oblique fissure）をはさんで上葉（superior lobe）の S2（左は S1+2）と接する。下葉気管支（inferior lobar bronchus）の最初の枝（branch）で後ろへ向かうので、あおむけで誤嚥（aspiration）したものが入りやすい。本では「上-下葉区」とも書く。"
+        },
+        {
+          "id": "medial-basal-segment", "ja": "内側肺底区（S7）", "yomi": "ないそくはいていく", "en": "medial basal segment", "la": "segmentum basale mediale",
+          "parts": ["za:medial basal segment of lung (s7)"], "level": 2,
+          "kanji": "肺底の内側の区域（S7）",
+          "etym": "medial「内側の」＋ basal「底の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "下葉（inferior lobe）の肺底（base of lung）のうち内側（medial）の区域（segment）。内側肺底枝（B7）が入る。心臓（heart）の下の縁と下大静脈（inferior vena cava）に接する（ラテン語の名に cardiacum「心臓の」が付く）。左では小さく、無いことも多い。"
+        },
+        {
+          "id": "anterior-basal-segment", "ja": "前肺底区（S8）", "yomi": "ぜんはいていく", "en": "anterior basal segment", "la": "segmentum basale anterius",
+          "parts": ["za:anterior basal segment of lung (s8)"], "level": 2,
+          "kanji": "肺底の前の区域（S8）",
+          "etym": "anterior「前の」＋ basal「底の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "下葉（inferior lobe）の肺底（base of lung）のうち前の区域（segment）。前肺底枝（B8）が入る。前の斜裂（oblique fissure）の下の部分で、右は中葉（middle lobe）、左は舌区（lingula）の後ろに接する。"
+        },
+        {
+          "id": "lateral-basal-segment", "ja": "外側肺底区（S9）", "yomi": "がいそくはいていく", "en": "lateral basal segment", "la": "segmentum basale laterale",
+          "parts": ["za:lateral basal segment of lung (s9)"], "level": 2,
+          "kanji": "肺底の外側の区域（S9）",
+          "etym": "lateral「外側の」＋ basal「底の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "下葉（inferior lobe）の肺底（base of lung）のうち外側（lateral）の区域（segment）。外側肺底枝（B9）が入る。横から見た下葉の下の部分で、肋骨横隔洞（costodiaphragmatic recess）に面する。"
+        },
+        {
+          "id": "posterior-basal-segment", "ja": "後肺底区（S10）", "yomi": "こうはいていく", "en": "posterior basal segment", "la": "segmentum basale posterius",
+          "parts": ["za:posterior basal segment of lung (s10)"], "level": 2,
+          "kanji": "肺底の後ろの区域（S10）",
+          "etym": "posterior「後ろの」＋ basal「底の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
+          "note": "下葉（inferior lobe）の肺底（base of lung）のうち後ろの区域（segment）で、下葉でいちばん大きい。後肺底枝（B10）が入る。後ろの最も低い所で、肺底部の背中（back）側。あおむけで寝ている人の誤嚥性肺炎（aspiration pneumonia）や、胸水（pleural effusion）がたまる肋骨横隔洞（costodiaphragmatic recess）に近い。"
+        }
+      ]
+    },
+    {
+      "id": "resp-pleura",
+      "title": "胸膜と胸膜洞",
+      "group": "気管支と肺",
+      "intro": [
+        "肺（lung）の表面と胸壁（thoracic wall）の内面（internal surface）は、薄い漿膜（serosa）の胸膜（pleura）でおおわれる。肺の表面をおおうのが肺胸膜（pulmonary pleura）、胸壁の内面をおおうのが壁側胸膜（parietal pleura）で、2つは肺門（hilum of lung）で折れ返ってつながる。2つの間のすき間が胸膜腔（pleural cavity）で、少しの漿液が入り、呼吸（respiration）のときのこすれを減らす。",
+        "壁側胸膜は場所によって肋骨胸膜（costal pleura）・横隔胸膜（diaphragmatic pleura）・縦隔胸膜（mediastinal pleura）とよび、肺尖（apex of lung）をおおう部分が胸膜頂（cervical pleura）。肺の前縁（anterior border）と下縁（inferior border）では肺が届かず胸膜腔が広くなる（胸膜洞。肋骨縦隔洞（costomediastinal recess）と肋骨横隔洞（costodiaphragmatic recess））。",
+        "立体の壁側胸膜と胸膜洞は、肺・胸壁・横隔膜（diaphragm）・縦隔（mediastinum）の器官（organ）の位置から作った模式の形。ふだんは薄く透かして描き、名前を選ぶとはっきり見える。臓器（organ）の図「胸膜」で、胸膜と肺の間のすき間（胸膜洞）を断面（section）で見られる。"
+      ],
+      "terms": [
+        {
+          "id": "parietal-pleura", "ja": "壁側胸膜", "yomi": "へきそくきょうまく", "en": "parietal pleura", "la": "pleura parietalis",
+          "parts": ["za:costal pleura", "za:diaphragmatic pleura", "za:mediastinal pleura", "za:cervical pleura"], "level": 1, "color": "#8fb8de", "xray": true, "veil": true,
+          "kanji": "胸壁の側をおおう胸膜",
+          "etym": "parietal「壁の」（ラテン語 paries「壁」）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
+          "note": "胸壁（thoracic wall）の内面（internal surface）・横隔膜（diaphragm）の上面（superior surface）・縦隔（mediastinum）の側面をおおう胸膜（pleura）。部位（region）によって肋骨胸膜（costal pleura）・横隔胸膜（diaphragmatic pleura）・縦隔胸膜（mediastinal pleura）・胸膜頂（cervical pleura）に分ける。肺門（hilum of lung）で肺根（root of lung）を袖のように包んで肺胸膜（pulmonary pleura）に続き、肺門の下では前後の胸膜が合わさって肺間膜（pulmonary ligament）になる。肺胸膜と違い痛覚があり、肋間神経（intercostal nerves）と横隔神経（phrenic nerve）が分布する（胸膜炎の胸痛）。"
+        },
+        {
+          "id": "costal-pleura", "ja": "肋骨胸膜", "yomi": "ろっこつきょうまく", "en": "costal pleura", "la": "pleura costalis",
+          "parts": ["za:costal pleura"], "level": 2, "color": "#8fb8de", "xray": true, "veil": true,
+          "kanji": "肋骨（胸壁）の内面をおおう胸膜",
+          "etym": "costal「肋骨の」（ラテン語 costa）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
+          "note": "壁側胸膜（parietal pleura）のうち、肋骨（ribs）と肋間筋（intercostal muscles）の内面（internal surface）をおおう部分で、いちばん広い。胸壁（thoracic wall）との間には胸内筋膜がある。下は肋骨横隔洞（costodiaphragmatic recess）で横隔胸膜（diaphragmatic pleura）に、前と後ろで縦隔胸膜（mediastinal pleura）に折れ返る。"
+        },
+        {
+          "id": "diaphragmatic-pleura", "ja": "横隔胸膜", "yomi": "おうかくきょうまく", "en": "diaphragmatic pleura", "la": "pleura diaphragmatica",
+          "parts": ["za:diaphragmatic pleura"], "level": 2, "color": "#8fb8de", "xray": true, "veil": true,
+          "kanji": "横隔膜の上面をおおう胸膜",
+          "etym": "diaphragmatic「横隔膜の」（ギリシャ語 diaphragma「仕切り」）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
+          "note": "壁側胸膜（parietal pleura）のうち、横隔膜（diaphragm）の上面（superior surface）をおおう部分。ドームの上に肺底（base of lung）がのる。まわりの部分には肋間神経（intercostal nerves）、中央の部分には横隔神経（phrenic nerve）が分布するので、横隔膜の中央の胸膜（pleura）の痛みは首から肩（shoulder）に感じる（関連痛）。"
+        },
+        {
+          "id": "mediastinal-pleura", "ja": "縦隔胸膜", "yomi": "じゅうかくきょうまく", "en": "mediastinal pleura", "la": "pleura mediastinalis",
+          "parts": ["za:mediastinal pleura"], "level": 2, "color": "#8fb8de", "xray": true, "veil": true,
+          "kanji": "縦隔の側面をおおう胸膜",
+          "etym": "mediastinal「縦隔の」（ラテン語 mediastinum「真ん中にあるもの」）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
+          "note": "壁側胸膜（parietal pleura）のうち、縦隔（mediastinum）（心臓（heart）・大血管（great vessels）・食道（esophagus）など）の左右の面をおおう部分。肺門（hilum of lung）で肺根（root of lung）を包んで肺胸膜（pulmonary pleura）に続く。心膜（pericardium）との間を横隔神経（phrenic nerve）と心膜横隔動静脈が下る。"
+        },
+        {
+          "id": "cervical-pleura", "ja": "胸膜頂", "yomi": "きょうまくちょう", "en": "cervical pleura", "enAlt": ["dome of pleura", "cupula of pleura"], "la": "cupula pleurae",
+          "parts": ["za:cervical pleura"], "level": 2, "color": "#c79ad6", "xray": true, "veil": true,
+          "kanji": "胸膜の頂（てっぺん）",
+          "etym": "cervical「頚の」（ラテン語 cervix「首」）＋ pleura「胸膜」。cupula「小さな丸屋根」",
+          "note": "肺尖（apex of lung）をおおう壁側胸膜（parietal pleura）で、第1肋骨（first rib）と鎖骨（clavicle）の上へ2〜3cm、首（neck）の付け根に丸屋根のように出る。上を胸膜上膜（シブソン筋膜）が補強する。前を鎖骨下動脈（subclavian artery）・鎖骨下静脈（subclavian vein）が通るので、鎖骨の上の注射や鎖骨下静脈の穿刺で傷つけると気胸を起こす。"
+        },
+        {
+          "id": "costodiaphragmatic-recess", "ja": "肋骨横隔洞", "yomi": "ろっこつおうかくどう", "en": "costodiaphragmatic recess", "la": "recessus costodiaphragmaticus",
+          "parts": ["za:costodiaphragmatic recess"], "level": 1, "color": "#3f78c9", "xray": true, "veil": true,
+          "kanji": "肋骨胸膜と横隔胸膜の間の洞（すき間）",
+          "etym": "costo-「肋骨の」＋ diaphragmatic「横隔膜の」＋ recess「くぼみ」（ラテン語 recessus「引っこんだ所」）",
+          "note": "肺（lung）の下縁（inferior border）に沿って、肋骨胸膜（costal pleura）と横隔胸膜（diaphragmatic pleura）の間にできる胸膜腔（pleural cavity）のすき間（胸膜洞）。ふだんの呼吸（respiration）では肺はここに入らず、深く吸ったときも満たされない。胸膜（pleura）の下縁は鎖骨中線（midclavicular line）で第8肋骨（eighth rib）、中腋窩線（midaxillary line）で第10肋骨（tenth rib）、肩甲線で第11〜12肋骨の高さで、肺の下縁より約2肋骨下（中腋窩線で最も離れる）。立って胸水（pleural effusion）がたまるのはまずここで、胸腔穿刺もこの高さで行う。"
+        },
+        {
+          "id": "costomediastinal-recess", "ja": "肋骨縦隔洞", "yomi": "ろっこつじゅうかくどう", "en": "costomediastinal recess", "la": "recessus costomediastinalis",
+          "parts": ["za:costomediastinal recess"], "level": 2, "color": "#2f9e7e", "xray": true, "veil": true,
+          "kanji": "肋骨胸膜と縦隔胸膜の間の洞（すき間）",
+          "etym": "costo-「肋骨の」＋ mediastinal「縦隔の」＋ recess「くぼみ」（ラテン語 recessus）",
+          "note": "肺（lung）の前縁（anterior border）に沿って、胸骨（sternum）の後ろで肋骨胸膜（costal pleura）と縦隔胸膜（mediastinal pleura）の間にできる胸膜腔（pleural cavity）のすき間（胸膜洞）。左では心切痕（cardiac notch）の所で広く、肺が届かないので心臓（heart）が胸膜（pleura）を隔てて前胸壁（anterior thoracic wall）に接する（打診で心濁音界になる所）。"
+        },
+        {
+          "id": "pleural-cavity", "ja": "胸膜腔", "yomi": "きょうまくくう", "en": "pleural cavity", "la": "cavitas pleuralis", "plate": "pleura-chest", "level": 1,
+          "kanji": "胸膜に囲まれた腔（すき間）",
+          "etym": "pleural「胸膜の」＋ cavity「腔」（ラテン語 cavus「うつろな」）",
+          "note": "肺胸膜（pulmonary pleura）と壁側胸膜（parietal pleura）の間のごく狭いすき間。少しの漿液（胸膜液）が入り、呼吸（respiration）のとき2枚の胸膜（pleura）がなめらかにすべる。閉じたすき間で中は大気より低い圧（陰圧（negative pressure））になっていて、胸郭（thoracic cage）が広がると肺（lung）もついて広がる。空気が入ると肺が縮み（気胸）、液がたまると胸水（pleural effusion）（血液（blood）なら血胸、膿なら膿胸）という。"
+        },
+        {
+          "id": "visceral-pleura", "ja": "肺胸膜", "yomi": "はいきょうまく", "en": "visceral pleura", "enAlt": ["pulmonary pleura"], "la": "pleura visceralis",
+          "parts": ["za:* segment of lung (*)"], "level": 1,
+          "kanji": "肺の表面をおおう胸膜（臓側胸膜）",
+          "etym": "visceral「内臓の」（ラテン語 viscera）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
+          "note": "肺（lung）の表面をじかにおおう胸膜（pleura）（臓側胸膜（visceral pleura）とも）。裂の中にも入りこみ、葉（lobe）と葉の間の面もおおう。肺門（hilum of lung）で折れ返って壁側胸膜（parietal pleura）に続く。痛覚は無い。立体では肺の表面そのもので示す。"
+        }
+      ]
+    },
+    {
+      "id": "resp-alveoli",
+      "title": "細気管支と肺胞",
+      "group": "気管支と肺",
+      "intro": [
+        "区域気管支（segmental bronchi）は枝分かれをくり返して細気管支になり、終末細気管支（terminal bronchiole）までが空気の通り道（導管部）。その先の呼吸細気管支（respiratory bronchiole）・肺胞管（alveolar duct）・肺胞嚢（alveolar sac）・肺胞（alveolus）でガス交換をする（呼吸部（respiratory part））。ガス交換できるのは呼吸細気管支と肺胞（『解剖学講義』）。",
+        "肺胞は直径 0.1〜0.2mm の袋で、左右の肺（lung）で約3億個、広げるとテニスコート1面（約130m²）になる。まわりを肺動脈（pulmonary artery）の枝から続く毛細血管（capillary）が網のように包む。",
+        "平面図「細気管支と肺胞（呼吸部）」で場所を示す。"
+      ],
+      "terms": [
+        {
+          "id": "terminal-bronchiole", "ja": "終末細気管支", "yomi": "しゅうまつさいきかんし", "en": "terminal bronchiole", "la": "bronchiolus terminalis", "plate": "respiratory-zone", "level": 2,
+          "kanji": "終わり（末）の細い気管支",
+          "etym": "terminal「終わりの」＋ bronchiole「細気管支」（bronchus＋縮小の -iole）",
+          "note": "空気の通り道（導管部）のいちばん先の細気管支（直径 0.5mm ほど）。壁に軟骨（cartilage）が無く、平滑筋（smooth muscle）が輪のように巻く（ぜんそくではこの筋（muscle）が縮んで息が吐きにくくなる）。この先の呼吸細気管支（respiratory bronchiole）からガス交換が始まる。"
+        },
+        {
+          "id": "respiratory-bronchiole", "ja": "呼吸細気管支", "yomi": "こきゅうさいきかんし", "en": "respiratory bronchiole", "la": "bronchiolus respiratorius", "plate": "respiratory-zone", "level": 2,
+          "kanji": "呼吸（ガス交換）をする細気管支",
+          "etym": "respiratory「呼吸の」（ラテン語 respirare）＋ bronchiole「細気管支」",
+          "note": "終末細気管支（terminal bronchiole）の先の細気管支で、壁のところどころに肺胞（alveolus）が開くので、ここからガス交換ができる（呼吸部（respiratory part）の始まり）。先は肺胞管（alveolar duct）に分かれる。"
+        },
+        {
+          "id": "alveolar-duct", "ja": "肺胞管", "yomi": "はいほうかん", "en": "alveolar duct", "la": "ductulus alveolaris", "plate": "respiratory-zone", "level": 2,
+          "kanji": "肺胞の並ぶ管",
+          "etym": "alveolar「肺胞の」（ラテン語 alveolus「小さなくぼみ」）＋ duct「管」",
+          "note": "呼吸細気管支（respiratory bronchiole）の先の細い管で、壁がほとんど肺胞（alveolus）の口だけでできている。先は肺胞嚢（alveolar sac）になる。"
+        },
+        {
+          "id": "alveolar-sac", "ja": "肺胞嚢", "yomi": "はいほうのう", "en": "alveolar sac", "la": "sacculus alveolaris", "plate": "respiratory-zone", "level": 2,
+          "kanji": "肺胞が集まった袋",
+          "etym": "alveolar「肺胞の」＋ sac「袋」（ラテン語 saccus）",
+          "note": "肺胞管（alveolar duct）の先で、いくつもの肺胞（alveolus）がぶどうの房のように集まって共通の入口に開いている所。"
+        },
+        {
+          "id": "pulmonary-alveolus", "ja": "肺胞", "yomi": "はいほう", "en": "pulmonary alveolus", "enAlt": ["alveolus"], "la": "alveolus pulmonis", "plate": "respiratory-zone", "level": 1,
+          "kanji": "肺の中の小さな袋（胞）",
+          "etym": "alveolus「小さなくぼみ・桶」（ラテン語 alveus の縮小）",
+          "note": "ガス交換をする小さな袋（直径 0.1〜0.2mm）。左右の肺（lung）で約3億個あり、表面積は約130m²（テニスコート1面）。壁はごく薄いⅠ型肺胞上皮細胞（squamous alveolar cell）でできていて、まわりを毛細血管（capillary）が包み、壁と毛細血管の間で酸素と二酸化炭素が拡散する。表面を表面活性物質（サーファクタント）がおおい、肺胞がつぶれるのを防ぐ。"
+        },
+        {
+          "id": "alveolar-pores", "ja": "肺胞孔", "yomi": "はいほうこう", "en": "alveolar pores", "enAlt": ["pores of kohn"], "la": "pori alveolares", "plate": "respiratory-zone", "level": 3,
+          "kanji": "となりの肺胞とつながる孔（あな）",
+          "etym": "alveolar「肺胞の」＋ pore「小さな孔」（ラテン語 porus）",
+          "note": "となり合う肺胞（alveolus）の壁にあいた小さな孔（コーン孔）。肺胞どうしの空気の行き来を助け、細気管支がつまっても空気が回りこめる（側副換気）。"
+        }
+      ]
+    },
+    {
+      "id": "resp-alveolar-wall",
+      "title": "肺胞の壁",
+      "group": "気管支と肺",
+      "intro": [
+        "肺胞（alveolus）の壁は、薄く広がったⅠ型肺胞上皮細胞（squamous alveolar cell）と、表面活性物質を出すⅡ型肺胞上皮細胞（great alveolar cell）でできる。肺胞の中には肺胞マクロファージ（alveolar macrophage）（塵埃細胞）がいる。",
+        "肺胞の中の空気と毛細血管（capillary）の中の血液（blood）の間（呼吸膜（respiratory membrane））は、上皮（epithelium）・基底膜（basement membrane）・毛細血管の内皮だけで、厚さは 0.5μm ほど。",
+        "平面図「肺胞の壁」で場所を示す。"
+      ],
+      "terms": [
+        {
+          "id": "type-i-alveolar-cell", "ja": "Ⅰ型肺胞上皮細胞", "yomi": "いちがたはいほうじょうひさいぼう", "en": "squamous alveolar cell", "enAlt": ["type one alveolar cell", "type one pneumocyte"], "la": "pneumocytus typus I", "plate": "alveolar-wall", "level": 2,
+          "kanji": "肺胞の壁をつくる薄い上皮細胞（Ⅰ型）",
+          "etym": "squamous「うろこ状の（平たい）」（ラテン語 squama「うろこ」）＋ alveolar「肺胞の」＋ cell「細胞」。type I pneumocyte ともいう",
+          "note": "肺胞（alveolus）の表面の大部分（約95%）をおおう、ごく薄く広がった上皮細胞（epithelial cell）。毛細血管（capillary）の内皮と基底膜（basement membrane）を共有して呼吸膜（respiratory membrane）をつくり、ここで酸素と二酸化炭素が拡散する。分裂できず、傷つくとⅡ型肺胞上皮細胞（great alveolar cell）から補われる。"
+        },
+        {
+          "id": "type-ii-alveolar-cell", "ja": "Ⅱ型肺胞上皮細胞", "yomi": "にがたはいほうじょうひさいぼう", "en": "great alveolar cell", "enAlt": ["type two alveolar cell", "type two pneumocyte"], "la": "pneumocytus typus II", "plate": "alveolar-wall", "level": 2,
+          "kanji": "表面活性物質を出す丸い上皮細胞（Ⅱ型）",
+          "etym": "great「大きな」＋ alveolar「肺胞の」＋ cell「細胞」。type II pneumocyte（pneumocyte ← ギリシャ語 pneumon「肺」＋ kytos「細胞」）ともいう",
+          "note": "肺胞（alveolus）の壁の角にある丸い上皮細胞（epithelial cell）。表面活性物質（サーファクタント）を出して肺胞の表面張力を下げ、吐いたときに肺胞がつぶれるのを防ぐ。早産の赤ちゃんではこれが足りず呼吸窮迫症候群になる。分裂してⅠ型肺胞上皮細胞（squamous alveolar cell）を補う。"
+        },
+        {
+          "id": "alveolar-macrophage", "ja": "肺胞マクロファージ", "yomi": "はいほうまくろふぁーじ", "en": "alveolar macrophage", "enAlt": ["dust cell"], "la": "macrophagocytus alveolaris", "plate": "alveolar-wall", "level": 2,
+          "kanji": "肺胞の中で異物を食べる大きな細胞",
+          "etym": "macrophage ← ギリシャ語 makros「大きい」＋ phagein「食べる」",
+          "note": "肺胞（alveolus）の中や壁にいて、吸いこんだちりや細菌を食べる細胞（cell）（塵埃細胞）。ちりを食べた細胞が肺（lung）にたまるので、年をとると肺の表面が黒っぽいまだらになる（『解剖学講義』）。"
+        },
+        {
+          "id": "respiratory-membrane", "ja": "呼吸膜", "yomi": "こきゅうまく", "en": "respiratory membrane", "enAlt": ["blood-air barrier"], "la": "membrana respiratoria", "plate": "alveolar-wall", "level": 2,
+          "kanji": "呼吸（ガス交換）をする膜",
+          "etym": "respiratory「呼吸の」＋ membrane「膜」（ラテン語 membrana）",
+          "note": "肺胞（alveolus）の中の空気と毛細血管（capillary）の中の血液（blood）を隔てる膜（membrane）（血液空気関門）。Ⅰ型肺胞上皮細胞（squamous alveolar cell）・2つの基底膜（basement membrane）（合わさって1枚）・毛細血管の内皮細胞でできていて、厚さ 0.5μm ほど。酸素と二酸化炭素はここを拡散で通る。"
         }
       ]
     },

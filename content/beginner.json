@@ -430,6 +430,17 @@
       ]
     },
     {
+      "id": "b-resp-pleura", "title": "胸膜と肺胞", "system": "respiratory",
+      "intro": ["肺は胸膜という薄い膜の袋に包まれています。空気は気管支の先の小さな袋（肺胞）まで届き、そこで酸素と二酸化炭素を交換します。"],
+      "terms": [
+        { "id": "visceral-pleura", "point": "肺の表面をじかにおおう胸膜。痛みは感じない。" },
+        { "id": "parietal-pleura", "point": "胸の壁の内側をおおう胸膜。肺門で肺胸膜につながる。痛みを感じる。" },
+        { "id": "pleural-cavity", "point": "2枚の胸膜の間のすき間。少しの液が入る。空気が入ると肺がしぼむ（気胸）。" },
+        { "id": "costodiaphragmatic-recess", "point": "肺の下の、胸壁と横隔膜の間のすき間。胸水がまずたまる所。" },
+        { "id": "pulmonary-alveolus", "point": "気管支の先の小さな袋。まわりの毛細血管とガスを交換する。" }
+      ]
+    },
+    {
       "id": "b-dig-mouth", "title": "口とのど", "system": "digestive",
       "intro": ["食べ物は 口腔 → 咽頭 → 食道 と進みます。咽頭は空気と食べ物の両方が通る所です。"],
       "terms": [

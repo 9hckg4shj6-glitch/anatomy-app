@@ -4631,6 +4631,477 @@
      "note": "糸球体包（glomerular capsule）の外葉と内葉（足細胞（podocyte））の間のすき間。糸球体（glomerulus）でこされた原尿（primary urine）がたまり、尿細管極（urinary pole）から近位尿細管（proximal tubule）へ流れる。"
     }
    ]
+  },
+  "lung-mediastinal-right": {
+   "url": "plates/lung-mediastinal-right.2362ec9a83.webp",
+   "w": 363,
+   "h": 510,
+   "labels": [
+    {
+     "at": [
+      0.5041,
+      0.0863
+     ],
+     "term": "apex-of-lung"
+    },
+    {
+     "at": [
+      0.427,
+      0.1216
+     ],
+     "ja": "腕頭動脈溝",
+     "en": "groove for brachiocephalic artery",
+     "note": "右の腕頭動脈が肺尖の前内側を押してできる溝。"
+    },
+    {
+     "at": [
+      0.2287,
+      0.2235
+     ],
+     "ja": "上大静脈溝",
+     "en": "groove for superior vena cava",
+     "note": "上大静脈が右肺の内側面の前上を押してできる溝。"
+    },
+    {
+     "at": [
+      0.5207,
+      0.3078
+     ],
+     "ja": "奇静脈溝",
+     "en": "groove for azygos vein",
+     "note": "奇静脈が肺門の上を後ろから前へアーチ状に越えて上大静脈に注ぐ、その跡の溝（右肺だけ）。"
+    },
+    {
+     "at": [
+      0.5482,
+      0.3804
+     ],
+     "term": "right-superior-lobar-bronchus",
+     "note": "右の上葉気管支は肺動脈より上にあるので動脈上気管支ともいう。"
+    },
+    {
+     "at": [
+      0.4876,
+      0.4157
+     ],
+     "term": "right-pulmonary-artery"
+    },
+    {
+     "at": [
+      0.5978,
+      0.451
+     ],
+     "ja": "中間気管支幹",
+     "en": "intermediate bronchus",
+     "note": "右の主気管支のうち、上葉気管支を出してから中葉気管支と下葉気管支に分かれるまでの部分（約2cm）。肺動脈より下にあるので動脈下気管支ともいう。"
+    },
+    {
+     "at": [
+      0.4821,
+      0.4922
+     ],
+     "term": "superior-pulmonary-vein"
+    },
+    {
+     "at": [
+      0.6198,
+      0.5471
+     ],
+     "term": "inferior-pulmonary-vein"
+    },
+    {
+     "at": [
+      0.4215,
+      0.3686
+     ],
+     "term": "hilum-of-lung"
+    },
+    {
+     "at": [
+      0.7328,
+      0.5804
+     ],
+     "ja": "食道溝",
+     "en": "groove for esophagus",
+     "note": "食道が右肺の肺門の後ろを押してできる溝。"
+    },
+    {
+     "at": [
+      0.3499,
+      0.5098
+     ],
+     "term": "cardiac-impression"
+    },
+    {
+     "at": [
+      0.6694,
+      0.7627
+     ],
+     "term": "pulmonary-ligament"
+    },
+    {
+     "at": [
+      0.5152,
+      0.8667
+     ],
+     "term": "base-of-lung"
+    }
+   ]
+  },
+  "lung-mediastinal-left": {
+   "url": "plates/lung-mediastinal-left.3f6df5d4f4.webp",
+   "w": 332,
+   "h": 496,
+   "labels": [
+    {
+     "at": [
+      0.5181,
+      0.0806
+     ],
+     "term": "apex-of-lung"
+    },
+    {
+     "at": [
+      0.6205,
+      0.119
+     ],
+     "ja": "左鎖骨下動脈溝",
+     "en": "groove for left subclavian artery",
+     "note": "左鎖骨下動脈が肺尖の内側を押してできる溝。"
+    },
+    {
+     "at": [
+      0.7078,
+      0.125
+     ],
+     "ja": "左腕頭静脈溝",
+     "en": "groove for left brachiocephalic vein",
+     "note": "左腕頭静脈が肺尖の前内側を押してできる溝。"
+    },
+    {
+     "at": [
+      0.4759,
+      0.2823
+     ],
+     "ja": "大動脈溝",
+     "en": "groove for aorta",
+     "note": "大動脈弓が肺門の上を前から後ろへ越え、胸大動脈が肺門の後ろを下る、その跡の深い溝（左肺だけ）。"
+    },
+    {
+     "at": [
+      0.509,
+      0.3629
+     ],
+     "term": "left-pulmonary-artery"
+    },
+    {
+     "at": [
+      0.4398,
+      0.4355
+     ],
+     "term": "main-bronchus",
+     "ja": "左主気管支",
+     "en": "left main bronchus"
+    },
+    {
+     "at": [
+      0.5361,
+      0.4335
+     ],
+     "term": "superior-pulmonary-vein"
+    },
+    {
+     "at": [
+      0.4127,
+      0.5766
+     ],
+     "term": "inferior-pulmonary-vein"
+    },
+    {
+     "at": [
+      0.4639,
+      0.3387
+     ],
+     "term": "hilum-of-lung"
+    },
+    {
+     "at": [
+      0.6867,
+      0.5403
+     ],
+     "term": "cardiac-impression"
+    },
+    {
+     "at": [
+      0.8554,
+      0.6069
+     ],
+     "term": "cardiac-notch"
+    },
+    {
+     "at": [
+      0.0723,
+      0.5827
+     ],
+     "ja": "後縁（肺）",
+     "en": "posterior border of lung",
+     "note": "肋骨面と内側面の境の後ろの丸い縁で、脊柱の両わきのくぼみに入る。"
+    },
+    {
+     "at": [
+      0.3524,
+      0.7117
+     ],
+     "term": "pulmonary-ligament"
+    },
+    {
+     "at": [
+      0.5181,
+      0.8911
+     ],
+     "term": "base-of-lung"
+    }
+   ]
+  },
+  "respiratory-zone": {
+   "url": "plates/respiratory-zone.40a5538499.webp",
+   "w": 1139,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.4015,
+      0.1239
+     ],
+     "term": "terminal-bronchiole"
+    },
+    {
+     "at": [
+      0.4176,
+      0.2011
+     ],
+     "ja": "平滑筋（細気管支）",
+     "en": "smooth muscle",
+     "note": "細気管支の壁を輪のように巻く平滑筋。縮むと空気の通り道が細くなる（ぜんそく）。迷走神経（副交感神経）で縮み、交感神経でゆるむ。"
+    },
+    {
+     "at": [
+      0.7941,
+      0.307
+     ],
+     "term": "pulmonary-artery",
+     "ja": "肺動脈の枝",
+     "en": "branch of pulmonary artery"
+    },
+    {
+     "at": [
+      0.7287,
+      0.3974
+     ],
+     "term": "pulmonary-veins",
+     "ja": "肺静脈の枝",
+     "en": "tributary of pulmonary vein"
+    },
+    {
+     "at": [
+      0.4015,
+      0.48
+     ],
+     "term": "respiratory-bronchiole"
+    },
+    {
+     "at": [
+      0.6632,
+      0.6158
+     ],
+     "term": "pulmonary-alveolus"
+    },
+    {
+     "at": [
+      0.8346,
+      0.7516
+     ],
+     "ja": "肺胞の毛細血管",
+     "en": "alveolar capillaries",
+     "note": "肺胞を網のように包む毛細血管。肺動脈の枝から来て肺静脈の枝へ続き、肺胞の空気と酸素・二酸化炭素を交換する。"
+    },
+    {
+     "at": [
+      0.2625,
+      0.6583
+     ],
+     "term": "alveolar-pores"
+    },
+    {
+     "at": [
+      0.4265,
+      0.5919
+     ],
+     "term": "alveolar-duct"
+    },
+    {
+     "at": [
+      0.1074,
+      0.7445
+     ],
+     "term": "alveolar-sac"
+    }
+   ]
+  },
+  "alveolar-wall": {
+   "url": "plates/alveolar-wall.dea76c2604.webp",
+   "w": 713,
+   "h": 715,
+   "labels": [
+    {
+     "at": [
+      0.6985,
+      0.3189
+     ],
+     "term": "alveolar-pores"
+    },
+    {
+     "at": [
+      0.8415,
+      0.3175
+     ],
+     "ja": "毛細血管",
+     "en": "capillary",
+     "note": "肺胞の壁の中を通る毛細血管。中の赤血球と肺胞の空気の間で酸素と二酸化炭素が交換される。"
+    },
+    {
+     "at": [
+      0.9018,
+      0.435
+     ],
+     "term": "respiratory-membrane"
+    },
+    {
+     "at": [
+      0.3955,
+      0.4587
+     ],
+     "term": "alveolar-macrophage"
+    },
+    {
+     "at": [
+      0.9509,
+      0.5538
+     ],
+     "term": "type-i-alveolar-cell"
+    },
+    {
+     "at": [
+      0.575,
+      0.7329
+     ],
+     "term": "pulmonary-alveolus",
+     "ja": "肺胞（中の空気）",
+     "en": "alveolus (air space)"
+    },
+    {
+     "at": [
+      0.5217,
+      0.9119
+     ],
+     "term": "type-ii-alveolar-cell"
+    }
+   ]
+  },
+  "pleura-chest": {
+   "url": "plates/pleura-chest.a25fd8da2e.webp",
+   "w": 1400,
+   "h": 968,
+   "labels": [
+    {
+     "at": [
+      0.3805,
+      0.1178
+     ],
+     "term": "lung"
+    },
+    {
+     "at": [
+      0.4793,
+      0.2138
+     ],
+     "term": "parietal-pleura",
+     "ja": "胸膜の袋（壁側胸膜）",
+     "en": "pleural sac"
+    },
+    {
+     "at": [
+      0.1012,
+      0.2559
+     ],
+     "ja": "肋間筋",
+     "en": "intercostal muscles",
+     "note": "肋骨（ribs）と肋骨の間を埋める筋（muscle）（外肋間筋（external intercostal muscles）・内肋間筋（internal intercostal muscles）・最内肋間筋（innermost intercostal））。胸壁（thoracic wall）をつくり、呼吸（respiration）で肋骨を動かす。"
+    },
+    {
+     "at": [
+      0.2612,
+      0.2727
+     ],
+     "term": "sternum"
+    },
+    {
+     "at": [
+      0.5143,
+      0.7189
+     ],
+     "term": "diaphragm"
+    },
+    {
+     "at": [
+      0.8924,
+      0.2997
+     ],
+     "term": "parietal-pleura",
+     "ja": "壁側胸膜（拡大）"
+    },
+    {
+     "at": [
+      0.8866,
+      0.4865
+     ],
+     "term": "visceral-pleura"
+    },
+    {
+     "at": [
+      0.9063,
+      0.5084
+     ],
+     "term": "pleural-cavity"
+    },
+    {
+     "at": [
+      0.7295,
+      0.1717
+     ],
+     "term": "lung",
+     "ja": "肺（拡大）",
+     "en": "lung (magnified)"
+    },
+    {
+     "at": [
+      0.9156,
+      0.1633
+     ],
+     "ja": "肋間筋（拡大）",
+     "en": "intercostal muscle",
+     "note": "肋骨の間の筋。壁側胸膜はその内側（胸内筋膜を隔てて）をおおう。"
+    },
+    {
+     "at": [
+      0.0721,
+      0.8872
+     ],
+     "ja": "胸壁",
+     "en": "thoracic wall",
+     "note": "胸郭（肋骨・胸骨・胸椎）と肋間筋・結合組織でできた胸の壁。内面を壁側胸膜（肋骨胸膜）がおおう。"
+    }
+   ]
   }
  }
 }

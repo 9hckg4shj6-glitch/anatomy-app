@@ -399,9 +399,9 @@ async function main() {
     if (!ids.length) continue;
     // 骨格の中の軟骨（肋軟骨・椎間円板）と関節の線維軟骨（半月・関節円板など）は、アプリで骨と違う青みのある白にする
     const extrasOf = (id) => (["skeletal", "joints"].includes(system.id) && CARTILAGE.test(elementNames.get(id)) ? { cartilage: true } : null);
-    // 腎臓の中のつくり（ZK_…、scripts/kidney/）は形どうしの面がぴったり接するので、光をさえぎる形に入れない
-    // （入れると、中の面がとなりの形にふさがれて真っ暗になる。外から見えるのは腎皮質の表面だけなので、ほかの形の暗さはほとんど変わらない）
-    const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) || id.startsWith("ZK_") };
+    // 腎臓の中のつくり（ZK_…、scripts/kidney/）と肺区域（ZL_…、scripts/lung/）は形どうしの面がぴったり接するので、光をさえぎる形に入れない
+    // （入れると、中の面がとなりの形にふさがれて真っ暗になる。外から見えるのは腎皮質・肺の表面だけなので、ほかの形の暗さはほとんど変わらない）
+    const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) || id.startsWith("ZK_") || id.startsWith("ZL_") };
     let meshes = new Map();
     if (bp.length) {
       const glb = await writeGlb(system.id, bp.map((id) => [id, shown(id)]), shape);
