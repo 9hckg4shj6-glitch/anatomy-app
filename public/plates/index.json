@@ -1037,7 +1037,7 @@
    ]
   },
   "kidney-section": {
-   "url": "plates/kidney-section.d88a9f5712.webp",
+   "url": "plates/kidney-section.1632fd44ba.webp",
    "w": 608,
    "h": 982,
    "labels": [
@@ -4113,7 +4113,9 @@
       0.5882,
       0.4075
      ],
-     "term": "renal-vein"
+     "term": "renal-vein",
+     "ja": "左腎静脈",
+     "en": "left renal vein"
     },
     {
      "at": [
@@ -4149,11 +4151,34 @@
       0.5675
      ],
      "term": "left-colic-flexure"
+    },
+    {
+     "at": [
+      0.6706,
+      0.155
+     ],
+     "term": "adrenal-gland"
+    },
+    {
+     "at": [
+      0.2941,
+      0.465
+     ],
+     "term": "renal-vein",
+     "ja": "右腎静脈",
+     "en": "right renal vein"
+    },
+    {
+     "at": [
+      0.6843,
+      0.75
+     ],
+     "term": "ureter"
     }
    ]
   },
   "renal-fascia-section": {
-   "url": "plates/renal-fascia-section.eff09ac60b.webp",
+   "url": "plates/renal-fascia-section.d04202d908.webp",
    "w": 687,
    "h": 391,
    "labels": [
@@ -4183,7 +4208,9 @@
       0.3595,
       0.2737
      ],
-     "term": "renal-fascia"
+     "term": "renal-fascia",
+     "ja": "腎筋膜の前葉",
+     "en": "anterior renal fascia"
     },
     {
      "at": [
@@ -4240,11 +4267,101 @@
       0.7596
      ],
      "term": "transversalis-fascia"
+    },
+    {
+     "at": [
+      0.2023,
+      0.6496
+     ],
+     "term": "renal-fascia",
+     "ja": "腎筋膜の後葉",
+     "en": "posterior renal fascia"
+    },
+    {
+     "at": [
+      0.3217,
+      0.1151
+     ],
+     "ja": "壁側腹膜",
+     "en": "parietal peritoneum",
+     "note": "腹壁の内面をおおう腹膜。この図では腹膜腔の後ろの壁で、その後ろが腹膜の後ろの区画になる。"
+    },
+    {
+     "at": [
+      0.3173,
+      0.202
+     ],
+     "ja": "前腎傍腔",
+     "en": "anterior pararenal space",
+     "note": "壁側腹膜と腎筋膜の前葉の間の区画。上行結腸・下行結腸・十二指腸・膵臓が入る。膵炎の滲出液や十二指腸の穿孔の空気はここに広がる。"
+    },
+    {
+     "at": [
+      0.5517,
+      0.2992
+     ],
+     "ja": "腸間膜後面",
+     "en": "retromesenteric plane",
+     "note": "腎筋膜の前葉の層の間にできるすき間。左右の腎周囲腔の前で正中を越えてつながり、前腎傍腔の液がここを通って反対側へ広がる。"
+    },
+    {
+     "at": [
+      0.3479,
+      0.5422
+     ],
+     "ja": "腎周囲腔",
+     "en": "perirenal space",
+     "note": "腎筋膜の前葉と後葉に包まれた区画。腎臓・副腎・脂肪被膜（腎周囲脂肪）が入る。下は閉じていない。"
+    },
+    {
+     "at": [
+      0.8443,
+      0.5499
+     ],
+     "ja": "架橋中隔",
+     "en": "perirenal bridging septa",
+     "note": "脂肪被膜の中を走る薄い線維の膜。線維被膜と腎筋膜を結ぶ。腎臓のまわりの出血や液はこれに沿って広がる。"
+    },
+    {
+     "at": [
+      0.3581,
+      0.7136
+     ],
+     "ja": "後腎傍腔",
+     "en": "posterior pararenal space",
+     "note": "腎筋膜の後葉と横筋筋膜の間の区画。臓器は入らず、腎傍脂肪体（脂肪）だけがある。外側で腹膜の外の脂肪の層に続く。"
+    },
+    {
+     "at": [
+      0.8574,
+      0.6317
+     ],
+     "ja": "腎後面",
+     "en": "retrorenal plane",
+     "note": "腎筋膜の後葉の層の間にできるすき間。前腎傍腔の液が腎臓の後ろへ回りこむ道になる。"
+    },
+    {
+     "at": [
+      0.0757,
+      0.4015
+     ],
+     "ja": "外側円錐筋膜",
+     "en": "lateroconal fascia",
+     "note": "腎筋膜の前葉と後葉が腎臓の外側で合わさって前外側へ続く膜。前腎傍腔と後腎傍腔を外側で分ける。"
+    },
+    {
+     "at": [
+      0.0539,
+      0.2097
+     ],
+     "ja": "腹膜外腔（側腹部）",
+     "en": "lateral extraperitoneal space",
+     "note": "側腹壁の内面と壁側腹膜の間の脂肪の層（腹膜前脂肪）。後ろで後腎傍腔に続く。"
     }
    ]
   },
   "kidney-vessels": {
-   "url": "plates/kidney-vessels.c24f9db6c1.webp",
+   "url": "plates/kidney-vessels.910a08d34e.webp",
    "w": 1400,
    "h": 1075,
    "labels": [
@@ -4401,83 +4518,117 @@
       0.9815
      ],
      "term": "papillary-duct"
+    },
+    {
+     "at": [
+      0.1357,
+      0.1638
+     ],
+     "term": "glomerular-capsule"
     }
    ]
   },
   "renal-corpuscle": {
-   "url": "plates/renal-corpuscle.4565bd2874.webp",
+   "url": "plates/renal-corpuscle.584f16e344.webp",
    "w": 1400,
-   "h": 1023,
+   "h": 1017,
    "labels": [
     {
      "at": [
-      0.1341,
-      0.1125
+      0.1336,
+      0.1131
      ],
      "term": "afferent-arteriole"
     },
     {
      "at": [
-      0.1982,
+      0.1972,
       0.4533
      ],
      "term": "juxtaglomerular-apparatus"
     },
     {
      "at": [
-      0.1469,
-      0.431
+      0.1463,
+      0.4311
      ],
      "term": "macula-densa"
     },
     {
      "at": [
-      0.0364,
+      0.0366,
       0.5233
      ],
      "term": "distal-tubule"
     },
     {
      "at": [
-      0.1318,
-      0.7766
+      0.1313,
+      0.7761
      ],
      "term": "efferent-arteriole"
     },
     {
      "at": [
-      0.3029,
-      0.5409
+      0.3011,
+      0.5408
      ],
      "term": "mesangial-cell"
     },
     {
      "at": [
-      0.438,
-      0.1985
+      0.435,
+      0.1989
      ],
      "term": "podocyte"
     },
     {
      "at": [
-      0.6824,
-      0.1109
+      0.6775,
+      0.1115
      ],
      "term": "glomerular-capsule"
     },
     {
      "at": [
-      0.6812,
-      0.587
+      0.5251,
+      0.5313
      ],
      "term": "glomerulus"
     },
     {
      "at": [
-      0.8559,
-      0.3721
+      0.8496,
+      0.3723
      ],
      "term": "proximal-tubule"
+    },
+    {
+     "at": [
+      0.6764,
+      0.5869
+     ],
+     "ja": "糸球体の内皮細胞",
+     "en": "glomerular capillary endothelial cell",
+     "note": "糸球体（glomerulus）の毛細血管（capillary）の内面（internal surface）をおおう薄い細胞（cell）。たくさんの孔（窓）があき、ろ過のふるいの1枚目になる。"
+    },
+    {
+     "at": [
+      0.472,
+      0.9494
+     ],
+     "ja": "壁側上皮細胞",
+     "en": "parietal epithelial cell",
+     "note": "糸球体包（glomerular capsule）の外葉（壁側板）をつくる単層扁平上皮の細胞（cell）。尿細管極（urinary pole）で近位尿細管（proximal tubule）の上皮（epithelium）に続く。"
+    },
+    {
+     "at": [
+      0.7791,
+      0.4915
+     ],
+     "ja": "ボウマン腔",
+     "en": "capsular space (Bowman's space)",
+     "note": "糸球体包（glomerular capsule）の外葉と内葉（足細胞（podocyte））の間のすき間。糸球体（glomerulus）でこされた原尿（primary urine）がたまり、尿細管極（urinary pole）から近位尿細管（proximal tubule）へ流れる。"
     }
    ]
   }

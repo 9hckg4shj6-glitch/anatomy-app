@@ -412,10 +412,10 @@ const PlateArt = z.strictObject({
   src: z.string().url(), page: z.string().url(), author: z.string().min(1), license: z.string().regex(/^CC BY(-SA)? \d\.\d( DE)?$|^Public domain$/),
   licenseUrl: z.string().url(), changes: z.string().min(1), background: z.enum(["dark", "red", "white"]), flip: z.literal("v").optional(),
   erase: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.number()])])).optional(), eraseWidth: z.number().optional(), white: z.number().int().min(200).max(254).optional(), blur: z.number().min(0.3).max(10).optional(),
-  eraseBoxes: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
+  eraseBoxes: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.string().regex(/^#[0-9a-f]{6}$/)])])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
   drop: z.array(z.string().min(1)).optional(), dropGroups: z.array(z.string().min(1)).optional(), recolor: z.record(z.string(), z.string()).optional(),
   blobs: z.number().int().min(2).max(5).optional(),
-  keepAll: z.literal(true).optional(),
+  keepAll: z.literal(true).optional(), backColor: z.tuple([z.number().int(), z.number().int(), z.number().int()]).optional(),
 });
 const Plate = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(), points: z.array(z.string().min(1)).optional(),

@@ -335,8 +335,15 @@ async function artPlate(plate) {
     const len = Math.hypot(x2 - x1, y2 - y1), tx = (x2 - x1) / len, ty = (y2 - y1) / len;
     for (let s = -half; s <= len + half; s += 0.5) for (let d = -half; d <= half; d += 0.5) erase[at(x1 + tx * s - ty * d, y1 + ty * s + tx * d) / 3] = 1;
   }
-  // 図に重なった文字（art.eraseBoxes の四角）も同じように埋める
-  for (const [bx0, by0, bx1, by1] of (art.eraseBoxes ?? []).map((box) => box.map((v) => Math.round(v * unit)))) {
+  // 図に重なった文字（art.eraseBoxes の四角）も同じように埋める。5つ目に色（#rrggbb）があればその色で平らに塗る
+  // （線と線の間の細い所の文字。まわりから補うと、補う長さが短くて線の色を拾う）
+  const flat = [];
+  for (const box of art.eraseBoxes ?? []) {
+    if (typeof box[4] !== "string") continue;
+    const [bx0, by0, bx1, by1] = box.slice(0, 4).map((v) => Math.round(v * unit));
+    flat.push([[bx0, by0, bx1, by1], hex(box[4])]);
+  }
+  for (const [bx0, by0, bx1, by1] of (art.eraseBoxes ?? []).filter((box) => typeof box[4] !== "string").map((box) => box.map((v) => Math.round(v * unit)))) {
     for (let y = Math.max(0, by0); y <= Math.min(H0 - 1, by1); y++) for (let x = Math.max(0, bx0); x <= Math.min(W0 - 1, bx1); x++) erase[y * W0 + x] = 1;
     reach = Math.max(reach, Math.ceil(Math.min(bx1 - bx0, by1 - by0) + 8));
   }
@@ -363,6 +370,9 @@ async function artPlate(plate) {
     if (color) filled.push([k * 3, color]);
   }
   for (const [k, c] of filled) px.set(c, k);
+  for (const [[bx0, by0, bx1, by1], c] of flat) {
+    for (let y = Math.max(0, by0); y <= Math.min(H0 - 1, by1); y++) for (let x = Math.max(0, bx0); x <= Math.min(W0 - 1, bx1); x++) px.set(c, (y * W0 + x) * 3);
+  }
   // 縁から続く背景（4近傍の塗りつぶし）
   // art.white があれば、白い背景とみなす明るさの下限（ごく薄い色の部分を背景として抜かないように）
   const isBack = art.background === "white" && art.white ? (r, g, b) => Math.min(r, g, b) > art.white : BACKGROUND[art.background];
@@ -376,6 +386,13 @@ async function artPlate(plate) {
   };
   for (let x = 0; x < W0; x++) { push(x, 0); push(x, H0 - 1); }
   for (let y = 0; y < H0; y++) { push(0, y); push(W0 - 1, y); }
+  // art.backColor [r, g, b] があれば、縁から続かない所でもその色（±6）の点から背景を広げる（図に囲まれて残った背景の帯の色）
+  if (art.backColor) {
+    const [br, bg, bb] = art.backColor;
+    for (let k = 0; k < W0 * H0; k++) {
+      if (Math.abs(px[k * 3] - br) <= 6 && Math.abs(px[k * 3 + 1] - bg) <= 6 && Math.abs(px[k * 3 + 2] - bb) <= 6) push(k % W0, Math.floor(k / W0));
+    }
+  }
   while (stack.length) {
     const k = stack.pop(), x = k % W0, y = (k - x) / W0;
     if (x > 0) push(x - 1, y);
