@@ -13,6 +13,7 @@ import { INSERTION_COLOR, ORIGIN_COLOR } from "../viewer";
 import { motionPlayer, sceneFor, type AppContext } from "./context";
 import { plateOverlay } from "./plate-view";
 import { termCard } from "./term-card";
+import { noteText } from "../en-notes";
 
 export type Outcome = EnglishResult | "skip";
 
@@ -144,7 +145,7 @@ export function relationAnswer(term: Term): HTMLElement {
   const { than, dir, why } = term.toward!;
   return h("div", { class: "relation-answer" },
     h("p", {}, h("b", { class: "relation-this" }, term.ja), "は", h("b", { class: "relation-than" }, termById.get(than)!.ja), "の", h("b", {}, termById.get(dir)!.ja)),
-    h("p", { class: "muted" }, why),
+    h("p", { class: "muted" }, noteText(why)),
   );
 }
 
@@ -280,7 +281,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
         h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi)),
         h("p", { class: "prompt" }, "ここを通る（入る）ものは？"),
       );
-      const text = (id: string) => termById.get(id)!.passes ?? "";
+      const text = (id: string) => noteText(termById.get(id)!.passes ?? "");
       const picked = await choose(prompt, choicesOf(text, (other) => !!other.passes), text, undefined, "long", ownerOf);
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
       break;

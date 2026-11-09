@@ -2,7 +2,8 @@ import "fake-indexeddb/auto";
 import { termById, units } from "../src/content";
 import { beginnerPoints, beginnerUnits, courseTerms, courseUnitOf, courseUnits, inCourse, lessonById, studyFacets } from "../src/course";
 import { db } from "../src/db";
-import { loadPreferences, preferences } from "../src/settings";
+import { noteText, withoutEnglish } from "../src/en-notes";
+import { loadPreferences, preferences, setPreference } from "../src/settings";
 import { normalize, searchTerms, searchUnits } from "../src/search";
 import { facetsFor, MUSCLE_FACETS, TERM_FACETS } from "../src/study";
 import { nextLesson } from "../src/ui/lessons";
@@ -82,15 +83,48 @@ describe("初心者コース", () => {
       const card = termCard(termById.get("humerus")!);
       expect(card.querySelector(".term-point")?.textContent).toContain(beginnerPoints.get("humerus")!);
       const more = card.querySelector("details.term-more") as HTMLDetailsElement;
-      expect(more.textContent).not.toContain(termById.get("humerus")!.note);
+      expect(more.textContent).not.toContain(noteText(termById.get("humerus")!.note));
       more.open = true;
       more.dispatchEvent(new Event("toggle"));
-      expect(more.textContent).toContain(termById.get("humerus")!.note);
+      expect(more.textContent).toContain(noteText(termById.get("humerus")!.note));
     });
     await withMode("detail", () => {
       const card = termCard(termById.get("humerus")!);
       expect(card.querySelector(".term-point")).toBeNull();
-      expect(card.textContent).toContain(termById.get("humerus")!.note);
+      expect(card.textContent).toContain(noteText(termById.get("humerus")!.note));
+    });
+  });
+});
+
+describe("説明の英語の併記", () => {
+  afterEach(() => {
+    preferences.enNotes = false;
+  });
+
+  it("ふだんは日本語だけで、添えた英語だけを外す（もとからの英語は残す）", () => {
+    const note = termById.get("humerus")!.note;
+    expect(note).toContain("肩甲骨（scapula）");
+    expect(preferences.enNotes).toBe(false);
+    expect(noteText(note)).not.toMatch(/（[A-Za-z]/);
+    expect(noteText(note)).toContain("肩甲骨と、肘で橈骨・尺骨と関節をつくる");
+    expect(withoutEnglish("頭側（cranial）とも言う。肩甲骨（scapula）の上")).toBe("頭側（cranial）とも言う。肩甲骨の上");
+    expect(withoutEnglish("脊髄神経（C1〜C8）")).toBe("脊髄神経（C1〜C8）");
+    preferences.enNotes = true;
+    expect(noteText(note)).toBe(note);
+  });
+
+  it("語のカードの「英語を併記」で切り替えて、設定に残す", async () => {
+    await withMode("detail", async () => {
+      const term = termById.get("humerus")!;
+      const card = termCard(term);
+      expect(card.textContent).not.toContain("（scapula）");
+      const toggle = card.querySelector(".en-toggle button") as HTMLButtonElement;
+      expect(toggle.getAttribute("aria-pressed")).toBe("false");
+      toggle.click();
+      await vi.waitFor(() => expect(card.textContent).toContain("（scapula）"));
+      expect(preferences.enNotes).toBe(true);
+      expect((await db.settings.get("enNotes"))?.value).toBe(true);
+      await setPreference("enNotes", false);
     });
   });
 });

@@ -6,6 +6,7 @@
 // 同じ説明（1つの語・レッスン・臓器・項目）の中では最初の1回だけ添え、その語自身（見出し）には添えない。
 // 添えた英語は外してから添え直すので、何度実行してもよい。説明を書き足したり表を変えたりしたら実行する
 // （表の英語を書きかえたときは、古い英語は外れないので、先に古い行のまま --strip で外す）。
+// 添えた「語（英語）」の一覧を content/en-notes.json に書く（アプリは英語を添えない設定のとき、表示でこれだけを外す。KEEP は残す）。
 // 使い方: node scripts/en-notes.mjs（--check は書きこまず、添え直すと変わる所があれば失敗する。--report は語ごとの例を出す。--strip は添えた英語を外す）
 import fs from "node:fs";
 import path from "node:path";
@@ -36,24 +37,30 @@ for (const [ja, ens] of headJa) {
   // 1文字の見出し（上・前・橋など）と、同じ日本語で英語が2つある見出し（筋突起など）は en-gloss.txt に書いたときだけ
   if (ja.length > 1 && new Set(ens).size === 1 && !ja.includes("（")) dict.set(ja, ens[0]);
 }
-/** 文脈で英語の変わる語: 「前枝@神経の」（直前がその文字列）・「錐体#nervous」（その系統のファイル。exam・organs・directions も） */
+/**
+ * 文脈で英語の変わる語: 「前枝@神経の」（直前がその文字列）・「錐体#nervous」（その系統のファイル。exam・organs・directions も）・
+ * 「舟状骨%距骨,踵骨」（同じ文（。で区切る）にどれかの語がある）
+ */
 const contexts = new Map();
 for (const line of fs.readFileSync(path.join(ROOT, "scripts/en-gloss.txt"), "utf8").split("\n")) {
   if (!line.trim() || line.startsWith("#")) continue;
   const [key, en] = line.split("|");
   if (!key || !en) throw new Error(`en-gloss.txt の行が読めない: ${line}`);
-  const [, ja, mark, where] = key.match(/^([^@#]+)(?:([@#])(.+))?$/);
+  const [, ja, mark, where] = key.match(/^([^@#%]+)(?:([@#%])(.+))?$/);
   if (mark) {
-    contexts.set(ja, [...(contexts.get(ja) ?? []), mark === "@" ? { before: where, en } : { systems: where.split(","), en }]);
+    const context = mark === "@" ? { before: where, en } : mark === "#" ? { systems: where.split(","), en } : { sentence: where.split(","), en };
+    contexts.set(ja, [...(contexts.get(ja) ?? []), context]);
     if (!dict.has(ja)) dict.set(ja, "-");
   } else dict.set(ja, en);
 }
-// 前の文字列の条件は長いものから、系統の条件はその後
+// 前の文字列の条件は長いものから、系統と文の条件はその後
 for (const list of contexts.values()) list.sort((a, b) => (b.before?.length ?? 0) - (a.before?.length ?? 0));
 /** いま書き換えているファイルの系統 */
 let system = "";
-function englishOf(word, before) {
-  const hit = contexts.get(word)?.find((c) => (c.before ? before.endsWith(c.before) : c.systems.includes(system)));
+function englishOf(word, before, after) {
+  const sentence = before.slice(before.lastIndexOf("。") + 1) + after.slice(0, after.includes("。") ? after.indexOf("。") : after.length);
+  const hit = contexts.get(word)?.find((c) =>
+    c.before ? before.endsWith(c.before) : c.systems ? c.systems.includes(system) : c.sentence.some((w) => sentence.includes(w)));
   const en = hit?.en ?? dict.get(word);
   return en && en !== "-" ? en : null;
 }
@@ -71,8 +78,23 @@ const unannotate = (text) => ownPairs.reduce((out, [annotated, ja]) => (out.incl
 const phrases = [...dict.keys()].filter((ja) => dict.get(ja) !== "-" || contexts.has(ja)).filter((ja) => !IS_RUN.test(ja)).sort((a, b) => b.length - a.length);
 const PHRASE = phrases.length ? new RegExp(phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"), "g") : null;
 
+/**
+ * もとから説明に書いてあった英語で、このスクリプトが添える形と同じ文字列になるもの。外さず、アプリでも英語を添えない設定のとき残す。
+ * 前後の文字まで含めて書く（ほかの所の「頭側（cranial）」は添えたものとして外す）
+ */
+const KEEP = [
+  "頭側（cranial）とも言う", "尾側（caudal）とも言う", "腹側（ventral）とも言う", "背側（dorsal）とも言う", "吻側（rostral）と言う",
+  "手の舟状骨（scaphoid）と足の舟状骨（navicular）",
+];
+const keepFound = new Set();
+/** KEEP の文字列を、語の続きにならない記号に置き換えておく（添え直しの間は触らない） */
+const protect = (text) => KEEP.reduce((out, keep, i) => (out.includes(keep) ? (keepFound.add(keep), out.split(keep).join(`\uE000${i}\uE001`)) : out), text);
+const restore = (text) => text.replace(/\uE000(\d+)\uE001/g, (_, i) => KEEP[Number(i)]);
+
 const examples = new Map();
 let added = 0;
+/** 実際に添えた「語（英語）」→ 語。content/en-notes.json に書き、アプリは英語を添えない設定のときこれだけを外す（src/en-notes.ts）。もとからの（scaphoid）などは残す */
+const used = new Map();
 
 /** 1つの説明の中の文に英語を添える。seen はその説明の中ですでに添えた語、self は見出し */
 function annotate(text, seen, self) {
@@ -94,7 +116,7 @@ function annotate(text, seen, self) {
 
   let out = "", last = 0;
   for (const [i, word, isRun] of spans) {
-    const en = englishOf(word, text.slice(0, i));
+    const en = englishOf(word, text.slice(0, i), text.slice(i + word.length));
     if (!en) continue;
     const rest = text.slice(i + word.length);
     if (isRun && word.length === 1 && (!AFTER_SINGLE.test(rest) || /[0-9つ]/.test(text[i - 1] ?? ""))) continue;
@@ -102,6 +124,7 @@ function annotate(text, seen, self) {
     if (seen.has(word)) continue;
     seen.add(word);
     const replaced = en.startsWith("=") ? en.slice(1) : `${word}（${en}）`;
+    used.set(replaced, word);
     out += text.slice(last, i) + replaced;
     last = i + word.length;
     added++;
@@ -123,7 +146,7 @@ function rewrite(file, edit) {
   const json = JSON.parse(raw);
   edit(json, (text, seen, self) => {
     if (typeof text !== "string") return;
-    const next = STRIP ? unannotate(text) : annotate(unannotate(text), seen, self);
+    const next = restore(STRIP ? unannotate(protect(text)) : annotate(unannotate(protect(text)), seen, self));
     changes.push([text, next]);
   });
   let out = "", cursor = 0;
@@ -184,6 +207,16 @@ changed += rewrite("content/exam.json", (json, put) => {
 changed += rewrite("content/directions.json", (json, put) => {
   for (const fact of json.facts) putKeys(fact, ["why"], put, new Set());
 });
+
+// 添えた文字列の一覧（長いものから。同じ長さは文字順）。語は英語の（）を外せば戻る
+for (const [annotated, word] of used) if (strip(annotated) !== word) throw new Error(`英語を外すと語に戻らない: ${annotated}`);
+for (const keep of KEEP) if (!keepFound.has(keep)) throw new Error(`KEEP の文字列が説明に無い: ${keep}`);
+const pairsFile = path.join(ROOT, "content/en-notes.json");
+const list = (texts) => `[\n${texts.map((text) => `  ${JSON.stringify(text)}`).join(",\n")}\n]`;
+const pairsJson = `{\n"keep": ${list(KEEP)},\n"added": ${list([...used.keys()].sort((a, b) => b.length - a.length || (a < b ? -1 : 1)))}\n}\n`;
+const pairsChanged = !fs.existsSync(pairsFile) || fs.readFileSync(pairsFile, "utf8") !== pairsJson;
+if (pairsChanged && CHECK) changed++;
+if (pairsChanged && !CHECK) fs.writeFileSync(pairsFile, pairsJson);
 
 if (REPORT) for (const [word, list] of [...examples].sort((a, b) => a[0].localeCompare(b[0], "ja"))) console.log(`${word}\t${list.join(" ／ ")}`);
 console.log(CHECK ? `添え直すと変わる説明 ${changed} 件` : `書き換えた説明 ${changed} 件（添えてある英語 ${added} 個）`);

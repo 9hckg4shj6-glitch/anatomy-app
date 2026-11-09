@@ -19,6 +19,7 @@ import { facetLabels, pickChoices, practiceQueue, shuffle, termMastery, typesEng
 import { sceneFor, type AppContext } from "./context";
 import { answeredChoices, chooseOne, retryButton, showPanel, typeEnglish, waitResult, type Outcome } from "./quiz";
 import { termCard } from "./term-card";
+import { noteText } from "../en-notes";
 
 /** 1回に新しく学ぶ数（D は図1枚が重いので少なく）と、苦手を解く数 */
 const SET_SIZE: Record<ExamKind, number> = { a: 10, b: 10, c: 10, d: 3, p: 5, s: 5, l: 5 };
@@ -395,7 +396,7 @@ function wordCard(exam: WordItem): HTMLElement {
       h("span", { lang: "en" }, exam.en),
       exam.la && exam.la.toLowerCase() !== exam.en.toLowerCase() ? h("span", { class: "term-la", lang: "la" }, `（ラ）${exam.la}`) : null,
     ),
-    h("dl", { class: "term-notes" }, h("div", {}, h("dt", {}, "説明"), h("dd", {}, exam.note))),
+    h("dl", { class: "term-notes" }, h("div", {}, h("dt", {}, "説明"), h("dd", {}, noteText(exam.note)))),
   );
 }
 
@@ -477,7 +478,7 @@ async function askEssay(ctx: AppContext, exam: EssayItem, source: ReviewEvent["s
     await until<void>(ctx.signal, (resolve) => showPanel(ctx, head,
       title(),
       h("p", { class: "prompt" }, "言えた要点に印を付ける"),
-      h("ul", { class: "points" }, ...exam.points.map((point, i) => h("li", {}, h("label", {}, boxes[i], h("span", {}, point))))),
+      h("ul", { class: "points" }, ...exam.points.map((point, i) => h("li", {}, h("label", {}, boxes[i], h("span", {}, noteText(point)))))),
       h("button", { class: "primary", type: "button", onClick: () => resolve() }, "採点する"),
     ));
   }
@@ -490,7 +491,7 @@ async function askEssay(ctx: AppContext, exam: EssayItem, source: ReviewEvent["s
     head,
     banner(outcome, `要点 ${checked} / ${exam.points.length}`),
     term ? "" : title(),
-    h("ul", { class: "points done" }, ...exam.points.map((point, i) => h("li", { class: boxes[i].checked ? "said" : "" }, point))),
+    h("ul", { class: "points done" }, ...exam.points.map((point, i) => h("li", { class: boxes[i].checked ? "said" : "" }, noteText(point)))),
     term ? termCard(term, { compact: true }) : "",
     countNote(exam),
   ], recorded);
@@ -799,13 +800,13 @@ async function studySort(ctx: AppContext, item: PairItem | SequenceItem | LevelI
   let body: (Node | string)[];
   if (item.kind === "p") {
     await showTerms(ctx, item.terms);
-    body = [h("h2", {}, item.title), pairTable(ctx, item), h("p", { class: "muted" }, "語の名前を押すと、3Dでその場所を示す。"), item.note ? h("p", {}, item.note) : ""];
+    body = [h("h2", {}, item.title), pairTable(ctx, item), h("p", { class: "muted" }, "語の名前を押すと、3Dでその場所を示す。"), item.note ? h("p", {}, noteText(item.note)) : ""];
   } else if (item.kind === "s") {
     await showSequenceAnswer(ctx, item);
-    body = [h("h2", {}, item.title), h("p", { class: "prompt" }, item.prompt), sequenceList(ctx, item), h("p", {}, item.note)];
+    body = [h("h2", {}, item.title), h("p", { class: "prompt" }, item.prompt), sequenceList(ctx, item), h("p", {}, noteText(item.note))];
   } else {
     await showLevel(ctx, item, "both");
-    body = [h("h2", {}, item.title), h("p", { class: "level-answer" }, item.answer), h("p", {}, item.note), h("p", { class: "muted" }, "橙が目安、緑が同じ高さの骨。")];
+    body = [h("h2", {}, item.title), h("p", { class: "level-answer" }, item.answer), h("p", {}, noteText(item.note)), h("p", { class: "muted" }, "橙が目安、緑が同じ高さの骨。")];
   }
   ctx.hint("回して・拡大して見られる");
   await until<void>(ctx.signal, (resolve) => {
@@ -858,7 +859,7 @@ async function askContrast(ctx: AppContext, exam: PairItem, source: ReviewEvent[
       `${row.text} → ${pairName(row.term)}`, chosen[rows.indexOf(row)] ? h("s", { class: "typed-ja" }, pairName(chosen[rows.indexOf(row)]!)) : ""))) : "",
     pairTable(ctx, exam),
     h("p", { class: "muted" }, "語の名前を押すと、3Dでその場所を示す。"),
-    exam.note ? h("p", {}, exam.note) : "",
+    exam.note ? h("p", {}, noteText(exam.note)) : "",
     countNote(exam),
   ], recorded);
   if (!again) return outcome;
@@ -920,7 +921,7 @@ async function askOrder(ctx: AppContext, exam: SequenceItem, source: ReviewEvent
     sequenceList(ctx, exam, exam.ordered || !answered ? undefined
       : (id) => (picked.includes(id) ? h("span", { class: "blank-answer correct" }, "✓") : h("span", { class: "blank-answer wrong" }, "選ばなかった"))),
     extra.length && !exam.ordered ? h("p", { class: "wrong-note" }, `当てはまらないのに選んだもの: ${extra.map(name).join("・")}`) : "",
-    h("p", {}, exam.note),
+    h("p", {}, noteText(exam.note)),
     countNote(exam),
   ], recorded);
   if (!again) return outcome;
@@ -1001,7 +1002,7 @@ async function askTrace(ctx: AppContext, exam: SequenceItem, source: ReviewEvent
     sequenceList(ctx, exam, completed ? undefined
       : (id) => (found.includes(id) ? h("span", { class: "blank-answer correct" }, "✓") : h("span", { class: "blank-answer wrong" }, "押せなかった"))),
     h("p", { class: "muted" }, "名前を押すと、3Dでその番号に寄る。"),
-    h("p", {}, exam.note),
+    h("p", {}, noteText(exam.note)),
     countNote(exam),
   ], recorded);
   if (!again) return outcome;
@@ -1033,7 +1034,7 @@ async function askLevel(ctx: AppContext, exam: LevelItem, facet: "level" | "land
     outcome === "correct" ? "" : answeredChoices(options, display, answer, picked, { variant: "long" }),
     h("h3", {}, exam.title),
     h("p", { class: "level-answer" }, exam.answer),
-    h("p", {}, exam.note),
+    h("p", {}, noteText(exam.note)),
     h("p", { class: "muted" }, "橙が目安、緑が同じ高さの骨。"),
     countNote(exam),
   ], recorded);

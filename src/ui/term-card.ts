@@ -2,8 +2,10 @@ import { speak } from "../audio";
 import { systemById, termById, terms, type Term } from "../content";
 import { beginnerPoints, isBeginner } from "../course";
 import { h } from "../dom";
+import { noteText } from "../en-notes";
 import { examCountOf } from "../exam";
 import { rootsOf, splitAtRoot, type Root } from "../roots";
+import { preferences, setPreference } from "../settings";
 import { INSERTION_COLOR, ORIGIN_COLOR, REGION_BOUND } from "../viewer";
 
 /**
@@ -95,6 +97,21 @@ function motionButton(play: (on: boolean) => string | Promise<string>): HTMLElem
   return h("div", { class: "motion-row" }, button, note);
 }
 
+/** 説明の欄の「英語を併記」の切り替え（設定の「説明に英語を添える」と同じ）。押したら rerender で説明を作り直す */
+function enToggle(rerender: () => void): HTMLElement {
+  const on = preferences.enNotes;
+  return h("div", { class: "en-toggle" },
+    h("button", {
+      class: on ? "chip on" : "chip", type: "button", "aria-pressed": String(on),
+      title: "説明の中の解剖の語に英語を（）で添える",
+      onClick: async () => {
+        await setPreference("enNotes", !on);
+        rerender();
+      },
+    }, on ? "英語を併記 ✓" : "英語を併記"),
+  );
+}
+
 /**
  * 語の中身（日本語・読み・英語・ラテン語・漢字の意味・語源・説明、筋なら起始・停止・支配神経・作用、局所解剖なら境界と通るもの）。
  * 説明・作用の中の基本の用語はタップで意味を出す。open を渡すと（図鑑）、その用語を3Dで見るボタンも出す。
@@ -113,7 +130,7 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
         h("b", {}, word.ja), h("span", { lang: "en" }, word.en),
         h("button", { class: "gloss-close", type: "button", "aria-label": "閉じる", onClick: () => (gloss.hidden = true) }, "×"),
       ),
-      h("p", {}, (beginner && beginnerPoints.get(word.id)) || word.note),
+      h("p", {}, (beginner && beginnerPoints.get(word.id)) || noteText(word.note)),
       options.open ? h("button", { class: "ghost-button", type: "button", onClick: () => options.open!(word) }, word.figure?.motion ? "動きを3Dで見る" : "3Dで見る") : "",
     );
   };
@@ -132,17 +149,18 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
   );
   if (options.compact) return h("article", { class: "term-card" }, head, english, gloss);
 
-  /** 詳しい中身（語根・漢字・語源・説明、筋の起始・停止・神経・作用、通るもの） */
-  const details = () => [
+  /** 詳しい中身（語根・漢字・語源・説明、筋の起始・停止・神経・作用、通るもの）。英語の併記を切り替えたら作り直す */
+  const details = (): (HTMLElement | null)[] => [
     rootChips(term),
+    enToggle(() => box.replaceChildren(...details().filter((node) => node !== null))),
     h("dl", { class: "term-notes" },
       term.kanji ? h("div", {}, h("dt", {}, "漢字"), h("dd", {}, term.kanji)) : null,
       term.etym ? h("div", {}, h("dt", {}, "語源"), h("dd", {}, term.etym)) : null,
       term.la && term.la.toLowerCase() !== term.en.toLowerCase() && beginner ? h("div", {}, h("dt", {}, "ラテン"), h("dd", { lang: "la" }, term.la)) : null,
-      h("div", {}, h("dt", {}, "説明"), h("dd", {}, ...linked(term.note))),
+      h("div", {}, h("dt", {}, "説明"), h("dd", {}, ...linked(noteText(term.note)))),
       // 骨の置き方（解剖学的正位の上下・前後・内外）と、ほかの部位から見た向き（向きの問い方の答え）
-      term.placing ? h("div", {}, h("dt", {}, "置き方"), h("dd", {}, ...linked(term.placing))) : null,
-      term.toward ? h("div", {}, h("dt", {}, "向き"), h("dd", {}, ...linked(`${termById.get(term.toward.than)?.ja}の${termById.get(term.toward.dir)?.ja}。${term.toward.why}`))) : null,
+      term.placing ? h("div", {}, h("dt", {}, "置き方"), h("dd", {}, ...linked(noteText(term.placing)))) : null,
+      term.toward ? h("div", {}, h("dt", {}, "向き"), h("dd", {}, ...linked(`${termById.get(term.toward.than)?.ja}の${termById.get(term.toward.dir)?.ja}。${noteText(term.toward.why)}`))) : null,
     ),
     !term.nerve ? null : h("dl", { class: "term-notes muscle-notes" },
       h("div", {}, h("dt", {}, h("span", { class: "swatch", style: `background:${ORIGIN_COLOR}` }), "起始"), h("dd", {}, term.origin)),
@@ -151,20 +169,27 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
       h("div", {}, h("dt", {}, "作用"), h("dd", {}, ...linked(term.action ?? ""))),
     ),
     !term.passes ? null : h("dl", { class: "term-notes" },
-      h("div", {}, h("dt", {}, "通るもの"), h("dd", {}, ...linked(term.passes))),
+      h("div", {}, h("dt", {}, "通るもの"), h("dd", {}, ...linked(noteText(term.passes)))),
     ),
     !term.hormones ? null : h("dl", { class: "term-notes" },
       h("div", {}, h("dt", {}, "ホルモン"), h("dd", {}, ...linked(term.hormones))),
     ),
   ];
+  const box = h("div", { class: "term-details" });
   const motion = term.motion && options.motion ? motionButton(options.motion) : null;
-  if (!beginner) return h("article", { class: "term-card" }, head, english, ...details(), motion, regionNotes(term, options.open), gloss);
+  if (!beginner) {
+    box.append(...details().filter((node) => node !== null));
+    return h("article", { class: "term-card" }, head, english, box, motion, regionNotes(term, options.open), gloss);
+  }
 
   // 初心者モード: 覚えることだけを見せ、詳しい中身は開いたときに作る
   const point = beginnerPoints.get(term.id);
   const more = h("details", { class: "term-more" }, h("summary", {}, "くわしく（漢字・語源・説明）"));
   more.addEventListener("toggle", () => {
-    if (more.open && more.children.length < 2) more.append(...details().filter((node) => node !== null), regionNotes(term, options.open) ?? "");
+    if (more.open && more.children.length < 2) {
+      box.append(...details().filter((node) => node !== null));
+      more.append(box, regionNotes(term, options.open) ?? "");
+    }
   });
   return h("article", { class: "term-card is-beginner" }, head, english,
     h("div", { class: "term-point" },

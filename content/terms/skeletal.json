@@ -1746,7 +1746,7 @@
       "title": "足の骨",
       "group": "下肢",
       "intro": [
-        "足根骨（tarsal bones）は7個: 近位列（proximal row）の距骨（talus）・踵骨（calcaneus）と、遠位列（distal row）の舟状骨（scaphoid）・内側楔状骨（medial cuneiform）・中間楔状骨（intermediate cuneiform）・外側楔状骨（lateral cuneiform）・立方骨（cuboid）。足（foot）では体重を受ける足根骨が大きく、指骨（phalanges）は小さい。",
+        "足根骨（tarsal bones）は7個: 近位列（proximal row）の距骨（talus）・踵骨（calcaneus）と、遠位列（distal row）の舟状骨（navicular）・内側楔状骨（medial cuneiform）・中間楔状骨（intermediate cuneiform）・外側楔状骨（lateral cuneiform）・立方骨（cuboid）。足（foot）では体重を受ける足根骨が大きく、指骨（phalanges）は小さい。",
         "足の骨（bone）は2つの列に分かれる。内側（medial）の列（踵骨・距骨・舟状骨・楔状骨（cuneiform bones）・第1〜第3中足骨（first to third metatarsals））はアーチ（arch）が高く、歩くときのばねになる。外側（lateral）の列（踵骨・立方骨・第4・第5中足骨（fourth and fifth metatarsals））はアーチが低く、体重を支える。横にもアーチがあり、土踏まず（arch of foot）をつくる。",
         "足の切断に使われた関節（joint）の名前が残っている: 横足根関節（transverse tarsal joint）（ショパール関節（Chopart joint））と足根中足関節（tarsometatarsal joints）（リスフラン関節（Lisfranc joint））。"
       ],
@@ -1756,14 +1756,14 @@
           "parts": ["talus", "calcaneus", "navicular bone of foot", "cuboid bone", "medial cuneiform bone", "intermediate cuneiform bone", "lateral cuneiform bone"], "level": 1,
           "kanji": "足根＝足の根もと（かかと〜足の甲の後ろ半分）",
           "etym": "tarsal ← ギリシャ語 tarsos「平たい面・足の裏」",
-          "note": "足（foot）の後ろ半分をつくる7個の骨（bone）。近位列（proximal row）の距骨（talus）・踵骨（calcaneus）と、遠位列（distal row）の舟状骨（scaphoid）・3個の楔状骨（cuneiform bones）・立方骨（cuboid）。体重を受ける距骨と踵骨はとくに大きい。距骨と舟状骨の間・踵骨と立方骨の間の関節（joint）はほぼ一直線に並ぶ（横足根関節（transverse tarsal joint）＝ショパール関節（Chopart joint））。"
+          "note": "足（foot）の後ろ半分をつくる7個の骨（bone）。近位列（proximal row）の距骨（talus）・踵骨（calcaneus）と、遠位列（distal row）の舟状骨（navicular）・3個の楔状骨（cuneiform bones）・立方骨（cuboid）。体重を受ける距骨と踵骨はとくに大きい。距骨と舟状骨の間・踵骨と立方骨の間の関節（joint）はほぼ一直線に並ぶ（横足根関節（transverse tarsal joint）＝ショパール関節（Chopart joint））。"
         },
         {
           "id": "talus", "ja": "距骨", "yomi": "きょこつ", "en": "talus", "la": "talus",
           "parts": ["talus"], "level": 2,
           "kanji": "距＝けづめ・へだてる",
           "etym": "talus ← ラテン語「くるぶし、さいころ」（古代ローマでは動物の距骨でさいころを作った）",
-          "placing": "距骨滑車（trochlea of talus）が上（下腿（leg）の骨（bone）と関節（joint））、丸い距骨頭（head of talus）が前（舟状骨（scaphoid）と関節）。滑車（trochlea）は前が広く後ろが狭い。大きな三角形の外果面（lateral malleolar surface）が外側（lateral）、三日月形の内果面（medial malleolar surface）が内側（medial）。",
+          "placing": "距骨滑車（trochlea of talus）が上（下腿（leg）の骨（bone）と関節（joint））、丸い距骨頭（head of talus）が前（舟状骨（navicular）と関節）。滑車（trochlea）は前が広く後ろが狭い。大きな三角形の外果面（lateral malleolar surface）が外側（lateral）、三日月形の内果面（medial malleolar surface）が内側（medial）。",
           "note": "脛骨（tibia）・腓骨（fibula）と足関節（ankle joint）（距腿関節（ankle joint））をつくる骨。立つと全身（whole body）の体重がかかる。上の距骨滑車は前が広いので、足首（ankle）を背屈（dorsiflexion）すると内果（medial malleolus）と外果（lateral malleolus）の間にしっかりはまって安定し、底屈（plantar flexion）するとゆるむ（ねんざは底屈で起こりやすい）。"
         },
         {
@@ -1793,7 +1793,7 @@
           "parts": ["medial cuneiform bone", "intermediate cuneiform bone", "lateral cuneiform bone"], "level": 2,
           "kanji": "楔（くさび）の形をした骨",
           "etym": "cuneiform ← ラテン語 cuneus「くさび」（楔形文字も cuneiform）",
-          "note": "舟状骨（scaphoid）の前に並ぶ3個の骨（bone）（内側（medial）・中間・外側楔状骨（lateral cuneiform））。第1〜第3中足骨（first to third metatarsals）と関節（joint）をつくる。"
+          "note": "舟状骨（navicular）の前に並ぶ3個の骨（bone）（内側（medial）・中間・外側楔状骨（lateral cuneiform））。第1〜第3中足骨（first to third metatarsals）と関節（joint）をつくる。"
         },
         {
           "id": "metatarsals", "ja": "中足骨", "yomi": "ちゅうそくこつ", "en": "metatarsals", "enAlt": ["metatarsal bones", "metatarsal"], "la": "ossa metatarsi",
@@ -2288,7 +2288,7 @@
         {
           "id": "head-of-talus", "ja": "距骨頭", "yomi": "きょこつとう", "en": "head of talus", "la": "caput tali",
           "of": "talus", "level": 3,
-          "note": "距骨（talus）の前の丸い部分。舟状骨（scaphoid）と関節（joint）をつくる。"
+          "note": "距骨（talus）の前の丸い部分。舟状骨（navicular）と関節（joint）をつくる。"
         },
         {
           "id": "neck-of-talus", "ja": "距骨頚", "yomi": "きょこつけい", "en": "neck of talus", "la": "collum tali",
@@ -2335,7 +2335,7 @@
         {
           "id": "tuberosity-of-navicular", "ja": "舟状骨粗面", "yomi": "しゅうじょうこつそめん", "en": "tuberosity of navicular", "enAlt": ["navicular tuberosity"], "la": "tuberositas ossis navicularis",
           "of": "navicular", "level": 3,
-          "note": "足（foot）の舟状骨（scaphoid）の内側（medial）の突出。土踏まず（arch of foot）の上で触れる。後脛骨筋（tibialis posterior）が付く。"
+          "note": "足（foot）の舟状骨（navicular）の内側（medial）の突出。土踏まず（arch of foot）の上で触れる。後脛骨筋（tibialis posterior）が付く。"
         },
         {
           "id": "tuberosity-of-cuboid", "ja": "立方骨粗面", "yomi": "りっぽうこつそめん", "en": "tuberosity of cuboid", "la": "tuberositas ossis cuboidei",

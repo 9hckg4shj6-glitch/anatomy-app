@@ -282,6 +282,8 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .speak { border: 1px solid var(--line); background: var(--bg); border-radius: 999px; width: 40px; height: 40px; cursor: pointer; font-size: 18px; }
 .speak.big { width: 72px; height: 72px; font-size: 32px; }
 .term-notes { margin: 14px 0 0; display: grid; gap: 8px; }
+.en-toggle { display: flex; justify-content: flex-end; margin: 12px 0 -6px; }
+.en-toggle .chip { min-height: 28px; padding: 3px 10px; font-size: 12px; }
 .term-notes div { display: grid; grid-template-columns: 3em 1fr; gap: 8px; }
 .term-notes dt { color: var(--muted); font-size: 13px; padding-top: 2px; }
 .term-notes dd { margin: 0; font-size: 15px; line-height: 1.6; }

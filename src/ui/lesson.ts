@@ -10,6 +10,7 @@ import { nextLesson } from "./lessons";
 import { plateOverlay } from "./plate-view";
 import { ask, showPanel } from "./quiz";
 import { termCard } from "./term-card";
+import { noteText } from "../en-notes";
 
 /**
  * レッスン：①始めの画面で確認テストの問い方を選ぶ → ②3Dで1語ずつ見る → ③確認テスト（選んだ問い方を順に。初めはタップと名前当てを交互に） → ④復習に入る。
@@ -161,7 +162,7 @@ async function startScreen(ctx: AppContext, unit: Unit, rest: Term[] | null): Pr
       showPanel(ctx,
         h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title),
           h("span", { class: "count" }, rest ? `${unit.terms.length - rest.length} / ${unit.terms.length}語 学んだ` : `${unit.terms.length}語`)),
-        unit.intro && !rest ? h("div", { class: "intro" }, ...unit.intro.map((text) => h("p", {}, text))) : "",
+        unit.intro && !rest ? h("div", { class: "intro" }, ...unit.intro.map((text) => h("p", {}, noteText(text)))) : "",
         rest ? h("p", {}, "このレッスンは途中です。まだの語: ", rest.map((term) => term.ja).join("・"))
           : h("p", { class: "muted lesson-terms" }, unit.terms.map((term) => term.ja).join("・")),
         h("h3", {}, "確認テストで覚えること"),

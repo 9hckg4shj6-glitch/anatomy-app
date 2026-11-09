@@ -28,6 +28,8 @@ export interface Preferences {
   lessonFacets: Facet[];
   /** 3Dの右上に向きの目印（小さな人と上・下・前・後・右・左）を出す。骨や臓器だけを見るときに前後左右が分かるように */
   compass: boolean;
+  /** 説明の中の解剖の語に英語を（）で添える（「脊柱（vertebral column）は…」）。ふだんは日本語だけ（src/en-notes.ts） */
+  enNotes: boolean;
 }
 
 export const NEW_PER_DAY_OPTIONS = [10, 20, 30, 40];
@@ -40,7 +42,7 @@ export const TEXT_SIZES: Record<Preferences["textSize"], { label: string; zoom: 
 
 export const preferences: Preferences = {
   mode: "detail", autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
-  studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"], compass: true,
+  studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"], compass: true, enNotes: false,
 };
 
 /** 学ぶ問い方を保存したときにあった問い方を覚えておく設定のキー。あとから増えた問い方（向き・ホルモン）を学ぶ側に入れるため */
@@ -64,6 +66,7 @@ const valid: { [K in keyof Preferences]: (value: unknown) => value is Preference
   studyFacets: facetList(TERM_FACETS),
   lessonFacets: facetList(BASIC_FACETS),
   compass: (value): value is boolean => typeof value === "boolean",
+  enNotes: (value): value is boolean => typeof value === "boolean",
 };
 
 /** 起動したときと、記録を読み込んだときに呼ぶ */

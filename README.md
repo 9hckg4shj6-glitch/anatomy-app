@@ -35,7 +35,7 @@ node scripts/build-models.mjs --attached-bones # 付着面が乗っている1本
 node scripts/pins/compute.mjs scripts/pins/rules/attach.mjs --write # Z-Anatomy に無い起始・停止（content/attachments.json）
 npm run build:audio      # macOS の afconvert を使う
 node scripts/joints.mjs  # 基本の用語（運動）で骨を動かす関節（content/joints.json）
-npm run build:en-notes   # 説明の解剖の語に（英語）を添える（英語は scripts/en-gloss.txt と語の見出しから）
+npm run build:en-notes   # 説明の解剖の語に（英語）を添え、添えた一覧を content/en-notes.json に書く（アプリはふだん外して日本語だけを出す）
 npm run build:wikidata   # 任意。Wikidata の日本語名との照合用
 npm run validate:content # docs/要確認用語.md も作り直す
 node scripts/visibility.mjs <系統> # 隠れて見えない語（xray を付けるか）の目安

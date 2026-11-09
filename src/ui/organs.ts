@@ -7,6 +7,7 @@ import { termAt, type AppContext } from "./context";
 import { flowDiagram } from "./diagrams";
 import { drawPlate, labelName, type LabelMode } from "./plate-view";
 import { termCard } from "./term-card";
+import { noteText } from "../en-notes";
 
 const LABEL_MODES: [LabelMode, string][] = [["both", "日本語と英語"], ["ja", "日本語"], ["en", "英語"], ["hide", "隠して確かめる"]];
 const LABEL_MODE = "plateLabelMode";
@@ -55,7 +56,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
   const head = h("div", { class: "organ-head" },
     h("a", { class: "back-link", href: "#/organs" }, "臓器の図"),
     h("h2", {}, h("ruby", {}, organ.ja, h("rt", {}, organ.yomi)), h("span", { class: "organ-en", lang: "en" }, organ.en)),
-    h("p", { class: "muted" }, organ.about),
+    h("p", { class: "muted" }, noteText(organ.about)),
   );
   const tabs = h("div", { class: "organ-tabs", role: "tablist" },
     organ.box ? h("a", { class: plate ? "chip" : "chip on", href: `#/organs/${organ.id}/3d`, role: "tab", "aria-selected": String(!plate) }, "立体（3D）") : "",
@@ -150,7 +151,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
         h("input", { type: "checkbox", checked: colored, onChange: (event: Event) => { colored = (event.target as HTMLInputElement).checked; paint(); render(); } }),
         organ.colorLabel ?? "色を分ける") : "",
       colored ? legend() : "",
-      organ.colorNote ? h("p", { class: "muted" }, organ.colorNote) : "",
+      organ.colorNote ? h("p", { class: "muted" }, noteText(organ.colorNote)) : "",
       selected ? h("div", { class: "detail" },
         termCard(selected, { open: (word) => (ids.has(word.id) ? select(word) : (location.hash = `#/explore/${word.id}`)) }),
         h("div", { class: "nav-row" },
@@ -228,7 +229,7 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
         chosenTerm ? termCard(chosenTerm, { open: (word) => (location.hash = `#/explore/${word.id}`) }) : h("article", { class: "term-card" },
           h("div", { class: "term-head" }, h("span", { class: "term-ja" }, nameOf(chosenLabel).ja)),
           h("div", { class: "term-en" }, h("span", { lang: "en" }, nameOf(chosenLabel).en)),
-          chosenLabel.note ? h("p", {}, chosenLabel.note) : ""),
+          chosenLabel.note ? h("p", {}, noteText(chosenLabel.note)) : ""),
         chosenTerm ? h("div", { class: "nav-row" },
           organ.box && (organTerms(organ).includes(chosenTerm.id) || chosenTerm.of) ? h("a", { class: "ghost-button", href: `#/organs/${organ.id}/3d/${chosenTerm.id}` }, "立体で見る") : null,
           h("a", { class: "ghost-button", href: `#/explore/${chosenTerm.id}` }, "図鑑で開く"),
@@ -248,8 +249,8 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
   const art = spec.art;
   body.replaceChildren(
     h("h3", { class: "plate-title" }, spec.title, h("span", { class: "en", lang: "en" }, `　${spec.en}`)),
-    spec.note ? h("p", { class: "muted" }, spec.note) : "",
-    spec.points?.length ? h("div", { class: "plate-points" }, h("h3", {}, "この図の要点"), h("ul", {}, ...spec.points.map((point) => h("li", {}, point)))) : "",
+    spec.note ? h("p", { class: "muted" }, noteText(spec.note)) : "",
+    spec.points?.length ? h("div", { class: "plate-points" }, h("h3", {}, "この図の要点"), h("ul", {}, ...spec.points.map((point) => h("li", {}, noteText(point))))) : "",
     listBox,
     art ? h("p", { class: "plate-credit muted" }, "図: ",
       h("a", { href: art.page, target: "_blank", rel: "noopener" }, art.author), "（",

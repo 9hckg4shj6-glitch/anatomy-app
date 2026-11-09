@@ -779,7 +779,7 @@
           "parts": ["za:talonavicular ligament"], "level": 3,
           "kanji": "距骨と舟状骨をつなぐ靱帯",
           "etym": "talo-「距骨の」＋ navicular「舟状骨の」",
-          "note": "距骨頚（neck of talus）の上面（superior surface）から舟状骨（scaphoid）の上面へ張る薄い靱帯（ligament）。距舟関節（talonavicular joint）（横足根関節（transverse tarsal joint）の内側半分（medial half））の上をおおう。"
+          "note": "距骨頚（neck of talus）の上面（superior surface）から舟状骨（navicular）の上面へ張る薄い靱帯（ligament）。距舟関節（talonavicular joint）（横足根関節（transverse tarsal joint）の内側半分（medial half））の上をおおう。"
         },
         {
           "id": "dorsal-tarsometatarsal-ligaments", "ja": "背側足根中足靱帯", "yomi": "はいそくそっこんちゅうそくじんたい", "en": "dorsal tarsometatarsal ligaments", "la": "ligamenta tarsometatarsalia dorsalia",
@@ -842,7 +842,7 @@
           "parts": ["za:tibionavicular ligament", "za:tibiocalcaneal ligament", "za:posterior tibiotalar ligament"], "level": 1,
           "kanji": "三角形に広がる靱帯",
           "etym": "deltoid ← ギリシャ文字 Δ（デルタ）の形",
-          "note": "内果（medial malleolus）から舟状骨（scaphoid）・踵骨（calcaneus）の載距突起（sustentaculum tali）・距骨（talus）へ扇形に広がる強い靱帯（ligament）（内側靱帯（medial ligament））。足首（ankle）の内側（medial）を補強し、外反（eversion）を防ぐ。とても強く、切れるより先に内果が折れることが多い。"
+          "note": "内果（medial malleolus）から舟状骨（navicular）・踵骨（calcaneus）の載距突起（sustentaculum tali）・距骨（talus）へ扇形に広がる強い靱帯（ligament）（内側靱帯（medial ligament））。足首（ankle）の内側（medial）を補強し、外反（eversion）を防ぐ。とても強く、切れるより先に内果が折れることが多い。"
         },
         {
           "id": "anterior-tibiofibular-ligament", "ja": "前脛腓靱帯", "yomi": "ぜんけいひじんたい", "en": "anterior tibiofibular ligament", "la": "ligamentum tibiofibulare anterius",
@@ -870,14 +870,14 @@
           "parts": ["za:plantar calcaneonavicular ligament"], "level": 2,
           "kanji": "足の裏で踵骨と舟状骨をつなぐ靱帯",
           "etym": "plantar「足底の」＋ calcaneo-「踵骨の」＋ navicular「舟状骨の」",
-          "note": "踵骨（calcaneus）の載距突起（sustentaculum tali）から舟状骨（scaphoid）の下面（inferior surface）へ張る厚い靱帯（ligament）。距骨頭（head of talus）を下から受け、土踏まず（arch of foot）（内側（medial）の縦のアーチ（arch））を支える。ばね靱帯ともいう。"
+          "note": "踵骨（calcaneus）の載距突起（sustentaculum tali）から舟状骨（navicular）の下面（inferior surface）へ張る厚い靱帯（ligament）。距骨頭（head of talus）を下から受け、土踏まず（arch of foot）（内側（medial）の縦のアーチ（arch））を支える。ばね靱帯ともいう。"
         },
         {
           "id": "bifurcate-ligament", "ja": "二分靱帯", "yomi": "にぶんじんたい", "en": "bifurcate ligament", "la": "ligamentum bifurcatum",
           "parts": ["za:calcaneonavicular ligament", "za:calcaneocuboid ligament"], "level": 3,
           "kanji": "二つに分かれる靱帯",
           "etym": "bifurcate「二股に分かれた」（ラテン語 bi-「2」＋ furca「フォーク」）",
-          "note": "踵骨（calcaneus）の前上部（anterosuperior part）から出て、舟状骨（scaphoid）へ行く部分と立方骨（cuboid）へ行く部分の2つに分かれるY字形の靱帯（ligament）。足（foot）の内反捻挫（inversion sprain）で傷むことがある。"
+          "note": "踵骨（calcaneus）の前上部（anterosuperior part）から出て、舟状骨（navicular）へ行く部分と立方骨（cuboid）へ行く部分の2つに分かれるY字形の靱帯（ligament）。足（foot）の内反捻挫（inversion sprain）で傷むことがある。"
         },
         {
           "id": "interosseous-talocalcaneal-ligament", "ja": "骨間距踵靱帯", "yomi": "こっかんきょしょうじんたい", "en": "interosseous talocalcaneal ligament", "la": "ligamentum talocalcaneum interosseum",
@@ -967,7 +967,7 @@
           "level": 3,
           "kanji": "距骨・踵骨・舟状骨の関節",
           "etym": "talo-「距骨の」＋ calcaneo-「踵骨の」＋ navicular「舟状骨の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "距骨頭（head of talus）を、前は舟状骨（scaphoid）の後ろのくぼみ、下は踵骨（calcaneus）の前・中距骨関節面（middle talar articular surface）（載距突起（sustentaculum tali）の上）と底側踵舟靱帯（plantar calcaneonavicular ligament）が受ける関節（joint）。1つの関節包（joint capsule）に包まれる。距骨下関節（subtalar joint）とともに足（foot）の内反（inversion）・外反（eversion）を行う。",
+          "note": "距骨頭（head of talus）を、前は舟状骨（navicular）の後ろのくぼみ、下は踵骨（calcaneus）の前・中距骨関節面（middle talar articular surface）（載距突起（sustentaculum tali）の上）と底側踵舟靱帯（plantar calcaneonavicular ligament）が受ける関節（joint）。1つの関節包（joint capsule）に包まれる。距骨下関節（subtalar joint）とともに足（foot）の内反（inversion）・外反（eversion）を行う。",
           "region": {"bounds": ["head-of-talus", "middle-talar-articular-surface", "anterior-talar-articular-surface"], "contents": [], "boundsLabel": "向き合う関節面", "view": {"target": [-0.0707, -0.0229, 0.0874], "from": [0.7, 0.6, 0.6], "size": 0.07}, "prompt": "距骨頭を舟状骨と踵骨の前・中距骨関節面が受ける関節は？"}
         },
         {
@@ -983,7 +983,7 @@
           "level": 2,
           "kanji": "足根を横切る関節",
           "etym": "transverse「横の」＋ tarsal「足根の」。articulatio ← ラテン語 articulus「小さな関節」",
-          "note": "距骨（talus）と舟状骨（scaphoid）の間（距踵舟関節（talocalcaneonavicular joint）の一部）と、踵骨（calcaneus）と立方骨（cuboid）の間（踵立方関節（calcaneocuboid joint））をあわせた、足根（tarsus）を横にS字に横切る関節（joint）（ショパール関節（Chopart joint））。外科で足（foot）を切断する位置として考案された。3Dでは関節の線を橙色の線で示す。",
+          "note": "距骨（talus）と舟状骨（navicular）の間（距踵舟関節（talocalcaneonavicular joint）の一部）と、踵骨（calcaneus）と立方骨（cuboid）の間（踵立方関節（calcaneocuboid joint））をあわせた、足根（tarsus）を横にS字に横切る関節（joint）（ショパール関節（Chopart joint））。外科で足（foot）を切断する位置として考案された。3Dでは関節の線を橙色の線で示す。",
           "region": {"bounds": ["head-of-talus"], "contents": ["navicular", "calcaneus", "cuboid"], "boundsLabel": "向き合う関節面", "contentsLabel": "関節する骨", "outline": [[-0.065, -0.012, 0.104],[-0.075, -0.009, 0.103],[-0.0838, -0.0106, 0.1006],[-0.089, -0.02, 0.094],[-0.0935, -0.027, 0.087],[-0.1, -0.033, 0.082]], "open": true, "view": {"target": [-0.0728, -0.0154, 0.0976], "from": [0, 1, 0.3], "size": 0.09}, "prompt": "橙色の線で示す、足根を横切る関節は？"}
         },
         {
