@@ -98,16 +98,18 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// 新しい版が届いたら（Service Worker が入れかわったら）、ホームにいるときに読み直して切りかえる。
-// レッスンや復習の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
+// 新しい版が届いたら（Service Worker が入れかわったら）、見るだけの画面（ホーム・臓器の図・図鑑・レッスン一覧など）にいるときか、
+// そこへ移るときに読み直して切りかえる。ホームだけにすると、臓器の図の中を行き来している間は古い版のまま（新しい平面図が出ない）だった。
+// レッスン・復習・演習・骨学試験の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
 let updated = false;
-const isHome = () => !location.hash.split("/")[1];
+const RELOADABLE = new Set(["", "organs", "explore", "lessons", "progress", "settings", "credits"]);
+const canReload = () => RELOADABLE.has(location.hash.split("/")[1] ?? "");
 const serviceWorker = navigator.serviceWorker as ServiceWorkerContainer | undefined; // http の LAN では無い
 // 初めて開いたとき（前の版が無いとき）の入れかわりは数えない
 if (serviceWorker?.controller) {
   serviceWorker.addEventListener("controllerchange", () => {
     updated = true;
-    if (isHome()) location.reload();
+    if (canReload()) location.reload();
   });
 }
 // ホーム画面のアプリは開き直しても読み込み直さないことが多いので、画面に戻ってきたときに新しい版を確かめる
@@ -151,7 +153,7 @@ async function start(): Promise<void> {
   };
 
   const route = async () => {
-    if (updated && isHome()) {
+    if (updated && canReload()) {
       location.reload();
       return;
     }
