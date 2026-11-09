@@ -1117,6 +1117,13 @@
       0.7617
      ],
      "term": "minor-calyx"
+    },
+    {
+     "at": [
+      0.5444,
+      0.5071
+     ],
+     "term": "renal-sinus"
     }
    ]
   },
@@ -3927,7 +3934,7 @@
      ],
      "ja": "外尿道口",
      "en": "external urethral orifice",
-     "note": "女性の尿道の出口。陰核の後ろ、腟口の前で腟前庭に開く。"
+     "note": "女性の尿道（urethra）の出口。陰核（clitoris）の後ろ、腟口（vaginal orifice）の前で腟前庭（vestibule of vagina）に開く。"
     },
     {
      "at": [
@@ -3957,7 +3964,7 @@
      ],
      "ja": "陰核包皮",
      "en": "prepuce of clitoris",
-     "note": "陰核亀頭をおおう皮膚のひだ。左右の小陰唇が前で合わさってできる。男性の陰茎包皮にあたる。"
+     "note": "陰核亀頭をおおう皮膚（skin）のひだ（fold）。左右の小陰唇（labium minus）が前で合わさってできる。男性の陰茎包皮（prepuce）にあたる。"
     }
    ]
   },
@@ -3980,7 +3987,7 @@
      ],
      "ja": "外尿道口",
      "en": "external urethral orifice",
-     "note": "女性の尿道の出口。陰核の後ろ、腟口の前で腟前庭に開く。"
+     "note": "女性の尿道（urethra）の出口。陰核（clitoris）の後ろ、腟口（vaginal orifice）の前で腟前庭（vestibule of vagina）に開く。"
     },
     {
      "at": [
@@ -4044,6 +4051,433 @@
       0.6485
      ],
      "term": "labium-majus"
+    }
+   ]
+  },
+  "kidney-anterior": {
+   "url": "plates/kidney-anterior.45abe3a13a.webp",
+   "w": 510,
+   "h": 400,
+   "labels": [
+    {
+     "at": [
+      0.2706,
+      0.23
+     ],
+     "term": "adrenal-gland"
+    },
+    {
+     "at": [
+      0.1216,
+      0.4875
+     ],
+     "term": "liver"
+    },
+    {
+     "at": [
+      0.1941,
+      0.585
+     ],
+     "term": "descending-part-of-duodenum"
+    },
+    {
+     "at": [
+      0.1471,
+      0.7175
+     ],
+     "term": "right-colic-flexure"
+    },
+    {
+     "at": [
+      0.298,
+      0.75
+     ],
+     "term": "ureter"
+    },
+    {
+     "at": [
+      0.402,
+      0.725
+     ],
+     "term": "inferior-vena-cava"
+    },
+    {
+     "at": [
+      0.5529,
+      0.725
+     ],
+     "term": "abdominal-aorta"
+    },
+    {
+     "at": [
+      0.5882,
+      0.4075
+     ],
+     "term": "renal-vein"
+    },
+    {
+     "at": [
+      0.7451,
+      0.18
+     ],
+     "term": "stomach"
+    },
+    {
+     "at": [
+      0.8765,
+      0.2375
+     ],
+     "term": "spleen"
+    },
+    {
+     "at": [
+      0.8549,
+      0.3375
+     ],
+     "term": "tail-of-pancreas"
+    },
+    {
+     "at": [
+      0.8078,
+      0.495
+     ],
+     "term": "jejunum"
+    },
+    {
+     "at": [
+      0.8765,
+      0.5675
+     ],
+     "term": "left-colic-flexure"
+    }
+   ]
+  },
+  "renal-fascia-section": {
+   "url": "plates/renal-fascia-section.eff09ac60b.webp",
+   "w": 687,
+   "h": 391,
+   "labels": [
+    {
+     "at": [
+      0.1368,
+      0.2685
+     ],
+     "term": "ascending-colon"
+    },
+    {
+     "at": [
+      0.5007,
+      0.1918
+     ],
+     "term": "pancreas"
+    },
+    {
+     "at": [
+      0.8675,
+      0.2685
+     ],
+     "term": "descending-colon"
+    },
+    {
+     "at": [
+      0.3595,
+      0.2737
+     ],
+     "term": "renal-fascia"
+    },
+    {
+     "at": [
+      0.2751,
+      0.491
+     ],
+     "term": "kidney"
+    },
+    {
+     "at": [
+      0.3435,
+      0.4118
+     ],
+     "term": "ureter"
+    },
+    {
+     "at": [
+      0.4774,
+      0.3785
+     ],
+     "term": "inferior-vena-cava"
+    },
+    {
+     "at": [
+      0.5488,
+      0.376
+     ],
+     "term": "abdominal-aorta"
+    },
+    {
+     "at": [
+      0.6696,
+      0.5294
+     ],
+     "term": "perirenal-fat-capsule"
+    },
+    {
+     "at": [
+      0.4279,
+      0.6138
+     ],
+     "term": "psoas-major"
+    },
+    {
+     "at": [
+      0.2314,
+      0.7084
+     ],
+     "term": "pararenal-fat-body"
+    },
+    {
+     "at": [
+      0.2606,
+      0.7596
+     ],
+     "term": "transversalis-fascia"
+    }
+   ]
+  },
+  "kidney-vessels": {
+   "url": "plates/kidney-vessels.c24f9db6c1.webp",
+   "w": 1400,
+   "h": 1075,
+   "labels": [
+    {
+     "at": [
+      0.073,
+      0.6121
+     ],
+     "term": "renal-artery"
+    },
+    {
+     "at": [
+      0.1127,
+      0.6121
+     ],
+     "term": "renal-vein"
+    },
+    {
+     "at": [
+      0.2173,
+      0.5972
+     ],
+     "term": "segmental-arteries-of-kidney"
+    },
+    {
+     "at": [
+      0.1776,
+      0.5035
+     ],
+     "term": "interlobar-arteries"
+    },
+    {
+     "at": [
+      0.2026,
+      0.4355
+     ],
+     "term": "arcuate-arteries-of-kidney"
+    },
+    {
+     "at": [
+      0.2173,
+      0.4021
+     ],
+     "term": "interlobular-arteries-of-kidney"
+    },
+    {
+     "at": [
+      0.2827,
+      0.5404
+     ],
+     "term": "interlobar-veins"
+    },
+    {
+     "at": [
+      0.3371,
+      0.4752
+     ],
+     "term": "arcuate-veins"
+    },
+    {
+     "at": [
+      0.354,
+      0.4546
+     ],
+     "term": "interlobular-veins-of-kidney"
+    },
+    {
+     "at": [
+      0.5948,
+      0.1872
+     ],
+     "term": "afferent-arteriole"
+    },
+    {
+     "at": [
+      0.6465,
+      0.1504
+     ],
+     "term": "glomerulus"
+    },
+    {
+     "at": [
+      0.6008,
+      0.0553
+     ],
+     "term": "efferent-arteriole"
+    },
+    {
+     "at": [
+      0.7696,
+      0.0652
+     ],
+     "term": "peritubular-capillaries"
+    }
+   ]
+  },
+  "nephron": {
+   "url": "plates/nephron.596eec8237.webp",
+   "w": 516,
+   "h": 647,
+   "labels": [
+    {
+     "at": [
+      0.1202,
+      0.0881
+     ],
+     "term": "glomerulus"
+    },
+    {
+     "at": [
+      0.1996,
+      0.136
+     ],
+     "term": "renal-corpuscle"
+    },
+    {
+     "at": [
+      0.3295,
+      0.119
+     ],
+     "term": "proximal-tubule"
+    },
+    {
+     "at": [
+      0.4903,
+      0.3988
+     ],
+     "term": "nephron"
+    },
+    {
+     "at": [
+      0.5194,
+      0.9335
+     ],
+     "term": "nephron-loop"
+    },
+    {
+     "at": [
+      0.6996,
+      0.1994
+     ],
+     "term": "distal-tubule"
+    },
+    {
+     "at": [
+      0.9109,
+      0.7172
+     ],
+     "term": "collecting-duct"
+    },
+    {
+     "at": [
+      0.8992,
+      0.9815
+     ],
+     "term": "papillary-duct"
+    }
+   ]
+  },
+  "renal-corpuscle": {
+   "url": "plates/renal-corpuscle.4565bd2874.webp",
+   "w": 1400,
+   "h": 1023,
+   "labels": [
+    {
+     "at": [
+      0.1341,
+      0.1125
+     ],
+     "term": "afferent-arteriole"
+    },
+    {
+     "at": [
+      0.1982,
+      0.4533
+     ],
+     "term": "juxtaglomerular-apparatus"
+    },
+    {
+     "at": [
+      0.1469,
+      0.431
+     ],
+     "term": "macula-densa"
+    },
+    {
+     "at": [
+      0.0364,
+      0.5233
+     ],
+     "term": "distal-tubule"
+    },
+    {
+     "at": [
+      0.1318,
+      0.7766
+     ],
+     "term": "efferent-arteriole"
+    },
+    {
+     "at": [
+      0.3029,
+      0.5409
+     ],
+     "term": "mesangial-cell"
+    },
+    {
+     "at": [
+      0.438,
+      0.1985
+     ],
+     "term": "podocyte"
+    },
+    {
+     "at": [
+      0.6824,
+      0.1109
+     ],
+     "term": "glomerular-capsule"
+    },
+    {
+     "at": [
+      0.6812,
+      0.587
+     ],
+     "term": "glomerulus"
+    },
+    {
+     "at": [
+      0.8559,
+      0.3721
+     ],
+     "term": "proximal-tubule"
     }
    ]
   }

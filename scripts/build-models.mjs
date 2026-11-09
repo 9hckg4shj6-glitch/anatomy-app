@@ -399,7 +399,9 @@ async function main() {
     if (!ids.length) continue;
     // 骨格の中の軟骨（肋軟骨・椎間円板）と関節の線維軟骨（半月・関節円板など）は、アプリで骨と違う青みのある白にする
     const extrasOf = (id) => (["skeletal", "joints"].includes(system.id) && CARTILAGE.test(elementNames.get(id)) ? { cartilage: true } : null);
-    const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) };
+    // 腎臓の中のつくり（ZK_…、scripts/kidney/）は形どうしの面がぴったり接するので、光をさえぎる形に入れない
+    // （入れると、中の面がとなりの形にふさがれて真っ暗になる。外から見えるのは腎皮質の表面だけなので、ほかの形の暗さはほとんど変わらない）
+    const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) || id.startsWith("ZK_") };
     let meshes = new Map();
     if (bp.length) {
       const glb = await writeGlb(system.id, bp.map((id) => [id, shown(id)]), shape);
@@ -414,7 +416,7 @@ async function main() {
       console.log(`${only.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(only.bytes / 1024 / 1024).toFixed(2)} MB`);
     } else if (fromZa.length) {
       // Z-Anatomy の形の AO は、同じ系統の BodyParts3D の形にもさえぎらせる（BodyParts3D の GLB には Z-Anatomy 由来のものを入れない）
-      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, shown(id)]), { ...shape, occluders: [...meshes].filter(([id]) => !veiled.has(id)).map(([, mesh]) => mesh) });
+      const extra = await writeGlb(`${system.id}-za`, fromZa.map((id) => [id, shown(id)]), { ...shape, occluders: [...meshes].filter(([id]) => !shape.clear(id)).map(([, mesh]) => mesh) });
       index.systems[system.id].za = { url: extra.url, bytes: extra.bytes, elements: fromZa.length };
       console.log(`${extra.url}: ${fromZa.length} 部品（Z-Anatomy）, ${(extra.bytes / 1024 / 1024).toFixed(2)} MB`);
     }

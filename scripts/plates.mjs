@@ -383,7 +383,7 @@ async function artPlate(plate) {
     if (y > 0) push(x, y - 1);
     if (y < H0 - 1) push(x, y + 1);
   }
-  // 背景でない所の塊（8近傍）のうち、いちばん大きいもの（art.blobs があれば大きい順にその数）だけを残す
+  // 背景でない所の塊（8近傍）のうち、いちばん大きいもの（art.blobs があれば大きい順にその数）だけを残す（焼き込まれた文字は離れた塊なので消える）
   const label = new Int32Array(W0 * H0).fill(-1);
   const sizes = [];
   for (let k0 = 0, id = 0; k0 < W0 * H0; k0++) {
@@ -404,7 +404,8 @@ async function artPlate(plate) {
     sizes.push(size);
     id++;
   }
-  const kept = new Set(sizes.map((size, id) => [size, id]).sort((a, b) => b[0] - a[0]).slice(0, art.blobs ?? 1).map(([, id]) => id));
+  // art.keepAll なら塊を全部残す（陰影の線がばらばらの塊になる銅版画。図の外の文字は eraseBoxes で消しておく）
+  const kept = new Set(art.keepAll ? sizes.map((_, id) => id) : sizes.map((size, id) => [size, id]).sort((a, b) => b[0] - a[0]).slice(0, art.blobs ?? 1).map(([, id]) => id));
   // 紙に重ねる。白い背景は掛け合わせ（縁のなじみが白のまま残らない）、暗い背景は縁を少しぼかした型で重ねる
   const keep = new Float32Array(W0 * H0);
   let x0 = W0, x1 = 0, y0 = H0, y1 = 0;

@@ -8,7 +8,7 @@
       "terms": [
         {
           "id": "kidney", "ja": "腎臓", "yomi": "じんぞう", "en": "kidney", "enAlt": ["kidneys"], "la": "ren",
-          "parts": ["kidney"], "level": 1,
+          "parts": ["za:renal cortex", "za:renal column", "za:renal pyramid", "za:renal papilla", "za:renal sinus"], "level": 1,
           "kanji": "腎＝じん",
           "etym": "kidney（英語の固有語）。ラテン語 ren から renal、ギリシャ語 nephros から nephro-",
           "note": "腰（lower back）の高さ、背骨（backbone）の両側（bilateral）の後腹膜（retroperitoneum）にあるそら豆形の臓器（organ）（長さ約10cm・幅約5cm・厚さ約3cm、約140〜160g）。第12胸椎（twelfth thoracic vertebra）〜第3腰椎（third lumbar vertebra）の高さにあり、右腎（right kidney）は肝臓（liver）のために左より約1.5cm低い。外から順に線維被膜（fibrous capsule）・脂肪被膜（perirenal fat capsule）・腎筋膜（renal fascia）（ジェロタ筋膜（Gerota fascia））に包まれ、腎筋膜が横隔膜（diaphragm）につくので息とともに上下する。断面（section）では表層の腎皮質（renal cortex）と深層（deep layer）の腎髄質（renal medulla）に分かれ、髄質（medulla）は十数個の腎錐体（renal pyramid）からなる。錐体（renal pyramid）の先の腎乳頭（renal papilla）から尿が小腎杯（minor calyx）へ出て、大腎杯（major calyx）・腎盤（renal pelvis）に集まる。錐体の間に入りこむ皮質（cortex）が腎柱（renal column）。血液（blood）をろ過して尿をつくる。",
@@ -16,7 +16,7 @@
         },
         {
           "id": "renal-pelvis", "check": true, "ja": "腎盤", "yomi": "じんばん", "en": "renal pelvis", "la": "pelvis renalis",
-          "parts": ["za:renal pelvis"], "level": 1,
+          "parts": ["za:renal pelvis proper"], "level": 1, "xray": true,
           "kanji": "腎臓の中の、たらい（盤）のような部分",
           "etym": "pelvis ← ラテン語「たらい・鉢」",
           "note": "腎臓（kidney）の中で、腎杯（renal calyx）から尿を集める漏斗形の部分。腎乳頭（renal papilla）を囲む小腎杯（minor calyx）が2〜3個の大腎杯（major calyx）にまとまり、それが合わさって腎盤になる。腎門（renal hilum）を出て下へ細くなり尿管（ureter）に続く。臨床では腎盂（renal pelvis）（じんう）ということが多い。"
@@ -46,16 +46,9 @@
     },
     {
       "id": "uro-pt",
-      "title": "腎臓・膀胱・尿道の部位",
+      "title": "膀胱・尿道の部位",
       "group": "泌尿器",
       "terms": [
-        {
-          "id": "renal-hilum", "ja": "腎門", "yomi": "じんもん", "en": "renal hilum", "enAlt": ["hilum of kidney"], "la": "hilum renale",
-          "of": "kidney", "level": 1,
-          "kanji": "腎臓の門（出入口）",
-          "etym": "renal ← ラテン語 ren「腎臓」。hilum「へそ」",
-          "note": "腎臓（kidney）の内側（medial）の縁の中央のくぼみ。前から腎静脈（renal vein）・腎動脈（renal artery）・腎盤（renal pelvis）（尿管（ureter））の順に並んで出入りする。奥は腎洞（renal sinus）という空所。"
-        },
         {
           "id": "apex-of-bladder", "ja": "膀胱尖", "yomi": "ぼうこうせん", "en": "apex of bladder", "la": "apex vesicae",
           "of": "urinary-bladder", "level": 3,
@@ -111,7 +104,127 @@
       "id": "uro-kidney-inner",
       "title": "腎臓の内部",
       "group": "泌尿器",
-      "intro": ["3Dの腎臓（kidney）は1つの形なので、中のつくりは腎臓の断面（section）（前頭断（frontal section））の図で示す。外側（lateral）の腎皮質（renal cortex）と内側（medial）の腎髄質（renal medulla）（腎錐体（renal pyramid））からなる腎実質で尿がつくられ、腎乳頭（renal papilla）→小腎杯（minor calyx）→大腎杯（major calyx）→腎盤（renal pelvis）→尿管（ureter）と流れる。"],
+      "intro": ["腎臓（kidney）の中は、表層の腎皮質（renal cortex）と深層（deep layer）の腎髄質（renal medulla）（十数個の腎錐体（renal pyramid））からなる腎実質と、腎門（renal hilum）から入りこんだ腎洞（renal sinus）に分かれる。尿は腎乳頭（renal papilla）→小腎杯（minor calyx）→大腎杯（major calyx）→腎盤（renal pelvis）→尿管（ureter）と流れる。立体は、腎杯（renal calyx）と腎盤の形をもとに腎臓の中を分けた模式の形（腎錐体は小腎杯ごとに1つで、実物の10〜18個より少ない）。臓器（organ）の図「腎臓」の前頭断（frontal section）や「腎皮質を外す」で中を見られる。"],
+      "terms": [
+        {
+          "id": "renal-cortex", "ja": "腎皮質", "yomi": "じんひしつ", "en": "renal cortex", "la": "cortex renalis",
+          "parts": ["za:renal cortex", "za:renal column"], "level": 1,
+          "kanji": "腎臓の皮（外側）の質",
+          "etym": "cortex「樹皮」（ラテン語）",
+          "note": "腎実質の表層の部分（厚さ約1cm）。腎小体（renal corpuscle）（糸球体（glomerulus）とボウマン嚢）と近位（proximal）・遠位（distal）の曲尿細管があり、血液（blood）をこして原尿（primary urine）をつくる。腎錐体（renal pyramid）の間に入りこんだ所が腎柱（renal column）。"
+        },
+        {
+          "id": "renal-medulla", "ja": "腎髄質", "yomi": "じんずいしつ", "en": "renal medulla", "la": "medulla renalis",
+          "parts": ["za:renal pyramid", "za:renal papilla"], "level": 1, "xray": true,
+          "kanji": "腎臓の髄（中心）の質",
+          "etym": "medulla「髄（骨の中心）」（ラテン語）",
+          "note": "腎皮質（renal cortex）の内側（medial）の部分。十数個の腎錐体（renal pyramid）からなり、ヘンレのわな（nephron loop）と集合管（collecting duct）が縦に並ぶので断面（section）で放射状のすじに見える。尿を濃くする。"
+        },
+        {
+          "id": "renal-pyramid", "ja": "腎錐体", "yomi": "じんすいたい", "en": "renal pyramid", "la": "pyramis renalis",
+          "parts": ["za:renal pyramid"], "level": 2, "xray": true,
+          "kanji": "腎臓の中の錐（円錐）の形の塊",
+          "etym": "pyramis「ピラミッド」（ギリシャ語 pyramis）",
+          "note": "腎髄質（renal medulla）をつくる円錐形の塊（1つの腎臓（kidney）に10〜18個）。底を腎皮質（renal cortex）に、先（腎乳頭（renal papilla））を腎洞（renal sinus）に向ける。1つの腎錐体とそれをおおう腎皮質を腎葉という。"
+        },
+        {
+          "id": "renal-papilla", "ja": "腎乳頭", "yomi": "じんにゅうとう", "en": "renal papilla", "la": "papilla renalis",
+          "parts": ["za:renal papilla"], "level": 2, "xray": true,
+          "kanji": "腎錐体の先の乳頭（乳首のような突起）",
+          "etym": "papilla「乳首」（ラテン語）",
+          "note": "腎錐体（renal pyramid）の先。集合管（collecting duct）が集まった乳頭管（papillary duct）の口（乳頭孔（papillary foramina））が多数開き、できあがった尿が小腎杯（minor calyx）へ出る。"
+        },
+        {
+          "id": "renal-column", "ja": "腎柱", "yomi": "じんちゅう", "en": "renal column", "la": "columna renalis",
+          "parts": ["za:renal column"], "level": 2, "xray": true,
+          "kanji": "腎錐体の間の柱",
+          "etym": "columna「柱」（ラテン語）",
+          "note": "腎錐体（renal pyramid）と腎錐体の間に柱のように入りこんだ腎皮質（renal cortex）。葉間動脈（interlobar artery）・葉間静脈（interlobar veins）が通り、腎錐体の底で弓状動脈（arcuate artery）になる。"
+        },
+        {
+          "id": "renal-sinus", "ja": "腎洞", "yomi": "じんどう", "en": "renal sinus", "la": "sinus renalis",
+          "parts": ["za:renal sinus"], "level": 2, "xray": true,
+          "kanji": "腎臓の中の洞（ほら穴）",
+          "etym": "sinus「くぼみ・湾」（ラテン語）",
+          "note": "腎門（renal hilum）から腎臓（kidney）の中へ入りこんだ空所。腎盤（renal pelvis）と大腎杯（major calyx）・小腎杯（minor calyx）、腎動脈（renal artery）と腎静脈（renal vein）の枝（branch）、リンパ管（lymphatic vessel）と神経（nerve）が入り、そのすき間を脂肪（fat）が埋める（脂肪被膜（perirenal fat capsule）の脂肪が腎門から続く）。壁は腎実質で、腎乳頭（renal papilla）が腎洞へ突き出て小腎杯に包まれる。腎洞の中の腎盤の手術は、腎門から腎洞の脂肪を分けて入る。"
+        },
+        {
+          "id": "major-calyx", "ja": "大腎杯", "yomi": "だいじんぱい", "en": "major calyx", "la": "calyx renalis major",
+          "parts": ["za:major renal calyx"], "level": 2, "xray": true,
+          "kanji": "大きな腎臓の杯（さかずき）",
+          "etym": "calyx「杯・花のがく」（ギリシャ語 kalyx）",
+          "note": "いくつかの小腎杯（minor calyx）が集まった太い管（ふつう2〜3本）。合わさって腎盤（renal pelvis）になる。"
+        },
+        {
+          "id": "minor-calyx", "ja": "小腎杯", "yomi": "しょうじんぱい", "en": "minor calyx", "la": "calyx renalis minor",
+          "parts": ["za:minor renal calyx"], "level": 2, "xray": true,
+          "kanji": "小さな腎臓の杯（さかずき）",
+          "etym": "calyx「杯・花のがく」（ギリシャ語 kalyx）",
+          "note": "腎乳頭（renal papilla）を杯のように受ける短い管（1つの腎臓（kidney）に7〜13個）。尿はここから大腎杯（major calyx）・腎盤（renal pelvis）へ流れる。"
+        }
+      ]
+    },
+    {
+      "id": "uro-kidney-pt",
+      "title": "腎臓の面と縁",
+      "group": "泌尿器",
+      "terms": [
+        {
+          "id": "renal-hilum", "ja": "腎門", "yomi": "じんもん", "en": "renal hilum", "enAlt": ["hilum of kidney"], "la": "hilum renale",
+          "of": "kidney", "level": 1,
+          "kanji": "腎臓の門（出入口）",
+          "etym": "renal ← ラテン語 ren「腎臓」。hilum「へそ」",
+          "note": "腎臓（kidney）の内側（medial）の縁の中央のくぼみ。前から腎静脈（renal vein）・腎動脈（renal artery）・腎盤（renal pelvis）（尿管（ureter））の順に並んで出入りする。奥は腎洞（renal sinus）という空所。"
+        },
+        {
+          "id": "superior-pole-of-kidney", "ja": "上端（腎臓）", "yomi": "じょうたん", "en": "superior pole of kidney", "enAlt": ["superior extremity of kidney"], "la": "extremitas superior renis",
+          "of": "kidney", "level": 2,
+          "kanji": "腎臓の上の端",
+          "etym": "superior「上の」＋ pole「極・端」。ラテン語 extremitas「端」",
+          "note": "腎臓（kidney）の上の丸い端。第12胸椎（twelfth thoracic vertebra）の高さにあり（右は肝臓（liver）に押されて少し低い）、副腎（suprarenal gland）がのる。下端（inferior end）より正中（median）に近く、腎臓の長い軸は上内側（superomedial）から下外側（inferolateral）へ傾く。後ろは横隔膜（diaphragm）を隔てて胸膜腔（pleural cavity）の肋骨横隔洞（costodiaphragmatic recess）に接するので、腎臓の手術で胸膜（pleura）を傷つけることがある。"
+        },
+        {
+          "id": "inferior-pole-of-kidney", "ja": "下端（腎臓）", "yomi": "かたん", "en": "inferior pole of kidney", "enAlt": ["inferior extremity of kidney"], "la": "extremitas inferior renis",
+          "of": "kidney", "level": 2,
+          "kanji": "腎臓の下の端",
+          "etym": "inferior「下の」＋ pole「極・端」",
+          "note": "腎臓（kidney）の下の丸い端。第3腰椎（third lumbar vertebra）の高さにあり、腸骨稜（iliac crest）の上約2.5cm。右の腎臓の下端（inferior end）はやせた人では腹壁（abdominal wall）の上から触れることがある。腎筋膜（renal fascia）は下で閉じないので、脂肪（fat）が減ると腎臓が下へ動く（腎下垂・遊走腎）。"
+        },
+        {
+          "id": "anterior-surface-of-kidney", "ja": "前面（腎臓）", "yomi": "ぜんめん", "en": "anterior surface of kidney", "la": "facies anterior renis",
+          "of": "kidney", "level": 2,
+          "kanji": "腎臓の前の面",
+          "etym": "anterior「前の」＋ surface「面」",
+          "note": "腎臓（kidney）の前の丸くふくらんだ面で、やや外側（lateral）を向く。腹膜（peritoneum）の後ろにあり、接する臓器（organ）が左右で違う。右は副腎（suprarenal gland）・肝臓（liver）・十二指腸（duodenum）の下行部（descending part）・右結腸曲（right colic flexure）（と小腸（small intestine））、左は副腎・胃（stomach）・脾臓（spleen）・膵尾（tail of pancreas）・空腸（jejunum）・左結腸曲（left colic flexure）（下行結腸（descending colon））。肝臓・胃・脾臓・空腸との間には腹膜がある。"
+        },
+        {
+          "id": "posterior-surface-of-kidney", "ja": "後面（腎臓）", "yomi": "こうめん", "en": "posterior surface of kidney", "la": "facies posterior renis",
+          "of": "kidney", "level": 2,
+          "kanji": "腎臓の後ろの面",
+          "etym": "posterior「後ろの」＋ surface「面」",
+          "note": "腎臓（kidney）の後ろの平らな面。脂肪被膜（perirenal fat capsule）と腎筋膜（renal fascia）を隔てて、上は横隔膜（diaphragm）（その後ろに第12肋骨（twelfth rib）と、左では第11肋骨（eleventh rib）も）、下は内側（medial）から大腰筋（psoas major）・腰方形筋（quadratus lumborum）・腹横筋（transversus abdominis）の腱膜（aponeurosis）に接する。腰方形筋の前を肋下神経（subcostal nerve）・腸骨下腹神経（iliohypogastric nerve）・腸骨鼡径神経（ilio-inguinal nerve）が下る。腰（lower back）の後ろから腎臓に入る手術や、背中（back）をたたくと痛む（叩打痛）のはこの面の側。"
+        },
+        {
+          "id": "lateral-border-of-kidney", "ja": "外側縁（腎臓）", "yomi": "がいそくえん", "en": "lateral border of kidney", "enAlt": ["lateral margin of kidney"], "la": "margo lateralis renis",
+          "of": "kidney", "level": 2,
+          "kanji": "腎臓の外側の縁",
+          "etym": "lateral「外側の」＋ border「縁」",
+          "note": "腎臓（kidney）の外側（lateral）の丸くふくらんだ縁。右は肝臓（liver）の右葉（right lobe）、左は脾臓（spleen）と下行結腸（descending colon）に近い。腎臓の中の前と後ろの動脈（artery）の区域（segment）の境（ブレーデル線）は、この縁のやや後ろを縦に通る（血管（blood vessel）の少ない所なので、ここで腎臓を切開する）。"
+        },
+        {
+          "id": "medial-border-of-kidney", "ja": "内側縁（腎臓）", "yomi": "ないそくえん", "en": "medial border of kidney", "enAlt": ["medial margin of kidney"], "la": "margo medialis renis",
+          "of": "kidney", "level": 2,
+          "kanji": "腎臓の内側の縁",
+          "etym": "medial「内側の」＋ border「縁」",
+          "note": "腎臓（kidney）の内側（medial）の縁。上と下はふくらみ、真ん中は腎門（renal hilum）としてくぼむ（そら豆形の凹みの側）。腎門の上で副腎（suprarenal gland）に、下で尿管（ureter）に続く。大腰筋（psoas major）の外側（lateral）に沿い、前内側（anteromedial）を向く。"
+        }
+      ]
+    },
+    {
+      "id": "uro-kidney-coverings",
+      "title": "腎臓の被膜",
+      "group": "泌尿器",
+      "intro": ["腎臓（kidney）は内から線維被膜（fibrous capsule）・脂肪被膜（perirenal fat capsule）・腎筋膜（renal fascia）の3つに包まれる。腎筋膜は副腎（suprarenal gland）も一緒に包み、その後ろには腎傍脂肪体（pararenal fat body）がある。立体の脂肪被膜と腎筋膜は、腎臓と副腎からの距離で作った模式の形（実物の脂肪被膜は腎臓の後ろと下で厚い）。臓器（organ）の図「腎臓」の水平断（horizontal section）で層の重なりを見られる。"],
       "terms": [
         {
           "id": "renal-capsule", "ja": "線維被膜", "yomi": "せんいひまく", "en": "fibrous capsule", "enAlt": ["renal capsule"], "la": "capsula fibrosa", "plate": "kidney-section", "level": 2,
@@ -120,46 +233,178 @@
           "note": "腎臓（kidney）の表面をじかに包む薄く丈夫な膜（membrane）。その外を脂肪被膜（perirenal fat capsule）（腎周囲の脂肪（fat））、さらに腎筋膜（renal fascia）（ゲロタ筋膜）が包む。健康な腎臓では線維被膜はたやすくはがれる。"
         },
         {
-          "id": "renal-cortex", "ja": "腎皮質", "yomi": "じんひしつ", "en": "renal cortex", "la": "cortex renalis", "plate": "kidney-section", "level": 1,
-          "kanji": "腎臓の皮（外側）の質",
-          "etym": "cortex「樹皮」（ラテン語）",
-          "note": "腎実質の外側（lateral）の層。腎小体（糸球体とボウマン嚢）と近位（proximal）・遠位（distal）の曲尿細管があり、血液（blood）をこして原尿をつくる。腎錐体（renal pyramid）の間に入りこんだ所が腎柱（renal column）。"
+          "id": "perirenal-fat-capsule", "ja": "脂肪被膜", "yomi": "しぼうひまく", "en": "perirenal fat capsule", "enAlt": ["adipose capsule", "perirenal fat", "perinephric fat"], "la": "capsula adiposa renis",
+          "parts": ["za:perirenal fat capsule"], "level": 2, "xray": true, "veil": true,
+          "kanji": "脂肪でできた被膜（包む膜）",
+          "etym": "perirenal ← peri-「まわり」＋ renal「腎臓の」。adipose「脂肪の」",
+          "note": "線維被膜（fibrous capsule）の外で腎臓（kidney）と副腎（suprarenal gland）を包む脂肪（fat）の層（腎周囲脂肪）。腎臓の後ろと縁で厚く、腎門（renal hilum）から腎洞（renal sinus）の脂肪に続く。腎臓を衝撃から守り、位置を保つ。急にやせると減って、腎臓が下へ動きやすくなる（腎下垂）。腎臓のまわりの出血や膿は、まず腎筋膜（renal fascia）の中のこの層に広がる。"
         },
         {
-          "id": "renal-medulla", "ja": "腎髄質", "yomi": "じんずいしつ", "en": "renal medulla", "la": "medulla renalis", "plate": "kidney-section", "level": 1,
-          "kanji": "腎臓の髄（中心）の質",
-          "etym": "medulla「髄（骨の中心）」（ラテン語）",
-          "note": "腎皮質（renal cortex）の内側（medial）の部分。十数個の腎錐体（renal pyramid）からなり、ヘンレのわなと集合管が縦に並ぶので断面（section）で放射状のすじに見える。尿を濃くする。"
+          "id": "renal-fascia", "ja": "腎筋膜", "yomi": "じんきんまく", "en": "renal fascia", "enAlt": ["gerota fascia", "gerota's fascia"], "la": "fascia renalis",
+          "parts": ["za:renal fascia"], "level": 2, "xray": true, "veil": true,
+          "kanji": "腎臓を包む筋膜",
+          "etym": "fascia「帯・包帯」（ラテン語）。ジェロタ（Gerota、ルーマニアの解剖学者）",
+          "note": "脂肪被膜（perirenal fat capsule）の外を包む膜（membrane）（ジェロタ筋膜（Gerota fascia））。腎筋膜は前葉（anterior layer）と後葉（posterior layer）からなり、腎臓（kidney）・副腎（suprarenal gland）・脂肪被膜を一緒に包む。前葉と後葉は上（副腎の上）と外側（lateral）で合わさるが、下は閉じずに尿管（ureter）と精巣（testis）（卵巣（ovary））動静脈（artery and vein）を通す。前葉は腹大動脈（abdominal aorta）と下大静脈（inferior vena cava）の前を通って反対側（contralateral side）に続く。前葉の前は腹膜（peritoneum）、後葉の後ろは腎傍脂肪体（pararenal fat body）。"
         },
         {
-          "id": "renal-pyramid", "ja": "腎錐体", "yomi": "じんすいたい", "en": "renal pyramid", "la": "pyramis renalis", "plate": "kidney-section", "level": 2,
-          "kanji": "腎臓の中の錐（円錐）の形の塊",
-          "etym": "pyramis「ピラミッド」（ギリシャ語 pyramis）",
-          "note": "腎髄質（renal medulla）をつくる円錐形の塊（1つの腎臓（kidney）に10〜18個）。底を腎皮質（renal cortex）に、先（腎乳頭（renal papilla））を腎洞（renal sinus）に向ける。1つの腎錐体とそれをおおう腎皮質を腎葉という。"
+          "id": "pararenal-fat-body", "ja": "腎傍脂肪体", "yomi": "じんぼうしぼうたい", "en": "pararenal fat body", "enAlt": ["paranephric fat", "pararenal fat"], "la": "corpus adiposum pararenale", "plate": "renal-fascia-section", "level": 3,
+          "kanji": "腎臓のそば（傍）の脂肪の塊",
+          "etym": "para-「そば」＋ renal「腎臓の」",
+          "note": "腎筋膜（renal fascia）の後葉（posterior layer）の後ろ（腎筋膜と腰方形筋（quadratus lumborum）・大腰筋（psoas major）を包む横筋筋膜（transversalis fascia）の間）にある脂肪（fat）。腎臓（kidney）の後ろと下で厚い。脂肪被膜（perirenal fat capsule）（腎筋膜の中）とは別の層。"
+        }
+      ]
+    },
+    {
+      "id": "uro-kidney-vessels",
+      "title": "腎臓の血管",
+      "group": "泌尿器",
+      "intro": ["腎臓（kidney）には心拍出量（cardiac output）の約4分の1の血液（blood）が流れる。腎動脈（renal artery）は腎洞（renal sinus）で区域動脈（segmental artery）に分かれ、葉間動脈（interlobar artery）→弓状動脈（arcuate artery）→小葉間動脈（interlobular artery）→輸入細動脈（afferent arteriole）→糸球体（glomerulus）→輸出細動脈（efferent arteriole）→尿細管周囲毛細血管（peritubular capillaries）と進み、静脈（vein）は逆の順に集まって腎静脈（renal vein）になる。これらは平面図「腎臓の血管（blood vessel）」で示す。"],
+      "terms": [
+        {
+          "id": "segmental-arteries-of-kidney", "ja": "区域動脈（腎臓）", "yomi": "くいきどうみゃく", "en": "segmental arteries of kidney", "enAlt": ["segmental artery", "segmental renal arteries"], "la": "arteriae segmenti renis", "plate": "kidney-vessels", "level": 2,
+          "kanji": "腎臓の区域ごとの動脈",
+          "etym": "segmental「区域の」（ラテン語 segmentum「切り分けた部分」）",
+          "note": "腎動脈（renal artery）の枝（branch）。腎門（renal hilum）の近くで前枝（anterior branch）と後枝（posterior branch）に分かれ、前枝から上区（superior segment）・上前区（anterior superior segment）・下前区（anterior inferior segment）・下区（inferior segment）の動脈（artery）、後枝から後区（posterior segment）の動脈が出て、腎臓（kidney）を5つの区域（segment）に分けて養う。腎洞（renal sinus）の中を走る。区域動脈（segmental artery）どうしはつながらない終動脈（end artery）なので、1本が詰まるとその区域が梗塞を起こす（区域ごとに切除できる）。"
         },
         {
-          "id": "renal-papilla", "ja": "腎乳頭", "yomi": "じんにゅうとう", "en": "renal papilla", "la": "papilla renalis", "plate": "kidney-section", "level": 2,
-          "kanji": "腎錐体の先の乳頭（乳首のような突起）",
-          "etym": "papilla「乳首」（ラテン語）",
-          "note": "腎錐体（renal pyramid）の先。集合管が集まった乳頭管の口（乳頭孔）が多数開き、できあがった尿が小腎杯（minor calyx）へ出る。"
+          "id": "interlobar-arteries", "ja": "葉間動脈", "yomi": "ようかんどうみゃく", "en": "interlobar arteries", "enAlt": ["interlobar artery"], "la": "arteriae interlobares renis", "plate": "kidney-vessels", "level": 2,
+          "kanji": "腎葉と腎葉の間の動脈",
+          "etym": "inter-「間の」＋ lobar「葉の」",
+          "note": "区域動脈（segmental artery）の枝（branch）。腎錐体（renal pyramid）と腎錐体の間（腎柱（renal column））を、腎洞（renal sinus）から皮質（cortex）へ向かってのぼる。腎錐体の底で弓状動脈（arcuate artery）になる。1つの腎錐体とそれをおおう皮質を腎葉といい、その間を通るので葉間動脈という。"
         },
         {
-          "id": "renal-column", "ja": "腎柱", "yomi": "じんちゅう", "en": "renal column", "la": "columna renalis", "plate": "kidney-section", "level": 2,
-          "kanji": "腎錐体の間の柱",
-          "etym": "columna「柱」（ラテン語）",
-          "note": "腎錐体（renal pyramid）と腎錐体の間に柱のように入りこんだ腎皮質（renal cortex）。葉間動脈（interlobar artery）・葉間静脈が通り、腎錐体の底で弓状動脈（arcuate artery）になる。"
+          "id": "arcuate-arteries-of-kidney", "ja": "弓状動脈（腎臓）", "yomi": "きゅうじょうどうみゃく", "en": "arcuate arteries of kidney", "enAlt": ["arcuate artery"], "la": "arteriae arcuatae renis", "plate": "kidney-vessels", "level": 2,
+          "kanji": "弓のように曲がって走る動脈",
+          "etym": "arcuate ← ラテン語 arcus「弓」",
+          "note": "葉間動脈（interlobar artery）の続き。腎錐体（renal pyramid）の底（皮質（cortex）と髄質（medulla）の境）で向きを変え、錐体（renal pyramid）の底にそって弓のように走る。皮質へ向かって小葉間動脈（interlobular artery）を出す。足背（dorsum of foot）の弓状動脈（arcuate artery）とは別。"
         },
         {
-          "id": "major-calyx", "ja": "大腎杯", "yomi": "だいじんぱい", "en": "major calyx", "la": "calyx renalis major", "plate": "kidney-section", "level": 2,
-          "kanji": "大きな腎臓の杯（さかずき）",
-          "etym": "calyx「杯・花のがく」（ギリシャ語 kalyx）",
-          "note": "いくつかの小腎杯（minor calyx）が集まった太い管（ふつう2〜3本）。合わさって腎盤（renal pelvis）になる。"
+          "id": "interlobular-arteries-of-kidney", "ja": "小葉間動脈（腎臓）", "yomi": "しょうようかんどうみゃく", "en": "interlobular arteries of kidney", "enAlt": ["interlobular artery", "cortical radiate arteries"], "la": "arteriae interlobulares renis", "plate": "kidney-vessels", "level": 2,
+          "kanji": "小葉と小葉の間の動脈",
+          "etym": "inter-「間の」＋ lobular「小葉の」。cortical radiate「皮質を放射状に走る」",
+          "note": "弓状動脈（arcuate artery）から、皮質（cortex）の中を腎臓（kidney）の表面へ向かって放射状にのびる動脈（artery）（皮質放線動脈ともいう）。途中で輸入細動脈（afferent arteriole）を次々に出す。皮質の髄放線（集合管（collecting duct）の束）と髄放線の間を通る。"
         },
         {
-          "id": "minor-calyx", "ja": "小腎杯", "yomi": "しょうじんぱい", "en": "minor calyx", "la": "calyx renalis minor", "plate": "kidney-section", "level": 2,
-          "kanji": "小さな腎臓の杯（さかずき）",
-          "etym": "calyx「杯・花のがく」（ギリシャ語 kalyx）",
-          "note": "腎乳頭（renal papilla）を杯のように受ける短い管（1つの腎臓（kidney）に7〜13個）。尿はここから大腎杯（major calyx）・腎盤（renal pelvis）へ流れる。"
+          "id": "afferent-arteriole", "ja": "輸入細動脈", "yomi": "ゆにゅうさいどうみゃく", "en": "afferent arteriole", "enAlt": ["afferent glomerular arteriole"], "la": "arteriola glomerularis afferens", "plate": "kidney-vessels", "level": 2,
+          "kanji": "糸球体へ血液を運び入れる細い動脈",
+          "etym": "afferent ← ラテン語 ad-「へ」＋ ferre「運ぶ」。arteriole「細動脈」",
+          "note": "小葉間動脈（interlobular artery）の枝（branch）で、腎小体（renal corpuscle）の血管極（vascular pole）から入って糸球体（glomerulus）の毛細血管（capillary）に分かれる。壁の平滑筋（smooth muscle）の一部が傍糸球体細胞に変わってレニンを出す。輸入細動脈が縮んだりゆるんだりして、糸球体に入る血液（blood）の量と圧を調節する。"
+        },
+        {
+          "id": "efferent-arteriole", "ja": "輸出細動脈", "yomi": "ゆしゅつさいどうみゃく", "en": "efferent arteriole", "enAlt": ["efferent glomerular arteriole"], "la": "arteriola glomerularis efferens", "plate": "kidney-vessels", "level": 2,
+          "kanji": "糸球体から血液を運び出す細い動脈",
+          "etym": "efferent ← ラテン語 ex-「外へ」＋ ferre「運ぶ」",
+          "note": "糸球体（glomerulus）の毛細血管（capillary）が集まって血管極（vascular pole）から出る細動脈（静脈（vein）ではなく動脈（artery））。輸入細動脈（afferent arteriole）より細いので糸球体の中の圧が高く保たれ、血液（blood）がこされる。このあと尿細管周囲毛細血管（peritubular capillaries）に分かれる（毛細血管が2度続く）。髄質（medulla）に近い腎小体（renal corpuscle）の輸出細動脈は、髄質へ下る直細動脈（直血管）になる。"
+        },
+        {
+          "id": "peritubular-capillaries", "ja": "尿細管周囲毛細血管", "yomi": "にょうさいかんしゅういもうさいけっかん", "en": "peritubular capillaries", "enAlt": ["peritubular capillary network"], "la": "vasa capillaria peritubularia", "plate": "kidney-vessels", "level": 3,
+          "kanji": "尿細管のまわりの毛細血管",
+          "etym": "peri-「まわり」＋ tubular「細管の」＋ capillary「毛細の」（ラテン語 capillus「髪の毛」）",
+          "note": "輸出細動脈（efferent arteriole）の続きで、尿細管を網のように囲む毛細血管（capillary）。尿細管が原尿（primary urine）から取りもどした水・塩類・ブドウ糖などを受け取り、尿細管へ出す物質を渡す。小葉間静脈に集まる。"
+        },
+        {
+          "id": "interlobular-veins-of-kidney", "ja": "小葉間静脈（腎臓）", "yomi": "しょうようかんじょうみゃく", "en": "interlobular veins of kidney", "enAlt": ["interlobular vein", "cortical radiate veins"], "la": "venae interlobulares renis", "plate": "kidney-vessels", "level": 3,
+          "kanji": "小葉と小葉の間の静脈",
+          "etym": "inter-「間の」＋ lobular「小葉の」",
+          "note": "皮質（cortex）の尿細管周囲毛細血管（peritubular capillaries）の血液（blood）を集め、小葉間動脈（interlobular artery）にそって皮質の中を内側（medial）へ下り、弓状静脈（arcuate veins）に注ぐ。"
+        },
+        {
+          "id": "arcuate-veins", "ja": "弓状静脈", "yomi": "きゅうじょうじょうみゃく", "en": "arcuate veins", "enAlt": ["arcuate vein"], "la": "venae arcuatae renis", "plate": "kidney-vessels", "level": 3,
+          "kanji": "弓のように曲がって走る静脈",
+          "etym": "arcuate ← ラテン語 arcus「弓」",
+          "note": "腎錐体（renal pyramid）の底にそって弓状動脈（arcuate artery）と並んで走る静脈（vein）。小葉間静脈と、髄質（medulla）から上る直細静脈の血液（blood）を集めて葉間静脈（interlobar veins）に注ぐ。動脈（artery）と違い、となりの弓状静脈どうしがつながる。"
+        },
+        {
+          "id": "interlobar-veins", "ja": "葉間静脈", "yomi": "ようかんじょうみゃく", "en": "interlobar veins", "enAlt": ["interlobar vein"], "la": "venae interlobares renis", "plate": "kidney-vessels", "level": 3,
+          "kanji": "腎葉と腎葉の間の静脈",
+          "etym": "inter-「間の」＋ lobar「葉の」",
+          "note": "弓状静脈（arcuate veins）の血液（blood）を集め、腎柱（renal column）を葉間動脈（interlobar artery）と並んで腎洞（renal sinus）へ下る静脈（vein）。腎洞の中で合わさり、腎門（renal hilum）で腎静脈（renal vein）になる。静脈には区域（segment）が無く、腎臓（kidney）の中でたがいにつながる。"
+        }
+      ]
+    },
+    {
+      "id": "uro-nephron",
+      "title": "ネフロン",
+      "group": "泌尿器",
+      "intro": ["尿をつくる単位をネフロン（nephron）という（1つの腎臓（kidney）に約100万個）。ネフロンは腎小体（renal corpuscle）（糸球体（glomerulus）と糸球体包（glomerular capsule））と尿細管（近位尿細管（proximal tubule）・ヘンレのわな（nephron loop）・遠位尿細管（distal tubule））からなり、いくつかのネフロンが集合管（collecting duct）に注ぐ。腎小体は皮質（cortex）にだけあり、ヘンレのわなと集合管は髄質（medulla）へ下る。平面図「ネフロン」「腎小体」で示す。"],
+      "terms": [
+        {
+          "id": "nephron", "ja": "ネフロン", "yomi": "ねふろん", "en": "nephron", "la": "nephronum", "plate": "nephron", "level": 1,
+          "kanji": "ネフロン＝腎単位",
+          "etym": "nephron ← ギリシャ語 nephros「腎臓」",
+          "note": "尿をつくるいちばん小さな単位（腎単位）。腎小体（renal corpuscle）とそれに続く1本の尿細管（近位尿細管（proximal tubule）・ヘンレのわな（nephron loop）・遠位尿細管（distal tubule））からなり、1つの腎臓（kidney）に約100万個ある。腎小体で血液（blood）をこして原尿（primary urine）（1日約150L）をつくり、尿細管で水と必要な物質の大部分を取りもどして、尿（1日約1.5L）にする。生まれたあとは新しくできない。集合管（collecting duct）はネフロンに含めない（発生（development）のもとが違う）。"
+        },
+        {
+          "id": "renal-corpuscle", "ja": "腎小体", "yomi": "じんしょうたい", "en": "renal corpuscle", "enAlt": ["malpighian corpuscle"], "la": "corpusculum renale", "plate": "nephron", "level": 1,
+          "kanji": "腎臓の中の小さな体（粒）",
+          "etym": "corpuscle ← ラテン語 corpusculum「小さな体」。マルピギー（Malpighi、イタリアの解剖学者）",
+          "note": "糸球体（glomerulus）とそれを包む糸球体包（glomerular capsule）からなる、直径約0.2mm の粒（マルピギー小体）。皮質（cortex）にだけあり、断面（section）で赤い点に見える。輸入細動脈（afferent arteriole）と輸出細動脈（efferent arteriole）が出入りする側を血管極（vascular pole）、近位尿細管（proximal tubule）が始まる側を尿細管極（urinary pole）という。"
+        },
+        {
+          "id": "glomerulus", "ja": "糸球体", "yomi": "しきゅうたい", "en": "glomerulus", "enAlt": ["renal glomerulus", "glomeruli"], "la": "glomerulus renalis", "plate": "renal-corpuscle", "level": 1,
+          "kanji": "糸を丸めた球のような体",
+          "etym": "glomerulus ← ラテン語 glomus「毛糸の玉」の小さいもの",
+          "note": "輸入細動脈（afferent arteriole）が分かれてできた毛細血管（capillary）の糸玉。毛細血管の内皮の小さな孔・基底膜（basement membrane）・足細胞（podocyte）のすき間の3重のふるいで、血液（blood）から血球（blood cells）とたんぱく質を残して血漿をこし、原尿（primary urine）をつくる（糸球体ろ過）。毛細血管の間をメサンギウム細胞（mesangial cell）が支える。動脈（artery）（輸入細動脈）と動脈（輸出細動脈（efferent arteriole））の間にある毛細血管。"
+        },
+        {
+          "id": "glomerular-capsule", "ja": "糸球体包", "yomi": "しきゅうたいほう", "en": "glomerular capsule", "enAlt": ["bowman's capsule", "bowman capsule"], "la": "capsula glomerularis", "plate": "renal-corpuscle", "level": 2,
+          "kanji": "糸球体を包む袋",
+          "etym": "capsule「小さな箱」。ボウマン（Bowman、イギリスの解剖学者）",
+          "note": "糸球体（glomerulus）を包む二重の袋（ボウマン嚢）。尿細管の始まりがふくらんでへこんだ形で、内葉（臓側板（visceral layer））は糸球体の毛細血管（capillary）にはりつく足細胞（podocyte）、外葉（壁側板）は単層扁平上皮。内葉と外葉の間の腔（ボウマン腔）にこされた原尿（primary urine）がたまり、尿細管極（urinary pole）から近位尿細管（proximal tubule）へ流れる。"
+        },
+        {
+          "id": "proximal-tubule", "ja": "近位尿細管", "yomi": "きんいにょうさいかん", "en": "proximal tubule", "enAlt": ["proximal convoluted tubule", "proximal renal tubule"], "la": "tubulus proximalis", "plate": "nephron", "level": 2,
+          "kanji": "腎小体に近い側の尿細管",
+          "etym": "proximal「近い」＋ tubule「細い管」（ラテン語 tubulus）",
+          "note": "糸球体包（glomerular capsule）に続く尿細管の最初の部分。腎小体（renal corpuscle）のまわりで曲がりくねる曲部と、髄質（medulla）へ向かってまっすぐ下る直部がある。上皮（epithelium）の表面に微絨毛（microvilli）（刷子縁（brush border））が密に並び、原尿（primary urine）の水と塩類の約3分の2、ブドウ糖とアミノ酸のほぼすべてを取りもどす。"
+        },
+        {
+          "id": "nephron-loop", "ja": "ヘンレのわな", "yomi": "へんれのわな", "en": "nephron loop", "enAlt": ["loop of henle", "henle's loop", "henle loop"], "la": "ansa nephroni", "plate": "nephron", "level": 2,
+          "kanji": "わな（輪）＝U字に折り返す管",
+          "etym": "ヘンレ（Henle、ドイツの解剖学者）。nephron loop「ネフロンのわな」",
+          "note": "近位尿細管（proximal tubule）の直部に続き、髄質（medulla）へ下ってU字に折り返し、皮質（cortex）へ戻る部分（ヘンレループ・ヘンレ係蹄）。下る脚（下行脚）は水を通し、上る脚（上行脚）は水を通さずに塩化ナトリウムをくみ出す。この仕組み（対向流）で髄質の深い所ほど濃くなり、集合管（collecting duct）で尿を濃くできる。髄質に近い腎小体（renal corpuscle）のネフロン（nephron）ほど長い。"
+        },
+        {
+          "id": "distal-tubule", "ja": "遠位尿細管", "yomi": "えんいにょうさいかん", "en": "distal tubule", "enAlt": ["distal convoluted tubule", "distal renal tubule"], "la": "tubulus distalis", "plate": "nephron", "level": 2,
+          "kanji": "腎小体から遠い側の尿細管",
+          "etym": "distal「遠い」＋ tubule「細い管」",
+          "note": "ヘンレのわな（nephron loop）の上行脚に続く部分。自分の腎小体（renal corpuscle）の血管極（vascular pole）に戻って緻密斑（macula densa）をつくり、そのあと曲がりくねって（曲部）集合管（collecting duct）に注ぐ。アルドステロンの働きでナトリウムを取りもどし、カリウムを出す。"
+        },
+        {
+          "id": "collecting-duct", "ja": "集合管", "yomi": "しゅうごうかん", "en": "collecting duct", "enAlt": ["collecting tubule", "collecting ducts"], "la": "ductus colligens", "plate": "nephron", "level": 2,
+          "kanji": "尿を集める管",
+          "etym": "collecting「集める」＋ duct「管」",
+          "note": "いくつかのネフロン（nephron）の遠位尿細管（distal tubule）が注ぐ管。皮質（cortex）から髄質（medulla）を腎乳頭（renal papilla）へ向かってまっすぐ下り、合わさって乳頭管（papillary duct）になる。バソプレシン（vasopressin）（抗利尿ホルモン（antidiuretic hormone））が働くと水を通す孔（アクアポリン）が増え、濃い髄質に水が引き出されて尿が濃くなる。発生（development）では尿管芽からでき（ネフロンは後腎の組織（tissue）から）、ネフロンに含めない。"
+        },
+        {
+          "id": "papillary-duct", "ja": "乳頭管", "yomi": "にゅうとうかん", "en": "papillary duct", "enAlt": ["papillary ducts", "duct of bellini"], "la": "ductus papillaris", "plate": "nephron", "level": 3,
+          "kanji": "腎乳頭に開く管",
+          "etym": "papillary「乳頭の」＋ duct「管」。ベリニ（Bellini）管",
+          "note": "集合管（collecting duct）が合わさってできる太い管。腎乳頭（renal papilla）の先の小さな孔（乳頭孔（papillary foramina））に開き、できあがった尿を小腎杯（minor calyx）へ出す。孔が多数並ぶ乳頭（nipple）の先を篩状野という。"
+        },
+        {
+          "id": "juxtaglomerular-apparatus", "ja": "傍糸球体装置", "yomi": "ぼうしきゅうたいそうち", "en": "juxtaglomerular apparatus", "enAlt": ["juxtaglomerular complex"], "la": "complexus juxtaglomerularis", "plate": "renal-corpuscle", "level": 2,
+          "kanji": "糸球体のそば（傍）の装置",
+          "etym": "juxta-「そば」（ラテン語）＋ glomerular「糸球体の」",
+          "note": "腎小体（renal corpuscle）の血管極（vascular pole）で、輸入細動脈（afferent arteriole）の傍糸球体細胞（レニンを出す）・遠位尿細管（distal tubule）の緻密斑（macula densa）・糸球体外メサンギウム細胞が集まった所。血圧（blood pressure）の低下や尿細管の中の塩化ナトリウムの減少を感じてレニンを出し、アンジオテンシン・アルドステロンを通して血圧と体液の量を保つ（レニン・アンジオテンシン・アルドステロン系）。"
+        },
+        {
+          "id": "macula-densa", "ja": "緻密斑", "yomi": "ちみつはん", "en": "macula densa", "la": "macula densa", "plate": "renal-corpuscle", "level": 3,
+          "kanji": "細胞が緻密に（すきまなく）並んだ斑（まだら）",
+          "etym": "macula「しみ・斑」＋ densa「密な」（ラテン語）",
+          "note": "遠位尿細管（distal tubule）が自分の腎小体（renal corpuscle）の血管極（vascular pole）に接する所で、背（back）の高い上皮細胞（epithelial cell）がすきまなく並んだ部分。尿細管の中の塩化ナトリウムの濃さを感じ、輸入細動脈（afferent arteriole）の太さとレニンの分泌（secretion）を変えて、糸球体（glomerulus）でこす量を調節する（尿細管糸球体フィードバック）。傍糸球体装置（juxtaglomerular apparatus）の一部。"
+        },
+        {
+          "id": "podocyte", "ja": "足細胞", "yomi": "そくさいぼう", "en": "podocyte", "enAlt": ["podocytes", "visceral epithelial cell"], "la": "podocytus", "plate": "renal-corpuscle", "level": 3,
+          "kanji": "足（突起）を出す細胞",
+          "etym": "podocyte ← ギリシャ語 pous「足」＋ kytos「細胞」",
+          "note": "糸球体包（glomerular capsule）の内葉（臓側板（visceral layer））をつくる上皮細胞（epithelial cell）。たくさんの足（foot）のような突起（process）（足突起）で糸球体（glomerulus）の毛細血管（capillary）を包み、となりの細胞（cell）の足突起とかみ合う。その間のすき間（スリット膜）が、たんぱく質を通さない最後のふるいになる。傷つくとたんぱく尿が出る（ネフローゼ症候群）。"
+        },
+        {
+          "id": "mesangial-cell", "ja": "メサンギウム細胞", "yomi": "めさんぎうむさいぼう", "en": "mesangial cell", "enAlt": ["mesangial cells", "mesangium"], "la": "cellula mesangialis", "plate": "renal-corpuscle", "level": 3,
+          "kanji": "メサンギウム＝血管の間（の組織）",
+          "etym": "mesangium ← ギリシャ語 mesos「間」＋ angeion「血管」",
+          "note": "糸球体（glomerulus）の毛細血管（capillary）と毛細血管の間にあって、それを支える細胞（cell）（糸球体内メサンギウム細胞）。縮んで毛細血管の流れを変え、ふるいにたまった物を取りこむ。血管極（vascular pole）の外にあるもの（糸球体外メサンギウム細胞）は傍糸球体装置（juxtaglomerular apparatus）の一部。IgA 腎症ではここに免疫（immunity）の複合体がたまる。"
         }
       ]
     },

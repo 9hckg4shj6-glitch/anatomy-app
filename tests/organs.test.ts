@@ -59,6 +59,16 @@ describe("臓器の場面", () => {
     expect(organOf("spinal-cord")).toBeUndefined();
   });
 
+  it("腎臓の中・被膜・面と縁・血管・ネフロンのレッスンは臓器「腎臓」で見せ、腎臓そのものは腎臓と尿路のまま", () => {
+    for (const unit of ["uro-kidney-inner", "uro-kidney-pt", "uro-kidney-coverings", "uro-kidney-vessels", "uro-nephron"]) {
+      expect(sceneFor("urogenital", unit).organ).toBe("renal");
+    }
+    expect(organOf("renal-pyramid")?.id).toBe("renal");
+    expect(organOf("renal-fascia")?.id).toBe("renal");
+    expect(organOf("kidney")?.id).toBe("kidney");
+    expect(organOf("renal-pelvis")?.id).toBe("kidney");
+  });
+
   it("鼻腔と副鼻腔は咽頭から分けた臓器で、咽頭の立体には鼻腔を添えるだけ", () => {
     expect(organOf("frontal-sinus")?.id).toBe("nose");
     expect(organOf("nasal-septal-cartilage")?.id).toBe("nose");

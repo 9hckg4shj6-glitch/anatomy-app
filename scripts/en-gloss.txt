@@ -401,6 +401,7 @@
 大十二指腸乳頭|major duodenal papilla
 絨毛|villi
 リンパ管|lymphatic vessel
+前葉%腎筋膜,筋膜|anterior layer
 前葉|anterior lobe
 上内側|superomedial
 蝶番関節|hinge joint
@@ -546,6 +547,7 @@ S状結腸間膜|sigmoid mesocolon
 第3大臼歯|third molar
 前下方|anteroinferior
 咽頭扁桃|pharyngeal tonsil
+後葉%腎筋膜,筋膜|posterior layer
 後葉|posterior lobe
 間脳|diencephalon
 峡部|isthmus
@@ -2176,3 +2178,11 @@ VIII脳神経|cranial nerve VIII
 正中点|midpoint
 開口部|opening
 分泌物|secretion
+
+# 腎臓（2026-11-09）
+肋下神経|subcostal nerve
+血管極|vascular pole
+尿細管極|urinary pole
+原尿|primary urine
+叩打痛|-
+乳頭孔|papillary foramina

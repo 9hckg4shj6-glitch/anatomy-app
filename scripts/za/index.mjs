@@ -6,6 +6,7 @@ import path from "node:path";
 import { splitMesh } from "../split-mesh.mjs";
 import { readZaFile, vertexNormals, ZA_DIR, ZA_FILES } from "./read.mjs";
 import { anchorPairs, icp, makeWarp } from "./warp.mjs";
+import { loadKidney } from "../kidney/index.mjs";
 
 const VERSION = 1;
 const CACHE = path.join(ZA_DIR, "anchors.json");
@@ -123,8 +124,12 @@ export async function loadZa(bpNames, bpMesh) {
     cutOf.set(`${source.id}-${cut.slug}`, [cut, "below", source.id]);
     names.set(`${source.id}-${cut.slug}`, cut.name);
   }
+  // 腎臓の中のつくり（Z-Anatomy の腎盤の形をもとに BodyParts3D の腎臓の中を分けたもの。scripts/kidney/）
+  const kidney = await loadKidney();
+  for (const [id, name] of kidney.names) names.set(id, name);
   const warped = new Map();
   const mesh = (id) => {
+    if (kidney.has(id)) return kidney.mesh(id);
     const [cut, half, sourceId] = cutOf.get(id) ?? [];
     if (!cut) return whole(id);
     if (!warped.has(id)) warped.set(id, { name: names.get(id), ...splitMesh(whole(sourceId), cut.normal, cut.d)[half] });
