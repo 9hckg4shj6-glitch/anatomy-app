@@ -339,6 +339,106 @@
       ]
     },
     {
+      "id": "dig-stomach-wall",
+      "title": "胃の壁と十二指腸乳頭",
+      "group": "消化管",
+      "intro": ["胃（stomach）の壁の層とひだ（fold）、十二指腸（duodenum）に胆汁（bile）と膵液（pancreatic juice）が出る所は3Dに形が無いので、胃の内面（internal surface）と筋層（muscular layer）の図・胆道と膵臓（pancreas）の図で示す。消化管（digestive tract）の壁は内から粘膜（mucosa）・粘膜下組織（submucosa）・筋層・漿膜（serosa）（腹膜（peritoneum）におおわれない所は外膜）の順に重なる。"],
+      "terms": [
+        {
+          "id": "gastric-folds", "ja": "胃粘膜ひだ", "yomi": "いねんまくひだ", "en": "gastric folds", "enAlt": ["gastric rugae"], "la": "plicae gastricae", "plate": "stomach-wall", "level": 2,
+          "kanji": "胃の粘膜のひだ",
+          "etym": "plica「ひだ」（ラテン語）。ruga「しわ」",
+          "note": "胃（stomach）の内面（internal surface）を主に縦に走るひだ（fold）。粘膜（mucosa）と粘膜下組織（submucosa）が寄ってでき、食べ物で胃が広がると平らになる。小弯（lesser curvature）にそったひだは食べ物の通り道（胃道）になる。"
+        },
+        {
+          "id": "longitudinal-muscle-layer", "ja": "縦走筋層", "yomi": "じゅうそうきんそう", "en": "longitudinal muscle layer", "la": "stratum longitudinale", "plate": "stomach-wall", "level": 3,
+          "kanji": "縦に走る筋の層",
+          "etym": "longitudinalis「縦の」（ラテン語 longus「長い」）",
+          "note": "消化管（digestive tract）の筋層（muscular layer）の外側（lateral）の層（平滑筋（smooth muscle））。管を縦に縮める。胃（stomach）では小弯（lesser curvature）と大弯（greater curvature）にそって多く、結腸（colon）では集まって3本の結腸ひも（taeniae coli）になる。"
+        },
+        {
+          "id": "circular-muscle-layer", "ja": "輪走筋層", "yomi": "りんそうきんそう", "en": "circular muscle layer", "la": "stratum circulare", "plate": "stomach-wall", "level": 3,
+          "kanji": "輪の形に走る筋の層",
+          "etym": "circularis「輪の」（ラテン語 circulus「小さな輪」）",
+          "note": "消化管（digestive tract）の筋層（muscular layer）の内側（medial）の層（平滑筋（smooth muscle））。管をしぼって中身を送る（蠕動（peristalsis））。所々で厚くなって括約筋をつくる（幽門括約筋（pyloric sphincter）・内肛門括約筋（internal anal sphincter））。"
+        },
+        {
+          "id": "oblique-fibers-of-stomach", "ja": "斜走筋", "yomi": "しゃそうきん", "en": "oblique fibers", "la": "fibrae obliquae", "plate": "stomach-wall", "level": 3,
+          "kanji": "斜めに走る筋",
+          "etym": "obliquus「斜めの」（ラテン語）",
+          "note": "胃（stomach）の筋層（muscular layer）のいちばん内側（medial）の層で、胃にだけある。噴門（cardia）から胃底（fundus of stomach）・胃体（body of stomach）へ斜めに広がり、胃の中身をこねる。"
+        },
+        {
+          "id": "serosa", "ja": "漿膜", "yomi": "しょうまく", "en": "serosa", "enAlt": ["serous coat"], "la": "tunica serosa", "plate": "stomach-wall", "level": 2,
+          "kanji": "漿（さらさらした液）を出す膜",
+          "etym": "serum「乳清・水っぽい液」（ラテン語）",
+          "note": "臓器（organ）の外面（external surface）をおおう薄くなめらかな膜（membrane）（胃（stomach）では臓側腹膜）。表面の中皮から少量の漿液を出し、臓器どうしがこすれずに動けるようにする。腹膜（peritoneum）のほか胸膜（pleura）・心膜（pericardium）も漿膜。"
+        },
+        {
+          "id": "pyloric-sphincter", "ja": "幽門括約筋", "yomi": "ゆうもんかつやくきん", "en": "pyloric sphincter", "la": "musculus sphincter pyloricus", "plate": "stomach-wall", "level": 2,
+          "kanji": "幽門をくくって締める筋",
+          "etym": "sphincter「締めるもの」（ギリシャ語 sphingein「締める」）",
+          "note": "幽門（pylorus）で輪走筋層（circular layer）が厚くなった平滑筋（smooth muscle）の輪。胃（stomach）の中身を少しずつ十二指腸（duodenum）へ送り、逆流を防ぐ。赤ちゃんで厚くなりすぎると吐く（肥厚性幽門狭窄症（hypertrophic pyloric stenosis））。"
+        },
+        {
+          "id": "major-duodenal-papilla", "ja": "大十二指腸乳頭", "yomi": "だいじゅうにしちょうにゅうとう", "en": "major duodenal papilla", "enAlt": ["papilla of vater"], "la": "papilla duodeni major", "plate": "liver-biliary", "level": 1,
+          "kanji": "十二指腸の大きな乳頭（乳首のような高まり）",
+          "etym": "papilla「乳首」（ラテン語）。Vater はドイツの解剖学者",
+          "note": "十二指腸（duodenum）の下行部（descending part）の内側（medial）（後内側（posteromedial））の壁の小さな高まり（ファーター乳頭（papilla of Vater））。総胆管（bile duct）と膵管（pancreatic duct）が合わさった胆膵管膨大部（hepatopancreatic ampulla）がここに開き、胆汁（bile）と膵液（pancreatic juice）が出る。オディ括約筋（sphincter of Oddi）が取り巻く。少し上に副膵管（accessory pancreatic duct）が開く小十二指腸乳頭（minor duodenal papilla）がある。"
+        }
+      ]
+    },
+    {
+      "id": "dig-villi",
+      "title": "小腸の絨毛と腸腺",
+      "group": "消化管",
+      "intro": ["小腸（small intestine）の内面（internal surface）は、輪状ひだ（circular folds）・絨毛（villi）・微絨毛（microvilli）の3段で表面積を広げる（テニスコート1面ほど）。小腸の壁の拡大図で、絨毛と腸腺（intestinal glands）のつくりを見る（組織学で詳しく学ぶ構造）。"],
+      "terms": [
+        {
+          "id": "intestinal-villi", "ja": "絨毛", "yomi": "じゅうもう", "en": "intestinal villi", "enAlt": ["villi"], "la": "villi intestinales", "plate": "intestine-villi", "level": 1,
+          "kanji": "絨（ビロード）のような毛",
+          "etym": "villus「毛のふさ」（ラテン語）。複数形 villi",
+          "note": "小腸（small intestine）の粘膜（mucosa）が指（finger）のように突き出たもの（高さ0.5〜1mm）。表面を微絨毛（microvilli）のある吸収上皮細胞（absorptive cell）がおおい、中を毛細血管（capillary）と中心乳び腔（central lacteal）が通る。糖とアミノ酸は毛細血管から門脈（hepatic portal vein）へ、脂肪（fat）は中心乳び腔からリンパ（lymph）へ入る。"
+        },
+        {
+          "id": "central-lacteal", "ja": "中心乳び腔", "yomi": "ちゅうしんにゅうびくう", "en": "lacteal", "enAlt": ["central lacteal"], "la": "vas chyliferum centrale", "plate": "intestine-villi", "level": 2,
+          "kanji": "（絨毛の）中心の、乳び（乳のように白いリンパ）の入る腔",
+          "etym": "lacteus「乳の」（ラテン語 lac「乳」）",
+          "note": "絨毛（villi）の中心を通る、先の閉じたリンパ管（lymphatic vessel）。吸収した脂肪（fat）がカイロミクロン（chylomicron）として入り、リンパ（lymph）が白く濁る（乳び（chyle））。腸（intestine）のリンパ管から乳び槽（cisterna chyli）・胸管（thoracic duct）を経て静脈（vein）へ流れる。"
+        },
+        {
+          "id": "intestinal-crypts", "ja": "腸陰窩", "yomi": "ちょういんか", "en": "intestinal crypts", "enAlt": ["intestinal glands", "crypts of lieberkuhn"], "la": "glandulae intestinales", "plate": "intestine-villi", "level": 2,
+          "kanji": "腸の陰（奥）の窩（くぼみ）",
+          "etym": "crypta「地下の穴」（ギリシャ語 kryptos「隠れた」）。腸腺とも",
+          "note": "絨毛（villi）の根もとの間に落ちこむ管状のくぼみ（腸腺（intestinal glands）、リーベルキューン腺（crypts of Lieberkühn））。底に幹細胞（stem cell）があって上皮（epithelium）を数日でつくりかえ、パネート細胞（Paneth cell）が抗菌の物質を出す。"
+        },
+        {
+          "id": "goblet-cell", "ja": "杯細胞", "yomi": "さかずきさいぼう", "en": "goblet cell", "la": "exocrinocytus caliciformis", "plate": "intestine-villi", "level": 3,
+          "kanji": "杯（さかずき）の形の細胞",
+          "etym": "goblet「脚付きの杯」",
+          "note": "上皮（epithelium）の細胞（cell）の間に散らばる、粘液（mucus）をためてふくらんだ杯の形の細胞。粘液で粘膜（mucosa）を守り、すべりをよくする。大腸（large intestine）へ行くほど多い。気道（airway）の上皮にもある。"
+        },
+        {
+          "id": "muscularis-mucosae", "ja": "粘膜筋板", "yomi": "ねんまくきんばん", "en": "muscularis mucosae", "la": "lamina muscularis mucosae", "plate": "intestine-villi", "level": 3,
+          "kanji": "粘膜の中の筋の板",
+          "etym": "muscularis「筋の」＋ mucosa「粘膜」（ラテン語）",
+          "note": "粘膜（mucosa）のいちばん下の薄い平滑筋（smooth muscle）の層で、粘膜と粘膜下組織（submucosa）の境。粘膜を細かく動かす。癌がこれを越えたかどうかで早期癌の深さを分ける。"
+        },
+        {
+          "id": "submucosa", "ja": "粘膜下組織", "yomi": "ねんまくかそしき", "en": "submucosa", "la": "tela submucosa", "plate": "intestine-villi", "level": 2,
+          "kanji": "粘膜の下の組織",
+          "etym": "sub-「下」＋ mucosa「粘膜」（ラテン語）",
+          "note": "粘膜（mucosa）と筋層（muscular layer）の間の疎性結合組織（loose connective tissue）。太い血管（blood vessel）・リンパ管（lymphatic vessel）と粘膜下神経叢（マイスネル神経叢）がある。十二指腸（duodenum）ではここに十二指腸腺（duodenal glands）、食道（esophagus）では食道腺がある。"
+        },
+        {
+          "id": "duodenal-glands", "ja": "十二指腸腺", "yomi": "じゅうにしちょうせん", "en": "duodenal glands", "enAlt": ["brunner's glands"], "la": "glandulae duodenales", "plate": "intestine-villi", "level": 2,
+          "kanji": "十二指腸の腺",
+          "etym": "glandula「腺」（ラテン語 glans「どんぐり」）。Brunner はスイスの解剖学者",
+          "note": "十二指腸（duodenum）の粘膜下組織（submucosa）にある腺（gland）（ブルンナー腺（Brunner glands））。アルカリ性の粘液（mucus）を出して、胃から来た酸を中和し粘膜（mucosa）を守る。小腸（small intestine）の中で十二指腸にだけある。"
+        }
+      ]
+    },
+    {
       "id": "dig-mesocolon-rectum",
       "title": "腸間膜根・横行結腸間膜と直腸の曲がり",
       "group": "消化管",
@@ -377,6 +477,62 @@
           "kanji": "会陰の所の曲がり",
           "etym": "perineal「会陰の」（ギリシャ語 perineos）＋ flexure「曲がり」",
           "note": "尾骨（coccyx）の先の3〜4cm前で、直腸（rectum）がほぼ直角に後ろ下へ曲がって肛門管（anal canal）に移る所。恥骨直腸筋（puborectalis）が後ろから前へ引いてつくる角で、便がもれないように働き、排便（defecation）のときはゆるんでまっすぐに近づく。"
+        }
+      ]
+    },
+    {
+      "id": "dig-colon-anal",
+      "title": "大腸の外形と肛門管",
+      "group": "消化管",
+      "intro": ["結腸（colon）の外形（ひも・膨起・腹膜垂（omental appendices））と、直腸（rectum）から肛門（anus）までのつくりを、上腸間膜動脈（superior mesenteric artery）と結腸の図・直腸と肛門管（anal canal）の断面（section）の図で示す。肛門管は櫛状線（pectinate line）を境に、上が内臓（viscera）（粘膜（mucosa）・門脈系（portal system）・痛みを感じにくい）、下が体壁（皮膚（skin）に近い上皮（epithelium）・大静脈系（caval system）・痛みを感じる）のつくりになる。"],
+      "terms": [
+        {
+          "id": "haustra-of-colon", "ja": "結腸膨起", "yomi": "けっちょうぼうき", "en": "haustra of colon", "la": "haustra coli", "plate": "intestine-arteries", "level": 2,
+          "kanji": "結腸のふくらんで起き上がった所",
+          "etym": "haustrum「水くみのおけ」（ラテン語）。複数形 haustra",
+          "note": "結腸ひも（taeniae coli）が縦に引くので、結腸（colon）の壁が袋のように並んでふくらんだ所。間を内面（internal surface）の半月ひだ（semilunar fold）が仕切る。X線（X-ray）（注腸造影）で結腸と小腸（small intestine）を見分ける目印。"
+        },
+        {
+          "id": "omental-appendices", "ja": "腹膜垂", "yomi": "ふくまくすい", "en": "omental appendices", "enAlt": ["epiploic appendices"], "la": "appendices omentales", "plate": "intestine-arteries", "level": 2,
+          "kanji": "腹膜が垂れ下がったもの",
+          "etym": "appendix「付属物」（ラテン語）。epiploon「大網」（ギリシャ語）",
+          "note": "結腸ひも（taeniae coli）にそって垂れる、腹膜（peritoneum）に包まれた脂肪（fat）の小さな袋。結腸（colon）にだけあり、小腸（small intestine）との見分けの目印になる。"
+        },
+        {
+          "id": "transverse-rectal-folds", "ja": "直腸横ひだ", "yomi": "ちょくちょうおうひだ", "en": "transverse rectal folds", "enAlt": ["houston's valves"], "la": "plicae transversae recti", "plate": "rectum-anal", "level": 3,
+          "kanji": "直腸の横のひだ",
+          "etym": "plica「ひだ」（ラテン語）。Houston はアイルランドの解剖学者",
+          "note": "直腸（rectum）の内面（internal surface）に横に張り出す、ふつう3つのひだ（fold）（ヒューストン弁）。真ん中のいちばん大きいもの（コールラウシュひだ（Kohlrausch fold））は右の壁にあり、肛門（anus）から約7cm。内視鏡（endoscope）の目印。"
+        },
+        {
+          "id": "anal-canal", "ja": "肛門管", "yomi": "こうもんかん", "en": "anal canal", "la": "canalis analis", "plate": "rectum-anal", "level": 1,
+          "kanji": "肛門の管",
+          "etym": "anus「輪・肛門」（ラテン語）",
+          "note": "直腸膨大部（rectal ampulla）の下（肛門直腸接合部、恥骨直腸筋（puborectalis）が後ろから引く所）から肛門（anus）までの長さ約3〜4cmの管。まわりを内肛門括約筋（internal anal sphincter）（平滑筋（smooth muscle）、意志で動かせない）と外肛門括約筋（external anal sphincter）（骨格筋（skeletal muscle）、陰部神経（pudendal nerve））が取り巻く。"
+        },
+        {
+          "id": "anal-columns", "ja": "肛門柱", "yomi": "こうもんちゅう", "en": "anal columns", "la": "columnae anales", "plate": "rectum-anal", "level": 2,
+          "kanji": "肛門（管）の柱",
+          "etym": "columna「柱」（ラテン語）",
+          "note": "肛門管（anal canal）の上半分の、縦に並ぶ6〜10本の粘膜（mucosa）のひだ（fold）（モルガニー柱）。中を上直腸動静脈の枝（branch）が通る。下の端どうしの間のくぼみが肛門洞で、肛門腺が開く。"
+        },
+        {
+          "id": "pectinate-line", "ja": "櫛状線", "yomi": "くしじょうせん", "en": "pectinate line", "enAlt": ["dentate line"], "la": "linea pectinata", "plate": "rectum-anal", "level": 1,
+          "kanji": "櫛（くし）の歯のような形の線",
+          "etym": "pecten「くし」（ラテン語）。歯状線とも",
+          "note": "肛門柱（anal columns）の下の端をつなぐぎざぎざの線（歯状線（dentate line））。上は内胚葉（endoderm）からできた粘膜（mucosa）（円柱上皮、内臓（viscera）の神経（nerve）・門脈系（portal system）の静脈（vein））、下は外胚葉（ectoderm）からできた重層扁平上皮（stratified squamous epithelium）（体の神経（陰部神経（pudendal nerve））・大静脈系（caval system）の静脈）。このため櫛状線より上の内痔核（internal hemorrhoid）は痛みが少なく、下の外痔核（external hemorrhoid）は痛む。"
+        },
+        {
+          "id": "anus", "ja": "肛門", "yomi": "こうもん", "en": "anus", "la": "anus", "plate": "rectum-anal", "level": 1,
+          "kanji": "肛（しりの穴）の門",
+          "etym": "anus「輪」（ラテン語）",
+          "note": "消化管（digestive tract）の出口で、肛門管（anal canal）の下の口。ふだんは内・外肛門括約筋（external anal sphincter）と恥骨直腸筋（puborectalis）で閉じている。会陰（perineum）の肛門三角（anal triangle）の真ん中にある。"
+        },
+        {
+          "id": "ischioanal-fossa", "ja": "坐骨肛門窩", "yomi": "ざこつこうもんか", "en": "ischioanal fossa", "enAlt": ["ischiorectal fossa"], "la": "fossa ischioanalis", "plate": "rectum-anal", "level": 2,
+          "kanji": "坐骨と肛門の間の窩（くぼみ）",
+          "etym": "ischion「坐骨」（ギリシャ語）＋ anus",
+          "note": "肛門管（anal canal）の両わき、肛門挙筋（levator ani）の下で外側（lateral）を内閉鎖筋（obturator internus）（と坐骨（ischium））がかこむ、脂肪（fat）で満ちたくさび形の空間。外側の壁の陰部神経管（pudendal canal）（アルコック管（Alcock canal））を陰部神経（pudendal nerve）と内陰部動静脈（internal pudendal vessels）が通る。排便（defecation）のとき肛門管が広がれるのはこの脂肪のおかげ。膿がたまりやすい（坐骨直腸窩膿瘍）。"
         }
       ]
     },

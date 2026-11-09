@@ -381,8 +381,7 @@
       0.7128,
       0.6431
      ],
-     "ja": "腱索",
-     "en": "chordae tendineae"
+     "term": "chordae-tendineae"
     },
     {
      "at": [
@@ -459,24 +458,21 @@
       0.6426,
       0.5804
      ],
-     "ja": "腱索",
-     "en": "chordae tendineae"
+     "term": "chordae-tendineae"
     },
     {
      "at": [
       0.403,
       0.6607
      ],
-     "ja": "心室中隔",
-     "en": "interventricular septum"
+     "term": "interventricular-septum"
     },
     {
      "at": [
       0.4753,
       0.2599
      ],
-     "ja": "心房中隔",
-     "en": "interatrial septum"
+     "term": "interatrial-septum"
     },
     {
      "at": [
@@ -1008,9 +1004,7 @@
       0.1771,
       0.5779
      ],
-     "ja": "大十二指腸乳頭",
-     "en": "major duodenal papilla",
-     "note": "十二指腸の下行部の内側の壁の小さな高まり。総胆管と膵管が合わさって（胆膵管膨大部）ここに開き、オディ括約筋が取り巻く。"
+     "term": "major-duodenal-papilla"
     },
     {
      "at": [
@@ -1043,7 +1037,7 @@
    ]
   },
   "kidney-section": {
-   "url": "plates/kidney-section.909f35d282.webp",
+   "url": "plates/kidney-section.d88a9f5712.webp",
    "w": 608,
    "h": 982,
    "labels": [
@@ -1052,54 +1046,42 @@
       0.8273,
       0.8635
      ],
-     "ja": "線維被膜",
-     "en": "fibrous capsule",
-     "note": "腎臓の表面を包む薄く丈夫な膜。その外を脂肪被膜、さらに腎筋膜が包む。"
+     "term": "renal-capsule"
     },
     {
      "at": [
       0.2319,
       0.0642
      ],
-     "ja": "腎皮質",
-     "en": "renal cortex",
-     "note": "腎臓の外側の層。腎小体（糸球体とボウマン嚢）と曲尿細管がある。腎錐体の間に入りこんだ所が腎柱。"
+     "term": "renal-cortex"
     },
     {
      "at": [
       0.3503,
       0.1354
      ],
-     "ja": "腎髄質",
-     "en": "renal medulla",
-     "note": "腎皮質の内側。十数個の腎錐体からなり、ヘンレのわなと集合管が通る。"
+     "term": "renal-medulla"
     },
     {
      "at": [
       0.4688,
       0.2383
      ],
-     "ja": "腎乳頭",
-     "en": "renal papilla",
-     "note": "腎錐体の先。乳頭管が開き、尿が小腎杯へ出る。"
+     "term": "renal-papilla"
     },
     {
      "at": [
       0.7039,
       0.3462
      ],
-     "ja": "腎錐体",
-     "en": "renal pyramid",
-     "note": "腎髄質を作る円錐形の塊。底を腎皮質に、先（腎乳頭）を腎洞に向ける。"
+     "term": "renal-pyramid"
     },
     {
      "at": [
       0.778,
       0.5804
      ],
-     "ja": "腎柱",
-     "en": "renal column",
-     "note": "腎錐体と腎錐体の間に入りこんだ腎皮質。葉間動脈・葉間静脈が通る。"
+     "term": "renal-column"
     },
     {
      "at": [
@@ -1127,18 +1109,14 @@
       0.4737,
       0.6955
      ],
-     "ja": "大腎杯",
-     "en": "major calyx",
-     "note": "小腎杯が集まったもの（ふつう2〜3本）。合わさって腎盤になる。"
+     "term": "major-calyx"
     },
     {
      "at": [
       0.5066,
       0.7617
      ],
-     "ja": "小腎杯",
-     "en": "minor calyx",
-     "note": "腎乳頭を受ける杯の形の管。いくつか集まって大腎杯になる。"
+     "term": "minor-calyx"
     }
    ]
   },
@@ -1425,9 +1403,7 @@
       0.4793,
       0.9485
      ],
-     "ja": "肛門",
-     "en": "anus",
-     "note": "消化管の出口。直腸から続く肛門管の下の口で、内肛門括約筋（平滑筋）と外肛門括約筋（骨格筋）が取り巻く。"
+     "term": "anus"
     }
    ]
   },
@@ -1476,9 +1452,7 @@
       0.5109,
       0.5668
      ],
-     "ja": "尿道球腺",
-     "en": "bulbourethral gland",
-     "note": "尿道球の後ろにある豆粒ほどの1対の腺（カウパー腺）。導管が尿道に開き、射精の前に粘液を出す。"
+     "term": "bulbourethral-gland"
     },
     {
      "at": [
@@ -1531,6 +1505,13 @@
     },
     {
      "at": [
+      0.0335,
+      0.8403
+     ],
+     "term": "prepuce-of-penis"
+    },
+    {
+     "at": [
       0.127,
       0.9049
      ],
@@ -1541,9 +1522,7 @@
       0.3353,
       0.8807
      ],
-     "ja": "陰嚢",
-     "en": "scrotum",
-     "note": "精巣と精巣上体を入れる皮膚の袋。中の肉様膜（平滑筋）が縮んで温度を調節する。"
+     "term": "scrotum"
     }
    ]
   },
@@ -1564,18 +1543,14 @@
       0.5709,
       0.2083
      ],
-     "ja": "後索",
-     "en": "posterior funiculus",
-     "note": "左右の後角の間の白質。薄束と楔状束が通り、触覚・振動覚・位置覚（深部感覚）を上へ伝える。"
+     "term": "posterior-funiculus"
     },
     {
      "at": [
       0.6424,
       0.3033
      ],
-     "ja": "後正中溝",
-     "en": "posterior median sulcus",
-     "note": "脊髄の後ろの正中の浅い溝。左右の後索の境。"
+     "term": "posterior-median-sulcus"
     },
     {
      "at": [
@@ -1596,18 +1571,14 @@
       0.3975,
       0.4753
      ],
-     "ja": "側索",
-     "en": "lateral funiculus",
-     "note": "前根と後根の間の白質。外側皮質脊髄路・脊髄視床路・脊髄小脳路などが通る。"
+     "term": "lateral-funiculus"
     },
     {
      "at": [
       0.7185,
       0.5908
      ],
-     "ja": "灰白交連",
-     "en": "gray commissure",
-     "note": "左右の灰白質をつなぐ横の橋で、中に中心管がある。"
+     "term": "gray-commissure"
     },
     {
      "at": [
@@ -1628,9 +1599,7 @@
       0.6424,
       0.7654
      ],
-     "ja": "前正中裂",
-     "en": "anterior median fissure",
-     "note": "脊髄の前の正中の深い裂け目。前脊髄動脈が走る。"
+     "term": "anterior-median-fissure"
     },
     {
      "at": [
@@ -1644,9 +1613,7 @@
       0.5313,
       0.8579
      ],
-     "ja": "前索",
-     "en": "anterior funiculus",
-     "note": "前正中裂と前根の間の白質。前皮質脊髄路・前脊髄視床路などが通る。"
+     "term": "anterior-funiculus"
     }
    ]
   },
@@ -1695,9 +1662,7 @@
       0.2881,
       0.4579
      ],
-     "ja": "網様体脊髄路",
-     "en": "reticulospinal tract",
-     "note": "脳幹の網様体から下り、姿勢を保つ筋の緊張を調節する。"
+     "term": "reticulospinal-tract"
     },
     {
      "at": [
@@ -1732,9 +1697,7 @@
       0.349,
       0.8039
      ],
-     "ja": "前庭脊髄路",
-     "en": "vestibulospinal tract",
-     "note": "延髄の前庭神経核から下り、体の平衡を保つように伸筋を働かせる。"
+     "term": "vestibulospinal-tract"
     }
    ]
   },
@@ -1762,9 +1725,7 @@
       0.4913,
       0.1329
      ],
-     "ja": "瞳孔",
-     "en": "pupil",
-     "note": "虹彩の中央の穴。瞳孔括約筋（動眼神経の副交感神経）で小さくなり、瞳孔散大筋（交感神経）で大きくなる。"
+     "term": "pupil"
     },
     {
      "at": [
@@ -1778,9 +1739,7 @@
       0.6569,
       0.1588
      ],
-     "ja": "後眼房",
-     "en": "posterior chamber",
-     "note": "虹彩と水晶体の間のせまい部屋。毛様体が作った眼房水がここから瞳孔を通って前眼房へ流れる。"
+     "term": "posterior-chamber"
     },
     {
      "at": [
@@ -1836,27 +1795,21 @@
       0.6255,
       0.7275
      ],
-     "ja": "黄斑",
-     "en": "macula",
-     "note": "網膜の後極にある黄色みのある所。錐体が集まり、ものを細かく見る。"
+     "term": "macula"
     },
     {
      "at": [
       0.5484,
       0.7585
      ],
-     "ja": "中心窩",
-     "en": "fovea centralis",
-     "note": "黄斑の真ん中のくぼみ。錐体だけが並び、視力がいちばん良い。"
+     "term": "fovea-centralis"
     },
     {
      "at": [
       0.3543,
       0.7223
      ],
-     "ja": "視神経円板",
-     "en": "optic disc",
-     "note": "視神経が眼球を出る所（視神経乳頭）。視細胞が無く、視野の盲点になる。網膜中心動脈・静脈が出入りする。"
+     "term": "optic-disc"
     },
     {
      "at": [
@@ -1970,7 +1923,7 @@
      ],
      "ja": "上涙点",
      "en": "superior lacrimal punctum",
-     "note": "上まぶたの内側の端の小さな穴。涙小管の入口。"
+     "note": "上まぶたの内側（medial）の端の小さな穴。涙小管（lacrimal canaliculus）の入口。"
     },
     {
      "at": [
@@ -1984,9 +1937,7 @@
       0.6729,
       0.4887
      ],
-     "ja": "下涙点",
-     "en": "inferior lacrimal punctum",
-     "note": "下まぶたの内側の端の小さな穴。涙の多くはここから流れる。"
+     "term": "lacrimal-punctum"
     },
     {
      "at": [
@@ -2028,9 +1979,7 @@
       0.3486,
       0.549
      ],
-     "ja": "外耳道",
-     "en": "external acoustic meatus",
-     "note": "耳介から鼓膜までの約2.5cmの管。外の1/3は軟骨、内の2/3は骨（側頭骨）でできている。"
+     "term": "external-acoustic-meatus"
     },
     {
      "at": [
@@ -2065,18 +2014,14 @@
       0.6208,
       0.6392
      ],
-     "ja": "鼓室",
-     "en": "tympanic cavity",
-     "note": "鼓膜の内側の空気の入った部屋（中耳）。耳小骨が入り、耳管で咽頭とつながる。"
+     "term": "tympanic-cavity"
     },
     {
      "at": [
       0.7038,
       0.3373
      ],
-     "ja": "半規管",
-     "en": "semicircular canals",
-     "note": "前・後・外側の3つの輪の管で、互いに直角に並ぶ。頭の回転を感じる。"
+     "term": "semicircular-canals"
     },
     {
      "at": [
@@ -2116,7 +2061,7 @@
    ]
   },
   "pharynx-sagittal": {
-   "url": "plates/pharynx-sagittal.99844f14d3.webp",
+   "url": "plates/pharynx-sagittal.303ddc7a42.webp",
    "w": 958,
    "h": 1400,
    "labels": [
@@ -2160,9 +2105,7 @@
       0.3193,
       0.2767
      ],
-     "ja": "耳管咽頭口",
-     "en": "pharyngeal opening of auditory tube",
-     "note": "咽頭鼻部の外側の壁にある耳管の入口。まわりの高まりが耳管隆起、後ろに咽頭扁桃がある。"
+     "term": "pharyngeal-opening-of-auditory-tube"
     },
     {
      "at": [
@@ -2190,18 +2133,14 @@
       0.9283,
       0.3681
      ],
-     "ja": "外鼻孔",
-     "en": "naris (nostril)",
-     "note": "鼻の穴。鼻腔の前の入口で、鼻前庭には鼻毛が生える。"
+     "term": "naris"
     },
     {
      "at": [
       0.6987,
       0.3816
      ],
-     "ja": "硬口蓋",
-     "en": "hard palate",
-     "note": "口腔の天井の前2/3。上顎骨と口蓋骨（骨口蓋）を粘膜がおおう。"
+     "term": "hard-palate"
     },
     {
      "at": [
@@ -2264,9 +2203,14 @@
       0.2152,
       0.8049
      ],
-     "ja": "声帯ひだ",
-     "en": "vocal fold",
-     "note": "喉頭の中の左右のひだ。中に声帯靱帯と声帯筋がある。その上の前庭ひだ（仮声帯）との間が喉頭室。"
+     "term": "vocal-fold"
+    },
+    {
+     "at": [
+      0.2377,
+      0.7883
+     ],
+     "term": "glottis"
     },
     {
      "at": [
@@ -2371,9 +2315,7 @@
       0.6906,
       0.7264
      ],
-     "ja": "輪状甲状関節",
-     "en": "cricothyroid joint",
-     "note": "甲状軟骨の下角と輪状軟骨の側面の関節。ここを軸に甲状軟骨が前へ傾くと声帯が張る。"
+     "term": "cricothyroid-joint"
     },
     {
      "at": [
@@ -2422,36 +2364,28 @@
       0.8697,
       0.2708
      ],
-     "ja": "漿膜",
-     "en": "serosa",
-     "note": "胃の外面をおおう腹膜（臓側腹膜）。"
+     "term": "serosa"
     },
     {
      "at": [
       0.4653,
       0.1509
      ],
-     "ja": "縦走筋層",
-     "en": "longitudinal muscle layer",
-     "note": "筋層のいちばん外の層。食道の縦走筋から続き、小弯と大弯にそって多い。"
+     "term": "longitudinal-muscle-layer"
     },
     {
      "at": [
       0.706,
       0.4471
      ],
-     "ja": "輪走筋層",
-     "en": "circular muscle layer",
-     "note": "筋層の中の層。幽門で厚くなって幽門括約筋をつくる。"
+     "term": "circular-muscle-layer"
     },
     {
      "at": [
       0.6241,
       0.5092
      ],
-     "ja": "斜走筋",
-     "en": "oblique fibers",
-     "note": "筋層のいちばん内の層で、胃にだけある。噴門から胃体へ斜めに走る。"
+     "term": "oblique-fibers-of-stomach"
     },
     {
      "at": [
@@ -2479,9 +2413,7 @@
       0.6563,
       0.7405
      ],
-     "ja": "胃粘膜ひだ",
-     "en": "gastric folds (rugae)",
-     "note": "胃の内面の縦に走るひだ。粘膜と粘膜下組織が寄ってできる。胃が広がると平らになる。"
+     "term": "gastric-folds"
     },
     {
      "at": [
@@ -2502,9 +2434,7 @@
       0.2233,
       0.6615
      ],
-     "ja": "幽門括約筋",
-     "en": "pyloric sphincter",
-     "note": "幽門で輪走筋層が厚くなった平滑筋の輪。胃の内容を少しずつ十二指腸へ送る。"
+     "term": "pyloric-sphincter"
     },
     {
      "at": [
@@ -2581,9 +2511,7 @@
       0.7141,
       0.194
      ],
-     "ja": "短胃動脈",
-     "en": "short gastric arteries",
-     "note": "脾動脈の終わりの方から出る数本の細い動脈。胃脾間膜を通って胃底へ行く。"
+     "term": "short-gastric-arteries"
     },
     {
      "at": [
@@ -2625,18 +2553,14 @@
       0.1283,
       0.2083
      ],
-     "ja": "絨毛",
-     "en": "intestinal villus",
-     "note": "粘膜が指のように突き出たもの。中に毛細血管と中心乳び腔が通る。"
+     "term": "intestinal-villi"
     },
     {
      "at": [
       0.2507,
       0.1782
      ],
-     "ja": "中心乳び腔",
-     "en": "lacteal",
-     "note": "絨毛の中心を通る、行き止まりのリンパ管。吸収した脂肪が入り、腸のリンパが白く濁る（乳び）。"
+     "term": "central-lacteal"
     },
     {
      "at": [
@@ -2645,7 +2569,7 @@
      ],
      "ja": "吸収上皮細胞",
      "en": "absorptive cell (enterocyte)",
-     "note": "表面に微絨毛（刷子縁）をもつ円柱上皮細胞。消化の最後の酵素をもち、栄養を取りこむ。"
+     "note": "表面に微絨毛（microvilli）（刷子縁（brush border））をもつ円柱上皮細胞。消化（digestion）の最後の酵素をもち、栄養を取りこむ。"
     },
     {
      "at": [
@@ -2654,7 +2578,7 @@
      ],
      "ja": "毛細血管",
      "en": "capillary",
-     "note": "絨毛の中の毛細血管。吸収した糖とアミノ酸を門脈へ運ぶ。"
+     "note": "絨毛（villi）の中の毛細血管。吸収した糖とアミノ酸を門脈（hepatic portal vein）へ運ぶ。"
     },
     {
      "at": [
@@ -2663,34 +2587,28 @@
      ],
      "ja": "細動脈",
      "en": "arteriole",
-     "note": "粘膜下組織から絨毛へ上る細い動脈。"
+     "note": "粘膜下組織（submucosa）から絨毛（villi）へ上る細い動脈（artery）。"
     },
     {
      "at": [
       0.8338,
       0.2616
      ],
-     "ja": "杯細胞",
-     "en": "goblet cell",
-     "note": "上皮の間に散らばる、粘液を出す細胞。大腸へ行くほど多い。"
+     "term": "goblet-cell"
     },
     {
      "at": [
       0.4752,
       0.5787
      ],
-     "ja": "腸陰窩（腸腺）",
-     "en": "intestinal crypt (gland)",
-     "note": "絨毛の根もとの間のくぼみ。幹細胞・パネート細胞があり、上皮をつくりかえる。"
+     "term": "intestinal-crypts"
     },
     {
      "at": [
       0.0408,
       0.7315
      ],
-     "ja": "粘膜筋板",
-     "en": "muscularis mucosae",
-     "note": "粘膜のいちばん下の薄い平滑筋の層。粘膜と粘膜下組織の境。"
+     "term": "muscularis-mucosae"
     },
     {
      "at": [
@@ -2699,25 +2617,21 @@
      ],
      "ja": "リンパ管",
      "en": "lymphatic vessel",
-     "note": "中心乳び腔から続くリンパ管。腸間膜のリンパ節を経て乳び槽へ。"
+     "note": "中心乳び腔（central lacteal）から続くリンパ管。腸間膜（mesentery）のリンパ節（lymph node）を経て乳び槽（cisterna chyli）へ。"
     },
     {
      "at": [
       0.1399,
       0.8912
      ],
-     "ja": "粘膜下組織",
-     "en": "submucosa",
-     "note": "粘膜の下の疎性結合組織。太い血管・リンパ管と神経叢（マイスネル神経叢）がある。"
+     "term": "submucosa"
     },
     {
      "at": [
       0.8338,
       0.9097
      ],
-     "ja": "十二指腸腺",
-     "en": "duodenal gland",
-     "note": "十二指腸の粘膜下組織にある腺（ブルンナー腺）。アルカリ性の粘液を出す。"
+     "term": "duodenal-glands"
     }
    ]
   },
@@ -2733,16 +2647,14 @@
      ],
      "ja": "直腸の筋層",
      "en": "muscular layer of rectum",
-     "note": "内輪・外縦の平滑筋。下で輪走筋が厚くなり内肛門括約筋になる。"
+     "note": "内輪・外縦の平滑筋（smooth muscle）。下で輪走筋（circular muscle）が厚くなり内肛門括約筋（internal anal sphincter）になる。"
     },
     {
      "at": [
       0.2241,
       0.3212
      ],
-     "ja": "直腸横ひだ",
-     "en": "transverse rectal folds",
-     "note": "直腸の内面に横に張り出す3つほどのひだ。"
+     "term": "transverse-rectal-folds"
     },
     {
      "at": [
@@ -2763,27 +2675,21 @@
       0.486,
       0.6788
      ],
-     "ja": "肛門柱",
-     "en": "anal columns",
-     "note": "肛門管の上半分の、縦に並ぶ6〜10本の粘膜のひだ。中を上直腸動静脈の枝が通る。"
+     "term": "anal-columns"
     },
     {
      "at": [
       0.3362,
       0.7076
      ],
-     "ja": "内直腸静脈叢",
-     "en": "internal rectal venous plexus",
-     "note": "櫛状線より上の粘膜の下の静脈叢。門脈系と大静脈系がつながる所で、ふくらむと内痔核になる。"
+     "term": "internal-rectal-venous-plexus"
     },
     {
      "at": [
       0.486,
       0.7356
      ],
-     "ja": "櫛状線（歯状線）",
-     "en": "pectinate line",
-     "note": "肛門柱の下端をつなぐ線。上は内胚葉由来の粘膜、下は外胚葉由来の皮膚に近い上皮。"
+     "term": "pectinate-line"
     },
     {
      "at": [
@@ -2797,36 +2703,28 @@
       0.4762,
       0.8222
      ],
-     "ja": "肛門管",
-     "en": "anal canal",
-     "note": "直腸膨大部から肛門までの約3〜4cmの管。まわりを内・外肛門括約筋が取り巻く。"
+     "term": "anal-canal"
     },
     {
      "at": [
       0.0487,
       0.838
      ],
-     "ja": "坐骨肛門窩",
-     "en": "ischioanal fossa",
-     "note": "肛門管の両わきの、脂肪で満ちたくさび形の空間。肛門挙筋の下にある。"
+     "term": "ischioanal-fossa"
     },
     {
      "at": [
       0.2899,
       0.9358
      ],
-     "ja": "外直腸静脈叢",
-     "en": "external rectal venous plexus",
-     "note": "肛門の皮膚の下の静脈叢。ふくらむと外痔核になる。"
+     "term": "external-rectal-venous-plexus"
     },
     {
      "at": [
       0.486,
       0.959
      ],
-     "ja": "肛門",
-     "en": "anus",
-     "note": "消化管の出口。"
+     "term": "anus"
     }
    ]
   },
@@ -2868,27 +2766,21 @@
       0.3562,
       0.0459
      ],
-     "ja": "前半規管",
-     "en": "anterior semicircular canal",
-     "note": "上に立つ縦の輪。反対側の後半規管と同じ面に並ぶ。"
+     "term": "anterior-semicircular-canal"
     },
     {
      "at": [
       0.25,
       0.1243
      ],
-     "ja": "後半規管",
-     "en": "posterior semicircular canal",
-     "note": "後ろに立つ縦の輪。"
+     "term": "posterior-semicircular-canal"
     },
     {
      "at": [
       0.214,
       0.2811
      ],
-     "ja": "外側半規管",
-     "en": "lateral semicircular canal",
-     "note": "水平に近い輪（頭を30度前に傾けると水平になる）。"
+     "term": "lateral-semicircular-canal"
     },
     {
      "at": [
@@ -2937,72 +2829,56 @@
       0.1997,
       0.1653
      ],
-     "ja": "前庭階",
-     "en": "scala vestibuli",
-     "note": "蝸牛の上の階。外リンパが満ちる。"
+     "term": "scala-vestibuli"
     },
     {
      "at": [
       0.6874,
       0.1837
      ],
-     "ja": "前庭膜（ライスネル膜）",
-     "en": "vestibular membrane (Reissner's membrane)",
-     "note": "前庭階と蝸牛管を分ける2層の細胞の薄い膜。"
+     "term": "vestibular-membrane"
     },
     {
      "at": [
       0.7823,
       0.3895
      ],
-     "ja": "蝸牛管（中央階）",
-     "en": "cochlear duct (scala media)",
-     "note": "膜迷路の一部。内リンパで満ち、底にラセン器がのる。"
+     "term": "cochlear-duct"
     },
     {
      "at": [
       0.942,
       0.4409
      ],
-     "ja": "血管条",
-     "en": "stria vascularis",
-     "note": "蝸牛管の外側の壁の、血管に富む上皮。内リンパ（K⁺）をつくる。"
+     "term": "stria-vascularis"
     },
     {
      "at": [
       0.4993,
       0.4409
      ],
-     "ja": "蓋膜",
-     "en": "tectorial membrane",
-     "note": "ラセン器の上にかぶさるゼラチンの膜。外有毛細胞の毛の先が付く。"
+     "term": "tectorial-membrane"
     },
     {
      "at": [
       0.5942,
       0.564
      ],
-     "ja": "外有毛細胞",
-     "en": "outer hair cells",
-     "note": "3列に並ぶ有毛細胞。音に合わせて伸び縮みし、基底膜の揺れを強める。"
+     "term": "outer-hair-cells"
     },
     {
      "at": [
       0.4793,
       0.6154
      ],
-     "ja": "ラセン器（コルチ器）",
-     "en": "spiral organ (organ of Corti)",
-     "note": "基底膜の上の聴覚の感覚装置。有毛細胞と支持細胞からなる。"
+     "term": "spiral-organ"
     },
     {
      "at": [
       0.7823,
       0.6632
      ],
-     "ja": "基底膜",
-     "en": "basilar membrane",
-     "note": "蝸牛管と鼓室階を分ける膜。音で揺れ、底では高い音・頂では低い音に応じる。"
+     "term": "basilar-membrane"
     },
     {
      "at": [
@@ -3016,9 +2892,7 @@
       0.4993,
       0.8818
      ],
-     "ja": "鼓室階",
-     "en": "scala tympani",
-     "note": "蝸牛の下の階。外リンパが満ち、蝸牛窓で終わる。"
+     "term": "scala-tympani"
     }
    ]
   },
@@ -3041,7 +2915,7 @@
      ],
      "ja": "嗅球",
      "en": "olfactory bulb",
-     "note": "前頭葉の下面にのる、嗅覚の最初の中継所。嗅神経（嗅糸）がここに入り、嗅索で大脳へ伝わる。"
+     "note": "前頭葉（frontal lobe）の下面（inferior surface）にのる、嗅覚（olfaction）の最初の中継所。嗅神経（olfactory nerve）（嗅糸（olfactory nerve fibers））がここに入り、嗅索（olfactory tract）で大脳（cerebrum）へ伝わる。"
     },
     {
      "at": [
@@ -3090,18 +2964,14 @@
       0.1539,
       0.6809
      ],
-     "ja": "鼻前庭",
-     "en": "nasal vestibule",
-     "note": "外鼻孔のすぐ内側の、皮膚でおおわれた所。鼻毛と脂腺・汗腺がある。"
+     "term": "nasal-vestibule"
     },
     {
      "at": [
       0.7201,
       0.4553
      ],
-     "ja": "蝶篩陥凹",
-     "en": "sphenoethmoidal recess",
-     "note": "上鼻甲介の後ろ上のくぼみ。蝶形骨洞が開く。"
+     "term": "sphenoethmoidal-recess"
     },
     {
      "at": [
@@ -3115,41 +2985,35 @@
       0.7379,
       0.5489
      ],
-     "ja": "上鼻道",
-     "en": "superior meatus",
-     "note": "上鼻甲介の下の隙間。後篩骨蜂巣が開く。"
+     "term": "superior-nasal-meatus"
     },
     {
      "at": [
       0.4733,
       0.5319
      ],
-     "term": "middle-nasal-concha"
+     "term": "nasal-middle-concha"
     },
     {
      "at": [
       0.598,
       0.5926
      ],
-     "ja": "中鼻道",
-     "en": "middle meatus",
-     "note": "中鼻甲介の下の隙間。半月裂孔のあたりに前頭洞・上顎洞・前と中の篩骨蜂巣が開く。副鼻腔の手術（内視鏡）の入口になる。"
+     "term": "middle-nasal-meatus"
     },
     {
      "at": [
       0.4071,
       0.6426
      ],
-     "term": "inferior-nasal-concha"
+     "term": "nasal-inferior-concha"
     },
     {
      "at": [
       0.7125,
       0.7106
      ],
-     "ja": "下鼻道",
-     "en": "inferior meatus",
-     "note": "下鼻甲介の下の、いちばん大きい鼻道。前の方に鼻涙管が開き、涙が鼻へ流れる。"
+     "term": "inferior-nasal-meatus"
     },
     {
      "at": [
@@ -3170,9 +3034,7 @@
       0.5547,
       0.7564
      ],
-     "ja": "硬口蓋",
-     "en": "hard palate",
-     "note": "鼻腔の床で口腔の天井。上顎骨の口蓋突起と口蓋骨の水平板でできる。"
+     "term": "hard-palate"
     }
    ]
   },
@@ -3200,32 +3062,28 @@
       0.1368,
       0.75
      ],
-     "ja": "上顎洞",
-     "en": "maxillary sinus",
-     "note": "上顎骨体の中の最大の副鼻腔。上は眼窩の床、下は歯の根に接し、中鼻道の半月裂孔に開く。"
+     "term": "maxillary-sinus"
     },
     {
      "at": [
       0.4105,
       0.4159
      ],
-     "term": "middle-nasal-concha"
+     "term": "nasal-middle-concha"
     },
     {
      "at": [
       0.3642,
       0.6318
      ],
-     "ja": "中鼻道",
-     "en": "middle meatus",
-     "note": "中鼻甲介の下の隙間。前頭洞・上顎洞・前と中の篩骨蜂巣が開く。"
+     "term": "middle-nasal-meatus"
     },
     {
      "at": [
       0.3853,
       0.8409
      ],
-     "term": "inferior-nasal-concha"
+     "term": "nasal-inferior-concha"
     },
     {
      "at": [
@@ -3239,9 +3097,7 @@
       0.4947,
       0.7273
      ],
-     "ja": "鼻中隔",
-     "en": "nasal septum",
-     "note": "左右の鼻腔を分ける仕切り。後ろ上が篩骨の垂直板、後ろ下が鋤骨、前が鼻中隔軟骨。"
+     "term": "nasal-septum"
     }
    ]
   },
@@ -3297,36 +3153,28 @@
       0.4981,
       0.4447
      ],
-     "ja": "鼻中隔",
-     "en": "nasal septum",
-     "note": "左右の鼻腔を分ける仕切り。粘膜の下に骨（篩骨の垂直板・鋤骨）と鼻中隔軟骨がある。"
+     "term": "nasal-septum"
     },
     {
      "at": [
       0.7773,
       0.5895
      ],
-     "ja": "キーゼルバッハ部位",
-     "en": "Kiesselbach's area",
-     "note": "鼻中隔の前下部で、いくつもの動脈が吻合して網をつくる所。鼻出血の好発部位。"
+     "term": "kiesselbach-area"
     },
     {
      "at": [
       0.6573,
       0.7013
      ],
-     "ja": "切歯管",
-     "en": "incisive canal",
-     "note": "硬口蓋の前の正中を上下に貫く管。大口蓋動脈の枝と鼻口蓋神経が通り、鼻中隔と口蓋をつなぐ。"
+     "term": "incisive-canal"
     },
     {
      "at": [
       0.525,
       0.747
      ],
-     "ja": "硬口蓋",
-     "en": "hard palate",
-     "note": "鼻腔の床で口腔の天井。"
+     "term": "hard-palate"
     },
     {
      "at": [
@@ -3335,7 +3183,7 @@
      ],
      "ja": "大口蓋動脈",
      "en": "greater palatine artery",
-     "note": "下行口蓋動脈（顎動脈の枝）の続きで、大口蓋孔から出て硬口蓋の下を前へ走り、切歯管から鼻中隔へ上がる。"
+     "note": "下行口蓋動脈（descending palatine artery）（顎動脈（maxillary artery）の枝（branch））の続きで、大口蓋孔（greater palatine foramen）から出て硬口蓋（hard palate）の下を前へ走り、切歯管（incisive canal）から鼻中隔（nasal septum）へ上がる。"
     }
    ]
   },
@@ -3356,9 +3204,7 @@
       0.4608,
       0.0474
      ],
-     "ja": "結腸膨起",
-     "en": "haustra of colon",
-     "note": "結腸ひもに縦に引かれて、結腸の壁が袋のようにふくらんだ所。間を半月ひだが仕切る。"
+     "term": "haustra-of-colon"
     },
     {
      "at": [
@@ -3372,9 +3218,7 @@
       0.6528,
       0.1254
      ],
-     "ja": "腹膜垂",
-     "en": "omental appendices",
-     "note": "結腸ひもにそって垂れる、腹膜に包まれた脂肪の小さな袋。"
+     "term": "omental-appendices"
     },
     {
      "at": [
@@ -3409,9 +3253,7 @@
       0.4181,
       0.6911
      ],
-     "ja": "回腸動脈",
-     "en": "ileal arteries",
-     "note": "上腸間膜動脈の左から出る回腸への枝。動脈弓を何段もつくる。"
+     "term": "ileal-arteries"
     },
     {
      "at": [
@@ -3425,9 +3267,7 @@
       0.8213,
       0.4374
      ],
-     "ja": "直動脈",
-     "en": "vasa recta",
-     "note": "動脈弓から腸の壁へまっすぐ入る細い動脈。空腸では長く、回腸では短い。"
+     "term": "vasa-recta"
     },
     {
      "at": [
@@ -3476,99 +3316,77 @@
       0.4103,
       0.0997
      ],
-     "ja": "前半規管",
-     "en": "anterior semicircular canal",
-     "note": "上に立つ縦の輪。中を膜半規管が通る。"
+     "term": "anterior-semicircular-canal"
     },
     {
      "at": [
       0.0555,
       0.3023
      ],
-     "ja": "外側半規管",
-     "en": "lateral semicircular canal",
-     "note": "水平に近い輪。"
+     "term": "lateral-semicircular-canal"
     },
     {
      "at": [
       0.1384,
       0.4314
      ],
-     "ja": "後半規管",
-     "en": "posterior semicircular canal",
-     "note": "後ろに立つ縦の輪。"
+     "term": "posterior-semicircular-canal"
     },
     {
      "at": [
       0.2288,
       0.3465
      ],
-     "ja": "膨大部稜",
-     "en": "ampullary crest",
-     "note": "半規管の根もとのふくらみ（膨大部）の中の感覚の隆起。有毛細胞の毛がゼラチンの小帽にささり、リンパの流れで曲がる。"
+     "term": "ampullary-crest"
     },
     {
      "at": [
       0.4137,
       0.3565
      ],
-     "ja": "卵形嚢",
-     "en": "utricle",
-     "note": "前庭の中の膜迷路の袋。平衡斑（卵形嚢斑）が水平の加速度と傾きを感じる。半規管がここにつながる。"
+     "term": "utricle"
     },
     {
      "at": [
       0.4418,
       0.5498
      ],
-     "ja": "球形嚢",
-     "en": "saccule",
-     "note": "前庭の中の膜迷路の小さな袋。平衡斑（球形嚢斑）が上下の加速度を感じる。蝸牛管とつながる。"
+     "term": "saccule"
     },
     {
      "at": [
       0.2753,
       0.5893
      ],
-     "ja": "前庭窓（卵円窓）",
-     "en": "oval window",
-     "note": "前庭の外側の壁の窓。アブミ骨底がはまる。"
+     "term": "oval-window"
     },
     {
      "at": [
       0.3493,
       0.7625
      ],
-     "ja": "蝸牛窓（正円窓）",
-     "en": "round window",
-     "note": "鼓室階の始まりの窓。第二鼓膜が張り、前庭窓から入った圧を中耳へ逃がす。"
+     "term": "round-window"
     },
     {
      "at": [
       0.4863,
       0.7204
      ],
-     "ja": "前庭階",
-     "en": "scala vestibuli",
-     "note": "蝸牛の上の階。外リンパが満ち、前庭窓から続く。"
+     "term": "scala-vestibuli"
     },
     {
      "at": [
       0.4863,
       0.802
      ],
-     "ja": "蝸牛管",
-     "en": "cochlear duct",
-     "note": "前庭階と鼓室階の間の膜迷路（中央階）。内リンパが満ち、ラセン器がのる。"
+     "term": "cochlear-duct"
     },
     {
      "at": [
       0.513,
       0.9023
      ],
-     "ja": "鼓室階",
-     "en": "scala tympani",
-     "note": "蝸牛の下の階。外リンパが満ち、蝸牛窓で終わる。"
+     "term": "scala-tympani"
     },
     {
      "at": [
@@ -3821,6 +3639,411 @@
       0.8012
      ],
      "term": "nail-bed"
+    }
+   ]
+  },
+  "female-front": {
+   "url": "plates/female-front.e407486e10.webp",
+   "w": 948,
+   "h": 1006,
+   "labels": [
+    {
+     "at": [
+      0.9133,
+      0.0343
+     ],
+     "term": "uterine-tube"
+    },
+    {
+     "at": [
+      0.9347,
+      0.1031
+     ],
+     "term": "ampulla-of-uterine-tube"
+    },
+    {
+     "at": [
+      0.6815,
+      0.2071
+     ],
+     "term": "isthmus-of-uterine-tube"
+    },
+    {
+     "at": [
+      0.9038,
+      0.2101
+     ],
+     "term": "infundibulum-of-uterine-tube"
+    },
+    {
+     "at": [
+      0.9412,
+      0.2621
+     ],
+     "term": "fimbriae-of-uterine-tube"
+    },
+    {
+     "at": [
+      0.898,
+      0.319
+     ],
+     "term": "ovary"
+    },
+    {
+     "at": [
+      0.701,
+      0.2774
+     ],
+     "term": "ovarian-ligament"
+    },
+    {
+     "at": [
+      0.4998,
+      0.204
+     ],
+     "term": "fundus-of-uterus"
+    },
+    {
+     "at": [
+      0.5809,
+      0.4089
+     ],
+     "term": "body-of-uterus"
+    },
+    {
+     "at": [
+      0.4284,
+      0.4481
+     ],
+     "term": "uterus"
+    },
+    {
+     "at": [
+      0.4449,
+      0.3548
+     ],
+     "term": "endometrium"
+    },
+    {
+     "at": [
+      0.5095,
+      0.3325
+     ],
+     "term": "uterine-cavity"
+    },
+    {
+     "at": [
+      0.5079,
+      0.5013
+     ],
+     "term": "cervix-of-uterus"
+    },
+    {
+     "at": [
+      0.5085,
+      0.7026
+     ],
+     "term": "vagina"
+    },
+    {
+     "at": [
+      0.5725,
+      0.864
+     ],
+     "term": "greater-vestibular-gland"
+    },
+    {
+     "at": [
+      0.5157,
+      0.8836
+     ],
+     "term": "hymen"
+    },
+    {
+     "at": [
+      0.5079,
+      0.8995
+     ],
+     "term": "vaginal-orifice"
+    },
+    {
+     "at": [
+      0.4254,
+      0.9475
+     ],
+     "term": "labium-majus"
+    },
+    {
+     "at": [
+      0.4832,
+      0.946
+     ],
+     "term": "labium-minus"
+    }
+   ]
+  },
+  "female-sagittal": {
+   "url": "plates/female-sagittal.63a845b00e.webp",
+   "w": 1222,
+   "h": 1089,
+   "labels": [
+    {
+     "at": [
+      0.4787,
+      0.0294
+     ],
+     "term": "uterine-tube"
+    },
+    {
+     "at": [
+      0.5649,
+      0.0785
+     ],
+     "term": "infundibulum-of-uterine-tube"
+    },
+    {
+     "at": [
+      0.5385,
+      0.1318
+     ],
+     "term": "ovary"
+    },
+    {
+     "at": [
+      0.3822,
+      0.2528
+     ],
+     "term": "uterus"
+    },
+    {
+     "at": [
+      0.4077,
+      0.298
+     ],
+     "term": "endometrium"
+    },
+    {
+     "at": [
+      0.4394,
+      0.365
+     ],
+     "term": "vesicouterine-pouch"
+    },
+    {
+     "at": [
+      0.6747,
+      0.3627
+     ],
+     "term": "rectouterine-pouch"
+    },
+    {
+     "at": [
+      0.641,
+      0.391
+     ],
+     "term": "cervix-of-uterus"
+    },
+    {
+     "at": [
+      0.3367,
+      0.4392
+     ],
+     "term": "urinary-bladder"
+    },
+    {
+     "at": [
+      0.2246,
+      0.5188
+     ],
+     "term": "pubic-symphysis"
+    },
+    {
+     "at": [
+      0.7361,
+      0.4545
+     ],
+     "term": "rectum"
+    },
+    {
+     "at": [
+      0.5636,
+      0.5484
+     ],
+     "term": "vagina"
+    },
+    {
+     "at": [
+      0.4237,
+      0.6465
+     ],
+     "term": "urethra"
+    },
+    {
+     "at": [
+      0.5495,
+      0.6791
+     ],
+     "term": "crus-of-clitoris"
+    },
+    {
+     "at": [
+      0.535,
+      0.7091
+     ],
+     "term": "greater-vestibular-gland"
+    },
+    {
+     "at": [
+      0.5125,
+      0.7091
+     ],
+     "term": "bulb-of-vestibule"
+    },
+    {
+     "at": [
+      0.4763,
+      0.7264
+     ],
+     "term": "hymen"
+    },
+    {
+     "at": [
+      0.4687,
+      0.7337
+     ],
+     "term": "vaginal-orifice"
+    },
+    {
+     "at": [
+      0.412,
+      0.6882
+     ],
+     "term": "paraurethral-glands"
+    },
+    {
+     "at": [
+      0.3828,
+      0.7215
+     ],
+     "ja": "外尿道口",
+     "en": "external urethral orifice",
+     "note": "女性の尿道の出口。陰核の後ろ、腟口の前で腟前庭に開く。"
+    },
+    {
+     "at": [
+      0.3427,
+      0.7713
+     ],
+     "term": "labium-minus"
+    },
+    {
+     "at": [
+      0.2823,
+      0.7348
+     ],
+     "term": "labium-majus"
+    },
+    {
+     "at": [
+      0.2801,
+      0.705
+     ],
+     "term": "clitoris"
+    },
+    {
+     "at": [
+      0.2551,
+      0.7036
+     ],
+     "ja": "陰核包皮",
+     "en": "prepuce of clitoris",
+     "note": "陰核亀頭をおおう皮膚のひだ。左右の小陰唇が前で合わさってできる。男性の陰茎包皮にあたる。"
+    }
+   ]
+  },
+  "female-vulva": {
+   "url": "plates/female-vulva.5fe2bf38dd.webp",
+   "w": 1186,
+   "h": 1051,
+   "labels": [
+    {
+     "at": [
+      0.5007,
+      0.3583
+     ],
+     "term": "clitoris"
+    },
+    {
+     "at": [
+      0.4888,
+      0.4555
+     ],
+     "ja": "外尿道口",
+     "en": "external urethral orifice",
+     "note": "女性の尿道の出口。陰核の後ろ、腟口の前で腟前庭に開く。"
+    },
+    {
+     "at": [
+      0.4839,
+      0.4795
+     ],
+     "term": "paraurethral-glands"
+    },
+    {
+     "at": [
+      0.5843,
+      0.488
+     ],
+     "term": "crus-of-clitoris"
+    },
+    {
+     "at": [
+      0.5095,
+      0.5056
+     ],
+     "term": "vaginal-vestibule"
+    },
+    {
+     "at": [
+      0.5666,
+      0.5305
+     ],
+     "term": "bulb-of-vestibule"
+    },
+    {
+     "at": [
+      0.4958,
+      0.5393
+     ],
+     "term": "vaginal-orifice"
+    },
+    {
+     "at": [
+      0.4992,
+      0.5644
+     ],
+     "term": "hymen"
+    },
+    {
+     "at": [
+      0.4851,
+      0.6248
+     ],
+     "term": "labium-minus"
+    },
+    {
+     "at": [
+      0.5676,
+      0.6335
+     ],
+     "term": "greater-vestibular-gland"
+    },
+    {
+     "at": [
+      0.439,
+      0.6485
+     ],
+     "term": "labium-majus"
     }
    ]
   }

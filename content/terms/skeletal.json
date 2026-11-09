@@ -1084,7 +1084,7 @@
       "title": "中手骨と指節骨を1本ずつ",
       "group": "上肢",
       "intro": [
-        "中手骨（metacarpals）・中足骨（metatarsals）は、親指（thumb）（母指（thumb）・母趾（great toe））の側から第1〜第5と数える。指（finger）は、手（hand）では母指・示指（index finger）・中指（middle finger）・薬指（ring finger）・小指（little finger）、足（foot）では母趾・第2趾（second toe）・第3趾（third toe）・第4趾（fourth toe）・小趾（little toe）。",
+        "中手骨（metacarpals）・中足骨（metatarsals）は、親指（thumb）（母指（thumb）・母趾（great toe））の側から第1〜第5と数える。指（digit）は、手（hand）では母指・示指（index finger）・中指（middle finger）・薬指（ring finger）・小指（little finger）、足（foot）では母趾・第2趾（second toe）・第3趾（third toe）・第4趾（fourth toe）・小趾（little toe）。",
         "それぞれ近位（proximal）から底・体・頭に分かれ、底が手根骨（carpal bones）・足根骨（tarsal bones）と、頭が指の基節骨（proximal phalanx）と関節（joint）する。"
       ],
       "terms": [
@@ -1816,7 +1816,7 @@
       "title": "楔状骨・中足骨・趾節骨を1つずつ",
       "group": "下肢",
       "intro": [
-        "中手骨（metacarpals）・中足骨（metatarsals）は、親指（thumb）（母指（thumb）・母趾（great toe））の側から第1〜第5と数える。指（finger）は、手（hand）では母指・示指（index finger）・中指（middle finger）・薬指（ring finger）・小指（little finger）、足（foot）では母趾・第2趾（second toe）・第3趾（third toe）・第4趾（fourth toe）・小趾（little toe）。",
+        "中手骨（metacarpals）・中足骨（metatarsals）は、親指（thumb）（母指（thumb）・母趾（great toe））の側から第1〜第5と数える。指（digit）は、手（hand）では母指・示指（index finger）・中指（middle finger）・薬指（ring finger）・小指（little finger）、足（foot）では母趾・第2趾（second toe）・第3趾（third toe）・第4趾（fourth toe）・小趾（little toe）。",
         "それぞれ近位（proximal）から底・体・頭に分かれ、底が手根骨（carpal bones）・足根骨（tarsal bones）と、頭が指の基節骨（proximal phalanx）と関節（joint）する。"
       ],
       "terms": [
@@ -1881,7 +1881,7 @@
           "parts": ["proximal phalanx of * toe"], "level": 3,
           "kanji": "足の指の付け根の節の骨",
           "etym": "proximal「近位の」＋ phalanx「指骨」",
-          "note": "中足骨（metatarsals）に続く、足（foot）の指（finger）の付け根の骨（bone）。"
+          "note": "中足骨（metatarsals）に続く、足（foot）の指（toe）の付け根の骨（bone）。"
         },
         {
           "id": "middle-phalanges-of-foot", "ja": "中節骨（足）", "yomi": "ちゅうせつこつ", "en": "middle phalanges of foot", "enAlt": ["middle phalanx of foot"], "la": "phalanges mediae pedis",

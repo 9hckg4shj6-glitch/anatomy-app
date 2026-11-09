@@ -497,6 +497,68 @@
       ]
     },
     {
+      "id": "resp-nose-septum",
+      "title": "鼻腔の壁と鼻中隔・硬口蓋",
+      "group": "鼻腔と喉頭",
+      "intro": ["3Dの鼻腔（nasal cavity）は CT から作った空気の型で、上鼻道（superior nasal meatus）・蝶篩陥凹（sphenoethmoidal recess）・鼻中隔（nasal septum）の粘膜（mucosa）などの細かい所は形が無いので、鼻腔の外側（lateral）の壁・鼻中隔・正中断の図で示す。"],
+      "terms": [
+        {
+          "id": "naris", "ja": "外鼻孔", "yomi": "がいびこう", "en": "naris", "enAlt": ["nostril"], "la": "naris", "plate": "pharynx-sagittal", "level": 2,
+          "kanji": "外鼻（外に見える鼻）の孔",
+          "etym": "naris「鼻の穴」（ラテン語）。複数形 nares",
+          "note": "鼻（nose）の左右の穴で、鼻腔（nasal cavity）の前の入口。後ろの出口は後鼻孔（choana）（咽頭鼻部（nasopharynx）へ開く）。"
+        },
+        {
+          "id": "nasal-vestibule", "ja": "鼻前庭", "yomi": "びぜんてい", "en": "nasal vestibule", "la": "vestibulum nasi", "plate": "nose-lateral", "level": 2,
+          "kanji": "鼻（腔）の前庭（入口の前の広間）",
+          "etym": "vestibulum「玄関」（ラテン語）",
+          "note": "外鼻孔（nostril）のすぐ内側（medial）の、皮膚（skin）でおおわれた所。鼻毛（nasal hairs）が生え、脂腺（sebaceous gland）・汗腺（sweat gland）がある。上の境（鼻限）から奥が粘膜（mucosa）でおおわれた本来の鼻腔（nasal cavity）。"
+        },
+        {
+          "id": "superior-nasal-meatus", "ja": "上鼻道", "yomi": "じょうびどう", "en": "superior nasal meatus", "la": "meatus nasi superior", "plate": "nose-lateral", "level": 2,
+          "kanji": "上の鼻の道",
+          "etym": "meatus「通り道」（ラテン語）",
+          "note": "上鼻甲介（superior nasal concha）の下の、せまく短いすき間。後篩骨蜂巣（posterior ethmoidal cells）が開く。（中鼻道（middle nasal meatus）には前頭洞（frontal sinus）・上顎洞（maxillary sinus）・前篩骨蜂巣、下鼻道（inferior nasal meatus）には鼻涙管（nasolacrimal duct）が開く。）"
+        },
+        {
+          "id": "sphenoethmoidal-recess", "ja": "蝶篩陥凹", "yomi": "ちょうしかんおう", "en": "sphenoethmoidal recess", "la": "recessus sphenoethmoidalis", "plate": "nose-lateral", "level": 3,
+          "kanji": "蝶形骨と篩骨の間の陥凹（くぼみ）",
+          "etym": "sphen「くさび」＋ ethmos「ふるい」（ギリシャ語）＋ recessus「奥まった所」",
+          "note": "上鼻甲介（superior nasal concha）の後ろ上の、蝶形骨（sphenoid bone）の前の小さなくぼみ。蝶形骨洞（sphenoidal sinus）が開く。"
+        },
+        {
+          "id": "nasal-septum", "ja": "鼻中隔", "yomi": "びちゅうかく", "en": "nasal septum", "la": "septum nasi", "plate": "nose-septum", "level": 1,
+          "kanji": "鼻（腔）の中の隔て（仕切り）",
+          "etym": "septum「仕切り」（ラテン語）",
+          "note": "左右の鼻腔（nasal cavity）を分ける仕切り。後ろ上は篩骨（ethmoid bone）の垂直板（perpendicular plate）、後ろ下は鋤骨（vomer）（ここまでが骨鼻中隔（bony nasal septum））、前は鼻中隔軟骨（septal nasal cartilage）で、全体を粘膜（mucosa）がおおう。多くの人で少し曲がっていて、強く曲がると鼻づまりの原因になる（鼻中隔弯曲症）。"
+        },
+        {
+          "id": "kiesselbach-area", "ja": "キーゼルバッハ部位", "yomi": "きーぜるばっはぶい", "en": "kiesselbach's area", "enAlt": ["little's area"], "la": "locus Kiesselbachi", "plate": "nose-septum", "level": 1,
+          "kanji": "キーゼルバッハ（人の名）の部位",
+          "etym": "Kiesselbach はドイツの耳鼻科医",
+          "note": "鼻中隔（nasal septum）の前下部（anteroinferior part）で、前篩骨動脈（anterior ethmoidal artery）・蝶口蓋動脈（sphenopalatine artery）・大口蓋動脈（greater palatine artery）・上唇動脈（superior labial artery）の枝（branch）がつながって細かい網をつくる所。粘膜（mucosa）が薄く、指（finger）でさわりやすいので、鼻出血（epistaxis）の大部分はここから起こる。"
+        },
+        {
+          "id": "incisive-canal", "ja": "切歯管", "yomi": "せっしかん", "en": "incisive canal", "la": "canalis incisivus", "plate": "nose-septum", "level": 3,
+          "kanji": "切歯（前歯）の後ろの管",
+          "etym": "incidere「切る」（ラテン語）",
+          "note": "硬口蓋（hard palate）の前の正中（median）を上下に貫く管で、口の側は切歯窩（incisive fossa）（切歯孔（incisive foramen））に開く。鼻口蓋神経（nasopalatine nerve）と大口蓋動脈（greater palatine artery）の枝（branch）が通り、鼻中隔（nasal septum）と口蓋（palate）をつなぐ。"
+        },
+        {
+          "id": "hard-palate", "ja": "硬口蓋", "yomi": "こうこうがい", "en": "hard palate", "la": "palatum durum", "plate": "pharynx-sagittal", "level": 1,
+          "kanji": "硬い口蓋（口の天井）",
+          "etym": "palatum「口蓋」（ラテン語）、durus「硬い」",
+          "note": "口蓋（palate）の前2/3で、口腔（oral cavity）の天井と鼻腔（nasal cavity）の床をなす。上顎骨（maxilla）の口蓋突起（palatine process of maxilla）と口蓋骨（palatine bone）の水平板（horizontal plate）（骨口蓋（bony palate））を粘膜（mucosa）がおおう。後ろに軟口蓋（soft palate）が続く。左右がつながらないと口蓋裂（cleft palate）になる。"
+        },
+        {
+          "id": "pharyngeal-opening-of-auditory-tube", "ja": "耳管咽頭口", "yomi": "じかんいんとうこう", "en": "pharyngeal opening of auditory tube", "la": "ostium pharyngeum tubae auditivae", "plate": "pharynx-sagittal", "level": 2,
+          "kanji": "耳管の咽頭（へ開く）口",
+          "etym": "ostium「口・入口」（ラテン語）",
+          "note": "咽頭鼻部（nasopharynx）の外側（lateral）の壁、下鼻甲介（inferior nasal concha）の後ろの高さにある耳管（auditory tube）の入口。まわりの軟骨（cartilage）の高まりが耳管隆起で、その後ろに咽頭扁桃（pharyngeal tonsil）（アデノイド（adenoids））がある。飲みこむと口蓋帆張筋（tensor veli palatini）が耳管を開け、鼓室（tympanic cavity）の気圧を外と同じにする。"
+        }
+      ]
+    },
+    {
       "id": "resp-larynx",
       "title": "喉頭の軟骨と靱帯",
       "group": "鼻腔と喉頭",
@@ -778,6 +840,32 @@
           "kanji": "筋が付く突起",
           "etym": "muscular「筋の」＋ process「突起」",
           "note": "披裂軟骨（arytenoid cartilage）の底から後ろ外へ出る突起（process）。後ろから後輪状披裂筋（posterior cricoarytenoid）（声門（glottis）を開く）、前外から外側輪状披裂筋（lateral cricoarytenoid）（声門を閉じる）が付き、披裂軟骨を回して声帯突起（vocal process of arytenoid cartilage）を外や内へ動かす。"
+        }
+      ]
+    },
+    {
+      "id": "resp-glottis",
+      "title": "声帯ひだ・声門と輪状甲状関節",
+      "group": "鼻腔と喉頭",
+      "intro": ["声を出す声帯ひだ（vocal fold）と声門（glottis）は3Dに形が無いので、正中断と喉頭（larynx）の図で示す。喉頭の中は上から喉頭前庭（laryngeal vestibule）（前庭ひだ（vestibular fold）まで）・喉頭室（laryngeal ventricle）（前庭ひだと声帯ひだの間）・声門下腔に分かれる。"],
+      "terms": [
+        {
+          "id": "vocal-fold", "ja": "声帯ひだ", "yomi": "せいたいひだ", "en": "vocal fold", "enAlt": ["vocal cord", "true vocal cord"], "la": "plica vocalis", "plate": "pharynx-sagittal", "level": 1,
+          "kanji": "声の帯のひだ",
+          "etym": "vocalis「声の」＋ plica「ひだ」（ラテン語）",
+          "note": "喉頭（larynx）の中の左右のひだ（fold）（いわゆる声帯（vocal cord））。甲状軟骨（thyroid cartilage）の後ろの面から披裂軟骨（arytenoid cartilage）の声帯突起（vocal process of arytenoid cartilage）へ張り、中に声帯靱帯（vocal ligament）と声帯筋（vocalis）がある。息で振動（vibration）して声を出す。上の前庭ひだ（vestibular fold）（仮声帯）との間が喉頭室（laryngeal ventricle）。"
+        },
+        {
+          "id": "glottis", "ja": "声門", "yomi": "せいもん", "en": "glottis", "la": "glottis", "plate": "pharynx-sagittal", "level": 1,
+          "kanji": "声の門",
+          "etym": "glottis（ギリシャ語 glotta「舌」から）",
+          "note": "左右の声帯ひだ（vocal fold）と、その間のすき間（声門裂（rima glottidis））をあわせた所。喉頭（larynx）でいちばんせまく、息をするときは後輪状披裂筋（posterior cricoarytenoid）で開き、声を出すときは外側輪状披裂筋（lateral cricoarytenoid）・披裂筋で閉じる。"
+        },
+        {
+          "id": "cricothyroid-joint", "ja": "輪状甲状関節", "yomi": "りんじょうこうじょうかんせつ", "en": "cricothyroid joint", "la": "articulatio cricothyroidea", "plate": "larynx-anterior", "level": 2,
+          "kanji": "輪状軟骨と甲状軟骨の間の関節",
+          "etym": "krikos「輪」＋ thyreos「盾」（ギリシャ語）",
+          "note": "甲状軟骨（thyroid cartilage）の下角（inferior angle）と輪状軟骨（cricoid cartilage）の側面の関節（joint）。輪状甲状筋（cricothyroid）が縮むと甲状軟骨がここを軸に前へ傾き、声帯ひだ（vocal fold）が引きのばされて声が高くなる。"
         }
       ]
     }

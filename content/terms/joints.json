@@ -800,14 +800,14 @@
           "parts": ["za:articular capsules of metatarsophalangeal joints"], "level": 2,
           "kanji": "中足骨と趾節骨（足の指の骨）の間の関節",
           "etym": "metatarso-「中足骨の」＋ phalangeal「指節骨の」",
-          "note": "中足骨頭（head of metatarsal bone）と基節骨（proximal phalanx）の底の間の関節（joint）。つま先立ちや歩くとき、ここで指（finger）が背屈（dorsiflexion）する。母趾（great toe）のこの関節で母趾が外へ曲がるのが外反母趾（hallux valgus）。"
+          "note": "中足骨頭（head of metatarsal bone）と基節骨（proximal phalanx）の底の間の関節（joint）。つま先立ちや歩くとき、ここで指（toe）が背屈（dorsiflexion）する。母趾（great toe）のこの関節で母趾が外へ曲がるのが外反母趾（hallux valgus）。"
         },
         {
           "id": "interphalangeal-joints-of-foot", "ja": "趾節間関節", "yomi": "しせつかんかんせつ", "en": "interphalangeal joints of foot", "la": "articulationes interphalangeae pedis",
           "parts": ["za:articular capsules of proximal interphalangeal joints of foot", "za:articular capsules of distal interphalangeal joints of foot", "za:articular capsule of interphalangeal joint of great toe"], "level": 3,
           "kanji": "足の指の骨の間の関節",
           "etym": "inter-「間の」＋ phalangeal「指節骨の」",
-          "note": "足（foot）の指（finger）の骨（bone）（趾節骨（phalanges of foot））の間の蝶番関節（hinge joint）。母趾（great toe）は1つ、ほかの指は近位（proximal）・遠位（distal）の2つずつ。"
+          "note": "足（foot）の指（toe）の骨（bone）（趾節骨（phalanges of foot））の間の蝶番関節（hinge joint）。母趾（great toe）は1つ、ほかの指は近位（proximal）・遠位（distal）の2つずつ。"
         }
       ]
     },

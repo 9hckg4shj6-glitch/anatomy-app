@@ -121,6 +121,7 @@
 後枝@神経の|posterior ramus
 後枝@閉鎖神経の|posterior branch
 後枝@から、|posterior ramus
+錐体%視細胞,網膜,黄斑,中心窩,色を感じる|cone
 錐体#skeletal,sensory,exam|petrous part
 錐体@側頭骨の|petrous part
 錐体#nervous|pyramid
@@ -459,6 +460,9 @@ S状結腸間膜|sigmoid mesocolon
 発生|development
 角化|keratinization
 基底膜|basement membrane
+基底膜%蝸牛,ラセン器,基底板,有毛細胞|basilar membrane
+指%母指・示指|digit
+指%趾,中足,足の裏,足底,つま先|toe
 交感神経|sympathetic nerve
 関節腔|joint cavity
 線維性|fibrous

@@ -4,6 +4,7 @@
     {
       "id": "sens-eyeball",
       "title": "眼球",
+      "group": "眼",
       "terms": [
         {
           "id": "eyeball", "ja": "眼球", "yomi": "がんきゅう", "en": "eyeball", "la": "bulbus oculi",
@@ -72,7 +73,8 @@
     },
     {
       "id": "sens-accessory",
-      "title": "眼筋・涙器・耳",
+      "title": "眼筋と涙器",
+      "group": "眼",
       "terms": [
         {
           "id": "superior-rectus", "ja": "上直筋", "yomi": "じょうちょっきん", "en": "superior rectus", "la": "musculus rectus superior",
@@ -171,24 +173,146 @@
           "kanji": "涙を鼻へ流す管",
           "etym": "naso-「鼻」＋ lacrimal「涙の」＋ duct",
           "note": "涙嚢（lacrimal sac）から下鼻道（inferior nasal meatus）へ涙（tears）を流す管。泣くと鼻水が出るのはこのため。"
+        }
+      ]
+    },
+    {
+      "id": "sens-eye-detail",
+      "title": "眼の細部",
+      "group": "眼",
+      "terms": [
+        {
+          "id": "ciliary-zonule", "ja": "毛様体小帯", "yomi": "もうようたいしょうたい", "en": "ciliary zonule", "enAlt": ["zonular fibres", "suspensory ligament of lens"], "la": "zonula ciliaris",
+          "parts": ["suspensory ligament of lens"], "level": 2, "color": "#e9e4d6", "tissue": "clear", "xray": true,
+          "kanji": "毛様体から出る小さな帯",
+          "etym": "ciliary「毛様体の」＋ zonule「小さな帯」（ラテン語 zonula）",
+          "note": "毛様体（ciliary body）と水晶体（lens）のふちをつなぐ細い線維（fiber）の輪（チン小帯（zonule of Zinn））。毛様体筋（ciliary muscle）がゆるむと小帯（zonule）が張って水晶体が薄くなり（遠くを見る）、縮むと小帯がゆるんで水晶体が厚くなる（近くを見る）。"
         },
+        {
+          "id": "common-tendinous-ring", "ja": "総腱輪", "yomi": "そうけんりん", "en": "common tendinous ring", "la": "anulus tendineus communis",
+          "parts": ["common tendinous ring"], "level": 2, "color": "#e6dfcf", "tissue": "ligament", "xray": true,
+          "kanji": "共通の腱の輪",
+          "etym": "common「共通の」＋ tendinous「腱の」＋ ring「輪」",
+          "note": "眼窩（orbit）の奥で視神経管（optic canal）と上眼窩裂（superior orbital fissure）の一部を囲む腱（tendon）の輪。4つの直筋（rectus muscle）がここから起こる。中を視神経（optic nerve）・眼動脈（ophthalmic artery）・動眼神経（oculomotor nerve）・外転神経（abducens nerve）などが通る。"
+        },
+        {
+          "id": "tarsal-plates", "ja": "瞼板", "yomi": "けんばん", "en": "tarsal plates", "enAlt": ["tarsus"], "la": "tarsi",
+          "parts": ["za:superior tarsus", "za:inferior tarsus"], "level": 2, "color": "#eadfcd", "tissue": "ligament",
+          "kanji": "まぶたの板",
+          "etym": "tarsus ← ギリシャ語 tarsos「平たい板・すのこ」",
+          "note": "上下のまぶた（eyelid）の芯になる密な結合組織（connective tissue）の板。中に瞼板腺（tarsal glands）（マイボーム腺（meibomian glands））が並び、涙（tears）が蒸発しないよう脂を出す。上瞼板（superior tarsus）に上眼瞼挙筋（levator palpebrae superioris）が付く。"
+        },
+        {
+          "id": "lacrimal-canaliculus", "ja": "涙小管", "yomi": "るいしょうかん", "en": "lacrimal canaliculus", "la": "canaliculus lacrimalis",
+          "parts": ["lacrimal canaliculus"], "level": 2, "color": "#e3b0a6", "tissue": "mucosa",
+          "kanji": "涙の小さな管",
+          "etym": "lacrimal「涙の」（ラテン語 lacrima）＋ canaliculus「小さな管」",
+          "note": "まぶた（eyelid）の内側（medial）の端の小さな穴（涙点（lacrimal punctum））から涙嚢（lacrimal sac）へ涙（tears）を運ぶ上下の細い管。涙は涙腺（lacrimal gland）→眼（eye）の表面→涙点→涙小管→涙嚢→鼻涙管（nasolacrimal duct）→下鼻道（inferior nasal meatus）と流れる。"
+        }
+      ]
+    },
+    {
+      "id": "sens-orbit-more",
+      "title": "眼球の部屋と眼窩の支え",
+      "group": "眼",
+      "terms": [
+        {
+          "id": "anterior-chamber-of-eyeball", "ja": "前眼房", "yomi": "ぜんがんぼう", "en": "anterior chamber of eyeball", "enAlt": ["anterior chamber"], "la": "camera anterior bulbi",
+          "parts": ["anterior chamber of eyeball"], "level": 2, "xray": true, "color": "#dfe9ee", "tissue": "clear",
+          "kanji": "眼球の前の部屋",
+          "etym": "anterior「前の」＋ chamber「部屋」（ラテン語 camera）",
+          "note": "角膜（cornea）と虹彩（iris）の間の、眼房水（aqueous humor）で満たされた空間。眼房水は毛様体（ciliary body）でつくられ、後眼房（posterior chamber）から瞳孔（pupil）を通ってここへ来て、角膜と虹彩のつけ根の角（隅角（iridocorneal angle））から強膜静脈洞（scleral venous sinus）（シュレム管（canal of Schlemm））へ出る。出口が詰まると眼圧（intraocular pressure）が上がる（緑内障（glaucoma））。"
+        },
+        {
+          "id": "trochlea-of-superior-oblique", "ja": "上斜筋の滑車", "yomi": "じょうしゃきんのかっしゃ", "en": "trochlea of superior oblique", "la": "trochlea musculi obliqui superioris",
+          "parts": ["trochlea of superior oblique"], "level": 3,
+          "kanji": "上斜筋の腱を折り返す滑車",
+          "etym": "trochlea ← ギリシャ語 trochilia「滑車」",
+          "note": "眼窩（orbit）の内側上（superomedial）の角（前頭骨（frontal bone）の滑車窩（trochlear fovea））に付く、軟骨（cartilage）の小さな輪。上斜筋（superior oblique）の腱（tendon）はここで後ろ外側（lateral）へ折れ曲がって眼球（eyeball）に付くので、上斜筋は眼球を下外側（inferolateral）へ向ける（下を見る）。この滑車（trochlea）の名前から、上斜筋を動かす神経（nerve）を滑車神経（trochlear nerve）という。"
+        },
+        {
+          "id": "suspensory-ligament-of-eyeball", "ja": "眼球提靱帯", "yomi": "がんきゅうていじんたい", "en": "suspensory ligament of eyeball", "la": "ligamentum suspensorium bulbi",
+          "parts": ["za:suspensory ligament of eyeball"], "level": 3,
+          "kanji": "眼球を下から吊り下げる靱帯",
+          "etym": "suspensory「吊る」（ラテン語 suspendere）＋ ligament「靱帯」",
+          "note": "眼球（eyeball）の下に張る、ハンモックのような結合組織（connective tissue）の帯。下直筋（inferior rectus）と下斜筋（inferior oblique）の筋膜（fascia）が厚くなったもので、内側（medial）と外側（lateral）の端は眼窩（orbit）の壁に付く。眼窩の底の骨（bone）が折れても、これが眼球を支える。"
+        },
+        {
+          "id": "check-ligament-of-medial-rectus", "ja": "内側直筋の制動靱帯", "yomi": "ないそくちょくきんのせいどうじんたい", "en": "check ligament of medial rectus", "la": "lacertus musculi recti medialis",
+          "parts": ["check ligament of medial rectus"], "level": 3, "check": true,
+          "kanji": "内側直筋の動きを止める靱帯",
+          "etym": "check「止める」＋ ligament「靱帯」",
+          "note": "内側直筋（medial rectus）の筋膜（fascia）から出て、眼窩（orbit）の内側壁（medial wall）（涙骨（lacrimal bone））に付く帯。内側直筋が縮みすぎないように止め、眼球（eyeball）が内側（medial）へ回りすぎるのを防ぐ。"
+        },
+        {
+          "id": "check-ligament-of-lateral-rectus", "ja": "外側直筋の制動靱帯", "yomi": "がいそくちょくきんのせいどうじんたい", "en": "check ligament of lateral rectus", "la": "lacertus musculi recti lateralis",
+          "parts": ["check ligament of lateral rectus"], "level": 3, "check": true,
+          "kanji": "外側直筋の動きを止める靱帯",
+          "etym": "check「止める」＋ lateral rectus「外側の直筋」",
+          "note": "外側直筋（lateral rectus）の筋膜（fascia）から出て、眼窩（orbit）の外側壁（lateral wall）（頬骨（zygomatic bone）の眼窩結節（orbital tubercle））に付く帯。眼球（eyeball）が外側（lateral）へ回りすぎるのを防ぐ。内側（medial）と外側の制動靱帯（check ligament）と眼球提靱帯（suspensory ligament of eyeball）で、眼球をハンモックのように支える。"
+        }
+      ]
+    },
+    {
+      "id": "sens-eye-plate",
+      "title": "瞳孔・後眼房と眼底",
+      "group": "眼",
+      "intro": ["瞳孔（pupil）・後眼房（posterior chamber）と、網膜（retina）の黄斑（macula）・中心窩（fovea centralis）・視神経円板（optic disc）は3Dに形が無いので、眼球（eyeball）の水平断（horizontal section）と涙器の図で示す。眼底鏡（ophthalmoscope）で瞳孔からのぞくと、網膜の後ろの部分（眼底）に視神経円板と黄斑、そこから出入りする網膜の血管（blood vessel）が見える。"],
+      "terms": [
+        {
+          "id": "pupil", "ja": "瞳孔", "yomi": "どうこう", "en": "pupil", "la": "pupilla", "plate": "eye-horizontal", "level": 1,
+          "kanji": "瞳（ひとみ）の孔（あな）",
+          "etym": "pupilla「小さな人形」（ラテン語。瞳に映る小さな人の姿から）",
+          "note": "虹彩（iris）の中央の丸い穴で、目に入る光の量を変える。瞳孔括約筋（sphincter pupillae）（動眼神経（oculomotor nerve）の副交感神経（parasympathetic nerve））で小さくなり（縮瞳）、瞳孔散大筋（dilator pupillae）（交感神経（sympathetic nerve））で大きくなる（散瞳）。光を当てると両目とも小さくなる対光反射（pupillary light reflex）は、脳幹（brainstem）の働きを確かめる目安。"
+        },
+        {
+          "id": "posterior-chamber", "ja": "後眼房", "yomi": "こうがんぼう", "en": "posterior chamber of eyeball", "la": "camera posterior bulbi", "plate": "eye-horizontal", "level": 2,
+          "kanji": "後ろの眼の房（部屋）",
+          "etym": "camera「部屋」（ラテン語）",
+          "note": "虹彩（iris）と水晶体（lens）（と毛様体小帯（ciliary zonule））の間のせまい部屋。毛様体（ciliary body）が作った眼房水（aqueous humor）がここに出て、瞳孔（pupil）を通って前眼房（anterior chamber of eyeball）へ流れ、隅角（iridocorneal angle）のシュレム管（canal of Schlemm）から静脈（vein）へ出る。流れがとどこおると眼圧（intraocular pressure）が上がる（緑内障（glaucoma））。"
+        },
+        {
+          "id": "macula", "ja": "黄斑", "yomi": "おうはん", "en": "macula lutea", "enAlt": ["macula"], "la": "macula lutea", "plate": "eye-horizontal", "level": 1,
+          "kanji": "黄色い斑（まだら）",
+          "etym": "macula「しみ・斑点」＋ luteus「黄色の」（ラテン語）",
+          "note": "網膜（retina）の後ろの真ん中（視神経円板（optic disc）の約4mm外側（lateral））にある、黄色みをおびた直径約2mmの所。色を感じる錐体（cone）が集まり、ものを細かく見る。年をとって傷むと見たい所が見えにくくなる（加齢黄斑変性）。"
+        },
+        {
+          "id": "fovea-centralis", "ja": "中心窩", "yomi": "ちゅうしんか", "en": "fovea centralis", "la": "fovea centralis", "plate": "eye-horizontal", "level": 2,
+          "kanji": "（黄斑の）中心の窩（くぼみ）",
+          "etym": "fovea「小さなくぼみ」（ラテン語）",
+          "note": "黄斑（macula）の真ん中の小さなくぼみ。錐体（petrous part）だけがすき間なく並び、上の層がわきへよけて光が直接届くので、視力がいちばん良い。ものを見つめると、その像がここに結ぶ。"
+        },
+        {
+          "id": "optic-disc", "ja": "視神経円板", "yomi": "ししんけいえんばん", "en": "optic disc", "enAlt": ["optic disk", "optic papilla"], "la": "discus nervi optici", "plate": "eye-horizontal", "level": 1,
+          "kanji": "視神経の（出る所の）円い板",
+          "etym": "discus「円盤」（ギリシャ語 diskos）。視神経乳頭とも",
+          "note": "網膜（retina）の神経線維（nerve fiber）が集まって視神経（optic nerve）として眼球（eyeball）を出る所（視神経乳頭（optic disc））。黄斑（macula）より鼻（nose）の側にある。視細胞（photoreceptor cell）が無いので光を感じず、視野（visual field）の盲点（マリオット盲点）になる。網膜中心動静脈が出入りする。頭の中の圧が上がるとむくむ（うっ血乳頭）。"
+        },
+        {
+          "id": "lacrimal-punctum", "ja": "涙点", "yomi": "るいてん", "en": "lacrimal punctum", "la": "punctum lacrimale", "plate": "eye-lacrimal", "level": 2,
+          "kanji": "涙の（入る）点（小さな穴）",
+          "etym": "punctum「点・刺した穴」（ラテン語）",
+          "note": "上下のまぶた（eyelid）の縁の内側（medial）の端にある小さな穴（上涙点・下涙点）。涙（tears）はここから涙小管（lacrimal canaliculus）・涙嚢（lacrimal sac）・鼻涙管（nasolacrimal duct）を通って下鼻道（inferior nasal meatus）へ流れる。涙の多くは下涙点から入る。"
+        }
+      ]
+    },
+    {
+      "id": "sens-ear",
+      "title": "外耳・中耳・内耳",
+      "group": "耳",
+      "intro": [
+        "耳（ear）は外耳（external ear）（耳介（auricle）・外耳道（external acoustic meatus））・中耳（middle ear）（鼓膜（tympanic membrane）・鼓室（tympanic cavity）・耳小骨（auditory ossicles）・耳管（auditory tube））・内耳（internal ear）（蝸牛（cochlea）・前庭（vestibule）・半規管（semicircular canal））に分けられる。音は鼓膜を震わせ、3つの耳小骨が振動（vibration）を大きくして内耳の蝸牛へ伝える。",
+        "中耳と内耳は側頭骨（temporal bone）の中に埋もれていて小さいので、示すときは周りを半透明にする。"
+      ],
+      "terms": [
         {
           "id": "external-ear", "ja": "外耳", "yomi": "がいじ", "en": "external ear", "la": "auris externa",
           "parts": ["external ear"], "level": 1,
           "kanji": "耳の外側の部分",
           "etym": "external「外の」＋ ear。ラテン語 auris から aural、ギリシャ語 ous から oto-",
           "note": "耳介（auricle）（耳たぶ（earlobe）を含む外に出た部分）と外耳道（external acoustic meatus）からなり、音を集めて鼓膜（tympanic membrane）へ導く。"
-        }
-      ]
-    },
-    {
-      "id": "sens-ear",
-      "title": "中耳と内耳",
-      "intro": [
-        "耳（ear）は外耳（external ear）（耳介（auricle）・外耳道（external acoustic meatus））・中耳（middle ear）（鼓膜（tympanic membrane）・鼓室（tympanic cavity）・耳小骨（auditory ossicles）・耳管（auditory tube））・内耳（internal ear）（蝸牛（cochlea）・前庭（vestibule）・半規管（semicircular canal））に分けられる。音は鼓膜を震わせ、3つの耳小骨が振動（vibration）を大きくして内耳の蝸牛へ伝える。",
-        "中耳と内耳は側頭骨（temporal bone）の中に埋もれていて小さいので、示すときは周りを半透明にする。"
-      ],
-      "terms": [
+        },
         {
           "id": "tympanic-membrane", "ja": "鼓膜", "yomi": "こまく", "en": "tympanic membrane", "la": "membrana tympanica",
           "parts": ["za:tympanic membrane"], "level": 1,
@@ -241,77 +365,138 @@
       ]
     },
     {
-      "id": "sens-eye-detail",
-      "title": "眼の細部",
+      "id": "sens-ear-plate",
+      "title": "外耳道・鼓室と半規管",
+      "group": "耳",
+      "intro": ["外耳道（external acoustic meatus）・鼓室（tympanic cavity）と、内耳（internal ear）の半規管（semicircular canal）・卵形嚢（utricle）・球形嚢（saccule）は3Dに形が無い（Z-Anatomy の内耳は蝸牛（cochlea）と前庭（vestibule）だけ）ので、耳（ear）の断面（section）と骨迷路（bony labyrinth）・膜迷路（membranous labyrinth）の図で示す。内耳は骨（bone）の中のトンネル（骨迷路）の中に膜（membrane）の管と袋（膜迷路）が入った二重のつくりで、骨迷路と膜迷路の間は外リンパ（perilymph）、膜迷路の中は内リンパ（endolymph）で満たされる。"],
       "terms": [
         {
-          "id": "ciliary-zonule", "ja": "毛様体小帯", "yomi": "もうようたいしょうたい", "en": "ciliary zonule", "enAlt": ["zonular fibres", "suspensory ligament of lens"], "la": "zonula ciliaris",
-          "parts": ["suspensory ligament of lens"], "level": 2, "color": "#e9e4d6", "tissue": "clear", "xray": true,
-          "kanji": "毛様体から出る小さな帯",
-          "etym": "ciliary「毛様体の」＋ zonule「小さな帯」（ラテン語 zonula）",
-          "note": "毛様体（ciliary body）と水晶体（lens）のふちをつなぐ細い線維（fiber）の輪（チン小帯（zonule of Zinn））。毛様体筋（ciliary muscle）がゆるむと小帯（zonule）が張って水晶体が薄くなり（遠くを見る）、縮むと小帯がゆるんで水晶体が厚くなる（近くを見る）。"
+          "id": "external-acoustic-meatus", "ja": "外耳道", "yomi": "がいじどう", "en": "external acoustic meatus", "enAlt": ["external auditory canal"], "la": "meatus acusticus externus", "plate": "ear-section", "level": 1,
+          "kanji": "外耳の道",
+          "etym": "meatus「通り道」＋ acusticus「聞くことの」（ギリシャ語 akouein「聞く」）",
+          "note": "耳介（auricle）の外耳孔（external acoustic opening）から鼓膜（tympanic membrane）までの長さ約2.5cmの、少しS字に曲がった管。外の1/3は軟骨（cartilage）、内の2/3は骨（bone）（側頭骨（temporal bone））でできている。外の部分の皮膚（skin）に耳垢腺と毛（hair）がある。耳（ear）を見るときは耳介を後ろ上に引いて管をまっすぐにする。"
         },
         {
-          "id": "common-tendinous-ring", "ja": "総腱輪", "yomi": "そうけんりん", "en": "common tendinous ring", "la": "anulus tendineus communis",
-          "parts": ["common tendinous ring"], "level": 2, "color": "#e6dfcf", "tissue": "ligament", "xray": true,
-          "kanji": "共通の腱の輪",
-          "etym": "common「共通の」＋ tendinous「腱の」＋ ring「輪」",
-          "note": "眼窩（orbit）の奥で視神経管（optic canal）と上眼窩裂（superior orbital fissure）の一部を囲む腱（tendon）の輪。4つの直筋（rectus muscle）がここから起こる。中を視神経（optic nerve）・眼動脈（ophthalmic artery）・動眼神経（oculomotor nerve）・外転神経（abducens nerve）などが通る。"
+          "id": "tympanic-cavity", "ja": "鼓室", "yomi": "こしつ", "en": "tympanic cavity", "la": "cavitas tympani", "plate": "ear-section", "level": 1,
+          "kanji": "鼓（つづみ＝鼓膜）の内側の室（部屋）",
+          "etym": "tympanum「太鼓」（ギリシャ語 tympanon）",
+          "note": "鼓膜（tympanic membrane）の内側（medial）の、空気の入った小さな部屋（中耳（middle ear）の本体）。耳小骨（auditory ossicles）（ツチ骨（malleus）・キヌタ骨（incus）・アブミ骨（stapes））が並び、鼓膜の振動（vibration）を前庭窓（oval window）へ伝える。前は耳管（auditory tube）で咽頭鼻部（nasopharynx）に、後ろは乳突洞（mastoid antrum）・乳突蜂巣（mastoid cells）に通じる。上の壁（鼓室蓋（tegmen tympani））の上は中頭蓋窩（middle cranial fossa）、内側の壁の向こうは内耳（internal ear）。"
         },
         {
-          "id": "tarsal-plates", "ja": "瞼板", "yomi": "けんばん", "en": "tarsal plates", "enAlt": ["tarsus"], "la": "tarsi",
-          "parts": ["za:superior tarsus", "za:inferior tarsus"], "level": 2, "color": "#eadfcd", "tissue": "ligament",
-          "kanji": "まぶたの板",
-          "etym": "tarsus ← ギリシャ語 tarsos「平たい板・すのこ」",
-          "note": "上下のまぶた（eyelid）の芯になる密な結合組織（connective tissue）の板。中に瞼板腺（tarsal glands）（マイボーム腺（meibomian glands））が並び、涙（tears）が蒸発しないよう脂を出す。上瞼板（superior tarsus）に上眼瞼挙筋（levator palpebrae superioris）が付く。"
+          "id": "semicircular-canals", "ja": "半規管", "yomi": "はんきかん", "en": "semicircular canals", "la": "canales semicirculares", "plate": "ear-section", "level": 1,
+          "kanji": "半円（半分の規＝コンパスで描いた円）の管",
+          "etym": "semi-「半分」＋ circulus「輪」（ラテン語）",
+          "note": "前・後・外側（lateral）の3つの半円形の管で、互いにほぼ直角の面に並ぶ。中の膜半規管の内リンパ（endolymph）が頭の回転で流れ、根もとの膨大部稜（ampullary crest）の有毛細胞（hair cell）がそれを感じる（回転の加速度）。前庭神経（vestibular nerve）で脳（brain）へ伝える。"
         },
         {
-          "id": "lacrimal-canaliculus", "ja": "涙小管", "yomi": "るいしょうかん", "en": "lacrimal canaliculus", "la": "canaliculus lacrimalis",
-          "parts": ["lacrimal canaliculus"], "level": 2, "color": "#e3b0a6", "tissue": "mucosa",
-          "kanji": "涙の小さな管",
-          "etym": "lacrimal「涙の」（ラテン語 lacrima）＋ canaliculus「小さな管」",
-          "note": "まぶた（eyelid）の内側（medial）の端の小さな穴（涙点（lacrimal punctum））から涙嚢（lacrimal sac）へ涙（tears）を運ぶ上下の細い管。涙は涙腺（lacrimal gland）→眼（eye）の表面→涙点→涙小管→涙嚢→鼻涙管（nasolacrimal duct）→下鼻道（inferior nasal meatus）と流れる。"
+          "id": "anterior-semicircular-canal", "ja": "前半規管", "yomi": "ぜんはんきかん", "en": "anterior semicircular canal", "enAlt": ["superior semicircular canal"], "la": "canalis semicircularis anterior", "plate": "ear-labyrinth", "level": 2,
+          "kanji": "前の半規管",
+          "etym": "anterior「前の」（ラテン語）",
+          "note": "上に縦に立つ半規管（semicircular canal）で、錐体（petrous part）の前の面の弓状隆起（arcuate eminence）をつくる。反対側（contralateral side）の耳（ear）の後半規管（posterior semicircular canal）とほぼ同じ面に並び、うなずく動きなどを感じる。"
+        },
+        {
+          "id": "posterior-semicircular-canal", "ja": "後半規管", "yomi": "こうはんきかん", "en": "posterior semicircular canal", "la": "canalis semicircularis posterior", "plate": "ear-labyrinth", "level": 2,
+          "kanji": "後ろの半規管",
+          "etym": "posterior「後ろの」（ラテン語）",
+          "note": "後ろに縦に立つ半規管（semicircular canal）。卵形嚢（utricle）からはがれた耳石が入りこみやすく、頭を動かしたときのめまい（良性発作性頭位めまい症）の原因になる。"
+        },
+        {
+          "id": "lateral-semicircular-canal", "ja": "外側半規管", "yomi": "がいそくはんきかん", "en": "lateral semicircular canal", "enAlt": ["horizontal semicircular canal"], "la": "canalis semicircularis lateralis", "plate": "ear-labyrinth", "level": 2,
+          "kanji": "外側の半規管",
+          "etym": "lateralis「横の」（ラテン語）",
+          "note": "水平に近い半規管（semicircular canal）（頭を約30度前に傾けると水平になる）。首（neck）を左右に振る回転を感じる。鼓室（tympanic cavity）の内側（medial）の壁にふくらみ（外側半規管隆起）をつくる。"
+        },
+        {
+          "id": "ampullary-crest", "ja": "膨大部稜", "yomi": "ぼうだいぶりょう", "en": "ampullary crest", "la": "crista ampullaris", "plate": "ear-labyrinth", "level": 3,
+          "kanji": "（半規管の）膨大部の稜（高まり）",
+          "etym": "crista「とさか」＋ ampulla「とっくり」（ラテン語）",
+          "note": "半規管（semicircular canal）の根もとのふくらみ（膨大部（ampulla））の中にある感覚（sensation）の高まり。有毛細胞（hair cell）の毛（hair）がゼラチンの帽子（クプラ）にささり、内リンパ（endolymph）の流れでクプラが傾くと興奮（excitation）する。"
+        },
+        {
+          "id": "utricle", "ja": "卵形嚢", "yomi": "らんけいのう", "en": "utricle", "la": "utriculus", "plate": "ear-labyrinth", "level": 2,
+          "kanji": "卵の形の嚢（ふくろ）",
+          "etym": "utriculus「小さな革袋」（ラテン語）",
+          "note": "前庭（vestibule）の中の膜迷路（membranous labyrinth）の袋で、3つの半規管（semicircular canal）がここにつながる。中の平衡斑（macula）（卵形嚢斑）はほぼ水平で、耳石（炭酸カルシウムの粒）の重みで水平方向の加速度と頭の傾きを感じる。"
+        },
+        {
+          "id": "saccule", "ja": "球形嚢", "yomi": "きゅうけいのう", "en": "saccule", "la": "sacculus", "plate": "ear-labyrinth", "level": 2,
+          "kanji": "球の形の嚢（ふくろ）",
+          "etym": "sacculus「小さな袋」（ラテン語）",
+          "note": "前庭（vestibule）の中の膜迷路（membranous labyrinth）の小さな袋で、卵形嚢（utricle）の前下（anteroinferior）にある。中の平衡斑（macula）（球形嚢斑）はほぼ縦に立ち、上下の加速度を感じる。結合管で蝸牛管（cochlear duct）とつながる。"
+        },
+        {
+          "id": "oval-window", "ja": "前庭窓", "yomi": "ぜんていそう", "en": "oval window", "enAlt": ["fenestra vestibuli"], "la": "fenestra vestibuli", "plate": "ear-labyrinth", "level": 2,
+          "kanji": "前庭の窓",
+          "etym": "fenestra「窓」（ラテン語）。卵円窓とも",
+          "note": "鼓室（tympanic cavity）の内側（medial）の壁にある、前庭（vestibule）へ通じる卵円形の窓（卵円窓（oval window））。アブミ骨底（base of stapes）がはまり、耳小骨（auditory ossicles）の振動（vibration）をここから外リンパ（perilymph）へ伝える。"
+        },
+        {
+          "id": "round-window", "ja": "蝸牛窓", "yomi": "かぎゅうそう", "en": "round window", "enAlt": ["fenestra cochleae"], "la": "fenestra cochleae", "plate": "ear-labyrinth", "level": 2,
+          "kanji": "蝸牛の窓",
+          "etym": "fenestra「窓」＋ cochlea「かたつむり」（ラテン語）。正円窓とも",
+          "note": "前庭窓（oval window）の下後（posteroinferior）ろにある丸い窓（正円窓）で、鼓室階（scala tympani）の始まりに当たる。第二鼓膜（secondary tympanic membrane）が張り、前庭窓から入った圧を中耳（middle ear）へ逃がして外リンパ（perilymph）が動けるようにする。"
         }
       ]
     },
     {
-      "id": "sens-orbit-more",
-      "title": "眼球の部屋と眼窩の支え",
+      "id": "sens-cochlea-plate",
+      "title": "蝸牛の中とラセン器",
+      "group": "耳",
+      "intro": ["蝸牛（cochlea）の断面（section）の図で、音を感じるしくみを見る。蝸牛の管は前庭階（scala vestibuli）・蝸牛管（cochlear duct）・鼓室階（scala tympani）の3階建てで、蝸牛管の底の基底板（basilar membrane）の上にラセン器（spiral organ）がのる。アブミ骨（stapes）の振動（vibration）は前庭階の外リンパ（perilymph）に伝わって基底板をゆらし、蝸牛の頂で鼓室階へ回って蝸牛窓（round window）へぬける。"],
       "terms": [
         {
-          "id": "anterior-chamber-of-eyeball", "ja": "前眼房", "yomi": "ぜんがんぼう", "en": "anterior chamber of eyeball", "enAlt": ["anterior chamber"], "la": "camera anterior bulbi",
-          "parts": ["anterior chamber of eyeball"], "level": 2, "xray": true, "color": "#dfe9ee", "tissue": "clear",
-          "kanji": "眼球の前の部屋",
-          "etym": "anterior「前の」＋ chamber「部屋」（ラテン語 camera）",
-          "note": "角膜（cornea）と虹彩（iris）の間の、眼房水（aqueous humor）で満たされた空間。眼房水は毛様体（ciliary body）でつくられ、後眼房（posterior chamber）から瞳孔（pupil）を通ってここへ来て、角膜と虹彩のつけ根の角（隅角（iridocorneal angle））から強膜静脈洞（scleral venous sinus）（シュレム管（canal of Schlemm））へ出る。出口が詰まると眼圧（intraocular pressure）が上がる（緑内障（glaucoma））。"
+          "id": "scala-vestibuli", "ja": "前庭階", "yomi": "ぜんていかい", "en": "scala vestibuli", "la": "scala vestibuli", "plate": "ear-cochlea", "level": 2,
+          "kanji": "前庭に続く階（階段）",
+          "etym": "scala「はしご・階段」（ラテン語）",
+          "note": "蝸牛（cochlea）の上の階。外リンパ（perilymph）で満ち、前庭窓（oval window）の前庭（vestibule）から始まって蝸牛の頂（蝸牛孔）で鼓室階（scala tympani）とつながる。"
         },
         {
-          "id": "trochlea-of-superior-oblique", "ja": "上斜筋の滑車", "yomi": "じょうしゃきんのかっしゃ", "en": "trochlea of superior oblique", "la": "trochlea musculi obliqui superioris",
-          "parts": ["trochlea of superior oblique"], "level": 3,
-          "kanji": "上斜筋の腱を折り返す滑車",
-          "etym": "trochlea ← ギリシャ語 trochilia「滑車」",
-          "note": "眼窩（orbit）の内側上（superomedial）の角（前頭骨（frontal bone）の滑車窩（trochlear fovea））に付く、軟骨（cartilage）の小さな輪。上斜筋（superior oblique）の腱（tendon）はここで後ろ外側（lateral）へ折れ曲がって眼球（eyeball）に付くので、上斜筋は眼球を下外側（inferolateral）へ向ける（下を見る）。この滑車（trochlea）の名前から、上斜筋を動かす神経（nerve）を滑車神経（trochlear nerve）という。"
+          "id": "cochlear-duct", "ja": "蝸牛管", "yomi": "かぎゅうかん", "en": "cochlear duct", "enAlt": ["scala media"], "la": "ductus cochlearis", "plate": "ear-cochlea", "level": 2,
+          "kanji": "蝸牛の（中の膜の）管",
+          "etym": "cochlea「かたつむり」（ラテン語）。中央階とも",
+          "note": "前庭階（scala vestibuli）と鼓室階（scala tympani）の間の、膜迷路（membranous labyrinth）の管（中央階（scala media））。断面（section）は三角形で、上を前庭膜（vestibular membrane）、下を基底板（basilar membrane）、外側（lateral）を血管条（stria vascularis）がかこむ。中はカリウムの多い内リンパ（endolymph）で満たされ、底にラセン器（spiral organ）がのる。"
         },
         {
-          "id": "suspensory-ligament-of-eyeball", "ja": "眼球提靱帯", "yomi": "がんきゅうていじんたい", "en": "suspensory ligament of eyeball", "la": "ligamentum suspensorium bulbi",
-          "parts": ["za:suspensory ligament of eyeball"], "level": 3,
-          "kanji": "眼球を下から吊り下げる靱帯",
-          "etym": "suspensory「吊る」（ラテン語 suspendere）＋ ligament「靱帯」",
-          "note": "眼球（eyeball）の下に張る、ハンモックのような結合組織（connective tissue）の帯。下直筋（inferior rectus）と下斜筋（inferior oblique）の筋膜（fascia）が厚くなったもので、内側（medial）と外側（lateral）の端は眼窩（orbit）の壁に付く。眼窩の底の骨（bone）が折れても、これが眼球を支える。"
+          "id": "scala-tympani", "ja": "鼓室階", "yomi": "こしつかい", "en": "scala tympani", "la": "scala tympani", "plate": "ear-cochlea", "level": 2,
+          "kanji": "鼓室に面する階（階段）",
+          "etym": "scala「階段」＋ tympanum「太鼓」",
+          "note": "蝸牛（cochlea）の下の階。外リンパ（perilymph）で満ち、蝸牛の頂で前庭階（scala vestibuli）から続き、蝸牛窓（round window）で鼓室（tympanic cavity）に面して終わる。"
         },
         {
-          "id": "check-ligament-of-medial-rectus", "ja": "内側直筋の制動靱帯", "yomi": "ないそくちょくきんのせいどうじんたい", "en": "check ligament of medial rectus", "la": "lacertus musculi recti medialis",
-          "parts": ["check ligament of medial rectus"], "level": 3, "check": true,
-          "kanji": "内側直筋の動きを止める靱帯",
-          "etym": "check「止める」＋ ligament「靱帯」",
-          "note": "内側直筋（medial rectus）の筋膜（fascia）から出て、眼窩（orbit）の内側壁（medial wall）（涙骨（lacrimal bone））に付く帯。内側直筋が縮みすぎないように止め、眼球（eyeball）が内側（medial）へ回りすぎるのを防ぐ。"
+          "id": "vestibular-membrane", "ja": "前庭膜", "yomi": "ぜんていまく", "en": "vestibular membrane", "enAlt": ["reissner's membrane"], "la": "membrana vestibularis", "plate": "ear-cochlea", "level": 3,
+          "kanji": "前庭階に面する膜",
+          "etym": "membrana「膜」（ラテン語）。Reissner はドイツの解剖学者",
+          "note": "前庭階（scala vestibuli）と蝸牛管（cochlear duct）を分ける、2層の細胞（cell）でできたとても薄い膜（membrane）（ライスネル膜（Reissner membrane））。外リンパ（perilymph）と内リンパ（endolymph）が混ざらないようにする。"
         },
         {
-          "id": "check-ligament-of-lateral-rectus", "ja": "外側直筋の制動靱帯", "yomi": "がいそくちょくきんのせいどうじんたい", "en": "check ligament of lateral rectus", "la": "lacertus musculi recti lateralis",
-          "parts": ["check ligament of lateral rectus"], "level": 3, "check": true,
-          "kanji": "外側直筋の動きを止める靱帯",
-          "etym": "check「止める」＋ lateral rectus「外側の直筋」",
-          "note": "外側直筋（lateral rectus）の筋膜（fascia）から出て、眼窩（orbit）の外側壁（lateral wall）（頬骨（zygomatic bone）の眼窩結節（orbital tubercle））に付く帯。眼球（eyeball）が外側（lateral）へ回りすぎるのを防ぐ。内側（medial）と外側の制動靱帯（check ligament）と眼球提靱帯（suspensory ligament of eyeball）で、眼球をハンモックのように支える。"
+          "id": "basilar-membrane", "ja": "基底板", "yomi": "きていばん", "en": "basilar membrane", "la": "lamina basilaris", "plate": "ear-cochlea", "level": 2,
+          "kanji": "基底の板",
+          "etym": "basilaris「底の」（ラテン語）。基底膜とも",
+          "note": "蝸牛管（cochlear duct）と鼓室階（scala tympani）を分ける、線維（fiber）の張った板（基底膜（basilar membrane）とも呼ぶ）。音で波のようにゆれ、蝸牛（cochlea）の底（幅がせまく硬い）は高い音に、頂（幅が広くやわらかい）は低い音によくゆれる（場所で音の高さを分ける）。上にラセン器（spiral organ）がのる。"
+        },
+        {
+          "id": "stria-vascularis", "ja": "血管条", "yomi": "けっかんじょう", "en": "stria vascularis", "la": "stria vascularis", "plate": "ear-cochlea", "level": 3,
+          "kanji": "血管の多い条（すじ）",
+          "etym": "stria「すじ」＋ vascularis「血管の」（ラテン語）",
+          "note": "蝸牛管（cochlear duct）の外側（lateral）の壁の、上皮（epithelium）の中に毛細血管（capillary）が入りこんだ所。カリウムを蝸牛管に送りこんで内リンパ（endolymph）をつくり、有毛細胞（hair cell）が興奮（excitation）するための電位を保つ。"
+        },
+        {
+          "id": "tectorial-membrane", "ja": "蓋膜", "yomi": "がいまく", "en": "tectorial membrane", "la": "membrana tectoria", "plate": "ear-cochlea", "level": 3,
+          "kanji": "（ラセン器の）蓋（ふた）の膜",
+          "etym": "tectorius「屋根の」（ラテン語 tectum「屋根」）",
+          "note": "ラセン器（spiral organ）の上にかぶさるゼラチンの膜（membrane）。外有毛細胞（outer hair cell）の毛（hair）の先が付き、基底板（basilar membrane）がゆれると毛が曲げられて有毛細胞（hair cell）が興奮（excitation）する。"
+        },
+        {
+          "id": "spiral-organ", "ja": "ラセン器", "yomi": "らせんき", "en": "spiral organ", "enAlt": ["organ of corti"], "la": "organum spirale", "plate": "ear-cochlea", "level": 1,
+          "kanji": "ラセン（蝸牛のうず巻き）にそった器官",
+          "etym": "spiralis「らせんの」（ラテン語）。Corti はイタリアの解剖学者",
+          "note": "基底板（basilar membrane）の上にのる聴覚（hearing）の感覚（sensation）の装置（コルチ器（organ of Corti））。1列の内有毛細胞（inner hair cell）と3列の外有毛細胞（outer hair cell）、それを支える細胞（cell）からなり、蝸牛（cochlea）のうず巻きにそって続く。内有毛細胞が音を蝸牛神経（cochlear nerve）へ伝え、外有毛細胞は基底板のゆれを強める。大きな音や薬・年齢で有毛細胞（hair cell）が傷むと聞こえが悪くなる（感音難聴）。"
+        },
+        {
+          "id": "outer-hair-cells", "ja": "外有毛細胞", "yomi": "がいゆうもうさいぼう", "en": "outer hair cells", "la": "epitheliocyti sensorii pilosi externi", "plate": "ear-cochlea", "level": 3,
+          "kanji": "外側の、毛の有る細胞",
+          "etym": "hair cell「毛の細胞」",
+          "note": "ラセン器（spiral organ）の外側（lateral）に3列に並ぶ有毛細胞（hair cell）。音に合わせて細胞（cell）の長さが伸び縮みし、基底板（basilar membrane）のゆれを強めて、小さな音を聞き分けられるようにする（蝸牛（cochlea）の増幅器）。耳（ear）の検査（耳音響放射）はこの働きを見る。"
         }
       ]
     }

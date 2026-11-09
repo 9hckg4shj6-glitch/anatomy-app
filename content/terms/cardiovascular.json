@@ -298,6 +298,32 @@
       ]
     },
     {
+      "id": "cv-heart-septa",
+      "title": "心臓の中隔と腱索",
+      "group": "心臓",
+      "intro": ["心臓（heart）の中の仕切り（中隔（septum））と、弁（valve）を引きとめる腱索（chordae tendineae）は3Dに形が無いので、前の壁を外した心臓と四腔断の図で示す。"],
+      "terms": [
+        {
+          "id": "chordae-tendineae", "ja": "腱索", "yomi": "けんさく", "en": "chordae tendineae", "la": "chordae tendineae", "plate": "heart-frontal", "level": 1,
+          "kanji": "腱の索（ひも）",
+          "etym": "chorda「弦・ひも」（ラテン語）＋ tendo「腱」",
+          "note": "乳頭筋（papillary muscles）の先から房室弁（atrioventricular valve）（三尖弁（tricuspid valve）・僧帽弁（mitral valve））の弁尖（cusp）の縁と裏へのびる、細い腱（tendon）のひも。心室（ventricle）が縮むとき乳頭筋も縮んで腱索を引き、弁尖が心房（atrium）の側へ反り返らないようにする。腱索が切れると弁（valve）が閉じきらず、血液（blood）が心房へ逆流する。"
+        },
+        {
+          "id": "interventricular-septum", "ja": "心室中隔", "yomi": "しんしつちゅうかく", "en": "interventricular septum", "la": "septum interventriculare", "plate": "heart-four-chamber", "level": 1,
+          "kanji": "心室の間の中隔（仕切り）",
+          "etym": "inter-「間」＋ ventriculus「小さな腹・心室」＋ septum「仕切り」（ラテン語）",
+          "note": "左右の心室（ventricle）を分ける壁。大部分は厚い筋性部で、大動脈弁（aortic valve）のすぐ下に薄い膜性部がある。中を刺激伝導系（conducting system of heart）の房室束（atrioventricular bundle）（ヒス束（bundle of His））と右脚（right bundle branch）・左脚（left bundle branch）が下る。表面の前室間溝（anterior interventricular sulcus）・後室間溝（posterior interventricular sulcus）を冠状動脈（coronary artery）の前室間枝（anterior interventricular branch）・後室間枝（posterior interventricular branch）が走り、中隔枝（interventricular septal branches）を送る。先天性心疾患で最も多い心室中隔欠損は膜性部に多い。"
+        },
+        {
+          "id": "interatrial-septum", "ja": "心房中隔", "yomi": "しんぼうちゅうかく", "en": "interatrial septum", "la": "septum interatriale", "plate": "heart-four-chamber", "level": 1,
+          "kanji": "心房の間の中隔（仕切り）",
+          "etym": "inter-「間」＋ atrium「広間・心房」＋ septum「仕切り」（ラテン語）",
+          "note": "左右の心房（atrium）を分ける薄い壁。右心房（right atrium）の側に卵円窩（fossa ovalis）（胎児（fetus）の血液（blood）が右心房から左心房（left atrium）へ通った卵円孔（foramen ovale）の閉じたあと）がある。生まれたあと閉じきらないものが心房中隔欠損・卵円孔開存。下の方に房室結節（atrioventricular node）がある。"
+        }
+      ]
+    },
+    {
       "id": "cv-artery-upper",
       "title": "大動脈と上半身の動脈",
       "group": "大きな血管",
@@ -1363,6 +1389,44 @@
       ]
     },
     {
+      "id": "cv-gut-small-vessels",
+      "title": "胃と腸の細い動脈・直腸の静脈叢",
+      "group": "体幹",
+      "intro": ["3Dに形の無い細い血管（blood vessel）を、胃（stomach）の動脈（artery）・上腸間膜動脈（superior mesenteric artery）と結腸（colon）・直腸（rectum）と肛門管（anal canal）の図で示す。"],
+      "terms": [
+        {
+          "id": "short-gastric-arteries", "ja": "短胃動脈", "yomi": "たんいどうみゃく", "en": "short gastric arteries", "la": "arteriae gastricae breves", "plate": "stomach-arteries", "level": 2,
+          "kanji": "胃へ行く短い動脈",
+          "etym": "brevis「短い」＋ gaster「胃」（ギリシャ語）",
+          "note": "脾動脈（splenic artery）の終わりの方（脾門（splenic hilum）の近く）から出る数本の細い動脈（artery）。胃脾間膜（gastrosplenic ligament）を通って胃底（fundus of stomach）と大弯（greater curvature）の上部へ行く。ほかの胃（stomach）の動脈と違って吻合（anastomosis）が少ない。"
+        },
+        {
+          "id": "ileal-arteries", "ja": "回腸動脈", "yomi": "かいちょうどうみゃく", "en": "ileal arteries", "la": "arteriae ileales", "plate": "intestine-arteries", "level": 2,
+          "kanji": "回腸へ行く動脈",
+          "etym": "ileum ← ギリシャ語 eilein「巻く」",
+          "note": "上腸間膜動脈（superior mesenteric artery）の左（凸の側）から出て腸間膜（mesentery）の中を回腸（ileum）へ行く十数本の枝（branch）。空腸（jejunum）へは空腸動脈（jejunal arteries）が同じように出る。枝どうしがつながって動脈弓（arterial arch）をつくり、回腸では何段にも重なる（空腸では1〜2段）。"
+        },
+        {
+          "id": "vasa-recta", "ja": "直動脈", "yomi": "ちょくどうみゃく", "en": "vasa recta", "enAlt": ["straight arteries"], "la": "arteriae rectae", "plate": "intestine-arteries", "level": 3,
+          "kanji": "まっすぐな動脈",
+          "etym": "vasa recta「まっすぐな血管」（ラテン語 vas「器・管」、rectus「まっすぐな」）",
+          "note": "腸間膜（mesentery）の動脈弓（arterial arch）から腸（intestine）の壁へまっすぐ入る細い動脈（artery）。たがいにつながらない終動脈（end artery）なので、つまるとその部分の腸が傷む。空腸（jejunum）では長く、回腸（ileum）では短い。"
+        },
+        {
+          "id": "internal-rectal-venous-plexus", "ja": "内直腸静脈叢", "yomi": "ないちょくちょうじょうみゃくそう", "en": "internal rectal venous plexus", "la": "plexus venosus rectalis internus", "plate": "rectum-anal", "level": 2,
+          "kanji": "直腸の内側（粘膜の下）の静脈の叢（くさむら＝網）",
+          "etym": "plexus「編んだもの・網」（ラテン語）",
+          "note": "肛門柱（anal columns）の粘膜（mucosa）の下にある静脈（vein）の網。上は上直腸静脈（superior rectal vein）から下腸間膜静脈（inferior mesenteric vein）・門脈（hepatic portal vein）へ、下は中・下直腸静脈（inferior rectal vein）から内腸骨静脈（internal iliac vein）（大静脈（vena cava））へ流れるので、門脈と大静脈がつながる所の1つ（門脈圧（portal pressure）が高いと太くなる）。ふくらんだものが内痔核（internal hemorrhoid）。"
+        },
+        {
+          "id": "external-rectal-venous-plexus", "ja": "外直腸静脈叢", "yomi": "がいちょくちょうじょうみゃくそう", "en": "external rectal venous plexus", "la": "plexus venosus rectalis externus", "plate": "rectum-anal", "level": 3,
+          "kanji": "直腸の外側（肛門の皮膚の下）の静脈の叢",
+          "etym": "plexus「編んだもの・網」（ラテン語）",
+          "note": "櫛状線（pectinate line）より下、肛門（anus）の皮膚（skin）の下にある静脈（vein）の網。下直腸静脈（inferior rectal vein）から内陰部静脈（internal pudendal vein）へ流れる。ふくらんだものが外痔核（external hemorrhoid）で、皮膚の神経（nerve）があるので痛む。"
+        }
+      ]
+    },
+    {
       "id": "cv-branch-neck-arm",
       "title": "頚部・上肢・胸壁の動脈の枝",
       "group": "上肢",
@@ -2022,35 +2086,35 @@
           "parts": ["za:dorsal metatarsal arteries"], "level": 3,
           "kanji": "足の甲の側の、中足骨の間の動脈",
           "etym": "dorsal「背側の」＋ metatarsal「中足骨の」",
-          "note": "弓状動脈（arcuate artery）（第1は足背動脈（dorsalis pedis artery））から出て、中足骨（metatarsals）の間を前へ走る4本の動脈（artery）。指（finger）の付け根で2本ずつの背側趾動脈（dorsal digital arteries of foot）に分かれる。"
+          "note": "弓状動脈（arcuate artery）（第1は足背動脈（dorsalis pedis artery））から出て、中足骨（metatarsals）の間を前へ走る4本の動脈（artery）。指（toe）の付け根で2本ずつの背側趾動脈（dorsal digital arteries of foot）に分かれる。"
         },
         {
           "id": "dorsal-digital-arteries-of-foot", "ja": "背側趾動脈", "yomi": "はいそくしどうみゃく", "en": "dorsal digital arteries of foot", "enAlt": ["dorsal digital arteries"], "la": "arteriae digitales dorsales pedis",
           "parts": ["dorsal digital artery of foot"], "level": 3,
           "kanji": "足の指（趾）の背の側を走る動脈",
           "etym": "dorsal「背側の」＋ digital「指の」",
-          "note": "背側中足動脈（dorsal metatarsal arteries）が指（finger）の付け根で2本ずつに分かれ、足（foot）の指の向かい合う縁の背（back）の側を走る動脈（artery）。第1背側中足動脈（first dorsal metatarsal artery）からは母趾（great toe）の両側（bilateral）と第2趾（second toe）の内側（medial）へ行く。"
+          "note": "背側中足動脈（dorsal metatarsal arteries）が指（toe）の付け根で2本ずつに分かれ、足（foot）の指の向かい合う縁の背（back）の側を走る動脈（artery）。第1背側中足動脈（first dorsal metatarsal artery）からは母趾（great toe）の両側（bilateral）と第2趾（second toe）の内側（medial）へ行く。"
         },
         {
           "id": "plantar-metatarsal-arteries", "ja": "底側中足動脈", "yomi": "ていそくちゅうそくどうみゃく", "en": "plantar metatarsal arteries", "la": "arteriae metatarsales plantares",
           "parts": ["plantar metatarsal artery"], "level": 3,
           "kanji": "足の裏の側の、中足骨の間の動脈",
           "etym": "plantar「足の裏の」＋ metatarsal「中足骨の」",
-          "note": "足底動脈弓（plantar arch）から出て、中足骨（metatarsals）の間を前へ走る4本の動脈（artery）。総底側趾動脈（common plantar digital arteries）を経て指（finger）へ行く。"
+          "note": "足底動脈弓（plantar arch）から出て、中足骨（metatarsals）の間を前へ走る4本の動脈（artery）。総底側趾動脈（common plantar digital arteries）を経て指（toe）へ行く。"
         },
         {
           "id": "common-plantar-digital-arteries", "ja": "総底側趾動脈", "yomi": "そうていそくしどうみゃく", "en": "common plantar digital arteries", "la": "arteriae digitales plantares communes",
           "parts": ["set of common plantar digital arteries"], "level": 3,
           "kanji": "足の裏の側の、指へ行く動脈の共通の幹",
           "etym": "common「共通の」＋ plantar「足の裏の」（ラテン語 planta）＋ digital「指の」",
-          "note": "底側中足動脈（plantar metatarsal arteries）が中足骨（metatarsals）の頭の間で続いたもの。深足底動脈（deep plantar artery）・背側中足動脈（dorsal metatarsal arteries）からの貫通枝（perforating branch）とつながり、指（finger）の付け根で2本の固有底側趾動脈（proper plantar digital arteries）に分かれる。手（hand）の総掌側指動脈（common palmar digital arteries）にあたる。"
+          "note": "底側中足動脈（plantar metatarsal arteries）が中足骨（metatarsals）の頭の間で続いたもの。深足底動脈（deep plantar artery）・背側中足動脈（dorsal metatarsal arteries）からの貫通枝（perforating branch）とつながり、指（toe）の付け根で2本の固有底側趾動脈（proper plantar digital arteries）に分かれる。手（hand）の総掌側指動脈（common palmar digital arteries）にあたる。"
         },
         {
           "id": "proper-plantar-digital-arteries", "ja": "固有底側趾動脈", "yomi": "こゆうていそくしどうみゃく", "en": "proper plantar digital arteries", "enAlt": ["plantar digital arteries proper"], "la": "arteriae digitales plantares propriae",
           "parts": ["set of plantar digital arteries proper"], "level": 3,
           "kanji": "1本の指だけへ行く、足の裏の側の動脈",
           "etym": "proper「固有の」＋ plantar「足の裏の」＋ digital「指の」",
-          "note": "足（foot）の指（finger）の両わき（足の裏（sole）の側）を指先（fingertip）まで走る動脈（artery）。指先で左右がつながる。足の指は背側（dorsal）より底側（plantar）の動脈が太く、指の先を養う。"
+          "note": "足（foot）の指（toe）の両わき（足の裏（sole）の側）を指先（fingertip）まで走る動脈（artery）。指先で左右がつながる。足の指は背側（dorsal）より底側（plantar）の動脈が太く、指の先を養う。"
         }
       ]
     },

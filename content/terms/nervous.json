@@ -1147,6 +1147,49 @@
       ]
     },
     {
+      "id": "nerv-mandibular-branches",
+      "title": "下顎神経の枝",
+      "group": "脳神経",
+      "intro": ["下顎神経（mandibular nerve）（三叉神経（trigeminal nerve）の第3枝（third division））は卵円孔（foramen ovale）を出て側頭下窩（infratemporal fossa）に入り、前の枝（branch）（咀嚼筋（muscles of mastication）への枝と頬神経（buccal nerve））と後ろの枝（耳介側頭神経・舌神経（lingual nerve）・下歯槽神経（inferior alveolar nerve））に分かれる。歯（tooth）の麻酔（anesthesia）と舌（tongue）の感覚（sensation）を理解する要の神経（nerve）。"],
+      "terms": [
+        {
+          "id": "lingual-nerve", "ja": "舌神経", "yomi": "ぜっしんけい", "en": "lingual nerve", "la": "nervus lingualis",
+          "parts": ["za:lingual nerve"], "level": 1,
+          "kanji": "舌へ行く神経",
+          "etym": "lingua「舌」（ラテン語）",
+          "note": "下顎神経（mandibular nerve）の後ろの枝から出て、外側翼突筋（lateral pterygoid）の下から内側翼突筋（medial pterygoid）と下顎枝（ramus of mandible）の間を前下（anteroinferior）へ走り、口腔底（floor of mouth）から舌（tongue）に入る。舌の前2/3の一般の感覚（sensation）（触覚（touch）・痛み・温度）を伝える。途中で顔面神経（facial nerve）の鼓索神経（chorda tympani）が合わさり、舌の前2/3の味覚（taste）と、顎下腺（submandibular gland）・舌下腺（sublingual gland）へ行く副交感神経（parasympathetic nerve）の線維（fiber）を運ぶ。第3大臼歯（third molar）（親知らず（wisdom tooth））のすぐ内側（medial）を通るので、抜歯で傷つきやすい。"
+        },
+        {
+          "id": "inferior-alveolar-nerve", "ja": "下歯槽神経", "yomi": "かしそうしんけい", "en": "inferior alveolar nerve", "la": "nervus alveolaris inferior",
+          "parts": ["za:inferior alveolar nerve"], "level": 1,
+          "kanji": "下（あご）の歯槽（歯の入る穴）の神経",
+          "etym": "alveolus「小さなくぼみ」（ラテン語）",
+          "note": "下顎神経（mandibular nerve）の後ろの枝から出て、舌神経（lingual nerve）の後ろを下り、下顎孔（mandibular foramen）から下顎管（mandibular canal）に入って下の歯（tooth）と歯肉（gingiva）の感覚（sensation）を伝える。下顎孔に入る前に顎舌骨筋神経（nerve to mylohyoid）を出し、オトガイ孔（mental foramen）から出る枝（branch）がオトガイ神経（mental nerve）。下の歯の治療では下顎孔のあたりに麻酔（anesthesia）をする（下歯槽神経ブロック（inferior alveolar nerve block））。"
+        },
+        {
+          "id": "mental-nerve", "ja": "オトガイ神経", "yomi": "おとがいしんけい", "en": "mental nerve", "la": "nervus mentalis",
+          "parts": ["za:mental nerve"], "level": 2,
+          "kanji": "オトガイ（下あごの先）の神経",
+          "etym": "mentum「あご先」（ラテン語）。mental はここでは「あごの」",
+          "note": "下歯槽神経（inferior alveolar nerve）の終わりの枝（branch）で、第2小臼歯（second premolar）の下のオトガイ孔（mental foramen）から出て、オトガイ（chin）と下唇（lower lip）の皮膚（skin）・粘膜（mucosa）の感覚（sensation）を伝える。"
+        },
+        {
+          "id": "buccal-nerve", "ja": "頬神経", "yomi": "きょうしんけい", "en": "buccal nerve", "la": "nervus buccalis",
+          "parts": ["za:buccal nerve"], "level": 2,
+          "kanji": "頬（ほお）の神経",
+          "etym": "bucca「ほお」（ラテン語）",
+          "note": "下顎神経（mandibular nerve）の前の枝（branch）で、運動の枝の中にあるただ1つの感覚（sensation）の神経（nerve）。外側翼突筋（lateral pterygoid）の2頭の間から前へ出て、頬（cheek）の皮膚（skin）と内側（medial）の粘膜（mucosa）・下の大臼歯（molars）の外側（lateral）の歯肉（gingiva）の感覚を伝える。頬筋（buccinator）を貫くが頬筋は動かさない（頬筋は顔面神経（facial nerve））。"
+        },
+        {
+          "id": "nerve-to-mylohyoid", "ja": "顎舌骨筋神経", "yomi": "がくぜっこつきんしんけい", "en": "nerve to mylohyoid", "la": "nervus mylohyoideus",
+          "parts": ["za:nerve to mylohyoid muscle"], "level": 2,
+          "kanji": "顎舌骨筋へ行く神経",
+          "etym": "myle「臼（臼歯）」＋ hyoeides「Uの字の形の（舌骨）」（ギリシャ語）",
+          "note": "下歯槽神経（inferior alveolar nerve）が下顎孔（mandibular foramen）に入る直前に分かれ、下顎骨（mandible）の内面（internal surface）の顎舌骨筋神経溝（mylohyoid groove）を前下（anteroinferior）へ走って、顎舌骨筋（mylohyoid）と顎二腹筋（digastric）の前腹（anterior belly）を動かす（顎二腹筋の後腹は顔面神経（facial nerve））。"
+        }
+      ]
+    },
+    {
       "id": "nerv-spinal",
       "title": "脊髄と上肢・体幹の神経",
       "group": "脊髄と上肢・体幹の神経",
@@ -1351,6 +1394,79 @@
           "kanji": "脊髄神経のふくらみ（神経細胞の集まり）",
           "etym": "spinal「脊髄の」＋ ganglion「こぶ・節」（ギリシャ語）",
           "note": "後根（posterior root）の途中のふくらみ。感覚ニューロン（sensory neuron）の細胞体（cell body）が集まる（偽単極性ニューロン（pseudounipolar neuron））。椎間孔（intervertebral foramen）の中にあり、帯状疱疹（herpes zoster）のウイルスがここにひそむ。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-cord-white",
+      "title": "脊髄の白質と溝",
+      "group": "脊髄と上肢・体幹の神経",
+      "intro": ["脊髄（spinal cord）の白質（white matter）は、前正中裂（anterior median fissure）・後正中溝（posterior median sulcus）と前根（anterior root）・後根（posterior root）の出る所で前索（anterior funiculus）・側索（lateral funiculus）・後索（posterior funiculus）に分かれ、それぞれを伝導路（tract）が通る。3Dには索や溝の形が無いので、脊髄の横断面（transverse section）の図で示す。"],
+      "terms": [
+        {
+          "id": "posterior-funiculus", "ja": "後索", "yomi": "こうさく", "en": "posterior funiculus", "enAlt": ["dorsal column"], "la": "funiculus posterior", "plate": "cord-section", "level": 1,
+          "kanji": "後ろの索（すじ）",
+          "etym": "funiculus「細い綱」（ラテン語 funis「綱」）",
+          "note": "左右の後角（posterior horn）の間の白質（white matter）。内側（medial）の薄束（gracile fasciculus）（下半身から）と外側（lateral）の楔状束（cuneate fasciculus）（上半身から）が通り、触覚（touch）の細かい区別・振動覚・位置覚（深部感覚）を同じ側のまま延髄（medulla oblongata）へ上げる（後索−内側毛帯路）。傷つくと目を閉じると立てなくなる（ロンベルグ徴候）。"
+        },
+        {
+          "id": "lateral-funiculus", "ja": "側索", "yomi": "そくさく", "en": "lateral funiculus", "la": "funiculus lateralis", "plate": "cord-section", "level": 1,
+          "kanji": "横（外側）の索",
+          "etym": "funiculus「細い綱」（ラテン語）",
+          "note": "前根（anterior root）と後根（posterior root）の出る所の間の白質（white matter）。外側皮質脊髄路（lateral corticospinal tract）（随意運動（voluntary movement））・外側脊髄視床路（lateral spinothalamic tract）（痛み・温度）・前後の脊髄小脳路（spinocerebellar tract）・赤核脊髄路（rubrospinal tract）などが通る。"
+        },
+        {
+          "id": "anterior-funiculus", "ja": "前索", "yomi": "ぜんさく", "en": "anterior funiculus", "la": "funiculus anterior", "plate": "cord-section", "level": 1,
+          "kanji": "前の索",
+          "etym": "funiculus「細い綱」（ラテン語）",
+          "note": "前正中裂（anterior median fissure）と前根（anterior root）の出る所の間の白質（white matter）。前皮質脊髄路（anterior corticospinal tract）・前脊髄視床路（anterior spinothalamic tract）（粗い触覚（touch））・前庭脊髄路（vestibulospinal tract）・網様体脊髄路（reticulospinal tract）・視蓋脊髄路（tectospinal tract）などが通る。"
+        },
+        {
+          "id": "anterior-median-fissure", "ja": "前正中裂", "yomi": "ぜんせいちゅうれつ", "en": "anterior median fissure", "la": "fissura mediana anterior", "plate": "cord-section", "level": 2,
+          "kanji": "前の正中の裂（さけめ）",
+          "etym": "fissura「裂け目」（ラテン語）",
+          "note": "脊髄（spinal cord）の前の正中（median）の深い裂け目で、左右の前索（anterior funiculus）の境。中を前脊髄動脈（anterior spinal artery）の枝（branch）が入る。底に白交連がある。"
+        },
+        {
+          "id": "posterior-median-sulcus", "ja": "後正中溝", "yomi": "こうせいちゅうこう", "en": "posterior median sulcus", "la": "sulcus medianus posterior", "plate": "cord-section", "level": 2,
+          "kanji": "後ろの正中の溝",
+          "etym": "sulcus「溝」（ラテン語）",
+          "note": "脊髄（spinal cord）の後ろの正中（median）の浅い溝で、左右の後索（posterior funiculus）の境。そこから後正中中隔が中へ入る。"
+        },
+        {
+          "id": "gray-commissure", "ja": "灰白交連", "yomi": "かいはくこうれん", "en": "gray commissure", "la": "commissura grisea", "plate": "cord-section", "level": 3,
+          "kanji": "灰白質の交連（左右をつなぐ所）",
+          "etym": "commissura「つなぎ目」（ラテン語）",
+          "note": "H字形の灰白質（gray matter）の横棒で、左右の灰白質をつなぐ。真ん中に中心管（central canal）がある。その前を白交連が通り、痛み・温度を伝える線維（fiber）はここで反対側（contralateral side）へ渡る。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-cord-tracts-more",
+      "title": "脊髄の下行路（網様体・前庭・視蓋）",
+      "group": "脊髄と上肢・体幹の神経",
+      "intro": ["皮質脊髄路（corticospinal tract）と赤核脊髄路（rubrospinal tract）のほかに、脳幹（brainstem）から脊髄（spinal cord）へ下って姿勢と平衡を保つ伝導路（tract）。主に前索（anterior funiculus）を下り、体幹（trunk）と四肢の近くの筋（muscle）を働かせる。白質（white matter）の中に埋もれているので、断面（section）で見るとよい。"],
+      "terms": [
+        {
+          "id": "reticulospinal-tract", "ja": "網様体脊髄路", "yomi": "もうようたいせきずいろ", "en": "reticulospinal tract", "la": "tractus reticulospinalis",
+          "parts": ["za:* reticulospinal tract"], "level": 3, "xray": true,
+          "kanji": "網様体から脊髄への道",
+          "etym": "reticulum「小さな網」（ラテン語）",
+          "note": "脳幹（brainstem）の網様体（reticular formation）（橋と延髄（medulla oblongata））から前索（anterior funiculus）と側索（lateral funiculus）を下る。筋（muscle）の張りと姿勢を調節し、歩く動きのもとになる。"
+        },
+        {
+          "id": "vestibulospinal-tract", "ja": "前庭脊髄路", "yomi": "ぜんていせきずいろ", "en": "vestibulospinal tract", "la": "tractus vestibulospinalis",
+          "parts": ["za:* vestibulospinal tract"], "level": 3, "xray": true,
+          "kanji": "前庭（神経核）から脊髄への道",
+          "etym": "vestibulum「玄関」（ラテン語）。内耳の前庭から",
+          "note": "延髄（medulla oblongata）と橋の前庭神経核（vestibular nuclei）から前索（anterior funiculus）を下る。内耳（internal ear）の平衡の情報を受けて、体が傾いたとき倒れないように伸筋（extensor）（抗重力筋）を働かせる。"
+        },
+        {
+          "id": "tectospinal-tract", "ja": "視蓋脊髄路", "yomi": "しがいせきずいろ", "en": "tectospinal tract", "la": "tractus tectospinalis",
+          "parts": ["za:tectospinal tract"], "level": 3, "xray": true,
+          "kanji": "視蓋（中脳の上丘）から脊髄への道",
+          "etym": "tectum「屋根」（ラテン語）。中脳の屋根＝上丘・下丘",
+          "note": "中脳（midbrain）の上丘（superior colliculus）から出てすぐ反対側（contralateral side）へ渡り、前索（anterior funiculus）を頚髄（cervical spinal cord）まで下る。光や音のする方へ頭と目を向ける反射（reflex）にかかわる。"
         }
       ]
     },
@@ -1565,6 +1681,42 @@
       ]
     },
     {
+      "id": "nerv-plexus-branches",
+      "title": "腕神経叢の根と手の神経の枝",
+      "group": "脊髄と上肢・体幹の神経",
+      "intro": ["腕神経叢の根（C5〜T1の前枝（anterior branch））と、鎖骨下筋神経（nerve to subclavius）・手（hand）の細い枝（branch）を見る。頚神経叢（C1〜C4）の枝（小後頭神経・大耳介神経・頚横神経・鎖骨上神経・横隔神経（phrenic nerve））と頚神経ワナは3Dに形が無い。横隔神経（C3〜C5）は前斜角筋（anterior scalene）の前を下り、心膜（pericardium）の横を通って横隔膜（diaphragm）を動かす。"],
+      "terms": [
+        {
+          "id": "roots-of-brachial-plexus", "ja": "腕神経叢の根", "yomi": "わんしんけいそうのこん", "en": "roots of brachial plexus", "la": "radices plexus brachialis",
+          "parts": ["za:roots of brachial plexus"], "level": 2,
+          "kanji": "腕神経叢の根（始まりの部分）",
+          "etym": "radix「根」（ラテン語）",
+          "note": "腕神経叢（brachial plexus）のもとになるC5〜C8とT1の脊髄神経（spinal nerve）の前枝（anterior ramus）。前斜角筋（anterior scalene）と中斜角筋（middle scalene）の間（斜角筋隙（scalene hiatus））から出て、合わさって上・中・下神経幹（inferior trunk of brachial plexus）になる。根から直接出る枝（branch）が肩甲背神経（C5）と長胸神経（C5〜C7）。"
+        },
+        {
+          "id": "subclavian-nerve", "ja": "鎖骨下筋神経", "yomi": "さこつかきんしんけい", "en": "nerve to subclavius", "enAlt": ["subclavian nerve"], "la": "nervus subclavius",
+          "parts": ["za:subclavian nerve"], "level": 3,
+          "kanji": "鎖骨下筋へ行く神経",
+          "etym": "sub-「下」＋ clavicula「小さなかぎ（鎖骨）」（ラテン語）",
+          "note": "腕神経叢（brachial plexus）の上神経幹（superior trunk of brachial plexus）から出て（C5・C6）、鎖骨下動脈（subclavian artery）の前を下って鎖骨下筋（subclavius）を動かす細い枝（branch）。横隔神経（phrenic nerve）に加わる枝（副横隔神経）を出すことがある。"
+        },
+        {
+          "id": "palmar-branch-of-ulnar-nerve", "ja": "尺骨神経の掌枝", "yomi": "しゃっこつしんけいのしょうし", "en": "palmar branch of ulnar nerve", "la": "ramus palmaris nervi ulnaris",
+          "parts": ["za:palmar branch of ulnar nerve"], "level": 3,
+          "kanji": "尺骨神経の手のひら（掌）の枝",
+          "etym": "palma「手のひら」（ラテン語）",
+          "note": "前腕（forearm）の中ほどで尺骨神経（ulnar nerve）から分かれ、尺骨動脈（ulnar artery）にそって下り、尺骨神経管（ulnar canal）（ギヨン管（Guyon canal））の外を通って小指球（hypothenar eminence）の皮膚（skin）の感覚（sensation）を伝える枝（branch）。"
+        },
+        {
+          "id": "dorsal-digital-nerves-of-hand", "ja": "手の背側指神経", "yomi": "てのはいそくししんけい", "en": "dorsal digital nerves of hand", "la": "nervi digitales dorsales manus",
+          "parts": ["za:dorsal digital branches of radial nerve", "za:dorsal digital branches of ulnar nerve"], "level": 3,
+          "kanji": "手の背側（手の甲の側）の指の神経",
+          "etym": "digitus「指」＋ dorsum「背」（ラテン語）",
+          "note": "手の甲（back of hand）から指（finger）の背側（dorsal）の皮膚（skin）へ行く細い枝（branch）。母指（thumb）の側の2指半は橈骨神経浅枝（superficial branch of radial nerve）、小指（little finger）の側の2指半は尺骨神経の手背枝（dorsal branch of ulnar nerve）から出る。指の先の背側（爪（nail）のまわり）は手掌の側から回る固有掌側指神経（proper palmar digital nerves）が受けもつ。"
+        }
+      ]
+    },
+    {
       "id": "nerv-lower",
       "title": "下肢の神経",
       "group": "下肢の神経",
@@ -1764,6 +1916,49 @@
           "kanji": "梨状筋へ行く神経",
           "etym": "nerve to「〜への神経」＋ piriformis「梨の形の（筋）」",
           "note": "仙骨神経叢（S1〜S2）の短い枝（branch）。骨盤（pelvis）の中で梨状筋（piriformis）の前面（anterior surface）に入る。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-lower-small",
+      "title": "陰部大腿神経の枝と足の指の神経",
+      "group": "下肢の神経",
+      "intro": ["陰部大腿神経（genitofemoral nerve）の2本の枝（branch）と、足（foot）の趾へ行く細い神経（nerve）を見る。腰神経叢（L1〜L4、大腰筋（psoas major）の中）と仙骨神経叢（L4〜S4、梨状筋（piriformis）の前）の叢そのものは3Dに形が無く、出ていく神経で示している。"],
+      "terms": [
+        {
+          "id": "genital-branch-of-genitofemoral-nerve", "ja": "陰部大腿神経の陰部枝", "yomi": "いんぶだいたいしんけいのいんぶし", "en": "genital branch of genitofemoral nerve", "la": "ramus genitalis nervi genitofemoralis",
+          "parts": ["za:genital branch of genitofemoral nerve"], "level": 3,
+          "kanji": "陰部大腿神経の、陰部へ行く枝",
+          "etym": "genitalis「生殖の」（ラテン語）",
+          "note": "深鼡径輪（deep inguinal ring）から鼡径管（inguinal canal）に入り、男性では精索（spermatic cord）の中で精巣挙筋（cremaster）と陰嚢（scrotum）の皮膚（skin）へ、女性では子宮円索（round ligament of uterus）にそって大陰唇（labium majus）の皮膚へ行く。太もも（thigh）の内側（medial）をなでると精巣挙筋が縮む挙睾筋反射（cremasteric reflex）の、筋（muscle）へ向かう側の神経（nerve）。"
+        },
+        {
+          "id": "femoral-branch-of-genitofemoral-nerve", "ja": "陰部大腿神経の大腿枝", "yomi": "いんぶだいたいしんけいのだいたいし", "en": "femoral branch of genitofemoral nerve", "la": "ramus femoralis nervi genitofemoralis",
+          "parts": ["za:femoral branch of genitofemoral nerve"], "level": 3,
+          "kanji": "陰部大腿神経の、大腿へ行く枝",
+          "etym": "femur「太もも」（ラテン語）",
+          "note": "鼡径靱帯（inguinal ligament）の下を大腿動脈（femoral artery）の外側（lateral）で通り（大腿鞘の中）、大腿三角（femoral triangle）の上の方の皮膚（skin）の感覚（sensation）を伝える。挙睾筋反射（cremasteric reflex）の、感覚を伝える側の神経（nerve）。"
+        },
+        {
+          "id": "common-plantar-digital-nerves", "ja": "総底側趾神経", "yomi": "そうていそくししんけい", "en": "common plantar digital nerves", "la": "nervi digitales plantares communes",
+          "parts": ["za:common plantar digital branches of * plantar nerve*"], "level": 3,
+          "kanji": "足の底側（足の裏の側）の指（趾）へ行く、まとまった神経",
+          "etym": "planta「足の裏」＋ digitus「指」（ラテン語）",
+          "note": "内側足底神経（medial plantar nerve）と外側足底神経（lateral plantar nerve）から出て、足（foot）の指（toe）の間へ向かう枝（branch）。指の付け根で2本ずつの固有底側趾神経（proper plantar digital nerves）に分かれる。第3・第4趾の間で太くなって痛むのがモートン病（Morton neuroma）。手（hand）の総掌側指神経（common palmar digital nerves）にあたる。"
+        },
+        {
+          "id": "proper-plantar-digital-nerves", "ja": "固有底側趾神経", "yomi": "こゆうていそくししんけい", "en": "proper plantar digital nerves", "la": "nervi digitales plantares proprii",
+          "parts": ["za:proper plantar digital branches of * plantar nerve"], "level": 3,
+          "kanji": "それぞれの足の指（趾）の底側の神経",
+          "etym": "proprius「固有の・自分の」（ラテン語）",
+          "note": "総底側趾神経（common plantar digital nerves）から分かれ、足（foot）の指（toe）の底側（plantar）の両わきを先へ走って、指の裏と先の皮膚（skin）の感覚（sensation）を伝える。内側足底神経（medial plantar nerve）は第1〜第4趾の内側（medial）、外側足底神経（lateral plantar nerve）は残り（第4趾（fourth toe）の外側（lateral）と第5趾）を受けもつ。"
+        },
+        {
+          "id": "dorsal-digital-nerves-of-foot", "ja": "足の背側趾神経", "yomi": "あしのはいそくししんけい", "en": "dorsal digital nerves of foot", "la": "nervi digitales dorsales pedis",
+          "parts": ["za:dorsal digital branches of superficial fibular nerve", "za:dorsal digital branches of deep fibular nerve"], "level": 3,
+          "kanji": "足の背側（足の甲の側）の指（趾）の神経",
+          "etym": "digitus「指」＋ dorsum「背」（ラテン語）",
+          "note": "足の甲（dorsum of foot）から指（finger）の背側（dorsal）の皮膚（skin）へ行く枝（branch）。大部分は浅腓骨神経（superficial fibular nerve）から出るが、第1趾（great toe）と第2趾（second toe）の向き合う側だけは深腓骨神経（deep fibular nerve）から出る（深腓骨神経のまひ（paralysis）で、そこだけしびれる）。"
         }
       ]
     }

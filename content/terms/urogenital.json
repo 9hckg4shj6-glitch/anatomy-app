@@ -108,6 +108,62 @@
       ]
     },
     {
+      "id": "uro-kidney-inner",
+      "title": "腎臓の内部",
+      "group": "泌尿器",
+      "intro": ["3Dの腎臓（kidney）は1つの形なので、中のつくりは腎臓の断面（section）（前頭断（frontal section））の図で示す。外側（lateral）の腎皮質（renal cortex）と内側（medial）の腎髄質（renal medulla）（腎錐体（renal pyramid））からなる腎実質で尿がつくられ、腎乳頭（renal papilla）→小腎杯（minor calyx）→大腎杯（major calyx）→腎盤（renal pelvis）→尿管（ureter）と流れる。"],
+      "terms": [
+        {
+          "id": "renal-capsule", "ja": "線維被膜", "yomi": "せんいひまく", "en": "fibrous capsule", "enAlt": ["renal capsule"], "la": "capsula fibrosa", "plate": "kidney-section", "level": 2,
+          "kanji": "線維でできた被膜（包む膜）",
+          "etym": "capsula「小さな箱」（ラテン語 capsa「箱」）",
+          "note": "腎臓（kidney）の表面をじかに包む薄く丈夫な膜（membrane）。その外を脂肪被膜（perirenal fat capsule）（腎周囲の脂肪（fat））、さらに腎筋膜（renal fascia）（ゲロタ筋膜）が包む。健康な腎臓では線維被膜はたやすくはがれる。"
+        },
+        {
+          "id": "renal-cortex", "ja": "腎皮質", "yomi": "じんひしつ", "en": "renal cortex", "la": "cortex renalis", "plate": "kidney-section", "level": 1,
+          "kanji": "腎臓の皮（外側）の質",
+          "etym": "cortex「樹皮」（ラテン語）",
+          "note": "腎実質の外側（lateral）の層。腎小体（糸球体とボウマン嚢）と近位（proximal）・遠位（distal）の曲尿細管があり、血液（blood）をこして原尿をつくる。腎錐体（renal pyramid）の間に入りこんだ所が腎柱（renal column）。"
+        },
+        {
+          "id": "renal-medulla", "ja": "腎髄質", "yomi": "じんずいしつ", "en": "renal medulla", "la": "medulla renalis", "plate": "kidney-section", "level": 1,
+          "kanji": "腎臓の髄（中心）の質",
+          "etym": "medulla「髄（骨の中心）」（ラテン語）",
+          "note": "腎皮質（renal cortex）の内側（medial）の部分。十数個の腎錐体（renal pyramid）からなり、ヘンレのわなと集合管が縦に並ぶので断面（section）で放射状のすじに見える。尿を濃くする。"
+        },
+        {
+          "id": "renal-pyramid", "ja": "腎錐体", "yomi": "じんすいたい", "en": "renal pyramid", "la": "pyramis renalis", "plate": "kidney-section", "level": 2,
+          "kanji": "腎臓の中の錐（円錐）の形の塊",
+          "etym": "pyramis「ピラミッド」（ギリシャ語 pyramis）",
+          "note": "腎髄質（renal medulla）をつくる円錐形の塊（1つの腎臓（kidney）に10〜18個）。底を腎皮質（renal cortex）に、先（腎乳頭（renal papilla））を腎洞（renal sinus）に向ける。1つの腎錐体とそれをおおう腎皮質を腎葉という。"
+        },
+        {
+          "id": "renal-papilla", "ja": "腎乳頭", "yomi": "じんにゅうとう", "en": "renal papilla", "la": "papilla renalis", "plate": "kidney-section", "level": 2,
+          "kanji": "腎錐体の先の乳頭（乳首のような突起）",
+          "etym": "papilla「乳首」（ラテン語）",
+          "note": "腎錐体（renal pyramid）の先。集合管が集まった乳頭管の口（乳頭孔）が多数開き、できあがった尿が小腎杯（minor calyx）へ出る。"
+        },
+        {
+          "id": "renal-column", "ja": "腎柱", "yomi": "じんちゅう", "en": "renal column", "la": "columna renalis", "plate": "kidney-section", "level": 2,
+          "kanji": "腎錐体の間の柱",
+          "etym": "columna「柱」（ラテン語）",
+          "note": "腎錐体（renal pyramid）と腎錐体の間に柱のように入りこんだ腎皮質（renal cortex）。葉間動脈（interlobar artery）・葉間静脈が通り、腎錐体の底で弓状動脈（arcuate artery）になる。"
+        },
+        {
+          "id": "major-calyx", "ja": "大腎杯", "yomi": "だいじんぱい", "en": "major calyx", "la": "calyx renalis major", "plate": "kidney-section", "level": 2,
+          "kanji": "大きな腎臓の杯（さかずき）",
+          "etym": "calyx「杯・花のがく」（ギリシャ語 kalyx）",
+          "note": "いくつかの小腎杯（minor calyx）が集まった太い管（ふつう2〜3本）。合わさって腎盤（renal pelvis）になる。"
+        },
+        {
+          "id": "minor-calyx", "ja": "小腎杯", "yomi": "しょうじんぱい", "en": "minor calyx", "la": "calyx renalis minor", "plate": "kidney-section", "level": 2,
+          "kanji": "小さな腎臓の杯（さかずき）",
+          "etym": "calyx「杯・花のがく」（ギリシャ語 kalyx）",
+          "note": "腎乳頭（renal papilla）を杯のように受ける短い管（1つの腎臓（kidney）に7〜13個）。尿はここから大腎杯（major calyx）・腎盤（renal pelvis）へ流れる。"
+        }
+      ]
+    },
+    {
       "id": "uro-male",
       "title": "精巣・精路と付属腺",
       "group": "男性生殖器",
@@ -287,6 +343,205 @@
           "kanji": "尿道の外の口",
           "etym": "external「外の」＋ urethral「尿道の」＋ orifice ← ラテン語 orificium「口」",
           "note": "尿道（urethra）の出口。男性では陰茎亀頭（glans penis）の先に縦の裂け目として開き、すぐ奥の尿道は舟状窩（navicular fossa）として広がる。女性では腟口（vaginal orifice）の前、陰核（clitoris）の後ろの腟前庭（vestibule of vagina）に開く。"
+        }
+      ]
+    },
+    {
+      "id": "uro-male-plate",
+      "title": "陰嚢・陰茎包皮と尿道球腺",
+      "group": "男性生殖器",
+      "intro": ["陰嚢（scrotum）・陰茎包皮（prepuce）・尿道球腺（bulbo-urethral gland）は3Dに形が無いので、男性の骨盤（pelvis）の正中断の図で示す。"],
+      "terms": [
+        {
+          "id": "scrotum", "ja": "陰嚢", "yomi": "いんのう", "en": "scrotum", "la": "scrotum", "plate": "male-sagittal", "level": 1,
+          "kanji": "陰部の嚢（ふくろ）",
+          "etym": "scrotum「皮の袋」（ラテン語）",
+          "note": "精巣（testis）と精巣上体（epididymis）・精索（spermatic cord）の下の部分を入れる皮膚（skin）の袋。中隔（septum）で左右に分かれる。皮膚の下の肉様膜（平滑筋（smooth muscle））と精巣挙筋（cremaster）が縮んだりゆるんだりして、精巣を体温（body temperature）より2〜3℃低く保つ（精子（sperm）をつくるのに必要）。女性の大陰唇（labium majus）にあたる。"
+        },
+        {
+          "id": "bulbourethral-gland", "ja": "尿道球腺", "yomi": "にょうどうきゅうせん", "en": "bulbourethral gland", "enAlt": ["cowper's gland"], "la": "glandula bulbourethralis", "plate": "male-sagittal", "level": 2,
+          "kanji": "尿道球の（後ろにある）腺",
+          "etym": "bulbus「球根」＋ urethra。Cowper はイギリスの解剖学者",
+          "note": "尿道球（bulb of penis）の後ろ上、深会陰隙の中にある豆粒ほどの1対の腺（gland）（カウパー腺）。導管（duct）が尿道（urethra）の海綿体部（spongy part）（尿道球の所）に開き、射精の前に透明な粘液（mucus）を出して尿道をなめらかにする。女性の大前庭腺（greater vestibular gland）にあたる。"
+        },
+        {
+          "id": "prepuce-of-penis", "ja": "陰茎包皮", "yomi": "いんけいほうひ", "en": "prepuce", "enAlt": ["foreskin"], "la": "preputium penis", "plate": "male-sagittal", "level": 3,
+          "kanji": "陰茎（亀頭）を包む皮",
+          "etym": "praeputium「包皮」（ラテン語）",
+          "note": "陰茎亀頭（glans penis）をおおう、二重に折り返った皮膚（skin）のひだ（fold）。亀頭（glans）の下面（inferior surface）とは包皮小帯でつながる。女性の陰核包皮にあたる。"
+        }
+      ]
+    },
+    {
+      "id": "uro-female-internal",
+      "title": "卵巣・卵管・子宮・腟",
+      "group": "女性生殖器",
+      "intro": ["女性の内生殖器は、卵巣（ovary）・卵管（uterine tube）・子宮（uterus）・腟（vagina）。3Dのモデル（BodyParts3D・Z-Anatomy）はどちらも男性の体なので、女性生殖器は平面図で示す。前から見た図（子宮と腟は前頭断（frontal section）で切ってある）と、骨盤（pelvis）の正中断の図。", "子宮と卵管・卵巣は腹膜（peritoneum）のひだ（fold）（子宮広間膜）に包まれて骨盤の中を左右に張る。子宮円索（round ligament of uterus）は子宮の角から鼡径管（inguinal canal）を通って大陰唇（labium majus）へ、卵巣提索（卵巣動静脈が通る）は卵巣から骨盤の側壁（lateral wall）へ向かう。"],
+      "terms": [
+        {
+          "id": "ovary", "ja": "卵巣", "yomi": "らんそう", "en": "ovary", "la": "ovarium", "plate": "female-front", "level": 1,
+          "kanji": "卵（卵子）の巣",
+          "etym": "ovarium ← ovum「卵」（ラテン語）。ギリシャ語 oophoron から oophorectomy「卵巣摘出」",
+          "note": "子宮（uterus）の両わき、骨盤（pelvis）の側壁（lateral wall）のくぼみ（卵巣窩）にある母指（thumb）の頭ほどの楕円形の器官（organ）。卵胞の中で卵子を育てて月に1つ排卵し、女性ホルモンを出す。卵巣提索で骨盤の壁に、卵巣固有索（ligament of ovary）で子宮に付く。卵巣動脈（ovarian artery）は腹大動脈（abdominal aorta）から直接出る（精巣動脈（testicular artery）と同じ）。男性の精巣（testis）にあたる。",
+          "hormones": "エストロゲン（卵胞から）・プロゲステロン（黄体から）"
+        },
+        {
+          "id": "uterine-tube", "ja": "卵管", "yomi": "らんかん", "en": "uterine tube", "enAlt": ["fallopian tube", "oviduct"], "la": "tuba uterina", "plate": "female-front", "level": 1,
+          "kanji": "卵（卵子）の通る管",
+          "etym": "tuba「らっぱ」（ラテン語）。Fallopius はイタリアの解剖学者",
+          "note": "子宮（uterus）の上の角から左右にのびる長さ約10cmの管で、子宮広間膜の上の縁の中を走る。外側（lateral）から卵管漏斗（infundibulum of uterine tube）（卵管采（fimbriae of uterine tube））・卵管膨大部（ampulla of uterine tube）・卵管峡部（isthmus of uterine tube）・子宮部に分かれる。排卵された卵子を卵管采で受けとり、子宮へ運ぶ。"
+        },
+        {
+          "id": "infundibulum-of-uterine-tube", "ja": "卵管漏斗", "yomi": "らんかんろうと", "en": "infundibulum of uterine tube", "la": "infundibulum tubae uterinae", "plate": "female-front", "level": 2,
+          "kanji": "卵管の漏斗（じょうご）の形の所",
+          "etym": "infundibulum「漏斗」（ラテン語）",
+          "note": "卵管（uterine tube）の外側（lateral）の端の、漏斗（infundibulum）のように広がった所。縁に卵管采（fimbriae of uterine tube）が並び、真ん中の穴（卵管腹腔口）が腹膜腔（peritoneal cavity）に開く。このため女性の腹膜腔は卵管・子宮（uterus）・腟（vagina）を通して外とつながっている。"
+        },
+        {
+          "id": "fimbriae-of-uterine-tube", "ja": "卵管采", "yomi": "らんかんさい", "en": "fimbriae of uterine tube", "la": "fimbriae tubae uterinae", "plate": "female-front", "level": 2,
+          "kanji": "卵管の采（ふさ）",
+          "etym": "fimbria「ふさ・へり飾り」（ラテン語）",
+          "note": "卵管漏斗（infundibulum of uterine tube）の縁の、指（finger）のような細いふさ。1本（卵巣采）は卵巣（ovary）に付き、排卵のときに卵巣の表面をおおって卵子を卵管（uterine tube）へ取りこむ。"
+        },
+        {
+          "id": "ampulla-of-uterine-tube", "ja": "卵管膨大部", "yomi": "らんかんぼうだいぶ", "en": "ampulla of uterine tube", "la": "ampulla tubae uterinae", "plate": "female-front", "level": 2,
+          "kanji": "卵管のふくらんで大きい部分",
+          "etym": "ampulla「とっくり・小さなつぼ」（ラテン語）",
+          "note": "卵管（uterine tube）の外側（lateral）の2/3を占める、太く壁の薄い部分。ふつう受精はここで起こる。子宮外妊娠（卵管妊娠）がいちばん多い所。"
+        },
+        {
+          "id": "isthmus-of-uterine-tube", "ja": "卵管峡部", "yomi": "らんかんきょうぶ", "en": "isthmus of uterine tube", "la": "isthmus tubae uterinae", "plate": "female-front", "level": 3,
+          "kanji": "卵管の峡（せまい所）",
+          "etym": "isthmus「地峡（細い陸地）」（ギリシャ語 isthmos）",
+          "note": "卵管（uterine tube）の内側（medial）の1/3の、細く壁の厚い部分。子宮（uterus）の壁の中を通る子宮部（間質部）を経て子宮腔（uterine cavity）に開く。不妊手術（卵管結紮）をする所。"
+        },
+        {
+          "id": "uterus", "ja": "子宮", "yomi": "しきゅう", "en": "uterus", "enAlt": ["womb"], "la": "uterus", "plate": "female-front", "level": 1,
+          "kanji": "子（胎児）の宮（すまい）",
+          "etym": "uterus「腹・子宮」（ラテン語）。ギリシャ語 hystera から hysterectomy「子宮摘出」、metra から endometrium",
+          "note": "膀胱（urinary bladder）の後ろ・直腸（rectum）の前にある、長さ約7cmの西洋梨を逆さにした形の筋（muscle）の厚い器官（organ）。上から子宮底（fundus of uterus）・子宮体（body of uterus）・子宮頚（cervix of uterus）に分かれ、ふつう前傾前屈の位置（子宮が腟（vagina）に対して前に傾き、子宮体が子宮頚に対して前に曲がる）をとる。壁は内から子宮内膜（endometrium）・子宮筋層（平滑筋（smooth muscle））・子宮外膜（腹膜（peritoneum））。子宮動脈（uterine artery）（内腸骨動脈（internal iliac artery）の枝（branch））は子宮頚のわきで尿管（ureter）の前上（anterosuperior）を越えるので、子宮の手術で尿管を傷つけないよう注意する。"
+        },
+        {
+          "id": "fundus-of-uterus", "ja": "子宮底", "yomi": "しきゅうてい", "en": "fundus of uterus", "la": "fundus uteri", "plate": "female-front", "level": 2,
+          "kanji": "子宮の底（いちばん上の丸い所）",
+          "etym": "fundus「底」（ラテン語）",
+          "note": "左右の卵管（uterine tube）が入る所より上の、丸く盛り上がった子宮（uterus）の上端（superior end）。妊娠中は子宮底の高さ（恥骨結合（pubic symphysis）から測る）で子宮の大きさを見る。"
+        },
+        {
+          "id": "body-of-uterus", "ja": "子宮体", "yomi": "しきゅうたい", "en": "body of uterus", "la": "corpus uteri", "plate": "female-front", "level": 2,
+          "kanji": "子宮の体（本体）",
+          "etym": "corpus「体」（ラテン語）",
+          "note": "子宮（uterus）の上2/3の、平たく広い主な部分。中に三角形の子宮腔（uterine cavity）があり、受精卵はここの子宮内膜（endometrium）に着床する。下は細い子宮峡部を経て子宮頚（cervix of uterus）に続く。"
+        },
+        {
+          "id": "cervix-of-uterus", "ja": "子宮頚", "yomi": "しきゅうけい", "en": "cervix of uterus", "enAlt": ["cervix", "uterine cervix"], "la": "cervix uteri", "plate": "female-front", "level": 1,
+          "kanji": "子宮の頚（くび）",
+          "etym": "cervix「くび」（ラテン語）",
+          "note": "子宮（uterus）の下1/3の細い筒の部分。下の端（子宮腟部）は腟（vagina）の中に突き出て、外子宮口が開く。中の頚管は粘液（mucus）でふさがれ、分娩のときに大きく開く。子宮頚癌（ヒトパピローマウイルスによる）ができる所で、子宮腟部の細胞（cell）をとって検診する。"
+        },
+        {
+          "id": "uterine-cavity", "ja": "子宮腔", "yomi": "しきゅうくう", "en": "uterine cavity", "la": "cavitas uteri", "plate": "female-front", "level": 2,
+          "kanji": "子宮の腔（中の空所）",
+          "etym": "cavitas「空所」（ラテン語 cavus「うつろな」）",
+          "note": "子宮体（body of uterus）の中の、前から見て逆三角形のせまい空所。上の2つの角に卵管（uterine tube）が開き、下の角は内子宮口から頚管へ続く。ふだんは前後の壁が接していて、すき間はほとんど無い。"
+        },
+        {
+          "id": "endometrium", "ja": "子宮内膜", "yomi": "しきゅうないまく", "en": "endometrium", "la": "tunica mucosa uteri", "plate": "female-front", "level": 2,
+          "kanji": "子宮の内側の膜（粘膜）",
+          "etym": "endo-「内」＋ metra「子宮」（ギリシャ語）",
+          "note": "子宮腔（uterine cavity）をおおう粘膜（mucosa）。卵巣（ovary）のホルモンに合わせて月ごとに厚くなり（エストロゲンで増え、プロゲステロンで着床の準備をする）、受精卵が着床しなければ表面の層（機能層）がはがれて月経になる。"
+        },
+        {
+          "id": "ovarian-ligament", "ja": "卵巣固有索", "yomi": "らんそうこゆうさく", "en": "ligament of ovary", "enAlt": ["ovarian ligament", "proper ovarian ligament"], "la": "ligamentum ovarii proprium", "plate": "female-front", "level": 3,
+          "kanji": "卵巣に固有の（卵巣と子宮をつなぐ）索（ひも）",
+          "etym": "ligamentum「しばるもの」（ラテン語 ligare「しばる」）",
+          "note": "卵巣（ovary）の子宮側の端と、子宮（uterus）の卵管（uterine tube）が入る所のすぐ下をつなぐ索。子宮円索（round ligament of uterus）とともに胎児（fetus）の導帯（男性では精巣（testis）を陰嚢（scrotum）へ導く索）のなごり。卵巣動静脈は通らない（それは卵巣提索を通る）。"
+        },
+        {
+          "id": "vagina", "ja": "腟", "yomi": "ちつ", "en": "vagina", "la": "vagina", "plate": "female-front", "level": 1,
+          "kanji": "腟（女性の産道となる管）",
+          "etym": "vagina「さや（刀のさや）」（ラテン語）。ギリシャ語 kolpos から colposcopy",
+          "note": "子宮頚（cervix of uterus）から腟前庭（vestibule of vagina）まで前下（anteroinferior）へのびる長さ約8cmの筋（muscle）の管で、産道（birth canal）になる。前に膀胱（urinary bladder）と尿道（urethra）、後ろに直腸（rectum）がある。上の端は子宮頚のまわりをとり巻いて腟円蓋をつくり、後ろの腟円蓋は腹膜（peritoneum）をへだてて直腸子宮窩（recto-uterine pouch）に接する。"
+        }
+      ]
+    },
+    {
+      "id": "uro-female-pelvis",
+      "title": "女性の骨盤の正中断と外陰部",
+      "group": "女性生殖器",
+      "intro": ["正中断の図で子宮（uterus）・膀胱（urinary bladder）・直腸（rectum）の位置と腹膜（peritoneum）のくぼみを、下から見た外陰部（external genitalia）の図で腟前庭（vestibule of vagina）のまわりを見る。", "外陰部は男性の陰嚢（scrotum）・陰茎（penis）にあたるつくりをもつ（大陰唇（labium majus）は陰嚢、陰核（clitoris）は陰茎海綿体（corpus cavernosum of penis）、前庭球（bulb of vestibule）は尿道海綿体（corpus spongiosum of penis）、大前庭腺（greater vestibular gland）は尿道球腺（bulbo-urethral gland）にあたる）。"],
+      "terms": [
+        {
+          "id": "rectouterine-pouch", "ja": "直腸子宮窩", "yomi": "ちょくちょうしきゅうか", "en": "rectouterine pouch", "enAlt": ["pouch of douglas"], "la": "excavatio rectouterina", "plate": "female-sagittal", "level": 1,
+          "kanji": "直腸と子宮の間の窩（くぼみ）",
+          "etym": "excavatio「くぼみ」（ラテン語）。Douglas はスコットランドの解剖学者",
+          "note": "子宮（uterus）（と腟（vagina）の上部）と直腸（rectum）の間で、腹膜（peritoneum）が深く落ちこんだくぼみ（ダグラス窩（pouch of Douglas））。立っても寝ても腹膜腔（peritoneal cavity）のいちばん低い所なので、血液（blood）・膿・腹水がたまりやすい。後ろの腟円蓋と接するので、腟から針を刺して中を調べられる。男性の直腸膀胱窩（rectovesical pouch）にあたる。"
+        },
+        {
+          "id": "vesicouterine-pouch", "ja": "膀胱子宮窩", "yomi": "ぼうこうしきゅうか", "en": "vesicouterine pouch", "la": "excavatio vesicouterina", "plate": "female-sagittal", "level": 2,
+          "kanji": "膀胱と子宮の間の窩（くぼみ）",
+          "etym": "vesica「膀胱」（ラテン語）＋ uterus",
+          "note": "前に傾いた子宮（uterus）と膀胱（urinary bladder）の上面（superior surface）の間の、腹膜（peritoneum）の浅いくぼみ。直腸子宮窩（recto-uterine pouch）より浅い。"
+        },
+        {
+          "id": "labium-majus", "ja": "大陰唇", "yomi": "だいいんしん", "en": "labium majus", "enAlt": ["labia majora"], "la": "labium majus pudendi", "plate": "female-vulva", "level": 2,
+          "kanji": "大きな陰部の唇",
+          "etym": "labium「唇」（ラテン語）。複数形 labia",
+          "note": "外陰部（external genitalia）の左右の外側（lateral）の、脂肪（fat）の多い皮膚（skin）のふくらみ。外面（external surface）に陰毛が生え、汗腺（sweat gland）と脂腺（sebaceous gland）が多い。子宮円索（round ligament of uterus）がここで終わる。男性の陰嚢（scrotum）にあたる。"
+        },
+        {
+          "id": "labium-minus", "ja": "小陰唇", "yomi": "しょういんしん", "en": "labium minus", "enAlt": ["labia minora"], "la": "labium minus pudendi", "plate": "female-vulva", "level": 2,
+          "kanji": "小さな陰部の唇",
+          "etym": "labium「唇」（ラテン語）",
+          "note": "大陰唇（labium majus）の内側（medial）の、脂肪（fat）の無い薄い皮膚（skin）のひだ（fold）。左右の小陰唇の間が腟前庭（vestibule of vagina）で、前で合わさって陰核包皮と陰核小帯をつくる。"
+        },
+        {
+          "id": "vaginal-vestibule", "ja": "腟前庭", "yomi": "ちつぜんてい", "en": "vestibule of vagina", "la": "vestibulum vaginae", "plate": "female-vulva", "level": 2,
+          "kanji": "腟の前庭（入口の前の広間）",
+          "etym": "vestibulum「玄関」（ラテン語）",
+          "note": "左右の小陰唇（labium minus）に囲まれた所。前に外尿道口（external urethral orifice）、後ろに腟口（vaginal orifice）が開き、その両わきに大前庭腺（greater vestibular gland）の導管（duct）が開く。"
+        },
+        {
+          "id": "vaginal-orifice", "ja": "腟口", "yomi": "ちつこう", "en": "vaginal orifice", "enAlt": ["vaginal opening"], "la": "ostium vaginae", "plate": "female-vulva", "level": 2,
+          "kanji": "腟の口",
+          "etym": "ostium「入口・戸口」（ラテン語）",
+          "note": "腟前庭（vestibule of vagina）の後ろの方に開く腟（vagina）の入口。外尿道口（external urethral orifice）の後ろにある。縁に処女膜（hymen）（またはそのなごり）がある。"
+        },
+        {
+          "id": "hymen", "ja": "処女膜", "yomi": "しょじょまく", "en": "hymen", "la": "hymen", "plate": "female-vulva", "level": 3,
+          "kanji": "処女（性交の経験の無い女性）の膜",
+          "etym": "hymen「膜」（ギリシャ語）",
+          "note": "腟口（vaginal orifice）の縁の、粘膜（mucosa）の薄いひだ（fold）。形や大きさは人によってさまざまで、ふつう中央が開いている。"
+        },
+        {
+          "id": "clitoris", "ja": "陰核", "yomi": "いんかく", "en": "clitoris", "la": "clitoris", "plate": "female-vulva", "level": 2,
+          "kanji": "陰部の核（小さな突起）",
+          "etym": "kleitoris（ギリシャ語。「小さな丘」の意とされる）",
+          "note": "腟前庭（vestibule of vagina）の前の端にある、勃起（erection）する小さな器官（organ）。外に見える陰核亀頭と、左右の陰核脚（crus of clitoris）（坐骨（ischium）と恥骨（pubis）の枝（branch）に付く）からなる。感覚（sensation）の神経（nerve）（陰核背神経（陰部神経（pudendal nerve）の枝））がとても多い。男性の陰茎（penis）（陰茎海綿体（corpus cavernosum of penis））にあたる。"
+        },
+        {
+          "id": "crus-of-clitoris", "ja": "陰核脚", "yomi": "いんかくきゃく", "en": "crus of clitoris", "la": "crus clitoridis", "plate": "female-vulva", "level": 3,
+          "kanji": "陰核の脚",
+          "etym": "crus「脚・すね」（ラテン語）",
+          "note": "陰核体から左右に分かれて後ろへのび、坐骨枝（ramus of ischium）と恥骨下枝（inferior pubic ramus）に付く海綿体（cavernous body）。坐骨海綿体筋（ischiocavernosus）におおわれる。男性の陰茎脚（crus of penis）にあたる。"
+        },
+        {
+          "id": "bulb-of-vestibule", "ja": "前庭球", "yomi": "ぜんていきゅう", "en": "bulb of vestibule", "la": "bulbus vestibuli", "plate": "female-vulva", "level": 3,
+          "kanji": "腟前庭（のわき）の球（ふくらみ）",
+          "etym": "bulbus「球根」（ラテン語）",
+          "note": "腟前庭（vestibule of vagina）の両わき、小陰唇（labium minus）の深くにある細長い海綿体（cavernous body）。球海綿体筋（bulbospongiosus）におおわれる。男性の尿道球（bulb of penis）（尿道海綿体（corpus spongiosum of penis））にあたる。"
+        },
+        {
+          "id": "greater-vestibular-gland", "ja": "大前庭腺", "yomi": "だいぜんていせん", "en": "greater vestibular gland", "enAlt": ["bartholin's gland"], "la": "glandula vestibularis major", "plate": "female-vulva", "level": 2,
+          "kanji": "（腟）前庭の大きな腺",
+          "etym": "vestibulum「玄関」＋ glandula「腺」。Bartholin はデンマークの解剖学者",
+          "note": "前庭球（bulb of vestibule）の後ろの端にある豆粒ほどの1対の腺（gland）（バルトリン腺）。導管（duct）が腟口（vaginal orifice）の両わき（処女膜（hymen）の外）に開き、粘液（mucus）を出して腟前庭（vestibule of vagina）をうるおす。導管がつまると腫れる（バルトリン腺嚢胞）。男性の尿道球腺（bulbo-urethral gland）にあたる。"
+        },
+        {
+          "id": "paraurethral-glands", "ja": "尿道傍腺", "yomi": "にょうどうぼうせん", "en": "paraurethral glands", "enAlt": ["skene's glands"], "la": "glandulae paraurethrales", "plate": "female-vulva", "level": 3,
+          "kanji": "尿道の傍（そば）の腺",
+          "etym": "para-「そば」（ギリシャ語）＋ urethra。Skene はアメリカの婦人科医",
+          "note": "女性の尿道（urethra）の下の端のまわりにある小さな腺（gland）（スキーン腺）で、外尿道口（external urethral orifice）の両わきに開く。男性の前立腺（prostate）にあたる。"
         }
       ]
     },

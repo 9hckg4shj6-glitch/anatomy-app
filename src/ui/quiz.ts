@@ -166,9 +166,10 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   const isolate = !!term.xray || landmark;
   const facet = item.facet === "point" && (term.xray || isDrawn(term)) ? "locate" : item.facet;
   const header = h("div", { class: "quiz-head" }, h("span", { class: "facet" }, facetLabels[facet]), h("span", { class: "count" }, progress));
-  // 平面図の語は3Dの上に図を重ね、答えるまで名前を隠す（英語→日本語のほかは、その語の番号を光らせる）
+  // 平面図の語は3Dの上に図を重ね、答えるまで名前を隠す（英語→日本語のほかは、その語の番号を光らせる）。
+  // ホルモンの問い方は器官を答えるので、図（図の名前で器官が分かる）を重ねない
   const plates = plateOverlay(ctx);
-  if (term.plate) await plates.show(term, { names: false, mark: facet !== "en2ja" });
+  if (term.plate && facet !== "hormone") await plates.show(term, { names: false, mark: facet !== "en2ja" });
   else plates.hide();
   // 向きの目印は、基本の用語（矢印の向き・面）と向きの問い方では答えになるので、答えるまで隠す（平面図を重ねている間も隠す）
   viewer.hideCompass(term.system === "basics" || facet === "relation" || !!term.plate);
