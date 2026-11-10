@@ -125,6 +125,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
   const lessons = organ.units.flatMap((id) => unitById.get(id) ?? []);
   const inLessons = new Set(lessons.flatMap((unit) => unit.terms.map((term) => term.id)));
   const withTerms = organ.with.filter((id) => !inLessons.has(id)).flatMap((id) => termById.get(id) ?? []);
+  const aroundTerms = organ.aroundTitle ? (organ.around ?? []).filter((id) => !inLessons.has(id)).flatMap((id) => termById.get(id) ?? []) : [];
   const render = () => {
     body.replaceChildren(
       h("h3", {}, "向き"),
@@ -159,7 +160,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
           h("button", { class: "ghost-button", type: "button", onClick: () => select(null) }, "選択をやめる"),
         ),
       ) : h("p", { class: "muted" }, "3Dの部位をタップするか、下の語を選んでください。"),
-      ...[...lessons.map((unit) => [unit.title, unit.terms] as const), ["いっしょに見せる語", withTerms] as const].filter(([, list]) => list.length).flatMap(([title, list]) => [
+      ...[...lessons.map((unit) => [unit.title, unit.terms] as const), ["いっしょに見せる語", withTerms] as const, [organ.aroundTitle ?? "", aroundTerms] as const].filter(([, list]) => list.length).flatMap(([title, list]) => [
         h("h3", {}, title),
         h("div", { class: "chip-list" }, ...list.map((term) => h("button", {
           class: term === selected ? "chip on" : "chip", type: "button", onClick: () => select(term),

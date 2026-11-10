@@ -90,6 +90,28 @@ describe("臓器の場面", () => {
     expect(organOf("trachea")?.id).toBe("lung");
     expect(organOf("frontal-lobe")?.id).toBe("brain");
   });
+
+  it("膝関節・脳の底面・縦隔・腹膜の臓器の図", () => {
+    // 膝関節: 靱帯・半月は図鑑でも膝の見せ方に。骨は添えるだけ。レッスンの場面には骨（骨格系）も読み込む
+    expect(organOf("anterior-cruciate-ligament")?.id).toBe("knee");
+    expect(organOf("anserine-bursa")?.id).toBe("knee");
+    expect(organOf("femur")).toBeUndefined();
+    expect(sceneFor("joints", "joint-knee-bursae")).toEqual({ systems: ["joints", "muscular", "skeletal"], organ: "knee" });
+    expect(sceneFor("joints", "joint-hip-knee").organ).toBeUndefined();
+    // 脳の底面: 脳幹と視覚の経路のレッスンはこの臓器の場面。脳を出て遠くへ行く神経（迷走神経など）は添えるだけ
+    expect(sceneFor("nervous", "nerv-stem").organ).toBe("brain-base");
+    expect(organOf("basilar-artery")?.id).toBe("brain-base");
+    expect(organOf("vagus-nerve")).toBeUndefined();
+    expect(sceneFor("nervous", "nerv-cranial").organ).toBeUndefined();
+    // 縦隔・腹膜: ほかの臓器の語を集めて見せる（図鑑の見せ方は変えない）。添える語も欄に一覧で出す
+    for (const id of ["mediastinum", "peritoneum"]) expect(organById.get(id)?.aroundTitle).toBeTruthy();
+    expect(organTerms(organById.get("mediastinum")!)).toContain("esophagus");
+    expect(organOf("thymus")?.id).toBe("mediastinum");
+    expect(organOf("heart")?.id).toBe("heart");
+    expect(organOf("greater-omentum")?.id).toBe("intestine");
+    expect(organTerms(organById.get("peritoneum")!)).toContain("kidney");
+    expect(sceneFor("digestive", "dig-peritoneum").organ).toBe("peritoneum");
+  });
 });
 
 describe("近い目印の形で分ける", () => {

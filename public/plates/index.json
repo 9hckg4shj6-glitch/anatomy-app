@@ -5102,6 +5102,1132 @@
      "note": "胸郭（肋骨・胸骨・胸椎）と肋間筋・結合組織でできた胸の壁。内面を壁側胸膜（肋骨胸膜）がおおう。"
     }
    ]
+  },
+  "knee-sagittal": {
+   "url": "plates/knee-sagittal.5879c710a8.webp",
+   "w": 334,
+   "h": 637,
+   "labels": [
+    {
+     "at": [
+      0.3772,
+      0.1821
+     ],
+     "term": "femur"
+    },
+    {
+     "at": [
+      0.7934,
+      0.2025
+     ],
+     "term": "quadriceps-tendon"
+    },
+    {
+     "at": [
+      0.7156,
+      0.2402
+     ],
+     "term": "suprapatellar-bursa"
+    },
+    {
+     "at": [
+      0.8263,
+      0.3736
+     ],
+     "term": "patella"
+    },
+    {
+     "at": [
+      0.9281,
+      0.4144
+     ],
+     "term": "prepatellar-bursa"
+    },
+    {
+     "at": [
+      0.0838,
+      0.4066
+     ],
+     "term": "knee-joint",
+     "ja": "関節包",
+     "en": "articular capsule"
+    },
+    {
+     "at": [
+      0.5629,
+      0.5086
+     ],
+     "term": "articular-cavity"
+    },
+    {
+     "at": [
+      0.4311,
+      0.5039
+     ],
+     "term": "posterior-cruciate-ligament"
+    },
+    {
+     "at": [
+      0.3623,
+      0.5479
+     ],
+     "term": "anterior-cruciate-ligament"
+    },
+    {
+     "at": [
+      0.1557,
+      0.5432
+     ],
+     "term": "lateral-meniscus"
+    },
+    {
+     "at": [
+      0.6766,
+      0.562
+     ],
+     "term": "infrapatellar-fat-pad"
+    },
+    {
+     "at": [
+      0.7275,
+      0.6091
+     ],
+     "term": "deep-infrapatellar-bursa"
+    },
+    {
+     "at": [
+      0.7305,
+      0.7363
+     ],
+     "term": "patellar-ligament"
+    },
+    {
+     "at": [
+      0.3174,
+      0.81
+     ],
+     "term": "tibia"
+    }
+   ]
+  },
+  "knee-tibia-top": {
+   "url": "plates/knee-tibia-top.579ce07ba3.webp",
+   "w": 608,
+   "h": 471,
+   "labels": [
+    {
+     "at": [
+      0.403,
+      0.3015
+     ],
+     "term": "anterior-cruciate-ligament"
+    },
+    {
+     "at": [
+      0.5247,
+      0.1826
+     ],
+     "term": "transverse-ligament-of-knee"
+    },
+    {
+     "at": [
+      0.2681,
+      0.4119
+     ],
+     "term": "joint-articular-cartilage",
+     "ja": "関節軟骨（内側顆）"
+    },
+    {
+     "at": [
+      0.6595,
+      0.5053
+     ],
+     "term": "joint-articular-cartilage",
+     "ja": "関節軟骨（外側顆）"
+    },
+    {
+     "at": [
+      0.2648,
+      0.7134
+     ],
+     "term": "medial-meniscus"
+    },
+    {
+     "at": [
+      0.7253,
+      0.6879
+     ],
+     "term": "lateral-meniscus"
+    },
+    {
+     "at": [
+      0.4556,
+      0.8025
+     ],
+     "term": "posterior-cruciate-ligament"
+    }
+   ]
+  },
+  "knee-anterior": {
+   "url": "plates/knee-anterior.5d9c15a152.webp",
+   "w": 455,
+   "h": 716,
+   "labels": [
+    {
+     "at": [
+      0.2901,
+      0.1662
+     ],
+     "term": "vastus-lateralis"
+    },
+    {
+     "at": [
+      0.4857,
+      0.1257
+     ],
+     "term": "rectus-femoris"
+    },
+    {
+     "at": [
+      0.7956,
+      0.102
+     ],
+     "term": "vastus-medialis"
+    },
+    {
+     "at": [
+      0.4857,
+      0.2514
+     ],
+     "term": "quadriceps-tendon"
+    },
+    {
+     "at": [
+      0.5297,
+      0.5028
+     ],
+     "term": "patella"
+    },
+    {
+     "at": [
+      0.2857,
+      0.5866
+     ],
+     "term": "patellar-retinacula",
+     "ja": "外側膝蓋支帯",
+     "en": "lateral patellar retinaculum"
+    },
+    {
+     "at": [
+      0.7165,
+      0.5503
+     ],
+     "term": "patellar-retinacula",
+     "ja": "内側膝蓋支帯",
+     "en": "medial patellar retinaculum"
+    },
+    {
+     "at": [
+      0.1275,
+      0.6592
+     ],
+     "term": "fibular-collateral-ligament"
+    },
+    {
+     "at": [
+      0.7824,
+      0.6159
+     ],
+     "term": "tibial-collateral-ligament"
+    },
+    {
+     "at": [
+      0.5253,
+      0.7751
+     ],
+     "term": "patellar-ligament"
+    },
+    {
+     "at": [
+      0.233,
+      0.8673
+     ],
+     "term": "fibula"
+    },
+    {
+     "at": [
+      0.6,
+      0.8994
+     ],
+     "term": "tibia"
+    }
+   ]
+  },
+  "brain-inferior": {
+   "url": "plates/brain-inferior.c46754739a.webp",
+   "w": 1175,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.3304,
+      0.2178
+     ],
+     "term": "frontal-lobe"
+    },
+    {
+     "at": [
+      0.4532,
+      0.1743
+     ],
+     "term": "olfactory-bulb"
+    },
+    {
+     "at": [
+      0.5381,
+      0.2673
+     ],
+     "term": "olfactory-tract"
+    },
+    {
+     "at": [
+      0.4154,
+      0.3287
+     ],
+     "term": "optic-nerve"
+    },
+    {
+     "at": [
+      0.557,
+      0.3802
+     ],
+     "term": "optic-chiasm"
+    },
+    {
+     "at": [
+      0.4862,
+      0.4614
+     ],
+     "term": "mammillary-body"
+    },
+    {
+     "at": [
+      0.439,
+      0.4396
+     ],
+     "term": "oculomotor-nerve"
+    },
+    {
+     "at": [
+      0.5924,
+      0.4752
+     ],
+     "term": "trochlear-nerve"
+    },
+    {
+     "at": [
+      0.295,
+      0.4752
+     ],
+     "term": "trigeminal-nerve"
+    },
+    {
+     "at": [
+      0.236,
+      0.5188
+     ],
+     "term": "temporal-lobe"
+    },
+    {
+     "at": [
+      0.5004,
+      0.5307
+     ],
+     "term": "pons"
+    },
+    {
+     "at": [
+      0.4343,
+      0.5743
+     ],
+     "term": "abducens-nerve"
+    },
+    {
+     "at": [
+      0.6184,
+      0.598
+     ],
+     "term": "facial-nerve"
+    },
+    {
+     "at": [
+      0.3304,
+      0.6119
+     ],
+     "term": "vestibulocochlear-nerve"
+    },
+    {
+     "at": [
+      0.642,
+      0.6376
+     ],
+     "term": "glossopharyngeal-nerve"
+    },
+    {
+     "at": [
+      0.4248,
+      0.6594
+     ],
+     "term": "hypoglossal-nerve"
+    },
+    {
+     "at": [
+      0.6278,
+      0.6614
+     ],
+     "term": "vagus-nerve"
+    },
+    {
+     "at": [
+      0.5004,
+      0.697
+     ],
+     "term": "medulla-oblongata"
+    },
+    {
+     "at": [
+      0.3847,
+      0.7089
+     ],
+     "term": "accessory-nerve"
+    },
+    {
+     "at": [
+      0.7081,
+      0.7921
+     ],
+     "term": "cerebellum"
+    }
+   ]
+  },
+  "circle-of-willis": {
+   "url": "plates/circle-of-willis.8633a05b65.webp",
+   "w": 971,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.5045,
+      0.0577
+     ],
+     "term": "anterior-cerebral-artery"
+    },
+    {
+     "at": [
+      0.4753,
+      0.0968
+     ],
+     "term": "anterior-communicating-artery"
+    },
+    {
+     "at": [
+      0.1209,
+      0.1561
+     ],
+     "term": "middle-cerebral-artery"
+    },
+    {
+     "at": [
+      0.6629,
+      0.1242
+     ],
+     "term": "ophthalmic-artery"
+    },
+    {
+     "at": [
+      0.3273,
+      0.2255
+     ],
+     "term": "internal-carotid-artery"
+    },
+    {
+     "at": [
+      0.4732,
+      0.2486
+     ],
+     "term": "cerebral-arterial-circle"
+    },
+    {
+     "at": [
+      0.7317,
+      0.2891
+     ],
+     "term": "anterior-choroidal-artery"
+    },
+    {
+     "at": [
+      0.6296,
+      0.3195
+     ],
+     "term": "posterior-communicating-artery"
+    },
+    {
+     "at": [
+      0.2668,
+      0.4367
+     ],
+     "term": "posterior-cerebral-artery"
+    },
+    {
+     "at": [
+      0.6859,
+      0.4873
+     ],
+     "term": "superior-cerebellar-artery"
+    },
+    {
+     "at": [
+      0.3669,
+      0.5379
+     ],
+     "term": "pontine-arteries"
+    },
+    {
+     "at": [
+      0.4732,
+      0.5567
+     ],
+     "term": "basilar-artery"
+    },
+    {
+     "at": [
+      0.6296,
+      0.6435
+     ],
+     "term": "anterior-inferior-cerebellar-artery"
+    },
+    {
+     "at": [
+      0.665,
+      0.8185
+     ],
+     "term": "posterior-inferior-cerebellar-artery"
+    },
+    {
+     "at": [
+      0.6296,
+      0.8894
+     ],
+     "term": "vertebral-artery"
+    },
+    {
+     "at": [
+      0.4607,
+      0.8822
+     ],
+     "term": "anterior-spinal-artery"
+    }
+   ]
+  },
+  "mediastinum-compartments": {
+   "url": "plates/mediastinum-compartments.cd41a9b37f.webp",
+   "w": 894,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.7158,
+      0.0952
+     ],
+     "term": "first-rib"
+    },
+    {
+     "at": [
+      0.5237,
+      0.1843
+     ],
+     "term": "trachea"
+    },
+    {
+     "at": [
+      0.5762,
+      0.2371
+     ],
+     "term": "superior-mediastinum"
+    },
+    {
+     "at": [
+      0.6718,
+      0.3124
+     ],
+     "term": "aortic-arch"
+    },
+    {
+     "at": [
+      0.3282,
+      0.3427
+     ],
+     "term": "thymus"
+    },
+    {
+     "at": [
+      0.6107,
+      0.379
+     ],
+     "ja": "心底",
+     "en": "base of heart",
+     "note": "心臓の後ろ上の面。おもに左心房でできていて、大血管が出入りする。"
+    },
+    {
+     "at": [
+      0.1654,
+      0.4763
+     ],
+     "term": "anterior-mediastinum"
+    },
+    {
+     "at": [
+      0.4186,
+      0.5435
+     ],
+     "term": "middle-mediastinum"
+    },
+    {
+     "at": [
+      0.7158,
+      0.5765
+     ],
+     "term": "posterior-mediastinum"
+    },
+    {
+     "at": [
+      0.2265,
+      0.6436
+     ],
+     "term": "diaphragm"
+    },
+    {
+     "at": [
+      0.7588,
+      0.6661
+     ],
+     "term": "thoracic-aorta"
+    },
+    {
+     "at": [
+      0.4798,
+      0.7107
+     ],
+     "term": "inferior-vena-cava"
+    },
+    {
+     "at": [
+      0.5848,
+      0.7662
+     ],
+     "term": "esophagus"
+    }
+   ]
+  },
+  "mediastinum-left": {
+   "url": "plates/mediastinum-left.0fff4452c5.webp",
+   "w": 610,
+   "h": 900,
+   "labels": [
+    {
+     "at": [
+      0.3852,
+      0.1422
+     ],
+     "term": "first-rib"
+    },
+    {
+     "at": [
+      0.4918,
+      0.1322
+     ],
+     "term": "supreme-intercostal-artery"
+    },
+    {
+     "at": [
+      0.2557,
+      0.25
+     ],
+     "term": "brachiocephalic-trunk"
+    },
+    {
+     "at": [
+      0.3115,
+      0.2356
+     ],
+     "term": "common-carotid-artery",
+     "ja": "左総頚動脈",
+     "en": "left common carotid artery"
+    },
+    {
+     "at": [
+      0.3705,
+      0.2289
+     ],
+     "term": "subclavian-artery",
+     "ja": "左鎖骨下動脈",
+     "en": "left subclavian artery"
+    },
+    {
+     "at": [
+      0.4066,
+      0.2067
+     ],
+     "term": "esophagus"
+    },
+    {
+     "at": [
+      0.559,
+      0.2344
+     ],
+     "ja": "交通枝",
+     "en": "rami communicantes",
+     "note": "交感神経幹と肋間神経（脊髄神経）をつなぐ短い枝。脊髄神経から幹へ入る白交通枝と、幹から脊髄神経へ戻る灰白交通枝がある。"
+    },
+    {
+     "at": [
+      0.4885,
+      0.2633
+     ],
+     "term": "superior-intercostal-vein"
+    },
+    {
+     "at": [
+      0.5115,
+      0.3144
+     ],
+     "term": "ligamentum-arteriosum"
+    },
+    {
+     "at": [
+      0.4623,
+      0.3156
+     ],
+     "term": "aortic-arch"
+    },
+    {
+     "at": [
+      0.3033,
+      0.3289
+     ],
+     "term": "ascending-aorta"
+    },
+    {
+     "at": [
+      0.459,
+      0.3389
+     ],
+     "term": "vagus-nerve"
+    },
+    {
+     "at": [
+      0.5115,
+      0.4
+     ],
+     "term": "left-pulmonary-artery"
+    },
+    {
+     "at": [
+      0.4049,
+      0.4078
+     ],
+     "term": "pericardiacophrenic-artery"
+    },
+    {
+     "at": [
+      0.5361,
+      0.4756
+     ],
+     "term": "main-bronchus",
+     "ja": "左主気管支",
+     "en": "left main bronchus"
+    },
+    {
+     "at": [
+      0.5049,
+      0.5122
+     ],
+     "term": "pulmonary-veins",
+     "ja": "左肺静脈",
+     "en": "left pulmonary veins"
+    },
+    {
+     "at": [
+      0.4295,
+      0.5333
+     ],
+     "term": "phrenic-nerve"
+    },
+    {
+     "at": [
+      0.6574,
+      0.5744
+     ],
+     "term": "sympathetic-trunk"
+    },
+    {
+     "at": [
+      0.7541,
+      0.5667
+     ],
+     "term": "intercostal-nerves"
+    },
+    {
+     "at": [
+      0.2623,
+      0.6667
+     ],
+     "term": "pericardium"
+    },
+    {
+     "at": [
+      0.5246,
+      0.6889
+     ],
+     "term": "thoracic-aorta"
+    },
+    {
+     "at": [
+      0.0738,
+      0.7111
+     ],
+     "term": "costal-pleura"
+    },
+    {
+     "at": [
+      0.5902,
+      0.8111
+     ],
+     "term": "greater-splanchnic-nerve"
+    },
+    {
+     "at": [
+      0.541,
+      0.9444
+     ],
+     "term": "diaphragm"
+    }
+   ]
+  },
+  "peritoneum-sagittal": {
+   "url": "plates/peritoneum-sagittal.eecb6a70bb.webp",
+   "w": 811,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.1474,
+      0.1215
+     ],
+     "term": "diaphragm"
+    },
+    {
+     "at": [
+      0.1337,
+      0.3128
+     ],
+     "term": "liver"
+    },
+    {
+     "at": [
+      0.4088,
+      0.3003
+     ],
+     "term": "omental-foramen"
+    },
+    {
+     "at": [
+      0.5584,
+      0.3227
+     ],
+     "term": "pancreas"
+    },
+    {
+     "at": [
+      0.4397,
+      0.3162
+     ],
+     "term": "omental-bursa"
+    },
+    {
+     "at": [
+      0.5274,
+      0.4024
+     ],
+     "term": "duodenum"
+    },
+    {
+     "at": [
+      0.2385,
+      0.4084
+     ],
+     "term": "stomach"
+    },
+    {
+     "at": [
+      0.369,
+      0.507
+     ],
+     "term": "transverse-colon"
+    },
+    {
+     "at": [
+      0.23,
+      0.5632
+     ],
+     "term": "greater-omentum"
+    },
+    {
+     "at": [
+      0.4294,
+      0.5876
+     ],
+     "term": "small-intestine"
+    },
+    {
+     "at": [
+      0.4191,
+      0.5473
+     ],
+     "term": "mesentery"
+    },
+    {
+     "at": [
+      0.2987,
+      0.6628
+     ],
+     "term": "peritoneal-cavity"
+    },
+    {
+     "at": [
+      0.5842,
+      0.7669
+     ],
+     "term": "uterus"
+    },
+    {
+     "at": [
+      0.3555,
+      0.7689
+     ],
+     "term": "urinary-bladder"
+    },
+    {
+     "at": [
+      0.6427,
+      0.8022
+     ],
+     "term": "rectouterine-pouch"
+    },
+    {
+     "at": [
+      0.2798,
+      0.8226
+     ],
+     "term": "pubic-symphysis"
+    },
+    {
+     "at": [
+      0.7493,
+      0.8505
+     ],
+     "term": "rectum"
+    },
+    {
+     "at": [
+      0.4879,
+      0.8904
+     ],
+     "term": "vagina"
+    }
+   ]
+  },
+  "peritoneum-transverse": {
+   "url": "plates/peritoneum-transverse.3a3efd76dd.webp",
+   "w": 550,
+   "h": 407,
+   "labels": [
+    {
+     "at": [
+      0.4673,
+      0.7125
+     ],
+     "term": "vertebral-body"
+    },
+    {
+     "at": [
+      0.4945,
+      0.7813
+     ],
+     "term": "spinal-cord"
+    },
+    {
+     "at": [
+      0.3473,
+      0.7813
+     ],
+     "term": "kidney"
+    },
+    {
+     "at": [
+      0.4273,
+      0.4668
+     ],
+     "term": "pancreas"
+    },
+    {
+     "at": [
+      0.1345,
+      0.5307
+     ],
+     "term": "liver"
+    },
+    {
+     "at": [
+      0.2345,
+      0.3759
+     ],
+     "term": "gallbladder"
+    },
+    {
+     "at": [
+      0.3036,
+      0.3956
+     ],
+     "term": "ascending-colon"
+    },
+    {
+     "at": [
+      0.3818,
+      0.3833
+     ],
+     "term": "small-intestine"
+    },
+    {
+     "at": [
+      0.2818,
+      0.1695
+     ],
+     "term": "visceral-peritoneum"
+    },
+    {
+     "at": [
+      0.5,
+      0.1278
+     ],
+     "term": "peritoneal-cavity"
+    },
+    {
+     "at": [
+      0.7055,
+      0.145
+     ],
+     "term": "parietal-peritoneum"
+    },
+    {
+     "at": [
+      0.6964,
+      0.2334
+     ],
+     "term": "stomach"
+    },
+    {
+     "at": [
+      0.8273,
+      0.4324
+     ],
+     "term": "descending-colon"
+    },
+    {
+     "at": [
+      0.8091,
+      0.6855
+     ],
+     "term": "spleen"
+    }
+   ]
+  },
+  "omental-foramen": {
+   "url": "plates/omental-foramen.8ba6da7ad7.webp",
+   "w": 1400,
+   "h": 1079,
+   "labels": [
+    {
+     "at": [
+      0.2714,
+      0.1108
+     ],
+     "term": "liver"
+    },
+    {
+     "at": [
+      0.207,
+      0.296
+     ],
+     "term": "gallbladder"
+    },
+    {
+     "at": [
+      0.3216,
+      0.5188
+     ],
+     "term": "hepatoduodenal-ligament"
+    },
+    {
+     "at": [
+      0.2749,
+      0.5794
+     ],
+     "term": "omental-foramen"
+    },
+    {
+     "at": [
+      0.4996,
+      0.4354
+     ],
+     "term": "lesser-omentum"
+    },
+    {
+     "at": [
+      0.4282,
+      0.5702
+     ],
+     "term": "omental-bursa"
+    },
+    {
+     "at": [
+      0.2714,
+      0.7131
+     ],
+     "term": "duodenum"
+    },
+    {
+     "at": [
+      0.7145,
+      0.6948
+     ],
+     "term": "stomach"
+    },
+    {
+     "at": [
+      0.1427,
+      0.8982
+     ],
+     "term": "colon"
+    },
+    {
+     "at": [
+      0.4996,
+      0.8799
+     ],
+     "term": "greater-omentum"
+    }
+   ]
   }
  }
 }

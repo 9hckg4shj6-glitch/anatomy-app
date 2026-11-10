@@ -414,7 +414,7 @@ const PlateArt = z.strictObject({
   erase: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.number()])])).optional(), eraseWidth: z.number().optional(), white: z.number().int().min(200).max(254).optional(), blur: z.number().min(0.3).max(10).optional(),
   eraseBoxes: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.string().regex(/^#[0-9a-f]{6}$/)])])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
   drop: z.array(z.string().min(1)).optional(), dropGroups: z.array(z.string().min(1)).optional(), recolor: z.record(z.string(), z.string()).optional(),
-  blobs: z.number().int().min(2).max(5).optional(),
+  blobs: z.number().int().min(2).max(5).optional(), within: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
   keepAll: z.literal(true).optional(), backColor: z.tuple([z.number().int(), z.number().int(), z.number().int()]).optional(),
 });
 const Plate = z.strictObject({
@@ -427,7 +427,7 @@ const Plate = z.strictObject({
   .refine((plate) => !plate.art || plate.labels.every((label) => typeof label !== "string" && label.px), "元の図（art）のラベルには px（元の図のピクセル）が要る");
 const Organ = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), ja: z.string().min(1), yomi: z.string().regex(/^[ぁ-ゖー]+$/), en: word, about: z.string().min(10),
-  units: z.array(z.string()).min(1), with: z.array(z.string()), around: z.array(z.string()).optional(), box: z.tuple([vec, vec]).optional(), seamless: z.array(z.string()).optional(),
+  units: z.array(z.string()).min(1), with: z.array(z.string()), around: z.array(z.string()).optional(), aroundTitle: z.string().min(1).optional(), box: z.tuple([vec, vec]).optional(), seamless: z.array(z.string()).optional(),
   colors: z.record(z.string(), z.string().regex(/^#[0-9a-f]{6}$/)), colorLabel: z.string().min(1).optional(), colorNote: z.string().min(1).optional(), views: z.array(z.strictObject({ label: z.string().min(1), from: vec })),
   cuts: z.array(OrganCut), plates: z.array(Plate),
 // box の無い臓器（皮膚）は3Dの形が無く、平面図だけ

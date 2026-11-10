@@ -224,6 +224,8 @@ export interface Organ {
   units: string[];
   with: string[];
   around?: string[];
+  /** around の語も臓器の図の欄に一覧で出すときの見出し（縦隔・腹膜のように、ほかの臓器の語を集めて見せる臓器） */
+  aroundTitle?: string;
   /** 3Dで見せる箱。無い臓器（皮膚）は平面図だけ */
   box?: [Vec3, Vec3];
   seamless?: string[];

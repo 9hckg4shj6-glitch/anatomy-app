@@ -92,6 +92,49 @@
       ]
     },
     {
+      "id": "reg-mediastinum-contents",
+      "title": "縦隔の心膜と神経・血管",
+      "group": "体幹と頭頚部",
+      "intro": ["縦隔（mediastinum）を左から見ると、心膜（pericardium）に包まれた心臓（heart）（中縦隔（middle mediastinum））の上に大動脈弓（arch of aorta）がかかり、その後ろを胸大動脈（thoracic aorta）・食道（esophagus）・交感神経幹（sympathetic trunk）が下る（後縦隔（posterior mediastinum））。横隔神経（phrenic nerve）は肺根（root of lung）の前で心膜の外側（lateral）の面を、迷走神経（vagus nerve）は肺根の後ろを下る。臓器（organ）の図「縦隔」の平面図で、縦隔の区分と中を通るものを見る。"],
+      "terms": [
+        {
+          "id": "pericardium", "ja": "心膜", "yomi": "しんまく", "en": "pericardium", "la": "pericardium",
+          "plate": "mediastinum-left", "level": 1,
+          "kanji": "心臓を包む膜",
+          "etym": "peri-「周り」＋ cardium ← ギリシャ語 kardia「心臓」",
+          "note": "心臓（heart）と大血管（great vessels）の根もとを包む袋。外側（lateral）の丈夫な線維性心膜と、内側（medial）の漿膜性心膜からなり、漿膜性心膜はさらに心臓の表面をおおう臓側板（visceral layer）（心外膜（epicardium））と、線維性心膜の裏の壁側板に分かれる。2枚の間の心膜腔には少しの液があり、拍動（pulsation）のときのこすれを減らす。下は横隔膜（diaphragm）の腱中心（central tendon）に付く。中縦隔（middle mediastinum）は心膜とその中身の部分。心膜腔に血液（blood）や液がたまって心臓が広がれなくなるのが心タンポナーデ。"
+        },
+        {
+          "id": "phrenic-nerve", "ja": "横隔神経", "yomi": "おうかくしんけい", "en": "phrenic nerve", "la": "nervus phrenicus",
+          "plate": "mediastinum-left", "level": 1,
+          "kanji": "横隔膜へ行く神経",
+          "etym": "phrenic ← ギリシャ語 phren「横隔膜」",
+          "note": "頚神経叢（cervical plexus）の枝（branch）で、おもに第4頚神経（第3〜5頚神経）から出る。前斜角筋（anterior scalene）の前を下り、胸郭上口（superior thoracic aperture）から縦隔（mediastinum）に入って、肺根（root of lung）の前で心膜（pericardium）の外側（lateral）の面にそって（心膜横隔動脈（pericardiacophrenic artery）と並んで）横隔膜（diaphragm）まで下り、横隔膜を動かす。心膜・縦隔胸膜（mediastinal pleura）と横隔膜の腹膜（peritoneum）からの感覚（sensation）も運ぶので、横隔膜の下の炎症（inflammation）が肩（shoulder）の痛みとして感じられる（関連痛）。片方が切れると、その側の横隔膜が上がったまま動かなくなる。"
+        },
+        {
+          "id": "pericardiacophrenic-artery", "ja": "心膜横隔動脈", "yomi": "しんまくおうかくどうみゃく", "en": "pericardiacophrenic artery", "la": "arteria pericardiacophrenica",
+          "plate": "mediastinum-left", "level": 2,
+          "kanji": "心膜と横隔膜へ行く動脈",
+          "etym": "pericardiaco-「心膜の」＋ phrenic「横隔膜の」＋ artery「動脈」",
+          "note": "内胸動脈（internal thoracic artery）の枝（branch）。横隔神経（phrenic nerve）と並んで心膜（pericardium）の外側（lateral）の面を下り、心膜・縦隔胸膜（mediastinal pleura）と横隔膜（diaphragm）に血液（blood）を送る。同じ名前の静脈（vein）がともなう。"
+        },
+        {
+          "id": "ligamentum-arteriosum", "ja": "動脈管索", "yomi": "どうみゃくかんさく", "en": "ligamentum arteriosum", "la": "ligamentum arteriosum",
+          "plate": "mediastinum-left", "level": 1,
+          "kanji": "動脈管の名残の索（ひも）",
+          "etym": "ligamentum「靱帯・ひも」＋ arteriosum「動脈の」",
+          "note": "肺動脈幹（pulmonary trunk）の分かれ目（左肺動脈（left pulmonary artery）の根もと）と大動脈弓（arch of aorta）の下の面をつなぐ、短い線維（fiber）のひも。胎児（fetus）の動脈管（ductus arteriosus）（肺動脈（pulmonary artery）から大動脈（aorta）へ血液（blood）を逃がす管）が、生まれたあと閉じてひもになったもの。左の迷走神経（vagus nerve）から出る左反回神経は、この索のすぐ左で大動脈弓の下をくぐって上へ戻る。動脈管が閉じずに残ったものが動脈管開存症（patent ductus arteriosus）。"
+        },
+        {
+          "id": "greater-splanchnic-nerve", "ja": "大内臓神経", "yomi": "だいないぞうしんけい", "en": "greater splanchnic nerve", "la": "nervus splanchnicus major",
+          "plate": "mediastinum-left", "level": 2,
+          "kanji": "内臓へ行く大きい神経",
+          "etym": "greater「大きい」＋ splanchnic ← ギリシャ語 splanchna「内臓」",
+          "note": "胸部（thorax）の交感神経幹（sympathetic trunk）の第5〜9胸神経節から出る枝（branch）が集まった神経（nerve）。椎体（vertebral body）の横を前下（anteroinferior）へ下り、横隔膜（diaphragm）の脚を貫いて腹腔（abdominal cavity）に入り、腹腔神経節に終わる。胃（stomach）・肝臓（liver）・膵臓（pancreas）など上腹部の内臓（viscera）へ行く交感神経（sympathetic nerve）の線維（fiber）と、内臓の痛みを伝える線維を含む。"
+        }
+      ]
+    },
+    {
       "id": "reg-bony-lines",
       "title": "骨がつくる管と線",
       "group": "体幹と頭頚部",

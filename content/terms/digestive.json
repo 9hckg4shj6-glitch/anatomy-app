@@ -372,7 +372,7 @@
           "id": "serosa", "ja": "漿膜", "yomi": "しょうまく", "en": "serosa", "enAlt": ["serous coat"], "la": "tunica serosa", "plate": "stomach-wall", "level": 2,
           "kanji": "漿（さらさらした液）を出す膜",
           "etym": "serum「乳清・水っぽい液」（ラテン語）",
-          "note": "臓器（organ）の外面（external surface）をおおう薄くなめらかな膜（membrane）（胃（stomach）では臓側腹膜）。表面の中皮から少量の漿液を出し、臓器どうしがこすれずに動けるようにする。腹膜（peritoneum）のほか胸膜（pleura）・心膜（pericardium）も漿膜。"
+          "note": "臓器（organ）の外面（external surface）をおおう薄くなめらかな膜（membrane）（胃（stomach）では臓側腹膜（visceral peritoneum））。表面の中皮から少量の漿液を出し、臓器どうしがこすれずに動けるようにする。腹膜（peritoneum）のほか胸膜（pleura）・心膜（pericardium）も漿膜。"
         },
         {
           "id": "pyloric-sphincter", "ja": "幽門括約筋", "yomi": "ゆうもんかつやくきん", "en": "pyloric sphincter", "la": "musculus sphincter pyloricus", "plate": "stomach-wall", "level": 2,
@@ -533,6 +533,56 @@
           "kanji": "坐骨と肛門の間の窩（くぼみ）",
           "etym": "ischion「坐骨」（ギリシャ語）＋ anus",
           "note": "肛門管（anal canal）の両わき、肛門挙筋（levator ani）の下で外側（lateral）を内閉鎖筋（obturator internus）（と坐骨（ischium））がかこむ、脂肪（fat）で満ちたくさび形の空間。外側の壁の陰部神経管（pudendal canal）（アルコック管（Alcock canal））を陰部神経（pudendal nerve）と内陰部動静脈（internal pudendal vessels）が通る。排便（defecation）のとき肛門管が広がれるのはこの脂肪のおかげ。膿がたまりやすい（坐骨直腸窩膿瘍）。"
+        }
+      ]
+    },
+    {
+      "id": "dig-peritoneum",
+      "title": "腹膜と腹膜腔・網嚢",
+      "group": "消化管",
+      "intro": ["腹膜（peritoneum）は、腹壁（abdominal wall）の内面（internal surface）をおおう壁側腹膜（parietal peritoneum）と臓器（organ）をおおう臓側腹膜（visceral peritoneum）が間膜（mesentery）でつながった1枚の漿膜（serosa）で、その間のごく狭いすき間が腹膜腔（peritoneal cavity）。臓器は腹膜腔の外にあり、間膜でつり下げられた腹膜内臓器と、後腹壁（posterior abdominal wall）に埋まった腹膜後器官に分けられる。胃（stomach）の後ろの網嚢（omental bursa）は、網嚢孔（omental foramen）だけで残りの腹膜腔とつながる。臓器の図「腹膜と腹膜腔」の平面図と、立体の色分けで見る。"],
+      "terms": [
+        {
+          "id": "parietal-peritoneum", "ja": "壁側腹膜", "yomi": "へきそくふくまく", "en": "parietal peritoneum", "la": "peritoneum parietale",
+          "plate": "peritoneum-transverse", "level": 1,
+          "kanji": "腹壁の側の腹膜",
+          "etym": "parietal「壁の」← ラテン語 paries「壁」＋ peritoneum「腹膜」",
+          "note": "腹壁（abdominal wall）と骨盤（pelvis）の壁の内面（internal surface）、横隔膜（diaphragm）の下面（inferior surface）をおおう腹膜（peritoneum）。腹膜は1枚のつながった漿膜（serosa）で、壁をおおう壁側腹膜が、腸間膜（mesentery）などのひだ（fold）を通って臓器（organ）の表面へ折れ返り、臓側腹膜（visceral peritoneum）に続く。壁側腹膜には体の壁と同じ感覚（sensation）の神経（nerve）が来るので、痛む場所がはっきり分かる（腹膜炎の痛みと、腹壁の筋（muscle）が固くなる筋性防御）。"
+        },
+        {
+          "id": "visceral-peritoneum", "ja": "臓側腹膜", "yomi": "ぞうそくふくまく", "en": "visceral peritoneum", "la": "peritoneum viscerale",
+          "plate": "peritoneum-transverse", "level": 1,
+          "kanji": "臓器の側の腹膜",
+          "etym": "visceral「内臓の」＋ peritoneum「腹膜」",
+          "note": "胃（stomach）・小腸（small intestine）・肝臓（liver）などの臓器（organ）の表面をおおう腹膜（peritoneum）（消化管（digestive tract）の壁ではいちばん外の漿膜（serosa））。間膜（mesentery）を通って壁側腹膜（parietal peritoneum）に続く。臓器の全体を臓側腹膜に包まれ、間膜で壁からつり下げられた臓器が腹膜内臓器、後腹壁（posterior abdominal wall）に埋まって前の面だけを腹膜におおわれた臓器が腹膜後器官（腎臓（kidney）・副腎（suprarenal gland）・膵臓（pancreas）・十二指腸（duodenum）の大部分・上行結腸（ascending colon）・下行結腸（descending colon）など）。"
+        },
+        {
+          "id": "peritoneal-cavity", "ja": "腹膜腔", "yomi": "ふくまくくう", "en": "peritoneal cavity", "la": "cavitas peritonealis",
+          "plate": "peritoneum-transverse", "level": 1,
+          "kanji": "腹膜に囲まれたすき間",
+          "etym": "peritoneal「腹膜の」＋ cavity「腔」",
+          "note": "壁側腹膜（parietal peritoneum）と臓側腹膜（visceral peritoneum）の間の、ごく狭いすき間。ふだんは少しの漿液があるだけで、臓器（organ）どうしがなめらかに動けるようにしている。臓器そのものは腹膜腔の外にある。胃（stomach）の後ろの網嚢（omental bursa）と、それ以外の大きい部分に分かれ、網嚢孔（omental foramen）でつながる。男性では閉じた袋だが、女性では卵管（uterine tube）の口で外とつながる。腹水・血液（blood）・膿がたまるのはこの腔で、あお向けや立った姿勢では骨盤（pelvis）の最も低い所（男性の直腸膀胱窩（rectovesical pouch）・女性の直腸子宮窩（recto-uterine pouch））にたまる。"
+        },
+        {
+          "id": "omental-bursa", "ja": "網嚢", "yomi": "もうのう", "en": "omental bursa", "enAlt": ["lesser sac"], "la": "bursa omentalis",
+          "plate": "peritoneum-sagittal", "level": 1,
+          "kanji": "小網と胃の後ろの袋",
+          "etym": "omental「網の」← ラテン語 omentum「網・大網」＋ bursa「袋」",
+          "note": "胃（stomach）と小網（lesser omentum）の後ろにある、腹膜腔（peritoneal cavity）の袋のような部分。後ろは膵臓（pancreas）・左の腎臓（kidney）と副腎（suprarenal gland）をおおう壁側腹膜（parietal peritoneum）、下は横行結腸間膜（transverse mesocolon）（下へ大網（greater omentum）の前後2枚の膜（membrane）の間にのびることもある）、左は脾臓（spleen）までで、右の網嚢孔（omental foramen）だけで残りの腹膜腔とつながる。胃の後壁（posterior wall）の潰瘍（ulcer）が破れると、内容がまず網嚢にたまる。"
+        },
+        {
+          "id": "omental-foramen", "ja": "網嚢孔", "yomi": "もうのうこう", "en": "omental foramen", "enAlt": ["epiploic foramen", "foramen of winslow"], "la": "foramen omentale",
+          "plate": "omental-foramen", "level": 1,
+          "kanji": "網嚢の入口の孔",
+          "etym": "omental「網の」＋ foramen「孔」。デンマークの解剖学者 Winslow にちなみ「ウィンスロー孔」とも",
+          "note": "網嚢（omental bursa）の入口で、指（finger）が1本入るほどの孔。前は肝十二指腸間膜（hepatoduodenal ligament）（中に門脈（hepatic portal vein）・固有肝動脈（proper hepatic artery）・総胆管（bile duct））、後ろは下大静脈（inferior vena cava）をおおう腹膜（peritoneum）、上は肝臓（liver）の尾状葉（caudate lobe）、下は十二指腸（duodenum）の上部で囲まれる。手術では、この孔に指を入れて肝十二指腸間膜をはさみ、肝臓へ行く血液（blood）を止める（プリングル法）。"
+        },
+        {
+          "id": "hepatoduodenal-ligament", "ja": "肝十二指腸間膜", "yomi": "かんじゅうにしちょうかんまく", "en": "hepatoduodenal ligament", "la": "ligamentum hepatoduodenale",
+          "plate": "omental-foramen", "level": 2,
+          "kanji": "肝臓と十二指腸の間の間膜",
+          "etym": "hepato-「肝臓の」＋ duodenal「十二指腸の」＋ ligament「靱帯（間膜）」",
+          "note": "小網（lesser omentum）の右の厚い縁の部分で、肝門（porta hepatis）と十二指腸（duodenum）の上部をつなぐ。中を門脈（hepatic portal vein）（後ろ）・固有肝動脈（proper hepatic artery）（左前）・総胆管（bile duct）（右前）が通る。この右の自由な縁のすぐ後ろが網嚢孔（omental foramen）。小網の残りの薄い部分（肝臓（liver）と胃（stomach）の小弯（lesser curvature）をつなぐ）は肝胃間膜という。"
         }
       ]
     },

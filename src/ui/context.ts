@@ -1,4 +1,4 @@
-import { organOfUnit, pins, regionSystems, termById, terms, type ModelIndex, type Term } from "../content";
+import { organOfUnit, organTerms, pins, regionSystems, termById, terms, type ModelIndex, type Term } from "../content";
 import { beginnerOrgan, inCourse, lessonById } from "../course";
 import { landmarkAt, type Vec3 } from "../landmarks";
 import type { AnatomyViewer, SceneSpec } from "../viewer";
@@ -70,11 +70,15 @@ export function motionPlayer(ctx: AppContext, term: Term, before?: () => Promise
  * 基本の用語（方向・面・運動）は骨格の上に図を描く。関節・靱帯は、どの骨をつなぐかが分かるよう骨を少し濃く添える。
  * 局所解剖は、そのレッスン（無ければ系統全体）の語の境界と中を通る語の系統を読み込む（ほかの語は隠して見せる）。
  * 臓器の場面のレッスン（心臓など。content/organs.json）は、その臓器と大血管だけを見せる（体の中の血管に埋もれないように）。
+ * 臓器の図の立体と同じく、臓器の語の系統はみな読み込む（膝関節のレッスンで骨も、縦隔で気管・食道も見えるように）。
  * 初心者コースのレッスンも、語がみな1つの臓器のものなら同じ（beginnerOrgan）。
  */
 export function sceneFor(system: string, unitId?: string): SceneSpec {
   const organ = organOfUnit(unitId) ?? beginnerOrgan(unitId);
-  if (organ) return { systems: [system], organ: organ.id };
+  if (organ) {
+    const others = organTerms(organ).map((id) => termById.get(id)?.system ?? "").filter((id) => id && id !== system);
+    return { systems: [system, ...new Set(others)], organ: organ.id };
+  }
   if (system === "basics") return { systems: ["skeletal"], body: true };
   if (system === "joints") return { systems: ["joints"], context: ["skeletal"], body: true, contextOpacity: 0.34 };
   if (system === "regional") {

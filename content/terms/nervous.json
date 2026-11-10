@@ -926,6 +926,35 @@
       ]
     },
     {
+      "id": "nerv-brain-base",
+      "title": "脳の底面と大脳動脈輪",
+      "group": "脳",
+      "intro": ["脳（brain）を下から見ると、前頭葉（frontal lobe）の下面（inferior surface）に嗅球（olfactory bulb）と嗅索（olfactory tract）、真ん中に視交叉（optic chiasm）・漏斗（infundibulum）・乳頭体（mammillary body）、その後ろに大脳脚（cerebral peduncle）・橋・延髄（medulla oblongata）が並び、12対の脳神経（cranial nerve）のうち11対がここから出る（滑車神経（trochlear nerve）だけは中脳（midbrain）の後ろから出て前へ回る）。その周りを、内頚動脈（internal carotid artery）と椎骨動脈（vertebral artery）・脳底動脈（basilar artery）がつくる大脳動脈輪（cerebral arterial circle）が囲む。臓器（organ）の図「脳の底面と脳神経」の平面図と立体で、脳神経の出る位置と動脈（artery）の輪を見る。"],
+      "terms": [
+        {
+          "id": "olfactory-bulb", "ja": "嗅球", "yomi": "きゅうきゅう", "en": "olfactory bulb", "la": "bulbus olfactorius",
+          "plate": "brain-inferior", "level": 1,
+          "kanji": "においの神経が入る球",
+          "etym": "olfactory「嗅覚の」＋ bulb「球」",
+          "note": "前頭葉（frontal lobe）の下面（inferior surface）、嗅溝（olfactory sulcus）の前の端にある、ふくらんだ小さな部分。篩骨（ethmoid bone）の篩板（cribriform plate）の上に乗り、鼻腔（nasal cavity）の天井の嗅上皮（olfactory epithelium）から篩板の孔を通ってくる嗅神経（olfactory nerve）（20本ほどの細い糸）がここに入る。においの情報は嗅球で次の神経細胞（neuron）に伝えられ、嗅索（olfactory tract）を通って後ろへ送られる。頭を打って篩板の所で嗅神経が切れると、においが分からなくなる。"
+        },
+        {
+          "id": "olfactory-tract", "ja": "嗅索", "yomi": "きゅうさく", "en": "olfactory tract", "la": "tractus olfactorius",
+          "plate": "brain-inferior", "level": 1,
+          "kanji": "においを伝える索（ひも）",
+          "etym": "olfactory「嗅覚の」＋ tract「索・路」",
+          "note": "嗅球（olfactory bulb）から後ろへのびる、ひものような白質（white matter）の束。前頭葉（frontal lobe）の下面（inferior surface）の嗅溝（olfactory sulcus）の中を走り、視交叉（optic chiasm）の前外側（anterolateral）で内側嗅条と外側嗅条に分かれて、側頭葉（temporal lobe）の内側（medial）（扁桃体（amygdaloid body）のあたり）などへにおいを伝える。嗅覚（olfaction）は視床（thalamus）を通らずに大脳皮質（cerebral cortex）へ届く、ただ一つの感覚（sensation）。"
+        },
+        {
+          "id": "cerebral-arterial-circle", "ja": "大脳動脈輪", "yomi": "だいのうどうみゃくりん", "en": "cerebral arterial circle", "enAlt": ["circle of willis", "arterial circle of willis"], "la": "circulus arteriosus cerebri",
+          "plate": "circle-of-willis", "level": 1,
+          "kanji": "大脳の下の動脈の輪",
+          "etym": "cerebral「大脳の」＋ arterial「動脈の」＋ circle「輪」。イギリスの医師 Thomas Willis にちなみ「ウィリス動脈輪」とも",
+          "note": "脳（brain）の底面で、視交叉（optic chiasm）・漏斗（infundibulum）・乳頭体（mammillary body）を囲む動脈（artery）の輪。前は左右の前大脳動脈（anterior cerebral artery）を前交通動脈（anterior communicating artery）がつなぎ、横は内頚動脈（internal carotid artery）と後大脳動脈（posterior cerebral artery）を後交通動脈（posterior communicating artery）がつなぎ、後ろは脳底動脈（basilar artery）が左右の後大脳動脈に分かれる所でできる。内頚動脈の系統（前）と椎骨動脈（vertebral artery）の系統（後ろ）が輪でつながるので、一つの道がゆっくり狭くなっても血液（blood）が回り込める。輪の枝（branch）の分かれ目は動脈瘤ができやすく、破れるとくも膜下出血になる。"
+        }
+      ]
+    },
+    {
       "id": "nerv-cranial",
       "title": "脳神経",
       "group": "脳神経",

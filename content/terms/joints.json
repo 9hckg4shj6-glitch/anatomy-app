@@ -812,6 +812,56 @@
       ]
     },
     {
+      "id": "joint-knee-bursae",
+      "title": "膝関節の関節腔と滑液包",
+      "group": "下肢",
+      "intro": ["膝関節（knee joint）は、関節包（joint capsule）に包まれた関節腔（joint cavity）の中で大腿骨（femur）・脛骨（tibia）・膝蓋骨（patella）の関節面（articular surface）（関節軟骨（articular cartilage））が向かい合う。関節腔は膝蓋骨の上で膝蓋上包（suprapatellar bursa）へ広がり、まわりには腱（tendon）や皮膚（skin）がこすれないように滑液包（bursa）がたくさんある。臓器（organ）の図「膝関節」の平面図と立体で、関節（joint）の中と外を見分ける。"],
+      "terms": [
+        {
+          "id": "articular-cavity", "ja": "関節腔", "yomi": "かんせつくう", "en": "articular cavity", "enAlt": ["joint cavity", "synovial cavity"], "la": "cavitas articularis",
+          "plate": "knee-sagittal", "level": 1,
+          "kanji": "関節の中のすき間",
+          "etym": "articular「関節の」＋ cavity「腔・空所」",
+          "note": "関節包（joint capsule）に包まれた、向かい合う骨（bone）の関節面（articular surface）の間のすき間。関節包の内面（internal surface）をおおう滑膜（synovial membrane）が出す少しの滑液（synovial fluid）で満たされ、関節軟骨（articular cartilage）の栄養と関節（joint）の潤滑をになう。膝関節（knee joint）の関節腔は人体でいちばん大きく、膝蓋骨（patella）の上では膝蓋上包（suprapatellar bursa）へ続く。膝（knee）に「水がたまる」（関節水腫）のは、この腔の液がふえた状態。"
+        },
+        {
+          "id": "joint-articular-cartilage", "ja": "関節軟骨", "yomi": "かんせつなんこつ", "en": "articular cartilage", "la": "cartilago articularis",
+          "plate": "knee-tibia-top", "level": 1,
+          "kanji": "関節面をおおう軟骨",
+          "etym": "articular「関節の」＋ cartilage「軟骨」",
+          "note": "骨（bone）の関節面（articular surface）をおおう、厚さ数mmの硝子軟骨（hyaline cartilage）。表面がなめらかで骨どうしの摩擦を減らし、衝撃をやわらげる。血管（blood vessel）も神経（nerve）も無く、関節腔（joint cavity）の滑液（synovial fluid）から栄養を受けるので、すり減ると治りにくい（変形性膝関節症）。脛骨（tibia）の上面（superior surface）では、内側顆（medial condyle）と外側顆（lateral condyle）の関節軟骨のまわりを内側半月（medial meniscus）・外側半月（lateral meniscus）が囲む。"
+        },
+        {
+          "id": "quadriceps-tendon", "ja": "大腿四頭筋腱", "yomi": "だいたいしとうきんけん", "en": "quadriceps tendon", "enAlt": ["tendon of quadriceps femoris"], "la": "tendo musculi quadricipitis femoris",
+          "plate": "knee-anterior", "level": 1,
+          "kanji": "大腿四頭筋の腱",
+          "etym": "quadriceps「四つの頭」＋ tendon「腱」",
+          "note": "大腿四頭筋（quadriceps femoris）の4つの頭（大腿直筋（rectus femoris）・外側広筋（vastus lateralis）・内側広筋（vastus medialis）・中間広筋（vastus intermedius））がまとまってできる腱（tendon）。膝蓋骨（patella）の上の縁（膝蓋骨底（base of patella））に付き、膝蓋骨の前を包んで膝蓋靱帯（patellar ligament）に続く。膝蓋骨は、この腱の中にできた種子骨（sesamoid bone）とみなされる。膝蓋腱反射（patellar reflex）は、膝蓋靱帯をたたいて大腿四頭筋を急に伸ばして起こす。"
+        },
+        {
+          "id": "semimembranosus-bursa", "ja": "半膜様筋包", "yomi": "はんまくようきんほう", "en": "semimembranosus bursa", "la": "bursa musculi semimembranosi",
+          "parts": ["za:semimembranosus bursa"], "level": 3, "color": "#9fc2da",
+          "kanji": "半膜様筋の腱の下の滑液包",
+          "etym": "semimembranosus「半ば膜のような（筋）」＋ bursa「袋」",
+          "note": "膝（knee）の後ろの内側（medial）で、半膜様筋（semimembranosus）の腱（tendon）と脛骨（tibia）の内側顆（medial condyle）・腓腹筋（gastrocnemius）の内側頭（medial head）との間にある滑液包（bursa）。腓腹筋内側腱下包（medial subtendinous bursa of gastrocnemius）とつながり、さらに膝関節（knee joint）の関節腔（joint cavity）へ開くことが多い。関節（joint）の液がここへ押し出されてふくれたものが膝窩嚢腫（ベーカー嚢腫）。"
+        },
+        {
+          "id": "medial-subtendinous-bursa-of-gastrocnemius", "ja": "腓腹筋内側腱下包", "yomi": "ひふくきんないそくけんかほう", "en": "medial subtendinous bursa of gastrocnemius", "la": "bursa subtendinea musculi gastrocnemii medialis",
+          "parts": ["za:medial subtendinous bursa of gastrocnemius muscle"], "level": 3, "color": "#9fc2da",
+          "kanji": "腓腹筋の内側頭の腱の下の滑液包",
+          "etym": "medial「内側の」＋ subtendinous「腱の下の」＋ bursa「袋」",
+          "note": "腓腹筋（gastrocnemius）の内側頭（medial head）の起始（origin）の腱（tendon）と、大腿骨（femur）の内側顆（medial condyle）の後ろの面との間にある滑液包（bursa）。多くの人で膝関節（knee joint）の関節腔（joint cavity）とつながり、半膜様筋包（semimembranosus bursa）とも通じる。膝窩嚢腫（ベーカー嚢腫）は、この包と半膜様筋包に関節（joint）の液がたまってふくれたもの。"
+        },
+        {
+          "id": "subcutaneous-infrapatellar-bursa", "ja": "膝蓋下皮下包", "yomi": "しつがいかひかほう", "en": "subcutaneous infrapatellar bursa", "la": "bursa subcutanea infrapatellaris",
+          "parts": ["za:subcutaneous infrapatellar bursa"], "level": 3, "color": "#9fc2da",
+          "kanji": "膝蓋骨の下の、皮下の滑液包",
+          "etym": "subcutaneous「皮下の」＋ infrapatellar「膝蓋骨の下の」＋ bursa「袋」",
+          "note": "膝蓋靱帯（patellar ligament）の下の部分・脛骨粗面（tibial tuberosity）と皮膚（skin）との間にある滑液包（bursa）。膝蓋靱帯の後ろで脛骨（tibia）との間にある深膝蓋下包（deep infrapatellar bursa）とは別のもの。ひざまずく姿勢で押されるので、膝蓋骨（patella）の前の膝蓋前皮下包（prepatellar bursa）とともに、膝（knee）をつく仕事で炎症（inflammation）を起こしやすい。"
+        }
+      ]
+    },
+    {
       "id": "joint-ankle-foot",
       "title": "足首と足の靱帯",
       "group": "下肢",

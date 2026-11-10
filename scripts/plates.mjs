@@ -305,6 +305,11 @@ async function artPlate(plate) {
   const W0 = info.width, H0 = info.height;
   const px = new Float32Array(data);
   const at = (x, y) => (Math.min(H0 - 1, Math.max(0, Math.round(y))) * W0 + Math.min(W0 - 1, Math.max(0, Math.round(x)))) * 3;
+  // art.within [x0, y0, x1, y1] があれば、その四角の外を白くしてから作る（1枚の元の図に並んだ図の1つだけを使う）
+  if (art.within) {
+    const [wx0, wy0, wx1, wy1] = art.within.map((v) => Math.round(v * unit));
+    for (let y = 0; y < H0; y++) for (let x = 0; x < W0; x++) if (x < wx0 || x > wx1 || y < wy0 || y > wy1) px.fill(255, (y * W0 + x) * 3, (y * W0 + x) * 3 + 3);
+  }
   // 引き出し線: 書いた端を ±8px の範囲で、線に沿って最も暗くなる所へ合わせ直し、線から width の内側を埋める。
   // 埋める点ごとに24の向きで両側の埋めない点まで進み、両端の色が最も近い向きで間を補う（線が横切った輪郭は輪郭の向きにつながる）
   const width = art.eraseWidth ?? 5;
