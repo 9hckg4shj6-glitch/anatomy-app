@@ -69,6 +69,7 @@ export function motionPlayer(ctx: AppContext, term: Term, before?: () => Promise
  * 系統を見せるときの既定の組み合わせ。骨格以外は骨格を半透明で添えて、体のどこにあるかを分かりやすくする。
  * 基本の用語（方向・面・運動）は骨格の上に図を描く。関節・靱帯は、どの骨をつなぐかが分かるよう骨を少し濃く添える。
  * 局所解剖は、そのレッスン（無ければ系統全体）の語の境界と中を通る語の系統を読み込む（ほかの語は隠して見せる）。
+ * 基本の用語の体の部位（region の語のレッスン）も同じく、目安の骨・筋と中の器官の系統を読み込む。
  * 臓器の場面のレッスン（心臓など。content/organs.json）は、その臓器と大血管だけを見せる（体の中の血管に埋もれないように）。
  * 臓器の図の立体と同じく、臓器の語の系統はみな読み込む（膝関節のレッスンで骨も、縦隔で気管・食道も見えるように）。
  * 初心者コースのレッスンも、語がみな1つの臓器のものなら同じ（beginnerOrgan）。
@@ -79,7 +80,13 @@ export function sceneFor(system: string, unitId?: string): SceneSpec {
     const others = organTerms(organ).map((id) => termById.get(id)?.system ?? "").filter((id) => id && id !== system);
     return { systems: [system, ...new Set(others)], organ: organ.id };
   }
-  if (system === "basics") return { systems: ["skeletal"], body: true };
+  if (system === "basics") {
+    const unit = unitId ? lessonById.get(unitId) : undefined;
+    const regions = (unit?.terms ?? []).flatMap((term) => (term.region ? [term.region] : []));
+    if (!regions.length) return { systems: ["skeletal"], body: true };
+    const needed = [...new Set(regions.flatMap(regionSystems))];
+    return { systems: needed.length ? needed : ["skeletal"], context: needed.length ? ["skeletal"] : [], body: true, contextOpacity: 0.3 };
+  }
   if (system === "joints") return { systems: ["joints"], context: ["skeletal"], body: true, contextOpacity: 0.34 };
   if (system === "regional") {
     const unit = unitId ? lessonById.get(unitId) : undefined;

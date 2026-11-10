@@ -4,7 +4,7 @@ import basicsJson from "../content/terms/basics.json";
 
 type Joint = { pivot: number[]; axis: number[]; slide?: boolean; moves: string[] };
 const all = joints as Record<string, Joint>;
-const basics = basicsJson as { units: { terms: { figure: { motion?: { from?: Record<string, number>; to: Record<string, number> } } }[] }[] };
+const basics = basicsJson as { units: { terms: { figure?: { motion?: { from?: Record<string, number>; to: Record<string, number> } } }[] }[] };
 
 /** アプリ（src/viewer.ts の poseMatrix）と同じく、関節の pivot のまわりに axis で回した点（slide は mm だけ動かす） */
 function move(jointId: string, angle: number, point: [number, number, number]): THREE.Vector3 {
@@ -56,10 +56,11 @@ describe("関節の向き（scripts/joints.mjs）", () => {
     expect(move("hallux", 30, [-0.09, -0.055, 0.23]).y).toBeLessThan(-0.07); // 屈曲: 母趾の先が下へ
     expect(move("toes", -30, [-0.13, -0.06, 0.2]).y).toBeGreaterThan(-0.045); // 伸展（負）: 指の先が上へ
     expect(move("neck", 60, [0, 1.52, 0.17]).x).toBeGreaterThan(0.05); // 回旋（正）: 顔が左（+x）を向く
+    expect(move("neck-side", 24, [0, 1.62, 0.06]).x).toBeLessThan(-0.04); // 側屈（正）: 頭のてっぺんが右（-x）へ傾く
   });
 
   it("動かす骨は根元から先の順に並び、基本の用語が使う関節はすべてある", () => {
-    const used = basics.units.flatMap((unit) => unit.terms.flatMap((term) => Object.keys({ ...term.figure.motion?.from, ...term.figure.motion?.to })));
+    const used = basics.units.flatMap((unit) => unit.terms.flatMap((term) => Object.keys({ ...term.figure?.motion?.from, ...term.figure?.motion?.to })));
     for (const id of used) expect(all[id], id).toBeDefined();
     const order = Object.keys(all);
     expect(order.indexOf("shoulder-rot")).toBeLessThan(order.indexOf("elbow"));

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="460" viewBox="0 0 920 460">
+  <!-- 神経細胞（ニューロン）の模式図。左から樹状突起・神経細胞体（核と核小体）・軸索小丘・軸索。軸索はシュワン細胞の髄鞘に巻かれ、髄鞘の切れ目がランビエ絞輪。右端で枝分かれした軸索終末（終末ボタン）が次の細胞とシナプスをつくる。このアプリで描いた模式図（scripts/diagrams/tissues.py）。文字は入れない -->
+  <rect width="920" height="460" fill="#ffffff"/>
+  <path d="M200 230 C170 190 150 160 110 140" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M110 140 C90 110 80 90 60 70" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M110 140 C80 140 60 150 34 146" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M200 230 C150 230 110 240 70 236" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M70 236 C50 220 40 210 24 206" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M70 236 C50 250 40 262 28 280" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M205 250 C180 300 150 330 120 370" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 370 C100 380 80 392 60 396" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 370 C120 400 116 420 108 440" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M230 200 C230 160 250 120 240 80" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M240 80 C220 60 214 46 200 30" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M240 80 C260 60 270 46 290 34" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M255 270 C270 320 280 350 300 400" fill="none" stroke="#a07a16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M200 230 C170 190 150 160 110 140" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M110 140 C90 110 80 90 60 70" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M110 140 C80 140 60 150 34 146" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M200 230 C150 230 110 240 70 236" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M70 236 C50 220 40 210 24 206" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M70 236 C50 250 40 262 28 280" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M205 250 C180 300 150 330 120 370" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 370 C100 380 80 392 60 396" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 370 C120 400 116 420 108 440" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M230 200 C230 160 250 120 240 80" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M240 80 C220 60 214 46 200 30" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M240 80 C260 60 270 46 290 34" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M255 270 C270 320 280 350 300 400" fill="none" stroke="#f2cf6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M200 230 C190 190 230 170 260 186 C292 200 300 250 280 270 C260 292 210 290 200 260 Z" fill="#f2cf6a" stroke="#a07a16" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="244" cy="232" rx="22" ry="22" fill="#e9e2f6" stroke="#5a3a8c" stroke-width="3"/>
+  <ellipse cx="248" cy="236" rx="8" ry="8" fill="#5a3a8c"/>
+  <path d="M284 236 L300 230 L300 246 L284 252 Z" fill="#f2cf6a" stroke="#a07a16" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M300 238 L770 238" fill="none" stroke="#a07a16" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M300 238 L770 238" fill="none" stroke="#f2cf6a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="318" y="222" width="92" height="32" rx="15" fill="#8fb6e8" stroke="#2f5a9a" stroke-width="3"/>
+  <path d="M328 222 L328 254 M400 222 L400 254" fill="none" stroke="#5a86c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="364" cy="226" rx="14" ry="5" fill="#2f4a8c"/>
+  <rect x="420" y="222" width="92" height="32" rx="15" fill="#8fb6e8" stroke="#2f5a9a" stroke-width="3"/>
+  <path d="M430 222 L430 254 M502 222 L502 254" fill="none" stroke="#5a86c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="466" cy="226" rx="14" ry="5" fill="#2f4a8c"/>
+  <rect x="522" y="222" width="92" height="32" rx="15" fill="#8fb6e8" stroke="#2f5a9a" stroke-width="3"/>
+  <path d="M532 222 L532 254 M604 222 L604 254" fill="none" stroke="#5a86c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="568" cy="226" rx="14" ry="5" fill="#2f4a8c"/>
+  <rect x="624" y="222" width="92" height="32" rx="15" fill="#8fb6e8" stroke="#2f5a9a" stroke-width="3"/>
+  <path d="M634 222 L634 254 M706 222 L706 254" fill="none" stroke="#5a86c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="670" cy="226" rx="14" ry="5" fill="#2f4a8c"/>
+  <path d="M770 238 C800 238 812 210 836 196" fill="none" stroke="#a07a16" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M770 238 C800 238 812 210 836 196" fill="none" stroke="#f2cf6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M770 238 C800 238 820 240 846 236" fill="none" stroke="#a07a16" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M770 238 C800 238 820 240 846 236" fill="none" stroke="#f2cf6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M770 238 C800 238 812 268 836 282" fill="none" stroke="#a07a16" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M770 238 C800 238 812 268 836 282" fill="none" stroke="#f2cf6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="840" cy="194" rx="9" ry="9" fill="#f2cf6a" stroke="#a07a16" stroke-width="3"/>
+  <ellipse cx="850" cy="236" rx="9" ry="9" fill="#f2cf6a" stroke="#a07a16" stroke-width="3"/>
+  <ellipse cx="840" cy="284" rx="9" ry="9" fill="#f2cf6a" stroke="#a07a16" stroke-width="3"/>
+  <path d="M866 150 C900 160 912 220 906 260 C900 310 880 330 866 330 C876 290 878 200 866 150 Z" fill="#c6d8a8" stroke="#5a7a3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M858 186 L862 202 M860 228 L864 244 M858 276 L862 292" fill="none" stroke="#5a7a3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

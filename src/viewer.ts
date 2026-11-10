@@ -1336,6 +1336,7 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
     this.setRegions(regions);
     // 断面で見せる局所解剖（区画など）では、ほかの語を隠さずにくすんだ色で不透明に描き、CT のような切り口にする
     const regionSection = regions.map((id) => termById.get(id)!.region!.section).find(Boolean) ?? null;
+    const bothSides = regions.some((id) => termById.get(id)!.region!.both);
     if (JSON.stringify(regionSection) !== JSON.stringify(this.regionSection)) {
       this.regionSection = regionSection;
       this.applyClip();
@@ -1420,8 +1421,8 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
       const outside = regions.length > 0 && !bone && !highlightedElements.has(elementId) && !spotElements.has(elementId);
       // 断面では区画の外の筋だけをくすんだ色で描く（細い神経・血管は切り口をごちゃつかせるので隠す）
       const hiddenByRegion = outside && (!regionSection || system !== "muscular");
-      // 局所解剖は右側で示すので、左側の形は隠す（内側から見るとき反対側の脚がじゃまにならないように）
-      const leftSide = regions.length > 0 && system !== "body" && this.restCenter(mesh).x > 0.02;
+      // 局所解剖は右側で示すので、左側の形は隠す（内側から見るとき反対側の脚がじゃまにならないように）。両側を見せる語（体幹の部位など）は隠さない
+      const leftSide = regions.length > 0 && !bothSides && system !== "body" && this.restCenter(mesh).x > 0.02;
       const peeled = !highlightedElements.has(elementId) && !spotElements.has(elementId);
       // 臓器の場面では、臓器の語（と強調した語）のほかは出さない
       const outsideOrgan = !!this.organ && !this.organ.elements.has(elementId) && !highlightedElements.has(elementId) && !spotElements.has(elementId);

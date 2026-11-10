@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="330" viewBox="0 0 1100 330">
+  <!-- 人体の階層の模式図。左から原子・分子（水の分子）、細胞小器官（ミトコンドリア）、細胞、組織（細胞が並んだ層）、器官（胃）、器官系（消化器系）、人体。矢印は小さい単位が集まって大きい単位をつくる向き。このアプリで描いた模式図（scripts/diagrams/tissues.py）。文字は入れない -->
+  <rect width="1100" height="330" fill="#ffffff"/>
+  <path d="M132 170 L179 170" fill="none" stroke="#9a8f80" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="177,160 177,180 191,170" fill="#9a8f80"/>
+  <path d="M287 170 L334 170" fill="none" stroke="#9a8f80" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="332,160 332,180 346,170" fill="#9a8f80"/>
+  <path d="M442 170 L489 170" fill="none" stroke="#9a8f80" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="487,160 487,180 501,170" fill="#9a8f80"/>
+  <path d="M597 170 L649 170" fill="none" stroke="#9a8f80" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="647,160 647,180 661,170" fill="#9a8f80"/>
+  <path d="M757 170 L809 170" fill="none" stroke="#9a8f80" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="807,160 807,180 821,170" fill="#9a8f80"/>
+  <path d="M917 170 L964 170" fill="none" stroke="#9a8f80" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="962,160 962,180 976,170" fill="#9a8f80"/>
+  <path d="M60 180 L84 152 L106 182" fill="none" stroke="#5a5a5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="60" cy="180" r="17" fill="#f2f2f2" stroke="#6a6a6a" stroke-width="3"/>
+  <circle cx="84" cy="152" r="22" fill="#e0453a" stroke="#8a1a12" stroke-width="3"/>
+  <circle cx="106" cy="182" r="17" fill="#f2f2f2" stroke="#6a6a6a" stroke-width="3"/>
+  <ellipse cx="235" cy="170" rx="50" ry="26" fill="#f0a35a" stroke="#8a4a10" stroke-width="4" transform="rotate(-15 235 170)"/>
+  <path d="M197 178 L211 158 L225 184 L239 158 L253 184 L267 160" fill="none" stroke="#8a4a10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-15 235 170)"/>
+  <ellipse cx="390" cy="170" rx="52" ry="44" fill="#fbe7d8" stroke="#a0522d" stroke-width="5"/>
+  <ellipse cx="384" cy="168" rx="18" ry="18" fill="#d9c6ee" stroke="#5b3f8c" stroke-width="3"/>
+  <ellipse cx="416" cy="184" rx="10" ry="5" fill="#f0a35a" stroke="#8a4a10" stroke-width="2" transform="rotate(20 416 184)"/>
+  <ellipse cx="412" cy="148" rx="9" ry="5" fill="#f6d57a" stroke="#a07a16" stroke-width="2"/>
+  <rect x="497" y="128" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="511" cy="142" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="527" y="128" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="541" cy="142" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="557" y="128" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="571" cy="142" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="587" y="128" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="601" cy="142" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="507" y="158" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="521" cy="172" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="537" y="158" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="551" cy="172" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="567" y="158" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="581" cy="172" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="597" y="158" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="611" cy="172" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="497" y="188" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="511" cy="202" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="527" y="188" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="541" cy="202" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="557" y="188" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="571" cy="202" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <rect x="587" y="188" width="28" height="28" rx="5" fill="#f2a7bd" stroke="#8a3a5a" stroke-width="2"/>
+  <ellipse cx="601" cy="202" rx="5.5" ry="5.5" fill="#5a3a8c"/>
+  <path d="M695 106 L713 106 C715 124 725 130 739 134 C765 144 767 190 749 210 C725 232 679 232 655 214 L647 200 C665 208 695 210 707 192 C717 178 711 156 699 140 C693 130 693 118 695 106 Z" fill="#e8a07a" stroke="#8a4a2a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M861 80 L861 130" fill="none" stroke="#c87a5a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M861 128 C895 124 899 160 869 162 C851 164 845 150 857 144" fill="#e8a07a" stroke="#8a4a2a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M819 242 L819 172 C819 160 911 160 911 172 L911 236" fill="none" stroke="#d9965b" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M837 184 C857 174 879 192 893 182 C895 200 839 200 839 214 C855 206 881 224 893 212 C885 230 855 234 845 228" fill="none" stroke="#f0b98a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="895" cy="110" rx="16" ry="10" fill="#9c4a2c" stroke="#5a2a18" stroke-width="2" transform="rotate(-10 895 110)"/>
+  <circle cx="1020" cy="78" r="20" fill="#f0c8a0" stroke="#8a5a3a" stroke-width="3"/>
+  <path d="M990 104 L1050 104 L1066 180 L1056 182 L1044 140 L1042 200 L1044 280 L1026 280 L1020 210 L1014 280 L996 280 L998 200 L996 140 L984 182 L974 180 Z" fill="#f0c8a0" stroke="#8a5a3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

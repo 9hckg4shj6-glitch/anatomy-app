@@ -65,6 +65,36 @@
       ]
     },
     {
+      "id": "b-basic-region",
+      "title": "体の部位の言葉（体幹）",
+      "system": "basics",
+      "intro": ["体は骨を目安に部位に分けます。まず体幹と四肢に分け、体幹は頭部・頚部・胸部・腹部などに分けます。部位の名前は一般の言葉（首・おなか）でなく、この名前で言います。"],
+      "terms": [
+        {"id": "trunk", "point": "体の中心の部分（頭部・頚部・胸部・腹部など）。四肢を除いた所。"},
+        {"id": "limbs", "point": "左右の上肢と下肢の4本。"},
+        {"id": "head", "point": "頚部より上。頭蓋の骨が目安。"},
+        {"id": "neck", "point": "頭部と胸部の間。頚椎（7個）が目安。「けいぶ」と読む。"},
+        {"id": "thorax", "point": "胸郭に囲まれた部分。心臓と肺が入る。"},
+        {"id": "abdomen", "point": "胸部の下、骨盤の上。胃・腸・肝臓が入る。"}
+      ]
+    },
+    {
+      "id": "b-basic-region-limb",
+      "title": "手足の部位の言葉",
+      "system": "basics",
+      "intro": ["上肢は上腕・前腕・手、下肢は大腿・下腿・足に分けます。「手」は手首から先、「足」は足首から先だけを指し、英語の arm は上腕、leg は下腿だけです。"],
+      "terms": [
+        {"id": "upper-limb", "point": "肩から指先まで。上腕・前腕・手に分ける。"},
+        {"id": "arm", "point": "肩から肘まで。骨は上腕骨。英語の arm はここだけ。"},
+        {"id": "forearm", "point": "肘から手首まで。骨は橈骨と尺骨。"},
+        {"id": "hand", "point": "手首から先。腕全体ではない。"},
+        {"id": "lower-limb", "point": "股関節から足の指先まで。大腿・下腿・足に分ける。"},
+        {"id": "thigh", "point": "股関節から膝まで（ふともも）。骨は大腿骨。"},
+        {"id": "leg", "point": "膝から足首まで（すね）。骨は脛骨と腓骨。英語の leg はここだけ。"},
+        {"id": "foot", "point": "足首から先。脚全体ではない。"}
+      ]
+    },
+    {
       "id": "b-skel-spine", "title": "背骨と胸の骨", "system": "skeletal",
       "intro": ["背骨（脊柱）は上から頚椎7・胸椎12・腰椎5・仙骨・尾骨。数を「7・12・5」で覚えます。"],
       "terms": [
@@ -736,6 +766,66 @@
         { "id": "posterior-mediastinum", "point": "心臓の後ろの部分。食道や胸大動脈が通る。" },
         { "id": "greater-pelvis", "point": "骨盤の、分界線より上の広い部分。おなか（腹腔）の下の部分になる。" },
         { "id": "lesser-pelvis", "point": "骨盤の、分界線より下の部分。膀胱や直腸が入る。" }
+      ]
+    },
+    {
+      "id": "b-tis-levels",
+      "title": "細胞と4つの組織",
+      "system": "tissues",
+      "intro": ["人体は 細胞 → 組織 → 器官 → 器官系 → 人体 と、小さい単位が集まってできています。組織はたった4種類です。"],
+      "terms": [
+        {"id": "cell", "point": "体をつくる基本の単位。細胞膜に包まれ、中に核がある。"},
+        {"id": "tissue", "point": "同じ形とはたらきの細胞の集まり。4種類だけ。"},
+        {"id": "organ", "point": "いくつかの組織が集まった、決まった形とはたらきの単位（胃・心臓）。臓器。"},
+        {"id": "organ-system", "point": "共通のはたらきの器官の集まり（消化器系など）。"},
+        {"id": "epithelial-tissue", "point": "体の表面や管の内面をおおう組織。"},
+        {"id": "connective-tissue", "point": "組織の間を埋めて支える組織。骨・軟骨・血液も入る。"},
+        {"id": "muscle-tissue", "point": "収縮する組織（骨格筋・心筋・平滑筋）。"},
+        {"id": "nervous-tissue", "point": "信号を伝える組織（神経細胞と神経膠細胞）。"}
+      ]
+    },
+    {
+      "id": "b-tis-cell",
+      "title": "細胞の中のつくり",
+      "system": "tissues",
+      "intro": ["細胞の中には、はたらきの違う細胞小器官があります。高校の生物の復習です。"],
+      "terms": [
+        {"id": "cell-membrane", "point": "細胞を包む膜（脂質二重膜）。"},
+        {"id": "nucleus", "point": "DNA を入れる、細胞のいちばん大きな構造。"},
+        {"id": "rough-er", "point": "リボソームが付き、タンパク質をつくる。"},
+        {"id": "golgi-apparatus", "point": "タンパク質を仕上げて送り出す。"},
+        {"id": "lysosome", "point": "酵素で物を分解する袋。"},
+        {"id": "mitochondrion", "point": "酸素を使ってエネルギー（ATP）をつくる。"}
+      ]
+    },
+    {
+      "id": "b-tis-epithelium-muscle",
+      "title": "上皮と筋の種類",
+      "system": "tissues",
+      "intro": ["上皮は細胞の形（扁平・立方・円柱）と層（単層・重層）で、筋は横紋の有無で分けます。"],
+      "terms": [
+        {"id": "simple-squamous-epithelium", "point": "平たい細胞が1層。肺胞・血管の内面。"},
+        {"id": "simple-columnar-epithelium", "point": "背の高い細胞が1層。胃・腸の内面。"},
+        {"id": "stratified-squamous-epithelium", "point": "何層も重なる。皮膚・食道。こすれに強い。"},
+        {"id": "skeletal-muscle", "point": "骨を動かす横紋筋。自分の意思で動かせる。"},
+        {"id": "cardiac-muscle", "point": "心臓の横紋筋。自分の意思では動かせない。"},
+        {"id": "smooth-muscle", "point": "内臓の壁の、横紋の無い筋。"}
+      ]
+    },
+    {
+      "id": "b-tis-neuron-layers",
+      "title": "神経細胞と体表からの層",
+      "system": "tissues",
+      "intro": ["神経細胞は樹状突起で受け、軸索で伝えます。体の表面からは 皮膚 → 皮下組織 → 筋膜 → 筋 → 骨 の順に重なり、注射は深いほど早く効きます。"],
+      "terms": [
+        {"id": "neuron", "point": "信号を伝える細胞（ニューロン）。"},
+        {"id": "dendrite", "point": "信号を受け取る、枝分かれした突起。"},
+        {"id": "axon", "point": "信号を遠くへ伝える1本の長い突起。"},
+        {"id": "synapse", "point": "次の細胞へ信号を渡すつなぎ目。"},
+        {"id": "fascia", "point": "筋を包む膜。"},
+        {"id": "subcutaneous-injection", "point": "皮下組織に打つ注射。インスリンなど。"},
+        {"id": "intramuscular-injection", "point": "筋に打つ注射。皮下注射より早く効く。"},
+        {"id": "intravenous-injection", "point": "静脈に打つ注射。最も早く効く。"}
       ]
     }
   ]

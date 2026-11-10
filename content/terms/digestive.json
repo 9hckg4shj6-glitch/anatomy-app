@@ -454,13 +454,13 @@
           "id": "mucosa", "ja": "粘膜", "yomi": "ねんまく", "en": "mucosa", "enAlt": ["mucous membrane"], "la": "tunica mucosa", "plate": "gi-wall", "level": 1,
           "kanji": "粘液でぬれた膜",
           "etym": "mucosa ← ラテン語 mucus「粘液」",
-          "note": "消化管（digestive tract）の壁のいちばん内の層で、粘膜上皮（epithelium of mucosa）・粘膜固有層（lamina propria）・粘膜筋板（muscularis mucosae）の3つからなる。消化液を出し、栄養を吸収する。食道（esophagus）と肛門管（anal canal）の下部の上皮（epithelium）は重層扁平上皮（stratified squamous epithelium）（こすれに強い）、胃から直腸（rectum）までは単層円柱上皮（分泌（secretion）と吸収）。"
+          "note": "消化管（digestive tract）の壁のいちばん内の層で、粘膜上皮（epithelium of mucosa）・粘膜固有層（lamina propria）・粘膜筋板（muscularis mucosae）の3つからなる。消化液を出し、栄養を吸収する。食道（esophagus）と肛門管（anal canal）の下部の上皮（epithelium）は重層扁平上皮（stratified squamous epithelium）（こすれに強い）、胃から直腸（rectum）までは単層円柱上皮（simple columnar epithelium）（分泌（secretion）と吸収）。"
         },
         {
           "id": "mucosal-epithelium", "ja": "粘膜上皮", "yomi": "ねんまくじょうひ", "en": "epithelium of mucosa", "enAlt": ["mucosal epithelium"], "la": "epithelium mucosae", "plate": "gi-wall", "level": 2,
           "kanji": "粘膜の表面の上皮",
           "etym": "epi-「上」＋ thele「乳頭」（ギリシャ語）",
-          "note": "消化管（digestive tract）の内腔（lumen）に面する細胞（cell）の層。消化（digestion）しない食道（esophagus）は重層扁平上皮（stratified squamous epithelium）、消化・吸収をする胃（stomach）・小腸（small intestine）・大腸（large intestine）は単層円柱上皮。胃がん・大腸がんの多くはこの上皮（epithelium）から起こる。"
+          "note": "消化管（digestive tract）の内腔（lumen）に面する細胞（cell）の層。消化（digestion）しない食道（esophagus）は重層扁平上皮（stratified squamous epithelium）、消化・吸収をする胃（stomach）・小腸（small intestine）・大腸（large intestine）は単層円柱上皮（simple columnar epithelium）。胃がん・大腸がんの多くはこの上皮（epithelium）から起こる。"
         },
         {
           "id": "lamina-propria", "ja": "粘膜固有層", "yomi": "ねんまくこゆうそう", "en": "lamina propria", "enAlt": ["lamina propria of mucosa"], "la": "lamina propria mucosae", "plate": "gi-wall", "level": 2,
@@ -472,7 +472,7 @@
           "id": "muscular-layer", "ja": "筋層", "yomi": "きんそう", "en": "muscular layer", "enAlt": ["muscularis externa","muscularis propria"], "la": "tunica muscularis", "plate": "gi-wall", "level": 1,
           "kanji": "（消化管の壁の）筋の層",
           "etym": "muscular「筋の」（ラテン語 musculus「小さなネズミ」）＋ layer「層」",
-          "note": "粘膜下組織（submucosa）の外の平滑筋（smooth muscle）の層で、内の輪走筋層（circular layer）と外の縦走筋層（longitudinal layer）の2層（胃（stomach）は内に斜走筋（oblique muscle fibers）が加わる3層）。2層が交互に縮んで内容物を先へ送る（蠕動運動）。食道（esophagus）の上1/3は横紋筋。"
+          "note": "粘膜下組織（submucosa）の外の平滑筋（smooth muscle）の層で、内の輪走筋層（circular layer）と外の縦走筋層（longitudinal layer）の2層（胃（stomach）は内に斜走筋（oblique muscle fibers）が加わる3層）。2層が交互に縮んで内容物を先へ送る（蠕動運動）。食道（esophagus）の上1/3は横紋筋（striated muscle）。"
         },
         {
           "id": "submucosal-plexus", "ja": "粘膜下神経叢", "yomi": "ねんまくかしんけいそう", "en": "submucosal plexus", "enAlt": ["meissner plexus"], "la": "plexus submucosus", "plate": "gi-wall", "level": 2,

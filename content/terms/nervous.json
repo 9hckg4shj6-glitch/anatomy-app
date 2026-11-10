@@ -1474,7 +1474,7 @@
       "id": "nerv-cord-tracts-more",
       "title": "脊髄の下行路（網様体・前庭・視蓋）",
       "group": "脊髄と上肢・体幹の神経",
-      "intro": ["皮質脊髄路（corticospinal tract）と赤核脊髄路（rubrospinal tract）のほかに、脳幹（brainstem）から脊髄（spinal cord）へ下って姿勢と平衡を保つ伝導路（tract）。主に前索（anterior funiculus）を下り、体幹（trunk）と四肢の近くの筋（muscle）を働かせる。白質（white matter）の中に埋もれているので、断面（section）で見るとよい。"],
+      "intro": ["皮質脊髄路（corticospinal tract）と赤核脊髄路（rubrospinal tract）のほかに、脳幹（brainstem）から脊髄（spinal cord）へ下って姿勢と平衡を保つ伝導路（tract）。主に前索（anterior funiculus）を下り、体幹（trunk）と四肢（limbs）の近くの筋（muscle）を働かせる。白質（white matter）の中に埋もれているので、断面（section）で見るとよい。"],
       "terms": [
         {
           "id": "reticulospinal-tract", "ja": "網様体脊髄路", "yomi": "もうようたいせきずいろ", "en": "reticulospinal tract", "la": "tractus reticulospinalis",

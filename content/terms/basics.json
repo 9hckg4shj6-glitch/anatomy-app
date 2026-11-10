@@ -9,13 +9,16 @@
         "寝ていても腕を上げていても、この姿勢に戻したときの向きで言う。だから「上」はいつも頭の方、「前」はいつも腹（abdomen）の方。",
         "左右は本人から見た左右。向かい合って見ると、図の左が体の右になる。3Dの右上の小さな人と「上・下・前・後・右・左」の字は、いま見ている向きを示す。骨（bone）や臓器（organ）だけを出して向きが分からなくなったら、そこを見る。",
         "『解剖学講義』も最初に「前後・左右・上下は、解剖学的正位をとったときの位置関係で示す」と書く。骨や臓器を手（hand）に取ったら、まず解剖学的正位のときの向きに置いてから名前を言う。",
-        "方向の用語は「上と下」のように対で覚える。部位（region）の名前の頭によく付く（上腕骨（humerus）・内側上顆（medial epicondyle）・浅側頭動脈（superficial temporal artery））。"
+        "方向の用語は「上と下」のように対で覚える。部位（region）の名前の頭によく付く（上腕骨（humerus）・内側上顆（medial epicondyle）・浅側頭動脈（superficial temporal artery））。",
+        "解剖の名前の元はラテン語。ラテン語では構造を表す名詞が先で、方向・形・部位の語が後ろに付き、日本語では順が逆になる: Spina iliaca anterior superior（棘・腸骨（ilium）の・前・上）＝上前腸骨棘（anterior superior iliac spine）、Musculus biceps brachii（筋（muscle）・二頭・上腕（arm）の）＝上腕二頭筋（biceps brachii）。",
+        "名前は原則として音読み（上前腸骨棘＝じょうぜんちょうこつきょく）。ただし右・左は訓読み（右冠状動脈（right coronary artery）＝みぎかんじょうどうみゃく、左胃動脈（left gastric artery）＝ひだりいどうみゃく。「さいどうみゃく」と読むと臍動脈（umbilical arteries）・細動脈（arteriole）とまぎれる）。",
+        "名前の決まり: ① 目安になる構造は原則として骨。② 左右に1対あるものには右・左を付け、付かないものは1つしかない（腕頭静脈（brachiocephalic vein）は左右にあるが、腕頭動脈（brachiocephalic trunk）は右だけ）。③ 方向の語が付けば、対になる構造がある（上前腸骨棘があれば下前腸骨棘（anterior inferior iliac spine）・上後腸骨棘（posterior superior iliac spine）・下後腸骨棘（posterior inferior iliac spine））。④ 並んで走る動脈（artery）と静脈（vein）は同じ名前（大腿動脈（femoral artery）と大腿静脈（femoral vein））。⑤ 筋や神経（nerve）の伝導路（tract）に2つの場所の名前があれば、起始（origin）と停止（insertion）・伝わる向きを示す（胸鎖乳突筋（sternocleidomastoid）、脊髄視床路（spinothalamic tract））。"
       ],
       "terms": [
         {
           "id": "superior", "ja": "上", "yomi": "じょう", "en": "superior", "la": "superior", "level": 1,
           "kanji": "上＝頭の方", "etym": "ラテン語 superior（より上の）。super-・supra-（上に）と同じ仲間",
-          "note": "頭の方。上大静脈（superior vena cava）・上腕骨（humerus）の「上」。頭側（cranial）とも言う。寝ていても、解剖学的正位（anatomical position）に戻したときの頭の方が上。発生学（embryology）や脳（brain）では、鼻先（口）に近い方を吻側（rostral）と言う。",
+          "note": "頭の方。上大静脈（superior vena cava）・上腕骨（humerus）の「上」。頭側（cranial）とも言う。寝ていても、解剖学的正位（anatomical position）に戻したときの頭の方が上。発生学（embryology）や脳（brain）では、鼻先（口）に近い方を吻側（rostral）と言う。四肢（limbs）は動かすと上下が変わるので、近位（proximal）・遠位（distal）を使う。",
           "figure": { "arrows": [[[0, 1.0, 0.26], [0, 1.34, 0.26]]], "view": { "target": [0, 0.95, 0.1], "from": [-0.3, 0.12, 1], "size": 0.75 } },
           "foils": ["inferior", "anterior", "posterior", "medial", "lateral"]
         },
@@ -29,7 +32,7 @@
         {
           "id": "anterior", "ja": "前", "yomi": "ぜん", "en": "anterior", "la": "anterior", "level": 1,
           "kanji": "前＝腹の側", "etym": "ラテン語 anterior（より前の）。ante-（前に）から",
-          "note": "体の腹（abdomen）の側。前脛骨筋（tibialis anterior）・前交通動脈（anterior communicating artery）の「前」。腹側（ventral）とも言う。",
+          "note": "体の腹（abdomen）の側。前脛骨筋（tibialis anterior）・前交通動脈（anterior communicating artery）の「前」。腹側（ventral）とも言う。上・下・前・後の向きは人と四足獣で違うので、動物と比べるときは頭側（cranial）・尾側（caudal）・腹側（ventral）・背側（dorsal）を使う。",
           "figure": { "arrows": [[[0, 1.12, 0.08], [0, 1.12, 0.4]]], "view": { "target": [0, 0.95, 0.1], "from": [-1, 0.12, 0.25], "size": 0.75 } },
           "foils": ["posterior", "superior", "inferior", "medial", "lateral"]
         },
@@ -85,7 +88,7 @@
         {
           "id": "superficial", "ja": "浅", "yomi": "せん", "en": "superficial", "la": "superficialis", "level": 1,
           "kanji": "浅い＝体の表面に近い", "etym": "ラテン語 superficies（表面）。super-（上）＋facies（面）",
-          "note": "体の表面（または器官（organ）の外面（external surface））に近い側。浅指屈筋（flexor digitorum superficialis）・浅側頭動脈（superficial temporal artery）の「浅」。浅指屈筋は深指屈筋（flexor digitorum profundus）より表面にある。浅と深の間は「中間」（intermediate。中間広筋（vastus intermedius））。",
+          "note": "体の表面（または器官（organ）の外面（external surface））に近い側。浅指屈筋（flexor digitorum superficialis）・浅側頭動脈（superficial temporal artery）の「浅」。浅指屈筋は深指屈筋（flexor digitorum profundus）より表面にある。浅と深の間は「中間」（intermediate。中間広筋（vastus intermedius））。日本語では深い所を「下」と言うこともある（皮下組織（subcutaneous tissue）＝皮膚（skin）より深い組織（tissue））ので、上・下と取りちがえないように注意する。",
           "figure": { "arrows": [[[-0.09, 0.6, 0.11], [-0.09, 0.6, 0.21]], [[-0.11, 0.6, 0.09], [-0.21, 0.6, 0.09]], [[-0.09, 0.6, 0.07], [-0.09, 0.6, -0.03]], [[-0.07, 0.6, 0.09], [0, 0.6, 0.09]]], "view": { "target": [-0.09, 0.6, 0.09], "from": [-0.5, 1.0, 1], "size": 0.2 } },
           "foils": ["deep", "proximal", "distal", "superior", "inferior"]
         },
@@ -109,28 +112,28 @@
         {
           "id": "median-plane", "ja": "正中矢状面", "yomi": "せいちゅうしじょうめん", "en": "median plane", "enAlt": ["midsagittal plane", "median sagittal plane"], "la": "planum medianum", "level": 1,
           "kanji": "正中＝まん中。矢状＝矢が体を前から後ろへ貫く向き", "etym": "median はラテン語 medianus（まん中の）。sagittal は sagitta（矢）から",
-          "note": "体のまん中を前から後ろへ縦に通り、体を左右の同じ半分に分ける面。1つしかない。正中面（median plane）とも言う。内側（medial）・外側（lateral）は、この面に近いか遠いかで言う。",
+          "note": "体のまん中を前から後ろへ縦に通り、体を左右の同じ半分に分ける面。1つしかない。正中面（median plane）とも言う。内側（medial）・外側（lateral）は、この面に近いか遠いかで言う。正中矢状面で切った断面（section）を正中断面と言う。",
           "figure": { "plane": { "axis": "x", "at": 0 }, "view": { "target": [0, 0.82, 0.1], "from": [-0.7, 0.35, 1], "size": 0.95 } },
           "foils": ["frontal-plane", "horizontal-plane"]
         },
         {
           "id": "sagittal-plane", "ja": "矢状面", "yomi": "しじょうめん", "en": "sagittal plane", "la": "planum sagittale", "level": 1,
           "kanji": "矢が前から後ろへ刺さる向きの面", "etym": "ラテン語 sagitta（矢）。頭蓋の矢状縫合も同じ向き",
-          "note": "正中矢状面（median plane）に平行な縦の面。体を左右に分ける（同じ大きさとは限らない）。屈曲（flexion）・伸展（extension）は、おもにこの面の中の動き。",
+          "note": "正中矢状面（median plane）に平行な縦の面。体を左右に分ける（同じ大きさとは限らない）。屈曲（flexion）・伸展（extension）は、おもにこの面の中の動き。矢状面の断面（section）（矢状断）では、前・後と上・下は分かるが、左・右（内側（medial）・外側（lateral））は分かりにくい。",
           "figure": { "plane": { "axis": "x", "at": -0.12 }, "view": { "target": [0, 0.82, 0.1], "from": [-0.7, 0.35, 1], "size": 0.95 } },
           "foils": ["median-plane", "frontal-plane", "horizontal-plane"]
         },
         {
           "id": "frontal-plane", "ja": "前頭面", "yomi": "ぜんとうめん", "en": "frontal plane", "enAlt": ["coronal plane"], "la": "planum frontale", "level": 1,
           "kanji": "前頭（ひたい）に平行な面", "etym": "frontal はラテン語 frons（ひたい）から。coronal は corona（冠）から（冠状縫合の向き）",
-          "note": "ひたいに平行な縦の面。体を前と後ろに分ける。冠状面（coronal plane）とも言う。外転（abduction）・内転（adduction）は、おもにこの面の中の動き。",
+          "note": "ひたいに平行な縦の面。体を前と後ろに分ける。冠状面（coronal plane）とも言う。外転（abduction）・内転（adduction）は、おもにこの面の中の動き。前額面とも言う（面の名前が2つあるのは四足獣と比べるため）。前頭断（frontal section）（冠状断）では、上・下と内側（medial）・外側（lateral）は分かるが、前・後（と左・右）は分かりにくい。",
           "figure": { "plane": { "axis": "z", "at": 0.09 }, "view": { "target": [0, 0.82, 0.1], "from": [-0.7, 0.35, 1], "size": 0.95 } },
           "foils": ["median-plane", "sagittal-plane", "horizontal-plane"]
         },
         {
           "id": "horizontal-plane", "ja": "水平面", "yomi": "すいへいめん", "en": "horizontal plane", "enAlt": ["transverse plane", "axial plane"], "la": "planum horizontale", "level": 1,
           "kanji": "地面に平行な面", "etym": "transverse はラテン語 transversus（横切る）から",
-          "note": "地面に平行な面。体を上と下に分ける。横断面（transverse section）とも言い、CT・MRI の横断像（transverse section）（輪切りの画像）はこの面。外旋（lateral rotation）・内旋（medial rotation）や回旋（rotation）は、おもにこの面の中の動き。",
+          "note": "地面に平行な面。体を上と下に分ける。横断面（transverse section）とも言い、CT・MRI の横断像（transverse section）（輪切りの画像）はこの面。外旋（lateral rotation）・内旋（medial rotation）や回旋（rotation）は、おもにこの面の中の動き。水平断（horizontal section）では前・後と内側（medial）・外側（lateral）が分かり、上・下は分かりにくい。医学では CT・MRI の横断像を必ず足（foot）の側（下）から見上げる向きで見るので（画面の左が体の右）、左・右も分かる。教科書の図には背側（dorsal）を上に描くもの（動物と比べる比較解剖学の向き）もある。",
           "figure": { "plane": { "axis": "y", "at": 1.0 }, "view": { "target": [0, 0.82, 0.1], "from": [-0.7, 0.35, 1], "size": 0.95 } },
           "foils": ["median-plane", "sagittal-plane", "frontal-plane"]
         }
@@ -333,6 +336,176 @@
           "note": "橈屈（radial deviation）の反対。手（hand）を小指（little finger）の側（尺側（ulnar））へ曲げる動き。手関節（wrist joint）の内転（adduction）とも言う。橈屈より大きく動く。",
           "figure": { "motion": { "to": { "wrist-dev": -35 } }, "view": { "target": [-0.27, 0.73, 0.14], "from": [-0.1, 0.05, 1], "size": 0.16 } },
           "foils": ["radial-deviation", "pronation", "supination", "inversion", "eversion", "elevation"]
+        }
+      ]
+    },
+    {
+      "id": "basic-region-trunk",
+      "title": "体の部位（体幹）",
+      "intro": [
+        "体は、主に骨（bone）を目安にして部位（region）に分ける。まず体幹（trunk）と四肢（limbs）に大きく分け、体幹は頭部（head）・頚部（neck）・胸部（thoracic part）・腹部（abdominal part）・骨盤（pelvis）・背部（back）・殿部（gluteal region）・会陰（perineum）に分ける。各部位には決まった境がある。",
+        "部位の名前は医学の言葉なので、一般の言葉（首（neck）・背中（back）・腰（lower back）・おなか（abdomen）・しり）を使わないように注意する。読みは音読み（頚部＝けいぶ、殿部＝でんぶ、会陰＝えいん）。",
+        "3Dでは、その部位の目安になる骨（と筋（muscle））を橙色で、中にある主な器官（organ）をもとの色で示す。"
+      ],
+      "terms": [
+        {
+          "id": "trunk", "ja": "体幹", "yomi": "たいかん", "en": "trunk", "la": "truncus", "level": 1,
+          "kanji": "体の幹（みき）", "etym": "ラテン語 truncus（木の幹）",
+          "note": "体の中心の部分で、四肢（limbs）（上肢（upper limb）・下肢（lower limb））を除いた所。講義では頭部（head）・頚部（neck）・胸部（thoracic part）・腹部（abdominal part）・骨盤（pelvis）・背部（back）・殿部（gluteal region）・会陰（perineum）をまとめて体幹とし、体を体幹と四肢に大別する。頭と頚（neck）を別にして、胸部・腹部・骨盤・背部だけを体幹（胴）と呼ぶ本も多い。3Dは体幹の骨（bone）（頭蓋（skull）・脊柱（vertebral column）・胸郭（thoracic cage）・骨盤）。",
+          "region": {"bounds": ["frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone", "maxilla", "mandible", "zygomatic-bone", "nasal-bone", "lacrimal-bone", "palatine-bone", "vomer", "inferior-nasal-concha", "hyoid-bone", "cervical-vertebrae", "thoracic-cage", "lumbar-vertebrae", "sacrum", "coccyx", "hip-bone"], "contents": [], "both": true, "boundsLabel": "目安の骨", "view": {"target": [0, 1.18, 0.08], "from": [0.35, 0.15, 1], "size": 0.52}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "limbs", "ja": "四肢", "yomi": "しし", "en": "limbs", "enAlt": ["extremities"], "la": "membra", "level": 1,
+          "kanji": "4本の肢（てあし）", "etym": "limb（手足）。extremities（体の先端）とも言う",
+          "note": "左右の上肢（upper limb）と下肢（lower limb）の4本。体幹（trunk）から突き出した部分で、体肢とも言う。上肢は上腕（arm）・前腕（forearm）・手（hand）、下肢は大腿（thigh）・下腿（leg）・足（foot）に分ける。上肢帯（pectoral girdle）（鎖骨（clavicle）・肩甲骨（scapula））と下肢帯（pelvic girdle）（寛骨（hip bone））の骨（bone）は四肢の骨に数えるが、肩（shoulder）・殿部（gluteal region）は体幹との境の部分。3Dは自由上肢（free upper limb）と自由下肢（free lower limb）の骨。",
+          "region": {"bounds": ["humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand", "femur", "patella", "tibia", "fibula", "tarsal-bones", "metatarsals", "phalanges-foot"], "contents": [], "both": true, "boundsLabel": "目安の骨", "view": {"target": [0, 0.78, 0.08], "from": [0.35, 0.15, 1], "size": 0.9}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "head", "ja": "頭部", "yomi": "とうぶ", "en": "head", "la": "caput", "level": 1,
+          "kanji": "頭の部分", "etym": "head（頭）。ラテン語 caput（頭。首都 capital の語源）",
+          "note": "頚部（neck）より上の部分。目安は頭蓋（skull）（とうがい）の骨（bone）。脳（brain）を入れる頭と、眼（eye）・鼻（nose）・口・耳（ear）のある顔面（face）に分ける。後頭部（occipital region）・側頭部（temporal region）などの細かい部位（region）は、下の骨（後頭骨（occipital bone）・側頭骨（temporal bone））の名前から付く。3Dは頭蓋の骨と、中の大脳（cerebrum）・小脳（cerebellum）。",
+          "region": {"bounds": ["frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone", "maxilla", "mandible", "zygomatic-bone", "nasal-bone", "lacrimal-bone", "palatine-bone", "vomer", "inferior-nasal-concha"], "contents": ["cerebrum", "cerebellum"], "both": true, "boundsLabel": "目安の骨", "contentsLabel": "中にある器官", "view": {"target": [0, 1.53, 0.08], "from": [0.7, 0.15, 1], "size": 0.17}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "neck", "ja": "頚部", "yomi": "けいぶ", "en": "neck", "la": "collum", "level": 1,
+          "kanji": "頚（くび）の部分", "etym": "ラテン語 collum（くび）・cervix（くび）。頚椎 cervical vertebrae・子宮頚 cervix の cervic- も「くび」",
+          "note": "頭部（head）と胸部（thorax）の間の部分。目安の骨（bone）は頚椎（cervical vertebrae）（7個）と舌骨（hyoid bone）。前に喉頭（larynx）（のどぼとけ（laryngeal prominence））・気管（trachea）・甲状腺（thyroid gland）、後ろは項部（nuchal region）（うなじ（nape））。一般の言葉の「首（neck）」「うなじ」ではなく頚部・項部と言う。「頚（neck）」は「頸」とも書く。",
+          "region": {"bounds": ["cervical-vertebrae", "hyoid-bone"], "contents": ["larynx", "thyroid-gland"], "both": true, "boundsLabel": "目安の骨", "contentsLabel": "中にある器官", "view": {"target": [0, 1.43, 0.08], "from": [0.9, 0.1, 1], "size": 0.12}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "thorax", "ja": "胸部", "yomi": "きょうぶ", "en": "thorax", "enAlt": ["chest"], "la": "thorax", "level": 1,
+          "kanji": "胸の部分", "etym": "ギリシャ語 thorax（よろい・胸当て）",
+          "note": "頚部（neck）と腹部（abdomen）の間の部分。胸郭（thoracic cage）（胸椎（thoracic vertebrae）・肋骨（ribs）・胸骨（sternum））に囲まれ、下は横隔膜（diaphragm）で腹部と分かれる。中に心臓（heart）と肺（lung）（胸腔（thoracic cavity））。乳房（breast）も胸部の部位（region）。英語の chest は一般の言葉で、解剖学（anatomy）では thorax と言う。",
+          "region": {"bounds": ["thoracic-cage"], "contents": ["heart", "lung"], "both": true, "boundsLabel": "目安の骨", "contentsLabel": "中にある器官", "view": {"target": [0, 1.2, 0.1], "from": [0.3, 0.1, 1], "size": 0.26}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "abdomen", "ja": "腹部", "yomi": "ふくぶ", "en": "abdomen", "la": "abdomen", "level": 1,
+          "kanji": "腹の部分", "etym": "ラテン語 abdomen（腹）",
+          "note": "胸部（thorax）の下、骨盤（pelvis）の上の部分。上は横隔膜（diaphragm）、下は骨盤の上の縁まで。骨（bone）は後ろの腰椎（lumbar vertebrae）だけで、前と横は腹壁（abdominal wall）の筋（muscle）が囲む。中に胃（stomach）・小腸（small intestine）・大腸（large intestine）・肝臓（liver）・腎臓（kidney）など（腹腔（abdominal cavity））。下へ骨盤（寛骨（hip bone）・仙骨（sacrum）・尾骨（coccyx）に囲まれた部分。膀胱（urinary bladder）・直腸（rectum）が入る）が続き、骨盤も体幹（trunk）の部位（region）の名前になる。3Dは腰椎と腹部の器官（organ）。",
+          "region": {"bounds": ["lumbar-vertebrae"], "contents": ["liver", "stomach", "small-intestine", "colon", "kidney"], "both": true, "boundsLabel": "目安の骨", "contentsLabel": "中にある器官", "view": {"target": [0, 1.0, 0.08], "from": [-1, 0.15, -0.55], "size": 0.25}, "prompt": "腰椎の前に、これらの器官が入る部位は？"}
+        },
+        {
+          "id": "back", "ja": "背部", "yomi": "はいぶ", "en": "back", "enAlt": ["dorsum"], "la": "dorsum", "level": 1,
+          "kanji": "背の部分", "etym": "ラテン語 dorsum（背）。背側 dorsal も同じ仲間",
+          "note": "体幹（trunk）の後ろの面。頚部（neck）の付け根から仙骨（sacrum）のあたりまでで、目安は脊柱（vertebral column）（胸椎（thoracic vertebrae）・腰椎（lumbar vertebrae））と肩甲骨（scapula）。浅い所に僧帽筋（trapezius）・広背筋（latissimus dorsi）、深い所に脊柱起立筋（erector spinae）。一般の言葉の「背中（back）」ではなく背部と言い、その下の方は腰部（lumbar region）と言う。3Dは後ろから。",
+          "region": {"bounds": ["thoracic-vertebrae", "lumbar-vertebrae", "scapula", "trapezius", "latissimus-dorsi"], "contents": [], "both": true, "boundsLabel": "目安の骨と筋", "view": {"target": [0, 1.12, 0.03], "from": [0.35, 0.2, -1], "size": 0.32}, "prompt": "後ろから見て、オレンジ色の骨と筋がある部位は？"}
+        },
+        {
+          "id": "gluteal-region", "ja": "殿部", "yomi": "でんぶ", "en": "gluteal region", "enAlt": ["buttock"], "la": "regio glutealis", "level": 1,
+          "kanji": "しり（殿）の部分", "etym": "ギリシャ語 gloutos（しり）。大殿筋 gluteus maximus も同じ",
+          "note": "骨盤（pelvis）の後ろの、しりのふくらみの部分。大殿筋（gluteus maximus）・中殿筋（gluteus medius）がつくり、下に寛骨（hip bone）と仙骨（sacrum）。「臀部」とも書くが、解剖学用語（anatomical term）では「殿」。筋肉注射（intramuscular injection）は、坐骨神経（sciatic nerve）を避けて殿部の上外側（superolateral）（中殿筋）に打つ。3Dは後ろから。",
+          "region": {"bounds": ["gluteus-maximus", "gluteus-medius"], "contents": [], "both": true, "boundsLabel": "つくる筋", "view": {"target": [0, 0.84, 0.03], "from": [0.4, 0.15, -1], "size": 0.2}, "prompt": "後ろから見て、オレンジ色の筋がつくる部位は？"}
+        },
+        {
+          "id": "perineum", "ja": "会陰", "yomi": "えいん", "en": "perineum", "la": "perineum", "level": 1,
+          "kanji": "陰部の会（あ）う所", "etym": "ギリシャ語 perineos（会陰）",
+          "note": "左右の大腿（thigh）の付け根の間で、骨盤（pelvis）の出口（骨盤下口（pelvic outlet））をふさぐ部分。恥骨結合（pubic symphysis）・左右の坐骨結節（ischial tuberosity）・尾骨（coccyx）を結ぶひし形で、左右の坐骨結節を結ぶ線で前の尿生殖三角（urogenital triangle）と後ろの肛門三角（anal triangle）に分ける。3Dは下から見る。",
+          "region": {"bounds": ["pubic-symphysis", "ischial-tuberosity", "coccyx"], "contents": [], "both": true, "boundsLabel": "ひし形の角の骨", "outline": [[0, 0.787, 0.128], [-0.03, 0.768, 0.095], [-0.0525, 0.757, 0.045], [-0.025, 0.772, 0.025], [0, 0.784, 0.012], [0.025, 0.772, 0.025], [0.0525, 0.757, 0.045], [0.03, 0.768, 0.095]], "view": {"target": [0, 0.765, 0.065], "from": [0, -1, 0.1], "size": 0.08}, "prompt": "下から見て、恥骨結合・坐骨結節・尾骨を結ぶひし形の部位は？"}
+        }
+      ]
+    },
+    {
+      "id": "basic-region-limb",
+      "title": "体の部位（上肢・下肢）",
+      "intro": [
+        "四肢（limbs）は上肢（upper limb）と下肢（lower limb）。上肢は上腕（arm）・前腕（forearm）・手（hand）、下肢は大腿（thigh）・下腿（leg）・足（foot）に分ける。境はおよそ関節（joint）（肩（shoulder）・肘（elbow）・手首（wrist）、股・膝（knee）・足首（ankle））で、それぞれの骨（bone）が目安になる。",
+        "一般の言葉と範囲が違うので注意する。「手」は手首から先だけ、「足」は足首から先だけで、腕（arm）・脚の全体ではない。英語でも arm は上腕だけ、leg は下腿だけを指す（全体は upper limb・lower limb）。",
+        "3Dでは右側の骨を橙色で示す。"
+      ],
+      "terms": [
+        {
+          "id": "upper-limb", "ja": "上肢", "yomi": "じょうし", "en": "upper limb", "la": "membrum superius", "level": 1,
+          "kanji": "上の肢（てあし）", "etym": "limb（手足）",
+          "note": "肩から指先（fingertip）までの部分で、上腕（arm）・前腕（forearm）・手（hand）に分ける。上肢の骨（bone）は、上肢帯（pectoral girdle）（鎖骨（clavicle）・肩甲骨（scapula））と自由上肢（free upper limb）の骨（上腕骨（humerus）から手の指骨（phalanges）まで）。英語では腕全体を upper limb と言い、arm は上腕だけを指す。3Dは自由上肢の骨。",
+          "region": {"bounds": ["humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"], "contents": [], "boundsLabel": "目安の骨", "view": {"target": [-0.22, 1.0, 0.1], "from": [-0.4, 0.1, 1], "size": 0.4}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "arm", "ja": "上腕", "yomi": "じょうわん", "en": "arm", "enAlt": ["upper arm"], "la": "brachium", "level": 1,
+          "kanji": "腕の上の部分", "etym": "ラテン語 brachium（腕）。上腕二頭筋 biceps brachii・腕神経叢 brachial plexus",
+          "note": "肩から肘までの部分。骨（bone）は上腕骨（humerus）1本。英語の arm は解剖学（anatomy）ではこの部分だけを指す（腕全体は upper limb）。一般の言葉の「二の腕（arm）」。",
+          "region": {"bounds": ["humerus"], "contents": [], "boundsLabel": "目安の骨", "view": {"target": [-0.19, 1.17, 0.08], "from": [-0.4, 0.1, 1], "size": 0.22}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "forearm", "ja": "前腕", "yomi": "ぜんわん", "en": "forearm", "la": "antebrachium", "level": 1,
+          "kanji": "腕の前（先）の部分", "etym": "ラテン語 antebrachium（ante-「前」＋brachium「腕」）",
+          "note": "肘から手首（wrist）までの部分。骨（bone）は橈骨（radius）（外側（lateral）＝母指（thumb）の側）と尺骨（ulna）（内側（medial）＝小指（little finger）の側）の2本で、回内（pronation）・回外（supination）で2本が交差する。前腕の外側・内側は、回内で向きが変わるので橈側（radial）・尺側（ulnar）とも言う。",
+          "region": {"bounds": ["radius", "ulna"], "contents": [], "boundsLabel": "目安の骨", "view": {"target": [-0.24, 0.92, 0.09], "from": [-0.4, 0.1, 1], "size": 0.18}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "hand", "ja": "手", "yomi": "て", "en": "hand", "la": "manus", "level": 1,
+          "kanji": "手首から先", "etym": "ラテン語 manus（手）。manual（手の）と同じ",
+          "note": "手首（wrist）から先の部分。骨（bone）は手根骨（carpal bones）（8個）・中手骨（metacarpals）（5本）・指骨（phalanges）（14個）。解剖学（anatomy）で「手」と言えば手首から先だけで、腕全体ではない。手のひら（palm）の側を手掌（掌側（palmar））、手の甲（back of hand）の側を手背（dorsum of hand）（背側（dorsal））と言う。",
+          "region": {"bounds": ["carpal-bones", "metacarpals", "phalanges-hand"], "contents": [], "boundsLabel": "目安の骨", "view": {"target": [-0.265, 0.75, 0.14], "from": [-0.3, 0.1, 1], "size": 0.11}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "lower-limb", "ja": "下肢", "yomi": "かし", "en": "lower limb", "la": "membrum inferius", "level": 1,
+          "kanji": "下の肢（てあし）", "etym": "limb（手足）",
+          "note": "殿部（gluteal region）・股関節（hip joint）から足（foot）の指先（fingertip）までで、大腿（thigh）・下腿（leg）・足に分ける。下肢の骨（bone）は、下肢帯（pelvic girdle）（寛骨（hip bone））と自由下肢（free lower limb）の骨（大腿骨（femur）から足の指骨（phalanges）まで）。英語では脚全体を lower limb と言い、leg は下腿だけを指す。3Dは自由下肢の骨。",
+          "region": {"bounds": ["femur", "patella", "tibia", "fibula", "tarsal-bones", "metatarsals", "phalanges-foot"], "contents": [], "boundsLabel": "目安の骨", "view": {"target": [-0.09, 0.38, 0.09], "from": [-0.45, 0.1, 1], "size": 0.52}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "thigh", "ja": "大腿", "yomi": "だいたい", "en": "thigh", "la": "femur", "level": 1,
+          "kanji": "大きな腿（もも）", "etym": "ラテン語 femur（もも）。部位も骨（大腿骨）も femur と言う",
+          "note": "股関節（hip joint）から膝までの部分（ふともも）。骨（bone）は大腿骨（femur）1本で、人体でいちばん長い骨。前の膝蓋骨（patella）は膝（knee）（膝蓋部）の骨。",
+          "region": {"bounds": ["femur"], "contents": [], "boundsLabel": "目安の骨", "view": {"target": [-0.09, 0.6, 0.08], "from": [-0.45, 0.1, 1], "size": 0.28}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "leg", "ja": "下腿", "yomi": "かたい", "en": "leg", "la": "crus", "level": 1,
+          "kanji": "腿（もも）の下", "etym": "ラテン語 crus（すね）。英語 leg は解剖学ではここだけ",
+          "note": "膝から足首（ankle）までの部分（すね（shin）・ふくらはぎ（calf））。骨（bone）は脛骨（tibia）（内側（medial）・太い）と腓骨（fibula）（外側（lateral）・細い）の2本。英語の leg は解剖学（anatomy）ではこの部分だけを指す（脚全体は lower limb）。ふくらはぎは腓腹（sura）。",
+          "region": {"bounds": ["tibia", "fibula"], "contents": [], "boundsLabel": "目安の骨", "view": {"target": [-0.085, 0.18, 0.08], "from": [-0.45, 0.1, 1], "size": 0.25}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        },
+        {
+          "id": "foot", "ja": "足", "yomi": "あし", "en": "foot", "la": "pes", "level": 1,
+          "kanji": "足首から先", "etym": "ラテン語 pes（足）。足背動脈 dorsalis pedis",
+          "note": "足首（ankle）から先の部分。骨（bone）は足根骨（tarsal bones）（7個）・中足骨（metatarsals）（5本）・指骨（phalanges）（14個）。解剖学（anatomy）で「足」と言えば足首から先だけで、脚全体（下肢（lower limb））ではない。上の面を足背（dorsum of foot）、地面に着く面を足底（sole）と言う。",
+          "region": {"bounds": ["tarsal-bones", "metatarsals", "phalanges-foot"], "contents": [], "boundsLabel": "目安の骨", "view": {"target": [-0.1, -0.03, 0.12], "from": [-0.5, 0.6, 1], "size": 0.14}, "prompt": "オレンジ色の骨が目安になる部位は？"}
+        }
+      ]
+    },
+    {
+      "id": "basic-motion-3",
+      "title": "運動の用語（前進・対立・側屈）",
+      "intro": [
+        "肩甲骨（scapula）の前後の動き（前進（protraction）と後退（retraction））、母指（thumb）の対立（opposition）と復位（reposition）、首（neck）と体幹（trunk）の側屈（lateral flexion）。これも対で覚える。",
+        "腕（arm）や脚の先で円を描くように、屈曲（flexion）・外転（abduction）・伸展（extension）・内転（adduction）を続けて回す動きを分回し運動（描円運動、circumduction）と言う（肩関節（shoulder joint）・股関節（hip joint））。",
+        "3Dでは骨だけを動かす。オレンジ色が動く骨（bone）、青緑の矢印が動く向き。"
+      ],
+      "terms": [
+        {
+          "id": "protraction", "ja": "前進", "yomi": "ぜんしん", "en": "protraction", "la": "protractio", "level": 2,
+          "kanji": "前へ進める", "etym": "ラテン語 pro-（前へ）＋trahere（引く）",
+          "note": "肩甲骨（scapula）（肩（shoulder））を胸郭（thoracic cage）に沿って前外側（anterolateral）へ滑らせる動き。前方移動・前方突出とも言い、肩甲骨の外転（abduction）とも言う。前鋸筋（serratus anterior）が働き、腕（arm）を前へ突き出すときに起こる。下顎骨（mandible）を前へ出す動きも前進（前方突出）と言う。3Dは右の肩甲骨を上から見る。",
+          "figure": {"motion": {"to": {"girdle-protract": 16}}, "view": {"target": [-0.12, 1.29, 0.07], "from": [-0.25, 1, 0.4], "size": 0.2}},
+          "foils": ["retraction", "elevation", "depression", "lateral-flexion", "opposition"]
+        },
+        {
+          "id": "retraction", "ja": "後退", "yomi": "こうたい", "en": "retraction", "la": "retractio", "level": 2,
+          "kanji": "後ろへ退く", "etym": "ラテン語 re-（後ろへ）＋trahere（引く）",
+          "note": "前進（protraction）の反対。肩甲骨（scapula）を後ろへ、脊柱（vertebral column）の方へ引き寄せる動き。後方移動とも言い、肩甲骨の内転（adduction）とも言う。菱形筋（rhomboid muscles）・僧帽筋（trapezius）の中部が働き、胸（chest）を張るときに起こる。下顎骨（mandible）を後ろへ引く動きも後退と言う。",
+          "figure": {"motion": {"from": {"girdle-protract": 10}, "to": {"girdle-protract": -12}}, "view": {"target": [-0.12, 1.29, 0.07], "from": [-0.25, 1, 0.4], "size": 0.2}},
+          "foils": ["protraction", "elevation", "depression", "lateral-flexion", "opposition"]
+        },
+        {
+          "id": "opposition", "ja": "対立", "yomi": "たいりつ", "en": "opposition", "la": "oppositio", "level": 2,
+          "kanji": "向かい合わせる", "etym": "ラテン語 ob-（向かって）＋ponere（置く）",
+          "note": "母指（thumb）（親指（thumb））の先を、ほかの指（finger）（とくに小指（little finger））の先の腹（abdomen）に向かい合わせる動き。母指の手根中手関節（carpometacarpal joint of thumb）（鞍関節（saddle joint））で、掌側外転・屈曲（flexion）・内旋（medial rotation）が合わさる。母指対立筋（opponens pollicis）が働き、物をつまむ・握るのに欠かせない。手（hand）の母指だけにあり、足（foot）の母趾（great toe）には無い。",
+          "figure": {"motion": {"to": {"thumb-abd": 35, "thumb-flex": 38}}, "view": {"target": [-0.27, 0.75, 0.14], "from": [-0.15, 0.05, 1], "size": 0.12}},
+          "foils": ["reposition", "extension", "supination", "pronation", "lateral-flexion"]
+        },
+        {
+          "id": "reposition", "ja": "復位", "yomi": "ふくい", "en": "reposition", "la": "repositio", "level": 2,
+          "kanji": "元の位置に復す", "etym": "ラテン語 re-（元へ）＋ponere（置く）",
+          "note": "対立（opposition）の反対。小指（little finger）に向かい合わせた母指（thumb）を、元の位置（手のひら（palm）の横）へ戻す動き。",
+          "figure": {"motion": {"from": {"thumb-abd": 35, "thumb-flex": 38}, "to": {"thumb-abd": 0, "thumb-flex": 0}}, "view": {"target": [-0.27, 0.75, 0.14], "from": [-0.15, 0.05, 1], "size": 0.12}},
+          "foils": ["opposition", "flexion", "supination", "pronation", "lateral-flexion"]
+        },
+        {
+          "id": "lateral-flexion", "ja": "側屈", "yomi": "そっくつ", "en": "lateral flexion", "enAlt": ["lateral bending"], "la": "lateroflexio", "level": 1,
+          "kanji": "側方へ屈げる", "etym": "lateral（横の）＋flexion（曲げる）",
+          "note": "首（neck）（頚椎（cervical vertebrae））や体幹（trunk）（脊柱（vertebral column））を左右へ傾ける動き。右への側屈・左への側屈と言う。前頭面（frontal plane）の中の動き。片側の胸鎖乳突筋（sternocleidomastoid）・斜角筋（scalene muscles）（首）や、腰方形筋（quadratus lumborum）・腹斜筋（oblique abdominal muscles）・脊柱起立筋（erector spinae）（体幹）が働く。3Dは頭を右へ傾ける（本当は頚椎全体が少しずつ曲がる）。",
+          "figure": {"motion": {"to": {"neck-side": 24}}, "view": {"target": [0, 1.5, 0.08], "from": [0, 0.15, 1], "size": 0.22}},
+          "foils": ["rotation", "flexion", "extension", "elevation"]
         }
       ]
     }

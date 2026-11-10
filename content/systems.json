@@ -12,5 +12,6 @@
   { "id": "nervous", "ja": "神経系", "color": "#e9c46a" },
   { "id": "sensory", "ja": "感覚器", "color": "#8e7cc3" },
   { "id": "integumentary", "ja": "外皮", "color": "#e3a98c" },
+  { "id": "tissues", "ja": "細胞と組織", "color": "#c48bb4" },
   { "id": "regional", "ja": "局所解剖", "color": "#b08968" }
 ]

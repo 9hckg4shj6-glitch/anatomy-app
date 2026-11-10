@@ -350,7 +350,7 @@
           "id": "glomerular-capsule", "ja": "糸球体包", "yomi": "しきゅうたいほう", "en": "glomerular capsule", "enAlt": ["bowman's capsule", "bowman capsule"], "la": "capsula glomerularis", "plate": "renal-corpuscle", "level": 2,
           "kanji": "糸球体を包む袋",
           "etym": "capsule「小さな箱」。ボウマン（Bowman、イギリスの解剖学者）",
-          "note": "糸球体（glomerulus）を包む二重の袋（ボウマン嚢）。尿細管の始まりがふくらんでへこんだ形で、内葉（臓側板（visceral layer））は糸球体の毛細血管（capillary）にはりつく足細胞（podocyte）、外葉（壁側板）は単層扁平上皮。内葉と外葉の間の腔（ボウマン腔）にこされた原尿（primary urine）がたまり、尿細管極（urinary pole）から近位尿細管（proximal tubule）へ流れる。"
+          "note": "糸球体（glomerulus）を包む二重の袋（ボウマン嚢）。尿細管の始まりがふくらんでへこんだ形で、内葉（臓側板（visceral layer））は糸球体の毛細血管（capillary）にはりつく足細胞（podocyte）、外葉（壁側板）は単層扁平上皮（simple squamous epithelium）。内葉と外葉の間の腔（ボウマン腔）にこされた原尿（primary urine）がたまり、尿細管極（urinary pole）から近位尿細管（proximal tubule）へ流れる。"
         },
         {
           "id": "proximal-tubule", "ja": "近位尿細管", "yomi": "きんいにょうさいかん", "en": "proximal tubule", "enAlt": ["proximal convoluted tubule", "proximal renal tubule"], "la": "tubulus proximalis", "plate": "nephron", "level": 2,

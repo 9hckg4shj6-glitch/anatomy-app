@@ -1,0 +1,473 @@
+{
+  "system": "tissues",
+  "units": [
+    {
+      "id": "tis-levels",
+      "title": "人体の階層と4つの組織",
+      "intro": [
+        "人体は、小さい単位が集まって大きい単位をつくる: 原子・分子 → 細胞小器官（organelle） → 細胞（cell） → 組織（tissue） → 器官（organ）（臓器（organ）） → 器官系（organ system） → 人体。組織はたった4種類（上皮組織（epithelial tissue）・結合組織（connective tissue）・筋組織（muscle tissue）・神経組織（nervous tissue））で、器官はこの4つが組み合わさってできる。",
+        "解剖学（anatomy）は、人体の正常な形と構造を、細かく分けて調べる学問。対象の大きさで、目で見る肉眼解剖学と、顕微鏡で見る顕微解剖学（組織学）に分ける。肉眼解剖学はさらに、同じはたらきの器官系ごとに見る系統解剖学と、体の部位（region）ごとに見る局所解剖学に分ける（神経系だけを神経解剖学と呼ぶこともある）。ほかに病気の原因を調べる病理解剖、死因を調べる法医解剖がある。",
+        "このアプリのホームの系統（骨格系（skeletal system）・筋系・循環器系（cardiovascular system）…）は系統解剖、「局所解剖（regional anatomy）」の系統は局所解剖の見方。局所解剖は臨床の手技に直結するが、その土台は系統解剖の知識。",
+        "人体の器官系: 骨格系・筋系・循環器系（心臓（heart）と血管（blood vessel））・リンパ系・呼吸器系・消化器系・泌尿器系・生殖器系・内分泌系（endocrine system）・神経系・感覚器系・外皮系（皮膚（skin））。",
+        "解剖学は暗記の科目ではなく、正常な構造を理解する学問。正常が分からなければ異常に気づけず、正常に戻すこともできない。図はこのアプリで描いた模式図。"
+      ],
+      "terms": [
+        {
+          "id": "cell", "ja": "細胞", "yomi": "さいぼう", "en": "cell", "la": "cellula", "plate": "body-levels", "level": 1,
+          "kanji": "細かい胞（ふくろ）", "etym": "ラテン語 cellula（小さな部屋）",
+          "note": "生物の体をつくる基本の単位。細胞膜（cell membrane）に包まれ、中は細胞質（cytoplasm）で満たされ、核（nucleus）と細胞小器官（organelle）がある。人体は約37兆個の細胞からなるとされる。同じ形とはたらきの細胞が集まって組織（tissue）をつくる。"
+        },
+        {
+          "id": "organelle", "ja": "細胞小器官", "yomi": "さいぼうしょうきかん", "en": "organelle", "la": "organellum", "plate": "body-levels", "level": 1,
+          "kanji": "細胞の中の小さな器官", "etym": "organ（器官）＋縮小の -elle",
+          "note": "細胞（cell）の中で決まったはたらきをもつ構造。核（nucleus）・ミトコンドリア（mitochondrion）・小胞体・ゴルジ装置（golgi apparatus）・リソソーム（lysosome）など。多くは膜（membrane）に包まれる（リボソーム（ribosome）は膜を持たない）。"
+        },
+        {
+          "id": "tissue", "ja": "組織", "yomi": "そしき", "en": "tissue", "la": "textus", "plate": "body-levels", "level": 1,
+          "kanji": "組み織られたもの", "etym": "フランス語 tissu（織物）",
+          "note": "同じ形とはたらきをもつ細胞（cell）と、その間の物質（細胞間質）の集まり。人体の組織は上皮組織（epithelial tissue）・結合組織（connective tissue）・筋組織（muscle tissue）・神経組織（nervous tissue）の4つに大別される。組織を顕微鏡で調べる学問が組織学。"
+        },
+        {
+          "id": "organ", "ja": "器官", "yomi": "きかん", "en": "organ", "la": "organum", "plate": "body-levels", "level": 1,
+          "kanji": "はたらきをする器（うつわ）", "etym": "ギリシャ語 organon（道具）",
+          "note": "いくつかの組織（tissue）が集まり、決まった形とはたらきをもつ体の単位（胃（stomach）・心臓（heart）・肺など）。臓器（organ）とも言い、体の中にあるものを特に内臓（viscera）と言う。"
+        },
+        {
+          "id": "organ-system", "ja": "器官系", "yomi": "きかんけい", "en": "organ system", "la": "systema", "plate": "body-levels", "level": 1,
+          "kanji": "器官のつながり（系＝つながり）", "etym": "system ← ギリシャ語 systema（組み合わせたもの）",
+          "note": "共通のはたらきをもつ器官（organ）の集まり（消化器系＝口腔（oral cavity）・咽頭（pharynx）・食道（esophagus）・胃（stomach）・腸（intestine）と肝臓（liver）・膵臓（pancreas）など）。系統解剖学の「系」はこの器官系のこと。"
+        },
+        {
+          "id": "epithelial-tissue", "ja": "上皮組織", "yomi": "じょうひそしき", "en": "epithelial tissue", "enAlt": ["epithelium"], "la": "textus epithelialis", "plate": "tissue-types", "level": 1,
+          "kanji": "表面（上）をおおう皮", "etym": "epi-（上）＋ギリシャ語 thele（乳頭）",
+          "note": "体の表面と、管・袋の内面（internal surface）をおおう組織（tissue）。細胞（cell）が隙間なく並び、基底膜（basement membrane）の上にのる。血管（blood vessel）が無い。保護・吸収・分泌（secretion）（腺（gland））・感覚（sensation）のはたらきをする。細胞の形（扁平・立方・円柱）と層（単層・重層・多列）で名前を付ける。"
+        },
+        {
+          "id": "connective-tissue", "ja": "結合組織", "yomi": "けつごうそしき", "en": "connective tissue", "la": "textus connectivus", "plate": "tissue-types", "level": 1,
+          "kanji": "結びつなぐ組織", "etym": "ラテン語 connectere（つなぐ）",
+          "note": "ほかの組織（tissue）の間を埋めてつなぎ、体を支える組織。支持組織とも言う。細胞（cell）はまばらで、細胞の間の物質（線維（fiber）と基質）が多い。狭い意味の結合組織（疎性・密性）のほか、軟骨組織（cartilage）・骨組織（bone tissue）、血液（blood）とリンパ（lymph）も結合組織に入れる。"
+        },
+        {
+          "id": "muscle-tissue", "ja": "筋組織", "yomi": "きんそしき", "en": "muscle tissue", "enAlt": ["muscular tissue"], "la": "textus muscularis", "plate": "tissue-types", "level": 1,
+          "kanji": "筋（すじ）の組織", "etym": "muscle ← ラテン語 musculus（小さなねずみ。筋が動く様子から）",
+          "note": "収縮して力を出す組織（tissue）。細長い筋細胞（筋線維）でできる。横紋のある横紋筋（striated muscle）（骨格筋（skeletal muscle）・心筋（cardiac muscle））と、横紋の無い平滑筋（smooth muscle）に分ける。"
+        },
+        {
+          "id": "nervous-tissue", "ja": "神経組織", "yomi": "しんけいそしき", "en": "nervous tissue", "la": "textus nervosus", "plate": "tissue-types", "level": 1,
+          "kanji": "神経の組織", "etym": "nerve ← ラテン語 nervus（すじ・腱）",
+          "note": "情報を電気の信号で伝える組織（tissue）。信号を伝える神経細胞（neuron）（ニューロン（neuron））と、それを支える神経膠細胞（グリア細胞）でできる。脳（brain）・脊髄（spinal cord）と末梢神経をつくる。"
+        }
+      ]
+    },
+    {
+      "id": "tis-cell",
+      "title": "細胞の膜と核",
+      "intro": [
+        "細胞（cell）は、脂質二重膜の細胞膜（cell membrane）で包まれ、中は細胞質（cytoplasm）で満たされている。細胞の中の核（nucleus）には DNA が入り、DNA は染色体（ふだんはほどけた染色質（chromatin））にまとまっている。高校の生物の復習。",
+        "図は動物細胞の模式図。名前の番号を押すと場所が光る。"
+      ],
+      "terms": [
+        {
+          "id": "cell-membrane", "ja": "細胞膜", "yomi": "さいぼうまく", "en": "cell membrane", "enAlt": ["plasma membrane"], "la": "plasmalemma", "plate": "cell", "level": 1,
+          "kanji": "細胞の膜", "etym": "membrane ← ラテン語 membrana（薄い皮）",
+          "note": "細胞（cell）を包む膜（membrane）。リン脂質の二重の層（脂質二重膜）にタンパク質が埋まる。必要なものだけを通し（半透性・選択的透過性）、受容体で外からの信号を受け取る。"
+        },
+        {
+          "id": "cytoplasm", "ja": "細胞質", "yomi": "さいぼうしつ", "en": "cytoplasm", "la": "cytoplasma", "plate": "cell", "level": 1,
+          "kanji": "細胞の中身（質）", "etym": "cyto-（細胞）＋ギリシャ語 plasma（形づくられたもの）",
+          "note": "細胞膜（cell membrane）の内側（medial）で、核（nucleus）の外の部分。水っぽい基質（細胞質基質）の中に、細胞小器官（organelle）が浮かぶ。"
+        },
+        {
+          "id": "nucleus", "ja": "核", "yomi": "かく", "en": "nucleus", "la": "nucleus", "plate": "cell", "level": 1,
+          "kanji": "果実の芯（たね）", "etym": "ラテン語 nucleus（木の実の芯）",
+          "note": "細胞（cell）の中のいちばん大きな構造で、遺伝情報の DNA を入れる。核膜（nuclear envelope）に包まれ、中に染色質（chromatin）と核小体（nucleolus）がある。赤血球（red blood cell）は核を持たず、骨格筋（skeletal muscle）の線維（fiber）は多くの核を持つ。脳（brain）の中の神経細胞体（cell body）の集まりも「核」（神経核（nucleus））と言うが、別の意味。"
+        },
+        {
+          "id": "nuclear-envelope", "ja": "核膜", "yomi": "かくまく", "en": "nuclear envelope", "enAlt": ["nuclear membrane"], "plate": "cell", "level": 1,
+          "kanji": "核の膜", "etym": "envelope（包むもの）",
+          "note": "核（nucleus）を包む2重の膜（membrane）。ところどころに核膜孔が開き、RNA やタンパク質が核と細胞質（cytoplasm）の間を出入りする。外側（lateral）の膜は粗面小胞体（rough endoplasmic reticulum）につながる。"
+        },
+        {
+          "id": "nucleolus", "ja": "核小体", "yomi": "かくしょうたい", "en": "nucleolus", "la": "nucleolus", "plate": "cell", "level": 1,
+          "kanji": "核の中の小さな体", "etym": "nucleus＋縮小の -olus",
+          "note": "核（nucleus）の中の濃く染まる粒。リボソーム（ribosome）の RNA をつくり、リボソームを組み立てる。仁（じん）とも言う。"
+        },
+        {
+          "id": "chromatin", "ja": "染色質", "yomi": "せんしょくしつ", "en": "chromatin", "enAlt": ["chromosome"], "la": "chromatinum", "plate": "cell", "level": 1,
+          "kanji": "色素でよく染まる物質", "etym": "ギリシャ語 chroma（色）",
+          "note": "核（nucleus）の中の DNA とタンパク質（ヒストン）の複合体。ふだんはほどけて核の中に広がり、細胞（cell）が分裂するときに凝縮して染色体になる。ヒトの染色体は23対（46本）。"
+        },
+        {
+          "id": "ribosome", "ja": "リボソーム", "yomi": "りぼそーむ", "en": "ribosome", "la": "ribosoma", "plate": "cell", "level": 1,
+          "etym": "ribo-（RNA の糖リボース）＋ギリシャ語 soma（体）",
+          "note": "タンパク質をつくる小さな粒で、膜（membrane）を持たない。細胞質（cytoplasm）に浮かぶもの（遊離リボソーム）と、粗面小胞体（rough endoplasmic reticulum）の表面に付くものがある。"
+        }
+      ]
+    },
+    {
+      "id": "tis-organelle",
+      "title": "細胞小器官",
+      "intro": [
+        "細胞（cell）の中では、細胞小器官（organelle）が分業している。粗面小胞体（rough endoplasmic reticulum）でタンパク質をつくり、ゴルジ装置（golgi apparatus）で仕上げて送り出し、リソソーム（lysosome）で分解し、ミトコンドリア（mitochondrion）でエネルギーをつくる。"
+      ],
+      "terms": [
+        {
+          "id": "rough-er", "ja": "粗面小胞体", "yomi": "そめんしょうほうたい", "en": "rough endoplasmic reticulum", "enAlt": ["rough er"], "la": "reticulum endoplasmicum granulosum", "plate": "cell", "level": 1,
+          "kanji": "表面が粗い（リボソームでざらざら）小胞体", "etym": "endo-（中）＋plasma＋ラテン語 reticulum（小さな網）",
+          "note": "表面にリボソーム（ribosome）が付いた、平たい袋が重なった小胞体。分泌（secretion）するタンパク質や膜（membrane）のタンパク質をつくる。核膜（nuclear envelope）の外の膜につながる。膵臓（pancreas）の腺房細胞など、タンパク質を盛んに分泌する細胞（cell）に多い。"
+        },
+        {
+          "id": "smooth-er", "ja": "滑面小胞体", "yomi": "かつめんしょうほうたい", "en": "smooth endoplasmic reticulum", "enAlt": ["smooth er"], "la": "reticulum endoplasmicum nongranulosum", "plate": "cell", "level": 1,
+          "kanji": "表面がなめらかな小胞体", "etym": "smooth（なめらか）",
+          "note": "リボソーム（ribosome）の付かない、管が網のようにつながった小胞体。脂質（ステロイドホルモン（steroid hormone）など）をつくり、肝細胞では薬物を解毒（detoxification）し、筋（muscle）ではカルシウムをためる（筋小胞体）。"
+        },
+        {
+          "id": "golgi-apparatus", "ja": "ゴルジ装置", "yomi": "ごるじそうち", "en": "golgi apparatus", "enAlt": ["golgi complex", "golgi body"], "la": "complexus golgiensis", "plate": "cell", "level": 1,
+          "etym": "イタリアのゴルジ（Golgi）が見つけた",
+          "note": "平たい袋が重なった構造。小胞体から届いたタンパク質に糖を付けるなどして仕上げ、行き先ごとに小胞に詰めて送り出す（細胞（cell）の外への分泌（secretion）・リソソーム（lysosome）・細胞膜（cell membrane））。ゴルジ体とも言う。"
+        },
+        {
+          "id": "lysosome", "ja": "リソソーム", "yomi": "りそそーむ", "en": "lysosome", "la": "lysosoma", "plate": "cell", "level": 1,
+          "etym": "ギリシャ語 lysis（ほどく）＋soma（体）",
+          "note": "加水分解酵素を入れた小さな袋。細胞（cell）が取り込んだものや古くなった細胞小器官（organelle）を分解する。水解小体とも言う。マクロファージなど、ものを食べる細胞に多い。"
+        },
+        {
+          "id": "mitochondrion", "ja": "ミトコンドリア", "yomi": "みとこんどりあ", "en": "mitochondrion", "enAlt": ["mitochondria"], "la": "mitochondrium", "plate": "cell", "level": 1,
+          "etym": "ギリシャ語 mitos（糸）＋chondrion（粒）",
+          "note": "酸素を使ってエネルギー（ATP）をつくる細胞小器官（organelle）。2重の膜（membrane）に包まれ、内膜がひだ（fold）（クリスタ）をつくる。自分の DNA とリボソーム（ribosome）を持ち、分裂して増える。心筋（cardiac muscle）など、よく働く細胞（cell）に多い。"
+        },
+        {
+          "id": "centrosome", "ja": "中心体", "yomi": "ちゅうしんたい", "en": "centrosome", "la": "centrosoma", "plate": "cell", "level": 2,
+          "kanji": "細胞の中心の体", "etym": "center（中心）＋soma（体）",
+          "note": "核（nucleus）の近くにある、2つの中心小体（短い筒）が直角に並んだ構造。細胞（cell）が分裂するとき、染色体を引き分ける紡錘体の起点になる。線毛（cilia）の根元（基底小体）も中心小体と同じつくり。"
+        }
+      ]
+    },
+    {
+      "id": "tis-epithelium",
+      "title": "上皮組織",
+      "intro": [
+        "上皮（epithelium）は、体の外と中を分ける、細胞（cell）が隙間なく並んだ層。体の表面（皮膚（skin）の表皮（epidermis））と、消化管（digestive tract）・気道（airway）・尿路・血管（blood vessel）などの内面（internal surface）をおおう。下の基底膜（basement membrane）で結合組織（connective tissue）とつながる。",
+        "名前は、細胞の形（扁平・立方・円柱）と、層の重なり（単層・重層、見かけは重層で実は単層の多列）の組み合わせ。英語も squamous（扁平）・cuboidal（立方）・columnar（円柱）と simple（単層）・stratified（重層）・pseudostratified（多列）の組み合わせ。",
+        "形とはたらきは密接に関係している: 薄い単層扁平上皮（simple squamous epithelium）は物質の交換に、背（back）の高い単層円柱上皮（simple columnar epithelium）は吸収と分泌（secretion）に、何層もの重層扁平上皮（stratified squamous epithelium）はこすれる刺激に強い。"
+      ],
+      "terms": [
+        {
+          "id": "simple-squamous-epithelium", "ja": "単層扁平上皮", "yomi": "たんそうへんぺいじょうひ", "en": "simple squamous epithelium", "la": "epithelium simplex squamosum", "plate": "epithelium", "level": 1,
+          "kanji": "1層の平たい上皮", "etym": "squamous ← ラテン語 squama（うろこ）",
+          "note": "平たい細胞（cell）が1層に並ぶ上皮（epithelium）。とても薄いので、物質の交換や濾過に向く。肺胞（alveolus）の壁、血管（blood vessel）・リンパ管（lymphatic vessel）の内面（internal surface）（内皮（endothelium））、胸膜（pleura）・腹膜（peritoneum）・心膜（pericardium）の表面（中皮）、糸球体包（glomerular capsule）の壁側。"
+        },
+        {
+          "id": "simple-cuboidal-epithelium", "ja": "単層立方上皮", "yomi": "たんそうりっぽうじょうひ", "en": "simple cuboidal epithelium", "la": "epithelium simplex cuboideum", "plate": "epithelium", "level": 1,
+          "kanji": "1層の立方の上皮", "etym": "cuboidal ← ラテン語 cubus（立方体）",
+          "note": "さいころのような細胞（cell）が1層に並ぶ上皮（epithelium）。分泌（secretion）と吸収をする。甲状腺（thyroid gland）の濾胞、腎臓（kidney）の尿細管の一部、小さな腺（gland）の導管（duct）、卵巣（ovary）の表面。脳室（ventricle）の壁の上衣細胞（ependymal cell）もこの形。"
+        },
+        {
+          "id": "simple-columnar-epithelium", "ja": "単層円柱上皮", "yomi": "たんそうえんちゅうじょうひ", "en": "simple columnar epithelium", "la": "epithelium simplex columnare", "plate": "epithelium", "level": 1,
+          "kanji": "1層の円柱の上皮", "etym": "columnar ← ラテン語 columna（柱）",
+          "note": "背（back）の高い円柱の細胞（cell）が1層に並ぶ上皮（epithelium）。吸収と分泌（secretion）をする所にあり、胃（stomach）・小腸（small intestine）・大腸（large intestine）の粘膜（mucosa）（小腸では表面に微絨毛（microvilli））、胆嚢（gallbladder）、卵管（uterine tube）・子宮（uterus）の内面（internal surface）。杯細胞（goblet cell）がまじる所もある。"
+        },
+        {
+          "id": "stratified-squamous-epithelium", "ja": "重層扁平上皮", "yomi": "じゅうそうへんぺいじょうひ", "en": "stratified squamous epithelium", "la": "epithelium stratificatum squamosum", "plate": "epithelium", "level": 1,
+          "kanji": "何層も重なった平たい上皮", "etym": "stratified ← ラテン語 stratum（層）",
+          "note": "細胞（cell）が何層にも重なり、深い層は立方、表面の層は平たい上皮（epithelium）。こすれる刺激（機械的刺激）に強い。皮膚（skin）の表皮（epidermis）は表面が角化（keratinization）する角化重層扁平上皮。口腔（oral cavity）・咽頭（pharynx）・食道（esophagus）・肛門（anus）・腟（vagina）は角化しない。"
+        },
+        {
+          "id": "pseudostratified-ciliated-epithelium", "ja": "多列線毛上皮", "yomi": "たれつせんもうじょうひ", "en": "pseudostratified ciliated columnar epithelium", "enAlt": ["pseudostratified epithelium"], "la": "epithelium pseudostratificatum", "plate": "epithelium", "level": 1,
+          "kanji": "核が何列にも並んで見え、線毛のある上皮", "etym": "pseudo-（にせの）＋stratified（重層の）",
+          "note": "すべての細胞（cell）が基底膜（basement membrane）に着いているが、背（back）の高さと核（nucleus）の高さがそろわないので重層に見える上皮（epithelium）（多列上皮）。気道（airway）（鼻腔（nasal cavity）・気管（trachea）・気管支（bronchus））では表面に線毛（cilia）があり、杯細胞（goblet cell）が多い。杯細胞の粘液（mucus）でちりや異物をからめ、線毛が咽頭（pharynx）の方へ送り出す。"
+        },
+        {
+          "id": "transitional-epithelium", "ja": "移行上皮", "yomi": "いこうじょうひ", "en": "transitional epithelium", "enAlt": ["urothelium"], "la": "urothelium", "plate": "epithelium", "level": 1,
+          "kanji": "形が移り変わる上皮", "etym": "transitional（移り変わる）",
+          "note": "尿の通り道（腎杯（renal calyx）・腎盂（renal pelvis）・尿管（ureter）・膀胱（urinary bladder））の上皮（epithelium）。膀胱がふくらむと細胞（cell）が引き伸ばされて層が薄くなり、縮むと厚くなる（伸び縮みできる）。表面に大きな被蓋細胞が並ぶ。尿路上皮とも言う。重層上皮の一つとする本が多いが、講義では伸び縮みする多列上皮として扱う。"
+        },
+        {
+          "id": "basement-membrane", "ja": "基底膜", "yomi": "きていまく", "en": "basement membrane", "la": "membrana basalis", "plate": "epithelium", "level": 2,
+          "kanji": "底（基底）の膜", "etym": "basement（土台）",
+          "note": "上皮細胞（epithelial cell）の下にある薄い膜（membrane）で、上皮（epithelium）と下の結合組織（connective tissue）の境。上皮細胞を支え、通す物質を選ぶ（腎臓（kidney）の糸球体（glomerulus）の濾過）。がんが基底膜を越えて広がることを浸潤と言う。"
+        },
+        {
+          "id": "cilia", "ja": "線毛", "yomi": "せんもう", "en": "cilia", "enAlt": ["cilium"], "la": "cilia", "plate": "epithelium", "level": 2,
+          "kanji": "線のような毛", "etym": "ラテン語 cilium（まつげ）の複数形",
+          "note": "上皮細胞（epithelial cell）の表面の細い毛（hair）のような突起（process）。根元の基底小体から生え、そろって波打ち、表面の粘液（mucus）や卵子を一方向へ送る（気道（airway）・卵管（uterine tube））。線毛のある上皮（epithelium）を線毛上皮と言う。小腸（small intestine）の吸収上皮の短い突起は微絨毛（microvilli）で、線毛とは別のもの。"
+        }
+      ]
+    },
+    {
+      "id": "tis-connective",
+      "title": "結合組織",
+      "intro": [
+        "結合組織（connective tissue）（支持組織）は体の中に広く分布し、ほかの組織（tissue）をつなぎ支え、栄養を補う。細胞（cell）がまばらで、細胞の間の物質（膠原線維（collagen fiber）・弾性線維（elastic fiber）などの線維（fiber）と、基質）が多い。",
+        "狭い意味の結合組織（線維性結合組織: 疎性と密性）、軟骨組織（cartilage）・骨組織（bone tissue）、血液（blood）とリンパ（lymph）（液性の結合組織）に分ける。ふつう「結合組織」と言えば線維性結合組織のこと。皮膚（skin）の下の皮下組織（subcutaneous tissue）は、脂肪細胞（adipocyte）の多い疎性結合組織（loose connective tissue）。"
+      ],
+      "terms": [
+        {
+          "id": "loose-connective-tissue", "ja": "疎性結合組織", "yomi": "そせいけつごうそしき", "en": "loose connective tissue", "enAlt": ["areolar connective tissue"], "la": "textus connectivus laxus", "plate": "connective-tissue", "level": 1,
+          "kanji": "まばら（疎）な結合組織", "etym": "loose（ゆるい）",
+          "note": "線維（fiber）がゆるく粗く走り、細胞（cell）と液の多い結合組織（connective tissue）。皮下組織（subcutaneous tissue）・粘膜固有層（lamina propria）・粘膜下組織（submucosa）・血管（blood vessel）のまわり・筋（muscle）と筋の間にあり、器官（organ）の間を埋めて、動けるようにつなぐ。膠原線維（collagen fiber）が密に並ぶもの（腱（tendon）・靱帯（ligament）・真皮（dermis）・筋膜（fascia）・眼球（eyeball）の強膜（sclera））は密性結合組織と言う。"
+        },
+        {
+          "id": "collagen-fiber", "ja": "膠原線維", "yomi": "こうげんせんい", "en": "collagen fiber", "enAlt": ["collagenous fiber"], "la": "fibra collagenosa", "plate": "connective-tissue", "level": 1,
+          "kanji": "膠（にかわ）のもとになる線維", "etym": "collagen ← ギリシャ語 kolla（にかわ）",
+          "note": "コラーゲンでできた太い線維（fiber）。白く、引っぱる力に強く、ほとんど伸びない。結合組織（connective tissue）で最も多い線維で、腱（tendon）・靱帯（ligament）・真皮（dermis）・骨（bone）の基質の主な成分。線維芽細胞（fibroblast）がつくる。"
+        },
+        {
+          "id": "elastic-fiber", "ja": "弾性線維", "yomi": "だんせいせんい", "en": "elastic fiber", "la": "fibra elastica", "plate": "connective-tissue", "level": 1,
+          "kanji": "弾む（伸び縮みする）線維", "etym": "elastic（弾力のある）",
+          "note": "エラスチンでできた細い線維（fiber）で、枝分かれして網をつくる。ゴムのように伸びて元に戻る。大動脈（aorta）の壁・肺（lung）・皮膚（skin）・弾性軟骨・皮下組織（subcutaneous tissue）に多い。"
+        },
+        {
+          "id": "fibroblast", "ja": "線維芽細胞", "yomi": "せんいがさいぼう", "en": "fibroblast", "la": "fibroblastus", "plate": "connective-tissue", "level": 1,
+          "kanji": "線維の芽（もと）の細胞", "etym": "fibro-（線維）＋ギリシャ語 blastos（芽）",
+          "note": "結合組織（connective tissue）で最もふつうの細胞（cell）。紡錘形で、膠原線維（collagen fiber）・弾性線維（elastic fiber）と基質をつくる。傷が治るときに増えて、傷あと（瘢痕）をつくる。"
+        },
+        {
+          "id": "adipocyte", "ja": "脂肪細胞", "yomi": "しぼうさいぼう", "en": "adipocyte", "enAlt": ["fat cell"], "la": "adipocytus", "plate": "connective-tissue", "level": 1,
+          "kanji": "脂肪をためる細胞", "etym": "ラテン語 adeps（脂肪）＋cyte（細胞）",
+          "note": "中に大きな脂肪（fat）の滴をためた丸い細胞（cell）。核（nucleus）と細胞質（cytoplasm）は端に薄く押しやられる（指輪のように見える）。集まって脂肪組織（adipose tissue）をつくり、エネルギーを蓄え、体温（body temperature）を保ち、クッションになる。皮下組織（subcutaneous tissue）に多い。"
+        },
+        {
+          "id": "cartilage-tissue", "ja": "軟骨組織", "yomi": "なんこつそしき", "en": "cartilage", "enAlt": ["cartilage tissue"], "la": "textus cartilagineus", "plate": "connective-tissue", "level": 1,
+          "kanji": "軟らかい骨", "etym": "ラテン語 cartilago",
+          "note": "硬いゴムのような基質の中の小さな腔（軟骨小腔）に、軟骨細胞（chondrocyte）が入る支持組織。血管（blood vessel）が無い。基質の線維（fiber）で、硝子軟骨（hyaline cartilage）（関節軟骨（articular cartilage）・肋軟骨（costal cartilages）・気管（trachea））・弾性軟骨（耳介（auricle）・喉頭蓋（epiglottis））・線維軟骨（fibrocartilage）（椎間円板（intervertebral disc）・恥骨結合（pubic symphysis）・関節円板（articular disc））に分ける。"
+        },
+        {
+          "id": "chondrocyte", "ja": "軟骨細胞", "yomi": "なんこつさいぼう", "en": "chondrocyte", "la": "chondrocytus", "plate": "connective-tissue", "level": 2,
+          "kanji": "軟骨の細胞", "etym": "ギリシャ語 chondros（軟骨）＋cyte",
+          "note": "軟骨（cartilage）の基質の中の小腔に入る細胞（cell）で、基質をつくる。1つの細胞から分かれた2〜4個が集まって並ぶ。"
+        },
+        {
+          "id": "bone-tissue", "ja": "骨組織", "yomi": "こつそしき", "en": "bone tissue", "enAlt": ["osseous tissue"], "la": "textus osseus", "plate": "connective-tissue", "level": 1,
+          "kanji": "骨の組織", "etym": "bone（骨）",
+          "note": "膠原線維（collagen fiber）にリン酸カルシウムが沈着した硬い基質をもつ支持組織。緻密骨では、中心管（central canal）（ハバース管）のまわりに同心円の層板が重なった骨単位（osteon）（オステオン）が並ぶ。血管（blood vessel）に富み、骨芽細胞（osteoblast）がつくり破骨細胞がこわして、つくり直され続ける。"
+        },
+        {
+          "id": "osteocyte", "ja": "骨細胞", "yomi": "こつさいぼう", "en": "osteocyte", "la": "osteocytus", "plate": "connective-tissue", "level": 2,
+          "kanji": "骨の細胞", "etym": "ギリシャ語 osteon（骨）＋cyte",
+          "note": "骨（bone）の基質の中の骨小腔に入る細胞（cell）。細い突起（process）を骨細管にのばして互いにつながり、骨の維持とつくり直しを調節する。骨芽細胞（osteoblast）が、自分のつくった基質に埋まったもの。"
+        }
+      ]
+    },
+    {
+      "id": "tis-blood",
+      "title": "血液",
+      "intro": [
+        "血液（blood）は液性の結合組織（connective tissue）。液体の血漿（水・血漿タンパク質・糖・電解質・脂質など）の中に、血球（blood cells）（赤血球（red blood cell）・白血球（leukocyte）・血小板（platelet））が浮かぶ。血球は骨髄（bone marrow）でつくられる。"
+      ],
+      "terms": [
+        {
+          "id": "blood", "ja": "血液", "yomi": "けつえき", "en": "blood", "la": "sanguis", "plate": "connective-tissue", "level": 1,
+          "kanji": "血の液", "etym": "古英語 blod",
+          "note": "血管（blood vessel）の中を流れる液性の結合組織（connective tissue）。体重の約8%。血漿（約55%）と血球（blood cells）（約45%）からなる。酸素・栄養・ホルモンを運び、二酸化炭素と老廃物を運び去り、体温（body temperature）を保ち、体を守る。"
+        },
+        {
+          "id": "erythrocyte", "ja": "赤血球", "yomi": "せっけっきゅう", "en": "erythrocyte", "enAlt": ["red blood cell"], "la": "erythrocytus", "plate": "connective-tissue", "level": 1,
+          "kanji": "赤い血の球", "etym": "ギリシャ語 erythros（赤い）＋cyte",
+          "note": "両面がくぼんだ円盤形（直径約7.5µm）の、核（nucleus）の無い血球（blood cells）。ヘモグロビンで酸素を運ぶ。血液（blood）1µL に約450万〜500万個。寿命は約120日で、脾臓（spleen）でこわされる。RBC と略す。"
+        },
+        {
+          "id": "leukocyte", "ja": "白血球", "yomi": "はっけっきゅう", "en": "leukocyte", "enAlt": ["white blood cell"], "la": "leucocytus", "plate": "connective-tissue", "level": 1,
+          "kanji": "白い血の球", "etym": "ギリシャ語 leukos（白い）＋cyte",
+          "note": "核（nucleus）のある血球（blood cells）で、体を病原体から守る（免疫（immunity））。顆粒球（好中球・好酸球・好塩基球）・リンパ球・単球に分ける。血液（blood）1µL に約4,000〜9,000個。血管（blood vessel）の外に出てはたらき、単球は組織（tissue）でマクロファージになる。WBC と略す。"
+        },
+        {
+          "id": "platelet", "ja": "血小板", "yomi": "けっしょうばん", "en": "platelet", "enAlt": ["thrombocyte"], "la": "thrombocytus", "plate": "connective-tissue", "level": 1,
+          "kanji": "血の中の小さな板", "etym": "plate（板）＋縮小の -let",
+          "note": "骨髄（bone marrow）の巨核球の細胞質（cytoplasm）がちぎれてできた小さなかけら（核（nucleus）が無い、直径2〜3µm）。血管（blood vessel）が傷つくと集まってふさぎ、血液（blood）を固める（止血（hemostasis））。血液1µL に約15万〜35万個。"
+        }
+      ]
+    },
+    {
+      "id": "tis-muscle",
+      "title": "筋組織",
+      "intro": [
+        "筋組織（muscle tissue）は顕微鏡で見た形で、横紋のある横紋筋（striated muscle）と、横紋の無い平滑筋（smooth muscle）に分ける。横紋筋はさらに、骨（bone）に付く骨格筋（skeletal muscle）と、心臓（heart）の心筋（cardiac muscle）に分ける。",
+        "横紋は、アクチンとミオシンの細い線維（fiber）がそろって並ぶために見える縞。そろって並ぶと強い力を出せる。自分の意思で動かせる随意筋は骨格筋だけで、心筋と平滑筋は不随意筋。"
+      ],
+      "terms": [
+        {
+          "id": "striated-muscle", "ja": "横紋筋", "yomi": "おうもんきん", "en": "striated muscle", "la": "textus muscularis striatus", "plate": "muscle-tissue", "level": 1,
+          "kanji": "横の紋（しま）のある筋", "etym": "ラテン語 striatus（すじのある）",
+          "note": "筋線維に横の縞（横紋）が見える筋（muscle）。アクチンとミオシンの線維（fiber）が規則正しく並ぶため。骨格筋（skeletal muscle）と心筋（cardiac muscle）が横紋筋で、速く強く収縮する。"
+        },
+        {
+          "id": "skeletal-muscle", "ja": "骨格筋", "yomi": "こっかくきん", "en": "skeletal muscle", "la": "textus muscularis striatus skeletalis", "plate": "muscle-tissue", "level": 1,
+          "kanji": "骨格を動かす筋", "etym": "skeletal（骨格の）",
+          "note": "骨（bone）に付いて体を動かす横紋筋（striated muscle）。筋線維は多くの細胞（cell）がとけ合ってできた長い円柱で、多くの核（nucleus）が細胞の端に並ぶ。自分の意思で動かす随意筋で、運動神経が支配（innervation）する。このアプリの筋系の筋（muscle）はみな骨格筋。"
+        },
+        {
+          "id": "cardiac-muscle", "ja": "心筋", "yomi": "しんきん", "en": "cardiac muscle", "la": "textus muscularis striatus cardiacus", "plate": "muscle-tissue", "level": 1,
+          "kanji": "心臓の筋", "etym": "ギリシャ語 kardia（心臓）",
+          "note": "心臓（heart）の壁（心筋層（myocardium））をつくる横紋筋（striated muscle）。細胞（cell）は枝分かれしてつながり、核（nucleus）は中央に1つ。細胞の境の介在板（intercalated disc）で信号が速く伝わり、心臓全体が1つになって収縮する。自分の意思では動かせない不随意筋で、休まず収縮を続ける。"
+        },
+        {
+          "id": "smooth-muscle", "ja": "平滑筋", "yomi": "へいかつきん", "en": "smooth muscle", "enAlt": ["visceral muscle"], "la": "textus muscularis levis", "plate": "muscle-tissue", "level": 1,
+          "kanji": "表面がなめらか（平滑）な筋", "etym": "smooth（なめらかな）",
+          "note": "横紋の無い筋（muscle）。紡錘形の細胞（cell）で、核（nucleus）は中央に1つ。消化管（digestive tract）・血管（blood vessel）・気管支（bronchus）・膀胱（urinary bladder）・子宮（uterus）などの内臓（viscera）の壁にあり、ゆっくり長く収縮する。不随意筋で、自律神経（autonomic nerve）とホルモンで調節される。内臓筋とも言う。"
+        },
+        {
+          "id": "intercalated-disc", "ja": "介在板", "yomi": "かいざいばん", "en": "intercalated disc", "la": "discus intercalatus", "plate": "muscle-tissue", "level": 2,
+          "kanji": "間に挟まる板", "etym": "ラテン語 intercalare（間に入れる）",
+          "note": "心筋（cardiac muscle）の細胞（cell）と細胞の境で、階段のような濃い線に見える所。細胞どうしを強く結び、ギャップ結合で電気の信号を隣の細胞へ伝える。心筋にだけある。"
+        }
+      ]
+    },
+    {
+      "id": "tis-neuron",
+      "title": "神経細胞",
+      "intro": [
+        "神経組織（nervous tissue）は、信号を伝える神経細胞（neuron）（ニューロン（neuron））と、それを支える神経膠細胞でできる。",
+        "神経細胞は、樹状突起（dendrite）で信号を受け、神経細胞体（cell body）を経て、1本の軸索（axon）で遠くへ伝え、軸索終末（axon terminal）のシナプス（synapse）で次の細胞（cell）へ渡す。"
+      ],
+      "terms": [
+        {
+          "id": "cell-body", "ja": "神経細胞体", "yomi": "しんけいさいぼうたい", "en": "cell body", "enAlt": ["soma", "perikaryon"], "la": "corpus neuronis", "plate": "neuron", "level": 1,
+          "kanji": "神経細胞の本体", "etym": "body（体）",
+          "note": "神経細胞（neuron）の、核（nucleus）のある部分。タンパク質をつくる粗面小胞体（rough endoplasmic reticulum）（ニッスル小体）が多い。脳（brain）・脊髄（spinal cord）の中で細胞体（cell body）が集まった所が灰白質（gray matter）（皮質（cortex）・神経核（nucleus））、末梢で集まった所が神経節（ganglion）。"
+        },
+        {
+          "id": "dendrite", "ja": "樹状突起", "yomi": "じゅじょうとっき", "en": "dendrite", "la": "dendritum", "plate": "neuron", "level": 1,
+          "kanji": "樹の枝のような突起", "etym": "ギリシャ語 dendron（木）",
+          "note": "神経細胞体（cell body）から木の枝（branch）のように分かれて出る短い突起（process）。ほかの神経細胞（neuron）からの信号を受け取る（入力）。"
+        },
+        {
+          "id": "axon", "ja": "軸索", "yomi": "じくさく", "en": "axon", "la": "axon", "plate": "neuron", "level": 1,
+          "kanji": "軸になる索（つな）", "etym": "ギリシャ語 axon（車軸）",
+          "note": "神経細胞体（cell body）から1本だけ出る長い突起（process）で、信号を遠くへ伝える（出力）。神経突起とも言い、髄鞘（myelin sheath）などの鞘と合わせて神経線維（nerve fiber）と言う。長いものは1m を超える（脊髄（spinal cord）から足（foot）の指（finger）へ）。細胞体（cell body）から出る所が軸索小丘。"
+        },
+        {
+          "id": "myelin-sheath", "ja": "髄鞘", "yomi": "ずいしょう", "en": "myelin sheath", "la": "stratum myelini", "plate": "neuron", "level": 1,
+          "kanji": "髄（脂の多い白い物質）の鞘", "etym": "ギリシャ語 myelos（髄）",
+          "note": "軸索（axon）を何重にも巻いた、脂質の多い膜（membrane）。ミエリン鞘とも言う。電気を通しにくく（絶縁）、信号がランビエ絞輪（node of ranvier）から次の絞輪へ跳んで速く伝わる（跳躍伝導）。末梢ではシュワン細胞（schwann cell）、中枢（center）では稀突起膠細胞（oligodendrocyte）がつくる。髄鞘のある線維（fiber）を有髄線維と言う。"
+        },
+        {
+          "id": "schwann-cell", "ja": "シュワン細胞", "yomi": "しゅわんさいぼう", "en": "schwann cell", "enAlt": ["neurolemmocyte"], "la": "neurolemmocytus", "plate": "neuron", "level": 1,
+          "etym": "ドイツのシュワン（Schwann）が見つけた",
+          "note": "末梢神経の神経膠細胞。軸索（axon）に巻きついて髄鞘（myelin sheath）をつくる（1つの細胞（cell）が1本の軸索の1節分）。髄鞘をつくらない細い線維（fiber）も包む。切れた末梢神経の再生を助ける。"
+        },
+        {
+          "id": "node-of-ranvier", "ja": "ランビエ絞輪", "yomi": "らんびえこうりん", "en": "node of ranvier", "la": "nodus neurofibrae", "plate": "neuron", "level": 2,
+          "kanji": "しぼられた輪", "etym": "フランスのランビエ（Ranvier）が見つけた",
+          "note": "髄鞘（myelin sheath）と髄鞘の間の、軸索（axon）がむき出しになった短い切れ目。ここに電気の信号を起こす仕組みが集まり、信号が絞輪から絞輪へ跳ぶ（跳躍伝導）。"
+        },
+        {
+          "id": "axon-terminal", "ja": "軸索終末", "yomi": "じくさくしゅうまつ", "en": "axon terminal", "enAlt": ["terminal bouton", "nerve ending"], "plate": "neuron", "level": 1,
+          "kanji": "軸索の終わり", "etym": "terminal（終わりの）",
+          "note": "軸索（axon）の先が枝分かれした末端のふくらみ（終末ボタン）。神経終末とも言う。中のシナプス小胞に神経伝達物質を入れる。"
+        },
+        {
+          "id": "synapse", "ja": "シナプス", "yomi": "しなぷす", "en": "synapse", "la": "synapsis", "plate": "neuron", "level": 1,
+          "etym": "ギリシャ語 synapsis（つなぎ合わせ）",
+          "note": "神経細胞（neuron）が次の細胞（cell）（神経細胞・筋（muscle）・腺（gland））へ信号を渡すつなぎ目。軸索終末（axon terminal）からごく狭いすき間（シナプス間隙）へ神経伝達物質（アセチルコリン（acetylcholine）など）を出し、相手の受容体が受け取る。信号は一方向にだけ伝わる。"
+        }
+      ]
+    },
+    {
+      "id": "tis-glia",
+      "title": "神経膠細胞",
+      "intro": [
+        "神経膠細胞（しんけいこうさいぼう。グリア細胞）は神経細胞（neuron）を支え、守り、栄養を与える細胞（cell）。「膠」は「にかわ（のり）」で、読みは「こう」。数は神経細胞より多い。",
+        "中枢神経系（脳（brain）・脊髄（spinal cord））には星状膠細胞（astrocyte）・稀突起膠細胞（oligodendrocyte）・上衣細胞（ependymal cell）・ミクログリア（microglia）、末梢神経系にはシュワン細胞（schwann cell）と衛星細胞（satellite cell）がある。図の左の枠が中枢（center）、右の枠が末梢。"
+      ],
+      "terms": [
+        {
+          "id": "neuron", "ja": "神経細胞", "yomi": "しんけいさいぼう", "en": "neuron", "enAlt": ["nerve cell"], "la": "neuron", "plate": "neuroglia", "level": 1,
+          "kanji": "神経の細胞", "etym": "ギリシャ語 neuron（すじ・神経）",
+          "note": "神経組織（nervous tissue）の中で信号を伝える細胞（cell）。ニューロン（neuron）とも言う。神経細胞体（cell body）・樹状突起（dendrite）・軸索（axon）からなる。ふつう分裂して増えない。"
+        },
+        {
+          "id": "astrocyte", "ja": "星状膠細胞", "yomi": "せいじょうこうさいぼう", "en": "astrocyte", "la": "astrocytus", "plate": "neuroglia", "level": 1,
+          "kanji": "星の形の膠細胞", "etym": "ギリシャ語 astron（星）＋cyte",
+          "note": "中枢神経系で最も多い神経膠細胞。星のように突起（process）をのばし、毛細血管（capillary）に終足を付けて血液脳関門（BBB）を支え、神経細胞（neuron）に栄養を渡し、まわりのイオンや伝達物質を整える。アストロサイトとも言う。"
+        },
+        {
+          "id": "oligodendrocyte", "ja": "稀突起膠細胞", "yomi": "きとっきこうさいぼう", "en": "oligodendrocyte", "la": "oligodendrocytus", "plate": "neuroglia", "level": 1,
+          "kanji": "突起の少ない（稀な）膠細胞", "etym": "ギリシャ語 oligos（少ない）＋dendron（木）＋cyte",
+          "note": "中枢神経系の髄鞘（myelin sheath）をつくる神経膠細胞。1つの細胞（cell）が数本の突起（process）で、何本もの軸索（axon）に髄鞘をつくる（末梢のシュワン細胞（schwann cell）は1本の1節だけ）。乏突起膠細胞・オリゴデンドロサイトとも言う。"
+        },
+        {
+          "id": "microglia", "ja": "ミクログリア", "yomi": "みくろぐりあ", "en": "microglia", "enAlt": ["microglial cell"], "la": "microglia", "plate": "neuroglia", "level": 1,
+          "kanji": "小さい膠細胞", "etym": "micro-（小さい）＋ギリシャ語 glia（にかわ）",
+          "note": "中枢神経系の小さな神経膠細胞。こわれた細胞（cell）や異物を食べる（貪食作用）、脳（brain）の中の免疫（immunity）の細胞。小膠細胞とも言う。マクロファージの仲間で、ほかの神経膠細胞とは由来が違う。"
+        },
+        {
+          "id": "ependymal-cell", "ja": "上衣細胞", "yomi": "じょういさいぼう", "en": "ependymal cell", "la": "ependymocytus", "plate": "neuroglia", "level": 1,
+          "kanji": "上に衣のようにおおう細胞", "etym": "ギリシャ語 ependyma（上着）",
+          "note": "脳室（ventricle）と脊髄（spinal cord）の中心管（central canal）の内面（internal surface）をおおう、立方〜円柱の細胞（cell）。表面に線毛（cilia）がある。脳室の脈絡叢（choroid plexus）では変化した上衣細胞が脳脊髄液（cerebrospinal fluid）をつくる。"
+        },
+        {
+          "id": "satellite-cell", "ja": "衛星細胞", "yomi": "えいせいさいぼう", "en": "satellite cell", "enAlt": ["satellite glial cell"], "la": "gliocytus ganglii", "plate": "neuroglia", "level": 2,
+          "kanji": "衛星のように囲む細胞", "etym": "satellite ← ラテン語 satelles（お供）",
+          "note": "末梢神経系の神経節（ganglion）（脊髄神経節（spinal ganglion）・自律神経節）で、神経細胞体（cell body）のまわりを1層で囲む平たい神経膠細胞。神経細胞（neuron）を守り、まわりの環境を整える。外套細胞とも言う。骨格筋（skeletal muscle）の筋衛星細胞（筋（muscle）の幹細胞（stem cell））とは別のもの。"
+        }
+      ]
+    },
+    {
+      "id": "tis-layers",
+      "title": "体表からの層と注射",
+      "intro": [
+        "体の表面から深い所へは、皮膚（skin）（表皮（epidermis）・真皮（dermis））→ 皮下組織（subcutaneous tissue）（脂肪（fat）の多い結合組織（connective tissue））→ 筋膜（fascia） → 骨格筋（skeletal muscle） → 骨 → 内臓（viscera）の順に重なる。人体はこの層で外界から守られている。筋（muscle）と骨（bone）のほかの層は、互いにゆるく（疎に）つながる。",
+        "筋は筋膜に包まれ、皮下組織とは疎につながるので、筋が縮んでも動きがじゃまされない。筋の層が重なる所もゆるくつながり、体幹（trunk）では重なった筋の線維（fiber）の向きが直交することが多い（外腹斜筋（external oblique）と内腹斜筋（internal oblique））。",
+        "深い層ほど血管（blood vessel）が多く太い（表皮には血管が無く、皮下組織は皮膚より、筋は皮下組織より多い）。だから注射は深いほど早く効く: 皮内注射（intradermal injection） → 皮下注射（subcutaneous injection） → 筋肉注射（intramuscular injection） → 静脈注射（intravenous injection）。"
+      ],
+      "terms": [
+        {
+          "id": "fascia", "ja": "筋膜", "yomi": "きんまく", "en": "fascia", "la": "fascia", "plate": "body-layers", "level": 1,
+          "kanji": "筋を包む膜", "etym": "ラテン語 fascia（帯・包帯）",
+          "note": "筋（muscle）を包む膜（membrane）で、膠原線維（collagen fiber）の多い密性結合組織。皮下組織（subcutaneous tissue）の中の浅筋膜と、筋を直接包む深筋膜に分けることもある。1つの筋はさらに筋外膜・筋周膜（筋束（muscle fascicle）を包む）・筋内膜（筋線維を包む）に包まれる。筋の群どうしを仕切る所は筋間中隔（intermuscular septum）になる。"
+        },
+        {
+          "id": "intradermal-injection", "ja": "皮内注射", "yomi": "ひないちゅうしゃ", "en": "intradermal injection", "enAlt": ["intracutaneous injection"], "plate": "body-layers", "level": 1,
+          "kanji": "皮膚の内に打つ注射", "etym": "intra-（中へ）＋derma（皮膚）",
+          "note": "針を皮膚（skin）の面とほぼ平行に浅く刺し、表皮（epidermis）のすぐ下の真皮（dermis）に少しだけ入れる注射（ID・IC と略す）。太い血管（blood vessel）が無いので吸収が最も遅く、薬が長くとどまる。ふくらみ（膨疹）ができる。アレルギーの検査（皮内反応）やツベルクリン反応に使う。"
+        },
+        {
+          "id": "subcutaneous-injection", "ja": "皮下注射", "yomi": "ひかちゅうしゃ", "en": "subcutaneous injection", "plate": "body-layers", "level": 1,
+          "kanji": "皮膚の下に打つ注射", "etym": "sub-（下）＋ラテン語 cutis（皮膚）",
+          "note": "皮膚（skin）をつまんで針を斜めに刺し、皮下組織（subcutaneous tissue）に入れる注射（SC と略す）。筋（muscle）に比べて太い血管（blood vessel）が少ないので、吸収は中くらいの速さで、ゆっくり長く効く。インスリン（insulin）や一部のワクチンに使う。"
+        },
+        {
+          "id": "intramuscular-injection", "ja": "筋肉注射", "yomi": "きんにくちゅうしゃ", "en": "intramuscular injection", "plate": "body-layers", "level": 1,
+          "kanji": "筋の中に打つ注射", "etym": "intra-（中へ）＋muscular（筋の）",
+          "note": "針を皮膚（skin）に垂直に深く刺し、骨格筋（skeletal muscle）の中に入れる注射（IM と略す）。筋（muscle）には皮下組織（subcutaneous tissue）より太く多くの血管（blood vessel）があるので、皮下注射（subcutaneous injection）より早く吸収される。三角筋（deltoid）や殿部（gluteal region）の中殿筋（gluteus medius）（上外側（superolateral）。坐骨神経（sciatic nerve）を避ける）に打つ。鎮静薬・鎮痛薬・ワクチンに使う。"
+        },
+        {
+          "id": "intravenous-injection", "ja": "静脈注射", "yomi": "じょうみゃくちゅうしゃ", "en": "intravenous injection", "plate": "body-layers", "level": 1,
+          "kanji": "静脈に打つ注射", "etym": "intra-（中へ）＋ラテン語 vena（静脈）",
+          "note": "皮下組織（subcutaneous tissue）の中の皮静脈（cutaneous vein）（肘正中皮静脈（median cubital vein）など）に浅い角度で針を刺し、血液（blood）の中へ直接入れる注射（IV と略す）。吸収の段階が無いので最も早く効く。時間をかけて少しずつ入れるのが点滴静脈注射（DIV）で、効き目が長く続く。多くの薬に使う。"
+        }
+      ]
+    },
+    {
+      "id": "tis-burn",
+      "title": "熱傷の深さ",
+      "intro": [
+        "熱傷（やけど）の重さは、深さと広さで決まる。深さは、皮膚（skin）のどの層までこわれたかで、Ⅰ度（表皮（epidermis））・Ⅱ度（真皮（dermis）。浅達性と深達性）・Ⅲ度（皮下組織（subcutaneous tissue））に分ける。",
+        "広さは体表面積の何%かで見る。成人では9の法則（頭部（head）9%・片方の上肢（upper limb）9%・体幹（trunk）の前18%・後ろ18%・片方の下肢（lower limb）18%・陰部（genital region）1%）、幼児・乳児では頭が大きいので5の法則を使う。Ⅱ度で30%以上、Ⅲ度で10%以上、顔（face）・手（hand）・足（foot）・会陰（perineum）の熱傷、気道（airway）の熱傷などは重症で、熱傷の専門の施設で治療する。"
+      ],
+      "terms": [
+        {
+          "id": "first-degree-burn", "ja": "Ⅰ度熱傷", "yomi": "いちどねっしょう", "en": "first degree burn", "enAlt": ["superficial burn", "epidermal burn"], "plate": "burn-depth", "level": 1,
+          "kanji": "1番浅い熱傷", "etym": "burn（焼けど）",
+          "note": "表皮（epidermis）だけの熱傷。赤くなり（発赤・紅斑）ひりひり痛むが、水疱はできない。数日で跡を残さず治る（日焼けなど）。"
+        },
+        {
+          "id": "superficial-dermal-burn", "ja": "浅達性Ⅱ度熱傷", "yomi": "せんたつせいにどねっしょう", "en": "superficial second degree burn", "enAlt": ["superficial partial thickness burn"], "plate": "burn-depth", "level": 1,
+          "kanji": "浅い所まで達したⅡ度",
+          "note": "真皮（dermis）の浅い所までの熱傷。水疱ができ、強く痛む（神経終末が残って刺激される）。毛包（hair follicle）や汗腺（sweat gland）の上皮（epithelium）が残るので、そこから表皮（epidermis）が再生し、1〜2週で治り、跡はあまり残らない。"
+        },
+        {
+          "id": "deep-dermal-burn", "ja": "深達性Ⅱ度熱傷", "yomi": "しんたつせいにどねっしょう", "en": "deep second degree burn", "enAlt": ["deep partial thickness burn"], "plate": "burn-depth", "level": 1,
+          "kanji": "深い所まで達したⅡ度",
+          "note": "真皮（dermis）の深い所までの熱傷。水疱ができ、底は白っぽく（蒼白）、感覚（sensation）が鈍い（知覚鈍麻）。治るのに3〜4週かかり、瘢痕（傷あと）が残る。植皮が必要になることもある。"
+        },
+        {
+          "id": "third-degree-burn", "ja": "Ⅲ度熱傷", "yomi": "さんどねっしょう", "en": "third degree burn", "enAlt": ["full thickness burn"], "plate": "burn-depth", "level": 1,
+          "kanji": "3番目（最も深い）の熱傷",
+          "note": "皮膚（skin）の全層がこわれ、皮下組織（subcutaneous tissue）まで達した熱傷。白〜黒っぽく乾いて硬く、神経終末もこわれるので痛みが無い（知覚脱失）。皮膚が再生しないので、小さいもの以外は植皮が必要。感染しやすい。"
+        }
+      ]
+    }
+  ]
+}

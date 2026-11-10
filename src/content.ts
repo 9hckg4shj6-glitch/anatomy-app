@@ -155,12 +155,14 @@ export interface View {
  * outline は囲みの線（open なら閉じない＝足弓のアーチ）。右側で示し、見せるときは左側の形を隠す。
  * boundsLabel / contentsLabel は説明の見出し（無ければ「境界」「通るもの」）、prompt は位置→名前の問題文。
  * section は見せるときに体を切る面（区画は水平断で、CT と同じく下から見る。keep: 1 で座標の大きい側を残す）。
+ * both は左右の両側を見せる（基本の用語の体の部位のうち、体幹の部位と四肢。正中にまたがる胸郭・頭蓋を半分にしないように）。
  */
 export interface Region {
   bounds: string[];
   contents: string[];
   outline?: Vec3[];
   open?: boolean;
+  both?: boolean;
   section?: { axis: "x" | "y" | "z"; at: number; keep: 1 | -1 };
   view: View;
   boundsLabel?: string;

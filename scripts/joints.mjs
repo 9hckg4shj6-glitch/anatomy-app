@@ -194,6 +194,8 @@ const joints = {
     pivot: mid(metatarsalHeads.second, metatarsalHeads.fifth), axis: unit([1, 0.05, 0.35]), plus: "屈曲",
   },
   neck: { ja: "環軸関節", moves: ["atlas", ...skull], pivot: pin("dens-of-axis"), axis: [0, 1, 0], mid: true, plus: "左を向く回旋" },
+  // 首の側屈: 頭を前後の軸のまわりに傾ける（本当は頚椎全体が少しずつ曲がるが、基本の用語の図では頭と環椎だけを傾けて示す）。正で右へ
+  "neck-side": { ja: "頚椎", moves: ["atlas", ...skull], pivot: add(pin("dens-of-axis"), [0, -0.035, 0]), axis: [0, 0, 1], mid: true, plus: "右への側屈" },
 };
 for (const joint of Object.values(joints)) {
   joint.pivot = round(joint.pivot);

@@ -34,6 +34,7 @@ const Region = z.strictObject({
   contents: z.array(z.string()),
   outline: z.array(vec).min(2).optional(),
   open: z.literal(true).optional(),
+  both: z.literal(true).optional(),
   section: z.strictObject({ axis: z.enum(["x", "y", "z"]), at: z.number(), keep: z.union([z.literal(1), z.literal(-1)]) }).optional(),
   view: View,
   boundsLabel: z.string().min(1).optional(),

@@ -413,7 +413,7 @@
           "id": "myocardium", "ja": "心筋層", "yomi": "しんきんそう", "en": "myocardium", "la": "myocardium", "plate": "heart-wall", "level": 1,
           "kanji": "心臓の筋の層",
           "etym": "myo-「筋」＋ kardia「心臓」（ギリシャ語）",
-          "note": "心臓（heart）の壁の中の層で、心筋と刺激伝導系（conducting system of heart）でできている。厚さは中の圧（血圧（blood pressure））に比例し、全身（whole body）へ送る左心室（left ventricle）（約10mm）が最も厚く、右心室（right ventricle）（約3〜4mm）、心房（atrium）（約1〜2mm）の順に薄い。心房と心室（ventricle）の心筋は線維輪（fibrous ring of heart）（線維性骨格）で分かれている。"
+          "note": "心臓（heart）の壁の中の層で、心筋（cardiac muscle）と刺激伝導系（conducting system of heart）でできている。厚さは中の圧（血圧（blood pressure））に比例し、全身（whole body）へ送る左心室（left ventricle）（約10mm）が最も厚く、右心室（right ventricle）（約3〜4mm）、心房（atrium）（約1〜2mm）の順に薄い。心房と心室（ventricle）の心筋は線維輪（fibrous ring of heart）（線維性骨格）で分かれている。"
         },
         {
           "id": "endocardium", "ja": "心内膜", "yomi": "しんないまく", "en": "endocardium", "la": "endocardium", "plate": "heart-wall", "level": 1,
@@ -427,7 +427,7 @@
       "id": "cv-conduction",
       "title": "刺激伝導系",
       "group": "心臓",
-      "intro": ["心臓（heart）の拍動（pulsation）は神経（nerve）からではなく、心臓の中の特殊な心筋（刺激伝導系（conducting system of heart））で起こる: 洞房結節（sinu-atrial node） → 心房（atrium）の壁 → 房室結節（atrioventricular node）（ここで少し遅れる）→ 房室束（atrioventricular bundle）（ヒス束（bundle of His））→ 右脚（right bundle branch）・左脚（left bundle branch） → プルキンエ線維（Purkinje fibers） → 心室全体。","心房と心室（ventricle）の間は線維性骨格（線維輪（fibrous ring of heart））で絶縁されているので、心房の興奮（excitation）が心室へ伝わる道は房室結節と房室束だけ。房室結節での遅れの間に心房が縮みきって心室へ血液（blood）を送る。"],
+      "intro": ["心臓（heart）の拍動（pulsation）は神経（nerve）からではなく、心臓の中の特殊な心筋（cardiac muscle）（刺激伝導系（conducting system of heart））で起こる: 洞房結節（sinu-atrial node） → 心房（atrium）の壁 → 房室結節（atrioventricular node）（ここで少し遅れる）→ 房室束（atrioventricular bundle）（ヒス束（bundle of His））→ 右脚（right bundle branch）・左脚（left bundle branch） → プルキンエ線維（Purkinje fibers） → 心室全体。","心房と心室（ventricle）の間は線維性骨格（線維輪（fibrous ring of heart））で絶縁されているので、心房の興奮（excitation）が心室へ伝わる道は房室結節と房室束だけ。房室結節での遅れの間に心房が縮みきって心室へ血液（blood）を送る。"],
       "terms": [
         {
           "id": "sinuatrial-node", "ja": "洞房結節", "yomi": "どうぼうけっせつ", "en": "sinuatrial node", "enAlt": ["sinoatrial node","sa node"], "la": "nodus sinuatrialis", "plate": "heart-conduction", "level": 1,
@@ -463,7 +463,7 @@
           "id": "purkinje-fibers", "ja": "プルキンエ線維", "yomi": "ぷるきんえせんい", "en": "purkinje fibers", "enAlt": ["subendocardial branches"], "la": "rami subendocardiales", "plate": "heart-conduction", "level": 1,
           "kanji": "プルキンエ（人名）の線維",
           "etym": "Purkinje はチェコの生理学者。subendocardial「心内膜の下の」",
-          "note": "右脚（right bundle branch）・左脚（left bundle branch）の先が心内膜（endocardium）の下に網のように広がった太い特殊心筋線維（心内膜下枝）。興奮（excitation）を速く伝え、心室（ventricle）の心筋をほぼ同時に、心尖（apex of heart）から心底（base of heart）へ向かって縮ませる（血液（blood）を上の動脈（artery）の口へ押し出す）。"
+          "note": "右脚（right bundle branch）・左脚（left bundle branch）の先が心内膜（endocardium）の下に網のように広がった太い特殊心筋線維（心内膜下枝）。興奮（excitation）を速く伝え、心室（ventricle）の心筋（cardiac muscle）をほぼ同時に、心尖（apex of heart）から心底（base of heart）へ向かって縮ませる（血液（blood）を上の動脈（artery）の口へ押し出す）。"
         }
       ]
     },
@@ -521,7 +521,7 @@
           "id": "endothelium", "ja": "内皮", "yomi": "ないひ", "en": "endothelium", "la": "endothelium", "plate": "vessel-wall", "level": 1,
           "kanji": "管の内面をおおう上皮",
           "etym": "endo-「内」＋ thele「乳頭」（ギリシャ語）から作られた語",
-          "note": "血管（blood vessel）・リンパ管（lymphatic vessel）と心臓（heart）の内面（internal surface）をおおう1層の扁平な細胞（cell）（単層扁平上皮）。血液（blood）が固まらないようにし、血管を広げる物質（一酸化窒素）を出す。毛細血管（capillary）の壁は内皮だけでできているので、物質の交換ができる。"
+          "note": "血管（blood vessel）・リンパ管（lymphatic vessel）と心臓（heart）の内面（internal surface）をおおう1層の扁平な細胞（cell）（単層扁平上皮（simple squamous epithelium））。血液（blood）が固まらないようにし、血管を広げる物質（一酸化窒素）を出す。毛細血管（capillary）の壁は内皮だけでできているので、物質の交換ができる。"
         },
         {
           "id": "internal-elastic-membrane", "ja": "内弾性板", "yomi": "ないだんせいばん", "en": "internal elastic membrane", "enAlt": ["internal elastic lamina"], "la": "membrana elastica interna", "plate": "vessel-wall", "level": 2,

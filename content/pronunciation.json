@@ -2,6 +2,9 @@
   "note": "医学英語として標準と違う読み方をする単語の発音記号（espeak 形式の米語 IPA）。scripts/build-audio.mjs が単語ごとに当てはめる。",
   "words": {
     "distal": "dˈɪstəl",
+    "golgi": "ɡˈoʊldʒi",
+    "ranvier": "ɹˈɑːnviˌeɪ",
+    "schwann": "ʃwˈɑːn",
     "abduction": "æbdˈʌkʃən",
     "adduction": "ædˈʌkʃən",
     "calcaneus": "kælkˈeɪniəs",

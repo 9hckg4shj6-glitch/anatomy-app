@@ -25,7 +25,7 @@
   "ja": "肩甲骨",
   "moves": ["scapula", "humerus", "radius", "ulna", "carpal-bones", "metacarpals", "phalanges-hand"],
   "pivot": [-0.1453, 1.3522, 0.0712],
-  "axis": [-0.5024, 0.2087, -0.8391],
+  "axis": [-0.5033, 0.2081, -0.8387],
   "plus": "上方回旋"
  },
  "shoulder-flex": {
@@ -166,5 +166,13 @@
   "axis": [0, 1, 0],
   "mid": true,
   "plus": "左を向く回旋"
+ },
+ "neck-side": {
+  "ja": "頚椎",
+  "moves": ["atlas", "frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone", "maxilla", "mandible", "zygomatic-bone", "nasal-bone", "lacrimal-bone", "palatine-bone", "vomer", "inferior-nasal-concha"],
+  "pivot": [-0.0009, 1.4434, 0.0753],
+  "axis": [0, 0, 1],
+  "mid": true,
+  "plus": "右への側屈"
  }
 }
