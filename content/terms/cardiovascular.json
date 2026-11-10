@@ -241,6 +241,12 @@
           "kanji": "心臓の右の縁（右心室の鋭い縁）を走る枝",
           "etym": "marginal ← ラテン語 margo「ふち」",
           "note": "右冠状動脈（right coronary artery）が冠状溝（coronary sulcus）を右へ回る途中で出し、右心室（right ventricle）の下の縁（鋭縁（acute margin））にそって心尖（apex of heart）の方へ下る枝（branch）。右心室の前壁（anterior wall）と下壁（inferior wall）を養う。鋭縁枝（right marginal branch）・右外縁枝（right marginal branch）ともいう（左冠状動脈（left coronary artery）の回旋枝（circumflex branch）からは、左心室（left ventricle）の丸い縁へ鈍縁枝（left marginal branch）が出る）。"
+        },
+        {
+          "id": "diagonal-branch", "ja": "対角枝", "yomi": "たいかくし", "en": "diagonal branch", "enAlt": ["diagonal artery"], "la": "ramus diagonalis", "parts": ["diagonal branch of anterior descending branch of left coronary artery"], "level": 3,
+          "kanji": "斜め（対角）に走る枝",
+          "etym": "diagonal「斜めの・対角の」（ギリシャ語 dia「通って」＋ gonia「角」）",
+          "note": "前室間枝（anterior interventricular branch）（左前下行枝（left anterior descending branch））から左へ斜めに出て、左心室（left ventricle）の前の壁を養う枝（branch）（臨床の記号 D。最初のものが D1）。冠動脈造影では番号で呼ばれ（AHA 分類の9・10）、ここがつまると左心室の前壁（anterior wall）の心筋梗塞（myocardial infarction）になる。"
         }
       ]
     },
@@ -320,6 +326,372 @@
           "kanji": "心房の間の中隔（仕切り）",
           "etym": "inter-「間」＋ atrium「広間・心房」＋ septum「仕切り」（ラテン語）",
           "note": "左右の心房（atrium）を分ける薄い壁。右心房（right atrium）の側に卵円窩（fossa ovalis）（胎児（fetus）の血液（blood）が右心房から左心房（left atrium）へ通った卵円孔（foramen ovale）の閉じたあと）がある。生まれたあと閉じきらないものが心房中隔欠損・卵円孔開存。下の方に房室結節（atrioventricular node）がある。"
+        }
+      ]
+    },
+    {
+      "id": "cv-heart-surfaces",
+      "title": "心臓の面と縁",
+      "group": "心臓",
+      "intro": ["心臓（heart）は円錐形の筋性の中空器官で、5つの面をもつ: 胸骨（sternum）の後ろの胸肋面（sternocostal surface）（前面（anterior surface））、横隔膜（diaphragm）にのる横隔面（diaphragmatic surface）、左右の肺（lung）に面する左肺面・右肺面、大血管（great vessels）が出入りする後ろ上の心底（base of heart）。左前下にとがった先が心尖（apex of heart）。","胸肋面と横隔面の境の鋭い縁が鋭縁（acute margin）（右縁（right border））、左肺面との境の丸い縁が鈍縁（obtuse margin）。冠状動脈（coronary artery）の枝（branch）の名前（鋭縁枝（right marginal branch）・鈍縁枝（left marginal branch））にも使われる。"],
+      "terms": [
+        {
+          "id": "sternocostal-surface-of-heart", "ja": "胸肋面（心臓）", "yomi": "きょうろくめん", "en": "sternocostal surface of heart", "enAlt": ["anterior surface of heart"], "la": "facies sternocostalis cordis", "of": "heart", "level": 1,
+          "kanji": "胸骨と肋骨（肋軟骨）に向く面",
+          "etym": "sterno-「胸骨」＋ costal「肋骨の」＋ surface「面」",
+          "note": "心臓（heart）の前面（anterior surface）。胸骨（sternum）と第3〜第6肋軟骨の後ろにあり、大部分は右心室（right ventricle）、右に右心房（right atrium）と右心耳（right auricle）、左の縁に少しだけ左心室（left ventricle）が見える。胸骨圧迫（心臓マッサージ）では胸骨の下半分を押し、この面ごと心臓を脊柱（vertebral column）との間で押しつぶして血液（blood）を送り出す。"
+        },
+        {
+          "id": "diaphragmatic-surface-of-heart", "ja": "横隔面（心臓）", "yomi": "おうかくめん", "en": "diaphragmatic surface of heart", "enAlt": ["inferior surface of heart"], "la": "facies diaphragmatica cordis", "of": "heart", "level": 2,
+          "kanji": "横隔膜に接する面",
+          "etym": "diaphragm（ギリシャ語 dia「間」＋ phragma「仕切り」）＋ surface「面」",
+          "note": "心臓（heart）の下の平らな面で、心膜（pericardium）をへだてて横隔膜（diaphragm）の腱中心（central tendon）にのる。おもに左心室（left ventricle）と右心室（right ventricle）でできていて、後室間溝（posterior interventricular sulcus）と後室間枝（posterior interventricular branch）が通る。"
+        },
+        {
+          "id": "right-pulmonary-surface-of-heart", "ja": "右肺面（心臓）", "yomi": "みぎはいめん", "en": "right pulmonary surface of heart", "la": "facies pulmonalis dextra cordis", "of": "heart", "level": 2,
+          "kanji": "右の肺に面する面",
+          "etym": "pulmonary「肺の」（ラテン語 pulmo「肺」）＋ surface「面」",
+          "note": "心臓（heart）の右の面で、右の縦隔胸膜（mediastinal pleura）をへだてて右肺（right lung）の縦隔面（mediastinal surface）に向く。右心房（right atrium）でできていて、上大静脈（superior vena cava）と下大静脈（inferior vena cava）が出入りする。"
+        },
+        {
+          "id": "left-pulmonary-surface-of-heart", "ja": "左肺面（心臓）", "yomi": "ひだりはいめん", "en": "left pulmonary surface of heart", "la": "facies pulmonalis sinistra cordis", "of": "heart", "level": 2,
+          "kanji": "左の肺に面する面",
+          "etym": "pulmonary「肺の」（ラテン語 pulmo「肺」）＋ surface「面」",
+          "note": "心臓（heart）の左の面で、おもに左心室（left ventricle）でできている。左肺（left lung）の縦隔面（mediastinal surface）に心圧痕（cardiac impression）をつくり、左肺の前縁（anterior border）の心切痕（cardiac notch）から心膜（pericardium）が胸壁（thoracic wall）に直接触れる。"
+        },
+        {
+          "id": "base-of-heart", "ja": "心底", "yomi": "しんてい", "en": "base of heart", "la": "basis cordis", "of": "heart", "level": 1,
+          "kanji": "心臓の底（心尖の反対側）",
+          "etym": "base ← ラテン語 basis「土台」",
+          "note": "心尖（apex of heart）の反対側（contralateral side）の、後ろ上を向く面。おもに左心房（left atrium）（と右心房（right atrium）の一部）でできていて、肺静脈（pulmonary veins）・上大静脈（superior vena cava）・下大静脈（inferior vena cava）が入り、上行大動脈（ascending aorta）と肺動脈幹（pulmonary trunk）が出る。食道（esophagus）と胸大動脈（thoracic aorta）をへだてて第5〜第8胸椎（fifth to eighth thoracic vertebrae）に向く。「底」でも体の下ではなく後ろ上にある。"
+        },
+        {
+          "id": "acute-margin", "ja": "鋭縁", "yomi": "えいえん", "en": "acute margin", "enAlt": ["inferior margin of heart","right border of heart"], "la": "margo dexter cordis", "of": "heart", "level": 2,
+          "kanji": "鋭くとがった縁",
+          "etym": "acute「鋭い」（ラテン語 acutus）＋ margin「縁」。解剖学用語では右縁（margo dexter）",
+          "note": "胸肋面（sternocostal surface）と横隔面（diaphragmatic surface）の境の鋭い縁で、右心室（right ventricle）の下の縁にあたる。解剖学用語（anatomical term）では右縁（right border）（下縁（inferior border）ともいう）。ここを右冠状動脈（right coronary artery）の右縁枝（right marginal branch）（鋭縁枝（right marginal branch）、記号 AM）が走る。胸部（thorax）X線（X-ray）の正面像で心臓（heart）の右の輪郭をつくる右心房（right atrium）の縁とは別。"
+        },
+        {
+          "id": "obtuse-margin", "ja": "鈍縁", "yomi": "どんえん", "en": "obtuse margin", "enAlt": ["left border of heart"], "la": "margo obtusus cordis", "of": "heart", "level": 3, "check": true,
+          "kanji": "丸く鈍い縁",
+          "etym": "obtuse「鈍い」（ラテン語 obtusus）＋ margin「縁」",
+          "note": "胸肋面（sternocostal surface）と左肺面の境の丸い縁で、左心室（left ventricle）の壁でできている。左冠状動脈（left coronary artery）の回旋枝（circumflex branch）から出る鈍縁枝（OM）がここを下る。"
+        }
+      ]
+    },
+    {
+      "id": "cv-heart-wall",
+      "title": "心臓の壁と心膜",
+      "group": "心臓",
+      "intro": ["心臓（heart）は心嚢（pericardial sac）に包まれて縦隔（mediastinum）にある。心嚢は外の線維性心膜（fibrous pericardium）と内の漿膜性心膜の2層。漿膜性心膜は大血管（great vessels）の根もと（心底（base of heart））で折り返し、壁側板と臓側板（visceral layer）（心外膜（epicardium））の間に心膜腔（pericardial cavity）をつくる。","心臓の壁は外から心外膜・心筋層（myocardium）・心内膜（endocardium）の3層。弁（valve）は心内膜のひだ（fold）。"],
+      "terms": [
+        {
+          "id": "fibrous-pericardium", "ja": "線維性心膜", "yomi": "せんいせいしんまく", "en": "fibrous pericardium", "la": "pericardium fibrosum", "plate": "heart-wall", "level": 1,
+          "kanji": "線維でできた丈夫な心膜",
+          "etym": "fibrous「線維の」＋ peri-「まわり」＋ kardia「心臓」（ギリシャ語）",
+          "note": "心嚢の外の丈夫な層。上は大血管（great vessels）の外膜（tunica externa）に続き、下は横隔膜（diaphragm）の腱中心（central tendon）に付いて心臓（heart）を胸（chest）の中に固定する。伸びにくいので、心膜腔（pericardial cavity）に血液（blood）がたまると心臓が広がれなくなる（心タンポナーデ）。"
+        },
+        {
+          "id": "parietal-layer-of-serous-pericardium", "ja": "漿膜性心膜の壁側板", "yomi": "しょうまくせいしんまくのへきそくばん", "en": "parietal layer of serous pericardium", "la": "lamina parietalis pericardii serosi", "plate": "heart-wall", "level": 2,
+          "kanji": "漿膜（なめらかな膜）の、壁の側の板",
+          "etym": "parietal「壁の」（ラテン語 paries「壁」）＋ serous「漿液の」",
+          "note": "線維性心膜（fibrous pericardium）の内面（internal surface）に貼りつく漿膜性心膜の層。線維性心膜と合わせて心嚢をつくる。心底（base of heart）の大血管（great vessels）の根もとで折り返して臓側板（visceral layer）（心外膜（epicardium））に続く。"
+        },
+        {
+          "id": "pericardial-cavity", "ja": "心膜腔", "yomi": "しんまくくう", "en": "pericardial cavity", "la": "cavitas pericardiaca", "plate": "heart-wall", "level": 1,
+          "kanji": "心膜（壁側板と臓側板）の間のすき間",
+          "etym": "pericardial「心膜の」＋ cavity「腔」（ラテン語 cavus「うつろな」）",
+          "note": "漿膜性心膜の壁側板（parietal layer of serous pericardium）と臓側板（visceral layer）（心外膜（epicardium））の間のすき間（心嚢腔）。少量（約20mL）の漿液が入っていて、拍動（pulsation）する心臓（heart）をなめらかにすべらせる。ここに血液（blood）や液がたまるのが心タンポナーデ・心嚢液貯留。"
+        },
+        {
+          "id": "epicardium", "ja": "心外膜", "yomi": "しんがいまく", "en": "epicardium", "enAlt": ["visceral layer of serous pericardium"], "la": "epicardium", "plate": "heart-wall", "level": 1,
+          "kanji": "心臓のいちばん外の膜",
+          "etym": "epi-「上・外」＋ kardia「心臓」（ギリシャ語）",
+          "note": "漿膜性心膜の臓側板（visceral layer）で、心臓（heart）の表面に直接貼りつく壁のいちばん外の層。下の脂肪（fat）の中を冠状動脈（coronary artery）と心臓の静脈（vein）が走る。心臓の壁は外から心外膜・心筋層（myocardium）・心内膜（endocardium）。"
+        },
+        {
+          "id": "myocardium", "ja": "心筋層", "yomi": "しんきんそう", "en": "myocardium", "la": "myocardium", "plate": "heart-wall", "level": 1,
+          "kanji": "心臓の筋の層",
+          "etym": "myo-「筋」＋ kardia「心臓」（ギリシャ語）",
+          "note": "心臓（heart）の壁の中の層で、心筋と刺激伝導系（conducting system of heart）でできている。厚さは中の圧（血圧（blood pressure））に比例し、全身（whole body）へ送る左心室（left ventricle）（約10mm）が最も厚く、右心室（right ventricle）（約3〜4mm）、心房（atrium）（約1〜2mm）の順に薄い。心房と心室（ventricle）の心筋は線維輪（fibrous ring of heart）（線維性骨格）で分かれている。"
+        },
+        {
+          "id": "endocardium", "ja": "心内膜", "yomi": "しんないまく", "en": "endocardium", "la": "endocardium", "plate": "heart-wall", "level": 1,
+          "kanji": "心臓の内面の膜",
+          "etym": "endo-「内」＋ kardia「心臓」（ギリシャ語）",
+          "note": "心臓（heart）の内面（internal surface）をおおう薄い膜（membrane）で、血管（blood vessel）の内皮（endothelium）と同じ組織（tissue）が続いたもの。弁（valve）は心内膜のひだ（fold）が変化したもの。細菌がここに付くのが感染性心内膜炎で、弁が壊れやすい。"
+        }
+      ]
+    },
+    {
+      "id": "cv-conduction",
+      "title": "刺激伝導系",
+      "group": "心臓",
+      "intro": ["心臓（heart）の拍動（pulsation）は神経（nerve）からではなく、心臓の中の特殊な心筋（刺激伝導系（conducting system of heart））で起こる: 洞房結節（sinu-atrial node） → 心房（atrium）の壁 → 房室結節（atrioventricular node）（ここで少し遅れる）→ 房室束（atrioventricular bundle）（ヒス束（bundle of His））→ 右脚（right bundle branch）・左脚（left bundle branch） → プルキンエ線維（Purkinje fibers） → 心室全体。","心房と心室（ventricle）の間は線維性骨格（線維輪（fibrous ring of heart））で絶縁されているので、心房の興奮（excitation）が心室へ伝わる道は房室結節と房室束だけ。房室結節での遅れの間に心房が縮みきって心室へ血液（blood）を送る。"],
+      "terms": [
+        {
+          "id": "sinuatrial-node", "ja": "洞房結節", "yomi": "どうぼうけっせつ", "en": "sinuatrial node", "enAlt": ["sinoatrial node","sa node"], "la": "nodus sinuatrialis", "plate": "heart-conduction", "level": 1,
+          "kanji": "静脈洞（右心房の大静脈の口）と心房の境の結節",
+          "etym": "sinus「くぼみ・洞」（静脈洞）＋ atrial「心房の」＋ node「結節」（ラテン語 nodus「結び目」）",
+          "note": "右心房（right atrium）の壁の、上大静脈（superior vena cava）が入る所のすぐ外（分界溝（sulcus terminalis cordis）の上端（superior end））にある特殊心筋のかたまり。自分で一定のリズムで興奮（excitation）し（1分に約60〜100回）、心臓全体の拍動（pulsation）を決める歩調取り（ペースメーカー（pacemaker））。キース・フラック結節ともいう。おもに右冠状動脈（right coronary artery）の洞房結節枝が養う。"
+        },
+        {
+          "id": "atrioventricular-node", "ja": "房室結節", "yomi": "ぼうしつけっせつ", "en": "atrioventricular node", "enAlt": ["av node"], "la": "nodus atrioventricularis", "plate": "heart-conduction", "level": 1,
+          "kanji": "心房と心室の間の結節",
+          "etym": "atrio-「心房」＋ ventricular「心室の」＋ node「結節」",
+          "note": "右心房（right atrium）の心房中隔（interatrial septum）の下の方、冠状静脈洞（coronary sinus）の口の前上（anterosuperior）にある結節（node）。心房（atrium）から来た興奮（excitation）をいったん遅らせてから房室束（atrioventricular bundle）へ送るので、心房が縮み終わってから心室（ventricle）が縮む。田原淳が見つけたので田原結節（Tawara node）ともいう。"
+        },
+        {
+          "id": "atrioventricular-bundle", "ja": "房室束", "yomi": "ぼうしつそく", "en": "atrioventricular bundle", "enAlt": ["bundle of his"], "la": "fasciculus atrioventricularis", "plate": "heart-conduction", "level": 1,
+          "kanji": "心房と心室をつなぐ線維の束",
+          "etym": "atrioventricular「房室の」＋ bundle「束」。His はスイスの解剖学者",
+          "note": "房室結節（atrioventricular node）から出て、線維性骨格（右線維三角）を貫き、心室中隔（interventricular septum）の膜性部の下縁（inferior border）を前へ走る束（ヒス束（bundle of His））。心房（atrium）と心室（ventricle）をつなぐ唯一の伝導の道で、ここが傷むと房室ブロックになる。心室中隔の上で右脚（right bundle branch）と左脚（left bundle branch）に分かれる。"
+        },
+        {
+          "id": "right-bundle-branch", "ja": "右脚", "yomi": "うきゃく", "en": "right bundle branch", "la": "crus dextrum fasciculi atrioventricularis", "plate": "heart-conduction", "level": 1,
+          "kanji": "房室束の右の脚（枝）",
+          "etym": "bundle branch「束の枝」",
+          "note": "房室束（atrioventricular bundle）から分かれて心室中隔（interventricular septum）の右側の心内膜（endocardium）の下を下る細い束。一部は中隔縁柱（septomarginal trabecula）（調節帯）を通って右心室（right ventricle）の前の壁の前乳頭筋（anterior papillary muscle）へ渡り、プルキンエ線維（Purkinje fibers）に分かれる。"
+        },
+        {
+          "id": "left-bundle-branch", "ja": "左脚", "yomi": "さきゃく", "en": "left bundle branch", "la": "crus sinistrum fasciculi atrioventricularis", "plate": "heart-conduction", "level": 1,
+          "kanji": "房室束の左の脚（枝）",
+          "etym": "bundle branch「束の枝」",
+          "note": "房室束（atrioventricular bundle）から分かれて心室中隔（interventricular septum）の左側を下る束。すぐに扇のように広がって前枝（anterior branch）と後枝（posterior branch）に分かれ、左心室（left ventricle）の前・後乳頭筋と壁へプルキンエ線維（Purkinje fibers）を送る。"
+        },
+        {
+          "id": "purkinje-fibers", "ja": "プルキンエ線維", "yomi": "ぷるきんえせんい", "en": "purkinje fibers", "enAlt": ["subendocardial branches"], "la": "rami subendocardiales", "plate": "heart-conduction", "level": 1,
+          "kanji": "プルキンエ（人名）の線維",
+          "etym": "Purkinje はチェコの生理学者。subendocardial「心内膜の下の」",
+          "note": "右脚（right bundle branch）・左脚（left bundle branch）の先が心内膜（endocardium）の下に網のように広がった太い特殊心筋線維（心内膜下枝）。興奮（excitation）を速く伝え、心室（ventricle）の心筋をほぼ同時に、心尖（apex of heart）から心底（base of heart）へ向かって縮ませる（血液（blood）を上の動脈（artery）の口へ押し出す）。"
+        }
+      ]
+    },
+    {
+      "id": "cv-heart-interior",
+      "title": "心臓の内面（卵円窩・肉柱・中隔縁柱）",
+      "group": "心臓",
+      "intro": ["前の壁を外した心臓（heart）で、右心房（right atrium）の卵円窩（fossa ovalis）と、心室（ventricle）の内面（internal surface）の肉柱（trabeculae carneae）・中隔縁柱（septomarginal trabecula）を見る。心臓の壁の3層（心外膜（epicardium）・心筋層（myocardium）・心内膜（endocardium））もこの図で確かめられる。"],
+      "terms": [
+        {
+          "id": "fossa-ovalis", "ja": "卵円窩", "yomi": "らんえんか", "en": "fossa ovalis", "enAlt": ["oval fossa"], "la": "fossa ovalis", "plate": "heart-interior", "level": 1,
+          "kanji": "卵の形のくぼみ",
+          "etym": "fossa「くぼみ」＋ ovalis「卵形の」（ラテン語）",
+          "note": "右心房（right atrium）の心房中隔（interatrial septum）にある卵形のくぼみ。胎児（fetus）の卵円孔（foramen ovale）（右心房から左心房（left atrium）へ血液（blood）を通した孔）が、生まれたあと一次中隔（septum primum）（底）と二次中隔（septum secundum）（縁＝卵円窩縁）が貼りついて閉じたあと。閉じきらないのが卵円孔開存・心房中隔欠損。"
+        },
+        {
+          "id": "trabeculae-carneae", "ja": "肉柱", "yomi": "にくちゅう", "en": "trabeculae carneae", "la": "trabeculae carneae", "plate": "heart-interior", "level": 2,
+          "kanji": "肉（筋）でできた柱",
+          "etym": "trabecula「小さな梁」＋ carneus「肉の」（ラテン語）",
+          "note": "心室（ventricle）の内面（internal surface）に網のように盛り上がる筋（muscle）の柱。心室の流入路（房室弁（atrioventricular valve）の側）に多く、流出路（動脈円錐（conus arteriosus）など）はなめらか。乳頭筋（papillary muscles）も肉柱の一種。"
+        },
+        {
+          "id": "septomarginal-trabecula", "ja": "中隔縁柱", "yomi": "ちゅうかくえんちゅう", "en": "septomarginal trabecula", "enAlt": ["moderator band"], "la": "trabecula septomarginalis", "plate": "heart-interior", "level": 2,
+          "kanji": "中隔から外の縁（前の壁）へ渡る柱",
+          "etym": "septo-「中隔」＋ marginal「縁の」＋ trabecula「小さな梁」（ラテン語）",
+          "note": "右心室（right ventricle）だけにある、心室中隔（interventricular septum）から前乳頭筋（anterior papillary muscle）の根もとへ渡る筋（muscle）の橋（調節帯）。中を刺激伝導系（conducting system of heart）の右脚（right bundle branch）の枝（branch）が通り、前乳頭筋へ興奮（excitation）を近道で届ける。右心室を見分ける目印。"
+        }
+      ]
+    },
+    {
+      "id": "cv-vessel-wall",
+      "title": "動脈と静脈の壁",
+      "group": "血管の構造と発生",
+      "intro": ["心臓（heart）から出る血管（blood vessel）が動脈（artery）、心臓に戻る血管が静脈（vein）。壁はどちらも内から内膜・中膜（tunica media）・外膜の3層だが、圧の高い動脈は中膜（平滑筋（smooth muscle）と弾性線維（elastic fiber））が厚く、圧の低い静脈は壁が薄く内腔（lumen）が広い。血液（blood）の約6〜7割は静脈にある（容量血管）。","大動脈（aorta）のような太い動脈は弾性線維が多い弾性動脈（拍動（pulsation）の流れをならす）、中くらいの動脈は平滑筋の多い筋性動脈、細動脈（arteriole）は抵抗血管（血流量を調節）、毛細血管（capillary）は交換血管。"],
+      "terms": [
+        {
+          "id": "tunica-intima", "ja": "内膜（血管）", "yomi": "ないまく", "en": "tunica intima", "enAlt": ["intima"], "la": "tunica intima", "plate": "vessel-wall", "level": 1,
+          "kanji": "血管の壁のいちばん内の膜",
+          "etym": "tunica「衣・層」＋ intimus「いちばん内の」（ラテン語）",
+          "note": "血管（blood vessel）の壁のいちばん内の層で、内皮（endothelium）と、その下の薄い結合組織（connective tissue）、動脈（artery）では内弾性板（internal elastic membrane）からなる。動脈硬化はこの層にコレステロールがたまって厚くなる病気。"
+        },
+        {
+          "id": "tunica-media", "ja": "中膜", "yomi": "ちゅうまく", "en": "tunica media", "enAlt": ["media"], "la": "tunica media", "plate": "vessel-wall", "level": 1,
+          "kanji": "血管の壁のまん中の膜",
+          "etym": "tunica「衣・層」＋ medius「まん中の」（ラテン語）",
+          "note": "血管（blood vessel）の壁のまん中の層で、輪の向きに並ぶ平滑筋（smooth muscle）と弾性線維（elastic fiber）。動脈（artery）で厚く、静脈（vein）で薄い。大動脈（aorta）では弾性線維が多く（弾性動脈）、心臓（heart）が送り出す拍動（pulsation）の流れを、たわんで戻ることで連続した流れに変える。"
+        },
+        {
+          "id": "tunica-externa", "ja": "外膜（血管）", "yomi": "がいまく", "en": "tunica externa", "enAlt": ["tunica adventitia","adventitia"], "la": "tunica externa", "plate": "vessel-wall", "level": 1,
+          "kanji": "血管の壁のいちばん外の膜",
+          "etym": "tunica「衣・層」＋ externus「外の」（ラテン語）。adventitia「外から来たもの」",
+          "note": "血管（blood vessel）の壁のいちばん外の結合組織（connective tissue）の層で、まわりの組織（tissue）に血管をつなぎとめる。静脈（vein）では最も厚い層。太い血管では、壁を養う細い血管（脈管の脈管（vasa vasorum））と神経（nerve）がここを通る。心臓（heart）の近くでは線維性心膜（fibrous pericardium）に続く。"
+        },
+        {
+          "id": "endothelium", "ja": "内皮", "yomi": "ないひ", "en": "endothelium", "la": "endothelium", "plate": "vessel-wall", "level": 1,
+          "kanji": "管の内面をおおう上皮",
+          "etym": "endo-「内」＋ thele「乳頭」（ギリシャ語）から作られた語",
+          "note": "血管（blood vessel）・リンパ管（lymphatic vessel）と心臓（heart）の内面（internal surface）をおおう1層の扁平な細胞（cell）（単層扁平上皮）。血液（blood）が固まらないようにし、血管を広げる物質（一酸化窒素）を出す。毛細血管（capillary）の壁は内皮だけでできているので、物質の交換ができる。"
+        },
+        {
+          "id": "internal-elastic-membrane", "ja": "内弾性板", "yomi": "ないだんせいばん", "en": "internal elastic membrane", "enAlt": ["internal elastic lamina"], "la": "membrana elastica interna", "plate": "vessel-wall", "level": 2,
+          "kanji": "内側の弾性線維の板",
+          "etym": "internal「内の」＋ elastic「弾性の」＋ membrane「膜」",
+          "note": "動脈（artery）の内膜と中膜（tunica media）の境にある、波打つ弾性線維（elastic fiber）の板。顕微鏡で動脈を静脈（vein）と見分けるいちばんの目印（静脈ではほとんど見えない）。"
+        },
+        {
+          "id": "external-elastic-membrane", "ja": "外弾性板", "yomi": "がいだんせいばん", "en": "external elastic membrane", "enAlt": ["external elastic lamina"], "la": "membrana elastica externa", "plate": "vessel-wall", "level": 3,
+          "kanji": "外側の弾性線維の板",
+          "etym": "external「外の」＋ elastic「弾性の」＋ membrane「膜」",
+          "note": "動脈（artery）の中膜（tunica media）と外膜の境にある弾性線維（elastic fiber）の板。筋性動脈ではっきり見え、内弾性板（internal elastic membrane）より薄い。"
+        },
+        {
+          "id": "vasa-vasorum", "ja": "脈管の脈管", "yomi": "みゃっかんのみゃっかん", "en": "vasa vasorum", "la": "vasa vasorum", "plate": "vessel-wall", "level": 3, "check": true,
+          "kanji": "血管（脈管）の壁を養う血管",
+          "etym": "vas「管」の複数形 vasa ＋ vasorum「管の」（ラテン語）",
+          "note": "太い動脈（artery）・静脈（vein）の外膜と中膜（tunica media）の外側（lateral）を養う細い血管（blood vessel）。壁が厚いと内腔（lumen）の血液（blood）からの拡散だけでは足りないため。大動脈（aorta）の脈管の脈管がふさがれると、梅毒性大動脈瘤のように壁が弱る。"
+        }
+      ]
+    },
+    {
+      "id": "cv-microcirculation",
+      "title": "毛細血管・細動脈・リンパ管",
+      "group": "血管の構造と発生",
+      "intro": ["動脈（artery）は枝分かれして細動脈（arteriole） → 毛細血管（capillary）となり、毛細血管で組織（tissue）と物質を交換したあと細静脈 → 静脈（vein）へ集まる。毛細血管からしみ出た液の一部はリンパ管（lymphatic vessel）が集めて静脈へ戻す。小腸（small intestine）の絨毛（villi）の図で見る。"],
+      "terms": [
+        {
+          "id": "capillary", "ja": "毛細血管", "yomi": "もうさいけっかん", "en": "capillary", "enAlt": ["blood capillary"], "la": "vas capillare", "plate": "intestine-villi", "level": 1,
+          "kanji": "毛のように細い血管",
+          "etym": "capillary ← ラテン語 capillus「髪の毛」",
+          "note": "細動脈（arteriole）と細静脈をつなぐ直径5〜10μmの最も細い血管（blood vessel）。壁は内皮（endothelium）（と基底膜（basement membrane））だけで、酸素・二酸化炭素・栄養・老廃物をまわりの組織（tissue）と交換する（交換血管）。数が多いので断面積の合計は最大で、血流（blood flow）はいちばん遅い。"
+        },
+        {
+          "id": "arteriole", "ja": "細動脈", "yomi": "さいどうみゃく", "en": "arteriole", "la": "arteriola", "plate": "intestine-villi", "level": 1,
+          "kanji": "細い動脈",
+          "etym": "arteria「動脈」＋ -ole「小さい」",
+          "note": "毛細血管（capillary）の手前の、直径約30μmの細い動脈（artery）。壁の平滑筋（smooth muscle）が縮んだりゆるんだりして血流（blood flow）の抵抗を変え、組織（tissue）へ流れる血液（blood）の量と血圧（blood pressure）を調節する（抵抗血管）。血圧はここで大きく下がる。"
+        },
+        {
+          "id": "lymphatic-vessel", "ja": "リンパ管", "yomi": "りんぱかん", "en": "lymphatic vessel", "la": "vas lymphaticum", "plate": "intestine-villi", "level": 1,
+          "kanji": "リンパ（組織の液）を運ぶ管",
+          "etym": "lympha「澄んだ水」（ラテン語）＋ vessel「管」",
+          "note": "毛細血管（capillary）からしみ出た組織液（interstitial fluid）の一部（リンパ（lymph））を集める、盲端で始まる薄い管。途中のリンパ節（lymph node）を通って、胸管（thoracic duct）・右リンパ本幹（right lymphatic duct）から静脈角（venous angle）（内頚静脈（internal jugular vein）と鎖骨下静脈（subclavian vein）の合流）で静脈（vein）へ戻る。広い意味では循環器系（cardiovascular system）に含める。小腸（small intestine）の中心乳び腔（central lacteal）は脂肪（fat）を運ぶリンパ管。"
+        }
+      ]
+    },
+    {
+      "id": "cv-fetal-circulation",
+      "title": "胎児循環",
+      "group": "血管の構造と発生",
+      "intro": ["胎児（fetus）は肺（lung）で呼吸（respiration）せず、胎盤（placenta）で酸素と栄養を受け取る。酸素の多い血液（blood）は臍静脈（umbilical vein） → 静脈管（ductus venosus）（肝臓（liver）を素通り）→ 下大静脈（inferior vena cava） → 右心房（right atrium） → 卵円孔（foramen ovale） → 左心房（left atrium） → 左心室（left ventricle） → 大動脈（aorta）と流れ、右心室（right ventricle）から肺動脈幹（pulmonary trunk）へ出た血液の大部分も動脈管（ductus arteriosus）で大動脈へ抜ける（肺を通らない）。","生まれて肺で呼吸が始まると、これらの近道は閉じて索になる: 臍静脈 → 肝円索（round ligament of liver）、静脈管 → 静脈管索（ligamentum venosum）、卵円孔 → 卵円窩（fossa ovalis）、動脈管 → 動脈管索（ligamentum arteriosum）、臍動脈（umbilical arteries） → 臍動脈索（内側臍ひだ）。"],
+      "terms": [
+        {
+          "id": "placenta", "ja": "胎盤", "yomi": "たいばん", "en": "placenta", "la": "placenta", "plate": "fetal-circulation", "level": 1,
+          "kanji": "胎児のための盤（円い板）",
+          "etym": "placenta「平たい菓子」（ラテン語）",
+          "note": "子宮（uterus）の壁につく円盤形の器官（organ）で、母の血液（blood）と胎児（fetus）の血液の間で酸素・二酸化炭素・栄養・老廃物を交換する（血液どうしは混ざらない）。胎児にとって肺（lung）・消化管（digestive tract）・腎臓（kidney）の役をする。へそ（umbilicus）の緒（臍帯）で胎児とつながる。"
+        },
+        {
+          "id": "umbilical-vein", "ja": "臍静脈", "yomi": "さいじょうみゃく", "en": "umbilical vein", "la": "vena umbilicalis", "plate": "fetal-circulation", "level": 1,
+          "kanji": "臍（へそ）の静脈",
+          "etym": "umbilicus「へそ」（ラテン語）＋ vein「静脈」",
+          "note": "胎盤（placenta）から胎児（fetus）へ、酸素と栄養の多い血液（blood）を運ぶ1本の血管（blood vessel）（静脈（vein）なのに胎児でいちばん酸素の多い血液が流れる）。へそから肝臓（liver）の下へ入り、静脈管（ductus venosus）と門脈（hepatic portal vein）へ続く。生まれたあと閉じて肝円索（round ligament of liver）になる。"
+        },
+        {
+          "id": "ductus-venosus", "ja": "静脈管", "yomi": "じょうみゃくかん", "en": "ductus venosus", "la": "ductus venosus", "plate": "fetal-circulation", "level": 1,
+          "kanji": "静脈どうしをつなぐ管",
+          "etym": "ductus「管」＋ venosus「静脈の」（ラテン語）",
+          "note": "胎児（fetus）の肝臓（liver）の中で、臍静脈（umbilical vein）から下大静脈（inferior vena cava）へ近道する管（アランチウス管）。胎盤（placenta）からの血液（blood）の多くが肝臓の毛細血管（capillary）を通らずに心臓（heart）へ向かう。生まれたあと閉じて静脈管索（ligamentum venosum）になり、肝臓の臓側面（visceral surface）の静脈管索裂（fissure for ligamentum venosum）に残る。"
+        },
+        {
+          "id": "foramen-ovale-of-heart", "ja": "卵円孔（心臓）", "yomi": "らんえんこう", "en": "foramen ovale of heart", "enAlt": ["foramen ovale"], "la": "foramen ovale cordis", "plate": "fetal-circulation", "level": 1,
+          "kanji": "心房中隔の卵の形の孔",
+          "etym": "foramen「孔」＋ ovale「卵形の」（ラテン語）",
+          "note": "胎児（fetus）の心房中隔（interatrial septum）の孔で、下大静脈（inferior vena cava）から右心房（right atrium）に入った酸素の多い血液（blood）を左心房（left atrium）へ通す（肺（lung）を通らない近道）。一次中隔（septum primum）が弁（valve）のようにかぶさり、右から左へだけ流れる。生まれて左心房の圧が上がると一次中隔が押しつけられて閉じ、卵円窩（fossa ovalis）になる。頭蓋（skull）の卵円孔（foramen ovale）（下顎神経（mandibular nerve）が通る）とは別。"
+        },
+        {
+          "id": "ductus-arteriosus", "ja": "動脈管", "yomi": "どうみゃくかん", "en": "ductus arteriosus", "la": "ductus arteriosus", "plate": "fetal-circulation", "level": 1,
+          "kanji": "動脈どうしをつなぐ管",
+          "etym": "ductus「管」＋ arteriosus「動脈の」（ラテン語）",
+          "note": "胎児（fetus）の肺動脈幹（pulmonary trunk）（左肺動脈（left pulmonary artery）の根もと）と大動脈弓（arch of aorta）をつなぐ管（ボタロー管）。右心室（right ventricle）から出た血液（blood）の大部分を、まだ広がっていない肺（lung）を通さずに大動脈（aorta）へ流す。生まれて数日で閉じて動脈管索（ligamentum arteriosum）になる。閉じないのが動脈管開存症（patent ductus arteriosus）。"
+        },
+        {
+          "id": "umbilical-arteries", "ja": "臍動脈", "yomi": "さいどうみゃく", "en": "umbilical arteries", "enAlt": ["umbilical artery"], "la": "arteria umbilicalis", "plate": "fetal-circulation", "level": 1,
+          "kanji": "臍（へそ）の動脈",
+          "etym": "umbilicus「へそ」（ラテン語）＋ artery「動脈」",
+          "note": "胎児（fetus）の左右の内腸骨動脈（internal iliac artery）から出て、膀胱（urinary bladder）の両わきを上ってへそから胎盤（placenta）へ、酸素の少ない血液（blood）を運ぶ2本の血管（blood vessel）。生まれたあと先の方が閉じて臍動脈索（内側臍ひだの中）になり、根もとは上膀胱動脈として残る。"
+        }
+      ]
+    },
+    {
+      "id": "cv-heart-tube",
+      "title": "心臓の発生（原始心筒）",
+      "group": "血管の構造と発生",
+      "intro": ["心臓（heart）は胎児（fetus）の中で最も早く働き始める器官（organ）。胎齢3週に原始線条の頭側（cranial）の中胚葉（心臓前駆細胞）から左右1対の心内膜筒ができ、胚の折りたたみで正中（median）に寄って1本の原始心筒（primitive heart tube）になる（胎齢21〜22日）。拍動（pulsation）は胎齢21〜22日に始まり、24〜25日には血液（blood）を送り出す。","原始心筒は頭から尾へ、動脈幹（truncus arteriosus）・心球（bulbus cordis）・原始心室（primitive ventricle）・原始心房（primitive atrium）・静脈洞（sinus venosus）にくびれる。胎齢23〜28日に右へ曲がってS字形にループし（心臓ループ）、心房（atrium）が心室（ventricle）の後ろ上へ回る。こうして大人の心臓の向きができる。"],
+      "terms": [
+        {
+          "id": "primitive-heart-tube", "ja": "原始心筒", "yomi": "げんししんとう", "en": "primitive heart tube", "enAlt": ["primary heart tube"], "la": "tubus cordis primitivus", "plate": "heart-tube", "level": 2, "check": true,
+          "kanji": "最初の心臓の筒",
+          "etym": "primitive「最初の」＋ heart tube「心臓の筒」",
+          "note": "胎齢3週の終わりに、左右の心内膜筒が正中（median）で合わさってできる1本の筒。内が心内膜（endocardium）、外が心筋層（myocardium）（あとから心外膜（epicardium））。頭側（cranial）から動脈幹（truncus arteriosus）・心球（bulbus cordis）・原始心室（primitive ventricle）・原始心房（primitive atrium）・静脈洞（sinus venosus）に分かれ、胎齢4週にS字形に曲がる（心臓ループ）。"
+        },
+        {
+          "id": "truncus-arteriosus", "ja": "動脈幹", "yomi": "どうみゃくかん", "en": "truncus arteriosus", "la": "truncus arteriosus", "plate": "heart-tube", "level": 2,
+          "kanji": "動脈の幹",
+          "etym": "truncus「幹」＋ arteriosus「動脈の」（ラテン語）",
+          "note": "原始心筒（primitive heart tube）のいちばん頭側（cranial）の流出路。中にらせん状の大動脈肺動脈中隔ができて、上行大動脈（ascending aorta）と肺動脈幹（pulmonary trunk）に分かれる（大動脈（aorta）と肺動脈（pulmonary artery）がねじれ合う理由）。分かれないと総動脈幹症。"
+        },
+        {
+          "id": "bulbus-cordis", "ja": "心球", "yomi": "しんきゅう", "en": "bulbus cordis", "la": "bulbus cordis", "plate": "heart-tube", "level": 2,
+          "kanji": "心臓のふくらみ（球）",
+          "etym": "bulbus「球根・ふくらみ」＋ cordis「心臓の」（ラテン語）",
+          "note": "動脈幹（truncus arteriosus）と原始心室（primitive ventricle）の間のふくらみ。右心室（right ventricle）の大部分と、右心室の動脈円錐（conus arteriosus）・左心室（left ventricle）の大動脈前庭（流出路）になる。"
+        },
+        {
+          "id": "primitive-ventricle", "ja": "原始心室", "yomi": "げんししんしつ", "en": "primitive ventricle", "la": "ventriculus primitivus", "plate": "heart-tube", "level": 2,
+          "kanji": "最初の心室",
+          "etym": "primitive「最初の」＋ ventricle「心室」",
+          "note": "原始心筒（primitive heart tube）の心室（ventricle）の部分で、おもに左心室（left ventricle）になる。心球（bulbus cordis）との間の溝の所から筋性の心室中隔（interventricular septum）が下から伸びて、左右の心室に分かれる。"
+        },
+        {
+          "id": "primitive-atrium", "ja": "原始心房", "yomi": "げんししんぼう", "en": "primitive atrium", "enAlt": ["common atrium"], "la": "atrium primitivum", "plate": "heart-tube", "level": 2,
+          "kanji": "最初の心房",
+          "etym": "primitive「最初の」＋ atrium「広間・心房」",
+          "note": "原始心筒（primitive heart tube）の心房（atrium）の部分。心臓ループで心室（ventricle）の後ろ上へ回り、一次中隔（septum primum）と二次中隔（septum secundum）で左右に分けられる。左右の心耳（auricle）（右心耳（right auricle）・左心耳（left auricle））は原始心房の名残り。"
+        },
+        {
+          "id": "sinus-venosus", "ja": "静脈洞", "yomi": "じょうみゃくどう", "en": "sinus venosus", "la": "sinus venosus", "plate": "heart-tube", "level": 2,
+          "kanji": "静脈が集まるくぼみ（洞）",
+          "etym": "sinus「くぼみ」＋ venosus「静脈の」（ラテン語）",
+          "note": "原始心筒（primitive heart tube）のいちばん尾側（caudal）で、左右の角に全身（whole body）からの静脈（vein）（主静脈・臍静脈（umbilical vein）・卵黄静脈）が注ぐ。右角は右心房（right atrium）の壁のなめらかな部分（大静脈洞（sinus venarum））に、左角は冠状静脈洞（coronary sinus）になる。洞房結節（sinu-atrial node）もこの境にできる。硬膜静脈洞（dural venous sinus）とは別。"
+        }
+      ]
+    },
+    {
+      "id": "cv-heart-septation",
+      "title": "心房中隔の発生",
+      "group": "血管の構造と発生",
+      "intro": ["胎齢4〜5週（28〜37日ごろ）に心臓（heart）は4つの部屋に分かれる（中隔形成）。心房（atrium）と心室（ventricle）の間には上下の心内膜床（endocardial cushion）（心臓クッション）が盛り上がって合わさり、左右の房室管と、房室弁（atrioventricular valve）・中隔（septum）の膜性部のもとになる。","心房では、①一次中隔（septum primum）が上から心内膜床へ伸び、残るすき間が一次孔（ostium primum） → ②一次孔が閉じる前に一次中隔の上の方に穴が開いて二次孔（ostium secundum） → ③一次中隔の右に厚い二次中隔（septum secundum）が伸び、その下の縁のすき間が卵円孔（foramen ovale）。一次中隔は卵円孔の弁（valve）になり、血液（blood）は右心房（right atrium）から左心房（left atrium）へだけ流れる。"],
+      "terms": [
+        {
+          "id": "endocardial-cushion", "ja": "心内膜床", "yomi": "しんないまくしょう", "en": "endocardial cushion", "enAlt": ["atrioventricular cushion"], "la": "torus endocardiacus", "plate": "atrial-septation", "level": 2, "check": true,
+          "kanji": "心内膜の下のふくらみ（床）",
+          "etym": "endocardial「心内膜の」＋ cushion「クッション」",
+          "note": "房室管の上（背側（dorsal））と下（腹側（ventral））の壁に盛り上がる、ゼリー状の組織（tissue）（心ゼリー）のふくらみ。上下が合わさって房室管を左右に分け、心房中隔（interatrial septum）・心室中隔（interventricular septum）の膜性部や房室弁（atrioventricular valve）（三尖弁（tricuspid valve）・僧帽弁（mitral valve））をつくる。うまく合わさらないのが房室中隔欠損（心内膜床欠損）で、ダウン症に多い。"
+        },
+        {
+          "id": "septum-primum", "ja": "一次中隔", "yomi": "いちじちゅうかく", "en": "septum primum", "la": "septum primum", "plate": "atrial-septation", "level": 2,
+          "kanji": "最初にできる（心房の）中隔",
+          "etym": "septum「仕切り」＋ primum「最初の」（ラテン語）",
+          "note": "原始心房（primitive atrium）の天井から心内膜床（endocardial cushion）へ向かって伸びる、薄い三日月形の膜（membrane）。下の縁と心内膜床の間のすき間が一次孔（ostium primum）。一次孔が閉じるころ上の方に穴（二次孔（ostium secundum））が開く。最後は卵円孔（foramen ovale）をふさぐ弁（valve）になり、卵円窩（fossa ovalis）の底として残る。"
+        },
+        {
+          "id": "ostium-primum", "ja": "一次孔", "yomi": "いちじこう", "en": "ostium primum", "enAlt": ["foramen primum"], "la": "foramen primum", "plate": "atrial-septation", "level": 3,
+          "kanji": "最初の孔",
+          "etym": "ostium「入口」＋ primum「最初の」（ラテン語）",
+          "note": "伸びてくる一次中隔（septum primum）の下の縁と心内膜床（endocardial cushion）の間に残るすき間。一次中隔が心内膜床と合わさって閉じる。閉じないのが一次孔型の心房中隔欠損。"
+        },
+        {
+          "id": "ostium-secundum", "ja": "二次孔", "yomi": "にじこう", "en": "ostium secundum", "enAlt": ["foramen secundum"], "la": "foramen secundum", "plate": "atrial-septation", "level": 3,
+          "kanji": "二番目の孔",
+          "etym": "ostium「入口」＋ secundum「二番目の」（ラテン語）",
+          "note": "一次孔（ostium primum）が閉じる前に、一次中隔（septum primum）の上の方に小さな穴がいくつも開いてつながってできる孔。右心房（right atrium）から左心房（left atrium）への流れを保つ。最も多い心房中隔欠損（二次孔型）はここが大きすぎるもの。"
+        },
+        {
+          "id": "septum-secundum", "ja": "二次中隔", "yomi": "にじちゅうかく", "en": "septum secundum", "la": "septum secundum", "plate": "atrial-septation", "level": 2,
+          "kanji": "二番目にできる（心房の）中隔",
+          "etym": "septum「仕切り」＋ secundum「二番目の」（ラテン語）",
+          "note": "一次中隔（septum primum）の右側に、天井から下へ伸びる厚い三日月形の中隔（septum）。下まで届かず、下の縁のすき間が卵円孔（foramen ovale）になる。大人では卵円窩（fossa ovalis）の縁（卵円窩縁）として残る。"
         }
       ]
     },

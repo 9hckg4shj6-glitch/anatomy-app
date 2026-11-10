@@ -428,13 +428,63 @@
           "id": "submucosa", "ja": "粘膜下組織", "yomi": "ねんまくかそしき", "en": "submucosa", "la": "tela submucosa", "plate": "intestine-villi", "level": 2,
           "kanji": "粘膜の下の組織",
           "etym": "sub-「下」＋ mucosa「粘膜」（ラテン語）",
-          "note": "粘膜（mucosa）と筋層（muscular layer）の間の疎性結合組織（loose connective tissue）。太い血管（blood vessel）・リンパ管（lymphatic vessel）と粘膜下神経叢（マイスネル神経叢）がある。十二指腸（duodenum）ではここに十二指腸腺（duodenal glands）、食道（esophagus）では食道腺がある。"
+          "note": "粘膜（mucosa）と筋層（muscular layer）の間の疎性結合組織（loose connective tissue）。太い血管（blood vessel）・リンパ管（lymphatic vessel）と粘膜下神経叢（submucosal plexus）（マイスネル神経叢）がある。十二指腸（duodenum）ではここに十二指腸腺（duodenal glands）、食道（esophagus）では食道腺がある。"
         },
         {
           "id": "duodenal-glands", "ja": "十二指腸腺", "yomi": "じゅうにしちょうせん", "en": "duodenal glands", "enAlt": ["brunner's glands"], "la": "glandulae duodenales", "plate": "intestine-villi", "level": 2,
           "kanji": "十二指腸の腺",
           "etym": "glandula「腺」（ラテン語 glans「どんぐり」）。Brunner はスイスの解剖学者",
           "note": "十二指腸（duodenum）の粘膜下組織（submucosa）にある腺（gland）（ブルンナー腺（Brunner glands））。アルカリ性の粘液（mucus）を出して、胃から来た酸を中和し粘膜（mucosa）を守る。小腸（small intestine）の中で十二指腸にだけある。"
+        },
+        {
+          "id": "absorptive-cell", "ja": "吸収上皮細胞", "yomi": "きゅうしゅうじょうひさいぼう", "en": "absorptive cell", "enAlt": ["enterocyte"], "la": "enterocytus", "plate": "intestine-villi", "level": 2, "check": true,
+          "kanji": "栄養を吸収する上皮の細胞",
+          "etym": "absorptive「吸収する」。entero-「腸」＋ -cyte「細胞」（ギリシャ語）",
+          "note": "絨毛（villi）の表面の大部分をおおう円柱上皮細胞（小腸上皮細胞）。表面に微絨毛（microvilli）（刷子縁（brush border））が密に並んで面積を広げ、消化（digestion）の最後の酵素で分解した糖・アミノ酸・脂肪（fat）を取りこむ。輪状ひだ（circular folds）・絨毛・微絨毛で小腸（small intestine）の内面（internal surface）はテニスコートほどの広さになる。"
+        }
+      ]
+    },
+    {
+      "id": "dig-gi-wall",
+      "title": "消化管の壁の層と神経叢",
+      "group": "消化管",
+      "intro": ["食道（esophagus）から下の消化管（digestive tract）の壁は、内腔（lumen）から順に 粘膜（mucosa）（粘膜上皮（epithelium of mucosa）・粘膜固有層（lamina propria）・粘膜筋板（muscularis mucosae））→ 粘膜下組織（submucosa） → 筋層（muscular layer）（内輪走・外縦走）→ 漿膜（serosa）（腹膜（peritoneum））の4層でできている。胃だけは筋層のいちばん内に斜走筋（oblique muscle fibers）がある。","筋層の2層の間の筋層間神経叢（myenteric plexus）（アウエルバッハ神経叢）が蠕動運動を、粘膜下組織の粘膜下神経叢（submucosal plexus）（マイスネル神経叢）が分泌（secretion）と血流（blood flow）を調節する。リンパ管（lymphatic vessel）とリンパ組織（lymphoid tissue）は粘膜固有層から粘膜下組織にあり、がんの広がり（深さ）を考えるとき大切。"],
+      "terms": [
+        {
+          "id": "mucosa", "ja": "粘膜", "yomi": "ねんまく", "en": "mucosa", "enAlt": ["mucous membrane"], "la": "tunica mucosa", "plate": "gi-wall", "level": 1,
+          "kanji": "粘液でぬれた膜",
+          "etym": "mucosa ← ラテン語 mucus「粘液」",
+          "note": "消化管（digestive tract）の壁のいちばん内の層で、粘膜上皮（epithelium of mucosa）・粘膜固有層（lamina propria）・粘膜筋板（muscularis mucosae）の3つからなる。消化液を出し、栄養を吸収する。食道（esophagus）と肛門管（anal canal）の下部の上皮（epithelium）は重層扁平上皮（stratified squamous epithelium）（こすれに強い）、胃から直腸（rectum）までは単層円柱上皮（分泌（secretion）と吸収）。"
+        },
+        {
+          "id": "mucosal-epithelium", "ja": "粘膜上皮", "yomi": "ねんまくじょうひ", "en": "epithelium of mucosa", "enAlt": ["mucosal epithelium"], "la": "epithelium mucosae", "plate": "gi-wall", "level": 2,
+          "kanji": "粘膜の表面の上皮",
+          "etym": "epi-「上」＋ thele「乳頭」（ギリシャ語）",
+          "note": "消化管（digestive tract）の内腔（lumen）に面する細胞（cell）の層。消化（digestion）しない食道（esophagus）は重層扁平上皮（stratified squamous epithelium）、消化・吸収をする胃（stomach）・小腸（small intestine）・大腸（large intestine）は単層円柱上皮。胃がん・大腸がんの多くはこの上皮（epithelium）から起こる。"
+        },
+        {
+          "id": "lamina-propria", "ja": "粘膜固有層", "yomi": "ねんまくこゆうそう", "en": "lamina propria", "enAlt": ["lamina propria of mucosa"], "la": "lamina propria mucosae", "plate": "gi-wall", "level": 2,
+          "kanji": "粘膜そのものの結合組織の層",
+          "etym": "lamina「板・層」＋ propria「固有の」（ラテン語）",
+          "note": "粘膜上皮（epithelium of mucosa）の下の、やわらかい結合組織（connective tissue）の層。毛細血管（capillary）・リンパ管（lymphatic vessel）・リンパ球（リンパ小節（lymphoid nodule））が多く、腸（intestine）の腺（gland）が入りこむ。小腸（small intestine）の絨毛（villi）の芯もこの層。"
+        },
+        {
+          "id": "muscular-layer", "ja": "筋層", "yomi": "きんそう", "en": "muscular layer", "enAlt": ["muscularis externa","muscularis propria"], "la": "tunica muscularis", "plate": "gi-wall", "level": 1,
+          "kanji": "（消化管の壁の）筋の層",
+          "etym": "muscular「筋の」（ラテン語 musculus「小さなネズミ」）＋ layer「層」",
+          "note": "粘膜下組織（submucosa）の外の平滑筋（smooth muscle）の層で、内の輪走筋層（circular layer）と外の縦走筋層（longitudinal layer）の2層（胃（stomach）は内に斜走筋（oblique muscle fibers）が加わる3層）。2層が交互に縮んで内容物を先へ送る（蠕動運動）。食道（esophagus）の上1/3は横紋筋。"
+        },
+        {
+          "id": "submucosal-plexus", "ja": "粘膜下神経叢", "yomi": "ねんまくかしんけいそう", "en": "submucosal plexus", "enAlt": ["meissner plexus"], "la": "plexus submucosus", "plate": "gi-wall", "level": 2,
+          "kanji": "粘膜下組織の中の神経の網",
+          "etym": "sub-「下」＋ mucosa「粘膜」＋ plexus「網・叢」（ラテン語）",
+          "note": "粘膜下組織（submucosa）の中の神経細胞（neuron）と線維（fiber）の網（マイスネル神経叢）。腸（intestine）の神経系（腸管神経系）の一部で、粘膜（mucosa）の分泌（secretion）・血流（blood flow）・粘膜筋板（muscularis mucosae）の動きを調節する。"
+        },
+        {
+          "id": "myenteric-plexus", "ja": "筋層間神経叢", "yomi": "きんそうかんしんけいそう", "en": "myenteric plexus", "enAlt": ["auerbach plexus"], "la": "plexus myentericus", "plate": "gi-wall", "level": 2,
+          "kanji": "筋層の2層の間の神経の網",
+          "etym": "myo-「筋」＋ enteron「腸」（ギリシャ語）＋ plexus「網」",
+          "note": "輪走筋層（circular layer）と縦走筋層（longitudinal layer）の間の神経（nerve）の網（アウエルバッハ神経叢）。蠕動運動を起こす。生まれつきこの神経細胞（neuron）が欠けるとその部分が動かず、上の大腸（large intestine）が太くなる（ヒルシュスプルング病）。迷走神経（vagus nerve）（副交感（parasympathetic））と交感神経（sympathetic nerve）がこの網を通して腸（intestine）を調節する。"
         }
       ]
     },
@@ -583,6 +633,68 @@
           "kanji": "肝臓と十二指腸の間の間膜",
           "etym": "hepato-「肝臓の」＋ duodenal「十二指腸の」＋ ligament「靱帯（間膜）」",
           "note": "小網（lesser omentum）の右の厚い縁の部分で、肝門（porta hepatis）と十二指腸（duodenum）の上部をつなぐ。中を門脈（hepatic portal vein）（後ろ）・固有肝動脈（proper hepatic artery）（左前）・総胆管（bile duct）（右前）が通る。この右の自由な縁のすぐ後ろが網嚢孔（omental foramen）。小網の残りの薄い部分（肝臓（liver）と胃（stomach）の小弯（lesser curvature）をつなぐ）は肝胃間膜という。"
+        }
+      ]
+    },
+    {
+      "id": "dig-gut-development",
+      "title": "消化管の発生（前腸・中腸・後腸）",
+      "group": "消化管",
+      "intro": ["内胚葉（endoderm）の消化管（digestive tract）は胎齢4週に胚の折りたたみで卵黄嚢（yolk sac）の上の部分がくびれてでき、頭側（cranial）の前腸（foregut）・まん中の中腸（midgut）・尾側（caudal）の後腸（hindgut）に分かれる。中腸は卵黄腸管（vitelline duct）で卵黄嚢とつながる。","前腸は食道（esophagus）・胃（stomach）・十二指腸（duodenum）の上半と肝臓（liver）・胆嚢（gallbladder）・膵臓（pancreas）、中腸は十二指腸の下半から横行結腸（transverse colon）の右2/3、後腸は横行結腸の左1/3から直腸（rectum）・肛門管（anal canal）の上部になる。大人ではそれぞれ腹腔動脈（celiac trunk）・上腸間膜動脈（superior mesenteric artery）・下腸間膜動脈（inferior mesenteric artery）が養う（発生（development）の区分と動脈（artery）の区分が一致する）。","胃は胎齢5〜8週に縦の軸のまわりに右へ90°回転し（左の面が前に）、背側胃間膜がふくらんで大網（greater omentum）に、後ろに網嚢（omental bursa）ができる。中腸は伸びが速く、胎齢6〜10週に臍帯の中へ出て（生理的臍帯ヘルニア）上腸間膜動脈を軸に反時計回りに90°、腹腔（abdominal cavity）へ戻るときにさらに180°、合わせて270°回転し、盲腸（cecum）が右下に収まる。"],
+      "terms": [
+        {
+          "id": "foregut", "ja": "前腸", "yomi": "ぜんちょう", "en": "foregut", "la": "proenteron", "plate": "gut-tube", "level": 2, "check": true,
+          "kanji": "前（頭側）の腸",
+          "etym": "fore-「前」＋ gut「腸」",
+          "note": "原始腸管の頭側（cranial）の部分。咽頭（pharynx）・食道（esophagus）・胃（stomach）・十二指腸（duodenum）の上半（大十二指腸乳頭（major duodenal papilla）まで）と、そこから芽を出す肝臓（liver）・胆嚢（gallbladder）・膵臓（pancreas）・気管（trachea）と肺（lung）になる。腹部（abdomen）では腹腔動脈（celiac trunk）が養う。"
+        },
+        {
+          "id": "midgut", "ja": "中腸", "yomi": "ちゅうちょう", "en": "midgut", "la": "mesenteron", "plate": "gut-tube", "level": 2, "check": true,
+          "kanji": "まん中の腸",
+          "etym": "mid-「まん中」＋ gut「腸」",
+          "note": "原始腸管のまん中の部分で、卵黄腸管（vitelline duct）で卵黄嚢（yolk sac）とつながる。十二指腸（duodenum）の下半・空腸（jejunum）・回腸（ileum）・盲腸（cecum）と虫垂（appendix）・上行結腸（ascending colon）・横行結腸（transverse colon）の右2/3になり、上腸間膜動脈（superior mesenteric artery）が養う。伸びが速いので一次腸ループ（primary intestinal loop）をつくり、270°回転して腹腔（abdominal cavity）に収まる。"
+        },
+        {
+          "id": "hindgut", "ja": "後腸", "yomi": "こうちょう", "en": "hindgut", "la": "metenteron", "plate": "gut-tube", "level": 2, "check": true,
+          "kanji": "後ろ（尾側）の腸",
+          "etym": "hind-「後ろ」＋ gut「腸」",
+          "note": "原始腸管の尾側（caudal）の部分。横行結腸（transverse colon）の左1/3・下行結腸（descending colon）・S状結腸（sigmoid colon）・直腸（rectum）・肛門管（anal canal）の上部（櫛状線（pectinate line）より上）になり、下腸間膜動脈（inferior mesenteric artery）が養う。端は総排泄腔（cloaca）。"
+        },
+        {
+          "id": "vitelline-duct", "ja": "卵黄腸管", "yomi": "らんおうちょうかん", "en": "vitelline duct", "enAlt": ["omphaloenteric duct","yolk stalk"], "la": "ductus vitellinus", "plate": "gut-tube", "level": 2,
+          "kanji": "卵黄嚢と腸をつなぐ管",
+          "etym": "vitellus「卵黄」（ラテン語）＋ duct「管」",
+          "note": "中腸（midgut）（一次腸ループ（primary intestinal loop）の頂点）と卵黄嚢（yolk sac）をつなぐ細い管。ふつうは胎齢6〜7週に閉じて消える。根もとが残ったものが回腸（ileum）の憩室（diverticulum）（メッケル憩室（Meckel diverticulum）、回盲弁（ileocecal valve）から約60cm）で、出血や腸閉塞の原因になる。"
+        },
+        {
+          "id": "yolk-sac", "ja": "卵黄嚢", "yomi": "らんおうのう", "en": "yolk sac", "enAlt": ["umbilical vesicle"], "la": "saccus vitellinus", "plate": "gut-tube", "level": 2,
+          "kanji": "卵黄の袋",
+          "etym": "yolk「卵黄」＋ sac「袋」",
+          "note": "胚の腹側（ventral）の袋で、ヒトでは卵黄（栄養）をほとんどもたない。胎齢17日ごろから壁の中胚葉に血島ができて最初の血液（blood）と血管（blood vessel）をつくり（のちに造血は肝臓（liver）・脾臓（spleen）・骨髄（bone marrow）へ移る）、原始生殖細胞もここから生殖腺へ移る。上の部分が胚の中に取りこまれて原始腸管になる。"
+        },
+        {
+          "id": "cloaca", "ja": "総排泄腔", "yomi": "そうはいせつくう", "en": "cloaca", "la": "cloaca", "plate": "gut-tube", "level": 2,
+          "kanji": "（尿と便を）まとめて出す腔",
+          "etym": "cloaca「下水溝」（ラテン語）",
+          "note": "後腸（hindgut）の尾側（caudal）の端のふくらみで、尿膜（尿膜管（urachus））もここに開く。胎齢4〜7週に尿直腸中隔が下へ伸びて前の尿生殖洞（膀胱（urinary bladder）・尿道（urethra）になる）と後ろの肛門直腸管（直腸（rectum）・肛門管（anal canal）の上部）に分ける。鳥類・爬虫類では大人でも総排泄腔のまま。"
+        },
+        {
+          "id": "primary-intestinal-loop", "ja": "一次腸ループ", "yomi": "いちじちょうるーぷ", "en": "primary intestinal loop", "enAlt": ["midgut loop"], "la": "ansa umbilicalis intestini", "plate": "gut-tube", "level": 3, "check": true,
+          "kanji": "最初にできる腸のわな（ループ）",
+          "etym": "primary「最初の」＋ intestinal「腸の」＋ loop「わな・輪」",
+          "note": "胎齢5週に伸びの速い中腸（midgut）が前へ突き出てできるU字のループ。上腸間膜動脈（superior mesenteric artery）が軸になり、頂点に卵黄腸管（vitelline duct）が付く。頭側（cranial）の脚は空腸（jejunum）・回腸（ileum）に、尾側（caudal）の脚は回腸の末端・盲腸（cecum）・上行結腸（ascending colon）・横行結腸（transverse colon）になる。胎齢6〜8週に臍帯の中へ出て（生理的臍帯ヘルニア）反時計回りに90°、10週に腹腔（abdominal cavity）へ戻るとき180°、計270°回転する。回転の異常（腸回転異常）は腸（intestine）がねじれる原因になる。"
+        },
+        {
+          "id": "dorsal-mesentery", "ja": "背側腸間膜", "yomi": "はいそくちょうかんまく", "en": "dorsal mesentery", "la": "mesenterium dorsale", "plate": "gut-tube", "level": 3,
+          "kanji": "背中側の腸間膜",
+          "etym": "dorsal「背の」（ラテン語 dorsum）＋ mesentery「腸間膜」（mesos「間」＋ enteron「腸」）",
+          "note": "原始腸管を後ろの体壁（大動脈（aorta）の前）からつり下げる膜（membrane）で、腸（intestine）へ行く動脈（artery）・神経（nerve）がここを通る。胃（stomach）の部分（背側胃間膜）は胃の回転でふくらんで大網（greater omentum）と胃脾間膜（gastrosplenic ligament）になり、ほかは小腸（small intestine）の腸間膜（mesentery）・横行結腸間膜（transverse mesocolon）・S状結腸間膜（sigmoid mesocolon）として残る。十二指腸（duodenum）・上行結腸（ascending colon）・下行結腸（descending colon）の部分は後腹壁（posterior abdominal wall）に癒着して消える（二次的な腹膜後器官）。"
+        },
+        {
+          "id": "ventral-mesentery", "ja": "腹側腸間膜", "yomi": "ふくそくちょうかんまく", "en": "ventral mesentery", "la": "mesenterium ventrale", "plate": "gut-tube", "level": 3,
+          "kanji": "腹側の腸間膜",
+          "etym": "ventral「腹の」（ラテン語 venter）＋ mesentery「腸間膜」",
+          "note": "前腸（foregut）（胃（stomach）と十二指腸（duodenum）の上部）だけにある、前の腹壁（abdominal wall）へ渡る膜（membrane）（横中隔から）。中に肝臓（liver）が育ち、肝臓と胃の間の部分が小網（lesser omentum）（肝胃間膜・肝十二指腸間膜（hepatoduodenal ligament））に、肝臓と前腹壁（anterior abdominal wall）の間の部分が肝鎌状間膜（falciform ligament of liver）になる。"
         }
       ]
     },
@@ -868,6 +980,76 @@
           "kanji": "尾状葉から出る突起",
           "etym": "caudate ← ラテン語 cauda「尾」＋ process「突起」",
           "note": "尾状葉（caudate lobe）から右前へ出て、肝門（porta hepatis）と下大静脈（inferior vena cava）の間で右葉（right lobe）につながる細い部分。網嚢孔（omental foramen）の上の壁になる。"
+        }
+      ]
+    },
+    {
+      "id": "dig-pt-liver-impressions",
+      "title": "肝臓の圧痕と肝鎌状間膜",
+      "group": "肝臓・胆道・膵臓",
+      "intro": ["肝臓（liver）の臓側面（visceral surface）（後ろ下の面）には、接する臓器（organ）が押した浅いくぼみ（圧痕）がある: 左葉（left lobe）に胃圧痕（gastric impression）・食道圧痕（esophageal impression）、右葉（right lobe）に十二指腸圧痕（duodenal impression）・結腸圧痕（colic impression）・腎圧痕（renal impression）・副腎圧痕（suprarenal impression）。","横隔面（diaphragmatic surface）の前では、肝鎌状間膜（falciform ligament of liver）が肝臓を横隔膜（diaphragm）と前腹壁（anterior abdominal wall）につなぐ。肝鎌状間膜は解剖学的に右葉と左葉を分けるが、手術（肝切除・肝移植）では下大静脈（inferior vena cava）と胆嚢窩（fossa for gallbladder）を結ぶカントリー線（Cantlie line）で左右に分ける。"],
+      "terms": [
+        {
+          "id": "gastric-impression", "ja": "胃圧痕", "yomi": "いあっこん", "en": "gastric impression", "la": "impressio gastrica", "of": "liver", "level": 2,
+          "kanji": "胃に押されたくぼみ",
+          "etym": "gastric「胃の」（ギリシャ語 gaster「胃」）＋ impression「押し跡」",
+          "note": "肝臓（liver）の左葉（left lobe）の臓側面（visceral surface）の広いくぼみで、胃（stomach）の前面（anterior surface）がここに接する。小網（lesser omentum）（肝胃間膜）が肝臓から胃の小弯（lesser curvature）へ渡る。"
+        },
+        {
+          "id": "esophageal-impression", "ja": "食道圧痕", "yomi": "しょくどうあっこん", "en": "esophageal impression", "la": "impressio oesophagea", "of": "liver", "level": 3,
+          "kanji": "食道に押されたくぼみ",
+          "etym": "esophageal「食道の」（ギリシャ語 oisophagos）＋ impression",
+          "note": "肝臓（liver）の左葉（left lobe）の後ろの縁の、腹部食道が胃（stomach）の噴門（cardia）へ入る所に接する浅い溝。静脈管索裂（fissure for ligamentum venosum）の左上にある。"
+        },
+        {
+          "id": "duodenal-impression", "ja": "十二指腸圧痕", "yomi": "じゅうにしちょうあっこん", "en": "duodenal impression", "la": "impressio duodenalis", "of": "liver", "level": 3,
+          "kanji": "十二指腸に押されたくぼみ",
+          "etym": "duodenal「十二指腸の」（ラテン語 duodeni「12ずつ」）＋ impression",
+          "note": "肝臓（liver）の右葉（right lobe）の臓側面（visceral surface）の、胆嚢頚（neck of gallbladder）の右に十二指腸（duodenum）の上部が接する小さなくぼみ。"
+        },
+        {
+          "id": "colic-impression", "ja": "結腸圧痕", "yomi": "けっちょうあっこん", "en": "colic impression", "la": "impressio colica", "of": "liver", "level": 2,
+          "kanji": "結腸に押されたくぼみ",
+          "etym": "colic「結腸の」（ギリシャ語 kolon）＋ impression",
+          "note": "肝臓（liver）の右葉（right lobe）の臓側面（visceral surface）の前下（anteroinferior）の、右結腸曲（right colic flexure）（肝弯曲（hepatic flexure））が接するくぼみ。右結腸曲が肝曲ともよばれるのはここで肝臓に接するから。"
+        },
+        {
+          "id": "renal-impression", "ja": "腎圧痕", "yomi": "じんあっこん", "en": "renal impression", "la": "impressio renalis", "of": "liver", "level": 2,
+          "kanji": "腎臓に押されたくぼみ",
+          "etym": "renal「腎臓の」（ラテン語 ren「腎臓」）＋ impression",
+          "note": "肝臓（liver）の右葉（right lobe）の臓側面（visceral surface）の後ろの、右の腎臓（kidney）の上の端が接する広いくぼみ。右の腎臓が左より低い（約1〜2cm）のは、上に肝臓があるため。肝臓と右腎（right kidney）の間のすき間は肝腎陥凹（モリソン窩）で、あお向けで腹腔（abdominal cavity）の液や血液（blood）がたまりやすい。"
+        },
+        {
+          "id": "suprarenal-impression", "ja": "副腎圧痕", "yomi": "ふくじんあっこん", "en": "suprarenal impression", "la": "impressio suprarenalis", "of": "liver", "level": 3,
+          "kanji": "副腎に押されたくぼみ",
+          "etym": "supra-「上」＋ renal「腎臓の」＋ impression",
+          "note": "肝臓（liver）の右葉（right lobe）の後ろの、下大静脈（inferior vena cava）の右（無漿膜野（bare area of liver）の下の方）に右の副腎（suprarenal gland）が接する小さなくぼみ。"
+        },
+        {
+          "id": "falciform-ligament", "ja": "肝鎌状間膜", "yomi": "かんかまじょうかんまく", "en": "falciform ligament", "enAlt": ["falciform ligament of liver"], "la": "ligamentum falciforme hepatis", "of": "liver", "level": 1,
+          "kanji": "肝臓の、鎌の形の間膜",
+          "etym": "falx「鎌」（ラテン語）＋ -form「形」＋ ligament「靱帯・間膜」",
+          "note": "肝臓（liver）の横隔面（diaphragmatic surface）の前から、横隔膜（diaphragm）と前腹壁（anterior abdominal wall）（へそまで）へ渡る2枚の腹膜（peritoneum）のひだ（fold）（腹側腸間膜（ventral mesentery）の名残り）。下の縁に肝円索（round ligament of liver）（胎児（fetus）の臍静脈（umbilical vein）のあと）を含む。解剖学（anatomy）ではこれで右葉（right lobe）と左葉（left lobe）を分けるが、機能的（血管（blood vessel）の分布）には下大静脈（inferior vena cava）と胆嚢窩（fossa for gallbladder）を結ぶカントリー線（Cantlie line）で分ける。後ろは冠状間膜（coronary ligament）と左右の三角間膜（triangular ligament）に続き、その間の無漿膜野（bare area of liver）で肝臓は横隔膜に直接付く。"
+        }
+      ]
+    },
+    {
+      "id": "dig-pancreas-islets",
+      "title": "膵臓の外分泌と内分泌（腺房と膵島）",
+      "group": "肝臓・胆道・膵臓",
+      "intro": ["膵臓（pancreas）は消化酵素（digestive enzyme）（トリプシン・リパーゼ・アミラーゼ）と重炭酸イオンを含む膵液（pancreatic juice）を1日1.5〜2L十二指腸へ出す外分泌腺であり、同時にインスリン（insulin）・グルカゴン・ソマトスタチンを血液（blood）へ出す内分泌腺（endocrine gland）でもある。外分泌（exocrine）は腺房、内分泌（endocrine）は腺房の間に散らばる膵島（pancreatic islets）が受け持つ。"],
+      "terms": [
+        {
+          "id": "pancreatic-acini", "ja": "腺房（膵臓）", "yomi": "せんぼう", "en": "pancreatic acini", "enAlt": ["acinar cells"], "la": "acini pancreatici", "plate": "pancreas-islets", "level": 2, "check": true,
+          "kanji": "腺の房（ぶどうの房のような袋）",
+          "etym": "acinus「ぶどうの粒」（ラテン語）",
+          "note": "膵臓（pancreas）の大部分を占める、外分泌（exocrine）の腺細胞のふくろ（腺房細胞）。トリプシン・リパーゼ・アミラーゼなどの消化酵素（digestive enzyme）を出し、導管（duct）が重炭酸イオンを足してアルカリ性の膵液（pancreatic juice）にする（胃酸（gastric acid）を中和）。膵液は膵管（pancreatic duct）から大十二指腸乳頭（major duodenal papilla）へ出る。"
+        },
+        {
+          "id": "pancreatic-islets", "ja": "膵島", "yomi": "すいとう", "en": "pancreatic islets", "enAlt": ["islets of langerhans","pancreatic islet"], "la": "insulae pancreaticae", "plate": "pancreas-islets", "level": 1,
+          "kanji": "膵臓の中の島",
+          "etym": "islet「小島」。Langerhans はドイツの病理学者",
+          "note": "腺房の間に島のように散らばる内分泌細胞のかたまり（ランゲルハンス島（islets of Langerhans））で、膵臓全体の1〜2%（約100万個）。膵尾（tail of pancreas）に多い。B細胞（β細胞（beta cell））がインスリン（insulin）（血糖を下げる）、A細胞（α細胞（alpha cell））がグルカゴン（血糖を上げる）、D細胞がソマトスタチン（両方を抑える）を毛細血管（capillary）へ出す。B細胞が壊れるのが1型糖尿病。"
         }
       ]
     },
@@ -1194,6 +1376,50 @@
           "kanji": "顎下腺の唾液を運ぶ管",
           "etym": "submandibular「顎下腺の」＋ duct",
           "note": "顎下腺（submandibular gland）から出て口腔底（floor of mouth）を前へ走り、舌小帯（frenulum of tongue）の両わきの舌下小丘（sublingual caruncle）に開く管（ワルトン管（Wharton duct））。唾液（saliva）の石（唾石（salivary stone））ができやすい。"
+        }
+      ]
+    },
+    {
+      "id": "dig-oral-cavity-parts",
+      "title": "口腔の区分と口峡",
+      "group": "口と咽頭",
+      "intro": ["口腔（oral cavity）は前が口裂（oral fissure）、後ろが口峡（fauces）で咽頭（pharynx）へ続く。上は口蓋（palate）（前2/3が骨（bone）のある硬口蓋（hard palate）、後ろ1/3が筋（muscle）の軟口蓋（soft palate）と口蓋垂（uvula））、下は舌（tongue）、外側（lateral）は頬（cheek）。","歯列（dental arch）（歯（tooth）と歯肉（gingiva）の並び）の外の、唇（lip）・頬との間が口腔前庭（oral vestibule）、内側（medial）が固有口腔（oral cavity proper）。口峡の両わきには前の口蓋舌弓（palatoglossal arch）と後ろの口蓋咽頭弓（palatopharyngeal arch）があり、その間に口蓋扁桃（palatine tonsil）がはさまる。"],
+      "terms": [
+        {
+          "id": "oral-fissure", "ja": "口裂", "yomi": "こうれつ", "en": "oral fissure", "enAlt": ["oral orifice"], "la": "rima oris", "plate": "mouth-open", "level": 2,
+          "kanji": "口の裂け目（開く所）",
+          "etym": "oral「口の」（ラテン語 os, oris）＋ fissure「裂け目」",
+          "note": "上唇（upper lip）と下唇（lower lip）の間の、口腔（oral cavity）の入口のすき間。口腔の前の境。両端が口角（angle of mouth）。"
+        },
+        {
+          "id": "oral-vestibule", "ja": "口腔前庭", "yomi": "こうくうぜんてい", "en": "oral vestibule", "enAlt": ["vestibule of mouth"], "la": "vestibulum oris", "plate": "mouth-open", "level": 1,
+          "kanji": "口腔の玄関（前の庭）",
+          "etym": "vestibulum「玄関」＋ oris「口の」（ラテン語）",
+          "note": "歯列（dental arch）・歯肉（gingiva）と、唇（lip）・頬（cheek）の間のすき間。上の第2大臼歯（second molar）に向き合う頬の粘膜（mucosa）に耳下腺管（parotid duct）が開く（耳下腺乳頭）。口を閉じても、最後の大臼歯（molars）の後ろで固有口腔（oral cavity proper）とつながっている。"
+        },
+        {
+          "id": "oral-cavity-proper", "ja": "固有口腔", "yomi": "こゆうこうくう", "en": "oral cavity proper", "la": "cavitas oris propria", "plate": "mouth-open", "level": 1,
+          "kanji": "口腔そのもの（歯列の内側）",
+          "etym": "oral cavity「口腔」＋ proper「本来の」",
+          "note": "歯列（dental arch）の内側（medial）の口腔（oral cavity）。上は口蓋（palate）、下は舌（tongue）と口腔底（floor of mouth）で、後ろは口峡（fauces）で咽頭口部（oropharynx）へ続く。口腔底の舌下小丘（sublingual caruncle）に顎下腺管（submandibular duct）と舌下腺管が開く。"
+        },
+        {
+          "id": "fauces", "ja": "口峡", "yomi": "こうきょう", "en": "fauces", "enAlt": ["oropharyngeal isthmus"], "la": "fauces", "plate": "mouth-open", "level": 1,
+          "kanji": "口の奥のせまい所（峡）",
+          "etym": "fauces「のど」（ラテン語）",
+          "note": "口腔（oral cavity）と咽頭口部（oropharynx）の境のせまい通り道。上は軟口蓋（soft palate）と口蓋垂（uvula）、両わきは口蓋舌弓（palatoglossal arch）、下は舌根（root of tongue）で囲まれる。飲み込むとき（嚥下の咽頭期）は軟口蓋が上がって咽頭鼻部（nasopharynx）をふさぎ、食べ物が鼻（nose）へ逆流しない。"
+        },
+        {
+          "id": "palatoglossal-arch", "ja": "口蓋舌弓", "yomi": "こうがいぜっきゅう", "en": "palatoglossal arch", "enAlt": ["anterior pillar of fauces"], "la": "arcus palatoglossus", "plate": "mouth-open", "level": 1,
+          "kanji": "口蓋から舌へ下る弓",
+          "etym": "palato-「口蓋」＋ glossal「舌の」（ギリシャ語 glossa）＋ arch「弓」",
+          "note": "軟口蓋（soft palate）から舌（tongue）の側面へ下る前のひだ（fold）（前口蓋弓）。中に口蓋舌筋がある。口峡（fauces）の前の境で、後ろの口蓋咽頭弓（palatopharyngeal arch）との間のくぼみ（扁桃窩）に口蓋扁桃（palatine tonsil）がある。"
+        },
+        {
+          "id": "palatopharyngeal-arch", "ja": "口蓋咽頭弓", "yomi": "こうがいいんとうきゅう", "en": "palatopharyngeal arch", "enAlt": ["posterior pillar of fauces"], "la": "arcus palatopharyngeus", "plate": "mouth-open", "level": 1,
+          "kanji": "口蓋から咽頭へ下る弓",
+          "etym": "palato-「口蓋」＋ pharyngeal「咽頭の」＋ arch「弓」",
+          "note": "軟口蓋（soft palate）から咽頭（pharynx）の側壁（lateral wall）へ下る後ろのひだ（fold）（後口蓋弓）。中に口蓋咽頭筋（palatopharyngeus）がある。口を開けると、口蓋舌弓（palatoglossal arch）の奥に見える。"
         }
       ]
     },

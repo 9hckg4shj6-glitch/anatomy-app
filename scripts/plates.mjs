@@ -229,7 +229,7 @@ function innerPoint(owner, SW, SH, indices) {
   return [(bestK % SW) + 0.5, Math.floor(bestK / SW) + 0.5];
 }
 
-/** 元の図（art）の取り置き。data-raw/ は git の対象外なので、無ければ取り寄せる */
+/** 元の図（art）の取り置き。data-raw/ は git の対象外なので、無ければ取り寄せる（art.file の自作の図は取り寄せない） */
 const ART = path.join(ROOT, "data-raw/plate-art");
 const ART_SIZE = 1400;
 
@@ -268,7 +268,8 @@ function dropGroup(svg, needle, src) {
  * scale は px（元の図の座標）から描いた画像のピクセルへの倍率
  */
 async function artImage(art) {
-  const file = await artSource(art.src);
+  // art.file はリポジトリの中の自作の模式図（content/diagrams/*.svg）。取り寄せずにそのまま読む
+  const file = art.file ? path.join(ROOT, art.file) : await artSource(art.src);
   // art.blur は網点で刷った古い図譜のため。先にぼかして網点をならす（薄い所が背景として抜けず、消した跡もなじむ）
   if (!file.endsWith(".svg")) return { image: art.blur ? sharp(file).blur(art.blur) : sharp(file), scale: 1 };
   let svg = fs.readFileSync(file, "utf8").replace(/<(text|flowRoot)\b[\s\S]*?<\/\1>/g, "");

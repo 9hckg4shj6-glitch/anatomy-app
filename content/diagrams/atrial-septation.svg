@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="740" height="330" viewBox="0 0 740 330">
+  <!-- 心房中隔の発生の模式図（このアプリで描いたもの）。心臓を前頭断で前から見た図（図の左＝体の右＝右心房）。
+       左から ① 胎齢30日ごろ（一次中隔と一次孔）② 胎齢33〜35日（二次孔ができ、二次中隔が伸び始める）③ 胎齢7週〜（卵円孔）。
+       色: 心臓の壁 桃、中の血液の空間 うす桃、一次中隔 青、二次中隔 緑、心内膜床 黄、血液の流れ 赤の矢印 -->
+  <rect width="740" height="330" fill="#ffffff"/>
+  <defs>
+    <g id="heart">
+      <!-- 心房と心室の外の壁 -->
+      <rect x="15" y="30" width="190" height="125" rx="44" fill="#e3929b" stroke="#5a3a3a" stroke-width="2.5"/>
+      <path d="M15 140 L205 140 C205 200 150 270 110 300 C70 270 15 200 15 140 Z" fill="#e3929b" stroke="#5a3a3a" stroke-width="2.5"/>
+      <!-- 中の空間 -->
+      <rect x="30" y="45" width="160" height="98" rx="32" fill="#f7d9d4"/>
+      <path d="M32 162 L188 162 C186 205 145 250 110 276 C75 250 34 205 32 162 Z" fill="#f7d9d4"/>
+      <!-- 房室の境の壁（外側）と房室管 -->
+      <rect x="30" y="143" width="22" height="19" fill="#e3929b"/>
+      <rect x="168" y="143" width="22" height="19" fill="#e3929b"/>
+      <!-- 筋性の心室中隔 -->
+      <path d="M102 276 L104 205 C106 196 114 196 116 205 L118 276 Z" fill="#e3929b" stroke="#5a3a3a" stroke-width="1.5"/>
+      <!-- 心内膜床 -->
+      <rect x="80" y="140" width="60" height="24" rx="10" fill="#e8c25a" stroke="#5a3a3a" stroke-width="2"/>
+    </g>
+  </defs>
+  <!-- ① 一次中隔が上から伸び、下の縁と心内膜床の間が一次孔 -->
+  <g transform="translate(10 0)">
+    <use xlink:href="#heart"/>
+    <path d="M104 45 L116 45 L116 100 C116 110 104 110 104 100 Z" fill="#5f8fd0" stroke="#2e4f80" stroke-width="2"/>
+  </g>
+  <!-- ② 一次中隔が心内膜床に付き、上の方に二次孔。右（図の左）に二次中隔が伸び始める -->
+  <g transform="translate(255 0)">
+    <use xlink:href="#heart"/>
+    <path d="M110 86 C116 86 117 92 117 96 L117 140 L105 140 L105 96 C105 92 106 86 110 86 Z" fill="#5f8fd0" stroke="#2e4f80" stroke-width="2"/>
+    <path d="M86 45 L102 45 L102 66 C102 74 86 74 86 66 Z" fill="#67b07a" stroke="#2f6b3e" stroke-width="2"/>
+  </g>
+  <!-- ③ 二次中隔の下の縁のすき間が卵円孔。一次中隔は弁になり、血液は右心房から左心房へだけ流れる -->
+  <g transform="translate(500 0)">
+    <use xlink:href="#heart"/>
+    <path d="M110 70 C116 70 117 76 117 80 L117 140 L106 140 L106 80 C106 76 104 70 110 70 Z" fill="#5f8fd0" stroke="#2e4f80" stroke-width="2"/>
+    <path d="M84 45 L101 45 L101 100 C101 112 84 112 84 100 Z" fill="#67b07a" stroke="#2f6b3e" stroke-width="2"/>
+    <path d="M58 132 C80 132 96 128 101 120 C104 100 104 82 112 64 C118 56 130 60 148 72" fill="none" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M140 62 L154 76 L136 78 Z" fill="#c0392b"/>
+  </g>
+</svg>

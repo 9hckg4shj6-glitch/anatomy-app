@@ -294,7 +294,7 @@
           "id": "efferent-arteriole", "ja": "輸出細動脈", "yomi": "ゆしゅつさいどうみゃく", "en": "efferent arteriole", "enAlt": ["efferent glomerular arteriole"], "la": "arteriola glomerularis efferens", "plate": "kidney-vessels", "level": 2,
           "kanji": "糸球体から血液を運び出す細い動脈",
           "etym": "efferent ← ラテン語 ex-「外へ」＋ ferre「運ぶ」",
-          "note": "糸球体（glomerulus）の毛細血管（capillary）が集まって血管極（vascular pole）から出る細動脈（静脈（vein）ではなく動脈（artery））。輸入細動脈（afferent arteriole）より細いので糸球体の中の圧が高く保たれ、血液（blood）がこされる。このあと尿細管周囲毛細血管（peritubular capillaries）に分かれる（毛細血管が2度続く）。髄質（medulla）に近い腎小体（renal corpuscle）の輸出細動脈は、髄質へ下る直細動脈（直血管）になる。"
+          "note": "糸球体（glomerulus）の毛細血管（capillary）が集まって血管極（vascular pole）から出る細動脈（arteriole）（静脈（vein）ではなく動脈（artery））。輸入細動脈（afferent arteriole）より細いので糸球体の中の圧が高く保たれ、血液（blood）がこされる。このあと尿細管周囲毛細血管（peritubular capillaries）に分かれる（毛細血管が2度続く）。髄質（medulla）に近い腎小体（renal corpuscle）の輸出細動脈は、髄質へ下る直細動脈（直血管）になる。"
         },
         {
           "id": "peritubular-capillaries", "ja": "尿細管周囲毛細血管", "yomi": "にょうさいかんしゅういもうさいけっかん", "en": "peritubular capillaries", "enAlt": ["peritubular capillary network"], "la": "vasa capillaria peritubularia", "plate": "kidney-vessels", "level": 3,
@@ -344,7 +344,7 @@
           "id": "glomerulus", "ja": "糸球体", "yomi": "しきゅうたい", "en": "glomerulus", "enAlt": ["renal glomerulus", "glomeruli"], "la": "glomerulus renalis", "plate": "renal-corpuscle", "level": 1,
           "kanji": "糸を丸めた球のような体",
           "etym": "glomerulus ← ラテン語 glomus「毛糸の玉」の小さいもの",
-          "note": "輸入細動脈（afferent arteriole）が分かれてできた毛細血管（capillary）の糸玉。毛細血管の内皮の小さな孔・基底膜（basement membrane）・足細胞（podocyte）のすき間の3重のふるいで、血液（blood）から血球（blood cells）とたんぱく質を残して血漿をこし、原尿（primary urine）をつくる（糸球体ろ過）。毛細血管の間をメサンギウム細胞（mesangial cell）が支える。動脈（artery）（輸入細動脈）と動脈（輸出細動脈（efferent arteriole））の間にある毛細血管。"
+          "note": "輸入細動脈（afferent arteriole）が分かれてできた毛細血管（capillary）の糸玉。毛細血管の内皮（endothelium）の小さな孔・基底膜（basement membrane）・足細胞（podocyte）のすき間の3重のふるいで、血液（blood）から血球（blood cells）とたんぱく質を残して血漿をこし、原尿（primary urine）をつくる（糸球体ろ過）。毛細血管の間をメサンギウム細胞（mesangial cell）が支える。動脈（artery）（輸入細動脈）と動脈（輸出細動脈（efferent arteriole））の間にある毛細血管。"
         },
         {
           "id": "glomerular-capsule", "ja": "糸球体包", "yomi": "しきゅうたいほう", "en": "glomerular capsule", "enAlt": ["bowman's capsule", "bowman capsule"], "la": "capsula glomerularis", "plate": "renal-corpuscle", "level": 2,

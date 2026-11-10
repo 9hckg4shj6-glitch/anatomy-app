@@ -2186,3 +2186,9 @@ VIII脳神経|cranial nerve VIII
 原尿|primary urine
 叩打痛|-
 乳頭孔|papillary foramina
+分界溝%右心房,洞房結節,上大静脈,心房|sulcus terminalis cordis
+静脈洞%原始心筒,心筒,心球,原始心房,心臓ループ,主静脈,卵黄静脈|sinus venosus
+線維輪%心房,心室,心筋,弁,線維性骨格|fibrous ring of heart
+結節%房室,洞房,心房中隔,冠状静脈洞|node
+β細胞|beta cell
+α細胞|alpha cell

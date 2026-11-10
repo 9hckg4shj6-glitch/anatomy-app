@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { organById, organOf, organOfUnit, organTerms } from "../src/content";
+import { organById, organOf, organOfUnit, organTerms, plateOfTerm } from "../src/content";
 import { sceneFor } from "../src/ui/context";
 // @ts-expect-error 型定義の無いビルド用スクリプト
 import { partitionMesh } from "../scripts/split-mesh.mjs";
@@ -111,6 +111,23 @@ describe("臓器の場面", () => {
     expect(organOf("greater-omentum")?.id).toBe("intestine");
     expect(organTerms(organById.get("peritoneum")!)).toContain("kidney");
     expect(sceneFor("digestive", "dig-peritoneum").organ).toBe("peritoneum");
+  });
+
+  it("講義に合わせた心臓・肝臓・消化管のレッスンと、平面図だけの臓器（血管の壁・発生）", () => {
+    // 心臓の面と縁・壁・刺激伝導系・内面は臓器「心臓」、肝臓の圧痕と膵島は「肝臓」、消化管の壁は「腸」、口腔の区分は「咽頭」
+    for (const unit of ["cv-heart-surfaces", "cv-heart-wall", "cv-conduction", "cv-heart-interior"]) expect(sceneFor("cardiovascular", unit).organ).toBe("heart");
+    for (const unit of ["dig-pt-liver-impressions", "dig-pancreas-islets"]) expect(sceneFor("digestive", unit).organ).toBe("liver");
+    expect(sceneFor("digestive", "dig-gi-wall").organ).toBe("intestine");
+    expect(sceneFor("digestive", "dig-oral-cavity-parts").organ).toBe("pharynx");
+    expect(organOf("gastric-impression")?.id).toBe("liver");
+    // 血管の壁と胎児循環・心臓と消化管の発生は3Dが無いので、レッスンは全身のまま。語は平面図で見せる
+    for (const id of ["vessels", "development"]) expect(organById.get(id)?.box).toBeUndefined();
+    for (const unit of ["cv-vessel-wall", "cv-fetal-circulation", "cv-heart-tube", "cv-heart-septation"]) expect(sceneFor("cardiovascular", unit).organ).toBeUndefined();
+    expect(sceneFor("digestive", "dig-gut-development").organ).toBeUndefined();
+    expect(organOf("ductus-arteriosus")).toBeUndefined();
+    expect(plateOfTerm({ plate: "fetal-circulation" })?.organ.id).toBe("vessels");
+    expect(plateOfTerm({ plate: "gut-tube" })?.organ.id).toBe("development");
+    expect(plateOfTerm({ plate: "atrial-septation" })?.plate.art?.license).toBe("自作");
   });
 });
 

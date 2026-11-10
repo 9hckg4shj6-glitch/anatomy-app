@@ -644,7 +644,7 @@
       "group": "気管支と肺",
       "intro": [
         "肺胞（alveolus）の壁は、薄く広がったⅠ型肺胞上皮細胞（squamous alveolar cell）と、表面活性物質を出すⅡ型肺胞上皮細胞（great alveolar cell）でできる。肺胞の中には肺胞マクロファージ（alveolar macrophage）（塵埃細胞）がいる。",
-        "肺胞の中の空気と毛細血管（capillary）の中の血液（blood）の間（呼吸膜（respiratory membrane））は、上皮（epithelium）・基底膜（basement membrane）・毛細血管の内皮だけで、厚さは 0.5μm ほど。",
+        "肺胞の中の空気と毛細血管（capillary）の中の血液（blood）の間（呼吸膜（respiratory membrane））は、上皮（epithelium）・基底膜（basement membrane）・毛細血管の内皮（endothelium）だけで、厚さは 0.5μm ほど。",
         "平面図「肺胞の壁」で場所を示す。"
       ],
       "terms": [
@@ -652,7 +652,7 @@
           "id": "type-i-alveolar-cell", "ja": "Ⅰ型肺胞上皮細胞", "yomi": "いちがたはいほうじょうひさいぼう", "en": "squamous alveolar cell", "enAlt": ["type one alveolar cell", "type one pneumocyte"], "la": "pneumocytus typus I", "plate": "alveolar-wall", "level": 2,
           "kanji": "肺胞の壁をつくる薄い上皮細胞（Ⅰ型）",
           "etym": "squamous「うろこ状の（平たい）」（ラテン語 squama「うろこ」）＋ alveolar「肺胞の」＋ cell「細胞」。type I pneumocyte ともいう",
-          "note": "肺胞（alveolus）の表面の大部分（約95%）をおおう、ごく薄く広がった上皮細胞（epithelial cell）。毛細血管（capillary）の内皮と基底膜（basement membrane）を共有して呼吸膜（respiratory membrane）をつくり、ここで酸素と二酸化炭素が拡散する。分裂できず、傷つくとⅡ型肺胞上皮細胞（great alveolar cell）から補われる。"
+          "note": "肺胞（alveolus）の表面の大部分（約95%）をおおう、ごく薄く広がった上皮細胞（epithelial cell）。毛細血管（capillary）の内皮（endothelium）と基底膜（basement membrane）を共有して呼吸膜（respiratory membrane）をつくり、ここで酸素と二酸化炭素が拡散する。分裂できず、傷つくとⅡ型肺胞上皮細胞（great alveolar cell）から補われる。"
         },
         {
           "id": "type-ii-alveolar-cell", "ja": "Ⅱ型肺胞上皮細胞", "yomi": "にがたはいほうじょうひさいぼう", "en": "great alveolar cell", "enAlt": ["type two alveolar cell", "type two pneumocyte"], "la": "pneumocytus typus II", "plate": "alveolar-wall", "level": 2,

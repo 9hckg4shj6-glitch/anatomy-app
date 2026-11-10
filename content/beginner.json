@@ -333,6 +333,41 @@
       ]
     },
     {
+      "id": "b-cv-heart-wall", "title": "心臓の壁と心膜", "system": "cardiovascular",
+      "intro": ["心臓の壁は内から心内膜・心筋層・心外膜の3層。その外を心嚢（線維性心膜と漿膜性心膜）が包み、間のすき間が心膜腔です。"],
+      "terms": [
+        { "id": "endocardium", "point": "心臓の内面の薄い膜。血管の内皮と続き、弁はこのひだ。" },
+        { "id": "myocardium", "point": "心臓の壁の筋の層。全身へ送る左心室で最も厚い。" },
+        { "id": "epicardium", "point": "心臓の表面に貼りつく膜（漿膜性心膜の臓側板）。冠状動脈がこの下を走る。" },
+        { "id": "pericardial-cavity", "point": "心膜の2枚の間のすき間。少しの液で心臓をすべらせる。血がたまると心タンポナーデ。" },
+        { "id": "fibrous-pericardium", "point": "心嚢のいちばん外の丈夫な袋。下は横隔膜に付く。" }
+      ]
+    },
+    {
+      "id": "b-cv-conduction", "title": "刺激伝導系", "system": "cardiovascular",
+      "intro": ["拍動は心臓の中の特殊な心筋で起こり、洞房結節 → 房室結節 → 房室束（ヒス束）→ 右脚・左脚 → プルキンエ線維 の順に伝わります。順番ごと覚えましょう。"],
+      "terms": [
+        { "id": "sinuatrial-node", "point": "右心房の上大静脈の口のそば。拍動のリズムをつくるペースメーカー。" },
+        { "id": "atrioventricular-node", "point": "心房中隔の下の方。興奮を少し遅らせて心室へ送る。" },
+        { "id": "atrioventricular-bundle", "point": "ヒス束。心房から心室へ興奮を伝える唯一の道。" },
+        { "id": "right-bundle-branch", "point": "心室中隔の右側を下り、右心室へ。" },
+        { "id": "left-bundle-branch", "point": "心室中隔の左側を下り、左心室へ。" },
+        { "id": "purkinje-fibers", "point": "心内膜の下に網のように広がり、心室全体をほぼ同時に縮ませる。" }
+      ]
+    },
+    {
+      "id": "b-cv-fetal", "title": "胎児循環", "system": "cardiovascular",
+      "intro": ["胎児は肺で呼吸しないので、胎盤からの血液が肝臓と肺を素通りする近道（静脈管・卵円孔・動脈管）があります。生まれると閉じて、肝円索・静脈管索・卵円窩・動脈管索になります。"],
+      "terms": [
+        { "id": "placenta", "point": "母の血液と胎児の血液の間で酸素と栄養をやりとりする器官。" },
+        { "id": "umbilical-vein", "point": "胎盤から胎児へ酸素の多い血液を運ぶ1本。生まれたあと肝円索になる。" },
+        { "id": "ductus-venosus", "point": "肝臓の中で臍静脈から下大静脈へ近道する管。のちの静脈管索。" },
+        { "id": "foramen-ovale-of-heart", "point": "右心房から左心房へ血液を通す心房中隔の孔。のちの卵円窩。" },
+        { "id": "ductus-arteriosus", "point": "肺動脈幹から大動脈弓へ抜ける管。のちの動脈管索。" },
+        { "id": "umbilical-arteries", "point": "胎児から胎盤へ酸素の少ない血液を戻す2本。内腸骨動脈から出る。" }
+      ]
+    },
+    {
       "id": "b-cv-arteries-upper", "title": "頭と腕の動脈", "system": "cardiovascular",
       "intro": ["腕の動脈は、鎖骨下動脈 → 腋窩動脈 → 上腕動脈 → 橈骨動脈・尺骨動脈と、通る場所で名前が変わります。"],
       "terms": [
@@ -453,6 +488,17 @@
         { "id": "submandibular-gland", "point": "下あごの内側にある唾液腺。" },
         { "id": "soft-palate", "point": "口の天井の後ろのやわらかい部分。飲み込むとき鼻への道をふさぐ。" },
         { "id": "pharynx", "point": "鼻と口の奥から、食道と喉頭へ続くのど。" }
+      ]
+    },
+    {
+      "id": "b-dig-fauces", "title": "口腔の区分と口峡", "system": "digestive",
+      "intro": ["口を開けて奥を見ると、口腔と咽頭の境の口峡が見えます。両わきの前のひだが口蓋舌弓、後ろのひだが口蓋咽頭弓で、その間に口蓋扁桃があります。"],
+      "terms": [
+        { "id": "oral-vestibule", "point": "歯列と唇・頬の間のすき間。耳下腺管が開く。" },
+        { "id": "oral-cavity-proper", "point": "歯列の内側の口腔。上は口蓋、下は舌。" },
+        { "id": "fauces", "point": "口腔から咽頭へ通じるせまい所。上は軟口蓋、下は舌根。" },
+        { "id": "palatoglossal-arch", "point": "口峡の両わきの前のひだ。" },
+        { "id": "palatopharyngeal-arch", "point": "口峡の両わきの後ろのひだ。前のひだとの間に口蓋扁桃。" }
       ]
     },
     {
