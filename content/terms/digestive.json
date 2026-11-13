@@ -8,7 +8,7 @@
       "terms": [
         {
           "id": "esophagus", "ja": "食道", "yomi": "しょくどう", "en": "esophagus", "enAlt": ["oesophagus"], "la": "oesophagus",
-          "parts": ["esophagus"], "level": 1,
+          "parts": ["esophagus", "thoracic part of esophagus", "abdominal part of esophagus"], "level": 1,
           "kanji": "食べ物の通る道",
           "etym": "esophagus ← ギリシャ語 oisein「運ぶ」＋ phagein「食べる」",
           "note": "咽頭（pharynx）から胃まで、気管（trachea）の後ろを下る約25cmの管。輪状軟骨（cricoid cartilage）の高さ（第6頚椎（sixth cervical vertebra））で始まり、頚部（cervical part）・胸部（thoracic part）・腹部（abdominal part）に分かれる。第10胸椎（tenth thoracic vertebra）の高さで横隔膜（diaphragm）の食道裂孔（esophageal hiatus）を通り、第11胸椎（eleventh thoracic vertebra）の左前で胃（stomach）の噴門（cardia）に続く。始まりの所・大動脈弓（arch of aorta）と左の主気管支（main bronchus）が前を横切る所・横隔膜を貫く所の3か所が生理的に狭く、飲みこんだ物がつかえやすく、食道癌（esophageal cancer）もできやすい（切歯（incisors）から約15・25・40cm）。下部の静脈（vein）は左胃静脈（left gastric vein）（門脈（hepatic portal vein））と奇静脈（azygos vein）の両方につながるので、門脈の圧が上がると食道静脈瘤（esophageal varices）ができる。"
@@ -34,14 +34,14 @@
           "parts": ["* part of jejunum"], "level": 1,
           "kanji": "死後に空（から）のことが多い腸",
           "etym": "jejunum ← ラテン語 jejunus「空腹の・空の」",
-          "note": "十二指腸（duodenum）に続く小腸（small intestine）の前半約5分の2で、主に左上腹部（left upper abdomen）にある。回腸（ileum）との間にはっきりした境は無いが、空腸は太く、壁が厚く、内面（internal surface）の輪状ひだ（circular folds）が大きく密に並ぶ。"
+          "note": "十二指腸（duodenum）に続く小腸（small intestine）の前半約5分の2で、主に左上腹部（left upper abdomen）にある。回腸（ileum）との間にはっきりした境は無いが、空腸は太く、壁が厚く、内面（internal surface）の輪状ひだ（circular folds）が大きく密に並ぶ。腸間膜（mesentery）の中の動脈（artery）は、空腸では動脈弓（arterial arch）が1〜2段で、そこから出る直動脈（vasa recta）が長く、腸間膜の脂肪（fat）が少ない（透けて見える窓がある）。色は濃い赤。"
         },
         {
           "id": "ileum", "ja": "回腸", "yomi": "かいちょう", "en": "ileum", "la": "ileum",
           "parts": ["* part of ileum"], "level": 1,
           "kanji": "曲がりくねって回る腸",
           "etym": "ileum ← ギリシャ語 eilein「巻く・ねじる」",
-          "note": "空腸（jejunum）に続く小腸（small intestine）の後半約5分の3で、主に右下腹部（right lower abdomen）にあり、回腸口（ileal orifice）で大腸（large intestine）（盲腸（cecum））に開く。空腸より細く壁がやや薄く、輪状ひだ（circular folds）は小さくまばらで、終わりの部分では消える。腸間膜（mesentery）が付く側の反対側（contralateral side）に、リンパ小節（lymphoid nodule）が集まった集合リンパ小節（aggregated lymphoid nodules）（パイエル板（Peyer patches））が20〜30個ある。終わりから0.3〜1m手前に、胎児（fetus）の卵黄腸管（vitelline duct）のなごりのメッケル憩室（Meckel diverticulum）が見られることがある（約1〜2%）。"
+          "note": "空腸（jejunum）に続く小腸（small intestine）の後半約5分の3で、主に右下腹部（right lower abdomen）にあり、回腸口（ileal orifice）で大腸（large intestine）（盲腸（cecum））に開く。空腸より細く壁がやや薄く、輪状ひだ（circular folds）は小さくまばらで、終わりの部分では消える。腸間膜（mesentery）が付く側の反対側（contralateral side）に、リンパ小節（lymphoid nodule）が集まった集合リンパ小節（aggregated lymphoid nodules）（パイエル板（Peyer patches））が20〜30個ある。終わりから0.3〜1m手前に、胎児（fetus）の卵黄腸管（vitelline duct）のなごりのメッケル憩室（Meckel diverticulum）が見られることがある（約1〜2%）。腸間膜の中の動脈弓（arterial arch）が何段にも重なり、直動脈（vasa recta）は短く、腸間膜の脂肪（fat）が多い。"
         },
         {
           "id": "cecum", "check": true, "ja": "盲腸", "yomi": "もうちょう", "en": "cecum", "enAlt": ["caecum"], "la": "caecum",
@@ -55,7 +55,7 @@
           "parts": ["appendix"], "level": 1,
           "kanji": "虫のように垂れ下がったもの",
           "etym": "appendix ← ラテン語「付属物」、vermiform「虫の形の」",
-          "note": "盲腸（cecum）から垂れ下がる細い管。炎症（inflammation）を起こしたものが虫垂炎（appendicitis）（いわゆる盲腸）。"
+          "note": "盲腸（cecum）の下端（inferior end）の後ろ内側（medial）から出る、長さ6〜8cmの細い管。壁にリンパ小節（lymphoid nodule）が多い。厳密には盲腸の炎症（inflammation）（盲腸炎）と虫垂の炎症（虫垂炎（appendicitis））は別のもの。虫垂の根もとはマックバーニー点（mcburney's point）（へそ（umbilicus）と右の上前腸骨棘（anterior superior iliac spine）を結ぶ線の外側（lateral）1/3）のあたりにある。"
         },
         {
           "id": "ascending-colon", "ja": "上行結腸", "yomi": "じょうこうけっちょう", "en": "ascending colon", "la": "colon ascendens",
@@ -91,6 +91,92 @@
           "kanji": "まっすぐな腸",
           "etym": "rectum ← ラテン語 rectus「まっすぐな」",
           "note": "大腸（large intestine）の最後の長さ12〜14cmの部分。第2〜3仙椎（second to third sacral vertebrae）の高さでS状結腸（sigmoid colon）から続き、仙骨（sacrum）の前をその弯曲に沿って下り（仙骨曲（sacral flexure））、尾骨（coccyx）の先の前でほぼ直角に後ろへ曲がって（会陰曲（perineal flexure））、骨盤隔膜（pelvic diaphragm）を貫いて肛門管（anal canal）に移る。下の方は広がって直腸膨大部（rectal ampulla）となる。結腸ひも（taeniae coli）・結腸膨起（haustra of colon）・腹膜垂（omental appendices）は無い。上部は前と横、中部は前だけが腹膜（peritoneum）におおわれ、下部は腹膜の外にある。前の腹膜のくぼみ（男性では直腸膀胱窩（rectovesical pouch）、女性では直腸子宮窩（recto-uterine pouch）＝ダグラス窩（pouch of Douglas））は腹膜腔（peritoneal cavity）でいちばん低く、膿や血液（blood）がたまりやすい。"
+        }
+      ]
+    },
+    {
+      "id": "dig-classification",
+      "title": "消化管と付属器・上部と下部の消化管",
+      "group": "消化管",
+      "intro": ["消化器系は、食物を消化（digestion）（消化酵素（digestive enzyme）などで小さな分子に分解）して吸収する器官（organ）の集まり。口から肛門（anus）まで続く1本の管の消化管（digestive tract）と、消化液を出す消化腺（唾液腺（salivary gland）・肝臓（liver）・胆嚢（gallbladder）・膵臓（pancreas））と付属器（appendages）（歯（tooth）・舌（tongue））に分ける（分け方は本によって少し違う）。", "形では、中が空いた管や袋の管腔臓器（消化管・胆嚢）と、中まで細胞（cell）が詰まった実質臓器（solid organ）（肝臓・膵臓）に分ける。臨床では内視鏡（endoscope）で見る範囲から、食道（esophagus）・胃（stomach）・十二指腸（duodenum）を上部消化管（upper gastrointestinal tract）、その先（主に大腸（large intestine））を下部消化管（lower gastrointestinal tract）と呼ぶ。"],
+      "terms": [
+        {
+          "id": "digestive-tract", "ja": "消化管", "yomi": "しょうかかん", "en": "digestive tract", "enAlt": ["gastrointestinal tract", "alimentary canal", "gi tract"], "la": "canalis alimentarius",
+          "parts": ["za:oropharynx", "za:laryngopharynx", "esophagus", "thoracic part of esophagus", "abdominal part of esophagus", "stomach", "duodenum", "* part of jejunum", "* part of ileum", "ileocecal junction", "appendix", "ascending colon", "transverse colon", "descending colon", "sigmoid colon", "rectum"], "level": 1,
+          "kanji": "消化する管",
+          "etym": "digestive「消化の」（ラテン語 digerere「分ける」）＋ tract「道」。gastrointestinal は gastro-「胃」＋ intestinal「腸の」",
+          "note": "口腔（oral cavity）から咽頭（pharynx）・食道（esophagus）・胃（stomach）・小腸（small intestine）（十二指腸（duodenum）・空腸（jejunum）・回腸（ileum））・大腸（large intestine）（盲腸（cecum）・結腸（colon）・直腸（rectum））を通って肛門（anus）まで続く1本の管（亡くなった人で約9m、生きた人では筋（muscle）の張りで5〜6m）。食道から下の壁は、内から粘膜（mucosa）・粘膜下組織（submucosa）・筋層（muscular layer）・漿膜（serosa）（または外膜）の4層が共通で、内容物は筋層の蠕動運動で送られる。中が空いた管腔臓器。3Dは咽頭口部（oropharynx）から直腸まで。"
+        },
+        {
+          "id": "upper-gastrointestinal-tract", "ja": "上部消化管", "yomi": "じょうぶしょうかかん", "en": "upper gastrointestinal tract", "enAlt": ["upper gi tract"],
+          "parts": ["esophagus", "thoracic part of esophagus", "abdominal part of esophagus", "stomach", "duodenum"], "level": 2,
+          "kanji": "消化管の上の部分",
+          "etym": "upper「上の」＋ gastrointestinal tract「消化管」",
+          "note": "臨床で使う分け方で、食道（esophagus）・胃（stomach）・十二指腸（duodenum）（十二指腸提筋（suspensory muscle of duodenum）（トライツ靱帯（ligament of Treitz））まで）。口から入れる内視鏡（endoscope）（胃カメラ）で見る範囲。ここからの出血は、血を吐く吐血や、胃酸（gastric acid）で黒くなったタール便になる。"
+        },
+        {
+          "id": "lower-gastrointestinal-tract", "ja": "下部消化管", "yomi": "かぶしょうかかん", "en": "lower gastrointestinal tract", "enAlt": ["lower gi tract"],
+          "parts": ["* part of jejunum", "* part of ileum", "ileocecal junction", "appendix", "ascending colon", "transverse colon", "descending colon", "sigmoid colon", "rectum"], "level": 2,
+          "kanji": "消化管の下の部分",
+          "etym": "lower「下の」＋ gastrointestinal tract「消化管」",
+          "note": "臨床で使う分け方で、十二指腸提筋（suspensory muscle of duodenum）（トライツ靱帯（ligament of Treitz））より先の小腸（small intestine）（空腸（jejunum）・回腸（ileum））と大腸（large intestine）。肛門（anus）から入れる内視鏡（endoscope）（大腸カメラ）で見る大腸を指すことが多い。ここからの出血は赤い血便になりやすい。"
+        },
+        {
+          "id": "major-salivary-glands", "ja": "大唾液腺", "yomi": "だいだえきせん", "en": "major salivary glands", "la": "glandulae salivariae majores",
+          "parts": ["za:parotid gland", "za:(accessory parotid gland)", "submandibular gland", "sublingual gland"], "level": 1,
+          "kanji": "大きな唾液腺",
+          "etym": "major「大きい」＋ salivary「唾液の」（ラテン語 saliva）＋ gland ← ラテン語 glans「どんぐり」",
+          "note": "口腔（oral cavity）の外にあり、長い導管（duct）で口の中へ唾液（saliva）を出す3対の大きな外分泌腺: 耳下腺（parotid gland）（漿液腺。導管は上の第2大臼歯（second molar）の向かいの頬（cheek）の粘膜（mucosa）に開く）・顎下腺（submandibular gland）（混合腺で漿液が多い）・舌下腺（sublingual gland）（混合腺で粘液（mucus）が多い）。唾液は1日に約1〜1.5L。漿液腺はアミラーゼなどの消化酵素（digestive enzyme）を含むさらさらした唾液、粘液腺はねばる唾液を出す。粘膜の中の小さな唾液腺（salivary gland）（口唇腺・頬腺・口蓋腺・舌腺）は小唾液腺という。"
+        }
+      ]
+    },
+    {
+      "id": "dig-esophagus-parts",
+      "title": "食道の区分と生理的狭窄",
+      "group": "消化管",
+      "intro": ["食道（esophagus）（約25cm）は第6頚椎（sixth cervical vertebra）（輪状軟骨（cricoid cartilage）の下端（inferior end））の高さで咽頭（pharynx）から始まり、気管（trachea）と心臓（heart）の後ろを下って、第10胸椎（tenth thoracic vertebra）の高さで横隔膜（diaphragm）の食道裂孔（esophageal hiatus）を通り、第11胸椎（eleventh thoracic vertebra）の高さで胃（stomach）の噴門（cardia）に続く。頚部（neck）・胸部（thoracic part）・腹部（abdominal part）に分け、臨床では胸部をさらに上部・中部・下部に分ける。", "内腔（lumen）は3か所で狭い（生理的狭窄）: 食道の起始部、気管分岐部（tracheal bifurcation）の高さで大動脈弓（arch of aorta）と左主気管支（left main bronchus）が押す所、横隔膜を貫く所。飲みこんだ異物が引っかかりやすく、食道がんもできやすい。", "食道は消化（digestion）をしないので、粘膜（mucosa）は丈夫な重層扁平上皮（stratified squamous epithelium）。頚部と胸部は漿膜（serosa）（腹膜（peritoneum））が無く外膜だけなので、がんが周りへ広がりやすい。筋層（muscular layer）は上1/3が骨格筋（skeletal muscle）、下1/3が平滑筋（smooth muscle）。"],
+      "terms": [
+        {
+          "id": "cervical-part-of-esophagus", "ja": "頚部（食道）", "yomi": "けいぶ", "en": "cervical part of esophagus", "la": "pars cervicalis oesophagi",
+          "parts": ["esophagus"], "level": 2,
+          "kanji": "食道の頚の部分",
+          "etym": "cervical ← ラテン語 cervix「首」＋ part「部分」",
+          "note": "食道（esophagus）の起始部（第6頚椎（sixth cervical vertebra）の高さ）から、胸骨（sternum）の頚切痕（jugular notch）の高さ（第1胸椎（first thoracic vertebra））までの約5cm。気管（trachea）のすぐ後ろ、椎体（vertebral body）の前にあり、両わきに総頚動脈（common carotid artery）と甲状腺（thyroid gland）の左右の葉（lobe）、気管との間の溝を反回神経（recurrent laryngeal nerve）が上る。"
+        },
+        {
+          "id": "thoracic-part-of-esophagus", "ja": "胸部（食道）", "yomi": "きょうぶ", "en": "thoracic part of esophagus", "la": "pars thoracica oesophagi",
+          "parts": ["thoracic part of esophagus"], "level": 2,
+          "kanji": "食道の胸の部分",
+          "etym": "thoracic ← ギリシャ語 thorax「胸」＋ part「部分」",
+          "note": "胸骨（sternum）の頚切痕（jugular notch）の高さから横隔膜（diaphragm）の食道裂孔（esophageal hiatus）までの約18cmで、食道（esophagus）の大部分。上縦隔（superior mediastinum）から後縦隔（posterior mediastinum）を、気管（trachea）・左主気管支（left main bronchus）・心臓（heart）（左心房（left atrium））の後ろ、胸大動脈（thoracic aorta）の右前を下る。左心房のすぐ後ろなので、左心房が大きくなると食道が押される。臨床では上部（気管分岐部（tracheal bifurcation）まで）・中部・下部に分ける。下部の静脈（vein）は門脈（hepatic portal vein）と大静脈（vena cava）の両方につながり、肝硬変（cirrhosis）では食道静脈瘤（esophageal varices）ができる。"
+        },
+        {
+          "id": "abdominal-part-of-esophagus", "ja": "腹部（食道）", "yomi": "ふくぶ", "en": "abdominal part of esophagus", "la": "pars abdominalis oesophagi",
+          "parts": ["abdominal part of esophagus"], "level": 2,
+          "kanji": "食道の腹の部分",
+          "etym": "abdominal ← ラテン語 abdomen「腹」＋ part「部分」",
+          "note": "食道裂孔（esophageal hiatus）から胃（stomach）の噴門（cardia）までの1〜2.5cmの、いちばん短い部分。肝臓（liver）の左葉（left lobe）の後ろ（食道圧痕（esophageal impression））にあり、前と左を腹膜（peritoneum）におおわれる。ここの筋（muscle）がいつも締まっていること（下部食道括約部）と横隔膜（diaphragm）の脚が締めることで、胃の内容が逆流しにくい。ゆるむと逆流性食道炎になる。"
+        },
+        {
+          "id": "pharyngoesophageal-constriction", "ja": "咽頭食道狭窄", "yomi": "いんとうしょくどうきょうさく", "en": "pharyngoesophageal constriction", "enAlt": ["cricopharyngeal constriction", "upper esophageal sphincter"], "la": "constrictio pharyngooesophagealis",
+          "of": "esophagus", "level": 2, "check": true,
+          "kanji": "咽頭から食道へ移る所の狭まり",
+          "etym": "pharyngo-「咽頭の」＋ esophageal「食道の」＋ constriction ← ラテン語 constringere「締めつける」",
+          "note": "食道（esophagus）の第1の生理的狭窄。食道の起始部（第6頚椎（sixth cervical vertebra）・輪状軟骨（cricoid cartilage）の下端（inferior end）の高さ、門歯から約15cm）で、下咽頭収縮筋（inferior pharyngeal constrictor）の下の部分（輪状咽頭部（cricopharyngeal part））がいつも締めている（上部食道括約筋）。3つの狭窄で最も狭く、魚の骨（bone）や薬の包装などの異物が引っかかりやすい。"
+        },
+        {
+          "id": "bronchoaortic-constriction", "ja": "気管支大動脈狭窄", "yomi": "きかんしだいどうみゃくきょうさく", "en": "bronchoaortic constriction", "enAlt": ["thoracic constriction", "aortic constriction"], "la": "constrictio bronchoaortica",
+          "of": "esophagus", "level": 2, "check": true,
+          "kanji": "気管支と大動脈に押されてできる狭まり",
+          "etym": "broncho-「気管支の」＋ aortic「大動脈の」＋ constriction「狭まり」",
+          "note": "食道（esophagus）の第2の生理的狭窄。気管分岐部（tracheal bifurcation）の高さ（第4〜5胸椎（fourth to fifth thoracic vertebrae）、門歯から約25cm）で、大動脈弓（arch of aorta）が左から、左主気管支（left main bronchus）が前から食道を押す所。講義では気管分岐部の狭窄ともいう。"
+        },
+        {
+          "id": "diaphragmatic-constriction", "ja": "横隔狭窄", "yomi": "おうかくきょうさく", "en": "diaphragmatic constriction", "la": "constrictio phrenica",
+          "of": "esophagus", "level": 2, "check": true,
+          "kanji": "横隔膜を通る所の狭まり",
+          "etym": "diaphragmatic「横隔膜の」＋ constriction「狭まり」。ラテン語 phrenicus「横隔膜の」",
+          "note": "食道（esophagus）の第3の生理的狭窄。食道が横隔膜（diaphragm）の食道裂孔（esophageal hiatus）を通る所（第10胸椎（tenth thoracic vertebra）の高さ、門歯から約40cm）。横隔膜の右脚（right crus）の筋（muscle）が食道を締め、下部食道括約部とともに胃（stomach）の内容の逆流を防ぐ。食道裂孔が広がって胃の一部が胸（chest）へ出るのが食道裂孔ヘルニア。"
         }
       ]
     },
@@ -389,6 +475,28 @@
       ]
     },
     {
+      "id": "dig-duodenum-more",
+      "title": "十二指腸提筋と小十二指腸乳頭",
+      "group": "消化管",
+      "intro": ["十二指腸（duodenum）は初め腹膜内器官（intraperitoneal organs）としてでき、胃（stomach）の回転のときに後腹壁（posterior abdominal wall）にくっついて二次的な腹膜後器官（retroperitoneal organs）になる。最後の十二指腸空腸曲（duodenojejunal flexure）は十二指腸提筋（suspensory muscle of duodenum）（トライツ靱帯（ligament of Treitz））でつり上げられ、ここから先が腹膜内器官の空腸（jejunum）。", "下行部（descending part）の内側（medial）の壁には2つの十二指腸乳頭がある。総胆管（bile duct）と膵管（pancreatic duct）が合わさって開く大十二指腸乳頭（major duodenal papilla）（ファーター乳頭（papilla of Vater））と、その約2cm上の、副膵管（accessory pancreatic duct）が開く小十二指腸乳頭（minor duodenal papilla）。"],
+      "terms": [
+        {
+          "id": "suspensory-muscle-of-duodenum", "ja": "十二指腸提筋", "yomi": "じゅうにしちょうていきん", "en": "suspensory muscle of duodenum", "enAlt": ["suspensory ligament of duodenum"], "la": "musculus suspensorius duodeni",
+          "of": "duodenum", "level": 2,
+          "kanji": "十二指腸をつり上げる（提げる）筋",
+          "etym": "suspensory「つり下げる」（ラテン語 suspendere）＋ muscle「筋」",
+          "note": "十二指腸空腸曲（duodenojejunal flexure）から、上腸間膜動脈（superior mesenteric artery）の根もとの後ろを上って、横隔膜（diaphragm）の右脚（right crus）（と腹腔動脈（celiac trunk）のまわり）に付く、平滑筋（smooth muscle）と線維（fiber）の帯（トライツ靱帯（ligament of Treitz））。十二指腸空腸曲をつり上げ、ここで腹膜後の十二指腸（duodenum）と腹膜内の空腸（jejunum）が分かれる。上部消化管（upper gastrointestinal tract）と下部消化管（lower gastrointestinal tract）の境の目印で、手術では空腸の始まりを探す目印にする。3Dでは十二指腸空腸曲の上の、提筋が付く所を示す。"
+        },
+        {
+          "id": "minor-duodenal-papilla", "ja": "小十二指腸乳頭", "yomi": "しょうじゅうにしちょうにゅうとう", "en": "minor duodenal papilla", "la": "papilla duodeni minor",
+          "plate": "pancreatic-ducts", "level": 2,
+          "kanji": "十二指腸の小さい乳頭（高まり）",
+          "etym": "minor「小さい」＋ duodenal「十二指腸の」＋ papilla「乳頭」（ラテン語）",
+          "note": "十二指腸（duodenum）の下行部（descending part）の内面（internal surface）で、大十二指腸乳頭（major duodenal papilla）の約2cm上（やや前）にある小さな高まり。副膵管（accessory pancreatic duct）（発生（development）の背側膵芽（dorsal pancreatic bud）の管の根もとの名残）が開き、膵頭（head of pancreas）の上部の膵液（pancreatic juice）がここから出る。胆管（bile duct）は開かない。"
+        }
+      ]
+    },
+    {
       "id": "dig-villi",
       "title": "小腸の絨毛と腸腺",
       "group": "消化管",
@@ -587,10 +695,46 @@
       ]
     },
     {
+      "id": "dig-intestine-more",
+      "title": "輪状ひだ・微絨毛・回腸口と内肛門括約筋",
+      "group": "消化管",
+      "intro": ["小腸（small intestine）は栄養と水を吸収するため、内面（internal surface）を3段階で広げている: 粘膜下組織（submucosa）ごと輪のように盛り上がる輪状ひだ（circular folds）（約3倍）、粘膜（mucosa）の指（finger）のような突起（process）の絨毛（villi）（約10倍）、上皮細胞（epithelial cell）の表面の微絨毛（microvilli）（約20倍）。合わせて内面は約200m²（テニスコートほど）になる。", "空腸（jejunum）は輪状ひだが高く密で、壁が厚く太く、血管（blood vessel）が多くて赤い。回腸（ileum）はひだ（fold）が低く少なく、集合リンパ小節（aggregated lymphoid nodules）（パイエル板（Peyer patches））が多い。回腸は盲腸（cecum）と上行結腸（ascending colon）の境の回腸口（ileal orifice）（回盲弁（ileocecal valve））で大腸（large intestine）に入る。大腸の終わりの肛門管（anal canal）は、平滑筋（smooth muscle）の内肛門括約筋（internal anal sphincter）と骨格筋（skeletal muscle）の外肛門括約筋（external anal sphincter）が二重に締める。"],
+      "terms": [
+        {
+          "id": "circular-folds", "ja": "輪状ひだ", "yomi": "りんじょうひだ", "en": "circular folds", "enAlt": ["plicae circulares", "valves of kerckring"], "la": "plicae circulares",
+          "plate": "intestine-folds", "level": 1,
+          "kanji": "輪の形のひだ",
+          "etym": "circular「輪の」＋ fold「ひだ」。ケルクリングひだとも",
+          "note": "小腸（small intestine）の内面（internal surface）を横に輪のように（多くは輪の一部）走るひだ（fold）で、粘膜（mucosa）と粘膜下組織（submucosa）がいっしょに盛り上がってできる（引き伸ばしても消えない）。十二指腸（duodenum）の下行部（descending part）から始まり、空腸（jejunum）で最も高く密で、回腸（ileum）の終わりではほとんど無くなる。表面積を約3倍にし、内容物をらせんに回してゆっくり進ませる。胃（stomach）の粘膜ひだ（胃がふくらむと消える）とはちがう。"
+        },
+        {
+          "id": "microvilli", "ja": "微絨毛", "yomi": "びじゅうもう", "en": "microvilli", "enAlt": ["microvillus", "brush border"], "la": "microvilli",
+          "plate": "intestine-folds", "level": 2,
+          "kanji": "とても小さな絨毛",
+          "etym": "micro-「小さい」＋ villus「毛のふさ」（ラテン語。複数 villi）",
+          "note": "小腸（small intestine）の吸収上皮細胞（absorptive cell）の、内腔（lumen）に向く面にぎっしり（1つの細胞（cell）に数千本）並ぶ、長さ約1μmの細い突起（process）。光学顕微鏡では刷子縁（brush border）（ブラシの縁）に見える。表面積を約20倍に広げ、表面に糖やペプチドを分解する酵素がある。腎臓（kidney）の近位尿細管（proximal tubule）の上皮（epithelium）にもある。線毛（cilia）とちがって自分では動かない。"
+        },
+        {
+          "id": "ileal-orifice", "ja": "回腸口", "yomi": "かいちょうこう", "en": "ileal orifice", "enAlt": ["ileocecal valve", "ileal papilla", "ileocecal orifice"], "la": "ostium ileale",
+          "of": "cecum", "level": 1,
+          "kanji": "回腸の（大腸への）口",
+          "etym": "ileal「回腸の」＋ orifice ← ラテン語 orificium「口」",
+          "note": "回腸（ileum）の終わりが、盲腸（cecum）と上行結腸（ascending colon）の境の内側（medial）の壁に開く口。上下2枚の唇（lip）のようなひだ（fold）（回腸乳頭）に囲まれ、講義・臨床では回盲弁（ileocecal valve）（バウヒン弁）と呼ぶ。大腸（large intestine）の内容物が小腸（small intestine）へ戻るのを防ぎ、小腸の内容物を少しずつ大腸へ送る。これより下の5〜6cmの袋が盲腸で、その下端（inferior end）に虫垂（appendix）が付く。3Dでは回腸が入る盲腸の壁を示す。"
+        },
+        {
+          "id": "internal-anal-sphincter", "ja": "内肛門括約筋", "yomi": "ないこうもんかつやくきん", "en": "internal anal sphincter", "la": "musculus sphincter ani internus",
+          "plate": "rectum-anal", "level": 1,
+          "kanji": "肛門の内側の、締める（括約する）筋",
+          "etym": "internal「内の」＋ anal「肛門の」＋ sphincter ← ギリシャ語 sphingein「締める」",
+          "note": "肛門管（anal canal）の上部約3/4を取り巻く、直腸（rectum）の輪走筋層（circular layer）が厚くなった平滑筋（smooth muscle）。自律神経（autonomic nerve）の支配（innervation）で、意志とは関係なくいつも締まり、便やガスが漏れるのを防ぐ（ふだんの締める力の大部分）。直腸に便がたまると反射（reflex）でゆるむ。その外を、骨格筋（skeletal muscle）の外肛門括約筋（external anal sphincter）（陰部神経（pudendal nerve）。意志で締める）が取り巻く。"
+        }
+      ]
+    },
+    {
       "id": "dig-peritoneum",
       "title": "腹膜と腹膜腔・網嚢",
       "group": "消化管",
-      "intro": ["腹膜（peritoneum）は、腹壁（abdominal wall）の内面（internal surface）をおおう壁側腹膜（parietal peritoneum）と臓器（organ）をおおう臓側腹膜（visceral peritoneum）が間膜（mesentery）でつながった1枚の漿膜（serosa）で、その間のごく狭いすき間が腹膜腔（peritoneal cavity）。臓器は腹膜腔の外にあり、間膜でつり下げられた腹膜内臓器と、後腹壁（posterior abdominal wall）に埋まった腹膜後器官に分けられる。胃（stomach）の後ろの網嚢（omental bursa）は、網嚢孔（omental foramen）だけで残りの腹膜腔とつながる。臓器の図「腹膜と腹膜腔」の平面図と、立体の色分けで見る。"],
+      "intro": ["腹膜（peritoneum）は、腹壁（abdominal wall）の内面（internal surface）をおおう壁側腹膜（parietal peritoneum）と臓器（organ）をおおう臓側腹膜（visceral peritoneum）が間膜（mesentery）でつながった1枚の漿膜（serosa）で、その間のごく狭いすき間が腹膜腔（peritoneal cavity）。臓器は腹膜腔の外にあり、間膜でつり下げられた腹膜内臓器と、後腹壁（posterior abdominal wall）に埋まった腹膜後器官（retroperitoneal organs）に分けられる。胃（stomach）の後ろの網嚢（omental bursa）は、網嚢孔（omental foramen）だけで残りの腹膜腔とつながる。臓器の図「腹膜と腹膜腔」の平面図と、立体の色分けで見る。"],
       "terms": [
         {
           "id": "parietal-peritoneum", "ja": "壁側腹膜", "yomi": "へきそくふくまく", "en": "parietal peritoneum", "la": "peritoneum parietale",
@@ -604,7 +748,7 @@
           "plate": "peritoneum-transverse", "level": 1,
           "kanji": "臓器の側の腹膜",
           "etym": "visceral「内臓の」＋ peritoneum「腹膜」",
-          "note": "胃（stomach）・小腸（small intestine）・肝臓（liver）などの臓器（organ）の表面をおおう腹膜（peritoneum）（消化管（digestive tract）の壁ではいちばん外の漿膜（serosa））。間膜（mesentery）を通って壁側腹膜（parietal peritoneum）に続く。臓器の全体を臓側腹膜に包まれ、間膜で壁からつり下げられた臓器が腹膜内臓器、後腹壁（posterior abdominal wall）に埋まって前の面だけを腹膜におおわれた臓器が腹膜後器官（腎臓（kidney）・副腎（suprarenal gland）・膵臓（pancreas）・十二指腸（duodenum）の大部分・上行結腸（ascending colon）・下行結腸（descending colon）など）。"
+          "note": "胃（stomach）・小腸（small intestine）・肝臓（liver）などの臓器（organ）の表面をおおう腹膜（peritoneum）（消化管（digestive tract）の壁ではいちばん外の漿膜（serosa））。間膜（mesentery）を通って壁側腹膜（parietal peritoneum）に続く。臓器の全体を臓側腹膜に包まれ、間膜で壁からつり下げられた臓器が腹膜内臓器、後腹壁（posterior abdominal wall）に埋まって前の面だけを腹膜におおわれた臓器が腹膜後器官（retroperitoneal organs）（腎臓（kidney）・副腎（suprarenal gland）・膵臓（pancreas）・十二指腸（duodenum）の大部分・上行結腸（ascending colon）・下行結腸（descending colon）など）。"
         },
         {
           "id": "peritoneal-cavity", "ja": "腹膜腔", "yomi": "ふくまくくう", "en": "peritoneal cavity", "la": "cavitas peritonealis",
@@ -637,10 +781,67 @@
       ]
     },
     {
+      "id": "dig-peritoneal-relations",
+      "title": "腹膜内器官と腹膜後器官・肝臓の間膜",
+      "group": "消化管",
+      "intro": ["腹膜腔（peritoneal cavity）に突き出し、ほぼ全体を腹膜（peritoneum）に包まれて間膜（mesentery）でつり下げられた器官（organ）が腹膜内器官（intraperitoneal organs）（よく動く）。後腹壁（posterior abdominal wall）に埋まって前だけを腹膜におおわれた器官が腹膜後器官（retroperitoneal organs）で、はじめから後ろにあるもの（腎臓（kidney）・副腎（suprarenal gland）・尿管（ureter）・腹大動脈（abdominal aorta）・下大静脈（inferior vena cava））と、発生（development）の途中で後腹壁にくっついた二次腹膜後器官（secondarily retroperitoneal organs）（十二指腸（duodenum）・膵臓（pancreas）・上行結腸（ascending colon）・下行結腸（descending colon））がある。", "肝臓（liver）の上の面の後ろには腹膜の無い無漿膜野（bare area of liver）があり、その縁で腹膜が横隔膜（diaphragm）へ折れ返る。この折り返しが冠状間膜（coronary ligament）で、左右の端では2枚が合わさって三角間膜（triangular ligament）になる。腹膜腔のうち、仰向けで上腹部の最も低い肝臓と右の腎臓の間の肝腎陥凹（hepatorenal recess）（モリソン窩）には、血液（blood）や液がたまりやすい。"],
+      "terms": [
+        {
+          "id": "intraperitoneal-organs", "ja": "腹膜内器官", "yomi": "ふくまくないきかん", "en": "intraperitoneal organs", "enAlt": ["intraperitoneal viscera"],
+          "parts": ["hepatovenous segment *", "quadrate lobe of liver", "caudate lobe of liver", "gallbladder", "stomach", "spleen", "* part of jejunum", "* part of ileum", "ileocecal junction", "appendix", "transverse colon", "sigmoid colon"], "level": 1,
+          "kanji": "腹膜の内（腹膜腔の側）にある器官",
+          "etym": "intra-「中の」＋ peritoneal「腹膜の」＋ organ「器官」",
+          "note": "腹膜腔（peritoneal cavity）に突き出し、表面のほぼすべてを臓側腹膜（visceral peritoneum）におおわれ、腸間膜（mesentery）・小網（lesser omentum）・大網（greater omentum）などの間膜（mesentery）で後腹壁（posterior abdominal wall）や前腹壁（anterior abdominal wall）とつながる器官（organ）（腹膜内臓器・腹腔内臓器ともいう）。胃（stomach）・空腸（jejunum）・回腸（ileum）・盲腸（cecum）と虫垂（appendix）・横行結腸（transverse colon）・S状結腸（sigmoid colon）・肝臓（liver）・胆嚢（gallbladder）・脾臓（spleen）。血管（blood vessel）・神経（nerve）・リンパ管（lymphatic vessel）は間膜の中を通って届く。よく動くので、腸（intestine）がねじれる腸捻転（volvulus）も起こる。肝臓は無漿膜野（bare area of liver）で横隔膜（diaphragm）に付くが、ほとんどが腹膜（peritoneum）におおわれる。"
+        },
+        {
+          "id": "secondarily-retroperitoneal-organs", "ja": "二次腹膜後器官", "yomi": "にじふくまくこうきかん", "en": "secondarily retroperitoneal organs", "enAlt": ["secondary retroperitoneal organs"],
+          "parts": ["duodenum", "pancreas", "ascending colon", "descending colon"], "level": 1, "check": true,
+          "kanji": "二次的に（あとから）腹膜の後ろになった器官",
+          "etym": "secondarily「二次的に」＋ retro-「後ろの」＋ peritoneal「腹膜の」",
+          "note": "はじめは間膜（mesentery）をもつ腹膜内器官（intraperitoneal organs）としてでき、発生（development）の途中で間膜ごと後腹壁（posterior abdominal wall）にくっついて（癒着して）腹膜後器官（retroperitoneal organs）になったもの（二次的な腹膜後器官）。十二指腸（duodenum）（胃（stomach）の回転で右へ倒れて癒着）・膵臓（pancreas）（背側胃間膜の中で育ち、網嚢（omental bursa）の後ろで癒着）・上行結腸（ascending colon）・下行結腸（descending colon）（中腸（midgut）の回転のあと）。癒着した面は手術ではがすことができ、もとの血管（blood vessel）の道すじが残る。"
+        },
+        {
+          "id": "retroperitoneal-organs", "ja": "腹膜後器官", "yomi": "ふくまくこうきかん", "en": "retroperitoneal organs", "enAlt": ["primarily retroperitoneal organs"],
+          "parts": ["za:renal cortex", "za:renal column", "za:renal pyramid", "za:renal papilla", "za:renal sinus", "adrenal gland", "ureter", "abdominal aorta", "inferior vena cava"], "level": 1,
+          "kanji": "腹膜の後ろにある器官",
+          "etym": "retro-「後ろの」＋ peritoneal「腹膜の」＋ organ「器官」",
+          "note": "腹膜腔（peritoneal cavity）の後ろ（後腹壁（posterior abdominal wall）と壁側腹膜（parietal peritoneum）の間の腹膜後隙）にあり、前の面だけを腹膜（peritoneum）におおわれる器官（organ）（後腹膜臓器）。はじめから腹膜の後ろにできる腎臓（kidney）・副腎（suprarenal gland）・尿管（ureter）・腹大動脈（abdominal aorta）・下大静脈（inferior vena cava）と、発生（development）の途中で後腹壁に癒着した二次腹膜後器官（secondarily retroperitoneal organs）（十二指腸（duodenum）・膵臓（pancreas）・上行結腸（ascending colon）・下行結腸（descending colon））がある。3Dは、はじめから腹膜の後ろにある器官。動かず、背中（back）の側から腹膜腔を開けずに近づける。"
+        },
+        {
+          "id": "hepatorenal-recess", "ja": "肝腎陥凹", "yomi": "かんじんかんおう", "en": "hepatorenal recess", "enAlt": ["morison pouch", "hepatorenal pouch"], "la": "recessus hepatorenalis",
+          "plate": "peritoneum-transverse", "level": 2,
+          "kanji": "肝臓と腎臓の間のくぼみ",
+          "etym": "hepato-「肝臓の」＋ renal「腎臓の」＋ recess「くぼみ」。モリソン窩とも",
+          "note": "肝臓（liver）の右葉（right lobe）の臓側面（visceral surface）と、右の腎臓（kidney）・右結腸曲（right colic flexure）の前の間にある腹膜腔（peritoneal cavity）の深いくぼみ（モリソン窩）。仰向けに寝たときの上腹部で最も低い所なので、腹（abdomen）の中の出血や腹水が最初にたまる。けがの超音波検査（FAST）で真っ先に見る所。網嚢孔（omental foramen）を通して網嚢（omental bursa）ともつながる。"
+        },
+        {
+          "id": "coronary-ligament-of-liver", "ja": "冠状間膜", "yomi": "かんじょうかんまく", "en": "coronary ligament of liver", "enAlt": ["coronary ligament"], "la": "ligamentum coronarium",
+          "of": "liver", "level": 2,
+          "kanji": "冠（かんむり）のように取り巻く間膜",
+          "etym": "coronary ← ラテン語 corona「冠」＋ ligament「靱帯・間膜」",
+          "note": "肝臓（liver）の横隔面（diaphragmatic surface）の後ろの無漿膜野（bare area of liver）を囲む、腹膜（peritoneum）の折り返し。肝臓をおおう臓側腹膜（visceral peritoneum）が、無漿膜野の上の縁（前葉（anterior layer））と下の縁（後葉（posterior layer））で、横隔膜（diaphragm）の下面（inferior surface）の壁側腹膜（parietal peritoneum）へ折れ返る。前では肝鎌状間膜（falciform ligament of liver）につながり、左右の端で前葉と後葉が合わさって右三角間膜（right triangular ligament）・左三角間膜（left triangular ligament）になる。肝臓を横隔膜に付け、呼吸（respiration）で横隔膜といっしょに上下させる。3Dでは無漿膜野の縁を示す。"
+        },
+        {
+          "id": "right-triangular-ligament", "ja": "右三角間膜", "yomi": "みぎさんかくかんまく", "en": "right triangular ligament", "la": "ligamentum triangulare dextrum",
+          "of": "liver", "level": 2,
+          "kanji": "右の三角形の間膜",
+          "etym": "right「右の」＋ triangular「三角形の」＋ ligament「間膜」",
+          "note": "冠状間膜（coronary ligament）の右の端で、前葉（anterior layer）と後葉（posterior layer）が合わさってできる短い三角形のひだ（fold）。肝臓（liver）の右葉（right lobe）の後ろ上の端を横隔膜（diaphragm）に付ける。"
+        },
+        {
+          "id": "left-triangular-ligament", "ja": "左三角間膜", "yomi": "ひだりさんかくかんまく", "en": "left triangular ligament", "la": "ligamentum triangulare sinistrum",
+          "of": "liver", "level": 2,
+          "kanji": "左の三角形の間膜",
+          "etym": "left「左の」＋ triangular「三角形の」＋ ligament「間膜」",
+          "note": "肝臓（liver）の左葉（left lobe）の上の面の左の端から横隔膜（diaphragm）へ渡る、三角形のひだ（fold）。肝鎌状間膜（falciform ligament of liver）と冠状間膜（coronary ligament）の腹膜（peritoneum）が左へ続いたもので、左葉の端を横隔膜に付ける。中に線維付属（肝臓の組織（tissue）の名残）を含むことがある。"
+        }
+      ]
+    },
+    {
       "id": "dig-gut-development",
       "title": "消化管の発生（前腸・中腸・後腸）",
       "group": "消化管",
-      "intro": ["内胚葉（endoderm）の消化管（digestive tract）は胎齢4週に胚の折りたたみで卵黄嚢（yolk sac）の上の部分がくびれてでき、頭側（cranial）の前腸（foregut）・まん中の中腸（midgut）・尾側（caudal）の後腸（hindgut）に分かれる。中腸は卵黄腸管（vitelline duct）で卵黄嚢とつながる。","前腸は食道（esophagus）・胃（stomach）・十二指腸（duodenum）の上半と肝臓（liver）・胆嚢（gallbladder）・膵臓（pancreas）、中腸は十二指腸の下半から横行結腸（transverse colon）の右2/3、後腸は横行結腸の左1/3から直腸（rectum）・肛門管（anal canal）の上部になる。大人ではそれぞれ腹腔動脈（celiac trunk）・上腸間膜動脈（superior mesenteric artery）・下腸間膜動脈（inferior mesenteric artery）が養う（発生（development）の区分と動脈（artery）の区分が一致する）。","胃は胎齢5〜8週に縦の軸のまわりに右へ90°回転し（左の面が前に）、背側胃間膜がふくらんで大網（greater omentum）に、後ろに網嚢（omental bursa）ができる。中腸は伸びが速く、胎齢6〜10週に臍帯の中へ出て（生理的臍帯ヘルニア）上腸間膜動脈を軸に反時計回りに90°、腹腔（abdominal cavity）へ戻るときにさらに180°、合わせて270°回転し、盲腸（cecum）が右下に収まる。"],
+      "intro": ["内胚葉（endoderm）の消化管（digestive tract）は胎齢4週に胚の折りたたみで卵黄嚢（yolk sac）の上の部分がくびれてでき、頭側（cranial）の前腸（foregut）・まん中の中腸（midgut）・尾側（caudal）の後腸（hindgut）に分かれる。中腸は卵黄腸管（vitelline duct）で卵黄嚢とつながる。","前腸は食道（esophagus）・胃（stomach）・十二指腸（duodenum）の上半と肝臓（liver）・胆嚢（gallbladder）・膵臓（pancreas）、中腸は十二指腸の下半から横行結腸（transverse colon）の右2/3、後腸は横行結腸の左1/3から直腸（rectum）・肛門管（anal canal）の上部になる。大人ではそれぞれ腹腔動脈（celiac trunk）・上腸間膜動脈（superior mesenteric artery）・下腸間膜動脈（inferior mesenteric artery）が養う（発生（development）の区分と動脈（artery）の区分が一致する）。","胃は胎齢5〜8週に縦の軸のまわりに右へ90°回転し（左の面が前に）、背側胃間膜がふくらんで大網（greater omentum）に、後ろに網嚢（omental bursa）ができる。中腸は伸びが速く、胎齢6〜10週に臍帯の中へ出て（生理的臍帯ヘルニア（physiological umbilical herniation））上腸間膜動脈を軸に反時計回りに90°、腹腔（abdominal cavity）へ戻るときにさらに180°、合わせて270°回転し、盲腸（cecum）が右下に収まる。"],
       "terms": [
         {
           "id": "foregut", "ja": "前腸", "yomi": "ぜんちょう", "en": "foregut", "la": "proenteron", "plate": "gut-tube", "level": 2, "check": true,
@@ -682,19 +883,62 @@
           "id": "primary-intestinal-loop", "ja": "一次腸ループ", "yomi": "いちじちょうるーぷ", "en": "primary intestinal loop", "enAlt": ["midgut loop"], "la": "ansa umbilicalis intestini", "plate": "gut-tube", "level": 3, "check": true,
           "kanji": "最初にできる腸のわな（ループ）",
           "etym": "primary「最初の」＋ intestinal「腸の」＋ loop「わな・輪」",
-          "note": "胎齢5週に伸びの速い中腸（midgut）が前へ突き出てできるU字のループ。上腸間膜動脈（superior mesenteric artery）が軸になり、頂点に卵黄腸管（vitelline duct）が付く。頭側（cranial）の脚は空腸（jejunum）・回腸（ileum）に、尾側（caudal）の脚は回腸の末端・盲腸（cecum）・上行結腸（ascending colon）・横行結腸（transverse colon）になる。胎齢6〜8週に臍帯の中へ出て（生理的臍帯ヘルニア）反時計回りに90°、10週に腹腔（abdominal cavity）へ戻るとき180°、計270°回転する。回転の異常（腸回転異常）は腸（intestine）がねじれる原因になる。"
+          "note": "胎齢5週に伸びの速い中腸（midgut）が前へ突き出てできるU字のループ。上腸間膜動脈（superior mesenteric artery）が軸になり、頂点に卵黄腸管（vitelline duct）が付く。頭側（cranial）の脚は空腸（jejunum）・回腸（ileum）に、尾側（caudal）の脚は回腸の末端・盲腸（cecum）・上行結腸（ascending colon）・横行結腸（transverse colon）になる。胎齢6〜8週に臍帯の中へ出て（生理的臍帯ヘルニア（physiological umbilical herniation））反時計回りに90°、10週に腹腔（abdominal cavity）へ戻るとき180°、計270°回転する。回転の異常（腸回転異常）は腸（intestine）がねじれる原因になる。"
         },
         {
           "id": "dorsal-mesentery", "ja": "背側腸間膜", "yomi": "はいそくちょうかんまく", "en": "dorsal mesentery", "la": "mesenterium dorsale", "plate": "gut-tube", "level": 3,
           "kanji": "背中側の腸間膜",
           "etym": "dorsal「背の」（ラテン語 dorsum）＋ mesentery「腸間膜」（mesos「間」＋ enteron「腸」）",
-          "note": "原始腸管を後ろの体壁（大動脈（aorta）の前）からつり下げる膜（membrane）で、腸（intestine）へ行く動脈（artery）・神経（nerve）がここを通る。胃（stomach）の部分（背側胃間膜）は胃の回転でふくらんで大網（greater omentum）と胃脾間膜（gastrosplenic ligament）になり、ほかは小腸（small intestine）の腸間膜（mesentery）・横行結腸間膜（transverse mesocolon）・S状結腸間膜（sigmoid mesocolon）として残る。十二指腸（duodenum）・上行結腸（ascending colon）・下行結腸（descending colon）の部分は後腹壁（posterior abdominal wall）に癒着して消える（二次的な腹膜後器官）。"
+          "note": "原始腸管を後ろの体壁（大動脈（aorta）の前）からつり下げる膜（membrane）で、腸（intestine）へ行く動脈（artery）・神経（nerve）がここを通る。胃（stomach）の部分（背側胃間膜）は胃の回転でふくらんで大網（greater omentum）と胃脾間膜（gastrosplenic ligament）になり、ほかは小腸（small intestine）の腸間膜（mesentery）・横行結腸間膜（transverse mesocolon）・S状結腸間膜（sigmoid mesocolon）として残る。十二指腸（duodenum）・上行結腸（ascending colon）・下行結腸（descending colon）の部分は後腹壁（posterior abdominal wall）に癒着して消える（二次的な腹膜後器官（retroperitoneal organs））。"
         },
         {
           "id": "ventral-mesentery", "ja": "腹側腸間膜", "yomi": "ふくそくちょうかんまく", "en": "ventral mesentery", "la": "mesenterium ventrale", "plate": "gut-tube", "level": 3,
           "kanji": "腹側の腸間膜",
           "etym": "ventral「腹の」（ラテン語 venter）＋ mesentery「腸間膜」",
-          "note": "前腸（foregut）（胃（stomach）と十二指腸（duodenum）の上部）だけにある、前の腹壁（abdominal wall）へ渡る膜（membrane）（横中隔から）。中に肝臓（liver）が育ち、肝臓と胃の間の部分が小網（lesser omentum）（肝胃間膜・肝十二指腸間膜（hepatoduodenal ligament））に、肝臓と前腹壁（anterior abdominal wall）の間の部分が肝鎌状間膜（falciform ligament of liver）になる。"
+          "note": "前腸（foregut）（胃（stomach）と十二指腸（duodenum）の上部）だけにある、前の腹壁（abdominal wall）へ渡る膜（membrane）（横中隔（septum transversum）から）。中に肝臓（liver）が育ち、肝臓と胃の間の部分が小網（lesser omentum）（肝胃間膜・肝十二指腸間膜（hepatoduodenal ligament））に、肝臓と前腹壁（anterior abdominal wall）の間の部分が肝鎌状間膜（falciform ligament of liver）になる。"
+        }
+      ]
+    },
+    {
+      "id": "dig-liver-pancreas-development",
+      "title": "肝臓・膵臓の発生と中腸の回転",
+      "group": "消化管",
+      "intro": ["胎齢4週に、前腸（foregut）の十二指腸（duodenum）になる所から腹側（ventral）へ肝憩室（hepatic diverticulum）が出て横中隔（septum transversum）の中へ伸び、肝臓（liver）の細胞（cell）の索（肝索）と胆嚢（gallbladder）・胆管（bile duct）をつくる。そのすぐ下から腹側膵芽（ventral pancreatic bud）、反対の背側（dorsal）から背側膵芽（dorsal pancreatic bud）が出る。", "胃（stomach）が回転して十二指腸がC字に曲がると、腹側膵芽は十二指腸の後ろを回って背側膵芽の下に並び、胎齢7週ごろ合わさって1つの膵臓（pancreas）になる。腹側膵芽は膵頭（head of pancreas）の下部と鈎状突起（uncinate process）、背側膵芽は残りの膵頭・膵体（body of pancreas）・膵尾（tail of pancreas）になる。主膵管は腹側膵芽の管と背側膵芽の管の先がつながったもの、副膵管（accessory pancreatic duct）は背側膵芽の管の根もとの名残。", "中腸（midgut）は伸びが速く、胎齢6週に臍帯の中へ出て（生理的臍帯ヘルニア（physiological umbilical herniation））、10週ごろ腹腔（abdominal cavity）へ戻る。戻らずに残ると、臍帯の付け根から腸（intestine）が出たまま生まれる臍帯ヘルニアになる。"],
+      "terms": [
+        {
+          "id": "septum-transversum", "ja": "横中隔", "yomi": "おうちゅうかく", "en": "septum transversum", "enAlt": ["transverse septum"], "la": "septum transversum",
+          "plate": "gut-tube", "level": 2, "check": true,
+          "kanji": "横に渡る中隔（仕切り）",
+          "etym": "septum「仕切り」＋ transversum「横の」（ラテン語）",
+          "note": "胚の心臓（heart）のすぐ尾側（caudal）で、胸（chest）の心膜腔（pericardial cavity）と腹（abdomen）の腹膜腔（peritoneal cavity）の間に横に渡る、中胚葉の厚い板。肝憩室（hepatic diverticulum）がこの中へ伸びて肝臓（liver）が育ち、横中隔の一部は横隔膜（diaphragm）の腱中心（central tendon）になる（肝臓の無漿膜野（bare area of liver）・冠状間膜（coronary ligament）・肝鎌状間膜（falciform ligament of liver）もここからできる）。頚（neck）の高さでできてから下がるので、横隔膜は頚神経（cervical nerve）（第3〜5頚神経）の横隔神経（phrenic nerve）に支配（innervation）される。"
+        },
+        {
+          "id": "hepatic-diverticulum", "ja": "肝憩室", "yomi": "かんけいしつ", "en": "hepatic diverticulum", "enAlt": ["liver bud"], "la": "diverticulum hepaticum",
+          "plate": "pancreas-development", "level": 2, "check": true,
+          "kanji": "肝臓になる憩室（袋状の芽）",
+          "etym": "hepatic「肝臓の」（ギリシャ語 hepar）＋ diverticulum「わき道・袋」（ラテン語）",
+          "note": "胎齢4週に、前腸（foregut）の終わり（十二指腸（duodenum）になる所）の腹側（ventral）の壁から出る内胚葉（endoderm）の芽。横中隔（septum transversum）の中へ伸びて枝分かれし、頭側（cranial）の大きな部分が肝細胞の索（肝索）になって肝臓（liver）を、尾側（caudal）の小さな部分（胆嚢憩室）が胆嚢（gallbladder）と胆嚢管（cystic duct）をつくり、根もとが総胆管（bile duct）になる。肝臓の中の血管（blood vessel）（類洞）は卵黄静脈と臍静脈（umbilical vein）からできる。胎児（fetus）の肝臓は血液（blood）もつくる。"
+        },
+        {
+          "id": "dorsal-pancreatic-bud", "ja": "背側膵芽", "yomi": "はいそくすいが", "en": "dorsal pancreatic bud", "la": "gemma pancreatica dorsalis",
+          "plate": "pancreas-development", "level": 2, "check": true,
+          "kanji": "背側に出る膵臓の芽",
+          "etym": "dorsal「背側の」＋ pancreatic「膵臓の」＋ bud「芽」",
+          "note": "前腸（foregut）の十二指腸（duodenum）になる所の背側（dorsal）の壁から、背側腸間膜（dorsal mesentery）の中へ出る膵臓（pancreas）の芽（腹側膵芽（ventral pancreatic bud）より大きく、少し上）。膵頭（head of pancreas）の上部・膵体（body of pancreas）・膵尾（tail of pancreas）になる。管の先は主膵管の膵体・膵尾の部分に、根もとは副膵管（accessory pancreatic duct）（小十二指腸乳頭（minor duodenal papilla）に開く）になる。"
+        },
+        {
+          "id": "ventral-pancreatic-bud", "ja": "腹側膵芽", "yomi": "ふくそくすいが", "en": "ventral pancreatic bud", "la": "gemma pancreatica ventralis",
+          "plate": "pancreas-development", "level": 2, "check": true,
+          "kanji": "腹側に出る膵臓の芽",
+          "etym": "ventral「腹側の」＋ pancreatic「膵臓の」＋ bud「芽」",
+          "note": "肝憩室（hepatic diverticulum）のすぐ下から、総胆管（bile duct）の根もとといっしょに腹側（ventral）へ出る小さな膵臓（pancreas）の芽。十二指腸（duodenum）の回転とともに後ろを回って背側膵芽（dorsal pancreatic bud）の下に並び、合わさって膵頭（head of pancreas）の下部と鈎状突起（uncinate process）になる。その管が主膵管の十二指腸の側の部分になり、総胆管とともに大十二指腸乳頭（major duodenal papilla）に開く。回る途中で十二指腸を輪のように囲んで残ると輪状膵（十二指腸が狭くなる）。"
+        },
+        {
+          "id": "physiological-umbilical-herniation", "ja": "生理的臍帯ヘルニア", "yomi": "せいりてきさいたいへるにあ", "en": "physiological umbilical herniation", "enAlt": ["physiological herniation of midgut"],
+          "plate": "gut-tube", "level": 2,
+          "kanji": "正常な（生理的な）、臍帯の中への腸の脱出",
+          "etym": "physiological「生理的な（正常な）」＋ umbilical「臍の」＋ herniation「脱出」（ラテン語 hernia）",
+          "note": "胎齢6週ごろ、伸びの速い中腸（midgut）の一次腸ループ（primary intestinal loop）が、肝臓（liver）などで狭い腹腔（abdominal cavity）に入りきらず、臍帯の中（胚の体の外）へ出ること。正常な発生（development）の一段階。臍帯の中で上腸間膜動脈（superior mesenteric artery）を軸に反時計回りに90°回り、胎齢10週ごろ腹腔へ戻るときにさらに180°（計270°）回って、盲腸（cecum）が右下に、横行結腸（transverse colon）が十二指腸（duodenum）の前に収まる。戻らないと臍帯ヘルニア、回り方の異常が腸回転異常症。"
         }
       ]
     },
@@ -1017,7 +1261,7 @@
           "id": "renal-impression", "ja": "腎圧痕", "yomi": "じんあっこん", "en": "renal impression", "la": "impressio renalis", "of": "liver", "level": 2,
           "kanji": "腎臓に押されたくぼみ",
           "etym": "renal「腎臓の」（ラテン語 ren「腎臓」）＋ impression",
-          "note": "肝臓（liver）の右葉（right lobe）の臓側面（visceral surface）の後ろの、右の腎臓（kidney）の上の端が接する広いくぼみ。右の腎臓が左より低い（約1〜2cm）のは、上に肝臓があるため。肝臓と右腎（right kidney）の間のすき間は肝腎陥凹（モリソン窩）で、あお向けで腹腔（abdominal cavity）の液や血液（blood）がたまりやすい。"
+          "note": "肝臓（liver）の右葉（right lobe）の臓側面（visceral surface）の後ろの、右の腎臓（kidney）の上の端が接する広いくぼみ。右の腎臓が左より低い（約1〜2cm）のは、上に肝臓があるため。肝臓と右腎（right kidney）の間のすき間は肝腎陥凹（hepatorenal recess）（モリソン窩）で、あお向けで腹腔（abdominal cavity）の液や血液（blood）がたまりやすい。"
         },
         {
           "id": "suprarenal-impression", "ja": "副腎圧痕", "yomi": "ふくじんあっこん", "en": "suprarenal impression", "la": "impressio suprarenalis", "of": "liver", "level": 3,
@@ -1063,7 +1307,7 @@
           "of": "liver", "level": 1,
           "kanji": "肝臓の門（出入口）",
           "etym": "porta ← ラテン語「門」。hepatis「肝臓の」",
-          "note": "肝臓（liver）の下面（inferior surface）の中央にある横長の溝。固有肝動脈（proper hepatic artery）と門脈（hepatic portal vein）が入り、左右の肝管（hepatic duct）が出る。前は方形葉（quadrate lobe）、後ろは尾状葉（caudate lobe）。"
+          "note": "肝臓（liver）の下面（inferior surface）の中央にある横長の溝。固有肝動脈（proper hepatic artery）と門脈（hepatic portal vein）が入り、左右の肝管（hepatic duct）が出る。前は方形葉（quadrate lobe）、後ろは尾状葉（caudate lobe）。前から後ろへ、肝管（出る）・固有肝動脈（入る）・門脈（入る）の順に並ぶ（神経（nerve）・リンパ管（lymphatic vessel）も通る）。"
         },
         {
           "id": "head-of-pancreas", "ja": "膵頭", "yomi": "すいとう", "en": "head of pancreas", "la": "caput pancreatis",

@@ -83,6 +83,27 @@
       ]
     },
     {
+      "id": "lymph-tonsils",
+      "title": "咽頭扁桃と舌扁桃（咽頭の扁桃輪）",
+      "intro": ["口と鼻から入る病原体を見張るリンパ組織（lymphoid tissue）（扁桃（tonsil））が、咽頭（pharynx）の入口を輪のように囲む（ワルダイエル（Waldeyer）の咽頭輪（pharyngeal ring））。上の咽頭扁桃（pharyngeal tonsil）（1つ）、両わきの口蓋扁桃（palatine tonsil）（1対）と耳管扁桃（tubal tonsil）（1対）、下の舌扁桃（lingual tonsil）（1つ）。どれも粘膜（mucosa）の下のリンパ小節（lymphoid nodule）の集まりで、表面の上皮（epithelium）が深いくぼみ（陰窩）をつくる。"],
+      "terms": [
+        {
+          "id": "pharyngeal-tonsil", "ja": "咽頭扁桃", "yomi": "いんとうへんとう", "en": "pharyngeal tonsil", "enAlt": ["adenoid", "adenoids"], "la": "tonsilla pharyngea",
+          "plate": "tonsils", "level": 1,
+          "kanji": "咽頭にある扁桃（平たい桃の形）",
+          "etym": "pharyngeal「咽頭の」＋ tonsil ← ラテン語 tonsilla「扁桃」",
+          "note": "咽頭鼻部（nasopharynx）の天井から後ろの壁（蝶形骨（sphenoid bone）・後頭骨（occipital bone）の下）にある、ひだ（fold）の多いリンパ組織（lymphoid tissue）のかたまり（1つ）。幼児期に大きく、学童期を過ぎると小さくなる。大きくなりすぎたものがアデノイド（adenoids）で、鼻（nose）がつまって口で息をし、耳管咽頭口（pharyngeal opening of auditory tube）をふさいで中耳炎（otitis media）のもとになる。"
+        },
+        {
+          "id": "lingual-tonsil", "ja": "舌扁桃", "yomi": "ぜつへんとう", "en": "lingual tonsil", "la": "tonsilla lingualis",
+          "plate": "tonsils", "level": 1,
+          "kanji": "舌（の根もと）にある扁桃",
+          "etym": "lingual「舌の」（ラテン語 lingua）＋ tonsil「扁桃」",
+          "note": "舌根（root of tongue）（分界溝（terminal sulcus of tongue）より後ろの舌（tongue）の後ろ1/3）の背面（dorsal surface）の粘膜（mucosa）の下に並ぶ、たくさんの小さなリンパ小節（lymphoid nodule）の集まり（1つ）。舌の前2/3のような舌乳頭（lingual papillae）が無く、でこぼこして見える。咽頭口部（oropharynx）の前の壁にあたり、口蓋扁桃（palatine tonsil）とともに口から入る病原体を見張る。"
+        }
+      ]
+    },
+    {
       "id": "lymph-thorax-arm",
       "title": "胸部と上肢のリンパ節",
       "terms": [

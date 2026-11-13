@@ -264,6 +264,10 @@ const CUTS = [
   { part: "hepatovenous segment iv", slug: "quadrate", name: "Quadrate lobe of liver", normal: [0, 1, 0], d: 1.103 },
   // BodyParts3D の大腿直筋は膝蓋骨を包んで脛骨粗面まで続く（膝蓋靱帯を含む）。膝蓋骨尖（y = 0.3615）のすぐ下から下を膝蓋靱帯とする
   { part: "rectus femoris", slug: "patlig", name: "Patellar ligament", normal: [0, 1, 0], d: 0.358, sided: true },
+  // 食道は1つの形。胸骨の頚切痕（y = 1.323）より上を頚部、食道裂孔（横隔膜に接する所の上下のまん中より少し下、y = 1.140）より下を腹部、
+  // 間を胸部とする。more は同じ向きの面でさらに下を切る（上から順に。間の部品は「上の面の下側で、次の面の上側」）
+  { part: "esophagus", slug: "thoracic", name: "Thoracic part of esophagus", normal: [0, 1, 0], d: 1.323,
+    more: [{ slug: "abdominal", name: "Abdominal part of esophagus", d: 1.14 }] },
 ];
 
 // BodyParts3D で1つの形になっているものを、近い目印の形ごとに分ける（split-mesh.mjs の partitionMesh）。
@@ -286,6 +290,12 @@ const PARTITIONS = [
 // 名前と外接箱が同じ部品は1つにまとめ、同じ形を二重に描かない。
 // 返り値の readMesh(部品ID) は形を読む（CUTS で分けた部品は分けた形）。readWhole(部品ID) は分ける前の形で、
 // Z-Anatomy の骨・器官との合わせ込み（scripts/za/）に使う（Z-Anatomy の下行結腸は BodyParts3D で切った上側より長く、切ると合わない）。
+/** 面 cut の half の側（lower があれば、さらにその面の上側だけ）を切り出す */
+function cutBetween(mesh, cut, half, lower) {
+  const part = splitMesh(mesh, cut.normal, cut.d)[half];
+  return lower ? splitMesh(part, lower.normal, lower.d).above : part;
+}
+
 export function readElements() {
   const objDir = path.join(RAW, "obj");
   if (!fs.existsSync(objDir)) throw new Error("data-raw/bp3d/obj がありません。先に npm run fetch:sources を実行してください");
@@ -306,16 +316,20 @@ export function readElements() {
       conceptElements.get(concept).add(element);
     }
   }
-  const cutOf = new Map(); // 部品ID → [切り方, "above" | "below"]
+  const cutOf = new Map(); // 部品ID → [切り方, "above" | "below", 元の部品ID, 下を切る面（more の間の部品だけ。その上側を残す）]
   for (const cut of CUTS) {
     const sources = [...elementNames].filter(([, name]) => baseName(name) === cut.part);
     if (sources.length !== (cut.sided ? 2 : 1)) throw new Error(`切る部品「${cut.part}」が ${sources.length} 個あります`);
     for (const [id, name] of sources) {
       const side = cut.sided ? (/\bleft\b/i.test(name) ? "Left" : "Right") : "";
       const plane = side === "Left" ? { ...cut, normal: [-cut.normal[0], cut.normal[1], cut.normal[2]] } : cut;
-      cutOf.set(id, [plane, "above"]);
-      cutOf.set(`${id}-${cut.slug}`, [plane, "below", id]);
-      elementNames.set(`${id}-${cut.slug}`, side ? `${side} ${cut.name.toLowerCase()}` : cut.name);
+      // 上から順の面と部品（more があれば下へ続ける）
+      const steps = [{ plane, slug: cut.slug, name: cut.name }, ...(cut.more ?? []).map((next) => ({ plane: { ...plane, d: next.d }, slug: next.slug, name: next.name }))];
+      cutOf.set(id, [steps[0].plane, "above"]);
+      for (const [k, step] of steps.entries()) {
+        cutOf.set(`${id}-${step.slug}`, [step.plane, "below", id, steps[k + 1]?.plane]);
+        elementNames.set(`${id}-${step.slug}`, side ? `${side} ${step.name.toLowerCase()}` : step.name);
+      }
     }
   }
   const pieceOf = new Map(); // 部品ID → [分け方, 何番目, 元の部品ID]
@@ -340,11 +354,11 @@ export function readElements() {
   const readMesh = (id) => {
     if (id.startsWith("NS_")) return nasal(id);
     if (!cache.has(id)) {
-      const [cut, half, source] = cutOf.get(id) ?? [];
+      const [cut, half, source, lower] = cutOf.get(id) ?? [];
       const [guides, i, whole, bias] = pieceOf.get(id) ?? [];
       if (guides) cache.set(id, { name: elementNames.get(id), ...partitionMesh(parseObj(path.join(objDir, `${whole}.obj`)), guides.map(readMesh), bias)[i] });
       else if (!cut) cache.set(id, parseObj(path.join(objDir, `${id}.obj`)));
-      else cache.set(id, { name: elementNames.get(id), ...splitMesh(parseObj(path.join(objDir, `${source ?? id}.obj`)), cut.normal, cut.d)[half] });
+      else cache.set(id, { name: elementNames.get(id), ...cutBetween(parseObj(path.join(objDir, `${source ?? id}.obj`)), cut, half, lower) });
     }
     return cache.get(id);
   };
@@ -364,10 +378,10 @@ async function main() {
   // 位置・大きさ・近さ（index.json）とピンは今までどおり 4.0 の形で決める
   const hires = loadHires({ parseObj, objDir, readWhole });
   const fine = (id) => {
-    const [cut, half, source] = splitOf(id) ?? [];
+    const [cut, half, source, lower] = splitOf(id) ?? [];
     if (!cut) return hires(id);
     const whole = hires(source ?? id);
-    return whole && { name: elementNames.get(id), ...splitMesh(whole, cut.normal, cut.d)[half] };
+    return whole && { name: elementNames.get(id), ...cutBetween(whole, cut, half, lower) };
   };
   const mesh = (id) => (za?.names.has(id) ? za.mesh(id) : bpMesh(id));
   // 3.0 の細かい形の無い筋（4.0 の粗い形のまま）は、三角形の角のでこぼこをならす。舌・唇などの粗い形は細分する（SMOOTH）

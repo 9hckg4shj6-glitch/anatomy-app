@@ -393,7 +393,7 @@
           "parts": ["second lumbar vertebra"], "level": 3, "from": [-0.4, 0.25, -1],
           "kanji": "上から2番目の腰椎",
           "etym": "second「2番目の」＋ lumbar「腰の」（ラテン語 lumbus「腰」）＋ vertebra「椎骨」",
-          "note": "腎動脈（renal artery）・腎静脈（renal vein）は、およそ第1〜第2腰椎（first to second lumbar vertebrae）の高さで腎門（renal hilum）に出入りする。横隔膜（diaphragm）の右脚（right bundle branch）は第1〜第3腰椎（first to third lumbar vertebrae）、左脚（left bundle branch）は第1〜第2腰椎の椎体（vertebral body）から起こる。"
+          "note": "腎動脈（renal artery）・腎静脈（renal vein）は、およそ第1〜第2腰椎（first to second lumbar vertebrae）の高さで腎門（renal hilum）に出入りする。横隔膜（diaphragm）の右脚（right crus）は第1〜第3腰椎（first to third lumbar vertebrae）、左脚（left crus）は第1〜第2腰椎の椎体（vertebral body）から起こる。"
         },
         {
           "id": "third-lumbar-vertebra", "ja": "第3腰椎", "yomi": "だいさんようつい", "en": "third lumbar vertebra", "la": "vertebra lumbalis III",

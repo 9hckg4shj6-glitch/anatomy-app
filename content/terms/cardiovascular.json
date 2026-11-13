@@ -494,6 +494,35 @@
       ]
     },
     {
+      "id": "cv-heart-skeleton",
+      "title": "大動脈洞・動脈円錐と線維輪",
+      "group": "心臓",
+      "intro": ["大動脈弁（aortic valve）の3枚の半月弁（semilunar valve）の後ろのふくらみが大動脈洞（aortic sinus）で、左右の冠状動脈（coronary artery）はここから出る。心室（ventricle）が縮む収縮期には、開いた弁（valve）が入口の前に来て、心筋（cardiac muscle）が中の血管（blood vessel）を押しつぶすので、冠状動脈には心室がゆるむ拡張期（diastole）に血液（blood）が流れる（ほかの臓器（organ）は収縮期）。", "右心室（right ventricle）の肺動脈幹（pulmonary trunk）へ続く出口は、じょうごのように細くなった動脈円錐（conus arteriosus）。4つの弁はほぼ同じ平面に並び、線維輪（fibrous ring of heart）と線維三角でできた線維性（fibrous）の骨格（skeleton）（心臓骨格）に付く。この骨格は電気を通さないので、心房（atrium）の興奮（excitation）は房室結節（atrioventricular node）から房室束（atrioventricular bundle）（ヒス束（bundle of His））を通らないと心室へ伝わらない。"],
+      "terms": [
+        {
+          "id": "aortic-sinus", "ja": "大動脈洞", "yomi": "だいどうみゃくどう", "en": "aortic sinus", "enAlt": ["sinus of valsalva"], "la": "sinus aortae",
+          "of": "ascending-aorta", "level": 2,
+          "kanji": "大動脈の洞（ふくらみ）",
+          "etym": "aortic「大動脈の」＋ sinus「くぼみ・ふくらみ」（ラテン語）。バルサルバ洞とも",
+          "note": "上行大動脈（ascending aorta）の根もとで、大動脈弁（aortic valve）の3枚の半月弁（semilunar valve）（右・左・後）それぞれの後ろが外へふくらんだ所。右の洞から右冠状動脈（right coronary artery）、左の洞から左冠状動脈（left coronary artery）が出る（後ろの洞からは出ないので、後半月弁（posterior semilunar cusp）を無冠尖（non-coronary cusp）ともいう）。冠状動脈（coronary artery）の入口が弁（valve）の裏にあるので、収縮期は開いた弁に入口が隠れ、弁が閉じる拡張期（diastole）に、はね返った血液（blood）が洞から冠状動脈へ流れこむ。3Dでは上行大動脈の根もとのふくらみを示す。"
+        },
+        {
+          "id": "conus-arteriosus", "ja": "動脈円錐", "yomi": "どうみゃくえんすい", "en": "conus arteriosus", "enAlt": ["infundibulum"], "la": "conus arteriosus",
+          "of": "right-ventricle", "level": 2,
+          "kanji": "動脈（肺動脈幹）へ向かう円錐形の部分",
+          "etym": "conus「円錐」＋ arteriosus「動脈の」（ラテン語）。漏斗（infundibulum）とも",
+          "note": "右心室（right ventricle）の左上の部分が、じょうごのように細くなって肺動脈幹（pulmonary trunk）へ続く所（右心室の流出路）。内面（internal surface）は肉柱（trabeculae carneae）が無く滑らかで、室上稜（supraventricular crest）で三尖弁（tricuspid valve）の側の流入路と分かれる。発生（development）では心球（bulbus cordis）からできる。右冠状動脈（right coronary artery）の最初の枝（branch）の動脈円錐枝（conus branch）が分布する。"
+        },
+        {
+          "id": "fibrous-rings-of-heart", "ja": "線維輪（心臓）", "yomi": "せんいりん", "en": "fibrous rings of heart", "enAlt": ["anulus fibrosus of heart", "fibrous skeleton of heart", "cardiac skeleton"], "la": "anuli fibrosi cordis",
+          "plate": "heart-base", "level": 2,
+          "kanji": "線維でできた輪",
+          "etym": "fibrous「線維の」＋ ring「輪」。ラテン語 anulus fibrosus",
+          "note": "心臓（heart）の4つの弁（valve）の口を囲む、膠原線維（collagen fiber）の丈夫な輪。三尖弁（tricuspid valve）の右線維輪・僧帽弁（mitral valve）の左線維輪と、大動脈弁（aortic valve）・肺動脈弁（pulmonary valve）の輪が、間の右線維三角・左線維三角でつながって心臓骨格（線維性骨格）をつくる。弁と、心房（atrium）・心室（ventricle）の心筋（cardiac muscle）がここに付く。電気を通さない絶縁体なので、心房から心室への興奮（excitation）は、右線維三角を貫く房室束（atrioventricular bundle）（ヒス束（bundle of His））だけを通る（房室結節（atrioventricular node）で少し遅れてから心室が縮む）。"
+        }
+      ]
+    },
+    {
       "id": "cv-vessel-wall",
       "title": "動脈と静脈の壁",
       "group": "血管の構造と発生",
@@ -547,13 +576,13 @@
       "id": "cv-microcirculation",
       "title": "毛細血管・細動脈・リンパ管",
       "group": "血管の構造と発生",
-      "intro": ["動脈（artery）は枝分かれして細動脈（arteriole） → 毛細血管（capillary）となり、毛細血管で組織（tissue）と物質を交換したあと細静脈 → 静脈（vein）へ集まる。毛細血管からしみ出た液の一部はリンパ管（lymphatic vessel）が集めて静脈へ戻す。小腸（small intestine）の絨毛（villi）の図で見る。"],
+      "intro": ["動脈（artery）は枝分かれして細動脈（arteriole） → 毛細血管（capillary）となり、毛細血管で組織（tissue）と物質を交換したあと細静脈（venule） → 静脈（vein）へ集まる。毛細血管からしみ出た液の一部はリンパ管（lymphatic vessel）が集めて静脈へ戻す。小腸（small intestine）の絨毛（villi）の図で見る。"],
       "terms": [
         {
           "id": "capillary", "ja": "毛細血管", "yomi": "もうさいけっかん", "en": "capillary", "enAlt": ["blood capillary"], "la": "vas capillare", "plate": "intestine-villi", "level": 1,
           "kanji": "毛のように細い血管",
           "etym": "capillary ← ラテン語 capillus「髪の毛」",
-          "note": "細動脈（arteriole）と細静脈をつなぐ直径5〜10μmの最も細い血管（blood vessel）。壁は内皮（endothelium）（と基底膜（basement membrane））だけで、酸素・二酸化炭素・栄養・老廃物をまわりの組織（tissue）と交換する（交換血管）。数が多いので断面積の合計は最大で、血流（blood flow）はいちばん遅い。"
+          "note": "細動脈（arteriole）と細静脈（venule）をつなぐ直径5〜10μmの最も細い血管（blood vessel）。壁は内皮（endothelium）（と基底膜（basement membrane））だけで、酸素・二酸化炭素・栄養・老廃物をまわりの組織（tissue）と交換する（交換血管）。数が多いので断面積の合計は最大で、血流（blood flow）はいちばん遅い。"
         },
         {
           "id": "arteriole", "ja": "細動脈", "yomi": "さいどうみゃく", "en": "arteriole", "la": "arteriola", "plate": "intestine-villi", "level": 1,
@@ -566,6 +595,56 @@
           "kanji": "リンパ（組織の液）を運ぶ管",
           "etym": "lympha「澄んだ水」（ラテン語）＋ vessel「管」",
           "note": "毛細血管（capillary）からしみ出た組織液（interstitial fluid）の一部（リンパ（lymph））を集める、盲端で始まる薄い管。途中のリンパ節（lymph node）を通って、胸管（thoracic duct）・右リンパ本幹（right lymphatic duct）から静脈角（venous angle）（内頚静脈（internal jugular vein）と鎖骨下静脈（subclavian vein）の合流）で静脈（vein）へ戻る。広い意味では循環器系（cardiovascular system）に含める。小腸（small intestine）の中心乳び腔（central lacteal）は脂肪（fat）を運ぶリンパ管。"
+        }
+      ]
+    },
+    {
+      "id": "cv-circulation",
+      "title": "体循環と肺循環・静脈の種類",
+      "group": "血管の構造と発生",
+      "intro": ["血液（blood）（体重の約1/13、約5L）は心臓（heart）を中心に2つの回り道を流れる。左心室（left ventricle）から大動脈（aorta）で全身（whole body）の毛細血管（capillary）へ行き、上大静脈（superior vena cava）・下大静脈（inferior vena cava）で右心房（right atrium）へ戻るのが体循環（systemic circulation）、右心室（right ventricle）から肺動脈（pulmonary artery）で肺（lung）の毛細血管へ行き、肺静脈（pulmonary veins）で左心房（left atrium）へ戻るのが肺循環（pulmonary circulation）。", "心臓から出る血管（blood vessel）が動脈（artery）、心臓へ戻る血管が静脈（vein）（流れる血液の酸素の多さでは決まらない。肺動脈は静脈血（venous blood）、肺静脈は動脈血（arterial blood）を運ぶ）。血液の多く（約6〜7割）は、壁が薄く広がりやすい静脈にたまっている（容量血管）。", "四肢（limbs）の静脈は2系統。深い所を動脈と並んで走る深静脈（deep veins）（動脈と同じ名前）と、皮下（subcutaneous）を走る皮静脈（cutaneous vein）（並ぶ動脈が無いので別の名前）。中くらいの静脈の中には逆流を防ぐ静脈弁（venous valve）がある。"],
+      "terms": [
+        {
+          "id": "systemic-circulation", "ja": "体循環", "yomi": "たいじゅんかん", "en": "systemic circulation", "enAlt": ["greater circulation"],
+          "plate": "dual-circulation", "level": 1,
+          "kanji": "体（全身）をめぐる循環。大循環とも",
+          "etym": "systemic「全身の」（system 系）＋ circulation「循環」（ラテン語 circulus「輪」）",
+          "note": "左心室（left ventricle）から出た動脈血（arterial blood）が、大動脈（aorta）とその枝（branch）で全身（whole body）の毛細血管（capillary）へ運ばれ、組織（tissue）に酸素と栄養を渡して二酸化炭素と老廃物を受け取り、静脈血（venous blood）となって上大静脈（superior vena cava）・下大静脈（inferior vena cava）から右心房（right atrium）へ戻る道すじ（大循環）。圧が高い（大動脈で約120/80mmHg）ので、送り出す左心室の壁は右心室（right ventricle）の約3倍の厚さがある。心臓自身を養う冠状動脈（coronary artery）も体循環の一部。"
+        },
+        {
+          "id": "pulmonary-circulation", "ja": "肺循環", "yomi": "はいじゅんかん", "en": "pulmonary circulation", "enAlt": ["lesser circulation"],
+          "plate": "dual-circulation", "level": 1,
+          "kanji": "肺をめぐる循環。小循環とも",
+          "etym": "pulmonary ← ラテン語 pulmo「肺」＋ circulation「循環」",
+          "note": "右心室（right ventricle）から出た静脈血（venous blood）が、肺動脈幹（pulmonary trunk）と左右の肺動脈（pulmonary artery）で肺（lung）の毛細血管（capillary）（肺胞（alveolus）の壁）へ運ばれ、二酸化炭素を捨てて酸素を受け取り、動脈血（arterial blood）となって肺静脈（pulmonary veins）（左右2本ずつ）から左心房（left atrium）へ戻る道すじ（小循環）。圧は体循環（systemic circulation）の約1/5（肺動脈で約25/10mmHg）と低い。肺動脈には静脈血、肺静脈には動脈血が流れる。"
+        },
+        {
+          "id": "superficial-veins", "ja": "皮静脈", "yomi": "ひじょうみゃく", "en": "superficial veins", "enAlt": ["cutaneous veins"], "la": "venae superficiales",
+          "parts": ["cephalic vein", "basilic vein", "median cubital vein", "median antebrachial vein", "great saphenous vein", "small saphenous vein", "za:external jugular vein"], "level": 1,
+          "kanji": "皮膚（の下）の静脈",
+          "etym": "superficial「浅い」（ラテン語 superficies「表面」）＋ vein ← ラテン語 vena",
+          "note": "皮下組織（subcutaneous tissue）（脂肪（fat））の中を走る浅い静脈（vein）。並んで走る名前のついた動脈（artery）が無いので、深静脈（deep veins）とは別の名前がつく: 上肢（upper limb）の橈側皮静脈（cephalic vein）・尺側皮静脈（basilic vein）・肘正中皮静脈（median cubital vein）・前腕正中皮静脈（median antebrachial vein）、下肢（lower limb）の大伏在静脈（great saphenous vein）・小伏在静脈（small saphenous vein）、頚（neck）の外頚静脈（external jugular vein）など。皮膚（skin）の上から透けて見えるので採血（blood sampling）・静脈注射（intravenous injection）・点滴（intravenous drip）に使い、最後は深静脈へ注ぐ。"
+        },
+        {
+          "id": "deep-veins", "ja": "深静脈", "yomi": "しんじょうみゃく", "en": "deep veins", "la": "venae profundae",
+          "parts": ["za:brachial veins", "radial vein", "ulnar vein", "axillary vein", "femoral vein", "deep femoral vein", "popliteal vein", "anterior tibial vein", "posterior tibial vein", "fibular vein"], "level": 1,
+          "kanji": "深い所の静脈",
+          "etym": "deep「深い」＋ vein ← ラテン語 vena",
+          "note": "筋膜（fascia）より深い所を、同じ名前の動脈（artery）と並んで走る静脈（vein）（伴行静脈（venae comitantes））。上腕静脈（brachial veins）・橈骨静脈（radial veins）・尺骨静脈（ulnar veins）・前脛骨静脈（anterior tibial veins）・後脛骨静脈（posterior tibial veins）・腓骨静脈（fibular veins）は1本の動脈に2本ずつ寄りそい、腋窩静脈（axillary vein）・大腿静脈（femoral vein）・膝窩静脈（popliteal vein）は1本。動脈・静脈・神経（nerve）がいっしょに束になって走ることが多い。下肢（lower limb）の深静脈に血の塊（血栓（thrombus））ができるのが深部静脈血栓症（deep vein thrombosis）（エコノミークラス症候群）で、はがれて流れると肺塞栓症になる。"
+        },
+        {
+          "id": "venule", "ja": "細静脈", "yomi": "さいじょうみゃく", "en": "venule", "la": "venula",
+          "plate": "vein-wall", "level": 2,
+          "kanji": "細い静脈",
+          "etym": "venule ← ラテン語 venula（vena「静脈」の小さいもの）",
+          "note": "毛細血管（capillary）が集まってできる、直径20〜100μmほどの最も細い静脈（vein）。壁は内皮（endothelium）と、ごく薄い平滑筋（smooth muscle）・結合組織（connective tissue）だけ。毛細血管とともに物質を交換し、炎症（inflammation）のとき白血球（leukocyte）が壁をすり抜けて組織（tissue）へ出ていくのも主に細静脈。集まって小静脈・静脈になる。"
+        },
+        {
+          "id": "venous-valve", "ja": "静脈弁", "yomi": "じょうみゃくべん", "en": "venous valve", "la": "valvula venosa",
+          "plate": "vein-wall", "level": 1,
+          "kanji": "静脈の中の弁",
+          "etym": "venous「静脈の」＋ valve ← ラテン語 valva「扉」",
+          "note": "中くらいの静脈（vein）の内膜が、ポケットのように張り出した（ふつう2枚の）弁（valve）。血液（blood）を心臓（heart）の向きにだけ通し、逆流を防ぐ。重力に逆らって血液を戻す四肢（limbs）、とくに下肢（lower limb）の静脈に多く、まわりの筋（muscle）が縮んで静脈を押すと血液が上へ送られる（筋ポンプ（muscle pump））。大静脈（vena cava）・門脈（hepatic portal vein）・脳（brain）の静脈には無い。弁がうまく閉じなくなると、血液がたまって静脈がふくれる下肢静脈瘤になる。"
         }
       ]
     },
@@ -726,7 +805,7 @@
           "parts": ["abdominal aorta"], "level": 1,
           "kanji": "腹の中の大動脈",
           "etym": "abdominal ← ラテン語 abdomen「腹」",
-          "note": "横隔膜（diaphragm）から第4腰椎（fourth lumbar vertebra）の高さまで。腹部（abdomen）の臓器（organ）への枝（branch）を出し、左右の総腸骨動脈（common iliac artery）に分かれる。"
+          "note": "横隔膜（diaphragm）から第4腰椎（fourth lumbar vertebra）の高さまで。腹部（abdomen）の臓器（organ）への枝（branch）を出し、左右の総腸骨動脈（common iliac artery）に分かれる。枝は3つに分けられる: 前から1本ずつ出て消化器を養う腹側臓側枝（腹腔動脈（celiac trunk）・上腸間膜動脈（superior mesenteric artery）・下腸間膜動脈（inferior mesenteric artery））、左右から出て腹膜（peritoneum）の後ろの器官（organ）を養う外側臓側枝（中副腎動脈（middle suprarenal artery）・腎動脈（renal artery）・精巣動脈（testicular artery）または卵巣動脈（ovarian artery））、腹（abdomen）の壁を養う壁側枝（parietal branches）（下横隔動脈（inferior phrenic artery）・腰動脈（lumbar arteries）・正中仙骨動脈（median sacral artery））。"
         },
         {
           "id": "brachiocephalic-trunk", "ja": "腕頭動脈", "yomi": "わんとうどうみゃく", "en": "brachiocephalic trunk", "enAlt": ["brachiocephalic artery"], "la": "truncus brachiocephalicus",
@@ -1020,7 +1099,7 @@
           "parts": ["hepatic portal vein"], "level": 1, "color": "#3b64b8",
           "kanji": "肝門（肝臓の門）から入る静脈",
           "etym": "portal ← ラテン語 porta「門」",
-          "note": "胃（stomach）・腸（intestine）・脾臓（spleen）などの静脈血（venous blood）を集めて肝臓（liver）へ運ぶ静脈（vein）。吸収した栄養をまず肝臓へ届ける。膵頚（neck of pancreas）の後ろで上腸間膜静脈（superior mesenteric vein）と脾静脈（splenic vein）が合わさってでき、小網（lesser omentum）の中を固有肝動脈（proper hepatic artery）・総胆管（bile duct）の後ろで上って肝門（porta hepatis）に入る。肝硬変（cirrhosis）などで門脈の圧が上がると、食道（esophagus）の静脈（食道静脈瘤（esophageal varices））・へそ（umbilicus）の周り（メドゥーサの頭）・直腸（rectum）の静脈を通って大静脈（vena cava）へ逃げ道ができる。"
+          "note": "胃（stomach）・腸（intestine）・脾臓（spleen）などの静脈血（venous blood）を集めて肝臓（liver）へ運ぶ静脈（vein）。吸収した栄養をまず肝臓へ届ける。膵頚（neck of pancreas）の後ろで上腸間膜静脈（superior mesenteric vein）と脾静脈（splenic vein）が合わさってでき、小網（lesser omentum）の中を固有肝動脈（proper hepatic artery）・総胆管（bile duct）の後ろで上って肝門（porta hepatis）に入る。肝硬変（cirrhosis）などで門脈の圧が上がると、食道（esophagus）の静脈（食道静脈瘤（esophageal varices））・へそ（umbilicus）の周り（メドゥーサの頭）・直腸（rectum）の静脈を通って大静脈（vena cava）へ逃げ道ができる。肝臓は、この門脈（静脈血。肝臓へ来る血液（blood）の約7割）と固有肝動脈（動脈血（arterial blood）。約3割）の2重の血流（blood flow）を受ける。消化管（digestive tract）で吸収した栄養や薬・毒は、全身（whole body）へ回る前にまず肝臓で代謝（metabolism）・解毒（detoxification）される。"
         },
         {
           "id": "splenic-vein", "ja": "脾静脈", "yomi": "ひじょうみゃく", "en": "splenic vein", "la": "vena splenica",
@@ -1966,6 +2045,35 @@
           "kanji": "直腸の外側（肛門の皮膚の下）の静脈の叢",
           "etym": "plexus「編んだもの・網」（ラテン語）",
           "note": "櫛状線（pectinate line）より下、肛門（anus）の皮膚（skin）の下にある静脈（vein）の網。下直腸静脈（inferior rectal vein）から内陰部静脈（internal pudendal vein）へ流れる。ふくらんだものが外痔核（external hemorrhoid）で、皮膚の神経（nerve）があるので痛む。"
+        }
+      ]
+    },
+    {
+      "id": "cv-aorta-branch-types",
+      "title": "腹大動脈の枝の分け方",
+      "group": "体幹",
+      "intro": ["腹大動脈（abdominal aorta）の枝（branch）は、出る向きと養う所で3つに分けられる。前から1本ずつ出て腹膜腔（peritoneal cavity）の中の消化器を養う腹側臓側枝（腹腔動脈（celiac trunk）・上腸間膜動脈（superior mesenteric artery）・下腸間膜動脈（inferior mesenteric artery））、左右対称に横へ出て腹膜（peritoneum）の後ろの泌尿器・生殖器（genital organs）を養う外側臓側枝（中副腎動脈（middle suprarenal artery）・腎動脈（renal artery）・精巣動脈（testicular artery）または卵巣動脈（ovarian artery））、腹（abdomen）の壁を養う壁側枝（parietal branches）（下横隔動脈（inferior phrenic artery）・腰動脈（lumbar arteries）・正中仙骨動脈（median sacral artery））。"],
+      "terms": [
+        {
+          "id": "ventral-visceral-branches-of-abdominal-aorta", "ja": "腹側臓側枝（腹大動脈）", "yomi": "ふくそくぞうそくし", "en": "ventral visceral branches", "enAlt": ["unpaired visceral branches"],
+          "parts": ["celiac trunk", "superior mesenteric artery", "trunk of superior mesenteric artery", "inferior mesenteric artery"], "level": 2, "check": true,
+          "kanji": "腹側（前）へ出る、臓器（内臓）への枝",
+          "etym": "ventral「腹側の」＋ visceral「内臓の」（ラテン語 viscera）＋ branch「枝」",
+          "note": "腹大動脈（abdominal aorta）の前から1本ずつ（左右の対にならずに）出る3本の枝（branch）（不対性臓側枝）。腹腔動脈（celiac trunk）（第12胸椎（twelfth thoracic vertebra）の高さ）が前腸（foregut）（胃（stomach）・十二指腸（duodenum）の上半・肝臓（liver）・胆嚢（gallbladder）・膵臓（pancreas）・脾臓（spleen））、上腸間膜動脈（superior mesenteric artery）（第1腰椎（first lumbar vertebra））が中腸（midgut）（十二指腸の下半〜横行結腸（transverse colon）の右2/3）、下腸間膜動脈（inferior mesenteric artery）（第3腰椎（third lumbar vertebra））が後腸（hindgut）（横行結腸の左1/3〜直腸（rectum）の上部）を養う。腹膜腔（peritoneal cavity）に出た腹膜内器官（intraperitoneal organs）へは間膜（mesentery）の中を通って届く。"
+        },
+        {
+          "id": "lateral-visceral-branches-of-abdominal-aorta", "ja": "外側臓側枝（腹大動脈）", "yomi": "がいそくぞうそくし", "en": "lateral visceral branches", "enAlt": ["paired visceral branches"],
+          "parts": ["middle suprarenal artery", "renal artery", "trunk of renal artery", "testicular artery"], "level": 2, "check": true,
+          "kanji": "外側（横）へ出る、臓器への枝",
+          "etym": "lateral「外側の」＋ visceral「内臓の」＋ branch「枝」",
+          "note": "腹大動脈（abdominal aorta）の左右から対になって出て、腹膜（peritoneum）の後ろの器官（organ）を養う枝（branch）（有対性臓側枝）。上から中副腎動脈（middle suprarenal artery）（副腎（suprarenal gland））、腎動脈（renal artery）（第1〜2腰椎（first to second lumbar vertebrae）の高さ。腎臓（kidney））、精巣動脈（testicular artery）（女性では卵巣動脈（ovarian artery）。腎動脈の少し下から細く長く下る）。腎臓・副腎・性腺はどれも後腹壁（posterior abdominal wall）の近くでできるので、横から枝を受ける。3Dは男性の模型なので精巣動脈。"
+        },
+        {
+          "id": "parietal-branches-of-abdominal-aorta", "ja": "壁側枝（腹大動脈）", "yomi": "へきそくし", "en": "parietal branches of abdominal aorta", "enAlt": ["parietal branches"],
+          "parts": ["inferior phrenic artery", "lumbar artery", "za:median sacral artery"], "level": 2, "check": true,
+          "kanji": "（体の）壁へ行く枝",
+          "etym": "parietal ← ラテン語 paries「壁」＋ branch「枝」",
+          "note": "腹大動脈（abdominal aorta）から出て、内臓（viscera）ではなく腹（abdomen）の壁（体壁）を養う枝（branch）。下横隔動脈（inferior phrenic artery）（横隔膜（diaphragm）の下面（inferior surface）へ。副腎（suprarenal gland）へも枝を出す）、腰動脈（lumbar arteries）（左右4対。後腹壁（posterior abdominal wall）の筋（muscle）と脊柱管（vertebral canal）へ）、正中仙骨動脈（median sacral artery）（大動脈（aorta）の分かれ目の後ろから仙骨（sacrum）の前を下る細い1本。大動脈のもともとの続き）。胸大動脈（thoracic aorta）の肋間動脈（posterior intercostal arteries）と同じ並びの枝。"
         }
       ]
     },

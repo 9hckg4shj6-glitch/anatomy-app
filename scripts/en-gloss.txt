@@ -401,7 +401,7 @@
 大十二指腸乳頭|major duodenal papilla
 絨毛|villi
 リンパ管|lymphatic vessel
-前葉%腎筋膜,筋膜|anterior layer
+前葉%腎筋膜,筋膜,冠状間膜,無漿膜野|anterior layer
 前葉|anterior lobe
 上内側|superomedial
 蝶番関節|hinge joint
@@ -547,7 +547,7 @@ S状結腸間膜|sigmoid mesocolon
 第3大臼歯|third molar
 前下方|anteroinferior
 咽頭扁桃|pharyngeal tonsil
-後葉%腎筋膜,筋膜|posterior layer
+後葉%腎筋膜,筋膜,冠状間膜,無漿膜野|posterior layer
 後葉|posterior lobe
 間脳|diencephalon
 峡部|isthmus
@@ -622,6 +622,7 @@ MP関節|MP joint
 内リンパ|endolymph
 骨端|epiphysis
 粗面|tuberosity
+右脚%横隔膜,食道裂孔,大動脈裂孔,十二指腸提筋|right crus
 右脚|right bundle branch
 心房中隔|interatrial septum
 下後|posteroinferior
@@ -796,6 +797,7 @@ X線写真|radiograph
 房室結節|atrioventricular node
 房室束|atrioventricular bundle
 ヒス束|bundle of His
+左脚%横隔膜,食道裂孔,大動脈裂孔|left crus
 左脚|left bundle branch
 櫛状筋|pectinate muscles
 動脈円錐|conus arteriosus
@@ -2192,3 +2194,4 @@ VIII脳神経|cranial nerve VIII
 結節%房室,洞房,心房中隔,冠状静脈洞|node
 β細胞|beta cell
 α細胞|alpha cell
+鈎状突起%膵|uncinate process

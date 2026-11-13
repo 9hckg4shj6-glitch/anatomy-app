@@ -95,6 +95,22 @@
       ]
     },
     {
+      "id": "b-basic-region-abdomen", "title": "おなかの9つの区分", "system": "basics",
+      "intro": ["おなかの前の面を、縦2本（左右の鎖骨中線）と横2本（肋骨弓のいちばん下・腸骨稜の高さ）の線で9つに分けます。痛む場所や中の臓器を伝えるのに使います。上の段から、右・まん中・左の順に覚えましょう（右は本人の右）。"],
+      "terms": [
+        { "id": "right-hypochondriac-region", "point": "右の肋骨弓の下。肝臓と胆嚢がある。臨床では右季肋部と言う。" },
+        { "id": "epigastric-region", "point": "みぞおち。胃と肝臓の左葉がある。臨床では心窩部と言う。" },
+        { "id": "left-hypochondriac-region", "point": "左の肋骨弓の下。胃と脾臓がある。臨床では左季肋部と言う。" },
+        { "id": "right-lateral-region", "point": "右のわき腹。上行結腸がある。" },
+        { "id": "umbilical-region", "point": "へその周り。小腸（空腸・回腸）が多い。" },
+        { "id": "left-lateral-region", "point": "左のわき腹。下行結腸がある。" },
+        { "id": "right-inguinal-region", "point": "右下腹部。盲腸と虫垂がある。虫垂炎で痛む所。" },
+        { "id": "pubic-region", "point": "恥骨のすぐ上。膀胱がある。臨床では下腹部とも言う。" },
+        { "id": "left-inguinal-region", "point": "左下腹部。S状結腸がある。" },
+        { "id": "mcburney-point", "point": "へそと右の上前腸骨棘を結ぶ線の外側1/3の点。虫垂炎で押すと痛む。" }
+      ]
+    },
+    {
       "id": "b-skel-spine", "title": "背骨と胸の骨", "system": "skeletal",
       "intro": ["背骨（脊柱）は上から頚椎7・胸椎12・腰椎5・仙骨・尾骨。数を「7・12・5」で覚えます。"],
       "terms": [
@@ -271,6 +287,15 @@
       ]
     },
     {
+      "id": "b-mus-diaphragm-openings", "title": "横隔膜の3つの孔", "system": "muscular",
+      "intro": ["横隔膜には、胸と腹の間を通る管の孔が3つあります。上から大静脈孔・食道裂孔・大動脈裂孔で、高さは胸椎の「8・10・12」と覚えます。"],
+      "terms": [
+        { "id": "caval-opening", "point": "下大静脈が通る孔。第8胸椎の高さで、3つの中でいちばん高い。" },
+        { "id": "esophageal-hiatus", "point": "食道と迷走神経が通る孔。第10胸椎の高さ。" },
+        { "id": "aortic-hiatus", "point": "大動脈と胸管が通る孔。第12胸椎の高さで、いちばん低い。" }
+      ]
+    },
+    {
       "id": "b-mus-neck-back", "title": "首と背中の筋", "system": "muscular",
       "intro": ["背中の浅い所には肩甲骨と腕を動かす筋、深い所には背骨を支える筋があります。"],
       "terms": [
@@ -444,6 +469,17 @@
       ]
     },
     {
+      "id": "b-cv-circulation", "title": "体循環と肺循環・静脈の種類", "system": "cardiovascular",
+      "intro": ["心臓から出る血管が動脈、心臓へ戻る血管が静脈です。血液は、全身を回る体循環と、肺を回る肺循環の2つの輪を流れます。手足の静脈は、皮膚のすぐ下の皮静脈と、深い所の深静脈の2系統です。"],
+      "terms": [
+        { "id": "systemic-circulation", "point": "左心室 → 大動脈 → 全身 → 大静脈 → 右心房と回る血液の道すじ。" },
+        { "id": "pulmonary-circulation", "point": "右心室 → 肺動脈 → 肺 → 肺静脈 → 左心房と回る血液の道すじ。" },
+        { "id": "superficial-veins", "point": "皮膚のすぐ下を走る静脈。透けて見え、採血や点滴に使う。" },
+        { "id": "deep-veins", "point": "深い所を動脈と並んで走り、動脈と同じ名前を持つ静脈。" },
+        { "id": "venous-valve", "point": "静脈の中の弁。血液の逆流を防ぐ。脚の静脈に多い。" }
+      ]
+    },
+    {
       "id": "b-lymph", "title": "リンパ節と扁桃", "system": "lymphatic",
       "intro": ["リンパ節は首・わきの下・脚の付け根に集まっています。かぜやけがで腫れて触れるのもこの3か所です。"],
       "terms": [
@@ -452,7 +488,9 @@
         { "id": "deep-cervical-nodes", "point": "首の太い静脈に沿って並ぶリンパ節。頭と首のリンパが集まる。" },
         { "id": "supraclavicular-nodes", "point": "鎖骨のすぐ上のリンパ節。胸や腹のがんの転移で腫れることがある。" },
         { "id": "axillary-nodes", "point": "わきの下のリンパ節。腕と乳房のリンパが集まる。" },
-        { "id": "superficial-inguinal-nodes", "point": "脚の付け根の皮膚の下のリンパ節。脚と下腹部のリンパが集まる。" }
+        { "id": "superficial-inguinal-nodes", "point": "脚の付け根の皮膚の下のリンパ節。脚と下腹部のリンパが集まる。" },
+        { "id": "pharyngeal-tonsil", "point": "鼻の奥の天井にある扁桃。大きすぎるとアデノイド。" },
+        { "id": "lingual-tonsil", "point": "舌の付け根（舌根）の表面にある扁桃。" }
       ]
     },
     {
@@ -544,6 +582,18 @@
       ]
     },
     {
+      "id": "b-dig-esophagus", "title": "消化管の分け方と食道の狭い所", "system": "digestive",
+      "intro": ["消化管は口から肛門までの1本の管です。病院では、胃カメラで見る食道・胃・十二指腸を上部消化管、その先を下部消化管と呼びます。食道には狭い所が3か所あり、飲みこんだ物が引っかかりやすい所として大事です。"],
+      "terms": [
+        { "id": "digestive-tract", "point": "口から肛門まで続く1本の管。食道・胃・小腸・大腸など。" },
+        { "id": "upper-gastrointestinal-tract", "point": "食道・胃・十二指腸。胃カメラで見る範囲。" },
+        { "id": "lower-gastrointestinal-tract", "point": "十二指腸より先の小腸と大腸。主に大腸カメラで見る。" },
+        { "id": "pharyngoesophageal-constriction", "point": "食道の入口の狭い所（第1の狭窄）。異物が最も引っかかりやすい。" },
+        { "id": "bronchoaortic-constriction", "point": "大動脈弓と左の気管支が食道を押す所（第2の狭窄）。" },
+        { "id": "diaphragmatic-constriction", "point": "食道が横隔膜を通る所（第3の狭窄）。" }
+      ]
+    },
+    {
       "id": "b-dig-colon", "title": "大腸", "system": "digestive",
       "intro": ["大腸は、おなかの右下の盲腸から時計回りに 上行 → 横行 → 下行 → S状結腸 → 直腸 と進みます。"],
       "terms": [
@@ -570,6 +620,16 @@
         { "id": "greater-omentum", "point": "胃の大弯から垂れ下がって、腸の前をおおう膜。" },
         { "id": "lesser-omentum", "point": "胃の小弯と肝臓の間の膜。" },
         { "id": "mesentery", "point": "小腸（空腸・回腸）をおなかの後ろの壁につるす膜。血管が通る。" }
+      ]
+    },
+    {
+      "id": "b-dig-peritoneal", "title": "腹膜の中と外の器官", "system": "digestive",
+      "intro": ["おなかの器官には、腹膜に包まれて間膜でつり下がり、よく動く器官と、おなかの後ろの壁に埋まって動かない器官があります。"],
+      "terms": [
+        { "id": "intraperitoneal-organs", "point": "腹膜に包まれ、間膜でつり下がる器官。胃・小腸・横行結腸・肝臓など。" },
+        { "id": "secondarily-retroperitoneal-organs", "point": "あとから後ろの壁にくっついた器官。十二指腸・膵臓・上行結腸・下行結腸。" },
+        { "id": "retroperitoneal-organs", "point": "初めから腹膜の後ろにある器官。腎臓・副腎・尿管・大動脈など。" },
+        { "id": "hepatorenal-recess", "point": "肝臓と右の腎臓の間のくぼみ。おなかの出血がまずたまる所。" }
       ]
     },
     {

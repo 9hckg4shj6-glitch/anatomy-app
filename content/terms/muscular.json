@@ -674,6 +674,38 @@
       ]
     },
     {
+      "id": "mus-diaphragm-openings",
+      "title": "横隔膜の孔（大静脈孔・食道裂孔・大動脈裂孔）",
+      "group": "体幹",
+      "intro": ["横隔膜（diaphragm）には、胸（chest）と腹（abdomen）の間を通る構造の孔が3つある。上から 大静脈孔（caval opening）（第8胸椎（eighth thoracic vertebra）の高さ。下大静脈（inferior vena cava））、食道裂孔（esophageal hiatus）（第10胸椎（tenth thoracic vertebra）。食道（esophagus）と迷走神経（vagus nerve））、大動脈裂孔（aortic hiatus）（第12胸椎（twelfth thoracic vertebra）。大動脈（aorta）と胸管（thoracic duct））。「8・10・12」と覚える。", "大静脈孔は腱中心（central tendon）にあるので、息を吸って横隔膜が縮むと広がり、静脈血（venous blood）が心臓（heart）へ戻りやすくなる。食道裂孔は右脚（right crus）の筋（muscle）に囲まれ、縮むと食道を締める。大動脈裂孔は左右の脚の後ろ（正中弓状靱帯の下）なので、縮んでも大動脈は押されない。"],
+      "terms": [
+        {
+          "id": "caval-opening", "ja": "大静脈孔", "yomi": "だいじょうみゃくこう", "en": "caval opening", "enAlt": ["vena caval foramen", "foramen of vena cava"], "la": "foramen venae cavae",
+          "of": "diaphragm", "level": 1,
+          "kanji": "大静脈が通る孔",
+          "etym": "caval「大静脈の」（ラテン語 vena cava「うつろな静脈」）＋ opening「孔」",
+          "note": "横隔膜（diaphragm）の腱中心（central tendon）の右寄り、第8胸椎（eighth thoracic vertebra）の高さにある孔。下大静脈（inferior vena cava）と、右の横隔神経（phrenic nerve）の枝（branch）が通る。腱（tendon）の中の孔なので、息を吸って横隔膜が縮むと引っぱられて広がり、下大静脈の血液（blood）が右心房（right atrium）へ戻りやすくなる。3つの孔でいちばん高く、前にある。",
+          "passes": "下大静脈・右横隔神経の枝"
+        },
+        {
+          "id": "esophageal-hiatus", "ja": "食道裂孔", "yomi": "しょくどうれっこう", "en": "esophageal hiatus", "enAlt": ["oesophageal hiatus"], "la": "hiatus oesophageus",
+          "of": "diaphragm", "level": 1,
+          "kanji": "食道が通る裂け目の孔",
+          "etym": "esophageal「食道の」＋ hiatus「すき間」（ラテン語）",
+          "note": "横隔膜（diaphragm）の右脚（right crus）の筋（muscle）が食道（esophagus）を囲んでつくる、第10胸椎（tenth thoracic vertebra）の高さの裂け目。食道と、迷走神経（vagus nerve）（前・後迷走神経幹）、左胃動静脈の食道枝が通る。息を吸って筋が縮むと食道を締め、胃（stomach）の内容の逆流を防ぐ。ここが広がって胃の一部が胸（chest）へ出るのが食道裂孔ヘルニア。",
+          "passes": "食道・前迷走神経幹と後迷走神経幹"
+        },
+        {
+          "id": "aortic-hiatus", "ja": "大動脈裂孔", "yomi": "だいどうみゃくれっこう", "en": "aortic hiatus", "la": "hiatus aorticus",
+          "of": "diaphragm", "level": 1,
+          "kanji": "大動脈が通る裂け目の孔",
+          "etym": "aortic「大動脈の」＋ hiatus「すき間」（ラテン語）",
+          "note": "横隔膜（diaphragm）の左右の脚と、その間に渡る正中弓状靱帯で囲まれた、第12胸椎（twelfth thoracic vertebra）の高さの通り道。大動脈（aorta）と胸管（thoracic duct）（と奇静脈（azygos vein））が通る。横隔膜の後ろを通るので、筋（muscle）が縮んでも大動脈は押されない。ここを通ると胸大動脈（thoracic aorta）は腹大動脈（abdominal aorta）と名前を変える。",
+          "passes": "大動脈・胸管"
+        }
+      ]
+    },
+    {
       "id": "mus-shoulder",
       "title": "肩と上腕の筋",
       "group": "上肢",
