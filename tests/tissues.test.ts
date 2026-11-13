@@ -6,14 +6,24 @@ import { facetsFor } from "../src/study";
 describe("細胞と組織（解剖学総論 I）", () => {
   const tissues = terms.filter((term) => term.system === "tissues");
 
-  it("細胞と組織の語はみな平面図の語で、臓器の図「細胞と組織」の自作の模式図の上にある", () => {
+  it("細胞と組織の語はみな平面図の語で、臓器の図「細胞と組織」の教科書の図（Commons の自由なライセンスの図）の上にある", () => {
     expect(tissues.length).toBeGreaterThanOrEqual(70);
     for (const term of tissues) {
       const found = plateOfTerm(term);
       expect(found?.organ.id, term.id).toBe("tissues");
-      expect(found?.plate.art?.license, term.id).toBe("自作");
+      expect(found?.plate.art?.page, term.id).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
+      expect(found?.plate.art?.license, term.id).not.toBe("自作");
       expect(isDrawn(term)).toBe(true);
     }
+  });
+
+  it("結合組織は疎性結合組織・軟骨・骨・血液の図に、神経膠細胞は中枢と末梢の図に分かれる", () => {
+    expect(plateOfTerm(termById.get("fibroblast")!)?.plate.id).toBe("loose-connective-tissue");
+    expect(plateOfTerm(termById.get("chondrocyte")!)?.plate.id).toBe("cartilage");
+    expect(plateOfTerm(termById.get("osteocyte")!)?.plate.id).toBe("compact-bone");
+    expect(plateOfTerm(termById.get("erythrocyte")!)?.plate.id).toBe("blood-cells");
+    expect(plateOfTerm(termById.get("astrocyte")!)?.plate.id).toBe("neuroglia-cns");
+    expect(plateOfTerm(termById.get("schwann-cell")!)?.plate.id).toBe("neuroglia-pns");
   });
 
   it("4つの組織・上皮の種類・筋の種類・神経膠細胞がそろっている", () => {

@@ -410,9 +410,10 @@ const PlateLabel = z.union([z.string(), z.strictObject({
 })]);
 // 元の図（イラスト）の出典と、作るときの手直し。出典・ライセンス・変えた所は画面に出す（CC BY の表示）
 const PlateArt = z.strictObject({
-  // file: このアプリで描いた模式図（content/diagrams/*.svg）。license は「自作」、src・page はリポジトリのそのファイル
+  // file: リポジトリの中の図（content/diagrams/）。自作の模式図（*.svg、license は「自作」、src・page はリポジトリのそのファイル）か、
+  // Commons の図から文字を消して切り出したもの（*.png、scripts/diagrams/tissue-art.py が作る。src・page・license は元の図）
   src: z.string().url(), page: z.string().url(), author: z.string().min(1), license: z.string().regex(/^CC BY(-SA)? \d\.\d( DE)?$|^Public domain$|^自作$/),
-  file: z.string().regex(/^content\/diagrams\/[a-z0-9-]+\.svg$/).optional(),
+  file: z.string().regex(/^content\/diagrams\/[a-z0-9-]+\.(svg|png)$/).optional(),
   licenseUrl: z.string().url(), changes: z.string().min(1), background: z.enum(["dark", "red", "white"]), flip: z.literal("v").optional(),
   erase: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.number()])])).optional(), eraseWidth: z.number().optional(), white: z.number().int().min(200).max(254).optional(), blur: z.number().min(0.3).max(10).optional(),
   eraseBoxes: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.string().regex(/^#[0-9a-f]{6}$/)])])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),

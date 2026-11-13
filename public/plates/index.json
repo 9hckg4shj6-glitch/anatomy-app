@@ -7218,57 +7218,58 @@
    ]
   },
   "body-levels": {
-   "url": "plates/body-levels.ecdb4819b3.webp",
-   "w": 1400,
-   "h": 360,
+   "url": "plates/body-levels.8776ec307a.webp",
+   "w": 1185,
+   "h": 1400,
    "labels": [
     {
      "at": [
-      0.0636,
-      0.4392
+      0.4573,
+      0.259
      ],
      "ja": "原子・分子",
-     "en": "atom and molecule"
+     "en": "atom and molecule",
+     "note": "水素原子と酸素原子が結びついて水分子をつくる"
     },
     {
      "at": [
-      0.2037,
-      0.5041
+      0.5934,
+      0.3831
      ],
      "term": "organelle"
     },
     {
      "at": [
-      0.3215,
-      0.5979
+      0.5233,
+      0.334
      ],
      "term": "cell"
     },
     {
      "at": [
-      0.4904,
-      0.5114
+      0.4147,
+      0.4976
      ],
      "term": "tissue"
     },
     {
      "at": [
-      0.6722,
-      0.5222
+      0.6538,
+      0.6237
      ],
      "term": "organ"
     },
     {
      "at": [
-      0.7891,
-      0.6052
+      0.4026,
+      0.7771
      ],
      "term": "organ-system"
     },
     {
      "at": [
-      0.9319,
-      0.432
+      0.6844,
+      0.9066
      ],
      "ja": "人体",
      "en": "human body"
@@ -7276,666 +7277,944 @@
    ]
   },
   "tissue-types": {
-   "url": "plates/tissue-types.3c71474faa.webp",
-   "w": 1400,
-   "h": 995,
+   "url": "plates/tissue-types.76c5793cd1.webp",
+   "w": 1070,
+   "h": 1135,
    "labels": [
     {
      "at": [
-      0.2556,
-      0.2625
+      0.1215,
+      0.0969
+     ],
+     "term": "nervous-tissue"
+    },
+    {
+     "at": [
+      0.1215,
+      0.5286
      ],
      "term": "epithelial-tissue"
     },
     {
      "at": [
-      0.7789,
-      0.225
-     ],
-     "term": "connective-tissue"
-    },
-    {
-     "at": [
-      0.2578,
-      0.7064
+      0.8738,
+      0.1278
      ],
      "term": "muscle-tissue"
     },
     {
      "at": [
-      0.6889,
-      0.7345
-     ],
-     "term": "nervous-tissue"
-    }
-   ]
-  },
-  "cell": {
-   "url": "plates/cell.3d7c0cfdf8.webp",
-   "w": 1400,
-   "h": 1134,
-   "labels": [
-    {
-     "at": [
-      0.9681,
-      0.4619
-     ],
-     "term": "cell-membrane"
-    },
-    {
-     "at": [
-      0.7661,
-      0.79
-     ],
-     "term": "cytoplasm"
-    },
-    {
-     "at": [
-      0.5428,
-      0.5046
-     ],
-     "term": "nucleus"
-    },
-    {
-     "at": [
-      0.5601,
-      0.5997
-     ],
-     "term": "nuclear-envelope"
-    },
-    {
-     "at": [
-      0.479,
-      0.4816
-     ],
-     "term": "nucleolus"
-    },
-    {
-     "at": [
-      0.5694,
-      0.4094
-     ],
-     "term": "chromatin"
-    },
-    {
-     "at": [
-      0.6717,
-      0.6079
-     ],
-     "term": "ribosome"
-    },
-    {
-     "at": [
-      0.3886,
-      0.1355
-     ],
-     "term": "rough-er"
-    },
-    {
-     "at": [
-      0.1441,
-      0.5604
-     ],
-     "term": "smooth-er"
-    },
-    {
-     "at": [
-      0.7515,
-      0.4423
-     ],
-     "term": "golgi-apparatus"
-    },
-    {
-     "at": [
-      0.7076,
-      0.685
-     ],
-     "term": "lysosome"
-    },
-    {
-     "at": [
-      0.285,
-      0.7999
-     ],
-     "term": "mitochondrion"
-    },
-    {
-     "at": [
-      0.6863,
-      0.2126
-     ],
-     "term": "centrosome"
-    }
-   ]
-  },
-  "epithelium": {
-   "url": "plates/epithelium.c439dcf1fc.webp",
-   "w": 1400,
-   "h": 871,
-   "labels": [
-    {
-     "at": [
-      0.1133,
-      0.3394
-     ],
-     "term": "simple-squamous-epithelium"
-    },
-    {
-     "at": [
-      0.5011,
-      0.3001
-     ],
-     "term": "simple-cuboidal-epithelium"
-    },
-    {
-     "at": [
-      0.8289,
-      0.2412
-     ],
-     "term": "simple-columnar-epithelium"
-    },
-    {
-     "at": [
-      0.1722,
-      0.711
-     ],
-     "term": "stratified-squamous-epithelium"
-    },
-    {
-     "at": [
-      0.4,
-      0.711
-     ],
-     "term": "pseudostratified-ciliated-epithelium"
-    },
-    {
-     "at": [
-      0.7556,
-      0.6645
-     ],
-     "term": "transitional-epithelium"
-    },
-    {
-     "at": [
-      0.6389,
-      0.3573
-     ],
-     "term": "basement-membrane"
-    },
-    {
-     "at": [
-      0.4233,
-      0.6127
-     ],
-     "term": "cilia"
-    },
-    {
-     "at": [
-      0.5211,
-      0.6645
-     ],
-     "term": "goblet-cell"
-    },
-    {
-     "at": [
-      0.1722,
-      0.4198
+      0.8738,
+      0.5639
      ],
      "term": "connective-tissue"
-    }
-   ]
-  },
-  "connective-tissue": {
-   "url": "plates/connective-tissue.47f25bb8a8.webp",
-   "w": 1400,
-   "h": 995,
-   "labels": [
-    {
-     "at": [
-      0.3333,
-      0.3688
-     ],
-     "term": "loose-connective-tissue"
     },
     {
      "at": [
-      0.3133,
-      0.4719
+      0.4766,
+      0.0617
      ],
-     "term": "collagen-fiber"
+     "ja": "脳",
+     "en": "brain"
     },
     {
      "at": [
-      0.3333,
-      0.5282
+      0.5075,
+      0.104
      ],
-     "term": "elastic-fiber"
+     "term": "spinal-cord"
     },
     {
      "at": [
-      0.2778,
-      0.7439
+      0.514,
+      0.1604
      ],
-     "term": "fibroblast"
+     "ja": "神経",
+     "en": "nerve"
     },
     {
      "at": [
-      0.1444,
-      0.5938
+      0.4981,
+      0.4026
      ],
-     "term": "adipocyte"
+     "ja": "消化管の内面（粘膜上皮）",
+     "en": "lining of the digestive tract"
     },
     {
      "at": [
-      0.4778,
-      0.4219
-     ],
-     "ja": "マクロファージ",
-     "en": "macrophage"
-    },
-    {
-     "at": [
-      0.3833,
-      0.8564
-     ],
-     "ja": "肥満細胞",
-     "en": "mast cell"
-    },
-    {
-     "at": [
-      0.5556,
-      0.8392
-     ],
-     "term": "capillary"
-    },
-    {
-     "at": [
-      0.7778,
-      0.2891
-     ],
-     "term": "cartilage-tissue"
-    },
-    {
-     "at": [
-      0.7822,
-      0.1594
-     ],
-     "term": "chondrocyte"
-    },
-    {
-     "at": [
-      0.8056,
-      0.3782
-     ],
-     "term": "bone-tissue"
-    },
-    {
-     "at": [
-      0.8056,
-      0.5001
-     ],
-     "ja": "中心管（ハバース管）",
-     "en": "central canal"
-    },
-    {
-     "at": [
-      0.8533,
-      0.5001
-     ],
-     "term": "osteocyte"
-    },
-    {
-     "at": [
-      0.6533,
-      0.8126
-     ],
-     "term": "blood"
-    },
-    {
-     "at": [
-      0.7222,
-      0.7345
-     ],
-     "term": "erythrocyte"
-    },
-    {
-     "at": [
-      0.8178,
-      0.822
-     ],
-     "term": "leukocyte"
-    },
-    {
-     "at": [
-      0.9022,
-      0.747
-     ],
-     "term": "platelet"
-    }
-   ]
-  },
-  "muscle-tissue": {
-   "url": "plates/muscle-tissue.7a787f043e.webp",
-   "w": 1400,
-   "h": 933,
-   "labels": [
-    {
-     "at": [
-      0.4444,
-      0.0967
-     ],
-     "term": "skeletal-muscle"
-    },
-    {
-     "at": [
-      0.6111,
-      0.5335
-     ],
-     "term": "cardiac-muscle"
-    },
-    {
-     "at": [
-      0.45,
-      0.8252
-     ],
-     "term": "smooth-muscle"
-    },
-    {
-     "at": [
-      0.9556,
-      0.2001
-     ],
-     "term": "striated-muscle"
-    },
-    {
-     "at": [
-      0.1422,
-      0.4318
-     ],
-     "term": "intercalated-disc"
-    }
-   ]
-  },
-  "neuron": {
-   "url": "plates/neuron.c7eb21f6e4.webp",
-   "w": 1400,
-   "h": 697,
-   "labels": [
-    {
-     "at": [
-      0.2326,
-      0.5456
-     ],
-     "term": "cell-body"
-    },
-    {
-     "at": [
-      0.2565,
-      0.4844
-     ],
-     "term": "nucleus"
-    },
-    {
-     "at": [
-      0.163,
-      0.3708
-     ],
-     "term": "dendrite"
-    },
-    {
-     "at": [
-      0.3174,
-      0.5215
-     ],
-     "ja": "軸索小丘",
-     "en": "axon hillock"
-    },
-    {
-     "at": [
-      0.8098,
-      0.515
-     ],
-     "term": "axon"
-    },
-    {
-     "at": [
-      0.5054,
-      0.5368
-     ],
-     "term": "myelin-sheath"
-    },
-    {
-     "at": [
-      0.6174,
-      0.4887
-     ],
-     "term": "schwann-cell"
-    },
-    {
-     "at": [
-      0.4511,
-      0.515
-     ],
-     "term": "node-of-ranvier"
-    },
-    {
-     "at": [
-      0.913,
-      0.4188
-     ],
-     "term": "axon-terminal"
-    },
-    {
-     "at": [
-      0.9359,
-      0.5106
-     ],
-     "term": "synapse"
-    }
-   ]
-  },
-  "neuroglia": {
-   "url": "plates/neuroglia.b041c38654.webp",
-   "w": 1400,
-   "h": 791,
-   "labels": [
-    {
-     "at": [
-      0.35,
-      0.5483
-     ],
-     "term": "neuron"
-    },
-    {
-     "at": [
-      0.1848,
-      0.5906
-     ],
-     "term": "astrocyte"
-    },
-    {
-     "at": [
-      0.0761,
-      0.3848
-     ],
-     "term": "capillary"
-    },
-    {
-     "at": [
-      0.5196,
-      0.3828
-     ],
-     "term": "oligodendrocyte"
-    },
-    {
-     "at": [
-      0.5109,
-      0.7772
-     ],
-     "term": "microglia"
-    },
-    {
-     "at": [
-      0.3489,
-      0.1462
-     ],
-     "term": "ependymal-cell"
-    },
-    {
-     "at": [
-      0.9043,
-      0.3309
-     ],
-     "term": "satellite-cell"
-    },
-    {
-     "at": [
-      0.8859,
-      0.7695
-     ],
-     "term": "schwann-cell"
-    }
-   ]
-  },
-  "body-layers": {
-   "url": "plates/body-layers.0f9a5d4fe9.webp",
-   "w": 1400,
-   "h": 845,
-   "labels": [
-    {
-     "at": [
-      0.4906,
-      0.2501
+      0.3486,
+      0.4185
      ],
      "term": "epidermis"
     },
     {
      "at": [
-      0.4906,
-      0.3517
+      0.4981,
+      0.267
      ],
-     "term": "dermis"
+     "term": "cardiac-muscle"
     },
     {
      "at": [
-      0.283,
-      0.594
+      0.528,
+      0.3374
      ],
-     "term": "subcutaneous-tissue"
+     "term": "smooth-muscle",
+     "note": "胃（stomach）・腸など内臓（viscera）の壁"
     },
     {
      "at": [
-      0.8491,
-      0.4643
-     ],
-     "ja": "皮静脈",
-     "en": "cutaneous vein"
-    },
-    {
-     "at": [
-      0.3962,
-      0.6503
-     ],
-     "term": "fascia"
-    },
-    {
-     "at": [
-      0.283,
-      0.7597
+      0.628,
+      0.3806
      ],
      "term": "skeletal-muscle"
     },
     {
      "at": [
-      0.283,
-      0.9223
+      0.5869,
+      0.5709
+     ],
+     "ja": "脂肪組織",
+     "en": "adipose tissue"
+    },
+    {
+     "at": [
+      0.5514,
+      0.674
      ],
      "ja": "骨",
      "en": "bone"
     },
     {
      "at": [
-      0.0868,
-      0.2126
+      0.5421,
+      0.8969
      ],
-     "term": "intradermal-injection"
-    },
-    {
-     "at": [
-      0.2132,
-      0.1313
-     ],
-     "term": "subcutaneous-injection"
-    },
-    {
-     "at": [
-      0.5736,
-      0.1094
-     ],
-     "term": "intramuscular-injection"
-    },
-    {
-     "at": [
-      0.9179,
-      0.1407
-     ],
-     "term": "intravenous-injection"
+     "ja": "腱",
+     "en": "tendon"
     }
    ]
   },
-  "burn-depth": {
-   "url": "plates/burn-depth.6c3fc8cc0a.webp",
+  "cell": {
+   "url": "plates/cell.e80ff7f9f1.webp",
    "w": 1400,
-   "h": 995,
+   "h": 936,
    "labels": [
     {
      "at": [
-      0.2765,
-      0.2609
+      0.1186,
+      0.2244
      ],
-     "term": "first-degree-burn"
+     "term": "cell-membrane"
     },
     {
      "at": [
-      0.4343,
-      0.4737
+      0.6225,
+      0.4375
      ],
-     "term": "superficial-dermal-burn"
+     "term": "cytoplasm"
     },
     {
      "at": [
-      0.5921,
-      0.6773
+      0.4075,
+      0.3128
      ],
-     "term": "deep-dermal-burn"
+     "term": "nucleus"
     },
     {
      "at": [
-      0.7499,
-      0.8808
+      0.4039,
+      0.2743
      ],
-     "term": "third-degree-burn"
+     "term": "nuclear-envelope"
     },
     {
      "at": [
-      0.0662,
-      0.2794
+      0.4268,
+      0.2678
+     ],
+     "ja": "核膜孔",
+     "en": "nuclear pore"
+    },
+    {
+     "at": [
+      0.4021,
+      0.3499
+     ],
+     "term": "nucleolus"
+    },
+    {
+     "at": [
+      0.4213,
+      0.2895
+     ],
+     "term": "chromatin"
+    },
+    {
+     "at": [
+      0.2971,
+      0.3863
+     ],
+     "term": "ribosome"
+    },
+    {
+     "at": [
+      0.3167,
+      0.4074
+     ],
+     "term": "rough-er"
+    },
+    {
+     "at": [
+      0.2879,
+      0.4847
+     ],
+     "term": "smooth-er"
+    },
+    {
+     "at": [
+      0.243,
+      0.3112
+     ],
+     "term": "golgi-apparatus"
+    },
+    {
+     "at": [
+      0.6851,
+      0.2629
+     ],
+     "term": "lysosome"
+    },
+    {
+     "at": [
+      0.6956,
+      0.3247
+     ],
+     "term": "mitochondrion"
+    },
+    {
+     "at": [
+      0.5525,
+      0.5026
+     ],
+     "term": "centrosome"
+    }
+   ]
+  },
+  "epithelium": {
+   "url": "plates/epithelium.87a9060480.webp",
+   "w": 1306,
+   "h": 696,
+   "labels": [
+    {
+     "at": [
+      0.16,
+      0.3348
+     ],
+     "term": "simple-squamous-epithelium"
+    },
+    {
+     "at": [
+      0.5,
+      0.3132
+     ],
+     "term": "simple-cuboidal-epithelium"
+    },
+    {
+     "at": [
+      0.8392,
+      0.2342
+     ],
+     "term": "simple-columnar-epithelium"
+    },
+    {
+     "at": [
+      0.16,
+      0.8089
+     ],
+     "term": "stratified-squamous-epithelium"
+    },
+    {
+     "at": [
+      0.5,
+      0.7514
+     ],
+     "term": "pseudostratified-ciliated-epithelium"
+    },
+    {
+     "at": [
+      0.8392,
+      0.7658
+     ],
+     "term": "transitional-epithelium"
+    },
+    {
+     "at": [
+      0.2443,
+      0.3606
+     ],
+     "term": "basement-membrane"
+    },
+    {
+     "at": [
+      0.5,
+      0.6034
+     ],
+     "term": "cilia"
+    },
+    {
+     "at": [
+      0.8392,
+      0.0647
+     ],
+     "ja": "微絨毛",
+     "en": "microvilli"
+    },
+    {
+     "at": [
+      0.5,
+      0.4066
+     ],
+     "term": "connective-tissue"
+    }
+   ]
+  },
+  "muscle-tissue": {
+   "url": "plates/muscle-tissue.048f346178.webp",
+   "w": 1151,
+   "h": 1044,
+   "labels": [
+    {
+     "at": [
+      0.3432,
+      0.1897
+     ],
+     "term": "skeletal-muscle"
+    },
+    {
+     "at": [
+      0.5265,
+      0.1897
+     ],
+     "term": "striated-muscle",
+     "note": "骨格筋（skeletal muscle）と心筋（cardiac muscle）に見える横の縞"
+    },
+    {
+     "at": [
+      0.828,
+      0.2193
+     ],
+     "ja": "骨格筋の横断面",
+     "en": "skeletal muscle, cross section"
+    },
+    {
+     "at": [
+      0.2572,
+      0.5278
+     ],
+     "term": "cardiac-muscle"
+    },
+    {
+     "at": [
+      0.2328,
+      0.4425
+     ],
+     "term": "intercalated-disc"
+    },
+    {
+     "at": [
+      0.3858,
+      0.8132
+     ],
+     "term": "smooth-muscle"
+    }
+   ]
+  },
+  "neuron": {
+   "url": "plates/neuron.9412e95737.webp",
+   "w": 746,
+   "h": 552,
+   "labels": [
+    {
+     "at": [
+      0.4196,
+      0.317
+     ],
+     "term": "cell-body"
+    },
+    {
+     "at": [
+      0.3767,
+      0.2717
+     ],
+     "term": "nucleus"
+    },
+    {
+     "at": [
+      0.3016,
+      0.2953
+     ],
+     "term": "dendrite"
+    },
+    {
+     "at": [
+      0.4772,
+      0.337
+     ],
+     "ja": "軸索小丘",
+     "en": "axon hillock"
+    },
+    {
+     "at": [
+      0.5469,
+      0.3406
+     ],
+     "term": "axon"
+    },
+    {
+     "at": [
+      0.8887,
+      0.6522
+     ],
+     "term": "myelin-sheath"
+    },
+    {
+     "at": [
+      0.7855,
+      0.4203
+     ],
+     "term": "node-of-ranvier"
+    },
+    {
+     "at": [
+      0.882,
+      0.3804
+     ],
+     "term": "oligodendrocyte"
+    },
+    {
+     "at": [
+      0.8686,
+      0.7971
+     ],
+     "term": "axon-terminal"
+    },
+    {
+     "at": [
+      0.8445,
+      0.9185
+     ],
+     "term": "synapse"
+    }
+   ]
+  },
+  "body-layers": {
+   "url": "plates/body-layers.eadaac556b.webp",
+   "w": 1400,
+   "h": 372,
+   "labels": [
+    {
+     "at": [
+      0.3026,
+      0.5384
      ],
      "term": "epidermis"
     },
     {
      "at": [
-      0.0662,
-      0.4237
+      0.3026,
+      0.5902
      ],
      "term": "dermis"
     },
     {
      "at": [
-      0.0662,
-      0.8531
+      0.3171,
+      0.6938
      ],
      "term": "subcutaneous-tissue"
+    },
+    {
+     "at": [
+      0.3699,
+      0.7538
+     ],
+     "term": "fascia",
+     "note": "皮下組織（subcutaneous tissue）と骨格筋（skeletal muscle）の境（図では線だけ）"
+    },
+    {
+     "at": [
+      0.3171,
+      0.8411
+     ],
+     "term": "skeletal-muscle"
+    },
+    {
+     "at": [
+      0.5632,
+      0.6857
+     ],
+     "ja": "皮静脈",
+     "en": "cutaneous vein"
+    },
+    {
+     "at": [
+      0.1324,
+      0.8329
+     ],
+     "term": "intramuscular-injection"
+    },
+    {
+     "at": [
+      0.4402,
+      0.6966
+     ],
+     "term": "subcutaneous-injection"
+    },
+    {
+     "at": [
+      0.7225,
+      0.6857
+     ],
+     "term": "intravenous-injection"
+    },
+    {
+     "at": [
+      0.9651,
+      0.5739
+     ],
+     "term": "intradermal-injection"
+    }
+   ]
+  },
+  "burn-depth": {
+   "url": "plates/burn-depth.7d477b0f3f.webp",
+   "w": 473,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.497,
+      0.1048
+     ],
+     "term": "first-degree-burn"
+    },
+    {
+     "at": [
+      0.5388,
+      0.4757
+     ],
+     "term": "superficial-dermal-burn",
+     "note": "水疱ができる"
+    },
+    {
+     "at": [
+      0.6722,
+      0.5899
+     ],
+     "term": "deep-dermal-burn",
+     "note": "赤みが真皮（dermis）の深い所まで"
+    },
+    {
+     "at": [
+      0.2927,
+      0.8465
+     ],
+     "term": "third-degree-burn"
+    },
+    {
+     "at": [
+      0.1551,
+      0.1654
+     ],
+     "term": "epidermis"
+    },
+    {
+     "at": [
+      0.1551,
+      0.2374
+     ],
+     "term": "dermis"
+    },
+    {
+     "at": [
+      0.1551,
+      0.2938
+     ],
+     "term": "subcutaneous-tissue"
+    }
+   ]
+  },
+  "loose-connective-tissue": {
+   "url": "plates/loose-connective-tissue.8815eeef00.webp",
+   "w": 874,
+   "h": 750,
+   "labels": [
+    {
+     "at": [
+      0.2746,
+      0.7467
+     ],
+     "term": "loose-connective-tissue",
+     "note": "線維（fiber）と細胞（cell）のあいだを満たすのが基質"
+    },
+    {
+     "at": [
+      0.8696,
+      0.44
+     ],
+     "term": "collagen-fiber"
+    },
+    {
+     "at": [
+      0.7094,
+      0.68
+     ],
+     "term": "elastic-fiber"
+    },
+    {
+     "at": [
+      0.3661,
+      0.08
+     ],
+     "ja": "細網線維",
+     "en": "reticular fiber"
+    },
+    {
+     "at": [
+      0.5378,
+      0.7467
+     ],
+     "term": "fibroblast"
+    },
+    {
+     "at": [
+      0.3432,
+      0.3467
+     ],
+     "term": "adipocyte"
+    },
+    {
+     "at": [
+      0.841,
+      0.8333
+     ],
+     "ja": "マクロファージ",
+     "en": "macrophage"
+    },
+    {
+     "at": [
+      0.1259,
+      0.4
+     ],
+     "ja": "間葉細胞",
+     "en": "mesenchymal cell"
+    }
+   ]
+  },
+  "cartilage": {
+   "url": "plates/cartilage.91dfb17d13.webp",
+   "w": 1400,
+   "h": 459,
+   "labels": [
+    {
+     "at": [
+      0.1638,
+      0.8397
+     ],
+     "ja": "硝子軟骨",
+     "en": "hyaline cartilage"
+    },
+    {
+     "at": [
+      0.5,
+      0.8397
+     ],
+     "ja": "線維軟骨",
+     "en": "fibrocartilage"
+    },
+    {
+     "at": [
+      0.8363,
+      0.8397
+     ],
+     "ja": "弾性軟骨",
+     "en": "elastic cartilage"
+    },
+    {
+     "at": [
+      0.2775,
+      0.6622
+     ],
+     "term": "cartilage-tissue",
+     "note": "軟骨細胞（chondrocyte）のまわりの基質"
+    },
+    {
+     "at": [
+      0.1075,
+      0.3263
+     ],
+     "term": "chondrocyte"
+    },
+    {
+     "at": [
+      0.5863,
+      0.6527
+     ],
+     "term": "collagen-fiber"
+    },
+    {
+     "at": [
+      0.8962,
+      0.7557
+     ],
+     "term": "elastic-fiber"
+    }
+   ]
+  },
+  "compact-bone": {
+   "url": "plates/compact-bone.948413f2e3.webp",
+   "w": 1037,
+   "h": 777,
+   "labels": [
+    {
+     "at": [
+      0.405,
+      0.5405
+     ],
+     "term": "bone-tissue"
+    },
+    {
+     "at": [
+      0.7329,
+      0.4505
+     ],
+     "ja": "骨単位（オステオン）",
+     "en": "osteon"
+    },
+    {
+     "at": [
+      0.675,
+      0.399
+     ],
+     "ja": "中心管（ハバース管）",
+     "en": "central canal"
+    },
+    {
+     "at": [
+      0.6095,
+      0.3925
+     ],
+     "term": "osteocyte"
+    },
+    {
+     "at": [
+      0.5689,
+      0.2574
+     ],
+     "ja": "骨層板",
+     "en": "lamella"
+    },
+    {
+     "at": [
+      0.3472,
+      0.695
+     ],
+     "ja": "貫通管（フォルクマン管）",
+     "en": "perforating canal"
+    },
+    {
+     "at": [
+      0.2893,
+      0.4376
+     ],
+     "ja": "骨膜",
+     "en": "periosteum"
+    },
+    {
+     "at": [
+      0.9161,
+      0.5534
+     ],
+     "ja": "海綿骨",
+     "en": "spongy bone"
+    },
+    {
+     "at": [
+      0.5014,
+      0.8237
+     ],
+     "ja": "緻密骨",
+     "en": "compact bone"
+    }
+   ]
+  },
+  "blood-cells": {
+   "url": "plates/blood-cells.bfb2218942.webp",
+   "w": 1400,
+   "h": 925,
+   "labels": [
+    {
+     "at": [
+      0.3229,
+      0.2065
+     ],
+     "term": "blood",
+     "note": "図の細胞（cell）と血漿を合わせたものが血液"
+    },
+    {
+     "at": [
+      0.2567,
+      0.2257
+     ],
+     "term": "erythrocyte"
+    },
+    {
+     "at": [
+      0.6684,
+      0.1711
+     ],
+     "term": "platelet"
+    },
+    {
+     "at": [
+      0.4806,
+      0.7024
+     ],
+     "term": "leukocyte",
+     "note": "下の段の細胞（cell）はみな白血球（この細胞はリンパ球）"
+    },
+    {
+     "at": [
+      0.1364,
+      0.6711
+     ],
+     "ja": "単球",
+     "en": "monocyte"
+    },
+    {
+     "at": [
+      0.373,
+      0.6457
+     ],
+     "ja": "リンパ球",
+     "en": "lymphocyte"
+    },
+    {
+     "at": [
+      0.6999,
+      0.5951
+     ],
+     "ja": "好酸球",
+     "en": "eosinophil"
+    },
+    {
+     "at": [
+      0.9031,
+      0.6012
+     ],
+     "ja": "好塩基球",
+     "en": "basophil"
+    },
+    {
+     "at": [
+      0.7914,
+      0.8593
+     ],
+     "ja": "好中球",
+     "en": "neutrophil"
+    }
+   ]
+  },
+  "neuroglia-cns": {
+   "url": "plates/neuroglia-cns.dd50e669a4.webp",
+   "w": 825,
+   "h": 637,
+   "labels": [
+    {
+     "at": [
+      0.4788,
+      0.1962
+     ],
+     "term": "neuron"
+    },
+    {
+     "at": [
+      0.3091,
+      0.3579
+     ],
+     "term": "astrocyte"
+    },
+    {
+     "at": [
+      0.7818,
+      0.5526
+     ],
+     "term": "oligodendrocyte"
+    },
+    {
+     "at": [
+      0.2667,
+      0.0973
+     ],
+     "term": "microglia"
+    },
+    {
+     "at": [
+      0.1273,
+      0.8085
+     ],
+     "term": "ependymal-cell"
+    },
+    {
+     "at": [
+      0.5455,
+      0.5181
+     ],
+     "term": "myelin-sheath"
+    },
+    {
+     "at": [
+      0.697,
+      0.5604
+     ],
+     "term": "axon"
+    }
+   ]
+  },
+  "neuroglia-pns": {
+   "url": "plates/neuroglia-pns.d3f791ade8.webp",
+   "w": 566,
+   "h": 494,
+   "labels": [
+    {
+     "at": [
+      0.2809,
+      0.6275
+     ],
+     "term": "satellite-cell"
+    },
+    {
+     "at": [
+      0.7173,
+      0.9211
+     ],
+     "term": "schwann-cell"
+    },
+    {
+     "at": [
+      0.5053,
+      0.1316
+     ],
+     "ja": "神経節の神経細胞体",
+     "en": "cell body of a ganglion neuron"
+    },
+    {
+     "at": [
+      0.1343,
+      0.9008
+     ],
+     "term": "axon"
     }
    ]
   }

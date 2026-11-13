@@ -9,7 +9,7 @@
         "解剖学（anatomy）は、人体の正常な形と構造を、細かく分けて調べる学問。対象の大きさで、目で見る肉眼解剖学と、顕微鏡で見る顕微解剖学（組織学）に分ける。肉眼解剖学はさらに、同じはたらきの器官系ごとに見る系統解剖学と、体の部位（region）ごとに見る局所解剖学に分ける（神経系だけを神経解剖学と呼ぶこともある）。ほかに病気の原因を調べる病理解剖、死因を調べる法医解剖がある。",
         "このアプリのホームの系統（骨格系（skeletal system）・筋系・循環器系（cardiovascular system）…）は系統解剖、「局所解剖（regional anatomy）」の系統は局所解剖の見方。局所解剖は臨床の手技に直結するが、その土台は系統解剖の知識。",
         "人体の器官系: 骨格系・筋系・循環器系（心臓（heart）と血管（blood vessel））・リンパ系・呼吸器系・消化器系・泌尿器系・生殖器系・内分泌系（endocrine system）・神経系・感覚器系・外皮系（皮膚（skin））。",
-        "解剖学は暗記の科目ではなく、正常な構造を理解する学問。正常が分からなければ異常に気づけず、正常に戻すこともできない。図はこのアプリで描いた模式図。"
+        "解剖学は暗記の科目ではなく、正常な構造を理解する学問。正常が分からなければ異常に気づけず、正常に戻すこともできない。図は OpenStax『Anatomy & Physiology』などの教科書の図（英語の文字を消したもの）。"
       ],
       "terms": [
         {
@@ -64,7 +64,7 @@
       "title": "細胞の膜と核",
       "intro": [
         "細胞（cell）は、脂質二重膜の細胞膜（cell membrane）で包まれ、中は細胞質（cytoplasm）で満たされている。細胞の中の核（nucleus）には DNA が入り、DNA は染色体（ふだんはほどけた染色質（chromatin））にまとまっている。高校の生物の復習。",
-        "図は動物細胞の模式図。名前の番号を押すと場所が光る。"
+        "図は動物細胞の一部を切り取って中を見せた模式図。名前の番号を押すと場所が光る。"
       ],
       "terms": [
         {
@@ -203,47 +203,47 @@
       ],
       "terms": [
         {
-          "id": "loose-connective-tissue", "ja": "疎性結合組織", "yomi": "そせいけつごうそしき", "en": "loose connective tissue", "enAlt": ["areolar connective tissue"], "la": "textus connectivus laxus", "plate": "connective-tissue", "level": 1,
+          "id": "loose-connective-tissue", "ja": "疎性結合組織", "yomi": "そせいけつごうそしき", "en": "loose connective tissue", "enAlt": ["areolar connective tissue"], "la": "textus connectivus laxus", "plate": "loose-connective-tissue", "level": 1,
           "kanji": "まばら（疎）な結合組織", "etym": "loose（ゆるい）",
           "note": "線維（fiber）がゆるく粗く走り、細胞（cell）と液の多い結合組織（connective tissue）。皮下組織（subcutaneous tissue）・粘膜固有層（lamina propria）・粘膜下組織（submucosa）・血管（blood vessel）のまわり・筋（muscle）と筋の間にあり、器官（organ）の間を埋めて、動けるようにつなぐ。膠原線維（collagen fiber）が密に並ぶもの（腱（tendon）・靱帯（ligament）・真皮（dermis）・筋膜（fascia）・眼球（eyeball）の強膜（sclera））は密性結合組織と言う。"
         },
         {
-          "id": "collagen-fiber", "ja": "膠原線維", "yomi": "こうげんせんい", "en": "collagen fiber", "enAlt": ["collagenous fiber"], "la": "fibra collagenosa", "plate": "connective-tissue", "level": 1,
+          "id": "collagen-fiber", "ja": "膠原線維", "yomi": "こうげんせんい", "en": "collagen fiber", "enAlt": ["collagenous fiber"], "la": "fibra collagenosa", "plate": "loose-connective-tissue", "level": 1,
           "kanji": "膠（にかわ）のもとになる線維", "etym": "collagen ← ギリシャ語 kolla（にかわ）",
           "note": "コラーゲンでできた太い線維（fiber）。白く、引っぱる力に強く、ほとんど伸びない。結合組織（connective tissue）で最も多い線維で、腱（tendon）・靱帯（ligament）・真皮（dermis）・骨（bone）の基質の主な成分。線維芽細胞（fibroblast）がつくる。"
         },
         {
-          "id": "elastic-fiber", "ja": "弾性線維", "yomi": "だんせいせんい", "en": "elastic fiber", "la": "fibra elastica", "plate": "connective-tissue", "level": 1,
+          "id": "elastic-fiber", "ja": "弾性線維", "yomi": "だんせいせんい", "en": "elastic fiber", "la": "fibra elastica", "plate": "loose-connective-tissue", "level": 1,
           "kanji": "弾む（伸び縮みする）線維", "etym": "elastic（弾力のある）",
           "note": "エラスチンでできた細い線維（fiber）で、枝分かれして網をつくる。ゴムのように伸びて元に戻る。大動脈（aorta）の壁・肺（lung）・皮膚（skin）・弾性軟骨・皮下組織（subcutaneous tissue）に多い。"
         },
         {
-          "id": "fibroblast", "ja": "線維芽細胞", "yomi": "せんいがさいぼう", "en": "fibroblast", "la": "fibroblastus", "plate": "connective-tissue", "level": 1,
+          "id": "fibroblast", "ja": "線維芽細胞", "yomi": "せんいがさいぼう", "en": "fibroblast", "la": "fibroblastus", "plate": "loose-connective-tissue", "level": 1,
           "kanji": "線維の芽（もと）の細胞", "etym": "fibro-（線維）＋ギリシャ語 blastos（芽）",
           "note": "結合組織（connective tissue）で最もふつうの細胞（cell）。紡錘形で、膠原線維（collagen fiber）・弾性線維（elastic fiber）と基質をつくる。傷が治るときに増えて、傷あと（瘢痕）をつくる。"
         },
         {
-          "id": "adipocyte", "ja": "脂肪細胞", "yomi": "しぼうさいぼう", "en": "adipocyte", "enAlt": ["fat cell"], "la": "adipocytus", "plate": "connective-tissue", "level": 1,
+          "id": "adipocyte", "ja": "脂肪細胞", "yomi": "しぼうさいぼう", "en": "adipocyte", "enAlt": ["fat cell"], "la": "adipocytus", "plate": "loose-connective-tissue", "level": 1,
           "kanji": "脂肪をためる細胞", "etym": "ラテン語 adeps（脂肪）＋cyte（細胞）",
           "note": "中に大きな脂肪（fat）の滴をためた丸い細胞（cell）。核（nucleus）と細胞質（cytoplasm）は端に薄く押しやられる（指輪のように見える）。集まって脂肪組織（adipose tissue）をつくり、エネルギーを蓄え、体温（body temperature）を保ち、クッションになる。皮下組織（subcutaneous tissue）に多い。"
         },
         {
-          "id": "cartilage-tissue", "ja": "軟骨組織", "yomi": "なんこつそしき", "en": "cartilage", "enAlt": ["cartilage tissue"], "la": "textus cartilagineus", "plate": "connective-tissue", "level": 1,
+          "id": "cartilage-tissue", "ja": "軟骨組織", "yomi": "なんこつそしき", "en": "cartilage", "enAlt": ["cartilage tissue"], "la": "textus cartilagineus", "plate": "cartilage", "level": 1,
           "kanji": "軟らかい骨", "etym": "ラテン語 cartilago",
           "note": "硬いゴムのような基質の中の小さな腔（軟骨小腔）に、軟骨細胞（chondrocyte）が入る支持組織。血管（blood vessel）が無い。基質の線維（fiber）で、硝子軟骨（hyaline cartilage）（関節軟骨（articular cartilage）・肋軟骨（costal cartilages）・気管（trachea））・弾性軟骨（耳介（auricle）・喉頭蓋（epiglottis））・線維軟骨（fibrocartilage）（椎間円板（intervertebral disc）・恥骨結合（pubic symphysis）・関節円板（articular disc））に分ける。"
         },
         {
-          "id": "chondrocyte", "ja": "軟骨細胞", "yomi": "なんこつさいぼう", "en": "chondrocyte", "la": "chondrocytus", "plate": "connective-tissue", "level": 2,
+          "id": "chondrocyte", "ja": "軟骨細胞", "yomi": "なんこつさいぼう", "en": "chondrocyte", "la": "chondrocytus", "plate": "cartilage", "level": 2,
           "kanji": "軟骨の細胞", "etym": "ギリシャ語 chondros（軟骨）＋cyte",
           "note": "軟骨（cartilage）の基質の中の小腔に入る細胞（cell）で、基質をつくる。1つの細胞から分かれた2〜4個が集まって並ぶ。"
         },
         {
-          "id": "bone-tissue", "ja": "骨組織", "yomi": "こつそしき", "en": "bone tissue", "enAlt": ["osseous tissue"], "la": "textus osseus", "plate": "connective-tissue", "level": 1,
+          "id": "bone-tissue", "ja": "骨組織", "yomi": "こつそしき", "en": "bone tissue", "enAlt": ["osseous tissue"], "la": "textus osseus", "plate": "compact-bone", "level": 1,
           "kanji": "骨の組織", "etym": "bone（骨）",
           "note": "膠原線維（collagen fiber）にリン酸カルシウムが沈着した硬い基質をもつ支持組織。緻密骨では、中心管（central canal）（ハバース管）のまわりに同心円の層板が重なった骨単位（osteon）（オステオン）が並ぶ。血管（blood vessel）に富み、骨芽細胞（osteoblast）がつくり破骨細胞がこわして、つくり直され続ける。"
         },
         {
-          "id": "osteocyte", "ja": "骨細胞", "yomi": "こつさいぼう", "en": "osteocyte", "la": "osteocytus", "plate": "connective-tissue", "level": 2,
+          "id": "osteocyte", "ja": "骨細胞", "yomi": "こつさいぼう", "en": "osteocyte", "la": "osteocytus", "plate": "compact-bone", "level": 2,
           "kanji": "骨の細胞", "etym": "ギリシャ語 osteon（骨）＋cyte",
           "note": "骨（bone）の基質の中の骨小腔に入る細胞（cell）。細い突起（process）を骨細管にのばして互いにつながり、骨の維持とつくり直しを調節する。骨芽細胞（osteoblast）が、自分のつくった基質に埋まったもの。"
         }
@@ -257,22 +257,22 @@
       ],
       "terms": [
         {
-          "id": "blood", "ja": "血液", "yomi": "けつえき", "en": "blood", "la": "sanguis", "plate": "connective-tissue", "level": 1,
+          "id": "blood", "ja": "血液", "yomi": "けつえき", "en": "blood", "la": "sanguis", "plate": "blood-cells", "level": 1,
           "kanji": "血の液", "etym": "古英語 blod",
           "note": "血管（blood vessel）の中を流れる液性の結合組織（connective tissue）。体重の約8%。血漿（約55%）と血球（blood cells）（約45%）からなる。酸素・栄養・ホルモンを運び、二酸化炭素と老廃物を運び去り、体温（body temperature）を保ち、体を守る。"
         },
         {
-          "id": "erythrocyte", "ja": "赤血球", "yomi": "せっけっきゅう", "en": "erythrocyte", "enAlt": ["red blood cell"], "la": "erythrocytus", "plate": "connective-tissue", "level": 1,
+          "id": "erythrocyte", "ja": "赤血球", "yomi": "せっけっきゅう", "en": "erythrocyte", "enAlt": ["red blood cell"], "la": "erythrocytus", "plate": "blood-cells", "level": 1,
           "kanji": "赤い血の球", "etym": "ギリシャ語 erythros（赤い）＋cyte",
           "note": "両面がくぼんだ円盤形（直径約7.5µm）の、核（nucleus）の無い血球（blood cells）。ヘモグロビンで酸素を運ぶ。血液（blood）1µL に約450万〜500万個。寿命は約120日で、脾臓（spleen）でこわされる。RBC と略す。"
         },
         {
-          "id": "leukocyte", "ja": "白血球", "yomi": "はっけっきゅう", "en": "leukocyte", "enAlt": ["white blood cell"], "la": "leucocytus", "plate": "connective-tissue", "level": 1,
+          "id": "leukocyte", "ja": "白血球", "yomi": "はっけっきゅう", "en": "leukocyte", "enAlt": ["white blood cell"], "la": "leucocytus", "plate": "blood-cells", "level": 1,
           "kanji": "白い血の球", "etym": "ギリシャ語 leukos（白い）＋cyte",
           "note": "核（nucleus）のある血球（blood cells）で、体を病原体から守る（免疫（immunity））。顆粒球（好中球・好酸球・好塩基球）・リンパ球・単球に分ける。血液（blood）1µL に約4,000〜9,000個。血管（blood vessel）の外に出てはたらき、単球は組織（tissue）でマクロファージになる。WBC と略す。"
         },
         {
-          "id": "platelet", "ja": "血小板", "yomi": "けっしょうばん", "en": "platelet", "enAlt": ["thrombocyte"], "la": "thrombocytus", "plate": "connective-tissue", "level": 1,
+          "id": "platelet", "ja": "血小板", "yomi": "けっしょうばん", "en": "platelet", "enAlt": ["thrombocyte"], "la": "thrombocytus", "plate": "blood-cells", "level": 1,
           "kanji": "血の中の小さな板", "etym": "plate（板）＋縮小の -let",
           "note": "骨髄（bone marrow）の巨核球の細胞質（cytoplasm）がちぎれてできた小さなかけら（核（nucleus）が無い、直径2〜3µm）。血管（blood vessel）が傷つくと集まってふさぎ、血液（blood）を固める（止血（hemostasis））。血液1µL に約15万〜35万個。"
         }
@@ -342,7 +342,7 @@
           "note": "軸索（axon）を何重にも巻いた、脂質の多い膜（membrane）。ミエリン鞘とも言う。電気を通しにくく（絶縁）、信号がランビエ絞輪（node of ranvier）から次の絞輪へ跳んで速く伝わる（跳躍伝導）。末梢ではシュワン細胞（schwann cell）、中枢（center）では稀突起膠細胞（oligodendrocyte）がつくる。髄鞘のある線維（fiber）を有髄線維と言う。"
         },
         {
-          "id": "schwann-cell", "ja": "シュワン細胞", "yomi": "しゅわんさいぼう", "en": "schwann cell", "enAlt": ["neurolemmocyte"], "la": "neurolemmocytus", "plate": "neuron", "level": 1,
+          "id": "schwann-cell", "ja": "シュワン細胞", "yomi": "しゅわんさいぼう", "en": "schwann cell", "enAlt": ["neurolemmocyte"], "la": "neurolemmocytus", "plate": "neuroglia-pns", "level": 1,
           "etym": "ドイツのシュワン（Schwann）が見つけた",
           "note": "末梢神経の神経膠細胞。軸索（axon）に巻きついて髄鞘（myelin sheath）をつくる（1つの細胞（cell）が1本の軸索の1節分）。髄鞘をつくらない細い線維（fiber）も包む。切れた末梢神経の再生を助ける。"
         },
@@ -368,36 +368,36 @@
       "title": "神経膠細胞",
       "intro": [
         "神経膠細胞（しんけいこうさいぼう。グリア細胞）は神経細胞（neuron）を支え、守り、栄養を与える細胞（cell）。「膠」は「にかわ（のり）」で、読みは「こう」。数は神経細胞より多い。",
-        "中枢神経系（脳（brain）・脊髄（spinal cord））には星状膠細胞（astrocyte）・稀突起膠細胞（oligodendrocyte）・上衣細胞（ependymal cell）・ミクログリア（microglia）、末梢神経系にはシュワン細胞（schwann cell）と衛星細胞（satellite cell）がある。図の左の枠が中枢（center）、右の枠が末梢。"
+        "中枢神経系（脳（brain）・脊髄（spinal cord））には星状膠細胞（astrocyte）・稀突起膠細胞（oligodendrocyte）・上衣細胞（ependymal cell）・ミクログリア（microglia）、末梢神経系にはシュワン細胞（schwann cell）と衛星細胞（satellite cell）がある。図は中枢（center）と末梢の2枚に分けてある。"
       ],
       "terms": [
         {
-          "id": "neuron", "ja": "神経細胞", "yomi": "しんけいさいぼう", "en": "neuron", "enAlt": ["nerve cell"], "la": "neuron", "plate": "neuroglia", "level": 1,
+          "id": "neuron", "ja": "神経細胞", "yomi": "しんけいさいぼう", "en": "neuron", "enAlt": ["nerve cell"], "la": "neuron", "plate": "neuroglia-cns", "level": 1,
           "kanji": "神経の細胞", "etym": "ギリシャ語 neuron（すじ・神経）",
           "note": "神経組織（nervous tissue）の中で信号を伝える細胞（cell）。ニューロン（neuron）とも言う。神経細胞体（cell body）・樹状突起（dendrite）・軸索（axon）からなる。ふつう分裂して増えない。"
         },
         {
-          "id": "astrocyte", "ja": "星状膠細胞", "yomi": "せいじょうこうさいぼう", "en": "astrocyte", "la": "astrocytus", "plate": "neuroglia", "level": 1,
+          "id": "astrocyte", "ja": "星状膠細胞", "yomi": "せいじょうこうさいぼう", "en": "astrocyte", "la": "astrocytus", "plate": "neuroglia-cns", "level": 1,
           "kanji": "星の形の膠細胞", "etym": "ギリシャ語 astron（星）＋cyte",
           "note": "中枢神経系で最も多い神経膠細胞。星のように突起（process）をのばし、毛細血管（capillary）に終足を付けて血液脳関門（BBB）を支え、神経細胞（neuron）に栄養を渡し、まわりのイオンや伝達物質を整える。アストロサイトとも言う。"
         },
         {
-          "id": "oligodendrocyte", "ja": "稀突起膠細胞", "yomi": "きとっきこうさいぼう", "en": "oligodendrocyte", "la": "oligodendrocytus", "plate": "neuroglia", "level": 1,
+          "id": "oligodendrocyte", "ja": "稀突起膠細胞", "yomi": "きとっきこうさいぼう", "en": "oligodendrocyte", "la": "oligodendrocytus", "plate": "neuroglia-cns", "level": 1,
           "kanji": "突起の少ない（稀な）膠細胞", "etym": "ギリシャ語 oligos（少ない）＋dendron（木）＋cyte",
           "note": "中枢神経系の髄鞘（myelin sheath）をつくる神経膠細胞。1つの細胞（cell）が数本の突起（process）で、何本もの軸索（axon）に髄鞘をつくる（末梢のシュワン細胞（schwann cell）は1本の1節だけ）。乏突起膠細胞・オリゴデンドロサイトとも言う。"
         },
         {
-          "id": "microglia", "ja": "ミクログリア", "yomi": "みくろぐりあ", "en": "microglia", "enAlt": ["microglial cell"], "la": "microglia", "plate": "neuroglia", "level": 1,
+          "id": "microglia", "ja": "ミクログリア", "yomi": "みくろぐりあ", "en": "microglia", "enAlt": ["microglial cell"], "la": "microglia", "plate": "neuroglia-cns", "level": 1,
           "kanji": "小さい膠細胞", "etym": "micro-（小さい）＋ギリシャ語 glia（にかわ）",
           "note": "中枢神経系の小さな神経膠細胞。こわれた細胞（cell）や異物を食べる（貪食作用）、脳（brain）の中の免疫（immunity）の細胞。小膠細胞とも言う。マクロファージの仲間で、ほかの神経膠細胞とは由来が違う。"
         },
         {
-          "id": "ependymal-cell", "ja": "上衣細胞", "yomi": "じょういさいぼう", "en": "ependymal cell", "la": "ependymocytus", "plate": "neuroglia", "level": 1,
+          "id": "ependymal-cell", "ja": "上衣細胞", "yomi": "じょういさいぼう", "en": "ependymal cell", "la": "ependymocytus", "plate": "neuroglia-cns", "level": 1,
           "kanji": "上に衣のようにおおう細胞", "etym": "ギリシャ語 ependyma（上着）",
           "note": "脳室（ventricle）と脊髄（spinal cord）の中心管（central canal）の内面（internal surface）をおおう、立方〜円柱の細胞（cell）。表面に線毛（cilia）がある。脳室の脈絡叢（choroid plexus）では変化した上衣細胞が脳脊髄液（cerebrospinal fluid）をつくる。"
         },
         {
-          "id": "satellite-cell", "ja": "衛星細胞", "yomi": "えいせいさいぼう", "en": "satellite cell", "enAlt": ["satellite glial cell"], "la": "gliocytus ganglii", "plate": "neuroglia", "level": 2,
+          "id": "satellite-cell", "ja": "衛星細胞", "yomi": "えいせいさいぼう", "en": "satellite cell", "enAlt": ["satellite glial cell"], "la": "gliocytus ganglii", "plate": "neuroglia-pns", "level": 2,
           "kanji": "衛星のように囲む細胞", "etym": "satellite ← ラテン語 satelles（お供）",
           "note": "末梢神経系の神経節（ganglion）（脊髄神経節（spinal ganglion）・自律神経節）で、神経細胞体（cell body）のまわりを1層で囲む平たい神経膠細胞。神経細胞（neuron）を守り、まわりの環境を整える。外套細胞とも言う。骨格筋（skeletal muscle）の筋衛星細胞（筋（muscle）の幹細胞（stem cell））とは別のもの。"
         }
