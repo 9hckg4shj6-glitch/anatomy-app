@@ -360,6 +360,90 @@
           "note": "直腸（rectum）の筋層（muscular layer）のまわり（直腸間膜（mesorectum）の中）のリンパ節（lymph node）。直腸がんの手術では、直腸間膜ごとこのリンパ節を取る（直腸間膜全切除（total mesorectal excision））。"
         }
       ]
+    },
+    {
+      "id": "lymph-node-structure",
+      "title": "リンパの流れとリンパ節",
+      "intro": ["組織（tissue）のすき間の液（組織液（interstitial fluid））の一部は毛細リンパ管に入ってリンパ（lymph）になり、リンパ管（lymphatic vessel）を流れる途中でリンパ節（lymph node）にこされ、最後は右上半身の分は右リンパ本幹（right lymphatic duct）から、残りは胸管（thoracic duct）から、首（neck）の付け根の静脈角（venous angle）（内頚静脈（internal jugular vein）と鎖骨下静脈（subclavian vein）の合流）で静脈（vein）へ戻る。リンパ球をつくり育てる骨髄（bone marrow）と胸腺（thymus）を一次リンパ性器官、リンパ球が働くリンパ節・脾臓（spleen）・扁桃（tonsil）を二次リンパ性器官という。"],
+      "terms": [
+        {
+          "id": "lymph-node", "ja": "リンパ節", "yomi": "りんぱせつ", "en": "lymph node", "enAlt": ["lymph gland"], "la": "nodus lymphoideus",
+          "plate": "lymph-node", "level": 1,
+          "kanji": "リンパ（管）の節（ふくらみ）",
+          "etym": "lymph ← ラテン語 lympha「澄んだ水」＋ node「節」",
+          "note": "リンパ管（lymphatic vessel）の途中にある、そら豆の形の小さな器官（organ）（数mm〜2cm、全身（whole body）に約600）。被膜に包まれ、外の皮質（cortex）にリンパ小節（lymphoid nodule）（胚中心（germinal center））、内の髄質（medulla）にリンパ球の索と髄洞がある。凸の側から入る輸入リンパ管（afferent lymphatic vessel）のリンパ（lymph）をこして、細菌やがん細胞（cell）をとらえ、リンパ球が免疫（immunity）をはたらかせる。くぼんだ門から輸出リンパ管（efferent lymphatic vessel）と血管（blood vessel）が出入りする。かぜで首（neck）のリンパ節が腫れるのはこのため。"
+        },
+        {
+          "id": "afferent-lymphatic-vessel", "ja": "輸入リンパ管", "yomi": "ゆにゅうりんぱかん", "en": "afferent lymphatic vessel", "la": "vas lymphaticum afferens",
+          "plate": "lymph-node", "level": 2,
+          "kanji": "（リンパ節へ）リンパを運び入れる管",
+          "etym": "afferent「中へ運ぶ」（ラテン語 ad-「へ」＋ ferre「運ぶ」）",
+          "note": "リンパ節（lymph node）の凸の側の被膜を貫いて、リンパ（lymph）を辺縁洞（subcapsular sinus）へ運び入れるリンパ管（lymphatic vessel）（1つのリンパ節に何本もある）。弁（valve）があり、リンパは一方向にしか流れない。"
+        },
+        {
+          "id": "efferent-lymphatic-vessel", "ja": "輸出リンパ管", "yomi": "ゆしゅつりんぱかん", "en": "efferent lymphatic vessel", "la": "vas lymphaticum efferens",
+          "plate": "lymph-node", "level": 2,
+          "kanji": "（リンパ節から）リンパを運び出す管",
+          "etym": "efferent「外へ運ぶ」",
+          "note": "リンパ節（lymph node）のくぼんだ門から、こしたリンパ（lymph）を運び出すリンパ管（lymphatic vessel）（輸入リンパ管（afferent lymphatic vessel）より少ない）。次のリンパ節か、太いリンパ本幹へ続く。"
+        },
+        {
+          "id": "subcapsular-sinus", "ja": "辺縁洞", "yomi": "へんえんどう", "en": "subcapsular sinus", "enAlt": ["marginal sinus"], "la": "sinus subcapsularis",
+          "plate": "lymph-node", "level": 3,
+          "kanji": "（リンパ節の）へりのリンパの通り道",
+          "etym": "subcapsular「被膜の下の」＋ sinus「洞」",
+          "note": "リンパ節（lymph node）の被膜のすぐ下のリンパ（lymph）の通り道。輸入リンパ管（afferent lymphatic vessel）から入ったリンパはここから中間洞・髄洞を通って門へ流れ、その間にマクロファージが異物を食べる。がんの転移（metastasis）は、まずここに見つかる。"
+        },
+        {
+          "id": "germinal-center", "ja": "胚中心", "yomi": "はいちゅうしん", "en": "germinal center", "la": "centrum germinale",
+          "plate": "lymph-node", "level": 2,
+          "kanji": "（リンパ球が）生まれる中心",
+          "etym": "germinal「芽の・生み出す」＋ center「中心」",
+          "note": "リンパ節（lymph node）の皮質（cortex）や脾臓（spleen）の白脾髄（white pulp）・扁桃（tonsil）のリンパ小節（lymphoid nodule）（二次小節）の中心の明るい所。抗原に出会ったBリンパ球がここでふえて、よく合う抗体を出す形質細胞や記憶細胞に育つ。"
+        },
+        {
+          "id": "right-lymphatic-duct", "ja": "右リンパ本幹", "yomi": "みぎりんぱほんかん", "en": "right lymphatic duct", "la": "ductus lymphaticus dexter",
+          "plate": "lymphatic-system", "level": 2,
+          "kanji": "右のリンパの太い幹",
+          "etym": "right「右の」＋ lymphatic duct「リンパ管」",
+          "note": "右の頭・首（neck）・上肢（upper limb）・胸（chest）（右上半身）のリンパ（lymph）を集める、長さ1cmほどの短い管。右の静脈角（venous angle）（内頚静脈（internal jugular vein）と鎖骨下静脈（subclavian vein）の合流）で静脈（vein）に注ぐ。残りの全身（whole body）（下半身・腹（abdomen）・左上半身）のリンパは胸管（thoracic duct）が集めて左の静脈角に注ぐ。"
+        },
+        {
+          "id": "lymph-bone-marrow", "ja": "骨髄", "yomi": "こつずい", "en": "bone marrow", "enAlt": ["marrow"], "la": "medulla ossium",
+          "plate": "lymphatic-system", "level": 1,
+          "kanji": "骨の中の髄",
+          "etym": "ラテン語 medulla「髄」",
+          "note": "骨（bone）の中の海綿質（spongy bone）のすき間と髄腔を満たす柔らかい組織（tissue）。血球（blood cells）をつくる赤色骨髄（red bone marrow）と、脂肪（fat）にかわった黄色骨髄（yellow bone marrow）がある。おとなの赤色骨髄は胸骨（sternum）・椎骨（vertebra）・寛骨（hip bone）・肋骨（ribs）など体幹（trunk）の骨に多く、検査では腸骨（ilium）や胸骨に針を刺してとる（骨髄穿刺）。リンパ球をつくるので、胸腺（thymus）とともに一次リンパ性器官という。"
+        }
+      ]
+    },
+    {
+      "id": "lymph-spleen-pulp",
+      "title": "脾臓の赤脾髄と白脾髄",
+      "intro": ["脾臓（spleen）は、左の第9〜11肋骨（ninth to eleventh ribs）の高さで胃（stomach）の後ろにある、こぶし大の血液（blood）のこし器。中は、古い赤血球（red blood cell）をこわして血をこす赤脾髄（red pulp）と、リンパ球が集まって血の中の異物に免疫（immunity）ではたらく白脾髄（white pulp）に分かれ、被膜から入る脾柱（splenic trabeculae）が骨組みになる。"],
+      "terms": [
+        {
+          "id": "red-pulp", "ja": "赤脾髄", "yomi": "せきひずい", "en": "red pulp", "la": "pulpa rubra",
+          "plate": "spleen-pulp", "level": 2,
+          "kanji": "赤い脾臓の髄",
+          "etym": "red「赤い」＋ pulp「髄（柔らかい中身）」",
+          "note": "脾臓（spleen）の大部分を占める、血で赤い柔らかい組織（tissue）。脾索（細胞（cell）の網）と脾洞（太い毛細血管（capillary））からなり、変形しにくくなった古い赤血球（red blood cell）は脾洞の壁のすき間を通れず、マクロファージに食べられてこわされる。血小板（platelet）と単球もたくわえる。"
+        },
+        {
+          "id": "white-pulp", "ja": "白脾髄", "yomi": "はくひずい", "en": "white pulp", "la": "pulpa alba",
+          "plate": "spleen-pulp", "level": 2,
+          "kanji": "白い脾臓の髄",
+          "etym": "white「白い」＋ pulp「髄」",
+          "note": "脾臓（spleen）の中に散らばる、灰白色の小さな点（直径1mm以下）。中心動脈のまわりをTリンパ球が鞘のように囲み（動脈周囲リンパ鞘）、ところどころにBリンパ球のリンパ小節（lymphoid nodule）（脾小節、胚中心（germinal center）がある）がある。血の中の細菌などに免疫（immunity）ではたらく。脾臓をとると、肺炎球菌などの重い感染症にかかりやすくなる。"
+        },
+        {
+          "id": "splenic-trabeculae", "ja": "脾柱", "yomi": "ひちゅう", "en": "splenic trabeculae", "enAlt": ["trabeculae of spleen"], "la": "trabeculae splenicae",
+          "plate": "spleen-pulp", "level": 3,
+          "kanji": "脾臓の（中を支える）柱",
+          "etym": "trabecula ← ラテン語「小さな梁」",
+          "note": "脾臓（spleen）の被膜から中へ入る結合組織（connective tissue）の柱。脾臓の骨組みになり、中を脾柱動脈・脾柱静脈が通る。被膜と脾柱には平滑筋（smooth muscle）が少しある。"
+        }
+      ]
     }
   ]
 }

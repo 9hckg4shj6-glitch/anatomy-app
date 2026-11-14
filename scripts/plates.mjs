@@ -284,7 +284,15 @@ async function artImage(art) {
   const buffer = Buffer.from(svg);
   const { width, height } = await sharp(buffer).metadata();
   const scale = SVG_SIZE / Math.max(width, height);
-  return { image: sharp(buffer, { density: 72 * scale }), scale };
+  // 幅・高さが mm などの SVG は、density で描くと metadata の大きさの倍率どおりにならない（librsvg。大きさが density の2乗で変わる）。
+  // いちど描いて測り、描いた幅 = width ×（density / 72）^k の k を求めて、幅が width × scale になる density に合わせ直す
+  let density = 72 * scale;
+  const { info } = await sharp(buffer, { density }).png().toBuffer({ resolveWithObject: true });
+  if (Math.abs(info.width - width * scale) > 2) {
+    const k = Math.log(info.width / width) / Math.log(scale);
+    density = 72 * scale ** (1 / k);
+  }
+  return { image: sharp(buffer, { density }), scale };
 }
 
 /** 背景の色か（art.background）。dark は黒、red は暗い赤のグラデーション、white は白 */
@@ -353,7 +361,25 @@ async function artPlate(plate) {
     for (let y = Math.max(0, by0); y <= Math.min(H0 - 1, by1); y++) for (let x = Math.max(0, bx0); x <= Math.min(W0 - 1, bx1); x++) erase[y * W0 + x] = 1;
     reach = Math.max(reach, Math.ceil(Math.min(bx1 - bx0, by1 - by0) + 8));
   }
-  const directions = Array.from({ length: 24 }, (_, i) => [Math.cos((i * Math.PI) / 24), Math.sin((i * Math.PI) / 24)]);
+  // art.eraseGray の四角の中の灰色の点（無彩色の矢印。枠の黒い線を含む）も埋める。色のある図の上にかかった矢印を、図を傷めずに消す
+  for (const box of art.eraseGray ?? []) {
+    const [gx0, gy0, gx1, gy1] = box.map((v) => Math.round(v * unit));
+    const gray = new Uint8Array(W0 * H0);
+    for (let y = Math.max(0, gy0); y <= Math.min(H0 - 1, gy1); y++) for (let x = Math.max(0, gx0); x <= Math.min(W0 - 1, gx1); x++) {
+      const k = (y * W0 + x) * 3, r = px[k], g = px[k + 1], b = px[k + 2];
+      const mean = (r + g + b) / 3;
+      if (Math.max(r, g, b) - Math.min(r, g, b) < 16 && mean > 40 && mean < 236) gray[y * W0 + x] = 1;
+    }
+    for (let y = Math.max(0, gy0); y <= Math.min(H0 - 1, gy1); y++) for (let x = Math.max(0, gx0); x <= Math.min(W0 - 1, gx1); x++) {
+      if (!gray[y * W0 + x]) continue;
+      for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) {
+        const xx = x + dx, yy = y + dy;
+        if (xx >= 0 && yy >= 0 && xx < W0 && yy < H0) erase[yy * W0 + xx] = 1;
+      }
+    }
+    reach = Math.max(reach, 60);
+  }
+  const directions = Array.from({ length: 24 },(_, i) => [Math.cos((i * Math.PI) / 24), Math.sin((i * Math.PI) / 24)]);
   const march = (x, y, dx, dy) => {
     for (let t = 1; t <= reach; t++) {
       const xx = Math.round(x + dx * t), yy = Math.round(y + dy * t);

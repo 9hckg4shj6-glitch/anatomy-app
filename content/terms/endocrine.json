@@ -117,6 +117,83 @@
           "note": "下の1対の上皮小体（parathyroid gland）で、甲状腺（thyroid gland）の左右の葉（lobe）の下の端の近くにある。発生（development）のときに胸腺（thymus）と一緒に下りてくるので、甲状腺から離れた所（胸腺の中など）にあることも多い。下甲状腺動脈（inferior thyroid artery）の枝（branch）を受け、甲状腺の手術で傷つくと血液（blood）のカルシウムが下がって手足（limbs）がしびれる（テタニー（tetany））。"
         }
       ]
+    },
+    {
+      "id": "endo-thyroid-follicle",
+      "title": "甲状腺の濾胞と上皮小体",
+      "intro": ["甲状腺（thyroid gland）は、1層の濾胞上皮細胞（follicular cell）が丸く並んだ袋（濾胞）が無数に集まった腺（gland）で、袋の中のコロイドに甲状腺ホルモン（thyroid hormone）のもと（サイログロブリン）をたくわえる。濾胞の間には血液（blood）のカルシウムを下げるカルシトニン（calcitonin）を出す傍濾胞細胞（parafollicular cell）があり、甲状腺の後ろの上皮小体（parathyroid gland）はカルシウムを上げる上皮小体ホルモンを出す。"],
+      "terms": [
+        {
+          "id": "thyroid-follicle", "ja": "濾胞（甲状腺）", "yomi": "ろほう", "en": "thyroid follicle", "la": "folliculus thyroideus",
+          "plate": "thyroid-follicles", "level": 2,
+          "kanji": "（液を）こし分けてためる小さな袋",
+          "etym": "follicle ← ラテン語 folliculus「小さな袋」",
+          "note": "甲状腺（thyroid gland）をつくる、直径0.05〜0.5mmの丸い袋。1層の濾胞上皮細胞（follicular cell）が壁をつくり、中にコロイドをためる。働きが盛んなときは上皮（epithelium）が高くなり、コロイドが減る。"
+        },
+        {
+          "id": "follicular-cell", "ja": "濾胞上皮細胞", "yomi": "ろほうじょうひさいぼう", "en": "follicular cell", "enAlt": ["thyrocyte","follicular epithelial cell"], "la": "thyrocytus T",
+          "plate": "thyroid-follicles", "level": 2, "hormones": "甲状腺ホルモン（サイロキシン T4・トリヨードサイロニン T3）。全身の代謝を高める",
+          "kanji": "濾胞の壁をつくる上皮細胞",
+          "etym": "follicular「濾胞の」＋ cell「細胞」",
+          "note": "甲状腺（thyroid gland）の濾胞の壁をつくる立方上皮の細胞（cell）。血液（blood）からヨウ素をとり入れてサイログロブリンにつけ、コロイドとしてためてから、必要なときに取りこみ直して甲状腺ホルモン（thyroid hormone）（サイロキシン・トリヨードサイロニン）として血液へ出す。下垂体（pituitary gland）の甲状腺刺激ホルモン（thyroid-stimulating hormone）で働きが高まる。"
+        },
+        {
+          "id": "parafollicular-cell", "ja": "傍濾胞細胞", "yomi": "ぼうろほうさいぼう", "en": "parafollicular cell", "enAlt": ["c cell","clear cell"], "la": "thyrocytus C",
+          "plate": "thyroid-follicles", "level": 2, "hormones": "カルシトニン。血液のカルシウムを下げる（上皮小体ホルモンと反対の働き）",
+          "kanji": "濾胞のそばの細胞",
+          "etym": "para-「そばの」＋ follicular「濾胞の」",
+          "note": "濾胞の壁の中や濾胞の間にぽつぽつある、明るく大きな細胞（cell）。血液（blood）のカルシウムが多いとカルシトニン（calcitonin）を出し、骨からカルシウムが溶け出すのを抑えて血液のカルシウムを下げる。C細胞ともいう（calcitonin の C）。"
+        },
+        {
+          "id": "colloid-of-thyroid", "ja": "コロイド（甲状腺）", "yomi": "ころいど", "en": "colloid", "enAlt": ["thyroid colloid"], "la": "colloidum",
+          "plate": "thyroid-follicles", "level": 3,
+          "kanji": "（ゼリーのような）膠のようなもの",
+          "etym": "ギリシャ語 kolla「膠」＋ -oid「〜のような」",
+          "note": "濾胞の中を満たす、ゼリーのようなたんぱく質のかたまり（染めるとピンク色）。甲状腺ホルモン（thyroid hormone）のもとのサイログロブリンをためておく倉庫で、甲状腺（thyroid gland）は数か月分のホルモンをためられる。"
+        }
+      ]
+    },
+    {
+      "id": "endo-adrenal-layers",
+      "title": "副腎の皮質と髄質",
+      "intro": ["副腎（suprarenal gland）は、外の皮質（cortex）（中胚葉から）と内の髄質（medulla）（神経堤（neural crest）から）の2つの違う腺（gland）が重なったもの。皮質は外から球状帯（zona glomerulosa）・束状帯（zona fasciculata）・網状帯（zona reticularis）の3層で、それぞれ鉱質コルチコイド・糖質コルチコイド・男性ホルモン（androgen）を出す（外から「塩・糖・性」と覚える）。髄質は交感神経（sympathetic nerve）の節後ニューロンのなかまで、アドレナリン（adrenaline）を出す。"],
+      "terms": [
+        {
+          "id": "adrenal-cortex", "ja": "副腎皮質", "yomi": "ふくじんひしつ", "en": "adrenal cortex", "enAlt": ["suprarenal cortex"], "la": "cortex glandulae suprarenalis",
+          "plate": "adrenal-layers", "level": 1, "hormones": "ステロイドホルモン（球状帯のアルドステロン・束状帯のコルチゾール・網状帯の男性ホルモン）",
+          "kanji": "副腎の皮（外側）の部分",
+          "etym": "adrenal「腎臓のそばの」（ad-「そば」＋ renal「腎臓の」）＋ cortex「皮」",
+          "note": "副腎（suprarenal gland）の外側（lateral）の厚い層（副腎の約8〜9割）。黄色っぽく、コレステロールからステロイドホルモン（steroid hormone）をつくる。外から球状帯（zona glomerulosa）・束状帯（zona fasciculata）・網状帯（zona reticularis）に分かれる。下垂体（pituitary gland）の副腎皮質刺激ホルモン（ACTH）で束状帯・網状帯の働きが高まる。"
+        },
+        {
+          "id": "zona-glomerulosa", "ja": "球状帯", "yomi": "きゅうじょうたい", "en": "zona glomerulosa", "la": "zona glomerulosa",
+          "plate": "adrenal-layers", "level": 2, "hormones": "アルドステロン（鉱質コルチコイド）。腎臓でナトリウムと水をとりもどし、カリウムを出す",
+          "kanji": "（細胞が）球のように集まった帯",
+          "etym": "ラテン語 zona「帯」＋ glomerulosa「小さな球の」",
+          "note": "副腎皮質（adrenal cortex）のいちばん外の薄い層。細胞（cell）が丸いかたまりに集まる。レニン・アンギオテンシン系と血液（blood）のカリウムで働きが高まり、鉱質コルチコイドのアルドステロンを出して、腎臓（kidney）でナトリウムを再吸収させ血圧（blood pressure）を保つ。"
+        },
+        {
+          "id": "zona-fasciculata", "ja": "束状帯", "yomi": "そくじょうたい", "en": "zona fasciculata", "la": "zona fasciculata",
+          "plate": "adrenal-layers", "level": 2, "hormones": "コルチゾール（糖質コルチコイド）。血糖を上げ、炎症と免疫を抑える",
+          "kanji": "（細胞が）束のように並んだ帯",
+          "etym": "ラテン語 zona「帯」＋ fasciculata「束になった」",
+          "note": "副腎皮質（adrenal cortex）のまん中のいちばん厚い層。細胞（cell）が表面に垂直な柱のように並ぶ。副腎皮質刺激ホルモン（adrenocorticotropic hormone）で働きが高まり、糖質コルチコイドのコルチゾールを出して、血糖を上げ、炎症（inflammation）と免疫（immunity）を抑える（ストレスに耐えるホルモン）。"
+        },
+        {
+          "id": "zona-reticularis", "ja": "網状帯", "yomi": "もうじょうたい", "en": "zona reticularis", "la": "zona reticularis",
+          "plate": "adrenal-layers", "level": 2, "hormones": "男性ホルモン（アンドロゲン。デヒドロエピアンドロステロン）",
+          "kanji": "（細胞が）網の目のように並んだ帯",
+          "etym": "ラテン語 zona「帯」＋ reticularis「網の」",
+          "note": "副腎皮質（adrenal cortex）のいちばん内の層で、髄質（medulla）に接する。細胞（cell）が網の目のようにつながる。弱い男性ホルモン（androgen）（デヒドロエピアンドロステロン）を出す。"
+        },
+        {
+          "id": "adrenal-medulla", "ja": "副腎髄質", "yomi": "ふくじんずいしつ", "en": "adrenal medulla", "enAlt": ["suprarenal medulla"], "la": "medulla glandulae suprarenalis",
+          "plate": "adrenal-layers", "level": 1, "hormones": "アドレナリン・ノルアドレナリン（カテコールアミン）。心拍と血圧・血糖を上げる",
+          "kanji": "副腎の髄（中心）の部分",
+          "etym": "adrenal「副腎の」＋ medulla「髄・芯」",
+          "note": "副腎（suprarenal gland）の中心の赤褐色の部分。神経堤（neural crest）からでき、交感神経（sympathetic nerve）の節後ニューロンにあたるクロム親和性細胞が、大内臓神経（greater splanchnic nerve）（交感神経の節前線維）の刺激でアドレナリン（adrenaline）とノルアドレナリンを血液（blood）へ出す（闘争か逃走か）。"
+        }
+      ]
     }
   ]
 }

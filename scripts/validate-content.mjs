@@ -419,7 +419,7 @@ const PlateArt = z.strictObject({
   eraseBoxes: z.array(z.union([z.tuple([z.number(), z.number(), z.number(), z.number()]), z.tuple([z.number(), z.number(), z.number(), z.number(), z.string().regex(/^#[0-9a-f]{6}$/)])])).optional(), crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
   drop: z.array(z.string().min(1)).optional(), dropGroups: z.array(z.string().min(1)).optional(), recolor: z.record(z.string(), z.string()).optional(),
   blobs: z.number().int().min(2).max(5).optional(), within: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
-  keepAll: z.literal(true).optional(), backColor: z.tuple([z.number().int(), z.number().int(), z.number().int()]).optional(),
+  keepAll: z.literal(true).optional(), eraseGray: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), backColor: z.tuple([z.number().int(), z.number().int(), z.number().int()]).optional(),
 });
 const Plate = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(), points: z.array(z.string().min(1)).optional(),

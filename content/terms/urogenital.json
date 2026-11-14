@@ -409,6 +409,56 @@
       ]
     },
     {
+      "id": "uro-bladder-inner",
+      "title": "膀胱の内面と尿道括約筋",
+      "group": "泌尿器",
+      "intro": ["膀胱（urinary bladder）は、平滑筋（smooth muscle）の排尿筋（detrusor）でできた袋で、尿をためると伸び、出すときは縮む。内面（internal surface）の後ろ下には左右の尿管口（ureteric orifice）と内尿道口（internal urethral orifice）を結ぶ三角（膀胱三角（trigone of bladder））があり、ここだけは粘膜（mucosa）にひだ（fold）が無い。出口は膀胱頚（neck of bladder）の内尿道括約筋（internal urethral sphincter）（平滑筋、自分の意思では動かない）と、尿生殖隔膜（urogenital diaphragm）の外尿道括約筋（external urethral sphincter）（骨格筋（skeletal muscle）、自分の意思で締める）の2つで閉じる。"],
+      "terms": [
+        {
+          "id": "detrusor", "ja": "排尿筋", "yomi": "はいにょうきん", "en": "detrusor", "enAlt": ["detrusor muscle"], "la": "musculus detrusor vesicae",
+          "plate": "bladder", "level": 2,
+          "kanji": "尿を排出する筋",
+          "etym": "ラテン語 detrudere「押し出す」",
+          "note": "膀胱（urinary bladder）の壁の平滑筋（smooth muscle）の層（内縦・中輪・外縦の3層が入りまじる）。尿がたまるときはゆるみ、排尿のときに縮んで尿を押し出す。骨盤内臓神経（副交感神経（parasympathetic nerve））で縮み、下腹神経（交感神経（sympathetic nerve））でゆるむ。"
+        },
+        {
+          "id": "ureteric-orifice", "ja": "尿管口", "yomi": "にょうかんこう", "en": "ureteric orifice", "enAlt": ["ureteral orifice"], "la": "ostium ureteris",
+          "plate": "bladder", "level": 1,
+          "kanji": "尿管の（膀胱への）開口",
+          "etym": "ureteric「尿管の」＋ orifice「開口」",
+          "note": "左右の尿管（ureter）が膀胱（urinary bladder）に開く、膀胱三角（trigone of bladder）の上の左右のかどの細い口。尿管は膀胱の壁を斜めに貫くので、膀胱に尿がたまって壁が張ると押されて閉じ、尿が尿管へ逆流しない。"
+        },
+        {
+          "id": "trigone-of-bladder", "ja": "膀胱三角", "yomi": "ぼうこうさんかく", "en": "trigone of bladder", "enAlt": ["vesical trigone"], "la": "trigonum vesicae",
+          "plate": "bladder", "level": 1,
+          "kanji": "膀胱の（内面の）三角",
+          "etym": "trigone ← ギリシャ語 trigonon「三角形」",
+          "note": "膀胱（urinary bladder）の内面（internal surface）の後ろ下（膀胱底（fundus of bladder））で、左右の尿管口（ureteric orifice）と内尿道口（internal urethral orifice）を結ぶ三角の部分。ほかの所と違って粘膜（mucosa）にひだ（fold）が無くなめらかで、膀胱がふくらんでも形が変わらない。膀胱炎（cystitis）や膀胱がんの起こりやすい所。"
+        },
+        {
+          "id": "internal-urethral-orifice", "ja": "内尿道口", "yomi": "ないにょうどうこう", "en": "internal urethral orifice", "la": "ostium urethrae internum",
+          "plate": "bladder", "level": 2,
+          "kanji": "尿道の内側（膀胱側）の口",
+          "etym": "internal「内の」＋ urethral「尿道の」",
+          "note": "膀胱三角（trigone of bladder）の下のかどで、膀胱頚（neck of bladder）から尿道（urethra）が始まる口。男性ではすぐ下を前立腺（prostate）が囲み、前立腺肥大症（benign prostatic hyperplasia）ではここが押されて尿が出にくくなる。体の外に開く口は外尿道口（external urethral orifice）。"
+        },
+        {
+          "id": "internal-urethral-sphincter", "ja": "内尿道括約筋", "yomi": "ないにょうどうかつやくきん", "en": "internal urethral sphincter", "enAlt": ["vesical sphincter"], "la": "musculus sphincter urethrae internus",
+          "plate": "bladder", "level": 2,
+          "kanji": "尿道の内側（上）の締める筋",
+          "etym": "sphincter ← ギリシャ語 sphingein「締める」",
+          "note": "膀胱頚（neck of bladder）で内尿道口（internal urethral orifice）を囲む平滑筋（smooth muscle）の輪。自分の意思では動かせず、交感神経（sympathetic nerve）で締まって尿がもれないようにする。男性では射精のときに締まり、精液（semen）が膀胱（urinary bladder）へ逆流するのを防ぐ。膀胱頚括約筋ともいう。"
+        },
+        {
+          "id": "external-urethral-sphincter", "ja": "外尿道括約筋", "yomi": "がいにょうどうかつやくきん", "en": "external urethral sphincter", "enAlt": ["sphincter urethrae","urethral sphincter"], "la": "musculus sphincter urethrae externus",
+          "plate": "bladder", "level": 1,
+          "kanji": "尿道の外側（下）の締める筋",
+          "etym": "external「外の」＋ urethral「尿道の」＋ sphincter「括約筋」",
+          "note": "尿生殖隔膜（urogenital diaphragm）（深会陰隙）で尿道（urethra）を囲む骨格筋（skeletal muscle）。陰部神経（pudendal nerve）に支配（innervation）され、自分の意思で締めて排尿を止める。お産や手術で弱くなると、せきやくしゃみで尿がもれる（腹圧性尿失禁）。尿道括約筋（urethral sphincter）ともいう。"
+        }
+      ]
+    },
+    {
       "id": "uro-male",
       "title": "精巣・精路と付属腺",
       "group": "男性生殖器",
@@ -614,6 +664,84 @@
           "kanji": "陰茎（亀頭）を包む皮",
           "etym": "praeputium「包皮」（ラテン語）",
           "note": "陰茎亀頭（glans penis）をおおう、二重に折り返った皮膚（skin）のひだ（fold）。亀頭（glans）の下面（inferior surface）とは包皮小帯でつながる。女性の陰核包皮にあたる。"
+        }
+      ]
+    },
+    {
+      "id": "uro-testis-inner",
+      "title": "精巣と精巣上体の内部",
+      "group": "男性生殖器",
+      "intro": ["精巣（testis）は白膜（tunica albuginea）に包まれ、中は精巣中隔（septa of testis）で約250の精巣小葉（lobules of testis）に分かれる。小葉（lobule）の中の曲精細管（convoluted seminiferous tubules）で精子（sperm）がつくられ、直精細管（straight seminiferous tubules）・精巣網（rete testis）・精巣輸出管（efferent ductules）を通って精巣上体（epididymis）の頭へ出て、精巣上体管（duct of epididymis）でたくわえられ成熟してから精管（ductus deferens）へ送られる。精巣は腹（abdomen）の中から鼡径管（inguinal canal）を通って陰嚢（scrotum）へ下りてくるので、そのとき引き連れた腹壁（abdominal wall）の層が精索（spermatic cord）と精巣の被膜（精巣挙筋（cremaster）・精巣鞘膜（tunica vaginalis）など）になる。"],
+      "terms": [
+        {
+          "id": "spermatic-cord", "ja": "精索", "yomi": "せいさく", "en": "spermatic cord", "la": "funiculus spermaticus",
+          "plate": "testis", "level": 1,
+          "kanji": "精巣へ通じる索（ひも）",
+          "etym": "spermatic「精液の・精子の」＋ cord「ひも」",
+          "note": "精巣（testis）から鼡径管（inguinal canal）の深鼡径輪（deep inguinal ring）までの、精管（ductus deferens）・精巣動脈（testicular artery）・蔓状静脈叢（pampiniform plexus）・神経（nerve）・リンパ管（lymphatic vessel）を包んだ太さ指1本ほどのひも。外から外精筋膜・精巣挙筋（cremaster）・内精筋膜に包まれる（腹壁（abdominal wall）の層の続き）。陰嚢（scrotum）の付け根で皮膚（skin）の上から精管を触れる。精索がねじれると精巣への血が止まる（精巣捻転、すぐに手術が要る）。"
+        },
+        {
+          "id": "cremaster", "ja": "精巣挙筋", "yomi": "せいそうきょきん", "en": "cremaster", "enAlt": ["cremaster muscle"], "la": "musculus cremaster",
+          "plate": "testis", "level": 2,
+          "kanji": "精巣を挙げる（引き上げる）筋",
+          "etym": "ギリシャ語 kremaster「つり下げるもの」",
+          "note": "内腹斜筋（internal oblique）と腹横筋（transversus abdominis）から分かれて精索（spermatic cord）と精巣（testis）を包む、ゆるい網のような骨格筋（skeletal muscle）。陰部大腿神経の陰部枝（genital branch of genitofemoral nerve）に支配（innervation）され、寒いときや大腿（thigh）の内側（medial）の皮膚（skin）をこすったとき（挙睾筋反射（cremasteric reflex））に精巣を引き上げる。精巣の温度を保つ。"
+        },
+        {
+          "id": "tunica-vaginalis", "ja": "精巣鞘膜", "yomi": "せいそうしょうまく", "en": "tunica vaginalis", "enAlt": ["tunica vaginalis testis"], "la": "tunica vaginalis testis",
+          "plate": "testis", "level": 2,
+          "kanji": "精巣を（さやのように）包む膜",
+          "etym": "ラテン語 tunica「衣」＋ vaginalis「さやの」",
+          "note": "精巣（testis）と精巣上体（epididymis）の前と両わきを包む漿膜（serosa）の袋（壁側板と臓側板（visceral layer））。精巣が下りるときに引き連れた腹膜（peritoneum）（腹膜鞘状突起）の残りで、2枚の間に少しの液がある。この液がふえると陰嚢（scrotum）が腫れる（陰嚢水腫）。"
+        },
+        {
+          "id": "tunica-albuginea-of-testis", "ja": "白膜（精巣）", "yomi": "はくまく", "en": "tunica albuginea of testis", "la": "tunica albuginea testis",
+          "plate": "testis", "level": 2,
+          "kanji": "白い膜",
+          "etym": "ラテン語 tunica「衣」＋ albugineus「白い」",
+          "note": "精巣（testis）を包む、厚く白い丈夫な線維性（fibrous）の膜（membrane）。後ろで厚くなって精巣縦隔（mediastinum of testis）になり、そこから精巣中隔（septa of testis）を出して中を小葉（lobule）に分ける。のびにくいので、精巣が腫れると強く痛む。"
+        },
+        {
+          "id": "septa-of-testis", "ja": "精巣中隔", "yomi": "せいそうちゅうかく", "en": "septa of testis", "enAlt": ["septula testis","testicular septa"], "la": "septula testis",
+          "plate": "testis", "level": 3,
+          "kanji": "精巣の中を仕切る隔て",
+          "etym": "septum ← ラテン語「仕切り」（複数 septa）",
+          "note": "白膜（tunica albuginea）（精巣縦隔（mediastinum of testis））から精巣（testis）の中へ放射状に入る結合組織（connective tissue）の薄い仕切り。精巣を約250の精巣小葉（lobules of testis）に分ける。"
+        },
+        {
+          "id": "lobules-of-testis", "ja": "精巣小葉", "yomi": "せいそうしょうよう", "en": "lobules of testis", "enAlt": ["testicular lobules"], "la": "lobuli testis",
+          "plate": "testis", "level": 3,
+          "kanji": "精巣の小さな葉（区画）",
+          "etym": "lobule「小葉」（ラテン語 lobulus）",
+          "note": "精巣中隔（septa of testis）で仕切られた、精巣縦隔（mediastinum of testis）を頂点とする円錐形の区画（compartment）（約250）。1つの小葉（lobule）に1〜4本の曲精細管（convoluted seminiferous tubules）が折りたたまれて入っている。"
+        },
+        {
+          "id": "seminiferous-tubules", "ja": "曲精細管", "yomi": "きょくせいさいかん", "en": "convoluted seminiferous tubules", "enAlt": ["seminiferous tubules","convoluted seminiferous tubule"], "la": "tubuli seminiferi contorti",
+          "plate": "testis", "level": 1, "hormones": "テストステロン（男性ホルモン。曲精細管の間のライディッヒ細胞＝間細胞）",
+          "kanji": "曲がりくねった、精子をつくる細い管",
+          "etym": "seminiferous「精子を運ぶ・生む」（ラテン語 semen「種」＋ ferre「運ぶ」）",
+          "note": "精巣小葉（lobules of testis）の中で曲がりくねる直径約0.2mmの細い管（全部をつなぐと数百m）。壁の精上皮で精祖細胞から精子（sperm）がつくられ、セルトリ細胞がそれを支え養う。管の間の結合組織（connective tissue）にはテストステロン（testosterone）を出すライディッヒ細胞（間細胞）がある。"
+        },
+        {
+          "id": "straight-tubules", "ja": "直精細管", "yomi": "ちょくせいさいかん", "en": "straight seminiferous tubules", "enAlt": ["straight tubules","tubuli recti"], "la": "tubuli seminiferi recti",
+          "plate": "testis", "level": 3,
+          "kanji": "まっすぐな精細管",
+          "etym": "straight「まっすぐな」＋ tubule「細管」",
+          "note": "曲精細管（convoluted seminiferous tubules）が小葉（lobule）の頂点（精巣縦隔（mediastinum of testis）の近く）でまっすぐになった短い管。精子（sperm）を精巣網（rete testis）へ送る。"
+        },
+        {
+          "id": "rete-testis", "ja": "精巣網", "yomi": "せいそうもう", "en": "rete testis", "la": "rete testis",
+          "plate": "testis", "level": 2,
+          "kanji": "精巣（縦隔）の中の網の目の管",
+          "etym": "ラテン語 rete「網」＋ testis「精巣」",
+          "note": "精巣縦隔（mediastinum of testis）の中で、直精細管（straight seminiferous tubules）から来た精子（sperm）の通る網の目のような管。10〜20本の精巣輸出管（efferent ductules）へ続く。"
+        },
+        {
+          "id": "efferent-ductules", "ja": "精巣輸出管", "yomi": "せいそうゆしゅつかん", "en": "efferent ductules", "enAlt": ["efferent ducts"], "la": "ductuli efferentes testis",
+          "plate": "testis", "level": 2,
+          "kanji": "精巣から送り出す管",
+          "etym": "efferent「外へ運ぶ」（ラテン語 ex-「外へ」＋ ferre「運ぶ」）",
+          "note": "精巣網（rete testis）から精巣上体（epididymis）の頭へ精子（sperm）を運ぶ10〜20本の細い管。精巣上体の頭の中でくねくね曲がり、1本の精巣上体管（duct of epididymis）へ合わさる。"
         }
       ]
     },

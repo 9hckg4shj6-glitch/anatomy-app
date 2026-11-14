@@ -955,6 +955,77 @@
       ]
     },
     {
+      "id": "nerv-meninges",
+      "title": "髄膜とくも膜下腔",
+      "group": "脳",
+      "intro": ["脳（brain）と脊髄（spinal cord）は、外から硬膜（dura mater）・くも膜（arachnoid mater）・軟膜（pia mater）の3枚の髄膜（meninges）に包まれ、くも膜と軟膜の間のくも膜下腔（subarachnoid space）を流れる脳脊髄液（cerebrospinal fluid）に浮かんでいる。頭蓋骨との間の硬膜は2枚が合わさり、ところどころで2枚が離れて硬膜静脈洞（dural venous sinus）をつくる。出血の場所（硬膜の外・硬膜の下・くも膜の下）で病気の名前が変わるので、層の順を覚える。"],
+      "terms": [
+        {
+          "id": "dura-mater", "ja": "硬膜", "yomi": "こうまく", "en": "dura mater", "enAlt": ["pachymeninx"], "la": "dura mater",
+          "plate": "meninges", "level": 1,
+          "kanji": "硬い膜",
+          "etym": "ラテン語 dura「硬い」＋ mater「母」（脳を包む母のような膜という、アラビア語の医書の訳から）",
+          "note": "髄膜（meninges）のいちばん外の、厚く丈夫な線維性（fibrous）の膜（membrane）。頭蓋（skull）では骨膜（periosteum）（外葉）と髄膜の層（内葉）の2枚が合わさって頭蓋骨の内面（internal surface）に付き、2枚が離れた所が硬膜静脈洞（dural venous sinus）（上矢状静脈洞（superior sagittal sinus）など）になる。内葉は大脳縦裂（longitudinal cerebral fissure）に入って大脳鎌（falx cerebri）、大脳（cerebrum）と小脳（cerebellum）の間に入って小脳テント（tentorium cerebelli）をつくる。頭蓋骨との間で中硬膜動脈（middle meningeal artery）が切れると硬膜外血腫（epidural hematoma）になる。脊髄（spinal cord）では骨膜と離れ、椎骨（vertebra）との間に硬膜上腔（脂肪（fat）と静脈叢（venous plexus））がある。"
+        },
+        {
+          "id": "arachnoid-mater", "ja": "くも膜", "yomi": "くもまく", "en": "arachnoid mater", "enAlt": ["arachnoid"], "la": "arachnoidea mater",
+          "plate": "meninges", "level": 1,
+          "kanji": "くもの巣のような膜",
+          "etym": "arachnoid ← ギリシャ語 arachne「くも」＋ -oid「〜のような」",
+          "note": "硬膜（dura mater）の内側（medial）に接する、血管（blood vessel）の無い薄い膜（membrane）。軟膜（pia mater）との間をくもの巣のような細い線維（fiber）（くも膜小柱）が渡り、その間のすき間がくも膜下腔（subarachnoid space）になる。脳（brain）の溝には入らず、表面を橋のようにおおう。硬膜静脈洞（dural venous sinus）の中へくも膜顆粒（arachnoid granulations）として突き出し、脳脊髄液（cerebrospinal fluid）を静脈血（venous blood）へ戻す。"
+        },
+        {
+          "id": "pia-mater", "ja": "軟膜", "yomi": "なんまく", "en": "pia mater", "enAlt": ["leptomeninx"], "la": "pia mater",
+          "plate": "meninges", "level": 1,
+          "kanji": "軟らかい膜",
+          "etym": "ラテン語 pia「やさしい」＋ mater「母」",
+          "note": "髄膜（meninges）のいちばん内の薄い膜（membrane）で、脳（brain）と脊髄（spinal cord）の表面にぴったり付き、溝の奥まで入りこむ。脳に入る血管（blood vessel）の表面をおおって一緒に入る。脊髄では左右に歯状靱帯を出して硬膜（dura mater）に付き、脊髄を支える。くも膜（arachnoid mater）と合わせて柔膜（軟髄膜）ともいう。"
+        },
+        {
+          "id": "subdural-space", "ja": "硬膜下腔", "yomi": "こうまくかくう", "en": "subdural space", "la": "spatium subdurale",
+          "plate": "meninges", "level": 2,
+          "kanji": "硬膜の下（内側）のすき間",
+          "etym": "sub-「下の」＋ dural「硬膜の」",
+          "note": "硬膜（dura mater）とくも膜（arachnoid mater）の間。ふだんは2枚がくっついていてすき間は無いが、硬膜とくも膜を貫いて静脈洞（venous sinus）に注ぐ架橋静脈が切れると血がたまって広がる（硬膜下血腫（subdural hematoma）。高齢者は軽く頭を打っただけでも起こり、数週間かけてゆっくり大きくなる慢性のものが多い）。"
+        },
+        {
+          "id": "subarachnoid-space", "ja": "くも膜下腔", "yomi": "くもまくかくう", "en": "subarachnoid space", "la": "spatium subarachnoideum",
+          "plate": "meninges", "level": 1,
+          "kanji": "くも膜の下（内側）のすき間",
+          "etym": "sub-「下の」＋ arachnoid「くも膜の」",
+          "note": "くも膜（arachnoid mater）と軟膜（pia mater）の間のすき間。脳脊髄液（cerebrospinal fluid）で満たされ、脳（brain）と脊髄（spinal cord）の太い動脈（artery）・静脈（vein）がここを通る。脳の底などで広くなった所をくも膜下槽（大槽など）という。脳底の動脈の瘤が破れるとここに出血する（くも膜下出血。突然の激しい頭痛）。脊髄では第2腰椎（second lumbar vertebra）より下に脊髄が無いので、第3〜4腰椎の間に針を刺して脳脊髄液をとる（腰椎穿刺（lumbar puncture））。"
+        },
+        {
+          "id": "arachnoid-granulations", "ja": "くも膜顆粒", "yomi": "くもまくかりゅう", "en": "arachnoid granulations", "enAlt": ["arachnoid villi","pacchionian granulations"], "la": "granulationes arachnoideae",
+          "plate": "meninges", "level": 2,
+          "kanji": "くも膜の小さな粒",
+          "etym": "arachnoid「くも膜の」＋ granulation「顆粒」（ラテン語 granulum「小さな粒」）",
+          "note": "くも膜（arachnoid mater）が硬膜（dura mater）を押し分けて、上矢状静脈洞（superior sagittal sinus）などの硬膜静脈洞（dural venous sinus）の中へ突き出したきのこ状の小さな粒。くも膜下腔（subarachnoid space）の脳脊髄液（cerebrospinal fluid）は、ここから静脈血（venous blood）へ吸収される。年をとると大きくなり、頭蓋骨の内面（internal surface）にくぼみ（顆粒小窩）をつくる。パキオニ小体ともいう。"
+        },
+        {
+          "id": "cerebral-cortex", "ja": "大脳皮質", "yomi": "だいのうひしつ", "en": "cerebral cortex", "la": "cortex cerebri",
+          "plate": "meninges", "level": 1,
+          "kanji": "大脳の皮（表面）の部分",
+          "etym": "cortex ← ラテン語「樹皮」",
+          "note": "大脳（cerebrum）の表面をおおう、厚さ2〜4mmの灰白質（gray matter）（神経細胞体（cell body）の集まり）。しわ（大脳回と大脳溝）で面積を広げ、6つの層に並んだ神経細胞（neuron）が運動・感覚（sensation）・言語・思考をになう。場所ごとに働きが分かれ（運動野（motor area）は中心前回（precentral gyrus）、体性感覚野は中心後回（postcentral gyrus）、視覚野（visual cortex）は後頭葉（occipital lobe））、その内側（medial）は神経線維（nerve fiber）の白質（white matter）（大脳髄質）。"
+        },
+        {
+          "id": "confluence-of-sinuses", "ja": "静脈洞交会", "yomi": "じょうみゃくどうこうかい", "en": "confluence of sinuses", "enAlt": ["torcular herophili"], "la": "confluens sinuum",
+          "plate": "dural-sinuses", "level": 2,
+          "kanji": "静脈洞が交わって会う所",
+          "etym": "confluence ← ラテン語 confluere「一緒に流れる」",
+          "note": "後頭骨（occipital bone）の内後頭隆起（internal occipital protuberance）の前で、上矢状静脈洞（superior sagittal sinus）・直静脈洞（straight sinus）・後頭静脈洞（occipital sinus）が合わさり、左右の横静脈洞（transverse sinus）へ分かれる所。大脳鎌（falx cerebri）と小脳テント（tentorium cerebelli）が付く所にあたる。"
+        },
+        {
+          "id": "great-cerebral-vein", "ja": "大大脳静脈", "yomi": "だいだいのうじょうみゃく", "en": "great cerebral vein", "enAlt": ["vein of galen"], "la": "vena magna cerebri",
+          "plate": "dural-sinuses", "level": 2,
+          "kanji": "大脳の大きな静脈",
+          "etym": "great「大きな」＋ cerebral「大脳の」",
+          "note": "脳（brain）の深い所（視床（thalamus）・大脳基底核（basal ganglia）・脳室（ventricle）の脈絡叢（choroid plexus））の血を集めた左右の内大脳静脈が、脳梁膨大の下で1本になった短く太い静脈（vein）。下矢状静脈洞（inferior sagittal sinus）と合わさって直静脈洞（straight sinus）に注ぐ。ガレン静脈（vein of Galen）ともいう。"
+        }
+      ]
+    },
+    {
       "id": "nerv-cranial",
       "title": "脳神経",
       "group": "脳神経",
@@ -1742,6 +1813,28 @@
           "kanji": "手の背側（手の甲の側）の指の神経",
           "etym": "digitus「指」＋ dorsum「背」（ラテン語）",
           "note": "手の甲（back of hand）から指（finger）の背側（dorsal）の皮膚（skin）へ行く細い枝（branch）。母指（thumb）の側の2指半は橈骨神経浅枝（superficial branch of radial nerve）、小指（little finger）の側の2指半は尺骨神経の手背枝（dorsal branch of ulnar nerve）から出る。指の先の背側（爪（nail）のまわり）は手掌の側から回る固有掌側指神経（proper palmar digital nerves）が受けもつ。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-brachial-cords",
+      "title": "腕神経叢の神経束と枝",
+      "group": "脊髄と上肢・体幹の神経",
+      "intro": ["腕神経叢（brachial plexus）は第5頚神経（fifth cervical nerve）から第1胸神経（first thoracic nerve）の前枝（anterior ramus）（根）が、上・中・下の神経幹（trunk）、前部（anterior part）と後部（posterior part）、外側（lateral）・内側（medial）・後神経束（posterior cord of brachial plexus）と組みかわってから、上肢（upper limb）の神経（nerve）に分かれる。根・幹・部・束・枝（branch）の順と、どの束からどの神経が出るかを図で覚える（外側神経束（lateral cord）から筋皮神経（musculocutaneous nerve）、内側神経束（medial cord）から尺骨神経（ulnar nerve）、後神経束から腋窩神経（axillary nerve）と橈骨神経（radial nerve）、外側と内側の束から正中神経（median nerve））。"],
+      "terms": [
+        {
+          "id": "lateral-cord-of-brachial-plexus", "ja": "外側神経束", "yomi": "がいそくしんけいそく", "en": "lateral cord of brachial plexus", "enAlt": ["lateral cord"], "la": "fasciculus lateralis plexus brachialis",
+          "plate": "brachial-plexus", "level": 2,
+          "kanji": "（腋窩動脈の）外側にある神経の束",
+          "etym": "lateral「外側の」＋ cord「束」（ラテン語 fasciculus「小さな束」）",
+          "note": "上神経幹（superior trunk of brachial plexus）と中神経幹（middle trunk of brachial plexus）の前部（anterior part）が合わさった束（第5〜7頚神経（fifth to seventh cervical nerves））。腋窩動脈（axillary artery）の外側（lateral）を下り、外側胸筋神経（lateral pectoral nerve）・筋皮神経（musculocutaneous nerve）と正中神経（median nerve）の外側根を出す。"
+        },
+        {
+          "id": "medial-cord-of-brachial-plexus", "ja": "内側神経束", "yomi": "ないそくしんけいそく", "en": "medial cord of brachial plexus", "enAlt": ["medial cord"], "la": "fasciculus medialis plexus brachialis",
+          "plate": "brachial-plexus", "level": 2,
+          "kanji": "（腋窩動脈の）内側にある神経の束",
+          "etym": "medial「内側の」＋ cord「束」",
+          "note": "下神経幹（inferior trunk of brachial plexus）の前部（anterior part）がそのまま続いた束（第8頚神経（eighth cervical nerve）・第1胸神経（first thoracic nerve））。腋窩動脈（axillary artery）の内側（medial）を下り、内側胸筋神経（medial pectoral nerve）・内側上腕皮神経（medial brachial cutaneous nerve）・内側前腕皮神経（medial antebrachial cutaneous nerve）・尺骨神経（ulnar nerve）と正中神経（median nerve）の内側根を出す。"
         }
       ]
     },

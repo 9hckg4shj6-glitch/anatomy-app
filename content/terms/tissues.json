@@ -119,7 +119,7 @@
         {
           "id": "smooth-er", "ja": "滑面小胞体", "yomi": "かつめんしょうほうたい", "en": "smooth endoplasmic reticulum", "enAlt": ["smooth er"], "la": "reticulum endoplasmicum nongranulosum", "plate": "cell", "level": 1,
           "kanji": "表面がなめらかな小胞体", "etym": "smooth（なめらか）",
-          "note": "リボソーム（ribosome）の付かない、管が網のようにつながった小胞体。脂質（ステロイドホルモン（steroid hormone）など）をつくり、肝細胞では薬物を解毒（detoxification）し、筋（muscle）ではカルシウムをためる（筋小胞体）。"
+          "note": "リボソーム（ribosome）の付かない、管が網のようにつながった小胞体。脂質（ステロイドホルモン（steroid hormone）など）をつくり、肝細胞（hepatocyte）では薬物を解毒（detoxification）し、筋（muscle）ではカルシウムをためる（筋小胞体）。"
         },
         {
           "id": "golgi-apparatus", "ja": "ゴルジ装置", "yomi": "ごるじそうち", "en": "golgi apparatus", "enAlt": ["golgi complex", "golgi body"], "la": "complexus golgiensis", "plate": "cell", "level": 1,

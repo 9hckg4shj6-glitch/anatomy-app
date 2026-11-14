@@ -917,7 +917,7 @@
           "plate": "pancreas-development", "level": 2, "check": true,
           "kanji": "肝臓になる憩室（袋状の芽）",
           "etym": "hepatic「肝臓の」（ギリシャ語 hepar）＋ diverticulum「わき道・袋」（ラテン語）",
-          "note": "胎齢4週に、前腸（foregut）の終わり（十二指腸（duodenum）になる所）の腹側（ventral）の壁から出る内胚葉（endoderm）の芽。横中隔（septum transversum）の中へ伸びて枝分かれし、頭側（cranial）の大きな部分が肝細胞の索（肝索）になって肝臓（liver）を、尾側（caudal）の小さな部分（胆嚢憩室）が胆嚢（gallbladder）と胆嚢管（cystic duct）をつくり、根もとが総胆管（bile duct）になる。肝臓の中の血管（blood vessel）（類洞）は卵黄静脈と臍静脈（umbilical vein）からできる。胎児（fetus）の肝臓は血液（blood）もつくる。"
+          "note": "胎齢4週に、前腸（foregut）の終わり（十二指腸（duodenum）になる所）の腹側（ventral）の壁から出る内胚葉（endoderm）の芽。横中隔（septum transversum）の中へ伸びて枝分かれし、頭側（cranial）の大きな部分が肝細胞（hepatocyte）の索（肝索）になって肝臓（liver）を、尾側（caudal）の小さな部分（胆嚢憩室）が胆嚢（gallbladder）と胆嚢管（cystic duct）をつくり、根もとが総胆管（bile duct）になる。肝臓の中の血管（blood vessel）（類洞（hepatic sinusoid））は卵黄静脈と臍静脈（umbilical vein）からできる。胎児（fetus）の肝臓は血液（blood）もつくる。"
         },
         {
           "id": "dorsal-pancreatic-bud", "ja": "背側膵芽", "yomi": "はいそくすいが", "en": "dorsal pancreatic bud", "la": "gemma pancreatica dorsalis",
@@ -1420,6 +1420,63 @@
           "kanji": "舌の正中の溝",
           "etym": "median「正中の」＋ sulcus「溝」",
           "note": "舌背（dorsum of tongue）の正中（median）を前後に走る浅い溝。後ろは舌盲孔（foramen caecum of tongue）の近くまで続き、舌（tongue）の中の舌中隔（lingual septum）の位置にあたる（舌が左右2つのもとから合わさってできた跡）。"
+        }
+      ]
+    },
+    {
+      "id": "dig-liver-lobule",
+      "title": "肝小葉と小葉間の三つ組",
+      "group": "肝臓・胆道・膵臓",
+      "intro": ["肝臓（liver）は、直径1〜2mmの六角柱の肝小葉（hepatic lobule）が数十万個集まってできている。小葉（lobule）のかどの小葉間結合組織（グリソン鞘）には小葉間静脈（門脈（hepatic portal vein）の枝（branch））・小葉間動脈（interlobular artery）（固有肝動脈（proper hepatic artery）の枝）・小葉間胆管（interlobular bile duct）の3つが並び（三つ組）、血は小葉の周りから類洞（hepatic sinusoid）を通って中心の中心静脈（central vein）へ流れ、胆汁（bile）は逆に中心から周りの胆管（bile duct）へ流れる。"],
+      "terms": [
+        {
+          "id": "hepatic-lobule", "ja": "肝小葉", "yomi": "かんしょうよう", "en": "hepatic lobule", "enAlt": ["liver lobule","classic lobule"], "la": "lobulus hepaticus",
+          "plate": "liver-lobule", "level": 1,
+          "kanji": "肝臓の小さな葉（ひとまとまり）",
+          "etym": "hepatic「肝臓の」（ギリシャ語 hepar）＋ lobule「小葉」",
+          "note": "肝臓（liver）をつくる単位の、断面（section）が六角形の柱（直径1〜2mm）。中心に中心静脈（central vein）が通り、そこから放射状に肝細胞（hepatocyte）の並び（肝細胞索）と類洞（hepatic sinusoid）が広がる。かどには小葉間結合組織があり、小葉間静脈・小葉間動脈（interlobular artery）・小葉間胆管（interlobular bile duct）が通る。ヒトでは小葉（lobule）の間の結合組織（connective tissue）が少なく、境は見分けにくい（ブタでははっきりしている）。"
+        },
+        {
+          "id": "central-vein-of-liver", "ja": "中心静脈", "yomi": "ちゅうしんじょうみゃく", "en": "central vein", "enAlt": ["centrilobular vein"], "la": "vena centralis",
+          "plate": "liver-lobule", "level": 1,
+          "kanji": "（肝小葉の）中心の静脈",
+          "etym": "central「中心の」＋ vein「静脈」",
+          "note": "肝小葉（hepatic lobule）の中心を縦に通る静脈（vein）。周りの類洞（hepatic sinusoid）を流れてきた血（門脈血と動脈血（arterial blood）がまざった血）を集め、小葉下静脈を経て肝静脈（hepatic veins）から下大静脈（inferior vena cava）へ送る。"
+        },
+        {
+          "id": "hepatic-sinusoid", "ja": "類洞", "yomi": "るいどう", "en": "hepatic sinusoid", "enAlt": ["liver sinusoid","sinusoid"], "la": "vas sinusoideum",
+          "plate": "liver-lobule", "level": 1,
+          "kanji": "（毛細血管に）類する洞（広い血管）",
+          "etym": "sinusoid ← sinus「くぼみ・洞」＋ -oid「〜のような」",
+          "note": "肝細胞索の間を中心静脈（central vein）へ向かって走る、ふつうの毛細血管（capillary）より太く壁に穴の多い血管（blood vessel）。小葉間静脈と小葉間動脈（interlobular artery）の血がまざって流れ、壁のすき間から肝細胞（hepatocyte）と物をやりとりする。壁にはクッパー細胞（肝臓（liver）のマクロファージ）がいて、壁と肝細胞の間のすき間をディッセ腔という。"
+        },
+        {
+          "id": "hepatocyte", "ja": "肝細胞", "yomi": "かんさいぼう", "en": "hepatocyte", "enAlt": ["liver cell"], "la": "hepatocytus",
+          "plate": "liver-lobule", "level": 1,
+          "kanji": "肝臓の（はたらきをになう）細胞",
+          "etym": "hepato-「肝臓の」＋ -cyte「細胞」",
+          "note": "肝臓（liver）の重さの約8割を占める多角形の大きな細胞（cell）。1〜2列に並んで板（肝細胞索・肝細胞板）をつくり、類洞（hepatic sinusoid）に面した側で血から栄養をとって糖・たんぱく質（アルブミンなど）をつくり、薬や毒を分解する。隣の肝細胞との間の細い溝（毛細胆管）へ胆汁（bile）を出す。"
+        },
+        {
+          "id": "interlobular-vein-of-liver", "ja": "小葉間静脈（肝臓）", "yomi": "しょうようかんじょうみゃく", "en": "interlobular vein of liver", "enAlt": ["portal venule"], "la": "vena interlobularis hepatis",
+          "plate": "liver-lobule", "level": 2,
+          "kanji": "肝小葉の間の静脈",
+          "etym": "interlobular「小葉の間の」＋ vein「静脈」",
+          "note": "肝小葉（hepatic lobule）のかどの小葉間結合組織を通る、門脈（hepatic portal vein）のいちばん細い枝（branch）。胃腸からの栄養の多い血を類洞（hepatic sinusoid）へ送る。三つ組の中でいちばん太く壁が薄い。"
+        },
+        {
+          "id": "interlobular-artery-of-liver", "ja": "小葉間動脈（肝臓）", "yomi": "しょうようかんどうみゃく", "en": "interlobular artery of liver", "enAlt": ["portal arteriole"], "la": "arteria interlobularis hepatis",
+          "plate": "liver-lobule", "level": 2,
+          "kanji": "肝小葉の間の動脈",
+          "etym": "interlobular「小葉の間の」＋ artery「動脈」",
+          "note": "肝小葉（hepatic lobule）のかどの小葉間結合組織を通る、固有肝動脈（proper hepatic artery）の細い枝（branch）。酸素の多い血を類洞（hepatic sinusoid）と胆管（bile duct）の壁へ送る。肝臓（liver）に入る血の約1/4で、残りの約3/4は門脈（hepatic portal vein）の血。"
+        },
+        {
+          "id": "interlobular-bile-duct", "ja": "小葉間胆管", "yomi": "しょうようかんたんかん", "en": "interlobular bile duct", "enAlt": ["bile ductule"], "la": "ductus biliferi interlobulares",
+          "plate": "liver-lobule", "level": 2,
+          "kanji": "肝小葉の間の胆管",
+          "etym": "interlobular「小葉の間の」＋ bile duct「胆管」",
+          "note": "肝小葉（hepatic lobule）のかどの小葉間結合組織を通る細い胆管（bile duct）。肝細胞（hepatocyte）の間の毛細胆管から胆汁（bile）を受け、太くなって左右の肝管（hepatic duct）・総肝管（common hepatic duct）へ続く。壁は立方上皮。小葉間静脈・小葉間動脈（interlobular artery）と3つ並ぶ（三つ組）。"
         }
       ]
     },

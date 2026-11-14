@@ -595,6 +595,57 @@
       ]
     },
     {
+      "id": "joint-shoulder-inside",
+      "title": "肩関節の関節包と烏口肩峰靱帯",
+      "group": "上肢",
+      "intro": ["肩関節（shoulder joint）は、大きな上腕骨頭（head of humerus）が小さく浅い関節窩（glenoid cavity）に乗るので、人体でいちばんよく動くが外れやすい（脱臼（dislocation））。関節唇（labrum）が受け皿を少し深くし、ゆるい関節包（joint capsule）のまわりを回旋筋腱板（rotator cuff）（棘上筋（supraspinatus）・棘下筋（infraspinatus）・小円筋（teres minor）・肩甲下筋（subscapularis）の腱（tendon））が囲んで押さえる。上は肩峰（acromion）と烏口肩峰靱帯（coraco-acromial ligament）が屋根（烏口肩峰アーチ）になり、その下を棘上筋の腱と肩峰下包（subacromial bursa）が通る。関節包は外の線維膜（fibrous layer）と内の滑膜（synovial membrane）の2層で、これはどの滑膜性（synovial）の関節（joint）にも共通。"],
+      "terms": [
+        {
+          "id": "synovial-membrane", "ja": "滑膜", "yomi": "かつまく", "en": "synovial membrane", "enAlt": ["synovium","synovial layer"], "la": "membrana synovialis",
+          "plate": "shoulder-coronal", "level": 1,
+          "kanji": "（関節を）滑らかにする膜",
+          "etym": "synovial ← 新ラテン語 synovia「滑液」（卵の白身のような液）",
+          "note": "関節包（joint capsule）の内側（medial）の層で、関節軟骨（articular cartilage）のある所を除いて関節腔（joint cavity）の内面（internal surface）をおおう、血管（blood vessel）に富む柔らかい膜（membrane）。滑液（synovial fluid）を出して関節（joint）を滑らかにし、関節軟骨を養う。関節リウマチ（rheumatoid arthritis）ではこの膜が炎症（inflammation）で厚くなり、軟骨（cartilage）と骨（bone）をこわす。滑液包（bursa）と腱鞘（tendon sheath）の内面も同じ膜。"
+        },
+        {
+          "id": "fibrous-membrane", "ja": "線維膜", "yomi": "せんいまく", "en": "fibrous membrane", "enAlt": ["fibrous layer","fibrous capsule"], "la": "membrana fibrosa",
+          "plate": "shoulder-coronal", "level": 2,
+          "kanji": "線維でできた膜",
+          "etym": "fibrous「線維の」＋ membrane「膜」",
+          "note": "関節包（joint capsule）の外側（lateral）の層で、向かい合う骨（bone）の骨膜（periosteum）に続く丈夫な結合組織（connective tissue）の膜（membrane）。ところどころが厚くなって関節包靱帯（肩関節（shoulder joint）では関節上腕靱帯（glenohumeral ligaments）、股関節（hip joint）では腸骨大腿靱帯（iliofemoral ligament）など）になり、関節（joint）が動きすぎないように支える。"
+        },
+        {
+          "id": "coracoacromial-ligament", "ja": "烏口肩峰靱帯", "yomi": "うこうけんぽうじんたい", "en": "coracoacromial ligament", "la": "ligamentum coracoacromiale",
+          "plate": "shoulder-coronal", "level": 2,
+          "kanji": "烏口突起と肩峰を結ぶ靱帯",
+          "etym": "coraco-「烏口突起の」＋ acromial「肩峰の」",
+          "note": "肩甲骨（scapula）の烏口突起（coracoid process）と肩峰（acromion）の間に張る三角形の強い靱帯（ligament）。肩峰・烏口突起とともに肩関節（shoulder joint）の上の屋根（烏口肩峰アーチ）をつくり、上腕骨頭（head of humerus）が上へ外れるのを防ぐ。腕（arm）を上げるとアーチ（arch）と上腕骨頭の間で棘上筋（supraspinatus）の腱（tendon）と肩峰下包（subacromial bursa）がはさまれ、痛む（インピンジメント症候群）。"
+        }
+      ]
+    },
+    {
+      "id": "joint-elbow-bursae",
+      "title": "肘の滑液包",
+      "group": "上肢",
+      "intro": ["滑液包（bursa）は、腱（tendon）・筋（muscle）・皮膚（skin）が骨（bone）の上をこすれる所にある、滑膜（synovial membrane）でできた小さな袋。肘（elbow）では肘頭（olecranon）の後ろの皮下（subcutaneous）と、上腕三頭筋（triceps brachii）の腱の下にあり、肘をついたりぶつけたりすると皮下の滑液包に水や血がたまって腫れる（肘頭滑液包炎）。"],
+      "terms": [
+        {
+          "id": "subcutaneous-olecranon-bursa", "ja": "肘頭皮下包", "yomi": "ちゅうとうひかほう", "en": "subcutaneous olecranon bursa", "enAlt": ["olecranon bursa"], "la": "bursa subcutanea olecrani",
+          "plate": "elbow-sagittal", "level": 2,
+          "kanji": "肘頭の皮下の滑液包",
+          "etym": "subcutaneous「皮下の」＋ olecranon「肘頭」（ギリシャ語 olene「肘」＋ kranion「頭」）",
+          "note": "尺骨（ulna）の肘頭（olecranon）の後ろと皮膚（skin）の間にある滑液包（bursa）。肘（elbow）をついても皮膚が肘頭の上を滑るようにする。肘を強くぶつけたり、机にひじをつく仕事を続けたりすると、腫れてぶよぶよになる（肘頭滑液包炎、学生肘）。"
+        },
+        {
+          "id": "subtendinous-bursa-of-triceps-brachii", "ja": "上腕三頭筋腱下包", "yomi": "じょうわんさんとうきんけんかほう", "en": "subtendinous bursa of triceps brachii", "la": "bursa subtendinea musculi tricipitis brachii",
+          "plate": "elbow-sagittal", "level": 3,
+          "kanji": "上腕三頭筋の腱の下の滑液包",
+          "etym": "subtendinous「腱の下の」＋ triceps brachii「上腕三頭筋」",
+          "note": "上腕三頭筋（triceps brachii）の腱（tendon）が肘頭（olecranon）に付く所の下（腱と肘頭・関節包（joint capsule）の間）にある滑液包（bursa）。腱が骨（bone）の上を滑らかに動くようにする。"
+        }
+      ]
+    },
+    {
       "id": "joint-hip-knee",
       "title": "股関節と膝関節",
       "group": "下肢",
@@ -858,6 +909,28 @@
           "kanji": "膝蓋骨の下の、皮下の滑液包",
           "etym": "subcutaneous「皮下の」＋ infrapatellar「膝蓋骨の下の」＋ bursa「袋」",
           "note": "膝蓋靱帯（patellar ligament）の下の部分・脛骨粗面（tibial tuberosity）と皮膚（skin）との間にある滑液包（bursa）。膝蓋靱帯の後ろで脛骨（tibia）との間にある深膝蓋下包（deep infrapatellar bursa）とは別のもの。ひざまずく姿勢で押されるので、膝蓋骨（patella）の前の膝蓋前皮下包（prepatellar bursa）とともに、膝（knee）をつく仕事で炎症（inflammation）を起こしやすい。"
+        }
+      ]
+    },
+    {
+      "id": "joint-hip-bursae",
+      "title": "股関節のまわりの滑液包",
+      "group": "下肢",
+      "intro": ["股関節（hip joint）のまわりでは、太い筋（muscle）の腱（tendon）が大転子（greater trochanter）や恥骨（pubis）の上を通る所に滑液包（bursa）がある。大転子の上の中殿筋の転子包（trochanteric bursa of gluteus medius）・大殿筋の転子包（trochanteric bursa）は、ランナーや高齢者の股関節の外側（lateral）の痛み（大転子滑液包炎（trochanteric bursitis））のもとになり、腸腰筋（iliopsoas）の腱の下の腸恥包（iliopectineal bursa）は股関節の関節腔（joint cavity）とつながっていることがある。"],
+      "terms": [
+        {
+          "id": "iliopectineal-bursa", "ja": "腸恥包", "yomi": "ちょうちほう", "en": "iliopectineal bursa", "enAlt": ["iliopsoas bursa"], "la": "bursa iliopectinea",
+          "parts": ["za:*iliopectineal bursa*"], "level": 3, "xray": true, "color": "#9fc2da",
+          "kanji": "腸腰筋と恥骨の間の滑液包",
+          "etym": "ilio-「腸骨の（腸腰筋の）」＋ pectineal「恥骨櫛の」",
+          "note": "腸腰筋（iliopsoas）の腱（tendon）と、股関節（hip joint）の関節包（joint capsule）の前・恥骨（pubis）（腸恥隆起（iliopubic eminence））の間にある大きな滑液包（bursa）。股関節の関節腔（joint cavity）とつながっていることがあり、関節（joint）の病気で腫れると鼡径部の痛みやしこりになる。腸腰筋包ともいう。"
+        },
+        {
+          "id": "trochanteric-bursa-of-gluteus-medius", "ja": "中殿筋の転子包", "yomi": "ちゅうでんきんのてんしほう", "en": "trochanteric bursa of gluteus medius", "la": "bursa trochanterica musculi glutei medii",
+          "parts": ["za:trochanteric bursa of gluteus medius muscle"], "level": 3, "color": "#9fc2da",
+          "kanji": "中殿筋の腱と大転子の間の滑液包",
+          "etym": "trochanteric「転子の」＋ gluteus medius「中殿筋」",
+          "note": "中殿筋（gluteus medius）の腱（tendon）が大転子（greater trochanter）に付く所の下にある滑液包（bursa）。大殿筋の転子包（trochanteric bursa）とともに、大転子の上で腱が滑らかに動くようにする。"
         }
       ]
     },
