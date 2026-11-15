@@ -22,6 +22,7 @@ import { attachedBones } from "./attach-bones.mjs";
 import { partitionMesh, splitMesh } from "./split-mesh.mjs";
 import { loadHires } from "./hires.mjs";
 import { loadNasal, nasalNames } from "./nasal/index.mjs";
+import { heartNames, loadHeart, REPLACES as HEART_REPLACES } from "./heart/index.mjs";
 import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, relax, simplify, subdivide } from "./surface.mjs";
 import { loadZa } from "./za/index.mjs";
 
@@ -349,10 +350,18 @@ export function readElements() {
   }
   // NasalSeg の CT から作った鼻腔・鼻道・鼻甲介・上顎洞（scripts/nasal/）。BodyParts3D の部品と同じように名前で指定する
   for (const [id, name] of nasalNames()) elementNames.set(id, name);
+  // 心臓の中のつくり（scripts/heart/）。作り直した壁・弁の尖で、BodyParts3D の壁・尖を置きかえる
+  const hearts = heartNames();
+  if (hearts.size) {
+    for (const [id, name] of [...elementNames]) if (id.startsWith("FJ") && HEART_REPLACES.includes(name.toLowerCase())) elementNames.delete(id);
+    for (const [id, name] of hearts) elementNames.set(id, name);
+  }
+  const heart = loadHeart();
   const cache = new Map();
   const nasal = loadNasal({ elementNames, readWhole: (id) => readWhole(id) });
   const readMesh = (id) => {
     if (id.startsWith("NS_")) return nasal(id);
+    if (id.startsWith("HT_")) return heart(id);
     if (!cache.has(id)) {
       const [cut, half, source, lower] = cutOf.get(id) ?? [];
       const [guides, i, whole, bias] = pieceOf.get(id) ?? [];

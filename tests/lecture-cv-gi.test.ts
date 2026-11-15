@@ -29,7 +29,8 @@ describe("解剖学総論の循環器・消化器 その2", () => {
     expect(on("microvilli")?.organ.id).toBe("intestine");
     expect(on("pharyngeal-tonsil")?.plate.id).toBe("tonsils");
     expect(on("hepatorenal-recess")?.plate.id).toBe("peritoneum-transverse");
-    expect(on("fibrous-rings-of-heart")?.plate.id).toBe("heart-base");
+    // 線維輪は 2026-11-16 に3Dの語にした（docs/緻密なモデル.md「その1」）
+    expect(termById.get("fibrous-rings-of-heart")?.parts).toEqual(["fibrous ring of * valve"]);
     expect(on("internal-anal-sphincter")?.plate.id).toBe("rectum-anal");
     expect(on("hepatic-diverticulum")?.plate.art?.license).toBe("自作");
     expect(on("septum-transversum")?.plate.id).toBe("gut-tube");

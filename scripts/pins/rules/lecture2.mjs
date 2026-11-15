@@ -7,7 +7,6 @@ export const RULES = {
   // 上行大動脈の根もと（大動脈弁のすぐ上のふくらみ）
   "aortic-sinus": { ...one, ext: "inf", r: 0.011, n: "ant+lat" },
   // 右心室が肺動脈幹へ続く所（肺動脈幹のいちばん下の接する所）
-  "conus-arteriosus": { ...one, near: [0.022, 1.262, 0.146], r: 0.011, n: "ant+med" },
   // 食道の狭窄: 起始部の上端・大動脈弓と左主気管支が押す高さ・食道裂孔を通る所
   "pharyngoesophageal-constriction": { ...one, ext: "sup", r: 0.009, n: "ant" },
   "bronchoaortic-constriction": { ...one, near: [0.012, 1.29, 0.079], r: 0.01, n: "med+ant" },
@@ -29,7 +28,7 @@ export const RULES = {
   "aortic-hiatus": { ...one, near: [0.002, 1.1, 0.108], r: 0.008, n: "post+inf" },
 };
 export const CHECKS = [
-  { name: "lec2-aorta-heart", mesh: ["ascending-aorta", "right-ventricle", "pulmonary-trunk"], views: ["ant", "lat"], ids: ["aortic-sinus", "conus-arteriosus"], side: "all" },
+  { name: "lec2-aorta-heart", mesh: ["ascending-aorta", "right-ventricle", "pulmonary-trunk"], views: ["ant", "lat"], ids: ["aortic-sinus"], side: "all" },
   { name: "lec2-esophagus", mesh: "esophagus", views: ["ant", "med"], ids: ["pharyngoesophageal-constriction", "bronchoaortic-constriction", "diaphragmatic-constriction"], side: "all" },
   { name: "lec2-gut", mesh: ["duodenum", "cecum"], views: ["ant"], ids: ["suspensory-muscle-of-duodenum", "duodenojejunal-flexure", "ileal-orifice"], side: "all" },
   { name: "lec2-liver", mesh: "liver", views: ["post", "sup", "ant"], ids: ["coronary-ligament-of-liver", "right-triangular-ligament", "left-triangular-ligament", "bare-area-of-liver", "falciform-ligament"], side: "all" },

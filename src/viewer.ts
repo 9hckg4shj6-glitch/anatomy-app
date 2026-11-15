@@ -396,6 +396,8 @@ export class AnatomyViewer {
   private elementTerms = new Map<string, string[]>();
   /** ほかの構造をおおったりふさいだりする形（大網・口腔など、veil の語）の部品。強調していないときはごく薄く見せ、タップでは選べない */
   private veiled = new Set<string>();
+  /** 強調したときだけ描く部品（tuck の語。心外膜・心内膜・心膜） */
+  private tucked = new Set<string>();
   private active = new Set<string>();
   private context = new Set<string>();
   private contextOpacity = 0.16;
@@ -610,6 +612,7 @@ export class AnatomyViewer {
       this.attachments = attachments;
       for (const [termId, term] of Object.entries(index.terms)) {
         if (termById.get(termId)?.veil) for (const element of term.elements) this.veiled.add(element);
+        if (termById.get(termId)?.tuck) for (const element of term.elements) this.tucked.add(element);
         // 骨・器官の部位は骨・器官と同じ部品なので、タップした部品の名前には使わない
         if (termById.get(termId)?.of) continue;
         for (const element of term.elements) {
@@ -1428,6 +1431,7 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
       const outsideOrgan = !!this.organ && !this.organ.elements.has(elementId) && !highlightedElements.has(elementId) && !spotElements.has(elementId);
       mesh.visible = !(this.motion && system === "body") && !(this.actionTerm && !bone) && !hiddenByRegion && !leftSide && !outsideOrgan
         && !(peeled && this.peelHidden.has(elementId))
+        && !(this.tucked.has(elementId) && !highlightedElements.has(elementId))
         && (!this.drawing || (this.drawing.elements.has(elementId) && this.onDrawingSide(mesh)));
       if (this.motion?.meshes.has(mesh)) {
         mesh.material = this.solid(HIGHLIGHT, mesh);

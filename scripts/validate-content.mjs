@@ -59,6 +59,7 @@ const Term = z.strictObject({
   tissue: z.enum(["clear", "sclera", "iris", "retina", "tooth", "mucosa", "tongue", "gland", "ligament"]).optional(),
   xray: z.literal(true).optional(),
   veil: z.literal(true).optional(),
+  tuck: z.literal(true).optional(),
   check: z.literal(true).optional(),
   origin: z.string().min(2).optional(),
   insertion: z.string().min(2).optional(),
@@ -77,7 +78,8 @@ const Term = z.strictObject({
   plate: z.string().regex(/^[a-z0-9-]+$/).optional(),
 }).refine((term) => [term.parts || term.of, term.figure, term.region, term.plate].filter(Boolean).length === 1, "parts か of（3Dの部品）か figure（基本の用語の図）か region（局所解剖）か plate（平面図の語）のどれかが要る")
   .refine((term) => !term.motion || term.nerve, "motion（作用の動き）は筋の語だけに書く")
-  .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける");
+  .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける")
+  .refine((term) => !term.tuck || term.veil, "tuck（強調したときだけ描く形）は veil と一緒に付ける");
 const TermFile = z.strictObject({
   system: z.string(),
   units: z.array(z.strictObject({ id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), group: z.string().min(1).optional(), intro: z.array(z.string().min(1)).min(1).optional(), terms: z.array(Term).min(1) })).min(1),
