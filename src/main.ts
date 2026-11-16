@@ -12,6 +12,11 @@ import { explore } from "./ui/explore";
 import { home } from "./ui/home";
 import { lesson } from "./ui/lesson";
 import { lessons } from "./ui/lessons";
+import { look } from "./ui/look";
+import { records } from "./ui/records";
+import { start } from "./ui/start";
+import { studyHub } from "./ui/study-hub";
+import { loadMarks } from "./marks";
 import { organScreen } from "./ui/organs";
 import { progress } from "./ui/progress";
 import { review } from "./ui/review";
@@ -27,19 +32,53 @@ const tools = document.getElementById("stage-tools")!;
 const crumbs = document.getElementById("crumbs")!;
 const layout = document.querySelector<HTMLElement>(".layout")!;
 
-/** ページの名前と、その一覧のアドレス（上の帯に「‹ ホーム ／ レッスン」と出す）。ここに無い名前はホーム */
+/** ページの名前と、その一覧のアドレス（上の帯に「‹ 学ぶ ／ レッスン」と出す）。ここに無い名前は今日（ホーム） */
 const PAGES: Record<string, [title: string, href: string]> = {
+  study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
   exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], organs: ["臓器の図", "#/organs"], roots: ["語根カード", "#/roots"],
   progress: ["進捗", "#/progress"], settings: ["設定", "#/settings"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
-/** 上の帯: ホームでは名前だけ、ほかのページでは「‹ ホーム」とページの名前（一覧より奥にいれば、名前を押すと一覧へ戻る） */
+/** 下のタブ（今日・学ぶ・調べる・記録）と、ページがどのタブの中にあるか */
+const TABS: Record<string, [label: string, href: string]> = {
+  today: ["今日", "#/"], study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"],
+};
+const TAB_OF: Record<string, string> = {
+  study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study",
+  look: "look", explore: "look",
+  records: "records", progress: "records", settings: "records", credits: "records", admin: "records",
+};
+/** タブの一番上の画面（上の帯は名前だけ） */
+const TAB_ROOTS = new Set(["", "study", "look", "records", "start"]);
+/** タブを隠す画面（解いている間・はじめに。上の帯の「‹」で戻る） */
+const NO_TABS = new Set(["learn", "review", "start"]);
+
+const brand = document.querySelector<HTMLAnchorElement>(".brand")!;
+const brandBack = brand.querySelector<HTMLElement>(".brand-back")!;
+const tabbar = document.getElementById("tabbar")!;
+
+/**
+ * 上の帯と下のタブ: タブの一番上の画面では名前だけ、ほかのページでは「‹ タブの名前」とページの名前
+ * （一覧より奥にいれば、名前を押すと一覧へ戻る）。今いるタブに印を付ける
+ */
 function showCrumbs(name: string): void {
   const page = PAGES[name];
-  document.body.classList.toggle("at-home", !page);
-  if (!page) {
+  const tab = TAB_OF[name] ?? "today";
+  const root = TAB_ROOTS.has(name) || !page;
+  document.body.classList.toggle("at-home", root);
+  document.body.classList.toggle("no-tabs", NO_TABS.has(name));
+  for (const link of tabbar.querySelectorAll<HTMLAnchorElement>(".tab")) {
+    if (link.dataset.tab === tab) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  }
+  const [tabLabel, tabHref] = TABS[tab];
+  brand.href = tabHref;
+  brandBack.textContent = tabLabel;
+  brand.setAttribute("aria-label", `${tabLabel}へ`);
+  if (root) {
     crumbs.replaceChildren();
+    document.title = page ? `${page[0]} - 解剖学 3D単語帳` : "解剖学 3D単語帳";
     return;
   }
   const [title, href] = page;
@@ -60,7 +99,7 @@ const keyHelp = h("dialog", { class: "key-help", "aria-label": "キーボード�
   h("dl", {},
     ...([
       ["1〜4", "選択肢を選ぶ"], ["0", "わからない"], ["Enter ・ →", "答えたあと次へ"], ["Backspace", "押しまちがえた（取り消して解き直す）"], ["H", "正解したけれど自信がなかった（早めにもう一度出す）"],
-      ["← →", "レッスンで前・次の語"], ["Esc", "復習をここでやめる"], ["/", "検索欄へ（レッスン・図鑑）"], ["?", "この一覧"],
+      ["← →", "レッスンで前・次の語"], ["Esc", "復習をここでやめる"], ["/", "検索欄へ（無ければ「調べる」へ）"], ["?", "この一覧"],
     ] as const).map(([key, text]) => h("div", {}, h("dt", {}, h("kbd", {}, key)), h("dd", {}, text))),
   ),
   h("form", { method: "dialog" }, h("button", { class: "primary" }, "閉じる")),
@@ -92,9 +131,9 @@ document.addEventListener("keydown", (event) => {
     else keyHelp.showModal();
   } else if (event.key === "/") {
     const search = document.querySelector<HTMLInputElement>("#panel .search");
-    if (!search) return;
     event.preventDefault();
-    search.focus();
+    if (search) search.focus();
+    else location.hash = "#/look";
   }
 });
 
@@ -102,7 +141,7 @@ document.addEventListener("keydown", (event) => {
 // そこへ移るときに読み直して切りかえる。ホームだけにすると、臓器の図の中を行き来している間は古い版のまま（新しい平面図が出ない）だった。
 // レッスン・復習・演習・骨学試験の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
 let updated = false;
-const RELOADABLE = new Set(["", "organs", "explore", "lessons", "progress", "settings", "credits"]);
+const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "lessons", "progress", "settings", "credits"]);
 const canReload = () => RELOADABLE.has(location.hash.split("/")[1] ?? "");
 const serviceWorker = navigator.serviceWorker as ServiceWorkerContainer | undefined; // http の LAN では無い
 // 初めて開いたとき（前の版が無いとき）の入れかわりは数えない
@@ -117,7 +156,7 @@ document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") void serviceWorker?.getRegistration().then((registration) => registration?.update()).catch(() => {});
 });
 
-async function start(): Promise<void> {
+async function boot(): Promise<void> {
   let viewer: AnatomyViewer;
   try {
     viewer = new AnatomyViewer(stage);
@@ -136,7 +175,7 @@ async function start(): Promise<void> {
     );
     return;
   }
-  const [index] = await Promise.all([loadModelIndex(), loadPreferences()]);
+  const [index] = await Promise.all([loadModelIndex(), loadPreferences(), loadMarks()]);
   // ピン打ちツールは ?admin=1 で開いたときだけホームに項目を出す（src/ui/home.ts）
   if (import.meta.env.DEV) Object.assign(window, { viewer }); // 開発時の確認用
   let controller = new AbortController();
@@ -189,16 +228,19 @@ async function start(): Promise<void> {
 
     const [name, arg] = parseHash();
     currentName = name;
-    // ホームは3Dの人体を大きく、境目のつまみは出さない。回る人体が主役なので向きの目印も出さない
+    // 今日（ホーム）は3Dの人体を大きく、境目のつまみは出さない。回る人体が主役なので向きの目印も出さない
     layout.classList.toggle("is-home", !PAGES[name]);
     viewer.hideCompass(!PAGES[name]);
-    if (!PAGES[name]) document.title = "解剖学 3D単語帳";
     showCrumbs(name);
     window.scrollTo(0, 0);
     try {
       if (name === "learn") await lesson(ctx, arg);
       else if (name === "lessons") await lessons(ctx, arg);
-      else if (name === "review") await review(ctx);
+      else if (name === "study") await studyHub(ctx);
+      else if (name === "look") await look(ctx);
+      else if (name === "records") await records(ctx);
+      else if (name === "start") await start(ctx);
+      else if (name === "review") await review(ctx, arg);
       else if (name === "explore") await explore(ctx, arg);
       // "#/roots/<レッスンID>" は語根のレッスン、"#/roots/root/<語根のキー>" は一覧でその語根を開く
       else if (name === "roots") await (arg && !arg.startsWith("root/") ? rootLesson(ctx, arg) : rootIndex(ctx, arg.slice("root/".length)));
@@ -234,4 +276,4 @@ async function start(): Promise<void> {
   await route();
 }
 
-void start();
+void boot();

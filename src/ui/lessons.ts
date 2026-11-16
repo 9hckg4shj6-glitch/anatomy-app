@@ -3,52 +3,40 @@ import { courseUnitOf, courseUnits, isBeginner, lessonById } from "../course";
 import { db, nowIso, type LearnedTerm } from "../db";
 import { h } from "../dom";
 import { normalize, searchTerms, searchUnits } from "../search";
-import { termAt, type AppContext } from "./context";
+import { preferences } from "../settings";
+import { sceneFor, termAt, type AppContext } from "./context";
+
+/** レッスンの一覧で最後に選んだ系統（レッスンから戻っても同じ系統を見せる） */
+let shownSystem = "";
 
 /**
- * レッスンの一覧（#/lessons）。系統→まとまり→レッスンのフォルダーと、最近のレッスン・検索。
- * "#/lessons/<系統ID>"（ホームの系統から）は、その系統のフォルダーを開いて見せる
+ * レッスンの一覧（#/lessons）。上の系統のボタンで系統を選び、その系統の進み具合（輪）と、まとまりごとのレッスンの道すじ
+ * （済み・途中・まだ）を出す。次に学ぶレッスンのあるまとまりは開いておく。検索ではレッスンの題・まとまりと語を探す。
+ * "#/lessons/<系統ID>" はその系統を選んで開く
  */
 export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
-  ctx.viewer.highlight([]);
-  ctx.viewer.overview();
-  // 皮膚と骨格だけを読み込む（全系統だと初めて開いたとき約25MB。ほかの系統は使う画面で読み込む）
-  void ctx.viewer.show({ systems: ["skeletal"], body: true });
+  ctx.fold(true);
+  ctx.hint("");
   // 骨や骨の部位をタップしたら、図鑑でその語を開く
   ctx.viewer.onPick = (elementId, point) => {
     const term = termAt(ctx, elementId, point);
     if (term) location.hash = `#/explore/${term.id}`;
   };
   ctx.viewer.onHover = (elementId, point) => termAt(ctx, elementId, point)?.ja ?? null;
-  ctx.hint("タップで図鑑を開く・ドラッグで回転");
 
   const [learned, openSetting] = await Promise.all([db.learned.toArray(), db.settings.get(OPEN_FOLDERS)]);
   const learnedIds = new Set(learned.map((item) => item.termId));
-  // 開いたフォルダーは覚えておき、レッスンから戻ったときも開いたままにする
+  // 開いたまとまりは覚えておき、レッスンから戻ったときも開いたままにする
   const openIds = new Set(Array.isArray(openSetting?.value) ? (openSetting.value as string[]) : []);
-  if (systemId) openIds.add(systemId);
-  const folder = (id: string, title: (Node | string)[], summary: string, allDone: boolean, list: HTMLElement, kind = "system folder"): HTMLElement =>
-    h("details", {
-      class: allDone ? `${kind} done` : kind,
-      "data-folder": id,
-      open: openIds.has(id),
-      ontoggle: (event: Event) => {
-        if ((event.currentTarget as HTMLDetailsElement).open) openIds.add(id);
-        else openIds.delete(id);
-        void db.settings.put({ key: OPEN_FOLDERS, value: [...openIds], updatedAt: nowIso() });
-      },
-    },
-      h("summary", {},
-        h("span", { class: "folder-title" }, ...title),
-        h("span", { class: "folder-count" }, summary),
-      ),
-      list,
-    );
   const nextUnit = nextLesson(learned);
-  const recent = recentLessons(learned).filter((unit) => unit !== nextUnit);
-  /** レッスンの行。途中まで学んだレッスンには「途中」の印 */
+  const units = courseUnits();
+  const inSystems = systems.filter((system) => units.some((unit) => unit.system === system.id));
+  const pick = [systemId, shownSystem, nextUnit?.system].find((id) => id && inSystems.some((system) => system.id === id)) ?? inSystems[0]?.id ?? "";
+  const doneOf = (unit: Unit) => unit.terms.filter((term) => learnedIds.has(term.id)).length;
+
+  /** レッスンの行（検索の結果）。途中まで学んだレッスンには「途中」の印 */
   const unitRow = (unit: Unit) => {
-    const done = unit.terms.filter((term) => learnedIds.has(term.id)).length;
+    const done = doneOf(unit);
     return h("li", {},
       h("a", { href: `#/learn/${unit.id}`, class: done === unit.terms.length ? "unit done" : done ? "unit partial" : "unit" },
         h("span", { class: "unit-title" }, unit.title),
@@ -56,12 +44,12 @@ export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
       ));
   };
 
-  // 検索: レッスンの題と語。打っている間はフォルダーの代わりに当たったものを並べる
+  // 検索: レッスンの題と語。打っている間は一覧の代わりに当たったものを並べる
   const search = h("input", {
     class: "search", type: "search", placeholder: "レッスン・語を探す", "aria-label": "レッスンと語を探す",
     oninput: () => {
       const query = normalize(search.value.trim());
-      folders.hidden = !!query;
+      body.hidden = !!query;
       results.hidden = !query;
       if (query) showResults(query);
     },
@@ -82,44 +70,98 @@ export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
     );
   };
 
-  const folders = h("div", {}, ...systems.flatMap((system) => {
-      const list = courseUnits().filter((unit) => unit.system === system.id);
-      if (!list.length) return [];
-      const total = list.reduce((sum, unit) => sum + unit.terms.length, 0);
-      const done = list.reduce((sum, unit) => sum + unit.terms.filter((term) => learnedIds.has(term.id)).length, 0);
-      // まとまり（骨格系の体幹・上肢など）のある系統は、系統→まとまり→レッスンの入れ子のフォルダーにする
-      const groups = [...new Set(list.map((unit) => unit.group))];
-      const content = groups[0]
-        ? h("div", { class: "subfolders" }, ...groups.map((group) => {
-          const inGroup = list.filter((unit) => unit.group === group);
-          const groupTotal = inGroup.reduce((sum, unit) => sum + unit.terms.length, 0);
-          const groupDone = inGroup.reduce((sum, unit) => sum + unit.terms.filter((term) => learnedIds.has(term.id)).length, 0);
-          return folder(`${system.id}/${group}`, [group ?? ""], `${inGroup.length}レッスン・${groupDone ? `${groupDone}/${groupTotal}` : groupTotal}語`,
-            groupDone === groupTotal, h("ul", { class: "units" }, ...inGroup.map(unitRow)), "subfolder");
-        }))
-        : h("ul", { class: "units" }, ...list.map(unitRow));
-      return [folder(system.id,
-        [h("span", { class: "swatch", style: `background:${system.color}` }), system.ja],
-        `${list.length}レッスン・${done ? `${done}/${total}` : total}語`,
-        done === total,
-        content,
-      )];
+  const chips = h("div", { class: "system-chips", role: "tablist", "aria-label": "系統" });
+  const body = h("div", {});
+  const choose = (id: string) => {
+    shownSystem = id;
+    for (const chip of chips.querySelectorAll<HTMLButtonElement>(".chip")) {
+      const on = chip.dataset.key === id;
+      chip.classList.toggle("on", on);
+      chip.setAttribute("aria-selected", String(on));
+    }
+    body.replaceChildren(...systemView(id));
+    // 3Dにはその系統を見せる（スマホではたたんでいる）
+    void ctx.viewer.show(sceneFor(id)).then(() => {
+      if (!ctx.signal.aborted) ctx.viewer.highlight([]);
+    });
+    ctx.viewer.overview();
+  };
+  chips.append(...inSystems.map((system) => h("button", {
+    class: "chip", type: "button", role: "tab", "data-key": system.id, onClick: () => choose(system.id),
+  }, h("span", { class: "swatch", style: `background:${system.color}` }), system.ja.replace(/系$/, ""))));
+
+  /** 系統の札（進み具合の輪）と、まとまりごとのレッスンの道すじ */
+  const systemView = (id: string): HTMLElement[] => {
+    const system = systems.find((item) => item.id === id)!;
+    const list = units.filter((unit) => unit.system === id);
+    const total = list.reduce((sum, unit) => sum + unit.terms.length, 0);
+    const done = list.reduce((sum, unit) => sum + doneOf(unit), 0);
+    const share = total ? done / total : 0;
+    const card = h("section", { class: "home-card system-card" },
+      ring(share, system.color),
+      h("div", {}, h("b", { class: "system-card-name" }, system.ja),
+        h("span", { class: "muted" }, `${done ? `${done.toLocaleString()} / ` : ""}${total.toLocaleString()}語・${list.length}レッスン`)),
+    );
+    const path = (inList: Unit[]) => h("ol", { class: "home-card lesson-path" }, ...inList.map((unit, i) => {
+      const n = doneOf(unit);
+      const state = n === unit.terms.length ? "done" : n ? "partial" : "todo";
+      const isNext = unit === nextUnit;
+      return h("li", {}, h("a", { class: `path-row ${state}${isNext ? " next" : ""}`, href: `#/learn/${unit.id}` },
+        h("span", { class: "path-mark", "aria-hidden": "true" }, state === "done" ? "✓" : String(i + 1)),
+        h("span", { class: "path-text" },
+          h("span", { class: "path-title" }, unit.title),
+          h("span", { class: "path-sub" }, state === "done" ? `${unit.terms.length}語・済み` : n ? `${n} / ${unit.terms.length}語・途中` : `${unit.terms.length}語`)),
+        isNext ? h("span", { class: "path-next" }, n ? "続き" : "次") : "",
+      ));
     }));
+    const groups = [...new Set(list.map((unit) => unit.group))];
+    if (!groups[0]) return [card, path(list)];
+    return [card, ...groups.map((group) => {
+      const inGroup = list.filter((unit) => unit.group === group);
+      const key = `${id}/${group}`;
+      const finished = inGroup.filter((unit) => doneOf(unit) === unit.terms.length).length;
+      const open = openIds.has(key) || inGroup.includes(nextUnit!) || groups.length === 1;
+      return h("details", {
+        class: "path-group", open,
+        ontoggle: (event: Event) => {
+          if ((event.currentTarget as HTMLDetailsElement).open) openIds.add(key);
+          else openIds.delete(key);
+          void db.settings.put({ key: OPEN_FOLDERS, value: [...openIds], updatedAt: nowIso() });
+        },
+      },
+        h("summary", {}, h("span", { class: "path-group-name" }, group ?? ""),
+          h("span", { class: "muted" }, finished ? `${finished} / ${inGroup.length} レッスン` : `${inGroup.length}レッスン`)),
+        path(inGroup));
+    })];
+  };
 
   ctx.panel.replaceChildren(
     search,
-    nextUnit ? h("a", { class: "primary next-lesson", href: `#/learn/${nextUnit.id}` }, `次のレッスン「${nextUnit.title}」`) : "",
-    recent.length ? h("section", { class: "recent" },
-      h("h3", {}, "最近のレッスン"),
-      h("ul", { class: "units" }, ...recent.map(unitRow)),
-    ) : "",
+    h("div", { class: "tab-head" }, h("h2", {}, "レッスン")),
+    chips,
     results,
-    folders,
+    body,
     isBeginner()
-      ? h("p", { class: "muted lessons-note" }, "初心者モードのレッスンです（最低限覚える語だけ）。全部の語は ", h("a", { href: "#/settings" }, "設定"), " で詳細モードにすると学べます。")
-      : h("p", { class: "muted lessons-note" }, "語根カード・臓器の図・骨学試験は、ホームのそれぞれの項目から開きます。"),
+      ? h("p", { class: "muted lessons-note" }, "「はじめての解剖」のコースのレッスンです（最低限覚える語だけ）。全部の語は ", h("a", { href: "#/settings" }, "設定"), " でコースを変えると学べます。")
+      : "",
   );
-  if (systemId) folders.querySelector(`[data-folder="${CSS.escape(systemId)}"]`)?.scrollIntoView({ block: "start" });
+  choose(pick);
+  chips.querySelector(".chip.on")?.scrollIntoView({ block: "nearest", inline: "center" });
+}
+
+/** 進み具合の輪（SVG。真ん中に %） */
+function ring(share: number, color: string): SVGElement {
+  const r = 23;
+  const length = 2 * Math.PI * r;
+  const box = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  box.setAttribute("viewBox", "0 0 56 56");
+  box.setAttribute("class", "progress-ring");
+  box.setAttribute("role", "img");
+  box.setAttribute("aria-label", `${Math.floor(share * 100)}%`);
+  box.innerHTML = `<circle cx="28" cy="28" r="${r}" fill="none" stroke="var(--ring-track)" stroke-width="6"/>`
+    + `<circle cx="28" cy="28" r="${r}" fill="none" stroke="${color}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${(share * length).toFixed(1)} ${length.toFixed(1)}" transform="rotate(-90 28 28)" style="filter:brightness(0.85) saturate(1.2)"/>`
+    + `<text x="28" y="33" text-anchor="middle" font-size="14" font-weight="800" fill="currentColor">${Math.floor(share * 100)}%</text>`;
+  return box;
 }
 
 const OPEN_FOLDERS = "homeOpenFolders";
@@ -133,6 +175,8 @@ export function nextLesson(learned: LearnedTerm[]): Unit | undefined {
   const learnedIds = new Set(learned.map((item) => item.termId));
   const open = (unit: Unit) => unit.terms.some((term) => !learnedIds.has(term.id));
   const last = recentLessons(learned)[0];
+  // 骨学試験のコースでは、まだ何も学んでいなければ骨格系から
+  if (!last && preferences.course === "exam") return units.find((unit) => open(unit) && unit.system === "skeletal") ?? units.find(open);
   if (last) {
     if (open(last)) return last;
     const after = units.slice(units.indexOf(last) + 1);

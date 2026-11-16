@@ -1,3 +1,4 @@
+import { loadMarks } from "../marks";
 import { exportBackup, importBackup, isBackup } from "../backup";
 import { systemById, terms } from "../content";
 import { beginnerTermCount } from "../course";
@@ -5,7 +6,7 @@ import { db, nowIso, type Facet } from "../db";
 import { canSaveOffline, offlineFiles, savedFiles, saveFiles } from "../offline";
 import { h } from "../dom";
 import {
-  daysUntilExam, loadPreferences, NEW_PER_DAY_OPTIONS, preferences, REVIEW_SIZE_OPTIONS, setPreference, TEXT_SIZES, type Preferences,
+  COURSES, courseOf, daysUntilExam, loadPreferences, setCourse, NEW_PER_DAY_OPTIONS, preferences, REVIEW_SIZE_OPTIONS, setPreference, TEXT_SIZES, type Preferences,
 } from "../settings";
 import { BASIC_FACETS, TERM_KINDS } from "../study";
 import type { AppContext } from "./context";
@@ -110,15 +111,18 @@ function settingRows(render: () => void): HTMLElement[] {
   const beginner = preferences.mode === "beginner";
   return [
     h("section", { class: "settings" },
-      h("h3", {}, "モード"),
-      chips([{ value: "beginner" as const, label: "初心者モード" }, { value: "detail" as const, label: "詳細モード" }], preferences.mode, async (value) => {
-        await setPreference("mode", value);
+      h("h3", {}, "コース"),
+      chips(COURSES.map((course) => ({ value: course.id, label: course.title })), courseOf(), async (value) => {
+        await setCourse(value);
         window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
       }),
       h("p", { class: "muted" }, beginner
-        ? `初心者モードでは、解剖学をはじめて学ぶ人が最低限覚える ${beginnerTermCount}語だけを、短い「覚えること」と一緒に学びます。問い方は位置・名前・英語の4つだけで、語根カードと骨学試験は出しません。`
-        : `詳細モードでは、全 ${terms.length.toLocaleString()}語と、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、語根カード・骨学試験を学びます。`),
-      h("p", { class: "muted" }, "学んだ記録は語ごとに残るので、どちらのモードで学んでも続きになります（初心者モードで学んだ語は、詳細モードでも学んだ語です）。"),
+        ? `はじめての解剖では、解剖学をはじめて学ぶ人が最低限覚える ${beginnerTermCount}語だけを、短い「覚えること」と一緒に学びます（初心者モード）。問い方は位置・名前・英語の4つだけで、語根カードと骨学試験は出しません。`
+        : `骨学試験の対策と「自分で選ぶ」では、全 ${terms.length.toLocaleString()}語と、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、語根カード・骨学試験を学びます（詳細モード）。骨学試験の対策は、骨格系のレッスンと骨学試験を先に出します。`),
+      h("p", { class: "muted" }, "学んだ記録は語ごとに残るので、コースを変えても続きになります。"),
+      h("p", { class: "setting-label" }, "学ぶの一覧"),
+      chips([{ value: false, label: "使う時が来たら出す" }, { value: true, label: "すべての学び方を出す" }], preferences.showAllWays, (value) => setPreference("showAllWays", value)),
+      h("p", { class: "muted" }, "はじめは、まだ使わない学び方（演習・骨学試験・語根カード）を隠し、レッスンを1つ学ぶと出します。"),
     ),
     h("section", { class: "settings" },
       h("h3", {}, "学ぶ問い方"),
@@ -162,7 +166,7 @@ function settingRows(render: () => void): HTMLElement[] {
         class: "ghost-button", type: "button",
         onClick: async (event: Event) => {
           await db.settings.delete("installHintClosed");
-          (event.currentTarget as HTMLButtonElement).textContent = "ホームに案内を出しました";
+          (event.currentTarget as HTMLButtonElement).textContent = "今日の画面に案内を出しました";
         },
       }, "「ホーム画面に追加」の案内をもう一度出す"),
     ),
@@ -171,8 +175,8 @@ function settingRows(render: () => void): HTMLElement[] {
       h("div", { class: "date-row" }, examDate,
         preferences.examDate ? h("button", { class: "text-button", type: "button", onClick: async () => { await setPreference("examDate", ""); render(); } }, "消す") : ""),
       h("p", { class: "muted" }, days === null
-        ? "決めると、ホームに試験までの日数と、まだ学んでいない骨学試験の項目を1日いくつ解けば間に合うかを出します。"
-        : `試験まであと${days}日。ホームに1日の目安を出します。`),
+        ? "決めると、今日と記録の画面に試験までの日数と、まだ学んでいない骨学試験の項目を1日いくつ解けば間に合うかを出します。"
+        : `試験まであと${days}日。今日の画面に1日の目安を出します。`),
     ),
   ];
 }
@@ -196,6 +200,7 @@ function backupSection(onImported: () => void): HTMLElement {
       if (!confirm(`${data.exportedAt.slice(0, 10)} に書き出した記録を、今の記録に足し合わせます。よろしいですか？`)) return;
       const result = await importBackup(data);
       await loadPreferences();
+      await loadMarks();
       onImported();
       window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
       status.textContent = `読み込みました（覚え具合 ${result.schedules}件・解いた記録 ${result.reviewEvents}件・学んだ語 ${result.learned}件）。`;

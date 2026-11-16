@@ -8,6 +8,13 @@ export interface Preferences {
    * 詳細モード（detail）は全部の語と詳しい説明（src/course.ts）。保存が無ければ、まだ何も学んでいない人は初心者モード
    */
   mode: "beginner" | "detail";
+  /**
+   * はじめに選ぶコース（#/start。docs/普段使い.md）。basic＝はじめての解剖（初心者モード）、exam＝骨学試験の対策、free＝授業に合わせて自分で選ぶ
+   * （exam と free は詳細モード）。空ならまだ選んでいない（今までの人は mode から決まる。courseOf）
+   */
+  course: "" | "basic" | "exam" | "free";
+  /** 学ぶの一覧に、まだ使う時の来ていない学び方（演習・骨学試験・語根カード）も初めから出す */
+  showAllWays: boolean;
   /** レッスン・図鑑・答え合わせで英語の発音を自動で鳴らす（🔊を押せばいつでも鳴る） */
   autoSpeak: boolean;
   /** 1日に新しく始める問い方の数（4つの問い方を別々に数える） */
@@ -41,7 +48,7 @@ export const TEXT_SIZES: Record<Preferences["textSize"], { label: string; zoom: 
 };
 
 export const preferences: Preferences = {
-  mode: "detail", autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
+  mode: "detail", course: "", showAllWays: false, autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
   studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"], compass: true, enNotes: false,
 };
 
@@ -56,6 +63,8 @@ const facetList = (allowed: Facet[]) => (value: unknown): value is Facet[] =>
 
 const valid: { [K in keyof Preferences]: (value: unknown) => value is Preferences[K] } = {
   mode: (value): value is Preferences["mode"] => value === "beginner" || value === "detail",
+  course: (value): value is Preferences["course"] => value === "" || value === "basic" || value === "exam" || value === "free",
+  showAllWays: (value): value is boolean => typeof value === "boolean",
   autoSpeak: (value): value is boolean => typeof value === "boolean",
   newPerDay: (value): value is number => typeof value === "number" && NEW_PER_DAY_OPTIONS.includes(value),
   autoNext: (value): value is boolean => typeof value === "boolean",
@@ -93,6 +102,24 @@ export async function setPreference<K extends keyof Preferences>(key: K, value: 
   preferences[key] = value;
   if (key === "textSize") applyTextSize();
   await db.settings.put({ key, value, updatedAt: nowIso() });
+}
+
+/** コース（はじめに選ぶ。#/start と設定） */
+export const COURSES: { id: Exclude<Preferences["course"], "">; title: string; sub: string; short: string }[] = [
+  { id: "basic", title: "はじめての解剖", sub: "まず覚える語だけを、短い説明で。医療系の1年生に。", short: "はじめての解剖" },
+  { id: "exam", title: "骨学試験の対策", sub: "骨を細かい部位まで。試験の形式の問題も使う。", short: "骨学試験の対策" },
+  { id: "free", title: "授業に合わせて自分で選ぶ", sub: "すべての系統とレッスンから、授業の範囲を選ぶ。", short: "授業に合わせて" },
+];
+
+/** 今のコース。まだ選んでいなければモードから（初心者モードは「はじめての解剖」、詳細モードは「自分で選ぶ」） */
+export function courseOf(): Exclude<Preferences["course"], ""> {
+  return preferences.course || (preferences.mode === "beginner" ? "basic" : "free");
+}
+
+/** コースを選ぶ。はじめての解剖は初心者モード、ほかは詳細モード */
+export async function setCourse(course: Exclude<Preferences["course"], "">): Promise<void> {
+  await setPreference("course", course);
+  await setPreference("mode", course === "basic" ? "beginner" : "detail");
 }
 
 /** 説明の欄の文字の大きさ（CSS の --panel-zoom） */

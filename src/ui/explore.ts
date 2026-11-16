@@ -2,6 +2,7 @@ import { autoSpeak } from "../audio";
 import { isDrawn, landmarksOf, loadAttachments, organOf, plateOfTerm, regionSystems, systems, termById, type Term, type Unit } from "../content";
 import { courseUnitOf, courseUnits, inCourse } from "../course";
 import { db, nowIso } from "../db";
+import { pushRecent } from "../marks";
 import { h } from "../dom";
 import { relatedTerms } from "../related";
 import { normalize, searchTerms } from "../search";
@@ -277,6 +278,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
       }
       if (!section) viewer.focus(term.id, 3.2);
       autoSpeak(term);
+      pushRecent(term.id);
     }
     render();
     // 一覧や部位の一覧から選んだとき、説明が見えるように上へ戻す（スマホでは画面全体、PCでは右の欄）
@@ -359,6 +361,12 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
 
   const chips = (items: Term[]) => h("div", { class: "chip-list" },
     ...items.map((item) => h("button", { class: "chip", type: "button", onClick: () => select(item) }, item.ja)));
+  /** 一覧の1行: 名前（部位・付く筋など）と、はじめの語をいくつか。開くと語のボタン */
+  const linkRow = (label: string, items: Term[], extra: HTMLElement | null = null) => h("details", { class: "link-row" },
+    h("summary", {},
+      h("span", { class: "link-label" }, label),
+      h("span", { class: "link-text" }, items.slice(0, 3).map((item) => item.ja).join("・") + (items.length > 3 ? ` ほか${items.length - 3}` : ""))),
+    chips(items), extra ?? "");
 
   const render = () => {
     for (const [id, row] of rows) row.classList.toggle("on", id === selected?.id);
@@ -404,16 +412,16 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
           await apply();
         }),
       }),
-      parts.length ? h("h3", {}, `${term.ja}の部位`) : "",
-      parts.length ? chips(parts) : "",
-      ...related.flatMap((relation) => [
-        h("h3", {}, `${relation.title}（${relation.list.length}）`),
-        chips(relation.list),
-        relation.group ? h("button", {
-          class: group.length ? "ghost-button on" : "ghost-button", type: "button",
-          onClick: () => (group.length ? select(term) : showGroup(relation.list)),
-        }, group.length ? "神経だけを見る" : "支配する筋をまとめて3Dで見る（神経は黄）") : "",
-      ]),
+      // 部位と関係する語は1行ずつの一覧に（押すと開いて、語を選べる）
+      parts.length || related.length ? h("div", { class: "home-card link-list" },
+        parts.length ? linkRow("部位", parts) : "",
+        ...related.map((relation) => linkRow(relation.title, relation.list,
+          relation.group ? h("button", {
+            class: group.length ? "ghost-button on" : "ghost-button", type: "button",
+            onClick: () => (group.length ? select(term) : showGroup(relation.list)),
+          }, group.length ? "神経だけを見る" : "支配する筋をまとめて3Dで見る（神経は黄）") : null)),
+      ) : "",
+      h("a", { class: "primary practice-term", href: `#/drill/term/${term.id}` }, "この語を演習"),
       h("div", { class: "nav-row" },
         parent ? h("button", { class: "ghost-button", type: "button", onClick: () => select(parent) }, `${parent.ja}を見る`) : null,
         attachable ? h("button", {

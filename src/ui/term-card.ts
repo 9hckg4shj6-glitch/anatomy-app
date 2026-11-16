@@ -5,6 +5,7 @@ import { h } from "../dom";
 import { noteText } from "../en-notes";
 import { examCountOf } from "../exam";
 import { rootsOf, splitAtRoot, type Root } from "../roots";
+import { markOf, setMark } from "../marks";
 import { preferences, setPreference } from "../settings";
 import { INSERTION_COLOR, ORIGIN_COLOR, REGION_BOUND } from "../viewer";
 
@@ -112,12 +113,79 @@ function enToggle(rerender: () => void): HTMLElement {
   );
 }
 
+/** 「くわしく」を開いたままにするか（端末ごとの好み。開いて読む人は毎回開かなくて済むように） */
+const MORE_KEY = "anatomy-term-more";
+function moreOpen(): boolean {
+  try {
+    return localStorage.getItem(MORE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+function rememberMore(open: boolean): void {
+  try {
+    localStorage.setItem(MORE_KEY, open ? "1" : "0");
+  } catch {
+    // 覚えられないときはその場だけ
+  }
+}
+
+/** ★（自分の印）の切りかえ。調べるの「★を付けた語」、演習の「★の語」に集まる */
+function starButton(term: Term): HTMLElement {
+  const button = h("button", { class: "star-button", type: "button" });
+  const paint = () => {
+    const on = markOf(term.id).starred;
+    button.classList.toggle("on", on);
+    button.setAttribute("aria-pressed", String(on));
+    button.setAttribute("aria-label", on ? `${term.ja}の★を外す` : `${term.ja}に★を付ける`);
+    button.title = on ? "★を外す" : "★を付ける（調べる・演習に集まる）";
+    button.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.8 2.5 5.2 5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4 5.7-.8z"/></svg>`;
+  };
+  button.addEventListener("click", async (event) => {
+    // 答えの画面などで、押したことが下の要素（自動で次へ進むのを止めるなど）にも伝わるのはかまわない
+    event.stopPropagation();
+    const mark = markOf(term.id);
+    // 押したらすぐ印を変える（保存はそのあと）
+    const saving = setMark(term.id, { ...mark, starred: !mark.starred });
+    paint();
+    await saving;
+  });
+  paint();
+  return button;
+}
+
+/** 自分の一言メモ（「先生が出すと言った」など）。押すと書く欄を開き、決めると残す */
+function memoRow(term: Term): HTMLElement {
+  const box = h("div", { class: "memo-row" });
+  const show = () => {
+    const memo = markOf(term.id).memo;
+    box.replaceChildren(
+      h("span", { class: "memo-label" }, "メモ"),
+      memo ? h("span", { class: "memo-text" }, memo) : h("span", { class: "memo-text muted" }, "自分の一言（先生が出すと言った、など）"),
+      h("button", { class: "text-button", type: "button", onClick: edit }, memo ? "直す" : "書く"),
+    );
+  };
+  const edit = () => {
+    const input = h("textarea", { class: "memo-input", rows: 2, maxlength: 200, "aria-label": `${term.ja}のメモ` }) as HTMLTextAreaElement;
+    input.value = markOf(term.id).memo;
+    const save = h("button", { class: "ghost-button", type: "button" }, "残す");
+    save.addEventListener("click", async () => {
+      await setMark(term.id, { ...markOf(term.id), memo: input.value });
+      show();
+    });
+    box.replaceChildren(h("span", { class: "memo-label" }, "メモ"), input, save);
+    input.focus();
+  };
+  show();
+  return box;
+}
+
 /**
- * 語の中身（日本語・読み・英語・ラテン語・漢字の意味・語源・説明、筋なら起始・停止・支配神経・作用、局所解剖なら境界と通るもの）。
+ * 語のカード。上から 名前と★ → 英語と発音・語根 → 説明（初心者モードは短い「覚えること」）→ 筋の起始・停止・神経・作用、通るもの・ホルモン
+ * → 局所解剖の境界と通るもの → 自分のメモ → くわしく（漢字・語源・置き方・向き・英語の併記。開いたままにできる）。
  * 説明・作用の中の基本の用語はタップで意味を出す。open を渡すと（図鑑）、その用語を3Dで見るボタンも出す。
- * 英語名に含まれる語根（brachi-「腕」など）もタップで意味を出す。
  * motion を渡すと、作用の動きのある筋に「動きを見る」を出す（骨を動かし、起始と停止を結ぶ帯が縮むのを示す）。
- * 初心者モードでは、日本語・読み・英語と「覚えること」（初心者コースの point）だけを出し、ほかは「くわしく」の中にたたむ。
+ * 初心者モードでは、覚えることだけを見せ、説明・起始停止なども「くわしく」の中にたたむ。compact は名前と英語だけ（正解したときの答え合わせ）
  */
 export function termCard(term: Term, options: { compact?: boolean; open?: (word: Term) => void; motion?: (on: boolean) => string | Promise<string> } = {}): HTMLElement {
   const beginner = isBeginner();
@@ -137,10 +205,11 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
   const linked = (text: string) => linkGlossary(text, term.id, show);
   const examCount = beginner ? 0 : examCountOf(term.id);
   const head = h("div", { class: "term-head" },
-    h("ruby", { class: "term-ja" }, term.ja, h("rt", {}, term.yomi)),
-    h("span", { class: "term-system" },
-      examCount ? h("a", { class: "exam-mark", href: `#/exam/about/${term.id}`, title: "骨学試験に出た回数（A・B・C の合計）。押すとこの語の出る項目" }, `試験 ${examCount}回`) : null,
-      where),
+    h("div", { class: "term-name" },
+      h("span", { class: "term-kicker" }, term.yomi, "・", where,
+        examCount ? h("a", { class: "exam-mark", href: `#/exam/about/${term.id}`, title: "骨学試験に出た回数（A・B・C の合計）。押すとこの語の出る項目" }, `試験 ${examCount}回`) : null),
+      h("span", { class: "term-ja" }, term.ja)),
+    starButton(term),
   );
   const english = h("div", { class: "term-en" },
     h("button", { class: "speak", type: "button", "aria-label": "英語の発音を聞く", onClick: () => void speak(term) }, "🔊"),
@@ -149,51 +218,64 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
   );
   if (options.compact) return h("article", { class: "term-card" }, head, english, gloss);
 
-  /** 詳しい中身（語根・漢字・語源・説明、筋の起始・停止・神経・作用、通るもの）。英語の併記を切り替えたら作り直す */
+  const point = beginnerPoints.get(term.id);
+  const pointBox = (text: string | undefined, label: string) => text
+    ? h("div", { class: "term-point" }, h("span", { class: "term-point-label" }, label), h("p", {}, ...linked(text)))
+    : null;
+  const muscle = !term.nerve ? null : h("dl", { class: "term-notes muscle-notes" },
+    h("div", {}, h("dt", {}, h("span", { class: "swatch", style: `background:${ORIGIN_COLOR}` }), "起始"), h("dd", {}, term.origin)),
+    h("div", {}, h("dt", {}, h("span", { class: "swatch", style: `background:${INSERTION_COLOR}` }), "停止"), h("dd", {}, term.insertion)),
+    h("div", {}, h("dt", {}, "神経"), h("dd", {}, term.nerve)),
+    h("div", {}, h("dt", {}, "作用"), h("dd", {}, ...linked(term.action ?? ""))),
+  );
+  const facts = [
+    !term.passes ? null : h("dl", { class: "term-notes" }, h("div", {}, h("dt", {}, "通るもの"), h("dd", {}, ...linked(noteText(term.passes))))),
+    !term.hormones ? null : h("dl", { class: "term-notes" }, h("div", {}, h("dt", {}, "ホルモン"), h("dd", {}, ...linked(term.hormones)))),
+  ];
+  /** くわしくの中身（漢字・語源・置き方・向き、初心者モードでは説明と筋なども）。英語の併記を切り替えたら作り直す */
   const details = (): (HTMLElement | null)[] => [
-    rootChips(term),
-    enToggle(() => box.replaceChildren(...details().filter((node) => node !== null))),
+    enToggle(() => {
+      box.replaceChildren(...details().filter((node) => node !== null));
+      desc.replaceChildren(...linked(noteText(term.note)));
+    }),
     h("dl", { class: "term-notes" },
       term.kanji ? h("div", {}, h("dt", {}, "漢字"), h("dd", {}, term.kanji)) : null,
       term.etym ? h("div", {}, h("dt", {}, "語源"), h("dd", {}, term.etym)) : null,
       term.la && term.la.toLowerCase() !== term.en.toLowerCase() && beginner ? h("div", {}, h("dt", {}, "ラテン"), h("dd", { lang: "la" }, term.la)) : null,
-      h("div", {}, h("dt", {}, "説明"), h("dd", {}, ...linked(noteText(term.note)))),
+      beginner ? h("div", {}, h("dt", {}, "説明"), h("dd", {}, ...linked(noteText(term.note)))) : null,
       // 骨の置き方（解剖学的正位の上下・前後・内外）と、ほかの部位から見た向き（向きの問い方の答え）
       term.placing ? h("div", {}, h("dt", {}, "置き方"), h("dd", {}, ...linked(noteText(term.placing)))) : null,
       term.toward ? h("div", {}, h("dt", {}, "向き"), h("dd", {}, ...linked(`${termById.get(term.toward.than)?.ja}の${termById.get(term.toward.dir)?.ja}。${noteText(term.toward.why)}`))) : null,
     ),
-    !term.nerve ? null : h("dl", { class: "term-notes muscle-notes" },
-      h("div", {}, h("dt", {}, h("span", { class: "swatch", style: `background:${ORIGIN_COLOR}` }), "起始"), h("dd", {}, term.origin)),
-      h("div", {}, h("dt", {}, h("span", { class: "swatch", style: `background:${INSERTION_COLOR}` }), "停止"), h("dd", {}, term.insertion)),
-      h("div", {}, h("dt", {}, "神経"), h("dd", {}, term.nerve)),
-      h("div", {}, h("dt", {}, "作用"), h("dd", {}, ...linked(term.action ?? ""))),
-    ),
-    !term.passes ? null : h("dl", { class: "term-notes" },
-      h("div", {}, h("dt", {}, "通るもの"), h("dd", {}, ...linked(noteText(term.passes)))),
-    ),
-    !term.hormones ? null : h("dl", { class: "term-notes" },
-      h("div", {}, h("dt", {}, "ホルモン"), h("dd", {}, ...linked(term.hormones))),
-    ),
+    ...(beginner ? [muscle, ...facts] : []),
   ];
   const box = h("div", { class: "term-details" });
-  const motion = term.motion && options.motion ? motionButton(options.motion) : null;
-  if (!beginner) {
-    box.append(...details().filter((node) => node !== null));
-    return h("article", { class: "term-card" }, head, english, box, motion, regionNotes(term, options.open), gloss);
-  }
-
-  // 初心者モード: 覚えることだけを見せ、詳しい中身は開いたときに作る
-  const point = beginnerPoints.get(term.id);
-  const more = h("details", { class: "term-more" }, h("summary", {}, "くわしく（漢字・語源・説明）"));
-  more.addEventListener("toggle", () => {
-    if (more.open && more.children.length < 2) {
+  // 詳細モードの説明（英語の併記を切り替えたら、くわしくの中と一緒に作り直す）
+  const desc = h("div", { class: "term-desc" }, ...linked(noteText(term.note)));
+  const more = h("details", { class: "term-more", open: moreOpen() },
+    h("summary", {}, beginner ? "くわしく（漢字・語源・説明）" : "くわしく（漢字・語源・置き方）"));
+  let filled = false;
+  const fill = () => {
+    if (more.open && !filled) {
+      filled = true;
       box.append(...details().filter((node) => node !== null));
-      more.append(box, regionNotes(term, options.open) ?? "");
+      more.append(box, beginner ? regionNotes(term, options.open) ?? "" : "");
     }
+  };
+  more.addEventListener("toggle", () => {
+    fill();
+    rememberMore(more.open);
   });
-  return h("article", { class: "term-card is-beginner" }, head, english,
-    h("div", { class: "term-point" },
-      h("span", { class: "term-point-label" }, "覚えること"),
-      point ? h("p", {}, ...linked(point)) : h("p", { class: "muted" }, "初心者コースには入っていない語です。くわしい説明は下から。")),
-    motion, more, gloss);
+  fill();
+  const motion = term.motion && options.motion ? motionButton(options.motion) : null;
+  if (beginner) {
+    return h("article", { class: "term-card is-beginner" }, head, english, rootChips(term),
+      pointBox(point, "覚えること") ?? h("div", { class: "term-point" }, h("span", { class: "term-point-label" }, "覚えること"),
+        h("p", { class: "muted" }, "初心者コースには入っていない語です。くわしい説明は下から。")),
+      motion, memoRow(term), more, gloss);
+  }
+  // 詳細モードは説明がそのまま「覚えること」（初心者コースの短い point と重なるので、point は出さない）
+  return h("article", { class: "term-card" }, head, english, rootChips(term),
+    desc,
+    muscle, ...facts, motion, regionNotes(term, options.open), memoRow(term), more, gloss);
 }

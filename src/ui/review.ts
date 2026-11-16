@@ -96,10 +96,18 @@ interface Setup {
 
 const cardOf = (item: QueueItem) => `${item.termId}:${item.facet}`;
 
-export async function review(ctx: AppContext): Promise<void> {
+/**
+ * 復習（#/review）。始めの画面で範囲・問い方・数を選ぶ。"#/review/now"（今日の画面の「今日の復習」）は選ばずにすぐ1問目から
+ * （設定の「復習の1回の区切り」の数だけ。範囲を選ぶときは今日の画面の「範囲を選ぶ」から）
+ */
+export async function review(ctx: AppContext, arg = ""): Promise<void> {
   const today = await todayQueue();
   if (!today.length) {
     await nothingToday(ctx);
+    return;
+  }
+  if (arg === "now") {
+    await session(ctx, { keep: () => true, limit: REVIEW_SIZE_OPTIONS.includes(preferences.reviewSize) ? preferences.reviewSize : 0, pending: new Set() });
     return;
   }
   await session(ctx, await chooseReview(ctx, today));
@@ -174,7 +182,6 @@ function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
         hasNew ? h("p", { class: "muted" }, `新しい問題は、レッスンで学んだ語のまだ解いていない問い方です（1日 ${preferences.newPerDay}問まで。設定で変えられます）。`) : "",
       );
       showPanel(ctx,
-        h("div", { class: "quiz-head" }, h("a", { href: "#/" }, "← ホーム"), ""),
         h("h2", {}, "今日の復習"),
         h("p", { class: "today-count" }, `${picked.length}問`,
           h("span", { class: "today-split" }, `復習 ${picked.length - freshCount}・新しい ${freshCount}`),
@@ -279,7 +286,7 @@ async function finish(ctx: AppContext, setup: Setup, answered: number, correct: 
       window.dispatchEvent(new HashChangeEvent("hashchange"));
     },
   }, `ほかの範囲を復習する（${others.length}問）`);
-  const home = (className: string) => h("a", { class: className, href: "#/" }, "ホームへ");
+  const home = (className: string) => h("a", { class: className, href: "#/" }, "今日はここまで");
   const missedLink = (id: string, facets: Set<string>) => {
     const title = [...facets].join("・");
     const root = rootByKey.get(id);
@@ -330,13 +337,13 @@ async function nothingToday(ctx: AppContext): Promise<void> {
   const next = nextLesson(learned);
   showPanel(ctx,
     h("h2", {}, "今日の復習はありません"),
-    !learned.length ? h("p", {}, "まずホームからレッスンを始めましょう。確認テストに答えた語が、毎日の復習に入ります。") : "",
+    !learned.length ? h("p", {}, "まず「学ぶ」からレッスンを始めましょう。確認テストに答えた語が、毎日の復習に入ります。") : "",
     upcoming.length ? h("p", {}, `次の復習は ${dueLabel(upcoming[0])}${soon ? `（24時間のうちに ${soon}問）` : ""}。`) : "",
     learned.length && newToday >= preferences.newPerDay
-      ? h("p", { class: "muted" }, `今日の新しい問題（${preferences.newPerDay}問）は解き終えました。もっと解くときは、設定で1日の数を増やすか、ホームの「範囲を選ぶ」で演習できます。`)
+      ? h("p", { class: "muted" }, `今日の新しい問題（${preferences.newPerDay}問）は解き終えました。もっと解くときは、設定で1日の数を増やすか、「学ぶ」の演習で解けます。`)
       : "",
     h("div", { class: "nav-row" },
-      h("a", { class: next ? "ghost-button" : "primary", href: "#/" }, "ホームへ"),
+      h("a", { class: next ? "ghost-button" : "primary", href: "#/" }, "今日へ"),
       next ? h("a", { class: "primary", href: `#/learn/${next.id}` }, `次のレッスン「${next.title}」`) : "",
     ),
   );

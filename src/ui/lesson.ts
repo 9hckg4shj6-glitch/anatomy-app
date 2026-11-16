@@ -1,11 +1,12 @@
 import { autoSpeak } from "../audio";
-import type { Term, Unit } from "../content";
+import { systemById, type Term, type Unit } from "../content";
 import { isBeginner, lessonById, studyFacets } from "../course";
 import { db, nowIso, type Facet } from "../db";
 import { h, onKeys, until } from "../dom";
 import { preferences, setPreference } from "../settings";
 import { BASIC_FACETS, facetLabels, facetsFor, lessonFacet, shuffle, type QueueItem } from "../study";
 import { motionPlayer, sceneFor, type AppContext } from "./context";
+import { lessonMinutes } from "./home";
 import { nextLesson } from "./lessons";
 import { plateOverlay } from "./plate-view";
 import { ask, showPanel } from "./quiz";
@@ -16,7 +17,10 @@ import { noteText } from "../en-notes";
  * レッスン：①始めの画面で確認テストの問い方を選ぶ → ②3Dで1語ずつ見る → ③確認テスト（選んだ問い方を順に。初めはタップと名前当てを交互に） → ④復習に入る。
  * 確認テストで答えた語から1つずつ「学んだ」に入れるので、途中でやめても答えた語は復習に入り、次に開くと残りの語から続ける。
  */
-export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
+export async function lesson(ctx: AppContext, arg: string): Promise<void> {
+  // "<ID>/try" ははじめにの3語だけの短いレッスン（始めの画面を出さず、位置→名前と名前→位置で）
+  const [unitId, mode] = arg.split("/");
+  const trial = mode === "try";
   const unit = lessonById.get(unitId);
   if (!unit) {
     ctx.panel.replaceChildren(h("p", {}, "レッスンが見つかりません。"), h("a", { href: "#/lessons" }, "レッスンの一覧へ"));
@@ -37,9 +41,11 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   const plates = plateOverlay(ctx);
   const firstOnPlate = unit.terms.find((term) => term.plate);
   if (firstOnPlate) void plates.show(firstOnPlate, { names: true, mark: false });
-  const list = await startScreen(ctx, unit, partial ? rest : null);
+  const { list, browse } = trial
+    ? { list: unit.terms.filter((term) => !learnedIds.has(term.id)).slice(0, TRIAL_TERMS), browse: true }
+    : await startScreen(ctx, unit, partial ? rest : null);
 
-  for (let i = 0; i < list.length; ) {
+  for (let i = 0; browse && i < list.length; ) {
     const term = list[i];
     // 学ぶ語を強調し、まわりは半透明にする（基本の用語の図は骨格を手がかりに見るので、まわりも見せる）
     viewer.highlight([term.id], { isolate: !term.figure });
@@ -56,6 +62,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
       ? h("button", { class: "head-skip", type: "button", title: "残りの語を飛ばして確認テストへ" }, "確認テストへ ›")
       : null;
     showPanel(ctx,
+      trial && i === 0 ? h("p", { class: "trial-note" }, "3Dで光った所と名前を見て、「次へ」。3語見たら、確認の問題に答えます。") : "",
       h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, skip ?? "", `${i + 1} / ${list.length}`)),
       termCard(term, { motion: motionPlayer(ctx, term) }),
       h("div", { class: "nav-row" }, back, next),
@@ -68,7 +75,7 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
 
   viewer.setLabel(null);
   // 確認テストは、選んだ問い方を語ごとに順に回す（初めは位置→名前と名前→位置を交互に）
-  const chosen = testFacets();
+  const chosen = trial ? (["locate", "point"] as Facet[]).filter((facet) => studies(facet)) : testFacets();
   const items: QueueItem[] = shuffle(list).map((term, i) => ({ termId: term.id, facet: lessonFacet(facetsFor(term, false, studyFacets()), chosen, i), isNew: true }));
   let correct = 0;
   for (const [i, item] of items.entries()) {
@@ -86,6 +93,20 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
   plates.hide();
   ctx.hint("");
   const next = nextLesson(await db.learned.toArray());
+  const left = unit.terms.filter((term) => !list.includes(term) && !learnedIds.has(term.id)).length;
+  if (trial) {
+    showPanel(ctx,
+      h("h2", {}, "これで3語を覚え始めました"),
+      h("p", { class: "today-count" }, `確認 ${correct} / ${items.length}`),
+      h("p", {}, "答えた語は、忘れかけたころに「今日」の復習に出ます。毎日、今日の復習を解くだけで続きます。"),
+      h("p", { class: "muted" }, "レッスンは「学ぶ」から。3Dは1本指で回し、2本指でつまんで拡大。部位をタップすると図鑑で開きます。"),
+      h("div", { class: "nav-row" },
+        h("a", { class: "ghost-button", href: "#/study" }, "学ぶへ"),
+        left ? h("a", { class: "primary", href: `#/learn/${unit.id}` }, `続きの${left}語も学ぶ`) : h("a", { class: "primary", href: "#/" }, "今日へ"),
+      ),
+    );
+    return;
+  }
   showPanel(ctx,
     h("h2", {}, `「${unit.title}」おわり`),
     h("p", { class: "today-count" }, `確認テスト ${correct} / ${items.length}`),
@@ -93,9 +114,9 @@ export async function lesson(ctx: AppContext, unitId: string): Promise<void> {
     unit.terms.some((term) => term.nerve) && studies("attach") ? h("p", {}, "筋の起始・停止・支配神経・作用は、場所を覚えたころに復習で出ます。") : "",
     unit.terms.some((term) => term.passes) && studies("passage") ? h("p", {}, "孔・溝を通るもの（入るもの）は、場所を覚えたころに復習で出ます。") : "",
     unit.terms.some((term) => term.toward) && studies("relation") ? h("p", {}, "部位どうしの向き（前後・左右・上下）は、場所を覚えたころに復習で出ます。") : "",
-    h("p", {}, h("a", { href: "#/review" }, "今日の復習へ")),
+    h("p", {}, h("a", { href: "#/review/now" }, "今日の復習へ")),
     h("div", { class: "nav-row" },
-      h("a", { class: next ? "ghost-button" : "primary", href: "#/lessons" }, "レッスンの一覧へ"),
+      h("a", { class: next ? "ghost-button" : "primary", href: "#/study" }, "学ぶへ"),
       next ? h("a", { class: "primary", href: `#/learn/${next.id}` }, `次のレッスン「${next.title}」`) : "",
     ),
   );
@@ -116,17 +137,23 @@ function reviewKinds(unit: Unit): string {
   return facets.map((facet) => `「${facetLabels[facet]}」`).join("");
 }
 
+/** はじめにの短いレッスンの語の数 */
+const TRIAL_TERMS = 3;
+
 /**
- * レッスンの始めの画面。初めの説明と、確認テストの問い方（場所から覚えるか、英語から覚えるか。選んだものを覚える）を出す。
- * rest（途中まで学んだレッスンのまだの語）があれば「続きから」か「はじめから」を選ぶ。学ぶ語を返す
+ * レッスンの始めの画面（1画面で始められる）。系統とまとまり・題・語の数と目安の分、語の一覧、初めの説明の1段落（続きは開く）、
+ * 確認テストで覚えること（場所から・日→英・英→日・ぜんぶ。詳細モードでは1つずつも）、「始める」と「確認テストだけ」。
+ * rest（途中まで学んだレッスンのまだの語）があれば「続きから」か「はじめから」を選ぶ。学ぶ語と、3Dで1語ずつ見るかを返す
  */
-async function startScreen(ctx: AppContext, unit: Unit, rest: Term[] | null): Promise<Term[]> {
+async function startScreen(ctx: AppContext, unit: Unit, rest: Term[] | null): Promise<{ list: Term[]; browse: boolean }> {
   const study = BASIC_FACETS.filter((facet) => studies(facet));
   // このレッスンの語のどれにも出せない問い方（基本の用語の図の「名前→位置」など）は並べない
   const usable = study.filter((facet) => unit.terms.some((term) => facetsFor(term, false, studyFacets()).includes(facet)));
   const beginner = isBeginner();
+  const learning = new Set((rest ?? unit.terms).map((term) => term.id));
   let note = "";
-  return until<Term[]>(ctx.signal, (resolve) => {
+  let moreOpen = false;
+  return until<{ list: Term[]; browse: boolean }>(ctx.signal, (resolve) => {
     const render = (focusKey?: string) => {
       // このレッスンで出せるものだけを見せる（名前→位置を選んでいても、基本の用語の図のレッスンでは出ない）
       const chosen = testFacets().filter((facet) => usable.includes(facet));
@@ -146,7 +173,7 @@ async function startScreen(ctx: AppContext, unit: Unit, rest: Term[] | null): Pr
         if (!picked.length) return "";
         const on = picked.length === chosen.length && picked.every((facet) => chosen.includes(facet));
         return h("button", {
-          class: on ? "chip on" : "chip", type: "button", "data-key": label, "aria-pressed": String(on),
+          class: on ? "segment on" : "segment", type: "button", "data-key": label, "aria-pressed": String(on),
           onClick: async () => {
             note = "";
             await setPreference("lessonFacets", picked);
@@ -154,30 +181,43 @@ async function startScreen(ctx: AppContext, unit: Unit, rest: Term[] | null): Pr
           },
         }, label);
       };
+      const list = rest ?? unit.terms;
       const start = h("button", { class: "primary", type: "button", "data-key": "start" }, rest ? `続きから（残り ${rest.length}語）` : "始める");
       const restart = rest ? h("button", { class: "ghost-button", type: "button" }, `はじめから（${unit.terms.length}語）`) : null;
-      start.addEventListener("click", () => resolve(rest ?? unit.terms), { once: true });
-      restart?.addEventListener("click", () => resolve(unit.terms), { once: true });
+      const testOnly = h("button", { class: "text-button test-only", type: "button" }, "知っている語なので、確認テストだけ");
+      start.addEventListener("click", () => resolve({ list, browse: true }), { once: true });
+      restart?.addEventListener("click", () => resolve({ list: unit.terms, browse: true }), { once: true });
+      testOnly.addEventListener("click", () => resolve({ list, browse: false }), { once: true });
       const skipped = study.filter((facet) => !chosen.includes(facet));
+      const system = systemById.get(unit.system)?.ja ?? "";
+      const [firstIntro, ...moreIntro] = unit.intro ?? [];
+      const intro = firstIntro && !rest ? h("div", { class: "intro" },
+        h("p", {}, noteText(firstIntro)),
+        moreIntro.length ? h("details", { class: "intro-more", open: moreOpen, ontoggle: (event: Event) => (moreOpen = (event.currentTarget as HTMLDetailsElement).open) },
+          h("summary", {}, "続きを読む"), ...moreIntro.map((text) => h("p", {}, noteText(text)))) : "",
+      ) : "";
       showPanel(ctx,
-        h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title),
-          h("span", { class: "count" }, rest ? `${unit.terms.length - rest.length} / ${unit.terms.length}語 学んだ` : `${unit.terms.length}語`)),
-        unit.intro && !rest ? h("div", { class: "intro" }, ...unit.intro.map((text) => h("p", {}, noteText(text)))) : "",
-        rest ? h("p", {}, "このレッスンは途中です。まだの語: ", rest.map((term) => term.ja).join("・"))
-          : h("p", { class: "muted lesson-terms" }, unit.terms.map((term) => term.ja).join("・")),
-        h("h3", {}, "確認テストで覚えること"),
-        usable.length > 1 ? h("div", { class: "chip-list lesson-presets" },
-          preset("場所から", ["locate", "point"]), preset("日本語→英語", ["ja2en"]), preset("英語→日本語", ["en2ja"]), preset("ぜんぶ", usable)) : "",
-        // 初心者モードでは、問い方を1つずつ選ぶ欄と設定への案内は出さない（まとめた選び方だけ）
-        usable.length > 1 && !beginner ? h("p", { class: "setting-label" }, "問い方を1つずつ選ぶ") : "",
-        beginner && usable.length > 1 ? "" : h("div", { class: "chip-list" }, ...usable.map(chip)),
-        beginner
-          ? h("p", { class: "muted" }, "語を3Dで1つずつ見たあと、1語に1問ずつ確認します。")
-          : h("p", { class: "muted" },
-            "語を3Dで1つずつ見たあと、選んだ問い方を順に回して1語に1問ずつ出します。",
-            skipped.length ? `選ばなかった${skipped.map((facet) => `「${facetLabels[facet]}」`).join("")}は、あとで復習に新しい問題として出ます。` : "",
-            h("br"), "問い方そのものを外すときは ", h("a", { href: "#/settings" }, "設定の「学ぶ問い方」"), "で。"),
-        note ? h("p", { class: "drill-note" }, note) : "",
+        h("div", { class: "lesson-start" },
+          h("p", { class: "lesson-where" }, unit.group ? `${system} › ${unit.group}` : system),
+          h("div", { class: "lesson-title" }, h("h2", {}, unit.title),
+            h("span", { class: "muted" }, rest ? `${unit.terms.length - rest.length} / ${unit.terms.length}語 学んだ・残り約${lessonMinutes(rest.length)}分` : `${unit.terms.length}語・約${lessonMinutes(unit.terms.length)}分`)),
+          h("div", { class: "word-chips" }, ...unit.terms.map((term) => h("span", { class: learning.has(term.id) ? "word-chip" : "word-chip learned" }, term.ja))),
+          rest ? h("p", { class: "muted" }, "このレッスンは途中です。✓ の語は学んだ語です。") : "",
+          intro,
+          h("p", { class: "setting-label" }, "確認テストで覚えること"),
+          usable.length > 1 ? h("div", { class: "segments", role: "group", "aria-label": "確認テストで覚えること" },
+            preset("場所から", ["locate", "point"]), preset("日→英", ["ja2en"]), preset("英→日", ["en2ja"]), preset("ぜんぶ", usable)) : "",
+          // 詳細モードでは、問い方を1つずつ選ぶ欄を開いて使う
+          !beginner && usable.length > 1 ? h("details", { class: "facet-more" },
+            h("summary", {}, "問い方を1つずつ選ぶ"),
+            h("div", { class: "chip-list" }, ...usable.map(chip)),
+            h("p", { class: "muted" },
+              skipped.length ? `選ばなかった${skipped.map((facet) => `「${facetLabels[facet]}」`).join("")}は、あとで復習に新しい問題として出ます。` : "",
+              "問い方そのものを外すときは ", h("a", { href: "#/settings" }, "設定の「学ぶ問い方」"), "で。")) : "",
+          usable.length === 1 ? h("p", { class: "muted" }, `${facetLabels[usable[0]]}で確認します。`) : "",
+          note ? h("p", { class: "drill-note" }, note) : "",
+          testOnly,
+        ),
         h("div", { class: "nav-row" }, restart ?? "", start),
       );
       ctx.panel.querySelector<HTMLElement>(`[data-key="${focusKey ?? "start"}"]`)?.focus({ preventScroll: true });
