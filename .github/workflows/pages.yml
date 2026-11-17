@@ -32,6 +32,10 @@ jobs:
           # kokoro-js（音声の作成用）が使う onnxruntime-node は、GPU 用の追加ファイルを取りに行くことがある。CI では要らない
           ONNXRUNTIME_NODE_INSTALL_CUDA: skip
       - run: npm run check
+        env:
+          # 名前と所属の送り先（基礎医学演習アプリの Supabase。src/profile.ts）。無ければ送らずに動く
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
       - uses: actions/upload-pages-artifact@v4
         if: github.event_name != 'pull_request'
         with:

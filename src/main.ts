@@ -1,6 +1,7 @@
 import "./styles.css";
 import { loadModelIndex } from "./content";
 import { loadPreferences } from "./settings";
+import { profileOnLaunch } from "./profile";
 import { h } from "./dom";
 import { watchInstallPrompt } from "./install";
 import { admin } from "./ui/admin";
@@ -179,6 +180,9 @@ async function boot(): Promise<void> {
     return;
   }
   const [index] = await Promise.all([loadModelIndex(), loadPreferences(), loadMarks()]);
+  // 名前と所属をまだ送れていなければ送り、その日にはじめて開いたことを管理者に残す（src/profile.ts。待たない）
+  void profileOnLaunch();
+  window.addEventListener("online", () => void profileOnLaunch());
   // ピン打ちツールは ?admin=1 で開いたときだけホームに項目を出す（src/ui/home.ts）
   if (import.meta.env.DEV) Object.assign(window, { viewer }); // 開発時の確認用
   let controller = new AbortController();
@@ -242,7 +246,7 @@ async function boot(): Promise<void> {
       else if (name === "study") await studyHub(ctx);
       else if (name === "look") await look(ctx);
       else if (name === "records") await records(ctx);
-      else if (name === "start") await start(ctx);
+      else if (name === "start") await start(ctx, arg);
       else if (name === "review") await review(ctx, arg);
       else if (name === "explore") await explore(ctx, arg);
       // "#/roots/<レッスンID>" は語根のレッスン、"#/roots/root/<語根のキー>" は一覧でその語根を開く

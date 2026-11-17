@@ -5,6 +5,7 @@ import { examProgress, SECTION_KINDS, SORT_KINDS } from "../exam";
 import { h } from "../dom";
 import { installHint } from "../install";
 import { daysUntilExam, preferences } from "../settings";
+import { loadProfile, profileComplete } from "../profile";
 import { nextLesson } from "./lessons";
 import { todayCounts } from "./review";
 import { sceneFor, termAt, type AppContext } from "./context";
@@ -18,7 +19,7 @@ const SECONDS_PER_ITEM = 20;
 /**
  * 今日（#/。タブの一番左）。3Dの人体を大きく見せ、ゆっくり回す。3Dの下の系統のボタンでその系統を見せる。
  * 欄は今日の一手1つ（今日の復習＝押すとすぐ1問目、無ければ次のレッスン）と、続きから・骨学試験の日の行だけ（docs/普段使い.md）。
- * 学び方の一覧は「学ぶ」、検索は「調べる」、設定と記録は「記録」のタブへ。何も学んでいなくてコースも選んでいなければ、はじめに（#/start）へ
+ * 学び方の一覧は「学ぶ」、検索は「調べる」、設定と記録は「記録」のタブへ。名前と所属がまだか、何も学んでいなくてコースも選んでいなければ、スタート画面（#/start）へ
  */
 export async function home(ctx: AppContext): Promise<void> {
   const { viewer, signal } = ctx;
@@ -26,12 +27,13 @@ export async function home(ctx: AppContext): Promise<void> {
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
   const since = new Date(startOfDay.getTime() - 7 * 86_400_000).toISOString();
-  const [learned, counts, recentEvents, hintClosed, schedules] = await Promise.all([
+  const [learned, counts, recentEvents, hintClosed, schedules, profile] = await Promise.all([
     db.learned.toArray(), todayCounts(), db.reviewEvents.where("reviewedAt").aboveOrEqual(since).toArray(),
-    db.settings.get("installHintClosed"), db.schedules.toArray(),
+    db.settings.get("installHintClosed"), db.schedules.toArray(), loadProfile(),
   ]);
   if (signal.aborted) return;
-  if (!learned.length && !preferences.course) {
+  // 名前と所属がまだの人（今使っている人も）と、はじめての人はスタート画面へ（src/ui/start.ts）
+  if (!profileComplete(profile) || (!learned.length && !preferences.course)) {
     location.replace("#/start");
     return;
   }

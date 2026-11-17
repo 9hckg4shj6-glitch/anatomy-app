@@ -9,6 +9,7 @@ import {
   COURSES, courseOf, daysUntilExam, loadPreferences, setCourse, NEW_PER_DAY_OPTIONS, preferences, REVIEW_SIZE_OPTIONS, setPreference, TEXT_SIZES, type Preferences,
 } from "../settings";
 import { BASIC_FACETS, TERM_KINDS } from "../study";
+import { loadProfile } from "../profile";
 import type { AppContext } from "./context";
 
 /** 設定の画面（#/settings）: 学び方・表示・骨学試験の日・記録の書き出しと読み込み */
@@ -21,10 +22,21 @@ export async function settingsScreen(ctx: AppContext): Promise<void> {
   const box = h("div", {});
   const render = () => box.replaceChildren(...settingRows(render));
   render();
-  ctx.panel.replaceChildren(h("h2", {}, "設定"), box, offlineSection(ctx), backupSection(render));
+  const profile = await loadProfile();
+  ctx.panel.replaceChildren(h("h2", {}, "設定"), profileSection(profile), box, offlineSection(ctx), backupSection(render));
 }
 
 /** オフライン: 3Dと音声をまとめて保存する（ふだんは開いた系統・聞いた音声だけが保存される） */
+/** 名前と所属（スタート画面で入れたもの）。直すときはスタート画面の #/start/edit へ */
+function profileSection(profile: Awaited<ReturnType<typeof loadProfile>>): HTMLElement {
+  return h("section", { class: "settings" },
+    h("h3", {}, "名前と所属"),
+    h("p", { class: "profile-summary" }, h("b", {}, profile?.name || "未入力"),
+      h("span", {}, [profile?.university, profile?.faculty, profile?.grade].filter(Boolean).join(" · ") || "所属は未入力")),
+    h("p", { class: "muted" }, "名前と所属は管理者に送られ、利用者の集計に使います。学習の記録は送りません。"),
+    h("a", { class: "ghost-button", href: "#/start/edit" }, "名前と所属を直す"));
+}
+
 function offlineSection(ctx: AppContext): HTMLElement {
   const status = h("p", { class: "muted" }, "保存したものを調べています…");
   const list = h("p", { class: "muted offline-list" });

@@ -1,24 +1,155 @@
 import { h } from "../dom";
 import { COURSES, courseOf, preferences, setCourse, type Preferences } from "../settings";
 import { db } from "../db";
+import { loadProfile, NAME_MAX, profileComplete, saveProfile, type Profile } from "../profile";
 import type { AppContext } from "./context";
 import { nextLesson } from "./lessons";
+import { profileFields } from "./profile-form";
+
+type Step = "name" | "profile" | "course";
+
+/** 名前の画面の3Dで選べるもの（選んだものは覚える） */
+const MODELS = [
+  { id: "skeletal", label: "骨格", spec: { systems: ["skeletal"], body: true } },
+  { id: "muscular", label: "筋", spec: { systems: ["skeletal", "muscular"], body: false } },
+] as const;
+const MODEL_KEY = "startModel";
 
 /**
- * はじめに（#/start）: 何のために使うかを1回だけ聞いてコースを決め、3語だけの短いレッスン（#/learn/<ID>/try）を通す。
- * はじめての人に、302レッスン・2,500語を並べて見せないため（docs/普段使い.md）。あとから設定でいつでも変えられる
+ * スタート画面（#/start。docs/普段使い.md「スタート画面」）。基礎医学演習アプリにならう。
+ * はじめて: ① 名前（上で本物の3Dが回る）→ ② 所属（大学・学部学科・学年。管理者に送る）→ ③ コース → 3語のレッスン（#/learn/<ID>/try）。
+ * 今使っている人で所属がまだなら ①② だけ（コースはもう選んでいる）。所属はできるだけ入れてもらうので飛ばせない。
+ * 2回目からは出さない（おかえりの画面は作らない）。#/start/edit は設定から名前と所属を直すとき（終われば設定へ戻る）
  */
-export async function start(ctx: AppContext): Promise<void> {
-  ctx.fold(true);
-  ctx.hint("");
-  void ctx.viewer.show({ systems: ["skeletal"], body: true });
-  ctx.viewer.highlight([]);
-  ctx.viewer.overview();
-  ctx.viewer.spin(!matchMedia("(prefers-reduced-motion: reduce)").matches);
-  const learned = await db.learned.count();
+export async function start(ctx: AppContext, arg = ""): Promise<void> {
+  const edit = arg === "edit";
+  const [learned, saved, savedModel] = await Promise.all([db.learned.count(), loadProfile(), db.settings.get(MODEL_KEY)]);
+  if (ctx.signal.aborted) return;
+  const draft: Partial<Profile> = { name: saved?.name ?? "", university: saved?.university ?? "", faculty: saved?.faculty ?? "", grade: saved?.grade ?? "" };
+  // コースを選ぶのは、まだ何も学んでいなくてコースも選んでいない人だけ
+  const needCourse = !edit && !learned && !preferences.course;
+  const steps: Step[] = needCourse ? ["name", "profile", "course"] : ["name", "profile"];
+  let step: Step = edit || !draft.name ? "name" : !profileComplete(draft) ? "profile" : "course";
+  if (!steps.includes(step)) {
+    location.replace("#/");
+    return;
+  }
   let picked: Exclude<Preferences["course"], ""> = preferences.course || (learned ? courseOf() : "basic");
+  let missing = false;
+  let model: string = MODELS.some((m) => m.id === savedModel?.value) ? String(savedModel!.value) : "skeletal";
 
-  const render = () => {
+  const counter = () => h("span", { class: "start-count" }, `${steps.indexOf(step) + 1} / ${steps.length}`);
+  const go = (next: Step) => {
+    step = next;
+    missing = false;
+    render();
+    window.scrollTo(0, 0);
+  };
+
+  const showModel = () => {
+    const spec = MODELS.find((m) => m.id === model)!.spec;
+    void ctx.viewer.show({ systems: [...spec.systems], body: spec.body });
+    ctx.tools.replaceChildren(h("div", { class: "start-models", role: "group", "aria-label": "回すモデルを選ぶ" },
+      ...MODELS.map((m) => h("button", {
+        class: m.id === model ? "chip on" : "chip", type: "button", "aria-pressed": String(m.id === model),
+        onClick: () => {
+          model = m.id;
+          void db.settings.put({ key: MODEL_KEY, value: model, updatedAt: new Date().toISOString() });
+          showModel();
+        },
+      }, m.label))));
+  };
+
+  const nameStep = () => {
+    ctx.fold(false);
+    showModel();
+    const input = h("input", {
+      id: "start-name", class: "start-input", maxlength: String(NAME_MAX), autocomplete: "nickname", placeholder: "例：解剖 花子",
+      value: draft.name ?? "", "aria-describedby": "start-name-error",
+      onInput: () => { input.removeAttribute("aria-invalid"); error.hidden = true; },
+    }) as HTMLInputElement;
+    const error = h("p", { id: "start-name-error", class: "start-error", role: "alert", hidden: true }, "名前を入力してください");
+    const form = h("form", {
+      class: "start-form", novalidate: true,
+      onSubmit: async (event: Event) => {
+        event.preventDefault();
+        const name = input.value.trim();
+        if (!name) {
+          input.setAttribute("aria-invalid", "true");
+          error.hidden = false;
+          input.focus();
+          return;
+        }
+        draft.name = name;
+        await saveProfile({ name });
+        go("profile");
+      },
+    },
+      h("label", { for: "start-name", class: "start-label" }, "お名前",
+        h("small", {}, `ニックネームでもかまいません。管理者の利用者一覧に表示されます（${NAME_MAX}文字まで）`)),
+      input, error,
+      h("button", { class: "primary start-go", type: "submit" }, edit ? "次へ（所属）" : "はじめる"));
+    return [
+      h("div", { class: "start-hero" },
+        counter(),
+        h("p", { class: "start-eyebrow" }, "3D解剖学の単語帳"),
+        h("h1", { class: "start-brand" }, "からだ", h("span", {}, "見聞録")),
+        h("p", { class: "start-catch" }, "回して、見て、", h("b", {}, "名前と場所"), "をいっしょに覚える。")),
+      // 今使っている人には、なぜ聞くのかを一言
+      learned && !saved?.name && !edit ? h("p", { class: "trial-note" }, "名前と所属を伺うようになりました。1回だけ入れてください。") : "",
+      form,
+      edit ? h("a", { class: "start-link", href: "#/settings" }, "やめて設定へ戻る")
+        : learned ? "" : h("a", { class: "start-link", href: "#/settings" }, "前の記録を読み込む（別の端末から）"),
+    ];
+  };
+
+  const profileStep = () => {
+    ctx.fold(true);
+    ctx.tools.replaceChildren();
+    const error = h("p", { class: "start-error", role: "alert" }, missingText());
+    // 全部選べば消す
+    error.hidden = !missing || profileComplete(draft);
+    const next = h("button", {
+      class: "primary start-go", type: "button",
+      onClick: async () => {
+        if (!profileComplete(draft)) {
+          missing = true;
+          render();
+          return;
+        }
+        await saveProfile(draft);
+        if (edit) location.hash = "#/settings";
+        else if (needCourse) go("course");
+        else location.hash = "#/";
+      },
+    }, edit ? "保存する" : needCourse ? "次へ（コースを選ぶ）" : "はじめる");
+    return [
+      h("div", { class: "start-top" },
+        h("button", { class: "start-back", type: "button", onClick: () => go("name") }, "‹ 名前"), counter()),
+      h("p", { class: "start-eyebrow" }, `ようこそ、${draft.name}さん`),
+      h("h2", { class: "start-title" }, "所属を教えてください"),
+      h("p", { class: "muted" }, "学年と学部に合ったコースをおすすめします。あとで 記録 › 設定 で直せます。"),
+      profileFields(draft, async (patch) => {
+        Object.assign(draft, patch);
+        await saveProfile(patch);
+        render();
+      }, ctx.signal, missing),
+      error, next,
+      h("p", { class: "muted start-note" }, "名前と所属は管理者に送られ、利用者の集計に使います。学習の記録は送りません。"),
+    ];
+  };
+
+  function missingText() {
+    const names = [!draft.university && "大学", !draft.faculty && "学部・学科", !draft.grade && "学年"].filter(Boolean);
+    return `${names.join("・")}を選んでください`;
+  }
+
+  const courseStep = () => {
+    ctx.fold(true);
+    ctx.tools.replaceChildren();
+    void ctx.viewer.show({ systems: ["skeletal"], body: true });
+    // 1年生には「はじめての解剖」をすすめる
+    const recommend: string = draft.grade === "1年" ? "basic" : "";
     const cards = COURSES.map((course) => {
       const on = course.id === picked;
       return h("button", {
@@ -30,23 +161,39 @@ export async function start(ctx: AppContext): Promise<void> {
         },
       },
         h("span", { class: "course-radio", "aria-hidden": "true" }),
-        h("span", { class: "course-text" }, h("span", { class: "course-title" }, course.title), h("span", { class: "course-sub" }, course.sub)),
+        h("span", { class: "course-text" },
+          h("span", { class: "course-title" }, course.title, course.id === recommend ? h("span", { class: "course-badge" }, "1年生におすすめ") : ""),
+          h("span", { class: "course-sub" }, course.sub)),
       );
     });
-    const go = h("button", { class: "primary", type: "button" }, "このコースで始める");
-    go.addEventListener("click", async () => {
+    const begin = h("button", { class: "primary", type: "button" }, "このコースで始める");
+    begin.addEventListener("click", async () => {
       await setCourse(picked);
       const first = nextLesson(await db.learned.toArray());
-      // まだ何も学んでいなければ、最初のレッスンの3語だけを通す。学んだ人は今日へ
+      // まだ何も学んでいなければ、最初のレッスンの3語だけを通す
       location.hash = first && !learned ? `#/learn/${first.id}/try` : "#/";
     });
-    ctx.panel.replaceChildren(h("div", { class: "start" },
+    return [
+      h("div", { class: "start-top" },
+        h("button", { class: "start-back", type: "button", onClick: () => go("profile") }, "‹ 所属"), counter()),
+      h("p", { class: "start-eyebrow" }, [draft.university, draft.faculty, draft.grade].join(" · ")),
       h("h2", { class: "start-title" }, "何のために使いますか？"),
       h("p", { class: "muted" }, "あとで「記録 › 設定」からいつでも変えられます。学んだ記録はコースを変えても続きます。"),
       h("div", { class: "course-list", role: "radiogroup", "aria-label": "コース" }, ...cards),
-      learned ? "" : h("p", { class: "muted start-note" }, "次に、3語だけの短いレッスンを試します（約1分）。"),
-      go,
-    ));
+      h("p", { class: "muted start-note" }, "次に、3語だけの短いレッスンを試します（約1分）。"),
+      begin,
+    ];
   };
+
+  function render() {
+    ctx.hint("");
+    ctx.viewer.highlight([]);
+    if (step === "name") {
+      ctx.viewer.overview();
+      ctx.viewer.spin(!matchMedia("(prefers-reduced-motion: reduce)").matches);
+    }
+    const parts = step === "name" ? nameStep() : step === "profile" ? profileStep() : courseStep();
+    ctx.panel.replaceChildren(h("div", { class: `start start-${step}` }, ...parts));
+  }
   render();
 }
