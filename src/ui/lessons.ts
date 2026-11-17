@@ -3,7 +3,6 @@ import { courseUnitOf, courseUnits, isBeginner, lessonById } from "../course";
 import { db, nowIso, type LearnedTerm } from "../db";
 import { h } from "../dom";
 import { normalize, searchTerms, searchUnits } from "../search";
-import { preferences } from "../settings";
 import { sceneFor, termAt, type AppContext } from "./context";
 
 /** レッスンの一覧で最後に選んだ系統（レッスンから戻っても同じ系統を見せる） */
@@ -175,8 +174,6 @@ export function nextLesson(learned: LearnedTerm[]): Unit | undefined {
   const learnedIds = new Set(learned.map((item) => item.termId));
   const open = (unit: Unit) => unit.terms.some((term) => !learnedIds.has(term.id));
   const last = recentLessons(learned)[0];
-  // 骨学試験のコースでは、まだ何も学んでいなければ骨格系から
-  if (!last && preferences.course === "exam") return units.find((unit) => open(unit) && unit.system === "skeletal") ?? units.find(open);
   if (last) {
     if (open(last)) return last;
     const after = units.slice(units.indexOf(last) + 1);

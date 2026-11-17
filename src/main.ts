@@ -33,6 +33,9 @@ const crumbs = document.getElementById("crumbs")!;
 const layout = document.querySelector<HTMLElement>(".layout")!;
 
 /** ページの名前と、その一覧のアドレス（上の帯に「‹ 学ぶ ／ レッスン」と出す）。ここに無い名前は今日（ホーム） */
+/** アプリの名前（暫定。2026-11-17 に「解剖学 3D単語帳」から変えた）。index.html・vite.config.ts の manifest もそろえる */
+const APP_NAME = "からだ見聞録";
+
 const PAGES: Record<string, [title: string, href: string]> = {
   study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
@@ -78,7 +81,7 @@ function showCrumbs(name: string): void {
   brand.setAttribute("aria-label", `${tabLabel}へ`);
   if (root) {
     crumbs.replaceChildren();
-    document.title = page ? `${page[0]} - 解剖学 3D単語帳` : "解剖学 3D単語帳";
+    document.title = page ? `${page[0]} - ${APP_NAME}` : APP_NAME;
     return;
   }
   const [title, href] = page;
@@ -86,7 +89,7 @@ function showCrumbs(name: string): void {
   crumbs.replaceChildren(atIndex
     ? h("span", { class: "crumb", "aria-current": "page" }, title)
     : h("a", { class: "crumb", href }, title));
-  document.title = `${title} - 解剖学 3D単語帳`;
+  document.title = `${title} - ${APP_NAME}`;
 }
 
 watchInstallPrompt();

@@ -46,8 +46,8 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "解剖学 3D単語帳",
-        short_name: "解剖3D",
+        name: "からだ見聞録",
+        short_name: "からだ見聞録",
         description: "解剖学の用語・位置・英語を3Dとフラッシュカードで覚えるオフライン対応アプリ",
         lang: "ja",
         // 上の帯（.topbar）と同じ色にして、スマホの状態表示の所とつなげる

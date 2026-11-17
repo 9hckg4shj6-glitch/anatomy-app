@@ -9,10 +9,10 @@ export interface Preferences {
    */
   mode: "beginner" | "detail";
   /**
-   * はじめに選ぶコース（#/start。docs/普段使い.md）。basic＝はじめての解剖（初心者モード）、exam＝骨学試験の対策、free＝授業に合わせて自分で選ぶ
-   * （exam と free は詳細モード）。空ならまだ選んでいない（今までの人は mode から決まる。courseOf）
+   * はじめに選ぶコース（#/start。docs/普段使い.md）。basic＝はじめての解剖（初心者モード）、free＝授業に合わせて自分で選ぶ（詳細モード）。
+   * 骨学試験の対策（exam）は 2026-11-17 にやめた。選んでいた人は起動したときに free へ移す（loadPreferences）。空ならまだ選んでいない（今までの人は mode から決まる。courseOf）
    */
-  course: "" | "basic" | "exam" | "free";
+  course: "" | "basic" | "free";
   /** 学ぶの一覧に、まだ使う時の来ていない学び方（演習・骨学試験・語根カード）も初めから出す */
   showAllWays: boolean;
   /** レッスン・図鑑・答え合わせで英語の発音を自動で鳴らす（🔊を押せばいつでも鳴る） */
@@ -63,7 +63,7 @@ const facetList = (allowed: Facet[]) => (value: unknown): value is Facet[] =>
 
 const valid: { [K in keyof Preferences]: (value: unknown) => value is Preferences[K] } = {
   mode: (value): value is Preferences["mode"] => value === "beginner" || value === "detail",
-  course: (value): value is Preferences["course"] => value === "" || value === "basic" || value === "exam" || value === "free",
+  course: (value): value is Preferences["course"] => value === "" || value === "basic" || value === "free",
   showAllWays: (value): value is boolean => typeof value === "boolean",
   autoSpeak: (value): value is boolean => typeof value === "boolean",
   newPerDay: (value): value is number => typeof value === "number" && NEW_PER_DAY_OPTIONS.includes(value),
@@ -88,6 +88,8 @@ export async function loadPreferences(): Promise<void> {
   });
   // モードを一度も選んでいなければ、今までに学んだ人は詳細モード（これまでどおり）、はじめての人は初心者モードにして覚える
   if (!valid.mode(records[keys.indexOf("mode")]?.value)) await setPreference("mode", (await db.learned.count()) ? "detail" : "beginner");
+  // やめたコース「骨学試験の対策」を選んでいた人は「自分で選ぶ」へ（同じ詳細モード。骨学試験は学ぶからそのまま使える）
+  if (records[keys.indexOf("course")]?.value === "exam") await setPreference("course", "free");
   // 学ぶ問い方を選んで保存したあとに増えた問い方は、学ぶ側に入れる（外したければ設定で外す）
   const seen = (await db.settings.get(SEEN_FACETS))?.value;
   const added = TERM_FACETS.filter((facet) => !(Array.isArray(seen) ? seen : OLD_FACETS).includes(facet));
@@ -107,7 +109,6 @@ export async function setPreference<K extends keyof Preferences>(key: K, value: 
 /** コース（はじめに選ぶ。#/start と設定） */
 export const COURSES: { id: Exclude<Preferences["course"], "">; title: string; sub: string; short: string }[] = [
   { id: "basic", title: "はじめての解剖", sub: "まず覚える語だけを、短い説明で。医療系の1年生に。", short: "はじめての解剖" },
-  { id: "exam", title: "骨学試験の対策", sub: "骨を細かい部位まで。試験の形式の問題も使う。", short: "骨学試験の対策" },
   { id: "free", title: "授業に合わせて自分で選ぶ", sub: "すべての系統とレッスンから、授業の範囲を選ぶ。", short: "授業に合わせて" },
 ];
 

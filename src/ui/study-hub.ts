@@ -35,7 +35,7 @@ export function itemRow(href: string, icon: keyof typeof ICONS, color: string, t
 /**
  * 学ぶ（#/study）: いちばん上にコースの次の1つ（続きから／次のレッスン）。はじめての人には「このあと」の3つ。
  * その下に学び方（レッスン・臓器の図・演習・骨学試験・語根カード）。まだ何も学んでいなければ、演習・骨学試験・語根カードは出さない
- * （骨学試験のコースなら骨学試験は初めから。設定の「すべての学び方を出す」なら全部）。全部で何語・何レッスンといった大きな数は出さない
+ * （設定の「すべての学び方を出す」なら全部）。全部で何語・何レッスンといった大きな数は出さない
  */
 export async function studyHub(ctx: AppContext): Promise<void> {
   ctx.hint("");
@@ -81,7 +81,7 @@ export async function studyHub(ctx: AppContext): Promise<void> {
   const ahead = fresh && next ? units.slice(units.indexOf(next) + 1, units.indexOf(next) + 4) : [];
   const plates = organs.reduce((sum, organ) => sum + organ.plates.length, 0);
   const showDrill = all || !fresh;
-  const showExam = !beginner && (all || !fresh || course === "exam");
+  const showExam = !beginner && (all || !fresh);
   const showRoots = !beginner && (all || !fresh);
   const examItem = showExam ? itemRow("#/exam", "exam", "#b07d10", "骨学試験", "試験対策として独立（A〜D の形式と、整理して覚える）") : "";
 
@@ -95,12 +95,10 @@ export async function studyHub(ctx: AppContext): Promise<void> {
       h("span", { class: "ahead-mark", "aria-hidden": "true" }, String(i + 2)), h("span", {}, unit.title)))) : "",
     h("h3", { class: "list-title" }, "学び方"),
     h("ul", { class: "home-card home-list" },
-      // 骨学試験のコースでは、骨学試験を先に
-      course === "exam" ? examItem : "",
       itemRow("#/lessons", "lessons", "#a8572f", fresh ? "すべてのレッスン" : "レッスン", "系統ごとに自分で選ぶ・検索"),
       itemRow("#/organs", "organ", "#c2493a", "臓器の図", `心臓・肺・脳などを色分け・切り口・平面図（${plates}枚）で`),
       showDrill ? itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンから選んで解く・苦手を解く") : "",
-      course === "exam" ? "" : examItem,
+      examItem,
       showRoots ? itemRow("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む") : "",
     ),
     fresh && !all ? h("p", { class: "home-note" }, "演習などほかの学び方は、レッスンを1つ学ぶとここに出ます（設定の「すべての学び方を出す」で初めから出せます）。") : "",

@@ -3,7 +3,7 @@ import { termById } from "../src/content";
 import { exportBackup, importBackup } from "../src/backup";
 import { db } from "../src/db";
 import { loadMarks, markOf, setMark, starredIds } from "../src/marks";
-import { courseOf, preferences, setCourse } from "../src/settings";
+import { courseOf, loadPreferences, preferences, setCourse } from "../src/settings";
 import { weekDays } from "../src/ui/home";
 import { nextLesson } from "../src/ui/lessons";
 import { termCard } from "../src/ui/term-card";
@@ -21,9 +21,9 @@ describe("普段使い その1", () => {
   it("コースからモードが決まり、まだ選んでいなければモードからコースを読む", async () => {
     await setCourse("basic");
     expect(preferences.mode).toBe("beginner");
-    await setCourse("exam");
+    await setCourse("free");
     expect(preferences.mode).toBe("detail");
-    expect(courseOf()).toBe("exam");
+    expect(courseOf()).toBe("free");
     preferences.course = "";
     preferences.mode = "beginner";
     expect(courseOf()).toBe("basic");
@@ -31,10 +31,12 @@ describe("普段使い その1", () => {
     expect(courseOf()).toBe("free");
   });
 
-  it("骨学試験のコースで何も学んでいなければ、最初のレッスンは骨格系", async () => {
-    await setCourse("exam");
-    expect(nextLesson([])?.system).toBe("skeletal");
-    await setCourse("free");
+  it("やめたコース「骨学試験の対策」を選んでいた人は、起動したときに「自分で選ぶ」へ移る", async () => {
+    await db.settings.put({ key: "course", value: "exam", updatedAt: new Date().toISOString() });
+    await loadPreferences();
+    expect(preferences.course).toBe("free");
+    expect(courseOf()).toBe("free");
+    expect((await db.settings.get("course"))?.value).toBe("free");
     expect(nextLesson([])?.system).toBe("basics");
   });
 

@@ -118,7 +118,7 @@ function settingRows(render: () => void): HTMLElement[] {
       }),
       h("p", { class: "muted" }, beginner
         ? `はじめての解剖では、解剖学をはじめて学ぶ人が最低限覚える ${beginnerTermCount}語だけを、短い「覚えること」と一緒に学びます（初心者モード）。問い方は位置・名前・英語の4つだけで、語根カードと骨学試験は出しません。`
-        : `骨学試験の対策と「自分で選ぶ」では、全 ${terms.length.toLocaleString()}語と、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、語根カード・骨学試験を学びます（詳細モード）。骨学試験の対策は、骨格系のレッスンと骨学試験を先に出します。`),
+        : `「自分で選ぶ」では、全 ${terms.length.toLocaleString()}語と、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、語根カード・骨学試験を学びます（詳細モード）。`),
       h("p", { class: "muted" }, "学んだ記録は語ごとに残るので、コースを変えても続きになります。"),
       h("p", { class: "setting-label" }, "学ぶの一覧"),
       chips([{ value: false, label: "使う時が来たら出す" }, { value: true, label: "すべての学び方を出す" }], preferences.showAllWays, (value) => setPreference("showAllWays", value)),
