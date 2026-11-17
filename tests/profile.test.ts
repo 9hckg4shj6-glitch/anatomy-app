@@ -6,10 +6,9 @@ import { MED_UNIVERSITIES, REGIONS } from "../src/universities";
 const load = async (env: boolean) => {
   vi.resetModules();
   vi.unstubAllEnvs();
-  if (env) {
-    vi.stubEnv("VITE_SUPABASE_URL", "https://example.supabase.co");
-    vi.stubEnv("VITE_SUPABASE_ANON_KEY", "anon-key");
-  }
+  // CI ではビルド用に本物の送り先が入っているので、無いときも空にして上書きする（テストから本物へ送らない）
+  vi.stubEnv("VITE_SUPABASE_URL", env ? "https://example.supabase.co" : "");
+  vi.stubEnv("VITE_SUPABASE_ANON_KEY", env ? "anon-key" : "");
   return import("../src/profile");
 };
 
