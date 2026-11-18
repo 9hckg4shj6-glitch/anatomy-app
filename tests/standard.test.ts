@@ -1,9 +1,11 @@
 import "fake-indexeddb/auto";
 import { termById, terms, units } from "../src/content";
-import { courseLesson, courseTerms, courseUnitOf, courseUnits, inCourse, standardTermCount, standardUnits } from "../src/course";
+import { courseLesson, courseTerms, courseUnitOf, courseUnits, inCourse, pointOf, standardTermCount, standardUnits } from "../src/course";
 import { db } from "../src/db";
 import { courseOf, preferences, setCourse } from "../src/settings";
+import { noteText } from "../src/en-notes";
 import { nextLesson } from "../src/ui/lessons";
+import { termCard } from "../src/ui/term-card";
 
 // 標準のコース（docs/学びやすさ.md の案2）: 必修と基礎の語（level 1・2）だけ
 describe("標準のコース", () => {
@@ -53,5 +55,30 @@ describe("標準のコース", () => {
     await setCourse("free");
     expect(preferences.mode).toBe("detail");
     expect(courseTerms()).toHaveLength(terms.length);
+  });
+
+  it("標準の語にはどれも覚えること（70字まで）があり、語のカードは覚えることを上に、説明を「くわしく」の中に出す", async () => {
+    await setCourse("standard");
+    for (const term of courseTerms()) {
+      expect(pointOf(term.id), term.id).toBeTruthy();
+      expect(pointOf(term.id)!.length).toBeLessThanOrEqual(70);
+    }
+    // 初心者コースに無い標準の語
+    const term = termById.get("deep-femoral-artery")!;
+    const card = termCard(term);
+    expect(card.querySelector(".term-point")?.textContent).toContain(pointOf(term.id)!);
+    const more = card.querySelector("details.term-more") as HTMLDetailsElement;
+    expect(card.textContent).not.toContain(noteText(term.note));
+    more.open = true;
+    more.dispatchEvent(new Event("toggle"));
+    expect(more.textContent).toContain(noteText(term.note));
+    // 筋の起始・停止は標準でもすぐ見える
+    expect(termCard(termById.get("biceps-brachii")!).querySelector(".muscle-notes")).toBeTruthy();
+    // 発展の語は今までどおり説明を出す
+    const advanced = terms.find((item) => item.level === 3)!;
+    expect(termCard(advanced).querySelector(".term-desc")).toBeTruthy();
+    // 詳細モードは今までどおり
+    await setCourse("free");
+    expect(termCard(term).querySelector(".term-desc")).toBeTruthy();
   });
 });

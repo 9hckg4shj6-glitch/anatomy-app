@@ -96,7 +96,7 @@ export async function studyHub(ctx: AppContext): Promise<void> {
     h("h3", { class: "list-title" }, "学び方"),
     h("ul", { class: "home-card home-list" },
       itemRow("#/lessons", "lessons", "#a8572f", fresh ? "すべてのレッスン" : "レッスン", "系統ごとに自分で選ぶ・検索"),
-      itemRow("#/organs", "organ", "#c2493a", "臓器の図", `心臓・肺・脳などを色分け・切り口・平面図（${plates}枚）で。細胞と組織・皮膚・発生もここで学ぶ`),
+      itemRow("#/organs", "organ", "#c2493a", "臓器の図", `細胞と組織・発生もここで。心臓・肺・脳などの立体と平面図（${plates}枚）`),
       showDrill ? itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンから選んで解く・苦手を解く") : "",
       examItem,
       showRoots ? itemRow("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む") : "",

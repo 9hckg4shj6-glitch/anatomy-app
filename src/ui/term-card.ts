@@ -1,6 +1,6 @@
 import { speak } from "../audio";
 import { systemById, termById, terms, type Term } from "../content";
-import { beginnerPoints, isBeginner } from "../course";
+import { beginnerPoints, isBeginner, isStandard, pointOf } from "../course";
 import { h } from "../dom";
 import { noteText } from "../en-notes";
 import { examCountOf } from "../exam";
@@ -189,6 +189,9 @@ function memoRow(term: Term): HTMLElement {
  */
 export function termCard(term: Term, options: { compact?: boolean; open?: (word: Term) => void; motion?: (on: boolean) => string | Promise<string> } = {}): HTMLElement {
   const beginner = isBeginner();
+  // 標準のコースでは、覚えることのある語（必修と基礎の語）は、覚えることを上に、説明を「くわしく」の中に（docs/学びやすさ.md の案4）
+  const standard = isStandard() && !!pointOf(term.id);
+  const brief = beginner || standard;
   const where = term.of ? `${termById.get(term.of)?.ja ?? ""}の部位` : systemById.get(term.system)?.ja ?? "";
   const gloss = h("div", { class: "gloss-box", hidden: true });
   const show = (word: Term) => {
@@ -198,7 +201,7 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
         h("b", {}, word.ja), h("span", { lang: "en" }, word.en),
         h("button", { class: "gloss-close", type: "button", "aria-label": "閉じる", onClick: () => (gloss.hidden = true) }, "×"),
       ),
-      h("p", {}, (beginner && beginnerPoints.get(word.id)) || noteText(word.note)),
+      h("p", {}, (beginner && beginnerPoints.get(word.id)) || (isStandard() && pointOf(word.id)) || noteText(word.note)),
       options.open ? h("button", { class: "ghost-button", type: "button", onClick: () => options.open!(word) }, word.figure?.motion ? "動きを3Dで見る" : "3Dで見る") : "",
     );
   };
@@ -247,7 +250,7 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
       term.kanji ? h("div", {}, h("dt", {}, "漢字"), h("dd", {}, term.kanji)) : null,
       term.etym ? h("div", {}, h("dt", {}, "語源"), h("dd", {}, term.etym)) : null,
       term.la && term.la.toLowerCase() !== term.en.toLowerCase() && beginner ? h("div", {}, h("dt", {}, "ラテン"), h("dd", { lang: "la" }, term.la)) : null,
-      beginner ? h("div", {}, h("dt", {}, "説明"), h("dd", {}, ...linked(noteText(term.note)))) : null,
+      brief ? h("div", {}, h("dt", {}, "説明"), h("dd", {}, ...linked(noteText(term.note)))) : null,
       // 骨の置き方（解剖学的正位の上下・前後・内外）と、ほかの部位から見た向き（向きの問い方の答え）
       term.placing ? h("div", {}, h("dt", {}, "置き方"), h("dd", {}, ...linked(noteText(term.placing)))) : null,
       term.toward ? h("div", {}, h("dt", {}, "向き"), h("dd", {}, ...linked(`${termById.get(term.toward.than)?.ja}の${termById.get(term.toward.dir)?.ja}。${noteText(term.toward.why)}`))) : null,
@@ -258,7 +261,7 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
   // 詳細モードの説明（英語の併記を切り替えたら、くわしくの中と一緒に作り直す）
   const desc = h("div", { class: "term-desc" }, ...linked(noteText(term.note)));
   const more = h("details", { class: "term-more", open: moreOpen() },
-    h("summary", {}, beginner ? "くわしく（漢字・語源・説明）" : "くわしく（漢字・語源・置き方）"));
+    h("summary", {}, brief ? "くわしく（漢字・語源・説明）" : "くわしく（漢字・語源・置き方）"));
   let filled = false;
   const fill = () => {
     if (more.open && !filled) {
@@ -278,6 +281,12 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
       pointBox(point, "覚えること") ?? h("div", { class: "term-point" }, h("span", { class: "term-point-label" }, "覚えること"),
         h("p", { class: "muted" }, "初心者コースには入っていない語です。くわしい説明は下から。")),
       motion, memoRow(term), more, gloss);
+  }
+  if (standard) {
+    // 標準のコース: 覚えること → 筋の起始・停止など・通るもの → 局所の境界 → メモ → くわしく（説明はここ）
+    return h("article", { class: "term-card is-standard" }, head, english, rootChips(term), schematic,
+      pointBox(pointOf(term.id), "覚えること"),
+      muscle, ...facts, motion, regionNotes(term, options.open), memoRow(term), more, gloss);
   }
   // 詳細モードは説明がそのまま「覚えること」（初心者コースの短い point と重なるので、point は出さない）
   return h("article", { class: "term-card" }, head, english, rootChips(term), schematic,

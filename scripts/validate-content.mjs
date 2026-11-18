@@ -242,6 +242,21 @@ for (const unit of beginnerParsed.success ? beginnerParsed.data.units : []) {
   }
 }
 
+// 標準の語の「覚えること」（content/points.json。docs/学びやすさ.md の案4）: 必修と基礎の語（level 1・2）のうち初心者コースに無い語には
+// どれにも1〜2文・70字までの覚えることがあり、英語の添え書き（「脊柱（vertebral column）」）は入れない。発展の語・初心者コースの語には書かない
+const points = JSON.parse(fs.readFileSync(path.join(ROOT, "content/points.json"), "utf8"));
+for (const [id, point] of Object.entries(points)) {
+  const term = seen.get(id);
+  if (!term) errors.push(`points.json: 「${id}」は語のIDではありません`);
+  else if (term.level > 2) errors.push(`points.json: 「${id}」は発展の語（level 3）です`);
+  if (beginnerIds.has(`term:${id}`)) errors.push(`points.json: 「${id}」は初心者コースの語（beginner.json の point を使う）`);
+  if (typeof point !== "string" || !point.endsWith("。") || point.length > 70) errors.push(`points.json: 「${id}」の覚えることは「。」で終わる70字まで`);
+  if (/（[a-z]/.test(point)) errors.push(`points.json: 「${id}」に英語の添え書きがあります`);
+}
+for (const term of terms) {
+  if (term.level <= 2 && !beginnerIds.has(`term:${term.id}`) && !points[term.id]) errors.push(`points.json: 標準の語「${term.id}」（${term.ja}）に覚えることがありません`);
+}
+
 // 骨学試験（content/exam.json）: 種類ごとの ID の重複、A の空欄（{語ID} か {=答え|別解}）、B・C の語と3Dで示す語。
 // B の総論の語（term の無い語）は日本語・読み・英語・説明を直接書く。D の図の番号は、ピンか骨の語のID、点を書いた語、語に無い名前（点と名前）。
 // 整理の項目（pairs・sequences・levels）は語の参照先、対の特徴の数と重なり、並びの語の重なり、目安の答えの重なり

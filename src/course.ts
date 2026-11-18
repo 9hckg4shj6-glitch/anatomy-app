@@ -1,4 +1,5 @@
 import beginnerJson from "../content/beginner.json";
+import pointsJson from "../content/points.json";
 import { isPlateUnit, organOf, organOfLesson, termById, terms, units, unitById, type Organ, type Term, type Unit } from "./content";
 import type { Facet } from "./db";
 import { preferences } from "./settings";
@@ -28,6 +29,14 @@ export const beginnerUnits: Unit[] = beginner.units.map((unit) => ({
 
 /** 初心者コースの語の「覚えること」（初学者が最低限覚える1〜2文） */
 export const beginnerPoints = new Map(beginner.units.flatMap((unit) => unit.terms.map((item) => [item.id, item.point] as const)));
+
+/** 標準の語（必修と基礎）のうち初心者コースに無い語の「覚えること」（content/points.json。docs/学びやすさ.md の案4） */
+const standardPoints = new Map(Object.entries(pointsJson as Record<string, string>));
+
+/** 語の「覚えること」（初心者コースの語は beginner.json、ほかの標準の語は points.json。発展の語には無い） */
+export function pointOf(termId: string): string | undefined {
+  return beginnerPoints.get(termId) ?? standardPoints.get(termId);
+}
 
 const beginnerTerms: Term[] = beginnerUnits.flatMap((unit) => unit.terms);
 const beginnerIds = new Set(beginnerTerms.map((term) => term.id));
