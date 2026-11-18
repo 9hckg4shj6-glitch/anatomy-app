@@ -1,5 +1,5 @@
 import { isPlateUnit, systems, type Unit } from "../content";
-import { courseUnitOf, courseUnits, isBeginner, lessonById } from "../course";
+import { courseLesson, courseUnitOf, courseUnits, isBeginner, isStandard } from "../course";
 import { db, nowIso, type LearnedTerm } from "../db";
 import { h } from "../dom";
 import { normalize, searchTerms, searchUnits } from "../search";
@@ -147,7 +147,9 @@ export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
     body,
     isBeginner()
       ? h("p", { class: "muted lessons-note" }, "「はじめての解剖」のコースのレッスンです（最低限覚える語だけ）。全部の語は ", h("a", { href: "#/settings" }, "設定"), " でコースを変えると学べます。")
-      : "",
+      : isStandard()
+        ? h("p", { class: "muted lessons-note" }, "「標準」のコースのレッスンです（必修と基礎の語。細かい発展の語は除いています）。発展の語まで学ぶときは ", h("a", { href: "#/settings" }, "設定"), " でコースを「すべての語」に。")
+        : "",
   );
   choose(pick);
   chips.querySelector(".chip.on")?.scrollIntoView({ block: "nearest", inline: "center" });
@@ -205,7 +207,7 @@ function recentLessons(learned: LearnedTerm[]): Unit[] {
     const unit = courseUnitOf(item.termId)?.id;
     if (unit && (latest.get(unit) ?? "") < item.learnedAt) latest.set(unit, item.learnedAt);
   }
-  return [...latest].sort((a, b) => b[1].localeCompare(a[1])).slice(0, 3).flatMap(([id]) => lessonById.get(id) ?? []);
+  return [...latest].sort((a, b) => b[1].localeCompare(a[1])).slice(0, 3).flatMap(([id]) => courseLesson(id) ?? []);
 }
 
 /** 検索の結果に添えるレッスンの名前（今のモードで語の入るレッスン） */

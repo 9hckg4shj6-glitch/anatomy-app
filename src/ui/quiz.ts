@@ -2,7 +2,7 @@ import type { Grade } from "ts-fsrs";
 import { checkEnglish, type EnglishResult } from "../answer";
 import { autoSpeak, speak } from "../audio";
 import { BODY_DIRECTIONS, DIRECTIONS, figurePrompt, isDrawn, pins, regionPrompt, termById, terms, type Term } from "../content";
-import { inCourse, isBeginner } from "../course";
+import { inCourse, isDetail } from "../course";
 import { db, type Facet, type ReviewEvent } from "../db";
 import { h, onKeys, until } from "../dom";
 import { dueLabel, Rating, recordReview, type RecordedReview } from "../fsrs";
@@ -90,11 +90,11 @@ function candidates(ctx: AppContext, term: Term, needs?: (other: Term) => boolea
 }
 
 /**
- * 初心者モードでは、選択肢を初心者コースの語から選ぶ（まだ習わない細かい名前を並べない）。
+ * 初心者・標準モードでは、選択肢をコースの語から選ぶ（まだ習わない細かい名前を並べない）。
  * コースの語だけでは3つそろわなければ、今までどおりすべての語から
  */
 function preferCourse(answerId: string, [near, pool]: [string[], string[]]): [string[], string[]] {
-  if (!isBeginner()) return [near, pool];
+  if (isDetail()) return [near, pool];
   const own = pool.filter((id) => id !== answerId && inCourse(id));
   return own.length >= 3 ? [near.filter(inCourse), own] : [near, pool];
 }

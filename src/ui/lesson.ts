@@ -1,6 +1,6 @@
 import { autoSpeak } from "../audio";
 import { isPlateUnit, organOfLesson, systemById, type Term, type Unit } from "../content";
-import { isBeginner, lessonById, organLessons, studyFacets } from "../course";
+import { courseLesson, isBeginner, organLessons, studyFacets } from "../course";
 import { db, nowIso, type Facet } from "../db";
 import { h, onKeys, until } from "../dom";
 import { preferences, setPreference } from "../settings";
@@ -21,7 +21,7 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
   // "<ID>/try" ははじめにの3語だけの短いレッスン（始めの画面を出さず、位置→名前と名前→位置で）
   const [unitId, mode] = arg.split("/");
   const trial = mode === "try";
-  const unit = lessonById.get(unitId);
+  const unit = courseLesson(unitId);
   if (!unit) {
     ctx.panel.replaceChildren(h("p", {}, "レッスンが見つかりません。"), h("a", { href: "#/lessons" }, "レッスンの一覧へ"));
     return;

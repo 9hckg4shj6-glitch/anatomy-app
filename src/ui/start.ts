@@ -148,8 +148,8 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
     ctx.fold(true);
     ctx.tools.replaceChildren();
     void ctx.viewer.show({ systems: ["skeletal"], body: true });
-    // 1年生には「はじめての解剖」をすすめる
-    const recommend: string = draft.grade === "1年" ? "basic" : "";
+    // 1年生には「はじめての解剖」、2年生から上には「標準」をすすめる（docs/学びやすさ.md の案2）
+    const recommend: string = draft.grade === "1年" ? "basic" : /^[2-6]年$/.test(draft.grade ?? "") ? "standard" : "";
     const cards = COURSES.map((course) => {
       const on = course.id === picked;
       return h("button", {
@@ -162,7 +162,7 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
       },
         h("span", { class: "course-radio", "aria-hidden": "true" }),
         h("span", { class: "course-text" },
-          h("span", { class: "course-title" }, course.title, course.id === recommend ? h("span", { class: "course-badge" }, "1年生におすすめ") : ""),
+          h("span", { class: "course-title" }, course.title, course.id === recommend ? h("span", { class: "course-badge" }, recommend === "basic" ? "1年生におすすめ" : "おすすめ") : ""),
           h("span", { class: "course-sub" }, course.sub)),
       );
     });

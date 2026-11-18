@@ -4,15 +4,17 @@ import { BASIC_FACETS, TERM_FACETS } from "./study";
 /** 設定の画面（#/settings）で変えられる設定。db.settings に1つずつ保存し、起動したときに読む */
 export interface Preferences {
   /**
-   * 初心者モード（beginner）は初心者コース（content/beginner.json の約370語）と短い「覚えること」だけ、
-   * 詳細モード（detail）は全部の語と詳しい説明（src/course.ts）。保存が無ければ、まだ何も学んでいない人は初心者モード
+   * 初心者モード（beginner）は初心者コース（content/beginner.json の約480語）と短い「覚えること」だけ、
+   * 標準モード（standard）は必修と基礎の語（level 1・2）、詳細モード（detail）は全部の語と詳しい説明（src/course.ts）。
+   * 保存が無ければ、まだ何も学んでいない人は初心者モード
    */
-  mode: "beginner" | "detail";
+  mode: "beginner" | "standard" | "detail";
   /**
-   * はじめに選ぶコース（#/start。docs/普段使い.md）。basic＝はじめての解剖（初心者モード）、free＝授業に合わせて自分で選ぶ（詳細モード）。
+   * はじめに選ぶコース（#/start。docs/普段使い.md）。basic＝はじめての解剖（初心者モード）、standard＝標準（標準モード。docs/学びやすさ.md）、
+   * free＝すべての語を授業に合わせて自分で選ぶ（詳細モード）。
    * 骨学試験の対策（exam）は 2026-11-17 にやめた。選んでいた人は起動したときに free へ移す（loadPreferences）。空ならまだ選んでいない（今までの人は mode から決まる。courseOf）
    */
-  course: "" | "basic" | "free";
+  course: "" | "basic" | "standard" | "free";
   /** 学ぶの一覧に、まだ使う時の来ていない学び方（演習・骨学試験・語根カード）も初めから出す */
   showAllWays: boolean;
   /** レッスン・図鑑・答え合わせで英語の発音を自動で鳴らす（🔊を押せばいつでも鳴る） */
@@ -62,8 +64,8 @@ const facetList = (allowed: Facet[]) => (value: unknown): value is Facet[] =>
   Array.isArray(value) && value.every((facet) => allowed.includes(facet)) && value.some((facet) => BASIC_FACETS.includes(facet));
 
 const valid: { [K in keyof Preferences]: (value: unknown) => value is Preferences[K] } = {
-  mode: (value): value is Preferences["mode"] => value === "beginner" || value === "detail",
-  course: (value): value is Preferences["course"] => value === "" || value === "basic" || value === "free",
+  mode: (value): value is Preferences["mode"] => value === "beginner" || value === "standard" || value === "detail",
+  course: (value): value is Preferences["course"] => value === "" || value === "basic" || value === "standard" || value === "free",
   showAllWays: (value): value is boolean => typeof value === "boolean",
   autoSpeak: (value): value is boolean => typeof value === "boolean",
   newPerDay: (value): value is number => typeof value === "number" && NEW_PER_DAY_OPTIONS.includes(value),
@@ -109,18 +111,19 @@ export async function setPreference<K extends keyof Preferences>(key: K, value: 
 /** コース（はじめに選ぶ。#/start と設定） */
 export const COURSES: { id: Exclude<Preferences["course"], "">; title: string; sub: string; short: string }[] = [
   { id: "basic", title: "はじめての解剖", sub: "まず覚える語だけを、短い説明で。医療系の1年生に。", short: "はじめての解剖" },
-  { id: "free", title: "授業に合わせて自分で選ぶ", sub: "すべての系統とレッスンから、授業の範囲を選ぶ。", short: "授業に合わせて" },
+  { id: "standard", title: "標準（必修と基礎）", sub: "授業と試験でよく出る語。細かすぎる発展の語は外す。", short: "標準" },
+  { id: "free", title: "すべての語（授業に合わせて自分で選ぶ）", sub: "発展の語まで、すべての系統とレッスンから授業の範囲を選ぶ。", short: "すべての語" },
 ];
 
-/** 今のコース。まだ選んでいなければモードから（初心者モードは「はじめての解剖」、詳細モードは「自分で選ぶ」） */
+/** 今のコース。まだ選んでいなければモードから（初心者モードは「はじめての解剖」、標準モードは「標準」、詳細モードは「すべての語」） */
 export function courseOf(): Exclude<Preferences["course"], ""> {
-  return preferences.course || (preferences.mode === "beginner" ? "basic" : "free");
+  return preferences.course || (preferences.mode === "beginner" ? "basic" : preferences.mode === "standard" ? "standard" : "free");
 }
 
-/** コースを選ぶ。はじめての解剖は初心者モード、ほかは詳細モード */
+/** コースを選ぶ。はじめての解剖は初心者モード、標準は標準モード、すべての語は詳細モード */
 export async function setCourse(course: Exclude<Preferences["course"], "">): Promise<void> {
   await setPreference("course", course);
-  await setPreference("mode", course === "basic" ? "beginner" : "detail");
+  await setPreference("mode", course === "basic" ? "beginner" : course === "standard" ? "standard" : "detail");
 }
 
 /** 説明の欄の文字の大きさ（CSS の --panel-zoom） */
