@@ -131,6 +131,7 @@ const gestureHelp = h("dialog", { class: "key-help", "aria-label": "3Dの動か�
       ["境目", "3Dと説明の境目をドラッグで大きさを変える（ダブルクリックで元に戻す）"],
     ] as const).map(([key, text]) => h("div", {}, h("dt", {}, key), h("dd", {}, text))),
   ),
+  h("p", {}, h("a", { href: "#/guide/3d", onClick: () => gestureHelp.close() }, "動く見本で見る（使い方）›")),
   h("form", { method: "dialog" }, h("button", { class: "primary" }, "閉じる")),
 );
 document.body.append(gestureHelp);
@@ -266,7 +267,7 @@ async function boot(): Promise<void> {
       else if (name === "exam") await exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
       else if (name === "settings") await settingsScreen(ctx);
-      else if (name === "guide") guide(ctx);
+      else if (name === "guide") guide(ctx, arg);
       else if (name === "credits") credits(ctx);
       else if (name === "admin") await admin(ctx, arg);
       else await home(ctx);
