@@ -1,5 +1,6 @@
 import "./styles.css";
-import { loadModelIndex } from "./content";
+import { isPlateUnit, loadModelIndex, organOfLesson } from "./content";
+import { lessonById } from "./course";
 import { loadPreferences } from "./settings";
 import { profileOnLaunch } from "./profile";
 import { h } from "./dom";
@@ -85,12 +86,20 @@ function showCrumbs(name: string): void {
     document.title = page ? `${page[0]} - ${APP_NAME}` : APP_NAME;
     return;
   }
-  const [title, href] = page;
+  const [title, href] = plateLesson(name) ?? page;
   const atIndex = location.hash === href || location.hash === `${href}/`;
   crumbs.replaceChildren(atIndex
     ? h("span", { class: "crumb", "aria-current": "page" }, title)
     : h("a", { class: "crumb", href }, title));
   document.title = `${title} - ${APP_NAME}`;
+}
+
+/** 図のレッスン（#/learn/<ID>）なら、上の帯は「臓器の名前の図」へ戻る（図のレッスンは臓器の図で学ぶので） */
+function plateLesson(name: string): [string, string] | undefined {
+  if (name !== "learn") return undefined;
+  const unit = lessonById.get(location.hash.split("/")[2] ?? "");
+  const organ = unit && isPlateUnit(unit) ? organOfLesson(unit) : undefined;
+  return organ ? [`${organ.ja}の図`, `#/organs/${organ.id}`] : undefined;
 }
 
 watchInstallPrompt();

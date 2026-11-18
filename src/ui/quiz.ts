@@ -164,15 +164,17 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   // 骨・器官の部位も、骨・器官をはっきり見せるため周りを半透明にする。
   const landmark = !!term.of;
   const isolate = !!term.xray || landmark;
-  const facet = item.facet === "point" && (term.xray || isDrawn(term)) ? "locate" : item.facet;
+  const facet = item.facet === "point" && (term.xray || term.small || isDrawn(term)) ? "locate" : item.facet;
   const header = h("div", { class: "quiz-head" }, h("span", { class: "facet" }, facetLabels[facet]), h("span", { class: "count" }, progress));
   // 平面図の語は3Dの上に図を重ね、答えるまで名前を隠す（英語→日本語のほかは、その語の番号を光らせる）。
+  // 3Dでは点にしか見えない小さい語も、載っている平面図があれば図で問う（term.seePlate）。
   // ホルモンの問い方は器官を答えるので、図（図の名前で器官が分かる）を重ねない
   const plates = plateOverlay(ctx);
-  if (term.plate && facet !== "hormone") await plates.show(term, { names: false, mark: facet !== "en2ja" });
+  const onPlate = !!(term.plate || term.seePlate) && facet !== "hormone";
+  if (onPlate) await plates.show(term, { names: false, mark: facet !== "en2ja" });
   else plates.hide();
   // 向きの目印は、基本の用語（矢印の向き・面）と向きの問い方では答えになるので、答えるまで隠す（平面図を重ねている間も隠す）
-  viewer.hideCompass(term.system === "basics" || facet === "relation" || !!term.plate);
+  viewer.hideCompass(term.system === "basics" || facet === "relation" || onPlate);
 
   let outcome: Outcome;
   let wrongTerm: string | null = null;
@@ -190,7 +192,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     case "locate": {
       viewer.highlight([term.id], { isolate });
       viewer.focus(term.id, 3.4);
-      const question = term.figure ? figurePrompt(term.figure) : term.region ? regionPrompt(term.region) : term.plate ? "図のオレンジ色の番号の名前は？" : "オレンジ色の部位の名前は？";
+      const question = term.figure ? figurePrompt(term.figure) : term.region ? regionPrompt(term.region) : onPlate ? "図のオレンジ色の番号の名前は？" : "オレンジ色の部位の名前は？";
       ctx.hint(question);
       const picked = await choose(question, choicesOf((id) => termById.get(id)!.ja, undefined, true), (id) => termById.get(id)!.ja);
       outcome = picked === term.id ? "correct" : picked ? "wrong" : "skip";
@@ -325,8 +327,10 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   }
 
   const recorded = await recordReview(term.id, facet, ratingOf[outcome], { durationMs: Math.round(performance.now() - started), source });
-  viewer.hideCompass(!!term.plate);
-  if (term.plate) void plates.show(term, { names: true, mark: true });
+  // 答えたあとは、図のある語なら図に名前を出す（ホルモンの問い方も、答え合わせでは図を見せる）
+  const plateAfter = !!(term.plate || term.seePlate);
+  viewer.hideCompass(plateAfter);
+  if (plateAfter) void plates.show(term, { names: true, mark: true });
   if (facet === "attach") viewer.highlight([term.id], { isolate: true, marks: attachMarks(term), seeThrough: true });
   // 向き: この語を橙、比べた語を青で示し、両方が入るように寄る
   else if (facet === "relation") viewer.reveal(term.id, term.toward!.than, true);

@@ -413,56 +413,56 @@
       "terms": [
         {
           "id": "apical-segment-of-lung", "ja": "肺尖区（S1）", "yomi": "はいせんく", "en": "apical segment", "la": "segmentum apicale",
-          "parts": ["za:right apical segment of lung (s1)"], "level": 2,
+          "parts": ["za:right apical segment of lung (s1)"], "level": 2, "schematic": true,
           "kanji": "肺尖（肺の上の先）の区域（S1）",
           "etym": "apical「頂点の」（ラテン語 apex）＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "右肺（right lung）の上葉（superior lobe）のいちばん上の区域（segment）で、肺尖（apex of lung）をつくる。肺尖枝（B1）と肺動脈（pulmonary artery）の肺尖枝（A1）が入る。左肺（left lung）では後上葉区（S2）と1つになって肺尖後区（S1+2）になる。S1・S2・S6 は肺結核（pulmonary tuberculosis）の好発部位。"
         },
         {
           "id": "posterior-segment-of-lung", "ja": "後上葉区（S2）", "yomi": "こうじょうようく", "en": "posterior segment", "la": "segmentum posterius",
-          "parts": ["za:right posterior segment of lung (s2)"], "level": 2,
+          "parts": ["za:right posterior segment of lung (s2)"], "level": 2, "schematic": true,
           "kanji": "上葉の後ろの区域（S2）",
           "etym": "posterior「後ろの」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "右肺（right lung）の上葉（superior lobe）の後ろの区域（segment）。後上葉枝（B2）が入る。後ろで斜裂（oblique fissure）をはさんで下葉（inferior lobe）の上下葉区（S6）と接する。あおむけで誤嚥（aspiration）したものが入りやすい区域の1つ。"
         },
         {
           "id": "apicoposterior-segment", "ja": "肺尖後区（S1+2）", "yomi": "はいせんこうく", "en": "apicoposterior segment", "la": "segmentum apicoposterius",
-          "parts": ["za:left apicoposterior segment of lung (s1+2)"], "level": 2,
+          "parts": ["za:left apicoposterior segment of lung (s1+2)"], "level": 2, "schematic": true,
           "kanji": "肺尖と後ろを合わせた区域（S1+2）",
           "etym": "apico-「頂点の」＋ posterior「後ろの」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "左肺（left lung）の上葉（superior lobe）の上と後ろの区域（segment）。左では肺尖枝（B1）と後上葉枝（B2）が共通の幹（B1+2）で出るので、S1 と S2 を合わせて S1+2 とよぶ（『解剖学講義』）。"
         },
         {
           "id": "anterior-segment-of-lung", "ja": "前上葉区（S3）", "yomi": "ぜんじょうようく", "en": "anterior segment", "la": "segmentum anterius",
-          "parts": ["za:anterior segment of lung (s3)"], "level": 2,
+          "parts": ["za:anterior segment of lung (s3)"], "level": 2, "schematic": true,
           "kanji": "上葉の前の区域（S3）",
           "etym": "anterior「前の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "上葉（superior lobe）の前の区域（segment）で、左右の肺（lung）にある。前上葉枝（B3）が入る。前から見ると上葉の大部分を占め、右では下を水平裂（horizontal fissure）で中葉（middle lobe）と、左では下で舌区（lingula）と接する。"
         },
         {
           "id": "lateral-segment-of-lung", "ja": "外側中葉区（S4）", "yomi": "がいそくちゅうようく", "en": "lateral segment", "la": "segmentum laterale",
-          "parts": ["za:right lateral segment of lung (s4)"], "level": 2,
+          "parts": ["za:right lateral segment of lung (s4)"], "level": 2, "schematic": true,
           "kanji": "中葉の外側の区域（右の S4）",
           "etym": "lateral「外側の」（ラテン語 latus「わき」）＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "右肺（right lung）の中葉（middle lobe）の外側（lateral）（後ろ外側）の区域（segment）。外側中葉枝（B4）が入る。横から見ると水平裂（horizontal fissure）と斜裂（oblique fissure）の間に見える。"
         },
         {
           "id": "medial-segment-of-lung", "ja": "内側中葉区（S5）", "yomi": "ないそくちゅうようく", "en": "medial segment", "la": "segmentum mediale",
-          "parts": ["za:right medial segment of lung (s5)"], "level": 2,
+          "parts": ["za:right medial segment of lung (s5)"], "level": 2, "schematic": true,
           "kanji": "中葉の内側の区域（右の S5）",
           "etym": "medial「内側の」（ラテン語 medius「真ん中」）＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "右肺（right lung）の中葉（middle lobe）の内側（medial）（前内側（anteromedial））の区域（segment）。内側中葉枝（B5）が入る。心臓（heart）の右の縁に接するので、胸部（thorax）X線（X-ray）で右の心臓の縁が見えなくなると（シルエットサイン（silhouette sign））ここの病変（lesion）を考える。"
         },
         {
           "id": "superior-lingular-segment", "ja": "上舌区（S4）", "yomi": "じょうぜつく", "en": "superior lingular segment", "la": "segmentum lingulare superius",
-          "parts": ["za:left superior lingular segment of lung (s4)"], "level": 2,
+          "parts": ["za:left superior lingular segment of lung (s4)"], "level": 2, "schematic": true,
           "kanji": "舌区の上の区域（左の S4）",
           "etym": "superior「上の」＋ lingular「小舌の」（ラテン語 lingula「小さな舌」）＋ segment「区域」",
           "note": "左肺（left lung）の上葉（superior lobe）の下の部分（舌区（lingula））のうち、上の区域（segment）。上舌枝（B4）が入る。右の外側中葉区（S4）にあたる。"
         },
         {
           "id": "inferior-lingular-segment", "ja": "下舌区（S5）", "yomi": "かぜつく", "en": "inferior lingular segment", "la": "segmentum lingulare inferius",
-          "parts": ["za:left inferior lingular segment of lung (s5)"], "level": 2,
+          "parts": ["za:left inferior lingular segment of lung (s5)"], "level": 2, "schematic": true,
           "kanji": "舌区の下の区域（左の S5）",
           "etym": "inferior「下の」＋ lingular「小舌の」（ラテン語 lingula「小さな舌」）＋ segment「区域」",
           "note": "左肺（left lung）の舌区（lingula）の下の区域（segment）。下舌枝（B5）が入る。心切痕（cardiac notch）の下を回って前から下へのび、右の内側中葉区（S5）にあたる。心臓（heart）の左の縁に接する。"
@@ -481,35 +481,35 @@
       "terms": [
         {
           "id": "superior-segment-of-lung", "ja": "上下葉区（S6）", "yomi": "じょうかようく", "en": "superior segment", "la": "segmentum superius",
-          "parts": ["za:superior segment of lung (s6)"], "level": 2,
+          "parts": ["za:superior segment of lung (s6)"], "level": 2, "schematic": true,
           "kanji": "下葉の上の区域（S6）",
           "etym": "superior「上の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "下葉（inferior lobe）のいちばん上の区域（segment）で、左右の肺（lung）にある。上下葉枝（B6）が入る。後ろで斜裂（oblique fissure）をはさんで上葉（superior lobe）の S2（左は S1+2）と接する。下葉気管支（inferior lobar bronchus）の最初の枝（branch）で後ろへ向かうので、あおむけで誤嚥（aspiration）したものが入りやすい。本では「上-下葉区」とも書く。"
         },
         {
           "id": "medial-basal-segment", "ja": "内側肺底区（S7）", "yomi": "ないそくはいていく", "en": "medial basal segment", "la": "segmentum basale mediale",
-          "parts": ["za:medial basal segment of lung (s7)"], "level": 2,
+          "parts": ["za:medial basal segment of lung (s7)"], "level": 2, "schematic": true,
           "kanji": "肺底の内側の区域（S7）",
           "etym": "medial「内側の」＋ basal「底の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "下葉（inferior lobe）の肺底（base of lung）のうち内側（medial）の区域（segment）。内側肺底枝（B7）が入る。心臓（heart）の下の縁と下大静脈（inferior vena cava）に接する（ラテン語の名に cardiacum「心臓の」が付く）。左では小さく、無いことも多い。"
         },
         {
           "id": "anterior-basal-segment", "ja": "前肺底区（S8）", "yomi": "ぜんはいていく", "en": "anterior basal segment", "la": "segmentum basale anterius",
-          "parts": ["za:anterior basal segment of lung (s8)"], "level": 2,
+          "parts": ["za:anterior basal segment of lung (s8)"], "level": 2, "schematic": true,
           "kanji": "肺底の前の区域（S8）",
           "etym": "anterior「前の」＋ basal「底の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "下葉（inferior lobe）の肺底（base of lung）のうち前の区域（segment）。前肺底枝（B8）が入る。前の斜裂（oblique fissure）の下の部分で、右は中葉（middle lobe）、左は舌区（lingula）の後ろに接する。"
         },
         {
           "id": "lateral-basal-segment", "ja": "外側肺底区（S9）", "yomi": "がいそくはいていく", "en": "lateral basal segment", "la": "segmentum basale laterale",
-          "parts": ["za:lateral basal segment of lung (s9)"], "level": 2,
+          "parts": ["za:lateral basal segment of lung (s9)"], "level": 2, "schematic": true,
           "kanji": "肺底の外側の区域（S9）",
           "etym": "lateral「外側の」＋ basal「底の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "下葉（inferior lobe）の肺底（base of lung）のうち外側（lateral）の区域（segment）。外側肺底枝（B9）が入る。横から見た下葉の下の部分で、肋骨横隔洞（costodiaphragmatic recess）に面する。"
         },
         {
           "id": "posterior-basal-segment", "ja": "後肺底区（S10）", "yomi": "こうはいていく", "en": "posterior basal segment", "la": "segmentum basale posterius",
-          "parts": ["za:posterior basal segment of lung (s10)"], "level": 2,
+          "parts": ["za:posterior basal segment of lung (s10)"], "level": 2, "schematic": true,
           "kanji": "肺底の後ろの区域（S10）",
           "etym": "posterior「後ろの」＋ basal「底の」＋ segment「区域（ラテン語 segmentum「切り分けたもの」）」",
           "note": "下葉（inferior lobe）の肺底（base of lung）のうち後ろの区域（segment）で、下葉でいちばん大きい。後肺底枝（B10）が入る。後ろの最も低い所で、肺底部の背中（back）側。あおむけで寝ている人の誤嚥性肺炎（aspiration pneumonia）や、胸水（pleural effusion）がたまる肋骨横隔洞（costodiaphragmatic recess）に近い。"
@@ -528,49 +528,49 @@
       "terms": [
         {
           "id": "parietal-pleura", "ja": "壁側胸膜", "yomi": "へきそくきょうまく", "en": "parietal pleura", "la": "pleura parietalis",
-          "parts": ["za:costal pleura", "za:diaphragmatic pleura", "za:mediastinal pleura", "za:cervical pleura"], "level": 1, "color": "#8fb8de", "xray": true, "veil": true,
+          "parts": ["za:costal pleura", "za:diaphragmatic pleura", "za:mediastinal pleura", "za:cervical pleura"], "level": 1, "schematic": true, "color": "#8fb8de", "xray": true, "veil": true,
           "kanji": "胸壁の側をおおう胸膜",
           "etym": "parietal「壁の」（ラテン語 paries「壁」）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
           "note": "胸壁（thoracic wall）の内面（internal surface）・横隔膜（diaphragm）の上面（superior surface）・縦隔（mediastinum）の側面をおおう胸膜（pleura）。部位（region）によって肋骨胸膜（costal pleura）・横隔胸膜（diaphragmatic pleura）・縦隔胸膜（mediastinal pleura）・胸膜頂（cervical pleura）に分ける。肺門（hilum of lung）で肺根（root of lung）を袖のように包んで肺胸膜（pulmonary pleura）に続き、肺門の下では前後の胸膜が合わさって肺間膜（pulmonary ligament）になる。肺胸膜と違い痛覚があり、肋間神経（intercostal nerves）と横隔神経（phrenic nerve）が分布する（胸膜炎の胸痛）。"
         },
         {
           "id": "costal-pleura", "ja": "肋骨胸膜", "yomi": "ろっこつきょうまく", "en": "costal pleura", "la": "pleura costalis",
-          "parts": ["za:costal pleura"], "level": 2, "color": "#8fb8de", "xray": true, "veil": true,
+          "parts": ["za:costal pleura"], "level": 2, "schematic": true, "color": "#8fb8de", "xray": true, "veil": true,
           "kanji": "肋骨（胸壁）の内面をおおう胸膜",
           "etym": "costal「肋骨の」（ラテン語 costa）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
           "note": "壁側胸膜（parietal pleura）のうち、肋骨（ribs）と肋間筋（intercostal muscles）の内面（internal surface）をおおう部分で、いちばん広い。胸壁（thoracic wall）との間には胸内筋膜がある。下は肋骨横隔洞（costodiaphragmatic recess）で横隔胸膜（diaphragmatic pleura）に、前と後ろで縦隔胸膜（mediastinal pleura）に折れ返る。"
         },
         {
           "id": "diaphragmatic-pleura", "ja": "横隔胸膜", "yomi": "おうかくきょうまく", "en": "diaphragmatic pleura", "la": "pleura diaphragmatica",
-          "parts": ["za:diaphragmatic pleura"], "level": 2, "color": "#8fb8de", "xray": true, "veil": true,
+          "parts": ["za:diaphragmatic pleura"], "level": 2, "schematic": true, "color": "#8fb8de", "xray": true, "veil": true,
           "kanji": "横隔膜の上面をおおう胸膜",
           "etym": "diaphragmatic「横隔膜の」（ギリシャ語 diaphragma「仕切り」）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
           "note": "壁側胸膜（parietal pleura）のうち、横隔膜（diaphragm）の上面（superior surface）をおおう部分。ドームの上に肺底（base of lung）がのる。まわりの部分には肋間神経（intercostal nerves）、中央の部分には横隔神経（phrenic nerve）が分布するので、横隔膜の中央の胸膜（pleura）の痛みは首から肩（shoulder）に感じる（関連痛）。"
         },
         {
           "id": "mediastinal-pleura", "ja": "縦隔胸膜", "yomi": "じゅうかくきょうまく", "en": "mediastinal pleura", "la": "pleura mediastinalis",
-          "parts": ["za:mediastinal pleura"], "level": 2, "color": "#8fb8de", "xray": true, "veil": true,
+          "parts": ["za:mediastinal pleura"], "level": 2, "schematic": true, "color": "#8fb8de", "xray": true, "veil": true,
           "kanji": "縦隔の側面をおおう胸膜",
           "etym": "mediastinal「縦隔の」（ラテン語 mediastinum「真ん中にあるもの」）＋ pleura「胸膜（ラテン語 pleura ← ギリシャ語 pleura「わき腹・あばら」）」",
           "note": "壁側胸膜（parietal pleura）のうち、縦隔（mediastinum）（心臓（heart）・大血管（great vessels）・食道（esophagus）など）の左右の面をおおう部分。肺門（hilum of lung）で肺根（root of lung）を包んで肺胸膜（pulmonary pleura）に続く。心膜（pericardium）との間を横隔神経（phrenic nerve）と心膜横隔動静脈が下る。"
         },
         {
           "id": "cervical-pleura", "ja": "胸膜頂", "yomi": "きょうまくちょう", "en": "cervical pleura", "enAlt": ["dome of pleura", "cupula of pleura"], "la": "cupula pleurae",
-          "parts": ["za:cervical pleura"], "level": 2, "color": "#c79ad6", "xray": true, "veil": true,
+          "parts": ["za:cervical pleura"], "level": 2, "schematic": true, "color": "#c79ad6", "xray": true, "veil": true,
           "kanji": "胸膜の頂（てっぺん）",
           "etym": "cervical「頚の」（ラテン語 cervix「首」）＋ pleura「胸膜」。cupula「小さな丸屋根」",
           "note": "肺尖（apex of lung）をおおう壁側胸膜（parietal pleura）で、第1肋骨（first rib）と鎖骨（clavicle）の上へ2〜3cm、首（neck）の付け根に丸屋根のように出る。上を胸膜上膜（シブソン筋膜）が補強する。前を鎖骨下動脈（subclavian artery）・鎖骨下静脈（subclavian vein）が通るので、鎖骨の上の注射や鎖骨下静脈の穿刺で傷つけると気胸を起こす。"
         },
         {
           "id": "costodiaphragmatic-recess", "ja": "肋骨横隔洞", "yomi": "ろっこつおうかくどう", "en": "costodiaphragmatic recess", "la": "recessus costodiaphragmaticus",
-          "parts": ["za:costodiaphragmatic recess"], "level": 1, "color": "#3f78c9", "xray": true, "veil": true,
+          "parts": ["za:costodiaphragmatic recess"], "level": 1, "schematic": true, "color": "#3f78c9", "xray": true, "veil": true,
           "kanji": "肋骨胸膜と横隔胸膜の間の洞（すき間）",
           "etym": "costo-「肋骨の」＋ diaphragmatic「横隔膜の」＋ recess「くぼみ」（ラテン語 recessus「引っこんだ所」）",
           "note": "肺（lung）の下縁（inferior border）に沿って、肋骨胸膜（costal pleura）と横隔胸膜（diaphragmatic pleura）の間にできる胸膜腔（pleural cavity）のすき間（胸膜洞）。ふだんの呼吸（respiration）では肺はここに入らず、深く吸ったときも満たされない。胸膜（pleura）の下縁は鎖骨中線（midclavicular line）で第8肋骨（eighth rib）、中腋窩線（midaxillary line）で第10肋骨（tenth rib）、肩甲線で第11〜12肋骨の高さで、肺の下縁より約2肋骨下（中腋窩線で最も離れる）。立って胸水（pleural effusion）がたまるのはまずここで、胸腔穿刺もこの高さで行う。"
         },
         {
           "id": "costomediastinal-recess", "ja": "肋骨縦隔洞", "yomi": "ろっこつじゅうかくどう", "en": "costomediastinal recess", "la": "recessus costomediastinalis",
-          "parts": ["za:costomediastinal recess"], "level": 2, "color": "#2f9e7e", "xray": true, "veil": true,
+          "parts": ["za:costomediastinal recess"], "level": 2, "schematic": true, "color": "#2f9e7e", "xray": true, "veil": true,
           "kanji": "肋骨胸膜と縦隔胸膜の間の洞（すき間）",
           "etym": "costo-「肋骨の」＋ mediastinal「縦隔の」＋ recess「くぼみ」（ラテン語 recessus）",
           "note": "肺（lung）の前縁（anterior border）に沿って、胸骨（sternum）の後ろで肋骨胸膜（costal pleura）と縦隔胸膜（mediastinal pleura）の間にできる胸膜腔（pleural cavity）のすき間（胸膜洞）。左では心切痕（cardiac notch）の所で広く、肺が届かないので心臓（heart）が胸膜（pleura）を隔てて前胸壁（anterior thoracic wall）に接する（打診で心濁音界になる所）。"

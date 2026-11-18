@@ -1,5 +1,6 @@
 import { autoSpeak } from "../audio";
 import { loadPlateIndex, organById, organs, organTerms, termById, unitById, type Organ, type PlateIndex, type PlateLabel, type PlateSpec, type Term } from "../content";
+import { organLessons } from "../course";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
 import type { Section } from "../viewer";
@@ -20,23 +21,51 @@ const LABEL_MODE = "plateLabelMode";
 export async function organScreen(ctx: AppContext, arg: string): Promise<void> {
   const [organId, mode, termId] = arg.split("/");
   const organ = organById.get(organId);
-  if (!organ) return organList(ctx);
+  if (!organ) return await organList(ctx);
   await organPage(ctx, organ, mode ?? "", termId ?? "");
 }
 
-function organList(ctx: AppContext): void {
+async function organList(ctx: AppContext): Promise<void> {
   ctx.fold(true);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   void ctx.viewer.show({ systems: ["skeletal"], body: true });
+  const learnedIds = new Set((await db.learned.toArray()).map((item) => item.termId));
+  const row = (organ: Organ) => {
+    const lessons = organLessons(organ);
+    const left = lessons.filter((unit) => unit.terms.some((term) => !learnedIds.has(term.id))).length;
+    return h("li", {},
+      h("a", { class: "unit", href: `#/organs/${organ.id}` },
+        h("span", { class: "unit-title" }, organ.ja, h("span", { class: "en", lang: "en" }, `　${organ.en}`)),
+        h("span", { class: "unit-count" }, lessons.length ? `図のレッスン ${left < lessons.length ? `${lessons.length - left} / ` : ""}${lessons.length}・平面図 ${organ.plates.length}枚` : `平面図 ${organ.plates.length}枚`)));
+  };
   ctx.panel.replaceChildren(
     h("h2", {}, "臓器の図"),
     h("p", { class: "muted" }, "臓器を、立体（3D）と教科書のような平面図の両方で見ます。平面図の名前は日本語と英語を並べて出します。"),
-    h("ul", { class: "units" }, ...organs.map((organ) => h("li", {},
-      h("a", { class: "unit", href: `#/organs/${organ.id}` },
-        h("span", { class: "unit-title" }, organ.ja, h("span", { class: "en", lang: "en" }, `　${organ.en}`)),
-        h("span", { class: "unit-count" }, `平面図 ${organ.plates.length}枚`))))),
+    h("p", { class: "muted" }, "細胞と組織・皮膚・発生や臓器の中のつくりのように、3Dより平面図で覚える語は、それぞれの臓器の「図で学ぶレッスン」で学びます。"),
+    h("ul", { class: "units" }, ...organs.map(row)),
   );
+}
+
+/** 臓器の画面の「図で学ぶレッスン」の欄（無ければ空） */
+async function lessonBox(organ: Organ): Promise<HTMLElement | string> {
+  const lessons = organLessons(organ);
+  if (!lessons.length) return "";
+  const learnedIds = new Set((await db.learned.bulkGet(lessons.flatMap((unit) => unit.terms.map((term) => term.id)))).flatMap((item) => (item ? [item.termId] : [])));
+  const done = lessons.filter((unit) => unit.terms.every((term) => learnedIds.has(term.id))).length;
+  // 多い（細胞と組織の11レッスンなど）ときは、見方の切りかえが下へ押し出されないよう、初めはたたむ
+  return h("details", { class: "path-group organ-lessons", open: lessons.length <= 4 },
+    h("summary", {}, h("span", { class: "path-group-name" }, "図で学ぶレッスン"),
+      h("span", { class: "muted" }, done ? `${done} / ${lessons.length} レッスン` : `${lessons.length}レッスン`)),
+    h("ol", { class: "home-card lesson-path" }, ...lessons.map((unit, i) => {
+      const n = unit.terms.filter((term) => learnedIds.has(term.id)).length;
+      const state = n === unit.terms.length ? "done" : n ? "partial" : "todo";
+      return h("li", {}, h("a", { class: `path-row ${state}`, href: `#/learn/${unit.id}` },
+        h("span", { class: "path-mark", "aria-hidden": "true" }, state === "done" ? "✓" : String(i + 1)),
+        h("span", { class: "path-text" },
+          h("span", { class: "path-title" }, unit.title),
+          h("span", { class: "path-sub" }, state === "done" ? `${unit.terms.length}語・済み` : n ? `${n} / ${unit.terms.length}語・途中` : `${unit.terms.length}語`))));
+    })));
 }
 
 async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm: string): Promise<void> {
@@ -65,7 +94,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
     }, item.title)),
   );
   const body = h("div", {});
-  panel.replaceChildren(head, h("p", { class: "organ-tabs-title" }, "見方"), tabs, body);
+  panel.replaceChildren(head, await lessonBox(organ), h("p", { class: "organ-tabs-title" }, "見方"), tabs, body);
 
   if (plate) {
     viewer.highlight([]);

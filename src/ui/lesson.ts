@@ -1,6 +1,6 @@
 import { autoSpeak } from "../audio";
-import { systemById, type Term, type Unit } from "../content";
-import { isBeginner, lessonById, studyFacets } from "../course";
+import { isPlateUnit, organOfLesson, systemById, type Term, type Unit } from "../content";
+import { isBeginner, lessonById, organLessons, studyFacets } from "../course";
 import { db, nowIso, type Facet } from "../db";
 import { h, onKeys, until } from "../dom";
 import { preferences, setPreference } from "../settings";
@@ -37,9 +37,9 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
   viewer.highlight((partial ? rest : unit.terms).map((term) => term.id), { isolate: !unit.terms.some((term) => term.figure) });
   viewer.overview();
   ctx.hint(unit.title);
-  // 平面図の語（皮膚の層など）は3Dの上に図を重ねて示す
+  // 平面図の語（皮膚の層など）と、3Dでは点にしか見えない小さい語は、3Dの上に図を重ねて示す
   const plates = plateOverlay(ctx);
-  const firstOnPlate = unit.terms.find((term) => term.plate);
+  const firstOnPlate = unit.terms.find((term) => term.plate || term.seePlate);
   if (firstOnPlate) void plates.show(firstOnPlate, { names: true, mark: false });
   const { list, browse } = trial
     ? { list: unit.terms.filter((term) => !learnedIds.has(term.id)).slice(0, TRIAL_TERMS), browse: true }
@@ -51,7 +51,7 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
     viewer.highlight([term.id], { isolate: !term.figure });
     viewer.focus(term.id, 3.2);
     viewer.setLabel(term.id, term.ja);
-    if (term.plate) void plates.show(term, { names: true, mark: true });
+    if (term.plate || term.seePlate) void plates.show(term, { names: true, mark: true });
     else plates.hide();
     ctx.hint("");
     autoSpeak(term);
@@ -92,7 +92,13 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
   viewer.overview();
   plates.hide();
   ctx.hint("");
-  const next = nextLesson(await db.learned.toArray());
+  const learnedNow = await db.learned.toArray();
+  // 図のレッスンのあとは、同じ臓器の図のまだ終えていないレッスンへ（無ければ臓器の図へ戻る）
+  const organ = isPlateUnit(unit) ? organOfLesson(unit) : undefined;
+  const doneNow = new Set(learnedNow.map((item) => item.termId));
+  const next = organ
+    ? organLessons(organ).find((other) => other !== unit && other.terms.some((term) => !doneNow.has(term.id)))
+    : nextLesson(learnedNow);
   const left = unit.terms.filter((term) => !list.includes(term) && !learnedIds.has(term.id)).length;
   if (trial) {
     showPanel(ctx,
@@ -116,7 +122,9 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
     unit.terms.some((term) => term.toward) && studies("relation") ? h("p", {}, "部位どうしの向き（前後・左右・上下）は、場所を覚えたころに復習で出ます。") : "",
     h("p", {}, h("a", { href: "#/review/now" }, "今日の復習へ")),
     h("div", { class: "nav-row" },
-      h("a", { class: next ? "ghost-button" : "primary", href: "#/study" }, "学ぶへ"),
+      organ
+        ? h("a", { class: next ? "ghost-button" : "primary", href: `#/organs/${organ.id}` }, `${organ.ja}の図へ`)
+        : h("a", { class: next ? "ghost-button" : "primary", href: "#/study" }, "学ぶへ"),
       next ? h("a", { class: "primary", href: `#/learn/${next.id}` }, `次のレッスン「${next.title}」`) : "",
     ),
   );

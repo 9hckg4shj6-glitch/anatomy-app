@@ -311,7 +311,7 @@
       "terms": [
         {
           "id": "chordae-tendineae", "ja": "腱索", "yomi": "けんさく", "en": "chordae tendineae", "la": "chordae tendineae",
-          "parts": ["chordae tendineae of *"], "level": 1, "xray": true, "color": "#f2ede0", "tissue": "ligament",
+          "parts": ["chordae tendineae of *"], "level": 1, "schematic": true, "xray": true, "color": "#f2ede0", "tissue": "ligament",
           "kanji": "腱の索（ひも）",
           "etym": "chorda「弦・ひも」（ラテン語）＋ tendo「腱」",
           "note": "乳頭筋（papillary muscles）の先から房室弁（atrioventricular valve）（三尖弁（tricuspid valve）・僧帽弁（mitral valve））の弁尖（cusp）の縁と裏へのびる、細い腱（tendon）のひも。心室（ventricle）が縮むとき乳頭筋も縮んで腱索を引き、弁尖が心房（atrium）の側へ反り返らないようにする。腱索が切れると弁（valve）が閉じきらず、血液（blood）が心房へ逆流する。"
@@ -390,28 +390,28 @@
       "terms": [
         {
           "id": "fibrous-pericardium", "ja": "線維性心膜", "yomi": "せんいせいしんまく", "en": "fibrous pericardium", "la": "pericardium fibrosum",
-          "parts": ["fibrous pericardium"], "level": 1, "xray": true, "veil": true, "tuck": true, "color": "#d9c8ae", "tissue": "ligament",
+          "parts": ["fibrous pericardium"], "level": 1, "schematic": true, "xray": true, "veil": true, "tuck": true, "color": "#d9c8ae", "tissue": "ligament",
           "kanji": "線維でできた丈夫な心膜",
           "etym": "fibrous「線維の」＋ peri-「まわり」＋ kardia「心臓」（ギリシャ語）",
           "note": "心嚢の外の丈夫な層。上は大血管（great vessels）の外膜（tunica externa）に続き、下は横隔膜（diaphragm）の腱中心（central tendon）に付いて心臓（heart）を胸（chest）の中に固定する。伸びにくいので、心膜腔（pericardial cavity）に血液（blood）がたまると心臓が広がれなくなる（心タンポナーデ）。"
         },
         {
           "id": "parietal-layer-of-serous-pericardium", "ja": "漿膜性心膜の壁側板", "yomi": "しょうまくせいしんまくのへきそくばん", "en": "parietal layer of serous pericardium", "la": "lamina parietalis pericardii serosi",
-          "parts": ["parietal layer of serous pericardium"], "level": 2, "xray": true, "veil": true, "tuck": true, "color": "#e8d2c4",
+          "parts": ["parietal layer of serous pericardium"], "level": 2, "schematic": true, "xray": true, "veil": true, "tuck": true, "color": "#e8d2c4",
           "kanji": "漿膜（なめらかな膜）の、壁の側の板",
           "etym": "parietal「壁の」（ラテン語 paries「壁」）＋ serous「漿液の」",
           "note": "線維性心膜（fibrous pericardium）の内面（internal surface）に貼りつく漿膜性心膜の層。線維性心膜と合わせて心嚢をつくる。心底（base of heart）の大血管（great vessels）の根もとで折り返して臓側板（visceral layer）（心外膜（epicardium））に続く。"
         },
         {
           "id": "pericardial-cavity", "ja": "心膜腔", "yomi": "しんまくくう", "en": "pericardial cavity", "la": "cavitas pericardiaca",
-          "parts": ["pericardial cavity"], "level": 1, "xray": true, "veil": true, "tuck": true, "color": "#8fb8de",
+          "parts": ["pericardial cavity"], "level": 1, "schematic": true, "xray": true, "veil": true, "tuck": true, "color": "#8fb8de",
           "kanji": "心膜（壁側板と臓側板）の間のすき間",
           "etym": "pericardial「心膜の」＋ cavity「腔」（ラテン語 cavus「うつろな」）",
           "note": "漿膜性心膜の壁側板（parietal layer of serous pericardium）と臓側板（visceral layer）（心外膜（epicardium））の間のすき間（心嚢腔）。少量（約20mL）の漿液が入っていて、拍動（pulsation）する心臓（heart）をなめらかにすべらせる。ここに血液（blood）や液がたまるのが心タンポナーデ・心嚢液貯留。"
         },
         {
           "id": "epicardium", "ja": "心外膜", "yomi": "しんがいまく", "en": "epicardium", "enAlt": ["visceral layer of serous pericardium"], "la": "epicardium",
-          "parts": ["epicardium"], "level": 1, "xray": true, "veil": true, "tuck": true, "color": "#e8c98e",
+          "parts": ["epicardium"], "level": 1, "schematic": true, "xray": true, "veil": true, "tuck": true, "color": "#e8c98e",
           "kanji": "心臓のいちばん外の膜",
           "etym": "epi-「上・外」＋ kardia「心臓」（ギリシャ語）",
           "note": "漿膜性心膜の臓側板（visceral layer）で、心臓（heart）の表面に直接貼りつく壁のいちばん外の層。下の脂肪（fat）の中を冠状動脈（coronary artery）と心臓の静脈（vein）が走る。心臓の壁は外から心外膜・心筋層（myocardium）・心内膜（endocardium）。"
@@ -425,7 +425,7 @@
         },
         {
           "id": "endocardium", "ja": "心内膜", "yomi": "しんないまく", "en": "endocardium", "la": "endocardium",
-          "parts": ["endocardium"], "level": 1, "xray": true, "veil": true, "tuck": true, "color": "#e9b9b9",
+          "parts": ["endocardium"], "level": 1, "schematic": true, "xray": true, "veil": true, "tuck": true, "color": "#e9b9b9",
           "kanji": "心臓の内面の膜",
           "etym": "endo-「内」＋ kardia「心臓」（ギリシャ語）",
           "note": "心臓（heart）の内面（internal surface）をおおう薄い膜（membrane）で、血管（blood vessel）の内皮（endothelium）と同じ組織（tissue）が続いたもの。弁（valve）は心内膜のひだ（fold）が変化したもの。細菌がここに付くのが感染性心内膜炎で、弁が壊れやすい。"
@@ -440,42 +440,42 @@
       "terms": [
         {
           "id": "sinuatrial-node", "ja": "洞房結節", "yomi": "どうぼうけっせつ", "en": "sinuatrial node", "enAlt": ["sinoatrial node", "sa node"], "la": "nodus sinuatrialis",
-          "parts": ["sinuatrial node"], "level": 1, "xray": true, "color": "#3fbf7f",
+          "parts": ["sinuatrial node"], "level": 1, "schematic": true, "xray": true, "color": "#3fbf7f",
           "kanji": "静脈洞（右心房の大静脈の口）と心房の境の結節",
           "etym": "sinus「くぼみ・洞」（静脈洞）＋ atrial「心房の」＋ node「結節」（ラテン語 nodus「結び目」）",
           "note": "右心房（right atrium）の壁の、上大静脈（superior vena cava）が入る所のすぐ外（分界溝（sulcus terminalis cordis）の上端（superior end））にある特殊心筋のかたまり。自分で一定のリズムで興奮（excitation）し（1分に約60〜100回）、心臓全体の拍動（pulsation）を決める歩調取り（ペースメーカー（pacemaker））。キース・フラック結節ともいう。おもに右冠状動脈（right coronary artery）の洞房結節枝が養う。"
         },
         {
           "id": "atrioventricular-node", "ja": "房室結節", "yomi": "ぼうしつけっせつ", "en": "atrioventricular node", "enAlt": ["av node"], "la": "nodus atrioventricularis",
-          "parts": ["atrioventricular node"], "level": 1, "xray": true, "color": "#3fbf7f",
+          "parts": ["atrioventricular node"], "level": 1, "schematic": true, "xray": true, "color": "#3fbf7f",
           "kanji": "心房と心室の間の結節",
           "etym": "atrio-「心房」＋ ventricular「心室の」＋ node「結節」",
           "note": "右心房（right atrium）の心房中隔（interatrial septum）の下の方、冠状静脈洞（coronary sinus）の口の前上（anterosuperior）にある結節（node）。心房（atrium）から来た興奮（excitation）をいったん遅らせてから房室束（atrioventricular bundle）へ送るので、心房が縮み終わってから心室（ventricle）が縮む。田原淳が見つけたので田原結節（Tawara node）ともいう。"
         },
         {
           "id": "atrioventricular-bundle", "ja": "房室束", "yomi": "ぼうしつそく", "en": "atrioventricular bundle", "enAlt": ["bundle of his"], "la": "fasciculus atrioventricularis",
-          "parts": ["atrioventricular bundle"], "level": 1, "xray": true, "color": "#3fbf7f",
+          "parts": ["atrioventricular bundle"], "level": 1, "schematic": true, "xray": true, "color": "#3fbf7f",
           "kanji": "心房と心室をつなぐ線維の束",
           "etym": "atrioventricular「房室の」＋ bundle「束」。His はスイスの解剖学者",
           "note": "房室結節（atrioventricular node）から出て、線維性骨格（右線維三角）を貫き、心室中隔（interventricular septum）の膜性部の下縁（inferior border）を前へ走る束（ヒス束（bundle of His））。心房（atrium）と心室（ventricle）をつなぐ唯一の伝導の道で、ここが傷むと房室ブロックになる。心室中隔の上で右脚（right bundle branch）と左脚（left bundle branch）に分かれる。"
         },
         {
           "id": "right-bundle-branch", "ja": "右脚", "yomi": "うきゃく", "en": "right bundle branch", "la": "crus dextrum fasciculi atrioventricularis",
-          "parts": ["right bundle branch"], "level": 1, "xray": true, "color": "#3fbf7f",
+          "parts": ["right bundle branch"], "level": 1, "schematic": true, "xray": true, "color": "#3fbf7f",
           "kanji": "房室束の右の脚（枝）",
           "etym": "bundle branch「束の枝」",
           "note": "房室束（atrioventricular bundle）から分かれて心室中隔（interventricular septum）の右側の心内膜（endocardium）の下を下る細い束。一部は中隔縁柱（septomarginal trabecula）（調節帯）を通って右心室（right ventricle）の前の壁の前乳頭筋（anterior papillary muscle）へ渡り、プルキンエ線維（Purkinje fibers）に分かれる。"
         },
         {
           "id": "left-bundle-branch", "ja": "左脚", "yomi": "さきゃく", "en": "left bundle branch", "la": "crus sinistrum fasciculi atrioventricularis",
-          "parts": ["left bundle branch"], "level": 1, "xray": true, "color": "#3fbf7f",
+          "parts": ["left bundle branch"], "level": 1, "schematic": true, "xray": true, "color": "#3fbf7f",
           "kanji": "房室束の左の脚（枝）",
           "etym": "bundle branch「束の枝」",
           "note": "房室束（atrioventricular bundle）から分かれて心室中隔（interventricular septum）の左側を下る束。すぐに扇のように広がって前枝（anterior branch）と後枝（posterior branch）に分かれ、左心室（left ventricle）の前・後乳頭筋と壁へプルキンエ線維（Purkinje fibers）を送る。"
         },
         {
           "id": "purkinje-fibers", "ja": "プルキンエ線維", "yomi": "ぷるきんえせんい", "en": "purkinje fibers", "enAlt": ["subendocardial branches"], "la": "rami subendocardiales",
-          "parts": ["subendocardial branches"], "level": 1, "xray": true, "color": "#a8d84f",
+          "parts": ["subendocardial branches"], "level": 1, "schematic": true, "xray": true, "color": "#a8d84f",
           "kanji": "プルキンエ（人名）の線維",
           "etym": "Purkinje はチェコの生理学者。subendocardial「心内膜の下の」",
           "note": "右脚（right bundle branch）・左脚（left bundle branch）の先が心内膜（endocardium）の下に網のように広がった太い特殊心筋線維（心内膜下枝）。興奮（excitation）を速く伝え、心室（ventricle）の心筋（cardiac muscle）をほぼ同時に、心尖（apex of heart）から心底（base of heart）へ向かって縮ませる（血液（blood）を上の動脈（artery）の口へ押し出す）。"
@@ -490,35 +490,35 @@
       "terms": [
         {
           "id": "fossa-ovalis", "ja": "卵円窩", "yomi": "らんえんか", "en": "fossa ovalis", "enAlt": ["oval fossa"], "la": "fossa ovalis",
-          "parts": ["fossa ovalis"], "level": 1, "xray": true, "color": "#c9907e",
+          "parts": ["fossa ovalis"], "level": 1, "schematic": true, "xray": true, "color": "#c9907e",
           "kanji": "卵の形のくぼみ",
           "etym": "fossa「くぼみ」＋ ovalis「卵形の」（ラテン語）",
           "note": "右心房（right atrium）の心房中隔（interatrial septum）にある卵形のくぼみ。胎児（fetus）の卵円孔（foramen ovale）（右心房から左心房（left atrium）へ血液（blood）を通した孔）が、生まれたあと一次中隔（septum primum）（底）と二次中隔（septum secundum）（縁＝卵円窩縁）が貼りついて閉じたあと。閉じきらないのが卵円孔開存・心房中隔欠損。"
         },
         {
           "id": "trabeculae-carneae", "ja": "肉柱", "yomi": "にくちゅう", "en": "trabeculae carneae", "la": "trabeculae carneae",
-          "parts": ["trabeculae carneae of ventricle"], "level": 2, "xray": true, "color": "#a65d4f",
+          "parts": ["trabeculae carneae of ventricle"], "level": 2, "schematic": true, "xray": true, "color": "#a65d4f",
           "kanji": "肉（筋）でできた柱",
           "etym": "trabecula「小さな梁」＋ carneus「肉の」（ラテン語）",
           "note": "心室（ventricle）の内面（internal surface）に網のように盛り上がる筋（muscle）の柱。心室の流入路（房室弁（atrioventricular valve）の側）に多く、流出路（動脈円錐（conus arteriosus）など）はなめらか。乳頭筋（papillary muscles）も肉柱の一種。"
         },
         {
           "id": "septomarginal-trabecula", "ja": "中隔縁柱", "yomi": "ちゅうかくえんちゅう", "en": "septomarginal trabecula", "enAlt": ["moderator band"], "la": "trabecula septomarginalis",
-          "parts": ["septomarginal trabecula"], "level": 2, "xray": true, "color": "#a65d4f",
+          "parts": ["septomarginal trabecula"], "level": 2, "schematic": true, "xray": true, "color": "#a65d4f",
           "kanji": "中隔から外の縁（前の壁）へ渡る柱",
           "etym": "septo-「中隔」＋ marginal「縁の」＋ trabecula「小さな梁」（ラテン語）",
           "note": "右心室（right ventricle）だけにある、心室中隔（interventricular septum）から前乳頭筋（anterior papillary muscle）の根もとへ渡る筋（muscle）の橋（調節帯）。中を刺激伝導系（conducting system of heart）の右脚（right bundle branch）の枝（branch）が通り、前乳頭筋へ興奮（excitation）を近道で届ける。右心室を見分ける目印。"
         },
         {
           "id": "pectinate-muscles", "ja": "櫛状筋", "yomi": "くしじょうきん", "en": "pectinate muscles", "la": "musculi pectinati",
-          "parts": ["pectinate muscles"], "level": 2, "xray": true, "color": "#a65d4f",
+          "parts": ["pectinate muscles"], "level": 2, "schematic": true, "xray": true, "color": "#a65d4f",
           "kanji": "櫛（くし）の歯のように並ぶ筋",
           "etym": "pectinate「櫛の形の」（ラテン語 pecten「櫛」）＋ muscle「筋」",
           "note": "右心房（right atrium）の前の壁と右心耳（right auricle）の内面（internal surface）に、分界稜（crista terminalis）から、くしのように平行に並ぶ筋（muscle）の隆起（eminence）。左心房（left atrium）では左心耳（left auricle）の中だけにある。右心房の後ろの大静脈洞（sinus venarum）の部分（大静脈（vena cava）が開く所）は平らで、その境が分界稜。"
         },
         {
           "id": "crista-terminalis", "ja": "分界稜", "yomi": "ぶんかいりょう", "en": "crista terminalis", "enAlt": ["terminal crest"], "la": "crista terminalis",
-          "parts": ["crista terminalis"], "level": 2, "xray": true, "color": "#a65d4f",
+          "parts": ["crista terminalis"], "level": 2, "schematic": true, "xray": true, "color": "#a65d4f",
           "kanji": "境（分界）の稜（すじ）",
           "etym": "crista「とさか・稜」＋ terminalis「境の」（ラテン語）",
           "note": "右心房（right atrium）の内面（internal surface）を、上大静脈（superior vena cava）の口の前から下大静脈（inferior vena cava）の口の前へ縦に走る筋（muscle）の隆起（eminence）。前の櫛状筋（pectinate muscles）のある部分と、後ろの平らな大静脈洞（sinus venarum）（胎児（fetus）の心臓（heart）の後ろの部屋からできる）の境。外の面では分界溝（sulcus terminalis cordis）にあたり、その上端（superior end）の心外膜（epicardium）の下に洞房結節（sinuatrial node）がある。"
@@ -547,7 +547,7 @@
         },
         {
           "id": "fibrous-rings-of-heart", "ja": "線維輪（心臓）", "yomi": "せんいりん", "en": "fibrous rings of heart", "enAlt": ["anulus fibrosus of heart", "fibrous skeleton of heart", "cardiac skeleton"], "la": "anuli fibrosi cordis",
-          "parts": ["fibrous ring of * valve"], "level": 2, "xray": true, "color": "#f2ede0", "tissue": "ligament",
+          "parts": ["fibrous ring of * valve"], "level": 2, "schematic": true, "xray": true, "color": "#f2ede0", "tissue": "ligament",
           "kanji": "線維でできた輪",
           "etym": "fibrous「線維の」＋ ring「輪」。ラテン語 anulus fibrosus",
           "note": "心臓（heart）の4つの弁（valve）の口を囲む、膠原線維（collagen fiber）の丈夫な輪。三尖弁（tricuspid valve）の右線維輪・僧帽弁（mitral valve）の左線維輪と、大動脈弁（aortic valve）・肺動脈弁（pulmonary valve）の輪が、間の右線維三角・左線維三角でつながって心臓骨格（線維性骨格）をつくる。弁と、心房（atrium）・心室（ventricle）の心筋（cardiac muscle）がここに付く。電気を通さない絶縁体なので、心房から心室への興奮（excitation）は、右線維三角を貫く房室束（atrioventricular bundle）（ヒス束（bundle of His））だけを通る（房室結節（atrioventricular node）で少し遅れてから心室が縮む）。"

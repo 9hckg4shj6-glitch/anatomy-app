@@ -218,6 +218,11 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
   );
   if (options.compact) return h("article", { class: "term-card" }, head, english, gloss);
 
+  // 自分で作った模式の立体（心臓の中・肺区域・胸膜・腎臓の中）は、本物の形と思わないように札を出す（docs/学びやすさ.md の案3）
+  const schematic = term.schematic
+    ? h("p", { class: "term-schematic" }, h("b", {}, "模式"), "3Dは位置と並びを示す模式の形で、実際の形とは違います。")
+    : null;
+
   const point = beginnerPoints.get(term.id);
   const pointBox = (text: string | undefined, label: string) => text
     ? h("div", { class: "term-point" }, h("span", { class: "term-point-label" }, label), h("p", {}, ...linked(text)))
@@ -269,13 +274,13 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
   fill();
   const motion = term.motion && options.motion ? motionButton(options.motion) : null;
   if (beginner) {
-    return h("article", { class: "term-card is-beginner" }, head, english, rootChips(term),
+    return h("article", { class: "term-card is-beginner" }, head, english, rootChips(term), schematic,
       pointBox(point, "覚えること") ?? h("div", { class: "term-point" }, h("span", { class: "term-point-label" }, "覚えること"),
         h("p", { class: "muted" }, "初心者コースには入っていない語です。くわしい説明は下から。")),
       motion, memoRow(term), more, gloss);
   }
   // 詳細モードは説明がそのまま「覚えること」（初心者コースの短い point と重なるので、point は出さない）
-  return h("article", { class: "term-card" }, head, english, rootChips(term),
+  return h("article", { class: "term-card" }, head, english, rootChips(term), schematic,
     desc,
     muscle, ...facts, motion, regionNotes(term, options.open), memoRow(term), more, gloss);
 }

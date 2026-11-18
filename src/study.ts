@@ -62,13 +62,13 @@ export const facetLabels: Record<Facet, string> = {
 };
 
 /**
- * その語に出す問い方。隠れた部位（xray）と、部品を持たない基本の用語（figure。矢印・面・動きの図）・局所解剖（region）・平面図の語（plate）は
- * タップできないので「名前→位置」を出さない。
+ * その語に出す問い方。隠れた部位（xray）と、部品を持たない基本の用語（figure。矢印・面・動きの図）・局所解剖（region）・平面図の語（plate）、
+ * 3Dの形が小さすぎる語（small。点にしか見えない）はタップできないので「名前→位置」を出さない。
  * 筋の起始・停止・支配神経・作用と、孔・溝を通るもの（passes）、向き（toward）、ホルモン（hormones）は、場所を覚えてから（unlocked。unlockedTerms を見る）出す。
  * chosen は学ぶ問い方（設定の「学ぶ問い方」）。外した問い方は出さない。
  */
 export function facetsFor(
-  term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "plate" | "passes" | "toward" | "hormones"> | undefined,
+  term: Pick<Term, "xray" | "nerve" | "figure" | "region" | "plate" | "passes" | "toward" | "hormones" | "small"> | undefined,
   unlocked = false,
   chosen: readonly Facet[] = FACETS,
 ): Facet[] {
@@ -78,7 +78,7 @@ export function facetsFor(
     if (facet === "passage") return !!term?.passes && unlocked;
     if (facet === "relation") return !!term?.toward && unlocked;
     if (facet === "hormone") return !!term?.hormones && unlocked;
-    return !(facet === "point" && (term?.xray || term?.figure || term?.region || term?.plate));
+    return !(facet === "point" && (term?.xray || term?.figure || term?.region || term?.plate || term?.small));
   });
 }
 

@@ -319,6 +319,8 @@ a.term-row { color: var(--ink); text-decoration: none; }
 .term-notes dt { color: var(--muted); font-size: 13px; padding-top: 2px; }
 .term-notes dd { margin: 0; font-size: 15px; line-height: 1.6; }
 /* 初心者モードの語のカード: 覚えることを大きく、ほかは「くわしく」の中 */
+.term-schematic { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.term-schematic b { flex: none; padding: 1px 8px; border-radius: 9px; border: 1px solid var(--line); font-size: 11px; letter-spacing: 0.08em; color: var(--ink); }
 .term-point { margin-top: 14px; padding: 12px 14px; border-radius: 12px; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
 .term-point-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
 .term-point p { margin: 4px 0 0; font-size: 17px; line-height: 1.7; }
@@ -981,6 +983,7 @@ dialog.sheet::backdrop { background: rgb(43 42 39 / 0.4); }
 .path-group[open] > summary::after { content: "▴"; }
 .path-group-name { flex: 1; font-size: 15px; font-weight: 800; }
 .path-group .lesson-path { margin-top: 6px; }
+.organ-lessons { margin: 4px 0 12px; }
 @media (hover: hover) { .path-row:hover .path-title { color: var(--accent); } }
 
 /* レッスンの始めの画面 */

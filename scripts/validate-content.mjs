@@ -76,6 +76,7 @@ const Term = z.strictObject({
   from: vec.optional(),
   placing: z.string().min(10).optional(),
   plate: z.string().regex(/^[a-z0-9-]+$/).optional(),
+  schematic: z.literal(true).optional(),
 }).refine((term) => [term.parts || term.of, term.figure, term.region, term.plate].filter(Boolean).length === 1, "parts か of（3Dの部品）か figure（基本の用語の図）か region（局所解剖）か plate（平面図の語）のどれかが要る")
   .refine((term) => !term.motion || term.nerve, "motion（作用の動き）は筋の語だけに書く")
   .refine((term) => !term.veil || term.xray, "veil（ほかの構造をおおう形）はタップで答えられないので xray も付ける")
@@ -87,6 +88,8 @@ const TermFile = z.strictObject({
 
 const systems = JSON.parse(fs.readFileSync(path.join(ROOT, "content/systems.json"), "utf8"));
 const terms = [];
+/** レッスンと語ID（図のレッスンが臓器の図に入るかを確かめる） */
+const lessonTerms = [];
 const unitIds = new Set();
 for (const system of systems) {
   const file = path.join(ROOT, `content/terms/${system.id}.json`);
@@ -109,7 +112,8 @@ for (const system of systems) {
   for (const unit of parsed.data.units) {
     if (unitIds.has(unit.id)) errors.push(`レッスンIDが重複: ${unit.id}`);
     unitIds.add(unit.id);
-    for (const term of unit.terms) terms.push({ ...term, system: system.id });
+    for (const term of unit.terms) terms.push({ ...term, system: system.id, unit: unit.id });
+    lessonTerms.push({ id: unit.id, terms: unit.terms.map((term) => term.id) });
   }
 }
 
@@ -464,6 +468,29 @@ for (const term of terms.filter((t) => t.plate)) {
   const plate = platesById.get(term.plate);
   if (!plate) errors.push(`${term.id}: 平面図 ${term.plate} が content/organs.json に無い`);
   else if (!plate.labels.some((label) => (typeof label === "string" ? label : label.term) === term.id)) errors.push(`${term.id}: 平面図 ${term.plate} のラベルに無い`);
+}
+
+// 語の棚（docs/学びやすさ.md）: content/shelves.json が今の3D・平面図から作られているか、図のレッスン（語の半分以上が平面図の語か
+// 3Dの小さい語）がどれも臓器の図に入るか（学ぶのレッスンの道すじには出さず、臓器の図の中で学ぶので）。初心者コースのレッスンも
+const shelvesFile = path.join(ROOT, "content/shelves.json");
+if (fs.existsSync(indexFile) && fs.existsSync(path.join(ROOT, "public/plates/index.json"))) {
+  const { computeShelves } = await import("./shelves.mjs");
+  if (!fs.existsSync(shelvesFile) || JSON.stringify(computeShelves()) !== JSON.stringify(JSON.parse(fs.readFileSync(shelvesFile, "utf8")))) {
+    errors.push("content/shelves.json が3D・平面図と合っていません。node scripts/shelves.mjs を実行してください");
+  }
+}
+if (fs.existsSync(shelvesFile) && organsParsed.success) {
+  const { small } = JSON.parse(fs.readFileSync(shelvesFile, "utf8"));
+  const organList = organsParsed.data.organs;
+  const onPlate = (id) => !!seen.get(id)?.plate || id in small;
+  const organOfLesson = (lesson) => organList.find((organ) => organ.units.includes(lesson.id))
+    ?? organList.find((organ) => lesson.terms.filter((id) => organ.units.includes(seen.get(id)?.unit)).length * 2 >= lesson.terms.length);
+  const beginnerLessons = (beginnerParsed.success ? beginnerParsed.data.units : []).map((unit) => ({ id: unit.id, terms: unit.terms.map((item) => item.id) }));
+  for (const lesson of [...lessonTerms, ...beginnerLessons]) {
+    if (lesson.terms.filter(onPlate).length * 2 >= lesson.terms.length && !organOfLesson(lesson)) {
+      errors.push(`図のレッスン ${lesson.id} がどの臓器の図にも入りません（content/organs.json の units に足してください）`);
+    }
+  }
 }
 
 // docs/要確認用語.md

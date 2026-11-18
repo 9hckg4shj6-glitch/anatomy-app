@@ -108,42 +108,42 @@
       "terms": [
         {
           "id": "renal-cortex", "ja": "腎皮質", "yomi": "じんひしつ", "en": "renal cortex", "la": "cortex renalis",
-          "parts": ["za:renal cortex", "za:renal column"], "level": 1,
+          "parts": ["za:renal cortex", "za:renal column"], "level": 1, "schematic": true,
           "kanji": "腎臓の皮（外側）の質",
           "etym": "cortex「樹皮」（ラテン語）",
           "note": "腎実質の表層の部分（厚さ約1cm）。腎小体（renal corpuscle）（糸球体（glomerulus）とボウマン嚢）と近位（proximal）・遠位（distal）の曲尿細管があり、血液（blood）をこして原尿（primary urine）をつくる。腎錐体（renal pyramid）の間に入りこんだ所が腎柱（renal column）。"
         },
         {
           "id": "renal-medulla", "ja": "腎髄質", "yomi": "じんずいしつ", "en": "renal medulla", "la": "medulla renalis",
-          "parts": ["za:renal pyramid", "za:renal papilla"], "level": 1, "xray": true,
+          "parts": ["za:renal pyramid", "za:renal papilla"], "level": 1, "schematic": true, "xray": true,
           "kanji": "腎臓の髄（中心）の質",
           "etym": "medulla「髄（骨の中心）」（ラテン語）",
           "note": "腎皮質（renal cortex）の内側（medial）の部分。十数個の腎錐体（renal pyramid）からなり、ヘンレのわな（nephron loop）と集合管（collecting duct）が縦に並ぶので断面（section）で放射状のすじに見える。尿を濃くする。"
         },
         {
           "id": "renal-pyramid", "ja": "腎錐体", "yomi": "じんすいたい", "en": "renal pyramid", "la": "pyramis renalis",
-          "parts": ["za:renal pyramid"], "level": 2, "xray": true,
+          "parts": ["za:renal pyramid"], "level": 2, "schematic": true, "xray": true,
           "kanji": "腎臓の中の錐（円錐）の形の塊",
           "etym": "pyramis「ピラミッド」（ギリシャ語 pyramis）",
           "note": "腎髄質（renal medulla）をつくる円錐形の塊（1つの腎臓（kidney）に10〜18個）。底を腎皮質（renal cortex）に、先（腎乳頭（renal papilla））を腎洞（renal sinus）に向ける。1つの腎錐体とそれをおおう腎皮質を腎葉という。"
         },
         {
           "id": "renal-papilla", "ja": "腎乳頭", "yomi": "じんにゅうとう", "en": "renal papilla", "la": "papilla renalis",
-          "parts": ["za:renal papilla"], "level": 2, "xray": true,
+          "parts": ["za:renal papilla"], "level": 2, "schematic": true, "xray": true,
           "kanji": "腎錐体の先の乳頭（乳首のような突起）",
           "etym": "papilla「乳首」（ラテン語）",
           "note": "腎錐体（renal pyramid）の先。集合管（collecting duct）が集まった乳頭管（papillary duct）の口（乳頭孔（papillary foramina））が多数開き、できあがった尿が小腎杯（minor calyx）へ出る。"
         },
         {
           "id": "renal-column", "ja": "腎柱", "yomi": "じんちゅう", "en": "renal column", "la": "columna renalis",
-          "parts": ["za:renal column"], "level": 2, "xray": true,
+          "parts": ["za:renal column"], "level": 2, "schematic": true, "xray": true,
           "kanji": "腎錐体の間の柱",
           "etym": "columna「柱」（ラテン語）",
           "note": "腎錐体（renal pyramid）と腎錐体の間に柱のように入りこんだ腎皮質（renal cortex）。葉間動脈（interlobar artery）・葉間静脈（interlobar veins）が通り、腎錐体の底で弓状動脈（arcuate artery）になる。"
         },
         {
           "id": "renal-sinus", "ja": "腎洞", "yomi": "じんどう", "en": "renal sinus", "la": "sinus renalis",
-          "parts": ["za:renal sinus"], "level": 2, "xray": true,
+          "parts": ["za:renal sinus"], "level": 2, "schematic": true, "xray": true,
           "kanji": "腎臓の中の洞（ほら穴）",
           "etym": "sinus「くぼみ・湾」（ラテン語）",
           "note": "腎門（renal hilum）から腎臓（kidney）の中へ入りこんだ空所。腎盤（renal pelvis）と大腎杯（major calyx）・小腎杯（minor calyx）、腎動脈（renal artery）と腎静脈（renal vein）の枝（branch）、リンパ管（lymphatic vessel）と神経（nerve）が入り、そのすき間を脂肪（fat）が埋める（脂肪被膜（perirenal fat capsule）の脂肪が腎門から続く）。壁は腎実質で、腎乳頭（renal papilla）が腎洞へ突き出て小腎杯に包まれる。腎洞の中の腎盤の手術は、腎門から腎洞の脂肪を分けて入る。"
@@ -234,14 +234,14 @@
         },
         {
           "id": "perirenal-fat-capsule", "ja": "脂肪被膜", "yomi": "しぼうひまく", "en": "perirenal fat capsule", "enAlt": ["adipose capsule", "perirenal fat", "perinephric fat"], "la": "capsula adiposa renis",
-          "parts": ["za:perirenal fat capsule"], "level": 2, "xray": true, "veil": true,
+          "parts": ["za:perirenal fat capsule"], "level": 2, "schematic": true, "xray": true, "veil": true,
           "kanji": "脂肪でできた被膜（包む膜）",
           "etym": "perirenal ← peri-「まわり」＋ renal「腎臓の」。adipose「脂肪の」",
           "note": "線維被膜（fibrous capsule）の外で腎臓（kidney）と副腎（suprarenal gland）を包む脂肪（fat）の層（腎周囲脂肪）。腎臓の後ろと縁で厚く、腎門（renal hilum）から腎洞（renal sinus）の脂肪に続く。腎臓を衝撃から守り、位置を保つ。急にやせると減って、腎臓が下へ動きやすくなる（腎下垂）。腎臓のまわりの出血や膿は、まず腎筋膜（renal fascia）の中のこの層に広がる。"
         },
         {
           "id": "renal-fascia", "ja": "腎筋膜", "yomi": "じんきんまく", "en": "renal fascia", "enAlt": ["gerota fascia", "gerota's fascia"], "la": "fascia renalis",
-          "parts": ["za:renal fascia"], "level": 2, "xray": true, "veil": true,
+          "parts": ["za:renal fascia"], "level": 2, "schematic": true, "xray": true, "veil": true,
           "kanji": "腎臓を包む筋膜",
           "etym": "fascia「帯・包帯」（ラテン語）。ジェロタ（Gerota、ルーマニアの解剖学者）",
           "note": "脂肪被膜（perirenal fat capsule）の外を包む膜（membrane）（ジェロタ筋膜（Gerota fascia））。腎筋膜は前葉（anterior layer）と後葉（posterior layer）からなり、腎臓（kidney）・副腎（suprarenal gland）・脂肪被膜を一緒に包む。前葉と後葉は上（副腎の上）と外側（lateral）で合わさるが、下は閉じずに尿管（ureter）と精巣（testis）（卵巣（ovary））動静脈（artery and vein）を通す。前葉は腹大動脈（abdominal aorta）と下大静脈（inferior vena cava）の前を通って反対側（contralateral side）に続く。前葉の前は腹膜（peritoneum）、後葉の後ろは腎傍脂肪体（pararenal fat body）。"

@@ -1,11 +1,11 @@
 import { organs, systemById, type Unit } from "../content";
-import { courseUnits, isBeginner } from "../course";
+import { isBeginner } from "../course";
 import { db } from "../db";
 import { h } from "../dom";
 import { COURSES, courseOf, preferences } from "../settings";
 import { sceneFor, type AppContext } from "./context";
 import { lessonMinutes } from "./home";
-import { nextLesson } from "./lessons";
+import { nextLesson, pathUnits } from "./lessons";
 
 /** 学び方の一覧の絵（線で描く。色は CSS の currentColor） */
 export const ICONS = {
@@ -58,7 +58,7 @@ export async function studyHub(ctx: AppContext): Promise<void> {
     ctx.hint(next.title);
   }
 
-  const units = courseUnits();
+  const units = pathUnits();
   const where = (unit: Unit) => {
     const inGroup = units.filter((item) => item.system === unit.system && item.group === unit.group);
     const done = inGroup.filter((item) => item.terms.every((term) => learnedIds.has(term.id))).length;
@@ -96,7 +96,7 @@ export async function studyHub(ctx: AppContext): Promise<void> {
     h("h3", { class: "list-title" }, "学び方"),
     h("ul", { class: "home-card home-list" },
       itemRow("#/lessons", "lessons", "#a8572f", fresh ? "すべてのレッスン" : "レッスン", "系統ごとに自分で選ぶ・検索"),
-      itemRow("#/organs", "organ", "#c2493a", "臓器の図", `心臓・肺・脳などを色分け・切り口・平面図（${plates}枚）で`),
+      itemRow("#/organs", "organ", "#c2493a", "臓器の図", `心臓・肺・脳などを色分け・切り口・平面図（${plates}枚）で。細胞と組織・皮膚・発生もここで学ぶ`),
       showDrill ? itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンから選んで解く・苦手を解く") : "",
       examItem,
       showRoots ? itemRow("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む") : "",

@@ -3,6 +3,7 @@ import directionsJson from "../content/directions.json";
 import jointsJson from "../content/joints.json";
 import organsJson from "../content/organs.json";
 import pinsJson from "../content/pins.json";
+import shelvesJson from "../content/shelves.json";
 import systemsJson from "../content/systems.json";
 
 export interface SystemInfo {
@@ -68,7 +69,16 @@ export interface Term {
   placing?: string;
   /** 平面図の語（皮膚の層・汗腺など3Dに形の無い語）。臓器の図の平面図（この図ID）の名前で場所を示し、レッスン・問題では3Dの上に図を重ねる */
   plate?: string;
+  /**
+   * 立体が模式の形（自分で作った形で、本物の形とは違う）。心臓の中のつくり・刺激伝導系・心膜、肺区域、胸膜と胸膜洞、腎臓の中と被膜。
+   * 語のカードに「立体は模式」と出す（docs/学びやすさ.md の案3）
+   */
+  schematic?: boolean;
   /** 以下は読み込み時に付ける */
+  /** 3Dの形が小さすぎて点にしか見えない語（直径 15mm 未満。content/shelves.json）。名前→位置を出さず、図の棚に入れる */
+  small?: boolean;
+  /** small の語が載っている平面図のID（content/shelves.json）。問題ではこの図を重ねて番号で問う */
+  seePlate?: string;
   /** 向きの問い方（content/directions.json）。この語が than の語のどちら側にあるか */
   toward?: Toward;
   system: string;
@@ -319,6 +329,11 @@ for (const { term, than, dir, why, at } of (directionsJson as { facts: (Toward &
   const found = terms.find((other) => other.id === term);
   if (found) found.toward = { than, dir, why, ...(at ? { at } : {}) };
 }
+const shelves = shelvesJson as { small: Record<string, number>; seePlate: Record<string, string> };
+for (const term of terms) {
+  if (term.id in shelves.small) term.small = true;
+  if (shelves.seePlate[term.id]) term.seePlate = shelves.seePlate[term.id];
+}
 export const termById = new Map(terms.map((term) => [term.id, term]));
 export const unitById = new Map(units.map((unit) => [unit.id, unit]));
 export const systemById = new Map(systems.map((system) => [system.id, system]));
@@ -351,10 +366,43 @@ export function organOfUnit(unitId: string | undefined): Organ | undefined {
   return unitId ? organs.find((organ) => organ.box && organ.units.includes(unitId)) : undefined;
 }
 
-/** 平面図の語（term.plate）の図と、その図のある臓器 */
-export function plateOfTerm(term: Pick<Term, "plate">): { organ: Organ; plate: PlateSpec } | undefined {
-  for (const organ of organs) for (const plate of organ.plates) if (plate.id === term.plate) return { organ, plate };
+/** 平面図の語（term.plate）と、小さくて図で示す語（term.seePlate）の図と、その図のある臓器 */
+export function plateOfTerm(term: Pick<Term, "plate" | "seePlate">): { organ: Organ; plate: PlateSpec } | undefined {
+  const id = term.plate ?? term.seePlate;
+  for (const organ of organs) for (const plate of organ.plates) if (plate.id === id) return { organ, plate };
   return undefined;
+}
+
+/**
+ * 図の棚の語（docs/学びやすさ.md の案1）: 3Dに形の無い平面図の語と、3Dの形が小さすぎる語。
+ * 3Dで指して覚えるより、臓器の図の平面図で覚える語
+ */
+export function onPlateShelf(term: Pick<Term, "plate" | "small">): boolean {
+  return !!term.plate || !!term.small;
+}
+
+/**
+ * 図のレッスン（語の半分以上が図の棚の語）。組織・発生・皮膚・臓器の内部など。学ぶのレッスンの道すじには出さず、
+ * 臓器の図の中で学ぶ（organOfLesson の臓器の画面に「図で学ぶレッスン」として並べる）
+ */
+export function isPlateUnit(unit: Pick<Unit, "terms">): boolean {
+  return unit.terms.length > 0 && unit.terms.filter(onPlateShelf).length * 2 >= unit.terms.length;
+}
+
+/**
+ * レッスンの入る臓器の図。そのレッスンを units に持つ臓器か、無ければ（初心者コースのレッスン）語の元のレッスンが
+ * いちばん多く入っている臓器
+ */
+export function organOfLesson(unit: Pick<Unit, "id" | "terms">): Organ | undefined {
+  const own = organs.find((organ) => organ.units.includes(unit.id));
+  if (own) return own;
+  let best: Organ | undefined;
+  let most = 0;
+  for (const organ of organs) {
+    const count = unit.terms.filter((term) => organ.units.includes(term.unit)).length;
+    if (count > most) [best, most] = [organ, count];
+  }
+  return best;
 }
 
 /** 基本の用語の図から名前を答える問題の文 */

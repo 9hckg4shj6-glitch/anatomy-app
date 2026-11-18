@@ -1,4 +1,4 @@
-import { systems, type Unit } from "../content";
+import { isPlateUnit, systems, type Unit } from "../content";
 import { courseUnitOf, courseUnits, isBeginner, lessonById } from "../course";
 import { db, nowIso, type LearnedTerm } from "../db";
 import { h } from "../dom";
@@ -28,7 +28,9 @@ export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
   // 開いたまとまりは覚えておき、レッスンから戻ったときも開いたままにする
   const openIds = new Set(Array.isArray(openSetting?.value) ? (openSetting.value as string[]) : []);
   const nextUnit = nextLesson(learned);
-  const units = courseUnits();
+  // 図のレッスン（組織・発生・臓器の内部など）は道すじに出さず、臓器の図で学ぶ（docs/学びやすさ.md の案1）
+  const units = pathUnits();
+  const plateCount = (id: string) => courseUnits().filter((unit) => unit.system === id && isPlateUnit(unit)).length;
   const inSystems = systems.filter((system) => units.some((unit) => unit.system === system.id));
   const pick = [systemId, shownSystem, nextUnit?.system].find((id) => id && inSystems.some((system) => system.id === id)) ?? inSystems[0]?.id ?? "";
   const doneOf = (unit: Unit) => unit.terms.filter((term) => learnedIds.has(term.id)).length;
@@ -114,7 +116,10 @@ export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
       ));
     }));
     const groups = [...new Set(list.map((unit) => unit.group))];
-    if (!groups[0]) return [card, path(list)];
+    const plates = plateCount(id);
+    const plateNote = h("p", { class: "muted lessons-note", hidden: !plates },
+      `平面図で覚える${plates}レッスン（組織・発生・臓器の中など）は `, h("a", { href: "#/organs" }, "臓器の図"), " の中で学びます。");
+    if (!groups[0]) return [card, path(list), plateNote];
     return [card, ...groups.map((group) => {
       const inGroup = list.filter((unit) => unit.group === group);
       const key = `${id}/${group}`;
@@ -131,7 +136,7 @@ export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
         h("summary", {}, h("span", { class: "path-group-name" }, group ?? ""),
           h("span", { class: "muted" }, finished ? `${finished} / ${inGroup.length} レッスン` : `${inGroup.length}レッスン`)),
         path(inGroup));
-    })];
+    }), plateNote];
   };
 
   ctx.panel.replaceChildren(
@@ -165,15 +170,20 @@ function ring(share: number, color: string): SVGElement {
 
 const OPEN_FOLDERS = "homeOpenFolders";
 
+/** 学ぶのレッスンの道すじに出すレッスン（今のコースのうち、図のレッスンでないもの。図のレッスンは臓器の図で学ぶ） */
+export function pathUnits(): Unit[] {
+  return courseUnits().filter((unit) => !isPlateUnit(unit));
+}
+
 /**
  * 次に学ぶレッスン（ホーム・レッスンの一覧と、復習・レッスンの終わりに出す）。最後に学んだレッスンが途中ならそれ、終えていれば
  * 同じまとまり→同じ系統の、後ろにあるまだ終えていないレッスン。何も学んでいなければ最初のレッスン。
  */
 export function nextLesson(learned: LearnedTerm[]): Unit | undefined {
-  const units = courseUnits();
+  const units = pathUnits();
   const learnedIds = new Set(learned.map((item) => item.termId));
   const open = (unit: Unit) => unit.terms.some((term) => !learnedIds.has(term.id));
-  const last = recentLessons(learned)[0];
+  const last = recentLessons(learned).find((unit) => units.includes(unit));
   if (last) {
     if (open(last)) return last;
     const after = units.slice(units.indexOf(last) + 1);
