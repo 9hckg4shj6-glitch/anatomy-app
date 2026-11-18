@@ -49,13 +49,21 @@ export const TEXT_SIZES: Record<Preferences["textSize"], { label: string; zoom: 
   large: { label: "大", zoom: 1.15 },
 };
 
+/**
+ * はじめて使う人の学ぶ問い方（docs/学びやすさ.md の案5）: 位置→名前・名前→位置・日本語→英語の3つ。
+ * 英語→日本語・筋の起始停止など・通るもの・向き・ホルモンは、コース「すべての語」を選んだときか、設定で足したとき
+ */
+export const FIRST_FACETS: Facet[] = ["locate", "point", "ja2en"];
+
 export const preferences: Preferences = {
   mode: "detail", course: "", showAllWays: false, autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
-  studyFacets: [...TERM_FACETS], lessonFacets: ["locate", "point"], compass: true, enNotes: false,
+  studyFacets: [...FIRST_FACETS], lessonFacets: ["locate", "point"], compass: true, enNotes: false,
 };
 
 /** 学ぶ問い方を保存したときにあった問い方を覚えておく設定のキー。あとから増えた問い方（向き・ホルモン）を学ぶ側に入れるため */
 const SEEN_FACETS = "seenFacets";
+/** 初めの問い方を3つにした版で、今まで使っていた人の問い方を確かめたか（docs/学びやすさ.md の案5） */
+const FIRST_FACETS_CHECKED = "firstFacetsChecked";
 /** SEEN_FACETS を覚え始める前からあった問い方 */
 const OLD_FACETS: Facet[] = TERM_FACETS.filter((facet) => facet !== "relation" && facet !== "hormone");
 
@@ -88,8 +96,15 @@ export async function loadPreferences(): Promise<void> {
     const value = records[i]?.value;
     if (valid[key](value)) (preferences as unknown as Record<string, unknown>)[key] = value;
   });
+  const learnedBefore = await db.learned.count();
   // モードを一度も選んでいなければ、今までに学んだ人は詳細モード（これまでどおり）、はじめての人は初心者モードにして覚える
-  if (!valid.mode(records[keys.indexOf("mode")]?.value)) await setPreference("mode", (await db.learned.count()) ? "detail" : "beginner");
+  if (!valid.mode(records[keys.indexOf("mode")]?.value)) await setPreference("mode", learnedBefore ? "detail" : "beginner");
+  // 初めの問い方を3つにした版をはじめて開いたとき、学ぶ問い方を一度も選んでいない人のうち、すでに学んだ人は
+  // 今までの初めの値（すべての問い方）のまま続ける。確かめたことを残し、2回目からは見ない（新しく始めた人が学んだあとで全部にならないように）
+  if (!(await db.settings.get(FIRST_FACETS_CHECKED))) {
+    if (!valid.studyFacets(records[keys.indexOf("studyFacets")]?.value) && learnedBefore) await setPreference("studyFacets", [...TERM_FACETS]);
+    await db.settings.put({ key: FIRST_FACETS_CHECKED, value: true, updatedAt: nowIso() });
+  }
   // やめたコース「骨学試験の対策」を選んでいた人は「自分で選ぶ」へ（同じ詳細モード。骨学試験は学ぶからそのまま使える）
   if (records[keys.indexOf("course")]?.value === "exam") await setPreference("course", "free");
   // 学ぶ問い方を選んで保存したあとに増えた問い方は、学ぶ側に入れる（外したければ設定で外す）
@@ -120,10 +135,14 @@ export function courseOf(): Exclude<Preferences["course"], ""> {
   return preferences.course || (preferences.mode === "beginner" ? "basic" : preferences.mode === "standard" ? "standard" : "free");
 }
 
-/** コースを選ぶ。はじめての解剖は初心者モード、標準は標準モード、すべての語は詳細モード */
+/**
+ * コースを選ぶ。はじめての解剖は初心者モード、標準は標準モード、すべての語は詳細モード。
+ * すべての語を選んだときは、学ぶ問い方をまだ自分で選んでいなければ、すべての問い方にする（ほかのコースは初めの3つのまま）
+ */
 export async function setCourse(course: Exclude<Preferences["course"], "">): Promise<void> {
   await setPreference("course", course);
   await setPreference("mode", course === "basic" ? "beginner" : course === "standard" ? "standard" : "detail");
+  if (course === "free" && !(await db.settings.get("studyFacets"))) await setPreference("studyFacets", [...TERM_FACETS]);
 }
 
 /** 説明の欄の文字の大きさ（CSS の --panel-zoom） */

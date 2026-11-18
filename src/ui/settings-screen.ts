@@ -140,7 +140,7 @@ function settingRows(render: () => void): HTMLElement[] {
     ),
     h("section", { class: "settings" },
       h("h3", {}, "学ぶ問い方"),
-      h("p", { class: "muted" }, "語の問題で出す問い方です。外した問い方は、新しく始めず、期限が来ても復習に出しません（覚え具合の記録は残るので、戻せば続きから出ます）。たとえば、まず場所だけを覚えるときは日本語→英語・英語→日本語を外します。"),
+      h("p", { class: "muted" }, "語の問題で出す問い方です。初めは位置→名前・名前→位置・日本語→英語の3つで、慣れたら英語→日本語や筋の起始・停止などを足します（コース「すべての語」を選ぶと全部）。外した問い方は、新しく始めず、期限が来ても復習に出しません（覚え具合の記録は残るので、戻せば続きから出ます）。"),
       studyChips,
       studyNote,
       beginner ? h("p", { class: "muted" }, "初心者モードでは、筋の起始・停止・神経・作用と孔・溝を通るものは出しません（詳細モードで出ます）。") : "",
@@ -153,7 +153,7 @@ function settingRows(render: () => void): HTMLElement[] {
         await setPreference("newPerDay", value);
         window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
       }),
-      h("p", { class: "muted" }, "1つの語に、学ぶ問い方の数だけ問題があり（初めは4つ。筋は7つ）、別々に数えます。期限の来た復習はこの数に関係なくすべて出ます。"),
+      h("p", { class: "muted" }, "1つの語に、学ぶ問い方の数だけ問題があり（初めは3つ）、別々に数えます。期限の来た復習はこの数に関係なくすべて出ます。"),
       h("p", { class: "setting-label" }, "復習の1回の区切り"),
       chips(REVIEW_SIZE_OPTIONS.map((n) => ({ value: n, label: n ? `${n}問` : "全部" })), preferences.reviewSize, (value) => setPreference("reviewSize", value)),
       h("p", { class: "muted" }, "復習を始めるときにも選べます（範囲・問い方もそこで絞れます）。途中で「ここでやめる」（Esc）もできます。"),
