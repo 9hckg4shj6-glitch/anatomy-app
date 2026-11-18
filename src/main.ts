@@ -7,6 +7,7 @@ import { h } from "./dom";
 import { watchInstallPrompt } from "./install";
 import { admin } from "./ui/admin";
 import { credits } from "./ui/credits";
+import { guide } from "./ui/guide";
 import type { AppContext } from "./ui/context";
 import { drill } from "./ui/drill";
 import { exam } from "./ui/exam";
@@ -42,7 +43,7 @@ const PAGES: Record<string, [title: string, href: string]> = {
   study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
   exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], organs: ["臓器の図", "#/organs"], roots: ["語根カード", "#/roots"],
-  progress: ["進捗", "#/progress"], settings: ["設定", "#/settings"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
+  progress: ["進捗", "#/progress"], settings: ["設定", "#/settings"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
 /** 下のタブ（今日・学ぶ・調べる・記録）と、ページがどのタブの中にあるか */
@@ -52,7 +53,7 @@ const TABS: Record<string, [label: string, href: string]> = {
 const TAB_OF: Record<string, string> = {
   study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study",
   look: "look", explore: "look",
-  records: "records", progress: "records", settings: "records", credits: "records", admin: "records",
+  records: "records", progress: "records", settings: "records", guide: "records", credits: "records", admin: "records",
 };
 /** タブの一番上の画面（上の帯は名前だけ） */
 const TAB_ROOTS = new Set(["", "study", "look", "records", "start"]);
@@ -154,7 +155,7 @@ document.addEventListener("keydown", (event) => {
 // そこへ移るときに読み直して切りかえる。ホームだけにすると、臓器の図の中を行き来している間は古い版のまま（新しい平面図が出ない）だった。
 // レッスン・復習・演習・骨学試験の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
 let updated = false;
-const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "lessons", "progress", "settings", "credits"]);
+const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "lessons", "progress", "settings", "credits", "guide"]);
 const canReload = () => RELOADABLE.has(location.hash.split("/")[1] ?? "");
 const serviceWorker = navigator.serviceWorker as ServiceWorkerContainer | undefined; // http の LAN では無い
 // 初めて開いたとき（前の版が無いとき）の入れかわりは数えない
@@ -265,6 +266,7 @@ async function boot(): Promise<void> {
       else if (name === "exam") await exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
       else if (name === "settings") await settingsScreen(ctx);
+      else if (name === "guide") guide(ctx);
       else if (name === "credits") credits(ctx);
       else if (name === "admin") await admin(ctx, arg);
       else await home(ctx);

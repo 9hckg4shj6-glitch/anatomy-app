@@ -9,6 +9,7 @@ import { loadProfile, profileComplete } from "../profile";
 import { nextLesson } from "./lessons";
 import { todayCounts } from "./review";
 import { sceneFor, termAt, type AppContext } from "./context";
+import { tabIntro } from "./tab-intro";
 
 /** ホームで最後に選んだ系統（ほかの画面から戻っても同じ系統を見せる） */
 let shownSystem = "skeletal";
@@ -37,6 +38,8 @@ export async function home(ctx: AppContext): Promise<void> {
     location.replace("#/start");
     return;
   }
+  const intro = await tabIntro("today");
+  if (signal.aborted) return;
   const learnedIds = new Set(learned.map((item) => item.termId));
   const answeredToday = recentEvents.filter((event) => event.reviewedAt >= startOfDay.toISOString());
 
@@ -93,6 +96,7 @@ export async function home(ctx: AppContext): Promise<void> {
     isBeginner() ? "" : examRow(learnedIds, schedules),
   ];
   ctx.panel.replaceChildren(h("div", { class: "home" },
+    intro,
     today(counts, nextUnit, learnedIds, weekDays(recentEvents), answeredToday.length, !learned.length),
     ...rows,
     backupReminder(learned),
@@ -130,6 +134,7 @@ function today(counts: { review: number; fresh: number }, nextUnit: Unit | undef
       h("h2", { class: "home-title" }, "3Dを見ながら、名前を覚える"),
       nextUnit ? bigButton(`#/learn/${nextUnit.id}`, "最初のレッスン", `${nextUnit.title}・約${lessonMinutes(nextUnit.terms.length)}分`) : "",
       h("p", { class: "home-note" }, "レッスンで覚えた語が、毎日の復習に入ります。3Dは1本指で回し、2本指でつまんで拡大。部位をタップすると図鑑で開きます。"),
+      h("a", { class: "home-guide-link", href: "#/guide" }, "このアプリでできること・目的に合わせた使い方 ›"),
     );
   }
   if (due) {

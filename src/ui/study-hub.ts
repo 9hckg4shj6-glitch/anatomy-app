@@ -2,10 +2,11 @@ import { organs, systemById, type Unit } from "../content";
 import { isBeginner } from "../course";
 import { db } from "../db";
 import { h } from "../dom";
-import { COURSES, courseOf, preferences } from "../settings";
+import { COURSES, courseOf } from "../settings";
 import { sceneFor, type AppContext } from "./context";
 import { lessonMinutes } from "./home";
 import { nextLesson, pathUnits } from "./lessons";
+import { tabIntro } from "./tab-intro";
 
 /** 学び方の一覧の絵（線で描く。色は CSS の currentColor） */
 export const ICONS = {
@@ -19,7 +20,12 @@ export const ICONS = {
   settings: `<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>`,
   star: `<path d="m12 3.8 2.5 5.2 5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4 5.7-.8z"/>`,
   credits: `<circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8h.01"/>`,
+  guide: `<circle cx="12" cy="12" r="8"/><path d="M9.7 9.6a2.4 2.4 0 1 1 3.3 2.2c-.6.3-1 .8-1 1.4v.5"/><path d="M12 16.6h.01"/>`,
+  today: `<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/>`,
 };
+
+/** 鍵（まだ使えない学び方の印） */
+const LOCK = `<rect x="5.5" y="10.5" width="13" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>`;
 
 /** 一覧の1行（絵・題・説明・›） */
 export function itemRow(href: string, icon: keyof typeof ICONS, color: string, title: string, sub: string, meta = ""): HTMLElement {
@@ -32,19 +38,32 @@ export function itemRow(href: string, icon: keyof typeof ICONS, color: string, t
   ));
 }
 
+/** まだ使えない学び方の行（押せない。絵・題・どうすれば使えるか・鍵）。学ぶの一覧に全部の学び方を見せるため */
+export function lockedRow(icon: keyof typeof ICONS, color: string, title: string, sub: string): HTMLElement {
+  const mark = h("span", { class: "home-item-icon", style: `--item:${color}`, "aria-hidden": "true" });
+  mark.innerHTML = `<svg viewBox="0 0 24 24">${ICONS[icon]}</svg>`;
+  const lock = h("span", { class: "home-item-lock", "aria-hidden": "true" });
+  lock.innerHTML = `<svg viewBox="0 0 24 24">${LOCK}</svg>`;
+  return h("li", {}, h("div", { class: "home-item locked", "aria-disabled": "true" },
+    mark,
+    h("span", { class: "home-item-text" }, h("span", { class: "home-item-title" }, title, h("span", { class: "visually-hidden" }, "（まだ使えません）")), h("span", { class: "home-item-sub wrap" }, sub)),
+    lock,
+  ));
+}
+
 /**
  * 学ぶ（#/study）: いちばん上にコースの次の1つ（続きから／次のレッスン）。はじめての人には「このあと」の3つ。
- * その下に学び方（レッスン・臓器の図・演習・骨学試験・語根カード）。まだ何も学んでいなければ、演習・骨学試験・語根カードは出さない
- * （設定の「すべての学び方を出す」なら全部）。全部で何語・何レッスンといった大きな数は出さない
+ * その下に学び方（レッスン・臓器の図・演習・骨学試験・語根カード）を、いつも全部と「こんなときに」の一言で（何があるかが分かるように）。
+ * まだ使えないもの（何も学んでいないときの演習、はじめての解剖の骨学試験・語根カード）は鍵を付け、どうすれば使えるかを書く
+ * （docs/普段使い.md「はじめての人への案内」）。全部で何語・何レッスンといった大きな数は出さない
  */
 export async function studyHub(ctx: AppContext): Promise<void> {
   ctx.hint("");
-  const learned = await db.learned.toArray();
+  const [learned, intro] = await Promise.all([db.learned.toArray(), tabIntro("study")]);
   const learnedIds = new Set(learned.map((item) => item.termId));
   const next = nextLesson(learned);
   const course = courseOf();
   const fresh = !learned.length;
-  const all = preferences.showAllWays;
   const beginner = isBeginner();
 
   // 3Dには次のレッスンの語を光らせて見せる（スマホは3Dをたたむ）
@@ -80,27 +99,31 @@ export async function studyHub(ctx: AppContext): Promise<void> {
   // はじめての人には、このあとのレッスンを3つ（何を学ぶかの見通し。全部の一覧は「すべてのレッスン」）
   const ahead = fresh && next ? units.slice(units.indexOf(next) + 1, units.indexOf(next) + 4) : [];
   const plates = organs.reduce((sum, organ) => sum + organ.plates.length, 0);
-  const showDrill = all || !fresh;
-  const showExam = !beginner && (all || !fresh);
-  const showRoots = !beginner && (all || !fresh);
-  const examItem = showExam ? itemRow("#/exam", "exam", "#b07d10", "骨学試験", "試験対策として独立（A〜D の形式と、整理して覚える）") : "";
+  const ways = [
+    itemRow("#/lessons", "lessons", "#a8572f", fresh ? "すべてのレッスン" : "レッスン", "新しい語を3Dで1語ずつ覚える。系統ごとに選ぶ"),
+    itemRow("#/organs", "organ", "#c2493a", "臓器の図", `心臓・肺・脳などを立体と平面図（${plates}枚）で。細胞と組織・発生も`),
+    fresh
+      ? lockedRow("drill", "#6b5fb5", "演習", "レッスンを1つ学ぶと使えます。終えた範囲を試験の前に解き直す")
+      : itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンを試験の前に解き直す・苦手を解く"),
+    beginner
+      ? lockedRow("exam", "#b07d10", "骨学試験", "覚える量を「標準」にすると使えます（記録 › 設定）")
+      : itemRow("#/exam", "exam", "#b07d10", "骨学試験", "骨学実習の試験の前に。A〜D の形式と、整理して覚える"),
+    beginner
+      ? lockedRow("roots", "#2f8f55", "語根カード", "覚える量を「標準」にすると使えます（記録 › 設定）")
+      : itemRow("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む。知らない英語名も意味が分かる"),
+  ];
 
   ctx.panel.replaceChildren(h("div", { class: "home" },
     h("div", { class: "tab-head" },
       h("h2", {}, "学ぶ"),
       h("a", { class: "course-chip", href: "#/settings", title: "コースを変える（設定）" }, `コース：${COURSES.find((item) => item.id === course)?.short ?? ""} ›`)),
+    intro,
     nextCard,
     ahead.length ? h("h3", { class: "list-title" }, "このあと") : "",
     ahead.length ? h("ol", { class: "home-card home-list ahead-list" }, ...ahead.map((unit, i) => h("li", {},
       h("span", { class: "ahead-mark", "aria-hidden": "true" }, String(i + 2)), h("span", {}, unit.title)))) : "",
     h("h3", { class: "list-title" }, "学び方"),
-    h("ul", { class: "home-card home-list" },
-      itemRow("#/lessons", "lessons", "#a8572f", fresh ? "すべてのレッスン" : "レッスン", "系統ごとに自分で選ぶ・検索"),
-      itemRow("#/organs", "organ", "#c2493a", "臓器の図", `細胞と組織・発生もここで。心臓・肺・脳などの立体と平面図（${plates}枚）`),
-      showDrill ? itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンから選んで解く・苦手を解く") : "",
-      examItem,
-      showRoots ? itemRow("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む") : "",
-    ),
-    fresh && !all ? h("p", { class: "home-note" }, "演習などほかの学び方は、レッスンを1つ学ぶとここに出ます（設定の「すべての学び方を出す」で初めから出せます）。") : "",
+    h("ul", { class: "home-card home-list ways" }, ...ways),
+    h("a", { class: "home-guide-link", href: "#/guide" }, "目的に合わせた使い方を見る ›"),
   ));
 }

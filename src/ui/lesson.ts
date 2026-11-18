@@ -11,6 +11,7 @@ import { nextLesson } from "./lessons";
 import { plateOverlay } from "./plate-view";
 import { ask, showPanel } from "./quiz";
 import { termCard } from "./term-card";
+import { planCard } from "./guide";
 import { noteText } from "../en-notes";
 
 /**
@@ -101,11 +102,13 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
     : nextLesson(learnedNow);
   const left = unit.terms.filter((term) => !list.includes(term) && !learnedIds.has(term.id)).length;
   if (trial) {
+    // 「あなたの使い方」を読めるよう、スマホでは3Dをたたむ
+    ctx.fold(true);
     showPanel(ctx,
       h("h2", {}, "これで3語を覚え始めました"),
       h("p", { class: "today-count" }, `確認 ${correct} / ${items.length}`),
       h("p", {}, "答えた語は、忘れかけたころに「今日」の復習に出ます。毎日、今日の復習を解くだけで続きます。"),
-      h("p", { class: "muted" }, "レッスンは「学ぶ」から。3Dは1本指で回し、2本指でつまんで拡大。部位をタップすると図鑑で開きます。"),
+      planCard(),
       h("div", { class: "nav-row" },
         h("a", { class: "ghost-button", href: "#/study" }, "学ぶへ"),
         left ? h("a", { class: "primary", href: `#/learn/${unit.id}` }, `続きの${left}語も学ぶ`) : h("a", { class: "primary", href: "#/" }, "今日へ"),

@@ -9,10 +9,11 @@ import {
   COURSES, courseOf, daysUntilExam, loadPreferences, setCourse, NEW_PER_DAY_OPTIONS, preferences, REVIEW_SIZE_OPTIONS, setPreference, TEXT_SIZES, type Preferences,
 } from "../settings";
 import { BASIC_FACETS, TERM_KINDS } from "../study";
+import { PURPOSES } from "../purposes";
 import { loadProfile } from "../profile";
 import type { AppContext } from "./context";
 
-/** 設定の画面（#/settings）: 学び方・表示・骨学試験の日・記録の書き出しと読み込み */
+/** 設定の画面（#/settings）: コースと使う目的・学び方・表示・骨学試験の日・記録の書き出しと読み込み */
 export async function settingsScreen(ctx: AppContext): Promise<void> {
   ctx.fold(true);
   ctx.viewer.highlight([]);
@@ -84,6 +85,21 @@ function offlineSection(ctx: AppContext): HTMLElement {
   );
 }
 
+/** 使う目的のチップ（押すたびに足し外し。src/purposes.ts）。使い方のページでも使う */
+export function purposeChips(onChange: () => void): HTMLElement {
+  return h("div", { class: "chip-list" }, ...PURPOSES.map((purpose) => {
+    const on = preferences.purposes.includes(purpose.id);
+    return h("button", {
+      class: on ? "chip on" : "chip", type: "button", "aria-pressed": String(on),
+      onClick: async () => {
+        const next = on ? preferences.purposes.filter((id) => id !== purpose.id) : [...preferences.purposes, purpose.id];
+        await setPreference("purposes", PURPOSES.map((item) => item.id).filter((id) => next.includes(id)));
+        onChange();
+      },
+    }, purpose.title);
+  }));
+}
+
 function settingRows(render: () => void): HTMLElement[] {
   const chips = <T>(options: { value: T; label: string }[], current: T, onPick: (value: T) => Promise<void>) =>
     h("div", { class: "chip-list" }, ...options.map((option) => h("button", {
@@ -123,7 +139,7 @@ function settingRows(render: () => void): HTMLElement[] {
   const beginner = preferences.mode === "beginner";
   return [
     h("section", { class: "settings" },
-      h("h3", {}, "コース"),
+      h("h3", {}, "コースと使う目的"),
       chips(COURSES.map((course) => ({ value: course.id, label: course.title })), courseOf(), async (value) => {
         await setCourse(value);
         window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
@@ -134,9 +150,10 @@ function settingRows(render: () => void): HTMLElement[] {
           ? `標準では、必修と基礎の ${standardTermCount.toLocaleString()}語を学びます（全 ${terms.length.toLocaleString()}語のうち、細かすぎる発展の語を除いたもの）。筋の起始・停止・支配神経・作用、語根カード・骨学試験も使えます。`
           : `「すべての語」では、発展の語まで全 ${terms.length.toLocaleString()}語と、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、語根カード・骨学試験を学びます（詳細モード）。`),
       h("p", { class: "muted" }, "学んだ記録は語ごとに残るので、コースを変えても続きになります。"),
-      h("p", { class: "setting-label" }, "学ぶの一覧"),
-      chips([{ value: false, label: "使う時が来たら出す" }, { value: true, label: "すべての学び方を出す" }], preferences.showAllWays, (value) => setPreference("showAllWays", value)),
-      h("p", { class: "muted" }, "はじめは、まだ使わない学び方（演習・骨学試験・語根カード）を隠し、レッスンを1つ学ぶと出します。"),
+      h("p", { class: "setting-label" }, "使う目的（いくつでも）"),
+      purposeChips(render),
+      h("p", { class: "muted" }, "選んだ目的の使い方を「使い方」の上に出します。どの目的でも、すべての学び方を使えます。"),
+      h("p", {}, h("a", { href: "#/guide" }, "使い方を見る ›")),
     ),
     h("section", { class: "settings" },
       h("h3", {}, "学ぶ問い方"),

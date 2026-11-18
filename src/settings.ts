@@ -1,5 +1,6 @@
 import { db, nowIso, type Facet } from "./db";
 import { BASIC_FACETS, TERM_FACETS } from "./study";
+import { isPurpose, type Purpose } from "./purposes";
 
 /** 設定の画面（#/settings）で変えられる設定。db.settings に1つずつ保存し、起動したときに読む */
 export interface Preferences {
@@ -15,8 +16,11 @@ export interface Preferences {
    * 骨学試験の対策（exam）は 2026-11-17 にやめた。選んでいた人は起動したときに free へ移す（loadPreferences）。空ならまだ選んでいない（今までの人は mode から決まる。courseOf）
    */
   course: "" | "basic" | "standard" | "free";
-  /** 学ぶの一覧に、まだ使う時の来ていない学び方（演習・骨学試験・語根カード）も初めから出す */
-  showAllWays: boolean;
+  /**
+   * 使う目的（はじめにの3枚目と、使い方・設定で選ぶ。src/purposes.ts）。コースのおすすめ・「あなたの使い方」・使い方のページの並びに使う。
+   * 2026-11-18 に、学び方を使う時が来るまで隠す設定（showAllWays）をやめて、学ぶにはいつも全部の学び方を出すようにした
+   */
+  purposes: Purpose[];
   /** レッスン・図鑑・答え合わせで英語の発音を自動で鳴らす（🔊を押せばいつでも鳴る） */
   autoSpeak: boolean;
   /** 1日に新しく始める問い方の数（4つの問い方を別々に数える） */
@@ -56,7 +60,7 @@ export const TEXT_SIZES: Record<Preferences["textSize"], { label: string; zoom: 
 export const FIRST_FACETS: Facet[] = ["locate", "point", "ja2en"];
 
 export const preferences: Preferences = {
-  mode: "detail", course: "", showAllWays: false, autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
+  mode: "detail", course: "", purposes: [], autoSpeak: true, newPerDay: 20, autoNext: false, reviewSize: 20, textSize: "medium", examDate: "", lastBackupAt: "",
   studyFacets: [...FIRST_FACETS], lessonFacets: ["locate", "point"], compass: true, enNotes: false,
 };
 
@@ -74,7 +78,7 @@ const facetList = (allowed: Facet[]) => (value: unknown): value is Facet[] =>
 const valid: { [K in keyof Preferences]: (value: unknown) => value is Preferences[K] } = {
   mode: (value): value is Preferences["mode"] => value === "beginner" || value === "standard" || value === "detail",
   course: (value): value is Preferences["course"] => value === "" || value === "basic" || value === "standard" || value === "free",
-  showAllWays: (value): value is boolean => typeof value === "boolean",
+  purposes: (value): value is Purpose[] => Array.isArray(value) && value.every(isPurpose),
   autoSpeak: (value): value is boolean => typeof value === "boolean",
   newPerDay: (value): value is number => typeof value === "number" && NEW_PER_DAY_OPTIONS.includes(value),
   autoNext: (value): value is boolean => typeof value === "boolean",

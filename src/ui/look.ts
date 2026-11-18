@@ -5,6 +5,7 @@ import { markOf, recentTerms, starredIds } from "../marks";
 import { normalize, searchTerms } from "../search";
 import type { AppContext } from "./context";
 import { itemRow } from "./study-hub";
+import { tabIntro } from "./tab-intro";
 
 /**
  * 調べる（#/look）: どこからでもすぐ1語を引く（実習・講義の間に）。検索・最近見た語・図鑑・★を付けた語。
@@ -42,6 +43,8 @@ export async function look(ctx: AppContext): Promise<void> {
     if (first) location.hash = first.getAttribute("href")!;
   });
 
+  const intro = await tabIntro("look");
+  if (ctx.signal.aborted) return;
   const inCourse = new Set(courseTerms().map((term) => term.id));
   const recent = recentTerms().flatMap((id) => termById.get(id) ?? []);
   const starred = starredIds().flatMap((id) => termById.get(id) ?? []).sort((a, b) => a.yomi.localeCompare(b.yomi, "ja"));
@@ -61,6 +64,7 @@ export async function look(ctx: AppContext): Promise<void> {
 
   ctx.panel.replaceChildren(h("div", { class: "home look" },
     h("div", { class: "tab-head" }, h("h2", {}, "調べる")),
+    intro,
     search, results, rest,
   ));
   // キーボードのある端末では、すぐ打てるように検索欄へ（スマホでは画面のキーボードが急に出ないよう、押してから）
