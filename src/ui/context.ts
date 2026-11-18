@@ -1,5 +1,5 @@
 import { organOfUnit, organTerms, pins, regionSystems, termById, terms, type ModelIndex, type Term } from "../content";
-import { beginnerOrgan, inCourse, lessonById } from "../course";
+import { beginnerOrgan, courseLesson, inCourse } from "../course";
 import { landmarkAt, type Vec3 } from "../landmarks";
 import type { AnatomyViewer, SceneSpec } from "../viewer";
 
@@ -81,7 +81,7 @@ export function sceneFor(system: string, unitId?: string): SceneSpec {
     return { systems: [system, ...new Set(others)], organ: organ.id };
   }
   if (system === "basics") {
-    const unit = unitId ? lessonById.get(unitId) : undefined;
+    const unit = unitId ? courseLesson(unitId) : undefined;
     const regions = (unit?.terms ?? []).flatMap((term) => (term.region ? [term.region] : []));
     if (!regions.length) return { systems: ["skeletal"], body: true };
     const needed = [...new Set(regions.flatMap(regionSystems))];
@@ -89,7 +89,7 @@ export function sceneFor(system: string, unitId?: string): SceneSpec {
   }
   if (system === "joints") return { systems: ["joints"], context: ["skeletal"], body: true, contextOpacity: 0.34 };
   if (system === "regional") {
-    const unit = unitId ? lessonById.get(unitId) : undefined;
+    const unit = unitId ? courseLesson(unitId) : undefined;
     const regions = (unit?.terms ?? []).flatMap((term) => (term.region ? [term.region] : []));
     const needed = regions.length ? [...new Set(regions.flatMap(regionSystems))] : ["muscular", "nervous", "cardiovascular", "joints", "lymphatic"];
     return { systems: needed, context: ["skeletal"], body: true, contextOpacity: 0.3 };

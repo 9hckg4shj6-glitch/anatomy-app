@@ -555,6 +555,30 @@ if (wikidata) {
 fs.mkdirSync(path.join(ROOT, "docs"), { recursive: true });
 fs.writeFileSync(path.join(ROOT, "docs/要確認用語.md"), `${lines.join("\n")}`);
 
+// 標準コースでまとめるレッスン（content/standard-lessons.json。docs/学びやすさ.md の案6）: どのレッスンもあり、1つのまとまりにだけ入る。
+// 3Dの場面が崩れないよう、まとめるのは同じ臓器の図のレッスンどうしか、どれも臓器の図に入らない同じ系統のレッスンどうし
+// （語が3つ以下のレッスンが標準の道すじに残らないことは tests/standard.test.ts が確かめる）
+const standardLessons = z.strictObject({
+  about: z.string(),
+  merge: z.array(z.strictObject({ units: z.array(z.string()).min(2), title: z.string().min(1).optional() })),
+}).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/standard-lessons.json"), "utf8")));
+if (!standardLessons.success) errors.push(`content/standard-lessons.json: ${standardLessons.error.issues.map((issue) => `${issue.path.join(".")}: ${issue.message}`).join(" / ")}`);
+const unitSystem = new Map(terms.map((term) => [term.unit, term.system]));
+const unitOrgan = (id) => (organsParsed.success ? organsParsed.data.organs.find((organ) => organ.units.includes(id))?.id : undefined);
+const mergedUnits = new Set();
+for (const group of standardLessons.success ? standardLessons.data.merge : []) {
+  const name = `standard-lessons.json ${group.units[0]}`;
+  for (const id of group.units) {
+    if (!unitIds.has(id)) errors.push(`${name}: レッスンが無い: ${id}`);
+    if (mergedUnits.has(id)) errors.push(`${name}: ${id} が2つのまとまりにある`);
+    mergedUnits.add(id);
+  }
+  const organIds = new Set(group.units.map(unitOrgan));
+  const systemIds = new Set(group.units.map((id) => unitSystem.get(id)));
+  if (organIds.size > 1) errors.push(`${name}: 臓器の図の違うレッスンをまとめている（${[...organIds].map((id) => id ?? "なし").join("・")}）`);
+  else if (!unitOrgan(group.units[0]) && systemIds.size > 1) errors.push(`${name}: 臓器の図に入らない、系統の違うレッスンをまとめている`);
+}
+
 const enNotes = spawnSync(process.execPath, [path.join(ROOT, "scripts/en-notes.mjs"), "--check"], { encoding: "utf8" });
 if (enNotes.status !== 0) errors.push(`説明の英語が今の表（scripts/en-gloss.txt）と合いません。npm run build:en-notes を実行してください（${(enNotes.stdout + enNotes.stderr).trim()}）`);
 

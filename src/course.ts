@@ -1,5 +1,6 @@
 import beginnerJson from "../content/beginner.json";
 import pointsJson from "../content/points.json";
+import standardLessonsJson from "../content/standard-lessons.json";
 import { isPlateUnit, organOf, organOfLesson, termById, terms, units, unitById, type Organ, type Term, type Unit } from "./content";
 import type { Facet } from "./db";
 import { preferences } from "./settings";
@@ -47,11 +48,32 @@ export const beginnerTermCount = beginnerTerms.length;
 /** 詳細モードと初心者コースのレッスン（#/learn/<ID> はどちらのレッスンも開ける。標準モードで開くときは courseLesson） */
 export const lessonById = new Map<string, Unit>([...unitById, ...beginnerUnits.map((unit) => [unit.id, unit] as const)]);
 
+interface StandardLessonsFile {
+  merge: { units: string[]; title?: string }[];
+}
+
+/** 標準コースでまとめるレッスン（content/standard-lessons.json。docs/学びやすさ.md の案6）。レッスンID → まとめた先のレッスンID */
+const standardMerge = (standardLessonsJson as StandardLessonsFile).merge;
+const mergedInto = new Map(standardMerge.flatMap((group) => group.units.map((id) => [id, group.units[0]] as const)));
+
+/** 標準コースで、そのレッスンの語の入るレッスンのID（まとめたレッスンは、まとめた先のID） */
+export const standardLessonId = (unitId: string): string => mergedInto.get(unitId) ?? unitId;
+
+const withoutAdvanced = (unit: Unit): Unit => ({ ...unit, terms: unit.terms.filter((term) => term.level <= 2) });
+
 /**
- * 標準コースのレッスン（詳細モードのレッスンから発展の語＝level 3 を除いたもの。レッスンID は同じ。語の残らないレッスンは出さない）
+ * 標準コースのレッスン（詳細モードのレッスンから発展の語＝level 3 を除いたもの。レッスンID は同じ。語の残らないレッスンは出さない）。
+ * 語が3つ以下になるレッスンは、standard-lessons.json で近いレッスンとまとめる（最初のレッスンのID・位置で、語は書いた順）
  */
 export const standardUnits: Unit[] = units
-  .map((unit) => ({ ...unit, terms: unit.terms.filter((term) => term.level <= 2) }))
+  .flatMap((unit): Unit[] => {
+    const group = standardMerge.find((item) => item.units.includes(unit.id));
+    if (!group) return [withoutAdvanced(unit)];
+    if (group.units[0] !== unit.id) return [];
+    const members = group.units.flatMap((id) => unitById.get(id) ?? []);
+    const intro = members.flatMap((member) => member.intro ?? []);
+    return [{ ...unit, title: group.title ?? unit.title, intro: intro.length ? intro : undefined, terms: members.flatMap((member) => withoutAdvanced(member).terms) }];
+  })
   .filter((unit) => unit.terms.length > 0);
 const standardById = new Map(standardUnits.map((unit) => [unit.id, unit]));
 const standardTerms: Term[] = standardUnits.flatMap((unit) => unit.terms);
@@ -78,13 +100,16 @@ export const inCourse = (termId: string): boolean => (isBeginner() ? beginnerIds
 export function courseUnitOf(termId: string): Unit | undefined {
   if (isBeginner()) return beginnerUnits.find((unit) => unit.terms.some((term) => term.id === termId));
   const unitId = termById.get(termId)?.unit ?? "";
-  if (isStandard()) return standardIds.has(termId) ? standardById.get(unitId) : undefined;
+  if (isStandard()) return standardIds.has(termId) ? standardById.get(standardLessonId(unitId)) : undefined;
   return unitById.get(unitId);
 }
 
-/** #/learn/<ID> で開くレッスン（標準モードでは発展の語を除いたもの。標準に語の無いレッスンは詳細モードのまま） */
+/**
+ * #/learn/<ID> で開くレッスン（標準モードでは発展の語を除いたもの。まとめたレッスンのIDなら、まとめた先のレッスン。
+ * 標準に語の無いレッスンは詳細モードのまま）
+ */
 export function courseLesson(unitId: string): Unit | undefined {
-  return (isStandard() ? standardById.get(unitId) : undefined) ?? lessonById.get(unitId);
+  return (isStandard() ? standardById.get(standardLessonId(unitId)) : undefined) ?? lessonById.get(unitId);
 }
 
 /** 学ぶ問い方（設定の「学ぶ問い方」。初心者モードでは基本の4つのうち選んだものだけ） */

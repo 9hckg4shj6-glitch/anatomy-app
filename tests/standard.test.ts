@@ -1,10 +1,11 @@
 import "fake-indexeddb/auto";
-import { termById, terms, units } from "../src/content";
+import { isPlateUnit, termById, terms, units } from "../src/content";
 import { courseLesson, courseTerms, courseUnitOf, courseUnits, inCourse, pointOf, standardTermCount, standardUnits } from "../src/course";
 import { db } from "../src/db";
+import { examCountOf, examItems } from "../src/exam";
 import { courseOf, preferences, setCourse } from "../src/settings";
 import { noteText } from "../src/en-notes";
-import { nextLesson } from "../src/ui/lessons";
+import { nextLesson, pathUnits } from "../src/ui/lessons";
 import { termCard } from "../src/ui/term-card";
 
 // 標準のコース（docs/学びやすさ.md の案2）: 必修と基礎の語（level 1・2）だけ
@@ -80,5 +81,42 @@ describe("標準のコース", () => {
     // 詳細モードは今までどおり
     await setCourse("free");
     expect(termCard(term).querySelector(".term-desc")).toBeTruthy();
+  });
+
+  it("語が3つ以下のレッスンは近いレッスンとまとめ、前のレッスンID でもまとめた先を開く（案6）", async () => {
+    await setCourse("standard");
+    // 学ぶの道すじに、語が3つ以下のレッスンは残らない（骨盤底の筋は、まとめる先が臓器の場面のレッスンだけなのでそのまま）
+    const tiny = pathUnits().filter((unit) => unit.terms.length <= 3).map((unit) => unit.id);
+    expect(tiny).toEqual(["uro-pelvic-floor"]);
+    // 膝の動脈（1語）は「下肢の動脈の枝と静脈」に入る
+    const merged = courseLesson("cv-knee-arteries")!;
+    expect(merged.id).toBe("cv-branch-leg");
+    expect(merged.title).toBe("下肢の動脈の枝と静脈");
+    expect(merged.terms.map((term) => term.unit)).toEqual(expect.arrayContaining(["cv-branch-leg", "cv-leg-artery-more", "cv-knee-arteries", "cv-leg-vein-more"]));
+    expect(courseUnits().some((unit) => unit.id === "cv-knee-arteries")).toBe(false);
+    const knee = merged.terms.find((term) => term.unit === "cv-knee-arteries")!;
+    expect(courseUnitOf(knee.id)).toBe(merged);
+    // 語はどれも1つのレッスンにだけ入り、標準の語はみなどこかのレッスンに入る
+    const ids = standardUnits.flatMap((unit) => unit.terms.map((term) => term.id));
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids.length).toBe(standardTermCount);
+    // 図のレッスンも同じ臓器の図の中でまとめる
+    expect(isPlateUnit(courseLesson("lymph-spleen-pulp")!)).toBe(true);
+    // 詳細モードではまとめない
+    await setCourse("free");
+    expect(courseLesson("cv-knee-arteries")!.id).toBe("cv-knee-arteries");
+  });
+
+  it("骨学試験で答える語は標準に入る", () => {
+    const asked = new Set<string>();
+    for (const item of examItems) {
+      if (item.kind === "d") for (const mark of item.marks) if (mark.term) asked.add(mark.term);
+      if (item.kind === "p") item.terms.forEach((id) => asked.add(id));
+      if (item.kind === "s") item.members.forEach((id) => asked.add(id));
+      if (item.kind === "l") asked.add(item.term);
+    }
+    for (const term of terms) if (examCountOf(term.id) > 0) asked.add(term.id);
+    const advanced = [...asked].filter((id) => termById.has(id) && termById.get(id)!.level === 3);
+    expect(advanced).toEqual([]);
   });
 });

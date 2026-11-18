@@ -152,28 +152,28 @@
         },
         {
           "id": "third-rib", "ja": "第3肋骨", "yomi": "だいさんろっこつ", "en": "third rib", "la": "costa tertia",
-          "parts": ["third rib"], "level": 3,
+          "parts": ["third rib"], "level": 2,
           "kanji": "上から3番目の肋骨",
           "etym": "third「3番目の」＋ rib「肋骨」（ラテン語 costa tertia）",
           "note": "真肋（true ribs）。頭・頚（neck）・結節（tubercle）・角・体のそろった典型的な肋骨（ribs）の1つ。小胸筋（pectoralis minor）は第3〜第5肋骨（third to fifth ribs）の前面（anterior surface）から起こる。"
         },
         {
           "id": "fourth-rib", "ja": "第4肋骨", "yomi": "だいよんろっこつ", "en": "fourth rib", "la": "costa quarta",
-          "parts": ["fourth rib"], "level": 3,
+          "parts": ["fourth rib"], "level": 2,
           "kanji": "上から4番目の肋骨",
           "etym": "fourth「4番目の」＋ rib「肋骨」（ラテン語 costa quarta）",
           "note": "真肋（true ribs）。男性の乳頭（nipple）は、およそ第4肋間隙（fourth intercostal space）（第4肋骨と第5肋骨（fifth rib）の間）の高さにある。"
         },
         {
           "id": "fifth-rib", "ja": "第5肋骨", "yomi": "だいごろっこつ", "en": "fifth rib", "la": "costa quinta",
-          "parts": ["fifth rib"], "level": 3,
+          "parts": ["fifth rib"], "level": 2,
           "kanji": "上から5番目の肋骨",
           "etym": "fifth「5番目の」＋ rib「肋骨」（ラテン語 costa quinta）",
           "note": "真肋（true ribs）。心尖拍動（apex beat）は、ふつう左の第5肋間隙（fifth intercostal space）（第5肋骨と第6肋骨（sixth rib）の間）で、鎖骨中線（midclavicular line）のやや内側（medial）に触れる。"
         },
         {
           "id": "sixth-rib", "ja": "第6肋骨", "yomi": "だいろくろっこつ", "en": "sixth rib", "la": "costa sexta",
-          "parts": ["sixth rib"], "level": 3,
+          "parts": ["sixth rib"], "level": 2,
           "kanji": "上から6番目の肋骨",
           "etym": "sixth「6番目の」＋ rib「肋骨」（ラテン語 costa sexta）",
           "note": "真肋（true ribs）。典型的な肋骨（ribs）の1つ。肋骨の部位（region）（肋骨頭（head of rib）・肋骨結節（tubercle of rib）・肋骨角（angle of rib）・肋骨溝（costal groove））のレッスンは、この肋骨の上で示している。肋軟骨（costal cartilages）は胸骨体（body of sternum）の下部に付く。"
@@ -227,7 +227,7 @@
         },
         {
           "id": "tenth-rib", "ja": "第10肋骨", "yomi": "だいじゅうろっこつ", "en": "tenth rib", "la": "costa decima",
-          "parts": ["tenth rib"], "level": 3,
+          "parts": ["tenth rib"], "level": 2,
           "kanji": "上から10番目の肋骨",
           "etym": "tenth「10番目の」＋ rib「肋骨」（ラテン語 costa decima）",
           "note": "仮肋（false ribs）。肋骨弓（costal arch）に加わる最も下の肋骨（ribs）。肋骨弓の最も低い所は第10肋軟骨（tenth costal cartilage）で、ここを通る水平面（horizontal plane）（肋骨下平面（subcostal plane））はおよそ第3腰椎（third lumbar vertebra）の高さ。肋骨頭（head of rib）はくさび形で、第9胸椎（ninth thoracic vertebra）の下の肋骨窩（costal facet）と第10胸椎（tenth thoracic vertebra）の上の肋骨窩にまたがる（第10胸椎とだけ関節（joint）する人もいる）。"
@@ -533,14 +533,14 @@
         },
         {
           "id": "accessory-process", "ja": "副突起", "yomi": "ふくとっき", "en": "accessory process", "la": "processus accessorius",
-          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 3, "from": [-0.3, 0.4, -1],
+          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 2, "from": [-0.3, 0.4, -1],
           "kanji": "添えものの突起",
           "etym": "accessory ← ラテン語 accedere「付け加わる」",
           "note": "腰椎（lumbar vertebrae）の肋骨突起（costal process）の根もとの後ろ下に出る、つららのような小さな突起（process）。これが本来の横突起（transverse process）の名残り。（図は第3腰椎（third lumbar vertebra））"
         },
         {
           "id": "mammillary-process", "ja": "乳頭突起", "yomi": "にゅうとうとっき", "en": "mammillary process", "la": "processus mammillaris",
-          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 3, "from": [-0.3, 0.4, -1],
+          "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 2, "from": [-0.3, 0.4, -1],
           "kanji": "乳頭のような小さな突起",
           "etym": "mammillary ← ラテン語 mammilla「乳頭」",
           "note": "腰椎（lumbar vertebrae）の上関節突起（superior articular process）の後ろの縁にある小さな高まり。上関節突起の一部のように見えるが、本来の横突起（transverse process）の一部。多裂筋（multifidus）が起こる。（図は第3腰椎（third lumbar vertebra））"
@@ -554,7 +554,7 @@
         },
         {
           "id": "transverse-costal-facet", "ja": "横突肋骨窩", "yomi": "おうとつろっこつか", "en": "transverse costal facet", "la": "fovea costalis processus transversi",
-          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 3, "from": [-1, 0.3, -0.3],
+          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 2, "from": [-1, 0.3, -0.3],
           "kanji": "横突起にある肋骨のくぼみ",
           "note": "胸椎（thoracic vertebrae）の横突起（transverse process）の先の前の面にある丸い関節面（articular surface）。同じ番号の肋骨（ribs）の肋骨結節（tubercle of rib）と関節（joint）する（肋横突関節（costotransverse joint））。第11・第12胸椎（eleventh and twelfth thoracic vertebrae）には無い（第11・第12肋骨（eleventh and twelfth ribs）が短いため）。（図は第6胸椎（sixth thoracic vertebra））"
         },
@@ -579,13 +579,13 @@
         },
         {
           "id": "superior-articular-facet-of-atlas", "ja": "上関節窩（環椎）", "yomi": "じょうかんせつか", "en": "superior articular facet of atlas", "la": "fovea articularis superior atlantis",
-          "of": "atlas", "level": 3,
+          "of": "atlas", "level": 2,
           "kanji": "上にある関節のくぼみ",
           "note": "外側塊（lateral mass）の上の面の、細長く大きくくぼんだ関節面（articular surface）。後頭骨（occipital bone）の後頭顆（occipital condyle）を受けて環椎後頭関節（atlanto-occipital joint）をつくり、首（neck）を前後に曲げる（うなずく）。頭を左右に回す動きはここではできない。下の面の関節面は丸く平らなので、上下を見分ける目安になる。"
         },
         {
           "id": "facet-for-dens", "ja": "歯突起窩", "yomi": "しとっきか", "en": "facet for dens", "la": "fovea dentis",
-          "of": "atlas", "level": 3,
+          "of": "atlas", "level": 2,
           "kanji": "歯突起を受けるくぼみ",
           "etym": "dens ← ラテン語「歯」",
           "note": "環椎（atlas）の前弓（anterior arch）の後ろの面の中央にある、丸い小さな関節面（articular surface）。軸椎（axis）の歯突起（dens）が接し、頭を左右に回すときは、頭をのせたまま環椎が歯突起のまわりを回る（左右に約30°ずつ）。"
@@ -610,7 +610,7 @@
       "terms": [
         {
           "id": "base-of-sacrum", "ja": "仙骨底", "yomi": "せんこつてい", "en": "base of sacrum", "la": "basis ossis sacri",
-          "of": "sacrum", "level": 3,
+          "of": "sacrum", "level": 2,
           "kanji": "仙骨の底（逆三角形の上の辺）",
           "etym": "base ← ラテン語 basis「土台」",
           "note": "逆三角形の仙骨（sacrum）の上の面（第1仙椎（first sacral vertebra）の上面（superior surface））。中央の楕円形の椎体（vertebral body）の面が椎間円板（intervertebral disc）を介して第5腰椎（fifth lumbar vertebra）と連結し、その前の縁が岬角（promontory）。後ろに仙骨管（sacral canal）の入口が開く。"
@@ -637,7 +637,7 @@
         },
         {
           "id": "auricular-surface-of-sacrum", "ja": "耳状面（仙骨）", "yomi": "じじょうめん", "en": "auricular surface of sacrum", "la": "facies auricularis ossis sacri",
-          "of": "sacrum", "level": 3,
+          "of": "sacrum", "level": 2,
           "kanji": "耳の形の面",
           "etym": "auricular ← ラテン語 auricula「小さな耳」",
           "note": "仙骨（sacrum）の外側（lateral）の面の上半分にある、耳（ear）の形の関節面（articular surface）。腸骨（ilium）の耳状面（auricular surface）とかみ合って仙腸関節（sacro-iliac joint）をつくる。かみ合いが強く、ほとんど動かない。脊柱（vertebral column）から下肢（lower limb）へ体重を伝える所。"
@@ -657,14 +657,14 @@
         },
         {
           "id": "anterior-sacral-foramina", "ja": "前仙骨孔", "yomi": "ぜんせんこつこう", "en": "anterior sacral foramina", "enAlt": ["pelvic sacral foramina"], "la": "foramina sacralia anteriora",
-          "of": "sacrum", "level": 3,
+          "of": "sacrum", "level": 2,
           "kanji": "仙骨の前の孔",
           "note": "仙骨（sacrum）の前面（anterior surface）に左右4対並ぶ孔。仙骨神経（sacral nerve）の前枝（anterior ramus）が出る。",
           "passes": "仙骨神経の前枝"
         },
         {
           "id": "posterior-sacral-foramina", "ja": "後仙骨孔", "yomi": "こうせんこつこう", "en": "posterior sacral foramina", "enAlt": ["dorsal sacral foramina"], "la": "foramina sacralia posteriora",
-          "of": "sacrum", "level": 3,
+          "of": "sacrum", "level": 2,
           "kanji": "仙骨の後ろの孔",
           "note": "仙骨（sacrum）の後面（posterior surface）に左右4対並ぶ孔。仙骨神経（sacral nerve）の後枝（posterior ramus）が出る。",
           "passes": "仙骨神経の後枝"
@@ -677,7 +677,7 @@
         },
         {
           "id": "intermediate-sacral-crest", "ja": "中間仙骨稜", "yomi": "ちゅうかんせんこつりょう", "en": "intermediate sacral crest", "enAlt": ["medial sacral crest"], "la": "crista sacralis medialis",
-          "of": "sacrum", "level": 3,
+          "of": "sacrum", "level": 2,
           "kanji": "正中と外側の間の稜",
           "note": "仙骨（sacrum）の後面（posterior surface）で、正中仙骨稜（median sacral crest）の両わきを縦に走る低い稜。仙椎（sacral vertebra）の関節突起（articular process）が上下に癒合（fusion）したもの。下の端は仙骨角（sacral cornu）になる。すぐ外側（lateral）に後仙骨孔（posterior sacral foramina）が並ぶ。"
         },
@@ -704,7 +704,7 @@
         },
         {
           "id": "sacral-hiatus", "ja": "仙骨裂孔", "yomi": "せんこつれっこう", "en": "sacral hiatus", "la": "hiatus sacralis",
-          "of": "sacrum", "level": 3,
+          "of": "sacrum", "level": 2,
           "kanji": "裂けたような孔",
           "etym": "hiatus ← ラテン語「すきま・開いた口」",
           "note": "仙骨（sacrum）の後面（posterior surface）の下端（inferior end）の開口部（opening）。仙骨管（sacral canal）の出口で、仙骨硬膜外麻酔（caudal epidural anesthesia）（仙骨麻酔（caudal anesthesia））の針を入れる所。",
@@ -726,7 +726,7 @@
         },
         {
           "id": "clavicular-notch", "ja": "鎖骨切痕", "yomi": "さこつせっこん", "en": "clavicular notch", "la": "incisura clavicularis",
-          "of": "sternum", "level": 3,
+          "of": "sternum", "level": 2,
           "kanji": "鎖骨を受ける切痕",
           "note": "胸骨柄（manubrium of sternum）の上外側（superolateral）の切れこみ。鎖骨（clavicle）の胸骨端（sternal end）と胸鎖関節（sternoclavicular joint）をつくる。"
         },
@@ -751,7 +751,7 @@
         },
         {
           "id": "neck-of-rib", "ja": "肋骨頚", "yomi": "ろっこつけい", "en": "neck of rib", "la": "collum costae",
-          "of": "ribs", "parts": ["sixth rib"], "level": 3,
+          "of": "ribs", "parts": ["sixth rib"], "level": 2,
           "note": "肋骨頭（head of rib）と肋骨結節（tubercle of rib）の間の細い部分。（図は第6肋骨（sixth rib））"
         },
         {
@@ -766,14 +766,14 @@
         },
         {
           "id": "costal-groove", "ja": "肋骨溝", "yomi": "ろっこつこう", "en": "costal groove", "la": "sulcus costae",
-          "of": "ribs", "parts": ["sixth rib"], "level": 3,
+          "of": "ribs", "parts": ["sixth rib"], "level": 2,
           "kanji": "肋骨の溝",
           "note": "肋骨（ribs）の下の縁の内面（internal surface）の溝。肋間動脈（posterior intercostal arteries）・静脈（vein）・神経（nerve）が通るので、胸（chest）に針を刺すときは肋骨の上の縁に沿って入れる。（図は第6肋骨（sixth rib））",
           "passes": "肋間神経（intercostal nerves）・肋間動静脈（intercostal vessels）"
         },
         {
           "id": "scalene-tubercle", "ja": "前斜角筋結節", "yomi": "ぜんしゃかくきんけっせつ", "en": "scalene tubercle", "la": "tuberculum musculi scaleni anterioris",
-          "of": "first-rib", "level": 3,
+          "of": "first-rib", "level": 2,
           "kanji": "前斜角筋が付く結節",
           "note": "第1肋骨（first rib）の上の面の内側（medial）の縁にある小さな高まり。前斜角筋（anterior scalene）が付く。前に鎖骨下静脈（subclavian vein）、後ろに鎖骨下動脈（subclavian artery）の溝があり、前斜角筋が動脈（artery）と静脈（vein）を分ける。"
         },
@@ -865,14 +865,14 @@
         },
         {
           "id": "superior-costal-facet", "ja": "上肋骨窩", "yomi": "じょうろっこつか", "en": "superior costal facet", "la": "fovea costalis superior",
-          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 3, "from": [-1, 0.3, -0.3],
+          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 2, "from": [-1, 0.3, -0.3],
           "kanji": "椎体の上の縁の肋骨窩",
           "etym": "superior「上の」＋ costal ← ラテン語 costa「肋骨」",
           "note": "胸椎（thoracic vertebrae）の椎体（vertebral body）の外側面（lateral surface）の上の縁にある関節面（articular surface）（3Dは第6胸椎（sixth thoracic vertebra））。同じ番号の肋骨（ribs）の肋骨頭（head of rib）の下半分と関節（joint）する。"
         },
         {
           "id": "inferior-costal-facet", "ja": "下肋骨窩", "yomi": "かろっこつか", "en": "inferior costal facet", "la": "fovea costalis inferior",
-          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 3, "from": [-1, 0.3, -0.3],
+          "of": "thoracic-vertebrae", "parts": ["sixth thoracic vertebra"], "level": 2, "from": [-1, 0.3, -0.3],
           "kanji": "椎体の下の縁の肋骨窩",
           "etym": "inferior「下の」＋ costal「肋骨の」",
           "note": "胸椎（thoracic vertebrae）の椎体（vertebral body）の外側面（lateral surface）の下の縁にある関節面（articular surface）（3Dは第6胸椎（sixth thoracic vertebra））。1つ下の番号の肋骨（ribs）の肋骨頭（head of rib）の上半分と関節（joint）する。第1胸椎（first thoracic vertebra）の上肋骨窩（superior costal facet）は第1肋骨（first rib）と丸ごと、第11・第12胸椎（eleventh and twelfth thoracic vertebrae）は肋骨窩（costal facet）が1つずつ。"
@@ -1230,7 +1230,7 @@
         },
         {
           "id": "lateral-border-of-scapula", "ja": "外側縁（肩甲骨）", "yomi": "がいそくえん", "en": "lateral border of scapula", "enAlt": ["lateral border", "axillary border"], "la": "margo lateralis",
-          "of": "scapula", "level": 3,
+          "of": "scapula", "level": 2,
           "note": "肩甲骨（scapula）の腋窩（axilla）側の厚い縁。小円筋（teres minor）と大円筋（teres major）が起こる。"
         },
         {
@@ -1247,7 +1247,7 @@
         },
         {
           "id": "suprascapular-notch", "ja": "肩甲切痕", "yomi": "けんこうせっこん", "en": "suprascapular notch", "enAlt": ["scapular notch"], "la": "incisura scapulae",
-          "of": "scapula", "level": 3,
+          "of": "scapula", "level": 2,
           "kanji": "切痕＝切れこみ",
           "etym": "notch「切れこみ」、la. incisura ← incidere「切りこむ」",
           "note": "肩甲骨（scapula）の上縁（superior border）で、烏口突起（coracoid process）の根もとの内側（medial）にある切れこみ。大きさと形は人によって違い、骨（bone）で閉じて孔になっていることもある。ふつうは上肩甲横靱帯（superior transverse scapular ligament）が橋をかけて孔になり、その中を肩甲上神経（suprascapular nerve）が通る。",
@@ -1303,14 +1303,14 @@
         },
         {
           "id": "crest-of-greater-tubercle", "ja": "大結節稜", "yomi": "だいけっせつりょう", "en": "crest of greater tubercle", "la": "crista tuberculi majoris",
-          "of": "humerus", "level": 3,
+          "of": "humerus", "level": 2,
           "kanji": "大結節から続く稜（高い線）",
           "etym": "crest ← ラテン語 crista「とさか」",
           "note": "大結節（greater tubercle）から下へのびる稜（結節間溝（intertubercular sulcus）の外側（lateral）の縁）。大胸筋（pectoralis major）が付く。"
         },
         {
           "id": "crest-of-lesser-tubercle", "ja": "小結節稜", "yomi": "しょうけっせつりょう", "en": "crest of lesser tubercle", "la": "crista tuberculi minoris",
-          "of": "humerus", "level": 3,
+          "of": "humerus", "level": 2,
           "kanji": "小結節から続く稜",
           "note": "小結節（lesser tubercle）から下へのびる稜（結節間溝（intertubercular sulcus）の内側（medial）の縁）。広背筋（latissimus dorsi）と大円筋（teres major）が付く。"
         },
@@ -1362,7 +1362,7 @@
         },
         {
           "id": "coronoid-fossa", "ja": "鈎突窩", "yomi": "こうとつか", "en": "coronoid fossa", "la": "fossa coronoidea",
-          "of": "humerus", "level": 3,
+          "of": "humerus", "level": 2,
           "kanji": "鈎状突起がはまる窩",
           "note": "上腕骨（humerus）の下端（inferior end）の前面（anterior surface）のくぼみ。肘（elbow）を曲げると尺骨（ulna）の鈎状突起（coronoid process of ulna）がはまる。"
         },
@@ -1402,13 +1402,13 @@
         },
         {
           "id": "radial-notch", "ja": "橈骨切痕", "yomi": "とうこつせっこん", "en": "radial notch", "la": "incisura radialis",
-          "of": "ulna", "level": 3,
+          "of": "ulna", "level": 2,
           "kanji": "橈骨を受ける切痕",
           "note": "尺骨（ulna）の鈎状突起（coronoid process of ulna）の外側（lateral）の小さな関節面（articular surface）。橈骨頭（head of radius）と上橈尺関節（proximal radio-ulnar joint）をつくる。"
         },
         {
           "id": "ulnar-tuberosity", "ja": "尺骨粗面", "yomi": "しゃっこつそめん", "en": "ulnar tuberosity", "enAlt": ["tuberosity of ulna"], "la": "tuberositas ulnae",
-          "of": "ulna", "level": 3,
+          "of": "ulna", "level": 2,
           "kanji": "尺骨の粗い面",
           "note": "鈎状突起（coronoid process of ulna）のすぐ下の前面（anterior surface）の粗い高まり。上腕筋（brachialis）が付く。"
         },
@@ -1431,7 +1431,7 @@
         },
         {
           "id": "neck-of-radius", "ja": "橈骨頚", "yomi": "とうこつけい", "en": "neck of radius", "enAlt": ["radial neck"], "la": "collum radii",
-          "of": "radius", "level": 3,
+          "of": "radius", "level": 2,
           "note": "橈骨頭（head of radius）のすぐ下の細い部分。"
         },
         {
@@ -1462,7 +1462,7 @@
         },
         {
           "id": "tubercle-of-trapezium", "ja": "大菱形骨結節", "yomi": "だいりょうけいこつけっせつ", "en": "tubercle of trapezium", "la": "tuberculum ossis trapezii",
-          "of": "trapezium", "level": 3,
+          "of": "trapezium", "level": 2,
           "kanji": "大菱形骨の結節",
           "etym": "tubercle「結節」＋ trapezium「台形（の骨）」",
           "note": "大菱形骨（trapezium）の前面（anterior surface）の高まり。屈筋支帯（flexor retinaculum）の外側（lateral）の端が付き、その内側（medial）の溝を橈側手根屈筋（flexor carpi radialis）の腱（tendon）が通る。母指球（thenar eminence）の筋（muscle）が起こる。"
@@ -1498,27 +1498,27 @@
       "terms": [
         {
           "id": "conoid-tubercle", "ja": "円錐靱帯結節", "yomi": "えんすいじんたいけっせつ", "en": "conoid tubercle", "la": "tuberculum conoideum",
-          "of": "clavicle", "level": 3,
+          "of": "clavicle", "level": 2,
           "kanji": "円錐靱帯が付く小さな高まり",
           "etym": "conoid「円錐の形の」＋ tubercle「小さな結節」",
           "note": "鎖骨（clavicle）の外側部（lateral part）の下面（inferior surface）、後ろ寄りの小さな高まり。烏口鎖骨靱帯（coracoclavicular ligament）のうち円錐靱帯（conoid ligament）が付き、鎖骨と肩甲骨（scapula）をつなぐ。"
         },
         {
           "id": "trapezoid-line", "ja": "菱形靱帯線", "yomi": "りょうけいじんたいせん", "en": "trapezoid line", "la": "linea trapezoidea",
-          "of": "clavicle", "level": 3,
+          "of": "clavicle", "level": 2,
           "kanji": "菱形靱帯が付く線",
           "etym": "trapezoid「台形の（菱形の）」＋ line「線」",
           "note": "円錐靱帯結節（conoid tubercle）から外側（lateral）の前へ斜めに走る、鎖骨（clavicle）の下面（inferior surface）の線。烏口鎖骨靱帯（coracoclavicular ligament）のうち菱形靱帯（trapezoid ligament）が付く。"
         },
         {
           "id": "costoclavicular-ligament-impression", "ja": "肋鎖靱帯圧痕", "yomi": "ろくさじんたいあっこん", "en": "impression for costoclavicular ligament", "la": "impressio ligamenti costoclavicularis",
-          "of": "clavicle", "level": 3,
+          "of": "clavicle", "level": 2,
           "kanji": "肋骨と鎖骨を結ぶ靱帯の跡",
           "note": "鎖骨（clavicle）の胸骨端（sternal end）の近くの下の面の粗い所。第1肋骨（first rib）とを結ぶ肋鎖靱帯（costoclavicular ligament）が付き、鎖骨の内側（medial）の端が上へずれないよう押さえる。鎖骨の上の面はなめらかで、下の面は両端が粗いので、上下を見分けられる。"
         },
         {
           "id": "neck-of-scapula", "ja": "肩甲頚", "yomi": "けんこうけい", "en": "neck of scapula", "la": "collum scapulae",
-          "of": "scapula", "level": 3,
+          "of": "scapula", "level": 2,
           "kanji": "肩甲骨の頚（くびれ）",
           "etym": "neck「頚」＋ scapula「肩甲骨」（ラテン語＝肩の骨）",
           "note": "関節窩（glenoid cavity）のすぐ内側（medial）の、少しくびれた部分。関節窩を肩甲骨（scapula）の本体につなぐ。"
@@ -1553,14 +1553,14 @@
       "terms": [
         {
           "id": "medial-supracondylar-ridge", "ja": "内側顆上稜", "yomi": "ないそくかじょうりょう", "en": "medial supracondylar ridge", "la": "crista supracondylaris medialis",
-          "of": "humerus", "level": 3,
+          "of": "humerus", "level": 2,
           "kanji": "内側の顆の上の稜（へり）",
           "etym": "medial「内側の」＋ supra-「上」＋ condylar「顆の」＋ ridge「稜」",
           "note": "上腕骨（humerus）の下部の内側縁（medial border）で、内側上顆（medial epicondyle）へ続く稜。内側上腕筋間中隔（medial intermuscular septum of arm）が付く。"
         },
         {
           "id": "lateral-supracondylar-ridge", "ja": "外側顆上稜", "yomi": "がいそくかじょうりょう", "en": "lateral supracondylar ridge", "la": "crista supracondylaris lateralis",
-          "of": "humerus", "level": 3,
+          "of": "humerus", "level": 2,
           "kanji": "外側の顆の上の稜（へり）",
           "etym": "lateral「外側の」＋ supra-「上」＋ condylar「顆の」＋ ridge「稜」",
           "note": "上腕骨（humerus）の下部の外側縁（lateral border）で、外側上顆（lateral epicondyle）へ続く稜。腕橈骨筋（brachioradialis）と長橈側手根伸筋（extensor carpi radialis longus）が起こり、外側上腕筋間中隔（lateral intermuscular septum of arm）が付く。"
@@ -1574,20 +1574,20 @@
         },
         {
           "id": "radial-fossa", "ja": "橈骨窩", "yomi": "とうこつか", "en": "radial fossa", "la": "fossa radialis",
-          "of": "humerus", "level": 3,
+          "of": "humerus", "level": 2,
           "kanji": "橈骨（橈骨頭）が入るくぼみ",
           "etym": "radial「橈骨の」＋ fossa「くぼみ」",
           "note": "上腕骨（humerus）の下端（inferior end）の前面（anterior surface）、上腕骨小頭（capitulum of humerus）のすぐ上のくぼみ。肘（elbow）を深く曲げると橈骨頭（head of radius）が入る（内側（medial）の鈎突窩（coronoid fossa）には尺骨（ulna）の鈎状突起（coronoid process of ulna）が入る）。"
         },
         {
           "id": "articular-circumference-of-radius", "ja": "関節環状面（橈骨）", "yomi": "かんせつかんじょうめん", "en": "articular circumference of radius", "la": "circumferentia articularis radii",
-          "of": "radius", "level": 3,
+          "of": "radius", "level": 2,
           "kanji": "輪のようにまわる関節面",
           "note": "橈骨頭（head of radius）の円盤の側面の関節面（articular surface）。尺骨（ulna）の橈骨切痕（radial notch）と上橈尺関節（proximal radio-ulnar joint）をつくり、輪状靱帯（annular ligament）に囲まれてその場で回る。2〜6歳の子では腕（arm）を急に引っぱると橈骨頭が輪状靱帯から抜けかける（肘内障（pulled elbow））。"
         },
         {
           "id": "ulnar-notch-of-radius", "ja": "尺骨切痕", "yomi": "しゃっこつせっこん", "en": "ulnar notch of radius", "la": "incisura ulnaris radii",
-          "of": "radius", "level": 3,
+          "of": "radius", "level": 2,
           "kanji": "尺骨（尺骨頭）がはまる切れこみ",
           "etym": "ulnar「尺骨の」＋ notch「切れこみ」",
           "note": "橈骨（radius）の下端（inferior end）の内側（medial）のくぼみ。尺骨頭（head of ulna）がはまって下橈尺関節（distal radio-ulnar joint）をつくり、回内（pronation）・回外（supination）で橈骨はここで尺骨頭のまわりを回る（尺骨（ulna）の上端（superior end）の橈骨切痕（radial notch）とは逆の組み合わせ）。"
@@ -1601,27 +1601,27 @@
         },
         {
           "id": "interosseous-border-of-radius", "ja": "骨間縁（橈骨）", "yomi": "こつかんえん", "en": "interosseous border of radius", "la": "margo interosseus radii",
-          "of": "radius", "level": 3,
+          "of": "radius", "level": 2,
           "kanji": "骨と骨の間に向く縁",
           "etym": "interosseous ← ラテン語 inter「間」＋ os「骨」",
           "note": "橈骨（radius）の体の内側（medial）（尺骨側（ulnar side））の鋭い縁。尺骨（ulna）の骨間縁（interosseous border）との間に前腕骨間膜（interosseous membrane of forearm）が張る。"
         },
         {
           "id": "interosseous-border-of-ulna", "ja": "骨間縁（尺骨）", "yomi": "こつかんえん", "en": "interosseous border of ulna", "la": "margo interosseus ulnae",
-          "of": "ulna", "level": 3,
+          "of": "ulna", "level": 2,
           "kanji": "骨と骨の間に向く縁",
           "etym": "interosseous ← ラテン語 inter「間」＋ os「骨」",
           "note": "尺骨（ulna）の体の外側（lateral）（橈骨（radius）側）の鋭い縁。橈骨（radius）の骨間縁（interosseous border）との間に前腕骨間膜（interosseous membrane of forearm）が張り、前腕（forearm）の前と後ろの筋（muscle）を分ける。"
         },
         {
           "id": "posterior-border-of-ulna", "ja": "後縁（尺骨）", "yomi": "こうえん", "en": "posterior border of ulna", "la": "margo posterior ulnae",
-          "of": "ulna", "level": 3,
+          "of": "ulna", "level": 2,
           "kanji": "後ろの縁",
           "note": "尺骨（ulna）の体の後ろの縁。肘頭（olecranon）から手首（wrist）まで皮膚（skin）のすぐ下にあり、前腕（forearm）の後ろで全長を線として触れる。"
         },
         {
           "id": "supinator-crest", "ja": "回外筋稜", "yomi": "かいがいきんりょう", "en": "supinator crest", "la": "crista musculi supinatoris",
-          "of": "ulna", "level": 3,
+          "of": "ulna", "level": 2,
           "kanji": "回外筋が起こる稜",
           "etym": "supinator「回外筋」＋ crest「稜」",
           "note": "尺骨（ulna）の上部の外側（lateral）を、橈骨切痕（radial notch）の下から下へ走る稜。回外筋（supinator）が起こる。"
@@ -1829,14 +1829,14 @@
         },
         {
           "id": "intermediate-cuneiform", "ja": "中間楔状骨", "yomi": "ちゅうかんけつじょうこつ", "en": "intermediate cuneiform", "enAlt": ["intermediate cuneiform bone"], "la": "os cuneiforme intermedium",
-          "parts": ["intermediate cuneiform bone"], "level": 3,
+          "parts": ["intermediate cuneiform bone"], "level": 2,
           "kanji": "真ん中の、くさびの形の骨",
           "etym": "intermediate「中間の」＋ cuneiform「くさびの形の」",
           "note": "3つの楔状骨（cuneiform bones）のうち最も小さく、第2中足骨（second metatarsal）と関節（joint）する。"
         },
         {
           "id": "lateral-cuneiform", "ja": "外側楔状骨", "yomi": "がいそくけつじょうこつ", "en": "lateral cuneiform", "enAlt": ["lateral cuneiform bone"], "la": "os cuneiforme laterale",
-          "parts": ["lateral cuneiform bone"], "level": 3,
+          "parts": ["lateral cuneiform bone"], "level": 2,
           "kanji": "外側の、くさびの形の骨",
           "etym": "lateral「外側の」＋ cuneiform「くさびの形の」",
           "note": "第3中足骨（third metatarsal）と関節（joint）し、外側（lateral）で立方骨（cuboid）と接する。3つの楔状骨（cuneiform bones）は上が広いくさびで、足（foot）の横のアーチ（arch）を作る。"
@@ -1938,21 +1938,21 @@
         },
         {
           "id": "superior-pubic-ramus", "ja": "恥骨上枝", "yomi": "ちこつじょうし", "en": "superior pubic ramus", "enAlt": ["superior ramus of pubis"], "la": "ramus superior ossis pubis",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "恥骨の上の枝",
           "etym": "superior「上の」＋ pubic「恥骨の」＋ ramus「枝」",
           "note": "恥骨体（body of pubis）から寛骨臼（acetabulum）へ外上に伸びる部分。上面（superior surface）に恥骨櫛（pecten pubis）があり、閉鎖孔（obturator foramen）の上を囲む。高齢者が転んだときに骨折（fracture）しやすい（骨盤（pelvis）の脆弱性骨折（fragility fracture））。"
         },
         {
           "id": "inferior-pubic-ramus", "ja": "恥骨下枝", "yomi": "ちこつかし", "en": "inferior pubic ramus", "enAlt": ["inferior ramus of pubis"], "la": "ramus inferior ossis pubis",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "恥骨の下の枝",
           "etym": "inferior「下の」＋ pubic「恥骨の」＋ ramus「枝」",
           "note": "恥骨体（body of pubis）から後ろ下へ伸び、坐骨枝（ramus of ischium）とつながる部分（合わせて坐骨恥骨枝（ischiopubic ramus））。閉鎖孔（obturator foramen）の前下（anteroinferior）を囲み、左右で恥骨弓（pubic arch）をつくる。"
         },
         {
           "id": "ramus-of-ischium", "ja": "坐骨枝", "yomi": "ざこつし", "en": "ramus of ischium", "enAlt": ["ischial ramus"], "la": "ramus ossis ischii",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "坐骨の枝",
           "etym": "ramus「枝」＋ ischium「坐骨」",
           "note": "坐骨体（body of ischium）から前上（anterosuperior）へ伸び、恥骨下枝（inferior pubic ramus）とつながる細い部分。閉鎖孔（obturator foramen）の下を囲む。陰茎脚（crus of penis）（女性では陰核脚（crus of clitoris））が付く。"
@@ -1994,7 +1994,7 @@
         },
         {
           "id": "posterior-inferior-iliac-spine", "ja": "下後腸骨棘", "yomi": "かこうちょうこつきょく", "en": "posterior inferior iliac spine", "la": "spina iliaca posterior inferior",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "腸骨の後ろ・下の棘",
           "note": "上後腸骨棘（posterior superior iliac spine）の下の小さな突出。すぐ下に大坐骨切痕（greater sciatic notch）が続く。"
         },
@@ -2006,7 +2006,7 @@
         },
         {
           "id": "auricular-surface-of-ilium", "ja": "耳状面（腸骨）", "yomi": "じじょうめん", "en": "auricular surface of ilium", "la": "facies auricularis ossis ilii",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "耳の形の面",
           "etym": "auricular ← ラテン語 auricula「小さな耳」",
           "note": "腸骨（ilium）の内面（internal surface）の後ろにある、耳（ear）の形の関節面（articular surface）。仙骨（sacrum）の耳状面（auricular surface）とかみ合って仙腸関節（sacro-iliac joint）をつくる。関節面がでこぼこでかみ合いが強く、ほとんど動かない（脊柱（vertebral column）からの体重を下肢（lower limb）へ伝える）。"
@@ -2026,7 +2026,7 @@
         },
         {
           "id": "lesser-sciatic-notch", "ja": "小坐骨切痕", "yomi": "しょうざこつせっこん", "en": "lesser sciatic notch", "la": "incisura ischiadica minor",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "小さい坐骨の切痕",
           "note": "坐骨棘（ischial spine）と坐骨結節（ischial tuberosity）の間の小さな切れこみ。靱帯（ligament）で囲まれて小坐骨孔（lesser sciatic foramen）になる。"
         },
@@ -2068,14 +2068,14 @@
         },
         {
           "id": "pecten-pubis", "ja": "恥骨櫛", "yomi": "ちこつしつ", "en": "pecten pubis", "enAlt": ["pectineal line"], "la": "pecten ossis pubis",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "櫛（くし）の背のような稜",
           "etym": "pecten ← ラテン語「くし」",
           "note": "恥骨上枝（superior pubic ramus）の上の縁の鋭い稜。恥骨筋（pectineus）が起こる。"
         },
         {
           "id": "arcuate-line-of-ilium", "ja": "弓状線", "yomi": "きゅうじょうせん", "en": "arcuate line", "enAlt": ["arcuate line of ilium"], "la": "linea arcuata",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "弓の形の線",
           "etym": "arcuate ← ラテン語 arcus「弓」",
           "note": "腸骨（ilium）の内面（internal surface）を斜めに走る線。前で恥骨櫛（pecten pubis）へ続き、大骨盤（greater pelvis）と小骨盤（lesser pelvis）の境（分界線（linea terminalis））の一部になる。"
@@ -2094,7 +2094,7 @@
         },
         {
           "id": "fovea-of-head-of-femur", "ja": "大腿骨頭窩", "yomi": "だいたいこっとうか", "en": "fovea for ligament of head", "enAlt": ["fovea of femoral head"], "la": "fovea capitis femoris",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "大腿骨頭の窩",
           "etym": "fovea ← ラテン語「小さなくぼみ」",
           "note": "大腿骨頭（head of femur）の中央の小さなくぼみ。大腿骨頭靱帯（ligament of head of femur）が付く。"
@@ -2119,13 +2119,13 @@
         },
         {
           "id": "intertrochanteric-crest", "ja": "転子間稜", "yomi": "てんしかんりょう", "en": "intertrochanteric crest", "la": "crista intertrochanterica",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "転子の間の稜",
           "note": "後面（posterior surface）で大転子（greater trochanter）と小転子（lesser trochanter）を結ぶ高い稜。大腿方形筋（quadratus femoris）が付く。"
         },
         {
           "id": "intertrochanteric-line", "ja": "転子間線", "yomi": "てんしかんせん", "en": "intertrochanteric line", "la": "linea intertrochanterica",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "転子の間の線",
           "note": "前面（anterior surface）で大転子（greater trochanter）と小転子（lesser trochanter）を結ぶ線。股関節（hip joint）の関節包（joint capsule）と腸骨大腿靱帯（iliofemoral ligament）が付く。"
         },
@@ -2157,17 +2157,17 @@
         },
         {
           "id": "medial-epicondyle-of-femur", "ja": "内側上顆（大腿骨）", "yomi": "ないそくじょうか", "en": "medial epicondyle of femur", "la": "epicondylus medialis femoris",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "note": "大腿骨（femur）の内側顆（medial condyle）の内側面（medial surface）の突出。膝（knee）の内側側副靱帯（medial collateral ligament）が付く。"
         },
         {
           "id": "lateral-epicondyle-of-femur", "ja": "外側上顆（大腿骨）", "yomi": "がいそくじょうか", "en": "lateral epicondyle of femur", "la": "epicondylus lateralis femoris",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "note": "大腿骨（femur）の外側顆（lateral condyle）の外側面（lateral surface）の突出。膝（knee）の外側側副靱帯（lateral collateral ligament）が付く。"
         },
         {
           "id": "adductor-tubercle", "ja": "内転筋結節", "yomi": "ないてんきんけっせつ", "en": "adductor tubercle", "la": "tuberculum adductorium",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "内転筋の付く結節",
           "note": "内側上顆（medial epicondyle）の上の小さな突出。大内転筋（adductor magnus）の腱（tendon）が付く。"
         },
@@ -2185,13 +2185,13 @@
         },
         {
           "id": "base-of-patella", "ja": "膝蓋骨底", "yomi": "しつがいこつてい", "en": "base of patella", "la": "basis patellae",
-          "of": "patella", "level": 3,
+          "of": "patella", "level": 2,
           "kanji": "底＝広いほうの端",
           "note": "膝蓋骨（patella）の上の広い縁。大腿四頭筋（quadriceps femoris）の腱（tendon）が付く。"
         },
         {
           "id": "apex-of-patella", "ja": "膝蓋骨尖", "yomi": "しつがいこつせん", "en": "apex of patella", "la": "apex patellae",
-          "of": "patella", "level": 3,
+          "of": "patella", "level": 2,
           "kanji": "尖＝とがった端",
           "note": "膝蓋骨（patella）の下のとがった端。膝蓋靱帯（patellar ligament）が起こる。"
         }
@@ -2214,7 +2214,7 @@
         },
         {
           "id": "intercondylar-eminence", "ja": "顆間隆起", "yomi": "かかんりゅうき", "en": "intercondylar eminence", "la": "eminentia intercondylaris",
-          "of": "tibia", "level": 3,
+          "of": "tibia", "level": 2,
           "kanji": "顆の間の高まり",
           "note": "脛骨（tibia）の上の面の中央の高まり。その前後に十字靱帯（cruciate ligaments）が付く。"
         },
@@ -2231,7 +2231,7 @@
         },
         {
           "id": "soleal-line", "ja": "ヒラメ筋線", "yomi": "ひらめきんせん", "en": "soleal line", "enAlt": ["line for soleus"], "la": "linea musculi solei",
-          "of": "tibia", "level": 3,
+          "of": "tibia", "level": 2,
           "etym": "soleal ← soleus（ラテン語 solea「サンダル・ヒラメ」）",
           "note": "脛骨（tibia）の後面（posterior surface）の上部を斜めに走る線。ヒラメ筋（soleus）が起こる。"
         },
@@ -2249,7 +2249,7 @@
         },
         {
           "id": "neck-of-fibula", "ja": "腓骨頚", "yomi": "ひこつけい", "en": "neck of fibula", "enAlt": ["fibular neck"], "la": "collum fibulae",
-          "of": "fibula", "level": 3,
+          "of": "fibula", "level": 2,
           "note": "腓骨頭（head of fibula）の下の細い部分。総腓骨神経（common fibular nerve）が巻きつくように通り、ここを圧迫すると足首（ankle）が上がらなくなる（下垂足（foot drop））。"
         },
         {
@@ -2274,7 +2274,7 @@
         },
         {
           "id": "sustentaculum-tali", "ja": "載距突起", "yomi": "さいきょとっき", "en": "sustentaculum tali", "la": "sustentaculum tali",
-          "of": "calcaneus", "level": 3,
+          "of": "calcaneus", "level": 2,
           "kanji": "距骨を載せる突起",
           "etym": "ラテン語 sustentaculum「支え」＋ tali「距骨の」",
           "note": "踵骨（calcaneus）の内側（medial）から棚のように突き出し、距骨（talus）を下から支える突起（process）。下を長母指屈筋（flexor pollicis longus）の腱（tendon）が通る。"
@@ -2287,19 +2287,19 @@
         },
         {
           "id": "head-of-talus", "ja": "距骨頭", "yomi": "きょこつとう", "en": "head of talus", "la": "caput tali",
-          "of": "talus", "level": 3,
+          "of": "talus", "level": 2,
           "note": "距骨（talus）の前の丸い部分。舟状骨（navicular）と関節（joint）をつくる。"
         },
         {
           "id": "neck-of-talus", "ja": "距骨頚", "yomi": "きょこつけい", "en": "neck of talus", "la": "collum tali",
-          "of": "talus", "level": 3,
+          "of": "talus", "level": 2,
           "kanji": "距骨のくび",
           "etym": "neck「くび」＋ talus「くるぶし・距骨」",
           "note": "距骨頭（head of talus）と距骨体（body of talus）の間のくびれ。足（foot）を強く背屈（dorsiflexion）して着地したときなどに骨折（fracture）し、距骨体への血流（blood flow）が途絶えやすい（距骨（talus）の壊死（necrosis））。"
         },
         {
           "id": "posterior-process-of-talus", "ja": "距骨後突起", "yomi": "きょこつこうとっき", "en": "posterior process of talus", "la": "processus posterior tali",
-          "of": "talus", "level": 3,
+          "of": "talus", "level": 2,
           "kanji": "距骨の後ろの突起",
           "etym": "posterior「後ろの」＋ process「突起」",
           "note": "距骨（talus）の後ろへ出る突起（process）。内側結節（medial tubercle）と外側結節（lateral tubercle）の間の溝を長母趾屈筋（flexor hallucis longus）の腱（tendon）が通る。外側結節が離れて小さな骨（bone）になったものが三角骨（triquetrum）。"
@@ -2334,7 +2334,7 @@
         },
         {
           "id": "tuberosity-of-navicular", "ja": "舟状骨粗面", "yomi": "しゅうじょうこつそめん", "en": "tuberosity of navicular", "enAlt": ["navicular tuberosity"], "la": "tuberositas ossis navicularis",
-          "of": "navicular", "level": 3,
+          "of": "navicular", "level": 2,
           "note": "足（foot）の舟状骨（navicular）の内側（medial）の突出。土踏まず（arch of foot）の上で触れる。後脛骨筋（tibialis posterior）が付く。"
         },
         {
@@ -2427,20 +2427,20 @@
         },
         {
           "id": "acetabular-fossa", "ja": "寛骨臼窩", "yomi": "かんこつきゅうか", "en": "acetabular fossa", "la": "fossa acetabuli",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "寛骨臼の底のくぼみ",
           "etym": "acetabulum ← ラテン語「酢を入れる小さな器」",
           "note": "寛骨臼（acetabulum）の底の、月状面（lunate surface）に囲まれた一段深いくぼみ。関節面（articular surface）ではなく、大腿骨頭靱帯（ligament of head of femur）と脂肪（fat）が入る。底の骨（bone）は薄く、光にかざすと透けて見える。"
         },
         {
           "id": "acetabular-notch", "ja": "寛骨臼切痕", "yomi": "かんこつきゅうせっこん", "en": "acetabular notch", "la": "incisura acetabuli",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "寛骨臼の切れこみ",
           "note": "寛骨臼（acetabulum）の下の縁の切れこみ（月状面（lunate surface）の切れ目）。寛骨臼横靱帯（transverse acetabular ligament）が橋をかけ、その下を大腿骨頭（head of femur）へ行く血管（blood vessel）が通る。"
         },
         {
           "id": "iliopubic-eminence", "ja": "腸恥隆起", "yomi": "ちょうちりゅうき", "en": "iliopubic eminence", "la": "eminentia iliopubica",
-          "of": "hip-bone", "level": 3,
+          "of": "hip-bone", "level": 2,
           "kanji": "腸骨と恥骨の境の高まり",
           "note": "腸骨（ilium）と恥骨（pubis）の境目で、寛骨臼（acetabulum）の前上（anterosuperior）の縁に沿う低い高まり。弓状線（arcuate line）はここを越えて恥骨櫛（pecten pubis）へ続く。"
         },
@@ -2461,28 +2461,28 @@
       "terms": [
         {
           "id": "trochanteric-fossa", "ja": "転子窩", "yomi": "てんしか", "en": "trochanteric fossa", "la": "fossa trochanterica",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "大転子のうしろの内側のくぼみ",
           "etym": "trochanter ← ギリシャ語 trochanter「回すもの」＋ fossa「くぼみ」",
           "note": "大転子（greater trochanter）の内側（medial）（後ろ）の深いくぼみ。外閉鎖筋（obturator externus）が停止（insertion）し、内閉鎖筋（obturator internus）と双子筋（gemelli）もそのすぐ上に付く。"
         },
         {
           "id": "pectineal-line-of-femur", "ja": "恥骨筋線", "yomi": "ちこつきんせん", "en": "pectineal line of femur", "la": "linea pectinea femoris",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "恥骨筋が付く線",
           "etym": "pectineal ← 恥骨筋（pectineus＝くし状の）の。ラテン語 pecten「くし」",
           "note": "小転子（lesser trochanter）の下から粗線（linea aspera）へ下る線。恥骨筋（pectineus）が停止（insertion）する。恥骨上枝（superior pubic ramus）の恥骨櫛（pectineal line of pubis）とは別の線。"
         },
         {
           "id": "medial-lip-of-linea-aspera", "ja": "内側唇（粗線）", "yomi": "ないそくしん", "en": "medial lip of linea aspera", "la": "labium mediale lineae asperae",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "内側のくちびる（縁）",
           "etym": "labium ← ラテン語「くちびる」",
           "note": "粗線（linea aspera）の内側（medial）の縁。上は転子間線（intertrochanteric line）のすぐ下までのび、下は内側上顆（medial epicondyle）へ向かって分かれる。内側広筋（vastus medialis）が起こる。"
         },
         {
           "id": "lateral-lip-of-linea-aspera", "ja": "外側唇（粗線）", "yomi": "がいそくしん", "en": "lateral lip of linea aspera", "la": "labium laterale lineae asperae",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "外側のくちびる（縁）",
           "etym": "labium ← ラテン語「くちびる」",
           "note": "粗線（linea aspera）の外側（lateral）の縁。上は殿筋粗面（gluteal tuberosity）へ、下は外側上顆（lateral epicondyle）へ向かって分かれる。外側広筋（vastus lateralis）が起こる。粗線は直立二足歩行（upright bipedalism）の筋（muscle）が付くためヒトでよく発達し、化石人類が立って歩いていたかの手（hand）がかりになる。"
@@ -2503,7 +2503,7 @@
         },
         {
           "id": "popliteal-surface", "ja": "膝窩面", "yomi": "しっかめん", "en": "popliteal surface", "enAlt": ["popliteal surface of femur"], "la": "facies poplitea",
-          "of": "femur", "level": 3,
+          "of": "femur", "level": 2,
           "kanji": "膝窩に面する（大腿骨の）面",
           "etym": "popliteal ← ラテン語 poples「膝の裏」",
           "note": "大腿骨（femur）の下端（inferior end）の後面（posterior surface）で、粗線（linea aspera）が内外に分かれて囲む三角形の平らな面。膝窩（popliteal fossa）の床になり、すぐ後ろを膝窩動脈（popliteal artery）が通る。"
@@ -2564,14 +2564,14 @@
         },
         {
           "id": "fibular-articular-facet", "ja": "腓骨関節面（脛骨）", "yomi": "ひこつかんせつめん", "en": "fibular articular facet", "la": "facies articularis fibularis",
-          "of": "tibia", "level": 3,
+          "of": "tibia", "level": 2,
           "kanji": "腓骨と関節する面",
           "etym": "fibular ← ラテン語 fibula「留め金、ブローチのピン」",
           "note": "脛骨（tibia）の外側顆（lateral condyle）の後下外側（posteroinferolateral）にある、卵円形の小さな関節面（articular surface）。腓骨頭関節面（articular facet of head of fibula）と脛腓関節（tibiofibular joint）をつくる。"
         },
         {
           "id": "articular-facet-of-head-of-fibula", "ja": "腓骨頭関節面", "yomi": "ひこつとうかんせつめん", "en": "articular facet of head of fibula", "la": "facies articularis capitis fibulae",
-          "of": "fibula", "level": 3,
+          "of": "fibula", "level": 2,
           "kanji": "腓骨頭の関節面",
           "etym": "articular「関節の」＋ head「頭」＋ fibula「腓骨」",
           "note": "腓骨頭（head of fibula）の上内側（superomedial）の関節面（articular surface）。脛骨（tibia）の腓骨関節面（fibular articular surface）と脛腓関節（tibiofibular joint）をつくる。膝関節（knee joint）には加わらない（腓骨（fibula）は大腿骨（femur）と関節（joint）しない）。"
@@ -2585,49 +2585,49 @@
         },
         {
           "id": "interosseous-border-of-tibia", "ja": "骨間縁（脛骨）", "yomi": "こつかんえん", "en": "interosseous border of tibia", "la": "margo interosseus tibiae",
-          "of": "tibia", "level": 3,
+          "of": "tibia", "level": 2,
           "kanji": "骨と骨の間に向く縁",
           "etym": "interosseous ← ラテン語 inter「間」＋ os「骨」",
           "note": "脛骨（tibia）の体の外側（lateral）（腓骨側（fibular side））を縦に走る稜。腓骨（fibula）の骨間縁（interosseous border）との間に下腿骨間膜（interosseous membrane of leg）が張る。下は腓骨切痕（fibular notch）へ続く。"
         },
         {
           "id": "interosseous-border-of-fibula", "ja": "骨間縁（腓骨）", "yomi": "こつかんえん", "en": "interosseous border of fibula", "la": "margo interosseus fibulae",
-          "of": "fibula", "level": 3,
+          "of": "fibula", "level": 2,
           "kanji": "骨と骨の間に向く縁",
           "etym": "interosseous ← ラテン語 inter「間」＋ os「骨」",
           "note": "腓骨（fibula）の体の内側（medial）（脛骨側（tibial side））を縦に走る稜。脛骨（tibia）の骨間縁（interosseous border）との間に下腿骨間膜（interosseous membrane of leg）が張り、下腿（leg）の前と後ろの筋（muscle）を分ける。"
         },
         {
           "id": "fibular-notch", "ja": "腓骨切痕", "yomi": "ひこつせっこん", "en": "fibular notch", "la": "incisura fibularis",
-          "of": "tibia", "level": 3,
+          "of": "tibia", "level": 2,
           "kanji": "腓骨がはまる切れ込み",
           "etym": "fibular「腓骨の」＋ notch「切れ込み」",
           "note": "脛骨（tibia）の下端（inferior end）の外側（lateral）のくぼみ。腓骨（fibula）の下端がはまり、前脛腓靱帯（anterior tibiofibular ligament）・後脛腓靱帯（posterior tibiofibular ligament）で強く結ばれる（脛腓靱帯結合（tibiofibular syndesmosis））。"
         },
         {
           "id": "articular-facet-of-medial-malleolus", "ja": "内果関節面", "yomi": "ないかかんせつめん", "en": "articular facet of medial malleolus", "la": "facies articularis malleoli medialis",
-          "of": "tibia", "level": 3,
+          "of": "tibia", "level": 2,
           "kanji": "内果の関節面",
           "etym": "malleolus ← ラテン語「小さな槌（つち）」",
           "note": "脛骨（tibia）の内果（medial malleolus）の外側（lateral）（距骨（talus）に向く）面。脛骨の下関節面（inferior articular surface）・腓骨（fibula）の外果関節面（articular facet of lateral malleolus）とともに関節窩（glenoid cavity）をつくり、距骨滑車（trochlea of talus）をはさんで距腿関節（ankle joint）（足関節（ankle joint））となる。"
         },
         {
           "id": "articular-facet-of-lateral-malleolus", "ja": "外果関節面", "yomi": "がいかかんせつめん", "en": "articular facet of lateral malleolus", "la": "facies articularis malleoli lateralis",
-          "of": "fibula", "level": 3,
+          "of": "fibula", "level": 2,
           "kanji": "外果の関節面",
           "etym": "lateral「外側の」＋ malleolus「くるぶし」",
           "note": "腓骨（fibula）の外果（lateral malleolus）の内側（medial）（距骨（talus）に向く）面で、逆三角形。後ろに外果窩（malleolar fossa）がある。脛骨（tibia）の下関節面（inferior articular surface）・内果関節面（articular facet of medial malleolus）とともに距骨滑車（trochlea of talus）をはさむ。外果は内果（medial malleolus）より低く、後ろにある。"
         },
         {
           "id": "malleolar-fossa", "ja": "外果窩", "yomi": "がいかか", "en": "malleolar fossa", "la": "fossa malleoli lateralis",
-          "of": "fibula", "level": 3,
+          "of": "fibula", "level": 2,
           "kanji": "外果のくぼみ",
           "etym": "malleolus ← ラテン語「小さな槌（つち）」",
           "note": "外果（lateral malleolus）の内側（medial）の面で、関節面（articular surface）の後ろにあるくぼみ。足首（ankle）の強い靱帯（ligament）（後距腓靱帯（posterior talofibular ligament））が付く。足（foot）を強く内反（inversion）すると、靱帯に引かれて外果の先から約1cm上で折れることがある。外果窩は後ろにあるので、腓骨（fibula）の左右を見分ける目安になる。"
         },
         {
           "id": "malleolar-groove-of-tibia", "ja": "果溝（脛骨）", "yomi": "かこう", "en": "malleolar groove of tibia", "la": "sulcus malleolaris tibiae",
-          "of": "tibia", "level": 3,
+          "of": "tibia", "level": 2,
           "kanji": "くるぶし（内果）の後ろの溝",
           "etym": "malleolar「くるぶしの」（ラテン語 malleolus＝小さな槌）＋ groove「溝」",
           "note": "内果（medial malleolus）の後面（posterior surface）の浅い溝。後脛骨筋（tibialis posterior）と長趾屈筋（flexor digitorum longus）の腱（tendon）がここを回って足の裏（sole）へ向きを変える（滑車（trochlea）のはたらき）。",
@@ -2635,7 +2635,7 @@
         },
         {
           "id": "malleolar-groove-of-fibula", "ja": "果溝（腓骨）", "yomi": "かこう", "en": "malleolar groove of fibula", "la": "sulcus malleolaris fibulae",
-          "of": "fibula", "level": 3,
+          "of": "fibula", "level": 2,
           "kanji": "くるぶし（外果）の後ろの溝",
           "etym": "malleolar「くるぶしの」＋ groove「溝」",
           "note": "外果（lateral malleolus）の後面（posterior surface）の溝。長腓骨筋（fibularis longus）と短腓骨筋（fibularis brevis）の腱（tendon）がここを回って足（foot）の外側（lateral）へ向きを変える。腱を押さえる上腓骨筋支帯（superior fibular retinaculum）が切れると、腱が外果の前へ外れる。",
@@ -3016,7 +3016,7 @@
         },
         {
           "id": "inferior-nuchal-line", "ja": "下項線", "yomi": "かこうせん", "en": "inferior nuchal line", "la": "linea nuchalis inferior",
-          "of": "occipital-bone", "level": 3,
+          "of": "occipital-bone", "level": 2,
           "kanji": "項（うなじ）の下の線",
           "etym": "nuchal ← 中世ラテン語 nucha「うなじ」（アラビア語から）",
           "note": "上項線（superior nuchal line）の下を平行に走る、はっきりしない稜。大後頭直筋（rectus capitis posterior major）・小後頭直筋（rectus capitis posterior minor）がこの線に付き、上項線との間に頭半棘筋（semispinalis capitis）と上頭斜筋（obliquus capitis superior）が付く。"
@@ -3081,7 +3081,7 @@
         },
         {
           "id": "zygomatic-process-of-temporal-bone", "ja": "頬骨突起（側頭骨）", "yomi": "きょうこつとっき", "en": "zygomatic process of temporal bone", "la": "processus zygomaticus ossis temporalis",
-          "of": "temporal-bone", "level": 3,
+          "of": "temporal-bone", "level": 2,
           "kanji": "頬骨へ向かう突起",
           "etym": "zygomatic ← ギリシャ語 zygon「くびき（2頭の牛をつなぐ横木）」",
           "note": "側頭骨（temporal bone）の鱗部（squamous part）から前へ長くのびる細い突起（process）。頬骨（zygomatic bone）の側頭突起（temporal process）とつながって頬骨弓（zygomatic arch）の後ろ半分をつくる。根もとの下に下顎窩（mandibular fossa）がある。"
@@ -3165,7 +3165,7 @@
         },
         {
           "id": "fossa-for-lacrimal-sac", "ja": "涙嚢窩", "yomi": "るいのうか", "en": "fossa for lacrimal sac", "la": "fossa sacci lacrimalis",
-          "of": "lacrimal-bone", "parts": ["lacrimal bone", "maxilla"], "level": 3,
+          "of": "lacrimal-bone", "parts": ["lacrimal bone", "maxilla"], "level": 2,
           "kanji": "涙嚢が入るくぼみ",
           "etym": "lacrimal ← ラテン語 lacrima「涙」",
           "note": "眼窩（orbit）の内側（medial）の壁の前の端を縦に走る、溝の形のくぼみ（涙骨（lacrimal bone）と上顎骨（maxilla）の前頭突起（frontal process）でできる）。涙嚢（lacrimal sac）が入り、下は鼻涙管（nasolacrimal duct）となって下鼻道（inferior nasal meatus）に開く。眼窩の上外側（superolateral）の涙腺窩（fossa for lacrimal gland）と混同しない。",
@@ -3235,7 +3235,7 @@
         },
         {
           "id": "temporal-process-of-zygomatic-bone", "ja": "側頭突起（頬骨）", "yomi": "そくとうとっき", "en": "temporal process of zygomatic bone", "la": "processus temporalis ossis zygomatici",
-          "of": "zygomatic-bone", "level": 3,
+          "of": "zygomatic-bone", "level": 2,
           "kanji": "側頭骨へ向かう突起",
           "note": "頬骨（zygomatic bone）から後ろへのびる太い突起（process）。側頭骨（temporal bone）の頬骨突起（zygomatic process）と斜めの縫合（suture）でつながって頬骨弓（zygomatic arch）の前半分をつくる。咬筋（masseter）が起こる。"
         },
@@ -3276,7 +3276,7 @@
         },
         {
           "id": "incisive-fossa", "ja": "切歯窩", "yomi": "せっしか", "en": "incisive fossa", "la": "fossa incisiva",
-          "of": "maxilla", "level": 3,
+          "of": "maxilla", "level": 2,
           "kanji": "切歯の後ろのくぼみ",
           "etym": "incisive ← ラテン語 incidere「切る」（切歯）",
           "note": "骨口蓋（bony palate）の正中（median）の前の端、上の中切歯（central incisor）のすぐ後ろのくぼみ。底に切歯管（incisive canal）が開き（切歯孔（incisive foramen））、鼻腔（nasal cavity）とつながる。",
@@ -3292,7 +3292,7 @@
         },
         {
           "id": "lesser-palatine-foramina", "ja": "小口蓋孔", "yomi": "しょうこうがいこう", "en": "lesser palatine foramina", "la": "foramina palatina minora",
-          "of": "palatine-bone", "level": 3,
+          "of": "palatine-bone", "level": 2,
           "kanji": "口蓋の小さいほうの孔",
           "etym": "lesser「小さい」＋ palatine「口蓋の」",
           "note": "大口蓋孔（greater palatine foramen）のすぐ後ろに1〜2個開く小さな孔（口蓋骨（palatine bone）の錐体突起（pyramidal process））。軟口蓋（soft palate）へ行く神経（nerve）と血管（blood vessel）が出る。",
@@ -3346,13 +3346,13 @@
       "terms": [
         {
           "id": "greater-wing-of-sphenoid", "ja": "大翼", "yomi": "だいよく", "en": "greater wing", "enAlt": ["greater wing of sphenoid"], "la": "ala major",
-          "of": "sphenoid-bone", "level": 3,
+          "of": "sphenoid-bone", "level": 2,
           "kanji": "大きい翼",
           "note": "蝶形骨（sphenoid bone）の体から左右に大きく広がる翼。中頭蓋窩（middle cranial fossa）の床・眼窩（orbit）の外側（lateral）の壁・こめかみ（temple）の一部をつくる。正円孔（foramen rotundum）（上顎神経（maxillary nerve））・卵円孔（foramen ovale）（下顎神経（mandibular nerve））・棘孔（foramen spinosum）（中硬膜動脈（middle meningeal artery））があく。"
         },
         {
           "id": "pterygoid-process", "ja": "翼状突起", "yomi": "よくじょうとっき", "en": "pterygoid process", "la": "processus pterygoideus",
-          "of": "sphenoid-bone", "level": 3,
+          "of": "sphenoid-bone", "level": 2,
           "kanji": "翼の形の突起",
           "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ -oid",
           "note": "蝶形骨（sphenoid bone）の体と大翼（greater wing）の付け根から下へのびる板状の突起（process）。内側翼突筋（medial pterygoid）と外側翼突筋（lateral pterygoid）が付く。"
@@ -3373,7 +3373,7 @@
         },
         {
           "id": "pterygoid-hamulus", "ja": "翼突鈎", "yomi": "よくとつこう", "en": "pterygoid hamulus", "la": "hamulus pterygoideus",
-          "of": "sphenoid-bone", "level": 3,
+          "of": "sphenoid-bone", "level": 2,
           "kanji": "翼状突起の鈎（かぎ）",
           "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ hamulus「小さな鈎」",
           "note": "翼状突起（pterygoid process）の内側板（medial plate）の下の端が、鈎のように外側（lateral）へ曲がった所。口蓋帆張筋（tensor veli palatini）の腱（tendon）がここで向きを変えて軟口蓋（soft palate）へ行く。"
@@ -3387,7 +3387,7 @@
         },
         {
           "id": "pharyngeal-tubercle", "ja": "咽頭結節", "yomi": "いんとうけっせつ", "en": "pharyngeal tubercle", "la": "tuberculum pharyngeum",
-          "of": "occipital-bone", "level": 3,
+          "of": "occipital-bone", "level": 2,
           "kanji": "咽頭が付く小さな高まり",
           "etym": "pharyngeal ← ギリシャ語 pharynx「のど」",
           "note": "後頭骨（occipital bone）の底部（大後頭孔（foramen magnum）の前）の下の面の正中（median）にある小さな高まり。咽頭（pharynx）の上の端（咽頭縫線（pharyngeal raphe））が付き、咽頭が頭蓋底（cranial base）から吊り下がる。"
@@ -3534,7 +3534,7 @@
       "terms": [
         {
           "id": "frontal-crest", "ja": "前頭稜", "yomi": "ぜんとうりょう", "en": "frontal crest", "la": "crista frontalis",
-          "of": "frontal-bone", "level": 3,
+          "of": "frontal-bone", "level": 2,
           "kanji": "前頭骨の内面の稜（すじ）",
           "etym": "frontal「前頭の」＋ crest「とさか、稜」",
           "note": "前頭骨（frontal bone）の内面（internal surface）の正中（median）を、篩骨（ethmoid bone）の鶏冠（crista galli）のすぐ前から上へ走る鋭い稜。大脳鎌（falx cerebri）が付く。上は上矢状洞溝（groove for superior sagittal sinus）に続く。"
@@ -3549,7 +3549,7 @@
         },
         {
           "id": "crista-galli", "ja": "鶏冠", "yomi": "けいかん", "en": "crista galli", "la": "crista galli",
-          "of": "ethmoid-bone", "level": 3,
+          "of": "ethmoid-bone", "level": 2,
           "kanji": "鶏の冠（とさか）",
           "etym": "ラテン語 crista「とさか」＋ galli「雄鶏の」",
           "note": "篩骨（ethmoid bone）の上の面の正中（median）に立つ板。ニワトリのとさかの形。大脳鎌（falx cerebri）が付く。"
@@ -3614,7 +3614,7 @@
         },
         {
           "id": "carotid-sulcus", "ja": "頚動脈溝", "yomi": "けいどうみゃくこう", "en": "carotid sulcus", "la": "sulcus caroticus",
-          "of": "sphenoid-bone", "level": 3,
+          "of": "sphenoid-bone", "level": 2,
           "kanji": "頚動脈が通る溝",
           "etym": "carotid「頚動脈の」＋ sulcus「溝」",
           "note": "蝶形骨（sphenoid bone）の体の外側（lateral）の面を前後に走る浅い溝（内頚動脈溝（carotid sulcus）とも書く）。内頚動脈（internal carotid artery）が海綿静脈洞（cavernous sinus）の中でこの溝にそって前へ進み、前床突起（anterior clinoid process）の内側（medial）で上へ曲がる。",
@@ -3639,7 +3639,7 @@
         },
         {
           "id": "trigeminal-impression", "ja": "三叉神経圧痕", "yomi": "さんさしんけいあっこん", "en": "trigeminal impression", "la": "impressio trigeminalis",
-          "of": "temporal-bone", "level": 3,
+          "of": "temporal-bone", "level": 2,
           "kanji": "三叉神経に押されてできたくぼみ",
           "etym": "trigeminal ← ラテン語 trigeminus「三つ子の」",
           "note": "側頭骨（temporal bone）の錐体（petrous part）の先の前の面にある浅いくぼみ。三叉神経節（trigeminal ganglion）がのる。",
@@ -3647,14 +3647,14 @@
         },
         {
           "id": "arcuate-eminence", "ja": "弓状隆起", "yomi": "きゅうじょうりゅうき", "en": "arcuate eminence", "la": "eminentia arcuata",
-          "of": "temporal-bone", "level": 3,
+          "of": "temporal-bone", "level": 2,
           "kanji": "弓の形の高まり",
           "etym": "arcuate ← ラテン語 arcus「弓」＋ eminence「高まり」",
           "note": "錐体（petrous part）の前の面の中ほどの高まりで、中の前半規管（anterior semicircular canal）が盛り上げている。弓状隆起と三叉神経圧痕（trigeminal impression）の間の薄い所は中耳（middle ear）の天井で、鼓室蓋（tegmen tympani）という。"
         },
         {
           "id": "subarcuate-fossa", "ja": "弓下窩", "yomi": "きゅうかか", "en": "subarcuate fossa", "la": "fossa subarcuata",
-          "of": "temporal-bone", "level": 3,
+          "of": "temporal-bone", "level": 2,
           "kanji": "弓状隆起の下のくぼみ",
           "etym": "sub-「下の」＋ arcuate「弓の（弓状隆起）」＋ fossa「くぼみ」",
           "note": "錐体（petrous part）の後ろの面、内耳孔（internal acoustic opening）の上外側（superolateral）の浅いくぼみ。前半規管（anterior semicircular canal）の弓の下にあたり、硬膜（dura mater）が入り込む（子どもでは深い）。"
@@ -3668,7 +3668,7 @@
         },
         {
           "id": "internal-occipital-protuberance", "ja": "内後頭隆起", "yomi": "ないこうとうりゅうき", "en": "internal occipital protuberance", "la": "protuberantia occipitalis interna",
-          "of": "occipital-bone", "level": 3,
+          "of": "occipital-bone", "level": 2,
           "kanji": "後頭骨の内面の高まり",
           "etym": "internal「内の」＋ occipital「後頭の」＋ protuberance「隆起」",
           "note": "後頭骨（occipital bone）の内面（internal surface）の中央の高まり。十字形の隆起（eminence）の交わる所で、上矢状洞（superior sagittal sinus）・横静脈洞（transverse sinus）・直静脈洞（straight sinus）が合わさる静脈洞交会（confluence of sinuses）がここにある。"
@@ -3683,7 +3683,7 @@
         },
         {
           "id": "groove-for-transverse-sinus", "ja": "横洞溝", "yomi": "おうどうこう", "en": "groove for transverse sinus", "la": "sulcus sinus transversi",
-          "of": "occipital-bone", "level": 3,
+          "of": "occipital-bone", "level": 2,
           "kanji": "横静脈洞が通る溝",
           "etym": "transverse「横の」＋ sinus「洞（静脈洞）」",
           "note": "後頭骨（occipital bone）の内面（internal surface）を、内後頭隆起（internal occipital protuberance）から左右へ横に走る溝。外側（lateral）で側頭骨（temporal bone）に移ってS状洞溝（groove for sigmoid sinus）となる。小脳テント（tentorium cerebelli）がこの溝の縁に付く。",
@@ -3691,7 +3691,7 @@
         },
         {
           "id": "groove-for-sigmoid-sinus", "ja": "S状洞溝", "yomi": "えすじょうどうこう", "en": "groove for sigmoid sinus", "la": "sulcus sinus sigmoidei",
-          "of": "temporal-bone", "parts": ["temporal bone", "occipital bone"], "level": 3,
+          "of": "temporal-bone", "parts": ["temporal bone", "occipital bone"], "level": 2,
           "kanji": "S字に曲がる静脈洞の溝",
           "etym": "sigmoid ← ギリシャ語 sigma（Σ・ς）の形の",
           "note": "横洞溝（groove for transverse sinus）の外側（lateral）の端から、側頭骨（temporal bone）の乳突部（mastoid part）の内面（internal surface）をS字に曲がって下り、頚静脈孔（jugular foramen）に入る溝。乳様突起（mastoid process）のすぐ内側（medial）なので、中耳炎（otitis media）が広がると静脈洞（venous sinus）に炎症（inflammation）が及ぶことがある。",
@@ -3699,7 +3699,7 @@
         },
         {
           "id": "granular-foveolae", "ja": "クモ膜顆粒小窩", "yomi": "くもまくかりゅうしょうか", "en": "granular foveolae", "la": "foveolae granulares",
-          "of": "parietal-bone", "level": 3,
+          "of": "parietal-bone", "level": 2,
           "kanji": "クモ膜顆粒が入る小さなくぼみ",
           "etym": "granular「つぶの」＋ foveola「小さなくぼみ」",
           "note": "頭蓋冠（calvaria）の内面（internal surface）で、上矢状洞溝（groove for superior sagittal sinus）の両わきにぽつぽつと並ぶ丸い浅いくぼみ。脳脊髄液（cerebrospinal fluid）を静脈（vein）へ戻すクモ膜顆粒（arachnoid granulations）が入る。年を取るほど深く多くなる。",
@@ -3723,7 +3723,7 @@
         },
         {
           "id": "base-of-mandible", "ja": "下顎底", "yomi": "かがくてい", "en": "base of mandible", "la": "basis mandibulae",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "下顎体の底（下の縁）",
           "etym": "base「底」＋ mandible ← ラテン語 mandere「かむ」",
           "note": "下顎体（body of mandible）の下の縁。厚く丸い。後ろへたどると下顎角（angle of mandible）で下顎枝（ramus of mandible）の後ろの縁に続く。正中（median）の近くの内面（internal surface）に二腹筋窩（digastric fossa）がある。"
@@ -3755,7 +3755,7 @@
         },
         {
           "id": "neck-of-mandible", "ja": "下顎頚", "yomi": "かがくけい", "en": "neck of mandible", "la": "collum mandibulae",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "下顎骨の頚（くび）",
           "note": "下顎頭（head of mandible）のすぐ下のくびれ。前内側（anteromedial）の面に翼突筋窩（pterygoid fovea）がある。あご（jaw）の先を強く打ったときに折れやすい所。"
         },
@@ -3768,7 +3768,7 @@
         },
         {
           "id": "mandibular-notch", "ja": "下顎切痕", "yomi": "かがくせっこん", "en": "mandibular notch", "la": "incisura mandibulae",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "下顎の切痕",
           "note": "筋突起（coronoid process）と関節突起（articular process）の間の切れこみ。"
         },
@@ -3781,7 +3781,7 @@
         },
         {
           "id": "mental-tubercle", "ja": "オトガイ結節", "yomi": "おとがいけっせつ", "en": "mental tubercle", "la": "tuberculum mentale",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "オトガイ（あご先）の左右の小さな高まり",
           "etym": "mental ← ラテン語 mentum「あご先」",
           "note": "オトガイ隆起（mental protuberance）の下の部分の左右にある小さな高まり。オトガイ隆起とあわせて、あご先（chin）の三角形の高まりをつくる。ヒトに特有の形。"
@@ -3795,7 +3795,7 @@
         },
         {
           "id": "mandibular-foramen", "ja": "下顎孔", "yomi": "かがくこう", "en": "mandibular foramen", "la": "foramen mandibulae",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "下顎の孔",
           "note": "下顎枝（ramus of mandible）の内面（internal surface）の中ほどにある孔。下歯槽神経（inferior alveolar nerve）と血管（blood vessel）が入る（下の歯（tooth）の麻酔（anesthesia）をする所）。",
           "passes": "下歯槽神経・下歯槽動静脈（inferior alveolar vessels）"
@@ -3833,49 +3833,49 @@
       "terms": [
         {
           "id": "lingula-of-mandible", "ja": "下顎小舌", "yomi": "かがくしょうぜつ", "en": "lingula of mandible", "la": "lingula mandibulae",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "下顎骨の小さな舌",
           "etym": "lingula ← ラテン語「小さな舌」",
           "note": "下顎孔（mandibular foramen）の前の縁の、舌（tongue）のように上後（posterosuperior）ろへとがった薄い板。蝶下顎靱帯（sphenomandibular ligament）が付く。下の歯（tooth）の麻酔（anesthesia）（下歯槽神経ブロック（inferior alveolar nerve block））で針を進める目印。"
         },
         {
           "id": "mylohyoid-line", "ja": "顎舌骨筋線", "yomi": "がくぜっこつきんせん", "en": "mylohyoid line", "la": "linea mylohyoidea",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "顎舌骨筋が付く線",
           "etym": "mylohyoid ← ギリシャ語 myle「臼（臼歯）」＋ hyoid「舌骨」",
           "note": "下顎体（body of mandible）の内面（internal surface）を、後ろ上から前下（anteroinferior）へ斜めに走る稜。顎舌骨筋（mylohyoid）が起こり、口の底をつくる。線より上の前に舌下腺窩（sublingual fossa）、下の後ろに顎下腺窩（submandibular fossa）がある。"
         },
         {
           "id": "mental-spine", "ja": "オトガイ棘", "yomi": "おとがいきょく", "en": "mental spine", "enAlt": ["genial tubercle"], "la": "spina mentalis",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "オトガイ（あご先）の内側のとげ",
           "etym": "mental ← ラテン語 mentum「あご先」",
           "note": "下顎体（body of mandible）の正中（median）の内面（internal surface）、下の縁から約1cm上にある、とげのような小さな突起（process）。オトガイ舌筋（genioglossus）とオトガイ舌骨筋（geniohyoid）が起こる。"
         },
         {
           "id": "digastric-fossa", "ja": "二腹筋窩", "yomi": "にふくきんか", "en": "digastric fossa", "la": "fossa digastrica",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "顎二腹筋が付くくぼみ",
           "etym": "digastric ← ギリシャ語 di-「2つ」＋ gaster「腹」",
           "note": "オトガイ棘（mental spine）の下外側（inferolateral）、下顎底（base of mandible）のすぐ上の楕円形の浅いくぼみ。顎二腹筋（digastric）の前腹（anterior belly）が付く。"
         },
         {
           "id": "pterygoid-fovea", "ja": "翼突筋窩", "yomi": "よくとつきんか", "en": "pterygoid fovea", "la": "fovea pterygoidea",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "翼突筋が付くくぼみ",
           "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ eidos「形」",
           "note": "下顎頚（neck of mandible）の前内側（anteromedial）の浅いくぼみ。外側翼突筋（lateral pterygoid）が付き、下顎頭（head of mandible）を前へ引いて口を開け、あご（jaw）を前へ出す。"
         },
         {
           "id": "pterygoid-tuberosity", "ja": "翼突筋粗面", "yomi": "よくとつきんそめん", "en": "pterygoid tuberosity", "la": "tuberositas pterygoidea",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "翼突筋が付く粗い面",
           "etym": "pterygoid ← ギリシャ語 pteryx「翼」＋ eidos「形」",
           "note": "下顎角（angle of mandible）の内面（internal surface）の粗い面。内側翼突筋（medial pterygoid）が付き、外面（external surface）の咬筋（masseter）とともに下顎角を内外から吊り上げて口を閉じる。"
         },
         {
           "id": "masseteric-tuberosity", "ja": "咬筋粗面", "yomi": "こうきんそめん", "en": "masseteric tuberosity", "la": "tuberositas masseterica",
-          "of": "mandible", "level": 3,
+          "of": "mandible", "level": 2,
           "kanji": "咬筋が付く粗い面",
           "etym": "masseter ← ギリシャ語 maseter「かむもの」",
           "note": "下顎角（angle of mandible）の外面（external surface）の、でこぼこした粗い面。咬筋（masseter）が付く。かむ力の強い人ほど発達する。"
