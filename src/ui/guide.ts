@@ -1,5 +1,6 @@
 import { h } from "../dom";
-import { PURPOSES, type PurposeInfo } from "../purposes";
+import { canUseExam } from "../profile";
+import { shownPurposes, type PurposeInfo } from "../purposes";
 import { preferences } from "../settings";
 import { termAt, type AppContext } from "./context";
 import {
@@ -135,8 +136,8 @@ export function guide(ctx: AppContext, arg = ""): void {
 
   const purposeBox = h("div", { class: "guide-purposes" });
   const renderPurposes = () => {
-    const chosen = PURPOSES.filter((purpose) => preferences.purposes.includes(purpose.id));
-    const others = PURPOSES.filter((purpose) => !preferences.purposes.includes(purpose.id));
+    const chosen = shownPurposes().filter((purpose) => preferences.purposes.includes(purpose.id));
+    const others = shownPurposes().filter((purpose) => !preferences.purposes.includes(purpose.id));
     purposeBox.replaceChildren(
       h("p", { class: "setting-label" }, "あなたの目的（押すと足し外し）"),
       purposeChips(renderPurposes),
@@ -171,7 +172,7 @@ export function guide(ctx: AppContext, arg = ""): void {
 
     h("nav", { class: "home-card guide-toc", "aria-label": "目次" },
       h("p", { class: "guide-toc-title" }, "目次"),
-      h("ol", {}, ...CHAPTERS.map(([id, title, sub]) => h("li", {}, h("a", { href: `#/guide/${id}` }, h("b", {}, title), h("span", {}, sub))))),
+      h("ol", {}, ...CHAPTERS.map(([id, title, sub]) => h("li", {}, h("a", { href: `#/guide/${id}` }, h("b", {}, title), h("span", {}, canUseExam() ? sub : sub.replace("・骨学", "")))))),
     ),
 
     chapter("day", "毎日の使い方", "毎日は「今日」を開いて、今日の復習を解くだけ。1日3〜5分で続きます。",
@@ -305,7 +306,8 @@ function tabCard(tab: (typeof TABS)[GuideTab]): HTMLElement {
   mark.innerHTML = `<svg viewBox="0 0 24 24">${ICONS[tab.icon]}</svg>`;
   return h("section", { class: "home-card guide-tab" },
     h("a", { class: "guide-tab-head", href: tab.href }, mark, h("span", {}, h("b", {}, tab.name), h("small", {}, tab.lead))),
-    h("ul", {}, ...tab.items.map(([label, href, text]) => h("li", {}, h("a", { href }, label), h("span", {}, text)))),
+    // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）
+    h("ul", {}, ...tab.items.filter(([, href]) => canUseExam() || href !== "#/exam").map(([label, href, text]) => h("li", {}, h("a", { href }, label), h("span", {}, canUseExam() ? text : text.replace("・骨学試験の日", ""))))),
   );
 }
 
@@ -314,8 +316,8 @@ function tabCard(tab: (typeof TABS)[GuideTab]): HTMLElement {
  * 全部は使い方のページで
  */
 export function planCard(): HTMLElement {
-  const chosen = PURPOSES.filter((purpose) => preferences.purposes.includes(purpose.id));
-  const list = chosen.length ? chosen : PURPOSES.slice(0, 1);
+  const chosen = shownPurposes().filter((purpose) => preferences.purposes.includes(purpose.id));
+  const list = chosen.length ? chosen : shownPurposes().slice(0, 1);
   return h("section", { class: "plan" },
     h("h3", {}, "あなたの使い方"),
     ...list.map((purpose) => h("div", { class: "plan-purpose" },

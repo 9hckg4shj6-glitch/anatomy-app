@@ -1,4 +1,5 @@
 import { h } from "../dom";
+import { canUseExam } from "../profile";
 
 /**
  * 使い方（#/guide）の図とアニメーション。docs/普段使い.md「使い方ガイド」。
@@ -35,7 +36,13 @@ const choices = (names: string[], ok: string, lang = "") => `<div class="gd-choi
 function block(cls: string, html: string, label?: string): HTMLElement {
   const box = h("div", { class: `gd-anim ${cls}`, ...(label ? { role: "img", "aria-label": label } : {}) });
   box.innerHTML = html;
+  dropExam(box);
   return box;
+}
+
+/** 骨学試験を使えない名前の人には、見本の骨学試験の所（data-exam）を消す（src/profile.ts の canUseExam） */
+function dropExam(root: HTMLElement): void {
+  if (!canUseExam()) for (const element of root.querySelectorAll("[data-exam]")) element.remove();
 }
 
 /**
@@ -364,10 +371,10 @@ export function compassDemo(): HTMLElement {
 /** 4つのタブの見本。タブを押す（または自動で）と中身が替わる */
 const TAB_SCREENS: Record<GuideTab, string> = {
   today: `<div class="gd-stage">${spinImg("gd-spin gd-spin-sm")}</div>
-    <div class="gd-sheet"><p class="gd-kicker">今日の一手</p><div class="gd-btn">今日の復習 <b>12問</b><span>→</span></div><p class="gd-note">続きから・骨学試験まで○日</p></div>`,
+    <div class="gd-sheet"><p class="gd-kicker">今日の一手</p><div class="gd-btn">今日の復習 <b>12問</b><span>→</span></div><p class="gd-note">続きから<span data-exam>・骨学試験まで○日</span></p></div>`,
   study: `<div class="gd-pad"><p class="gd-title">学ぶ</p>
     <div class="gd-next"><small>次のレッスン</small><b>下肢の骨</b><span class="gd-btn gd-btn-sm">始める<span>→</span></span></div>
-    <ul class="gd-rows"><li><i style="--c:#c4663f"></i>すべてのレッスン</li><li><i style="--c:#b0453b"></i>臓器の図</li><li><i style="--c:#1f6f78"></i>演習</li><li><i style="--c:#6a5a9e"></i>骨学試験</li><li><i style="--c:#5b8a3a"></i>語根カード</li></ul></div>`,
+    <ul class="gd-rows"><li><i style="--c:#c4663f"></i>すべてのレッスン</li><li><i style="--c:#b0453b"></i>臓器の図</li><li><i style="--c:#1f6f78"></i>演習</li><li data-exam><i style="--c:#6a5a9e"></i>骨学試験</li><li><i style="--c:#5b8a3a"></i>語根カード</li></ul></div>`,
   look: `<div class="gd-pad"><p class="gd-title">調べる</p>
     <div class="gd-search">${svg(TAB_ICON.look)}<span>だいたい</span></div>
     <ul class="gd-rows gd-hits"><li><b>大腿骨</b><small lang="en">femur</small></li><li><b>大腿動脈</b><small lang="en">femoral artery</small></li><li><b>大腿四頭筋</b><small lang="en">quadriceps femoris</small></li></ul>
@@ -398,6 +405,7 @@ export function tabsDemo(signal: AbortSignal, describe: (tab: GuideTab) => HTMLE
     const swap = () => {
       for (const element of phone.querySelectorAll<HTMLElement>(".gd-tab")) element.classList.toggle("on", element.dataset.tab === tab);
       screen.innerHTML = TAB_SCREENS[tab];
+      dropExam(screen);
       screen.classList.remove("is-in");
       void screen.offsetWidth;
       screen.classList.add("is-in");
@@ -453,7 +461,7 @@ export function featureCards(): HTMLElement {
       <div class="gd-f-art gd-f-drill"><span>終えたレッスン</span><span class="on">苦手な語</span><span>★を付けた語</span><span>範囲を細かく</span></div>
       <b>演習</b><span>範囲を選んで解き直す。試験の前の総ざらいに。答えは復習にも反映されます。</span>
     </a>
-    <a class="gd-feature" href="#/exam">
+    <a class="gd-feature" href="#/exam" data-exam>
       <div class="gd-f-art gd-f-exam"><span><b>A</b>空欄</span><span><b>B</b>読み・書き</span><span><b>C</b>説明</span><span><b>D</b>図示</span></div>
       <b>骨学試験</b><span>骨学実習の試験の形式で練習。対で覚える語・数と並び・体表の目安も。（標準とすべての語）</span>
     </a>

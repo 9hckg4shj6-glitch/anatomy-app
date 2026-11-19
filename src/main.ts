@@ -2,7 +2,7 @@ import "./styles.css";
 import { isPlateUnit, loadModelIndex, organOfLesson } from "./content";
 import { courseLesson } from "./course";
 import { loadPreferences } from "./settings";
-import { profileOnLaunch } from "./profile";
+import { canUseExam, loadProfile, profileOnLaunch } from "./profile";
 import { h } from "./dom";
 import { watchInstallPrompt } from "./install";
 import { admin } from "./ui/admin";
@@ -190,7 +190,7 @@ async function boot(): Promise<void> {
     );
     return;
   }
-  const [index] = await Promise.all([loadModelIndex(), loadPreferences(), loadMarks()]);
+  const [index] = await Promise.all([loadModelIndex(), loadPreferences(), loadMarks(), loadProfile()]);
   // 名前と所属をまだ送れていなければ送り、その日にはじめて開いたことを管理者に残す（src/profile.ts。待たない）
   void profileOnLaunch();
   window.addEventListener("online", () => void profileOnLaunch());
@@ -245,6 +245,12 @@ async function boot(): Promise<void> {
     splitter.restore();
 
     const [name, arg] = parseHash();
+    // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts の canUseExam）。ほかの人は学ぶへ
+    if (name === "exam" && !canUseExam()) {
+      history.replaceState(null, "", "#/study");
+      await route();
+      return;
+    }
     currentName = name;
     // 今日（ホーム）は3Dの人体を大きく、境目のつまみは出さない。回る人体が主役なので向きの目印も出さない
     layout.classList.toggle("is-home", !PAGES[name]);

@@ -1,6 +1,6 @@
 import { h } from "../dom";
 import { COURSES, courseOf, preferences, setCourse, setPreference, type Preferences } from "../settings";
-import { PURPOSES, recommendCourse, type Purpose } from "../purposes";
+import { PURPOSES, recommendCourse, shownPurposes, type Purpose } from "../purposes";
 import { db } from "../db";
 import { loadProfile, NAME_MAX, profileComplete, saveProfile, type Profile } from "../profile";
 import type { AppContext } from "./context";
@@ -159,7 +159,7 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
     void ctx.viewer.show({ systems: ["skeletal"], body: true });
     const recommend = recommendCourse(draft.grade, purposes);
     if (!coursePicked) picked = recommend;
-    const purposeCards = PURPOSES.map((purpose) => {
+    const purposeCards = shownPurposes().map((purpose) => {
       const on = purposes.includes(purpose.id);
       return h("button", {
         class: on ? "purpose-card on" : "purpose-card", type: "button", role: "checkbox", "aria-checked": String(on), "data-key": purpose.id,

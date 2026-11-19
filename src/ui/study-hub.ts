@@ -1,6 +1,7 @@
 import { organs, systemById, type Unit } from "../content";
 import { isBeginner } from "../course";
 import { db } from "../db";
+import { canUseExam } from "../profile";
 import { h } from "../dom";
 import { COURSES, courseOf } from "../settings";
 import { sceneFor, type AppContext } from "./context";
@@ -105,7 +106,8 @@ export async function studyHub(ctx: AppContext): Promise<void> {
     fresh
       ? lockedRow("drill", "#6b5fb5", "演習", "レッスンを1つ学ぶと使えます。終えた範囲を試験の前に解き直す")
       : itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンを試験の前に解き直す・苦手を解く"),
-    beginner
+    // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）
+    !canUseExam() ? null : beginner
       ? lockedRow("exam", "#b07d10", "骨学試験", "覚える量を「標準」にすると使えます（記録 › 設定）")
       : itemRow("#/exam", "exam", "#b07d10", "骨学試験", "骨学実習の試験の前に。A〜D の形式と、整理して覚える"),
     beginner

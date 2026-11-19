@@ -3,6 +3,7 @@ import { courseTerms, inCourse, isBeginner } from "../course";
 import { db, type ReviewEvent, type StoredSchedule } from "../db";
 import { h } from "../dom";
 import { EXAM_KINDS, examProgress, isExamKey, kindLabels } from "../exam";
+import { canUseExam } from "../profile";
 import { isRootKey, rootKey, roots } from "../roots";
 import { termMastery } from "../study";
 import { sceneFor, type AppContext } from "./context";
@@ -64,7 +65,7 @@ export async function progress(ctx: AppContext): Promise<void> {
           h("td", {}, system.ja),
           h("td", {}, `${list.filter((term) => learnedIds.has(term.id)).length} / ${list.length}`),
           h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
-      }), ...(isBeginner() ? [] : [rootRow(), ...EXAM_KINDS.map(examRow)])),
+      }), ...(isBeginner() ? [] : [rootRow(), ...(canUseExam() ? EXAM_KINDS.map(examRow) : [])])),
     ),
     weakest.length ? h("h3", {}, "覚え具合の低い語（押すと図鑑）") : "",
     weakest.length ? h("ul", { class: "term-list" }, ...weakest.map(([id, value]) => {
@@ -104,7 +105,9 @@ function dayKey(date: Date): string {
  * 記録: 直近30日に解いた数（日ごとの棒）・続けた日数・これから7日の復習の予定・系統ごとの今日の期限。
  * 毎日の目安と、どの系統の復習がたまっているかを見るため
  */
-function records(events: ReviewEvent[], schedules: StoredSchedule[], now = new Date()): (HTMLElement | string)[] {
+function records(events: ReviewEvent[], allSchedules: StoredSchedule[], now = new Date()): (HTMLElement | string)[] {
+  // 骨学試験を使えない名前の人には、骨学試験の項目を予定に数えない（src/profile.ts）
+  const schedules = canUseExam() ? allSchedules : allSchedules.filter((s) => !isExamKey(s.termId));
   if (!events.length) return [h("p", { class: "muted" }, "まだ解いた記録がありません。レッスンや復習を解くと、日ごとの数と復習の予定がここに出ます。")];
   const perDay = new Map<string, number>();
   for (const event of events) {

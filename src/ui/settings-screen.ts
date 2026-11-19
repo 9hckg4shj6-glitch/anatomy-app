@@ -9,8 +9,8 @@ import {
   COURSES, courseOf, daysUntilExam, loadPreferences, setCourse, NEW_PER_DAY_OPTIONS, preferences, REVIEW_SIZE_OPTIONS, setPreference, TEXT_SIZES, type Preferences,
 } from "../settings";
 import { BASIC_FACETS, TERM_KINDS } from "../study";
-import { PURPOSES } from "../purposes";
-import { loadProfile } from "../profile";
+import { PURPOSES, shownPurposes } from "../purposes";
+import { canUseExam, loadProfile } from "../profile";
 import type { AppContext } from "./context";
 
 /** 設定の画面（#/settings）: コースと使う目的・学び方・表示・骨学試験の日・記録の書き出しと読み込み */
@@ -87,7 +87,7 @@ function offlineSection(ctx: AppContext): HTMLElement {
 
 /** 使う目的のチップ（押すたびに足し外し。src/purposes.ts）。使い方のページでも使う */
 export function purposeChips(onChange: () => void): HTMLElement {
-  return h("div", { class: "chip-list" }, ...PURPOSES.map((purpose) => {
+  return h("div", { class: "chip-list" }, ...shownPurposes().map((purpose) => {
     const on = preferences.purposes.includes(purpose.id);
     return h("button", {
       class: on ? "chip on" : "chip", type: "button", "aria-pressed": String(on),
@@ -100,7 +100,7 @@ export function purposeChips(onChange: () => void): HTMLElement {
   }));
 }
 
-function settingRows(render: () => void): HTMLElement[] {
+function settingRows(render: () => void): (HTMLElement | string)[] {
   const chips = <T>(options: { value: T; label: string }[], current: T, onPick: (value: T) => Promise<void>) =>
     h("div", { class: "chip-list" }, ...options.map((option) => h("button", {
       class: option.value === current ? "chip on" : "chip", type: "button", "aria-pressed": String(option.value === current),
@@ -137,6 +137,8 @@ function settingRows(render: () => void): HTMLElement[] {
     },
   }) as HTMLInputElement;
   const beginner = preferences.mode === "beginner";
+  // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）。ほかの人には説明の文からも外す
+  const exam = canUseExam();
   return [
     h("section", { class: "settings" },
       h("h3", {}, "コースと使う目的"),
@@ -145,10 +147,10 @@ function settingRows(render: () => void): HTMLElement[] {
         window.dispatchEvent(new CustomEvent("anatomy:reviewed"));
       }),
       h("p", { class: "muted" }, beginner
-        ? `はじめての解剖では、解剖学をはじめて学ぶ人が最低限覚える ${beginnerTermCount}語だけを、短い「覚えること」と一緒に学びます（初心者モード）。問い方は位置・名前・英語の4つだけで、語根カードと骨学試験は出しません。`
+        ? `はじめての解剖では、解剖学をはじめて学ぶ人が最低限覚える ${beginnerTermCount}語だけを、短い「覚えること」と一緒に学びます（初心者モード）。問い方は位置・名前・英語の4つだけで、${exam ? "語根カードと骨学試験" : "語根カード"}は出しません。`
         : preferences.mode === "standard"
-          ? `標準では、必修と基礎の ${standardTermCount.toLocaleString()}語を学びます（全 ${terms.length.toLocaleString()}語のうち、細かすぎる発展の語を除いたもの）。筋の起始・停止・支配神経・作用、語根カード・骨学試験も使えます。`
-          : `「すべての語」では、発展の語まで全 ${terms.length.toLocaleString()}語と、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、語根カード・骨学試験を学びます（詳細モード）。`),
+          ? `標準では、必修と基礎の ${standardTermCount.toLocaleString()}語を学びます（全 ${terms.length.toLocaleString()}語のうち、細かすぎる発展の語を除いたもの）。筋の起始・停止・支配神経・作用、${exam ? "語根カード・骨学試験" : "語根カード"}も使えます。`
+          : `「すべての語」では、発展の語まで全 ${terms.length.toLocaleString()}語と、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、${exam ? "語根カード・骨学試験" : "語根カード"}を学びます（詳細モード）。`),
       h("p", { class: "muted" }, "学んだ記録は語ごとに残るので、コースを変えても続きになります。"),
       h("p", { class: "setting-label" }, "使う目的（いくつでも）"),
       purposeChips(render),
@@ -161,7 +163,7 @@ function settingRows(render: () => void): HTMLElement[] {
       studyChips,
       studyNote,
       beginner ? h("p", { class: "muted" }, "初心者モードでは、筋の起始・停止・神経・作用と孔・溝を通るものは出しません（詳細モードで出ます）。") : "",
-      h("p", { class: "muted" }, "レッスンの確認テストでどれから覚えるかは、レッスンの始めの画面で選べます。語根カードと骨学試験の問題は、ここでは変わりません。"),
+      h("p", { class: "muted" }, `レッスンの確認テストでどれから覚えるかは、レッスンの始めの画面で選べます。${exam ? "語根カードと骨学試験" : "語根カード"}の問題は、ここでは変わりません。`),
     ),
     h("section", { class: "settings" },
       h("h3", {}, "学び方"),
@@ -201,7 +203,7 @@ function settingRows(render: () => void): HTMLElement[] {
         },
       }, "「ホーム画面に追加」の案内をもう一度出す"),
     ),
-    h("section", { class: "settings" },
+    !exam ? "" : h("section", { class: "settings" },
       h("h3", {}, "骨学試験の日"),
       h("div", { class: "date-row" }, examDate,
         preferences.examDate ? h("button", { class: "text-button", type: "button", onClick: async () => { await setPreference("examDate", ""); render(); } }, "消す") : ""),

@@ -5,7 +5,7 @@ import { examProgress, SECTION_KINDS, SORT_KINDS } from "../exam";
 import { h } from "../dom";
 import { installHint } from "../install";
 import { daysUntilExam, preferences } from "../settings";
-import { loadProfile, profileComplete } from "../profile";
+import { canUseExam, loadProfile, profileComplete } from "../profile";
 import { nextLesson } from "./lessons";
 import { todayCounts } from "./review";
 import { sceneFor, termAt, type AppContext } from "./context";
@@ -201,7 +201,7 @@ function examRow(learnedIds: Set<string>, schedules: StoredSchedule[]): HTMLElem
 
 /** 骨学試験の日までの日数・まだの項目・1日の目安（試験の日を決めていなければ null）。今日と記録の画面で使う */
 export function examLeft(learnedIds: Set<string>, schedules: StoredSchedule[]): { days: number; rest: number; perDay: number; href: string } | null {
-  const days = daysUntilExam();
+  const days = canUseExam() ? daysUntilExam() : null;
   if (days === null) return null;
   const rest = [...SECTION_KINDS, ...SORT_KINDS].map((kind) => {
     const { done, total } = examProgress(kind, learnedIds, schedules);

@@ -1,3 +1,5 @@
+import { canUseExam } from "./profile";
+
 /**
  * 使う目的（はじめに #/start の3枚目と、使い方 #/guide。docs/普段使い.md「はじめての人への案内」）。
  * 目的はいくつでも選べ、覚える量の段（コース）のおすすめ・3語のレッスンのあとの「あなたの使い方」・使い方のページの並びに使う。
@@ -68,6 +70,9 @@ export const PURPOSES: PurposeInfo[] = [
     ],
   },
 ];
+
+/** 画面に出す目的（骨学試験の対策は、骨学試験を使える名前の人だけ。src/profile.ts の canUseExam） */
+export const shownPurposes = (): PurposeInfo[] => (canUseExam() ? PURPOSES : PURPOSES.filter((purpose) => purpose.id !== "bone"));
 
 export const purposeById = new Map(PURPOSES.map((purpose) => [purpose.id, purpose]));
 

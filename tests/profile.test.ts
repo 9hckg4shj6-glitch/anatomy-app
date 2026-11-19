@@ -89,3 +89,31 @@ describe("名前と所属（スタート画面）", () => {
     expect(ok).toHaveBeenCalledTimes(2);
   });
 });
+
+describe("骨学試験は名前に「シマエナガ」を含む人だけ", () => {
+  beforeEach(async () => {
+    await db.settings.clear();
+  });
+
+  it("名前の判定（半角カナ・ひらがなも同じ）", async () => {
+    const { examAllowedFor } = await load(false);
+    expect(examAllowedFor("シマエナガ")).toBe(true);
+    expect(examAllowedFor("医学部のシマエナガ1号")).toBe(true);
+    expect(examAllowedFor("ｼﾏｴﾅｶﾞ")).toBe(true);
+    expect(examAllowedFor("しまえなが")).toBe(true);
+    expect(examAllowedFor("エナガ")).toBe(false);
+    expect(examAllowedFor("山田")).toBe(false);
+    expect(examAllowedFor("")).toBe(false);
+    expect(examAllowedFor(undefined)).toBe(false);
+  });
+
+  it("読み込み・保存した名前で canUseExam が決まる", async () => {
+    const { canUseExam, loadProfile, saveProfile } = await load(false);
+    await loadProfile();
+    expect(canUseExam()).toBe(false);
+    await saveProfile({ name: "シマエナガ" });
+    expect(canUseExam()).toBe(true);
+    await saveProfile({ name: "山田" });
+    expect(canUseExam()).toBe(false);
+  });
+});

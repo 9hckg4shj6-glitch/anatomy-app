@@ -4,6 +4,7 @@ import { beginnerPoints, isBeginner, isStandard, pointOf } from "../course";
 import { h } from "../dom";
 import { noteText } from "../en-notes";
 import { examCountOf } from "../exam";
+import { canUseExam } from "../profile";
 import { rootsOf, splitAtRoot, type Root } from "../roots";
 import { markOf, setMark } from "../marks";
 import { preferences, setPreference } from "../settings";
@@ -206,7 +207,7 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
     );
   };
   const linked = (text: string) => linkGlossary(text, term.id, show);
-  const examCount = beginner ? 0 : examCountOf(term.id);
+  const examCount = beginner || !canUseExam() ? 0 : examCountOf(term.id);
   const head = h("div", { class: "term-head" },
     h("div", { class: "term-name" },
       h("span", { class: "term-kicker" }, term.yomi, "・", where,

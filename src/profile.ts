@@ -35,8 +35,26 @@ export function cleanText(raw: string, max: number): string {
 
 export async function loadProfile(): Promise<StoredProfile | null> {
   const value = (await db.settings.get(PROFILE))?.value as StoredProfile | undefined;
-  return value && typeof value === "object" && typeof value.name === "string" ? value : null;
+  const profile = value && typeof value === "object" && typeof value.name === "string" ? value : null;
+  examOpen = examAllowedFor(profile?.name);
+  return profile;
 }
+
+/**
+ * 骨学試験を見せる名前（一旦、名前に「シマエナガ」を含む人だけ。2026-11-19）。
+ * 半角カナ・ひらがなでも同じに数える。ほかの人には学ぶ・今日・記録・設定・復習・語のカード・使い方の骨学試験を出さず、#/exam も開けない
+ */
+const EXAM_NAME = "シマエナガ";
+let examOpen = false;
+
+export function examAllowedFor(name: string | undefined): boolean {
+  if (!name) return false;
+  const katakana = name.normalize("NFKC").replace(/[\u3041-\u3096]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0x60));
+  return katakana.includes(EXAM_NAME);
+}
+
+/** 今の名前で骨学試験を使えるか（起動したときと名前を直したときに loadProfile で決まる） */
+export const canUseExam = (): boolean => examOpen;
 
 /** 名前と所属がそろっているか（スタート画面を出すかどうか） */
 export function profileComplete(profile: Partial<Profile> | null): profile is Profile {
@@ -52,6 +70,7 @@ export async function saveProfile(next: Partial<Profile>): Promise<void> {
     savedAt: nowIso(),
   };
   await db.settings.put({ key: PROFILE, value: merged, updatedAt: merged.savedAt });
+  examOpen = examAllowedFor(merged.name);
   if (profileComplete(merged)) void sendProfile();
 }
 

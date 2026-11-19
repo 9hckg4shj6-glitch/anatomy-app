@@ -4,6 +4,7 @@ import { db, type ReviewEvent } from "../db";
 import { dueLabel, State } from "../fsrs";
 import { h, onKeys, until } from "../dom";
 import { examByKey, examFacetsOf, FIRST_FACETS, isExamKey } from "../exam";
+import { canUseExam } from "../profile";
 import { isRootKey, rootByKey } from "../roots";
 import { preferences, REVIEW_SIZE_OPTIONS, setPreference } from "../settings";
 import { buildQueue, facetLabels, facetsFor, ROOT_FACETS, TERM_KINDS, unlockedTerms, type QueueItem } from "../study";
@@ -45,10 +46,10 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
     .filter((item) => (isRootKey(item.termId) || isExamKey(item.termId) || study.includes(item.facet)) && keep(item));
 }
 
-/** 今のモードの復習に出す語・語根カード・骨学試験の項目か（内容の更新で消えた語は出さない） */
+/** 今のモードの復習に出す語・語根カード・骨学試験の項目か（内容の更新で消えた語は出さない。骨学試験は使える名前の人だけ） */
 function inReview(id: string): boolean {
   if (termById.has(id)) return inCourse(id);
-  return !isBeginner() && (rootByKey.has(id) || examByKey.has(id));
+  return !isBeginner() && (rootByKey.has(id) || (examByKey.has(id) && canUseExam()));
 }
 
 /** 語の問題か語根の問題か骨学試験の問題かで出し分ける */

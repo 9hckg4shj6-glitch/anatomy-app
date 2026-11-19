@@ -1,4 +1,5 @@
 import { courseTerms, isBeginner } from "../course";
+import { canUseExam } from "../profile";
 import { db } from "../db";
 import { h } from "../dom";
 import type { AppContext } from "./context";
@@ -46,7 +47,7 @@ export async function records(ctx: AppContext): Promise<void> {
     h("ul", { class: "home-card home-list" },
       itemRow("#/guide", "guide", "#1f6f78", "使い方", "目的に合わせた使い方・4つのタブ・ことばの意味"),
       itemRow("#/progress", "progress", "#4f6d8f", "進捗", "覚え具合を人体の色で見る・30日の記録・7日の予定"),
-      itemRow("#/settings", "settings", "#77736a", "設定", "コースと目的・1日の数・文字の大きさ・骨学試験の日・記録の書き出し"),
+      itemRow("#/settings", "settings", "#77736a", "設定", canUseExam() ? "コースと目的・1日の数・文字の大きさ・骨学試験の日・記録の書き出し" : "コースと目的・1日の数・文字の大きさ・記録の書き出し"),
       itemRow("#/credits", "credits", "#77736a", "出典・クレジット", "3Dモデル・図・音声のライセンス"),
       new URLSearchParams(location.search).has("admin") ? itemRow("#/admin", "settings", "#77736a", "ピン", "部位のピンを打つ（管理用）") : "",
     ),

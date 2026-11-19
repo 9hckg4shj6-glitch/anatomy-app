@@ -1,5 +1,6 @@
 import { db, nowIso } from "../db";
 import { h } from "../dom";
+import { canUseExam } from "../profile";
 
 export type TabName = "today" | "study" | "look" | "records";
 
@@ -32,7 +33,9 @@ export async function tabIntro(tab: TabName): Promise<HTMLElement | ""> {
   if (seen < 0 || seen >= SHOW_TIMES) return "";
   counts[tab] = seen + 1;
   void db.settings.put({ key: KEY, value: counts, updatedAt: nowIso() });
-  const [title, text] = TEXTS[tab];
+  const [title, full] = TEXTS[tab];
+  // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）
+  const text = canUseExam() ? full : full.replace("・骨学試験", "");
   const box = h("aside", { class: "tab-intro", "aria-label": `${title}のタブについて` },
     h("p", {}, h("b", {}, `${title}：`), text, " ", h("a", { href: "#/guide" }, "使い方 ›")),
     h("button", {
