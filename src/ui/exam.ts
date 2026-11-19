@@ -2,7 +2,7 @@ import type { Grade } from "ts-fsrs";
 import { checkEnglish } from "../answer";
 import { speak } from "../audio";
 import { isDrawn, pins, termById } from "../content";
-import { db, nowIso, type Facet, type ReviewEvent } from "../db";
+import { db, markLearned, nowIso, type Facet, type ReviewEvent } from "../db";
 import { h, until } from "../dom";
 import type { EnglishResult } from "../answer";
 import {
@@ -110,7 +110,7 @@ async function learn(ctx: AppContext, kind: ExamKind, area?: ExamArea): Promise<
   const learnedAt = nowIso();
   const results: [ExamItem, Outcome][] = [];
   for (const [i, item] of items.entries()) {
-    await db.learned.put({ termId: item.key, unitId: `exam-${kind}`, learnedAt });
+    await markLearned([{ termId: item.key, unitId: `exam-${kind}` }], learnedAt);
     if (item.kind === "d") await studyDrawing(ctx, item, `${i + 1} / ${items.length}`);
     if (item.kind === "p" || item.kind === "s" || item.kind === "l") await studySort(ctx, item, `${i + 1} / ${items.length}`);
     results.push([item, await askExam(ctx, { termId: item.key, facet: examFacetsOf(item)[0], isNew: true }, "lesson", `${i + 1} / ${items.length}`)]);

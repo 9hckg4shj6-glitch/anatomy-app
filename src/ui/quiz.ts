@@ -503,23 +503,60 @@ export async function chooseOne(
   });
 }
 
+/** 骨の部位の問題で、2回目のタップを1回目と「同じ所」とみなす近さ（m。指の幅より少し狭い） */
+const SAME_SPOT = 0.012;
+
+/**
+ * 名前→位置: 3Dをタップして答える。1回目のタップは選ぶだけ（青で示し、名前は出さない）で、同じ所をもう一度タップするか
+ * 「これで答える」（キーボードは Enter）で決まる。回そうとして触れただけで不正解にならないように
+ * （docs/普段使い.md「はじめての人の使いにくさの見直し」）。同じ所は、語の問題なら同じ語、骨の部位の問題なら同じ部位か近い点
+ */
 async function tapElement(ctx: AppContext, header: HTMLElement, term: Term): Promise<{ element: string; point: Vec3 } | null> {
   const status = h("p", { class: "tap-status" }, "部位をタップしてください（回転・拡大もできます）");
+  const landmark = !!term.of;
+  let selected: { element: string; point: Vec3; part: string | null } | null = null;
+  /** タップした所が何か（語の問題はその部品の語、骨の部位の問題はその部位） */
+  const partAt = (element: string, point: Vec3): string | null => {
+    if (!landmark) return ctx.viewer.termsOf(element)[0] ?? null;
+    const others = terms.filter((other) => other.of && ctx.index.terms[other.id]?.elements.includes(element));
+    return landmarkAt(point, others)?.id ?? null;
+  };
+  const same = (element: string, point: Vec3, part: string | null) => !!selected && selected.element === element
+    && (landmark
+      ? (part !== null && part === selected.part) || Math.hypot(...point.map((v, k) => v - selected!.point[k])) <= SAME_SPOT
+      : part === selected.part);
+  const confirm = h("button", { class: "primary", type: "button", disabled: true }, "これで答える");
   let stopKeys = () => {};
   try {
     return await until<{ element: string; point: Vec3 } | null>(ctx.signal, (resolve) => {
-      // キーボードでは 0 で「わからない」（ほかの問題の数字キーと同じ）
+      const answer = () => {
+        if (!selected) return;
+        ctx.viewer.select(null);
+        resolve({ element: selected.element, point: selected.point });
+      };
+      // キーボードでは 0 で「わからない」（ほかの問題の数字キーと同じ）、Enter で選んだ所に決める
       stopKeys = onKeys(ctx.signal, (key) => {
-        if (key !== "0") return false;
-        resolve(null);
+        if (key === "0") resolve(null);
+        else if (key === "Enter" && selected) answer();
+        else return false;
         return true;
       });
+      confirm.addEventListener("click", answer);
       ctx.viewer.onPick = (element, point) => {
         if (!element || !point) {
           status.textContent = term.of ? `${termById.get(term.of)?.ja ?? "骨"}の上をタップしてください` : "部位の上をタップしてください";
           return;
         }
-        resolve({ element, point });
+        const part = partAt(element, point);
+        if (same(element, point, part)) {
+          answer();
+          return;
+        }
+        selected = { element, point, part };
+        // 語の問題はタップした語を青く、骨の部位の問題はタップした点に青い印を付ける（どちらも名前は出さない）
+        ctx.viewer.select({ element, point }, landmark ? null : part);
+        confirm.disabled = false;
+        status.textContent = "青い所でよければ、もう一度タップするか「これで答える」。ちがえば、別の所をタップしてください";
       };
       showPanel(ctx,
         header,
@@ -527,6 +564,7 @@ async function tapElement(ctx: AppContext, header: HTMLElement, term: Term): Pro
         h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi)),
         status,
         h("button", { class: "ghost-button", type: "button", onClick: () => resolve(null) }, "わからない"),
+        confirm,
       );
     });
   } finally {

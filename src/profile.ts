@@ -61,6 +61,22 @@ export function profileComplete(profile: Partial<Profile> | null): profile is Pr
   return !!(profile?.name && profile.university && profile.faculty && profile.grade);
 }
 
+/**
+ * はじめにの3語（#/learn/<TRIAL_LESSON>/try）を、名前を入れる前に始めたことを残す db.settings のキー。
+ * 3語を学んだあとも「はじめての人」として、名前・所属のあとに目的と覚える量を聞く（今まで使っていた人とは分ける）
+ */
+export const START_TRIAL_KEY = "startTrial";
+/** はじめにの3語のレッスン（初心者コースの「脚の骨」。大腿骨・膝蓋骨・脛骨は正面から見えて、3Dをタップして答えられる） */
+export const TRIAL_LESSON = "b-skel-leg";
+
+/**
+ * スタート画面（#/start）を出すか。名前と所属がまだか、はじめての人（何も学んでいないか、はじめにの3語だけ）がまだコースを選んでいないとき。
+ * docs/普段使い.md「はじめての人の使いにくさの見直し」
+ */
+export function needsStart(profile: Partial<Profile> | null, learnedCount: number, trialStarted: boolean, course: string): boolean {
+  return !profileComplete(profile) || (!course && (!learnedCount || trialStarted));
+}
+
 /** 保存して、そろっていれば送る（送るのは待たない） */
 export async function saveProfile(next: Partial<Profile>): Promise<void> {
   const before = await loadProfile();

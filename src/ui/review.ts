@@ -18,11 +18,19 @@ import { askRoot } from "./roots";
 const AHEAD_MS = 20 * 60_000;
 
 /**
+ * 今日の出題の区分（docs/普段使い.md「はじめての人の使いにくさの見直し」）。
+ * main＝今日の復習（前の日までに学んだ語）。finish＝仕上げ（今日のレッスンで学んだ語の、ほかの問い方と確認テストの解き直し。やらなくてよい。
+ * 解かなければ次の日から今日の復習に出る）。レッスンを終えた直後に「今日の復習 20問」が出て重くならないように分ける
+ */
+export type Part = "main" | "finish";
+
+/**
  * 今日の出題（期限の来た復習と、1日の上限までの新しい問題）。keep で範囲・問い方を絞る（新しい問題の上限は絞る前に数える）。
  * 設定の「学ぶ問い方」で外した語の問い方は、新しく始めず、期限が来ていても出さない。
  * 初心者モードでは初心者コースの語だけを出す（ほかの語・語根カード・骨学試験の記録は残り、詳細モードで出る）。
+ * part で今日の復習（前の日までに学んだ語）か仕上げ（今日学んだ語）かを選ぶ。新しい問題の上限はそれぞれで数える
  */
-async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean = () => true, aheadUntil?: Date): Promise<QueueItem[]> {
+async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean = () => true, aheadUntil?: Date, part: Part = "main"): Promise<QueueItem[]> {
   const startOfDay = new Date(now);
   startOfDay.setHours(0, 0, 0, 0);
   const [learned, schedules, today] = await Promise.all([
@@ -30,9 +38,10 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
     db.schedules.toArray(),
     db.reviewEvents.where("reviewedAt").aboveOrEqual(startOfDay.toISOString()).toArray(),
   ]);
-  const newToday = today.filter((event) => event.isNew && event.source === "review").length;
+  const inPart = partFilter(learned, startOfDay, part);
+  const newToday = today.filter((event) => event.isNew && event.source === "review" && inPart(event.termId)).length;
   // 内容の更新で消えた語の記録は出さない。語根カード（"root:…"）と骨学試験（"exam:…"）も一緒に出す
-  const known = learned.filter((item) => inReview(item.termId));
+  const known = learned.filter((item) => inReview(item.termId) && inPart(item.termId));
   const study = studyFacets();
   const unlocked = unlockedTerms(schedules, study);
   // 骨学試験 D の「図に書き込む」は番号→名前が、数と並びの「3Dで押す」は並べる・選ぶが、復習の段階に入ってから
@@ -44,6 +53,13 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
   };
   return buildQueue(known, schedules, now, preferences.newPerDay - newToday, facetsOf, aheadUntil)
     .filter((item) => (isRootKey(item.termId) || isExamKey(item.termId) || study.includes(item.facet)) && keep(item));
+}
+
+/** その区分に入る語か（今日 startOfDay より後に学んだ語は仕上げ、それより前に学んだ語は今日の復習） */
+export function partFilter(learned: { termId: string; learnedAt: string }[], startOfDay: Date, part: Part): (termId: string) => boolean {
+  const since = startOfDay.getTime();
+  const learnedToday = new Set(learned.filter((item) => new Date(item.learnedAt).getTime() >= since).map((item) => item.termId));
+  return (termId) => learnedToday.has(termId) === (part === "finish");
 }
 
 /** 今のモードの復習に出す語・語根カード・骨学試験の項目か（内容の更新で消えた語は出さない。骨学試験は使える名前の人だけ） */
@@ -59,11 +75,20 @@ export function askItem(ctx: AppContext, item: QueueItem, source: ReviewEvent["s
   return ask(ctx, item, source, progress);
 }
 
-/** 今日解く数を、期限の来た復習と新しく始める問題に分けて（ホームと上の印） */
-export async function todayCounts(): Promise<{ review: number; fresh: number }> {
-  const queue = await todayQueue();
+/** 今日解く数を、期限の来た復習と新しく始める問題に分けて（ホームと上の印）。finish は仕上げ（今日学んだ語）の数 */
+export async function todayCounts(now = new Date()): Promise<{ review: number; fresh: number; finish: number }> {
+  const [queue, finish] = await Promise.all([todayQueue(now), todayQueue(now, undefined, undefined, "finish")]);
   const fresh = queue.filter((item) => item.isNew).length;
-  return { review: queue.length - fresh, fresh };
+  return { review: queue.length - fresh, fresh, finish: finish.length };
+}
+
+/** 仕上げの行（今日学んだ語の問題。やらなくてよい）。今日の画面・レッスンの終わり・復習の終わりで使う */
+export function finishRow(count: number): HTMLElement {
+  return h("a", { class: "home-row-card finish-row", href: "#/review/finish" },
+    h("span", { class: "home-row-label" }, "仕上げ"),
+    h("span", { class: "home-row-title" }, `今日学んだ語 ${count}問`),
+    h("span", { class: "home-row-meta" }, "やらなくてよい"),
+  );
 }
 
 /** 復習の範囲: 語は系統ごと、ほかは語根カードと骨学試験 */
@@ -93,22 +118,27 @@ interface Setup {
   keep: (item: QueueItem) => boolean;
   limit: number;
   pending: Set<string>;
+  /** 今日の復習か、仕上げ（今日学んだ語）か */
+  part: Part;
 }
 
 const cardOf = (item: QueueItem) => `${item.termId}:${item.facet}`;
 
 /**
  * 復習（#/review）。始めの画面で範囲・問い方・数を選ぶ。"#/review/now"（今日の画面の「今日の復習」）は選ばずにすぐ1問目から
- * （設定の「復習の1回の区切り」の数だけ。範囲を選ぶときは今日の画面の「範囲を選ぶ」から）
+ * （設定の「復習の1回の区切り」の数だけ。範囲を選ぶときは今日の画面の「範囲を選ぶ」から）。
+ * "#/review/finish" は仕上げ（今日学んだ語）を、選ばずにすぐ1問目から
  */
 export async function review(ctx: AppContext, arg = ""): Promise<void> {
-  const today = await todayQueue();
+  const part: Part = arg === "finish" ? "finish" : "main";
+  const today = await todayQueue(new Date(), undefined, undefined, part);
   if (!today.length) {
     await nothingToday(ctx);
     return;
   }
-  if (arg === "now") {
-    await session(ctx, { keep: () => true, limit: REVIEW_SIZE_OPTIONS.includes(preferences.reviewSize) ? preferences.reviewSize : 0, pending: new Set() });
+  const limit = REVIEW_SIZE_OPTIONS.includes(preferences.reviewSize) ? preferences.reviewSize : 0;
+  if (arg === "now" || part === "finish") {
+    await session(ctx, { keep: () => true, limit, pending: new Set(), part });
     return;
   }
   await session(ctx, await chooseReview(ctx, today));
@@ -167,7 +197,7 @@ function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
         picked.length ? `始める（${count}問）` : "始める");
       start.addEventListener("click", () => {
         void setPreference("reviewSize", limit);
-        resolve({ keep, limit, pending: new Set() });
+        resolve({ keep, limit, pending: new Set(), part: "main" });
       });
       const more = h("details", { class: "review-more", open: moreOpen, ontoggle: (event: Event) => (moreOpen = (event.currentTarget as HTMLDetailsElement).open) },
         h("summary", {}, "問い方・新しい問題で絞る",
@@ -180,7 +210,7 @@ function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
         hasNew ? h("div", { class: "chip-list" },
           chip("fresh-on", "出す", fresh, today.filter((item) => item.isNew && rangeOk(item) && kindOk(item)).length, () => (fresh = true)),
           chip("fresh-off", "復習だけ", !fresh, null, () => (fresh = false))) : "",
-        hasNew ? h("p", { class: "muted" }, `新しい問題は、レッスンで学んだ語のまだ解いていない問い方です（1日 ${preferences.newPerDay}問まで。設定で変えられます）。`) : "",
+        hasNew ? h("p", { class: "muted" }, `新しい問題は、前の日までにレッスンで学んだ語のまだ解いていない問い方です（1日 ${preferences.newPerDay}問まで。設定で変えられます）。今日学んだ語は「仕上げ」に出ます。`) : "",
       );
       showPanel(ctx,
         h("h2", {}, "今日の復習"),
@@ -254,9 +284,9 @@ async function session(ctx: AppContext, setup: Setup): Promise<void> {
 
 /** 次に出す問題。期限の来たものが無ければ、まちがえてまだ正解していない問題を期限の前に（again） */
 async function remaining(setup: Setup): Promise<{ queue: QueueItem[]; again: boolean }> {
-  const queue = await todayQueue(new Date(), setup.keep);
+  const queue = await todayQueue(new Date(), setup.keep, undefined, setup.part);
   if (queue.length || !setup.pending.size) return { queue, again: false };
-  const ahead = await todayQueue(new Date(), (item) => setup.keep(item) && setup.pending.has(cardOf(item)), new Date(Date.now() + AHEAD_MS));
+  const ahead = await todayQueue(new Date(), (item) => setup.keep(item) && setup.pending.has(cardOf(item)), new Date(Date.now() + AHEAD_MS), setup.part);
   return { queue: ahead, again: true };
 }
 
@@ -268,12 +298,16 @@ async function finish(ctx: AppContext, setup: Setup, answered: number, correct: 
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   ctx.hint("");
-  const [{ queue: rest }, others, learned] = await Promise.all([
+  const finishing = setup.part === "finish";
+  const [{ queue: rest }, others, learned, counts] = await Promise.all([
     remaining(setup),
-    todayQueue(new Date(), (item) => !setup.keep(item)),
+    todayQueue(new Date(), (item) => !setup.keep(item), undefined, setup.part),
     db.learned.toArray(),
+    todayCounts(),
   ]);
   const next = nextLesson(learned);
+  // 仕上げを終えて今日の復習が残っていれば今日の復習へ、今日の復習を終えて仕上げが残っていれば仕上げの行を出す
+  const mainLeft = counts.review + counts.fresh;
   // 「続ける」: 同じ範囲・問い方・区切りで続きから
   const again = h("button", {
     class: "primary", type: "button", onClick: () => void session(ctx, setup).catch((error) => {
@@ -296,21 +330,27 @@ async function finish(ctx: AppContext, setup: Setup, answered: number, correct: 
     if (exam) return h("a", { class: "chip", href: itemHref(exam), title }, exam.title);
     return h("a", { class: "chip", href: `#/explore/${id}`, title }, termById.get(id)?.ja ?? id, h("span", { class: "chip-count" }, title));
   };
+  const name = finishing ? "仕上げ" : "今日の復習";
   showPanel(ctx,
-    h("h2", {}, rest.length ? "ここまでの復習" : answered ? "今日の復習おわり" : "今日の復習はありません"),
+    h("h2", {}, rest.length ? `ここまでの${finishing ? "仕上げ" : "復習"}` : answered ? `${name}おわり` : `${name}はありません`),
     answered ? h("p", { class: "today-count" }, `${correct} / ${answered} 正解`) : "",
-    answered ? h("p", {}, "正解した問題は日をあけて出ます。まちがえた問題は、新しい語なら1分後・覚えた語なら10分後に期限が来て、その回の終わりにもう一度出ます。") : "",
+    answered ? h("p", {}, finishing
+      ? "今日学んだ語は、明日から今日の復習に出ます。正解した問題は日をあけて、まちがえた問題は早めに出ます。"
+      : "正解した問題は日をあけて出ます。まちがえた問題は、新しい語なら1分後・覚えた語なら10分後に期限が来て、その回の終わりにもう一度出ます。") : "",
     missed.size ? h("h3", {}, "まちがえた語（タップでその語へ）") : "",
     missed.size ? h("div", { class: "chip-list" }, ...[...missed].map(([id, facets]) => missedLink(id, facets))) : "",
     rest.length && others.length ? h("p", {}, otherLink("text-button")) : "",
+    !rest.length && !finishing && counts.finish ? finishRow(counts.finish) : "",
     h("div", { class: "nav-row" },
       ...(rest.length
         ? [home("ghost-button"), again]
         : others.length
           ? [home("ghost-button"), otherLink("primary")]
-          : next && learned.length
-            ? [home("ghost-button"), h("a", { class: "primary", href: `#/learn/${next.id}` }, "次のレッスンへ")]
-            : [home("primary")]),
+          : finishing && mainLeft
+            ? [home("ghost-button"), h("a", { class: "primary", href: "#/review/now" }, `今日の復習へ（${mainLeft}問）`)]
+            : next && learned.length
+              ? [home("ghost-button"), h("a", { class: "primary", href: `#/learn/${next.id}` }, "次のレッスンへ")]
+              : [home("primary")]),
     ),
   );
 }
@@ -323,11 +363,15 @@ async function nothingToday(ctx: AppContext): Promise<void> {
   ctx.hint("");
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
-  const [learned, schedules, newToday] = await Promise.all([
+  const [learned, schedules, newEvents, counts] = await Promise.all([
     db.learned.toArray(),
     db.schedules.toArray(),
-    db.reviewEvents.where("reviewedAt").aboveOrEqual(startOfDay.toISOString()).filter((event) => event.isNew && event.source === "review").count(),
+    db.reviewEvents.where("reviewedAt").aboveOrEqual(startOfDay.toISOString()).filter((event) => event.isNew && event.source === "review").toArray(),
+    todayCounts(),
   ]);
+  // 新しい問題の上限は今日の復習の分（前の日までに学んだ語）だけで数える
+  const inMain = partFilter(learned, startOfDay, "main");
+  const newToday = newEvents.filter((event) => inMain(event.termId)).length;
   const learnedIds = new Set(learned.filter((item) => inReview(item.termId)).map((item) => item.termId));
   const study = studyFacets();
   const upcoming = schedules
@@ -343,6 +387,8 @@ async function nothingToday(ctx: AppContext): Promise<void> {
     learned.length && newToday >= preferences.newPerDay
       ? h("p", { class: "muted" }, `今日の新しい問題（${preferences.newPerDay}問）は解き終えました。もっと解くときは、設定で1日の数を増やすか、「学ぶ」の演習で解けます。`)
       : "",
+    counts.review + counts.fresh ? h("p", {}, h("a", { href: "#/review/now" }, `今日の復習（${counts.review + counts.fresh}問）`)) : "",
+    counts.finish ? finishRow(counts.finish) : "",
     h("div", { class: "nav-row" },
       h("a", { class: next ? "ghost-button" : "primary", href: "#/" }, "今日へ"),
       next ? h("a", { class: "primary", href: `#/learn/${next.id}` }, `次のレッスン「${next.title}」`) : "",

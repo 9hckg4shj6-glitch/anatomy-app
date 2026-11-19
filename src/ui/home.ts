@@ -5,9 +5,9 @@ import { examProgress, SECTION_KINDS, SORT_KINDS } from "../exam";
 import { h } from "../dom";
 import { installHint } from "../install";
 import { daysUntilExam, preferences } from "../settings";
-import { canUseExam, loadProfile, profileComplete } from "../profile";
+import { canUseExam, loadProfile, needsStart, START_TRIAL_KEY } from "../profile";
 import { nextLesson } from "./lessons";
-import { todayCounts } from "./review";
+import { finishRow, todayCounts } from "./review";
 import { sceneFor, termAt, type AppContext } from "./context";
 import { tabIntro } from "./tab-intro";
 
@@ -28,13 +28,13 @@ export async function home(ctx: AppContext): Promise<void> {
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
   const since = new Date(startOfDay.getTime() - 7 * 86_400_000).toISOString();
-  const [learned, counts, recentEvents, hintClosed, schedules, profile] = await Promise.all([
+  const [learned, counts, recentEvents, hintClosed, schedules, profile, trial] = await Promise.all([
     db.learned.toArray(), todayCounts(), db.reviewEvents.where("reviewedAt").aboveOrEqual(since).toArray(),
-    db.settings.get("installHintClosed"), db.schedules.toArray(), loadProfile(),
+    db.settings.get("installHintClosed"), db.schedules.toArray(), loadProfile(), db.settings.get(START_TRIAL_KEY),
   ]);
   if (signal.aborted) return;
-  // 名前と所属がまだの人（今使っている人も）と、はじめての人はスタート画面へ（src/ui/start.ts）
-  if (!profileComplete(profile) || (!learned.length && !preferences.course)) {
+  // 名前と所属がまだの人（今使っている人も）と、はじめての人（はじめにの3語だけの人も）はスタート画面へ（src/ui/start.ts）
+  if (needsStart(profile, learned.length, !!trial?.value, preferences.course)) {
     location.replace("#/start");
     return;
   }
@@ -95,9 +95,12 @@ export async function home(ctx: AppContext): Promise<void> {
     counts.review + counts.fresh && nextUnit ? continueRow(nextUnit, learnedIds) : "",
     isBeginner() ? "" : examRow(learnedIds, schedules),
   ];
+  // タブの1行の説明は今日の札の下に（小さい画面でも、今日の一手のボタンが初めの画面に入るように）
   ctx.panel.replaceChildren(h("div", { class: "home" },
-    intro,
     today(counts, nextUnit, learnedIds, weekDays(recentEvents), answeredToday.length, !learned.length),
+    // 仕上げ（今日学んだ語。やらなくてよい）は今日の復習とは別の行に
+    counts.finish ? finishRow(counts.finish) : "",
+    intro,
     ...rows,
     backupReminder(learned),
     hintClosed ? "" : installHint(signal, () => void db.settings.put({ key: "installHintClosed", value: true, updatedAt: nowIso() })),
@@ -149,7 +152,8 @@ function today(counts: { review: number; fresh: number }, nextUnit: Unit | undef
   return h("section", { class: "home-card home-today" }, kicker,
     answered
       ? h("div", { class: "home-done" }, h("span", { class: "home-done-mark", "aria-hidden": "true" }, "✓"),
-        h("div", {}, h("b", {}, "今日の復習は終わりました"), h("span", {}, `今日 ${answered}問`)))
+        // レッスンだけの日（はじめの日など）も、今日の分は終わり（今日学んだ語は明日から今日の復習に出る）
+        h("div", {}, h("b", {}, "今日の分は終わりました"), h("span", {}, `今日 ${answered}問`)))
       : h("h2", { class: "home-title" }, "今日の復習はありません"),
     lessonButton(!answered),
     h("p", { class: "home-note" }, "次の復習は、日をあけて出ます。"),

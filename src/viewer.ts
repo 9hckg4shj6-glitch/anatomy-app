@@ -712,6 +712,21 @@ export class AnatomyViewer {
     this.refresh();
   }
 
+  /**
+   * 名前→位置で、答える前にタップで選んだ所を青で示す（決めるのはもう一度タップか「これで答える」。src/ui/quiz.ts の tapElement）。
+   * termId があればその語を青く、無ければ（骨の部位の問題など）強調はそのままで、タップした点に小さな青い印だけを付ける。null で消す
+   */
+  select(tap: { element: string; point: Vec3 } | null, termId: string | null = null): void {
+    if (termId) {
+      this.stopAction();
+      this.highlighted = new Map([[termId, WRONG]]);
+      this.isolate = false;
+      this.seeThrough = false;
+    }
+    this.tapMark = tap;
+    this.refresh();
+  }
+
   /** 正解（橙）と、間違えて選んだ所（青）を同時に示す。tap はタップした部品と点（小さな青い印） */
   reveal(correct: string, wrong: string | null, isolate = false, tap: { element: string; point: Vec3 } | null = null): void {
     this.stopAction();

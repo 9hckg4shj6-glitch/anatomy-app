@@ -139,7 +139,7 @@ const LESSON_STEPS: { title: string; text: string; screen: string }[] = [
   },
   {
     title: "確認テスト",
-    text: "見た語を、選んだ問い方で解きます。名前→位置は、3Dのその所をタップして答えます。答えた語から順に復習に入るので、途中でやめても大丈夫。",
+    text: "見た語を、選んだ問い方で解きます。名前→位置は、3Dのその所をタップして青くし、もう一度タップか「これで答える」で答えます。答えた語から順に復習に入るので、途中でやめても大丈夫。",
     screen: `${topBar("学ぶ")}
       <div class="gd-qhead"><b>名前→位置</b><span>確認 3 / 12</span></div>
       <div class="gd-stage gd-stage-img gd-l3-stage"><img src="${IMG}femur.webp" alt="" draggable="false"><img class="gd-l3-hi" src="${IMG}femur-hi.webp" alt="" draggable="false">${finger()}${ripple()}</div>
@@ -224,7 +224,7 @@ export function askDemos(): HTMLElement {
         <p class="gd-q">「大腿骨」はどこ？</p>
         <p class="gd-note">3Dの上でタップ（回す・拡大もできる）</p>
       </div>
-      <figcaption><b>名前→位置</b>名前を見て、3Dのその所をタップする。</figcaption>
+      <figcaption><b>名前→位置</b>名前を見て、3Dのその所をタップする。青くなった所でよければ、もう一度タップか「これで答える」。</figcaption>
     </figure>
     <figure class="gd-ask">
       <div class="gd-ask-scr" aria-hidden="true">

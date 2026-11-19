@@ -11,6 +11,8 @@
   --close: #c08a12;
   --highlight: #ff7a1a;
   --header: 52px;
+  /* スマホの縦で3Dの高さ（境目のつまみで変えていないとき）。背の低い画面では小さくする（下の @media） */
+  --stage-default: 46svh;
   /* ノッチ・ホームバーの分（ホーム画面から開いたとき） */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
@@ -93,7 +95,7 @@ body { padding-bottom: var(--tabbar); }
 .stage {
   position: sticky; top: calc(var(--header) + var(--safe-top)); z-index: 1;
   /* 縦に並ぶとき（スマホ）の3Dの高さ。境目のつまみで変えられる（src/ui/splitter.ts の --stage-height） */
-  height: 46vh; height: var(--stage-height, 46svh); min-height: 200px;
+  height: 46vh; height: var(--stage-height, var(--stage-default)); min-height: 200px;
   /* 暗い背景の方が、骨の白・筋の赤・くぼみの陰がはっきり見える */
   background: radial-gradient(circle at 50% 35%, #4b5058 0%, #24272c 62%, #17191c 100%);
   touch-action: none; overflow: hidden;
@@ -175,7 +177,7 @@ body { padding-bottom: var(--tabbar); }
 
 /* 3Dと説明の境目のつまみ。縦に並ぶときは3Dのすぐ下に留める */
 .splitter {
-  position: sticky; z-index: 2; top: calc(var(--header) + var(--safe-top) + max(200px, var(--stage-height, 46svh)));
+  position: sticky; z-index: 2; top: calc(var(--header) + var(--safe-top) + max(200px, var(--stage-height, var(--stage-default))));
   display: flex; align-items: center; justify-content: center; height: 18px;
   background: var(--bg); border-bottom: 1px solid var(--line); cursor: row-resize; touch-action: none;
 }
@@ -758,7 +760,7 @@ a.term-row { color: var(--ink); text-decoration: none; }
 @media (max-width: 767px) and (orientation: portrait), (max-width: 767px) and (min-height: 541px) {
   .layout.stage-folded .stage { position: relative; top: 0; }
   .layout.stage-folded .splitter { display: none; }
-  .layout.stage-folded .panel { position: relative; z-index: 2; margin-top: calc(52px - max(200px, var(--stage-height, 46svh))); }
+  .layout.stage-folded .panel { position: relative; z-index: 2; margin-top: calc(52px - max(200px, var(--stage-height, var(--stage-default)))); }
   .layout.stage-folded .stage-unfold {
     display: flex; align-items: center; justify-content: center; position: absolute; z-index: 6; top: 0; left: 0; right: 0; height: 52px;
     border: 0; background: #1d1f23; color: #f1eee8; font-size: 15px; font-weight: 600; cursor: pointer;
@@ -770,7 +772,7 @@ a.term-row { color: var(--ink); text-decoration: none; }
   .layout.is-home .stage-tools { bottom: 30px; }
   .layout.is-home .panel { position: relative; z-index: 2; margin-top: -18px; padding-top: 14px; border-radius: 20px 20px 0 0; box-shadow: 0 -8px 20px -12px rgb(0 0 0 / 0.4); }
   /* レッスンの一覧で、ホームから開いた系統のフォルダーが上に留めた3Dの下に来るように */
-  .folder[data-folder] { scroll-margin-top: calc(var(--header) + var(--safe-top) + max(200px, var(--stage-height, 46svh)) + 26px); }
+  .folder[data-folder] { scroll-margin-top: calc(var(--header) + var(--safe-top) + max(200px, var(--stage-height, var(--stage-default))) + 26px); }
 }
 
 /* ===== 普段使い その1（docs/普段使い.md）: 今日・学ぶ・調べる・記録・はじめに・レッスン・語のカード・演習の入口 ===== */
@@ -1144,3 +1146,42 @@ body.no-tabs .topbar-search { margin-left: auto; }
 .plan-title { margin: 0 0 6px; font-size: 14px; font-weight: 800; color: var(--accent); }
 .plan .guide-steps { padding: 0; }
 .plan .home-guide-link { margin: 4px 0 0; }
+
+/* はじめての人の使いにくさの見直し（docs/普段使い.md） */
+/* スタート画面のはじめ: できること3つ・iPhone のブラウザでのホーム画面への追加・下の小さなリンク */
+.start-points { display: grid; gap: 8px; margin: 4px 0 2px; padding: 0; list-style: none; counter-reset: start-point; }
+.start-points li { display: grid; grid-template-columns: 26px minmax(0, 1fr); column-gap: 10px; align-items: baseline; counter-increment: start-point; }
+.start-points li::before {
+  content: counter(start-point); grid-row: span 2; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--highlight); color: #fff; font-size: 13px; font-weight: 800;
+}
+.start-points b { font-size: 15px; }
+.start-points span { font-size: 13px; line-height: 1.55; color: var(--muted); }
+.start-install {
+  display: grid; gap: 4px; padding: 12px 14px; border-radius: 14px; font-size: 13px; line-height: 1.6;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+.start-install > b { font-size: 14px; }
+.start-links { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 18px; }
+.start-links button.start-link { border: 0; background: none; color: var(--accent); cursor: pointer; padding: 0; }
+.start-speak-note { margin: -4px 0 0; font-size: 12px; line-height: 1.6; }
+/* 「この使い方で始める」などを画面の下に留める（.panel > .panel-foot:last-child）。中身の幅にそろえる */
+.panel-foot.start-foot { max-width: 520px; margin-left: auto; margin-right: auto; width: 100%; box-sizing: border-box; }
+.start-foot > .primary, .start-foot .nav-row .primary { min-height: 52px; border-radius: 14px; }
+.start-foot .nav-row { margin-top: 0; }
+.start-ready .plan { margin-top: 4px; }
+/* 仕上げ（今日学んだ語。やらなくてよい）の行 */
+.finish-row .home-row-meta { font-size: 12px; }
+.panel > .finish-row, .home > .finish-row { margin: 10px 0; }
+
+/* 背の低い画面（小さい iPhone・横向きの手前）: 3Dを少し小さくし、4択と「わからない」が1画面に入るように詰める */
+@media (max-height: 700px) {
+  :root { --stage-default: 38svh; }
+  .choices { gap: 6px; margin-bottom: 8px; }
+  .choice { padding-top: 8px; padding-bottom: 8px; font-size: 17px; }
+  .prompt { margin: 4px 0 8px; }
+  .prompt-ja { margin: 6px 0; }
+}
+@media (max-width: 767px) and (orientation: portrait) and (max-height: 700px) {
+  .layout.is-home .stage { height: 50svh; min-height: 260px; }
+}

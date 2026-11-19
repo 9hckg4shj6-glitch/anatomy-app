@@ -82,3 +82,12 @@ export const db = new AnatomyDatabase();
 export function nowIso(): string {
   return new Date().toISOString();
 }
+
+/**
+ * レッスンで学んだ語（語根・骨学試験の項目も）を記録する。前に学んだものは、初めに学んだ日時のまま残す
+ * （学び直しても「今日学んだ語」＝仕上げ（src/ui/review.ts）に移さない。docs/普段使い.md「はじめての人の使いにくさの見直し」）
+ */
+export async function markLearned(items: { termId: string; unitId: string }[], learnedAt = nowIso()): Promise<void> {
+  const before = await db.learned.bulkGet(items.map((item) => item.termId));
+  await db.learned.bulkPut(items.map((item, i) => ({ termId: item.termId, unitId: item.unitId, learnedAt: before[i]?.learnedAt ?? learnedAt })));
+}

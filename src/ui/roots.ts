@@ -1,5 +1,5 @@
 import type { Term } from "../content";
-import { db, nowIso, type ReviewEvent } from "../db";
+import { db, markLearned, type ReviewEvent } from "../db";
 import { h } from "../dom";
 import { dueLabel, Rating, recordReview } from "../fsrs";
 import { examplesOf, exampleFor, rootByKey, rootKey, roots, rootUnitById, rootUnits, type Root } from "../roots";
@@ -88,8 +88,7 @@ export async function rootLesson(ctx: AppContext, unitId: string): Promise<void>
   for (const [i, item] of items.entries()) {
     if ((await askRoot(ctx, item, "lesson", `確認 ${i + 1} / ${items.length}`)) === "correct") correct++;
   }
-  const learnedAt = nowIso();
-  await db.learned.bulkPut(unit.roots.map((root) => ({ termId: rootKey(root), unitId: unit.id, learnedAt })));
+  await markLearned(unit.roots.map((root) => ({ termId: rootKey(root), unitId: unit.id })));
   ctx.guard(null);
   void navigator.storage?.persist?.().catch(() => false);
   ctx.hint("");

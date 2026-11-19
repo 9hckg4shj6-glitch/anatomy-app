@@ -1,7 +1,9 @@
-import { autoSpeak } from "../audio";
+import { autoSpeak, holdAutoSpeak } from "../audio";
 import { isPlateUnit, organOfLesson, systemById, type Term, type Unit } from "../content";
 import { courseLesson, isBeginner, organLessons, studyFacets } from "../course";
-import { db, nowIso, type Facet } from "../db";
+import { db, markLearned, type Facet } from "../db";
+import { loadProfile, profileComplete } from "../profile";
+import { finishRow, todayCounts } from "./review";
 import { h, onKeys, until } from "../dom";
 import { preferences, setPreference } from "../settings";
 import { BASIC_FACETS, facetLabels, facetsFor, lessonFacet, shuffle, type QueueItem } from "../study";
@@ -28,6 +30,11 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
     return;
   }
   const { viewer, signal } = ctx;
+  // はじめにの3語では発音を自動で鳴らさない（鳴らすかどうかは、このあと目的と覚える量の画面で聞く）
+  if (trial) {
+    holdAutoSpeak(true);
+    signal.addEventListener("abort", () => holdAutoSpeak(false), { once: true });
+  }
   await viewer.show(sceneFor(unit.system, unit.id));
 
   // 始めの画面: レッスンの初めの説明（基本の用語の「解剖学的正位」など）、確認テストの問い方、
@@ -63,7 +70,7 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
       ? h("button", { class: "head-skip", type: "button", title: "残りの語を飛ばして確認テストへ" }, "確認テストへ ›")
       : null;
     showPanel(ctx,
-      trial && i === 0 ? h("p", { class: "trial-note" }, "3Dで光った所と名前を見て、「次へ」。3語見たら、確認の問題に答えます。") : "",
+      trial && i === 0 ? h("p", { class: "trial-note" }, "3Dで光った所と名前を見て、「次へ」。3語見たら、名前を選ぶ問題と、3Dをタップして場所を答える問題に答えます。") : "",
       h("div", { class: "quiz-head" }, h("span", { class: "facet" }, unit.title), h("span", { class: "count" }, skip ?? "", `${i + 1} / ${list.length}`)),
       termCard(term, { motion: motionPlayer(ctx, term) }),
       h("div", { class: "nav-row" }, back, next),
@@ -82,8 +89,8 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
   for (const [i, item] of items.entries()) {
     const outcome = await ask(ctx, item, "lesson", `確認 ${i + 1} / ${items.length}`);
     if (outcome === "correct") correct++;
-    // 答えた語から「学んだ」に入れる（途中でやめても、答えた語は復習に出る）
-    await db.learned.put({ termId: item.termId, unitId: unit.id, learnedAt: nowIso() });
+    // 答えた語から「学んだ」に入れる（途中でやめても、答えた語は復習に出る。前に学んだ語は初めに学んだ日時のまま）
+    await markLearned([{ termId: item.termId, unitId: unit.id }]);
   }
   // 学習の記録を、端末の空きが減ったときなどにブラウザが消さないようにする（ホーム画面に追加した PWA は多くが自動で認められる）
   void navigator.storage?.persist?.().catch(() => false);
@@ -101,13 +108,24 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
     ? organLessons(organ).find((other) => other !== unit && other.terms.some((term) => !doneNow.has(term.id)))
     : nextLesson(learnedNow);
   const left = unit.terms.filter((term) => !list.includes(term) && !learnedIds.has(term.id)).length;
+  holdAutoSpeak(false);
   if (trial) {
-    // 「あなたの使い方」を読めるよう、スマホでは3Dをたたむ
     ctx.fold(true);
+    // はじめに（名前を入れる前）の3語なら、続けるために名前・所属・目的と覚える量へ（src/ui/start.ts。「あなたの使い方」はその最後に出す）
+    if (!profileComplete(await loadProfile())) {
+      showPanel(ctx,
+        h("h2", {}, "これで3語を覚え始めました"),
+        h("p", { class: "today-count" }, `確認 ${correct} / ${items.length}`),
+        h("p", {}, "答えた語は、明日から「今日」の復習に出ます。毎日、今日の復習を解くだけで続きます。"),
+        h("p", {}, "続けるには、名前と所属、使う目的を教えてください（約1分）。"),
+        h("a", { class: "primary", href: "#/start" }, "次へ（名前を入れる）"),
+      );
+      return;
+    }
     showPanel(ctx,
       h("h2", {}, "これで3語を覚え始めました"),
       h("p", { class: "today-count" }, `確認 ${correct} / ${items.length}`),
-      h("p", {}, "答えた語は、忘れかけたころに「今日」の復習に出ます。毎日、今日の復習を解くだけで続きます。"),
+      h("p", {}, "答えた語は、明日から「今日」の復習に出ます。毎日、今日の復習を解くだけで続きます。"),
       planCard(),
       h("div", { class: "nav-row" },
         h("a", { class: "ghost-button", href: "#/study" }, "学ぶへ"),
@@ -116,14 +134,19 @@ export async function lesson(ctx: AppContext, arg: string): Promise<void> {
     );
     return;
   }
+  // 今日学んだ語は明日から今日の復習に出る。今日のうちに解き直すなら仕上げ（やらなくてよい。src/ui/review.ts）
+  const counts = await todayCounts();
+  if (signal.aborted) return;
+  const mainLeft = counts.review + counts.fresh;
   showPanel(ctx,
     h("h2", {}, `「${unit.title}」おわり`),
     h("p", { class: "today-count" }, `確認テスト ${correct} / ${items.length}`),
-    h("p", {}, "この語は復習に入りました。復習では ", reviewKinds(unit), " が出ます。"),
+    h("p", {}, "学んだ語は、明日から「今日」の復習に出ます。復習では ", reviewKinds(unit), " が出ます。"),
     unit.terms.some((term) => term.nerve) && studies("attach") ? h("p", {}, "筋の起始・停止・支配神経・作用は、場所を覚えたころに復習で出ます。") : "",
     unit.terms.some((term) => term.passes) && studies("passage") ? h("p", {}, "孔・溝を通るもの（入るもの）は、場所を覚えたころに復習で出ます。") : "",
     unit.terms.some((term) => term.toward) && studies("relation") ? h("p", {}, "部位どうしの向き（前後・左右・上下）は、場所を覚えたころに復習で出ます。") : "",
-    h("p", {}, h("a", { href: "#/review/now" }, "今日の復習へ")),
+    mainLeft ? h("p", {}, h("a", { href: "#/review/now" }, `今日の復習へ（${mainLeft}問）`)) : "",
+    counts.finish ? finishRow(counts.finish) : "",
     h("div", { class: "nav-row" },
       organ
         ? h("a", { class: next ? "ghost-button" : "primary", href: `#/organs/${organ.id}` }, `${organ.ja}の図へ`)

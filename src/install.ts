@@ -32,6 +32,14 @@ function isIos(): boolean {
 }
 
 /**
+ * iPhone・iPad のブラウザ（ホーム画面のアプリでない）で開いているか。ブラウザとホーム画面のアプリでは記録が別々になるので、
+ * スタート画面の初めに「先にホーム画面に追加」を出す（src/ui/start.ts）
+ */
+export function inIosBrowser(): boolean {
+  return isIos() && !isStandalone();
+}
+
+/**
  * ホーム画面に追加する案内。iOS は共有ボタンからの手順を、Chrome は追加のボタンを出す。
  * それ以外（PC の Safari・Firefox など）とホーム画面から開いているときは何も出さない。
  */

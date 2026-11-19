@@ -32,7 +32,17 @@ export async function speak(term: Pick<Term, "id" | "en">): Promise<void> {
   speechSynthesis.speak(utterance);
 }
 
+/**
+ * 自動で鳴らすのを止めている間か。はじめにの3語は、鳴らすかどうかを聞く前なので鳴らさない
+ * （目的と覚える量の画面で選ぶ。docs/普段使い.md「はじめての人の使いにくさの見直し」）
+ */
+let held = false;
+
+export function holdAutoSpeak(on: boolean): void {
+  held = on;
+}
+
 /** 画面を開いたときや答え合わせのときに自動で鳴らす（設定で切れる。🔊のボタンは speak で鳴らす） */
 export function autoSpeak(term: Pick<Term, "id" | "en">): void {
-  if (preferences.autoSpeak) void speak(term);
+  if (preferences.autoSpeak && !held) void speak(term);
 }
