@@ -97,7 +97,7 @@ export interface ModelSpec {
 
 /** 3D模型で、部品をドラッグして動かす。start は押した部品から動かす部品（null ならふだんどおり回す）、end は動かした量 */
 export interface PartDrag {
-  /** 動かすモードか（PC は Shift を押しながらでも動かせる） */
+  /** 選んだ部品の「動かす」を押しているか（ふだんは回すだけ） */
   enabled: () => boolean;
   start: (elementId: string) => string[] | null;
   end: (elements: string[], delta: Vec3) => void;
@@ -644,7 +644,7 @@ export class AnatomyViewer {
       this.hoverLabel.hidden = true;
     });
 
-    // 3D模型: 動かすモードで部品を押したら、回す代わりにその部品を動かす。OrbitControls より先に受けるため、3Dの枠で capture する
+    // 3D模型: 「動かす」を押した部品を押したら、回す代わりにその部品を動かす。OrbitControls より先に受けるため、3Dの枠で capture する
     host.addEventListener("pointerdown", (event) => this.startPartDrag(event), { capture: true });
     host.addEventListener("pointermove", (event) => this.movePartDrag(event), { capture: true });
     host.addEventListener("pointerup", (event) => this.endPartDrag(event, false), { capture: true });
@@ -1346,7 +1346,7 @@ export class AnatomyViewer {
     }
     if (!this.model || !this.partDrag || event.target !== this.renderer.domElement) return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
-    if (!this.partDrag.enabled() && !event.shiftKey) return;
+    if (!this.partDrag.enabled()) return;
     const hit = this.pick(event.clientX, event.clientY, false);
     if (!hit) return;
     const elements = this.partDrag.start(hit.element);

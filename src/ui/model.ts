@@ -12,7 +12,8 @@ import { tabIntro } from "./tab-intro";
 
 /**
  * 3D模型（#/model。下のタブ）: 人体模型のように、自由に回し・取り外し・透かし・分解し・切って見る。docs/普段使い.md「3D模型」。
- * 部品をタップで選び（まとまりを大きく・細かく）、隠す・薄くする・これだけ・外へ出す。「動かす」にすると部品をドラッグで取り外せる。
+ * 部品をタップで選び（まとまりを大きく・細かく）、隠す・薄くする・これだけ・外へ出す。3Dはふだん回すだけで、
+ * 選んだ部品の「動かす」を押したときだけ、その部品をドラッグで動かせる（「動かし終える」まで。うっかり動かさないように）。
  * 系統ごとに濃さを変え、分解・断面・片側・見る向きを選ぶ。どの操作も「元に戻す」で1つずつ戻せる。
  * 模型の状態はアプリを開いている間は残る（ほかのタブへ行って戻っても、取り外したまま）
  */
@@ -46,7 +47,7 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
   const history = kept?.history ?? new History();
   /** 選んだ部品: 押した部品・まとまりの大きさ（0 が一番細かい）・まとまり */
   let selection: { element: string; level: number; part: Part } | null = null;
-  /** 部品を動かすモード（回す代わりにドラッグで動かす） */
+  /** 選んだ部品を動かしているか（ふだんは false＝回すだけ。選んだ部品の「動かす」で true にし、その部品だけをドラッグで動かす） */
   let moving = false;
   let spinning = false;
   /** スライダーを動かし始める前の状態（離したときに「元に戻す」へ入れる） */
@@ -76,7 +77,10 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
     const previous = history.pop();
     if (!previous) return;
     state = previous;
-    if (selection && state.hidden.some((part) => part.elements.includes(selection!.element))) selection = null;
+    if (selection && state.hidden.some((part) => part.elements.includes(selection!.element))) {
+      selection = null;
+      if (moving) setMoving(false);
+    }
     sync();
     render();
     ctx.hint("1つ戻した");
@@ -101,6 +105,8 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
 
   const nameOf = (part: Part) => partName(part, (id) => termById.get(id)?.ja ?? id);
   const select = (element: string | null, level = 0) => {
+    // 選び直したら、動かすのは終える（ほかの部品をうっかり動かさないように）
+    if (moving) stopMoving(false);
     if (!element) {
       selection = null;
       if (state.solo) state = { ...cloneState(state), solo: false };
@@ -113,7 +119,11 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
     render();
   };
 
-  viewer.onPick = (element) => select(element);
+  viewer.onPick = (element) => {
+    // 動かしている間は、動かしている部品と何も無い所のタップでは何もしない（終えるのは「動かし終える」）
+    if (moving && (!element || selection?.part.elements.includes(element))) return;
+    select(element);
+  };
   viewer.onHover = (element) => {
     const terms = viewer.partTerms(element);
     return terms[0] ? termById.get(terms[0])?.ja ?? null : null;
@@ -121,10 +131,10 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
   viewer.partDrag = {
     enabled: () => moving,
     start: (element) => {
-      // 選んでいるまとまりの部品なら、そのまとまりごと。ほかの部品なら、その一番細かいまとまりを選んで動かす
-      if (!selection?.part.elements.includes(element)) select(element);
+      // 動かせるのは、「動かす」を押した部品だけ。ほかの部品と何も無い所をドラッグしたら回す
+      if (!selection?.part.elements.includes(element)) return null;
       editing = cloneState(state);
-      return selection?.part.elements ?? null;
+      return selection.part.elements;
     },
     end: (elements, delta) => {
       const before = editing ?? cloneState(state);
@@ -136,25 +146,32 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
     },
   };
 
-  // ───── 3Dの上のボタン（回す／動かす・元に戻す・全体） ─────
-  const modeChips = h("span", { class: "model-mode", role: "radiogroup", "aria-label": "3Dの操作" });
+  // ───── 3Dの上のボタン（動かしている間は「動かし終える」・元に戻す・全体） ─────
+  const doneChip = h("button", { class: "chip model-done", type: "button", onClick: () => stopMoving() }, "✓ 動かし終える");
   const undoChip = h("button", { class: "chip", type: "button", onClick: undo, title: "元に戻す（⌘Z・Ctrl+Z）" }, "↶ 戻す");
   const renderTools = () => {
-    modeChips.replaceChildren(...([[false, "回す"], [true, "動かす"]] as const).map(([value, label]) => h("button", {
-      class: moving === value ? "chip on" : "chip", type: "button", role: "radio", "aria-checked": String(moving === value),
-      onClick: () => setMoving(value),
-    }, label)));
+    doneChip.hidden = !moving;
     undoChip.disabled = !history.size;
   };
+  const stage = document.getElementById("stage");
   const setMoving = (on: boolean) => {
-    moving = on;
-    ctx.hint(on ? "部品をドラッグで動かす（何も無い所は回す）" : "部品をタップで選ぶ");
-    document.getElementById("stage")?.classList.toggle("is-moving", on);
+    moving = on && !!selection;
+    stage?.classList.toggle("is-moving", moving);
+    ctx.hint(moving ? `${nameOf(selection!.part)}をドラッグで動かす（ほかの所は回す）` : "部品をタップで選ぶ");
+  };
+  /** 動かすのを終える（redraw が false なら欄は描き直さない。選び直すときは select が描き直す） */
+  function stopMoving(redraw = true): void {
+    setMoving(false);
+    renderTools();
+    if (redraw) render();
+  }
+  const startMoving = () => {
+    setMoving(true);
     renderTools();
     render();
   };
-  signal.addEventListener("abort", () => document.getElementById("stage")?.classList.remove("is-moving"), { once: true });
-  tools.replaceChildren(modeChips, undoChip,
+  signal.addEventListener("abort", () => stage?.classList.remove("is-moving"), { once: true });
+  tools.replaceChildren(doneChip, undoChip,
     h("button", { class: "chip", type: "button", onClick: () => viewer.frameModel() }, "全体"));
 
   // ───── 欄 ─────
@@ -183,7 +200,7 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
     if (!selection) {
       selectedBox.replaceChildren(h("div", { class: "model-empty" },
         h("p", {}, h("b", {}, "部品をタップして選ぶ")),
-        h("p", { class: "muted" }, moving ? "「動かす」の間は、部品をドラッグすると取り外せます。何も無い所をドラッグすると回ります。" : "選んだ部品は、隠す・薄くする・これだけ見る・外へ出すができます。3Dの下の「動かす」で、ドラッグして取り外せます。"),
+        h("p", { class: "muted" }, "3Dは1本指で回す・2本指でつまんで拡大・2本指でずらす。選んだ部品は、隠す・薄くする・これだけ見る・外へ出す・動かすができます。"),
       ));
       return;
     }
@@ -207,6 +224,14 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
         h("span", { class: "model-level-text" }, `まとまり ${level + 1} / ${terms.length}`),
         h("button", { class: "model-step", type: "button", disabled: level >= terms.length - 1, "aria-label": "大きなまとまりにする", onClick: () => select(element, level + 1) }, "大きく ›"),
       ) : "",
+      // 動かす: ふだんは回すだけ。押したときだけ、この部品をドラッグで動かせる
+      moving
+        ? h("div", { class: "model-moving", role: "status" },
+          h("p", {}, h("b", {}, "動かしています"), h("span", {}, `3Dで${nameOf(part)}をドラッグすると動きます。ほかの所をドラッグすると回ります。`)),
+          h("button", { class: "primary", type: "button", onClick: () => stopMoving() }, "✓ 動かし終える"))
+        : h("button", { class: "model-move", type: "button", onClick: startMoving },
+          h("span", { class: "model-move-icon", "aria-hidden": "true" }, "✥"),
+          h("span", {}, h("b", {}, "ドラッグで動かす"), h("small", {}, "押したあと、この部品だけを3Dで動かせます"))),
       h("div", { class: "model-actions" },
         action("隠す", () => {
           change(withPart(state, part, "hidden"), { redraw: false });
@@ -332,10 +357,6 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
     renderUndo();
     const preset = presetOf(state);
     body.replaceChildren(
-      group("操作", {},
-        card(row("3Dで指を動かすと", "", segmented("3Dの操作", [{ value: false, label: "回す" }, { value: true, label: "部品を動かす" }], moving, (value) => setMoving(value)), true)),
-        foot("回す: 1本指で回す・2本指でつまんで拡大・2本指でずらす。部品を動かす: 部品をドラッグで取り外す（PC は Shift を押しながらドラッグでも）。"),
-      ),
       group("組み合わせ", {},
         h("div", { class: "chip-list model-presets" }, ...PRESETS.map((item) => h("button", {
           class: preset === item.id ? "chip on" : "chip", type: "button",
@@ -373,7 +394,7 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
     );
   };
 
-  // キーボード: Delete で隠す・Esc で選ぶのをやめる・⌘Z / Ctrl+Z で元に戻す・M で回す／動かす
+  // キーボード: Delete で隠す・Esc で動かし終える／選ぶのをやめる・⌘Z / Ctrl+Z で元に戻す
   document.addEventListener("keydown", (event) => {
     if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement || event.isComposing) return;
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "z") {
@@ -381,7 +402,9 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
       undo();
     } else if (event.metaKey || event.ctrlKey || event.altKey) {
       return;
-    } else if ((event.key === "Delete" || event.key === "Backspace") && selection) {
+    } else if (event.key === "Escape" && moving) {
+      stopMoving();
+    } else if ((event.key === "Delete" || event.key === "Backspace") && selection && !moving) {
       event.preventDefault();
       const part = selection.part;
       change(withPart(state, part, "hidden"), { redraw: false });
@@ -389,8 +412,6 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
       select(null);
     } else if (event.key === "Escape" && selection) {
       select(null);
-    } else if (event.key.toLowerCase() === "m") {
-      setMoving(!moving);
     }
   }, { signal });
 
