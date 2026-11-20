@@ -706,6 +706,42 @@
       ]
     },
     {
+      "id": "mus-diaphragm-parts",
+      "title": "横隔膜の腱中心と脚",
+      "group": "体幹",
+      "intro": ["横隔膜（diaphragm）は胸腔（thoracic cavity）と腹腔（abdominal cavity）を分けるドームの形の筋（muscle）で、まわり（胸骨（sternum）の剣状突起（xiphoid process）・下位6本の肋骨（ribs）と肋軟骨（costal cartilages）・腰椎（lumbar vertebrae））から起こった筋線維が、真ん中の腱（tendon）の板（腱中心（central tendon））に集まる。腰椎から起こる部分は左右の脚で、右脚（right bundle branch）の方が太く長い（第1〜3腰椎、左脚（left bundle branch）は第1〜2腰椎（first to second lumbar vertebrae））。脚は大腰筋（psoas major）の上を内側弓状靱帯（medial arcuate ligament）、腰方形筋（quadratus lumborum）の上を外側弓状靱帯で越える。縮むとドームが下がって胸腔が広がり、息を吸う（横隔神経（phrenic nerve）、C3〜C5）。"],
+      "terms": [
+        {
+          "id": "central-tendon-of-diaphragm", "ja": "腱中心", "yomi": "けんちゅうしん", "en": "central tendon of diaphragm", "enAlt": ["central tendon"], "la": "centrum tendineum diaphragmatis",
+          "plate": "diaphragm-inferior", "level": 1,
+          "kanji": "（横隔膜の）中心の腱",
+          "etym": "central「中心の」＋ tendon「腱」（ラテン語 tendere「張る」）",
+          "note": "横隔膜（diaphragm）のドームの頂の、クローバーの葉（lobe）の形をした腱（tendon）の板。まわりから起こった筋線維がみなここに付き（停止（insertion））、縮むと腱中心が下へ引かれて胸腔（thoracic cavity）が広がる。上面（superior surface）に心膜（pericardium）が癒着していて、心臓（heart）がこの上にのる。右寄りに大静脈孔（caval opening）があき、下大静脈（inferior vena cava）が通る。"
+        },
+        {
+          "id": "right-crus-of-diaphragm", "ja": "右脚（横隔膜）", "yomi": "うきゃく", "en": "right crus of diaphragm", "enAlt": ["right crus"], "la": "crus dextrum diaphragmatis",
+          "plate": "diaphragm-inferior", "level": 2,
+          "kanji": "（横隔膜の）右の脚",
+          "etym": "crus「脚・すね」（ラテン語）",
+          "note": "横隔膜（diaphragm）の腰椎部の右の部分で、第1〜3腰椎の椎体（vertebral body）の前から起こる（左脚（left crus）より太く長い）。上で線維（fiber）が左右に分かれて食道裂孔（esophageal hiatus）を囲み、食道（esophagus）が胸から腹（abdomen）へ抜ける所を締める（下部食道の逆流を防ぐ働きの一つ）。左右の脚は正中弓状靱帯でつながり、その後ろの大動脈裂孔（aortic hiatus）を大動脈（aorta）が通る。"
+        },
+        {
+          "id": "left-crus-of-diaphragm", "ja": "左脚（横隔膜）", "yomi": "さきゃく", "en": "left crus of diaphragm", "enAlt": ["left crus"], "la": "crus sinistrum diaphragmatis",
+          "plate": "diaphragm-inferior", "level": 2,
+          "kanji": "（横隔膜の）左の脚",
+          "etym": "crus「脚・すね」（ラテン語）",
+          "note": "横隔膜（diaphragm）の腰椎部の左の部分で、第1〜2腰椎（first to second lumbar vertebrae）の椎体（vertebral body）の前から起こる（右脚（right crus）より細く短い）。右脚と正中弓状靱帯でつながり、大動脈裂孔（aortic hiatus）の左の縁をつくる。"
+        },
+        {
+          "id": "medial-arcuate-ligament", "ja": "内側弓状靱帯", "yomi": "ないそくきゅうじょうじんたい", "en": "medial arcuate ligament", "la": "ligamentum arcuatum mediale",
+          "plate": "diaphragm-inferior", "level": 3,
+          "kanji": "内側の弓の形の靱帯",
+          "etym": "medial「内側の」＋ arcuate「弓の形の」（ラテン語 arcus「弓」）",
+          "note": "大腰筋（psoas major）の上の端を弓のように越える、横隔膜（diaphragm）の腰椎部の起こる所の腱（tendon）の弓（第1〜2腰椎（first to second lumbar vertebrae）の椎体（vertebral body）から第1腰椎（first lumbar vertebra）の肋骨突起（costal process）へ）。その外側（lateral）には腰方形筋（quadratus lumborum）を越える外側弓状靱帯（第1腰椎の肋骨突起から第12肋骨（twelfth rib）へ）がある。2つの弓の下を大腰筋と腰方形筋が腹（abdomen）の後ろの壁へくぐる。"
+        }
+      ]
+    },
+    {
       "id": "mus-shoulder",
       "title": "肩と上腕の筋",
       "group": "上肢",

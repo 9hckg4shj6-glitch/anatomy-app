@@ -1007,6 +1007,49 @@
           "note": "内閉鎖筋（obturator internus）の筋膜（fascia）が厚くなってできた弓。恥骨（pubis）の後ろから坐骨棘（ischial spine）まで、骨盤（pelvis）の側壁（lateral wall）を前後に走り、肛門挙筋（levator ani）（恥骨尾骨筋（pubococcygeus）・腸骨尾骨筋（iliococcygeus））がここから起こる。"
         }
       ]
+    },
+    {
+      "id": "uro-perineal-muscles",
+      "title": "会陰の筋と会陰腱中心",
+      "group": "骨盤底",
+      "intro": ["会陰（perineum）（骨盤（pelvis）の出口、左右の坐骨結節（ischial tuberosity）を結ぶ線で前の尿生殖三角（urogenital triangle）と後ろの肛門三角（anal triangle）に分ける）には、骨盤隔膜（pelvic diaphragm）（肛門挙筋（levator ani）・尾骨筋（coccygeus））の下に浅い筋（muscle）の層がある。尿生殖三角には坐骨海綿体筋（ischiocavernosus）・球海綿体筋（bulbospongiosus）・浅会陰横筋（superficial transverse perineal muscle）、肛門三角には外肛門括約筋（external anal sphincter）がある。真ん中の会陰腱中心（perineal body）にはこれらの筋と肛門挙筋が集まり、肛門（anus）と尾骨（coccyx）の間は肛門尾骨靱帯（anococcygeal ligament）がつなぐ。会陰の筋はみな陰部神経（S2〜S4）の枝（branch）が支配（innervation）する。"],
+      "terms": [
+        {
+          "id": "ischiocavernosus", "ja": "坐骨海綿体筋", "yomi": "ざこつかいめんたいきん", "en": "ischiocavernosus", "enAlt": ["ischiocavernosus muscle"], "la": "musculus ischiocavernosus",
+          "plate": "perineum-muscles", "level": 2,
+          "kanji": "坐骨から（陰茎・陰核の）海綿体へ行く筋",
+          "etym": "ischio-「坐骨の」（ギリシャ語 ischion）＋ cavernosus「海綿体の」（ラテン語 caverna「ほら穴」）",
+          "note": "尿生殖三角（urogenital triangle）の外側（lateral）の縁で、坐骨枝（ramus of ischium）から起こり、陰茎脚（crus of penis）（女性では陰核脚（crus of clitoris））を包んでその海綿体（cavernous body）に付く筋（muscle）。縮むと海綿体から出る静脈（vein）を押さえて勃起（erection）を保つ。陰部神経（pudendal nerve）の会陰神経が支配（innervation）する。"
+        },
+        {
+          "id": "bulbospongiosus", "ja": "球海綿体筋", "yomi": "きゅうかいめんたいきん", "en": "bulbospongiosus", "enAlt": ["bulbocavernosus"], "la": "musculus bulbospongiosus",
+          "plate": "perineum-muscles", "level": 2,
+          "kanji": "（尿道）球と（尿道）海綿体を包む筋",
+          "etym": "bulbo-「球の」（ラテン語 bulbus「球根」）＋ spongiosus「海綿の」",
+          "note": "尿生殖三角（urogenital triangle）の真ん中で、会陰腱中心（perineal body）から起こる筋（muscle）。男性では左右が正中（median）で合わさって尿道球（bulb of penis）（尿道海綿体（corpus spongiosum of penis）の後ろの端）を包み、縮んで尿道（urethra）に残った尿や精液（semen）を押し出す（射精）。女性では左右に分かれて腟口（vaginal orifice）と前庭球（bulb of vestibule）を囲み、腟口を締める。陰部神経（pudendal nerve）が支配（innervation）する。"
+        },
+        {
+          "id": "superficial-transverse-perineal", "ja": "浅会陰横筋", "yomi": "せんえいんおうきん", "en": "superficial transverse perineal muscle", "enAlt": ["superficial transverse perineus"], "la": "musculus transversus perinei superficialis",
+          "plate": "perineum-muscles", "level": 3,
+          "kanji": "会陰を浅く横に走る筋",
+          "etym": "superficial「浅い」＋ transverse「横の」＋ perineal「会陰の」（ギリシャ語 perineos）",
+          "note": "坐骨結節（ischial tuberosity）の内側（medial）から起こり、横に走って会陰腱中心（perineal body）に付く細い筋（muscle）。尿生殖三角（urogenital triangle）と肛門三角（anal triangle）の境に沿って走り、会陰腱中心を左右から引いて固定する。その深くには、尿生殖隔膜（urogenital diaphragm）をつくる深会陰横筋がある。"
+        },
+        {
+          "id": "perineal-body", "ja": "会陰腱中心", "yomi": "えいんけんちゅうしん", "en": "perineal body", "enAlt": ["central tendon of perineum"], "la": "centrum perinei",
+          "plate": "perineum-muscles", "level": 1,
+          "kanji": "会陰（の筋）の腱の中心",
+          "etym": "perineal「会陰の」＋ body「塊」",
+          "note": "肛門（anus）と尿生殖三角（urogenital triangle）（男性では尿道球（bulb of penis）、女性では腟口（vaginal orifice））の間の、線維（fiber）と筋（muscle）の塊。球海綿体筋（bulbospongiosus）・浅会陰横筋（superficial transverse perineal muscle）・深会陰横筋・外肛門括約筋（external anal sphincter）・肛門挙筋（levator ani）がここに集まり、骨盤（pelvis）の底を支えるかなめになる。出産のときに傷みやすく、裂けるのを防ぐため会陰切開をすることがある。"
+        },
+        {
+          "id": "anococcygeal-ligament", "ja": "肛門尾骨靱帯", "yomi": "こうもんびこつじんたい", "en": "anococcygeal ligament", "enAlt": ["anococcygeal body"], "la": "ligamentum anococcygeum",
+          "plate": "perineum-muscles", "level": 3,
+          "kanji": "肛門と尾骨の間の靱帯",
+          "etym": "ano-「肛門の」（ラテン語 anus）＋ coccygeal「尾骨の」（ギリシャ語 kokkyx「カッコウ」、くちばしの形から）",
+          "note": "肛門（anus）の後ろから尾骨（coccyx）の先までの、線維（fiber）と筋（muscle）の束。外肛門括約筋（external anal sphincter）と肛門挙筋（levator ani）（腸骨尾骨筋（iliococcygeus）・恥骨尾骨筋（pubococcygeus））が付き、肛門管（anal canal）を後ろへつなぎとめる。"
+        }
+      ]
     }
   ]
 }

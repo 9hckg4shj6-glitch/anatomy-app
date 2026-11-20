@@ -10459,6 +10459,744 @@
      "term": "femur"
     }
    ]
+  },
+  "esophagus-course": {
+   "url": "plates/esophagus-course.35de5ca7d0.webp",
+   "w": 546,
+   "h": 824,
+   "labels": [
+    {
+     "at": [
+      0.511,
+      0.3313
+     ],
+     "term": "pharyngoesophageal-constriction"
+    },
+    {
+     "at": [
+      0.4707,
+      0.3908
+     ],
+     "term": "trachea"
+    },
+    {
+     "at": [
+      0.5201,
+      0.4248
+     ],
+     "term": "cervical-part-of-esophagus"
+    },
+    {
+     "at": [
+      0.5293,
+      0.6068
+     ],
+     "term": "esophagus"
+    },
+    {
+     "at": [
+      0.5256,
+      0.801
+     ],
+     "term": "thoracic-part-of-esophagus"
+    },
+    {
+     "at": [
+      0.5788,
+      0.9442
+     ],
+     "ja": "下食道括約筋",
+     "en": "lower esophageal sphincter",
+     "note": "食道の下の端（胃の入口）で、ふだん締まって胃の中身が食道へ戻るのを防ぐ所。はっきりした筋の輪ではなく、食道の輪走筋の厚み・横隔膜の右脚・食道と胃の角度（ヒス角）がいっしょに働く。"
+    },
+    {
+     "at": [
+      0.6392,
+      0.9854
+     ],
+     "term": "stomach"
+    }
+   ]
+  },
+  "teeth": {
+   "url": "plates/teeth.007fec621c.webp",
+   "w": 444,
+   "h": 1077,
+   "labels": [
+    {
+     "at": [
+      0.5113,
+      0.0492
+     ],
+     "term": "central-incisor"
+    },
+    {
+     "at": [
+      0.6149,
+      0.0566
+     ],
+     "term": "lateral-incisor"
+    },
+    {
+     "at": [
+      0.6937,
+      0.0715
+     ],
+     "term": "canines"
+    },
+    {
+     "at": [
+      0.7365,
+      0.1012
+     ],
+     "term": "first-premolar"
+    },
+    {
+     "at": [
+      0.777,
+      0.1402
+     ],
+     "term": "second-premolar"
+    },
+    {
+     "at": [
+      0.8041,
+      0.1718
+     ],
+     "term": "first-molar"
+    },
+    {
+     "at": [
+      0.8266,
+      0.2163
+     ],
+     "term": "second-molar"
+    },
+    {
+     "at": [
+      0.8491,
+      0.2646
+     ],
+     "term": "third-molar"
+    },
+    {
+     "at": [
+      0.5135,
+      0.3668
+     ],
+     "term": "deciduous-teeth"
+    },
+    {
+     "at": [
+      0.6239,
+      0.4076
+     ],
+     "ja": "乳犬歯",
+     "en": "deciduous canine",
+     "note": "乳歯の犬歯（3番）。1歳半ごろに生え、11〜12歳ごろ永久歯の犬歯に生えかわる。"
+    },
+    {
+     "at": [
+      0.7162,
+      0.4605
+     ],
+     "ja": "第2乳臼歯",
+     "en": "deciduous second molar",
+     "note": "乳歯のいちばん奥の歯（5番）。2〜3歳で生え、10〜12歳ごろ第2小臼歯に生えかわる。そのすぐ奥に6歳ごろ第1大臼歯が生える。"
+    }
+   ]
+  },
+  "tooth-structure": {
+   "url": "plates/tooth-structure.86be3a94ba.webp",
+   "w": 1400,
+   "h": 1308,
+   "labels": [
+    {
+     "at": [
+      0.6725,
+      0.1542
+     ],
+     "term": "crown-of-tooth"
+    },
+    {
+     "at": [
+      0.3725,
+      0.0685
+     ],
+     "term": "enamel"
+    },
+    {
+     "at": [
+      0.36,
+      0.3522
+     ],
+     "term": "dentin"
+    },
+    {
+     "at": [
+      0.515,
+      0.2773
+     ],
+     "term": "dental-pulp"
+    },
+    {
+     "at": [
+      0.6475,
+      0.5343
+     ],
+     "term": "root-of-tooth"
+    },
+    {
+     "at": [
+      0.675,
+      0.6119
+     ],
+     "term": "cementum"
+    },
+    {
+     "at": [
+      0.68,
+      0.6895
+     ],
+     "term": "periodontal-ligament"
+    },
+    {
+     "at": [
+      0.24,
+      0.4165
+     ],
+     "term": "gingiva"
+    },
+    {
+     "at": [
+      0.155,
+      0.727
+     ],
+     "ja": "歯槽骨",
+     "en": "alveolar bone",
+     "note": "上顎骨・下顎骨の歯槽突起（歯槽部）で、歯根を入れるくぼみ（歯槽）の壁をつくる骨。歯が抜けると吸収されてやせる。"
+    }
+   ]
+  },
+  "tongue-dorsum": {
+   "url": "plates/tongue-dorsum.e4ab649f0f.webp",
+   "w": 489,
+   "h": 801,
+   "labels": [
+    {
+     "at": [
+      0.4867,
+      0.1523
+     ],
+     "term": "root-of-tongue"
+    },
+    {
+     "at": [
+      0.4703,
+      0.2447
+     ],
+     "term": "foramen-caecum-of-tongue"
+    },
+    {
+     "at": [
+      0.2638,
+      0.3371
+     ],
+     "term": "terminal-sulcus-of-tongue"
+    },
+    {
+     "at": [
+      0.5787,
+      0.3196
+     ],
+     "term": "vallate-papillae"
+    },
+    {
+     "at": [
+      0.9448,
+      0.5019
+     ],
+     "term": "foliate-papillae"
+    },
+    {
+     "at": [
+      0.2986,
+      0.5243
+     ],
+     "term": "body-of-tongue"
+    },
+    {
+     "at": [
+      0.4826,
+      0.5993
+     ],
+     "term": "median-sulcus-of-tongue"
+    },
+    {
+     "at": [
+      0.6135,
+      0.7528
+     ],
+     "term": "fungiform-papillae"
+    },
+    {
+     "at": [
+      0.7219,
+      0.8889
+     ],
+     "term": "filiform-papillae"
+    },
+    {
+     "at": [
+      0.4826,
+      0.9488
+     ],
+     "term": "apex-of-tongue"
+    }
+   ]
+  },
+  "taste-bud": {
+   "url": "plates/taste-bud.290a5119b7.webp",
+   "w": 589,
+   "h": 590,
+   "labels": [
+    {
+     "at": [
+      0.5654,
+      0.0678
+     ],
+     "term": "taste-pore"
+    },
+    {
+     "at": [
+      0.3565,
+      0.0407
+     ],
+     "ja": "味毛",
+     "en": "gustatory hairs (microvilli)",
+     "note": "味細胞の上の端から味孔へ出る微絨毛。ここで味の物質を受けとる。"
+    },
+    {
+     "at": [
+      0.4414,
+      0.2983
+     ],
+     "term": "taste-bud"
+    },
+    {
+     "at": [
+      0.5433,
+      0.7305
+     ],
+     "term": "gustatory-cell"
+    },
+    {
+     "at": [
+      0.6876,
+      0.7831
+     ],
+     "ja": "支持細胞",
+     "en": "supporting cell",
+     "note": "味蕾の中で味細胞の間をうめる細長い細胞。味細胞へ育つ途中の細胞もふくむ。"
+    },
+    {
+     "at": [
+      0.3005,
+      0.8695
+     ],
+     "ja": "基底細胞",
+     "en": "basal cell",
+     "note": "味蕾の底にある小さな細胞で、分裂して新しい味細胞をつくる。"
+    }
+   ]
+  },
+  "salivary-glands": {
+   "url": "plates/salivary-glands.0d296ae032.webp",
+   "w": 1400,
+   "h": 1195,
+   "labels": [
+    {
+     "at": [
+      0.7317,
+      0.3572
+     ],
+     "term": "parotid-gland"
+    },
+    {
+     "at": [
+      0.5244,
+      0.3258
+     ],
+     "term": "parotid-duct"
+    },
+    {
+     "at": [
+      0.3049,
+      0.6501
+     ],
+     "term": "sublingual-gland"
+    },
+    {
+     "at": [
+      0.4939,
+      0.7359
+     ],
+     "term": "submandibular-gland"
+    }
+   ]
+  },
+  "diaphragm-inferior": {
+   "url": "plates/diaphragm-inferior.06be3b084f.webp",
+   "w": 1327,
+   "h": 1264,
+   "labels": [
+    {
+     "at": [
+      0.5139,
+      0.0593
+     ],
+     "term": "sternum"
+    },
+    {
+     "at": [
+      0.5177,
+      0.2168
+     ],
+     "term": "central-tendon-of-diaphragm"
+    },
+    {
+     "at": [
+      0.4378,
+      0.3006
+     ],
+     "term": "caval-opening"
+    },
+    {
+     "at": [
+      0.5463,
+      0.3671
+     ],
+     "term": "esophageal-hiatus"
+    },
+    {
+     "at": [
+      0.6315,
+      0.4976
+     ],
+     "term": "diaphragm"
+    },
+    {
+     "at": [
+      0.5117,
+      0.5301
+     ],
+     "term": "aortic-hiatus"
+    },
+    {
+     "at": [
+      0.3775,
+      0.6377
+     ],
+     "term": "medial-arcuate-ligament"
+    },
+    {
+     "at": [
+      0.4484,
+      0.7737
+     ],
+     "term": "right-crus-of-diaphragm"
+    },
+    {
+     "at": [
+      0.5275,
+      0.7737
+     ],
+     "term": "left-crus-of-diaphragm"
+    },
+    {
+     "at": [
+      0.049,
+      0.7413
+     ],
+     "term": "twelfth-rib"
+    },
+    {
+     "at": [
+      0.6315,
+      0.7587
+     ],
+     "term": "psoas-major"
+    },
+    {
+     "at": [
+      0.7543,
+      0.807
+     ],
+     "term": "quadratus-lumborum"
+    },
+    {
+     "at": [
+      0.4846,
+      0.9241
+     ],
+     "ja": "腰椎",
+     "en": "lumbar vertebra",
+     "note": "横隔膜の右脚・左脚は、腰椎の椎体の前から起こる（右脚は第1〜3腰椎、左脚は第1〜2腰椎）。"
+    }
+   ]
+  },
+  "pelvic-floor": {
+   "url": "plates/pelvic-floor.2285249563.webp",
+   "w": 1055,
+   "h": 1080,
+   "labels": [
+    {
+     "at": [
+      0.5213,
+      0.1454
+     ],
+     "term": "pubic-symphysis"
+    },
+    {
+     "at": [
+      0.5213,
+      0.2269
+     ],
+     "term": "urethra"
+    },
+    {
+     "at": [
+      0.5213,
+      0.3093
+     ],
+     "term": "vagina"
+    },
+    {
+     "at": [
+      0.4464,
+      0.35
+     ],
+     "term": "pubococcygeus"
+    },
+    {
+     "at": [
+      0.5081,
+      0.4185
+     ],
+     "term": "rectum"
+    },
+    {
+     "at": [
+      0.3905,
+      0.5019
+     ],
+     "term": "iliococcygeus"
+    },
+    {
+     "at": [
+      0.5137,
+      0.6352
+     ],
+     "term": "sacrum"
+    },
+    {
+     "at": [
+      0.2303,
+      0.6509
+     ],
+     "term": "iliacus"
+    }
+   ]
+  },
+  "perineum-muscles": {
+   "url": "plates/perineum-muscles.cc4bd2c6a8.webp",
+   "w": 1400,
+   "h": 812,
+   "labels": [
+    {
+     "at": [
+      0.1771,
+      0.114
+     ],
+     "term": "penis"
+    },
+    {
+     "at": [
+      0.1591,
+      0.4047
+     ],
+     "term": "bulbospongiosus"
+    },
+    {
+     "at": [
+      0.1832,
+      0.5928
+     ],
+     "term": "external-anal-sphincter"
+    },
+    {
+     "at": [
+      0.1421,
+      0.6254
+     ],
+     "term": "levator-ani"
+    },
+    {
+     "at": [
+      0.1034,
+      0.6718
+     ],
+     "term": "gluteus-maximus"
+    },
+    {
+     "at": [
+      0.1766,
+      0.6816
+     ],
+     "term": "coccyx"
+    },
+    {
+     "at": [
+      0.7748,
+      0.2508
+     ],
+     "term": "clitoris"
+    },
+    {
+     "at": [
+      0.7224,
+      0.2891
+     ],
+     "term": "ischiocavernosus"
+    },
+    {
+     "at": [
+      0.7748,
+      0.3893
+     ],
+     "ja": "外尿道口",
+     "en": "external urethral orifice",
+     "note": "尿道が体の外に開く口。女性では腟前庭の、陰核と腟口の間に開く。"
+    },
+    {
+     "at": [
+      0.7748,
+      0.4748
+     ],
+     "ja": "腟口",
+     "en": "vaginal orifice",
+     "note": "腟が腟前庭に開く口。まわりを球海綿体筋が囲む。"
+    },
+    {
+     "at": [
+      0.8428,
+      0.5692
+     ],
+     "term": "superficial-transverse-perineal"
+    },
+    {
+     "at": [
+      0.7743,
+      0.5928
+     ],
+     "term": "perineal-body"
+    },
+    {
+     "at": [
+      0.7682,
+      0.6686
+     ],
+     "term": "anus"
+    },
+    {
+     "at": [
+      0.7743,
+      0.794
+     ],
+     "term": "anococcygeal-ligament"
+    }
+   ]
+  },
+  "pituitary": {
+   "url": "plates/pituitary.e40eb748dc.webp",
+   "w": 528,
+   "h": 509,
+   "labels": [
+    {
+     "at": [
+      0.6288,
+      0.4715
+     ],
+     "term": "thalamus"
+    },
+    {
+     "at": [
+      0.447,
+      0.5717
+     ],
+     "term": "hypothalamus"
+    },
+    {
+     "at": [
+      0.4413,
+      0.6876
+     ],
+     "ja": "漏斗（下垂体茎）",
+     "en": "infundibulum (pituitary stalk)",
+     "note": "視床下部の底から下垂体へのびる柄。中を視床下部から神経下垂体への神経線維（視床下部下垂体路）が通り、表面を下垂体門脈が走る。"
+    },
+    {
+     "at": [
+      0.3712,
+      0.7328
+     ],
+     "term": "adenohypophysis"
+    },
+    {
+     "at": [
+      0.411,
+      0.7564
+     ],
+     "term": "neurohypophysis"
+    }
+   ]
+  },
+  "cerebellum-lateral": {
+   "url": "plates/cerebellum-lateral.7700eb982a.webp",
+   "w": 596,
+   "h": 528,
+   "labels": [
+    {
+     "at": [
+      0.7215,
+      0.1364
+     ],
+     "term": "cerebellum"
+    },
+    {
+     "at": [
+      0.6258,
+      0.3939
+     ],
+     "ja": "小脳活樹",
+     "en": "arbor vitae",
+     "note": "小脳の断面で、中の白質が木の枝のように広がって見えるもの（「生命の樹」の意味）。枝の先を小脳皮質（灰白質）が包む。"
+    },
+    {
+     "at": [
+      0.0872,
+      0.3655
+     ],
+     "term": "pons"
+    },
+    {
+     "at": [
+      0.2383,
+      0.6989
+     ],
+     "term": "olive"
+    }
+   ]
   }
  }
 }

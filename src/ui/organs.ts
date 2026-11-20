@@ -32,7 +32,7 @@ export async function organScreen(ctx: AppContext, arg: string): Promise<void> {
 export const ORGAN_GROUPS: { title: string; color: string; organs: string[] }[] = [
   { title: "心臓と血管・リンパ", color: "#c8323c", organs: ["heart", "vessels", "lymph"] },
   { title: "呼吸器と胸の中", color: "#6fa8dc", organs: ["nose", "pharynx", "larynx", "lung", "lung-segments", "pleura", "mediastinum"] },
-  { title: "消化器と腹膜", color: "#d9965b", organs: ["stomach", "liver", "intestine", "peritoneum"] },
+  { title: "消化器と腹膜", color: "#d9965b", organs: ["mouth", "stomach", "liver", "intestine", "peritoneum", "diaphragms"] },
   { title: "泌尿器と生殖器", color: "#d4a514", organs: ["kidney", "renal", "male", "female"] },
   { title: "神経と感覚器", color: "#e9c46a", organs: ["brain", "brain-base", "spinal-cord", "brachial-plexus", "eye", "ear"] },
   { title: "関節", color: "#b7c7cc", organs: ["shoulder", "elbow", "hip", "knee"] },

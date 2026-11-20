@@ -71,8 +71,9 @@ export default defineConfig({
         // 臓器の平面図（plates/*.webp、1枚 70〜130KB）は小さいのでプリキャッシュする（オフラインでも開ける）。
         globPatterns: ["**/*.{html,js,css,json,svg,png,webp,woff2}"],
         globIgnores: ["models/*.glb", "audio/*.m4a"],
-        // 語の内容（content/terms）は JS に入るので、語が増えると既定の 2 MiB を超える。超えるとオフラインで開けなくなる
-        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+        // 語の内容（content/terms）と臓器の図（content/organs.json）は JS に入るので、語や図が増えると既定の 2 MiB を超える。
+        // 超えるとオフラインで開けなくなる（2026-11-20 に JS が 4.2MB になり 4 MiB を超えたので 6 MiB に）
+        maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         runtimeCaching: [
           {
             urlPattern: ({ url }) => url.pathname.includes("/models/") && url.pathname.endsWith(".glb"),

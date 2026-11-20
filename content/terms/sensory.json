@@ -499,6 +499,63 @@
           "note": "ラセン器（spiral organ）の外側（lateral）に3列に並ぶ有毛細胞（hair cell）。音に合わせて細胞（cell）の長さが伸び縮みし、基底板（basilar membrane）のゆれを強めて、小さな音を聞き分けられるようにする（蝸牛（cochlea）の増幅器）。耳（ear）の検査（耳音響放射）はこの働きを見る。"
         }
       ]
+    },
+    {
+      "id": "sens-taste",
+      "title": "舌乳頭と味蕾",
+      "group": "味覚",
+      "intro": ["舌（tongue）の背面（dorsal surface）は、舌の後ろ1/3の舌根（root of tongue）と前2/3の舌体（body of tongue）に、V字の分界溝（terminal sulcus of tongue）で分かれる。舌体の表面は4種類の舌乳頭（lingual papillae）でざらざらしている。全面をおおう糸状乳頭（filiform papillae）は角化（keratinization）していて味蕾（taste bud）が無く、食べ物をなめとる。その間に点在する茸状乳頭（fungiform papillae）、分界溝のすぐ前に並ぶ大きな有郭乳頭（vallate papillae）、舌の外側（lateral）の縁のひだ（fold）の葉状乳頭（foliate papillae）には、味を感じる味蕾がある。味蕾の味細胞（gustatory cell）は味孔（taste pore）に味毛を出し、舌の前2/3の味は顔面神経（facial nerve）（鼓索神経（chorda tympani））、後ろ1/3の味は舌咽神経（glossopharyngeal nerve）が脳（brain）へ伝える。"],
+      "terms": [
+        {
+          "id": "vallate-papillae", "ja": "有郭乳頭", "yomi": "ゆうかくにゅうとう", "en": "vallate papillae", "enAlt": ["circumvallate papillae"], "la": "papillae vallatae",
+          "plate": "tongue-dorsum", "level": 1,
+          "kanji": "郭（堀）に囲まれた乳頭",
+          "etym": "vallate「堀・土塁で囲まれた」（ラテン語 vallum「土塁」）＋ papilla「乳頭（小さな突起）」",
+          "note": "分界溝（terminal sulcus of tongue）のすぐ前にV字に並ぶ、直径1〜2mmのいちばん大きな舌乳頭（lingual papillae）（8〜12個）。まわりを深い溝が囲み、溝の壁に味蕾（taste bud）が多い（1つに数百個）。溝の底にエブネル腺が開き、味の物質を洗い流す。舌（tongue）の後ろ1/3と同じく舌咽神経（glossopharyngeal nerve）が味を伝える。"
+        },
+        {
+          "id": "fungiform-papillae", "ja": "茸状乳頭", "yomi": "じじょうにゅうとう", "en": "fungiform papillae", "la": "papillae fungiformes",
+          "plate": "tongue-dorsum", "level": 2,
+          "kanji": "茸（きのこ）の形の乳頭",
+          "etym": "fungiform「きのこの形の」（ラテン語 fungus「きのこ」）",
+          "note": "糸状乳頭（filiform papillae）の間に点在する、きのこの形の舌乳頭（lingual papillae）。舌尖（apex of tongue）と舌（tongue）の縁に多く、上皮（epithelium）が薄いので血管（blood vessel）がすけて赤い点に見える。上面（superior surface）に数個の味蕾（taste bud）があり、味は顔面神経（facial nerve）（鼓索神経（chorda tympani））が伝える。"
+        },
+        {
+          "id": "filiform-papillae", "ja": "糸状乳頭", "yomi": "しじょうにゅうとう", "en": "filiform papillae", "la": "papillae filiformes",
+          "plate": "tongue-dorsum", "level": 2,
+          "kanji": "糸の形の乳頭",
+          "etym": "filiform「糸の形の」（ラテン語 filum「糸」）",
+          "note": "舌体（body of tongue）の背面全体をおおう、いちばん数の多い細い舌乳頭（lingual papillae）。先が角化（keratinization）していて舌（tongue）の表面をざらざらにし、食べ物をなめとる。味蕾（taste bud）は無い（味ではなく触覚（touch）にかかわる）。はがれた角化上皮と細菌がたまると白く見える（舌苔）。"
+        },
+        {
+          "id": "foliate-papillae", "ja": "葉状乳頭", "yomi": "ようじょうにゅうとう", "en": "foliate papillae", "la": "papillae foliatae",
+          "plate": "tongue-dorsum", "level": 2,
+          "kanji": "葉の形の乳頭",
+          "etym": "foliate「葉の形の」（ラテン語 folium「葉」）",
+          "note": "舌（tongue）の外側（lateral）の縁の後ろの方に並ぶ、縦のひだ（fold）の形の舌乳頭（lingual papillae）。ひだの間の溝の壁に味蕾（taste bud）がある。ヒトでは子どもの方がよく発達していて、大人では目立たない。"
+        },
+        {
+          "id": "taste-bud", "ja": "味蕾", "yomi": "みらい", "en": "taste bud", "la": "caliculus gustatorius",
+          "plate": "taste-bud", "level": 1,
+          "kanji": "味の蕾（つぼみ）",
+          "etym": "taste「味」＋ bud「つぼみ」。ラテン語 gustus「味わうこと」から gustatory「味覚の」",
+          "note": "味を感じる、つぼみの形の小さな器官（organ）（高さ約70μm）。上皮（epithelium）の中にあり、味細胞（gustatory cell）・支持細胞・基底細胞の50〜150個の細胞（cell）が集まって、上の味孔（taste pore）で口の中に開く。舌（tongue）の茸状乳頭（fungiform papillae）・有郭乳頭（vallate papillae）・葉状乳頭（foliate papillae）のほか、軟口蓋（soft palate）・咽頭（pharynx）・喉頭蓋（epiglottis）にもある（全部で約5,000〜10,000個）。"
+        },
+        {
+          "id": "gustatory-cell", "ja": "味細胞", "yomi": "みさいぼう", "en": "gustatory cell", "enAlt": ["taste receptor cell","taste cell"], "la": "cellula gustatoria",
+          "plate": "taste-bud", "level": 2,
+          "kanji": "味を受けとる細胞",
+          "etym": "gustatory「味覚の」（ラテン語 gustare「味わう」）＋ cell「細胞」",
+          "note": "味蕾（taste bud）の中の、味の物質を受けとる細長い細胞（cell）。上の端の微絨毛（microvilli）（味毛）を味孔（taste pore）に出し、甘味・うま味・苦味・酸味・塩味を受けとって、味覚（taste）の神経（nerve）（顔面神経（facial nerve）・舌咽神経（glossopharyngeal nerve）・迷走神経（vagus nerve））に伝える。寿命は約10日で、基底細胞から新しくつくられる。"
+        },
+        {
+          "id": "taste-pore", "ja": "味孔", "yomi": "みこう", "en": "taste pore", "la": "porus gustatorius",
+          "plate": "taste-bud", "level": 3,
+          "kanji": "味（の物質の入る）孔",
+          "etym": "taste「味」＋ pore「小さな孔」（ギリシャ語 poros「通り道」）",
+          "note": "味蕾（taste bud）の上の、上皮（epithelium）の表面に開く小さな孔。だ液に溶けた味の物質がここから入り、味細胞（gustatory cell）の味毛にふれる。乾いた食べ物の味が分かりにくいのは、溶けないと味孔に届かないため。"
+        }
+      ]
     }
   ]
 }

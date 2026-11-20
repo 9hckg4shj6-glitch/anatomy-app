@@ -1611,6 +1611,77 @@
       ]
     },
     {
+      "id": "dig-tooth-structure",
+      "title": "歯の構造と乳歯",
+      "group": "口と咽頭",
+      "intro": ["歯（tooth）は、歯肉（gingiva）から出た歯冠（crown of tooth）と、歯槽（dental alveolus）（上顎骨（maxilla）・下顎骨（mandible）の歯槽突起（alveolar process）のくぼみ）に埋まった歯根（root of tooth）からなる。歯冠の表面は体でいちばん硬いエナメル質（enamel）、歯根の表面は骨（bone）に似たセメント質（cementum）で、その内側（medial）の大部分は象牙質（dentin）、中心の歯髄腔に神経（nerve）と血管（blood vessel）を含む歯髄（dental pulp）がある。歯根は歯根膜（periodontal ligament）で歯槽骨（alveolar bone）につながれ、かむ力を受け止める。乳歯（deciduous teeth）は20本（片側の上下に切歯（incisors）2・犬歯（canines）1・乳臼歯2）で生後6か月ごろから生え、6歳ごろから永久歯（permanent teeth）32本（切歯2・犬歯1・小臼歯（premolars）2・大臼歯（molars）3）に生えかわる。"],
+      "terms": [
+        {
+          "id": "crown-of-tooth", "ja": "歯冠", "yomi": "しかん", "en": "crown of tooth", "enAlt": ["dental crown"], "la": "corona dentis",
+          "plate": "tooth-structure", "level": 1,
+          "kanji": "歯の冠（かんむり）",
+          "etym": "crown「冠」（ラテン語 corona）＋ tooth（ラテン語 dens）",
+          "note": "歯（tooth）のうち、歯肉（gingiva）から口の中に出ている部分。表面はエナメル質（enamel）におおわれ、かむ面には山（咬頭（cusp））と溝がある。歯冠と歯根（root of tooth）の境のくびれを歯頚といい、ここを歯肉が囲む。"
+        },
+        {
+          "id": "root-of-tooth", "ja": "歯根", "yomi": "しこん", "en": "root of tooth", "enAlt": ["dental root"], "la": "radix dentis",
+          "plate": "tooth-structure", "level": 1,
+          "kanji": "歯の根",
+          "etym": "root「根」（ラテン語 radix）",
+          "note": "歯（tooth）のうち、歯槽（dental alveolus）（上顎骨（maxilla）・下顎骨（mandible）の歯槽突起（alveolar process）のくぼみ）に埋まっている部分。表面はセメント質（cementum）で、歯根膜（periodontal ligament）によって歯槽骨（alveolar bone）につながれる（釘植という線維（fiber）の連結）。数は切歯（incisors）・犬歯（canines）が1本、上の大臼歯（molars）は3本、下の大臼歯は2本がふつう。先の根尖孔から神経（nerve）と血管（blood vessel）が歯髄（dental pulp）へ入る。"
+        },
+        {
+          "id": "enamel", "ja": "エナメル質", "yomi": "えなめるしつ", "en": "enamel", "enAlt": ["dental enamel"], "la": "enamelum",
+          "plate": "tooth-structure", "level": 1,
+          "kanji": "（ほうろうのような）エナメルの質",
+          "etym": "enamel「ほうろう（焼き物のうわぐすり）」（古フランス語 esmail）",
+          "note": "歯冠（crown of tooth）の表面をおおう、体でいちばん硬い組織（tissue）（無機質が約96%、ほとんどがハイドロキシアパタイト）。外胚葉（ectoderm）のエナメル芽細胞がつくるが、歯（tooth）が生えたあとはその細胞（cell）が無くなるので、むし歯（う蝕）で失われると元に戻らない。神経（nerve）も血管（blood vessel）も無く、削っても痛まない。"
+        },
+        {
+          "id": "dentin", "ja": "象牙質", "yomi": "ぞうげしつ", "en": "dentin", "enAlt": ["dentine"], "la": "dentinum",
+          "plate": "tooth-structure", "level": 1,
+          "kanji": "象牙のような質",
+          "etym": "dentin ← ラテン語 dens「歯」。象牙（ゾウの切歯）も同じ組織",
+          "note": "歯（tooth）の大部分をつくる、骨より少し硬い組織（tissue）（無機質が約70%）。歯冠（crown of tooth）ではエナメル質（enamel）、歯根（root of tooth）ではセメント質（cementum）の内側（medial）にある。歯髄（dental pulp）の表面に並ぶ象牙芽細胞の突起（process）が細い管（象牙細管）に入っていて、一生少しずつつくられる。エナメル質が欠けて象牙質が出ると、冷たいものがしみる（知覚過敏）。"
+        },
+        {
+          "id": "dental-pulp", "ja": "歯髄", "yomi": "しずい", "en": "dental pulp", "enAlt": ["pulp"], "la": "pulpa dentis",
+          "plate": "tooth-structure", "level": 1,
+          "kanji": "歯の髄（中心のやわらかい部分）",
+          "etym": "pulp「やわらかい中身」（ラテン語 pulpa「果肉」）",
+          "note": "歯（tooth）の中心の空所（歯髄腔。歯冠（crown of tooth）の髄室と歯根（root of tooth）の根管）を満たす、やわらかい結合組織（connective tissue）。根尖孔から入った神経（nerve）（上顎神経（maxillary nerve）・下顎神経（mandibular nerve）の枝（branch））と血管（blood vessel）・リンパ管（lymphatic vessel）を含み、表面の象牙芽細胞が象牙質（dentin）をつくる。むし歯が歯髄まで進むと強く痛む（歯髄炎）。いわゆる「歯の神経を抜く」治療は歯髄をとること。"
+        },
+        {
+          "id": "cementum", "ja": "セメント質", "yomi": "せめんとしつ", "en": "cementum", "la": "cementum",
+          "plate": "tooth-structure", "level": 2,
+          "kanji": "（歯根を固める）セメントの質",
+          "etym": "cementum「くだいた石・接着材」（ラテン語 caementum）",
+          "note": "歯根（root of tooth）の表面をおおう薄い層で、骨（bone）に似た組織（tissue）。歯根膜（periodontal ligament）の線維（fiber）がここに埋まって、歯（tooth）を歯槽骨（alveolar bone）につなぎとめる。歯冠（crown of tooth）のエナメル質（enamel）とは歯頚で接する。"
+        },
+        {
+          "id": "periodontal-ligament", "ja": "歯根膜", "yomi": "しこんまく", "en": "periodontal ligament", "enAlt": ["periodontal membrane","periodontium"], "la": "periodontium",
+          "plate": "tooth-structure", "level": 2,
+          "kanji": "歯根（のまわり）の膜",
+          "etym": "periodontal「歯のまわりの」（ギリシャ語 peri「まわり」＋ odous「歯」）＋ ligament「靱帯」",
+          "note": "歯根（root of tooth）のセメント質（cementum）と歯槽骨（alveolar bone）の間の、厚さ0.2mmほどの線維（fiber）の膜（membrane）。歯（tooth）をつり下げるようにつなぎ（釘植）、かむ力をやわらげて骨（bone）に伝える。かむ力の強さや食べ物の硬さを感じる受容器（receptor）が多い。歯周病では歯肉（gingiva）から歯根膜・歯槽骨へと壊れていき、歯がぐらつく。"
+        },
+        {
+          "id": "third-molar", "ja": "第3大臼歯", "yomi": "だいさんだいきゅうし", "en": "third molar", "enAlt": ["wisdom tooth"], "la": "dens molaris tertius",
+          "plate": "teeth", "level": 2,
+          "kanji": "3番目の大臼歯",
+          "etym": "third「3番目の」＋ molar「臼歯」（ラテン語 mola「臼」）。wisdom tooth「知恵の歯」（分別のつく年ごろに生える）",
+          "note": "歯列（dental arch）のいちばん奥の大臼歯（molars）（8番）で、親知らず（wisdom tooth）・智歯ともいう。永久歯（permanent teeth）でいちばん遅く（17〜21歳ごろ）生え、生えない人や4本そろわない人も多い。あご（jaw）に場所が足りないと斜めに埋まったり（埋伏歯）、まわりの歯肉（gingiva）が炎症（inflammation）を起こしたり（智歯周囲炎）する。"
+        },
+        {
+          "id": "deciduous-teeth", "ja": "乳歯", "yomi": "にゅうし", "en": "deciduous teeth", "enAlt": ["primary teeth","milk teeth","baby teeth"], "la": "dentes decidui",
+          "plate": "teeth", "level": 1,
+          "kanji": "乳（赤ちゃん）の時期の歯",
+          "etym": "deciduous「抜け落ちる」（ラテン語 decidere「落ちる」、落葉樹と同じ語）",
+          "note": "生後6か月ごろから生え、2〜3歳で20本（上下左右に乳切歯2・乳犬歯1・乳臼歯2）そろう歯（tooth）。6歳ごろから下の中切歯（central incisor）と第1大臼歯（first molar）を先頭に永久歯（permanent teeth）（32本）に生えかわり、12歳ごろまでにすべて抜ける。乳臼歯のあとには小臼歯（premolars）が生え、大臼歯（molars）は乳歯の奥に新しく生える（乳歯に大臼歯は無い）。"
+        }
+      ]
+    },
+    {
       "id": "dig-oral-pharynx",
       "title": "口腔と咽頭",
       "group": "口と咽頭",
