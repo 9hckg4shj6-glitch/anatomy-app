@@ -48,11 +48,11 @@ describe("使い方ガイドの見本", () => {
     expect(demo.classList.contains("is-mouse")).toBe(true);
   });
 
-  it("5つのタブ: 押すとそのタブの説明に替わる", () => {
+  it("6つのタブ: 押すとそのタブの説明に替わる", () => {
     const controller = new AbortController();
     const demo = tabsDemo(controller.signal, (tab) => Object.assign(document.createElement("p"), { textContent: tab }));
     const chips = [...demo.querySelectorAll<HTMLButtonElement>(".gd-tabs-chips .chip")];
-    expect(chips.map((chip) => chip.textContent)).toEqual(["今日", "学ぶ", "調べる", "記録", "設定"]);
+    expect(chips.map((chip) => chip.textContent)).toEqual(["今日", "学ぶ", "調べる", "3D模型", "記録", "設定"]);
     chips[2].click();
     expect(demo.querySelector(".gd-tabs-side")?.textContent).toBe("look");
     controller.abort();

@@ -85,7 +85,7 @@ describe("画面の分かりにくさの見直し", () => {
     expect(plain.querySelector(".home-item")?.getAttribute("aria-disabled")).toBe("true");
   });
 
-  it("使い方の「5つのタブ」は、開いたタブを選んで止めておける（各タブの1行の説明の「くわしく」から）", () => {
+  it("使い方の「6つのタブ」は、開いたタブを選んで止めておける（各タブの1行の説明の「くわしく」から）", () => {
     const controller = new AbortController();
     const demo = tabsDemo(controller.signal, (tab) => Object.assign(document.createElement("p"), { textContent: tab }), "look");
     expect(demo.querySelector(".gd-tabs-side")?.textContent).toBe("look");

@@ -78,6 +78,31 @@ export interface DrawingMark {
   project?: string;
 }
 
+/**
+ * 3D模型（#/model。src/ui/model.ts）の見せ方。人体模型のように、系統ごとの濃さを変え、部品（GLB の部品ID）を隠す・薄くする・選ぶ・動かす。
+ * opacity は系統ID（皮膚は "body"）ごとの濃さ 0〜1（0 は出さない）。offsets は部品を動かした量（体の座標 m）。
+ * explode は分解の度合い 0〜1（見えている部品の真ん中から外へ離す）。side は片側だけ見せる（本人の右・左）
+ */
+export interface ModelSpec {
+  opacity: Record<string, number>;
+  hidden: string[];
+  faded: string[];
+  selected: string[];
+  /** 選んだ部品のほかを、ごく薄くする */
+  solo: boolean;
+  side: "both" | "right" | "left";
+  explode: number;
+  offsets: Record<string, Vec3>;
+}
+
+/** 3D模型で、部品をドラッグして動かす。start は押した部品から動かす部品（null ならふだんどおり回す）、end は動かした量 */
+export interface PartDrag {
+  /** 動かすモードか（PC は Shift を押しながらでも動かせる） */
+  enabled: () => boolean;
+  start: (elementId: string) => string[] | null;
+  end: (elements: string[], delta: Vec3) => void;
+}
+
 /** 骨学試験 D の図: terms の部品だけを side の側で見せ（ほかは隠す）、cut で切る */
 export interface DrawingSpec {
   terms: string[];
@@ -478,6 +503,17 @@ export class AnatomyViewer {
   /** 向きを答える問題の間は目印を隠す（hideCompass） */
   private compassHidden = false;
   private compassShown = false;
+  /** 3D模型の見せ方（setModel。null ならふだんの画面） */
+  private model: { spec: ModelSpec; hidden: Set<string>; faded: Set<string>; selected: Set<string> } | null = null;
+  /** 3D模型で名前の札を付ける部品（動かしても札がついてくる） */
+  private labelElements: string[] | null = null;
+  /** 3D模型で部品をドラッグして動かす（setModel の間だけ） */
+  partDrag: PartDrag | null = null;
+  /** ドラッグで動かしている部品と、動かした量（体の座標）。tap は押した所（動かさずに離したらタップにする） */
+  private dragging: {
+    pointer: number; elements: Set<string>; plane: THREE.Plane; from: THREE.Vector3; delta: THREE.Vector3;
+    x: number; y: number; moved: boolean; tap: { element: string; point: Vec3; normal: Vec3 | null };
+  } | null = null;
 
   constructor(private readonly host: HTMLElement) {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -607,6 +643,12 @@ export class AnatomyViewer {
       hoverAt = null;
       this.hoverLabel.hidden = true;
     });
+
+    // 3D模型: 動かすモードで部品を押したら、回す代わりにその部品を動かす。OrbitControls より先に受けるため、3Dの枠で capture する
+    host.addEventListener("pointerdown", (event) => this.startPartDrag(event), { capture: true });
+    host.addEventListener("pointermove", (event) => this.movePartDrag(event), { capture: true });
+    host.addEventListener("pointerup", (event) => this.endPartDrag(event, false), { capture: true });
+    host.addEventListener("pointercancel", (event) => this.endPartDrag(event, true), { capture: true });
 
     new ResizeObserver(() => this.resize()).observe(host);
     this.resize();
@@ -994,8 +1036,10 @@ export class AnatomyViewer {
 
   setLabel(termId: string | null, text = ""): void {
     this.labelTerm = termId;
+    this.labelElements = null;
     this.label.textContent = text;
     this.label.hidden = !termId;
+    this.label.style.opacity = "1";
     this.dirty = true;
   }
 
@@ -1127,6 +1171,237 @@ export class AnatomyViewer {
   /** アプリが最後に決めた視点へ戻る（自分で回して迷ったとき） */
   resetView(): void {
     if (this.homeView) this.moveTo(...this.homeView, true);
+  }
+
+  /**
+   * 3D模型の見せ方にする（null でやめ、動かした部品を元の位置へ戻す）。濃さが 0 より大きい系統を読み込んで出す。
+   * スライダーを動かしている間も何度も呼ばれるので、読み込み済みの系統なら材質を替えて置き直すだけ
+   */
+  async setModel(spec: ModelSpec | null): Promise<void> {
+    if (!spec) {
+      this.dragging = null;
+      this.partDrag = null;
+      this.labelElements = null;
+      if (!this.model) return;
+      this.model = null;
+      this.placeParts();
+      this.label.hidden = true;
+      this.refresh();
+      return;
+    }
+    await this.ready;
+    this.model = { spec, hidden: new Set(spec.hidden), faded: new Set(spec.faded), selected: new Set(spec.selected) };
+    const shown = Object.keys(spec.opacity).filter((id) => spec.opacity[id] > 0 && this.index.systems[id]);
+    await this.show({ systems: shown.filter((id) => id !== "body"), body: shown.includes("body") });
+    // 読み込んでいる間に別の画面へ移ったら（setModel(null)）何もしない
+    if (this.model?.spec !== spec) return;
+    this.placeParts();
+  }
+
+  /** 部品のある側（本人の右なら -1、左なら 1、正中なら 0）。まだ読み込んでいない部品は null */
+  sideOf(elementId: string): -1 | 0 | 1 | null {
+    const mesh = this.meshes.get(elementId);
+    if (!mesh) return null;
+    const x = this.restCenter(mesh).x;
+    return x < -0.01 ? -1 : x > 0.01 ? 1 : 0;
+  }
+
+  /** 部品の元の位置の真ん中（動かす前。読み込んでいない部品は除く） */
+  partCenter(elements: string[]): Vec3 | null {
+    const sum = new THREE.Vector3();
+    let count = 0;
+    for (const id of elements) {
+      const mesh = this.meshes.get(id);
+      if (!mesh) continue;
+      sum.add(this.restCenter(mesh));
+      count++;
+    }
+    return count ? (sum.divideScalar(count).toArray() as Vec3) : null;
+  }
+
+  /** 部品を含む語（細かい順）。表示中の系統に限らない（3D模型で部品の名前とまとまりを決める） */
+  partTerms(elementId: string): string[] {
+    return this.elementTerms.get(elementId) ?? [];
+  }
+
+  /** 3D模型で、部品に名前の札を付ける（null で消す）。部品を動かしても札がついてくる */
+  setPartLabel(elements: string[] | null, text = ""): void {
+    this.labelTerm = null;
+    this.labelElements = elements?.length ? elements : null;
+    this.label.textContent = text;
+    this.label.hidden = !this.labelElements;
+    this.dirty = true;
+  }
+
+  /**
+   * 3D模型で、見えている部品（only があればその部品）の全体が入るように、from の向き（無ければ今の向き）から映す。
+   * 動かした部品・分解した位置も入れる
+   */
+  frameModel(from?: Vec3, only?: string[]): void {
+    const box = new THREE.Box3();
+    const wanted = only?.length ? new Set(only) : null;
+    for (const [id, mesh] of this.meshes) {
+      if (wanted ? !wanted.has(id) : mesh.userData.system === "body" || this.ghosted.has(id)) continue;
+      if (!this.isVisible(mesh)) continue;
+      mesh.geometry.computeBoundingBox();
+      mesh.updateMatrixWorld();
+      box.union(mesh.geometry.boundingBox!.clone().applyMatrix4(mesh.matrixWorld));
+    }
+    if (box.isEmpty()) {
+      this.overview();
+      return;
+    }
+    const target = box.getCenter(new THREE.Vector3());
+    const radius = Math.max(0.03, box.getSize(new THREE.Vector3()).length() / 2);
+    const direction = from ? new THREE.Vector3(...from).normalize() : this.camera.position.clone().sub(this.controls.target).normalize();
+    if (direction.lengthSq() === 0) direction.set(0, 0, 1);
+    // 真上・真下からだと回転の操作がしにくいので少し前に傾ける
+    if (Math.abs(direction.y) > 0.96) direction.add(new THREE.Vector3(0, 0, 0.12)).normalize();
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    this.moveTo(target, target.clone().add(direction.multiplyScalar((radius * 0.92) / tan / Math.min(1, this.camera.aspect))), true);
+  }
+
+  /** 画面の右の向き（体の座標）。3D模型の「外へ出す」で、部品を画面の横へずらすのに使う */
+  get screenRight(): Vec3 {
+    const e = this.camera.matrixWorld.elements;
+    return [e[0], e[1], e[2]];
+  }
+
+  /** 3D模型の部品の色と見せ方（refresh から）。own は部品のもとの色 */
+  private paintModelPart(elementId: string, mesh: THREE.Mesh, own: () => string): void {
+    const { spec, hidden, faded, selected } = this.model!;
+    const system = mesh.userData.system as string;
+    const opacity = spec.opacity[system] ?? 0;
+    const chosen = selected.has(elementId);
+    const x = this.restCenter(mesh).x;
+    // 片側だけ: 本人の右は -x。皮膚は両側のまま
+    const offSide = spec.side !== "both" && system !== "body" && (spec.side === "right" ? x > 0.01 : x < -0.01);
+    mesh.visible = opacity > 0 && !hidden.has(elementId) && !offSide && !(this.tucked.has(elementId) && !chosen);
+    if (!mesh.visible) return;
+    // 濃さは 5% きざみ（スライダーを動かしている間に材質を作りすぎないように）
+    const level = Math.round(opacity * 20) / 20;
+    const ghost = (material: THREE.Material, pickable = false) => {
+      mesh.material = material;
+      mesh.renderOrder = system === "body" ? 2 : 1;
+      if (!pickable) this.ghosted.add(elementId);
+    };
+    if (system === "body") ghost(this.ghost("#e8c9a8", Math.max(0.03, level * 0.55)));
+    else if (chosen) mesh.material = this.solid(`#${new THREE.Color(own()).lerp(new THREE.Color(HIGHLIGHT), 0.55).getHexString()}`, mesh);
+    else if (faded.has(elementId) || this.veiled.has(elementId)) ghost(this.ghost(own(), 0.14));
+    else if (spec.solo && selected.size) ghost(this.ghost(own(), 0.06));
+    // 6割より薄い系統はタップで選べない（奥の部品をタップできるように）
+    else if (level < 1) ghost(this.ghost(own(), level), level >= 0.6);
+    else mesh.material = this.solid(own(), mesh);
+  }
+
+  /** 3D模型で動かした部品・分解を置き直す（3D模型でなければ、動かした部品を元の位置へ戻す） */
+  private placeParts(): void {
+    const spec = this.model?.spec;
+    let center: THREE.Vector3 | null = null;
+    if (spec && spec.explode > 0) {
+      // 分解の中心: 選んだ部品だけを見ているならその部品、ほかは見えている部品（皮膚は除く）の真ん中
+      const focus = spec.solo && this.model!.selected.size ? this.model!.selected : null;
+      const box = new THREE.Box3();
+      for (const [id, mesh] of this.meshes) {
+        if (mesh.userData.system === "body" || (focus ? !focus.has(id) : !this.isVisible(mesh))) continue;
+        box.expandByPoint(this.restCenter(mesh));
+      }
+      if (!box.isEmpty()) center = box.getCenter(new THREE.Vector3());
+    }
+    const drag = this.dragging;
+    for (const [id, mesh] of this.meshes) {
+      const offset = spec?.offsets[id];
+      const exploding = !!center && mesh.userData.system !== "body";
+      const dragged = !!drag?.elements.has(id);
+      if (!spec || (!offset && !exploding && !dragged)) {
+        if (mesh.userData.modelRest) {
+          mesh.position.copy(mesh.userData.modelRest as THREE.Vector3);
+          delete mesh.userData.modelRest;
+        }
+        continue;
+      }
+      if (!mesh.userData.modelRest) {
+        // 元の中心（restCenter）は動かす前に覚えておく
+        this.restCenter(mesh);
+        mesh.userData.modelRest = mesh.position.clone();
+      }
+      const delta = new THREE.Vector3();
+      if (exploding) delta.copy(this.restCenter(mesh)).sub(center!).multiplyScalar(spec.explode * 1.4);
+      if (offset) delta.add(new THREE.Vector3(...offset));
+      if (dragged) delta.add(drag!.delta);
+      // 動かす量は体の座標なので、親（GLB の場面）の座標に直して置く
+      const parent = mesh.parent!;
+      parent.updateWorldMatrix(true, false);
+      const world = parent.localToWorld((mesh.userData.modelRest as THREE.Vector3).clone()).add(delta);
+      mesh.position.copy(parent.worldToLocal(world));
+    }
+    this.dirty = true;
+  }
+
+  private startPartDrag(event: PointerEvent): void {
+    if (this.dragging) {
+      // 動かしている間の2本目の指は、回す操作に渡さない
+      event.stopPropagation();
+      return;
+    }
+    if (!this.model || !this.partDrag || event.target !== this.renderer.domElement) return;
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    if (!this.partDrag.enabled() && !event.shiftKey) return;
+    const hit = this.pick(event.clientX, event.clientY, false);
+    if (!hit) return;
+    const elements = this.partDrag.start(hit.element);
+    if (!elements?.length) return;
+    event.stopPropagation();
+    event.preventDefault();
+    const from = new THREE.Vector3(...hit.point);
+    const facing = this.camera.getWorldDirection(new THREE.Vector3());
+    this.dragging = {
+      pointer: event.pointerId, elements: new Set(elements), plane: new THREE.Plane().setFromNormalAndCoplanarPoint(facing, from),
+      from, delta: new THREE.Vector3(), x: event.clientX, y: event.clientY, moved: false, tap: hit,
+    };
+    this.hoverLabel.hidden = true;
+    this.renderer.domElement.setPointerCapture?.(event.pointerId);
+    this.host.classList.add("is-dragging");
+  }
+
+  private movePartDrag(event: PointerEvent): void {
+    const drag = this.dragging;
+    if (!drag) return;
+    event.stopPropagation();
+    if (event.pointerId !== drag.pointer) return;
+    if (!drag.moved && Math.hypot(event.clientX - drag.x, event.clientY - drag.y) < 6) return;
+    drag.moved = true;
+    const rect = this.renderer.domElement.getBoundingClientRect();
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(new THREE.Vector2(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1), this.camera);
+    const point = raycaster.ray.intersectPlane(drag.plane, new THREE.Vector3());
+    if (!point) return;
+    drag.delta.copy(point).sub(drag.from);
+    this.placeParts();
+  }
+
+  private endPartDrag(event: PointerEvent, cancel: boolean): void {
+    const drag = this.dragging;
+    if (!drag) return;
+    event.stopPropagation();
+    if (event.pointerId !== drag.pointer) return;
+    this.dragging = null;
+    this.host.classList.remove("is-dragging");
+    if (cancel || !drag.moved) {
+      this.placeParts();
+      // 動かさずに離したらタップ（部品を選ぶ）
+      if (!cancel) this.onPick?.(drag.tap.element, drag.tap.point, drag.tap.normal);
+      return;
+    }
+    const delta = drag.delta.toArray() as Vec3;
+    // end で offsets を書きかえて setModel し直すまで、動かした位置のまま見せる
+    const spec = this.model?.spec;
+    if (spec) for (const id of drag.elements) {
+      const [x, y, z] = spec.offsets[id] ?? [0, 0, 0];
+      spec.offsets[id] = [x + delta[0], y + delta[1], z + delta[2]];
+    }
+    this.placeParts();
+    this.partDrag?.end([...drag.elements], delta);
   }
 
   /** point に寄る（その点を真ん中にして、今の半分より近くへ）。「視点を戻す」で元に戻れる */
@@ -1447,6 +1722,10 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
         return (owners[0] && termById.get(owners[0])?.color) || base;
       };
       mesh.renderOrder = 0;
+      if (this.model) {
+        this.paintModelPart(elementId, mesh, own);
+        continue;
+      }
       // 関節の動きを示すときは、動く骨を光らせ、動かない皮膚は消す。筋の動きでは骨だけを見せる。
       // 局所解剖では、境界と中を通る語のほかは隠す（骨格は添える）
       const bone = system === "skeletal" || system === "body";
@@ -2065,6 +2344,24 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
   }
 
   private placeLabel(): void {
+    if (this.labelElements) {
+      // 3D模型: 部品の今の位置（動かした・分解した所）の、見えている部分の真ん中
+      const box = new THREE.Box3();
+      for (const id of this.labelElements) {
+        const mesh = this.meshes.get(id);
+        if (!mesh || !this.isVisible(mesh)) continue;
+        mesh.geometry.computeBoundingBox();
+        box.union(mesh.geometry.boundingBox!.clone().applyMatrix4(mesh.matrixWorld));
+      }
+      if (box.isEmpty()) {
+        this.label.style.opacity = "0";
+        return;
+      }
+      const point = box.getCenter(new THREE.Vector3()).project(this.camera);
+      this.label.style.transform = `translate(${((point.x + 1) / 2) * this.host.clientWidth}px, ${((1 - point.y) / 2) * this.host.clientHeight}px)`;
+      this.label.style.opacity = point.z > 1 ? "0" : "1";
+      return;
+    }
     if (!this.labelTerm || !this.index) return;
     const pin = pins[this.labelTerm];
     const figure = this.labelTerm === this.figureTerm ? this.figureAnchor?.toArray() : undefined;

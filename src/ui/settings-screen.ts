@@ -243,7 +243,7 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
 function aboutSection(): HTMLElement {
   return group("使い方とこのアプリについて", {},
     h("ul", { class: "home-card home-list set-links" },
-      itemRow("#/guide", "guide", "#1f6f78", "使い方", "目的に合わせた使い方・5つのタブ・ことばの意味"),
+      itemRow("#/guide", "guide", "#1f6f78", "使い方", "目的に合わせた使い方・6つのタブ・ことばの意味"),
       itemRow("#/credits", "credits", "#77736a", "出典・クレジット", "3Dモデル・図・音声のライセンス"),
       new URLSearchParams(location.search).has("admin") ? itemRow("#/admin", "settings", "#77736a", "ピン", "部位のピンを打つ（管理用）") : "",
     ));

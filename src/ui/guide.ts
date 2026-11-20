@@ -12,7 +12,7 @@ import { purposeChips } from "./settings-screen";
 import { ICONS } from "./study-hub";
 import { resetTabIntros } from "./tab-intro";
 
-/** 5つのタブと、その中にあるもの（使い方のページの地図） */
+/** 6つのタブと、その中にあるもの（使い方のページの地図） */
 const TABS: Record<GuideTab, { name: string; href: string; icon: keyof typeof ICONS; lead: string; items: [label: string, href: string, text: string][] }> = {
   today: {
     name: "今日", href: "#/", icon: "today", lead: "毎日ここから開く",
@@ -39,6 +39,14 @@ const TABS: Record<GuideTab, { name: string; href: string; icon: keyof typeof IC
       ["系統から探す", "#/look", "骨格系・筋系などの語を、レッスンごとに一覧で"],
       ["図鑑", "#/explore", "3Dをタップして、名前と説明を見る"],
       ["★を付けた語", "#/look", "語のカードの ☆ で印を付けた語"],
+    ],
+  },
+  model: {
+    name: "3D模型", href: "#/model", icon: "model", lead: "人体模型を自由にいじる",
+    items: [
+      ["部品を選ぶ", "#/model", "タップで選び、まとまりを大きく・細かく。隠す・薄くする・これだけ見る・外へ出す"],
+      ["部品を動かす", "#/model", "3Dの下の「動かす」で、部品をドラッグして取り外す。「元に戻す」で1つずつ戻せる"],
+      ["系統と濃さ・分解・断面", "#/model", "系統ごとに透かす・部品を外へ離す・水平断などで切る・片側だけ見る"],
     ],
   },
   records: {
@@ -92,7 +100,7 @@ const CHAPTERS: [id: string, title: string, sub: string][] = [
   ["ask", "問い方と答え方", "4択とタップ"],
   ["memory", "復習のしくみ", "忘れる前に出る"],
   ["3d", "3Dの動かし方", "回す・拡大・タップ"],
-  ["tabs", "5つのタブ", "どこに何があるか"],
+  ["tabs", "6つのタブ", "どこに何があるか"],
   ["card", "語のカード", "どこを読めばいいか"],
   ["more", "そのほかの学び方", "臓器の図・演習など"],
   ["purpose", "目的別の使い方", "授業・骨学・調べる・見直し"],
@@ -107,7 +115,7 @@ const SCENE_OF: Record<string, Scene> = { lesson: "femur", ask: "femur", card: "
 /**
  * 使い方（#/guide。入口は上の帯の「? 使い方」と設定のタブの下。3Dの「?」は3Dの動かし方の一覧から 05 へ。各タブの1行の説明は 06 をそのタブで）。
  * docs/普段使い.md「使い方ガイド」「画面の分かりにくさの見直し」。タブの印と「‹」は、開いたときのタブのまま（src/main.ts）。
- * 目次 → 毎日の使い方（動く見本）→ レッスン（段ごとの見本）→ 問い方 → 復習のしくみ（図）→ 3Dの動かし方 → 5つのタブ →
+ * 目次 → 毎日の使い方（動く見本）→ レッスン（段ごとの見本）→ 問い方 → 復習のしくみ（図）→ 3Dの動かし方 → 6つのタブ →
  * 語のカード → そのほかの学び方 → 目的別 → 困ったとき → ことば → キーボード。
  * "#/guide/<章>" でその章を開く（目次から押したときは画面を作り直さずにずらすだけ）
  */
@@ -180,7 +188,7 @@ export function guide(ctx: AppContext, arg = ""): void {
     },
   }, "3Dで試してみる");
 
-  // "#/guide/tabs/<タブ>" は、5つのタブの章をそのタブにして開く（各タブの1行の説明から）
+  // "#/guide/tabs/<タブ>" は、6つのタブの章をそのタブにして開く（各タブの1行の説明から）
   const tabOf = (value: string) => {
     const [chapterId, tab = ""] = value.split("/");
     return chapterId === "tabs" && isGuideTab(tab) ? tab : undefined;
@@ -232,7 +240,7 @@ export function guide(ctx: AppContext, arg = ""): void {
       h("p", { class: "guide-note" }, "⤢ を押すと説明をたたんで3Dを大きく。3Dと説明の境目は、ドラッグで大きさを変えられます。"),
     ),
 
-    chapter("tabs", "5つのタブ", "画面の下（iPad・PC は左）の5つのタブで行き来します。レッスンや復習を解いている間はタブが隠れ、上の「‹」で戻ります。",
+    chapter("tabs", "6つのタブ", "画面の下（iPad・PC は左）の6つのタブで行き来します。レッスンや復習を解いている間はタブが隠れ、上の「‹」で戻ります。",
       tabs,
     ),
 

@@ -1490,3 +1490,77 @@ a.set-profile .set-value::after { content: " ›"; color: #b9b3a7; font-weight: 
 .drill-more .text-button { margin: 0; padding-left: 0; }
 .panel > .set-group + .set-group, .panel > .set-group + .drill-note { margin-top: 22px; }
 
+
+/* ===== 3D模型（#/model。src/ui/model.ts・docs/普段使い.md「3D模型」）=====
+   3Dを大きめに。欄は設定と同じ見出しとカード。選んだ部品のカードを一番上に、操作のボタンを3列で */
+.layout.is-model { --stage-default: 56svh; }
+.model-page { gap: 22px; }
+.stage-tools .model-mode { display: flex; gap: 0; border-radius: 999px; overflow: hidden; }
+.stage-tools .model-mode .chip { border-radius: 0; }
+.stage-tools .model-mode .chip:first-child { border-radius: 999px 0 0 999px; }
+.stage-tools .model-mode .chip:last-child { border-radius: 0 999px 999px 0; border-left: 0; }
+.stage-tools .chip:disabled { opacity: 0.45; }
+.stage.is-moving canvas { cursor: grab; }
+.stage.is-dragging canvas { cursor: grabbing; }
+
+.model-empty {
+  padding: 14px 16px; border-radius: 16px; border: 1px dashed color-mix(in srgb, var(--ink) 22%, var(--surface)); background: var(--surface);
+}
+.model-empty p { margin: 0; }
+.model-empty p + p { margin-top: 4px; font-size: 13px; line-height: 1.6; }
+
+.model-selected {
+  padding: 14px 14px 12px; border-radius: 18px; background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--highlight) 45%, var(--line));
+  box-shadow: 0 1px 2px rgb(43 42 39 / 0.04), 0 16px 30px -22px color-mix(in srgb, var(--highlight) 70%, black);
+}
+.model-selected-head { display: flex; align-items: flex-start; gap: 10px; }
+.model-selected-name { display: grid; gap: 2px; flex: 1; min-width: 0; }
+.model-selected-name b { font-size: 18px; line-height: 1.35; }
+.model-selected-name .en { color: var(--muted); font-size: 13px; }
+.model-selected-meta { color: var(--muted); font-size: 12px; }
+.model-close {
+  flex: none; width: 36px; height: 36px; margin: -6px -4px 0 0; border: 0; border-radius: 50%; background: none; color: var(--muted); font-size: 20px; cursor: pointer;
+}
+.model-level {
+  display: flex; align-items: center; gap: 6px; margin-top: 10px; padding: 3px; border-radius: 11px; background: color-mix(in srgb, var(--ink) 6%, var(--surface));
+}
+.model-level-text { flex: 1; text-align: center; font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.model-step {
+  min-height: 34px; padding: 4px 12px; border: 0; border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 13px; font-weight: 600; cursor: pointer;
+  box-shadow: 0 1px 3px rgb(43 42 39 / 0.14);
+}
+.model-step:disabled { background: none; box-shadow: none; color: #b8b2a6; cursor: default; }
+.model-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+.model-action {
+  min-height: 44px; padding: 6px 4px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink);
+  font-size: 13.5px; font-weight: 600; cursor: pointer;
+}
+.model-action.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.model-action:disabled { color: #b8b2a6; cursor: default; }
+@media (hover: hover) { .model-action:not(:disabled):not(.on):hover { border-color: color-mix(in srgb, var(--ink) 30%, var(--line)); } }
+.model-link { display: inline-block; margin: 10px 2px 0; font-size: 13.5px; font-weight: 700; text-decoration: none; }
+
+.model-undo { display: flex; gap: 8px; }
+.model-undo .ghost-button { flex: 1; min-height: 42px; font-size: 14px; }
+.model-undo .ghost-button:disabled { color: #b8b2a6; cursor: default; }
+.model-presets { padding: 0 2px; }
+
+/* 系統の行: 押すと出し入れする名前・濃さのつまみ・割合 */
+.model-system-row { display: grid; grid-template-columns: minmax(96px, 9.5em) minmax(0, 1fr) 3.2em; gap: 10px; min-height: 52px; padding: 8px 14px 8px 10px; }
+.model-system {
+  display: flex; align-items: center; gap: 8px; min-height: 36px; padding: 4px 6px; border: 0; border-radius: 9px; background: none;
+  color: var(--ink); font-size: 14px; font-weight: 600; text-align: left; cursor: pointer;
+}
+.model-system[aria-pressed="false"] { color: var(--muted); font-weight: 500; }
+.model-swatch { flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--swatch); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.12); }
+.model-system[aria-pressed="false"] .model-swatch { background: none; box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--swatch) 80%, var(--ink)); }
+.model-row-label { padding-left: 6px; }
+.model-system-row input[type="range"], .model-range input[type="range"] { width: 100%; margin: 0; accent-color: var(--accent); }
+.model-percent { text-align: right; font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.model-range { margin-top: 0; }
+.model-buttons { display: flex; gap: 8px; }
+.model-buttons .ghost-button { flex: 1; min-height: 40px; font-size: 14px; }
+.model-views { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.model-views .ghost-button { min-height: 40px; padding: 4px; font-size: 14px; }
+@media (pointer: coarse) { .model-system-row input[type="range"] { height: 32px; } }

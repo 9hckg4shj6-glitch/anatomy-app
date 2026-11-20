@@ -18,11 +18,12 @@ const TAB_ICON = {
   today: `<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/>`,
   study: `<path d="M12 6.5C10 5 7.3 4.5 4 4.8v13.4c3.3-.3 6 .2 8 1.7 2-1.5 4.7-2 8-1.7V4.8c-3.3-.3-6 .2-8 1.7Z"/><path d="M12 6.5v13.4"/>`,
   look: `<circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5 5"/>`,
+  model: `<path d="M12 3.2 19.6 7.6v8.8L12 20.8l-7.6-4.4V7.6Z"/><path d="M4.4 7.6 12 12l7.6-4.4M12 12v8.8"/>`,
   records: `<path d="M4 20h16"/><path d="M7 17v-5M12 17V7M17 17v-8"/>`,
   settings: `<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>`,
 };
 export type GuideTab = keyof typeof TAB_ICON;
-const TAB_NAMES: [GuideTab, string][] = [["today", "今日"], ["study", "学ぶ"], ["look", "調べる"], ["records", "記録"], ["settings", "設定"]];
+const TAB_NAMES: [GuideTab, string][] = [["today", "今日"], ["study", "学ぶ"], ["look", "調べる"], ["model", "3D模型"], ["records", "記録"], ["settings", "設定"]];
 const svg = (body: string, cls = "") => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${body}</svg>`;
 
 /** 見本の部品 */
@@ -369,7 +370,7 @@ export function compassDemo(): HTMLElement {
   return box;
 }
 
-/** 5つのタブの見本。タブを押す（または自動で）と中身が替わる */
+/** 6つのタブの見本。タブを押す（または自動で）と中身が替わる */
 const TAB_SCREENS: Record<GuideTab, string> = {
   today: `<div class="gd-stage">${spinImg("gd-spin gd-spin-sm")}</div>
     <div class="gd-sheet"><p class="gd-kicker">今日の一手</p><div class="gd-btn">今日の復習 <b>12問</b><span>→</span></div><p class="gd-note">続きから<span data-exam>・骨学試験まで○日</span></p></div>`,
@@ -380,6 +381,8 @@ const TAB_SCREENS: Record<GuideTab, string> = {
     <div class="gd-search">${svg(TAB_ICON.look)}<span>だいたい</span></div>
     <ul class="gd-rows gd-hits"><li><b>大腿骨</b><small lang="en">femur</small></li><li><b>大腿動脈</b><small lang="en">femoral artery</small></li><li><b>大腿四頭筋</b><small lang="en">quadriceps femoris</small></li></ul>
     <ul class="gd-rows"><li><i style="--c:#c08a12"></i>★を付けた語</li><li><i style="--c:#c4663f"></i>系統から探す</li><li><i style="--c:#1f6f78"></i>図鑑（3Dをタップ）</li></ul></div>`,
+  model: `<div class="gd-stage">${spinImg("gd-spin gd-spin-sm")}</div>
+    <div class="gd-sheet"><p class="gd-kicker">3D模型</p><ul class="gd-rows"><li><i style="--c:#ff7a1a"></i>部品をタップ → 隠す・取り外す</li><li><i style="--c:#c75b4f"></i>系統の濃さ・分解・断面</li></ul></div>`,
   records: `<div class="gd-pad"><p class="gd-title">記録</p>
     <div class="gd-week">${[3, 5, 2, 6, 4, 7, 5].map((n, i) => `<span style="--n:${n}"><i></i>${"月火水木金土日"[i]}</span>`).join("")}</div>
     <ul class="gd-rows"><li><i style="--c:#3a9d5d"></i>進捗（覚え具合を色で）</li></ul></div>`,
@@ -387,7 +390,7 @@ const TAB_SCREENS: Record<GuideTab, string> = {
     <ul class="gd-rows"><li><i style="--c:#3d7a5a"></i>アカウントと同期</li><li><i style="--c:#c4663f"></i>コースと使う目的</li><li><i style="--c:#77736a"></i>1日の数・表示</li><li data-exam><i style="--c:#6a5a9e"></i>骨学試験の日</li><li><i style="--c:#77736a"></i>記録の書き出し</li><li><i style="--c:#1f6f78"></i>使い方・出典</li></ul></div>`,
 };
 
-/** 5つのタブの見本。select でそのタブにして止める（各タブの1行の説明の「くわしく ›」から #/guide/tabs/<タブ> で開いたとき） */
+/** 6つのタブの見本。select でそのタブにして止める（各タブの1行の説明の「くわしく ›」から #/guide/tabs/<タブ> で開いたとき） */
 export type TabsDemo = HTMLElement & { select(tab: GuideTab): void };
 
 export function isGuideTab(value: string): value is GuideTab {
@@ -411,8 +414,9 @@ export function tabsDemo(signal: AbortSignal, describe: (tab: GuideTab) => HTMLE
   const show = (tab: GuideTab, tap: boolean) => {
     index = TAB_NAMES.findIndex(([id]) => id === tab);
     // 指をそのタブへ動かしてから切りかえる
-    // 見本の画面の幅 220px を5つに分けたタブの真ん中
-    pointer.style.setProperty("--x", `${index * 44 + 22}px`);
+    // 見本の画面の幅 220px をタブの数で分けた、そのタブの真ん中
+    const width = 220 / TAB_NAMES.length;
+    pointer.style.setProperty("--x", `${(index * width + width / 2).toFixed(1)}px`);
     pointer.classList.toggle("is-shown", tap);
     const swap = () => {
       for (const element of phone.querySelectorAll<HTMLElement>(".gd-tab")) element.classList.toggle("on", element.dataset.tab === tab);

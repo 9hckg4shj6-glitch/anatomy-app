@@ -79,7 +79,7 @@
 .gd-btn-ghost { justify-content: center; height: 28px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 10.5px; }
 .gd-navrow { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .gd-navrow .gd-btn { justify-content: center; height: 30px; }
-.gd-tabbar { position: absolute; inset: auto 0 0; z-index: 2; height: 40px; display: grid; grid-template-columns: repeat(5, 1fr); background: var(--surface); border-top: 1px solid var(--line); }
+.gd-tabbar { position: absolute; inset: auto 0 0; z-index: 2; height: 40px; display: grid; grid-template-columns: repeat(6, 1fr); background: var(--surface); border-top: 1px solid var(--line); }
 .gd-tab { display: grid; justify-items: center; align-content: center; gap: 1px; color: #8b867b; font-size: 8.5px; transition: color 0.2s; }
 .gd-tab svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .gd-tab i { font-style: normal; }
@@ -362,7 +362,7 @@
 .gd-c-rarm { fill: #ff9a4d; }
 .gd-c-arrow { fill: none; stroke: #c4663f; stroke-width: 2; stroke-linecap: round; }
 
-/* ───── 5つのタブ ───── */
+/* ───── 6つのタブ ───── */
 .gd-tabs-scr { bottom: 40px; overflow: hidden; }
 .gd-tabs-scr.is-in { animation: gd-in 0.35s both; }
 .gd-tabs-scr .gd-stage { height: 230px; }

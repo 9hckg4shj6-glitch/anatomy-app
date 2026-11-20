@@ -16,6 +16,7 @@ import { explore } from "./ui/explore";
 import { home } from "./ui/home";
 import { lesson } from "./ui/lesson";
 import { lessons } from "./ui/lessons";
+import { modelScreen } from "./ui/model";
 import { look } from "./ui/look";
 import { records } from "./ui/records";
 import { start } from "./ui/start";
@@ -42,19 +43,20 @@ const layout = document.querySelector<HTMLElement>(".layout")!;
 const APP_NAME = "からだ見聞録";
 
 const PAGES: Record<string, [title: string, href: string]> = {
-  study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"], settings: ["設定", "#/settings"], start: ["はじめに", "#/start"],
+  study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
   exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], organs: ["臓器の図", "#/organs"], roots: ["語根カード", "#/roots"],
   progress: ["進捗", "#/progress"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
-/** 下のタブ（今日・学ぶ・調べる・記録・設定）と、ページがどのタブの中にあるか。2026-11-20 に記録から設定を分けた */
+/** 下のタブ（今日・学ぶ・調べる・3D模型・記録・設定）と、ページがどのタブの中にあるか。2026-11-20 に記録から設定を分け、3D模型を足した */
 const TABS: Record<string, [label: string, href: string]> = {
-  today: ["今日", "#/"], study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"], settings: ["設定", "#/settings"],
+  today: ["今日", "#/"], study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"],
 };
 const TAB_OF: Record<string, string> = {
   study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study",
   look: "look", explore: "look",
+  model: "model",
   records: "records", progress: "records",
   settings: "settings", guide: "settings", credits: "settings", admin: "settings",
 };
@@ -64,7 +66,7 @@ const TAB_OF: Record<string, string> = {
  */
 let guideTab = "settings";
 /** タブの一番上の画面（上の帯は名前だけ） */
-const TAB_ROOTS = new Set(["", "study", "look", "records", "settings", "start"]);
+const TAB_ROOTS = new Set(["", "study", "look", "model", "records", "settings", "start"]);
 /** タブを隠す画面（解いている間・はじめに。上の帯の「‹」で戻る） */
 const NO_TABS = new Set(["learn", "review", "start"]);
 
@@ -263,6 +265,8 @@ async function boot(): Promise<void> {
       guard: (message) => (leaveWarning = message),
       stay: (handler) => (stayHandler = handler),
     };
+    // 3D模型で動かした部品を元の位置へ戻す（ほかの画面は組み立てた体で）
+    void viewer.setModel(null);
     viewer.onPick = null;
     viewer.onHover = null;
     viewer.spin(false);
@@ -293,16 +297,18 @@ async function boot(): Promise<void> {
     // はじめに（名前・所属など）も3Dは飾りなので、向きの目印と「3Dを大きく」は出さない
     layout.classList.toggle("is-home", !PAGES[name]);
     layout.classList.toggle("is-start", name === "start");
+    layout.classList.toggle("is-model", name === "model");
     viewer.hideCompass(!PAGES[name] || name === "start");
     showCrumbs(name);
     // 3Dを動かして見る画面（レッスン・図鑑・臓器の図）を初めて開いたときに、右上の ⤢・?・向きの目印の説明を出す（src/ui/stage-tip.ts）
-    if (name === "learn" || name === "explore" || (name === "organs" && arg)) void stageTip(stage, ctx.signal);
+    if (name === "learn" || name === "explore" || name === "model" || (name === "organs" && arg)) void stageTip(stage, ctx.signal);
     window.scrollTo(0, 0);
     try {
       if (name === "learn") await lesson(ctx, arg);
       else if (name === "lessons") await lessons(ctx, arg);
       else if (name === "study") await studyHub(ctx);
       else if (name === "look") await look(ctx, arg);
+      else if (name === "model") await modelScreen(ctx);
       else if (name === "records") await records(ctx);
       else if (name === "start") await start(ctx, arg);
       else if (name === "review") await review(ctx, arg);
