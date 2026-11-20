@@ -5,6 +5,8 @@ const SOURCES: [string, string, string][] = [
   ["3Dモデル", "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International", "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"],
   ["3Dモデル（広背筋・表情筋・末梢神経・脳神経・肺の葉・動脈の枝・靱帯・リンパ節など）", "Z-Anatomy（Lluís Vinent Juanico ほか, CC BY-SA 4.0）", "https://github.com/LluisV/Z-Anatomy"],
   ["3Dモデル（鼻腔・鼻甲介・鼻道・上顎洞）", "NasalSeg（Yichi Zhang ほか, Scientific Data 2024, CC BY 4.0）の CT の1例から作成", "https://zenodo.org/records/13893419"],
+  ["動きの図鑑（呼吸の肺と胸郭の動き）", "4DMRI moving meshes（A. Duetschler, T. Jenny, D. C. Weber, A. J. Lomax, Y. Zhang, Zenodo 2022, CC BY 4.0）の自由呼吸の平均から作成", "https://zenodo.org/records/7052607"],
+  ["動きの図鑑（心周期の圧・容積・弁の流れ）", "ModularCirc（Alan Turing Institute, MIT License）の Korakianitis & Shi (2006) のモデルの式と値（心房の受動的な硬さを変えて計算）", "https://github.com/alan-turing-institute/ModularCirc"],
   ["3Dモデルの変換方法（参考）", "ashemag/human-atlas（MIT License）", "https://github.com/ashemag/human-atlas"],
   ["臓器の図（心臓の前・前の壁を外した図・四腔断）", "Patrick J. Lynch, medical illustrator（CC BY 2.5）", "https://commons.wikimedia.org/wiki/File:Heart_anterior_exterior_view.jpg"],
   ["臓器の図（心臓の後ろ）", "BruceBlaus / Blausen Medical（CC BY-SA 3.0）", "https://commons.wikimedia.org/wiki/File:Rear_view_of_a_human_heart_*_Vista_posterior_de_un_coraz%C3%B3n_humano.png"],

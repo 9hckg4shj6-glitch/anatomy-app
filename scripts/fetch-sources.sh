@@ -43,3 +43,12 @@ if [ ! -d "$NS/labels" ]; then
   (cd "$NS" && unzip -q -o NasalSeg.zip)
 fi
 [ -s "$NS/P065.json" ] || python3 scripts/nasal/nasalseg.py "$NS" P065 "$NS/P065.json"
+
+# 4DMRI moving meshes（CC BY 4.0。https://zenodo.org/records/7052607）。自由呼吸の 4DMRI から取った肺と胸郭の動く点（約128MB）。
+# 動きの図鑑の「呼吸」に使う: node scripts/motions/export.mjs のあと python3 scripts/motions/breathing.py（docs/動きの図鑑.md）
+MM="data-raw/motions"
+mkdir -p "$MM"
+if [ ! -d "$MM/4DMRI_moving_meshes-v1.0.0" ]; then
+  [ -s "$MM/4DMRI_moving_meshes.zip" ] || curl -fSL "https://zenodo.org/api/records/7052607/files/4DMRI_moving_meshes-v1.0.0.zip/content" -o "$MM/4DMRI_moving_meshes.zip"
+  (cd "$MM" && unzip -q -o 4DMRI_moving_meshes.zip)
+fi

@@ -1589,3 +1589,45 @@ a.set-profile .set-value::after { content: " ›"; color: #b9b3a7; font-weight: 
 .model-moving p { margin: 0; display: grid; gap: 2px; font-size: 13px; line-height: 1.6; color: var(--ink); }
 .model-moving b { font-size: 14.5px; color: color-mix(in srgb, var(--highlight) 70%, black); }
 .model-moving .primary { min-height: 44px; }
+
+/* 動きの図鑑（#/motions、src/ui/motions.ts） */
+.motion-thumb { display: grid; place-items: center; color: #fff; background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--motion) 70%, #fff) 0%, var(--motion) 55%, color-mix(in srgb, var(--motion) 60%, #000) 100%); }
+.motion-thumb svg { width: 46%; height: auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.motion-lead { white-space: normal; line-height: 1.5; }
+.motion-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.motion-head h2 { margin-bottom: 4px; }
+p.motion-lead { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+.motion-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 12px; }
+.motion-controls .motion-play { min-width: 112px; min-height: 40px; font-weight: 700; }
+.motion-controls .motion-step { min-width: 40px; min-height: 40px; padding: 0; font-size: 20px; }
+.motion-controls .seg { flex: 1; min-width: 160px; }
+.motion-now { margin: 0 0 10px; padding: 10px 12px; border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; background: var(--surface); }
+.motion-now-name { display: block; font-size: 17px; }
+.motion-now-note { margin: 4px 0 0; font-size: 14px; line-height: 1.55; }
+.motion-volume { display: block; margin-top: 6px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.motion-valves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 8px; margin-top: 8px; }
+.motion-valve { display: flex; justify-content: space-between; padding: 3px 8px; border-radius: 8px; background: color-mix(in srgb, var(--ink) 7%, var(--surface)); font-size: 13px; }
+.motion-valve b { color: var(--muted); }
+.motion-valve.open { background: color-mix(in srgb, var(--ok) 16%, var(--surface)); }
+.motion-valve.open b { color: var(--ok); }
+.motion-chart { display: block; width: 100%; height: auto; margin: 4px 0 10px; border: 1px solid var(--line); border-radius: 10px; background: #fffdf8; cursor: pointer; }
+.motion-chart text { font-family: inherit; }
+.motion-band { font-size: 11px; fill: #77736a; }
+.motion-axis { font-size: 11px; }
+.motion-legend { font-size: 11px; fill: #2b2a27; }
+.motion-cursor { stroke: var(--accent); stroke-width: 2.5; }
+.motion-sound { stroke: #b9b2a3; stroke-width: 1; stroke-dasharray: 3 3; }
+.motion-steps { margin: 0 0 10px; padding-left: 22px; }
+.motion-steps li { padding: 4px 6px; border-radius: 8px; font-size: 14px; line-height: 1.5; }
+.motion-steps li b { display: block; }
+.motion-steps li span { color: var(--muted); font-size: 13px; }
+.motion-steps li.on { background: color-mix(in srgb, #ffc61a 22%, var(--surface)); }
+.motion-switch { margin: 0 0 10px; }
+.motion-switch .seg { width: 100%; }
+.motion-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0 0 10px; font-size: 14px; }
+.motion-facts dt { color: var(--muted); }
+.motion-facts dd { margin: 0; font-variant-numeric: tabular-nums; }
+.motion-picked { margin: 10px 0; font-size: 14px; }
+.motion-picked a { margin-left: 6px; }
+.motion-links { align-items: center; margin-top: 6px; }
+.motion-links .chip { text-decoration: none; color: var(--ink); }

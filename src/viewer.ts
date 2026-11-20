@@ -103,6 +103,38 @@ export interface PartDrag {
   end: (elements: string[], delta: Vec3) => void;
 }
 
+/**
+ * 動きの図鑑の場面（setStage）。solid の部品はふだんの色で、glass の部品は透かして、ghost の部品はごく薄く見せ、ほかは隠す。
+ * colors で部品の色を替える（部屋の色分けなど）
+ */
+export interface StageSpec {
+  solid: string[];
+  glass?: string[];
+  ghost?: string[];
+  colors?: Record<string, string>;
+  /** glass の輪郭の濃さ（ふだん 0.8） */
+  glassStrength?: number;
+  /** 皮膚の輪郭をごく薄く添える（show で body を読み込んでおく） */
+  body?: boolean;
+  /** 光るように（照明に依らない色で）描く部品。透かした壁の奥でも見える（刺激伝導系など） */
+  glow?: string[];
+}
+
+/** 動きの図鑑で頂点を動かす部品: rest は動かす前の頂点（体の座標、x y z の並び）、position に今の位置を書いて deformed() を呼ぶ */
+export interface Deformable {
+  element: string;
+  rest: Float32Array;
+  position: Float32Array;
+}
+
+/** 動きの図鑑の粒（血液・空気・興奮）。position・color（0〜1）・size（0 で隠す。半径の倍率）に書いて dotsChanged() を呼ぶ */
+export interface Dots {
+  capacity: number;
+  position: Float32Array;
+  color: Float32Array;
+  size: Float32Array;
+}
+
 /** 骨学試験 D の図: terms の部品だけを side の側で見せ（ほかは隠す）、cut で切る */
 export interface DrawingSpec {
   terms: string[];
@@ -505,6 +537,14 @@ export class AnatomyViewer {
   private compassShown = false;
   /** 3D模型の見せ方（setModel。null ならふだんの画面） */
   private model: { spec: ModelSpec; hidden: Set<string>; faded: Set<string>; selected: Set<string> } | null = null;
+  /** 動きの図鑑の場面（setStage。null ならふだんの画面） */
+  private stage: { solid: Set<string>; glass: Set<string>; ghost: Set<string>; glow: Set<string>; colors: Record<string, string>; strength: number; body: boolean } | null = null;
+  /** 頂点を動かしている部品と、元に戻すための元の値 */
+  private readonly deforms = new Map<string, { mesh: THREE.Mesh; position: THREE.BufferAttribute | THREE.InterleavedBufferAttribute; normal: THREE.BufferAttribute | THREE.InterleavedBufferAttribute | undefined; matrix: THREE.Matrix4; auto: boolean; live: THREE.BufferAttribute; rest: Float32Array }>();
+  /** 動きの図鑑の粒 */
+  private dots: { mesh: THREE.InstancedMesh; data: Dots; radius: number } | null = null;
+  /** 毎フレーム、描く前に呼ぶ（動きの図鑑の再生。null で止める）。now は performance.now() */
+  onTick: ((now: number) => void) | null = null;
   /** 3D模型で名前の札を付ける部品（動かしても札がついてくる） */
   private labelElements: string[] | null = null;
   /** 3D模型で部品をドラッグして動かす（setModel の間だけ） */
@@ -1173,6 +1213,182 @@ export class AnatomyViewer {
     if (this.homeView) this.moveTo(...this.homeView, true);
   }
 
+  /** 動きの図鑑の場面にする（null でやめる）。表示する系統は show で読み込んでおく */
+  setStage(spec: StageSpec | null): void {
+    this.stage = spec && {
+      solid: new Set(spec.solid), glass: new Set(spec.glass ?? []), ghost: new Set(spec.ghost ?? []), glow: new Set(spec.glow ?? []),
+      colors: spec.colors ?? {}, strength: spec.glassStrength ?? 0.8, body: !!spec.body,
+    };
+    this.refresh();
+  }
+
+  /** 動きの図鑑の場面の部品の見せ方（refresh から） */
+  private paintStagePart(elementId: string, mesh: THREE.Mesh, own: () => string): void {
+    const { solid, glass, ghost, glow, colors, strength, body } = this.stage!;
+    const color = colors[elementId] ?? own();
+    const skin = body && mesh.userData.system === "body";
+    mesh.visible = solid.has(elementId) || glass.has(elementId) || ghost.has(elementId) || glow.has(elementId) || skin;
+    if (!mesh.visible) return;
+    if (glow.has(elementId)) {
+      mesh.material = this.material(`glow:${color}`, () => new THREE.MeshBasicMaterial({ color, toneMapped: false }));
+      mesh.renderOrder = 3;
+      return;
+    }
+    if (solid.has(elementId)) {
+      mesh.material = this.solid(color, mesh);
+      return;
+    }
+    mesh.material = glass.has(elementId) ? this.glass(color, strength) : skin ? this.ghost("#e8c9a8", 0.07) : this.ghost(color, 0.08);
+    mesh.renderOrder = mesh.userData.system === "body" ? 2 : 1;
+    this.ghosted.add(elementId);
+  }
+
+  /**
+   * 部品の頂点を動かせるようにする（読み込み済みの部品だけ）。頂点を体の座標の Float32 に置き換え、部品の行列を外す
+   * （見た目は変わらない。面の模様・スポットも体の座標で描くので）。restoreDeform で元に戻す
+   */
+  deformable(elements: string[]): Deformable[] {
+    const out: Deformable[] = [];
+    const v = new THREE.Vector3();
+    for (const element of elements) {
+      const mesh = this.meshes.get(element);
+      if (!mesh) continue;
+      const done = this.deforms.get(element);
+      if (done) {
+        out.push({ element, rest: done.rest, position: done.live.array as Float32Array });
+        continue;
+      }
+      const geometry = mesh.geometry as THREE.BufferGeometry;
+      const position = geometry.getAttribute("position");
+      const normal = geometry.getAttribute("normal") as THREE.BufferAttribute | undefined;
+      mesh.updateMatrixWorld(true);
+      const world = mesh.matrixWorld.clone();
+      const rest = new Float32Array(position.count * 3);
+      for (let i = 0; i < position.count; i++) {
+        v.fromBufferAttribute(position, i).applyMatrix4(world);
+        rest[i * 3] = v.x;
+        rest[i * 3 + 1] = v.y;
+        rest[i * 3 + 2] = v.z;
+      }
+      const live = new THREE.BufferAttribute(rest.slice(), 3);
+      live.setUsage(THREE.DynamicDrawUsage);
+      geometry.setAttribute("position", live);
+      if (normal) {
+        const normalMatrix = new THREE.Matrix3().getNormalMatrix(world);
+        const normals = new Float32Array(normal.count * 3);
+        for (let i = 0; i < normal.count; i++) {
+          v.fromBufferAttribute(normal, i).applyMatrix3(normalMatrix).normalize();
+          normals.set([v.x, v.y, v.z], i * 3);
+        }
+        geometry.setAttribute("normal", new THREE.BufferAttribute(normals, 3));
+      }
+      this.deforms.set(element, { mesh, position, normal, matrix: mesh.matrix.clone(), auto: mesh.matrixAutoUpdate, live, rest });
+      // 体の座標の頂点をそのまま描く（親の行列を打ち消す）
+      mesh.matrixAutoUpdate = false;
+      mesh.matrix.copy(mesh.parent ? mesh.parent.matrixWorld.clone().invert() : new THREE.Matrix4());
+      mesh.matrixWorldNeedsUpdate = true;
+      // 動いても選べるよう、囲む球を少し大きく
+      geometry.computeBoundingSphere();
+      if (geometry.boundingSphere) geometry.boundingSphere.radius += 0.03;
+      geometry.boundingBox = null;
+      out.push({ element, rest, position: live.array as Float32Array });
+    }
+    return out;
+  }
+
+  /** deformable の position を書き換えたら呼ぶ */
+  deformed(): void {
+    for (const { live } of this.deforms.values()) live.needsUpdate = true;
+    this.dirty = true;
+  }
+
+  /** 頂点を動かした部品をすべて元に戻す */
+  restoreDeform(): void {
+    for (const { mesh, position, normal, matrix, auto } of this.deforms.values()) {
+      const geometry = mesh.geometry as THREE.BufferGeometry;
+      geometry.setAttribute("position", position);
+      if (normal) geometry.setAttribute("normal", normal);
+      geometry.boundingSphere = null;
+      geometry.boundingBox = null;
+      geometry.computeBoundingSphere();
+      mesh.matrix.copy(matrix);
+      mesh.matrixAutoUpdate = auto;
+      mesh.matrixWorldNeedsUpdate = true;
+    }
+    this.deforms.clear();
+    this.dirty = true;
+  }
+
+  /** 粒を用意する（capacity 個まで。radius は粒の半径 m）。null で消す */
+  setDots(capacity: number | null, radius = 0.002): Dots | null {
+    if (this.dots) {
+      this.scene.remove(this.dots.mesh);
+      this.dots.mesh.geometry.dispose();
+      (this.dots.mesh.material as THREE.Material).dispose();
+      this.dots = null;
+    }
+    if (!capacity) {
+      this.dirty = true;
+      return null;
+    }
+    const mesh = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 10, 8), new THREE.MeshBasicMaterial({ color: "#ffffff", toneMapped: false }), capacity);
+    mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    mesh.setColorAt(0, new THREE.Color());
+    mesh.instanceColor!.setUsage(THREE.DynamicDrawUsage);
+    mesh.frustumCulled = false;
+    mesh.count = 0;
+    // 透かした壁（glass）より先に描き、壁の色が上にかかるようにする
+    mesh.renderOrder = 0;
+    this.scene.add(mesh);
+    const data: Dots = { capacity, position: new Float32Array(capacity * 3), color: new Float32Array(capacity * 3), size: new Float32Array(capacity) };
+    this.dots = { mesh, data, radius };
+    return data;
+  }
+
+  /** 粒の position・color・size を書き換えたら呼ぶ（count は使う粒の数） */
+  dotsChanged(count: number): void {
+    const dots = this.dots;
+    if (!dots) return;
+    const { mesh, data, radius } = dots;
+    const n = Math.min(count, data.capacity);
+    const m = mesh.instanceMatrix.array as Float32Array;
+    const c = mesh.instanceColor!.array as Float32Array;
+    for (let i = 0; i < n; i++) {
+      const r = data.size[i] * radius;
+      const o = i * 16;
+      m[o] = r; m[o + 1] = 0; m[o + 2] = 0; m[o + 3] = 0;
+      m[o + 4] = 0; m[o + 5] = r; m[o + 6] = 0; m[o + 7] = 0;
+      m[o + 8] = 0; m[o + 9] = 0; m[o + 10] = r; m[o + 11] = 0;
+      m[o + 12] = data.position[i * 3]; m[o + 13] = data.position[i * 3 + 1]; m[o + 14] = data.position[i * 3 + 2]; m[o + 15] = 1;
+      c[i * 3] = data.color[i * 3];
+      c[i * 3 + 1] = data.color[i * 3 + 1];
+      c[i * 3 + 2] = data.color[i * 3 + 2];
+    }
+    mesh.count = n;
+    mesh.instanceMatrix.needsUpdate = true;
+    mesh.instanceColor!.needsUpdate = true;
+    this.dirty = true;
+  }
+
+  /** 見せている部品（場面）の全体が入るように from の向きから映す */
+  frameStage(from: Vec3, elements: string[], zoom = 1): void {
+    const box = new THREE.Box3();
+    for (const id of elements) {
+      const mesh = this.meshes.get(id);
+      if (!mesh) continue;
+      const geometry = mesh.geometry as THREE.BufferGeometry;
+      geometry.computeBoundingBox();
+      mesh.updateMatrixWorld();
+      box.union(geometry.boundingBox!.clone().applyMatrix4(mesh.matrixWorld));
+    }
+    if (box.isEmpty()) return;
+    const target = box.getCenter(new THREE.Vector3());
+    const radius = Math.max(0.03, box.getSize(new THREE.Vector3()).length() / 2) / zoom;
+    const direction = new THREE.Vector3(...from).normalize();
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    this.moveTo(target, target.clone().add(direction.multiplyScalar((radius * 0.92) / tan / Math.min(1, this.camera.aspect))), true);
+  }
+
   /**
    * 3D模型の見せ方にする（null でやめ、動かした部品を元の位置へ戻す）。濃さが 0 より大きい系統を読み込んで出す。
    * スライダーを動かしている間も何度も呼ばれるので、読み込み済みの系統なら材質を替えて置き直すだけ
@@ -1726,6 +1942,10 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
         this.paintModelPart(elementId, mesh, own);
         continue;
       }
+      if (this.stage) {
+        this.paintStagePart(elementId, mesh, own);
+        continue;
+      }
       // 関節の動きを示すときは、動く骨を光らせ、動かない皮膚は消す。筋の動きでは骨だけを見せる。
       // 局所解剖では、境界と中を通る語のほかは隠す（骨格は添える）
       const bone = system === "skeletal" || system === "body";
@@ -2203,6 +2423,10 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
     // 設定で目印を出し入れしたとき・問題で隠したときも描き直す
     if (this.compassShown !== (preferences.compass && !this.compassHidden)) this.dirty = true;
     this.animateMotion();
+    if (this.onTick) {
+      this.onTick(now);
+      this.dirty = true;
+    }
     if (!this.dirty) {
       // 止まったら、動かしている間だけ下げていた画素の細かさを戻して描き直す
       if (this.renderer.getPixelRatio() >= this.fullRatio || now - this.lastRender < 250) return;

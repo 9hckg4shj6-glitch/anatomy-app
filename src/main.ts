@@ -17,6 +17,7 @@ import { home } from "./ui/home";
 import { lesson } from "./ui/lesson";
 import { lessons } from "./ui/lessons";
 import { modelScreen } from "./ui/model";
+import { motionScreen } from "./ui/motions";
 import { look } from "./ui/look";
 import { records } from "./ui/records";
 import { start } from "./ui/start";
@@ -45,7 +46,7 @@ const APP_NAME = "からだ見聞録";
 const PAGES: Record<string, [title: string, href: string]> = {
   study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
-  exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], organs: ["臓器の図", "#/organs"], roots: ["語根カード", "#/roots"],
+  exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], motions: ["動きの図鑑", "#/motions"], organs: ["臓器の図", "#/organs"], roots: ["語根カード", "#/roots"],
   progress: ["進捗", "#/progress"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
@@ -55,7 +56,7 @@ const TABS: Record<string, [label: string, href: string]> = {
 };
 const TAB_OF: Record<string, string> = {
   study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study",
-  look: "look", explore: "look",
+  look: "look", explore: "look", motions: "look",
   model: "model",
   records: "records", progress: "records",
   settings: "settings", guide: "settings", credits: "settings", admin: "settings",
@@ -188,7 +189,7 @@ document.addEventListener("keydown", (event) => {
 // そこへ移るときに読み直して切りかえる。ホームだけにすると、臓器の図の中を行き来している間は古い版のまま（新しい平面図が出ない）だった。
 // レッスン・復習・演習・骨学試験の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
 let updated = false;
-const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "lessons", "progress", "settings", "credits", "guide"]);
+const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "motions", "lessons", "progress", "settings", "credits", "guide"]);
 const canReload = () => RELOADABLE.has(location.hash.split("/")[1] ?? "");
 const serviceWorker = navigator.serviceWorker as ServiceWorkerContainer | undefined; // http の LAN では無い
 // 初めて開いたとき（前の版が無いとき）の入れかわりは数えない
@@ -301,7 +302,7 @@ async function boot(): Promise<void> {
     viewer.hideCompass(!PAGES[name] || name === "start");
     showCrumbs(name);
     // 3Dを動かして見る画面（レッスン・図鑑・臓器の図）を初めて開いたときに、右上の ⤢・?・向きの目印の説明を出す（src/ui/stage-tip.ts）
-    if (name === "learn" || name === "explore" || name === "model" || (name === "organs" && arg)) void stageTip(stage, ctx.signal);
+    if (name === "learn" || name === "explore" || name === "model" || ((name === "organs" || name === "motions") && arg)) void stageTip(stage, ctx.signal);
     window.scrollTo(0, 0);
     try {
       if (name === "learn") await lesson(ctx, arg);
@@ -313,6 +314,7 @@ async function boot(): Promise<void> {
       else if (name === "start") await start(ctx, arg);
       else if (name === "review") await review(ctx, arg);
       else if (name === "explore") await explore(ctx, arg);
+      else if (name === "motions") await motionScreen(ctx, arg);
       // "#/roots/<レッスンID>" は語根のレッスン、"#/roots/root/<語根のキー>" は一覧でその語根を開く
       else if (name === "roots") await (arg && !arg.startsWith("root/") ? rootLesson(ctx, arg) : rootIndex(ctx, arg.slice("root/".length)));
       else if (name === "drill") await drill(ctx, arg);

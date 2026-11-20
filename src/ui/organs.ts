@@ -9,6 +9,19 @@ import { flowDiagram } from "./diagrams";
 import { drawPlate, labelName, type LabelMode } from "./plate-view";
 import { termCard } from "./term-card";
 import { noteText } from "../en-notes";
+import { MOTIONS } from "./motions";
+
+/** 臓器の図から動きの図鑑へ（その臓器の動きがあれば） */
+const ORGAN_MOTIONS: Record<string, string[]> = {
+  heart: ["heartbeat", "conduction", "circulation"], vessels: ["circulation"], lung: ["breathing"], "lung-segments": ["breathing"],
+  pleura: ["breathing"], mediastinum: ["breathing", "circulation"], diaphragms: ["breathing"],
+};
+
+function motionLinks(organId: string): HTMLElement | string {
+  const list = (ORGAN_MOTIONS[organId] ?? []).flatMap((id) => MOTIONS.find((motion) => motion.id === id) ?? []);
+  return list.length ? h("div", { class: "chip-list motion-links" }, h("span", { class: "muted" }, "動きで見る："),
+    ...list.map((motion) => h("a", { class: "chip", href: `#/motions/${motion.id}` }, `▶ ${motion.ja}`))) : "";
+}
 
 const LABEL_MODES: [LabelMode, string][] = [["both", "日本語と英語"], ["ja", "日本語"], ["en", "英語"], ["hide", "隠して確かめる"]];
 const LABEL_MODE = "plateLabelMode";
@@ -124,6 +137,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
     h("a", { class: "back-link", href: "#/organs" }, "臓器の図"),
     h("h2", {}, h("ruby", {}, organ.ja, h("rt", {}, organ.yomi)), h("span", { class: "organ-en", lang: "en" }, organ.en)),
     h("p", { class: "muted" }, noteText(organ.about)),
+    motionLinks(organ.id),
   );
   const tabs = h("div", { class: "organ-tabs", role: "tablist" },
     organ.box ? h("a", { class: plate ? "chip" : "chip on", href: `#/organs/${organ.id}/3d`, role: "tab", "aria-selected": String(!plate) }, "立体（3D）") : "",
