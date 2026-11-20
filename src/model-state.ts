@@ -186,3 +186,15 @@ export class History {
     this.stack.length = 0;
   }
 }
+
+/**
+ * 3D模型の2つの使い方（docs/普段使い.md「3D模型の2つの使い方」）。look＝見る（部位をタップすると図鑑の説明。はじめての人向け）、
+ * free＝自由に操作（部品を隠す・取り外す・透かす・切る。上級者向け）
+ */
+export type ModelMode = "look" | "free";
+
+/** アドレス（#/model/look・#/model/free）で選んでいればそれ、無ければ前に選んだもの、それも無ければ見る */
+export function modelModeOf(arg: string, saved: unknown): ModelMode {
+  if (arg === "look" || arg === "free") return arg;
+  return saved === "free" ? "free" : "look";
+}

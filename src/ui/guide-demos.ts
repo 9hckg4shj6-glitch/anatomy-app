@@ -382,7 +382,7 @@ const TAB_SCREENS: Record<GuideTab, string> = {
     <ul class="gd-rows gd-hits"><li><b>大腿骨</b><small lang="en">femur</small></li><li><b>大腿動脈</b><small lang="en">femoral artery</small></li><li><b>大腿四頭筋</b><small lang="en">quadriceps femoris</small></li></ul>
     <ul class="gd-rows"><li><i style="--c:#c08a12"></i>★を付けた語</li><li><i style="--c:#c4663f"></i>系統から探す</li><li><i style="--c:#1f6f78"></i>図鑑（3Dをタップ）</li></ul></div>`,
   model: `<div class="gd-stage">${spinImg("gd-spin gd-spin-sm")}</div>
-    <div class="gd-sheet"><p class="gd-kicker">3D模型</p><ul class="gd-rows"><li><i style="--c:#ff7a1a"></i>部品をタップ → 隠す・取り外す</li><li><i style="--c:#c75b4f"></i>系統の濃さ・分解・断面</li></ul></div>`,
+    <div class="gd-sheet"><p class="gd-kicker">3D模型</p><ul class="gd-rows"><li><i style="--c:#1f6f78"></i>見る：タップで図鑑の説明</li><li><i style="--c:#ff7a1a"></i>自由に操作：隠す・取り外す</li><li><i style="--c:#c75b4f"></i>系統の濃さ・分解・断面</li></ul></div>`,
   records: `<div class="gd-pad"><p class="gd-title">記録</p>
     <div class="gd-week">${[3, 5, 2, 6, 4, 7, 5].map((n, i) => `<span style="--n:${n}"><i></i>${"月火水木金土日"[i]}</span>`).join("")}</div>
     <ul class="gd-rows"><li><i style="--c:#3a9d5d"></i>進捗（覚え具合を色で）</li></ul></div>`,

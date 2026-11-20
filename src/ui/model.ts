@@ -1,17 +1,177 @@
-import { systemById, systems, termById } from "../content";
+import { systemById, systems, termById, type Term } from "../content";
+import { db, nowIso } from "../db";
 import { h } from "../dom";
 import type { Vec3 } from "../landmarks";
 import {
-  History, PRESETS, SKIN, cloneState, initialState, isChanged, partAt, partName, presetOf, toSpec, toggleSystem,
-  withOffset, withPart, withPreset, withoutOffset, withoutPart, type ModelState, type Part,
+  History, PRESETS, SKIN, cloneState, initialState, isChanged, modelModeOf, partAt, partName, presetOf, toSpec, toggleSystem,
+  withOffset, withPart, withPreset, withoutOffset, withoutPart, type ModelMode, type ModelState, type Part,
 } from "../model-state";
 import type { Section } from "../viewer";
-import type { AppContext } from "./context";
+import { motionPlayer, sceneFor, termAt, type AppContext } from "./context";
 import { card, foot, group, row, segmented, toggleRow } from "./settings-kit";
 import { tabIntro } from "./tab-intro";
+import { termCard } from "./term-card";
+
+/** 前に選んだ使い方（見る・自由に操作）を残す db.settings のキー。下のタブの #/model はこれで開く */
+const MODE_KEY = "modelMode";
+
+const MODES: { id: ModelMode; label: string; note: string }[] = [
+  { id: "look", label: "見る", note: "部位をタップすると、図鑑の説明が出ます。" },
+  { id: "free", label: "自由に操作（上級）", note: "部品を隠す・取り外す・透かす・分解する・切って見る。慣れた人向けです。" },
+];
 
 /**
- * 3D模型（#/model。下のタブ）: 人体模型のように、自由に回し・取り外し・透かし・分解し・切って見る。docs/普段使い.md「3D模型」。
+ * 3D模型（#/model。下のタブ）。使い方を2つに分ける（docs/普段使い.md「3D模型の2つの使い方」）。
+ * 見る（#/model/look）は今日の3Dと同じく部位をタップすると、その場に図鑑の説明が出る。
+ * 自由に操作（#/model/free）は人体模型のように部品をいじる（上級者向け）。#/model は前に選んだほう（はじめは見る）
+ */
+export async function modelScreen(ctx: AppContext, arg = ""): Promise<void> {
+  const saved = (await db.settings.get(MODE_KEY))?.value;
+  const mode = modelModeOf(arg, saved);
+  if (mode !== saved) void db.settings.put({ key: MODE_KEY, value: mode, updatedAt: nowIso() });
+  const intro = await tabIntro("model");
+  if (ctx.signal.aborted) return;
+  const head: Head = { top: [h("div", { class: "tab-head" }, h("h2", {}, "3D模型")), modeSwitch(mode)], intro };
+  if (mode === "free") await freeModel(ctx, head);
+  else await lookModel(ctx, head);
+}
+
+/** 欄の頭: 見出しと使い方の切り替え（top）と、タブの1行の説明（intro。はじめのうちだけ） */
+interface Head {
+  top: HTMLElement[];
+  intro: HTMLElement | "";
+}
+
+/** 使い方の切り替えの帯（見る／自由に操作）と、その使い方の一言 */
+function modeSwitch(mode: ModelMode): HTMLElement {
+  return h("div", { class: "model-mode" },
+    segmented("3D模型の使い方", MODES.map((item) => ({ value: item.id, label: item.label })), mode, (value) => {
+      // 札がすべるのを見せてから画面を作り直す
+      if (value !== mode) setTimeout(() => (location.hash = `#/model/${value}`), 180);
+    }),
+    h("p", { class: "model-mode-note" }, MODES.find((item) => item.id === mode)!.note),
+  );
+}
+
+/** 見るで最後に見ていた系統・選んだ語・視点（アプリを開いている間。ほかのタブへ行って戻っても同じ所から） */
+let lookKept: { system: string; termId: string | null; view: [Vec3, Vec3] } | null = null;
+
+/** 3Dの下のボタンの短い名前（「骨格系」→「骨格」。泌尿器・生殖器系は「泌尿・生殖」。今日の3Dと同じ） */
+function shortName(name: string): string {
+  return name === "泌尿器・生殖器系" ? "泌尿・生殖" : name.replace(/系$/, "");
+}
+
+/**
+ * 見る（#/model/look）: 系統を1つ選んで3Dを回し、部位をタップすると、欄にその語の図鑑の説明（語のカード）が出る。
+ * 3Dではその語を光らせる。寄って見る・図鑑で開く（関係する語・演習などはそちら）。隠す・取り外すなどは自由に操作で
+ */
+async function lookModel(ctx: AppContext, head: Head): Promise<void> {
+  const { viewer, panel, tools, index, signal } = ctx;
+  const bodySystems = systems.filter((system) => index.systems[system.id]);
+  let shown = lookKept && bodySystems.some((system) => system.id === lookKept!.system) ? lookKept.system : "skeletal";
+  let selected: Term | null = (lookKept?.termId && termById.get(lookKept.termId)) || null;
+  const view = lookKept?.view;
+  signal.addEventListener("abort", () => {
+    viewer.playAction(null);
+    lookKept = { system: shown, termId: selected?.id ?? null, view: viewer.view };
+  }, { once: true });
+
+  const paint = () => viewer.highlight(selected ? [selected.id] : []);
+
+  const chips = bodySystems.map((system) => h("button", {
+    class: "chip", type: "button", style: `--swatch:${system.color}`, "aria-pressed": "false",
+    onClick: () => void choose(system.id),
+  }, h("span", { class: "swatch" }), shortName(system.ja)));
+  const choose = async (systemId: string) => {
+    shown = systemId;
+    for (const [i, system] of bodySystems.entries()) {
+      chips[i].classList.toggle("on", system.id === systemId);
+      chips[i].setAttribute("aria-pressed", String(system.id === systemId));
+    }
+    // ほかの系統の語を選んでいたら、選ぶのをやめる（光らせる部品が出ていないので）
+    if (selected && selected.system !== systemId) {
+      selected = null;
+      render();
+    }
+    await viewer.show(sceneFor(systemId));
+    if (signal.aborted) return;
+    paint();
+  };
+  tools.replaceChildren(...chips, h("button", { class: "chip", type: "button", onClick: () => viewer.overview() }, "全体"));
+
+  const detail = h("div", { class: "model-look" });
+  const select = (term: Term | null) => {
+    viewer.playAction(null);
+    selected = term;
+    paint();
+    render();
+    ctx.hint(term ? "" : "部位をタップすると図鑑の説明");
+  };
+  /** 説明の中の用語の「3Dで見る」: 3Dのある語はここで（系統が違えば出し直して）選ぶ。無い語（方向・面など）は図鑑で */
+  const open = async (word: Term) => {
+    if (!index.terms[word.id]?.elements.length || !index.systems[word.system]) {
+      location.hash = `#/explore/${word.id}`;
+      return;
+    }
+    if (word.system !== shown) await choose(word.system);
+    if (signal.aborted) return;
+    select(word);
+    viewer.focus(word.id, 3.2);
+  };
+
+  function render(): void {
+    if (!selected) {
+      detail.replaceChildren(h("div", { class: "model-empty" },
+        h("p", {}, h("b", {}, "部位をタップすると、図鑑の説明が出ます")),
+        h("p", { class: "muted" }, "3Dは1本指で回す・2本指でつまんで拡大。3Dの下のボタンで系統を変えます。隠す・取り外す・透かす・切るは「自由に操作」で。"),
+      ));
+      return;
+    }
+    const term = selected;
+    detail.replaceChildren(
+      termCard(term, { open: (word) => void open(word), motion: motionPlayer(ctx, term) }),
+      h("div", { class: "nav-row model-look-actions" },
+        h("button", { class: "ghost-button", type: "button", onClick: () => viewer.focus(term.id, 3.2) }, "寄って見る"),
+        h("a", { class: "ghost-button", href: `#/explore/${term.id}` }, "図鑑で開く ›"),
+        h("button", { class: "ghost-button", type: "button", onClick: () => { select(null); viewer.overview(); } }, "選ぶのをやめる"),
+      ),
+    );
+  }
+
+  viewer.onPick = (elementId, point) => {
+    const term = termAt(ctx, elementId, point);
+    select(term);
+    if (term) reveal();
+  };
+  /**
+   * スマホでは欄が3Dの下にあり、説明が画面の外に出るので、名前と説明の頭（約260px）が下のタブの上に見えるところまで送る。
+   * 3Dはなるべく残す（全部は送らない）。欄だけが流れる画面（PC など）では欄を、ほかはページを送る
+   */
+  const reveal = () => {
+    const rect = detail.getBoundingClientRect();
+    const bottom = document.getElementById("tabbar")?.getBoundingClientRect().top || innerHeight;
+    const need = rect.top + Math.min(rect.height, 260) - bottom;
+    if (need <= 0) return;
+    const scroller = panel.scrollHeight > panel.clientHeight && getComputedStyle(panel).overflowY !== "visible" ? panel : window;
+    scroller.scrollBy({ top: need, behavior: "smooth" });
+  };
+  viewer.onHover = (elementId, point) => termAt(ctx, elementId, point)?.ja ?? null;
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && selected && !(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) select(null);
+  }, { signal });
+
+  // 説明はタブの1行の説明より上に（スマホでタップしたとき、3Dのすぐ下に出るように）
+  panel.replaceChildren(h("div", { class: "set-page model-page" }, ...head.top, detail, head.intro));
+  render();
+  ctx.hint(selected ? "" : "部位をタップすると図鑑の説明");
+  await choose(shown);
+  if (signal.aborted) return;
+  if (view) viewer.setView(view, false);
+  else viewer.overview();
+}
+
+/**
+ * 自由に操作（#/model/free。上級者向け）: 人体模型のように、自由に回し・取り外し・透かし・分解し・切って見る。docs/普段使い.md「3D模型」。
  * 部品をタップで選び（まとまりを大きく・細かく）、隠す・薄くする・これだけ・外へ出す。3Dはふだん回すだけで、
  * 選んだ部品の「動かす」を押したときだけ、その部品をドラッグで動かせる（「動かし終える」まで。うっかり動かさないように）。
  * 系統ごとに濃さを変え、分解・断面・片側・見る向きを選ぶ。どの操作も「元に戻す」で1つずつ戻せる。
@@ -40,7 +200,7 @@ const VIEWS: [label: string, from: Vec3][] = [
   ["前", [0, 0, 1]], ["後ろ", [0, 0, -1]], ["右", [-1, 0, 0]], ["左", [1, 0, 0]], ["上", [0, 1, 0]], ["下", [0, -1, 0]],
 ];
 
-export async function modelScreen(ctx: AppContext): Promise<void> {
+async function freeModel(ctx: AppContext, head: Head): Promise<void> {
   const { viewer, panel, tools, index, signal } = ctx;
   const available = modelSystems(ctx);
   let state: ModelState = kept ? cloneState(kept.state) : initialState();
@@ -415,10 +575,9 @@ export async function modelScreen(ctx: AppContext): Promise<void> {
     }
   }, { signal });
 
-  const intro = await tabIntro("model");
   panel.replaceChildren(h("div", { class: "set-page model-page" },
-    h("div", { class: "tab-head" }, h("h2", {}, "3D模型")),
-    intro,
+    ...head.top,
+    head.intro,
     selectedBox,
     undoBox,
     body,

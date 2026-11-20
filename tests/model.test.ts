@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-  History, PRESETS, initialState, isChanged, partAt, partName, presetOf, toSpec, toggleSystem,
+  History, PRESETS, initialState, isChanged, modelModeOf, partAt, partName, presetOf, toSpec, toggleSystem,
   withOffset, withPart, withPreset, withoutOffset, withoutPart,
 } from "../src/model-state";
 
@@ -101,5 +101,15 @@ describe("3D模型の状態", () => {
     const part = partAt("kidneyR", 0, ["kidney"], elementsOf, sideOf);
     const spec = toSpec({ ...initialState(), solo: true, side: "right", explode: 0.3 }, part);
     expect(spec).toMatchObject({ selected: ["kidneyR"], solo: true, side: "right", explode: 0.3 });
+  });
+});
+
+describe("3D模型の2つの使い方", () => {
+  it("アドレスで選んだ使い方、無ければ前に選んだ使い方、どちらも無ければ見る", () => {
+    expect(modelModeOf("free", "look")).toBe("free");
+    expect(modelModeOf("look", "free")).toBe("look");
+    expect(modelModeOf("", "free")).toBe("free");
+    expect(modelModeOf("", undefined)).toBe("look");
+    expect(modelModeOf("xyz", "other")).toBe("look");
   });
 });

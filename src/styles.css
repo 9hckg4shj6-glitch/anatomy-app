@@ -1495,6 +1495,14 @@ a.set-profile .set-value::after { content: " ›"; color: #b9b3a7; font-weight: 
    3Dを大きめに。欄は設定と同じ見出しとカード。選んだ部品のカードを一番上に、操作のボタンを3列で */
 .layout.is-model { --stage-default: 56svh; }
 .model-page { gap: 22px; }
+/* 使い方の切り替え（見る／自由に操作）。見出しのすぐ下に、帯と一言 */
+.model-mode { display: grid; gap: 6px; margin-top: -10px; }
+.model-mode-note { margin: 0 2px; font-size: 12.5px; line-height: 1.6; color: var(--muted); }
+/* 見る: 3Dの下の系統のボタンに色の点（今日の3Dと同じ） */
+.layout.is-model .stage-tools .swatch { width: 9px; height: 9px; border-radius: 50%; border: 0; background: var(--swatch); }
+.model-look { display: grid; gap: 10px; }
+.model-look-actions { flex-wrap: wrap; }
+.model-look-actions .ghost-button { flex: 1 1 auto; min-height: 42px; text-align: center; text-decoration: none; }
 /* 動かしている間だけ: 3Dの縁を橙で囲み、「✓ 動かし終える」を出す（ふだんは回すだけ） */
 .stage.is-moving::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; box-shadow: inset 0 0 0 3px var(--highlight); }
 .stage-tools .chip.model-done { background: var(--highlight); border-color: var(--highlight); color: #fff; font-weight: 700; }

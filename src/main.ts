@@ -308,7 +308,7 @@ async function boot(): Promise<void> {
       else if (name === "lessons") await lessons(ctx, arg);
       else if (name === "study") await studyHub(ctx);
       else if (name === "look") await look(ctx, arg);
-      else if (name === "model") await modelScreen(ctx);
+      else if (name === "model") await modelScreen(ctx, arg);
       else if (name === "records") await records(ctx);
       else if (name === "start") await start(ctx, arg);
       else if (name === "review") await review(ctx, arg);
