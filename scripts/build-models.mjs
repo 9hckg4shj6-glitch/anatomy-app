@@ -409,8 +409,21 @@ async function main() {
   for (const file of fs.readdirSync(OUT)) if (file.endsWith(".glb")) fs.rmSync(path.join(OUT, file));
 
   // 部品は最初に使った語の系統の GLB に入れる（同じ部品を2つのファイルに重複させない）。
+  // ただし、ほかの系統の器官をまとめて指す語（消化器の「腹膜後器官」＝腎臓・副腎・尿管など）が先にあっても、
+  // その一部だけを指すほかの系統の語（腎臓・副腎・尿管）があれば、その語の系統に入れる。系統の場面はその系統の GLB しか
+  // 読み込まないので、腎臓が消化器の GLB に入ると、泌尿器のレッスンや問題の3Dに腎臓が出なくなる（tests/scene-elements.test.ts）
   const elementSystem = new Map();
-  for (const term of terms) for (const id of resolved.get(term.id)) if (!elementSystem.has(id)) elementSystem.set(id, term.system);
+  const elementOwner = new Map();
+  for (const term of terms) {
+    const own = resolved.get(term.id);
+    for (const id of own) {
+      const before = elementOwner.get(id);
+      const wider = before && before.system !== term.system ? resolved.get(before.id) : null;
+      if (before && !(wider && own.length < wider.length && own.every((other) => wider.includes(other)))) continue;
+      elementOwner.set(id, term);
+      elementSystem.set(id, term.system);
+    }
+  }
 
   const fiberOf = fibers(terms, resolved);
   const veiled = new Set(terms.filter((term) => term.veil).flatMap((term) => resolved.get(term.id)));

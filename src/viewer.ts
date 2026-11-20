@@ -400,6 +400,11 @@ export class AnatomyViewer {
   private tucked = new Set<string>();
   private active = new Set<string>();
   private context = new Set<string>();
+  /**
+   * 添える系統の GLB に入っているが、選べる系統の語の部品（関節の場面の椎間円板＝頸椎・胸椎・腰椎の語と同じく骨格の GLB）と、その語の系統。
+   * 添える系統の部品として薄くせず、その系統の部品として出してタップで選べるようにする
+   */
+  private borrowed = new Map<string, string>();
   private contextOpacity = 0.16;
   /** 断面（図鑑の「断面」）。切る面は renderer の clippingPlanes で、すべての材質に効く */
   private section: Section | null = null;
@@ -659,6 +664,11 @@ export class AnatomyViewer {
     if (seq !== this.showSeq) return;
     this.active = new Set(spec.systems);
     this.context = new Set(context);
+    this.borrowed.clear();
+    for (const [elementId, mesh] of this.meshes) {
+      const own = this.termsOf(elementId)[0];
+      if (own && !this.active.has(mesh.userData.system as string) && this.context.has(mesh.userData.system as string)) this.borrowed.set(elementId, this.index.terms[own].system);
+    }
     this.contextOpacity = spec.contextOpacity ?? 0.16;
     this.setOrgan(spec.organ ?? null);
     for (const [id, group] of await this.loadedGroups()) group.visible = wanted.includes(id);
@@ -1428,7 +1438,7 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
     this.ghosted.clear();
     for (const [elementId, mesh] of this.meshes) {
       const system = mesh.userData.system as string;
-      const base = systemById.get(system)?.color ?? "#cccccc";
+      const base = systemById.get(this.borrowed.get(elementId) ?? system)?.color ?? "#cccccc";
       // 色分け（colorTerms）は、部品を含む語のうち色の指定がある語で塗る（肝臓の葉のように、もっと細かい区域の語があっても）
       const own = () => {
         const owners = this.elementTerms.get(elementId) ?? [];
@@ -1477,7 +1487,7 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
         mesh.material = this.organ ? this.glass(own(), 0.7) : this.ghost(own(), 0.14);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
-      } else if (this.context.has(system)) {
+      } else if (this.context.has(system) && !this.borrowed.has(elementId)) {
         mesh.material = this.ghost(base, this.contextOpacity);
         mesh.renderOrder = 1;
         this.ghosted.add(elementId);
@@ -1864,7 +1874,7 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
     const raycaster = new THREE.Raycaster();
     // 半透明の部品（周りを薄くしたときなど）は選べない
     const candidates = [...this.meshes.values()].filter((mesh) =>
-      this.active.has(mesh.userData.system as string) && !this.ghosted.has(mesh.name) && this.isVisible(mesh));
+      (this.active.has(mesh.userData.system as string) || this.borrowed.has(mesh.name)) && !this.ghosted.has(mesh.name) && this.isVisible(mesh));
     // 細い骨や血管は指で当てにくいので、外れたら周りを少しずつ広げて探す
     for (const radius of spread ? [0, 6, 12, 18] : [0]) {
       const steps = radius ? 8 : 1;

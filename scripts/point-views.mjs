@@ -11,9 +11,11 @@
  * アプリのタップ判定（viewer.pick）を当てて、正解になる面（画素²）を数える。いちばん広い向きが、ふつうの向きより
  * 1.5倍以上かつ 150 画素²以上広ければ、その向きを書く（ふつうの向きで 44×44 画素以上ある語は、押しやすいので書かない）。
  * 3Dのモデル・ピン・場面（sceneFor）・語の from を変えたら測り直す。
+ * 一部の系統のモデルだけを変えたときは POINT_SCENES=digestive,urogenital（その系統が出る場面の語）や POINT_IDS=kidney,ureter（その語）で
+ * 測る語を絞れる。そのときは測った語だけを content/point-views.json に書き換える（ほかの語の向きは残す）。
  */
 import { createRequire } from "node:module";
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const base = process.env.POINT_URL ?? "http://localhost:5173/";
@@ -24,6 +26,10 @@ const workers = Number(process.argv[2] ?? 4);
 const limit = Number(process.env.POINT_LIMIT ?? 0);
 /** 試すときに測る系統（空なら全部） */
 const only = process.env.POINT_SYSTEM ?? "";
+/** 測り直す語を、その系統が場面に出る語（POINT_SCENES）や語の ID（POINT_IDS）で絞る。測った語だけを書き換える */
+const scenes = (process.env.POINT_SCENES ?? "").split(",").filter(Boolean);
+const ids = (process.env.POINT_IDS ?? "").split(",").filter(Boolean);
+const partial = scenes.length > 0 || ids.length > 0;
 const OUT = path.resolve(import.meta.dirname, "../content/point-views.json");
 /** ふつうの向きより何倍・何画素²広ければ向きを替えるか */
 const RATIO = 1.5;
@@ -47,7 +53,7 @@ async function measure(part) {
   await page.goto(`${base}#/credits`);
   await page.waitForFunction(() => !!window.viewer, null, { timeout: 120000 });
   await page.waitForTimeout(2000);
-  return page.evaluate(async ({ part, workers, limit, only, RATIO, MIN_GAIN, EASY }) => {
+  return page.evaluate(async ({ part, workers, limit, only, scenes, ids, RATIO, MIN_GAIN, EASY }) => {
     const { terms, pins, isDrawn } = await import("/src/content.ts");
     const { facetsFor } = await import("/src/study.ts");
     const { sceneFor } = await import("/src/ui/context.ts");
@@ -76,7 +82,12 @@ async function measure(part) {
     const frames = () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     // 出題で名前→位置を出す語（quiz.ts: xray・small・図の語は位置当てに替わる）
     const list = terms.filter((t) => facetsFor(t).includes("point") && !t.xray && !t.small && !isDrawn(t) && index.terms[t.id] && (!t.of || pins[t.id]));
-    const chosen = only ? list.filter((t) => t.system === only) : list;
+    const inScene = (t) => {
+      const scene = sceneFor(t.system, t.unit);
+      return [...scene.systems, ...(scene.context ?? [])].some((system) => scenes.includes(system));
+    };
+    const chosen = list.filter((t) => (!only || t.system === only) && (!scenes.length && !ids.length || (scenes.length && inScene(t)) || ids.includes(t.id)));
+    if (part === 0) console.log(`[0] 測る語 ${chosen.length}`);
     const mine = (limit ? chosen.slice(0, limit) : chosen).filter((_, i) => i % workers === part);
     const views = {};
     for (const [n, term] of mine.entries()) {
@@ -136,15 +147,25 @@ async function measure(part) {
       if (best.name && usual < EASY && best.px >= usual * RATIO && best.px - usual >= MIN_GAIN) views[term.id] = { name: best.name, usual, best: best.px };
       if ((n + 1) % 100 === 0) console.log(`${n + 1}/${mine.length}`);
     }
-    return { total: mine.length, views };
-  }, { part, workers, limit, only, RATIO, MIN_GAIN, EASY }).finally(() => context.close());
+    return { total: mine.length, measured: mine.map((t) => t.id), views };
+  }, { part, workers, limit, only, scenes, ids, RATIO, MIN_GAIN, EASY }).finally(() => context.close());
 }
 
 const started = Date.now();
 const results = await Promise.all(Array.from({ length: workers }, (_, part) => measure(part)));
 await browser.close();
 const measured = Object.assign({}, ...results.map((result) => result.views));
-const views = Object.fromEntries(Object.keys(measured).sort().map((id) => [id, measured[id].name]));
+let views = Object.fromEntries(Object.keys(measured).sort().map((id) => [id, measured[id].name]));
+if (partial) {
+  // 測った語だけを書き換える（測った語で向きを替えなくなった語は消す）
+  const again = new Set(results.flatMap((result) => result.measured));
+  const before = JSON.parse(readFileSync(OUT, "utf8")).views;
+  const kept = Object.entries(before).filter(([id]) => !again.has(id));
+  const changed = [...again].filter((id) => before[id] !== views[id]).map((id) => `${id}: ${before[id] ?? "ふつう"} → ${views[id] ?? "ふつう"}`);
+  console.log(`向きの変わった語 ${changed.length}${changed.length ? `\n  ${changed.join("\n  ")}` : ""}`);
+  const merged = Object.fromEntries([...kept, ...Object.entries(views)]);
+  views = Object.fromEntries(Object.keys(merged).sort().map((id) => [id, merged[id]]));
+}
 if (!limit && !only) writeFileSync(OUT, `${JSON.stringify({ views }, null, 2)}\n`);
 const total = results.reduce((sum, result) => sum + result.total, 0);
 const counts = {};
