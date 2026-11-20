@@ -1001,19 +1001,51 @@ dialog.sheet::backdrop { background: rgb(43 42 39 / 0.4); }
 .sheet-grade.on { border: 1.5px solid var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
 .trial-note { margin: 0 0 10px; padding: 10px 14px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 8%, var(--surface)); font-size: 14px; line-height: 1.6; }
 
-/* 調べる */
+/* 調べる（docs/普段使い.md「調べるの見直し」） */
 .look > .search { margin: 0; min-height: 52px; border: 1.5px solid var(--accent); border-radius: 14px; font-size: 17px; }
+.look-results:not([hidden]), .look-rest:not([hidden]) { display: grid; gap: 12px; }
+.look-count { margin: 2px 4px -4px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.look-count .muted { font-weight: 400; }
 .look-list { list-style: none; margin: 0; padding: 0; overflow: hidden; }
 .look-list li + li { border-top: 1px solid var(--line); }
-.look-row { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 6px 16px 6px 14px; color: var(--ink); text-decoration: none; }
-.look-row::after { content: "›"; margin-left: auto; font-size: 18px; color: #b9b3a7; }
-.look-dot { width: 10px; height: 10px; flex: none; border-radius: 50%; }
-.look-text { display: grid; gap: 1px; min-width: 0; }
-.look-ja { font-size: 16px; font-weight: 700; }
+.look-row { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 9px 14px 9px 14px; color: var(--ink); text-decoration: none; }
+.look-row::after { content: "›"; margin-left: auto; padding-left: 4px; font-size: 18px; color: #b9b3a7; }
+.look-row.active { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.look-dot { width: 10px; height: 10px; flex: none; align-self: flex-start; margin-top: 7px; border-radius: 50%; }
+.look-text { display: grid; gap: 2px; min-width: 0; }
+.look-ja { font-size: 16px; font-weight: 700; line-height: 1.4; }
 .look-en { margin-left: 8px; font-size: 13px; font-weight: 400; color: var(--muted); }
+.look-meaning {
+  font-size: 13px; line-height: 1.5; color: color-mix(in srgb, var(--ink) 82%, var(--surface));
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.look-meaning:empty { display: none; }
 .look-where { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.look-memo { font-size: 12px; color: var(--accent); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.look-outside {
+  display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 8px; vertical-align: 2px;
+  border: 1px solid var(--line); font-size: 11px; font-weight: 600; color: var(--muted);
+}
+.look-row mark { background: color-mix(in srgb, var(--accent) 16%, transparent); color: inherit; border-radius: 3px; }
+.look-more { width: 100%; }
 .look-recent .chip { min-height: 44px; padding: 0 16px; font-size: 15px; font-weight: 600; text-decoration: none; color: var(--ink); }
-@media (hover: hover) { .look-row:hover .look-ja { color: var(--accent); } }
+.look-systems { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+.look-system {
+  display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 6px 12px;
+  border: 1px solid var(--line); border-left: 4px solid var(--system); border-radius: 12px; background: var(--surface); color: var(--ink); text-decoration: none;
+}
+.look-system-name { flex: 1; min-width: 0; font-size: 15px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.look-system-count { flex: none; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.look-system-head { flex-wrap: wrap; gap: 2px 10px; padding-left: 10px; border-left: 5px solid var(--system); }
+.look-system-head .muted { width: 100%; font-size: 13px; }
+.look-group { margin: 18px 4px -2px; font-size: 17px; font-weight: 800; }
+.look h4.list-title { margin: 6px 4px -4px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.look h4.list-title .muted { font-weight: 400; }
+.look-back { width: 100%; text-align: center; text-decoration: none; }
+@media (hover: hover) {
+  .look-row:hover .look-ja { color: var(--accent); }
+  .look-system:hover .look-system-name { color: var(--accent); }
+}
 
 /* 記録 */
 .rec-stats { display: flex; gap: 8px; }

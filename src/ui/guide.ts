@@ -35,7 +35,8 @@ const TABS: Record<GuideTab, { name: string; href: string; icon: keyof typeof IC
   look: {
     name: "調べる", href: "#/look", icon: "explore", lead: "1語をすぐ引く",
     items: [
-      ["検索", "#/look", "日本語・読み・英語・ラテン語から"],
+      ["検索", "#/look", "日本語・読み・英語・ラテン語・ローマ字の読みから。覚えることも一緒に出る"],
+      ["系統から探す", "#/look", "骨格系・筋系などの語を、レッスンごとに一覧で"],
       ["図鑑", "#/explore", "3Dをタップして、名前と説明を見る"],
       ["★を付けた語", "#/look", "語のカードの ☆ で印を付けた語"],
     ],

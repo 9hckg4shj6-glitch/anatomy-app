@@ -1,5 +1,5 @@
 import "./styles.css";
-import { isPlateUnit, loadModelIndex, organOfLesson } from "./content";
+import { isPlateUnit, loadModelIndex, organOfLesson, systemById } from "./content";
 import { courseLesson } from "./course";
 import { loadPreferences } from "./settings";
 import { canUseExam, loadProfile, profileOnLaunch } from "./profile";
@@ -79,7 +79,9 @@ const tabbar = document.getElementById("tabbar")!;
 function showCrumbs(name: string): void {
   const page = PAGES[name];
   const tab = name === "guide" ? guideTab : TAB_OF[name] ?? "today";
-  const root = TAB_ROOTS.has(name) || !page;
+  // 調べるの「系統から探す」（#/look/<系統ID>）は、上の帯を「‹ 調べる」と系統の名前に
+  const lookSystem = name === "look" ? systemById.get(location.hash.split("/")[2] ?? "") : undefined;
+  const root = (TAB_ROOTS.has(name) && !lookSystem) || !page;
   document.body.classList.toggle("at-home", root);
   document.body.classList.toggle("no-tabs", NO_TABS.has(name));
   // はじめにの3語（#/learn/<ID>/try）は、上の帯を「‹ はじめに」と「3語を試す」にする（学ぶから来ていないので）。検索も出さない
@@ -105,6 +107,11 @@ function showCrumbs(name: string): void {
   if (root) {
     crumbs.replaceChildren();
     document.title = page ? `${page[0]} - ${APP_NAME}` : APP_NAME;
+    return;
+  }
+  if (lookSystem) {
+    crumbs.replaceChildren(h("span", { class: "crumb", "aria-current": "page" }, lookSystem.ja));
+    document.title = `${lookSystem.ja} - ${APP_NAME}`;
     return;
   }
   const [title, href] = plateLesson(name) ?? page;
@@ -295,7 +302,7 @@ async function boot(): Promise<void> {
       if (name === "learn") await lesson(ctx, arg);
       else if (name === "lessons") await lessons(ctx, arg);
       else if (name === "study") await studyHub(ctx);
-      else if (name === "look") await look(ctx);
+      else if (name === "look") await look(ctx, arg);
       else if (name === "records") await records(ctx);
       else if (name === "start") await start(ctx, arg);
       else if (name === "review") await review(ctx, arg);
