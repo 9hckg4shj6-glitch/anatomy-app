@@ -25,6 +25,9 @@ export const ICONS = {
   today: `<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/>`,
 };
 
+/** コースを変えると使える学び方の行き先（設定のコースの所） */
+const COURSE_SETTING: [string, string] = ["#/settings/course", "設定でコースを変える"];
+
 /** 鍵（まだ使えない学び方の印） */
 const LOCK = `<rect x="5.5" y="10.5" width="13" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>`;
 
@@ -39,17 +42,22 @@ export function itemRow(href: string, icon: keyof typeof ICONS, color: string, t
   ));
 }
 
-/** まだ使えない学び方の行（押せない。絵・題・どうすれば使えるか・鍵）。学ぶの一覧に全部の学び方を見せるため */
-export function lockedRow(icon: keyof typeof ICONS, color: string, title: string, sub: string): HTMLElement {
+/**
+ * まだ使えない学び方の行（絵・題・どうすれば使えるか・鍵）。学ぶの一覧に全部の学び方を見せるため。
+ * 設定を変えれば使えるもの（覚える量を「標準」に）は、go に [行き先, 押したときの言葉] を渡すと、押してその設定へ行ける
+ */
+export function lockedRow(icon: keyof typeof ICONS, color: string, title: string, sub: string, go?: [href: string, label: string]): HTMLElement {
   const mark = h("span", { class: "home-item-icon", style: `--item:${color}`, "aria-hidden": "true" });
   mark.innerHTML = `<svg viewBox="0 0 24 24">${ICONS[icon]}</svg>`;
   const lock = h("span", { class: "home-item-lock", "aria-hidden": "true" });
   lock.innerHTML = `<svg viewBox="0 0 24 24">${LOCK}</svg>`;
-  return h("li", {}, h("div", { class: "home-item locked", "aria-disabled": "true" },
-    mark,
-    h("span", { class: "home-item-text" }, h("span", { class: "home-item-title" }, title, h("span", { class: "visually-hidden" }, "（まだ使えません）")), h("span", { class: "home-item-sub wrap" }, sub)),
-    lock,
-  ));
+  const text = h("span", { class: "home-item-text" },
+    h("span", { class: "home-item-title" }, title, h("span", { class: "visually-hidden" }, "（まだ使えません）")),
+    h("span", { class: "home-item-sub wrap" }, sub),
+    go ? h("span", { class: "home-item-go" }, `${go[1]} ›`) : "");
+  return h("li", {}, go
+    ? h("a", { class: "home-item locked can-unlock", href: go[0] }, mark, text, lock)
+    : h("div", { class: "home-item locked", "aria-disabled": "true" }, mark, text, lock));
 }
 
 /**
@@ -67,8 +75,8 @@ export async function studyHub(ctx: AppContext): Promise<void> {
   const fresh = !learned.length;
   const beginner = isBeginner();
 
-  // 3Dには次のレッスンの語を光らせて見せる（スマホは3Dをたたむ）
-  ctx.fold(true);
+  // 3Dには次のレッスンの語を光らせて見せる（スマホは3Dをたたみ、何が見えるかの帯だけを残す）
+  ctx.fold(next ? "3Dで見る：次のレッスンの語" : true);
   if (next) {
     void ctx.viewer.show(sceneFor(next.system, next.id)).then(() => {
       if (ctx.signal.aborted) return;
@@ -108,10 +116,10 @@ export async function studyHub(ctx: AppContext): Promise<void> {
       : itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンを試験の前に解き直す・苦手を解く"),
     // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）
     !canUseExam() ? null : beginner
-      ? lockedRow("exam", "#b07d10", "骨学試験", "覚える量を「標準」にすると使えます（記録 › 設定）")
+      ? lockedRow("exam", "#b07d10", "骨学試験", "コースを「標準」にすると使えます", COURSE_SETTING)
       : itemRow("#/exam", "exam", "#b07d10", "骨学試験", "骨学実習の試験の前に。A〜D の形式と、整理して覚える"),
     beginner
-      ? lockedRow("roots", "#2f8f55", "語根カード", "覚える量を「標準」にすると使えます（記録 › 設定）")
+      ? lockedRow("roots", "#2f8f55", "語根カード", "コースを「標準」にすると使えます", COURSE_SETTING)
       : itemRow("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む。知らない英語名も意味が分かる"),
   ];
 
@@ -126,6 +134,5 @@ export async function studyHub(ctx: AppContext): Promise<void> {
       h("span", { class: "ahead-mark", "aria-hidden": "true" }, String(i + 2)), h("span", {}, unit.title)))) : "",
     h("h3", { class: "list-title" }, "学び方"),
     h("ul", { class: "home-card home-list ways" }, ...ways),
-    h("a", { class: "home-guide-link", href: "#/guide" }, "目的に合わせた使い方を見る ›"),
   ));
 }

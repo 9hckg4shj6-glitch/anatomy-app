@@ -384,7 +384,14 @@ const TAB_SCREENS: Record<GuideTab, string> = {
     <ul class="gd-rows"><li><i style="--c:#3a9d5d"></i>進捗（覚え具合を色で）</li><li><i style="--c:#77736a"></i>設定</li><li><i style="--c:#1f6f78"></i>使い方</li></ul></div>`,
 };
 
-export function tabsDemo(signal: AbortSignal, describe: (tab: GuideTab) => HTMLElement): HTMLElement {
+/** 4つのタブの見本。select でそのタブにして止める（各タブの1行の説明の「くわしく ›」から #/guide/tabs/<タブ> で開いたとき） */
+export type TabsDemo = HTMLElement & { select(tab: GuideTab): void };
+
+export function isGuideTab(value: string): value is GuideTab {
+  return TAB_NAMES.some(([id]) => id === value);
+}
+
+export function tabsDemo(signal: AbortSignal, describe: (tab: GuideTab) => HTMLElement, initial?: GuideTab): TabsDemo {
   const phone = h("div", { class: "gd-phone gd-tabs-phone", "aria-hidden": "true" });
   phone.innerHTML = `${topBar()}<div class="gd-scr is-active gd-tabs-scr"></div>${tabBar("today")}${finger("gd-tabs-f")}`;
   const screen = phone.querySelector<HTMLElement>(".gd-tabs-scr")!;
@@ -394,8 +401,9 @@ export function tabsDemo(signal: AbortSignal, describe: (tab: GuideTab) => HTMLE
     class: "chip", type: "button", onClick: () => { auto = false; show(id, false); },
   }, name));
   const box = h("div", { class: "gd-anim gd-tabs gd-pair" }, phone,
-    h("div", {}, h("div", { class: "chip-list gd-tabs-chips", role: "group", "aria-label": "タブ" }, ...chips), side));
-  let auto = !reducedMotion();
+    h("div", {}, h("div", { class: "chip-list gd-tabs-chips", role: "group", "aria-label": "タブ" }, ...chips), side)) as HTMLElement as TabsDemo;
+  // 1つのタブを開いて来たときは、自動では切りかえない
+  let auto = !reducedMotion() && !initial;
   let index = 0;
   const show = (tab: GuideTab, tap: boolean) => {
     index = TAB_NAMES.findIndex(([id]) => id === tab);
@@ -415,7 +423,11 @@ export function tabsDemo(signal: AbortSignal, describe: (tab: GuideTab) => HTMLE
     chips.forEach((chip, i) => chip.classList.toggle("on", i === index));
     side.replaceChildren(describe(tab));
   };
-  show("today", false);
+  show(initial ?? "today", false);
+  box.select = (tab) => {
+    auto = false;
+    show(tab, false);
+  };
   const timer = window.setInterval(() => {
     if (auto && box.classList.contains("is-on")) show(TAB_NAMES[(index + 1) % TAB_NAMES.length][0], true);
   }, 4200);

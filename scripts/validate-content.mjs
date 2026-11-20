@@ -257,6 +257,20 @@ for (const term of terms) {
   if (term.level <= 2 && !beginnerIds.has(`term:${term.id}`) && !points[term.id]) errors.push(`points.json: 標準の語「${term.id}」（${term.ja}）に覚えることがありません`);
 }
 
+// 出題で語を映す向き（content/point-views.json。scripts/point-views.mjs が書く。src/point-views.ts）: 語のIDと向きの名前。
+// 名前→位置を出さない語（xray・図の語・平面図の語）には書かない（測るのは名前→位置を出す語だけ）
+const VIEW_NAMES = ["front", "back", "right", "left", "frontRight", "frontLeft", "backRight", "backLeft", "above", "below"];
+const pointViews = z.strictObject({ views: z.record(z.string(), z.enum(VIEW_NAMES)) })
+  .safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/point-views.json"), "utf8")));
+if (!pointViews.success) errors.push(`point-views.json: ${pointViews.error.issues.map((issue) => `${issue.path.join(".")} ${issue.message}`).join(" / ")}`);
+else {
+  for (const id of Object.keys(pointViews.data.views)) {
+    const term = seen.get(id);
+    if (!term) errors.push(`point-views.json: 「${id}」は語のIDではありません`);
+    else if (term.xray || term.figure || term.region || term.plate) errors.push(`point-views.json: 「${id}」は名前→位置を出さない語です（測り直す: scripts/point-views.mjs）`);
+  }
+}
+
 // 骨学試験（content/exam.json）: 種類ごとの ID の重複、A の空欄（{語ID} か {=答え|別解}）、B・C の語と3Dで示す語。
 // B の総論の語（term の無い語）は日本語・読み・英語・説明を直接書く。D の図の番号は、ピンか骨の語のID、点を書いた語、語に無い名前（点と名前）。
 // 整理の項目（pairs・sequences・levels）は語の参照先、対の特徴の数と重なり、並びの語の重なり、目安の答えの重なり

@@ -190,16 +190,16 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
       h("div", { class: "nav-row" },
         h("button", { class: "ghost-button", type: "button", onClick: () => unpeel(peeled[peeled.length - 1].id) }, "1つ戻す"),
         h("button", { class: "ghost-button", type: "button", onClick: () => unpeel() }, "全部戻す"),
-        h("button", { class: "ghost-button", type: "button", onClick: saveView }, "表示を保存"),
+        h("button", { class: "ghost-button", type: "button", onClick: saveView }, "この見え方を保存"),
       ),
     );
   };
 
-  // 表示の保存: 今の表示に名前を付けて残し、一覧の「保存した表示」から開き直す（記録の書き出しにも入る）
+  // 見え方の保存: 今の3Dの見え方（系統・隠した部位・断面・視点）に名前を付けて残し、一覧の「保存した見え方」から開き直す（記録の書き出しにも入る）
   const storeViews = () => db.settings.put({ key: VIEWS, value: views, updatedAt: nowIso() });
   const saveView = () => {
     const first = termById.get(peeled[0]?.id ?? "");
-    const name = window.prompt("この表示の名前", selected?.ja ?? (first ? `${first.ja}をはがした所` : `表示 ${views.length + 1}`))?.trim();
+    const name = window.prompt("この見え方の名前", selected?.ja ?? (first ? `${first.ja}をはがした所` : `見え方 ${views.length + 1}`))?.trim();
     if (!name) return;
     views = [{
       id: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, name,
@@ -209,7 +209,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
     openIds.add(VIEWS);
     void db.settings.put({ key: OPEN_FOLDERS, value: [...openIds], updatedAt: nowIso() });
     if (!search.value.trim()) renderList();
-    ctx.hint(`「${name}」を保存した。一覧の「保存した表示」から開ける`);
+    ctx.hint(`「${name}」を保存した。一覧の「保存した見え方」から開ける`);
   };
   const openView = async (view: SavedView) => {
     shown.clear();
@@ -234,7 +234,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
   };
   const viewRows = () => h("div", { class: "saved-views" },
     h("p", { class: "muted" }, "系統の組み合わせ・隠した部位・断面・視点を、名前を付けて残せます。"),
-    h("button", { class: "ghost-button", type: "button", onClick: saveView }, "今の表示を保存"),
+    h("button", { class: "ghost-button", type: "button", onClick: saveView }, "今の3Dの見え方を保存"),
     views.length ? h("ul", { class: "term-list" }, ...views.map((view) => h("li", { class: "view-row" },
       h("button", { type: "button", class: "term-row", onClick: () => void openView(view) },
         h("span", {}, view.name), h("span", { class: "en" }, view.savedAt.slice(0, 10))),
@@ -337,7 +337,7 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
       list.replaceChildren(matches.length ? termRows(matches, true) : h("p", { class: "muted" }, "見つかりませんでした。"));
       return;
     }
-    list.replaceChildren(folder(VIEWS, "system folder", ["保存した表示"], `${views.length}件`, viewRows), ...systems.flatMap((system) => {
+    list.replaceChildren(folder(VIEWS, "system folder", ["保存した見え方"], views.length ? `${views.length}件` : "まだ無し", viewRows), ...systems.flatMap((system) => {
       const inSystem = courseUnits().filter((unit) => unit.system === system.id);
       if (!inSystem.length) return [];
       const total = inSystem.reduce((sum, unit) => sum + unit.terms.length, 0);

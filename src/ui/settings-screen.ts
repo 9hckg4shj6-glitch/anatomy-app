@@ -8,13 +8,16 @@ import { h } from "../dom";
 import {
   COURSES, courseOf, daysUntilExam, loadPreferences, setCourse, NEW_PER_DAY_OPTIONS, preferences, REVIEW_SIZE_OPTIONS, setPreference, TEXT_SIZES, type Preferences,
 } from "../settings";
-import { BASIC_FACETS, TERM_KINDS } from "../study";
+import { BASIC_FACETS, KIND_HINTS, kindHintText, TERM_KINDS } from "../study";
 import { PURPOSES, shownPurposes } from "../purposes";
 import { canUseExam, loadProfile } from "../profile";
 import type { AppContext } from "./context";
 
-/** 設定の画面（#/settings）: コースと使う目的・学び方・表示・骨学試験の日・記録の書き出しと読み込み */
-export async function settingsScreen(ctx: AppContext): Promise<void> {
+/**
+ * 設定の画面（#/settings）: コースと使う目的・学び方・表示・骨学試験の日・記録の書き出しと読み込み。
+ * "#/settings/course" はコースの所を開いて出す（学ぶの鍵の付いた学び方から）
+ */
+export async function settingsScreen(ctx: AppContext, arg = ""): Promise<void> {
   ctx.fold(true);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
@@ -25,6 +28,11 @@ export async function settingsScreen(ctx: AppContext): Promise<void> {
   render();
   const profile = await loadProfile();
   ctx.panel.replaceChildren(h("h2", {}, "設定"), profileSection(profile), box, offlineSection(ctx), backupSection(render));
+  if (arg === "course") {
+    const course = ctx.panel.querySelector<HTMLElement>("#settings-course");
+    requestAnimationFrame(() => course?.scrollIntoView({ block: "start" }));
+    course?.classList.add("is-pointed");
+  }
 }
 
 /** オフライン: 3Dと音声をまとめて保存する（ふだんは開いた系統・聞いた音声だけが保存される） */
@@ -129,6 +137,10 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
       render();
     },
   }, kind.label)));
+  studyChips.querySelectorAll<HTMLButtonElement>(".chip").forEach((chip, i) => {
+    const hint = KIND_HINTS[TERM_KINDS[i].key];
+    if (hint) chip.title = hint;
+  });
   const examDate = h("input", {
     class: "date-input", type: "date", value: preferences.examDate, "aria-label": "骨学試験の日",
     onChange: async () => {
@@ -140,7 +152,7 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
   // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）。ほかの人には説明の文からも外す
   const exam = canUseExam();
   return [
-    h("section", { class: "settings" },
+    h("section", { class: "settings", id: "settings-course" },
       h("h3", {}, "コースと使う目的"),
       chips(COURSES.map((course) => ({ value: course.id, label: course.title })), courseOf(), async (value) => {
         await setCourse(value);
@@ -155,12 +167,13 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
       h("p", { class: "setting-label" }, "使う目的（いくつでも）"),
       purposeChips(render),
       h("p", { class: "muted" }, "選んだ目的の使い方を「使い方」の上に出します。どの目的でも、すべての学び方を使えます。"),
-      h("p", {}, h("a", { href: "#/guide" }, "使い方を見る ›")),
+      h("p", {}, h("a", { href: "#/guide/purpose" }, "使い方の「目的別の使い方」を見る ›")),
     ),
     h("section", { class: "settings" },
       h("h3", {}, "学ぶ問い方"),
-      h("p", { class: "muted" }, "語の問題で出す問い方です。初めは位置→名前・名前→位置・日本語→英語の3つで、慣れたら英語→日本語や筋の起始・停止などを足します（コース「すべての語」を選ぶと全部）。外した問い方は、新しく始めず、期限が来ても復習に出しません（覚え具合の記録は残るので、戻せば続きから出ます）。"),
+      h("p", { class: "muted" }, "レッスンと復習で出す問題の種類です。初めの3つで十分で、慣れたら英語→日本語や筋の起始・停止などを足します。外した問い方は出なくなりますが、記録は残ります（戻せば続きから）。"),
       studyChips,
+      h("p", { class: "muted kind-hints" }, `${kindHintText(["locate", "point", "ja2en", "en2ja"])}。`),
       studyNote,
       beginner ? h("p", { class: "muted" }, "初心者モードでは、筋の起始・停止・神経・作用と孔・溝を通るものは出しません（詳細モードで出ます）。") : "",
       h("p", { class: "muted" }, `レッスンの確認テストでどれから覚えるかは、レッスンの始めの画面で選べます。${exam ? "語根カードと骨学試験" : "語根カード"}の問題は、ここでは変わりません。`),

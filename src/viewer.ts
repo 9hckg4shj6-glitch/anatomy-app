@@ -989,8 +989,11 @@ export class AnatomyViewer {
     this.dirty = true;
   }
 
-  /** 語に寄る。zoom を大きくするほど引いて周りも映す（答えが分かりすぎないように）。include の点も画面に入れる */
-  focus(termId: string, zoom = 3.2, animate = true, include?: Vec3): void {
+  /**
+   * 語に寄る。zoom を大きくするほど引いて周りも映す（答えが分かりすぎないように）。include の点も画面に入れる。
+   * from はカメラを置く向き（骨・器官の部位はピンの向きが先。出題で見える向きから映すとき。src/point-views.ts）
+   */
+  focus(termId: string, zoom = 3.2, animate = true, include?: Vec3, from?: Vec3): void {
     const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
     const drawn = termById.get(termId);
     const view: View | undefined = drawn?.figure?.view ?? drawn?.region?.view;
@@ -1041,8 +1044,9 @@ export class AnatomyViewer {
       this.moveTo(target, target.clone().add(direction.multiplyScalar(half / tan)), animate);
       return;
     }
-    // 前からは陰になる語（胸椎など）は、語に書いた向きから見る
-    if (drawn?.from) direction.set(...drawn.from).normalize();
+    // 見る向きを渡されればその向きから。前からは陰になる語（胸椎など）は、語に書いた向きから見る
+    if (from) direction.set(...from).normalize();
+    else if (drawn?.from) direction.set(...drawn.from).normalize();
     const target = new THREE.Vector3(...term.center);
     // 臓器の場面では臓器しか出ていないので、小さな語（弁など）にもっと寄れる
     const distance = Math.max(this.organ ? 0.07 : 0.18, term.radius * zoom) / tan;

@@ -36,8 +36,12 @@ function save(saved: Saved): void {
 export interface Splitter {
   /** 説明をたたんでいたら戻し、3Dもたたんでいたら戻す（画面を移ったとき） */
   restore(): void;
-  /** 縦に並ぶとき（スマホ）だけ、3Dを細い帯にたたむ（false で戻す）。左右に並ぶときは何も変わらない */
-  fold(on: boolean): void;
+  /**
+   * 縦に並ぶとき（スマホ）だけ、3Dをたたむ（false で戻す）。左右に並ぶときは何も変わらない。
+   * true は3Dごと隠す（調べる・記録・設定など3Dの要らない画面）。文字を渡すと、その文字の細い帯だけを残し、押すと3Dを出す
+   * （学ぶ・レッスンの一覧のように、3Dにその画面の語が光っている画面。何が見えるかを書く）
+   */
+  fold(on: boolean | string): void;
 }
 
 export function setupSplitter(layout: HTMLElement, stage: HTMLElement, panel: HTMLElement): Splitter {
@@ -121,10 +125,16 @@ export function setupSplitter(layout: HTMLElement, stage: HTMLElement, panel: HT
   expand.addEventListener("click", () => setExpanded(!layout.classList.contains("stage-only")));
   setExpanded(false);
 
-  // 一覧や設定など3Dを使わない画面では、説明を3Dに重ねて上の帯だけを見せる（3Dの大きさは変えないので、描き直しも視点のずれも無い）。
-  // 帯を押すと3Dを出す
-  const unfold = h("button", { class: "stage-unfold", type: "button", onClick: () => setFolded(false) }, "3Dを出す ▾");
-  const setFolded = (on: boolean) => layout.classList.toggle("stage-folded", on);
+  // 一覧や設定など3Dを使わない画面では、説明を3Dに重ねて隠す（3Dの大きさは変えないので、描き直しも視点のずれも無い）。
+  // 3Dにその画面の語が光っている画面だけ、上に何が見えるかの帯を残し、押すと3Dを出す（docs/普段使い.md「画面の分かりにくさの見直し」）
+  const unfoldLabel = h("span", { class: "stage-unfold-label" });
+  const unfold = h("button", { class: "stage-unfold", type: "button", onClick: () => setFolded(false) },
+    h("span", { class: "stage-unfold-mark", "aria-hidden": "true" }, "3D"), unfoldLabel, h("span", { class: "stage-unfold-open", "aria-hidden": "true" }, "▾"));
+  const setFolded = (on: boolean | string) => {
+    layout.classList.toggle("stage-folded", on !== false);
+    layout.classList.toggle("stage-folded-bar", typeof on === "string");
+    unfoldLabel.textContent = typeof on === "string" ? on : "";
+  };
 
   stage.append(expand, unfold);
   stage.after(handle);

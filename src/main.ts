@@ -26,6 +26,7 @@ import { review } from "./ui/review";
 import { rootIndex, rootLesson } from "./ui/roots";
 import { settingsScreen } from "./ui/settings-screen";
 import { setupSplitter } from "./ui/splitter";
+import { stageTip } from "./ui/stage-tip";
 import { AnatomyViewer } from "./viewer";
 
 const stage = document.getElementById("stage")!;
@@ -55,6 +56,11 @@ const TAB_OF: Record<string, string> = {
   look: "look", explore: "look",
   records: "records", progress: "records", settings: "records", guide: "records", credits: "records", admin: "records",
 };
+/**
+ * 使い方（#/guide）は、どのタブからも上の帯の「使い方」で開くので、開いたときのタブのまま（タブの印と「‹」の戻り先）。
+ * アドレスから直に開いたときは記録（記録の一覧に「使い方」がある）
+ */
+let guideTab = "records";
 /** タブの一番上の画面（上の帯は名前だけ） */
 const TAB_ROOTS = new Set(["", "study", "look", "records", "start"]);
 /** タブを隠す画面（解いている間・はじめに。上の帯の「‹」で戻る） */
@@ -70,10 +76,22 @@ const tabbar = document.getElementById("tabbar")!;
  */
 function showCrumbs(name: string): void {
   const page = PAGES[name];
-  const tab = TAB_OF[name] ?? "today";
+  const tab = name === "guide" ? guideTab : TAB_OF[name] ?? "today";
   const root = TAB_ROOTS.has(name) || !page;
   document.body.classList.toggle("at-home", root);
   document.body.classList.toggle("no-tabs", NO_TABS.has(name));
+  // はじめにの3語（#/learn/<ID>/try）は、上の帯を「‹ はじめに」と「3語を試す」にする（学ぶから来ていないので）。検索も出さない
+  const trial = name === "learn" && location.hash.endsWith("/try");
+  document.body.classList.toggle("is-trial", trial);
+  if (trial) {
+    brand.href = "#/start";
+    brandBack.textContent = "はじめに";
+    brand.setAttribute("aria-label", "はじめにへ");
+    for (const link of tabbar.querySelectorAll<HTMLAnchorElement>(".tab")) link.removeAttribute("aria-current");
+    crumbs.replaceChildren(h("span", { class: "crumb", "aria-current": "page" }, "3語を試す"));
+    document.title = `3語を試す - ${APP_NAME}`;
+    return;
+  }
   for (const link of tabbar.querySelectorAll<HTMLAnchorElement>(".tab")) {
     if (link.dataset.tab === tab) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
@@ -128,6 +146,7 @@ const gestureHelp = h("dialog", { class: "key-help", "aria-label": "3Dの動か�
       ["回す", "1本指でドラッグ（マウスは左ドラッグ）"], ["拡大・縮小", "2本指でつまむ（マウスはホイール）。指の所へ寄る"],
       ["ずらす", "2本指でドラッグ（マウスは右ドラッグ）"], ["名前を見る", "部位をタップ（図鑑。PC は重ねるだけでも）"],
       ["視点を戻す", "自分で動かしたあと右上に出る。アプリが決めた向きへ戻る"], ["⤢", "説明をたたんで3Dを大きく（もう一度押すと戻る）"],
+      ["向きの目印", "右上の小さな人。今どちら側から見ているか（「前から見ている」など）。オレンジの「右」は本人の右なので、前から見ると画面の左に来る（設定で消せる）"],
       ["境目", "3Dと説明の境目をドラッグで大きさを変える（ダブルクリックで元に戻す）"],
     ] as const).map(([key, text]) => h("div", {}, h("dt", {}, key), h("dd", {}, text))),
   ),
@@ -203,6 +222,8 @@ async function boot(): Promise<void> {
   /** 同じ画面の中の移動（図鑑で語を選んだあと「戻る」など）を、画面を作り直さずに受ける */
   let stayHandler: ((arg: string) => boolean) | null = null;
   let currentName = "";
+  /** 1回でも画面を開いたか（使い方を直に開いたときと、今日から開いたときを分ける） */
+  let routed = false;
   /** "#/exam/a/list" → ["exam", "a/list"]（2段目からは arg にまとめる） */
   const parseHash = (): [string, string] => {
     const [, name = "", ...rest] = location.hash.split("/");
@@ -251,11 +272,18 @@ async function boot(): Promise<void> {
       await route();
       return;
     }
+    // 使い方は、開いたときのタブのまま（同じ使い方の中で章を移るときは変えない。アドレスから直に開いたときは記録）
+    if (name === "guide" && (currentName !== "guide" || !routed)) guideTab = routed ? TAB_OF[currentName] ?? "today" : "records";
+    routed = true;
     currentName = name;
-    // 今日（ホーム）は3Dの人体を大きく、境目のつまみは出さない。回る人体が主役なので向きの目印も出さない
+    // 今日（ホーム）は3Dの人体を大きく、境目のつまみは出さない。回る人体が主役なので向きの目印も出さない。
+    // はじめに（名前・所属など）も3Dは飾りなので、向きの目印と「3Dを大きく」は出さない
     layout.classList.toggle("is-home", !PAGES[name]);
-    viewer.hideCompass(!PAGES[name]);
+    layout.classList.toggle("is-start", name === "start");
+    viewer.hideCompass(!PAGES[name] || name === "start");
     showCrumbs(name);
+    // 3Dを動かして見る画面（レッスン・図鑑・臓器の図）を初めて開いたときに、右上の ⤢・?・向きの目印の説明を出す（src/ui/stage-tip.ts）
+    if (name === "learn" || name === "explore" || (name === "organs" && arg)) void stageTip(stage, ctx.signal);
     window.scrollTo(0, 0);
     try {
       if (name === "learn") await lesson(ctx, arg);
@@ -272,7 +300,7 @@ async function boot(): Promise<void> {
       else if (name === "organs") await organScreen(ctx, arg);
       else if (name === "exam") await exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
-      else if (name === "settings") await settingsScreen(ctx);
+      else if (name === "settings") await settingsScreen(ctx, arg);
       else if (name === "guide") guide(ctx, arg);
       else if (name === "credits") credits(ctx);
       else if (name === "admin") await admin(ctx, arg);

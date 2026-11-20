@@ -5,7 +5,7 @@ import { preferences } from "../settings";
 import { termAt, type AppContext } from "./context";
 import {
   askDemos, cardDemo, compassDemo, dayDemo, featureCards, gestureDemos, heroDemo, lessonDemo, memoryChart, outcomeTable,
-  tabsDemo, watchDemos, type GuideTab,
+  isGuideTab, tabsDemo, watchDemos, type GuideTab,
 } from "./guide-demos";
 import "./guide.css";
 import { purposeChips } from "./settings-screen";
@@ -57,7 +57,7 @@ const WORDS: [term: string, text: string][] = [
   ["仕上げ", "今日のレッスンで学んだ語を、その日のうちにほかの問い方でもう一度解く問題です。やらなくてもかまいません（明日から今日の復習に出ます）。「今日」の画面とレッスンの終わりに出ます。"],
   ["演習", "範囲を自分で選んで解きます（試験の前の総ざらい・苦手な語）。答えは復習と同じく記録され、次に出る日にも反映されます。"],
   ["問い方", "位置→名前（光った所の名前を選ぶ）・名前→位置（3Dでその所をタップして選び、もう一度タップで答える）・日本語→英語の3つから始まります。英語→日本語・筋の起始と停止などは 設定 › 学ぶ問い方 で足せます。"],
-  ["覚える量（コース）", "はじめての解剖（まず覚える語）・標準（必修と基礎）・すべての語（発展の語まで）。変えても学んだ記録は続きます。"],
+  ["コース", "どこまでの語を覚えるか。はじめての解剖（まず覚える語）・標準（必修と基礎）・すべての語（発展の語まで）。変えても学んだ記録は続きます。"],
   ["覚えること・くわしく", "語のカードは、まず「覚えること」の1〜2文。くわしい説明・漢字・語源は「くわしく」を開くと出ます。"],
   ["模式", "心臓の中・肺区域・腎臓の中などは、位置と並びを示す模式の立体です。実際の形とは違います。"],
 ];
@@ -67,7 +67,7 @@ const FAQ: [question: string, answer: string, link?: [href: string, label: strin
   ["復習がたまってしまった", "期限の来た復習は全部出ますが、1回の区切り（初めは20問）ごとにやめられます。復習を始めるときに範囲・問い方も絞れます。新しいレッスンを数日休むと、たまった分は減っていきます。", ["#/review", "復習の始めの画面"]],
   ["当てずっぽうで正解した・押しまちがえた", "正解の画面の「自信がなかった（早めにもう一度出す）」で、次に出る日を早められます。押しまちがえたときは「押しまちがえた（取り消して解き直す）」を。"],
   ["新しい語が多すぎる・少なすぎる", "記録 › 設定 の「1日に新しく始める問題」で変えられます。1つの語に、学ぶ問い方の数だけ問題があります（初めは3つ）。", ["#/settings", "設定"]],
-  ["覚える量（コース）を変えたい", "記録 › 設定 の「コースと使う目的」で、いつでも変えられます。学んだ記録はそのまま続きます。", ["#/settings", "設定"]],
+  ["コースを変えたい", "記録 › 設定 の「コースと使う目的」で、いつでも変えられます。学んだ記録はそのまま続きます。", ["#/settings/course", "設定"]],
   ["機種を変える・別の端末で続けたい", "記録はこの端末の中だけにあります。設定の「記録の書き出し・読み込み」でファイルに書き出し、新しい端末で読み込んでください。iOS の Safari とホーム画面のアプリの間も同じです。", ["#/settings", "設定"]],
   ["通信の無い所で使いたい", "ホーム画面に追加してから、設定の「オフライン」で「すべて保存」を押すと、通信の無い実習室でも使えます。", ["#/settings", "設定"]],
   ["3Dで迷った・見えなくなった", "自分で回したり拡大したりすると、3Dの右上に「視点を戻す」が出ます。押すとアプリが決めた向きへ戻ります。"],
@@ -95,7 +95,8 @@ type Scene = "spin" | "femur" | "free";
 const SCENE_OF: Record<string, Scene> = { lesson: "femur", ask: "femur", card: "femur", "3d": "free" };
 
 /**
- * 使い方（#/guide。記録のタブ・上の帯の「? 使い方」・学ぶと今日の案内から）。docs/普段使い.md「使い方ガイド」。
+ * 使い方（#/guide。入口は上の帯の「? 使い方」と記録の一覧。3Dの「?」は3Dの動かし方の一覧から 05 へ。各タブの1行の説明は 06 をそのタブで）。
+ * docs/普段使い.md「使い方ガイド」「画面の分かりにくさの見直し」。タブの印と「‹」は、開いたときのタブのまま（src/main.ts）。
  * 目次 → 毎日の使い方（動く見本）→ レッスン（段ごとの見本）→ 問い方 → 復習のしくみ（図）→ 3Dの動かし方 → 4つのタブ →
  * 語のカード → そのほかの学び方 → 目的別 → 困ったとき → ことば → キーボード。
  * "#/guide/<章>" でその章を開く（目次から押したときは画面を作り直さずにずらすだけ）
@@ -109,10 +110,13 @@ export function guide(ctx: AppContext, arg = ""): void {
   });
 
   let scene: Scene | null = null;
+  // スマホの縦では3Dごとたたんであるので、回し続けない（見えない3Dを描き続けると電池を使う。「3Dで試してみる」で出したときは回さない場面）
+  const layout = document.querySelector<HTMLElement>(".layout");
+  const stageHidden = () => !!layout?.classList.contains("stage-folded") && getComputedStyle(layout).flexDirection !== "row";
   const setScene = (next: Scene, force = false) => {
     if (next === scene && !force) return;
     scene = next;
-    viewer.spin(next === "spin");
+    viewer.spin(next === "spin" && !stageHidden());
     if (next === "femur") {
       viewer.highlight(["femur"], { isolate: true });
       viewer.focus("femur", 1.6);
@@ -166,6 +170,13 @@ export function guide(ctx: AppContext, arg = ""): void {
     },
   }, "3Dで試してみる");
 
+  // "#/guide/tabs/<タブ>" は、4つのタブの章をそのタブにして開く（各タブの1行の説明から）
+  const tabOf = (value: string) => {
+    const [chapterId, tab = ""] = value.split("/");
+    return chapterId === "tabs" && isGuideTab(tab) ? tab : undefined;
+  };
+  const tabs = tabsDemo(signal, (tab) => tabCard(TABS[tab]), tabOf(arg));
+
   const page = h("div", { class: "home guide" },
     h("div", { class: "tab-head" }, h("h2", {}, "使い方")),
     h("p", { class: "guide-lead" }, "からだ見聞録は、3Dの人体を回して見ながら、解剖の名前と場所をいっしょに覚えるアプリです。"),
@@ -212,7 +223,7 @@ export function guide(ctx: AppContext, arg = ""): void {
     ),
 
     chapter("tabs", "4つのタブ", "画面の下（iPad・PC は左）の4つのタブで行き来します。レッスンや復習を解いている間はタブが隠れ、上の「‹」で戻ります。",
-      tabsDemo(signal, (tab) => tabCard(TABS[tab])),
+      tabs,
     ),
 
     chapter("card", "語のカード", "レッスン・図鑑・答えたあとに出るカードです。まずは「覚えること」だけ読めば十分です。",
@@ -263,7 +274,10 @@ export function guide(ctx: AppContext, arg = ""): void {
   signal.addEventListener("abort", () => watcher.disconnect(), { once: true });
 
   // 目次から押したときは作り直さずにその章へ
-  const jump = (id: string, smooth: boolean) => {
+  const jump = (value: string, smooth: boolean) => {
+    const id = value.split("/")[0];
+    const tab = tabOf(value);
+    if (tab) tabs.select(tab);
     const target = id ? page.querySelector(`#guide-${CSS.escape(id)}`) : null;
     target?.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
   };

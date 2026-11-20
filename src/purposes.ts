@@ -63,7 +63,7 @@ export const PURPOSES: PurposeInfo[] = [
     title: "CBT・国試の前に見直す",
     sub: "全身をざっと見直し、苦手な語を解き直す",
     steps: [
-      { text: "覚える量は「標準」（必修と基礎）がおすすめ。発展の語まで見るなら「すべての語」。", link: { href: "#/settings", label: "設定でコースを変える" } },
+      { text: "コースは「標準」（必修と基礎）がおすすめ。発展の語まで見るなら「すべての語」。", link: { href: "#/settings", label: "設定でコースを変える" } },
       { text: "「演習」で系統やレッスンを選んで解く。「苦手な語」は、まちがえた語・忘れかけた語から出る。", link: { href: "#/drill", label: "演習" } },
       { text: "「臓器の図」で、臓器どうしの位置と切り口を見直す。", link: { href: "#/organs", label: "臓器の図" } },
       { text: "「記録 › 進捗」で覚え具合を人体の色で見て、薄い系統から手を付ける。", link: { href: "#/progress", label: "進捗" } },

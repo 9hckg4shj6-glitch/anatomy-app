@@ -31,6 +31,22 @@ export const TERM_KINDS: { key: string; label: string; facets: Facet[] }[] = [
   { key: "hormone", label: "ホルモン（どこから出る？）", facets: ["hormone"] },
 ];
 
+/** 基本の問い方が何をする問題か（「位置→名前」だけでは分かりにくいので、選ぶ所に添える。docs/普段使い.md「画面の分かりにくさの見直し」） */
+export const KIND_HINTS: Record<string, string> = {
+  locate: "光った所の名前を選ぶ",
+  point: "名前の所を3Dでタップ",
+  ja2en: "英語名を選ぶ（打つ）",
+  en2ja: "英語を聞いて日本語を選ぶ",
+};
+
+/** 問い方の一言をつなげた文（「位置→名前＝光った所の名前を選ぶ。…」）。一言の無い問い方は入れない */
+export function kindHintText(keys: string[]): string {
+  return keys.flatMap((key) => {
+    const kind = TERM_KINDS.find((item) => item.key === key);
+    return kind && KIND_HINTS[key] ? [`${kind.label}＝${KIND_HINTS[key]}`] : [];
+  }).join("。");
+}
+
 /** 語に付く問い方すべて（設定の「学ぶ問い方」の初め） */
 export const TERM_FACETS: Facet[] = TERM_KINDS.flatMap((kind) => kind.facets);
 

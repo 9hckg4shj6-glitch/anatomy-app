@@ -1,5 +1,5 @@
 import { autoSpeak } from "../audio";
-import { loadPlateIndex, organById, organs, organTerms, termById, unitById, type Organ, type PlateIndex, type PlateLabel, type PlateSpec, type Term } from "../content";
+import { loadPlateIndex, organById, organTerms, termById, unitById, type Organ, type PlateIndex, type PlateLabel, type PlateSpec, type Term } from "../content";
 import { organLessons } from "../course";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
@@ -25,25 +25,63 @@ export async function organScreen(ctx: AppContext, arg: string): Promise<void> {
   await organPage(ctx, organ, mode ?? "", termId ?? "");
 }
 
+/**
+ * 臓器の図の一覧の見出し（系統のまとまり）と、その臓器。どの臓器も1つのまとまりに入る（tests/organs.test.ts が確かめる）。
+ * color は見出しの印（content/systems.json の系統の色）
+ */
+export const ORGAN_GROUPS: { title: string; color: string; organs: string[] }[] = [
+  { title: "心臓と血管・リンパ", color: "#c8323c", organs: ["heart", "vessels", "lymph"] },
+  { title: "呼吸器と胸の中", color: "#6fa8dc", organs: ["nose", "pharynx", "larynx", "lung", "lung-segments", "pleura", "mediastinum"] },
+  { title: "消化器と腹膜", color: "#d9965b", organs: ["stomach", "liver", "intestine", "peritoneum"] },
+  { title: "泌尿器と生殖器", color: "#d4a514", organs: ["kidney", "renal", "male", "female"] },
+  { title: "神経と感覚器", color: "#e9c46a", organs: ["brain", "brain-base", "spinal-cord", "brachial-plexus", "eye", "ear"] },
+  { title: "関節", color: "#b7c7cc", organs: ["shoulder", "elbow", "hip", "knee"] },
+  { title: "皮膚・組織・発生", color: "#c48bb4", organs: ["skin", "tissues", "development"] },
+];
+
+/** 一覧の絵（scripts/organ-thumbs.mjs が最初の平面図から作る）。平面図の無い臓器は無し */
+export function organThumb(organ: Organ): string | null {
+  return organ.plates.length ? `${import.meta.env.BASE_URL}organs/${organ.id}.webp` : null;
+}
+
+/** 一覧の札の小さな字（平面図の枚数と、図のレッスンの進み具合） */
+export function organMeta(organ: Organ, lessons: number, done: number): string[] {
+  const plates = organ.plates.length ? `平面図 ${organ.plates.length}枚` : "立体だけ";
+  return lessons ? [plates, done ? `レッスン ${done} / ${lessons}` : `レッスン ${lessons}`] : [plates];
+}
+
+/**
+ * 臓器の図の一覧（docs/普段使い.md「画面の分かりにくさの見直し」）。系統のまとまりの見出しと、絵つきの札を2列に。
+ * 英語名は臓器の画面で出す。3Dは使わないので、スマホでは3Dごとたたむ
+ */
 async function organList(ctx: AppContext): Promise<void> {
   ctx.fold(true);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   void ctx.viewer.show({ systems: ["skeletal"], body: true });
   const learnedIds = new Set((await db.learned.toArray()).map((item) => item.termId));
-  const row = (organ: Organ) => {
+  const card = (organ: Organ) => {
     const lessons = organLessons(organ);
-    const left = lessons.filter((unit) => unit.terms.some((term) => !learnedIds.has(term.id))).length;
+    const done = lessons.filter((unit) => unit.terms.every((term) => learnedIds.has(term.id))).length;
+    const thumb = organThumb(organ);
     return h("li", {},
-      h("a", { class: "unit", href: `#/organs/${organ.id}` },
-        h("span", { class: "unit-title" }, organ.ja, h("span", { class: "en", lang: "en" }, `　${organ.en}`)),
-        h("span", { class: "unit-count" }, lessons.length ? `図のレッスン ${left < lessons.length ? `${lessons.length - left} / ` : ""}${lessons.length}・平面図 ${organ.plates.length}枚` : `平面図 ${organ.plates.length}枚`)));
+      h("a", { class: "organ-card", href: `#/organs/${organ.id}` },
+        thumb
+          ? h("img", { class: "organ-thumb", src: thumb, alt: "", loading: "lazy", decoding: "async", width: "360", height: "240" })
+          : h("span", { class: "organ-thumb organ-thumb-3d", "aria-hidden": "true" }, "3D"),
+        h("span", { class: "organ-name" }, organ.ja),
+        h("span", { class: "organ-meta" }, ...organMeta(organ, lessons.length, done).map((text) => h("span", {}, text)))));
   };
   ctx.panel.replaceChildren(
     h("h2", {}, "臓器の図"),
-    h("p", { class: "muted" }, "臓器を、立体（3D）と教科書のような平面図の両方で見ます。平面図の名前は日本語と英語を並べて出します。"),
-    h("p", { class: "muted" }, "細胞と組織・皮膚・発生や臓器の中のつくりのように、3Dより平面図で覚える語は、それぞれの臓器の「図で学ぶレッスン」で学びます。"),
-    h("ul", { class: "units" }, ...organs.map(row)),
+    h("p", { class: "muted" }, "臓器を立体（3D）と教科書のような平面図で見ます。細胞と組織・発生などは、それぞれの図の「図で学ぶレッスン」で。"),
+    ...ORGAN_GROUPS.flatMap((group) => {
+      const list = group.organs.flatMap((id) => (organById.has(id) ? [organById.get(id)!] : []));
+      return list.length ? [
+        h("h3", { class: "organ-group" }, h("span", { class: "swatch", style: `background:${group.color}` }), group.title),
+        h("ul", { class: "organ-grid" }, ...list.map(card)),
+      ] : [];
+    }),
   );
 }
 

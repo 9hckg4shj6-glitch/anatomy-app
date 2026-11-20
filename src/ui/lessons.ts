@@ -14,7 +14,8 @@ let shownSystem = "";
  * "#/lessons/<系統ID>" はその系統を選んで開く
  */
 export async function lessons(ctx: AppContext, systemId = ""): Promise<void> {
-  ctx.fold(true);
+  // 3Dには選んだ系統を出す（スマホはたたみ、帯だけを残す。押すと3D）
+  ctx.fold("3Dで見る：選んだ系統（タップで図鑑）");
   ctx.hint("");
   // 骨や骨の部位をタップしたら、図鑑でその語を開く
   ctx.viewer.onPick = (elementId, point) => {

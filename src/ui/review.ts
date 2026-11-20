@@ -7,7 +7,7 @@ import { examByKey, examFacetsOf, FIRST_FACETS, isExamKey } from "../exam";
 import { canUseExam } from "../profile";
 import { isRootKey, rootByKey } from "../roots";
 import { preferences, REVIEW_SIZE_OPTIONS, setPreference } from "../settings";
-import { buildQueue, facetLabels, facetsFor, ROOT_FACETS, TERM_KINDS, unlockedTerms, type QueueItem } from "../study";
+import { buildQueue, facetLabels, facetsFor, kindHintText, ROOT_FACETS, TERM_KINDS, unlockedTerms, type QueueItem } from "../study";
 import type { AppContext } from "./context";
 import { nextLesson } from "./lessons";
 import { ask, showPanel, type Outcome } from "./quiz";
@@ -144,8 +144,14 @@ export async function review(ctx: AppContext, arg = ""): Promise<void> {
   await session(ctx, await chooseReview(ctx, today));
 }
 
+/** 1回に解く数の選択肢のうち、いちばん小さい数（「全部」の 0 を除く） */
+export function smallestReviewSize(): number {
+  return Math.min(...REVIEW_SIZE_OPTIONS.filter((size) => size > 0));
+}
+
 /**
  * 復習の始めの画面: 今日の問題の内訳を出し、範囲（系統・語根カード・骨学試験）、問い方、新しい問題を出すか、1回に解く数を選ぶ。
+ * 1回に解く数は、今日の問題がいちばん小さい数より多いときだけ出す。
  * 1回に解く数は前に選んだものを覚える。範囲と問い方は毎回すべてから始める（ホームの数と食いちがわないように）
  */
 function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
@@ -161,6 +167,7 @@ function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
   const kinds = new Set(kindKeys);
   let fresh = true;
   let limit = REVIEW_SIZE_OPTIONS.includes(preferences.reviewSize) ? preferences.reviewSize : 0;
+  const manySizes = today.length > smallestReviewSize();
   let moreOpen = false;
   let note = "";
 
@@ -200,11 +207,12 @@ function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
         resolve({ keep, limit, pending: new Set(), part: "main" });
       });
       const more = h("details", { class: "review-more", open: moreOpen, ontoggle: (event: Event) => (moreOpen = (event.currentTarget as HTMLDetailsElement).open) },
-        h("summary", {}, "問い方・新しい問題で絞る",
+        h("summary", {}, "問題の種類で絞る",
           kinds.size < kindKeys.length || !fresh ? h("span", { class: "muted" }, "（絞っています）") : ""),
         kindKeys.length ? h("h3", {}, "問い方") : "",
         kindKeys.length ? h("div", { class: "chip-list" }, ...kindKeys.map((key) => chip(key, TERM_KINDS.find((kind) => kind.key === key)!.label, kinds.has(key),
           today.filter((item) => kindOf(item) === key && rangeOk(item) && freshOk(item)).length, () => toggle(kinds, key)))) : "",
+        kindHintText(kindKeys) ? h("p", { class: "muted kind-hints" }, `${kindHintText(kindKeys)}。`) : "",
         all(kindKeys, kinds),
         hasNew ? h("h3", {}, "新しい問題") : "",
         hasNew ? h("div", { class: "chip-list" },
@@ -222,9 +230,10 @@ function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
           today.filter((item) => rangeOf(item.termId) === key && kindOk(item) && freshOk(item)).length, () => toggle(ranges, key)))) : "",
         all(rangeKeys, ranges),
         kindKeys.length || hasNew ? more : "",
-        h("h3", {}, "1回に解く数"),
-        h("div", { class: "chip-list" }, ...REVIEW_SIZE_OPTIONS.map((size) =>
-          chip(`size-${size}`, size ? `${size}問` : "全部", size === limit, null, () => (limit = size)))),
+        // 1回に解く数は、今日の問題がいちばん小さい数（10問）より多いときだけ選ぶ（3問しか無いのに 10問・20問・全部 を出さない）
+        manySizes ? h("h3", {}, "1回に解く数") : "",
+        manySizes ? h("div", { class: "chip-list" }, ...REVIEW_SIZE_OPTIONS.map((size) =>
+          chip(`size-${size}`, size ? `${size}問` : "全部", size === limit, null, () => (limit = size)))) : "",
         h("p", { class: "muted" }, "途中で「ここでやめる」（Esc）もできます。まちがえた問題は、その回の終わりにもう一度出ます。"),
         note ? h("p", { class: "drill-note" }, note) : "",
         picked.length ? "" : h("p", { class: "drill-note" }, "選んだ範囲・問い方に、今日の問題がありません。"),

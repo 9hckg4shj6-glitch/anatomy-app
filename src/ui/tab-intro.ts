@@ -37,7 +37,8 @@ export async function tabIntro(tab: TabName): Promise<HTMLElement | ""> {
   // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）
   const text = canUseExam() ? full : full.replace("・骨学試験", "");
   const box = h("aside", { class: "tab-intro", "aria-label": `${title}のタブについて` },
-    h("p", {}, h("b", {}, `${title}：`), text, " ", h("a", { href: "#/guide" }, "使い方 ›")),
+    // 使い方の「4つのタブ」の章を、このタブを選んで開く
+    h("p", {}, h("b", {}, `${title}：`), text, " ", h("a", { href: `#/guide/tabs/${tab}` }, "くわしく ›")),
     h("button", {
       class: "tab-intro-close", type: "button", "aria-label": "この説明を閉じる", title: "閉じる",
       onClick: () => {

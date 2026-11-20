@@ -14,8 +14,12 @@ import { motionPlayer, sceneFor, type AppContext } from "./context";
 import { plateOverlay } from "./plate-view";
 import { termCard } from "./term-card";
 import { noteText } from "../en-notes";
+import { hasMeasuredView, questionView } from "../point-views";
 
 export type Outcome = EnglishResult | "skip";
+
+/** 光らせた語を映す向き。正面などから隠れると測った語だけ、見える向き（ほかは今までどおり今の向きのまま） */
+const measuredView = (term: Term): Vec3 | undefined => (hasMeasuredView(term.id) ? questionView(term) : undefined);
 
 const ratingOf: Record<Outcome, Grade> = {
   correct: Rating.Good,
@@ -191,7 +195,8 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
   switch (facet) {
     case "locate": {
       viewer.highlight([term.id], { isolate });
-      viewer.focus(term.id, 3.4);
+      // 正面からだとオレンジの所がほかの部品に隠れる語は、見える向きから（src/point-views.ts）
+      viewer.focus(term.id, 3.4, true, undefined, measuredView(term));
       const question = term.figure ? figurePrompt(term.figure) : term.region ? regionPrompt(term.region) : onPlate ? "図のオレンジ色の番号の名前は？" : "オレンジ色の部位の名前は？";
       ctx.hint(question);
       const picked = await choose(question, choicesOf((id) => termById.get(id)!.ja, undefined, true), (id) => termById.get(id)!.ja);
@@ -204,11 +209,13 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
       if (landmark) {
         // 骨・器官の部位は、その骨・器官だけを見せて全体が入る距離から探させる
         viewer.only([term.id]);
-        // 前の問題の向きが残ると見にくいので、いつも正面やや右上から
-        viewer.focusWhole(term.id, 1.3, true, [-0.35, 0.15, 1]);
+        // 前の問題の向きが残ると見にくいので、いつも決めた向きから。ふつうは正面やや右上、
+        // 背中側など正面やや右上からは見えない部位は、測った見える向きから（src/point-views.ts）
+        viewer.focusWhole(term.id, 1.3, true, questionView(term));
         ctx.hint(`${termById.get(term.of!)?.ja ?? "骨"}の上でタップして答える`);
       } else {
-        viewer.focus(term.id, 7);
+        // いつも決めた向きから（ふつうは正面。正面から隠れる・小さく映る語は、測った見える向き）
+        viewer.focus(term.id, 7, true, undefined, questionView(term));
         ctx.hint("3Dの上でタップして答える");
       }
       const tap = await tapElement(ctx, header, term);
@@ -232,7 +239,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     }
     case "ja2en": {
       viewer.highlight([term.id], { isolate });
-      viewer.focus(term.id, 3.4);
+      viewer.focus(term.id, 3.4, true, undefined, measuredView(term));
       ctx.hint("");
       const prompt = h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi));
       if (typesEnglish(await db.schedules.get(`${term.id}:ja2en`))) {
@@ -264,7 +271,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     case "action": {
       // 筋を光らせて、名前と一緒に問う。選択肢は近くの筋の起始・停止（支配神経・作用）
       viewer.highlight([term.id], { isolate });
-      viewer.focus(term.id, 3.4);
+      viewer.focus(term.id, 3.4, true, undefined, measuredView(term));
       ctx.hint("");
       const text = muscleText[facet]!;
       const prompt = h("div", {},
@@ -278,7 +285,7 @@ export async function ask(ctx: AppContext, item: QueueItem, source: ReviewEvent[
     case "passage": {
       // 孔・溝を光らせて、名前と一緒に問う。選択肢は近くの孔・溝を通るもの
       viewer.highlight([term.id], { isolate });
-      viewer.focus(term.id, 3.4);
+      viewer.focus(term.id, 3.4, true, undefined, measuredView(term));
       ctx.hint("");
       const prompt = h("div", {},
         h("ruby", { class: "prompt-ja" }, term.ja, h("rt", {}, term.yomi)),
