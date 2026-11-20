@@ -41,7 +41,7 @@ export const PURPOSES: PurposeInfo[] = [
     title: "骨学試験の対策",
     sub: "骨学実習の試験を A〜D の形式で練習する",
     steps: [
-      { text: "「記録 › 設定」で骨学試験の日を入れると、今日の画面に「試験まで○日・1日○項目」が出る。", link: { href: "#/settings", label: "設定" } },
+      { text: "「設定」で骨学試験の日を入れると、今日の画面に「試験まで○日・1日○項目」が出る。", link: { href: "#/settings", label: "設定" } },
       { text: "「学ぶ › 骨学試験」で、A 空欄・B 読みと書き・C 説明・D 図示の形式で解く。", link: { href: "#/exam", label: "骨学試験" } },
       { text: "骨学試験の「整理して覚える」で、対で覚える語・数と並び・体表の目安をまとめて覚える。" },
       { text: "骨の名前と場所そのものは、骨格系のレッスンで3Dと一緒に覚える。", link: { href: "#/lessons/skeletal", label: "骨格系のレッスン" } },
@@ -66,7 +66,7 @@ export const PURPOSES: PurposeInfo[] = [
       { text: "コースは「標準」（必修と基礎）がおすすめ。発展の語まで見るなら「すべての語」。", link: { href: "#/settings", label: "設定でコースを変える" } },
       { text: "「演習」で系統やレッスンを選んで解く。「苦手な語」は、まちがえた語・忘れかけた語から出る。", link: { href: "#/drill", label: "演習" } },
       { text: "「臓器の図」で、臓器どうしの位置と切り口を見直す。", link: { href: "#/organs", label: "臓器の図" } },
-      { text: "「記録 › 進捗」で覚え具合を人体の色で見て、薄い系統から手を付ける。", link: { href: "#/progress", label: "進捗" } },
+      { text: "「記録」の「進捗」で覚え具合を人体の色で見て、薄い系統から手を付ける。", link: { href: "#/progress", label: "進捗" } },
     ],
   },
 ];

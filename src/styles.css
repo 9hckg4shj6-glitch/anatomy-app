@@ -60,7 +60,7 @@ a.crumb::after { content: " ›"; color: var(--muted); font-weight: 400; }
 .topbar-search svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; }
 .topbar-search:hover { background: var(--bg); }
 
-/* 下のタブ（今日・学ぶ・調べる・記録。src/main.ts の showCrumbs）。スマホは画面の下に、iPad・PC は左の細い帯に。
+/* 下のタブ（今日・学ぶ・調べる・記録・設定。src/main.ts の showCrumbs）。スマホは画面の下に、iPad・PC は左の細い帯に。
    レッスン・復習を解いている間とはじめに（body.no-tabs）は隠す */
 :root { --tabbar: 0px; --rail: 0px; }
 body:not(.no-tabs) { --tabbar: calc(64px + var(--safe-bottom)); }

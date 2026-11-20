@@ -14,10 +14,13 @@ import { canUseExam, loadProfile } from "../profile";
 import { account } from "../account";
 import { accountSection } from "./account-section";
 import type { AppContext } from "./context";
+import { itemRow } from "./study-hub";
+import { tabIntro } from "./tab-intro";
 
 /**
- * 設定の画面（#/settings）: アカウントと同期・名前と所属・コースと使う目的・学び方・表示・骨学試験の日・記録の書き出しと読み込み。
- * "#/settings/course" はコースの所を開いて出す（学ぶの鍵の付いた学び方から）、"#/settings/account" はアカウントと同期の所（記録の一覧・はじめに・Google から戻ったとき）
+ * 設定のタブ（#/settings）: アカウントと同期・名前と所属・コースと使う目的・学び方・表示・骨学試験の日・オフライン・記録の書き出しと読み込み、
+ * 一番下に使い方・出典。2026-11-20 に記録のタブから分けて、下のタブの1つにした（docs/普段使い.md「記録と設定を分ける」）。
+ * "#/settings/course" はコースの所を開いて出す（学ぶの鍵の付いた学び方から）、"#/settings/account" はアカウントと同期の所（はじめに・Google から戻ったとき）
  */
 export async function settingsScreen(ctx: AppContext, arg = ""): Promise<void> {
   ctx.fold(true);
@@ -30,7 +33,11 @@ export async function settingsScreen(ctx: AppContext, arg = ""): Promise<void> {
   render();
   let profile = profileSection(await loadProfile());
   const backup = backupSection(render);
-  ctx.panel.replaceChildren(h("h2", {}, "設定"), accountSection(ctx.signal), profile, box, offlineSection(ctx), backup);
+  ctx.panel.replaceChildren(
+    h("div", { class: "tab-head" }, h("h2", {}, "設定")),
+    await tabIntro("settings"),
+    accountSection(ctx.signal), profile, box, offlineSection(ctx), backup, aboutSection(),
+  );
   // ほかの端末の記録を受けたら、コース・目的・名前と所属などを描き直す
   window.addEventListener("anatomy:synced", async () => {
     render();
@@ -236,6 +243,17 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
         : `試験まであと${days}日。今日の画面に1日の目安を出します。`),
     ),
   ];
+}
+
+/** 使い方と、このアプリについて（使い方の入口は上の帯・ここ・3Dの「?」の3か所） */
+function aboutSection(): HTMLElement {
+  return h("section", { class: "settings" },
+    h("h3", {}, "使い方とこのアプリについて"),
+    h("ul", { class: "home-card home-list" },
+      itemRow("#/guide", "guide", "#1f6f78", "使い方", "目的に合わせた使い方・5つのタブ・ことばの意味"),
+      itemRow("#/credits", "credits", "#77736a", "出典・クレジット", "3Dモデル・図・音声のライセンス"),
+      new URLSearchParams(location.search).has("admin") ? itemRow("#/admin", "settings", "#77736a", "ピン", "部位のピンを打つ（管理用）") : "",
+    ));
 }
 
 /** 記録の置き場所の説明（ログインしているかで替える） */

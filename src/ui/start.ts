@@ -155,8 +155,8 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
         form,
         // 名前を入れるとアカウントがあるように思えるので、記録の置き場所を先に伝える
         edit ? "" : h("p", { class: "muted start-note" }, accountAvailable()
-          ? "学んだ記録はこの端末の中に保存されます。Google でログインすると、ほかの端末（スマホ・iPad・PC）と記録が同じになります（あとから 記録 › 設定 でも）。"
-          : "学んだ記録はこの端末の中に保存されます（アカウントはありません）。機種を変えるときは、記録 › 設定 から書き出して、新しい端末で読み込みます。"),
+          ? "学んだ記録はこの端末の中に保存されます。Google でログインすると、ほかの端末（スマホ・iPad・PC）と記録が同じになります（あとから 設定 でも）。"
+          : "学んだ記録はこの端末の中に保存されます（アカウントはありません）。機種を変えるときは、設定 から書き出して、新しい端末で読み込みます。"),
         edit ? h("a", { class: "start-link", href: "#/settings" }, "やめて設定へ戻る")
           : fresh ? h("a", { class: "start-link", href: "#/settings" }, "前の記録を読み込む（別の端末から）") : "",
         edit || !fresh ? "" : signInBlock(),
@@ -190,7 +190,7 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
           h("button", { class: "start-back", type: "button", onClick: () => go("name") }, "‹ 名前"), counter()),
         h("p", { class: "start-eyebrow" }, `ようこそ、${draft.name}さん`),
         h("h2", { class: "start-title" }, "所属を教えてください"),
-        h("p", { class: "muted" }, "学年と学部に合ったコースをおすすめします。あとで 記録 › 設定 で直せます。"),
+        h("p", { class: "muted" }, "学年と学部に合ったコースをおすすめします。あとで 設定 で直せます。"),
         profileFields(draft, async (patch) => {
           Object.assign(draft, patch);
           await saveProfile(patch);
@@ -286,7 +286,7 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
         h("div", { class: "segments", role: "group", "aria-label": "英語の発音" },
           speakChoice(true, "自動で鳴らす"), speakChoice(false, "🔊を押したときだけ")),
         h("p", { class: "muted start-speak-note" }, "語を開いたときと、英語の問題の答え合わせで鳴らします。講義中や電車では「押したときだけ」が安心です。"),
-        h("p", { class: "muted start-note" }, "目的もコースも発音も、あとで「記録 › 設定」から変えられます。学んだ記録は続きます。"),
+        h("p", { class: "muted start-note" }, "目的もコースも発音も、あとで「設定」から変えられます。学んだ記録は続きます。"),
       ],
       foot: begin,
     };

@@ -42,28 +42,29 @@ const layout = document.querySelector<HTMLElement>(".layout")!;
 const APP_NAME = "からだ見聞録";
 
 const PAGES: Record<string, [title: string, href: string]> = {
-  study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"], start: ["はじめに", "#/start"],
+  study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"], settings: ["設定", "#/settings"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
   exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], organs: ["臓器の図", "#/organs"], roots: ["語根カード", "#/roots"],
-  progress: ["進捗", "#/progress"], settings: ["設定", "#/settings"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
+  progress: ["進捗", "#/progress"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
-/** 下のタブ（今日・学ぶ・調べる・記録）と、ページがどのタブの中にあるか */
+/** 下のタブ（今日・学ぶ・調べる・記録・設定）と、ページがどのタブの中にあるか。2026-11-20 に記録から設定を分けた */
 const TABS: Record<string, [label: string, href: string]> = {
-  today: ["今日", "#/"], study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"],
+  today: ["今日", "#/"], study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], records: ["記録", "#/records"], settings: ["設定", "#/settings"],
 };
 const TAB_OF: Record<string, string> = {
   study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study",
   look: "look", explore: "look",
-  records: "records", progress: "records", settings: "records", guide: "records", credits: "records", admin: "records",
+  records: "records", progress: "records",
+  settings: "settings", guide: "settings", credits: "settings", admin: "settings",
 };
 /**
  * 使い方（#/guide）は、どのタブからも上の帯の「使い方」で開くので、開いたときのタブのまま（タブの印と「‹」の戻り先）。
- * アドレスから直に開いたときは記録（記録の一覧に「使い方」がある）
+ * アドレスから直に開いたときは設定（設定の下に「使い方」がある）
  */
-let guideTab = "records";
+let guideTab = "settings";
 /** タブの一番上の画面（上の帯は名前だけ） */
-const TAB_ROOTS = new Set(["", "study", "look", "records", "start"]);
+const TAB_ROOTS = new Set(["", "study", "look", "records", "settings", "start"]);
 /** タブを隠す画面（解いている間・はじめに。上の帯の「‹」で戻る） */
 const NO_TABS = new Set(["learn", "review", "start"]);
 
@@ -277,8 +278,8 @@ async function boot(): Promise<void> {
       await route();
       return;
     }
-    // 使い方は、開いたときのタブのまま（同じ使い方の中で章を移るときは変えない。アドレスから直に開いたときは記録）
-    if (name === "guide" && (currentName !== "guide" || !routed)) guideTab = routed ? TAB_OF[currentName] ?? "today" : "records";
+    // 使い方は、開いたときのタブのまま（同じ使い方の中で章を移るときは変えない。アドレスから直に開いたときは設定）
+    if (name === "guide" && (currentName !== "guide" || !routed)) guideTab = routed ? TAB_OF[currentName] ?? "today" : "settings";
     routed = true;
     currentName = name;
     // 今日（ホーム）は3Dの人体を大きく、境目のつまみは出さない。回る人体が主役なので向きの目印も出さない。
