@@ -23,6 +23,7 @@ export const ICONS = {
   credits: `<circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8h.01"/>`,
   guide: `<circle cx="12" cy="12" r="8"/><path d="M9.7 9.6a2.4 2.4 0 1 1 3.3 2.2c-.6.3-1 .8-1 1.4v.5"/><path d="M12 16.6h.01"/>`,
   today: `<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/>`,
+  again: `<path d="M4.5 11a7.5 7.5 0 0 1 13-4.6L19.5 8.5"/><path d="M19.5 4v4.5H15"/><path d="M19.5 13a7.5 7.5 0 0 1-13 4.6L4.5 15.5"/><path d="M4.5 20v-4.5H9"/>`,
   sync: `<path d="M7.2 18.5h9.6a3.9 3.9 0 0 0 .5-7.77A5.6 5.6 0 0 0 6.5 9.6a4.45 4.45 0 0 0 .7 8.9Z"/><path d="m10 14.2 1.6 1.6 3-3.2"/>`,
 };
 
@@ -114,7 +115,7 @@ export async function studyHub(ctx: AppContext): Promise<void> {
     itemRow("#/organs", "organ", "#c2493a", "臓器の図", `心臓・肺・脳などを立体と平面図（${plates}枚）で。細胞と組織・発生も`),
     fresh
       ? lockedRow("drill", "#6b5fb5", "演習", "レッスンを1つ学ぶと使えます。終えた範囲を試験の前に解き直す")
-      : itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンを試験の前に解き直す・苦手を解く"),
+      : itemRow("#/drill", "drill", "#6b5fb5", "演習", "終えたレッスンを試験の前に解き直す。範囲→問い方→数の3段階で選ぶ"),
     // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）
     !canUseExam() ? null : beginner
       ? lockedRow("exam", "#b07d10", "骨学試験", "コースを「標準」にすると使えます", COURSE_SETTING)

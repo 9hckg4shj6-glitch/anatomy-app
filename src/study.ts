@@ -214,13 +214,21 @@ export interface PracticeCandidate {
   lapses: number;
 }
 
+/** 演習の出し方。mix＝まぜる、weak＝苦手から（一度は解いた問題だけ）、fresh＝はじめての問題（まだ解いていない問題）を先に */
+export type PracticeOrder = "mix" | "weak" | "fresh";
+
 /**
  * 範囲を選んだ演習の出題。weak なら苦手な順（思い出せる確率が低い・忘れた回数が多い・まだ解いていないものは真ん中）、
- * そうでなければ混ぜる。1周ごとに1つの語から1問ずつ取る（同じ語の問い方ばかりにならないように）。
+ * fresh ならまだ解いていない問題を先に（足りなければ解いた問題で埋める）、mix なら混ぜる。
+ * 1周ごとに1つの語から1問ずつ取る（同じ語の問い方ばかりにならないように）。
+ * order に true・false を渡すと weak・mix（前の形）
  */
-export function practiceQueue(candidates: PracticeCandidate[], count: number, weak: boolean, random: () => number = Math.random): QueueItem[] {
+export function practiceQueue(candidates: PracticeCandidate[], count: number, order: PracticeOrder | boolean, random: () => number = Math.random): QueueItem[] {
+  const kind: PracticeOrder = order === true ? "weak" : order === false ? "mix" : order;
   const score = (c: PracticeCandidate) => (c.recall ?? 0.75) - Math.min(c.lapses, 5) * 0.05;
-  const ordered = weak ? shuffle(candidates, random).sort((a, b) => score(a) - score(b)) : shuffle(candidates, random);
+  const ordered = kind === "weak" ? shuffle(candidates, random).sort((a, b) => score(a) - score(b))
+    : kind === "fresh" ? shuffle(candidates, random).sort((a, b) => Number(a.recall !== null) - Number(b.recall !== null))
+      : shuffle(candidates, random);
   const picked: PracticeCandidate[] = [];
   const used = new Set<string>();
   for (let round = 0; picked.length < count && round < 9; round++) {
@@ -235,5 +243,5 @@ export function practiceQueue(candidates: PracticeCandidate[], count: number, we
     }
   }
   const items = picked.map((c) => ({ termId: c.termId, facet: c.facet, isNew: c.recall === null }));
-  return weak ? items : shuffle(items, random);
+  return kind === "mix" ? shuffle(items, random) : items;
 }

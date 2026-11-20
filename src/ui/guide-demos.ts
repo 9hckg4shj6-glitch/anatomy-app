@@ -474,8 +474,8 @@ export function featureCards(): HTMLElement {
       <b>臓器の図</b><span>心臓・肺・脳などの立体を回し、切って中を見る。平面図で名前を確かめる。細胞と組織・発生もここ。</span>
     </a>
     <a class="gd-feature" href="#/drill">
-      <div class="gd-f-art gd-f-drill"><span>終えたレッスン</span><span class="on">苦手な語</span><span>★を付けた語</span><span>範囲を細かく</span></div>
-      <b>演習</b><span>範囲を選んで解き直す。試験の前の総ざらいに。答えは復習にも反映されます。</span>
+      <div class="gd-f-art gd-f-drill"><span>最近のレッスン</span><span class="on">苦手な語</span><span>①範囲</span><span>②問い方</span><span>③数</span></div>
+      <b>演習</b><span>すぐ始めるか、範囲→問い方→数の3段階で選んで解き直す。答えは復習にも反映されます。</span>
     </a>
     <a class="gd-feature" href="#/exam" data-exam>
       <div class="gd-f-art gd-f-exam"><span><b>A</b>空欄</span><span><b>B</b>読み・書き</span><span><b>C</b>説明</span><span><b>D</b>図示</span></div>
