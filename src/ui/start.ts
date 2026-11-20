@@ -3,7 +3,9 @@ import { COURSES, courseOf, preferences, setCourse, setPreference, type Preferen
 import { PURPOSES, recommendCourse, shownPurposes, type Purpose } from "../purposes";
 import { db, nowIso } from "../db";
 import { inIosBrowser } from "../install";
-import { loadProfile, NAME_MAX, profileComplete, saveProfile, START_TRIAL_KEY, TRIAL_LESSON, type Profile } from "../profile";
+import { loadProfile, NAME_MAX, needsStart, profileComplete, saveProfile, START_TRIAL_KEY, TRIAL_LESSON, type Profile } from "../profile";
+import { account, accountAvailable } from "../account";
+import { googleButton, inAppNote } from "./account-section";
 import type { AppContext } from "./context";
 import { planCard } from "./guide";
 import { lessonMinutes } from "./home";
@@ -103,11 +105,12 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
         // iPhone・iPad のブラウザでは、記録が別々になる前に（何も入れる前に）ホーム画面への追加をすすめる
         inIosBrowser() ? h("aside", { class: "start-install" },
           h("b", {}, "iPhone・iPad では、先にホーム画面に追加するのがおすすめです"),
-          h("span", {}, "共有ボタン（", h("b", {}, "□↑"), "）から「ホーム画面に追加」。追加したアイコンから開いて始めてください。ブラウザとホーム画面のアプリでは、学んだ記録が別々になります。")) : "",
+          h("span", {}, "共有ボタン（", h("b", {}, "□↑"), "）から「ホーム画面に追加」。追加したアイコンから開いて始めてください。ブラウザとホーム画面のアプリでは、学んだ記録が別々になります（Google でログインすれば同じにできます）。")) : "",
         h("p", { class: "muted start-note" }, "名前と所属は、試したあとに伺います。"),
         h("div", { class: "start-links" },
           h("button", { class: "start-link", type: "button", onClick: () => go("name") }, "試さずに始める（名前を入れる）"),
           h("a", { class: "start-link", href: "#/settings" }, "前の記録を読み込む（別の端末から）")),
+        signInBlock(),
       ],
       // 小さい画面でも、できること3つの下に隠れないよう画面の下に留める
       foot: tryButton,
@@ -151,9 +154,12 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
         learned && !trialStarted && !saved?.name && !edit ? h("p", { class: "trial-note" }, "名前と所属を伺うようになりました。1回だけ入れてください。") : "",
         form,
         // 名前を入れるとアカウントがあるように思えるので、記録の置き場所を先に伝える
-        edit ? "" : h("p", { class: "muted start-note" }, "学んだ記録はこの端末の中に保存されます（アカウントはありません）。機種を変えるときは、記録 › 設定 から書き出して、新しい端末で読み込みます。"),
+        edit ? "" : h("p", { class: "muted start-note" }, accountAvailable()
+          ? "学んだ記録はこの端末の中に保存されます。Google でログインすると、ほかの端末（スマホ・iPad・PC）と記録が同じになります（あとから 記録 › 設定 でも）。"
+          : "学んだ記録はこの端末の中に保存されます（アカウントはありません）。機種を変えるときは、記録 › 設定 から書き出して、新しい端末で読み込みます。"),
         edit ? h("a", { class: "start-link", href: "#/settings" }, "やめて設定へ戻る")
           : fresh ? h("a", { class: "start-link", href: "#/settings" }, "前の記録を読み込む（別の端末から）") : "",
+        edit || !fresh ? "" : signInBlock(),
       ],
     };
   };
@@ -191,7 +197,7 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
           render();
         }, ctx.signal, missing),
         error, next,
-        h("p", { class: "muted start-note" }, "名前と所属は管理者に送られ、利用者の集計に使います。学習の記録は送りません。"),
+        h("p", { class: "muted start-note" }, "名前と所属は管理者に送られ、利用者の集計に使います。学習の記録は集計に使いません。"),
       ],
     };
   };
@@ -309,6 +315,34 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
         next ? h("a", { class: "primary", href: `#/learn/${next.id}` }, label) : h("a", { class: "primary", href: "#/" }, "はじめる")),
     };
   };
+
+  /**
+   * ほかの端末で使っている人は、名前を入れる前に Google でログインすれば、名前・所属・コースと記録を受けて今日へ進む
+   * （受けたら下の anatomy:synced で確かめる）。ログイン中なら、その旨と受けている途中であること
+   */
+  function signInBlock(): HTMLElement | string {
+    if (!accountAvailable() || account.status === "unavailable" || account.status === "loading") return "";
+    if (account.status === "signed-in" || account.status === "conflict") {
+      return h("p", { class: "start-signed", role: "status" }, `✓ ${account.user?.email ?? ""} でログイン中。`,
+        account.phase === "syncing" ? "記録を受けています…" : account.phase === "not-ready" ? "同期のサーバーの準備がまだです。" : "");
+    }
+    return h("div", { class: "start-signin" },
+      h("p", { class: "start-signin-lead" }, "ほかの端末で使っている人は"),
+      inAppNote(),
+      googleButton("Google でログインして続きから"),
+      account.message ? h("p", { class: "start-error", role: "alert" }, account.message) : "");
+  }
+
+  // ログインの状態が変わったら、はじめ（入力の無い画面）だけ描き直す。ほかの端末の記録を受けて名前・所属・コースがそろったら今日へ
+  window.addEventListener("anatomy:account", () => {
+    if (step === "welcome") void render();
+    else ctx.panel.querySelector(".start-signin, .start-signed")?.replaceWith(signInBlock() || "");
+  }, { signal: ctx.signal });
+  window.addEventListener("anatomy:synced", async () => {
+    if (edit) return;
+    const [profile, count, trial] = await Promise.all([loadProfile(), db.learned.count(), db.settings.get(START_TRIAL_KEY)]);
+    if (!ctx.signal.aborted && !needsStart(profile, count, !!trial?.value, preferences.course)) location.replace("#/");
+  }, { signal: ctx.signal });
 
   async function render(focusKey?: string) {
     ctx.hint("");

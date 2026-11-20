@@ -20,6 +20,7 @@
     "build:wikidata": "node scripts/wikidata-labels.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "dexie": "^4.4.7",
     "three": "^0.186.1",
     "ts-fsrs": "^5.4.2",

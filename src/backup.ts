@@ -1,8 +1,9 @@
-import { db, type LearnedTerm, type ReviewEvent, type SettingRecord, type StoredSchedule } from "./db";
+import { db, isDeviceSetting, type LearnedTerm, type ReviewEvent, type SettingRecord, type StoredSchedule } from "./db";
 
 /**
- * 学習の記録の書き出し・読み込み。記録は端末ごと（IndexedDB）なので、機種変更や
- * iOS の Safari とホーム画面のアプリの間で移すときに使う（端末をまたぐ同期の代わり）。
+ * 学習の記録の書き出し・読み込み。記録は端末ごと（IndexedDB）なので、Google でログインしない人が機種変更や
+ * iOS の Safari とホーム画面のアプリの間で移すときに使う（ログインした人は src/sync.ts で端末をまたぐ。書き出しは念のための控え）。
+ * 読み込んだ記録は、ログインしていればアカウントへも送る（db.ts が変えた行として残す）。
  */
 export interface Backup {
   app: "anatomy-study";
@@ -18,7 +19,11 @@ export async function exportBackup(): Promise<Backup> {
   const [schedules, reviewEvents, learned, settings] = await Promise.all([
     db.schedules.toArray(), db.reviewEvents.toArray(), db.learned.toArray(), db.settings.toArray(),
   ]);
-  return { app: "anatomy-study", version: 1, exportedAt: new Date().toISOString(), schedules, reviewEvents, learned, settings };
+  // 端末ID・同期の状態など端末ごとの設定は書き出さない（読み込んだ端末が同じ端末だと思わないように）
+  return {
+    app: "anatomy-study", version: 1, exportedAt: new Date().toISOString(), schedules, reviewEvents, learned,
+    settings: settings.filter((item) => !isDeviceSetting(item.key)),
+  };
 }
 
 export function isBackup(data: unknown): data is Backup {
@@ -56,7 +61,8 @@ export async function importBackup(backup: Backup): Promise<{ schedules: number;
     await db.learned.bulkPut(earlier);
 
     const settings = new Map((await db.settings.toArray()).map((item) => [item.key, item]));
-    await db.settings.bulkPut(backup.settings.filter((item) => !settings.has(item.key) || item.updatedAt > settings.get(item.key)!.updatedAt));
+    await db.settings.bulkPut(backup.settings.filter((item) => !isDeviceSetting(item.key)
+      && (!settings.has(item.key) || item.updatedAt > settings.get(item.key)!.updatedAt)));
 
     return { schedules: changed.length, reviewEvents: events.length, learned: earlier.length };
   });

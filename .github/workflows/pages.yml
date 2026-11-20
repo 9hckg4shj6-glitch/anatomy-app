@@ -33,7 +33,8 @@ jobs:
           ONNXRUNTIME_NODE_INSTALL_CUDA: skip
       - run: npm run check
         env:
-          # 名前と所属の送り先（基礎医学演習アプリの Supabase。src/profile.ts）。無ければ送らずに動く
+          # 基礎医学演習アプリの Supabase: 名前と所属の送り先（src/profile.ts）と、Google でログインして端末をまたぐ同期（src/account.ts）。
+          # 無ければ送らず、ログインの所も出さずに動く
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
       - uses: actions/upload-pages-artifact@v4

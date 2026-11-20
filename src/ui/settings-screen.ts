@@ -11,11 +11,13 @@ import {
 import { BASIC_FACETS, KIND_HINTS, kindHintText, TERM_KINDS } from "../study";
 import { PURPOSES, shownPurposes } from "../purposes";
 import { canUseExam, loadProfile } from "../profile";
+import { account } from "../account";
+import { accountSection } from "./account-section";
 import type { AppContext } from "./context";
 
 /**
- * 設定の画面（#/settings）: コースと使う目的・学び方・表示・骨学試験の日・記録の書き出しと読み込み。
- * "#/settings/course" はコースの所を開いて出す（学ぶの鍵の付いた学び方から）
+ * 設定の画面（#/settings）: アカウントと同期・名前と所属・コースと使う目的・学び方・表示・骨学試験の日・記録の書き出しと読み込み。
+ * "#/settings/course" はコースの所を開いて出す（学ぶの鍵の付いた学び方から）、"#/settings/account" はアカウントと同期の所（記録の一覧・はじめに・Google から戻ったとき）
  */
 export async function settingsScreen(ctx: AppContext, arg = ""): Promise<void> {
   ctx.fold(true);
@@ -26,12 +28,21 @@ export async function settingsScreen(ctx: AppContext, arg = ""): Promise<void> {
   const box = h("div", {});
   const render = () => box.replaceChildren(...settingRows(render));
   render();
-  const profile = await loadProfile();
-  ctx.panel.replaceChildren(h("h2", {}, "設定"), profileSection(profile), box, offlineSection(ctx), backupSection(render));
-  if (arg === "course") {
-    const course = ctx.panel.querySelector<HTMLElement>("#settings-course");
-    requestAnimationFrame(() => course?.scrollIntoView({ block: "start" }));
-    course?.classList.add("is-pointed");
+  let profile = profileSection(await loadProfile());
+  const backup = backupSection(render);
+  ctx.panel.replaceChildren(h("h2", {}, "設定"), accountSection(ctx.signal), profile, box, offlineSection(ctx), backup);
+  // ほかの端末の記録を受けたら、コース・目的・名前と所属などを描き直す
+  window.addEventListener("anatomy:synced", async () => {
+    render();
+    const next = profileSection(await loadProfile());
+    profile.replaceWith(next);
+    profile = next;
+  }, { signal: ctx.signal });
+  window.addEventListener("anatomy:account", () => backup.querySelector(".backup-note")?.replaceWith(backupNote()), { signal: ctx.signal });
+  if (arg === "course" || arg === "account") {
+    const target = ctx.panel.querySelector<HTMLElement>(`#settings-${arg}`);
+    requestAnimationFrame(() => target?.scrollIntoView({ block: "start" }));
+    target?.classList.add("is-pointed");
   }
 }
 
@@ -42,7 +53,7 @@ function profileSection(profile: Awaited<ReturnType<typeof loadProfile>>): HTMLE
     h("h3", {}, "名前と所属"),
     h("p", { class: "profile-summary" }, h("b", {}, profile?.name || "未入力"),
       h("span", {}, [profile?.university, profile?.faculty, profile?.grade].filter(Boolean).join(" · ") || "所属は未入力")),
-    h("p", { class: "muted" }, "名前と所属は管理者に送られ、利用者の集計に使います。学習の記録は送りません。"),
+    h("p", { class: "muted" }, "名前と所属は管理者に送られ、利用者の集計に使います。学習の記録は集計に使いません（Google でログインしたときだけ、端末をまたぐためにアカウントに保存します）。"),
     h("a", { class: "ghost-button", href: "#/start/edit" }, "名前と所属を直す"));
 }
 
@@ -227,7 +238,14 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
   ];
 }
 
-/** 記録の書き出し・読み込み（機種変更や、iOS の Safari とホーム画面のアプリの間で移すとき） */
+/** 記録の置き場所の説明（ログインしているかで替える） */
+function backupNote(): HTMLElement {
+  return h("p", { class: "muted backup-note" }, account.status === "signed-in"
+    ? "Google でログインしている間は、記録はアカウントにも保存され、ほかの端末と同じになります。書き出しは念のための控えです（読み込むと今の記録に足し合わせ、アカウントにも送ります）。"
+    : "ログインしていないとき、記録はこの端末の中だけにあります。機種を変えるときや、iOS の Safari とホーム画面のアプリの間で移すときは、上の「アカウントと同期」で Google でログインするか、ファイルに書き出して読み込んでください（今の記録に足し合わせます）。");
+}
+
+/** 記録の書き出し・読み込み（ログインしない人が機種変更や、iOS の Safari とホーム画面のアプリの間で移すとき） */
 function backupSection(onImported: () => void): HTMLElement {
   const status = h("p", { class: "muted" });
   const last = h("p", { class: "muted" });
@@ -268,7 +286,7 @@ function backupSection(onImported: () => void): HTMLElement {
   };
   return h("section", { class: "backup" },
     h("h3", {}, "記録の書き出し・読み込み"),
-    h("p", { class: "muted" }, "記録はこの端末の中だけにあります。機種を変えるときや、iOS の Safari とホーム画面のアプリの間で移すときは、ファイルに書き出して読み込んでください（今の記録に足し合わせます）。"),
+    backupNote(),
     last,
     h("div", { class: "nav-row" },
       h("button", { class: "ghost-button", type: "button", onClick: () => void save() }, "書き出す"),

@@ -1,4 +1,4 @@
-import { db, nowIso, type Facet } from "./db";
+import { db, DEFAULT_STAMP, nowIso, type Facet } from "./db";
 import { BASIC_FACETS, TERM_FACETS } from "./study";
 import { isPurpose, type Purpose } from "./purposes";
 
@@ -101,13 +101,18 @@ export async function loadPreferences(): Promise<void> {
     if (valid[key](value)) (preferences as unknown as Record<string, unknown>)[key] = value;
   });
   const learnedBefore = await db.learned.count();
+  // ここでアプリが自分で入れる初めの値は古い日時で残す（Google でログインしたとき、ほかの端末で選んだ値に負けるように。src/sync.ts）
+  const putDefault = async <K extends keyof Preferences>(key: K, value: Preferences[K]) => {
+    preferences[key] = value;
+    await db.settings.put({ key, value, updatedAt: DEFAULT_STAMP });
+  };
   // モードを一度も選んでいなければ、今までに学んだ人は詳細モード（これまでどおり）、はじめての人は初心者モードにして覚える
-  if (!valid.mode(records[keys.indexOf("mode")]?.value)) await setPreference("mode", learnedBefore ? "detail" : "beginner");
+  if (!valid.mode(records[keys.indexOf("mode")]?.value)) await putDefault("mode", learnedBefore ? "detail" : "beginner");
   // 初めの問い方を3つにした版をはじめて開いたとき、学ぶ問い方を一度も選んでいない人のうち、すでに学んだ人は
   // 今までの初めの値（すべての問い方）のまま続ける。確かめたことを残し、2回目からは見ない（新しく始めた人が学んだあとで全部にならないように）
   if (!(await db.settings.get(FIRST_FACETS_CHECKED))) {
-    if (!valid.studyFacets(records[keys.indexOf("studyFacets")]?.value) && learnedBefore) await setPreference("studyFacets", [...TERM_FACETS]);
-    await db.settings.put({ key: FIRST_FACETS_CHECKED, value: true, updatedAt: nowIso() });
+    if (!valid.studyFacets(records[keys.indexOf("studyFacets")]?.value) && learnedBefore) await putDefault("studyFacets", [...TERM_FACETS]);
+    await db.settings.put({ key: FIRST_FACETS_CHECKED, value: true, updatedAt: DEFAULT_STAMP });
   }
   // やめたコース「骨学試験の対策」を選んでいた人は「自分で選ぶ」へ（同じ詳細モード。骨学試験は学ぶからそのまま使える）
   if (records[keys.indexOf("course")]?.value === "exam") await setPreference("course", "free");
@@ -116,7 +121,7 @@ export async function loadPreferences(): Promise<void> {
   const added = TERM_FACETS.filter((facet) => !(Array.isArray(seen) ? seen : OLD_FACETS).includes(facet));
   if (added.length) {
     if (valid.studyFacets(records[keys.indexOf("studyFacets")]?.value)) await setPreference("studyFacets", [...new Set([...preferences.studyFacets, ...added])]);
-    await db.settings.put({ key: SEEN_FACETS, value: TERM_FACETS, updatedAt: nowIso() });
+    await db.settings.put({ key: SEEN_FACETS, value: TERM_FACETS, updatedAt: DEFAULT_STAMP });
   }
   applyTextSize();
 }

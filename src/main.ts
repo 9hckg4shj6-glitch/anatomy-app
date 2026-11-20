@@ -3,6 +3,7 @@ import { isPlateUnit, loadModelIndex, organOfLesson } from "./content";
 import { courseLesson } from "./course";
 import { loadPreferences } from "./settings";
 import { canUseExam, loadProfile, profileOnLaunch } from "./profile";
+import { initAccount, takeAuthReturn } from "./account";
 import { h } from "./dom";
 import { watchInstallPrompt } from "./install";
 import { admin } from "./ui/admin";
@@ -121,6 +122,8 @@ function plateLesson(name: string): [string, string] | undefined {
   return organ ? [`${organ.ja}の図`, `#/organs/${organ.id}`] : undefined;
 }
 
+// Google から戻ってきたときのアドレス（?code=…）を受け取り、ログインに出る前の画面に戻す（画面を作る前に。src/account.ts）
+takeAuthReturn();
 watchInstallPrompt();
 const splitter = setupSplitter(document.querySelector<HTMLElement>(".layout")!, stage, panel);
 
@@ -213,6 +216,8 @@ async function boot(): Promise<void> {
   // 名前と所属をまだ送れていなければ送り、その日にはじめて開いたことを管理者に残す（src/profile.ts。待たない）
   void profileOnLaunch();
   window.addEventListener("online", () => void profileOnLaunch());
+  // 前に Google でログインしていれば、ログインを確かめて同期を始める（待たない。src/account.ts）
+  void initAccount();
   // ピン打ちツールは ?admin=1 で開いたときだけホームに項目を出す（src/ui/home.ts）
   if (import.meta.env.DEV) Object.assign(window, { viewer }); // 開発時の確認用
   let controller = new AbortController();
@@ -311,6 +316,12 @@ async function boot(): Promise<void> {
       panel.replaceChildren(h("p", {}, "エラーが起きました。"), h("p", { class: "muted" }, String(error)), h("a", { href: "#/" }, "ホームへ"));
     }
   };
+
+  // ほかの端末の記録を受けたら、見るだけの画面（今日・学ぶ・記録・進捗）は描き直す（今日の復習の数など）。
+  // はじめに・設定はそれぞれの画面で受ける。レッスンや復習の途中は描き直さない
+  window.addEventListener("anatomy:synced", () => {
+    if (["", "study", "records", "progress"].includes(currentName) && !leaveWarning) void route();
+  });
 
   window.addEventListener("hashchange", () => {
     // やめないときは、アドレスだけ元に戻して今の画面を続ける（replaceState では hashchange は起きない）

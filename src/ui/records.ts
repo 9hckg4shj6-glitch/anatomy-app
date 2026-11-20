@@ -1,5 +1,6 @@
 import { courseTerms, isBeginner } from "../course";
 import { canUseExam } from "../profile";
+import { account, accountAvailable } from "../account";
 import { db } from "../db";
 import { h } from "../dom";
 import type { AppContext } from "./context";
@@ -8,7 +9,7 @@ import { itemRow } from "./study-hub";
 import { tabIntro } from "./tab-intro";
 
 /**
- * 記録（#/records）: 今週・今日・学んだ語の数、骨学試験の日、進捗・設定・出典。
+ * 記録（#/records）: 今週・今日・学んだ語の数、骨学試験の日、使い方・アカウントと同期・進捗・設定・出典。
  * 全部で何語・何レッスンといった大きな数はここにだけ出す（学ぶ・今日では出さない。docs/普段使い.md）
  */
 export async function records(ctx: AppContext): Promise<void> {
@@ -46,6 +47,10 @@ export async function records(ctx: AppContext): Promise<void> {
     backupReminder(learned),
     h("ul", { class: "home-card home-list" },
       itemRow("#/guide", "guide", "#1f6f78", "使い方", "目的に合わせた使い方・4つのタブ・ことばの意味"),
+      accountAvailable() ? itemRow("#/settings/account", "sync", "#3d7a5a", "アカウントと同期", account.status === "signed-in"
+        ? `${account.user?.email ?? ""} でログイン中`
+        : account.status === "conflict" ? "この端末に別のアカウントの記録があります。確かめてください"
+          : "Google でログインして、スマホ・iPad・PC で同じ記録に") : "",
       itemRow("#/progress", "progress", "#4f6d8f", "進捗", "覚え具合を人体の色で見る・30日の記録・7日の予定"),
       itemRow("#/settings", "settings", "#77736a", "設定", canUseExam() ? "コースと目的・1日の数・文字の大きさ・骨学試験の日・記録の書き出し" : "コースと目的・1日の数・文字の大きさ・記録の書き出し"),
       itemRow("#/credits", "credits", "#77736a", "出典・クレジット", "3Dモデル・図・音声のライセンス"),

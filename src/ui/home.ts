@@ -6,6 +6,7 @@ import { h } from "../dom";
 import { installHint } from "../install";
 import { daysUntilExam, preferences } from "../settings";
 import { canUseExam, loadProfile, needsStart, START_TRIAL_KEY } from "../profile";
+import { account } from "../account";
 import { nextLesson } from "./lessons";
 import { finishRow, todayCounts } from "./review";
 import { sceneFor, termAt, type AppContext } from "./context";
@@ -215,13 +216,16 @@ export function examLeft(learnedIds: Set<string>, schedules: StoredSchedule[]): 
   return { days, rest: left, perDay: Math.ceil(left / Math.max(1, days)), href: next ? `#/exam/${next.kind}` : "#/exam" };
 }
 
-/** 記録を書き出してから（一度も書き出していなければ学び始めてから）14日たったら知らせる。記録は端末の中だけにあるので */
+/**
+ * 記録を書き出してから（一度も書き出していなければ学び始めてから）14日たったら知らせる。記録は端末の中だけにあるので。
+ * Google でログインしている人（確かめている間も）には出さない（記録はアカウントにもある）
+ */
 export function backupReminder(learned: LearnedTerm[]): HTMLElement | string {
-  if (!learned.length) return "";
+  if (!learned.length || account.status === "signed-in" || account.status === "loading") return "";
   const since = preferences.lastBackupAt || learned.reduce((first, item) => (item.learnedAt < first ? item.learnedAt : first), learned[0].learnedAt);
   if (Date.now() - new Date(since).getTime() < 14 * 86_400_000) return "";
   return h("a", { class: "home-notice", href: "#/settings" },
     h("b", {}, "記録を書き出しましょう"),
-    h("span", {}, `${preferences.lastBackupAt ? "書き出してから" : "学び始めてから"}2週間たちました。記録はこの端末の中だけにあります`),
+    h("span", {}, `${preferences.lastBackupAt ? "書き出してから" : "学び始めてから"}2週間たちました。記録はこの端末の中だけにあります（Google でログインすれば、ほかの端末と同じにもなります）`),
   );
 }

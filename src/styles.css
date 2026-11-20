@@ -564,6 +564,32 @@ a.term-row { color: var(--ink); text-decoration: none; }
 
 .settings { margin-top: 20px; padding-top: 4px; border-top: 1px solid var(--line); }
 .settings .ghost-button { margin-top: 12px; }
+/* アカウントと同期（src/ui/account-section.ts）。Google のボタンは白地に「G」（Google のログインボタンの決まりに近づける） */
+.google-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; margin-top: 12px; padding: 10px 18px;
+  border: 1px solid #c9c4b8; border-radius: 999px; background: #fff; color: #1f1f1f; font-size: 15px; font-weight: 600; cursor: pointer;
+}
+.google-button svg { width: 18px; height: 18px; flex: none; }
+.google-button:hover { background: #f7f5ef; }
+.google-button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+.settings.account > p:first-of-type { margin-top: 4px; }
+.account-status { margin: 10px 0 0; padding: 8px 12px; border-radius: 10px; background: color-mix(in srgb, var(--ok) 8%, var(--surface)); font-size: 14px; }
+.account-status.is-warn { background: color-mix(in srgb, var(--close) 12%, var(--surface)); }
+.account-actions { margin-top: 4px; }
+.account-actions .ghost-button { margin-top: 8px; }
+.account-logout { display: grid; gap: 8px; margin-top: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.account-logout p { margin: 0; font-weight: 600; }
+.account-logout .ghost-button { margin-top: 0; }
+.account-logout .text-button { margin: 0 auto; }
+.ghost-button.is-danger { color: var(--ng); border-color: color-mix(in srgb, var(--ng) 35%, var(--line)); }
+.settings.account .primary { margin-top: 12px; width: 100%; }
+.settings.account .primary + .ghost-button { width: 100%; }
+/* はじめに: ほかの端末で使っている人のログイン */
+.start-signin { display: flex; flex-direction: column; align-items: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.start-signin-lead { margin: 0; color: var(--muted); font-size: 13px; }
+.start-signin .google-button { margin-top: 8px; }
+.start-signin .drill-note { margin: 8px 0 0; }
+.start-signed { margin: 16px 0 0; text-align: center; color: var(--ok); font-size: 14px; font-weight: 600; }
 .date-row { display: flex; align-items: center; gap: 8px; }
 .offline-list { display: flex; flex-wrap: wrap; gap: 4px 6px; }
 .offline-item { padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; }
