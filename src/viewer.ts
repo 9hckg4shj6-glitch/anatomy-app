@@ -135,6 +135,13 @@ export interface Dots {
   size: Float32Array;
 }
 
+/** 動きの図鑑の模型の名前の札。element は呼んだ側が作り、at（object の座標）の所に置く */
+export interface SchematicTag {
+  element: HTMLElement;
+  at: Vec3;
+  object?: THREE.Object3D;
+}
+
 /** 骨学試験 D の図: terms の部品だけを side の側で見せ（ほかは隠す）、cut で切る */
 export interface DrawingSpec {
   terms: string[];
@@ -543,6 +550,13 @@ export class AnatomyViewer {
   private readonly deforms = new Map<string, { mesh: THREE.Mesh; position: THREE.BufferAttribute | THREE.InterleavedBufferAttribute; normal: THREE.BufferAttribute | THREE.InterleavedBufferAttribute | undefined; matrix: THREE.Matrix4; auto: boolean; live: THREE.BufferAttribute; rest: Float32Array }>();
   /** 動きの図鑑の粒 */
   private dots: { mesh: THREE.InstancedMesh; data: Dots; radius: number } | null = null;
+  /** 動きの図鑑の「わかりやすい模型」（setSchematic）。体の部品の代わりに置く作り物の立体 */
+  private schematic: THREE.Object3D | null = null;
+  /** 3Dの上の名前の札（setTags）。at は object の座標（object が無ければ体の座標） */
+  private tags: SchematicTag[] = [];
+  private readonly tagLayer: HTMLDivElement;
+  /** 模型をタップしたとき（userData.pick のある部品。外れたら null） */
+  onSchematicPick: ((id: string | null, point: Vec3 | null) => void) | null = null;
   /** 毎フレーム、描く前に呼ぶ（動きの図鑑の再生。null で止める）。now は performance.now() */
   onTick: ((now: number) => void) | null = null;
   /** 3D模型で名前の札を付ける部品（動かしても札がついてくる） */
@@ -568,6 +582,9 @@ export class AnatomyViewer {
     this.markLayer = document.createElement("div");
     this.markLayer.className = "stage-marks";
     host.append(this.markLayer);
+    this.tagLayer = document.createElement("div");
+    this.tagLayer.className = "stage-tags";
+    host.append(this.tagLayer);
     this.label = document.createElement("div");
     this.label.className = "stage-label";
     this.label.hidden = true;
@@ -642,6 +659,11 @@ export class AnatomyViewer {
       // ドラッグ（回転）とタップを区別する
       if (!down || Math.hypot(event.clientX - down.x, event.clientY - down.y) > 8 || performance.now() - down.t > 600) return;
       down = null;
+      if (this.schematic && this.onSchematicPick) {
+        const hit = this.pickSchematic(event.clientX, event.clientY);
+        this.onSchematicPick(hit?.id ?? null, hit?.point ?? null);
+        return;
+      }
       const hit = this.pick(event.clientX, event.clientY);
       if (this.onPick) {
         this.onPick(hit?.element ?? null, hit?.point ?? null, hit?.normal ?? null);
@@ -1387,6 +1409,81 @@ export class AnatomyViewer {
     const direction = new THREE.Vector3(...from).normalize();
     const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
     this.moveTo(target, target.clone().add(direction.multiplyScalar((radius * 0.92) / tan / Math.min(1, this.camera.aspect))), true);
+  }
+
+  /**
+   * 動きの図鑑の「わかりやすい模型」を置く（null で外す）。体の部品は setStage({ solid: [] }) などで隠しておく。
+   * 模型の部品の材質・形は呼んだ側が持ち、外すときに捨てる
+   */
+  setSchematic(object: THREE.Object3D | null): void {
+    if (this.schematic) {
+      this.scene.remove(this.schematic);
+      this.schematic.traverse((node) => {
+        const mesh = node as THREE.Mesh;
+        if (!mesh.isMesh && !(node as THREE.Line).isLine) return;
+        mesh.geometry.dispose();
+        for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) material.dispose();
+      });
+    }
+    this.schematic = object;
+    if (object) this.scene.add(object);
+    else this.onSchematicPick = null;
+    this.dirty = true;
+  }
+
+  /** 模型の全体（only があればその部品）が入るように from の向きから映す */
+  frameSchematic(from: Vec3, zoom = 1, only?: THREE.Object3D): void {
+    const object = only ?? this.schematic;
+    if (!object || !this.schematic) return;
+    this.schematic.updateMatrixWorld(true);
+    const box = new THREE.Box3().setFromObject(object);
+    if (box.isEmpty()) return;
+    const target = box.getCenter(new THREE.Vector3());
+    const radius = Math.max(0.02, box.getSize(new THREE.Vector3()).length() / 2) / zoom;
+    const direction = new THREE.Vector3(...from).normalize();
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    this.moveTo(target, target.clone().add(direction.multiplyScalar((radius * 0.92) / tan / Math.min(1, this.camera.aspect))), true);
+  }
+
+  /** 3Dの上に名前の札を置く（null で消す）。札の要素は呼んだ側が作る（文字・色・リンクを替えてよい） */
+  setTags(tags: SchematicTag[] | null): void {
+    this.tags = tags ?? [];
+    this.tagLayer.replaceChildren(...this.tags.map((tag) => tag.element));
+    this.dirty = true;
+  }
+
+  private placeTags(): void {
+    if (!this.tags.length) return;
+    const v = new THREE.Vector3();
+    const width = this.host.clientWidth;
+    const height = this.host.clientHeight;
+    for (const tag of this.tags) {
+      if (tag.element.hidden) continue;
+      v.set(...tag.at);
+      if (tag.object) v.applyMatrix4(tag.object.matrixWorld);
+      v.project(this.camera);
+      tag.element.style.transform = `translate(${((v.x + 1) / 2) * width}px, ${((1 - v.y) / 2) * height}px)`;
+      tag.element.style.visibility = v.z > 1 ? "hidden" : "";
+    }
+  }
+
+  /** 模型の当たった部品の pick と、当たった点（模型の root の座標） */
+  private pickSchematic(clientX: number, clientY: number): { id: string; point: Vec3 } | null {
+    if (!this.schematic) return null;
+    const rect = this.renderer.domElement.getBoundingClientRect();
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(new THREE.Vector2(((clientX - rect.left) / rect.width) * 2 - 1, -((clientY - rect.top) / rect.height) * 2 + 1), this.camera);
+    const meshes: THREE.Object3D[] = [];
+    this.schematic.traverse((node) => {
+      if ((node as THREE.Mesh).isMesh && this.isVisible(node)) meshes.push(node);
+    });
+    for (const hit of raycaster.intersectObjects(meshes, false)) {
+      for (let node: THREE.Object3D | null = hit.object; node; node = node.parent) {
+        if (typeof node.userData.pick === "string") return { id: node.userData.pick, point: this.schematic.worldToLocal(hit.point.clone()).toArray() as Vec3 };
+        if (node.userData.pick === false) break;
+      }
+    }
+    return null;
   }
 
   /**
@@ -2441,6 +2538,7 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
     this.renderer.render(this.scene, this.camera);
     this.placeLabel();
     this.placeMarks();
+    this.placeTags();
     this.placeCompass();
   }
 

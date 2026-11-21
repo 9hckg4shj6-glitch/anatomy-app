@@ -8,6 +8,7 @@ import {
 } from "../motions";
 import type { AnatomyViewer, Deformable, StageSpec } from "../viewer";
 import { termAt, type AppContext } from "./context";
+import { motionModelScene } from "./motion-models";
 import { segmented } from "./settings-kit";
 
 /**
@@ -48,8 +49,8 @@ export const MOTIONS: MotionItem[] = [
   },
 ];
 
-const RED = "#d23b3b";
-const BLUE = "#3b64c8";
+export const RED = "#d23b3b";
+export const BLUE = "#3b64c8";
 const VALVE = "#f1ede2";
 const CONDUCTION_COLOR = "#e0a800";
 
@@ -57,14 +58,25 @@ const CONDUCTION_COLOR = "#e0a800";
 const SPEEDS = [{ value: 0.25, label: "¼" }, { value: 0.5, label: "½" }, { value: 1, label: "1倍" }];
 
 export async function motionScreen(ctx: AppContext, arg: string): Promise<void> {
-  const item = MOTIONS.find((motion) => motion.id === arg);
+  const [id, mode] = arg.split("/");
+  const item = MOTIONS.find((motion) => motion.id === id);
   if (!item) return motionList(ctx);
   ctx.fold(false);
   const player = new Player(ctx);
   ctx.signal.addEventListener("abort", () => player.stop(), { once: true });
+  // はじめは「わかりやすい模型」（src/ui/motion-models.ts）、#/motions/<ID>/real は実際の形（アプリの3Dの形を動かす）
+  if (mode !== "real") return motionModelScene(ctx, player, item);
   if (item.id === "breathing") await breathingScene(ctx, player);
   else if (item.id === "circulation") await circulationScene(ctx, player);
   else await heartScene(ctx, player, item.id === "conduction");
+  ctx.panel.prepend(modeSwitch(item, true));
+}
+
+/** 「わかりやすい模型」と「実際の形」の切り替え（欄の頭） */
+export function modeSwitch(item: MotionItem, real: boolean): HTMLElement {
+  return h("div", { class: "motion-switch motion-mode" }, segmented<boolean>("見せ方", [{ value: false, label: "わかりやすい模型" }, { value: true, label: "実際の形" }], real, (value) => {
+    location.hash = `#/motions/${item.id}${value ? "/real" : ""}`;
+  }));
 }
 
 /** 動きの図鑑の一覧（3Dは使わないので、スマホでは3Dごとたたむ） */
@@ -91,7 +103,7 @@ function motionList(ctx: AppContext): void {
 // ---------------------------------------------------------------- 再生
 
 /** 再生の時計と、3Dの後片付け。time は実際の時間（秒）で、速さを掛けて進む */
-class Player {
+export class Player {
   time = 0;
   playing = !matchMedia("(prefers-reduced-motion: reduce)").matches;
   speed = 0.5;
@@ -127,6 +139,8 @@ class Player {
     const viewer = this.ctx.viewer;
     viewer.onTick = null;
     viewer.setDots(null);
+    viewer.setSchematic(null);
+    viewer.setTags(null);
     viewer.restoreDeform();
     viewer.setStage(null);
     viewer.setSection(null);
@@ -222,7 +236,7 @@ const colorsOf = (ctx: AppContext, table: Record<string, string>): Record<string
   return out;
 };
 
-const hex = (color: string): [number, number, number] => {
+export const hex = (color: string): [number, number, number] => {
   const n = parseInt(color.slice(1), 16);
   return [(n >> 16) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
 };
@@ -244,14 +258,14 @@ function pickBox(ctx: AppContext): HTMLElement {
 }
 
 /** 関係する語（図鑑へ） */
-function relatedTerms(ids: string[]): HTMLElement {
+export function relatedTerms(ids: string[]): HTMLElement {
   return h("div", { class: "chip-list motion-terms" }, ...ids.flatMap((id) => {
     const term = termById.get(id);
     return term ? [h("a", { class: "chip", href: `#/explore/${id}` }, term.ja)] : [];
   }));
 }
 
-function toggle(label: string, on: boolean, change: (on: boolean) => void): HTMLElement {
+export function toggle(label: string, on: boolean, change: (on: boolean) => void): HTMLElement {
   const input = h("input", { type: "checkbox", checked: on, onChange: () => change(input.checked) }) as HTMLInputElement;
   return h("label", { class: "switch-row" }, input, label);
 }
@@ -259,14 +273,14 @@ function toggle(label: string, on: boolean, change: (on: boolean) => void): HTML
 // ---------------------------------------------------------------- グラフ
 
 const SVG = "http://www.w3.org/2000/svg";
-function el<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, string | number>, ...children: (Node | string)[]): SVGElementTagNameMap[K] {
+export function el<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, string | number>, ...children: (Node | string)[]): SVGElementTagNameMap[K] {
   const element = document.createElementNS(SVG, tag);
   for (const [key, value] of Object.entries(attrs)) element.setAttribute(key, String(value));
   element.append(...children);
   return element;
 }
 
-interface Track {
+export interface Track {
   values: number[];
   color: string;
   min: number;
@@ -277,11 +291,11 @@ interface Track {
   width?: number;
 }
 
-const CHART_W = 600;
-const CHART_X = 44;
+export const CHART_W = 600;
+export const CHART_X = 44;
 
 /** 1周期のグラフ。押した所へ移る（seek）。cursor(u) で今の線を動かす */
-function chart(height: number, tracks: Track[], decorate: (svg: SVGSVGElement, x: (u: number) => number) => void, seek: (u: number) => void, label: string): { svg: SVGSVGElement; cursor: (u: number) => void } {
+export function chart(height: number, tracks: Track[], decorate: (svg: SVGSVGElement, x: (u: number) => number) => void, seek: (u: number) => void, label: string): { svg: SVGSVGElement; cursor: (u: number) => void } {
   const svg = el("svg", { viewBox: `0 0 ${CHART_W} ${height}`, class: "motion-chart", role: "img", "aria-label": label });
   const x = (u: number) => CHART_X + u * (CHART_W - CHART_X - 8);
   decorate(svg, x);
@@ -302,7 +316,7 @@ function chart(height: number, tracks: Track[], decorate: (svg: SVGSVGElement, x
 }
 
 /** グラフの左の見出しと目盛り */
-function axisLabel(svg: SVGSVGElement, text: string, y: number, color = "#77736a"): void {
+export function axisLabel(svg: SVGSVGElement, text: string, y: number, color = "#77736a"): void {
   svg.append(el("text", { x: 4, y, class: "motion-axis", fill: color }, text));
 }
 
@@ -596,7 +610,7 @@ async function heartScene(ctx: AppContext, player: Player, conduction: boolean):
 }
 
 /** 心周期のグラフ（Wiggers の図）: 圧（左心室・大動脈・左心房）・左心室の容積・心電図と、区分の帯 */
-function wiggers(cycle: CardiacCycle, timeline: CardiacTimeline, seek: (u: number) => void) {
+export function wiggers(cycle: CardiacCycle, timeline: CardiacTimeline, seek: (u: number) => void) {
   return chart(330, [
     { values: cycle.pressure.sas, color: "#8b1e2b", min: 0, max: 130, top: 30, height: 140, dash: "6 4" },
     { values: cycle.pressure.la, color: "#e58a9a", min: 0, max: 130, top: 30, height: 140 },
@@ -625,7 +639,7 @@ function wiggers(cycle: CardiacCycle, timeline: CardiacTimeline, seek: (u: numbe
 }
 
 /** 心電図（模式）と、刺激伝導の段階の帯。P 波の前から T 波のあとまで（1拍の 6 割）を広げて描く */
-function ecgChart(seek: (u: number) => void) {
+export function ecgChart(seek: (u: number) => void) {
   const from = 0.82;
   const span = 0.62;
   const n = 200;
@@ -646,7 +660,7 @@ function ecgChart(seek: (u: number) => void) {
 }
 
 /** 心音（Ⅰ音・Ⅱ音）を Web Audio の短い低い音で鳴らす（押して有効にしたときだけ） */
-class HeartSound {
+export class HeartSound {
   private audio: AudioContext | null = null;
 
   enable(on: boolean): void {
@@ -685,7 +699,7 @@ const CHEST_BONES = ["ribs", "costal-cartilages", "sternum", "thoracic-vertebrae
 const INTERCOSTALS = ["external-intercostal", "internal-intercostal"];
 const BREATH_HEART = ["right-atrium", "right-ventricle", "left-atrium", "left-ventricle", "ascending-aorta", "aortic-arch", "pulmonary-trunk", "superior-vena-cava"];
 /** 深呼吸は安静呼吸の動きを何倍にするか・周期を何倍にするか（目安） */
-const DEEP = { amplitude: 2.4, period: 1.7 };
+export const DEEP = { amplitude: 2.4, period: 1.7 };
 
 async function breathingScene(ctx: AppContext, player: Player): Promise<void> {
   const { viewer, panel } = ctx;
