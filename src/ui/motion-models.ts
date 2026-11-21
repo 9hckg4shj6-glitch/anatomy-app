@@ -6,8 +6,12 @@ import {
   CARDIAC_PHASES, cardiacTimeline, CONDUCTION, CONDUCTION_STEPS, conductionStep, cyclic, heartState, inhaling, loadMotionData, phaseAt,
   type BreathingData, type CardiacCycle, type Chamber, type ConductionStep, type ValveKey,
 } from "../motions";
+import { breathQuestion, circulationQuestion, conductionQuestion, heartQuestion } from "../motion-quiz";
+import { DESTINATIONS, loopRoute, stationsOf } from "../motion-models/route";
+import { breathCaption, heartCaption, MotionCaption } from "./motion-caption";
+import { motionCheck } from "./motion-check";
 import { CM, tag } from "../motion-models/common";
-import { FlowNet, normalizeFlow, type FlowPath, type FlowPool, type RGB } from "../motion-models/flow";
+import { FlowNet, normalizeFlow, Tracer, type FlowPath, type FlowPool, type RGB } from "../motion-models/flow";
 import { ARTERIAL, buildHeart, CHAMBERS, CONDUCTION_PATHS, heartRegion, MUSCLE, VENOUS, VESSELS, type HeartModel, type HeartTag } from "../motion-models/heart";
 import type { SchematicTag } from "../viewer";
 import type { AppContext } from "./context";
@@ -58,10 +62,15 @@ function pickBox(ctx: AppContext, name: (id: string, point: Vec3) => [string, st
 }
 
 /** 札（HTML）を作り、viewer に渡す */
-function placeTags<T extends { text: string; note?: string; at: Vec3; kind: string; valve?: ValveKey }>(ctx: AppContext, root: THREE.Object3D, tags: T[]): Map<T, HTMLElement> {
+/** 札の優先（重なるときは小さい方を先に置き、大きい方をずらす・隠す。src/tag-layout.ts） */
+const TAG_RANK: Record<string, number> = { tracer: -1, chamber: 0, conduction: 0, organ: 1, valve: 1, vessel: 2, note: 3 };
+
+function placeTags<T extends { text: string; note?: string; at: Vec3; kind: string; valve?: ValveKey; phase?: string }>(ctx: AppContext, root: THREE.Object3D, tags: T[]): Map<T, HTMLElement> {
   const elements = new Map<T, HTMLElement>();
-  const list: SchematicTag[] = tags.map((t) => {
+  const ordered = [...tags].sort((a, b) => (TAG_RANK[a.kind] ?? 2) - (TAG_RANK[b.kind] ?? 2));
+  const list: SchematicTag[] = ordered.map((t) => {
     const element = tag(t.text, t.kind);
+    if (t.phase) element.classList.add("phase");
     if (t.note) element.append(h("small", {}, t.note));
     if (t.valve) element.append(h("b", { class: "stage-tag-state" }, "閉"));
     elements.set(t, element);
@@ -80,6 +89,11 @@ function stageModel(ctx: AppContext, model: THREE.Object3D): THREE.Group {
   ctx.viewer.setStage({ solid: [] });
   ctx.viewer.setSchematic(root);
   return root;
+}
+
+/** 確かめるの欄（見出しつき） */
+function checkSection(...nodes: HTMLElement[]): HTMLElement[] {
+  return [h("h3", { class: "list-title" }, "確かめる"), ...nodes];
 }
 
 function viewChips(views: [string, () => void][]): HTMLElement {
@@ -170,6 +184,8 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
   const root = stageModel(ctx, heart.root);
   const views: [string, Vec3][] = [["前", [0, 0.04, 1]], ["斜め", [0.55, 0.3, 0.8]], ["下から", [0.1, -0.7, 0.75]]];
   const frame = (from: Vec3) => viewer.frameSchematic(from, conduction ? 0.86 : 1.05, conduction ? heart.root.children[0] : undefined);
+  // 3Dの下の字幕: 心周期の7つの時期（拍動）か、刺激伝導の6つの段階（刺激伝導系）
+  const { caption, update: captionAt, phaseSpans, stepSpans } = heartCaption(ctx, player, cycle, timeline, conduction);
   frame(views[0][1]);
 
   // 血管は刺激伝導系の場面では薄く
@@ -302,6 +318,7 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
     viewer.dotsChanged(dots.capacity);
     graph.cursor(u);
     const phase = phaseAt(timeline, u);
+    captionAt(u);
     if (conduction) {
       const step = conductionStep(u);
       if (phaseName.dataset.key !== step) {
@@ -347,6 +364,11 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
     h("div", { class: "motion-now" }, phaseName, phaseNote, conduction ? "" : valveRow),
     graph.svg,
     stepList ?? "",
+    ...checkSection(motionCheck(ctx, {
+      make: (rng) => (conduction ? conductionQuestion(rng, stepSpans) : heartQuestion(rng, phaseSpans)),
+      show: (q) => player.seek(q.u ?? 0, cycle.period),
+      mask: (on) => caption.mask(on),
+    })),
     h("h3", { class: "list-title" }, "見方"),
     viewChips(views.map(([label, from]) => [label, () => frame(from)])),
     toggle("名前を出す", named, (on) => {
@@ -395,11 +417,14 @@ async function breathingModelScene(ctx: AppContext, player: Player, item: Motion
   const root = stageModel(ctx, lungs.root);
   const views: [string, Vec3][] = [["前", [0, 0.05, 1]], ["右から", [-1, 0.06, 0.08]], ["斜め", [-0.62, 0.22, 0.76]]];
   const frame = (from: Vec3) => viewer.frameSchematic(from, 1.12);
-  frame(views[0][1]);
 
   let deep = false;
   let named = true;
+  let quiz = false;
   const period = () => data.period * (deep ? DEEP.period : 1);
+  // 3Dの下の字幕: 吸気と呼気
+  const { caption, update: captionAt, spans } = breathCaption(ctx, player, data, period);
+  frame(views[0][1]);
   const vmax = Math.max(...data.volume);
   const n = data.volume.length;
   const slope = (u: number) => (cyclic(data.volume, u + 0.5 / n) - cyclic(data.volume, u - 0.5 / n)) * n;
@@ -487,8 +512,9 @@ async function breathingModelScene(ctx: AppContext, player: Player, item: Motion
     const inhale = inhaling(data, u);
     const moving = Math.abs(flow) > 0.12;
     for (const [t, element] of tagElements) {
-      element.hidden = !named || (t.phase ? !moving || (t.phase === "in") !== inhale : false);
+      element.hidden = !named || (t.phase ? quiz || !moving || (t.phase === "in") !== inhale : false);
     }
+    captionAt(u, deep);
     const key = `${inhale}:${deep}`;
     if (phaseName.dataset.key !== key) {
       phaseName.dataset.key = key;
@@ -515,6 +541,14 @@ async function breathingModelScene(ctx: AppContext, player: Player, item: Motion
     h("div", { class: "motion-switch" }, segmented<boolean>("呼吸の深さ", [{ value: false, label: "安静呼吸" }, { value: true, label: "深呼吸（目安）" }], deep, (value) => {
       deep = value;
       phaseName.dataset.key = "";
+    })),
+    ...checkSection(motionCheck(ctx, {
+      make: (rng) => breathQuestion(rng, spans),
+      show: (q) => player.seek(q.u ?? 0, period()),
+      mask: (on) => {
+        quiz = on;
+        caption.mask(on);
+      },
     })),
     h("h3", { class: "list-title" }, "見方"),
     viewChips(views.map(([label, from]) => [label, () => frame(from)])),
@@ -577,7 +611,6 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     ["胸（心臓と肺）", () => viewer.frameSchematic([0, 0.05, 1], 0.4, heart.root.children[0])],
     ["心臓", () => viewer.frameSchematic([0, 0.05, 1], 1.0, heart.root.children[0])],
   ];
-  views[0][1]();
 
   // 流れ: 心臓の模型の大血管の端を、全身の道へつなぎ直す
   const shares: HeartShares = { svc: 0.29, ivc: 0.71, desc: 0.71, bct: 0.07, lcca: 0.15, lsa: 0.07, width: (share) => Math.sqrt(share) };
@@ -603,7 +636,18 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     circuit.set(id, path.circuit);
   }
   const net = new FlowNet(paths, pools, 5, 0.22);
-  const dots = viewer.setDots(net.count, 0.0034)!;
+  // 1滴を追う: 右心房 → 肺 → 左心室 → 行き先の臓器 → 右心房。行き先は「順番に」なら1周ごとに変える
+  let destination = -1;
+  let turn = 0;
+  const makeRoute = () => {
+    const dest = DESTINATIONS[destination >= 0 ? destination : turn % DESTINATIONS.length].id;
+    const lung = turn % 2 ? "l-lung-c" : "r-lung-c";
+    return loopRoute((id) => net.next(id), ["ra", lung, "lv", dest, "ra"]);
+  };
+  const tracer = new Tracer(net, makeRoute(), mean * cycle.period * 0.45);
+  let stations = stationsOf(tracer.route);
+  const tracerAt: Vec3 = [0, 0, 0];
+  const dots = viewer.setDots(net.count + 1, 0.0034)!;
   let filter = "both" as "both" | "systemic" | "pulmonary";
   const visible = (id: string) => filter === "both" || circuit.get(id) === "both" || circuit.get(id) === filter;
 
@@ -620,9 +664,32 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     { text: "心臓", at: [0, -11.6, 2], kind: "chamber" },
     { text: "毛細血管で 静脈血 → 動脈血", at: [-17, -4.6, -2.6], kind: "note" },
     { text: "毛細血管で 動脈血 → 静脈血", at: [-14.6, -48.4, 0], kind: "note" },
+    { text: "1滴", at: tracerAt, kind: "tracer" },
   ];
   let named = true;
   const tagElements = placeTags(ctx, root, tags);
+  // 全身は細長いので、スマホの3Dでは血管と注の札を出さない（臓器・心臓・1滴だけ。CSS の .minor）
+  for (const [t, element] of tagElements) if (t.kind === "vessel" || t.kind === "note") element.classList.add("minor");
+
+  // 3Dの下の字幕: 1滴の今いる所と、1周の道順（駅）
+  const stationSpans = () => stations.map((s) => ({ label: s.label, width: 1, tone: s.circuit === "pulmonary" ? "pulmonary" : undefined }));
+  const goStation = (i: number, frac = 0) => {
+    const station = stations[i];
+    const k = frac > 0 ? Math.min(station.count - 1, Math.floor(station.count * frac)) : 0;
+    tracer.place(station.first + k, frac > 0 ? (station.count * frac) % 1 || 0.5 : 0);
+    player.set(false);
+  };
+  const caption = new MotionCaption(ctx, player, (i) => goStation(i), stationSpans());
+  const reroute = () => {
+    tracer.route = makeRoute();
+    stations = stationsOf(tracer.route);
+    caption.setSpans(stationSpans());
+  };
+  tracer.onLoop = () => {
+    turn++;
+    reroute();
+  };
+  views[0][1]();
 
   const muscle = new THREE.Color(MUSCLE);
   const hot = new THREE.Color("#f2913d");
@@ -640,7 +707,18 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     heart.arrows.atria.visible = false;
     net.step(u, dt);
     net.write(dots.position, dots.color, dots.size, CM, visible);
+    // 1滴（光る粒）は大きく、明るく
+    tracer.step(u, dt);
+    tracer.position(tracerAt);
+    const last = net.count;
+    dots.position.set([tracerAt[0] * CM, tracerAt[1] * CM, tracerAt[2] * CM], last * 3);
+    const [r, g, b] = tracer.color();
+    dots.color.set([r + (1 - r) * 0.25, g + (1 - g) * 0.25, b + (1 - b) * 0.25], last * 3);
+    dots.size[last] = 2.6;
     viewer.dotsChanged(dots.capacity);
+    const i = stations.findIndex((s) => tracer.index >= s.first && tracer.index < s.first + s.count);
+    const station = stations[Math.max(0, i)];
+    caption.update(Math.max(0, i), (tracer.index - station.first + tracer.progress) / station.count, station.title, station.note);
   });
 
   const legend = h("p", { class: "motion-now-note" });
@@ -662,13 +740,25 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
   panel.replaceChildren(
     modeSwitch(item, false),
     h("div", { class: "motion-head" }, h("h2", {}, "肺循環と体循環"), h("span", { class: "muted", lang: "en" }, "pulmonary and systemic circulation")),
-    h("p", { class: "motion-lead" }, "全身の血液の通り道の模型です。真ん中が心臓（前から切った模型）、まわりが肺と全身の臓器。粒が血液で、拍動につれて動脈の中で速くなり、毛細血管でゆっくりになって色が変わります（実際は1周に約1分）。"),
+    h("p", { class: "motion-lead" }, "全身の血液の通り道の模型です。真ん中が心臓（前から切った模型）、まわりが肺と全身の臓器。粒が血液で、拍動につれて動脈の中で速くなり、毛細血管でゆっくりになって色が変わります（実際は1周に約1分）。光る大きな粒（1滴）を目で追うと、8の字の道順が分かります。"),
     player.controls(() => cycle.period),
     h("div", { class: "motion-switch" }, segmented<typeof filter>("見せる流れ", [{ value: "both", label: "両方" }, { value: "pulmonary", label: "肺循環" }, { value: "systemic", label: "体循環" }], filter, (value) => {
       filter = value;
       describe();
     })),
     h("div", { class: "motion-now" }, legend),
+    h("h3", { class: "list-title" }, "1滴を追う"),
+    h("p", { class: "home-note" }, "光る大きな粒（1滴）が1周します。今いる所は3Dの下の字幕に。‹ › で1つずつ進めて止められます。"),
+    h("div", { class: "motion-switch" }, segmented<number>("1滴の行き先", [{ value: -1, label: "順番に" }, ...DESTINATIONS.map((d, i) => ({ value: i, label: d.ja }))], destination, (value) => {
+      destination = value;
+      reroute();
+      tracer.place(0);
+    })),
+    ...checkSection(motionCheck(ctx, {
+      make: (rng) => circulationQuestion(rng, stations),
+      show: (q) => goStation(q.station ?? 0, 0.5),
+      mask: (on) => caption.mask(on),
+    })),
     h("h3", { class: "list-title" }, "見る所"),
     viewChips(views),
     toggle("名前を出す", named, (on) => {

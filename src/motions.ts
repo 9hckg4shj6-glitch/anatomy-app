@@ -434,3 +434,73 @@ export function routeLine(route: Route): Polyline {
 export const ROUTE_SHARE: Record<string, number> = {
   "head-r": 7.5, "head-l": 7.5, kidney: 20, gut: 25, "arm-r": 7, "arm-l": 7, "leg-r": 13, "leg-l": 13,
 };
+
+// ---------------------------------------------------------------- 3Dの上の字幕の区分（src/ui/motion-caption.ts）
+
+/** 1周の中の区分。from から to（to は 1 を超えてよい。区分は from の順に隙間なく1周を埋める） */
+export interface CycleSpan<K extends string = string> {
+  key: K;
+  from: number;
+  to: number;
+}
+
+/** u（0〜1）が入る区分の番号と、区分の中の位置（0〜1） */
+export function spanAt(spans: CycleSpan[], u: number): { index: number; frac: number } {
+  const origin = spans[0].from;
+  const t = origin + ((((u - origin) % 1) + 1) % 1);
+  for (let i = 0; i < spans.length; i++) {
+    const { from, to } = spans[i];
+    if (t >= from && t < to) return { index: i, frac: (t - from) / (to - from) };
+  }
+  return { index: spans.length - 1, frac: 1 };
+}
+
+/** 区分 index の初めの少しあと（u。0〜1）。その区分へ移るときに使う */
+export function spanStart(spans: CycleSpan[], index: number): number {
+  const { from, to } = spans[index];
+  return (((from + Math.min(0.004, (to - from) / 4)) % 1) + 1) % 1;
+}
+
+/** 刺激伝導の段階の区分（洞房結節の興奮から1周） */
+export function conductionSpans(): CycleSpan<ConductionStep>[] {
+  const c = CONDUCTION;
+  return [
+    { key: "sa", from: c.san, to: c.san + 0.015 },
+    { key: "atria", from: c.san + 0.015, to: c.avn },
+    { key: "av", from: c.avn, to: c.his },
+    { key: "bundle", from: c.his, to: c.bundleEnd },
+    { key: "purkinje", from: c.bundleEnd, to: c.purkinjeEnd },
+    { key: "rest", from: c.purkinjeEnd, to: c.san + 1 },
+  ];
+}
+
+/** 呼吸の吸気と呼気の区分（容積が増えている間が吸気） */
+export function breathSpans(data: BreathingData): CycleSpan<"in" | "out">[] {
+  const v = data.volume;
+  const n = v.length;
+  const rising = (i: number) => v[(i + 1) % n] > v[i % n];
+  let start = 0;
+  for (let i = 0; i < n; i++) if (rising(i) && !rising(i - 1 + n)) start = i;
+  let end = start;
+  while (rising(end) && end < start + n) end++;
+  return [
+    { key: "in", from: start / n, to: end / n },
+    { key: "out", from: end / n, to: start / n + 1 },
+  ];
+}
+
+/** 心周期の区分（初めと終わりが同じ区分なら1つにまとめる） */
+export function cardiacSpans(timeline: CardiacTimeline): CycleSpan<CardiacPhaseKey>[] {
+  const spans = timeline.spans.map((span) => ({ ...span }));
+  const first = spans[0];
+  const last = spans[spans.length - 1];
+  if (spans.length > 1 && first.key === last.key) {
+    spans.pop();
+    spans[0] = { key: first.key, from: last.from, to: first.to + 1 };
+    for (let i = 1; i < spans.length; i++) {
+      spans[i].from += 1;
+      spans[i].to += 1;
+    }
+  }
+  return spans;
+}

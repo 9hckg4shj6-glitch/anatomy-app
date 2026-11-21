@@ -51,8 +51,9 @@ interface Dot {
 
 export class FlowNet {
   readonly count: number;
-  private readonly paths = new Map<string, { spec: FlowPath; line: Polyline; width: number }>();
-  private readonly pools = new Map<string, { spec: FlowPool; queue: Dot[]; debt: number }>();
+  /** 道とたまり（Tracer も読む） */
+  readonly paths = new Map<string, { spec: FlowPath; line: Polyline; width: number }>();
+  readonly pools = new Map<string, { spec: FlowPool; queue: Dot[]; debt: number }>();
   private readonly dots: Dot[] = [];
   private seed = 12345;
   /** 道の上で粒どうしの間（cm）。perDot mL が進む長さ */
@@ -194,6 +195,18 @@ export class FlowNet {
     });
   }
 
+  /** 道・たまりの行き先の ID（1滴を追う道順を作る） */
+  next(id: string): string[] {
+    const target = this.paths.get(id)?.spec.to ?? this.pools.get(id)?.spec.to;
+    if (!target) return [];
+    return "pool" in target ? [target.pool] : target.paths.filter(([, w]) => w > 0).map(([to]) => to);
+  }
+
+  /** 太さ1の道を 1 mL が進む長さ（cm） */
+  get cmPerMlValue(): number {
+    return this.cmPerMl;
+  }
+
   /** たまりの粒の数（確かめ用） */
   poolCount(id: string): number {
     return this.pools.get(id)?.queue.length ?? 0;
@@ -205,4 +218,111 @@ export function normalizeFlow(series: number[], period: number, total: number): 
   const positive = series.map((v) => Math.max(0, v));
   const sum = (positive.reduce((a, b) => a + b, 0) / positive.length) * period;
   return positive.map((v) => (v * total) / (sum || 1));
+}
+
+/**
+ * 1滴を追う（docs/動きの図鑑.md「品質の見直し」）。決めた道順（route）を、ほかの粒と同じ速さで進む1つの粒。
+ * 道ではその道を流れる量に比例して進み、たまり（部屋）では出口から leaveAt mL 出たら次の道へ出る
+ * （部屋に入ってから、次に弁が開いて流れ出る間に出る）
+ */
+export class Tracer {
+  /** 道順の中の今の番号 */
+  index = 0;
+  /** 道の上の位置（cm） */
+  s = 0;
+  /** たまりに入ってから出口を流れた量（mL） */
+  volume = 0;
+  private age = 9;
+  private from: Vec3 = [0, 0, 0];
+  private readonly at = new Float32Array(3);
+  /** 道順を1周したとき（右心房に戻ったとき）に呼ぶ */
+  onLoop: (() => void) | null = null;
+
+  constructor(private readonly net: FlowNet, public route: string[], private readonly leaveAt: number, private readonly slot = 37) {}
+
+  /** 今いる道・たまりの中の進み具合（0〜1） */
+  get progress(): number {
+    const id = this.route[this.index];
+    const path = this.net.paths.get(id);
+    if (path) return path.line.length ? Math.min(1, this.s / path.line.length) : 1;
+    return Math.min(1, this.volume / this.leaveAt);
+  }
+
+  /** 道順の index 番目へ移る（frac はその道・たまりの中の位置 0〜1） */
+  place(index: number, frac = 0): void {
+    this.index = ((index % this.route.length) + this.route.length) % this.route.length;
+    const id = this.route[this.index];
+    const path = this.net.paths.get(id);
+    this.s = path ? path.line.length * frac : 0;
+    this.volume = path ? 0 : this.leaveAt * frac;
+    this.age = 9;
+  }
+
+  step(u: number, dt: number): void {
+    if (dt <= 0) return;
+    this.age += dt;
+    const id = this.route[this.index];
+    const path = this.net.paths.get(id);
+    if (path) {
+      this.s += (Math.max(0, path.spec.rate(u)) * dt * this.net.cmPerMlValue) / path.width;
+      if (this.s >= path.line.length) this.advance();
+      return;
+    }
+    const pool = this.net.pools.get(id);
+    if (!pool) return this.advance();
+    this.volume += Math.max(0, pool.spec.rate(u)) * dt;
+    if (this.volume >= this.leaveAt) this.advance();
+  }
+
+  private advance(): void {
+    const from: Vec3 = [0, 0, 0];
+    this.position(from);
+    this.from = from;
+    this.index = (this.index + 1) % this.route.length;
+    this.s = 0;
+    this.volume = 0;
+    this.age = 0;
+    if (this.index === 0) this.onLoop?.();
+  }
+
+  /** 今の道・たまりの上の位置（なめらかにつなぐ前） */
+  private raw(out: Vec3): void {
+    const id = this.route[this.index];
+    const path = this.net.paths.get(id);
+    if (path) {
+      path.line.at(Math.min(this.s, path.line.length), this.at);
+      out[0] = this.at[0];
+      out[1] = this.at[1];
+      out[2] = this.at[2];
+      return;
+    }
+    const pool = this.net.pools.get(id)!;
+    const slot = pool.spec.slots[this.slot % pool.spec.slots.length];
+    if (pool.spec.move) pool.spec.move(slot, out);
+    else {
+      out[0] = slot[0];
+      out[1] = slot[1];
+      out[2] = slot[2];
+    }
+  }
+
+  /** 今の位置（cm。たまりへ入るとき・道へ出るときは、前の位置から 0.3 秒でなめらかに） */
+  position(out: Vec3): Vec3 {
+    this.raw(out);
+    if (this.age >= 0.3) return out;
+    const t = this.age / 0.3;
+    const e = t * t * (3 - 2 * t);
+    for (let k = 0; k < 3; k++) out[k] = this.from[k] + (out[k] - this.from[k]) * e;
+    return out;
+  }
+
+  /** 今の色 */
+  color(): RGB {
+    const id = this.route[this.index];
+    const path = this.net.paths.get(id);
+    if (!path) return this.net.pools.get(id)!.spec.color;
+    const [a, b] = path.spec.color;
+    const f = this.progress;
+    return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f];
+  }
 }

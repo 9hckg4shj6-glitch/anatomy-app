@@ -8,6 +8,9 @@ import {
 } from "../motions";
 import type { AnatomyViewer, Deformable, StageSpec } from "../viewer";
 import { termAt, type AppContext } from "./context";
+import { breathQuestion, conductionQuestion, heartQuestion } from "../motion-quiz";
+import { breathCaption, heartCaption } from "./motion-caption";
+import { motionCheck } from "./motion-check";
 import { motionModelScene } from "./motion-models";
 import { segmented } from "./settings-kit";
 
@@ -87,10 +90,15 @@ function motionList(ctx: AppContext): void {
   ctx.viewer.overview();
   ctx.panel.replaceChildren(
     h("h2", {}, "動きの図鑑"),
-    h("p", { class: "muted" }, "体の中の動きを、3Dの形を動かして見ます。止めて1コマずつ見たり、ゆっくり再生したりできます。"),
+    h("p", { class: "muted" }, "体の中の動きを、3Dの模型を動かして見ます。3Dの下の字幕で今の時期が分かり、‹ › で1つずつ止めて見られます。最後に「確かめる」で4択の問題も。"),
     h("ul", { class: "organ-grid motion-grid" }, ...MOTIONS.map((motion) => {
-      const art = h("span", { class: "organ-thumb motion-thumb", style: `--motion:${motion.color}`, "aria-hidden": "true" });
-      art.innerHTML = `<svg viewBox="0 0 24 24">${motion.icon}</svg>`;
+      // 絵はわかりやすい模型を撮ったもの（scripts/motions/thumbs.mjs）。読めないときは記号の絵
+      const art = h("img", { class: "organ-thumb motion-photo", src: `${import.meta.env.BASE_URL}motions/thumbs/${motion.id}.webp`, alt: "", loading: "lazy", decoding: "async" });
+      art.addEventListener("error", () => {
+        const icon = h("span", { class: "organ-thumb motion-thumb", style: `--motion:${motion.color}`, "aria-hidden": "true" });
+        icon.innerHTML = `<svg viewBox="0 0 24 24">${motion.icon}</svg>`;
+        art.replaceWith(icon);
+      }, { once: true });
       return h("li", {}, h("a", { class: "organ-card", href: `#/motions/${motion.id}` },
         art,
         h("span", { class: "organ-name" }, motion.ja),
@@ -144,6 +152,7 @@ export class Player {
     viewer.restoreDeform();
     viewer.setStage(null);
     viewer.setSection(null);
+    viewer.setFrameInset(0);
     viewer.onPick = null;
   }
 
@@ -421,6 +430,7 @@ async function heartScene(ctx: AppContext, player: Player, conduction: boolean):
   const deform = heartDeform(viewer, heart, parts);
   const weights = new Float32Array(HEART_CHANNELS);
   const views: [string, Vec3][] = [["前", [0, 0.05, 1]], ["左前", [0.7, 0.15, 0.75]], ["下", [0.15, -1, 0.5]], ["後ろ", [0, 0.1, -1]]];
+  const { caption, update: captionAt, phaseSpans, stepSpans } = heartCaption(ctx, player, cycle, timeline, conduction);
   viewer.frameStage(views[0][1], [...walls, ...valves], 0.8);
 
   // 血液の粒（心臓の中の流れ。弁の流れの速さで進む）
@@ -537,6 +547,7 @@ async function heartScene(ctx: AppContext, player: Player, conduction: boolean):
     else bloodFrame(u, dt);
     viewer.dotsChanged(dots.capacity);
     graph.cursor(u);
+    captionAt(u);
     const phase = phaseAt(timeline, u);
     if (conduction) {
       const step = conductionStep(u);
@@ -582,6 +593,12 @@ async function heartScene(ctx: AppContext, player: Player, conduction: boolean):
     h("div", { class: "motion-now" }, phaseName, phaseNote, valveRow),
     graph.svg,
     stepList ?? "",
+    h("h3", { class: "list-title" }, "確かめる"),
+    motionCheck(ctx, {
+      make: (rng) => (conduction ? conductionQuestion(rng, stepSpans) : heartQuestion(rng, phaseSpans)),
+      show: (q) => player.seek(q.u ?? 0, cycle.period),
+      mask: (on) => caption.mask(on),
+    }),
     h("h3", { class: "list-title" }, "見方"),
     viewChips,
     conduction ? "" : toggle("壁を透かして血液の流れを見る", see, (on) => {
@@ -758,6 +775,8 @@ async function breathingScene(ctx: AppContext, player: Player): Promise<void> {
   });
   const weights = new Float32Array(4);
   const views: [string, Vec3][] = [["前", [0, 0.05, 1]], ["右", [-1, 0.05, 0.15]], ["左前", [0.7, 0.1, 0.75]]];
+  const period = () => data.period * (deep ? DEEP.period : 1);
+  const { caption, update: captionAt, spans: breathParts } = breathCaption(ctx, player, data, period);
   viewer.frameStage(views[0][1], [...lungs, ...diaphragm], 1.05);
 
   // 空気の粒（吸うと気管から気管支へ、吐くと戻る）
@@ -767,7 +786,6 @@ async function breathingScene(ctx: AppContext, player: Player): Promise<void> {
   const air = airLines.flatMap((line, k) => Array.from({ length: perLine }, (_, i) => ({ k, s: (line.length * (i + Math.random())) / perLine })));
   const fresh = hex("#4fc3f7");
   const stale = hex("#9aa3ad");
-  const period = () => data.period * (deep ? DEEP.period : 1);
 
   const phaseName = h("strong", { class: "motion-now-name" });
   const phaseNote = h("p", { class: "motion-now-note" });
@@ -815,6 +833,7 @@ async function breathingScene(ctx: AppContext, player: Player): Promise<void> {
     }
     viewer.dotsChanged(dots.capacity);
     graph.cursor(u);
+    captionAt(u, deep);
     const inhale = inhaling(data, u);
     const key = `${inhale}:${deep}`;
     if (phaseName.dataset.key !== key) {
@@ -846,6 +865,12 @@ async function breathingScene(ctx: AppContext, player: Player): Promise<void> {
       deep = value;
       phaseName.dataset.key = "";
     })),
+    h("h3", { class: "list-title" }, "確かめる"),
+    motionCheck(ctx, {
+      make: (rng) => breathQuestion(rng, breathParts),
+      show: (q) => player.seek(q.u ?? 0, period()),
+      mask: (on) => caption.mask(on),
+    }),
     h("h3", { class: "list-title" }, "見方"),
     viewChips,
     toggle("肺を透かす（気管支と空気の流れを見る）", glassLungs, (on) => {

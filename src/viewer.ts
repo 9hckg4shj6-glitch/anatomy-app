@@ -6,6 +6,7 @@ import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 import { joints, loadAttachments, loadModelIndex, organById, organTerms, pins, systemById, systems, termById, terms, type Attachments, type FigurePlane, type ModelIndex, type Motion, type Term, type View } from "./content";
 import { drawingUp, pinCenter, pinSpread, type Cut, type Vec3 } from "./landmarks";
 import { preferences } from "./settings";
+import { layoutTags, leaderLine, type Rect, type TagBox } from "./tag-layout";
 
 /** 向きの目印の字と、その向き（モデル座標。本人の右は -x） */
 const COMPASS_WORDS: [string, Vec3][] = [["上", [0, 1, 0]], ["下", [0, -1, 0]], ["前", [0, 0, 1]], ["後", [0, 0, -1]], ["右", [-1, 0, 0]], ["左", [1, 0, 0]]];
@@ -554,7 +555,11 @@ export class AnatomyViewer {
   private schematic: THREE.Object3D | null = null;
   /** 3Dの上の名前の札（setTags）。at は object の座標（object が無ければ体の座標） */
   private tags: SchematicTag[] = [];
+  /** 札ごとの引き出し線と、前のフレームで選んだずらし方（src/tag-layout.ts） */
+  private tagState: { line: HTMLDivElement; last: number }[] = [];
   private readonly tagLayer: HTMLDivElement;
+  /** 3Dの下を覆う字幕の高さ（setFrameInset） */
+  private frameInset = 0;
   /** 模型をタップしたとき（userData.pick のある部品。外れたら null） */
   onSchematicPick: ((id: string | null, point: Vec3 | null) => void) | null = null;
   /** 毎フレーム、描く前に呼ぶ（動きの図鑑の再生。null で止める）。now は performance.now() */
@@ -1406,9 +1411,21 @@ export class AnatomyViewer {
     if (box.isEmpty()) return;
     const target = box.getCenter(new THREE.Vector3());
     const radius = Math.max(0.03, box.getSize(new THREE.Vector3()).length() / 2) / zoom;
+    this.frameBox(target, radius, from);
+  }
+
+  /** target を中心に半径 radius の球が入るように from の向きから映す（下を字幕が覆う分は、その上の所に入るよう上へ寄せる） */
+  private frameBox(target: THREE.Vector3, radius: number, from: Vec3): void {
     const direction = new THREE.Vector3(...from).normalize();
     const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
-    this.moveTo(target, target.clone().add(direction.multiplyScalar((radius * 0.92) / tan / Math.min(1, this.camera.aspect))), true);
+    const f = Math.min(0.4, this.frameInset / Math.max(1, this.host.clientHeight));
+    const distance = (radius * 0.92) / tan / Math.min(1 - f, this.camera.aspect);
+    if (f > 0) {
+      const up = new THREE.Vector3(0, 1, 0).addScaledVector(direction, -direction.y);
+      if (up.lengthSq() < 1e-6) up.set(0, 0, -1);
+      target.addScaledVector(up.normalize(), -distance * tan * f);
+    }
+    this.moveTo(target, target.clone().add(direction.multiplyScalar(distance)), true);
   }
 
   /**
@@ -1427,7 +1444,10 @@ export class AnatomyViewer {
     }
     this.schematic = object;
     if (object) this.scene.add(object);
-    else this.onSchematicPick = null;
+    else {
+      this.onSchematicPick = null;
+      this.frameInset = 0;
+    }
     this.dirty = true;
   }
 
@@ -1440,16 +1460,25 @@ export class AnatomyViewer {
     if (box.isEmpty()) return;
     const target = box.getCenter(new THREE.Vector3());
     const radius = Math.max(0.02, box.getSize(new THREE.Vector3()).length() / 2) / zoom;
-    const direction = new THREE.Vector3(...from).normalize();
-    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
-    this.moveTo(target, target.clone().add(direction.multiplyScalar((radius * 0.92) / tan / Math.min(1, this.camera.aspect))), true);
+    this.frameBox(target, radius, from);
   }
 
   /** 3Dの上に名前の札を置く（null で消す）。札の要素は呼んだ側が作る（文字・色・リンクを替えてよい） */
   setTags(tags: SchematicTag[] | null): void {
     this.tags = tags ?? [];
-    this.tagLayer.replaceChildren(...this.tags.map((tag) => tag.element));
+    this.tagState = this.tags.map(() => {
+      const line = document.createElement("div");
+      line.className = "stage-tag-line";
+      line.hidden = true;
+      return { line, last: 0 };
+    });
+    this.tagLayer.replaceChildren(...this.tagState.map((state) => state.line), ...this.tags.map((tag) => tag.element));
     this.dirty = true;
+  }
+
+  /** 3Dの下を字幕などが覆う高さ（px）。frameSchematic はその上の所に模型が入るように映す */
+  setFrameInset(bottom: number): void {
+    this.frameInset = Math.max(0, bottom);
   }
 
   private placeTags(): void {
@@ -1457,14 +1486,45 @@ export class AnatomyViewer {
     const v = new THREE.Vector3();
     const width = this.host.clientWidth;
     const height = this.host.clientHeight;
-    for (const tag of this.tags) {
-      if (tag.element.hidden) continue;
+    // 先に読む（札の大きさ・避ける所）。書くのはそのあと（読み書きを交互にすると、札ごとに配置を計算し直すので）
+    const hostRect = this.host.getBoundingClientRect();
+    const avoid: Rect[] = [];
+    for (const node of this.host.querySelectorAll<HTMLElement>(":scope > button:not([hidden]), .stage-compass:not([hidden]), .stage-hint:not(:empty), .stage-tools > *, .stage-tip")) {
+      const r = node.getBoundingClientRect();
+      if (r.width && r.height) avoid.push({ x: r.left - hostRect.left, y: r.top - hostRect.top, w: r.width, h: r.height });
+    }
+    const items: { index: number; box: TagBox }[] = [];
+    this.tags.forEach((tag, index) => {
+      if (tag.element.hidden) return;
       v.set(...tag.at);
       if (tag.object) v.applyMatrix4(tag.object.matrixWorld);
       v.project(this.camera);
-      tag.element.style.transform = `translate(${((v.x + 1) / 2) * width}px, ${((1 - v.y) / 2) * height}px)`;
-      tag.element.style.visibility = v.z > 1 ? "hidden" : "";
-    }
+      // 見せていない札（スマホで CSS が隠すものなど）は置かない
+      if (v.z > 1 || !tag.element.offsetWidth) return;
+      items.push({ index, box: { x: ((v.x + 1) / 2) * width, y: ((1 - v.y) / 2) * height, w: tag.element.offsetWidth, h: tag.element.offsetHeight, last: this.tagState[index]?.last } });
+    });
+    const places = layoutTags(items.map((item) => item.box), avoid, width, height);
+    const shown = new Set<number>();
+    items.forEach(({ index, box }, k) => {
+      const place = places[k];
+      const tag = this.tags[index];
+      const state = this.tagState[index];
+      state.last = place.choice;
+      tag.element.style.transform = `translate(${place.x}px, ${place.y}px)`;
+      tag.element.style.visibility = place.hidden ? "hidden" : "";
+      const line = place.hidden ? null : leaderLine(box.x, box.y, place, box.w, box.h);
+      state.line.hidden = !line;
+      if (line) {
+        state.line.style.transform = `translate(${line.x}px, ${line.y}px) rotate(${line.angle}rad)`;
+        state.line.style.width = `${line.length}px`;
+      }
+      shown.add(index);
+    });
+    this.tags.forEach((tag, index) => {
+      if (shown.has(index)) return;
+      if (!tag.element.hidden) tag.element.style.visibility = "hidden";
+      this.tagState[index].line.hidden = true;
+    });
   }
 
   /** 模型の当たった部品の pick と、当たった点（模型の root の座標） */

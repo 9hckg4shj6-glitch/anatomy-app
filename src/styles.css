@@ -1591,6 +1591,7 @@ a.set-profile .set-value::after { content: " ›"; color: #b9b3a7; font-weight: 
 .model-moving .primary { min-height: 44px; }
 
 /* 動きの図鑑（#/motions、src/ui/motions.ts） */
+.motion-photo { background: #24272c; }
 .motion-thumb { display: grid; place-items: center; color: #fff; background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--motion) 70%, #fff) 0%, var(--motion) 55%, color-mix(in srgb, var(--motion) 60%, #000) 100%); }
 .motion-thumb svg { width: 46%; height: auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .motion-lead { white-space: normal; line-height: 1.5; }
@@ -1640,6 +1641,9 @@ p.motion-lead { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
   white-space: nowrap; border: 1px solid rgb(255 255 255 / 0.22);
 }
 .stage-tag small { font-size: 10px; font-weight: 500; opacity: 0.85; }
+/* ずらした札の引き出し線（src/tag-layout.ts）。根もとに小さな点 */
+.stage-tag-line { position: absolute; top: 0; left: 0; height: 1.5px; margin-top: -0.75px; transform-origin: 0 50%; background: rgb(250 247 241 / 0.75); }
+.stage-tag-line::before { content: ""; position: absolute; left: -2.5px; top: -1.75px; width: 5px; height: 5px; border-radius: 50%; background: #faf7f1; }
 .stage-tag.chamber { font-size: 14px; background: rgb(30 29 27 / 0.55); }
 .stage-tag.valve { flex-direction: row; gap: 5px; background: rgb(250 247 241 / 0.92); color: #2b2a27; border-color: rgb(0 0 0 / 0.12); }
 .stage-tag-state { padding: 0 5px; border-radius: 5px; background: #8a857a; color: #fff; font-size: 11px; }
@@ -1647,8 +1651,74 @@ p.motion-lead { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
 .stage-tag.conduction { background: rgb(255 210 63 / 0.95); color: #3a2c00; border-color: rgb(0 0 0 / 0.15); }
 .stage-tag.organ { font-size: 13px; background: rgb(30 29 27 / 0.62); }
 .stage-tag.note { font-size: 11px; font-weight: 600; background: rgb(255 255 255 / 0.9); color: #2b2a27; }
+.stage-tag.tracer { font-size: 11px; background: #ffd23f; color: #3a2c00; border-color: rgb(0 0 0 / 0.2); box-shadow: 0 0 0 3px rgb(255 210 63 / 0.3); }
 .motion-mode { margin-bottom: 12px; }
+/* 動きの図鑑の3Dの下の字幕（src/ui/motion-caption.ts）。今の時期・1周の区分の帯・再生と前後の時期 */
+.motion-caption {
+  flex: 1 1 100%; min-width: 0; padding: 8px 10px 9px; border-radius: 14px; color: #f1eee8;
+  background: rgb(20 22 25 / 0.74); border: 1px solid rgb(255 255 255 / 0.16); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.motion-caption-top { display: flex; align-items: center; gap: 8px; }
+.motion-caption-play {
+  flex: none; width: 40px; height: 40px; border-radius: 50%; border: none; background: #f7f4ee; color: #1f1d1a; font-size: 14px; cursor: pointer;
+}
+.motion-caption-text { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35; }
+.motion-caption-title { font-size: 15px; }
+.motion-caption-note {
+  font-size: 12px; opacity: 0.86; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.motion-caption-step {
+  flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgb(255 255 255 / 0.25); background: rgb(255 255 255 / 0.08);
+  color: #f1eee8; font-size: 18px; line-height: 1; cursor: pointer;
+}
+.motion-caption-bar { position: relative; display: flex; gap: 2px; margin-top: 8px; height: 24px; }
+.motion-caption-span {
+  flex-basis: 0; min-width: 6px; padding: 0 2px; border: none; border-radius: 5px; cursor: pointer;
+  background: rgb(255 255 255 / 0.13); color: rgb(241 238 232 / 0.82); font-size: 10.5px; white-space: nowrap; overflow: hidden;
+}
+.motion-caption-span.systole { background: rgb(242 145 61 / 0.32); }
+.motion-caption-span.pulmonary { background: rgb(111 168 220 / 0.3); }
+.motion-caption-span.pulmonary.on { background: #8fc1ec; color: #0d2236; }
+.motion-caption-span.inhale { background: rgb(79 195 247 / 0.28); }
+.motion-caption-span.inhale.on { background: #4fc3f7; color: #06283a; }
+.motion-caption-span.on { background: #f7f4ee; color: #1f1d1a; font-weight: 700; }
+.motion-caption-span.systole.on { background: #f2913d; color: #2b1600; }
+.motion-caption-cursor {
+  position: absolute; top: -3px; bottom: -3px; width: 3px; margin-left: -1.5px; border-radius: 2px; background: #fff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.45); pointer-events: none;
+}
+.motion-caption.masked .motion-caption-span { color: transparent; }
+.motion-caption.masked .motion-caption-span.on { background: rgb(255 255 255 / 0.13); }
+.motion-caption.masked .motion-caption-title { color: #ffd23f; }
+/* 動きの図鑑の「確かめる」（src/ui/motion-check.ts）。問題の間は答えの見える所を伏せる */
+.motion-check { margin: 0 0 12px; }
+.motion-check-count { margin: 0 0 2px; font-size: 13px; }
+.motion-check-prompt { margin: 0 0 10px; font-size: 16px; font-weight: 600; line-height: 1.5; }
+.motion-check .choice.right { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, var(--surface)); }
+.motion-check .choice.wrong { border-color: var(--ng); background: color-mix(in srgb, var(--ng) 10%, var(--surface)); }
+.motion-check .choice:disabled { color: var(--ink); opacity: 1; }
+.motion-check-feedback p { margin: 0 0 8px; font-size: 14px; line-height: 1.6; }
+.motion-check-ok { color: var(--ok); font-weight: 700; }
+.motion-check-ng { color: var(--ng); font-weight: 700; }
+.motion-check-end { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.motion-check-end p { flex: 1 1 100%; }
+.motion-check-quit { margin-top: 4px; }
+body.motion-quiz .motion-now, body.motion-quiz .stage-tag-state, body.motion-quiz .stage-tag.phase { visibility: hidden; }
+body.motion-quiz .motion-steps li.on { background: none; }
 @media (max-width: 720px) {
+  .motion-caption { padding: 6px 8px 7px; border-radius: 12px; }
+  .motion-caption-top { gap: 6px; }
+  .motion-caption-play { width: 34px; height: 34px; font-size: 12px; }
+  .motion-caption-step { width: 32px; height: 32px; font-size: 16px; }
+  .motion-caption-title { font-size: 13.5px; }
+  .motion-caption-note { font-size: 11px; }
+  .motion-caption-bar { margin-top: 6px; height: 20px; }
+  .motion-caption-span { font-size: 9.5px; }
+  /* 細い区分は、選んでいる間だけ名前を出す（字幕の名前でも分かる） */
+  .motion-caption-span.slim:not(.on) { color: transparent; }
+}
+@media (max-width: 720px) {
+  .stage-tag.minor { display: none; }
   .stage-tag { font-size: 10.5px; padding: 1px 6px; }
   .stage-tag.chamber { font-size: 12px; }
   .stage-tag small { font-size: 9px; }
