@@ -1705,6 +1705,43 @@ p.motion-lead { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
 .motion-check-quit { margin-top: 4px; }
 body.motion-quiz .motion-now, body.motion-quiz .stage-tag-state, body.motion-quiz .stage-tag.phase { visibility: hidden; }
 body.motion-quiz .motion-steps li.on { background: none; }
+/* 動きの図鑑の学ぶ流れ（src/ui/motion-lesson.ts・docs/動きの図鑑.md「学ぶ目当てと1つずつ」） */
+.motion-goals { margin: 0 0 12px; padding: 10px 12px 8px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
+.motion-goals h3 { margin: 0 0 4px; font-size: 14px; color: var(--accent); }
+.motion-goals ol { margin: 0; padding-left: 20px; }
+.motion-goals li { font-size: 14px; line-height: 1.55; margin: 2px 0; }
+.motion-controls-box { margin: 0 0 4px; }
+.motion-guide-switch { margin-bottom: 6px; }
+.motion-guide-switch .home-note { margin: 4px 2px 0; font-size: 12.5px; }
+.motion-length { font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.motion-lesson p { margin: 8px 0 0; font-size: 14px; line-height: 1.6; }
+.motion-lesson p:empty { display: none; }
+.motion-lesson b { display: inline-block; margin-right: 6px; padding: 0 6px; border-radius: 6px; font-size: 12px; }
+.motion-look b { background: #ffd23f; color: #3a2c00; }
+.motion-why b { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); color: var(--accent); }
+.motion-flow { padding-left: 24px; }
+.motion-flow li { padding: 0; }
+.motion-flow li::marker { color: var(--muted); font-weight: 700; }
+.motion-flow-item { width: 100%; padding: 5px 8px; border: none; border-radius: 8px; background: none; color: var(--ink); font: inherit; font-size: 14px; text-align: left; cursor: pointer; }
+.motion-flow-item:hover { background: color-mix(in srgb, var(--ink) 6%, var(--surface)); }
+.motion-flow li.done .motion-flow-item { color: var(--muted); }
+.motion-flow li.on .motion-flow-item { font-weight: 700; }
+.motion-points { margin: 0 0 12px; padding-left: 20px; }
+.motion-points li { margin: 4px 0; font-size: 14px; line-height: 1.6; }
+.motion-caption-head { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+.motion-caption-count { flex: none; padding: 0 5px; border-radius: 5px; background: rgb(255 255 255 / 0.16); font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.motion-caption-count:empty { display: none; }
+.motion-caption-look {
+  margin-top: 2px; font-size: 12px; color: #ffe27a; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.motion-caption-look:empty { display: none; }
+.motion-caption-play.wait { background: #ffd23f; animation: motion-wait 1.6s ease-in-out infinite; }
+@keyframes motion-wait { 50% { box-shadow: 0 0 0 6px rgb(255 210 63 / 0.35); } }
+.stage-tag.focus { outline: 2px solid #ffd23f; outline-offset: 1px; box-shadow: 0 0 12px 2px rgb(255 210 63 / 0.75); z-index: 2; }
+body.motion-quiz .stage-tag.focus { outline: none; box-shadow: none; }
+body.motion-quiz .motion-flow li.on .motion-flow-item { font-weight: inherit; }
+body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .motion-caption-play.wait { animation: none; } }
 @media (max-width: 720px) {
   .motion-caption { padding: 6px 8px 7px; border-radius: 12px; }
   .motion-caption-top { gap: 6px; }
@@ -1716,6 +1753,9 @@ body.motion-quiz .motion-steps li.on { background: none; }
   .motion-caption-span { font-size: 9.5px; }
   /* 細い区分は、選んでいる間だけ名前を出す（字幕の名前でも分かる） */
   .motion-caption-span.slim:not(.on) { color: transparent; }
+  /* スマホの3Dは低いので、ここを見るがあるときは一言（何が起きる）を欄に任せる */
+  .motion-caption-note:has(+ .motion-caption-look:not(:empty)) { display: none; }
+  .motion-caption-look { font-size: 11px; }
 }
 @media (max-width: 720px) {
   .stage-tag.minor { display: none; }

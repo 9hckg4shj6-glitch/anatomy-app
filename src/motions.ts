@@ -455,10 +455,11 @@ export function spanAt(spans: CycleSpan[], u: number): { index: number; frac: nu
   return { index: spans.length - 1, frac: 1 };
 }
 
-/** 区分 index の初めの少しあと（u。0〜1）。その区分へ移るときに使う */
-export function spanStart(spans: CycleSpan[], index: number): number {
+/** 区分 index の初めの少しあと（u。0〜1）。その区分へ移るときに使う。frac を渡すと区分の中のその割合の所 */
+export function spanStart(spans: CycleSpan[], index: number, frac?: number): number {
   const { from, to } = spans[index];
-  return (((from + Math.min(0.004, (to - from) / 4)) % 1) + 1) % 1;
+  const at = frac === undefined ? from + Math.min(0.004, (to - from) / 4) : from + (to - from) * frac;
+  return ((at % 1) + 1) % 1;
 }
 
 /** 刺激伝導の段階の区分（洞房結節の興奮から1周） */

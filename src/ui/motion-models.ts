@@ -4,7 +4,7 @@ import { h } from "../dom";
 import type { Vec3 } from "../landmarks";
 import {
   CARDIAC_PHASES, cardiacTimeline, CONDUCTION, CONDUCTION_STEPS, conductionStep, cyclic, heartState, inhaling, loadMotionData, phaseAt,
-  type BreathingData, type CardiacCycle, type Chamber, type ConductionStep, type ValveKey,
+  type BreathingData, type CardiacCycle, type Chamber, type ValveKey,
 } from "../motions";
 import { breathQuestion, circulationQuestion, conductionQuestion, heartQuestion } from "../motion-quiz";
 import { DESTINATIONS, loopRoute, stationsOf } from "../motion-models/route";
@@ -18,6 +18,8 @@ import type { AppContext } from "./context";
 import { BODY_PATHS, buildBody, ORGANS } from "../motion-models/body";
 import { buildLungs, BREATH, type LungTag } from "../motion-models/lungs";
 import { segmented } from "./settings-kit";
+import { goalsBox, LessonSteps, pointsBox } from "./motion-lesson";
+import { stepLesson } from "../motion-lessons";
 import { axisLabel, chart, CHART_W, DEEP, ecgChart, el, HeartSound, hex, modeSwitch, Player, relatedTerms, toggle, wiggers, type MotionItem } from "./motions";
 
 /**
@@ -185,6 +187,8 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
   const views: [string, Vec3][] = [["前", [0, 0.04, 1]], ["斜め", [0.55, 0.3, 0.8]], ["下から", [0.1, -0.7, 0.75]]];
   const frame = (from: Vec3) => viewer.frameSchematic(from, conduction ? 0.86 : 1.05, conduction ? heart.root.children[0] : undefined);
   // 3Dの下の字幕: 心周期の7つの時期（拍動）か、刺激伝導の6つの段階（刺激伝導系）
+  player.defaultSpeed(0.25);
+  if (conduction) player.stepLabel = "この段階を見る";
   const { caption, update: captionAt, phaseSpans, stepSpans } = heartCaption(ctx, player, cycle, timeline, conduction);
   frame(views[0][1]);
 
@@ -206,6 +210,10 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
   const tagList = [...heart.tags.filter((t) => !conduction || t.kind === "chamber"), ...conductionTags];
   let named = true;
   const tagElements = placeTags(ctx, root, tagList);
+  // 学ぶ流れ: 心周期の7つの時期／刺激伝導の6つの段階。今の区分の「ここを見る」「なぜ」と、見る所の札を光らせる
+  const steps = new LessonSteps(conduction ? "conduction" : "heartbeat", caption, caption.go, conduction
+    ? stepSpans.map((span) => ({ key: span.key, title: CONDUCTION_STEPS[span.key].ja }))
+    : phaseSpans.map((span) => ({ key: span.key, title: `${CARDIAC_PHASES[span.key].ja}（${CARDIAC_PHASES[span.key].systole ? "収縮期" : "拡張期"}）` })), tagElements);
   const showTags = () => {
     for (const element of tagElements.values()) element.hidden = !named;
   };
@@ -288,8 +296,6 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
     valveRow.append(pill);
     return [key, pill] as const;
   });
-  const stepList = conduction ? h("ol", { class: "motion-steps" }, ...(Object.keys(CONDUCTION_STEPS) as ConductionStep[]).map((key) =>
-    h("li", { "data-key": key }, h("b", {}, CONDUCTION_STEPS[key].ja), h("span", {}, CONDUCTION_STEPS[key].note)))) : null;
   const sound = new HeartSound();
   let lastU = 0;
   const graph = conduction ? ecgChart((u) => player.seek(u, cycle.period)) : wiggers(cycle, timeline, (u) => player.seek(u, cycle.period));
@@ -325,7 +331,6 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
         phaseName.dataset.key = step;
         phaseName.textContent = CONDUCTION_STEPS[step].ja;
         phaseNote.textContent = `${CARDIAC_PHASES[phase].ja}のころ。${CONDUCTION_STEPS[step].note}`;
-        for (const li of stepList!.children) li.classList.toggle("on", (li as HTMLElement).dataset.key === step);
       }
     } else if (phaseName.dataset.key !== phase) {
       phaseName.dataset.key = phase;
@@ -357,13 +362,16 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
   panel.replaceChildren(
     modeSwitch(item, false),
     h("div", { class: "motion-head" }, h("h2", {}, conduction ? "刺激伝導系と心電図" : "心臓の拍動と心周期"), h("span", { class: "muted", lang: "en" }, conduction ? "cardiac conduction system" : "cardiac cycle")),
+    goalsBox(conduction ? "conduction" : "heartbeat"),
     h("p", { class: "motion-lead" }, conduction
       ? "心臓を前から切った模型です。黄色の線が刺激伝導系、壁が黄色くなっている所が興奮している所。洞房結節 → 心房 → 房室結節（少し待つ）→ ヒス束 → 右脚・左脚 → プルキンエ線維と進み、心室は心尖から心底へ興奮します。下の心電図の今の位置と見比べてください。"
       : "心臓を前から切った模型です。青の粒は静脈血（右心系）、赤の粒は動脈血（左心系）。血液は心房にたまり、弁が開いた間だけ次の部屋・血管へ流れます。縮んでいる部屋は橙色に。グラフを押すと、その時点で止まります。"),
-    player.controls(() => cycle.period),
-    h("div", { class: "motion-now" }, phaseName, phaseNote, conduction ? "" : valveRow),
+    player.controls(() => cycle.period, "1拍"),
+    h("div", { class: "motion-now" }, phaseName, phaseNote, steps.detail, conduction ? "" : valveRow),
+    h("h3", { class: "list-title" }, conduction ? "学ぶ流れ（6つの段階）" : "学ぶ流れ（7つの時期）"),
+    steps.list,
     graph.svg,
-    stepList ?? "",
+    ...pointsBox(conduction ? "conduction" : "heartbeat"),
     ...checkSection(motionCheck(ctx, {
       make: (rng) => (conduction ? conductionQuestion(rng, stepSpans) : heartQuestion(rng, phaseSpans)),
       show: (q) => player.seek(q.u ?? 0, cycle.period),
@@ -395,7 +403,7 @@ async function heartModelScene(ctx: AppContext, player: Player, item: MotionItem
     h("p", { class: "plate-credit muted" },
       "模型は教科書の模式図にならった作り物です（部屋の大きさ・弁の位置は分かりやすさを優先）。部屋の縮み・弁の開き・血液の流れる量は ModularCirc（Alan Turing Institute, MIT License）の Korakianitis & Shi (2006) の4つの部屋のモデルを解いた値。心電図は模式です。実際の心臓の形で見るときは、上の「実際の形」を。"),
   );
-  if (!player.playing) ctx.hint("▶ 再生 で動きます");
+  player.startHint();
 }
 
 // ---------------------------------------------------------------- 呼吸
@@ -423,6 +431,7 @@ async function breathingModelScene(ctx: AppContext, player: Player, item: Motion
   let quiz = false;
   const period = () => data.period * (deep ? DEEP.period : 1);
   // 3Dの下の字幕: 吸気と呼気
+  player.defaultSpeed(0.25);
   const { caption, update: captionAt, spans } = breathCaption(ctx, player, data, period);
   frame(views[0][1]);
   const vmax = Math.max(...data.volume);
@@ -432,6 +441,7 @@ async function breathingModelScene(ctx: AppContext, player: Player, item: Motion
   for (let i = 0; i < 200; i++) maxSlope = Math.max(maxSlope, Math.abs(slope(i / 200)));
 
   const tagElements = placeTags<LungTag>(ctx, root, lungs.tags);
+  const steps = new LessonSteps("breathing", caption, caption.go, spans.map((span) => ({ key: span.key, title: span.key === "in" ? "吸気（息を吸う）" : "呼気（息を吐く）" })), tagElements);
 
   // 空気の粒（気管 → 気管支 → 肺の中）
   const lines = lungs.airways.map((points) => ({ points, length: points.length - 1 }));
@@ -534,14 +544,18 @@ async function breathingModelScene(ctx: AppContext, player: Player, item: Motion
   panel.replaceChildren(
     modeSwitch(item, false),
     h("div", { class: "motion-head" }, h("h2", {}, "呼吸"), h("span", { class: "muted", lang: "en" }, "breathing")),
+    goalsBox("breathing"),
     h("p", { class: "motion-lead" }, "胸の模型です。息を吸うと、横隔膜のドームが下がり、肋骨が上がって胸郭が前と横へ広がり、肺がふくらんで空気が入ります。肝臓と胃も押し下げられます。「右から」で見ると、胸骨が前へ出る動きと横隔膜の下がり方がよく分かります。"),
-    player.controls(period),
-    h("div", { class: "motion-now" }, phaseName, phaseNote, volumeText),
+    player.controls(period, "1呼吸"),
+    h("div", { class: "motion-now" }, phaseName, phaseNote, steps.detail, volumeText),
+    h("h3", { class: "list-title" }, "学ぶ流れ（吸気と呼気）"),
+    steps.list,
     graph.svg,
     h("div", { class: "motion-switch" }, segmented<boolean>("呼吸の深さ", [{ value: false, label: "安静呼吸" }, { value: true, label: "深呼吸（目安）" }], deep, (value) => {
       deep = value;
       phaseName.dataset.key = "";
     })),
+    ...pointsBox("breathing"),
     ...checkSection(motionCheck(ctx, {
       make: (rng) => breathQuestion(rng, spans),
       show: (q) => player.seek(q.u ?? 0, period()),
@@ -571,7 +585,7 @@ async function breathingModelScene(ctx: AppContext, player: Player, item: Motion
     h("p", { class: "plate-credit muted" },
       "模型は教科書の模式図にならった作り物です。呼吸の時間の流れ（吸気と呼気の長さ・容積の変化）は 4DMRI moving meshes（A. Duetschler ほか, Zenodo 2022, doi:10.5281/zenodo.7052607, CC BY 4.0）の自由呼吸 47 回の平均。実際の肺と胸郭の形で見るときは、上の「実際の形」を。"),
   );
-  if (!player.playing) ctx.hint("▶ 再生 で動きます");
+  player.startHint();
 }
 
 // ---------------------------------------------------------------- 肺循環と体循環
@@ -679,11 +693,25 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     tracer.place(station.first + k, frac > 0 ? (station.count * frac) % 1 || 0.5 : 0);
     player.set(false);
   };
-  const caption = new MotionCaption(ctx, player, (i) => goStation(i), stationSpans());
+  player.defaultSpeed(0.5);
+  player.stepLabel = "次の所まで進める";
+  // 1滴は部屋で弁が開くのを待つので、駅へ入ったらすぐ止める
+  const caption = new MotionCaption(ctx, player, (i) => goStation(i), stationSpans(), undefined, 0);
+  const stationItems = () => stations.map((s) => ({ key: s.key, title: s.title }));
+  const steps = new LessonSteps("circulation", caption, caption.go, stationItems(), tagElements);
+  const stationName = h("strong", { class: "motion-now-name" });
+  const stationNote = h("p", { class: "motion-now-note" });
+  caption.onStep((index) => {
+    const station = stations[index];
+    if (!station) return;
+    stationName.textContent = `1滴は今: ${station.title}`;
+    stationNote.textContent = station.note;
+  });
   const reroute = () => {
     tracer.route = makeRoute();
     stations = stationsOf(tracer.route);
     caption.setSpans(stationSpans());
+    steps.setItems(stationItems());
   };
   tracer.onLoop = () => {
     turn++;
@@ -718,7 +746,7 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     viewer.dotsChanged(dots.capacity);
     const i = stations.findIndex((s) => tracer.index >= s.first && tracer.index < s.first + s.count);
     const station = stations[Math.max(0, i)];
-    caption.update(Math.max(0, i), (tracer.index - station.first + tracer.progress) / station.count, station.title, station.note);
+    caption.update(Math.max(0, i), (tracer.index - station.first + tracer.progress) / station.count, station.title, station.note, stepLesson("circulation", station.key)?.look);
   });
 
   const legend = h("p", { class: "motion-now-note" });
@@ -740,20 +768,25 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
   panel.replaceChildren(
     modeSwitch(item, false),
     h("div", { class: "motion-head" }, h("h2", {}, "肺循環と体循環"), h("span", { class: "muted", lang: "en" }, "pulmonary and systemic circulation")),
+    goalsBox("circulation"),
     h("p", { class: "motion-lead" }, "全身の血液の通り道の模型です。真ん中が心臓（前から切った模型）、まわりが肺と全身の臓器。粒が血液で、拍動につれて動脈の中で速くなり、毛細血管でゆっくりになって色が変わります（実際は1周に約1分）。光る大きな粒（1滴）を目で追うと、8の字の道順が分かります。"),
     player.controls(() => cycle.period),
-    h("div", { class: "motion-switch" }, segmented<typeof filter>("見せる流れ", [{ value: "both", label: "両方" }, { value: "pulmonary", label: "肺循環" }, { value: "systemic", label: "体循環" }], filter, (value) => {
-      filter = value;
-      describe();
-    })),
-    h("div", { class: "motion-now" }, legend),
-    h("h3", { class: "list-title" }, "1滴を追う"),
-    h("p", { class: "home-note" }, "光る大きな粒（1滴）が1周します。今いる所は3Dの下の字幕に。‹ › で1つずつ進めて止められます。"),
+    h("div", { class: "motion-now" }, stationName, stationNote, steps.detail),
+    h("h3", { class: "list-title" }, "学ぶ流れ（1滴の道順）"),
+    h("p", { class: "home-note" }, "光る大きな粒（1滴）が、右心房から肺を回り、全身の臓器を回って戻ります。1つずつなら駅ごとに止まります。"),
     h("div", { class: "motion-switch" }, segmented<number>("1滴の行き先", [{ value: -1, label: "順番に" }, ...DESTINATIONS.map((d, i) => ({ value: i, label: d.ja }))], destination, (value) => {
       destination = value;
       reroute();
       tracer.place(0);
     })),
+    steps.list,
+    h("h3", { class: "list-title" }, "肺循環と体循環を分けて見る"),
+    h("div", { class: "motion-switch" }, segmented<typeof filter>("見せる流れ", [{ value: "both", label: "両方" }, { value: "pulmonary", label: "肺循環" }, { value: "systemic", label: "体循環" }], filter, (value) => {
+      filter = value;
+      describe();
+    })),
+    legend,
+    ...pointsBox("circulation"),
     ...checkSection(motionCheck(ctx, {
       make: (rng) => circulationQuestion(rng, stations),
       show: (q) => goStation(q.station ?? 0, 0.5),
@@ -784,5 +817,5 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     relatedTerms(["left-ventricle", "ascending-aorta", "aortic-arch", "pulmonary-trunk", "pulmonary-veins", "superior-vena-cava", "inferior-vena-cava", "hepatic-portal-vein", "right-atrium", "left-atrium", "capillary"]),
     h("p", { class: "plate-credit muted" }, "模型は教科書の模式図にならった作り物です（臓器の位置・血管の道すじは分かりやすさを優先）。拍動と弁を流れる量は ModularCirc（MIT）の Korakianitis & Shi (2006) のモデルの値。実際の血管の形で見るときは、上の「実際の形」を。"),
   );
-  if (!player.playing) ctx.hint("▶ 再生 で動きます");
+  player.startHint();
 }

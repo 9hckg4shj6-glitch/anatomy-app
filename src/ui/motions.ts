@@ -57,8 +57,23 @@ export const BLUE = "#3b64c8";
 const VALVE = "#f1ede2";
 const CONDUCTION_COLOR = "#e0a800";
 
-/** 速さ（1倍＝実際の速さ） */
-const SPEEDS = [{ value: 0.25, label: "¼" }, { value: 0.5, label: "½" }, { value: 1, label: "1倍" }];
+/** 速さ（1倍＝実際の速さ）。ふだんは ¼（心臓は1拍 4 秒） */
+const SPEEDS = [{ value: 0.125, label: "⅛" }, { value: 0.25, label: "¼" }, { value: 0.5, label: "½" }, { value: 1, label: "1倍" }];
+
+/**
+ * 「1つずつ（解説つき）」で、短い区分（等容性収縮期・洞房結節の興奮など）を引き延ばして見せる最短の長さ（秒）。
+ * 区分の実際の長さ÷速さがこれより短いときは、その区分の間だけさらに遅くする（docs/動きの図鑑.md「学ぶ目当てと1つずつ」）
+ */
+export const MIN_STEP_SECONDS = 4;
+
+/** 見せ方（1つずつ／続けて）と速さは、アプリを開いている間だけ覚えておく */
+const remembered: { guided: boolean; speed: number | null } = { guided: true, speed: null };
+
+/** 再生の速さ（その区分の実際の長さ span 秒を、1つずつなら MIN_STEP_SECONDS より短く見せない） */
+export function playRate(speed: number, guided: boolean, span: number | null): number {
+  if (!guided || !span || span <= 0) return speed;
+  return Math.min(speed, span / MIN_STEP_SECONDS);
+}
 
 export async function motionScreen(ctx: AppContext, arg: string): Promise<void> {
   const [id, mode] = arg.split("/");
@@ -90,7 +105,7 @@ function motionList(ctx: AppContext): void {
   ctx.viewer.overview();
   ctx.panel.replaceChildren(
     h("h2", {}, "動きの図鑑"),
-    h("p", { class: "muted" }, "体の中の動きを、3Dの模型を動かして見ます。3Dの下の字幕で今の時期が分かり、‹ › で1つずつ止めて見られます。最後に「確かめる」で4択の問題も。"),
+    h("p", { class: "muted" }, "体の中の動きを、3Dの模型を動かして学びます。はじめに「この動きで学ぶこと」を読み、「1つずつ（解説つき）」で時期ごとに止めながら、何が起きるか・どこを見るか・なぜそうなるかを確かめます。最後に「覚えること」と「確かめる」の4択で仕上げます。"),
     h("ul", { class: "organ-grid motion-grid" }, ...MOTIONS.map((motion) => {
       // 絵はわかりやすい模型を撮ったもの（scripts/motions/thumbs.mjs）。読めないときは記号の絵
       const art = h("img", { class: "organ-thumb motion-photo", src: `${import.meta.env.BASE_URL}motions/thumbs/${motion.id}.webp`, alt: "", loading: "lazy", decoding: "async" });
@@ -114,7 +129,15 @@ function motionList(ctx: AppContext): void {
 export class Player {
   time = 0;
   playing = !matchMedia("(prefers-reduced-motion: reduce)").matches;
-  speed = 0.5;
+  speed = remembered.speed ?? 0.25;
+  /** 1つずつ（解説つき）: 区分の初めで止まり、▶ でその区分だけを見る。短い区分は引き延ばす */
+  guided = remembered.guided;
+  /** 字幕の区分があるか（あれば「1つずつ／続けて」を出す。src/ui/motion-caption.ts が立てる） */
+  stepped = false;
+  /** 1つずつで止まっているときの ▶ の言葉（「この時期を見る」など） */
+  stepLabel = "この時期を見る";
+  /** 今の区分の実際の長さ（秒。字幕が入れる。わからないときは null） */
+  spanSeconds: number | null = null;
   private last = 0;
   private readonly frames: ((time: number, dt: number) => void)[] = [];
   private readonly listeners: (() => void)[] = [];
@@ -123,7 +146,7 @@ export class Player {
     ctx.viewer.onTick = (now) => {
       const dt = this.last ? Math.min(0.1, (now - this.last) / 1000) : 0;
       this.last = now;
-      const step = this.playing ? dt * this.speed : 0;
+      const step = this.playing ? dt * playRate(this.speed, this.guided, this.spanSeconds) : 0;
       this.time += step;
       for (const frame of this.frames) frame(this.time, step);
     };
@@ -143,6 +166,28 @@ export class Player {
     for (const listener of this.listeners) listener();
   }
 
+  /** 1つずつ／続けて を切り替える */
+  setGuided(guided: boolean): void {
+    this.guided = guided;
+    remembered.guided = guided;
+    for (const listener of this.listeners) listener();
+  }
+
+  /** はじめの案内（止まっているとき）。再生すると消す */
+  startHint(): void {
+    if (this.playing) return;
+    this.ctx.hint(this.stepped && this.guided ? `説明を読んでから ▶ ${this.stepLabel}` : "▶ 再生 で動きます");
+    const clear = () => {
+      if (this.playing) this.ctx.hint("");
+    };
+    this.onChange(clear);
+  }
+
+  /** 場面ごとのはじめの速さ（利用者が選んだ速さがあればそちら） */
+  defaultSpeed(speed: number): void {
+    if (remembered.speed === null) this.speed = speed;
+  }
+
   stop(): void {
     const viewer = this.ctx.viewer;
     viewer.onTick = null;
@@ -156,12 +201,17 @@ export class Player {
     viewer.onPick = null;
   }
 
-  /** 再生・止める・速さ・1コマ戻す／進める */
-  controls(period: () => number): HTMLElement {
+  /**
+   * 見せ方（1つずつ／続けて）・再生・止める・速さ・1コマ戻す／進める。
+   * unit は1周の呼び名（「1拍」「1呼吸」）で、今の速さで1周が何秒かを添える（循環のように1周が決まらないときは省く）
+   */
+  controls(period: () => number, unit?: string): HTMLElement {
     const play = h("button", { class: "ghost-button motion-play", type: "button", onClick: () => this.set(!this.playing) });
+    const length = h("span", { class: "motion-length muted" });
     const show = () => {
-      play.textContent = this.playing ? "❚❚ 止める" : "▶ 再生";
+      play.textContent = this.playing ? "❚❚ 止める" : this.stepped && this.guided ? `▶ ${this.stepLabel}` : "▶ 再生";
       play.classList.toggle("on", !this.playing);
+      if (unit) length.textContent = `${unit} 約${(period() / this.speed).toFixed(period() / this.speed < 10 ? 1 : 0)}秒`;
     };
     this.onChange(show);
     show();
@@ -169,13 +219,23 @@ export class Player {
       this.set(false);
       this.time = Math.max(0, this.time + sign * period() / 40);
     };
-    return h("div", { class: "motion-controls" },
-      play,
-      h("button", { class: "ghost-button motion-step", type: "button", "aria-label": "少し戻す", onClick: () => step(-1) }, "‹"),
-      h("button", { class: "ghost-button motion-step", type: "button", "aria-label": "少し進める", onClick: () => step(1) }, "›"),
-      segmented("速さ", SPEEDS, this.speed, (value) => {
-        this.speed = value;
-      }),
+    const mode = this.stepped ? h("div", { class: "motion-switch motion-guide-switch" },
+      segmented<boolean>("見せ方", [{ value: true, label: "1つずつ（解説つき）" }, { value: false, label: "続けて見る" }], this.guided, (value) => this.setGuided(value)),
+      h("p", { class: "home-note" }, "1つずつ: 区切り（3Dの下の帯の1つ）ごとに止まります。説明を読んでから ▶ を押すと、次の区切りまでをゆっくり見せます（短い時期も 4 秒以上かけて）。"),
+    ) : "";
+    return h("div", { class: "motion-controls-box" },
+      mode,
+      h("div", { class: "motion-controls" },
+        play,
+        h("button", { class: "ghost-button motion-step", type: "button", "aria-label": "少し戻す", onClick: () => step(-1) }, "‹"),
+        h("button", { class: "ghost-button motion-step", type: "button", "aria-label": "少し進める", onClick: () => step(1) }, "›"),
+        segmented("速さ", SPEEDS, this.speed, (value) => {
+          this.speed = value;
+          remembered.speed = value;
+          show();
+        }),
+        length,
+      ),
     );
   }
 
@@ -430,6 +490,8 @@ async function heartScene(ctx: AppContext, player: Player, conduction: boolean):
   const deform = heartDeform(viewer, heart, parts);
   const weights = new Float32Array(HEART_CHANNELS);
   const views: [string, Vec3][] = [["前", [0, 0.05, 1]], ["左前", [0.7, 0.15, 0.75]], ["下", [0.15, -1, 0.5]], ["後ろ", [0, 0.1, -1]]];
+  player.defaultSpeed(0.25);
+  if (conduction) player.stepLabel = "この段階を見る";
   const { caption, update: captionAt, phaseSpans, stepSpans } = heartCaption(ctx, player, cycle, timeline, conduction);
   viewer.frameStage(views[0][1], [...walls, ...valves], 0.8);
 
@@ -589,7 +651,7 @@ async function heartScene(ctx: AppContext, player: Player, conduction: boolean):
     h("p", { class: "motion-lead" }, conduction
       ? "黄色の光が興奮の伝わり。洞房結節 → 心房 → 房室結節（ここで少し待つ）→ ヒス束 → 右脚・左脚 → プルキンエ線維と進み、そのあと心室が縮みます。下の心電図の今の位置と見比べてください。"
       : "青の粒は静脈血、赤の粒は動脈血。弁の開いている間だけ血液が流れ、閉じている間は心房にたまります。グラフを押すと、その時点で止まります。"),
-    player.controls(() => cycle.period),
+    player.controls(() => cycle.period, "1拍"),
     h("div", { class: "motion-now" }, phaseName, phaseNote, valveRow),
     graph.svg,
     stepList ?? "",
@@ -623,7 +685,7 @@ async function heartScene(ctx: AppContext, player: Player, conduction: boolean):
     h("p", { class: "plate-credit muted" },
       "圧・容積・弁の流れは ModularCirc（Alan Turing Institute, MIT License）の Korakianitis & Shi (2006) の4つの部屋のモデルを解いた値（心房の受動的な硬さだけ、健康な成人の充満に近づけるよう変えた）。心臓の形は BodyParts3D、動かし方（壁の縮み・心底の下がり・弁の開き）はこのアプリの模式。心電図は模式です。"),
   );
-  if (!player.playing) ctx.hint("▶ 再生 で動きます");
+  player.startHint();
 }
 
 /** 心周期のグラフ（Wiggers の図）: 圧（左心室・大動脈・左心房）・左心室の容積・心電図と、区分の帯 */
@@ -776,6 +838,7 @@ async function breathingScene(ctx: AppContext, player: Player): Promise<void> {
   const weights = new Float32Array(4);
   const views: [string, Vec3][] = [["前", [0, 0.05, 1]], ["右", [-1, 0.05, 0.15]], ["左前", [0.7, 0.1, 0.75]]];
   const period = () => data.period * (deep ? DEEP.period : 1);
+  player.defaultSpeed(0.25);
   const { caption, update: captionAt, spans: breathParts } = breathCaption(ctx, player, data, period);
   viewer.frameStage(views[0][1], [...lungs, ...diaphragm], 1.05);
 
@@ -858,7 +921,7 @@ async function breathingScene(ctx: AppContext, player: Player): Promise<void> {
   panel.replaceChildren(
     h("div", { class: "motion-head" }, h("h2", {}, "呼吸"), h("span", { class: "muted", lang: "en" }, "breathing")),
     h("p", { class: "motion-lead" }, "実際の人の自由呼吸（4DMRI で撮った 47 回の平均）の肺と胸郭の動きを、このアプリの肺・肋骨・横隔膜に重ねて動かしています。横から見ると、横隔膜の下がり方と胸骨が前へ出る動きがよく分かります。"),
-    player.controls(period),
+    player.controls(period, "1呼吸"),
     h("div", { class: "motion-now" }, phaseName, phaseNote, volumeText),
     graph.svg,
     h("div", { class: "motion-switch" }, segmented<boolean>("呼吸の深さ", [{ value: false, label: "安静呼吸" }, { value: true, label: "深呼吸（目安）" }], deep, (value) => {
@@ -898,7 +961,7 @@ async function breathingScene(ctx: AppContext, player: Player): Promise<void> {
     h("p", { class: "plate-credit muted" },
       "動きのデータ: 4DMRI moving meshes（A. Duetschler, T. Jenny, D. C. Weber, A. J. Lomax, Y. Zhang. Zenodo 2022, doi:10.5281/zenodo.7052607, CC BY 4.0）の MRI1。肺と胸郭の点の動きを1呼吸の位相ごとに平均し、このアプリの肺の大きさに合わせて変位の場にしました（肺と胸郭は別の場。肺は胸壁の内側をすべるため）。"),
   );
-  if (!player.playing) ctx.hint("▶ 再生 で動きます");
+  player.startHint();
 }
 
 // ---------------------------------------------------------------- 肺循環と体循環
@@ -914,6 +977,7 @@ const CIRCULATION_VESSELS = [
 ];
 
 async function circulationScene(ctx: AppContext, player: Player): Promise<void> {
+  player.defaultSpeed(0.5);
   const { viewer, panel } = ctx;
   ctx.hint("読み込み中…");
   const [data, cycle, heart] = await Promise.all([
@@ -1022,7 +1086,7 @@ async function circulationScene(ctx: AppContext, player: Player): Promise<void> 
     relatedTerms(["left-ventricle", "ascending-aorta", "aortic-arch", "pulmonary-trunk", "pulmonary-veins", "superior-vena-cava", "inferior-vena-cava", "hepatic-portal-vein", "right-atrium", "left-atrium"]),
     h("p", { class: "plate-credit muted" }, "血管の形は BodyParts3D と Z-Anatomy、流れの道すじはその形の中心線から作りました（scripts/motions/paths.py）。拍動は ModularCirc（MIT）のモデルの大動脈・肺動脈の流れに合わせています。"),
   );
-  if (!player.playing) ctx.hint("▶ 再生 で動きます");
+  player.startHint();
 }
 
 /** 道の毛細血管の初めと終わり（長さ） */
