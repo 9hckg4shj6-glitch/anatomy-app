@@ -1,10 +1,12 @@
 import { existsSync } from "node:fs";
-import { cardDemo, dayDemo, featureCards, gestureDemos, lessonDemo, memoryChart, tabsDemo } from "../src/ui/guide-demos";
+import {
+  cardDemo, dayDemo, drillDemo, featureCards, gestureDemos, lessonDemo, lookDemo, memoryChart, modelDemo, motionDemo, organDemo, tabsDemo,
+} from "../src/ui/guide-demos";
 
 /** 使い方ガイド（docs/普段使い.md「使い方ガイド」） */
 describe("使い方ガイドの見本", () => {
   it("見本の絵（public/guide）がそろっている", () => {
-    for (const name of ["spin", "femur", "femur-hi", "heart", "progress"]) expect(existsSync(`public/guide/${name}.webp`)).toBe(true);
+    for (const name of ["spin", "femur", "femur-hi", "heart", "progress", "model-in", "model-pick", "model-out"]) expect(existsSync(`public/guide/${name}.webp`)).toBe(true);
   });
 
   it("毎日の使い方は、画面3つと手順4つ。指は押す所（今日の復習・正解の選択肢）の中にある", () => {
@@ -21,9 +23,9 @@ describe("使い方ガイドの見本", () => {
     const demo = lessonDemo(controller.signal);
     const tabs = [...demo.querySelectorAll<HTMLButtonElement>(".gd-stepper-tab")];
     expect(tabs).toHaveLength(4);
-    expect(demo.querySelector(".gd-scr.is-active")?.classList.contains("gd-l1")).toBe(true);
+    expect(demo.querySelector(".gd-scr.is-active")?.classList.contains("gd-s1")).toBe(true);
     tabs[2].click();
-    expect(demo.querySelector(".gd-scr.is-active")?.classList.contains("gd-l3")).toBe(true);
+    expect(demo.querySelector(".gd-scr.is-active")?.classList.contains("gd-s3")).toBe(true);
     expect(tabs[2].getAttribute("aria-pressed")).toBe("true");
     expect(demo.querySelector(".gd-stepper-text")?.textContent).toContain("名前→位置");
     controller.abort();
@@ -62,5 +64,42 @@ describe("使い方ガイドの見本", () => {
     const card = cardDemo();
     expect(card.querySelectorAll(".gd-pin").length).toBe(card.querySelectorAll(".gd-parts li").length);
     for (const link of featureCards().querySelectorAll("a")) expect(link.getAttribute("href")).toMatch(/^#\//);
+  });
+
+  it("学び方ごとのガイド: 演習・調べる・3D模型・臓器の図・動きの図鑑は、段ごとに画面と説明が替わる", () => {
+    const controller = new AbortController();
+    const cases: [HTMLElement, string[]][] = [
+      [drillDemo(controller.signal), ["すぐ始める", "①範囲", "②問い方", "③数と順", "おわり"]],
+      [lookDemo(controller.signal), ["字を入れる", "語を開く", "探し方いろいろ"]],
+      [modelDemo(controller.signal), ["見る", "部品を選ぶ", "外へ出す", "動かす", "濃さ・断面"]],
+      [organDemo(controller.signal), ["臓器を選ぶ", "立体（3D）", "平面図", "隠して確かめる", "要点とレッスン"]],
+      [motionDemo(controller.signal), ["動きを選ぶ", "学ぶことを読む", "1つずつ見る", "速さと見せ方", "覚えて確かめる"]],
+    ];
+    for (const [demo, titles] of cases) {
+      const tabs = [...demo.querySelectorAll<HTMLButtonElement>(".gd-stepper-tab")];
+      expect(tabs.map((tab) => tab.querySelector("span")?.textContent)).toEqual(titles);
+      expect(demo.querySelectorAll(".gd-scr")).toHaveLength(titles.length);
+      // 段のボタンは段の数だけ横に並ぶ
+      expect(demo.getAttribute("style")).toContain(`--n:${titles.length}`);
+      const last = titles.length - 1;
+      tabs[last].click();
+      expect(demo.querySelector(".gd-scr.is-active")?.classList.contains(`gd-s${last + 1}`)).toBe(true);
+      expect(demo.querySelector(".gd-stepper-text")?.textContent?.length).toBeGreaterThan(30);
+    }
+    controller.abort();
+  });
+
+  it("見本の絵は、アプリにある絵（使い方・動きの図鑑・臓器の図の一覧）だけを使う", () => {
+    const controller = new AbortController();
+    const demos = [drillDemo, lookDemo, modelDemo, organDemo, motionDemo].map((make) => make(controller.signal));
+    const sources = [...demos, featureCards()].flatMap((demo) => [...demo.querySelectorAll("img")].map((img) => img.getAttribute("src") ?? ""));
+    expect(sources.length).toBeGreaterThan(10);
+    for (const src of sources) expect(existsSync(`public/${src.replace(/^\//, "")}`), src).toBe(true);
+    controller.abort();
+  });
+
+  it("学び方の一覧に3D模型と動きの図鑑がある", () => {
+    const hrefs = [...featureCards().querySelectorAll("a")].map((link) => link.getAttribute("href"));
+    expect(hrefs).toEqual(expect.arrayContaining(["#/organs", "#/motions", "#/model", "#/drill"]));
   });
 });

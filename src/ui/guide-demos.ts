@@ -9,6 +9,9 @@ import { canUseExam } from "../profile";
  */
 
 const IMG = `${import.meta.env.BASE_URL}guide/`;
+/** 動きの図鑑の一覧の絵（scripts/motions/thumbs.mjs）と、臓器の図の一覧の絵（scripts/organ-thumbs.mjs） */
+const MOTION_IMG = `${import.meta.env.BASE_URL}motions/thumbs/`;
+const ORGAN_IMG = `${import.meta.env.BASE_URL}organs/`;
 
 /** 動きを減らす設定の端末か */
 export const reducedMotion = (): boolean => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
@@ -168,24 +171,40 @@ const LESSON_STEPS: { title: string; text: string; screen: string }[] = [
 ];
 
 export function lessonDemo(signal: AbortSignal): HTMLElement {
-  const phone = h("div", { class: "gd-phone gd-lesson-phone", "aria-hidden": "true" });
-  const screens = LESSON_STEPS.map((step, i) => {
-    const screen = h("div", { class: `gd-scr gd-l${i + 1}` });
+  return stepDemo(LESSON_STEPS, signal, { cls: "gd-lesson", label: "レッスンの段" });
+}
+
+/** 段ごとの見本の1つの段（題・横の説明・端末の中の画面） */
+export interface DemoStep {
+  title: string;
+  text: string;
+  screen: string;
+}
+
+/**
+ * 段ごとの見本: 端末の中の画面を、段のボタン・前・次で切りかえる。画面に入っている間は自動で進み、押したら止まる。
+ * 段の中の指・タップの輪・.gd-later は、その段を開いてから --at 秒で動く（src/ui/guide.css の .gd-steps）
+ */
+export function stepDemo(steps: DemoStep[], signal: AbortSignal, options: { cls: string; label: string; every?: number }): HTMLElement {
+  const phone = h("div", { class: `gd-phone ${options.cls}-phone`, "aria-hidden": "true" });
+  const screens = steps.map((step, i) => {
+    const screen = h("div", { class: `gd-scr gd-s${i + 1}` });
     screen.innerHTML = step.screen;
+    dropExam(screen);
     phone.append(screen);
     return screen;
   });
   const text = h("p", { class: "gd-stepper-text", "aria-live": "polite" });
-  const buttons = LESSON_STEPS.map((step, i) => h("button", {
+  const buttons = steps.map((step, i) => h("button", {
     class: "gd-stepper-tab", type: "button",
     onClick: () => { auto = false; show(i); },
   }, h("i", {}, String(i + 1)), h("span", {}, step.title)));
-  const box = h("div", { class: "gd-anim gd-lesson gd-pair" },
+  const box = h("div", { class: `gd-anim gd-steps ${options.cls} gd-pair`, style: `--n:${steps.length}` },
     phone,
-    h("div", { class: "gd-stepper" }, h("div", { class: "gd-stepper-tabs", role: "group", "aria-label": "レッスンの段" }, ...buttons), text,
+    h("div", { class: "gd-stepper" }, h("div", { class: "gd-stepper-tabs", role: "group", "aria-label": options.label }, ...buttons), text,
       h("div", { class: "gd-stepper-nav" },
-        h("button", { class: "ghost-button", type: "button", onClick: () => { auto = false; show((current + LESSON_STEPS.length - 1) % LESSON_STEPS.length); } }, "‹ 前"),
-        h("button", { class: "ghost-button", type: "button", onClick: () => { auto = false; show((current + 1) % LESSON_STEPS.length); } }, "次 ›"))),
+        h("button", { class: "ghost-button", type: "button", onClick: () => { auto = false; show((current + steps.length - 1) % steps.length); } }, "‹ 前"),
+        h("button", { class: "ghost-button", type: "button", onClick: () => { auto = false; show((current + 1) % steps.length); } }, "次 ›"))),
   );
   let current = 0;
   let auto = !reducedMotion();
@@ -199,12 +218,12 @@ export function lessonDemo(signal: AbortSignal): HTMLElement {
       }
     });
     buttons.forEach((button, k) => button.setAttribute("aria-pressed", String(k === i)));
-    text.textContent = LESSON_STEPS[i].text;
+    text.textContent = steps[i].text;
   };
   show(0);
   const timer = window.setInterval(() => {
-    if (auto && box.classList.contains("is-on")) show((current + 1) % LESSON_STEPS.length);
-  }, 6000);
+    if (auto && box.classList.contains("is-on")) show((current + 1) % steps.length);
+  }, options.every ?? 6000);
   signal.addEventListener("abort", () => window.clearInterval(timer), { once: true });
   return box;
 }
@@ -380,7 +399,7 @@ const TAB_SCREENS: Record<GuideTab, string> = {
   look: `<div class="gd-pad"><p class="gd-title">調べる</p>
     <div class="gd-search">${svg(TAB_ICON.look)}<span>だいたい</span></div>
     <ul class="gd-rows gd-hits"><li><b>大腿骨</b><small lang="en">femur</small></li><li><b>大腿動脈</b><small lang="en">femoral artery</small></li><li><b>大腿四頭筋</b><small lang="en">quadriceps femoris</small></li></ul>
-    <ul class="gd-rows"><li><i style="--c:#c08a12"></i>★を付けた語</li><li><i style="--c:#c4663f"></i>系統から探す</li><li><i style="--c:#1f6f78"></i>図鑑（3Dをタップ）</li></ul></div>`,
+    <ul class="gd-rows"><li><i style="--c:#c08a12"></i>★を付けた語</li><li><i style="--c:#c4663f"></i>系統から探す</li><li><i style="--c:#1f6f78"></i>図鑑（3Dをタップ）</li><li><i style="--c:#7a4fb5"></i>動きの図鑑</li></ul></div>`,
   model: `<div class="gd-stage">${spinImg("gd-spin gd-spin-sm")}</div>
     <div class="gd-sheet"><p class="gd-kicker">3D模型</p><ul class="gd-rows"><li><i style="--c:#1f6f78"></i>見る：タップで図鑑の説明</li><li><i style="--c:#ff7a1a"></i>自由に操作：隠す・取り外す</li><li><i style="--c:#c75b4f"></i>系統の濃さ・分解・断面</li></ul></div>`,
   records: `<div class="gd-pad"><p class="gd-title">記録</p>
@@ -477,6 +496,14 @@ export function featureCards(): HTMLElement {
       <div class="gd-f-art gd-f-organ"><img src="${IMG}heart.webp" alt="" draggable="false"><span class="gd-f-cut"></span></div>
       <b>臓器の図</b><span>心臓・肺・脳などの立体を回し、切って中を見る。平面図で名前を確かめる。細胞と組織・発生もここ。</span>
     </a>
+    <a class="gd-feature" href="#/motions">
+      <div class="gd-f-art gd-f-motion"><img src="${MOTION_IMG}heartbeat.webp" alt="" draggable="false"><span class="gd-f-play">▶</span></div>
+      <b>動きの図鑑</b><span>呼吸・心臓の拍動・刺激伝導系・肺循環と体循環を、模型を動かして1時期ずつ学ぶ。</span>
+    </a>
+    <a class="gd-feature" href="#/model">
+      <div class="gd-f-art gd-f-model"><img src="${IMG}model-out.webp" alt="" draggable="false"></div>
+      <b>3D模型</b><span>部位をタップして説明を読む。慣れたら部品を隠す・外へ出す・透かす・切って見る。</span>
+    </a>
     <a class="gd-feature" href="#/drill">
       <div class="gd-f-art gd-f-drill"><span>最近のレッスン</span><span class="on">苦手な語</span><span>①範囲</span><span>②問い方</span><span>③数</span></div>
       <b>演習</b><span>すぐ始めるか、範囲→問い方→数の3段階で選んで解き直す。答えは復習にも反映されます。</span>
@@ -499,3 +526,389 @@ export function featureCards(): HTMLElement {
     </a>`);
   return box;
 }
+
+/* ───── 学び方ごとのガイド（演習・調べる・3D模型・臓器の図・動きの図鑑）。2026-11-22 ───── */
+
+/** 演習の段（①範囲 → ②問い方 → ③数と出し方）の印 */
+const drillSteps = (on: number) => `<div class="gd-3steps">${["①範囲", "②問い方", "③数と出し方"].map((name, i) => `<span class="${i === on ? "on" : i < on ? "done" : ""}">${name}</span>`).join("")}</div>`;
+
+const DRILL_STEPS: DemoStep[] = [
+  {
+    title: "すぐ始める",
+    text: "演習の入口の上は「すぐ始める」。最近のレッスン・苦手な語・★を付けた語・前回と同じ条件を、押すだけで解けます。苦手な語は、まちがえた問題・思い出しにくい問題から出ます。",
+    screen: `${topBar("学ぶ")}
+      <div class="gd-pad">
+        <p class="gd-title">演習</p>
+        <p class="gd-label">すぐ始める</p>
+        <ul class="gd-rows gd-quick">
+          <li><i style="--c:#1f6f78"></i><span>最近のレッスン<small>下肢の骨・昨日</small></span></li>
+          <li><i style="--c:#d0503c"></i><span>苦手な語<small>思い出しにくい順に</small></span>${finger()}${ripple()}</li>
+          <li><i style="--c:#c08a12"></i><span>★を付けた語<small>8語</small></span></li>
+          <li><i style="--c:#77736a"></i><span>前回と同じ条件<small>骨格系・名前と場所・20問</small></span></li>
+        </ul>
+        <p class="gd-label">自分で選ぶ</p>
+        <div class="gd-btn gd-btn-ghost">範囲から選ぶ ›</div>
+      </div>`,
+  },
+  {
+    title: "①範囲",
+    text: "自分で選ぶときは3つの段階で。①範囲は、学んだレッスンの中から系統・レッスン・1語ずつまで選べます。まだ学んでいない語は「すべての系統と語」から。",
+    screen: `${topBar("演習")}
+      <div class="gd-pad">
+        ${drillSteps(0)}
+        <p class="gd-q">どこを解く？</p>
+        <div class="gd-seg"><span class="on">学んだレッスン</span><span>すべての系統と語</span></div>
+        <ul class="gd-rows gd-checks">
+          <li class="on"><b>✓</b>骨格系の学んだ語<small>42語</small></li>
+          <li class="on gd-indent"><b>✓</b>下肢の骨<small>6/6語</small></li>
+          <li class="gd-indent"><b>✓</b>上肢の骨<small>8/8語</small></li>
+          <li><b></b>筋系の学んだ語<small>12語</small></li>
+        </ul>
+        <div class="gd-btn gd-btn-sm">次へ：問い方<span>→</span>${finger()}${ripple()}</div>
+      </div>`,
+  },
+  {
+    title: "②問い方",
+    text: "②問い方は段階で選びます。名前と場所（まずはここから）→ ＋英語 → 総仕上げ（筋の起始・停止・神経・作用、孔を通るもの、向き、ホルモンも）。1つずつ選ぶこともできます。",
+    screen: `${topBar("演習")}
+      <div class="gd-pad">
+        ${drillSteps(1)}
+        <p class="gd-q">どう問う？</p>
+        <ul class="gd-rows gd-opts">
+          <li class="on">名前と場所<small>位置→名前・名前→位置。まずはここから</small>${finger()}${ripple()}</li>
+          <li>＋英語<small>日本語→英語も</small></li>
+          <li>総仕上げ<small>筋の起始・停止・神経・作用、通るもの、向き、ホルモンも</small></li>
+        </ul>
+        <p class="gd-note">この範囲・問い方で 84問あります</p>
+      </div>`,
+  },
+  {
+    title: "③数と順",
+    text: "③数は 10・20・40問か全部。出し方は、まぜる（まんべんなく）・苦手から・はじめての問題から。1問およそ15秒なので、20問で約5分です。",
+    screen: `${topBar("演習")}
+      <div class="gd-pad">
+        ${drillSteps(2)}
+        <p class="gd-q">何問・どの順で？</p>
+        <div class="gd-toggles gd-counts"><span>10問</span><span class="on">20問</span><span>40問</span><span>全部</span></div>
+        <ul class="gd-rows gd-opts">
+          <li class="on">まぜる<small>範囲からまんべんなく</small></li>
+          <li>苦手から<small>思い出しにくい・まちがえた問題から</small></li>
+          <li>はじめての問題から<small>まだ解いていない問題を先に</small></li>
+        </ul>
+        <div class="gd-btn gd-btn-sm">始める（20問・約5分）<span>→</span>${finger()}${ripple()}</div>
+      </div>`,
+  },
+  {
+    title: "おわり",
+    text: "答えは今日の復習の記録にも入り、次に出る日が変わります。おわりの画面では問い方ごとの正解の数と、まちがえた語（押すと図鑑）が出ます。「同じ条件でもう一度」で解き直せます。",
+    screen: `${topBar("演習")}
+      <div class="gd-pad gd-l4">
+        <p class="gd-title">演習おわり</p>
+        <p class="gd-big"><b>17</b> / 20 正解</p>
+        <ul class="gd-bars">
+          <li><span>位置→名前</span><i style="--p:90%"></i><small>9/10</small></li>
+          <li><span>名前→位置</span><i style="--p:80%"></i><small>8/10</small></li>
+        </ul>
+        <p class="gd-label">まちがえた語（押すと図鑑）</p>
+        <ul class="gd-rows"><li><i style="--c:#e9dfc9"></i>距骨</li><li><i style="--c:#e9dfc9"></i>舟状骨（足）</li></ul>
+        <div class="gd-navrow"><span class="gd-btn gd-btn-ghost">条件を変える</span><span class="gd-btn gd-btn-sm">同じ条件でもう一度</span></div>
+      </div>`,
+  },
+];
+
+export const drillDemo = (signal: AbortSignal): HTMLElement => stepDemo(DRILL_STEPS, signal, { cls: "gd-drill", label: "演習の段", every: 8000 });
+
+const LOOK_STEPS: DemoStep[] = [
+  {
+    title: "字を入れる",
+    text: "漢字・ひらがな・英語・ラテン語のどれでも、字の一部だけでも探せます。読みはローマ字（daitai）でも。結果には「覚えること」と、どの系統・レッスンの語かが一緒に出ます。",
+    screen: `${topBar()}
+      <div class="gd-pad">
+        <p class="gd-title">調べる</p>
+        <div class="gd-search">${svg(TAB_ICON.look)}<span class="gd-typing">daitai</span></div>
+        <ul class="gd-rows gd-hits gd-results gd-later">
+          <li><b>大腿骨 <small lang="en">femur</small></b><span>人体で最も長い骨（身長の約1/4）。</span><small>骨格系 › 下肢の骨</small></li>
+          <li><b>大腿動脈 <small lang="en">femoral artery</small></b><span>太ももの前内側を下る動脈。</span><small>循環器系 › 腹部・下肢と肺の動脈</small></li>
+          <li><b>大腿四頭筋 <small lang="en">quadriceps femoris</small></b><span>太ももの前の大きな筋。</span><small>筋系 › 殿部と大腿の筋</small></li>
+        </ul>
+      </div>`,
+  },
+  {
+    title: "語を開く",
+    text: "結果を押すと図鑑で開き、3Dでその場所が光ります。語のカードの ☆ で印を付け、メモを残し、「この語を演習」でその語の問い方をひと通り解けます。",
+    screen: `${topBar("調べる")}
+      <div class="gd-stage gd-stage-img"><img src="${IMG}femur-hi.webp" alt="" draggable="false"><span class="gd-label3d gd-l2-label">大腿骨</span></div>
+      <div class="gd-pad">
+        <div class="gd-card">
+          <div class="gd-card-row"><b class="gd-card-name">大腿骨</b><span class="gd-star gd-star-sm">☆${finger()}${ripple()}<i class="gd-later">★</i></span></div>
+          <span class="gd-card-en" lang="en">🔊 femur</span>
+          <div class="gd-point"><i>覚えること</i>太ももの骨。体でいちばん長い骨。</div>
+        </div>
+        <div class="gd-btn gd-btn-sm">この語を演習<span>→</span></div>
+      </div>`,
+  },
+  {
+    title: "探し方いろいろ",
+    text: "字を入れる前の画面には、最近見た語・★を付けた語・系統から探す（骨格系・筋系などをレッスンごとに一覧で）・3Dで調べる（図鑑・臓器の図・動きの図鑑）が並びます。",
+    screen: `${topBar()}
+      <div class="gd-pad">
+        <p class="gd-title">調べる</p>
+        <div class="gd-search gd-search-idle">${svg(TAB_ICON.look)}<small>日本語・読み・英語で探す</small></div>
+        <p class="gd-label">最近見た語</p>
+        <div class="gd-terms"><span>大腿骨</span><span>僧帽弁</span><span>腎門</span></div>
+        <ul class="gd-rows"><li><i style="--c:#c08a12"></i>★を付けた語（8）</li></ul>
+        <p class="gd-label">系統から探す</p>
+        <div class="gd-systems"><span style="--c:#e9dfc9">骨格系</span><span style="--c:#c75b4f">筋系</span><span style="--c:#c8323c">循環器系</span><span style="--c:#6fa8dc">呼吸器系</span><span style="--c:#d9965b">消化器系</span><span style="--c:#e9c46a">神経系</span></div>
+        <p class="gd-label">3Dで調べる</p>
+        <ul class="gd-rows"><li><i style="--c:#1f6f78"></i>図鑑</li><li><i style="--c:#b0453b"></i>臓器の図</li><li><i style="--c:#7a4fb5"></i>動きの図鑑</li></ul>
+      </div>`,
+  },
+];
+
+export const lookDemo = (signal: AbortSignal): HTMLElement => stepDemo(LOOK_STEPS, signal, { cls: "gd-look", label: "調べるの段", every: 7000 });
+
+/** 3D模型の切り替えの帯 */
+const modelSeg = (free: boolean) => `<div class="gd-seg"><span class="${free ? "" : "on"}">見る</span><span class="${free ? "on" : ""}">自由に操作（上級）</span></div>`;
+const modelActs = (on = "") => `<div class="gd-acts">${["隠す", "薄くする", "これだけ見る", "外へ出す", "元の位置へ", "寄って見る"].map((name) => `<span class="${name === on ? "gd-hit" : ""}">${name}${name === on ? finger() + ripple() : ""}</span>`).join("")}</div>`;
+
+const MODEL_STEPS: DemoStep[] = [
+  {
+    title: "見る",
+    text: "3D模型のタブは、はじめは「見る」。3Dの下のボタンで骨格・筋などの系統を選び、部位をタップすると、画面を移らずに図鑑の説明（覚えること・くわしく）が出ます。「寄って見る」「図鑑で開く」も。",
+    screen: `${topBar()}
+      <div class="gd-stage gd-stage-img"><img src="${IMG}femur.webp" alt="" draggable="false"><img class="gd-later" src="${IMG}femur-hi.webp" alt="" draggable="false"><span class="gd-label3d gd-l2-label gd-later">大腿骨</span><span class="gd-pick">${finger()}${ripple()}</span></div>
+      <div class="gd-sysbar"><span class="on">骨格</span><span>関節</span><span>筋</span><span>心臓・血管</span></div>
+      <div class="gd-pad">
+        ${modelSeg(false)}
+        <div class="gd-card gd-later">
+          <b class="gd-card-name">大腿骨</b>
+          <div class="gd-point"><i>覚えること</i>太ももの骨。体でいちばん長い骨。</div>
+        </div>
+        <div class="gd-navrow gd-later"><span class="gd-btn gd-btn-ghost">寄って見る</span><span class="gd-btn gd-btn-ghost">図鑑で開く ›</span></div>
+      </div>`,
+  },
+  {
+    title: "部品を選ぶ",
+    text: "「自由に操作（上級）」では、部品をタップして選びます。選んだ部品は橙色になり、名前の札がついてきます。「‹ 細かく」「大きく ›」で、まとまりを変えられます（右心房 → 心臓 など）。",
+    screen: `${topBar()}
+      <div class="gd-stage gd-stage-img gd-stage-model"><img src="${IMG}model-in.webp" alt="" draggable="false"><img class="gd-later" src="${IMG}model-pick.webp" alt="" draggable="false"><span class="gd-label3d gd-m-label gd-later">胃</span><span class="gd-pick gd-m-pick">${finger()}${ripple()}</span></div>
+      <div class="gd-pad">
+        ${modelSeg(true)}
+        <div class="gd-card gd-later">
+          <div class="gd-card-row"><b class="gd-card-name">胃</b><span class="gd-size">‹ 細かく</span><span class="gd-size">大きく ›</span></div>
+          ${modelActs()}
+        </div>
+      </div>`,
+  },
+  {
+    title: "外へ出す",
+    text: "選んだ部品は、隠す・薄くする・これだけ見る・外へ出す（体の横へ取り出す）ができます。奥にある部品は、手前を隠すか薄くすると見えます。「元の位置へ」で戻ります。",
+    screen: `${topBar()}
+      <div class="gd-stage gd-stage-img gd-stage-model"><img src="${IMG}model-pick.webp" alt="" draggable="false"><img class="gd-later" src="${IMG}model-out.webp" alt="" draggable="false"></div>
+      <div class="gd-pad">
+        ${modelSeg(true)}
+        <div class="gd-card">
+          <b class="gd-card-name">胃</b>
+          ${modelActs("外へ出す")}
+        </div>
+      </div>`,
+  },
+  {
+    title: "動かす",
+    text: "3Dはふだん回すだけ。部品を自分で動かしたいときは、選んで「ドラッグで動かす」を押します。その部品だけがドラッグで動き、3Dの縁が橙色になります。終えるときは「✓ 動かし終える」。",
+    screen: `${topBar()}
+      <div class="gd-stage gd-stage-img gd-stage-model gd-moving"><img src="${IMG}model-out.webp" alt="" draggable="false"><span class="gd-drag">${finger()}</span></div>
+      <div class="gd-pad">
+        ${modelSeg(true)}
+        <div class="gd-card">
+          <p class="gd-banner">動かしています</p>
+          <b class="gd-card-name">胃</b>
+          <div class="gd-btn gd-btn-sm">✓ 動かし終える</div>
+        </div>
+      </div>`,
+  },
+  {
+    title: "濃さ・断面",
+    text: "系統ごとに濃さを変えて透かし、分解（部品を外へ離す）・断面（水平断・矢状断・前頭断）・見る向き・片側だけを選べます。どの操作も「↶ 元に戻す」で1つずつ戻り、「組み立て直す」でまとめて戻ります。",
+    screen: `${topBar()}
+      <div class="gd-pad">
+        ${modelSeg(true)}
+        <p class="gd-label">系統と濃さ</p>
+        <ul class="gd-sliders">
+          <li><span>骨格系</span><i style="--p:100%"></i></li>
+          <li><span>筋系</span><i class="gd-slide" style="--p:25%"></i></li>
+          <li><span>消化器系</span><i style="--p:100%"></i></li>
+          <li><span>皮膚</span><i style="--p:0%"></i></li>
+        </ul>
+        <p class="gd-label">分解・断面</p>
+        <div class="gd-toggles"><span>水平断</span><span class="on">矢状断</span><span>前頭断</span></div>
+        <p class="gd-label">見る向き</p>
+        <div class="gd-toggles"><span class="on">前</span><span>後ろ</span><span>右</span><span>左</span><span>上</span><span>下</span></div>
+        <div class="gd-toggles gd-undo"><span>↶ 元に戻す（3）</span><span>組み立て直す</span></div>
+      </div>`,
+  },
+];
+
+export const modelDemo = (signal: AbortSignal): HTMLElement => stepDemo(MODEL_STEPS, signal, { cls: "gd-model", label: "3D模型の段", every: 8000 });
+
+const ORGAN_STEPS: DemoStep[] = [
+  {
+    title: "臓器を選ぶ",
+    text: "臓器の図は「学ぶ」と「調べる › 3Dで調べる」から。心臓と血管・呼吸器・消化器・泌尿器と生殖器・神経と感覚器・関節・皮膚と組織と発生に分かれて並びます。",
+    screen: `${topBar("学ぶ")}
+      <div class="gd-pad">
+        <p class="gd-title">臓器の図</p>
+        <p class="gd-group"><i style="--c:#c8323c"></i>心臓と血管・リンパ</p>
+        <div class="gd-organs">
+          <span><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false"><b>心臓</b>${finger()}${ripple()}</span>
+          <span><img src="${ORGAN_IMG}vessels.webp" alt="" draggable="false"><b>血管</b></span>
+        </div>
+        <p class="gd-group"><i style="--c:#6fa8dc"></i>呼吸器と胸の中</p>
+        <div class="gd-organs">
+          <span><img src="${ORGAN_IMG}lung.webp" alt="" draggable="false"><b>肺</b></span>
+          <span><img src="${ORGAN_IMG}pleura.webp" alt="" draggable="false"><b>胸膜</b></span>
+        </div>
+      </div>`,
+  },
+  {
+    title: "立体（3D）",
+    text: "「立体（3D）」では、その臓器と大血管だけを回して見ます。色を分ける（部屋・葉ごと）・切って中を見る・向きを選べ、部位をタップすると名前と説明が出ます。",
+    screen: `${topBar("臓器の図")}
+      <div class="gd-stage gd-stage-img gd-organ3d"><img src="${IMG}heart.webp" alt="" draggable="false"><span class="gd-f-cut"></span></div>
+      <div class="gd-pad">
+        <p class="gd-title">心臓 <small>heart</small></p>
+        <p class="gd-label">見方</p>
+        <div class="gd-toggles"><span class="on">立体（3D）</span><span>血液の流れ</span><span>前から見た心臓</span><span>…</span></div>
+        <p class="gd-label">切って中を見る</p>
+        <div class="gd-toggles"><span>切らない</span><span class="on">前の壁を外す（前頭断）</span><span>四腔断（水平断）</span></div>
+        <div class="gd-toggles"><span class="on">部屋ごとに色を分ける</span></div>
+      </div>`,
+  },
+  {
+    title: "平面図",
+    text: "「見方」の2つめからは教科書のような平面図です。名前の出し方は 日本語と英語・日本語・英語・隠して確かめる の4つ。名前を押すと、その語の説明が下に出ます。",
+    screen: `${topBar("臓器の図")}
+      <div class="gd-plate"><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">
+        <span class="gd-tag" style="left:6%;top:16%">上大静脈</span><span class="gd-tag" style="left:58%;top:8%">大動脈弓</span>
+        <span class="gd-tag" style="left:2%;top:52%">右心房</span><span class="gd-tag" style="left:62%;top:58%">左心室</span>
+      </div>
+      <div class="gd-pad">
+        <div class="gd-toggles"><span class="on">日本語と英語</span><span>日本語</span><span>英語</span><span>隠して確かめる</span></div>
+        <ol class="gd-names"><li>上大静脈 <small lang="en">superior vena cava</small></li><li>大動脈弓 <small lang="en">arch of aorta</small></li><li>右心房 <small lang="en">right atrium</small></li><li>左心室 <small lang="en">left ventricle</small></li></ol>
+      </div>`,
+  },
+  {
+    title: "隠して確かめる",
+    text: "「隠して確かめる」にすると、図の名前が番号になります。思い出してから番号を押すと名前が出ます。「すべての名前を出す」で答え合わせ。選んだ出し方は次も同じです。",
+    screen: `${topBar("臓器の図")}
+      <div class="gd-plate"><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">
+        <span class="gd-tag gd-num" style="left:10%;top:16%">1</span><span class="gd-tag gd-num" style="left:66%;top:8%">2</span>
+        <span class="gd-tag gd-num gd-hide" style="left:6%;top:52%">3${finger()}${ripple()}<b class="gd-later">右心房</b></span><span class="gd-tag gd-num" style="left:68%;top:58%">4</span>
+      </div>
+      <div class="gd-pad">
+        <div class="gd-toggles"><span>日本語と英語</span><span>日本語</span><span>英語</span><span class="on">隠して確かめる</span></div>
+        <p class="gd-note">名前を隠しています。番号を押すと名前が出ます。</p>
+        <ol class="gd-names"><li>？</li><li>？</li><li><span class="gd-later">右心房</span></li><li>？</li></ol>
+      </div>`,
+  },
+  {
+    title: "要点とレッスン",
+    text: "平面図の下の「この図の要点」に、図から読み取ることを短くまとめてあります。臓器の頭には「図で学ぶレッスン」（その臓器の語を図で覚える）と、心臓・肺などは「動きで見る」（動きの図鑑へ）があります。",
+    screen: `${topBar("臓器の図")}
+      <div class="gd-pad">
+        <p class="gd-title">心臓 <small>heart</small></p>
+        <div class="gd-motionlink">動きで見る：<b>▶ 心臓の拍動と心周期</b></div>
+        <p class="gd-label">図で学ぶレッスン</p>
+        <ul class="gd-rows gd-lessonrows"><li><i>✓</i>心臓<small>12語・済み</small></li><li><i>2</i>心臓の内部と心臓の静脈<small>8語</small></li></ul>
+        <div class="gd-points">
+          <b>この図の要点</b>
+          <ul><li>右心系（右心房・右心室）は静脈血、左心系は動脈血。</li><li>心室の壁の厚さは中の圧に比例し、左心室が最も厚い。</li></ul>
+        </div>
+      </div>`,
+  },
+];
+
+export const organDemo = (signal: AbortSignal): HTMLElement => stepDemo(ORGAN_STEPS, signal, { cls: "gd-organ", label: "臓器の図の段", every: 8000 });
+
+/** 動きの図鑑の3Dの下の字幕（時期の名前・1周の区分の帯・ここを見る） */
+const motionCaption = (name: string, look: string, at: number) => `
+  <div class="gd-mcap">
+    <div class="gd-mcap-row"><span class="gd-play">▶</span><b>${name}</b></div>
+    <div class="gd-band">${Array.from({ length: 7 }, (_, i) => `<i class="${i === at ? "on" : i < at ? "done" : ""}"></i>`).join("")}</div>
+    <p><i>ここを見る</i>${look}</p>
+  </div>`;
+
+const MOTION_STEPS: DemoStep[] = [
+  {
+    title: "動きを選ぶ",
+    text: "動きの図鑑は「調べる › 3Dで調べる」から。臓器の図の心臓・肺などの「動きで見る」からも開けます。呼吸・心臓の拍動と心周期・刺激伝導系と心電図・肺循環と体循環の4つです。",
+    screen: `${topBar("調べる")}
+      <div class="gd-pad">
+        <p class="gd-title">動きの図鑑</p>
+        <div class="gd-motions">
+          <span><img src="${MOTION_IMG}breathing.webp" alt="" draggable="false"><b>呼吸</b></span>
+          <span><img src="${MOTION_IMG}heartbeat.webp" alt="" draggable="false"><b>心臓の拍動と心周期</b>${finger()}${ripple()}</span>
+          <span><img src="${MOTION_IMG}conduction.webp" alt="" draggable="false"><b>刺激伝導系と心電図</b></span>
+          <span><img src="${MOTION_IMG}circulation.webp" alt="" draggable="false"><b>肺循環と体循環</b></span>
+        </div>
+      </div>`,
+  },
+  {
+    title: "学ぶことを読む",
+    text: "開くと、はじめは止まっています。まず欄の頭の「この動きで学ぶこと」（目当て3つ）を読み、何ができるようになればよいかをつかみます。",
+    screen: `${topBar("動きの図鑑")}
+      <div class="gd-stage gd-stage-img gd-motion-stage"><img src="${MOTION_IMG}heartbeat.webp" alt="" draggable="false"></div>
+      <div class="gd-pad">
+        <div class="gd-goals">
+          <b>この動きで学ぶこと</b>
+          <ol><li>心周期の7つの時期を、収縮期と拡張期に分けて順に言える</li><li>時期ごとに、どの弁が開き・閉じているかを説明できる</li><li>Ⅰ音・Ⅱ音と心電図の波が、心周期のどこか分かる</li></ol>
+        </div>
+      </div>`,
+  },
+  {
+    title: "1つずつ見る",
+    text: "見せ方は「1つずつ（解説つき）」。▶ を押すと次の時期までゆっくり動いて止まります。3Dの下の字幕と欄の「ここを見る」で目を向ける所を、「なぜ」でわけを読みます。見る所の札は黄色の縁で光ります。",
+    screen: `${topBar("動きの図鑑")}
+      <div class="gd-stage gd-stage-img gd-motion-stage"><img src="${MOTION_IMG}heartbeat.webp" alt="" draggable="false"><span class="gd-focus" style="left:34%;top:52%">閉</span><span class="gd-focus" style="left:58%;top:52%">閉</span></div>
+      ${motionCaption("等容性収縮期", "4つの弁がすべて「閉」。容積は平らのまま。", 0)}
+      <div class="gd-pad">
+        <div class="gd-why"><i>なぜ</i>心室の圧が心房より高くなり房室弁が閉じる（Ⅰ音）。まだ大動脈より低いので、動脈弁は開かない。</div>
+        <div class="gd-btn gd-btn-sm gd-btn-play">▶ この時期を見る${finger()}${ripple()}</div>
+      </div>`,
+  },
+  {
+    title: "速さと見せ方",
+    text: "速さは ⅛・¼・½・1倍（ふだんは ¼）。「続けて見る」にすると止まらずに流れます。グラフを押すとその時点で止まります。「わかりやすい模型」と、実際の体の形で動かす「実際の形」も切りかえられます。肺循環と体循環では、1滴の血液を追えます。",
+    screen: `${topBar("動きの図鑑")}
+      <div class="gd-pad">
+        <p class="gd-label">見せ方</p>
+        <div class="gd-seg"><span class="on">1つずつ（解説つき）</span><span>続けて見る</span></div>
+        <div class="gd-seg"><span class="on">わかりやすい模型</span><span>実際の形</span></div>
+        <p class="gd-label">速さ <small>1拍 約4.0秒</small></p>
+        <div class="gd-toggles"><span>⅛</span><span class="on">¼</span><span>½</span><span>1倍</span></div>
+        <svg class="gd-graph" viewBox="0 0 200 64" aria-hidden="true">
+          <path class="gd-graph-p" d="M0 54 L30 54 C40 54 42 12 60 10 S84 30 92 50 L120 54 L200 54"/>
+          <path class="gd-graph-v" d="M0 20 L30 20 L40 20 C52 20 70 48 92 48 L110 48 C130 48 140 22 170 21 L200 20"/>
+          <line class="gd-graph-now" x1="70" x2="70" y1="2" y2="62"/>
+        </svg>
+        <p class="gd-note">グラフを押すと、その時点で止まる</p>
+        <div class="gd-trace"><img src="${MOTION_IMG}circulation.webp" alt="" draggable="false"><span>1滴を追う：右心房 → 肺 → 左心室 → 脳 …</span></div>
+      </div>`,
+  },
+  {
+    title: "覚えて確かめる",
+    text: "最後に「覚えること」（試験に出る要点4〜5つ）を読み、「確かめる」で5問の4択に答えます。問題の間は答えの見える字幕・札が伏せられます。まちがえた所は ▶ で動かして確かめ直しましょう。",
+    screen: `${topBar("動きの図鑑")}
+      <div class="gd-pad">
+        <div class="gd-goals gd-goals-point">
+          <b>覚えること</b>
+          <ul><li>弁は圧の差だけで開閉する。</li><li>4つの弁がすべて閉じるのは等容性収縮期と等容性弛緩期。</li><li>Ⅰ音＝房室弁が閉じる音、Ⅱ音＝動脈弁が閉じる音。</li></ul>
+        </div>
+        <p class="gd-label">確かめる 2 / 5</p>
+        <p class="gd-q">Ⅱ音が鳴るのはどの時期の始まり？</p>
+        ${choices(["等容性収縮期", "等容性弛緩期", "急速充満期", "心房収縮期"], "等容性弛緩期")}
+      </div>`,
+  },
+];
+
+export const motionDemo = (signal: AbortSignal): HTMLElement => stepDemo(MOTION_STEPS, signal, { cls: "gd-motion", label: "動きの図鑑の段", every: 8000 });

@@ -4,8 +4,8 @@ import { shownPurposes, type PurposeInfo } from "../purposes";
 import { preferences } from "../settings";
 import { termAt, type AppContext } from "./context";
 import {
-  askDemos, cardDemo, compassDemo, dayDemo, featureCards, gestureDemos, heroDemo, lessonDemo, memoryChart, outcomeTable,
-  isGuideTab, tabsDemo, watchDemos, type GuideTab,
+  askDemos, cardDemo, compassDemo, dayDemo, drillDemo, featureCards, gestureDemos, heroDemo, lessonDemo, lookDemo, memoryChart, modelDemo,
+  motionDemo, organDemo, outcomeTable, isGuideTab, tabsDemo, watchDemos, type GuideTab,
 } from "./guide-demos";
 import "./guide.css";
 import { purposeChips } from "./settings-screen";
@@ -38,6 +38,7 @@ const TABS: Record<GuideTab, { name: string; href: string; icon: keyof typeof IC
       ["検索", "#/look", "日本語・読み・英語・ラテン語・ローマ字の読みから。覚えることも一緒に出る"],
       ["系統から探す", "#/look", "骨格系・筋系などの語を、レッスンごとに一覧で"],
       ["図鑑", "#/explore", "3Dをタップして、名前と説明を見る"],
+      ["動きの図鑑", "#/motions", "呼吸・心臓の拍動・刺激伝導系・肺循環と体循環を、模型を動かして1時期ずつ"],
       ["★を付けた語", "#/look", "語のカードの ☆ で印を付けた語"],
     ],
   },
@@ -78,6 +79,11 @@ const WORDS: [term: string, text: string][] = [
   ["コース", "どこまでの語を覚えるか。はじめての解剖（まず覚える語）・標準（必修と基礎）・すべての語（発展の語まで）。変えても学んだ記録は続きます。"],
   ["覚えること・くわしく", "語のカードは、まず「覚えること」の1〜2文。くわしい説明・漢字・語源は「くわしく」を開くと出ます。"],
   ["模式", "心臓の中・肺区域・腎臓の中などは、位置と並びを示す模式の立体です。実際の形とは違います。"],
+  ["平面図", "臓器の図の、教科書のような図。名前の出し方を 日本語と英語・日本語・英語・隠して確かめる から選べます（隠して確かめるは、番号を押すと名前が出る）。"],
+  ["3D模型の見る・自由に操作", "3D模型のタブの2つの使い方。見るは、部位をタップするとその場に図鑑の説明が出ます。自由に操作（上級）は、部品を隠す・外へ出す・透かす・切って見る。タブは前に選んだほうで開きます。"],
+  ["動きの図鑑", "呼吸・心臓の拍動と心周期・刺激伝導系と心電図・肺循環と体循環を、模型を動かして学ぶ所。調べる › 3Dで調べる と、臓器の図の「動きで見る」から開きます。"],
+  ["1つずつ（解説つき）", "動きの図鑑の見せ方。時期ごとに止まり、▶ で次の時期までゆっくり見せます（短い時期も4秒以上かけて）。「続けて見る」は止まらずに流します。"],
+  ["わかりやすい模型・実際の形", "動きの図鑑の見せ方。わかりやすい模型は教科書の模式図を立体にしたもの、実際の形は人の体の形（3D）をそのまま動かしたものです。"],
   ["同期", "Google でログインした端末どうしで、覚え具合・解いた記録・★とメモ・設定を同じにすること。学んでいる間は少しずつ、アプリを開いたときと閉じたときにも自動で行います。ログインしなければ、記録はその端末の中だけです。"],
 ];
 
@@ -89,35 +95,52 @@ const FAQ: [question: string, answer: string, link?: [href: string, label: strin
   ["コースを変えたい", "設定 の「コースと使う目的」で、いつでも変えられます。学んだ記録はそのまま続きます。", ["#/settings/course", "設定"]],
   ["機種を変える・別の端末で続けたい", "設定の「アカウントと同期」で Google でログインすると、同じアカウントでログインした端末（スマホ・iPad・PC）どうしで記録が自動で同じになります。iOS の Safari とホーム画面のアプリは別の端末として、それぞれでログインします。ログインしないときは、「記録の書き出し・読み込み」でファイルに書き出し、新しい端末で読み込んでください。", ["#/settings/account", "アカウントと同期"]],
   ["通信の無い所で使いたい", "ホーム画面に追加してから、設定の「オフライン」で「すべて保存」を押すと、通信の無い実習室でも使えます。", ["#/settings", "設定"]],
+  ["演習で何を選べばいいかわからない", "迷ったら「すぐ始める」の「最近のレッスン」か「苦手な語」を。試験の前は「自分で選ぶ」で範囲を選び、問い方を「総仕上げ」にします。", ["#/guide/drill", "演習の使い方"]],
+  ["平面図の名前を隠して覚えたい", "臓器の図の平面図で、名前の出し方を「隠して確かめる」にします。図の名前が番号になり、押すと名前が出ます。", ["#/guide/organs", "臓器の図の使い方"]],
+  ["3D模型で部品を外したまま戻せない", "「↶ 元に戻す」で1つずつ、「組み立て直す」で隠した・動かした・分解・断面・片側をまとめて戻せます（系統の濃さはそのまま）。隠した部品は、一覧のチップを押すとそれだけ戻ります。", ["#/model/free", "3D模型"]],
+  ["動きの図鑑が速い・どこを見ればいいかわからない", "見せ方を「1つずつ（解説つき）」にすると、時期ごとに止まり、「ここを見る」「なぜ」が出ます。見る所の札は黄色の縁で光ります。速さは ⅛ まで遅くできます。", ["#/guide/motions", "動きの図鑑の使い方"]],
   ["3Dで迷った・見えなくなった", "自分で回したり拡大したりすると、3Dの右上に「視点を戻す」が出ます。押すとアプリが決めた向きへ戻ります。"],
   ["文字が小さい・英語も見たい", "設定の「表示」で、説明の文字の大きさと、説明に英語を併記するかを選べます。語のカードの「英語を併記」でも切りかえられます。", ["#/settings", "設定"]],
   ["3Dが出ない", "ほかのアプリやタブを閉じてから読み直してください。ブラウザを新しくする、PC ならブラウザの設定で「ハードウェアアクセラレーション」をオンにするのも効きます。"],
 ];
 
-/** 章（目次と、#/guide/<id> で開く所） */
-const CHAPTERS: [id: string, title: string, sub: string][] = [
-  ["day", "毎日の使い方", "1日3〜5分"],
-  ["lesson", "レッスンの流れ", "新しい語を覚える"],
-  ["ask", "問い方と答え方", "4択とタップ"],
-  ["memory", "復習のしくみ", "忘れる前に出る"],
-  ["3d", "3Dの動かし方", "回す・拡大・タップ"],
-  ["tabs", "6つのタブ", "どこに何があるか"],
-  ["card", "語のカード", "どこを読めばいいか"],
-  ["more", "そのほかの学び方", "臓器の図・演習など"],
-  ["purpose", "目的別の使い方", "授業・骨学・調べる・見直し"],
-  ["faq", "困ったとき", "よくある質問"],
-  ["words", "ことばの意味", "このアプリの用語"],
+/** 章（目次と、#/guide/<id> で開く所）。部ごとに分ける。番号は部をまたいで続く */
+const PARTS: [title: string, chapters: [id: string, title: string, sub: string][]][] = [
+  ["基本の使い方", [
+    ["day", "毎日の使い方", "1日3〜5分"],
+    ["lesson", "レッスンの流れ", "新しい語を覚える"],
+    ["ask", "問い方と答え方", "4択とタップ"],
+    ["memory", "復習のしくみ", "忘れる前に出る"],
+    ["3d", "3Dの動かし方", "回す・拡大・タップ"],
+    ["tabs", "6つのタブ", "どこに何があるか"],
+    ["card", "語のカード", "どこを読めばいいか"],
+  ]],
+  ["学び方ごとのガイド", [
+    ["more", "学び方の一覧", "どれを使うか"],
+    ["drill", "演習", "すぐ始める・3段階で選ぶ"],
+    ["look", "調べる", "1語をすぐ引く"],
+    ["model", "3D模型", "見る・自由に操作"],
+    ["organs", "臓器の図", "立体と平面図"],
+    ["motions", "動きの図鑑", "1時期ずつ止めて見る"],
+  ]],
+  ["目的別・困ったとき", [
+    ["purpose", "目的別の使い方", "授業・骨学・調べる・見直し"],
+    ["faq", "困ったとき", "よくある質問"],
+    ["words", "ことばの意味", "このアプリの用語"],
+  ]],
 ];
+const CHAPTERS = PARTS.flatMap(([, chapters]) => chapters);
 
 /** 章ごとの3D（PC・iPad の横では説明の横に見える。スマホではたたんであり、「3Dを出す」で見える） */
 type Scene = "spin" | "femur" | "free";
-const SCENE_OF: Record<string, Scene> = { lesson: "femur", ask: "femur", card: "femur", "3d": "free" };
+const SCENE_OF: Record<string, Scene> = { lesson: "femur", ask: "femur", card: "femur", "3d": "free", look: "femur", model: "free" };
 
 /**
  * 使い方（#/guide。入口は上の帯の「? 使い方」と設定のタブの下。3Dの「?」は3Dの動かし方の一覧から 05 へ。各タブの1行の説明は 06 をそのタブで）。
  * docs/普段使い.md「使い方ガイド」「画面の分かりにくさの見直し」。タブの印と「‹」は、開いたときのタブのまま（src/main.ts）。
- * 目次 → 毎日の使い方（動く見本）→ レッスン（段ごとの見本）→ 問い方 → 復習のしくみ（図）→ 3Dの動かし方 → 6つのタブ →
- * 語のカード → そのほかの学び方 → 目的別 → 困ったとき → ことば → キーボード。
+ * 目次 → 第1部 基本の使い方（毎日の使い方・レッスン・問い方・復習のしくみ・3Dの動かし方・6つのタブ・語のカード）→
+ * 第2部 学び方ごとのガイド（学び方の一覧・演習・調べる・3D模型・臓器の図・動きの図鑑。段ごとの見本）→
+ * 第3部 目的別・困ったとき（目的別・困ったとき・ことば）→ キーボード。
  * "#/guide/<章>" でその章を開く（目次から押したときは画面を作り直さずにずらすだけ）
  */
 export function guide(ctx: AppContext, arg = ""): void {
@@ -204,9 +227,13 @@ export function guide(ctx: AppContext, arg = ""): void {
 
     h("nav", { class: "home-card guide-toc", "aria-label": "目次" },
       h("p", { class: "guide-toc-title" }, "目次"),
-      h("ol", {}, ...CHAPTERS.map(([id, title, sub]) => h("li", {}, h("a", { href: `#/guide/${id}` }, h("b", {}, title), h("span", {}, canUseExam() ? sub : sub.replace("・骨学", "")))))),
+      ...PARTS.flatMap(([part, chapters]) => [
+        h("p", { class: "guide-toc-part" }, part),
+        h("ol", {}, ...chapters.map(([id, title, sub]) => h("li", {}, h("a", { href: `#/guide/${id}` }, h("b", {}, title), h("span", {}, canUseExam() ? sub : sub.replace("・骨学", "")))))),
+      ]),
     ),
 
+    partHead(0),
     chapter("day", "毎日の使い方", "毎日は「今日」を開いて、今日の復習を解くだけ。1日3〜5分で続きます。",
       dayDemo(),
       h("p", { class: "guide-note" }, "今日の復習が無い日は、「今日」に次のレッスンが出ます。わからない語は、いつでも「調べる」で引けます。"),
@@ -250,10 +277,51 @@ export function guide(ctx: AppContext, arg = ""): void {
       cardDemo(),
     ),
 
-    chapter("more", "そのほかの学び方", "レッスンと今日の復習のほかに、目的に合わせて使える学び方です。押すとその画面へ。",
+    partHead(1),
+    chapter("more", "学び方の一覧", "レッスンと今日の復習のほかに、目的に合わせて使える学び方です。押すとその画面へ。くわしい使い方は、次の章から1つずつ。",
       featureCards(),
+      h("ul", { class: "guide-points" },
+        h("li", {}, h("b", {}, "覚える："), "レッスン → 今日の復習。試験の前は演習で解き直す。"),
+        h("li", {}, h("b", {}, "引く："), "調べる・図鑑で1語。3D模型の「見る」で、回しながら部位をタップ。"),
+        h("li", {}, h("b", {}, "つながりを見る："), "臓器の図で切り口と平面図、動きの図鑑で体の中の動き、3D模型の自由に操作で重なり。"),
+      ),
     ),
 
+    chapter("drill", "演習", "学んだ範囲を解き直す所です（学ぶ › 演習）。答えは今日の復習の記録にも入ります。",
+      drillDemo(signal),
+      h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/drill" }, "演習を開く ›")),
+    ),
+
+    chapter("look", "調べる", "授業や実習の合間に、1語をすぐ引く所です（下のタブの「調べる」、上の帯の虫めがね、PC は / キー）。",
+      lookDemo(signal),
+      h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/look" }, "調べるを開く ›")),
+    ),
+
+    chapter("model", "3D模型", "人体模型のように、3Dを手でいじって位置と重なりを見る所です（下のタブの「3D模型」）。使い方は「見る」と「自由に操作（上級）」の2つ。",
+      modelDemo(signal),
+      h("p", { class: "guide-note" }, "模型の状態（隠した・外へ出した部品など）は、アプリを開いている間はほかのタブへ行っても残ります。キーボードでは Delete で隠す・Esc で選ぶのをやめる・⌘Z（Ctrl+Z）で元に戻す。"),
+      h("div", { class: "nav-row" },
+        h("a", { class: "ghost-button", href: "#/model/look" }, "見るを開く ›"),
+        h("a", { class: "ghost-button", href: "#/model/free" }, "自由に操作を開く ›")),
+    ),
+
+    chapter("organs", "臓器の図", "心臓・肺・腎臓・脳・関節など33の臓器を、立体（3D）と教科書のような平面図で見る所です（学ぶ › 臓器の図、調べる › 3Dで調べる）。",
+      organDemo(signal),
+      h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/organs" }, "臓器の図を開く ›")),
+    ),
+
+    chapter("motions", "動きの図鑑", "体の中の動きを、模型を動かして学ぶ所です。はじめに学ぶことを読み、1時期ずつ止めながら見て、最後に覚えることと確かめるで仕上げます。",
+      motionDemo(signal),
+      h("ul", { class: "guide-points" },
+        h("li", {}, h("b", {}, "呼吸："), "横隔膜が下がり、肋骨が上がって胸郭が広がる。肺胞内圧・胸腔内圧のグラフと一緒に。"),
+        h("li", {}, h("b", {}, "心臓の拍動と心周期："), "7つの時期と弁の開き閉じ。圧・容積・心電図のグラフ、心音（Ⅰ音・Ⅱ音）。"),
+        h("li", {}, h("b", {}, "刺激伝導系と心電図："), "洞房結節からプルキンエ線維へ興奮が伝わる順と、心電図の波。"),
+        h("li", {}, h("b", {}, "肺循環と体循環："), "1滴の血液を追い、どこで動脈血と静脈血が入れかわるかを見る。行き先（脳・腕・腸と肝臓・腎臓・脚）も選べる。"),
+      ),
+      h("div", { class: "nav-row" }, h("a", { class: "ghost-button", href: "#/motions" }, "動きの図鑑を開く ›")),
+    ),
+
+    partHead(2),
     chapter("purpose", "目的別の使い方", "選んだ目的は、ここと「あなたの使い方」の並びに使います。どの目的でも、全部の学び方を使えます。",
       purposeBox,
     ),
@@ -306,6 +374,11 @@ export function guide(ctx: AppContext, arg = ""): void {
     return true;
   });
   if (arg) requestAnimationFrame(() => jump(arg, false));
+}
+
+/** 部の見出し（基本の使い方・学び方ごとのガイド・目的別と困ったとき） */
+function partHead(i: number): HTMLElement {
+  return h("p", { class: "guide-part" }, h("span", {}, `第${i + 1}部`), PARTS[i][0]);
 }
 
 /** 章（題・一言・中身）。目次から "#/guide/<id>" で開く */
