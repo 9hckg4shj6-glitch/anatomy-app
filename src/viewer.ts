@@ -2584,6 +2584,8 @@ diffuseColor.a = clamp(${base.toFixed(2)} + ${strength.toFixed(2)} * pow(1.0 - g
       this.onTick(now);
       this.dirty = true;
     }
+    // 3Dを隠している間（iPad の縦で3Dを使わない画面。styles.css の stage-folded）は描かない。dirty は残し、出したときに描く
+    if (!this.host.clientWidth) return;
     if (!this.dirty) {
       // 止まったら、動かしている間だけ下げていた画素の細かさを戻して描き直す
       if (this.renderer.getPixelRatio() >= this.fullRatio || now - this.lastRender < 250) return;

@@ -129,9 +129,10 @@ export function guide(ctx: AppContext, arg = ""): void {
   });
 
   let scene: Scene | null = null;
-  // スマホの縦では3Dごとたたんであるので、回し続けない（見えない3Dを描き続けると電池を使う。「3Dで試してみる」で出したときは回さない場面）
+  // スマホの縦と iPad の縦では3Dごとたたんであるので、回し続けない（見えない3Dを描き続けると電池を使う。「3Dで試してみる」で出したときは回さない場面）
   const layout = document.querySelector<HTMLElement>(".layout");
-  const stageHidden = () => !!layout?.classList.contains("stage-folded") && getComputedStyle(layout).flexDirection !== "row";
+  const stage = document.getElementById("stage");
+  const stageHidden = () => !stage?.clientWidth || (!!layout?.classList.contains("stage-folded") && getComputedStyle(layout).flexDirection !== "row");
   const setScene = (next: Scene, force = false) => {
     if (next === scene && !force) return;
     scene = next;

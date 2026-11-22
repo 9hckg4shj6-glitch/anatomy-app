@@ -299,6 +299,8 @@ async function boot(): Promise<void> {
     layout.classList.toggle("is-home", !PAGES[name]);
     layout.classList.toggle("is-start", name === "start");
     layout.classList.toggle("is-model", name === "model");
+    // 動きの図鑑は3Dの中に字幕・札・向きの目印があるので、スマホでは3Dを高めに（styles.css の .layout.is-motion）
+    layout.classList.toggle("is-motion", name === "motions");
     viewer.hideCompass(!PAGES[name] || name === "start");
     showCrumbs(name);
     // 3Dを動かして見る画面（レッスン・図鑑・臓器の図）を初めて開いたときに、右上の ⤢・?・向きの目印の説明を出す（src/ui/stage-tip.ts）
