@@ -419,7 +419,7 @@
           "plate": "bladder", "level": 2,
           "kanji": "尿を排出する筋",
           "etym": "ラテン語 detrudere「押し出す」",
-          "note": "膀胱（urinary bladder）の壁の平滑筋（smooth muscle）の層（内縦・中輪・外縦の3層が入りまじる）。尿がたまるときはゆるみ、排尿のときに縮んで尿を押し出す。骨盤内臓神経（副交感神経（parasympathetic nerve））で縮み、下腹神経（交感神経（sympathetic nerve））でゆるむ。"
+          "note": "膀胱（urinary bladder）の壁の平滑筋（smooth muscle）の層（内縦・中輪・外縦の3層が入りまじる）。尿がたまるときはゆるみ、排尿のときに縮んで尿を押し出す。骨盤内臓神経（pelvic splanchnic nerves）（副交感神経（parasympathetic nerve））で縮み、下腹神経（交感神経（sympathetic nerve））でゆるむ。"
         },
         {
           "id": "ureteric-orifice", "ja": "尿管口", "yomi": "にょうかんこう", "en": "ureteric orifice", "enAlt": ["ureteral orifice"], "la": "ostium ureteris",

@@ -922,6 +922,13 @@
           "kanji": "ひし形のくぼみ",
           "etym": "rhomboid「ひし形の」（ギリシャ語 rhombos）＋ fossa「くぼみ」",
           "note": "橋と延髄（medulla oblongata）の上半分の背側（dorsal）の面にある、ひし形のくぼみ。第四脳室（fourth ventricle）の床で、小脳（cerebellum）を外すと見える。ここに脳神経（cranial nerve）の核（nucleus）（外転神経核（abducens nucleus）・舌下神経核（hypoglossal nucleus）・迷走神経背側核（dorsal nucleus of vagus nerve）など）が並び、正中（median）のわきの小さな高まり（顔面神経丘（facial colliculus）・舌下神経三角（hypoglossal trigone））で外から位置が分かる。"
+        },
+        {
+          "id": "superior-cerebellar-peduncle", "ja": "上小脳脚", "yomi": "じょうしょうのうきゃく", "en": "superior cerebellar peduncle", "enAlt": ["brachium conjunctivum"], "la": "pedunculus cerebellaris superior",
+          "parts": ["za:superior cerebellar peduncle"], "level": 2,
+          "kanji": "小脳の上の脚（結合腕ともいう）",
+          "etym": "pedunculus「小さな足」（ラテン語）",
+          "note": "小脳（cerebellum）と中脳（midbrain）をつなぐ線維（fiber）の束（結合腕ともいう）。小脳の歯状核などから出る、小脳から出ていく線維の大部分が通り、第四脳室（fourth ventricle）の上半分の外側（lateral）の壁をつくって上る。下丘（inferior colliculus）の高さで左右が交叉（decussation）し（上小脳脚交叉）、反対側（contralateral side）の赤核（red nucleus）と視床（thalamus）（そこから大脳（cerebrum）の運動野（motor area））へ行く。3つの小脳脚（cerebellar peduncle）のうち、中小脳脚（middle cerebellar peduncle）（橋腕）は橋から、下小脳脚（索状体）は脊髄（spinal cord）と延髄（medulla oblongata）から小脳へ入る線維がおもで、上小脳脚はおもに出ていく線維。"
         }
       ]
     },
@@ -1091,14 +1098,14 @@
           "parts": ["za:glossopharyngeal nerve (ix)"], "level": 1,
           "kanji": "舌と咽頭へ行く神経",
           "etym": "glosso-「舌」＋ pharyngeal「咽頭の」",
-          "note": "第Ⅸ脳神経（cranial nerve）。頚静脈孔（jugular foramen）を通り、舌（tongue）の後ろ1/3の味覚（taste）と感覚（sensation）、咽頭（pharynx）の感覚を伝える。耳下腺（parotid gland）の分泌（secretion）も担う。"
+          "note": "第Ⅸ脳神経（cranial nerve）。頚静脈孔（jugular foramen）を通り、舌（tongue）の後ろ1/3の味覚（taste）と感覚（sensation）、咽頭（pharynx）・口蓋扁桃（palatine tonsil）・中耳（middle ear）の感覚と、頚動脈洞（carotid sinus）・頚動脈小体（carotid body）からの血圧（blood pressure）と血液（blood）の酸素の情報を伝え、茎突咽頭筋（stylopharyngeus）を動かす。咽頭の壁で、迷走神経（vagus nerve）の咽頭枝・交感神経（sympathetic nerve）と一緒に咽頭神経叢をつくる。鼓室神経・小錐体神経を経て耳神経節（otic ganglion）で乗りかえる副交感神経（parasympathetic nerve）の線維（fiber）で、耳下腺（parotid gland）の分泌（secretion）を担う。"
         },
         {
           "id": "vagus-nerve", "ja": "迷走神経", "yomi": "めいそうしんけい", "en": "vagus nerve", "la": "nervus vagus",
           "parts": ["za:vagus nerve (x)"], "level": 1,
           "kanji": "迷うように広く走る神経",
           "etym": "vagus ← ラテン語 vagus「さまよう」",
-          "note": "第Ⅹ脳神経（cranial nerve）。頚静脈孔（jugular foramen）を出て首（neck）を下り、胸（chest）・腹（abdomen）の内臓（viscera）まで広く分布する。副交感神経（parasympathetic nerve）の大部分を担い、心拍（heart rate）を落とし消化管（digestive tract）を動かす。枝（branch）の反回神経（recurrent laryngeal nerve）が喉頭（larynx）の筋（muscle）を動かす。"
+          "note": "第Ⅹ脳神経（cranial nerve）。頚静脈孔（jugular foramen）を出て（ここに上神経節と下神経節がある）、頚部（neck）では内頚動脈（internal carotid artery）・総頚動脈（common carotid artery）の後外側（posterolateral）を下り、肺根（root of lung）の後ろを通って食道（esophagus）のまわりで食道神経叢をつくり、前迷走神経幹・後迷走神経幹として食道とともに腹腔（abdominal cavity）に入る。副交感神経（parasympathetic nerve）の大部分を担い、心拍（heart rate）を落とし、気管支（bronchus）を縮め、消化管（digestive tract）を動かす（大腸（large intestine）では横行結腸（transverse colon）の右2/3まで）。おもな枝（branch）は咽頭枝（舌咽神経（glossopharyngeal nerve）と咽頭神経叢をつくり、咽頭（pharynx）と軟口蓋（soft palate）の筋（muscle）を動かす）・上喉頭神経（superior laryngeal nerve）・心臓枝（cardiac branch）・反回神経（recurrent laryngeal nerve）（輪状甲状筋以外の喉頭（larynx）の筋）。"
         },
         {
           "id": "accessory-nerve", "ja": "副神経", "yomi": "ふくしんけい", "en": "accessory nerve", "la": "nervus accessorius",
@@ -1310,10 +1317,10 @@
         },
         {
           "id": "sympathetic-trunk", "ja": "交感神経幹", "yomi": "こうかんしんけいかん", "en": "sympathetic trunk", "la": "truncus sympathicus",
-          "parts": ["za:sympathetic trunk", "za:ganglia of sympathetic trunk"], "level": 2,
+          "parts": ["za:sympathetic trunk", "za:superior cervical ganglion", "za:middle cervical ganglion", "za:cervicothoracic ganglion", "za:thoracic ganglia"], "level": 2,
           "kanji": "交感神経の幹（みき）",
           "etym": "sympathetic ← ギリシャ語 sym-「共に」＋ pathos「感じる」（体の各部を共に感じさせると考えられた）",
-          "note": "脊柱（vertebral column）の両わきを頭蓋底（cranial base）から尾骨（coccyx）まで縦に走る、神経節（ganglion）が数珠のようにつながった索。交感神経（sympathetic nerve）の線維（fiber）がここで乗りかえて全身（whole body）へ向かう。"
+          "note": "脊柱（vertebral column）の両わきを頭蓋底（cranial base）から尾骨（coccyx）の前まで縦に走る、神経節（ganglion）が数珠のようにつながった索。頚部（neck）では内頚動脈（internal carotid artery）・総頚動脈（common carotid artery）の後ろ、頚椎（cervical vertebrae）の横突起（transverse process）の前を下り、第1肋骨（first rib）の頚（neck）の前で胸部（thorax）に入って肋骨（ribs）の頭の前を、横隔膜（diaphragm）を貫いて腰椎（lumbar vertebrae）の前外側（anterolateral）を、骨盤（pelvis）では前仙骨孔（anterior sacral foramina）の内側（medial）を下る。神経節は頚部に3つ（上頚・中頚・頚胸神経節（cervicothoracic ganglion））、胸部に10〜11対、腰部（lumbar region）に4〜5対、仙骨部に4対あり、左右の下端（inferior end）は尾骨の前の不対神経節で合わさる。脊髄（spinal cord）の側角（lateral horn）から白交通枝（white ramus communicans）で入った節前線維がここで乗りかえ（または通り抜けて内臓神経になり）、灰白交通枝（gray ramus communicans）で脊髄神経（spinal nerve）に戻った節後線維が全身（whole body）の血管（blood vessel）・汗腺（sweat gland）へ、動脈（artery）に沿った線維（fiber）が頭頚部（head and neck）と胸（chest）の内臓（viscera）へ向かう。3Dの幹は第3頚椎（third cervical vertebra）から第12胸椎（twelfth thoracic vertebra）の高さまで、神経節は模式の形。"
         },
         {
           "id": "brachial-plexus", "ja": "腕神経叢", "yomi": "わんしんけいそう", "en": "brachial plexus", "la": "plexus brachialis",
@@ -1571,6 +1578,92 @@
       ]
     },
     {
+      "id": "nerv-cord-gray-more",
+      "title": "脊髄の側角・後角固有核と固有束",
+      "group": "脊髄と上肢・体幹の神経",
+      "intro": ["脊髄（spinal cord）の灰白質（gray matter）の細部と、灰白質に接する白質（white matter）の束。側角（lateral horn）は胸髄（thoracic spinal cord）と上位の腰髄だけにあり、交感神経（sympathetic nerve）の節前ニューロンがある。3Dの側角は第1胸髄から上位の腰髄のあたりだけを示す（ほかの構造は脊髄の全長にわたる模式の形）。"],
+      "terms": [
+        {
+          "id": "lateral-horn", "ja": "側角", "yomi": "そっかく", "en": "lateral horn", "enAlt": ["lateral horn of spinal cord", "intermediolateral nucleus"], "la": "cornu laterale",
+          "parts": ["za:intermediolateral nucleus"], "level": 1, "xray": true,
+          "kanji": "灰白質の横の角",
+          "etym": "cornu「角」（ラテン語）",
+          "note": "第1胸髄から第2〜第3腰髄で、灰白質（gray matter）の前角（anterior horn）と後角（posterior horn）の間（中間質の外側部（lateral part））が横へ小さく突き出た所。交感神経（sympathetic nerve）の節前ニューロンの細胞体（cell body）が集まり（中間外側核）、その線維（fiber）は前根（anterior root）・白交通枝（white ramus communicans）を通って交感神経幹（sympathetic trunk）へ行く。第2〜第4仙髄の同じ位置には副交感神経（parasympathetic nerve）の節前ニューロン（骨盤内臓神経（pelvic splanchnic nerves）のもと）がある。3Dは第1胸髄から上位の腰髄のあたりだけを示す。"
+        },
+        {
+          "id": "nucleus-proprius", "ja": "後角固有核", "yomi": "こうかくこゆうかく", "en": "nucleus proprius", "enAlt": ["nucleus proprius of posterior horn"], "la": "nucleus proprius cornus posterioris",
+          "parts": ["za:nucleus proprius"], "level": 3, "xray": true,
+          "kanji": "後角に固有の（後角の中心の）核",
+          "etym": "proprius「固有の・自分の」（ラテン語）",
+          "note": "後角（posterior horn）の中ほど（膠様質のすぐ前）にある神経細胞（neuron）の集まり。後根（posterior root）から入った触覚（touch）・圧覚（pressure sensation）・痛覚の線維（fiber）を受け、反対側（contralateral side）の前索（anterior funiculus）・側索（lateral funiculus）を上る脊髄視床路（spinothalamic tract）などで脳（brain）へ送る。"
+        },
+        {
+          "id": "posterolateral-tract", "ja": "後外側束", "yomi": "こうがいそくそく", "en": "posterolateral tract", "enAlt": ["tract of lissauer", "posterolateral fasciculus", "dorsolateral fasciculus"], "la": "tractus posterolateralis",
+          "parts": ["za:posterolateral tract"], "level": 3, "xray": true,
+          "kanji": "後ろの外側の線維の束",
+          "etym": "postero-「後ろの」＋ lateral「外側の」＋ tract「路」",
+          "note": "後角（posterior horn）の先（後角尖）と脊髄（spinal cord）の表面の間にある細い白質（white matter）の束（終帯ともいい、臨床ではリッサウエル路という）。後根（posterior root）から入った痛み・温度の細い線維（fiber）が、ここで1〜2髄節上るか下ってから後角に入る。"
+        },
+        {
+          "id": "fasciculus-proprius", "ja": "固有束", "yomi": "こゆうそく", "en": "fasciculus proprius", "enAlt": ["fasciculi proprii", "propriospinal tract"], "la": "fasciculi proprii",
+          "parts": ["za:* fasciculus proprius"], "level": 3, "xray": true,
+          "kanji": "脊髄に固有の（脊髄の中だけをつなぐ）束",
+          "etym": "fasciculus「小さな束」＋ proprius「固有の」（ラテン語）",
+          "note": "灰白質（gray matter）のすぐまわりを取り巻く白質（white matter）の束で、脊髄（spinal cord）のいろいろな高さ（髄節）どうしをつなぐ短い線維（fiber）（連合路）からなる。脳（brain）と脊髄をつなぐ長い線維（投射路）はその外側（lateral）を走る。上下の髄節をまたぐ脊髄反射の協調にかかわる。前索（anterior funiculus）・側索（lateral funiculus）・後索（posterior funiculus）のそれぞれにある。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-spinal-nerve-rami",
+      "title": "脊髄神経の枝と交通枝",
+      "group": "脊髄と上肢・体幹の神経",
+      "intro": ["脊髄神経（spinal nerve）は前根（anterior root）（運動）と後根（posterior root）（感覚（sensation）。脊髄神経節（spinal ganglion）がある）が椎間孔（intervertebral foramen）で合わさってでき、椎間孔を出るとすぐ太い前枝（anterior ramus）と細い後枝（posterior ramus）に分かれる。その前に、交感神経幹（sympathetic trunk）とつなぐ交通枝（ramus communicans）を出す。", "平面図は胸髄（thoracic spinal cord）の高さの1対の脊髄神経を横から見た模式図。青は感覚の線維（fiber）、赤は運動の線維（濃い赤は前角（anterior horn）からの骨格筋（skeletal muscle）への線維、うすい赤は側角（lateral horn）からの交感神経（sympathetic nerve）の線維。実線が節前、点線が節後）。"],
+      "terms": [
+        {
+          "id": "spinal-nerve", "ja": "脊髄神経", "yomi": "せきずいしんけい", "en": "spinal nerve", "enAlt": ["spinal nerves"], "la": "nervus spinalis",
+          "plate": "spinal-nerve-rami", "level": 1,
+          "kanji": "脊髄から出る神経",
+          "etym": "spinal「脊柱の・脊髄の」← spina「とげ・背骨」（ラテン語）",
+          "note": "脊髄（spinal cord）から出る31対の末梢神経（頚神経（cervical nerve）8対・胸神経（thoracic nerve）12対・腰神経（lumbar nerve）5対・仙骨神経（sacral nerve）5対・尾骨神経（coccygeal nerve）1対）。前根（anterior root）と後根（posterior root）が椎間孔（intervertebral foramen）の中で合わさってでき、運動と感覚（sensation）の両方の線維（fiber）を含む。椎間孔を出るとすぐ前枝（anterior ramus）と後枝（posterior ramus）に分かれ、その前に硬膜（dura mater）へ戻る硬膜枝と、交感神経幹（sympathetic trunk）へ行く交通枝（ramus communicans）を出す。第1頚神経（first cervical nerve）は頭蓋（skull）と環椎（atlas）の間から、第8頚神経（eighth cervical nerve）は第7頚椎（seventh cervical vertebra）と第1胸椎（first thoracic vertebra）の間から出るので、頚神経は頚椎（cervical vertebrae）より1対多い。"
+        },
+        {
+          "id": "anterior-ramus", "ja": "前枝", "yomi": "ぜんし", "en": "anterior ramus", "enAlt": ["ventral ramus", "anterior rami"], "la": "ramus anterior nervi spinalis",
+          "plate": "spinal-nerve-rami", "level": 1,
+          "kanji": "脊髄神経の前（腹側）の枝",
+          "etym": "ramus「枝」（ラテン語）",
+          "note": "脊髄神経（spinal nerve）が椎間孔（intervertebral foramen）を出て分かれる2本の枝（branch）のうち太い方。体幹（trunk）の横と前（肋間神経（intercostal nerves）・肋下神経（subcostal nerve））と上肢（upper limb）・下肢（lower limb）に分布する。頚部（neck）・腰部（lumbar region）・仙骨部では、となりどうしの前枝が合わさって神経叢（頚神経叢（cervical plexus）・腕神経叢（brachial plexus）・腰神経叢（lumbar plexus）・仙骨神経叢（sacral plexus））をつくり、胸部（thorax）では神経叢をつくらずに肋間神経として1本ずつ肋骨（ribs）の間を走る。"
+        },
+        {
+          "id": "posterior-ramus", "ja": "後枝", "yomi": "こうし", "en": "posterior ramus", "enAlt": ["dorsal ramus", "posterior rami"], "la": "ramus posterior nervi spinalis",
+          "plate": "spinal-nerve-rami", "level": 1,
+          "kanji": "脊髄神経の後ろ（背側）の枝",
+          "etym": "ramus「枝」（ラテン語）",
+          "note": "脊髄神経（spinal nerve）の2本の枝（branch）のうち細い方。後ろへ向かい、内側枝と外側枝に分かれて、背中（back）の深い筋（muscle）（固有背筋（intrinsic back muscles））と背中の皮膚（skin）に分布する。第1頚神経（first cervical nerve）の後枝が後頭下神経（suboccipital nerve）（後頭下筋（suboccipital muscles）を動かす）、第2頚神経の後枝が大後頭神経（greater occipital nerve）（後頭動脈（occipital artery）と一緒に上る。後頭部（occipital region）と頭頂部の皮膚）、第3頚神経の後枝が第三後頭神経、第1〜第3腰神経の後枝が上殿皮神経、第1〜第3仙骨神経の後枝が中殿皮神経（殿部（gluteal region）の皮膚）。"
+        },
+        {
+          "id": "white-ramus-communicans", "ja": "白交通枝", "yomi": "はくこうつうし", "en": "white ramus communicans", "enAlt": ["white rami communicantes"], "la": "ramus communicans albus",
+          "plate": "spinal-nerve-rami", "level": 2,
+          "kanji": "白い交通枝（髄鞘があって白く見える）",
+          "etym": "ramus「枝」＋ communicans「通じ合う」（ラテン語）、albus「白い」",
+          "note": "脊髄（spinal cord）の側角（lateral horn）にある交感神経（sympathetic nerve）の節前ニューロンの線維（fiber）が、前根（anterior root）・脊髄神経（spinal nerve）から交感神経幹（sympathetic trunk）の神経節（ganglion）へ入る枝（branch）。線維に髄鞘（myelin sheath）があるので白い。側角のある第1胸神経（first thoracic nerve）から第2〜第3腰神経にだけある。幹に入った線維は、その高さの神経節で乗りかえるか、幹を上下して別の高さの神経節で乗りかえるか、乗りかえずに通り抜けて内臓神経になる。"
+        },
+        {
+          "id": "gray-ramus-communicans", "ja": "灰白交通枝", "yomi": "かいはくこうつうし", "en": "gray ramus communicans", "enAlt": ["grey ramus communicans", "gray rami communicantes"], "la": "ramus communicans griseus",
+          "plate": "spinal-nerve-rami", "level": 2,
+          "kanji": "灰白色の交通枝（髄鞘が無く灰色に見える）",
+          "etym": "griseus「灰色の」（ラテン語）",
+          "note": "交感神経幹（sympathetic trunk）の神経節（ganglion）で乗りかえた節後線維が、脊髄神経（spinal nerve）に戻る枝（branch）。線維（fiber）に髄鞘（myelin sheath）が無いので灰色。すべての脊髄神経にあり、節後線維は脊髄神経の枝に乗って全身（whole body）の皮膚（skin）の血管（blood vessel）・汗腺（sweat gland）・立毛筋（arrector pili muscle）へ行く（汗（sweat）をかく・鳥肌（goose bumps）が立つ・皮膚が青白くなる）。"
+        },
+        {
+          "id": "prevertebral-ganglia", "ja": "椎前神経節", "yomi": "ついぜんしんけいせつ", "en": "prevertebral ganglia", "enAlt": ["prevertebral ganglion", "preaortic ganglia"], "la": "ganglia prevertebralia",
+          "plate": "spinal-nerve-rami", "level": 3,
+          "kanji": "椎骨（脊柱）の前にある神経節",
+          "etym": "pre-「前」＋ vertebra「椎骨」（ラテン語）",
+          "note": "脊柱（vertebral column）の前、腹大動脈（abdominal aorta）の枝（branch）の根もとのまわりにある交感神経（sympathetic nerve）の神経節（ganglion）（腹腔神経節（celiac ganglion）・上腸間膜動脈神経節（superior mesenteric ganglion）・下腸間膜動脈神経節（inferior mesenteric ganglion）・大動脈腎動脈神経節）。交感神経幹（sympathetic trunk）を乗りかえずに通り抜けた節前線維（内臓神経）がここで乗りかえ、節後線維が動脈（artery）に沿って腹部（abdomen）と骨盤（pelvis）の内臓（viscera）へ行く。交感神経幹にある神経節（幹神経節・椎傍神経節）と分けていう。"
+        }
+      ]
+    },
+    {
       "id": "nerv-upper-branches",
       "title": "腕神経叢と上肢の神経の枝",
       "group": "脊髄と上肢・体幹の神経",
@@ -1784,7 +1877,7 @@
       "id": "nerv-plexus-branches",
       "title": "腕神経叢の根と手の神経の枝",
       "group": "脊髄と上肢・体幹の神経",
-      "intro": ["腕神経叢の根（C5〜T1の前枝（anterior branch））と、鎖骨下筋神経（nerve to subclavius）・手（hand）の細い枝（branch）を見る。頚神経叢（C1〜C4）の枝（小後頭神経・大耳介神経・頚横神経・鎖骨上神経・横隔神経（phrenic nerve））と頚神経ワナは3Dに形が無い。横隔神経（C3〜C5）は前斜角筋（anterior scalene）の前を下り、心膜（pericardium）の横を通って横隔膜（diaphragm）を動かす。"],
+      "intro": ["腕神経叢の根（C5〜T1の前枝（anterior ramus））と、鎖骨下筋神経（nerve to subclavius）・手（hand）の細い枝（branch）を見る。頚神経叢（C1〜C4）の枝（小後頭神経（lesser occipital nerve）・大耳介神経（great auricular nerve）・頚横神経（transverse cervical nerve）・鎖骨上神経（supraclavicular nerves）・横隔神経（phrenic nerve））と頚神経ワナ（ansa cervicalis）は3Dに形が無いので、レッスン「頚神経叢と反回神経（recurrent laryngeal nerve）」と臓器（organ）の図「神経叢と自律神経（autonomic nerve）」の平面図で見る。横隔神経（C3〜C5）は前斜角筋（anterior scalene）の前を下り、心膜（pericardium）の横を通って横隔膜（diaphragm）を動かす。"],
       "terms": [
         {
           "id": "roots-of-brachial-plexus", "ja": "腕神経叢の根", "yomi": "わんしんけいそうのこん", "en": "roots of brachial plexus", "la": "radices plexus brachialis",
@@ -1835,6 +1928,70 @@
           "kanji": "（腋窩動脈の）内側にある神経の束",
           "etym": "medial「内側の」＋ cord「束」",
           "note": "下神経幹（inferior trunk of brachial plexus）の前部（anterior part）がそのまま続いた束（第8頚神経（eighth cervical nerve）・第1胸神経（first thoracic nerve））。腋窩動脈（axillary artery）の内側（medial）を下り、内側胸筋神経（medial pectoral nerve）・内側上腕皮神経（medial brachial cutaneous nerve）・内側前腕皮神経（medial antebrachial cutaneous nerve）・尺骨神経（ulnar nerve）と正中神経（median nerve）の内側根を出す。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-cervical-plexus",
+      "title": "頚神経叢と反回神経",
+      "group": "脊髄と上肢・体幹の神経",
+      "intro": ["頚神経叢（cervical plexus）は第1〜第4頚神経の前枝（anterior ramus）がつくる神経叢で、胸鎖乳突筋（sternocleidomastoid）の後ろに隠れている。皮膚（skin）へ行く枝（branch）（小後頭神経（lesser occipital nerve）・大耳介神経（great auricular nerve）・頚横神経（transverse cervical nerve）・鎖骨上神経（supraclavicular nerves））は胸鎖乳突筋の後縁（posterior border）のまん中（神経点）から扇のように出る。筋（muscle）へ行く枝は頚神経ワナ（ansa cervicalis）（舌骨下筋（infrahyoid muscles））と横隔神経（phrenic nerve）（横隔膜（diaphragm））など。", "迷走神経（vagus nerve）の枝の反回神経（recurrent laryngeal nerve）と上喉頭神経（superior laryngeal nerve）は、喉頭（larynx）の筋と粘膜（mucosa）へ行く。どれも3Dに形が無いので平面図で見る。"],
+      "terms": [
+        {
+          "id": "cervical-plexus", "ja": "頚神経叢", "yomi": "けいしんけいそう", "en": "cervical plexus", "la": "plexus cervicalis",
+          "plate": "cervical-plexus", "level": 1,
+          "kanji": "頚の神経の叢（あみ）",
+          "etym": "plexus「編んだもの・網」（ラテン語）",
+          "note": "第1〜第4頚神経の前枝（anterior ramus）が合わさってつくる神経叢。上位の頚椎（cervical vertebrae）の横で、椎前筋（prevertebral muscles）と頚椎の横突起（transverse process）の後結節（posterior tubercle）の間にあり、胸鎖乳突筋（sternocleidomastoid）におおわれる。皮枝（cutaneous branch）（小後頭神経（lesser occipital nerve）・大耳介神経（great auricular nerve）・頚横神経（transverse cervical nerve）・鎖骨上神経（supraclavicular nerves））は胸鎖乳突筋の後縁（posterior border）のまん中（神経点）から出て、後頭部（occipital region）・耳（ear）・頚（neck）・肩（shoulder）の上の皮膚（skin）へ行く。筋枝は椎前筋・斜角筋（scalene muscles）・肩甲挙筋（levator scapulae）への枝（branch）と、頚神経ワナ（ansa cervicalis）（舌骨下筋（infrahyoid muscles））・横隔神経（phrenic nerve）（横隔膜（diaphragm））。頚の手術では神経点のあたりに局所麻酔をする（浅頚神経叢ブロック）。"
+        },
+        {
+          "id": "lesser-occipital-nerve", "ja": "小後頭神経", "yomi": "しょうこうとうしんけい", "en": "lesser occipital nerve", "la": "nervus occipitalis minor",
+          "plate": "cervical-plexus", "level": 2,
+          "kanji": "後頭部の小さいほうの神経",
+          "etym": "occipital ← occiput「後頭」（ラテン語）",
+          "note": "頚神経叢（cervical plexus）の皮枝（cutaneous branch）（第2頚神経）。神経点から胸鎖乳突筋（sternocleidomastoid）の後縁（posterior border）に沿って上り、耳（ear）の後ろと後頭部（occipital region）の外側（lateral）の皮膚（skin）へ行く。後頭部の内側（medial）は大後頭神経（greater occipital nerve）（第2頚神経の後枝（posterior ramus））の受けもち。"
+        },
+        {
+          "id": "great-auricular-nerve", "ja": "大耳介神経", "yomi": "だいじかいしんけい", "en": "great auricular nerve", "enAlt": ["greater auricular nerve"], "la": "nervus auricularis magnus",
+          "plate": "cervical-plexus", "level": 2,
+          "kanji": "耳介へ行く大きい神経",
+          "etym": "auricular ← auricula「耳介（小さな耳）」（ラテン語）",
+          "note": "頚神経叢（cervical plexus）でいちばん太い皮枝（cutaneous branch）（第2・第3頚神経）。神経点から胸鎖乳突筋（sternocleidomastoid）の表面をまっすぐ上り、耳介（auricle）の後ろと下部、耳下腺（parotid gland）の上と下顎角（angle of mandible）の皮膚（skin）へ行く。耳下腺や頚（neck）の手術で傷みやすい。"
+        },
+        {
+          "id": "transverse-cervical-nerve", "ja": "頚横神経", "yomi": "けいおうしんけい", "en": "transverse cervical nerve", "enAlt": ["transverse nerve of neck"], "la": "nervus transversus colli",
+          "plate": "cervical-plexus", "level": 2,
+          "kanji": "頚を横に走る神経",
+          "etym": "transverse「横の」＋ cervical「頚の」",
+          "note": "頚神経叢（cervical plexus）の皮枝（cutaneous branch）（第2・第3頚神経）。神経点から胸鎖乳突筋（sternocleidomastoid）の表面を前へ横切り、広頚筋（platysma）の下を通って、前頚部と側頚部の皮膚（skin）へ行く。"
+        },
+        {
+          "id": "supraclavicular-nerves", "ja": "鎖骨上神経", "yomi": "さこつじょうしんけい", "en": "supraclavicular nerves", "enAlt": ["supraclavicular nerve"], "la": "nervi supraclaviculares",
+          "plate": "cervical-plexus", "level": 2,
+          "kanji": "鎖骨の上を通る神経",
+          "etym": "supra-「上」＋ clavicula「鎖骨」（ラテン語）",
+          "note": "頚神経叢（cervical plexus）の皮枝（cutaneous branch）（第3・第4頚神経）。神経点から後頚三角（posterior triangle of neck）の下の方を扇のように下り、鎖骨（clavicle）を越えて頚（neck）の下部・胸（chest）の上部（第2肋骨（second rib）のあたりまで）・肩（shoulder）の皮膚（skin）へ行く（内側（medial）・中間・外側鎖骨上神経）。肩の皮膚が横隔神経（phrenic nerve）と同じ第4頚神経の受けもちなので、横隔膜（diaphragm）や肝臓（liver）の病気の痛みが肩に感じられる（関連痛）。"
+        },
+        {
+          "id": "ansa-cervicalis", "ja": "頚神経ワナ", "yomi": "けいしんけいわな", "en": "ansa cervicalis", "la": "ansa cervicalis",
+          "plate": "cervical-plexus", "level": 2,
+          "kanji": "頚神経がつくるワナ（輪）",
+          "etym": "ansa「取っ手・輪」（ラテン語）",
+          "note": "頚神経叢（cervical plexus）の筋枝がつくる輪。第1・第2頚神経の線維（fiber）がいったん舌下神経（hypoglossal nerve）に加わって走ったのち離れて下る上根と、第2・第3頚神経の線維が内頚静脈（internal jugular vein）に沿って下る下根が、頚動脈鞘（carotid sheath）の前で合わさって輪になる。輪から舌骨下筋（infrahyoid muscles）（胸骨舌骨筋（sternohyoid）・胸骨甲状筋（sternothyroid）・肩甲舌骨筋（omohyoid））へ枝（branch）を出す。甲状舌骨筋（thyrohyoid）とオトガイ舌骨筋（geniohyoid）へは、第1頚神経（first cervical nerve）の線維が舌下神経に乗ったまま行く。"
+        },
+        {
+          "id": "recurrent-laryngeal-nerve", "ja": "反回神経", "yomi": "はんかいしんけい", "en": "recurrent laryngeal nerve", "enAlt": ["inferior laryngeal nerve"], "la": "nervus laryngeus recurrens",
+          "plate": "recurrent-laryngeal", "level": 1,
+          "kanji": "反り返って回る（上へ戻る）神経",
+          "etym": "recurrent ← re-「戻る」＋ currere「走る」（ラテン語）、laryngeal「喉頭の」",
+          "note": "迷走神経（vagus nerve）の枝（branch）。左は大動脈弓（arch of aorta）（動脈管索（ligamentum arteriosum）のすぐ外側（lateral））の下を、右は右鎖骨下動脈（right subclavian artery）の下を後ろへ回って反転し、気管（trachea）と食道（esophagus）の間の溝を上って喉頭（larynx）に入る（喉頭に入ってからを下喉頭神経という）。輪状甲状筋以外のすべての喉頭の筋（muscle）を動かし、声門（glottis）より下の喉頭の粘膜（mucosa）の感覚（sensation）を伝える。左は長く胸（chest）の中を通るので、大動脈瘤・肺癌のリンパ節転移（lymph node metastasis）・甲状腺（thyroid gland）の手術で傷みやすく、傷むと声帯（vocal cord）が動かず声がかすれる（嗄声。反回神経まひ）。"
+        },
+        {
+          "id": "superior-laryngeal-nerve", "ja": "上喉頭神経", "yomi": "じょうこうとうしんけい", "en": "superior laryngeal nerve", "la": "nervus laryngeus superior",
+          "plate": "recurrent-laryngeal", "level": 2,
+          "kanji": "喉頭の上の方へ行く神経",
+          "etym": "superior「上の」＋ laryngeal「喉頭の」",
+          "note": "迷走神経（vagus nerve）が頚静脈孔（jugular foramen）のすぐ下の下神経節から出す枝（branch）。内頚動脈（internal carotid artery）の後ろを内下方（inferomedial）へ下り、喉頭（larynx）の上で内枝（internal branch）と外枝（external branch）に分かれる。太い内枝は甲状舌骨膜（thyrohyoid membrane）を貫いて、声門（glottis）より上の喉頭の粘膜（mucosa）の感覚（sensation）を伝える（異物が触れると咳が出る）。細い外枝は輪状甲状筋（cricothyroid）を動かして声帯（vocal cord）を張る（高い声）。"
         }
       ]
     },
@@ -2081,6 +2238,170 @@
           "kanji": "足の背側（足の甲の側）の指（趾）の神経",
           "etym": "digitus「指」＋ dorsum「背」（ラテン語）",
           "note": "足の甲（dorsum of foot）から指（finger）の背側（dorsal）の皮膚（skin）へ行く枝（branch）。大部分は浅腓骨神経（superficial fibular nerve）から出るが、第1趾（great toe）と第2趾（second toe）の向き合う側だけは深腓骨神経（deep fibular nerve）から出る（深腓骨神経のまひ（paralysis）で、そこだけしびれる）。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-lumbosacral-plexus",
+      "title": "腰神経叢と仙骨神経叢",
+      "group": "下肢の神経",
+      "intro": ["腰神経叢（lumbar plexus）は第12胸神経と第1〜第4腰神経の前枝（anterior ramus）が大腰筋（psoas major）の中でつくる神経叢で、おもに下肢（lower limb）の前と内側（medial）へ行く（大腿神経（femoral nerve）・閉鎖神経（obturator nerve））。仙骨神経叢（sacral plexus）は第4・第5腰神経と第1〜第4仙骨神経の前枝が梨状筋（piriformis）の前でつくる神経叢で、大坐骨孔（greater sciatic foramen）から骨盤（pelvis）を出て殿部（gluteal region）と下肢の後ろへ行く（坐骨神経（sciatic nerve）・上殿神経（superior gluteal nerve）・下殿神経（inferior gluteal nerve））。2つは腰仙骨神経幹（lumbosacral trunk）でつながる。", "平面図は右側の神経叢を前から見た模式図で、緑は後部（posterior part）（大腿神経・坐骨神経の総腓骨神経（common fibular nerve）の部分など、下肢を伸ばす側へ行く線維（fiber））、黄は前部（anterior part）（閉鎖神経・脛骨神経（tibial nerve）の部分など、曲げる側へ行く線維）。"],
+      "terms": [
+        {
+          "id": "lumbar-plexus", "ja": "腰神経叢", "yomi": "ようしんけいそう", "en": "lumbar plexus", "la": "plexus lumbalis",
+          "plate": "lumbar-plexus", "level": 1,
+          "kanji": "腰の神経の叢（あみ）",
+          "etym": "lumbar ← lumbus「腰」（ラテン語）",
+          "note": "第1〜第4腰神経の前枝（anterior ramus）（と第12胸神経の一部）が大腰筋（psoas major）の中で合わさってつくる神経叢。大腰筋の外側縁（lateral border）から腸骨下腹神経（iliohypogastric nerve）・腸骨鼡径神経（ilio-inguinal nerve）・外側大腿皮神経（lateral femoral cutaneous nerve）・大腿神経（femoral nerve）、前面（anterior surface）から陰部大腿神経（genitofemoral nerve）、内側縁（medial border）から閉鎖神経（obturator nerve）が出る。大腿神経（第2〜第4腰神経の後部（posterior part））がいちばん太く大腿（thigh）の前の筋（muscle）（膝（knee）を伸ばす）へ、閉鎖神経（第2〜第4腰神経の前部（anterior part））は大腿の内側（medial）の筋（内転筋（adductor））へ行く。第4腰神経の一部は腰仙骨神経幹（lumbosacral trunk）として仙骨神経叢（sacral plexus）に加わる。"
+        },
+        {
+          "id": "subcostal-nerve", "ja": "肋下神経", "yomi": "ろっかしんけい", "en": "subcostal nerve", "la": "nervus subcostalis",
+          "plate": "lumbar-plexus", "level": 2,
+          "kanji": "肋骨の下（第12肋骨の下）を走る神経",
+          "etym": "sub-「下」＋ costa「肋骨」（ラテン語）",
+          "note": "第12胸神経の前枝（anterior ramus）。肋間神経（intercostal nerves）と同じ形の神経（nerve）だが、第12肋骨（twelfth rib）の下縁（inferior border）に沿って走り肋骨（ribs）の間ではないので肋下神経という。腎臓（kidney）の後ろを腸骨下腹神経（iliohypogastric nerve）のすぐ上で並んで走り、腹横筋（transversus abdominis）と内腹斜筋（internal oblique）の間を前へ回って、下腹部（lower abdomen）の腹壁（abdominal wall）の筋（muscle）と皮膚（skin）に分布する。一部の線維（fiber）は腰神経叢（lumbar plexus）に加わる。"
+        },
+        {
+          "id": "lumbosacral-trunk", "ja": "腰仙骨神経幹", "yomi": "ようせんこつしんけいかん", "en": "lumbosacral trunk", "la": "truncus lumbosacralis",
+          "plate": "lumbar-plexus", "level": 3,
+          "kanji": "腰と仙骨の神経叢をつなぐ神経の幹",
+          "etym": "lumbo-「腰の」＋ sacral「仙骨の」",
+          "note": "第4腰神経の前枝（anterior ramus）の一部と第5腰神経（fifth lumbar nerve）の前枝が合わさった太い索。大腰筋（psoas major）の内側縁（medial border）から出て仙骨（sacrum）の翼（仙腸関節（sacro-iliac joint）の前）を越えて骨盤（pelvis）に下り、仙骨神経叢（sacral plexus）に加わる。腰神経叢（lumbar plexus）と仙骨神経叢をつなぐもので、2つを合わせて腰仙骨神経叢という。"
+        },
+        {
+          "id": "sacral-plexus", "ja": "仙骨神経叢", "yomi": "せんこつしんけいそう", "en": "sacral plexus", "la": "plexus sacralis",
+          "plate": "sacral-plexus", "level": 1,
+          "kanji": "仙骨（の前）の神経の叢（あみ）",
+          "etym": "sacral ← os sacrum「仙骨」（ラテン語）",
+          "note": "第4・第5腰神経（腰仙骨神経幹（lumbosacral trunk））と第1〜第4仙骨神経の前枝（anterior ramus）がつくる、最も大きい神経叢。骨盤（pelvis）の後ろの壁の梨状筋（piriformis）の前（内腸骨動静脈と尿管（ureter）の後ろ）にあり、大坐骨孔（greater sciatic foramen）へ向かって三角形にまとまる。梨状筋の上（梨状筋上孔（suprapiriform foramen））から上殿神経（superior gluteal nerve）、梨状筋の下（梨状筋下孔（infrapiriform foramen））から下殿神経（inferior gluteal nerve）・坐骨神経（sciatic nerve）・後大腿皮神経（posterior femoral cutaneous nerve）・陰部神経（pudendal nerve）が出るほか、梨状筋・内閉鎖筋（obturator internus）・双子筋（gemelli）・大腿方形筋（quadratus femoris）への筋枝を出す。坐骨神経（第4腰神経〜第3仙骨神経）は人体で最大の神経（nerve）。"
+        },
+        {
+          "id": "inferior-gluteal-nerve", "ja": "下殿神経", "yomi": "かでんしんけい", "en": "inferior gluteal nerve", "la": "nervus gluteus inferior",
+          "plate": "sacral-plexus", "level": 2,
+          "kanji": "殿部の下の方へ行く神経",
+          "etym": "gluteal ← ギリシャ語 gloutos「尻」",
+          "note": "仙骨神経叢（sacral plexus）の枝（branch）（第5腰神経（fifth lumbar nerve）〜第2仙骨神経。『解剖学講義』では第1・第2仙骨神経）。梨状筋（piriformis）の下（梨状筋下孔（infrapiriform foramen））から下殿動静脈（inferior gluteal vessels）・坐骨神経（sciatic nerve）・後大腿皮神経（posterior femoral cutaneous nerve）と一緒に殿部（gluteal region）に出て、大殿筋（gluteus maximus）だけを動かす。傷むと股関節（hip joint）を伸ばす力が弱まり、階段を上る・いすから立ち上がるときに手（hand）を使うようになる。"
+        },
+        {
+          "id": "nerve-to-obturator-internus", "ja": "内閉鎖筋神経", "yomi": "ないへいさきんしんけい", "en": "nerve to obturator internus", "la": "nervus musculi obturatorii interni",
+          "plate": "sacral-plexus", "level": 3,
+          "kanji": "内閉鎖筋へ行く神経",
+          "etym": "obturator ← obturare「ふさぐ」（ラテン語）",
+          "note": "仙骨神経叢（sacral plexus）の枝（branch）（第5腰神経（fifth lumbar nerve）〜第2仙骨神経）。梨状筋下孔（infrapiriform foramen）から殿部（gluteal region）に出て坐骨棘（ischial spine）の後ろを回り、小坐骨孔（lesser sciatic foramen）から入って内閉鎖筋（obturator internus）（骨盤（pelvis）の中の面）と上双子筋（superior gemellus）へ行く。陰部神経（pudendal nerve）と同じ通り道（大坐骨孔（greater sciatic foramen）から出て小坐骨孔へ入る）をとる。"
+        },
+        {
+          "id": "coccygeal-plexus", "ja": "尾骨神経叢", "yomi": "びこつしんけいそう", "en": "coccygeal plexus", "la": "plexus coccygeus",
+          "plate": "sacral-plexus", "level": 3,
+          "kanji": "尾骨（の前）の神経の叢（あみ）",
+          "etym": "coccyx ← ギリシャ語 kokkyx「カッコウ（くちばしの形）」",
+          "note": "第4・第5仙骨神経と尾骨神経（coccygeal nerve）の前枝（anterior ramus）がつくる小さな神経叢。尾骨（coccyx）の前にあり、尾骨筋（coccygeus）と肛門挙筋（levator ani）の一部へ枝（branch）を出し、肛門尾骨神経として尾骨と肛門（anus）の間の皮膚（skin）へ行く。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-sympathetic-ganglia",
+      "title": "交感神経幹の神経節と交通枝",
+      "group": "自律神経",
+      "intro": ["交感神経幹（sympathetic trunk）は脊柱（vertebral column）の両わきを頭蓋底（cranial base）から尾骨（coccyx）の前まで下る、神経節（ganglion）が数珠のようにつながった索。頚部（neck）では神経節が3つ（上頚神経節（superior cervical ganglion）・中頚神経節（middle cervical ganglion）・頚胸神経節（cervicothoracic ganglion））にまとまり、胸部（thorax）では肋骨（ribs）の頭の前に10〜11対の胸神経節（thoracic ganglia）が並ぶ。腰部（lumbar region）には4〜5対の腰神経節、骨盤（pelvis）には4対の仙骨神経節があり、左右の幹の下端（inferior end）は尾骨の前の不対神経節で合わさる。", "3Dの神経節は、Z-Anatomy の交感神経幹の上に作った模式の形（位置と大きさのめやす）。モデルの交感神経幹は第3頚椎（third cervical vertebra）から第12胸椎（twelfth thoracic vertebra）の高さまでで、腰部と骨盤部（pelvic part）は無い。交通枝（ramus communicans）は脊髄神経（spinal nerve）と幹をつなぐ短い枝（branch）で、平面図「脊髄神経の枝と交通枝」で白交通枝（white ramus communicans）と灰白交通枝（gray ramus communicans）を見分ける。"],
+      "terms": [
+        {
+          "id": "superior-cervical-ganglion", "ja": "上頚神経節", "yomi": "じょうけいしんけいせつ", "en": "superior cervical ganglion", "la": "ganglion cervicale superius",
+          "parts": ["za:superior cervical ganglion"], "level": 2, "schematic": true,
+          "kanji": "頚部の上の神経節",
+          "etym": "ganglion ← ギリシャ語「こぶ・結び目」、cervical ← cervix「首」（ラテン語）",
+          "note": "頚部（neck）の交感神経幹（sympathetic trunk）の3つの神経節（ganglion）のうち最も大きく、第2・第3頚椎の横突起（transverse process）の前（下顎角（angle of mandible）の高さ）、内頚動脈（internal carotid artery）の後ろにある長さ約2cmの紡錘形の神経節。第1〜第4頚神経節が合わさってできた。上位の胸髄（thoracic spinal cord）（第1〜第4胸髄）から幹を上ってきた節前線維がここで節後ニューロンに代わり、節後線維は内頚動脈・外頚動脈（external carotid artery）のまわりに神経叢をつくって頭と頚（neck）の血管（blood vessel）・瞳孔散大筋（dilator pupillae）・瞼板筋・汗腺（sweat gland）・唾液腺（salivary gland）へ行き、上頚心臓神経として心臓神経叢にも入る。ここやその下の幹が傷むと、その側に縮瞳・眼瞼下垂（ptosis）・顔（face）の汗（sweat）が出ない（ホルネル症候群）が起こる。立体は模式の形。"
+        },
+        {
+          "id": "middle-cervical-ganglion", "ja": "中頚神経節", "yomi": "ちゅうけいしんけいせつ", "en": "middle cervical ganglion", "la": "ganglion cervicale medium",
+          "parts": ["za:middle cervical ganglion"], "level": 3, "schematic": true,
+          "kanji": "頚部のまん中の神経節",
+          "etym": "middle「まん中の」＋ cervical「頚の」",
+          "note": "頚部（neck）の交感神経幹（sympathetic trunk）の3つの神経節（ganglion）のうち最も小さく（無いこともある）、第6頚椎（sixth cervical vertebra）の横突起（transverse process）の前にある。第5・第6頚神経節にあたり、中頚心臓神経を出して心臓神経叢に加わる。下の頚胸神経節（cervicothoracic ganglion）とは前と後ろの2本の索で結ばれ、前の索は鎖骨下動脈（subclavian artery）を輪のように囲む（鎖骨下ワナ）。立体は模式の形。"
+        },
+        {
+          "id": "cervicothoracic-ganglion", "ja": "頚胸神経節", "yomi": "けいきょうしんけいせつ", "en": "cervicothoracic ganglion", "enAlt": ["stellate ganglion"], "la": "ganglion cervicothoracicum",
+          "parts": ["za:cervicothoracic ganglion"], "level": 2, "schematic": true,
+          "kanji": "頚と胸の境の神経節（四方へ枝を出すので星状神経節ともいう）",
+          "etym": "cervico-「頚の」＋ thoracic「胸の」、stellate ← stella「星」（ラテン語）",
+          "note": "下頚神経節と第1胸神経節が合わさった不規則な形の神経節（ganglion）で、星状神経節ともいう。第7頚椎（seventh cervical vertebra）の横突起（transverse process）と第1肋骨（first rib）の頭（肋骨頚（neck of rib））の前にあり、すぐ前を椎骨動脈（vertebral artery）が通る。鎖骨下動脈（subclavian artery）・椎骨動脈のまわりに神経叢をつくって上肢（upper limb）と脳（brain）の血管（blood vessel）へ、下頚心臓神経として心臓神経叢へ枝（branch）を出す。顔（face）・上肢の痛みや血の巡りの悪さに、ここに局所麻酔薬を入れることがある（星状神経節ブロック）。ここが傷むと、頭頚部（head and neck）の交感神経（sympathetic nerve）がまひしてホルネル症候群が起こる。立体は模式の形。"
+        },
+        {
+          "id": "thoracic-ganglia", "ja": "胸神経節", "yomi": "きょうしんけいせつ", "en": "thoracic ganglia", "enAlt": ["thoracic ganglion"], "la": "ganglia thoracica",
+          "parts": ["za:thoracic ganglia"], "level": 3, "schematic": true,
+          "kanji": "胸部の（交感神経幹の）神経節",
+          "etym": "thoracic「胸の」← ギリシャ語 thorax「胸」",
+          "note": "胸部（thorax）の交感神経幹（sympathetic trunk）で、肋骨（ribs）の頭の前に並ぶ10〜11対の小さな神経節（ganglion）（第1胸神経節は多くが下頚神経節と合わさって頚胸神経節（cervicothoracic ganglion）になる）。となりの神経節とは節間枝でつながる。胸神経（thoracic nerve）から白交通枝（white ramus communicans）で節前線維を受け、灰白交通枝（gray ramus communicans）で節後線維を胸神経へ返す。第1〜第4胸神経節から心臓（heart）（胸心臓神経）・肺（lung）・胸大動脈（thoracic aorta）への枝（branch）、第5〜第9胸神経節から大内臓神経（greater splanchnic nerve）、第10〜第11胸神経節から小内臓神経（lesser splanchnic nerve）が出る。立体は模式の形。"
+        },
+        {
+          "id": "rami-communicantes", "ja": "交通枝", "yomi": "こうつうし", "en": "rami communicantes", "enAlt": ["ramus communicans", "communicating branches"], "la": "rami communicantes",
+          "parts": ["za:sympathetic nerves"], "level": 2,
+          "kanji": "脊髄神経と交感神経幹を交通する（行き来する）枝",
+          "etym": "ramus「枝」＋ communicans「通じ合う」（ラテン語）",
+          "note": "脊髄神経（spinal nerve）と交感神経幹（sympathetic trunk）の神経節（ganglion）をつなぐ短い枝（branch）（1本の脊髄神経に1〜3本）。脊髄（spinal cord）の側角（lateral horn）にある節前ニューロンの線維（fiber）が前根（anterior root）と脊髄神経を通って幹に入る白交通枝（white ramus communicans）（髄鞘（myelin sheath）があって白い）と、幹の神経節で代わった節後線維が脊髄神経に戻る灰白交通枝（gray ramus communicans）（髄鞘が無く灰色）がある。白交通枝は側角のある第1胸神経（first thoracic nerve）から第2〜第3腰神経にだけあり、灰白交通枝はすべての脊髄神経にある。"
+        }
+      ]
+    },
+    {
+      "id": "nerv-autonomic-ganglia",
+      "title": "自律神経の神経節と内臓神経",
+      "group": "自律神経",
+      "intro": ["自律神経（autonomic nerve）は、内臓（viscera）・血管（blood vessel）・腺（gland）を意識と関係なく働かせる神経（nerve）で、脳（brain）・脊髄（spinal cord）から出る節前ニューロンと、神経節（ganglion）で乗りかえた節後ニューロンの2つで器官（organ）に届く。交感神経（sympathetic nerve）は胸髄（thoracic spinal cord）と上位の腰髄（第1胸髄〜第2・第3腰髄）の側角（lateral horn）から出て、交感神経幹（sympathetic trunk）の神経節か、腹大動脈（abdominal aorta）の前の椎前神経節（prevertebral ganglia）（腹腔神経節（celiac ganglion）・上腸間膜動脈神経節（superior mesenteric ganglion）・下腸間膜動脈神経節（inferior mesenteric ganglion））で乗りかえる。副交感神経（parasympathetic nerve）は脳幹（brainstem）（動眼神経（oculomotor nerve）・顔面神経（facial nerve）・舌咽神経（glossopharyngeal nerve）・迷走神経（vagus nerve））と仙髄（第2〜第4仙髄）から出て、器官の近く（頭では毛様体神経節（ciliary ganglion）・翼口蓋神経節（pterygopalatine ganglion）・顎下神経節（submandibular ganglion）・耳神経節（otic ganglion））か器官の壁の中で乗りかえる。", "平面図「自律神経の全体」は、赤が交感神経、青が副交感神経。左に脳幹と脊髄、まん中に交感神経幹、右に器官を並べた模式図で、実線は節前線維、点線は節後線維。"],
+      "terms": [
+        {
+          "id": "lesser-splanchnic-nerve", "ja": "小内臓神経", "yomi": "しょうないぞうしんけい", "en": "lesser splanchnic nerve", "la": "nervus splanchnicus minor",
+          "plate": "autonomic-overview", "level": 3,
+          "kanji": "小さいほうの内臓（へ行く）神経",
+          "etym": "splanchnic ← ギリシャ語 splanchna「内臓」",
+          "note": "第10・第11胸神経節から出る2〜3本の根が合わさった神経（nerve）。交感神経幹（sympathetic trunk）と大内臓神経（greater splanchnic nerve）の間を下り、横隔膜（diaphragm）を貫いて腹腔（abdominal cavity）に入り、腹腔神経叢と腎神経叢に加わる。中の線維（fiber）は交感神経幹で乗りかえていない節前線維で、腹（abdomen）の中の神経節（ganglion）（腹腔神経節（celiac ganglion）・大動脈腎動脈神経節）で節後ニューロンに代わる。いちばん下の胸神経節（thoracic ganglia）からは最下内臓神経が出る。"
+        },
+        {
+          "id": "celiac-ganglion", "ja": "腹腔神経節", "yomi": "ふくくうしんけいせつ", "en": "celiac ganglion", "enAlt": ["coeliac ganglion", "celiac ganglia", "solar ganglion"], "la": "ganglia coeliaca",
+          "plate": "autonomic-overview", "level": 2,
+          "kanji": "腹腔動脈（の根もと）にある神経節",
+          "etym": "celiac ← ギリシャ語 koilia「腹」",
+          "note": "腹腔動脈（celiac trunk）の根もとの左右にある大きな椎前神経節（prevertebral ganglia）で、まわりの腹腔神経叢（最も発達した自律神経叢。線維（fiber）が太陽の光のように広がるので太陽神経叢ともいう）の中心。大内臓神経（greater splanchnic nerve）と小内臓神経（lesser splanchnic nerve）の節前線維がここで節後ニューロンに代わり、節後線維は動脈（artery）に沿って肝臓（liver）・胃（stomach）・脾臓（spleen）・膵臓（pancreas）・小腸（small intestine）などへ行く。迷走神経（vagus nerve）（後迷走神経幹）の副交感神経（parasympathetic nerve）の線維は乗りかえずにここを通り抜ける。上腹部の内臓（viscera）の痛みはここから大内臓神経を通って胸髄（thoracic spinal cord）へ伝わる。"
+        },
+        {
+          "id": "superior-mesenteric-ganglion", "ja": "上腸間膜動脈神経節", "yomi": "じょうちょうかんまくどうみゃくしんけいせつ", "en": "superior mesenteric ganglion", "la": "ganglion mesentericum superius",
+          "plate": "autonomic-overview", "level": 3,
+          "kanji": "上腸間膜動脈（の根もと）にある神経節",
+          "etym": "mesenteric「腸間膜の」← ギリシャ語 mesos「まん中」＋ enteron「腸」",
+          "note": "上腸間膜動脈（superior mesenteric artery）の根もとにある椎前神経節（prevertebral ganglia）。腹腔神経叢から下へ続く上腸間膜動脈神経叢の中にあり、ここで乗りかえた交感神経（sympathetic nerve）の節後線維が上腸間膜動脈の枝（branch）に沿って小腸（small intestine）と大腸（large intestine）の前半（横行結腸（transverse colon）の右2/3まで）へ行き、腸（intestine）の動きと分泌（secretion）を抑える。"
+        },
+        {
+          "id": "inferior-mesenteric-ganglion", "ja": "下腸間膜動脈神経節", "yomi": "かちょうかんまくどうみゃくしんけいせつ", "en": "inferior mesenteric ganglion", "la": "ganglion mesentericum inferius",
+          "plate": "autonomic-overview", "level": 3,
+          "kanji": "下腸間膜動脈（の根もと）にある神経節",
+          "etym": "inferior「下の」＋ mesenteric「腸間膜の」",
+          "note": "下腸間膜動脈（inferior mesenteric artery）の根もとにある椎前神経節（prevertebral ganglia）。おもに腰内臓神経（上位の腰神経節から）の節前線維がここで乗りかえ、節後線維は下腸間膜動脈に沿って横行結腸（transverse colon）の左1/3・下行結腸（descending colon）・S状結腸（sigmoid colon）・直腸（rectum）の上部へ行く。下へは上下腹神経叢（仙骨前神経）に続き、骨盤（pelvis）の臓器（organ）へ向かう。"
+        },
+        {
+          "id": "pelvic-splanchnic-nerves", "ja": "骨盤内臓神経", "yomi": "こつばんないぞうしんけい", "en": "pelvic splanchnic nerves", "enAlt": ["pelvic splanchnic nerve", "nervi erigentes", "pelvic nerves"], "la": "nervi splanchnici pelvici",
+          "plate": "autonomic-overview", "level": 2,
+          "kanji": "骨盤の内臓（へ行く）神経",
+          "etym": "pelvic「骨盤の」＋ splanchnic「内臓の」",
+          "note": "第2〜第4仙髄から出る副交感神経（parasympathetic nerve）の節前線維で、第2〜第4仙骨神経の前枝（anterior ramus）から分かれて下下腹神経叢（骨盤神経叢）に加わり、膀胱（urinary bladder）・直腸（rectum）・生殖器（genital organs）の壁の近くの神経節（ganglion）で乗りかえる。膀胱の排尿筋（detrusor）を縮めて尿を出し（排尿）、直腸を動かして便を出し（排便（defecation））、陰茎（penis）の血管（blood vessel）を広げて勃起（erection）を起こす（勃起神経ともいう）。一部は上って、迷走神経（vagus nerve）の届かない横行結腸（transverse colon）の左1/3から下の大腸（large intestine）にも行く。"
+        },
+        {
+          "id": "pterygopalatine-ganglion", "ja": "翼口蓋神経節", "yomi": "よくこうがいしんけいせつ", "en": "pterygopalatine ganglion", "enAlt": ["sphenopalatine ganglion"], "la": "ganglion pterygopalatinum",
+          "plate": "autonomic-overview", "level": 2,
+          "kanji": "翼口蓋窩（蝶形骨の翼状突起と口蓋骨の間のくぼみ）の神経節",
+          "etym": "pterygo- ← ギリシャ語 pteryx「翼」＋ palatine「口蓋の」",
+          "note": "翼口蓋窩（pterygopalatine fossa）で上顎神経（maxillary nerve）のすぐ内側（medial）にある径4〜6mmの副交感神経節。顔面神経（facial nerve）（中間神経）から大錐体神経（greater petrosal nerve）・翼突管神経（nerve of pterygoid canal）を経て来た節前線維がここで乗りかえ、節後線維は上顎神経の枝（branch）に乗って涙腺（lacrimal gland）と、鼻腔（nasal cavity）・口蓋（palate）の粘膜（mucosa）の腺（gland）へ行く（涙（tears）と鼻水を出す）。上顎神経の感覚（sensation）の線維（fiber）と、深錐体神経（deep petrosal nerve）から来る交感神経（sympathetic nerve）の線維は乗りかえずに通り抜ける。"
+        },
+        {
+          "id": "submandibular-ganglion", "ja": "顎下神経節", "yomi": "がくかしんけいせつ", "en": "submandibular ganglion", "la": "ganglion submandibulare",
+          "plate": "autonomic-overview", "level": 2,
+          "kanji": "顎の下（顎下腺の上）の神経節",
+          "etym": "sub-「下」＋ mandibula「下顎」（ラテン語）",
+          "note": "舌神経（lingual nerve）が顎下腺（submandibular gland）の上を通る所で、舌神経からぶら下がるようにある小さな副交感神経節。顔面神経（facial nerve）の鼓索神経（chorda tympani）の節前線維が舌神経に乗ってここに来て乗りかえ、節後線維が顎下腺と舌下腺（sublingual gland）へ行って唾液（saliva）を出させる。"
+        },
+        {
+          "id": "otic-ganglion", "ja": "耳神経節", "yomi": "じしんけいせつ", "en": "otic ganglion", "la": "ganglion oticum",
+          "plate": "autonomic-overview", "level": 2,
+          "kanji": "耳（の近く）の神経節",
+          "etym": "otic ← ギリシャ語 ous, otos「耳」",
+          "note": "卵円孔（foramen ovale）のすぐ下で、下顎神経（mandibular nerve）のすぐ内側（medial）にある小さな副交感神経節。舌咽神経（glossopharyngeal nerve）から鼓室神経・小錐体神経を経て来た節前線維がここで乗りかえ、節後線維は耳介側頭神経（下顎神経の枝（branch））に乗って耳下腺（parotid gland）へ行き、唾液（saliva）を出させる。"
         }
       ]
     }

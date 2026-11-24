@@ -313,6 +313,19 @@ async function artPlate(plate) {
   const { data, info } = await source.flatten({ background: "#ffffff" }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const W0 = info.width, H0 = info.height;
   const px = new Float32Array(data);
+  // art.keepInk（#rrggbb）があれば、その色のインクを白地に塗った点（と縁のなじみ）だけを残し、ほかの色（黒い文字・凡例の印など）を白にする。
+  // 白からの差がインクの色の向きからどれだけ外れるか（art.inkTolerance、ふだん 60。外れが差の 35% を超える点も）で決める（線と文字の色が分かれている図のため）
+  if (art.keepInk) {
+    const ink = hex(art.keepInk).map((v) => 255 - v);
+    const ink2 = ink.reduce((sum, v) => sum + v * v, 0);
+    for (let k = 0; k < px.length; k += 3) {
+      const d = [255 - px[k], 255 - px[k + 1], 255 - px[k + 2]];
+      const a = Math.min(1, Math.max(0, (d[0] * ink[0] + d[1] * ink[1] + d[2] * ink[2]) / ink2));
+      const off = Math.hypot(d[0] - a * ink[0], d[1] - a * ink[1], d[2] - a * ink[2]);
+      // 外れが大きいか、白からの差のうちインクの向きでない分が多い（うすい灰色の文字の縁）なら白に
+      if (off > (art.inkTolerance ?? 60) || off > 0.35 * Math.hypot(...d)) px.fill(255, k, k + 3);
+    }
+  }
   const at = (x, y) => (Math.min(H0 - 1, Math.max(0, Math.round(y))) * W0 + Math.min(W0 - 1, Math.max(0, Math.round(x)))) * 3;
   // art.within [x0, y0, x1, y1] があれば、その四角の外を白くしてから作る（1枚の元の図に並んだ図の1つだけを使う）
   if (art.within) {

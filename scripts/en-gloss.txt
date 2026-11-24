@@ -117,6 +117,9 @@
 前枝@脊髄神経（|anterior ramus
 前枝@などは|anterior ramus
 前枝@外側溝の|anterior ramus
+前枝%脊髄神経,椎間孔,頚神経,胸神経,腰神経,仙骨神経,神経叢|anterior ramus
+後枝%脊髄神経,椎間孔,頚神経,胸神経,腰神経,仙骨神経,固有背筋|posterior ramus
+交通枝%交感神経幹,白交通枝,灰白交通枝|ramus communicans
 後枝|posterior branch
 後枝@神経の|posterior ramus
 後枝@閉鎖神経の|posterior branch

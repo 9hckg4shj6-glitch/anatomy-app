@@ -31,6 +31,8 @@
     { "units": ["mus-neck", "mus-neck-deep", "mus-head-neck-parts"], "title": "首の筋と舌骨の筋" },
     { "units": ["nerv-diencephalon", "nerv-septal", "nerv-diencephalon-more"], "title": "間脳・中脳の細部と透明中隔・髄膜" },
     { "units": ["nerv-cranial-branches", "nerv-mandibular-branches"], "title": "脳神経と下顎神経の枝" },
+    { "units": ["nerv-cord-inner", "nerv-cord-gray-more"], "title": "脊髄の内部と神経根・側角" },
+    { "units": ["nerv-sympathetic-ganglia", "nerv-autonomic-ganglia"], "title": "交感神経幹の神経節と自律神経の神経節" },
     { "units": ["nerv-upper-branches", "nerv-upper-more", "nerv-plexus-branches"] },
     { "units": ["nerv-lower-branches", "nerv-lower-more"], "title": "腰神経叢・仙骨神経叢の枝と腓腹神経" },
     { "units": ["reg-thorax-pelvis-openings", "reg-cranial-fossae"], "title": "頭蓋窩・胸郭と骨盤の口と腔" },

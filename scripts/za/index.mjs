@@ -8,6 +8,7 @@ import { readZaFile, vertexNormals, ZA_DIR, ZA_FILES } from "./read.mjs";
 import { anchorPairs, icp, makeWarp } from "./warp.mjs";
 import { loadKidney } from "../kidney/index.mjs";
 import { loadLung } from "../lung/index.mjs";
+import { gangliaNames, makeGanglia } from "../nerves/ganglia.mjs";
 
 const VERSION = 1;
 const CACHE = path.join(ZA_DIR, "anchors.json");
@@ -40,9 +41,12 @@ function orient(positions, indices) {
 // Z-Anatomy の内腹斜筋・腹横筋は腱膜まで1つの形で、腹直筋の前をおおってしまう（アプリで腹直筋が見えず、タップもできない）。
 // 前から見て腹直筋（同じ側）と重なる所＝腹直筋鞘になる腱膜を切り取る（by）。
 // BodyParts3D の総頚動脈・内頚静脈は頚の下の方で終わっているので、Z-Anatomy の同じ血管の、BodyParts3D の上端より上だけを足す（above）。
+// 脊髄の中間外側核（側角）は Z-Anatomy では脊髄の全長にあるが、側角は第1胸髄から第2・3腰髄だけ（『解剖学講義』p.638）。
+// 脊髄の髄節は同じ番号の椎骨より上にあるので、第7頚椎と第1胸椎の間から第12胸椎の中心までを残す（between: 上と下の BodyParts3D の骨の中心の平均）
 const CLIP = [
   { mesh: /^(internal abdominal oblique|transversus abdominis) muscle$/, by: "rectus abdominis muscle" },
   { mesh: /^(common carotid artery|internal jugular vein)$/, above: true },
+  { mesh: /^intermediolateral nucleus$/, between: { top: ["Seventh cervical vertebra", "First thoracic vertebra"], bottom: ["Twelfth thoracic vertebra"] } },
 ];
 // Z-Anatomy で1つの形になっているものを平面で分ける（書き方は build-models.mjs の CUTS と同じ。mesh は Z-Anatomy の名前）。
 // 平面の下側（normal・p < d）が "<ID>-<slug>"（名前は name）になり、上側は元のIDのまま。骨に合わせて動かしたあとの形を切る。
@@ -131,10 +135,35 @@ export async function loadZa(bpNames, bpMesh) {
   // 肺区域（Z-Anatomy の肺葉の中を区域気管支・区域動脈で分けたもの。scripts/lung/）
   const lung = await loadLung();
   for (const [id, name] of lung.names) names.set(id, name);
+  // 交感神経幹の神経節の模式の形（Z-Anatomy の幹の上に作る。scripts/nerves/ganglia.mjs）
+  const ganglia = gangliaNames();
+  for (const [id, name] of ganglia) names.set(id, name);
   const warped = new Map();
+  const gangliaOf = (side) => {
+    const key = `ganglia:${side}`;
+    if (!warped.has(key)) {
+      const find = (name) => all.find((m) => m.name === `${side} ${name}`);
+      const level = (name) => {
+        const [bpId] = [...bpNames].find(([, n]) => n === name) ?? [];
+        if (!bpId) throw new Error(`神経節: BodyParts3D に ${name} がありません`);
+        const { positions } = bpMesh(bpId);
+        let y = 0;
+        for (let i = 1; i < positions.length; i += 3) y += positions[i];
+        return y / (positions.length / 3);
+      };
+      const shapes = makeGanglia(whole(find("sympathetic trunk").id), whole(find("ganglia of sympathetic trunk").id), level);
+      for (const shape of Object.values(shapes)) shape.indices = orient(shape.positions, shape.indices);
+      warped.set(key, shapes);
+    }
+    return warped.get(key);
+  };
   const mesh = (id) => {
     if (kidney.has(id)) return kidney.mesh(id);
     if (lung.has(id)) return lung.mesh(id);
+    if (ganglia.has(id)) {
+      const [, slug, side] = id.match(/^ZS_(.+)_([rl])$/);
+      return { name: ganglia.get(id), ...gangliaOf(side === "r" ? "right" : "left")[slug] };
+    }
     const [cut, half, sourceId] = cutOf.get(id) ?? [];
     if (!cut) return whole(id);
     if (!warped.has(id)) warped.set(id, { name: names.get(id), ...splitMesh(whole(sourceId), cut.normal, cut.d)[half] });
@@ -166,6 +195,18 @@ export async function loadZa(bpNames, bpMesh) {
       if (!bpId) throw new Error(`BodyParts3D に ${source.name} がありません`);
       const top = bpMesh(bpId).bounds[1][1] - OVERLAP;
       ({ positions, indices } = clip(positions, indices, (x, y) => y > top));
+    }
+    if (rule?.between) {
+      const level = (list) => list.reduce((sum, name) => {
+        const bpId = bpByName.get(name.toLowerCase());
+        if (!bpId) throw new Error(`BodyParts3D に ${name} がありません`);
+        const p = bpMesh(bpId).positions;
+        let y = 0;
+        for (let i = 1; i < p.length; i += 3) y += p[i];
+        return sum + y / (p.length / 3);
+      }, 0) / list.length;
+      const top = level(rule.between.top), bottom = level(rule.between.bottom);
+      ({ positions, indices } = clip(positions, indices, (x, y) => y <= top && y >= bottom));
     }
     indices = orient(positions, indices);
     const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];

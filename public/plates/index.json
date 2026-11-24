@@ -11796,6 +11796,759 @@
      "term": "obturator-artery"
     }
    ]
+  },
+  "autonomic-overview": {
+   "url": "plates/autonomic-overview.c8a28c9b5e.webp",
+   "w": 355,
+   "h": 700,
+   "labels": [
+    {
+     "at": [
+      0.3549,
+      0.1829
+     ],
+     "term": "superior-cervical-ganglion"
+    },
+    {
+     "at": [
+      0.3239,
+      0.4714
+     ],
+     "term": "sympathetic-trunk"
+    },
+    {
+     "at": [
+      0.7296,
+      0.0443
+     ],
+     "term": "ciliary-ganglion"
+    },
+    {
+     "at": [
+      0.7296,
+      0.0871
+     ],
+     "term": "pterygopalatine-ganglion"
+    },
+    {
+     "at": [
+      0.7296,
+      0.1343
+     ],
+     "term": "submandibular-ganglion"
+    },
+    {
+     "at": [
+      0.7296,
+      0.1929
+     ],
+     "term": "otic-ganglion"
+    },
+    {
+     "at": [
+      0.5352,
+      0.4043
+     ],
+     "term": "greater-splanchnic-nerve"
+    },
+    {
+     "at": [
+      0.5352,
+      0.4543
+     ],
+     "term": "lesser-splanchnic-nerve"
+    },
+    {
+     "at": [
+      0.7239,
+      0.4286
+     ],
+     "term": "celiac-ganglion"
+    },
+    {
+     "at": [
+      0.707,
+      0.5586
+     ],
+     "term": "superior-mesenteric-ganglion"
+    },
+    {
+     "at": [
+      0.7155,
+      0.6329
+     ],
+     "term": "inferior-mesenteric-ganglion"
+    },
+    {
+     "at": [
+      0.5014,
+      0.8014
+     ],
+     "term": "pelvic-splanchnic-nerves"
+    },
+    {
+     "at": [
+      0.5352,
+      0.0386
+     ],
+     "term": "oculomotor-nerve"
+    },
+    {
+     "at": [
+      0.5352,
+      0.0957
+     ],
+     "term": "facial-nerve"
+    },
+    {
+     "at": [
+      0.5803,
+      0.15
+     ],
+     "term": "glossopharyngeal-nerve"
+    },
+    {
+     "at": [
+      0.5915,
+      0.19
+     ],
+     "term": "vagus-nerve"
+    },
+    {
+     "at": [
+      0.1127,
+      0.4714
+     ],
+     "term": "spinal-cord"
+    },
+    {
+     "at": [
+      0.1352,
+      0.36
+     ],
+     "term": "lateral-horn"
+    }
+   ]
+  },
+  "spinal-nerve-rami": {
+   "url": "plates/spinal-nerve-rami.9d3d037508.webp",
+   "w": 1400,
+   "h": 988,
+   "labels": [
+    {
+     "at": [
+      0.4928,
+      0.174
+     ],
+     "term": "posterior-root"
+    },
+    {
+     "at": [
+      0.4999,
+      0.4878
+     ],
+     "term": "anterior-root"
+    },
+    {
+     "at": [
+      0.3429,
+      0.3846
+     ],
+     "term": "spinal-ganglion"
+    },
+    {
+     "at": [
+      0.2086,
+      0.4676
+     ],
+     "term": "spinal-nerve"
+    },
+    {
+     "at": [
+      0.0929,
+      0.3967
+     ],
+     "term": "posterior-ramus"
+    },
+    {
+     "at": [
+      0.0786,
+      0.506
+     ],
+     "term": "anterior-ramus"
+    },
+    {
+     "at": [
+      0.1615,
+      0.6072
+     ],
+     "term": "white-ramus-communicans"
+    },
+    {
+     "at": [
+      0.2029,
+      0.5668
+     ],
+     "term": "gray-ramus-communicans"
+    },
+    {
+     "at": [
+      0.2322,
+      0.67
+     ],
+     "term": "thoracic-ganglia"
+    },
+    {
+     "at": [
+      0.2322,
+      0.7591
+     ],
+     "term": "sympathetic-trunk"
+    },
+    {
+     "at": [
+      0.6856,
+      0.8705
+     ],
+     "term": "prevertebral-ganglia"
+    },
+    {
+     "at": [
+      0.782,
+      0.3117
+     ],
+     "term": "lateral-horn"
+    },
+    {
+     "at": [
+      0.7571,
+      0.4504
+     ],
+     "term": "anterior-horn"
+    },
+    {
+     "at": [
+      0.7785,
+      0.1822
+     ],
+     "term": "posterior-horn"
+    },
+    {
+     "at": [
+      0.4429,
+      0.7996
+     ],
+     "ja": "内臓神経",
+     "en": "splanchnic nerve",
+     "note": "交感神経幹で乗りかえずに通り抜けた節前線維の束。椎前神経節へ行って乗りかえる（大内臓神経・小内臓神経など）。"
+    }
+   ]
+  },
+  "cervical-plexus": {
+   "url": "plates/cervical-plexus.210b10f9e0.webp",
+   "w": 645,
+   "h": 414,
+   "labels": [
+    {
+     "at": [
+      0.414,
+      0.4191
+     ],
+     "term": "cervical-plexus"
+    },
+    {
+     "at": [
+      0.8726,
+      0.2983
+     ],
+     "term": "lesser-occipital-nerve"
+    },
+    {
+     "at": [
+      0.7912,
+      0.2983
+     ],
+     "term": "great-auricular-nerve"
+    },
+    {
+     "at": [
+      0.1271,
+      0.4191
+     ],
+     "term": "transverse-cervical-nerve"
+    },
+    {
+     "at": [
+      0.2744,
+      0.8478
+     ],
+     "term": "supraclavicular-nerves"
+    },
+    {
+     "at": [
+      0.1981,
+      0.6787
+     ],
+     "term": "ansa-cervicalis"
+    },
+    {
+     "at": [
+      0.3919,
+      0.8157
+     ],
+     "term": "phrenic-nerve"
+    },
+    {
+     "at": [
+      0.2718,
+      0.107
+     ],
+     "term": "hypoglossal-nerve"
+    },
+    {
+     "at": [
+      0.9631,
+      0.57
+     ],
+     "term": "accessory-nerve"
+    },
+    {
+     "at": [
+      0.5845,
+      0.1473
+     ],
+     "ja": "第1頚神経（C1）",
+     "en": "first cervical nerve"
+    },
+    {
+     "at": [
+      0.5845,
+      0.3244
+     ],
+     "ja": "第2頚神経（C2）",
+     "en": "second cervical nerve"
+    },
+    {
+     "at": [
+      0.5845,
+      0.5017
+     ],
+     "ja": "第3頚神経（C3）",
+     "en": "third cervical nerve"
+    },
+    {
+     "at": [
+      0.5845,
+      0.6768
+     ],
+     "ja": "第4頚神経（C4）",
+     "en": "fourth cervical nerve"
+    },
+    {
+     "at": [
+      0.5845,
+      0.8739
+     ],
+     "ja": "第5頚神経（C5）",
+     "en": "fifth cervical nerve",
+     "note": "腕神経叢の上の根。横隔神経に少し線維を出す。"
+    },
+    {
+     "at": [
+      0.1763,
+      0.2783
+     ],
+     "ja": "頚神経ワナの上根",
+     "en": "superior root of ansa cervicalis",
+     "note": "C1（・C2）の線維。いったん舌下神経に乗ってから離れて下る。"
+    },
+    {
+     "at": [
+      0.224,
+      0.3787
+     ],
+     "ja": "頚神経ワナの下根",
+     "en": "inferior root of ansa cervicalis",
+     "note": "C2・C3 の線維。内頚静脈に沿って下る。"
+    },
+    {
+     "at": [
+      0.0392,
+      0.1473
+     ],
+     "ja": "甲状舌骨筋・オトガイ舌骨筋への枝",
+     "en": "branches to thyrohyoid and geniohyoid",
+     "note": "C1 の線維が舌下神経に乗ったまま行く。"
+    },
+    {
+     "at": [
+      0.162,
+      0.6002
+     ],
+     "ja": "舌骨下筋への枝",
+     "en": "branches to infrahyoid muscles",
+     "note": "胸骨舌骨筋・胸骨甲状筋・肩甲舌骨筋へ。"
+    }
+   ]
+  },
+  "recurrent-laryngeal": {
+   "url": "plates/recurrent-laryngeal.9ce525596e.webp",
+   "w": 1115,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.7368,
+      0.4968
+     ],
+     "term": "vagus-nerve"
+    },
+    {
+     "at": [
+      0.5022,
+      0.3186
+     ],
+     "term": "superior-laryngeal-nerve"
+    },
+    {
+     "at": [
+      0.6127,
+      0.6464
+     ],
+     "term": "recurrent-laryngeal-nerve"
+    },
+    {
+     "at": [
+      0.339,
+      0.4086
+     ],
+     "term": "larynx"
+    },
+    {
+     "at": [
+      0.7368,
+      0.7574
+     ],
+     "term": "aortic-arch"
+    },
+    {
+     "at": [
+      0.4649,
+      0.5329
+     ],
+     "ja": "気管への枝",
+     "en": "tracheal branches"
+    },
+    {
+     "at": [
+      0.6286,
+      0.557
+     ],
+     "ja": "食道への枝",
+     "en": "esophageal branches"
+    }
+   ]
+  },
+  "lumbar-plexus": {
+   "url": "plates/lumbar-plexus.52399b477d.webp",
+   "w": 862,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.7565,
+      0.3074
+     ],
+     "term": "lumbar-plexus"
+    },
+    {
+     "at": [
+      0.8962,
+      0.0369
+     ],
+     "term": "subcostal-nerve"
+    },
+    {
+     "at": [
+      0.4072,
+      0.1762
+     ],
+     "term": "iliohypogastric-nerve"
+    },
+    {
+     "at": [
+      0.3739,
+      0.2172
+     ],
+     "term": "ilio-inguinal-nerve"
+    },
+    {
+     "at": [
+      0.527,
+      0.2869
+     ],
+     "term": "genitofemoral-nerve"
+    },
+    {
+     "at": [
+      0.3972,
+      0.4385
+     ],
+     "term": "lateral-femoral-cutaneous-nerve"
+    },
+    {
+     "at": [
+      0.161,
+      0.7787
+     ],
+     "term": "femoral-nerve"
+    },
+    {
+     "at": [
+      0.6035,
+      0.7951
+     ],
+     "term": "obturator-nerve"
+    },
+    {
+     "at": [
+      0.5802,
+      0.9324
+     ],
+     "term": "lumbosacral-trunk"
+    },
+    {
+     "at": [
+      0.9228,
+      0.0984
+     ],
+     "ja": "第1腰神経（L1）",
+     "en": "first lumbar nerve"
+    },
+    {
+     "at": [
+      0.9128,
+      0.25
+     ],
+     "ja": "第2腰神経（L2）",
+     "en": "second lumbar nerve"
+    },
+    {
+     "at": [
+      0.9395,
+      0.4098
+     ],
+     "ja": "第3腰神経（L3）",
+     "en": "third lumbar nerve"
+    },
+    {
+     "at": [
+      0.9228,
+      0.584
+     ],
+     "ja": "第4腰神経（L4）",
+     "en": "fourth lumbar nerve"
+    },
+    {
+     "at": [
+      0.8862,
+      0.7705
+     ],
+     "ja": "第5腰神経（L5）",
+     "en": "fifth lumbar nerve"
+    },
+    {
+     "at": [
+      0.5003,
+      0.7992
+     ],
+     "ja": "副閉鎖神経",
+     "en": "accessory obturator nerve",
+     "note": "ある人とない人がいる。恥骨筋へ行く。"
+    },
+    {
+     "at": [
+      0.0679,
+      0.7213
+     ],
+     "ja": "大腰筋・腸骨筋への枝",
+     "en": "branches to psoas and iliacus"
+    }
+   ]
+  },
+  "sacral-plexus": {
+   "url": "plates/sacral-plexus.58520572cd.webp",
+   "w": 767,
+   "h": 1400,
+   "labels": [
+    {
+     "at": [
+      0.617,
+      0.4492
+     ],
+     "term": "sacral-plexus"
+    },
+    {
+     "at": [
+      0.2745,
+      0.3415
+     ],
+     "term": "superior-gluteal-nerve"
+    },
+    {
+     "at": [
+      0.1734,
+      0.4615
+     ],
+     "term": "inferior-gluteal-nerve"
+    },
+    {
+     "at": [
+      0.1734,
+      0.7262
+     ],
+     "term": "sciatic-nerve"
+    },
+    {
+     "at": [
+      0.4682,
+      0.7323
+     ],
+     "term": "posterior-femoral-cutaneous-nerve"
+    },
+    {
+     "at": [
+      0.5384,
+      0.8492
+     ],
+     "term": "pudendal-nerve"
+    },
+    {
+     "at": [
+      0.5131,
+      0.4954
+     ],
+     "term": "nerve-to-piriformis"
+    },
+    {
+     "at": [
+      0.2605,
+      0.7846
+     ],
+     "term": "nerve-to-quadratus-femoris"
+    },
+    {
+     "at": [
+      0.3784,
+      0.7385
+     ],
+     "term": "nerve-to-obturator-internus"
+    },
+    {
+     "at": [
+      0.8584,
+      0.4954
+     ],
+     "term": "pelvic-splanchnic-nerves"
+    },
+    {
+     "at": [
+      0.7967,
+      0.8385
+     ],
+     "term": "coccygeal-plexus"
+    },
+    {
+     "at": [
+      0.937,
+      0.0338
+     ],
+     "ja": "第4腰神経（L4）",
+     "en": "fourth lumbar nerve"
+    },
+    {
+     "at": [
+      0.937,
+      0.1692
+     ],
+     "ja": "第5腰神経（L5）",
+     "en": "fifth lumbar nerve"
+    },
+    {
+     "at": [
+      0.937,
+      0.3
+     ],
+     "ja": "第1仙骨神経（S1）",
+     "en": "first sacral nerve"
+    },
+    {
+     "at": [
+      0.9286,
+      0.44
+     ],
+     "ja": "第2仙骨神経（S2）",
+     "en": "second sacral nerve"
+    },
+    {
+     "at": [
+      0.9174,
+      0.5769
+     ],
+     "ja": "第3仙骨神経（S3）",
+     "en": "third sacral nerve"
+    },
+    {
+     "at": [
+      0.9286,
+      0.7123
+     ],
+     "ja": "第4仙骨神経（S4）",
+     "en": "fourth sacral nerve"
+    },
+    {
+     "at": [
+      0.937,
+      0.8123
+     ],
+     "ja": "第5仙骨神経（S5）",
+     "en": "fifth sacral nerve"
+    },
+    {
+     "at": [
+      0.9118,
+      0.8923
+     ],
+     "ja": "尾骨神経",
+     "en": "coccygeal nerve"
+    },
+    {
+     "at": [
+      0.5637,
+      0.7231
+     ],
+     "ja": "貫通皮神経",
+     "en": "perforating cutaneous nerve",
+     "note": "仙結節靱帯を貫いて、殿部の下内側の皮膚へ行く。"
+    },
+    {
+     "at": [
+      0.7153,
+      0.8062
+     ],
+     "ja": "尾骨筋・肛門挙筋への枝",
+     "en": "branches to coccygeus and levator ani"
+    },
+    {
+     "at": [
+      0.763,
+      0.9569
+     ],
+     "ja": "肛門尾骨神経",
+     "en": "anococcygeal nerves",
+     "note": "尾骨と肛門の間の皮膚へ行く。"
+    }
+   ]
   }
  }
 }
