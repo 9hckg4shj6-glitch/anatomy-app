@@ -8,6 +8,7 @@ import {
   motionDemo, organDemo, outcomeTable, isGuideTab, tabsDemo, watchDemos, type GuideTab,
 } from "./guide-demos";
 import "./guide.css";
+import { stepList } from "./plan-card";
 import { purposeChips } from "./settings-screen";
 import { ICONS } from "./study-hub";
 import { resetTabIntros } from "./tab-intro";
@@ -401,14 +402,6 @@ function purposeSection(purpose: PurposeInfo, mine: boolean): HTMLElement {
   );
 }
 
-/** 番号つきの手順（押すとその画面へ行くリンクつき）。使い方と「あなたの使い方」で使う */
-export function stepList(steps: PurposeInfo["steps"]): HTMLElement {
-  return h("ol", { class: "guide-steps" }, ...steps.map((step) => h("li", {},
-    h("span", {}, step.text),
-    step.link ? h("a", { class: "guide-go", href: step.link.href }, `${step.link.label} ›`) : "",
-  )));
-}
-
 function tabCard(tab: (typeof TABS)[GuideTab]): HTMLElement {
   const mark = h("span", { class: "home-item-icon", style: "--item:#1f6f78", "aria-hidden": "true" });
   mark.innerHTML = `<svg viewBox="0 0 24 24">${ICONS[tab.icon]}</svg>`;
@@ -416,21 +409,5 @@ function tabCard(tab: (typeof TABS)[GuideTab]): HTMLElement {
     h("a", { class: "guide-tab-head", href: tab.href }, mark, h("span", {}, h("b", {}, tab.name), h("small", {}, tab.lead))),
     // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）
     h("ul", {}, ...tab.items.filter(([, href]) => canUseExam() || href !== "#/exam").map(([label, href, text]) => h("li", {}, h("a", { href }, label), h("span", {}, canUseExam() ? text : text.replace("・骨学試験の日", ""))))),
-  );
-}
-
-/**
- * 3語のレッスンのあとに1回だけ出す「あなたの使い方」。選んだ目的ごとに初めの2つの手順（目的を選んでいなければ授業の予習・復習）。
- * 全部は使い方のページで
- */
-export function planCard(): HTMLElement {
-  const chosen = shownPurposes().filter((purpose) => preferences.purposes.includes(purpose.id));
-  const list = chosen.length ? chosen : shownPurposes().slice(0, 1);
-  return h("section", { class: "plan" },
-    h("h3", {}, "あなたの使い方"),
-    ...list.map((purpose) => h("div", { class: "plan-purpose" },
-      h("p", { class: "plan-title" }, purpose.title),
-      stepList(purpose.steps.slice(0, 2)))),
-    h("a", { class: "home-guide-link", href: "#/guide" }, "使い方をすべて見る（動く見本つき）›"),
   );
 }

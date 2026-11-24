@@ -3,15 +3,14 @@ import { inCourse, isBeginner, studyFacets } from "../course";
 import { db, type ReviewEvent } from "../db";
 import { dueLabel, State } from "../fsrs";
 import { h, onKeys, until } from "../dom";
-import { examByKey, examFacetsOf, FIRST_FACETS, isExamKey } from "../exam";
-import { canUseExam } from "../profile";
+import { FIRST_FACETS, isExamKey, itemHref } from "../exam-keys";
+import { examLoaded, loadExam } from "../exam-lazy";
 import { isRootKey, rootByKey } from "../roots";
 import { preferences, REVIEW_SIZE_OPTIONS, setPreference } from "../settings";
 import { buildQueue, facetLabels, facetsFor, kindHintText, ROOT_FACETS, TERM_KINDS, unlockedTerms, type QueueItem } from "../study";
 import type { AppContext } from "./context";
 import { nextLesson } from "./lessons";
 import { ask, showPanel, type Outcome } from "./quiz";
-import { askExam, itemHref } from "./exam";
 import { askRoot } from "./roots";
 
 /** まちがえて覚え直している途中の問題を、期限の何分前から出すか（復習の回の終わりに、待たずにもう一度解く） */
@@ -48,7 +47,10 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
   const firstLearned = new Set(schedules.filter((s) => FIRST_FACETS.includes(s.facet) && s.state === State.Review).map((s) => s.termId));
   const facetsOf = (id: string) => {
     if (isRootKey(id)) return ROOT_FACETS;
-    if (isExamKey(id)) return examFacetsOf(examByKey.get(id)!, firstLearned.has(id));
+    if (isExamKey(id)) {
+      const exam = examLoaded()!.data; // inReview で読み込み済みのものだけ
+      return exam.examFacetsOf(exam.examByKey.get(id)!, firstLearned.has(id));
+    }
     return facetsFor(termById.get(id), unlocked.has(id), study);
   };
   return buildQueue(known, schedules, now, preferences.newPerDay - newToday, facetsOf, aheadUntil)
@@ -65,13 +67,13 @@ export function partFilter(learned: { termId: string; learnedAt: string }[], sta
 /** 今のモードの復習に出す語・語根カード・骨学試験の項目か（内容の更新で消えた語は出さない。骨学試験は使える名前の人だけ） */
 function inReview(id: string): boolean {
   if (termById.has(id)) return inCourse(id);
-  return !isBeginner() && (rootByKey.has(id) || (examByKey.has(id) && canUseExam()));
+  return !isBeginner() && (rootByKey.has(id) || !!examLoaded()?.data.examByKey.has(id));
 }
 
 /** 語の問題か語根の問題か骨学試験の問題かで出し分ける */
 export function askItem(ctx: AppContext, item: QueueItem, source: ReviewEvent["source"], progress: string): Promise<Outcome> {
   if (isRootKey(item.termId)) return askRoot(ctx, item, source, progress);
-  if (isExamKey(item.termId)) return askExam(ctx, item, source, progress);
+  if (isExamKey(item.termId)) return loadExam().then(({ ui }) => ui.askExam(ctx, item, source, progress));
   return ask(ctx, item, source, progress);
 }
 
@@ -334,7 +336,7 @@ async function finish(ctx: AppContext, setup: Setup, answered: number, correct: 
   const missedLink = (id: string, facets: Set<string>) => {
     const title = [...facets].join("・");
     const root = rootByKey.get(id);
-    const exam = examByKey.get(id);
+    const exam = examLoaded()?.data.examByKey.get(id);
     if (root) return h("a", { class: "chip", href: `#/roots/root/${encodeURIComponent(id)}`, lang: "en", title }, root.root);
     if (exam) return h("a", { class: "chip", href: itemHref(exam), title }, exam.title);
     return h("a", { class: "chip", href: `#/explore/${id}`, title }, termById.get(id)?.ja ?? id, h("span", { class: "chip-count" }, title));

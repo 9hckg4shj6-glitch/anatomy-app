@@ -49,6 +49,42 @@
       ]
     },
     {
+      "id": "reg-inguinal-ring",
+      "title": "鼡径管の入口と鼡径三角",
+      "group": "体幹と頭頚部",
+      "intro": ["鼡径管（inguinal canal）は腹壁（abdominal wall）を斜めに抜ける管で、腹（abdomen）の中の側の入口が深鼡径輪（deep inguinal ring）、皮下（subcutaneous）の出口が浅鼡径輪（superficial inguinal ring）。腹の中から見ると、深鼡径輪のすぐ内側（medial）を下腹壁動静脈が上り、その内側の、腹直筋（rectus abdominis）の外縁（lateral margin）と鼡径靱帯（inguinal ligament）に囲まれた所が鼡径三角（inguinal triangle）。", "鼡径ヘルニア（inguinal hernia）のうち、下腹壁動脈（inferior epigastric artery）の外側（lateral）の深鼡径輪から鼡径管を通って出るものを外鼡径ヘルニア（間接ヘルニア）、内側の鼡径三角の腹壁を直接押して出るものを内鼡径ヘルニア（直接ヘルニア）という。鼡径靱帯の下の大腿輪（femoral ring）から出るのが大腿ヘルニア（femoral hernia）。"],
+      "terms": [
+        {
+          "id": "deep-inguinal-ring", "ja": "深鼡径輪", "yomi": "しんそけいりん", "en": "deep inguinal ring", "enAlt": ["internal inguinal ring", "abdominal inguinal ring"], "la": "anulus inguinalis profundus",
+          "plate": "inguinal-posterior", "level": 1,
+          "kanji": "深い所（腹の中の側）の鼡径の輪",
+          "etym": "deep「深い」＋ inguinal「鼡径の」＋ ring「輪」",
+          "note": "鼡径管（inguinal canal）の腹（abdomen）の中の側の入口。鼡径靱帯（inguinal ligament）の中点の約1.5cm上で、横筋筋膜（transversalis fascia）にあいた穴。ここから精管（ductus deferens）と精巣動静脈（testicular vessels）（女性は子宮円索（round ligament of uterus））が鼡径管に入る。すぐ内側（medial）を下腹壁動脈（inferior epigastric artery）が上るので、下腹壁動脈の外側（lateral）から出るヘルニア（hernia）を外鼡径ヘルニア（間接ヘルニア）という。出口は外腹斜筋（external oblique）の腱膜（aponeurosis）にあいた浅鼡径輪（superficial inguinal ring）で、恥骨結節（pubic tubercle）のすぐ上外側（superolateral）にある。"
+        },
+        {
+          "id": "inguinal-triangle", "ja": "鼡径三角", "yomi": "そけいさんかく", "en": "inguinal triangle", "enAlt": ["hesselbach's triangle", "hesselbach triangle"], "la": "trigonum inguinale",
+          "plate": "inguinal-posterior", "level": 2,
+          "kanji": "鼡径部の三角形",
+          "etym": "inguinal「鼡径の」＋ triangle「三角形」。ヘッセルバッハ三角ともいう",
+          "note": "腹（abdomen）の中から見て、外側（lateral）を下腹壁動静脈、内側（medial）を腹直筋（rectus abdominis）の外縁（lateral margin）、下を鼡径靱帯（inguinal ligament）に囲まれた三角形の所。腹壁（abdominal wall）が横筋筋膜（transversalis fascia）と腹膜（peritoneum）だけで薄いので、腸（intestine）がここを直接押して出ることがある（内鼡径ヘルニア（直接ヘルニア）。下腹壁動脈（inferior epigastric artery）の内側から出る）。"
+        },
+        {
+          "id": "femoral-ring", "ja": "大腿輪", "yomi": "だいたいりん", "en": "femoral ring", "la": "anulus femoralis",
+          "plate": "inguinal-posterior", "level": 2,
+          "kanji": "大腿管の入口の輪",
+          "etym": "femoral「大腿の」＋ ring「輪」",
+          "note": "鼡径靱帯（inguinal ligament）の下、血管裂孔（vascular lacuna）のいちばん内側（medial）で、大腿静脈（femoral vein）の内側にある小さな入口（大腿管（femoral canal）の上の口）。内側を裂孔靱帯（lacunar ligament）、前を鼡径靱帯、後ろを恥骨櫛（pecten pubis）が囲み、中にはリンパ管（lymphatic vessel）と深鼡径リンパ節（deep inguinal nodes）がある。腸（intestine）がここから大腿管へ出るのが大腿ヘルニア（femoral hernia）で、女性に多く、出口がせまいので腸がしめつけられやすい（嵌頓）。"
+        },
+        {
+          "id": "lacunar-ligament", "ja": "裂孔靱帯", "yomi": "れっこうじんたい", "en": "lacunar ligament", "enAlt": ["gimbernat's ligament"], "la": "ligamentum lacunare",
+          "plate": "inguinal-posterior", "level": 3,
+          "kanji": "（血管）裂孔の内側の靱帯",
+          "etym": "lacunar「くぼみ・すき間の」（ラテン語 lacuna）＋ ligament「靱帯」。ジンベルナート靱帯ともいう",
+          "note": "鼡径靱帯（inguinal ligament）の内側（medial）の端が、後ろへ折れ返って恥骨櫛（pecten pubis）に付く三角形の靱帯（ligament）。大腿輪（femoral ring）の内側の縁になる。"
+        }
+      ]
+    },
+    {
       "id": "reg-mediastinum",
       "title": "縦隔",
       "group": "体幹と頭頚部",

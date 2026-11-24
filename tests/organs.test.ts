@@ -3,6 +3,7 @@ import { organById, organOf, organOfUnit, organTerms, plateOfTerm } from "../src
 import { sceneFor } from "../src/ui/context";
 // @ts-expect-error 型定義の無いビルド用スクリプト
 import { partitionMesh } from "../scripts/split-mesh.mjs";
+import { fullOrganById, fullPlate } from "../src/organ-details";
 
 const mesh = (geometry: THREE.BufferGeometry) => {
   geometry.computeVertexNormals();
@@ -104,7 +105,7 @@ describe("臓器の場面", () => {
     expect(organOf("vagus-nerve")).toBeUndefined();
     expect(sceneFor("nervous", "nerv-cranial").organ).toBeUndefined();
     // 縦隔・腹膜: ほかの臓器の語を集めて見せる（図鑑の見せ方は変えない）。添える語も欄に一覧で出す
-    for (const id of ["mediastinum", "peritoneum"]) expect(organById.get(id)?.aroundTitle).toBeTruthy();
+    for (const id of ["mediastinum", "peritoneum"]) expect(fullOrganById(id)?.aroundTitle).toBeTruthy();
     expect(organTerms(organById.get("mediastinum")!)).toContain("esophagus");
     expect(organOf("thymus")?.id).toBe("mediastinum");
     expect(organOf("heart")?.id).toBe("heart");
@@ -127,7 +128,7 @@ describe("臓器の場面", () => {
     expect(organOf("ductus-arteriosus")).toBeUndefined();
     expect(plateOfTerm({ plate: "fetal-circulation" })?.organ.id).toBe("vessels");
     expect(plateOfTerm({ plate: "gut-tube" })?.organ.id).toBe("development");
-    expect(plateOfTerm({ plate: "atrial-septation" })?.plate.art?.license).toBe("自作");
+    expect(fullPlate(plateOfTerm({ plate: "atrial-septation" })?.plate.id)?.art?.license).toBe("自作");
   });
 });
 

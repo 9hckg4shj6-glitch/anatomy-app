@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { organById, organOf, pins, plateOfTerm, termById, unitById } from "../src/content";
 import { sceneFor } from "../src/ui/context";
+import { fullPlate } from "../src/organ-details";
 
 // 解剖学総論（循環器系・消化器系）の講義に合わせた2回目の追加（docs/設計.md「解剖学総論の講義に合わせた循環器・消化器 その2」）
 describe("解剖学総論の循環器・消化器 その2", () => {
@@ -32,10 +33,10 @@ describe("解剖学総論の循環器・消化器 その2", () => {
     // 線維輪は 2026-11-16 に3Dの語にした（docs/緻密なモデル.md「その1」）
     expect(termById.get("fibrous-rings-of-heart")?.parts).toEqual(["fibrous ring of * valve"]);
     expect(on("internal-anal-sphincter")?.plate.id).toBe("rectum-anal");
-    expect(on("hepatic-diverticulum")?.plate.art?.license).toBe("自作");
+    expect(fullPlate(on("hepatic-diverticulum")?.plate.id)?.art?.license).toBe("自作");
     expect(on("septum-transversum")?.plate.id).toBe("gut-tube");
     for (const id of ["dual-circulation", "vein-wall", "tonsils", "pancreatic-ducts", "intestine-folds"]) {
-      const plate = [...organById.values()].flatMap((organ) => organ.plates).find((p) => p.id === id);
+      const plate = fullPlate(id);
       expect(plate?.art?.page, id).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
     }
   });

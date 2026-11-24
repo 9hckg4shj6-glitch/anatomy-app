@@ -7,7 +7,7 @@ import { loadProfile, NAME_MAX, needsStart, profileComplete, saveProfile, START_
 import { account, accountAvailable } from "../account";
 import { googleButton, inAppNote } from "./account-section";
 import type { AppContext } from "./context";
-import { planCard } from "./guide";
+import { planCard } from "./plan-card";
 import { lessonMinutes } from "./home";
 import { nextLesson } from "./lessons";
 import { profileFields } from "./profile-form";

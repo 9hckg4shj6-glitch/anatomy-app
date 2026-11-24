@@ -12,6 +12,7 @@ import {
   type ClozeItem, type DrawingItem, type DrawingMarkItem, type DrawingView, type EssayItem, type ExamArea, type ExamItem, type ExamKind, type LevelItem,
   type PairItem, type SequenceItem, type WordItem,
 } from "../exam";
+import { itemHref } from "../exam-keys";
 import { landmarkAt, type Vec3 } from "../landmarks";
 import { ORIGIN_COLOR } from "../viewer";
 import { dueLabel, Rating, recordReview, retrievability, type RecordedReview } from "../fsrs";
@@ -153,9 +154,6 @@ async function practice(ctx: AppContext, kind: ExamKind): Promise<void> {
 }
 
 /** その項目を1問だけ解くアドレス */
-export function itemHref(item: ExamItem): string {
-  return `#/exam/${item.kind}/${encodeURIComponent(item.id)}`;
-}
 
 /**
  * 項目の一覧（出た回数・覚え具合）。押すとその1問を解く。areas なら範囲（総論〜頭蓋）で絞れる。

@@ -403,7 +403,7 @@
         },
         {
           "id": "right-lymphatic-duct", "ja": "右リンパ本幹", "yomi": "みぎりんぱほんかん", "en": "right lymphatic duct", "la": "ductus lymphaticus dexter",
-          "plate": "lymphatic-system", "level": 2,
+          "plate": "thoracic-duct", "level": 2,
           "kanji": "右のリンパの太い幹",
           "etym": "right「右の」＋ lymphatic duct「リンパ管」",
           "note": "右の頭・首（neck）・上肢（upper limb）・胸（chest）（右上半身）のリンパ（lymph）を集める、長さ1cmほどの短い管。右の静脈角（venous angle）（内頚静脈（internal jugular vein）と鎖骨下静脈（subclavian vein）の合流）で静脈（vein）に注ぐ。残りの全身（whole body）（下半身・腹（abdomen）・左上半身）のリンパは胸管（thoracic duct）が集めて左の静脈角に注ぐ。"
@@ -442,6 +442,34 @@
           "kanji": "脾臓の（中を支える）柱",
           "etym": "trabecula ← ラテン語「小さな梁」",
           "note": "脾臓（spleen）の被膜から中へ入る結合組織（connective tissue）の柱。脾臓の骨組みになり、中を脾柱動脈・脾柱静脈が通る。被膜と脾柱には平滑筋（smooth muscle）が少しある。"
+        }
+      ]
+    },
+    {
+      "id": "lymph-thoracic-duct",
+      "title": "胸管と乳び槽",
+      "intro": ["全身（whole body）のリンパ（lymph）は、最後に2本の太いリンパ管（lymphatic vessel）に集まって静脈（vein）に戻る。下半身・腹（abdomen）と左の上半身のリンパは胸管（thoracic duct）に、右の上半身のリンパは右リンパ本幹（right lymphatic duct）に集まり、それぞれ左右の静脈角（venous angle）（内頚静脈（internal jugular vein）と鎖骨下静脈（subclavian vein）の合流点）に注ぐ。", "胸管は腹の乳び槽（cisterna chyli）から始まり、大動脈（aorta）と一緒に横隔膜（diaphragm）を抜けて胸（chest）を上る。腸（intestine）で吸収した脂肪（fat）も胸管を通って血液（blood）に入る。このアプリの3Dモデルには胸管・リンパ管が無いので、平面図で示す。"],
+      "terms": [
+        {
+          "id": "thoracic-duct", "ja": "胸管", "yomi": "きょうかん", "en": "thoracic duct", "la": "ductus thoracicus",
+          "plate": "thoracic-duct", "level": 1,
+          "kanji": "胸（胸郭の中）を通る管",
+          "etym": "thoracic「胸の」（ギリシャ語 thorax）＋ duct「管」（ラテン語 ductus「導くもの」）",
+          "note": "体でいちばん太いリンパ管（lymphatic vessel）（長さ約40cm）。第1〜2腰椎（first to second lumbar vertebrae）の前の乳び槽（cisterna chyli）から始まり、横隔膜（diaphragm）の大動脈裂孔（aortic hiatus）を大動脈（aorta）と一緒に通って胸（chest）に入る。胸では大動脈と奇静脈（azygos vein）の間を食道（esophagus）の後ろで上り、上のほうで左へ寄って、首（neck）の付け根で左の静脈角（venous angle）に注ぐ。下半身・腹（abdomen）・左の上半身（全身（whole body）のおよそ3/4）のリンパ（lymph）を集め、腸（intestine）で吸収した脂肪（fat）（乳び（chyle））も運ぶ。胸の手術で傷つくと、胸膜腔（pleural cavity）に乳びがたまる（乳び胸）。"
+        },
+        {
+          "id": "cisterna-chyli", "ja": "乳び槽", "yomi": "にゅうびそう", "en": "cisterna chyli", "la": "cisterna chyli",
+          "plate": "thoracic-duct", "level": 2,
+          "kanji": "乳び（脂肪を含んだ白いリンパ）をためる槽（水おけ）",
+          "etym": "cisterna「水槽」（ラテン語）＋ chyli「乳びの」（ギリシャ語 chylos「汁」）",
+          "note": "第1〜2腰椎（first to second lumbar vertebrae）の前、腹大動脈（abdominal aorta）の右後ろにある、胸管（thoracic duct）の始まりのふくらみ。左右の腰リンパ本幹（lumbar trunk）（下肢（lower limb）・骨盤（pelvis）・腹壁（abdominal wall）から）と腸リンパ本幹（腸から）が注ぐ。腸（intestine）のリンパ（lymph）は吸収した脂肪（fat）で白くにごっているので乳び（chyle）という。"
+        },
+        {
+          "id": "venous-angle", "ja": "静脈角", "yomi": "じょうみゃくかく", "en": "venous angle", "enAlt": ["jugulosubclavian junction"], "la": "angulus venosus",
+          "plate": "thoracic-duct", "level": 1,
+          "kanji": "静脈がつくる角",
+          "etym": "venous「静脈の」＋ angle「角」。ピロゴフ角ともいう",
+          "note": "首（neck）の付け根で、内頚静脈（internal jugular vein）と鎖骨下静脈（subclavian vein）が合わさって腕頭静脈（brachiocephalic vein）になる所の角。左の静脈角に胸管（thoracic duct）が、右の静脈角に右リンパ本幹（right lymphatic duct）が注ぎ、全身（whole body）のリンパ（lymph）が静脈（vein）に戻る。左の静脈角の近くの左鎖骨上リンパ節（ウィルヒョウ（Virchow）のリンパ節（lymph node））は、胃（stomach）がんなど腹（abdomen）のがんが胸管をさかのぼって転移（metastasis）する所として知られる。"
         }
       ]
     }

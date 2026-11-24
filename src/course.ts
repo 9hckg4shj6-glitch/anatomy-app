@@ -1,7 +1,7 @@
 import beginnerJson from "../content/beginner.json";
 import pointsJson from "../content/points.json";
 import standardLessonsJson from "../content/standard-lessons.json";
-import { isPlateUnit, organOf, organOfLesson, termById, terms, units, unitById, type Organ, type Term, type Unit } from "./content";
+import { isPlateUnit, organOf, organOfLesson, termById, terms, units, unitById, type OrganCore, type Term, type Unit } from "./content";
 import type { Facet } from "./db";
 import { preferences } from "./settings";
 import { BASIC_FACETS } from "./study";
@@ -118,7 +118,7 @@ export function studyFacets(): Facet[] {
 }
 
 /** 初心者コースのレッスンが1つの臓器の語だけなら、その臓器（心臓のレッスンは心臓と大血管だけを見せる） */
-export function beginnerOrgan(unitId: string | undefined): Organ | undefined {
+export function beginnerOrgan(unitId: string | undefined): OrganCore | undefined {
   const unit = beginnerUnits.find((item) => item.id === unitId);
   const organ = unit?.terms[0] ? organOf(unit.terms[0].id) : undefined;
   return organ && unit!.terms.every((term) => organOf(term.id) === organ) ? organ : undefined;
@@ -128,6 +128,7 @@ export function beginnerOrgan(unitId: string | undefined): Organ | undefined {
  * 臓器の図で学ぶレッスン（今のコースの図のレッスンのうち、この臓器に入るもの。docs/学びやすさ.md の案1）。
  * 組織・発生・皮膚・臓器の内部のように平面図で覚えるレッスンは、学ぶのレッスンの道すじではなくここで学ぶ
  */
-export function organLessons(organ: Organ): Unit[] {
-  return courseUnits().filter((unit) => isPlateUnit(unit) && organOfLesson(unit) === organ);
+export function organLessons(organ: OrganCore): Unit[] {
+  // 臓器の図の画面の臓器は、残りの所を合わせた別のもの（src/organ-details.ts）なので ID でくらべる
+  return courseUnits().filter((unit) => isPlateUnit(unit) && organOfLesson(unit)?.id === organ.id);
 }

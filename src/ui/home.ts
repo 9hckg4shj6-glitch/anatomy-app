@@ -1,11 +1,12 @@
 import { systems, type Unit } from "../content";
 import { courseTerms, isBeginner } from "../course";
 import { db, nowIso, type LearnedTerm, type StoredSchedule } from "../db";
-import { examProgress, SECTION_KINDS, SORT_KINDS } from "../exam";
+import { SECTION_KINDS, SORT_KINDS } from "../exam-keys";
+import { examLoaded } from "../exam-lazy";
 import { h } from "../dom";
 import { installHint } from "../install";
 import { daysUntilExam, preferences } from "../settings";
-import { canUseExam, loadProfile, needsStart, START_TRIAL_KEY } from "../profile";
+import { loadProfile, needsStart, START_TRIAL_KEY } from "../profile";
 import { account } from "../account";
 import { nextLesson } from "./lessons";
 import { finishRow, todayCounts } from "./review";
@@ -205,10 +206,11 @@ function examRow(learnedIds: Set<string>, schedules: StoredSchedule[]): HTMLElem
 
 /** 骨学試験の日までの日数・まだの項目・1日の目安（試験の日を決めていなければ null）。今日と記録の画面で使う */
 export function examLeft(learnedIds: Set<string>, schedules: StoredSchedule[]): { days: number; rest: number; perDay: number; href: string } | null {
-  const days = canUseExam() ? daysUntilExam() : null;
-  if (days === null) return null;
+  const exam = examLoaded()?.data;
+  const days = exam ? daysUntilExam() : null;
+  if (!exam || days === null) return null;
   const rest = [...SECTION_KINDS, ...SORT_KINDS].map((kind) => {
-    const { done, total } = examProgress(kind, learnedIds, schedules);
+    const { done, total } = exam.examProgress(kind, learnedIds, schedules);
     return { kind, rest: total - done };
   });
   const left = rest.reduce((sum, item) => sum + item.rest, 0);

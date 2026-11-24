@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { isDrawn, organById, plateOfTerm, termById, terms, unitById } from "../src/content";
 import { sceneFor } from "../src/ui/context";
 import { facetsFor } from "../src/study";
+import { fullPlate } from "../src/organ-details";
 
 describe("細胞と組織（解剖学総論 I）", () => {
   const tissues = terms.filter((term) => term.system === "tissues");
@@ -11,8 +12,8 @@ describe("細胞と組織（解剖学総論 I）", () => {
     for (const term of tissues) {
       const found = plateOfTerm(term);
       expect(found?.organ.id, term.id).toBe("tissues");
-      expect(found?.plate.art?.page, term.id).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
-      expect(found?.plate.art?.license, term.id).not.toBe("自作");
+      expect(fullPlate(found?.plate.id)?.art?.page, term.id).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
+      expect(fullPlate(found?.plate.id)?.art?.license, term.id).not.toBe("自作");
       expect(isDrawn(term)).toBe(true);
     }
   });

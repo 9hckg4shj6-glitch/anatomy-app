@@ -13,7 +13,7 @@ import { nextLesson } from "./lessons";
 import { plateOverlay } from "./plate-view";
 import { ask, showPanel } from "./quiz";
 import { termCard } from "./term-card";
-import { planCard } from "./guide";
+import { planCard } from "./plan-card";
 import { noteText } from "../en-notes";
 
 /**

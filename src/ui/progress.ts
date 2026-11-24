@@ -2,7 +2,8 @@ import { systems, termById, terms } from "../content";
 import { courseTerms, inCourse, isBeginner } from "../course";
 import { db, type ReviewEvent, type StoredSchedule } from "../db";
 import { h } from "../dom";
-import { EXAM_KINDS, examProgress, isExamKey, kindLabels } from "../exam";
+import { EXAM_KINDS, isExamKey, kindLabels } from "../exam-keys";
+import { examLoaded } from "../exam-lazy";
 import { canUseExam } from "../profile";
 import { isRootKey, rootKey, roots } from "../roots";
 import { termMastery } from "../study";
@@ -65,7 +66,7 @@ export async function progress(ctx: AppContext): Promise<void> {
           h("td", {}, system.ja),
           h("td", {}, `${list.filter((term) => learnedIds.has(term.id)).length} / ${list.length}`),
           h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
-      }), ...(isBeginner() ? [] : [rootRow(), ...(canUseExam() ? EXAM_KINDS.map(examRow) : [])])),
+      }), ...(isBeginner() ? [] : [rootRow(), ...(examLoaded() ? EXAM_KINDS.map(examRow) : [])])),
     ),
     weakest.length ? h("h3", {}, "覚え具合の低い語（押すと図鑑）") : "",
     weakest.length ? h("ul", { class: "term-list" }, ...weakest.map(([id, value]) => {
@@ -79,7 +80,7 @@ export async function progress(ctx: AppContext): Promise<void> {
   );
 
   function examRow(kind: (typeof EXAM_KINDS)[number]): HTMLElement {
-    const { done, total, mastery } = examProgress(kind, learnedIds, schedules);
+    const { done, total, mastery } = examLoaded()!.data.examProgress(kind, learnedIds, schedules);
     return h("tr", {},
       h("td", {}, `骨学試験 ${kindLabels[kind]}`),
       h("td", {}, `${done} / ${total}`),

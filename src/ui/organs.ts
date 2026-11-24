@@ -1,5 +1,5 @@
 import { autoSpeak } from "../audio";
-import { loadPlateIndex, organById, organTerms, termById, unitById, type Organ, type PlateIndex, type PlateLabel, type PlateSpec, type Term } from "../content";
+import { loadPlateIndex, organById, organTerms, termById, unitById, type Organ, type OrganCore, type PlateIndex, type PlateLabel, type PlateSpec, type Term } from "../content";
 import { organLessons } from "../course";
 import { db, nowIso } from "../db";
 import { h } from "../dom";
@@ -9,7 +9,8 @@ import { flowDiagram } from "./diagrams";
 import { drawPlate, labelName, type LabelMode } from "./plate-view";
 import { termCard } from "./term-card";
 import { noteText } from "../en-notes";
-import { MOTIONS } from "./motions";
+import { MOTIONS } from "../motion-list";
+import { fullOrganById } from "../organ-details";
 
 /** 臓器の図から動きの図鑑へ（その臓器の動きがあれば） */
 const ORGAN_MOTIONS: Record<string, string[]> = {
@@ -33,7 +34,7 @@ const LABEL_MODE = "plateLabelMode";
  */
 export async function organScreen(ctx: AppContext, arg: string): Promise<void> {
   const [organId, mode, termId] = arg.split("/");
-  const organ = organById.get(organId);
+  const organ = fullOrganById(organId);
   if (!organ) return await organList(ctx);
   await organPage(ctx, organ, mode ?? "", termId ?? "");
 }
@@ -49,16 +50,17 @@ export const ORGAN_GROUPS: { title: string; color: string; organs: string[] }[] 
   { title: "泌尿器と生殖器", color: "#d4a514", organs: ["kidney", "renal", "male", "female"] },
   { title: "神経と感覚器", color: "#e9c46a", organs: ["brain", "brain-base", "spinal-cord", "brachial-plexus", "eye", "ear"] },
   { title: "関節", color: "#b7c7cc", organs: ["shoulder", "elbow", "hip", "knee"] },
+  { title: "局所の通り道", color: "#8f9aa6", organs: ["passages"] },
   { title: "皮膚・組織・発生", color: "#c48bb4", organs: ["skin", "tissues", "development"] },
 ];
 
 /** 一覧の絵（scripts/organ-thumbs.mjs が最初の平面図から作る）。平面図の無い臓器は無し */
-export function organThumb(organ: Organ): string | null {
+export function organThumb(organ: OrganCore): string | null {
   return organ.plates.length ? `${import.meta.env.BASE_URL}organs/${organ.id}.webp` : null;
 }
 
 /** 一覧の札の小さな字（平面図の枚数と、図のレッスンの進み具合） */
-export function organMeta(organ: Organ, lessons: number, done: number): string[] {
+export function organMeta(organ: OrganCore, lessons: number, done: number): string[] {
   const plates = organ.plates.length ? `平面図 ${organ.plates.length}枚` : "立体だけ";
   return lessons ? [plates, done ? `レッスン ${done} / ${lessons}` : `レッスン ${lessons}`] : [plates];
 }
@@ -73,7 +75,7 @@ async function organList(ctx: AppContext): Promise<void> {
   ctx.viewer.overview();
   void ctx.viewer.show({ systems: ["skeletal"], body: true });
   const learnedIds = new Set((await db.learned.toArray()).map((item) => item.termId));
-  const card = (organ: Organ) => {
+  const card = (organ: OrganCore) => {
     const lessons = organLessons(organ);
     const done = lessons.filter((unit) => unit.terms.every((term) => learnedIds.has(term.id))).length;
     const thumb = organThumb(organ);

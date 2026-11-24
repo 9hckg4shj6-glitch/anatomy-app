@@ -11197,6 +11197,605 @@
      "term": "olive"
     }
    ]
+  },
+  "liver-visceral": {
+   "url": "plates/liver-visceral.a682c0d422.webp",
+   "w": 1100,
+   "h": 871,
+   "labels": [
+    {
+     "at": [
+      0.7375,
+      0.3292
+     ],
+     "term": "right-lobe-of-liver"
+    },
+    {
+     "at": [
+      0.2343,
+      0.5181
+     ],
+     "term": "left-lobe-of-liver"
+    },
+    {
+     "at": [
+      0.4961,
+      0.502
+     ],
+     "term": "caudate-lobe"
+    },
+    {
+     "at": [
+      0.5389,
+      0.7971
+     ],
+     "term": "quadrate-lobe"
+    },
+    {
+     "at": [
+      0.6784,
+      0.8654
+     ],
+     "term": "gallbladder"
+    },
+    {
+     "at": [
+      0.53,
+      0.6
+     ],
+     "term": "porta-hepatis"
+    },
+    {
+     "at": [
+      0.4197,
+      0.4507
+     ],
+     "term": "fissure-for-ligamentum-venosum"
+    },
+    {
+     "at": [
+      0.4506,
+      0.8664
+     ],
+     "term": "fissure-for-round-ligament"
+    },
+    {
+     "at": [
+      0.2367,
+      0.4651
+     ],
+     "term": "gastric-impression"
+    },
+    {
+     "at": [
+      0.4312,
+      0.4155
+     ],
+     "term": "esophageal-impression"
+    },
+    {
+     "at": [
+      0.6862,
+      0.6424
+     ],
+     "term": "duodenal-impression"
+    },
+    {
+     "at": [
+      0.8798,
+      0.7695
+     ],
+     "term": "colic-impression"
+    },
+    {
+     "at": [
+      0.7702,
+      0.48
+     ],
+     "term": "renal-impression"
+    },
+    {
+     "at": [
+      0.684,
+      0.4576
+     ],
+     "term": "suprarenal-impression"
+    },
+    {
+     "at": [
+      0.7384,
+      0.0736
+     ],
+     "term": "bare-area-of-liver"
+    },
+    {
+     "at": [
+      0.5076,
+      0.33
+     ],
+     "term": "groove-for-vena-cava"
+    },
+    {
+     "at": [
+      0.5089,
+      0.6541
+     ],
+     "term": "hepatic-portal-vein"
+    },
+    {
+     "at": [
+      0.5443,
+      0.634
+     ],
+     "term": "proper-hepatic-artery"
+    }
+   ]
+  },
+  "thoracic-duct": {
+   "url": "plates/thoracic-duct.0a987efa79.webp",
+   "w": 730,
+   "h": 626,
+   "labels": [
+    {
+     "at": [
+      0.1699,
+      0.1821
+     ],
+     "term": "right-lymphatic-duct"
+    },
+    {
+     "at": [
+      0.189,
+      0.099
+     ],
+     "term": "internal-jugular-vein"
+    },
+    {
+     "at": [
+      0.1507,
+      0.23
+     ],
+     "term": "subclavian-vein"
+    },
+    {
+     "at": [
+      0.8247,
+      0.2109
+     ],
+     "term": "venous-angle"
+    },
+    {
+     "at": [
+      0.5,
+      0.4888
+     ],
+     "term": "thoracic-duct"
+    },
+    {
+     "at": [
+      0.4973,
+      0.5431
+     ],
+     "term": "cisterna-chyli"
+    },
+    {
+     "at": [
+      0.3753,
+      0.5974
+     ],
+     "ja": "右リンパ本幹の範囲",
+     "en": "area drained by the right lymphatic duct",
+     "note": "頭・首（neck）の右半分、右の上肢（upper limb）、胸（chest）の右半分のリンパ（lymph）は、右リンパ本幹（right lymphatic duct）から右の静脈角（venous angle）へ注ぐ。"
+    },
+    {
+     "at": [
+      0.5671,
+      0.9137
+     ],
+     "ja": "胸管の範囲",
+     "en": "area drained by the thoracic duct",
+     "note": "下半身（lower body）・腹（abdomen）と、上半身（upper body）の左半分のリンパ（lymph）は、胸管（thoracic duct）から左の静脈角（venous angle）へ注ぐ。全身（whole body）のリンパのおよそ3/4。"
+    }
+   ]
+  },
+  "larynx-superior": {
+   "url": "plates/larynx-superior.068632c32b.webp",
+   "w": 885,
+   "h": 885,
+   "labels": [
+    {
+     "at": [
+      0.4599,
+      0.2508
+     ],
+     "term": "epiglottis"
+    },
+    {
+     "at": [
+      0.6011,
+      0.4881
+     ],
+     "term": "vocal-fold"
+    },
+    {
+     "at": [
+      0.5051,
+      0.5559
+     ],
+     "term": "glottis"
+    },
+    {
+     "at": [
+      0.4825,
+      0.7593
+     ],
+     "term": "trachea"
+    },
+    {
+     "at": [
+      0.2678,
+      0.5446
+     ],
+     "term": "vestibular-fold"
+    },
+    {
+     "at": [
+      0.704,
+      0.7661
+     ],
+     "term": "arytenoid-cartilage"
+    }
+   ]
+  },
+  "larynx-coronal": {
+   "url": "plates/larynx-coronal.9987850977.webp",
+   "w": 383,
+   "h": 529,
+   "labels": [
+    {
+     "at": [
+      0.0522,
+      0.0435
+     ],
+     "term": "hyoid-bone"
+    },
+    {
+     "at": [
+      0.4935,
+      0.1267
+     ],
+     "term": "epiglottis"
+    },
+    {
+     "at": [
+      0.1253,
+      0.1815
+     ],
+     "term": "thyrohyoid-membrane"
+    },
+    {
+     "at": [
+      0.3499,
+      0.3856
+     ],
+     "term": "vestibular-fold"
+    },
+    {
+     "at": [
+      0.624,
+      0.4405
+     ],
+     "term": "laryngeal-ventricle"
+    },
+    {
+     "at": [
+      0.4386,
+      0.5577
+     ],
+     "term": "vocal-fold"
+    },
+    {
+     "at": [
+      0.4935,
+      0.5501
+     ],
+     "term": "glottis"
+    },
+    {
+     "at": [
+      0.5666,
+      0.5595
+     ],
+     "term": "vocalis"
+    },
+    {
+     "at": [
+      0.4935,
+      0.7051
+     ],
+     "term": "infraglottic-cavity"
+    },
+    {
+     "at": [
+      0.2245,
+      0.6616
+     ],
+     "term": "thyroid-cartilage"
+    },
+    {
+     "at": [
+      0.6762,
+      0.8299
+     ],
+     "term": "cricoid-cartilage"
+    },
+    {
+     "at": [
+      0.5065,
+      0.9168
+     ],
+     "term": "trachea"
+    }
+   ]
+  },
+  "carpal-tunnel-section": {
+   "url": "plates/carpal-tunnel-section.2c71eacbcd.webp",
+   "w": 440,
+   "h": 258,
+   "labels": [
+    {
+     "at": [
+      0.5227,
+      0.4031
+     ],
+     "term": "carpal-tunnel"
+    },
+    {
+     "at": [
+      0.4955,
+      0.2171
+     ],
+     "term": "flexor-retinaculum-of-wrist"
+    },
+    {
+     "at": [
+      0.4318,
+      0.2984
+     ],
+     "term": "median-nerve"
+    },
+    {
+     "at": [
+      0.4,
+      0.2791
+     ],
+     "term": "flexor-pollicis-longus"
+    },
+    {
+     "at": [
+      0.5636,
+      0.3178
+     ],
+     "term": "flexor-digitorum-superficialis"
+    },
+    {
+     "at": [
+      0.4955,
+      0.4419
+     ],
+     "term": "flexor-digitorum-profundus"
+    },
+    {
+     "at": [
+      0.3409,
+      0.2674
+     ],
+     "term": "flexor-carpi-radialis"
+    },
+    {
+     "at": [
+      0.5068,
+      0.1512
+     ],
+     "term": "palmaris-longus"
+    },
+    {
+     "at": [
+      0.6341,
+      0.2248
+     ],
+     "term": "ulnar-artery"
+    },
+    {
+     "at": [
+      0.6636,
+      0.2558
+     ],
+     "term": "ulnar-nerve"
+    },
+    {
+     "at": [
+      0.1886,
+      0.6085
+     ],
+     "term": "radial-artery"
+    },
+    {
+     "at": [
+      0.2386,
+      0.1434
+     ],
+     "term": "thenar-muscles"
+    },
+    {
+     "at": [
+      0.8068,
+      0.3372
+     ],
+     "term": "hypothenar-muscles"
+    },
+    {
+     "at": [
+      0.2273,
+      0.4341
+     ],
+     "term": "trapezium"
+    },
+    {
+     "at": [
+      0.3,
+      0.6667
+     ],
+     "term": "trapezoid"
+    },
+    {
+     "at": [
+      0.4545,
+      0.7132
+     ],
+     "term": "capitate"
+    },
+    {
+     "at": [
+      0.6182,
+      0.5891
+     ],
+     "term": "hamate"
+    },
+    {
+     "at": [
+      0.7818,
+      0.6744
+     ],
+     "term": "extensor-carpi-ulnaris"
+    },
+    {
+     "at": [
+      0.5568,
+      0.8488
+     ],
+     "term": "extensor-digitorum"
+    },
+    {
+     "at": [
+      0.3205,
+      0.8101
+     ],
+     "term": "extensor-pollicis-longus"
+    }
+   ]
+  },
+  "inguinal-posterior": {
+   "url": "plates/inguinal-posterior.a15ea9d2b5.webp",
+   "w": 601,
+   "h": 583,
+   "labels": [
+    {
+     "at": [
+      0.4376,
+      0.4545
+     ],
+     "term": "deep-inguinal-ring"
+    },
+    {
+     "at": [
+      0.2928,
+      0.5317
+     ],
+     "term": "inguinal-triangle"
+    },
+    {
+     "at": [
+      0.2396,
+      0.2573
+     ],
+     "term": "inferior-epigastric-artery"
+    },
+    {
+     "at": [
+      0.7288,
+      0.2916
+     ],
+     "term": "inguinal-ligament"
+    },
+    {
+     "at": [
+      0.4958,
+      0.5489
+     ],
+     "term": "ductus-deferens"
+    },
+    {
+     "at": [
+      0.629,
+      0.4631
+     ],
+     "term": "testicular-artery"
+    },
+    {
+     "at": [
+      0.6622,
+      0.5489
+     ],
+     "term": "external-iliac-artery"
+    },
+    {
+     "at": [
+      0.604,
+      0.6346
+     ],
+     "term": "external-iliac-vein"
+    },
+    {
+     "at": [
+      0.421,
+      0.5832
+     ],
+     "term": "femoral-ring"
+    },
+    {
+     "at": [
+      0.3128,
+      0.6175
+     ],
+     "term": "lacunar-ligament"
+    },
+    {
+     "at": [
+      0.1298,
+      0.3431
+     ],
+     "term": "rectus-abdominis"
+    },
+    {
+     "at": [
+      0.5458,
+      0.2573
+     ],
+     "term": "transversalis-fascia"
+    },
+    {
+     "at": [
+      0.8286,
+      0.6518
+     ],
+     "term": "psoas-major"
+    },
+    {
+     "at": [
+      0.8869,
+      0.3431
+     ],
+     "term": "iliacus"
+    },
+    {
+     "at": [
+      0.4676,
+      0.837
+     ],
+     "term": "obturator-artery"
+    }
+   ]
   }
  }
 }

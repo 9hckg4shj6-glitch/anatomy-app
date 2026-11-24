@@ -715,6 +715,7 @@ a.term-row { color: var(--ink); text-decoration: none; }
   .stage:has(> .plate-layer:not([hidden])) > .stage-reset { display: none; }
 }
 .plate-image { position: absolute; border-radius: 6px; box-shadow: 0 1px 4px rgb(0 0 0 / 0.12); user-select: none; -webkit-user-drag: none; }
+.plate-missing { display: grid; place-items: center; padding: 16px; background: var(--surface); color: var(--muted); font-size: 14px; line-height: 1.6; text-align: center; }
 .plate-lines { position: absolute; top: 0; left: 0; pointer-events: none; overflow: visible; }
 .plate-lines line { stroke: #4a4238; stroke-width: 1; opacity: 0.75; }
 .plate-lines circle { fill: #2b2a27; }

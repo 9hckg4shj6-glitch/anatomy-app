@@ -23,23 +23,16 @@ import type { Section } from "./viewer";
  * 整理の項目の count・recent は、その語を空欄・語に含む A・B・C の項目から数える（関係する問題が出た回数）。
  * 学習の記録は語と同じ表に、語ID の代わりに "exam:a:<ID>" などで入れる（語根カードの "root:" と同じ）。
  */
-export type ExamKind = "a" | "b" | "c" | "d" | "p" | "s" | "l";
+export { EXAM_KINDS, examKey, FIRST_FACETS, isExamKey, kindLabels, SECTION_KINDS, SORT_KINDS, type ExamKind } from "./exam-keys";
+import { examKey, isExamKey, type ExamKind } from "./exam-keys";
 export type ExamArea = "general" | "trunk" | "upper" | "lower" | "skull";
 
-export const EXAM_KINDS: ExamKind[] = ["a", "b", "c", "d", "p", "s", "l"];
-/** 試験の形式の種類（A〜D）と、整理して覚える種類 */
-export const SECTION_KINDS: ExamKind[] = ["a", "b", "c", "d"];
-export const SORT_KINDS: ExamKind[] = ["p", "s", "l"];
-export const kindLabels: Record<ExamKind, string> = { a: "A 穴埋め", b: "B 用語", c: "C 短文記述", d: "D 図示", p: "対で覚える", s: "数と並び", l: "体表の目安" };
 export const areaLabels: Record<ExamArea, string> = { general: "総論", trunk: "体幹", upper: "上肢", lower: "下肢", skull: "頭蓋" };
 /** 種類ごとの問い方。B は最初にラ→日（4択）、あとで日→英・ラ（つづり）も出す。D は examFacetsOf で項目ごとに絞る */
 export const examFacets: Record<ExamKind, Facet[]> = {
   a: ["cloze"], b: ["read", "spell"], c: ["explain"], d: ["label", "annotate", "orient"],
   p: ["contrast"], s: ["order", "trace"], l: ["level", "landmark"],
 };
-
-/** 先に覚える問い方（これが復習の段階に入ると、あとの問い方が出る） */
-export const FIRST_FACETS: Facet[] = ["label", "order"];
 
 /**
  * 項目に出す問い方。D の「図に書き込む」は「番号→名前」が復習の段階に入ってから（名前を覚えてから）、
@@ -268,16 +261,7 @@ export interface LevelItem extends ItemBase {
 
 export type ExamItem = ClozeItem | WordItem | EssayItem | DrawingItem | PairItem | SequenceItem | LevelItem;
 
-const PREFIX = "exam:";
 const data = examJson as ExamFile;
-
-export function examKey(kind: ExamKind, id: string): string {
-  return `${PREFIX}${kind}:${id}`;
-}
-
-export function isExamKey(id: string): boolean {
-  return id.startsWith(PREFIX);
-}
 
 /** 語の日本語名から、区別のための（）を除く（「耳状面（仙骨）」→「耳状面」） */
 export function plainJa(ja: string): string {

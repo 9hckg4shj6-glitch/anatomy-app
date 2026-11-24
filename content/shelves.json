@@ -68,6 +68,8 @@
     "superior-parathyroid-gland": "thyroid-posterior",
     "inferior-parathyroid-gland": "thyroid-posterior",
     "mammillary-body": "brain-inferior",
+    "arytenoid-cartilage": "larynx-superior",
+    "vocalis": "larynx-coronal",
     "lateral-thyrohyoid-ligament": "larynx-anterior",
     "common-tendinous-ring": "eye-muscles",
     "lacrimal-canaliculus": "eye-lacrimal",

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { isPlateUnit, organById, organOfLesson, plateOfTerm, termById, units } from "../src/content";
 import { ORGAN_GROUPS } from "../src/ui/organs";
 import { sceneFor } from "../src/ui/context";
+import { fullPlate } from "../src/organ-details";
 
 // 口腔・歯・唾液腺、横隔膜と骨盤底・会陰の臓器の図と、下垂体・小脳・食道の平面図（docs/設計.md「口腔・横隔膜と骨盤底の臓器の図と平面図を足す」）
 describe("口腔・横隔膜と骨盤底の臓器の図と平面図", () => {
@@ -53,9 +54,8 @@ describe("口腔・横隔膜と骨盤底の臓器の図と平面図", () => {
 
   it("元の図は Commons の自由なライセンスの図", () => {
     const ids = ["teeth", "tooth-structure", "tongue-dorsum", "taste-bud", "salivary-glands", "diaphragm-inferior", "pelvic-floor", "perineum-muscles", "pituitary", "cerebellum-lateral", "esophagus-course"];
-    const all = [...organById.values()].flatMap((organ) => organ.plates);
-    for (const id of ids) {
-      const art = all.find((plate) => plate.id === id)?.art;
+        for (const id of ids) {
+      const art = fullPlate(id)?.art;
       expect(art?.page, id).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
       expect(art?.license, id).toMatch(/^CC BY(-SA)? \d\.\d$/);
     }

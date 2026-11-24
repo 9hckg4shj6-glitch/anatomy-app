@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { organById, organOf, plateOfTerm, termById } from "../src/content";
 import { sceneFor } from "../src/ui/context";
+import { fullPlate } from "../src/organ-details";
 
 // 主要な臓器と解剖学で大事な所の平面図を増やす（docs/設計.md「主要な臓器と大事な所の平面図を増やす」）
 describe("主要な臓器と大事な所の平面図", () => {
@@ -12,7 +13,7 @@ describe("主要な臓器と大事な所の平面図", () => {
       expect(organById.get(id)?.plates.length, id).toBeGreaterThan(0);
     }
     expect(organById.get("lymph")?.box).toBeUndefined();
-    expect(plateIds("lymph")).toEqual(["lymphatic-system", "lymph-node", "spleen-pulp"]);
+    expect(plateIds("lymph")).toEqual(["lymphatic-system", "lymph-node", "spleen-pulp", "thoracic-duct"]);
     expect(plateIds("elbow")).toEqual(["elbow-sagittal", "elbow-lateral", "elbow-medial"]);
     expect(plateIds("hip")).toEqual(["hip-anterior", "hip-posterior"]);
   });
@@ -72,9 +73,8 @@ describe("主要な臓器と大事な所の平面図", () => {
   it("元の図は Commons の自由なライセンスの図", () => {
     const ids = ["coronary-arteries", "brain-ventricles", "basal-nuclei", "meninges", "dural-sinuses", "liver-lobule", "portal-system", "bladder", "testis",
       "thyroid-anterior", "adrenal-layers", "shoulder-coronal", "elbow-sagittal", "hip-anterior", "brachial-plexus", "lymphatic-system", "lymph-node", "spleen-pulp"];
-    const all = [...organById.values()].flatMap((organ) => organ.plates);
-    for (const id of ids) {
-      const art = all.find((plate) => plate.id === id)?.art;
+        for (const id of ids) {
+      const art = fullPlate(id)?.art;
       expect(art?.page, id).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
       expect(art?.license, id).toMatch(/^(CC BY(-SA)? \d\.\d|Public domain)$/);
     }

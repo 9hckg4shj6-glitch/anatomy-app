@@ -1,10 +1,10 @@
 import attachmentsJson from "../content/attachments.json";
 import directionsJson from "../content/directions.json";
 import jointsJson from "../content/joints.json";
-import organsJson from "../content/organs.json";
 import pinsJson from "../content/pins.json";
 import shelvesJson from "../content/shelves.json";
 import systemsJson from "../content/systems.json";
+import organsCore from "virtual:organs-core";
 
 export interface SystemInfo {
   id: string;
@@ -225,23 +225,31 @@ export interface Pin {
 /**
  * 臓器を詳しく見る画面（#/organs/<ID>。content/organs.json）。units のレッスンの語と with の語（大血管など）が臓器の場面で、
  * 3Dではそれだけを box の中に切って見せる（SceneSpec の organ）。around は場面に添えるだけの語（食道・結腸のように箱の外へ長く続き、
- * 図鑑でその語を選んでもこの臓器だけの見せ方にはしない）。colors は部屋・葉の色分け（colorLabel はその切りかえの名前、colorNote は凡例の下の説明）、views は向き、cuts は切って中を見る面
- * （normal・point で、normal の向きの側を残す。hide は切るときに隠す語）。seamless は平面図で境に線を引かない語（心房・心室の壁）。
- * plates は平面図（scripts/plates.mjs が art の元の図から作るか、view・cut から描く。diagram があれば手で描いた模式図）
+ * 図鑑でその語を選んでもこの臓器だけの見せ方にはしない）。plates は平面図。
+ * ここ（OrganCore）は、はじめの JS に入る所だけ。臓器の図と動きの図鑑だけで使う所は Organ（src/organ-details.ts で読む。vite.config.ts の organSplit）
  */
-export interface Organ {
+export interface OrganCore {
   id: string;
   ja: string;
   yomi: string;
   en: string;
-  about: string;
   units: string[];
   with: string[];
   around?: string[];
-  /** around の語も臓器の図の欄に一覧で出すときの見出し（縦隔・腹膜のように、ほかの臓器の語を集めて見せる臓器） */
-  aroundTitle?: string;
   /** 3Dで見せる箱。無い臓器（皮膚）は平面図だけ */
   box?: [Vec3, Vec3];
+  plates: PlateRef[];
+}
+
+/**
+ * 臓器の図の画面で使う所まで含めた臓器。colors は部屋・葉の色分け（colorLabel はその切りかえの名前、colorNote は凡例の下の説明）、views は向き、cuts は切って中を見る面
+ * （normal・point で、normal の向きの側を残す。hide は切るときに隠す語）。seamless は平面図で境に線を引かない語（心房・心室の壁）。
+ * plates は平面図（scripts/plates.mjs が art の元の図から作るか、view・cut から描く。diagram があれば手で描いた模式図）
+ */
+export interface Organ extends Omit<OrganCore, "plates"> {
+  about: string;
+  /** around の語も臓器の図の欄に一覧で出すときの見出し（縦隔・腹膜のように、ほかの臓器の語を集めて見せる臓器） */
+  aroundTitle?: string;
   seamless?: string[];
   colors: Record<string, string>;
   colorLabel?: string;
@@ -259,19 +267,23 @@ export interface OrganCut {
   hide?: string[];
 }
 
-/**
- * 平面図の指定（content/organs.json）。ラベルは語ID か { term, pin } か、語の無い所の { ja, en, uv }。
- * art は元の図（イラスト）の出典で、ラベルは元の図のピクセル { term, px }。note は図の向きなどの添え書き、points はこの図で押さえる要点
- */
-export interface PlateSpec {
+/** 平面図のうち、はじめの JS に入る所（ID・名前・ラベル）。ラベルは語ID か { term, pin } か、語の無い所の { ja, en, uv } */
+export interface PlateRef {
   id: string;
   title: string;
+  labels: (string | { term?: string; ja?: string; en?: string })[];
+}
+
+/**
+ * 平面図の指定（content/organs.json）。art は元の図（イラスト）の出典で、ラベルは元の図のピクセル { term, px }。
+ * note は図の向きなどの添え書き、points はこの図で押さえる要点
+ */
+export interface PlateSpec extends PlateRef {
   en: string;
   diagram?: string;
   art?: PlateArt;
   note?: string;
   points?: string[];
-  labels: (string | { term?: string; ja?: string; en?: string })[];
 }
 
 /** 元の図の出典（画面に、作者・ライセンス・変えた所を出す） */
@@ -343,31 +355,31 @@ export const pins = pinsJson as unknown as Record<string, Pin>;
 
 export const joints = jointsJson as unknown as Record<string, Joint>;
 
-export const organs = (organsJson as unknown as { organs: Organ[] }).organs;
+export const organs = (organsCore as unknown as { organs: OrganCore[] }).organs;
 export const organById = new Map(organs.map((organ) => [organ.id, organ]));
 
 /** 臓器の語（レッスンの語・器官の部位と、添える大血管など） */
-function ownTerms(organ: Organ): string[] {
+function ownTerms(organ: OrganCore): string[] {
   return [...organ.units.flatMap((id) => unitById.get(id)?.terms.map((term) => term.id) ?? []), ...organ.with];
 }
 
 /** 臓器の場面の語（臓器の語と、場面に添えるだけの語） */
-export function organTerms(organ: Organ): string[] {
+export function organTerms(organ: OrganCore): string[] {
   return [...ownTerms(organ), ...(organ.around ?? [])];
 }
 
 /** 語が入る臓器の場面（無ければ undefined。添えるだけの語は入れない。3Dの無い臓器＝皮膚は場面にならない） */
-export function organOf(termId: string): Organ | undefined {
+export function organOf(termId: string): OrganCore | undefined {
   return organs.find((organ) => organ.box && ownTerms(organ).includes(termId));
 }
 
 /** レッスンが臓器の場面のものなら、その臓器 */
-export function organOfUnit(unitId: string | undefined): Organ | undefined {
+export function organOfUnit(unitId: string | undefined): OrganCore | undefined {
   return unitId ? organs.find((organ) => organ.box && organ.units.includes(unitId)) : undefined;
 }
 
 /** 平面図の語（term.plate）と、小さくて図で示す語（term.seePlate）の図と、その図のある臓器 */
-export function plateOfTerm(term: Pick<Term, "plate" | "seePlate">): { organ: Organ; plate: PlateSpec } | undefined {
+export function plateOfTerm(term: Pick<Term, "plate" | "seePlate">): { organ: OrganCore; plate: PlateRef } | undefined {
   const id = term.plate ?? term.seePlate;
   for (const organ of organs) for (const plate of organ.plates) if (plate.id === id) return { organ, plate };
   return undefined;
@@ -393,10 +405,10 @@ export function isPlateUnit(unit: Pick<Unit, "terms">): boolean {
  * レッスンの入る臓器の図。そのレッスンを units に持つ臓器か、無ければ（初心者コースのレッスン）語の元のレッスンが
  * いちばん多く入っている臓器
  */
-export function organOfLesson(unit: Pick<Unit, "id" | "terms">): Organ | undefined {
+export function organOfLesson(unit: Pick<Unit, "id" | "terms">): OrganCore | undefined {
   const own = organs.find((organ) => organ.units.includes(unit.id));
   if (own) return own;
-  let best: Organ | undefined;
+  let best: OrganCore | undefined;
   let most = 0;
   for (const organ of organs) {
     const count = unit.terms.filter((term) => organ.units.includes(term.unit)).length;
@@ -486,7 +498,7 @@ export function loadPlateIndex(): Promise<PlateIndex> {
 }
 
 /** 語が出てくる平面図（臓器の図の画面で開く）。図のIDと臓器 */
-export async function platesOf(termId: string): Promise<{ organ: Organ; plate: PlateSpec }[]> {
+export async function platesOf(termId: string): Promise<{ organ: OrganCore; plate: PlateRef }[]> {
   const index = await loadPlateIndex().catch(() => null);
   return organs.flatMap((organ) => organ.plates
     .filter((plate) => (index?.plates[plate.id]?.labels ?? []).some((label) => label.term === termId) || plate.labels.some((label) => (typeof label === "string" ? label : label.term) === termId))

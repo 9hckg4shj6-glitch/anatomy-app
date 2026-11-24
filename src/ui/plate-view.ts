@@ -1,4 +1,4 @@
-import { loadPlateIndex, plateOfTerm, termById, type PlateIndex, type PlateLabel, type PlateSpec, type Term } from "../content";
+import { loadPlateIndex, plateOfTerm, termById, type PlateIndex, type PlateLabel, type PlateRef, type Term } from "../content";
 import { h } from "../dom";
 import type { AppContext } from "./context";
 
@@ -15,7 +15,7 @@ export function labelName(label: PlateLabel): { ja: string; en: string; term: Te
 
 export interface PlateDrawing {
   entry: PlateEntry;
-  spec: PlateSpec;
+  spec: PlateRef;
   labels: PlateLabel[];
   labelMode: LabelMode;
   /** 隠しているときに名前を出したラベル */
@@ -43,7 +43,12 @@ export function drawPlate(layer: HTMLElement, paper: HTMLElement, d: PlateDrawin
   const scale = Math.min(areaW / entry.w, areaH / entry.h);
   const imgW = entry.w * scale, imgH = entry.h * scale;
   const left = (width - imgW) / 2, imgTop = top + (areaH - imgH) / 2;
-  const img = h("img", { class: "plate-image", src: `${import.meta.env.BASE_URL}${entry.url}`, alt: spec.title, style: `left:${left}px;top:${imgTop}px;width:${imgW}px;height:${imgH}px` });
+  const box = `left:${left}px;top:${imgTop}px;width:${imgW}px;height:${imgH}px`;
+  // 平面図は開いたときに保存する（はじめに全部は保存しない。vite.config.ts）。まだ保存していない図をオフラインで開いたときは、そう伝える
+  const img = h("img", {
+    class: "plate-image", src: `${import.meta.env.BASE_URL}${entry.url}`, alt: spec.title, style: box,
+    onError: () => img.replaceWith(h("div", { class: "plate-image plate-missing", style: box }, "図を読み込めませんでした。オフラインのときは、一度開いた図だけを見られます")),
+  });
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("class", "plate-lines");
   svg.setAttribute("width", String(width));

@@ -8,22 +8,19 @@ import { h } from "./dom";
 import { watchInstallPrompt } from "./install";
 import { admin } from "./ui/admin";
 import { credits } from "./ui/credits";
-import { guide } from "./ui/guide";
 import type { AppContext } from "./ui/context";
 import { drill } from "./ui/drill";
-import { exam } from "./ui/exam";
 import { explore } from "./ui/explore";
 import { home } from "./ui/home";
 import { lesson } from "./ui/lesson";
 import { lessons } from "./ui/lessons";
 import { modelScreen } from "./ui/model";
-import { motionScreen } from "./ui/motions";
 import { look } from "./ui/look";
 import { records } from "./ui/records";
 import { start } from "./ui/start";
 import { studyHub } from "./ui/study-hub";
+import { loadExam } from "./exam-lazy";
 import { loadMarks } from "./marks";
-import { organScreen } from "./ui/organs";
 import { progress } from "./ui/progress";
 import { review } from "./ui/review";
 import { rootIndex, rootLesson } from "./ui/roots";
@@ -290,6 +287,10 @@ async function boot(): Promise<void> {
       await route();
       return;
     }
+    // 骨学試験を使える人は、項目のデータを先に読んでおく（今日・記録・復習・語のカードで使う。src/exam-lazy.ts）。
+    // 読めなくても（オフラインでまだ保存していないなど）ほかの画面は開く
+    if (canUseExam()) await loadExam().catch((error: unknown) => console.warn("骨学試験を読めませんでした", error));
+    if (ctx.signal.aborted) return;
     // 使い方は、開いたときのタブのまま（同じ使い方の中で章を移るときは変えない。アドレスから直に開いたときは設定）
     if (name === "guide" && (currentName !== "guide" || !routed)) guideTab = routed ? TAB_OF[currentName] ?? "today" : "settings";
     routed = true;
@@ -316,22 +317,30 @@ async function boot(): Promise<void> {
       else if (name === "start") await start(ctx, arg);
       else if (name === "review") await review(ctx, arg);
       else if (name === "explore") await explore(ctx, arg);
-      else if (name === "motions") await motionScreen(ctx, arg);
+      else if (name === "motions") await (await import("./ui/motions")).motionScreen(ctx, arg);
       // "#/roots/<レッスンID>" は語根のレッスン、"#/roots/root/<語根のキー>" は一覧でその語根を開く
       else if (name === "roots") await (arg && !arg.startsWith("root/") ? rootLesson(ctx, arg) : rootIndex(ctx, arg.slice("root/".length)));
       else if (name === "drill") await drill(ctx, arg);
-      else if (name === "organs") await organScreen(ctx, arg);
-      else if (name === "exam") await exam(ctx, arg);
+      else if (name === "organs") await (await import("./ui/organs")).organScreen(ctx, arg);
+      else if (name === "exam") await (await loadExam()).ui.exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
       else if (name === "settings") await settingsScreen(ctx, arg);
-      else if (name === "guide") guide(ctx, arg);
+      else if (name === "guide") (await import("./ui/guide")).guide(ctx, arg);
       else if (name === "credits") credits(ctx);
       else if (name === "admin") await admin(ctx, arg);
       else await home(ctx);
     } catch (error) {
       if (ctx.signal.aborted) return; // 途中で別の画面へ移った
       console.error(error);
-      panel.replaceChildren(h("p", {}, "エラーが起きました。"), h("p", { class: "muted" }, String(error)), h("a", { href: "#/" }, "ホームへ"));
+      // 骨学試験・使い方・動きの図鑑・臓器の図は開いたときに読む別のファイルなので、回線が切れていると読めないことがある
+      const offline = /dynamically imported module|Importing a module script failed|error loading dynamically/i.test(String(error));
+      panel.replaceChildren(
+        h("p", {}, offline ? "この画面を読み込めませんでした。回線を確かめてから読み直してください。" : "エラーが起きました。"),
+        h("p", { class: "muted" }, String(error)),
+        h("div", { class: "nav-row" },
+          h("button", { class: "primary", type: "button", onClick: () => location.reload() }, "読み直す"),
+          h("a", { class: "ghost-button", href: "#/" }, "ホームへ")),
+      );
     }
   };
 
