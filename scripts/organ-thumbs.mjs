@@ -6,6 +6,10 @@
  *
  * 平面図の地の色（#fbf8f0）の余白を詰め、横 3：縦 2 の枠に収める。平面図の無い臓器（肺区域）は作らない（一覧では「立体だけ」の絵）。
  * 平面図を足したり作り直したり（scripts/plates.mjs）、臓器の平面図の並びを変えたりしたら作り直す。
+ *
+ * あわせて、平面図ごとの小さな絵を public/plates/thumbs/<平面図のファイル名> に書く（図の帯・すべての図・探した結果に出す。
+ * docs/普段使い.md「平面図の探しやすさの見直し」）。ファイル名は平面図と同じ（中身のハッシュ入り）なので、
+ * 平面図を作り直すと名前が変わる（tests/figures.test.ts が、どの平面図にも絵があるかを確かめる）。
  */
 import { mkdirSync, readdirSync, readFileSync, rmSync } from "node:fs";
 import path from "node:path";
@@ -42,3 +46,21 @@ for (const organ of organs) {
   made++;
 }
 console.log(`作った絵 ${made} / 臓器 ${organs.length}`);
+
+/** 平面図ごとの絵（図の帯の1枚はスマホで約 120×80px。2倍の細かさで） */
+const PLATE_THUMBS = path.join(ROOT, "public/plates/thumbs");
+mkdirSync(PLATE_THUMBS, { recursive: true });
+for (const file of readdirSync(PLATE_THUMBS)) if (file.endsWith(".webp")) rmSync(path.join(PLATE_THUMBS, file));
+let plates = 0;
+for (const organ of organs) for (const plate of organ.plates) {
+  const entry = index[plate.id];
+  if (!entry?.url) continue;
+  const trimmed = await sharp(path.join(ROOT, "public", entry.url)).trim({ background: BACKGROUND, threshold: 12 }).toBuffer();
+  await sharp(trimmed)
+    .resize(240 - 12, 160 - 12, { fit: "contain", background: BACKGROUND })
+    .extend({ top: 6, bottom: 6, left: 6, right: 6, background: BACKGROUND })
+    .webp({ quality: 70 })
+    .toFile(path.join(PLATE_THUMBS, path.basename(entry.url)));
+  plates++;
+}
+console.log(`平面図ごとの絵 ${plates}`);

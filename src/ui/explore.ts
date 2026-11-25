@@ -9,6 +9,7 @@ import { normalize, searchTerms } from "../search";
 import type { Vec3 } from "../landmarks";
 import type { Section } from "../viewer";
 import { motionPlayer, termAt, type AppContext } from "./context";
+import { termFigures } from "./figure-strip";
 import { plateOverlay } from "./plate-view";
 import { attachMarks } from "./quiz";
 import { termCard } from "./term-card";
@@ -412,6 +413,8 @@ export async function explore(ctx: AppContext, termId = ""): Promise<void> {
           await apply();
         }),
       }),
+      // この語が載っている平面図（押すとその図を、この語の名前を選んで開く。docs/普段使い.md「平面図の探しやすさの見直し」）
+      termFigures(term.id, { prefer: organ?.id ?? onPlate?.organ.id }),
       // 部位と関係する語は1行ずつの一覧に（押すと開いて、語を選べる）
       parts.length || related.length ? h("div", { class: "home-card link-list" },
         parts.length ? linkRow("部位", parts) : "",

@@ -250,6 +250,8 @@ export interface Organ extends Omit<OrganCore, "plates"> {
   about: string;
   /** around の語も臓器の図の欄に一覧で出すときの見出し（縦隔・腹膜のように、ほかの臓器の語を集めて見せる臓器） */
   aroundTitle?: string;
+  /** ほかの臓器の図で、この臓器にも関わる図（図の帯の終わりに「ほかの臓器の図」として出す。開くとその図の臓器の画面） */
+  also?: string[];
   seamless?: string[];
   colors: Record<string, string>;
   colorLabel?: string;

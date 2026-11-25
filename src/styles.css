@@ -1334,6 +1334,72 @@ body.no-tabs .topbar-search { margin-left: auto; }
 }
 .organ-name { padding: 8px 10px 0; font-size: 15px; font-weight: 700; line-height: 1.35; }
 .organ-meta { display: flex; flex-wrap: wrap; gap: 0 8px; padding: 2px 10px 10px; margin-top: auto; font-size: 13px; color: var(--muted); }
+/* ===== 平面図の探しやすさの見直し（docs/普段使い.md）: 図の帯・すべての図・図を探す・この語が載っている図
+   （src/ui/figure-strip.ts・organs.ts・look.ts・explore.ts）===== */
+.fig-head { margin: 12px 2px 6px; font-size: 14px; font-weight: 700; }
+.fig-head .muted { font-size: 13px; font-weight: 400; }
+/* 帯は横に送る（スマホ・iPad）。端まで送れるよう欄の余白の外まで広げる */
+.fig-strip {
+  position: relative; list-style: none; display: flex; gap: 8px; overflow-x: auto; overscroll-behavior-x: contain;
+  margin: 0 calc(-16px - var(--safe-right)) 0 calc(-16px - var(--safe-left)); padding: 2px calc(16px + var(--safe-right)) 8px calc(16px + var(--safe-left));
+  scroll-snap-type: x proximity; scroll-padding: 0 16px; scrollbar-width: thin;
+}
+.fig-strip > li { flex: 0 0 124px; scroll-snap-align: start; }
+.fig-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(112px, calc(33.3% - 6px)), 1fr)); gap: 8px; }
+/* マウスの PC では横に送りにくいので、帯も折り返す */
+@media (hover: hover) and (pointer: fine) {
+  .fig-strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); overflow: visible; margin: 0; padding: 0 0 4px; }
+  .fig-divider { grid-column: 1 / -1; }
+  .fig-divider span { writing-mode: horizontal-tb !important; border-left: 0 !important; padding: 4px 0 0 !important; }
+}
+.fig-card {
+  position: relative; display: flex; flex-direction: column; height: 100%; overflow: hidden; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink); text-decoration: none;
+}
+.fig-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.fig-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fig-card.on { border-color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.fig-card.on .fig-title { font-weight: 800; }
+.fig-thumb { display: block; flex: none; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; background: #fbf8f0; border-bottom: 1px solid var(--line); }
+.fig-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.fig-thumb-3d, .fig-thumb-text { display: flex; align-items: center; justify-content: center; font-weight: 800; }
+.fig-thumb-3d { color: #f1eee8; font-size: 20px; letter-spacing: 0.04em; background: radial-gradient(circle at 50% 35%, #4b5058 0%, #24272c 70%, #17191c 100%); }
+.fig-thumb-text { color: var(--muted); font-size: 13px; }
+.fig-title { padding: 6px 8px 8px; font-size: 13px; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* ほかの臓器の図は、絵の左上に臓器の名前の札（札の高さをそろえる） */
+.fig-sub {
+  position: absolute; top: 4px; left: 4px; max-width: calc(100% - 8px); padding: 1px 6px; border-radius: 6px;
+  background: rgb(36 39 44 / 0.8); color: #fff; font-size: 12px; font-weight: 600; line-height: 1.5;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fig-divider { flex: 0 0 auto !important; display: flex; align-items: center; }
+.fig-divider span { writing-mode: vertical-rl; padding-left: 6px; border-left: 1px solid var(--line); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); }
+/* 平面図の上の 前の図・次の図 */
+.fig-nav { display: flex; align-items: center; gap: 8px; margin: 14px 0 0; }
+.fig-nav-count { flex: 1; text-align: center; font-size: 13px; color: var(--muted); }
+.fig-nav-button {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.fig-nav-button.off { visibility: hidden; }
+@media (pointer: coarse) { .fig-nav-button { min-height: 44px; } }
+.fig-nav + div > .plate-title { margin-top: 8px; }
+.organ-about { margin-top: 4px; }
+.organ-about-end { margin-top: 24px; padding-top: 2px; border-top: 1px solid var(--line); }
+.organ-about-end h3 { font-size: 15px; }
+.term-figures { margin-top: 12px; }
+/* 臓器の図の一覧: 臓器から・すべての図 の切りかえと、すべての図の臓器の見出し */
+.organ-view { margin: 4px 0 2px; }
+.organ-view .segment { display: flex; align-items: center; justify-content: center; text-decoration: none; }
+.fig-organ-head { margin: 14px 2px 6px; font-size: 14px; }
+.fig-organ-head a { color: var(--ink); font-weight: 700; text-decoration: none; }
+.fig-organ-head .muted { font-size: 13px; font-weight: 400; }
+/* 図を探した結果・調べるの「臓器の図」の行（小さな絵つき） */
+.fig-row .fig-thumb { width: 72px; border: 1px solid var(--line); border-radius: 6px; }
+.fig-row .look-where { white-space: normal; }
+.look-figures { margin-bottom: 14px; }
+.look-figures .list-title { margin-top: 4px; }
+.look-more-row { min-height: 44px; color: var(--accent); font-size: 14px; font-weight: 600; }
 /* はじめにの3枚目の「コース」の見出しに添える一言 */
 .start-sub small { margin-left: 8px; font-size: 13px; font-weight: 500; color: var(--muted); }
 

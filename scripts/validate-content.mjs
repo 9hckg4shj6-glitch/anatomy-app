@@ -470,6 +470,8 @@ const Organ = z.strictObject({
   units: z.array(z.string()).min(1), with: z.array(z.string()), around: z.array(z.string()).optional(), aroundTitle: z.string().min(1).optional(), box: z.tuple([vec, vec]).optional(), seamless: z.array(z.string()).optional(),
   colors: z.record(z.string(), z.string().regex(/^#[0-9a-f]{6}$/)), colorLabel: z.string().min(1).optional(), colorNote: z.string().min(1).optional(), views: z.array(z.strictObject({ label: z.string().min(1), from: vec })),
   cuts: z.array(OrganCut), plates: z.array(Plate),
+  // ほかの臓器の図で、この臓器にも関わる図（臓器の画面の図の帯の終わりに「ほかの臓器の図」として出す。docs/普段使い.md「平面図の探しやすさの見直し」）
+  also: z.array(z.string()).optional(),
 // box の無い臓器（皮膚）は3Dの形が無く、平面図だけ
 }).refine((organ) => (organ.box ? organ.views.length > 0 : organ.plates.length > 0 && !organ.cuts.length), "3Dのある臓器（box）には views が、box の無い臓器には平面図が要る");
 const organsParsed = z.strictObject({ organs: z.array(Organ) }).safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/organs.json"), "utf8")));
@@ -491,6 +493,20 @@ for (const organ of organsParsed.success ? organsParsed.data.organs : []) {
     else if (!fs.existsSync(path.join(ROOT, "public", entry.url))) errors.push(`平面図 ${plate.id} の画像がありません: ${entry.url}`);
     else for (const label of entry.labels) if (label.term && !seen.has(label.term)) errors.push(`平面図 ${plate.id}: 語が無い: ${label.term}`);
   }
+}
+// also はほかの臓器の図（自分の図・無い図・重なりは誤り）
+for (const organ of organsParsed.success ? organsParsed.data.organs : []) {
+  const own = new Set(organ.plates.map((plate) => plate.id));
+  const others = new Set(organsParsed.data.organs.filter((other) => other !== organ).flatMap((other) => other.plates.map((plate) => plate.id)));
+  for (const id of organ.also ?? []) {
+    if (own.has(id)) errors.push(`organs.json ${organ.id}: also の ${id} は自分の図`);
+    else if (!others.has(id)) errors.push(`organs.json ${organ.id}: also の図が無い: ${id}`);
+  }
+  if (new Set(organ.also ?? []).size !== (organ.also ?? []).length) errors.push(`organs.json ${organ.id}: also に同じ図が2つ`);
+}
+// 平面図の題は「主題（向き）」の形にそろえる（「前から見た心臓」ではなく「心臓（前から）」。一覧で主題が先に読めるように）
+for (const organ of organsParsed.success ? organsParsed.data.organs : []) for (const plate of organ.plates) {
+  if (/から見た|見る）/.test(plate.title)) errors.push(`平面図 ${plate.id} の題「${plate.title}」: 向きは「主題（前から）」の形で書く`);
 }
 // 平面図の語（plate）は、その図のラベルにある
 const platesById = new Map((organsParsed.success ? organsParsed.data.organs : []).flatMap((organ) => organ.plates.map((plate) => [plate.id, plate])));

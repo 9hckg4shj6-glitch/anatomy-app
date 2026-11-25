@@ -119,9 +119,10 @@ export default defineConfig({
         // CacheFirst でも作り直した版が古いまま残ることはない。
         // 臓器の平面図（plates/*.webp、1枚 70〜130KB・計 7.7MB）と使い方の絵（guide/*.webp）も、はじめに全部は保存せず、
         // 開いたときに保存する（2026-11-24。初回の裏の保存が 14MB あり、スマホの回線で重かった）。平面図もファイル名にハッシュが入っている（scripts/plates.mjs）。
-        // 平面図のラベルの位置（plates/index.json）はプリキャッシュのまま
+        // 平面図のラベルの位置（plates/index.json）はプリキャッシュのまま。平面図ごとの小さな絵（plates/thumbs/*.webp、計 0.6MB）も
+        // 開いたときに保存する（平面図と同じファイル名＝ハッシュ入り。scripts/organ-thumbs.mjs）
         globPatterns: ["**/*.{html,js,css,json,svg,png,webp,woff2}"],
-        globIgnores: ["models/*.glb", "audio/*.m4a", "plates/*.webp", "guide/*.webp"],
+        globIgnores: ["models/*.glb", "audio/*.m4a", "plates/*.webp", "plates/thumbs/*.webp", "guide/*.webp"],
         // 語の内容（content/terms）と臓器の図（content/organs.json）は JS に入るので、語や図が増えると既定の 2 MiB を超える。
         // 超えるとオフラインで開けなくなる（2026-11-20 に JS が 4.2MB になり 4 MiB を超えたので 6 MiB に）
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
@@ -140,7 +141,8 @@ export default defineConfig({
             handler: "CacheFirst",
             options: {
               cacheName: "anatomy-plates-v1",
-              expiration: { maxEntries: 400 },
+              // 平面図と、その小さな絵（plates/thumbs/）の両方
+              expiration: { maxEntries: 800 },
               cacheableResponse: { statuses: [0, 200] }
             }
           },

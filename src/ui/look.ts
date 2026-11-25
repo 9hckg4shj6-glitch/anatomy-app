@@ -1,9 +1,11 @@
-import { systemById, systems, termById, type Term } from "../content";
+import { systemById, systems, termById, type OrganCore, type Term } from "../content";
 import { courseUnitOf, courseUnits, inCourse, pointOf } from "../course";
 import { h } from "../dom";
 import { noteText } from "../en-notes";
 import { markOf, recentTerms, starredIds } from "../marks";
 import { foldKeep, lookup, romajiToKana, suggest, type Hit } from "../search";
+import { figureHref, findFigures, findOrgans, organThumb, type FigureHit } from "../organ-figures";
+import { figureThumbElement } from "./figure-strip";
 import type { AppContext } from "./context";
 import { itemRow } from "./study-hub";
 import { tabIntro } from "./tab-intro";
@@ -38,7 +40,8 @@ export async function look(ctx: AppContext, systemId = ""): Promise<void> {
   }) as HTMLInputElement;
   /** 矢印キーで選んでいる結果の行（Enter で開く） */
   let active = 0;
-  const links = () => [...results.querySelectorAll<HTMLAnchorElement>("a.look-row")];
+  // 矢印キーと Enter は語の行だけ（上の臓器の図の行は押して開く。Enter はこれまでどおりいちばん当たった語を開く）
+  const links = () => [...results.querySelectorAll<HTMLAnchorElement>("a.look-row:not(.fig-row, .look-more-row)")];
   const setActive = (index: number) => {
     const list = links();
     if (!list.length) return;
@@ -55,10 +58,12 @@ export async function look(ctx: AppContext, systemId = ""): Promise<void> {
     const hits = lookup(query, { all: true, memo: (id) => markOf(id).memo });
     const marks = markers(query);
     active = 0;
+    const figures = figureBlock(query, !hits.length);
     if (!hits.length) {
       const near = suggest(query);
       results.replaceChildren(
-        h("p", { class: "look-count" }, `「${query}」は見つかりませんでした。`),
+        figures,
+        h("p", { class: "look-count" }, `「${query}」という語は見つかりませんでした。`),
         near.length ? h("h3", { class: "list-title" }, "もしかして") : "",
         near.length ? h("ul", { class: "home-card look-list" }, ...near.map((term) => lookRow({ term, score: 0, via: "ja", inCourse: inCourse(term.id) }, []))) : "",
         h("p", { class: "home-note" }, "漢字・ひらがな・英語・ラテン語のどれでも、字の一部だけでも探せます（「じょうわん」「brach」など）。読みはローマ字（jouwan）でも。"),
@@ -68,6 +73,7 @@ export async function look(ctx: AppContext, systemId = ""): Promise<void> {
     const shown = all ? hits : hits.slice(0, FIRST_RESULTS);
     const outside = hits.filter((hit) => !hit.inCourse).length;
     results.replaceChildren(
+      figures,
       h("p", { class: "look-count" }, `${hits.length}語`, outside ? h("span", { class: "muted" }, `（うちコースの外 ${outside}語）`) : ""),
       h("ul", { class: "home-card look-list" }, ...shown.map((hit) => lookRow(hit, marks))),
       shown.length < hits.length ? h("button", { class: "ghost-button look-more", type: "button", onClick: () => show(true) }, `さらに ${hits.length - shown.length}語を表示`) : "",
@@ -166,6 +172,47 @@ async function lookSystem(ctx: AppContext, systemId: string): Promise<void> {
 }
 
 const hitOf = (term: Term): Hit => ({ term, score: 0, via: "ja", inCourse: inCourse(term.id) });
+
+/** 調べるの結果の上に出す臓器の図の数 */
+const FIGURE_ROWS = 2;
+
+/**
+ * 調べるの結果の上の「臓器の図」（docs/普段使い.md「平面図の探しやすさの見直し」）: 名前に当たる臓器と、題に当たる平面図（「四腔断」「ネフロン」「胎児循環」）。
+ * 語の結果のじゃまにならないよう、名前・題の頭から当たったものを2つまで（語が1つも無いときは途中に当たったものも）。
+ * 図に載っている部位の名前でも探せる「臓器の図で探す」へ
+ */
+function figureBlock(query: string, loose: boolean): HTMLElement | "" {
+  const organs = findOrgans(query);
+  const figures = findFigures(query).filter((hit) => !hit.byOrgan && (loose || hit.score >= 80));
+  const strongOrgans = organs.filter((organ) => loose || foldKeep(organ.ja).startsWith(foldKeep(query)) || organ.yomi.startsWith(foldKeep(query)));
+  const rows = [...strongOrgans.map((organ) => organRow(organ)), ...figures.map((hit) => figureRow(hit))];
+  if (!rows.length) return "";
+  const more = `#/organs/find/${encodeURIComponent(query)}`;
+  return h("div", { class: "look-figures" },
+    h("h3", { class: "list-title" }, "臓器の図"),
+    h("ul", { class: "home-card look-list" }, ...rows.slice(0, FIGURE_ROWS),
+      h("li", {}, h("a", { class: "look-row look-more-row", href: more }, rows.length > FIGURE_ROWS ? `ほかの図も臓器の図で探す（あと ${rows.length - FIGURE_ROWS}）` : "図に載っている部位の名前でも探す"))),
+  );
+}
+
+/** 臓器の図の行（臓器の一覧の絵・名前・平面図の枚数） */
+function organRow(organ: OrganCore): HTMLElement {
+  const thumb = organThumb(organ);
+  return h("li", {}, h("a", { class: "look-row fig-row", href: `#/organs/${organ.id}` },
+    thumb ? h("span", { class: "fig-thumb" }, h("img", { src: thumb, alt: "", loading: "lazy", decoding: "async", width: "360", height: "240" })) : h("span", { class: "fig-thumb fig-thumb-3d", "aria-hidden": "true" }, "3D"),
+    h("span", { class: "look-text" },
+      h("span", { class: "look-ja" }, organ.ja),
+      h("span", { class: "look-where" }, organ.plates.length ? `臓器の図 ・ 平面図 ${organ.plates.length}枚` : "臓器の図 ・ 立体"))));
+}
+
+/** 平面図の行（小さな絵・図の題・臓器の名前） */
+function figureRow(hit: FigureHit): HTMLElement {
+  return h("li", {}, h("a", { class: "look-row fig-row", href: figureHref(hit) },
+    figureThumbElement(hit.plate.id),
+    h("span", { class: "look-text" },
+      h("span", { class: "look-ja" }, hit.plate.title),
+      h("span", { class: "look-where" }, `${hit.organ.ja}の図`))));
+}
 
 /** 結果の行で太く示す文字（打った言葉と、ローマ字ならその読み） */
 function markers(query: string): string[] {

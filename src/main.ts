@@ -305,7 +305,8 @@ async function boot(): Promise<void> {
     viewer.hideCompass(!PAGES[name] || name === "start");
     showCrumbs(name);
     // 3Dを動かして見る画面（レッスン・図鑑・臓器の図）を初めて開いたときに、右上の ⤢・?・向きの目印の説明を出す（src/ui/stage-tip.ts）
-    if (name === "learn" || name === "explore" || name === "model" || ((name === "organs" || name === "motions") && arg)) void stageTip(stage, ctx.signal);
+    // 臓器の図のすべての図（all）と図を探した結果（find）は一覧なので出さない
+    if (name === "learn" || name === "explore" || name === "model" || ((name === "organs" || name === "motions") && arg && !/^(all|find)(\/|$)/.test(arg))) void stageTip(stage, ctx.signal);
     window.scrollTo(0, 0);
     try {
       if (name === "learn") await lesson(ctx, arg);

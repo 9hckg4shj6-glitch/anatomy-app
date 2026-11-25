@@ -72,7 +72,7 @@ describe("使い方ガイドの見本", () => {
       [drillDemo(controller.signal), ["すぐ始める", "①範囲", "②問い方", "③数と順", "おわり"]],
       [lookDemo(controller.signal), ["字を入れる", "語を開く", "探し方いろいろ"]],
       [modelDemo(controller.signal), ["見る", "部品を選ぶ", "外へ出す", "動かす", "濃さ・断面"]],
-      [organDemo(controller.signal), ["臓器を選ぶ", "立体（3D）", "平面図", "隠して確かめる", "要点とレッスン"]],
+      [organDemo(controller.signal), ["臓器を選ぶ", "立体（3D）と図の帯", "平面図", "語から図へ", "隠して確かめる", "要点とレッスン"]],
       [motionDemo(controller.signal), ["動きを選ぶ", "学ぶことを読む", "1つずつ見る", "速さと見せ方", "覚えて確かめる"]],
     ];
     for (const [demo, titles] of cases) {

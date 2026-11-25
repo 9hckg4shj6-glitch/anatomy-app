@@ -11,6 +11,10 @@ import { termCard } from "./term-card";
 import { noteText } from "../en-notes";
 import { MOTIONS } from "../motion-list";
 import { fullOrganById } from "../organ-details";
+import { alsoFigures, allFigures, figureHref, findFigures, ORGAN_GROUPS, organThumb, type Figure } from "../organ-figures";
+import { figureCard, figureCards, figureThumbElement, termFigures, type FigureCard } from "./figure-strip";
+
+export { ORGAN_GROUPS, organThumb };
 
 /** 臓器の図から動きの図鑑へ（その臓器の動きがあれば） */
 const ORGAN_MOTIONS: Record<string, string[]> = {
@@ -28,35 +32,18 @@ const LABEL_MODES: [LabelMode, string][] = [["both", "日本語と英語"], ["ja
 const LABEL_MODE = "plateLabelMode";
 
 /**
- * 臓器の図（#/organs）。臓器の一覧と、臓器ごとの画面（#/organs/<臓器ID>）。
+ * 臓器の図（#/organs）。臓器の一覧（#/organs）・すべての図（#/organs/all）・図を探した結果（#/organs/find/<言葉>）と、臓器ごとの画面（#/organs/<臓器ID>）。
  * 立体（#/organs/<臓器ID>/3d/<語ID>）は臓器と大血管だけを、部屋の色分け・向き・切り口を選んで見る。
- * 平面図（#/organs/<臓器ID>/<図ID>）は教科書のような図に、名前を日本語と英語で添える（scripts/plates.mjs が元のイラストから作った図・形から描いた図と、手で描いた模式図）
+ * 平面図（#/organs/<臓器ID>/<図ID>/<語ID>）は教科書のような図に、名前を日本語と英語で添える（scripts/plates.mjs が元のイラストから作った図・形から描いた図と、手で描いた模式図）。
+ * 語ID があれば、その名前を選んで開く（図鑑などの「この語が載っている図」から）
  */
 export async function organScreen(ctx: AppContext, arg: string): Promise<void> {
   const [organId, mode, termId] = arg.split("/");
+  if (organId === "all") return await organList(ctx, "figures");
+  if (organId === "find") return await organList(ctx, "organs", arg.slice("find/".length));
   const organ = fullOrganById(organId);
-  if (!organ) return await organList(ctx);
+  if (!organ) return await organList(ctx, "organs");
   await organPage(ctx, organ, mode ?? "", termId ?? "");
-}
-
-/**
- * 臓器の図の一覧の見出し（系統のまとまり）と、その臓器。どの臓器も1つのまとまりに入る（tests/organs.test.ts が確かめる）。
- * color は見出しの印（content/systems.json の系統の色）
- */
-export const ORGAN_GROUPS: { title: string; color: string; organs: string[] }[] = [
-  { title: "心臓と血管・リンパ", color: "#c8323c", organs: ["heart", "vessels", "lymph"] },
-  { title: "呼吸器と胸の中", color: "#6fa8dc", organs: ["nose", "pharynx", "larynx", "lung", "lung-segments", "pleura", "mediastinum"] },
-  { title: "消化器と腹膜", color: "#d9965b", organs: ["mouth", "stomach", "liver", "intestine", "peritoneum", "diaphragms"] },
-  { title: "泌尿器と生殖器", color: "#d4a514", organs: ["kidney", "renal", "male", "female"] },
-  { title: "神経と感覚器", color: "#e9c46a", organs: ["brain", "brain-base", "spinal-cord", "brachial-plexus", "plexuses", "eye", "ear"] },
-  { title: "関節", color: "#b7c7cc", organs: ["shoulder", "elbow", "hip", "knee"] },
-  { title: "局所の通り道", color: "#8f9aa6", organs: ["passages"] },
-  { title: "皮膚・組織・発生", color: "#c48bb4", organs: ["skin", "tissues", "development"] },
-];
-
-/** 一覧の絵（scripts/organ-thumbs.mjs が最初の平面図から作る）。平面図の無い臓器は無し */
-export function organThumb(organ: OrganCore): string | null {
-  return organ.plates.length ? `${import.meta.env.BASE_URL}organs/${organ.id}.webp` : null;
 }
 
 /** 一覧の札の小さな字（平面図の枚数と、図のレッスンの進み具合） */
@@ -65,11 +52,16 @@ export function organMeta(organ: OrganCore, lessons: number, done: number): stri
   return lessons ? [plates, done ? `レッスン ${done} / ${lessons}` : `レッスン ${lessons}`] : [plates];
 }
 
+/** 図を探した結果の数（「さらに表示」で全部） */
+const FIRST_FIGURES = 30;
+
 /**
- * 臓器の図の一覧（docs/普段使い.md「画面の分かりにくさの見直し」）。系統のまとまりの見出しと、絵つきの札を2列に。
+ * 臓器の図の一覧（docs/普段使い.md「画面の分かりにくさの見直し」「平面図の探しやすさの見直し」）。
+ * 上に図を探す欄（図の題・図に載っている語の名前・臓器の名前で）と、「臓器から」「すべての図」の切りかえ。
+ * 臓器からは系統のまとまりの見出しと絵つきの札を2列に、すべての図は臓器ごとに平面図の絵を並べる（どの臓器に入っているか分からなくても見つかる）。
  * 英語名は臓器の画面で出す。3Dは使わないので、スマホでは3Dごとたたむ
  */
-async function organList(ctx: AppContext): Promise<void> {
+async function organList(ctx: AppContext, view: "organs" | "figures", startQuery = ""): Promise<void> {
   ctx.fold(true);
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
@@ -87,27 +79,108 @@ async function organList(ctx: AppContext): Promise<void> {
         h("span", { class: "organ-name" }, organ.ja),
         h("span", { class: "organ-meta" }, ...organMeta(organ, lessons.length, done).map((text) => h("span", {}, text)))));
   };
+  const groups = ORGAN_GROUPS.map((group) => ({ ...group, list: group.organs.flatMap((id) => (organById.has(id) ? [organById.get(id)!] : [])) })).filter((group) => group.list.length);
+  const groupHead = (group: (typeof groups)[number]) => h("h3", { class: "organ-group" }, h("span", { class: "swatch", style: `background:${group.color}` }), group.title);
+  const body = view === "figures"
+    // すべての図: 系統のまとまり → 臓器の名前（押すと臓器の画面）→ その臓器の平面図の絵
+    ? groups.flatMap((group) => [groupHead(group), ...group.list.filter((organ) => organ.plates.length).flatMap((organ) => [
+      h("h4", { class: "fig-organ-head" }, h("a", { href: `#/organs/${organ.id}` }, organ.ja, h("span", { class: "muted" }, ` 平面図 ${organ.plates.length}枚 ›`))),
+      figureCards(organ.plates.map((plate) => figureCard({ organ, plate })), { layout: "grid", label: `${organ.ja}の平面図` }),
+    ])])
+    : groups.flatMap((group) => [groupHead(group), h("ul", { class: "organ-grid" }, ...group.list.map(card))]);
+
+  const results = h("div", { class: "fig-results", hidden: true });
+  const rest = h("div", {},
+    h("div", { class: "segments organ-view", role: "group", "aria-label": "一覧の見せ方" },
+      h("a", { class: view === "organs" ? "segment on" : "segment", href: "#/organs", ...(view === "organs" ? { "aria-current": "page" } : {}) }, "臓器から"),
+      h("a", { class: view === "figures" ? "segment on" : "segment", href: "#/organs/all", ...(view === "figures" ? { "aria-current": "page" } : {}) }, `すべての図（${allFigures.length}枚）`)),
+    ...body);
+  const search = h("input", {
+    class: "search", type: "search", placeholder: "図や部位の名前で探す（例: 弁・膵管）", "aria-label": "平面図を探す", enterkeyhint: "search",
+    autocomplete: "off", autocapitalize: "off", spellcheck: "false",
+    onInput: () => show(),
+  }) as HTMLInputElement;
+  const show = (all = false) => {
+    const query = search.value.trim();
+    results.hidden = !query;
+    rest.hidden = !!query;
+    // 図を開いて戻ったとき、同じ結果から続けられるように（アドレスだけ変える。画面は作り直さない）
+    const hash = query ? `#/organs/find/${encodeURIComponent(query)}` : view === "figures" ? "#/organs/all" : "#/organs";
+    if (location.hash !== hash) history.replaceState(null, "", hash);
+    if (!query) return;
+    const hits = findFigures(query, { labels: true });
+    if (!hits.length) {
+      results.replaceChildren(
+        h("p", { class: "look-count" }, `「${query}」の載っている図は見つかりませんでした。`),
+        h("p", { class: "home-note" }, "図の題（「四腔断」「ネフロン」など）・図に載っている部位の名前（日本語・読み・英語）・臓器の名前で探せます。語そのものは「調べる」で。"),
+      );
+      return;
+    }
+    const shown = all ? hits : hits.slice(0, FIRST_FIGURES);
+    results.replaceChildren(
+      h("p", { class: "look-count" }, `${hits.length}枚`),
+      h("ul", { class: "home-card look-list fig-rows" }, ...shown.map((hit) => figureRow(hit, hit.term, hit.label))),
+      shown.length < hits.length ? h("button", { class: "ghost-button look-more", type: "button", onClick: () => show(true) }, `さらに ${hits.length - shown.length}枚を表示`) : "",
+    );
+  };
+
   ctx.panel.replaceChildren(
     h("h2", {}, "臓器の図"),
-    h("p", { class: "muted" }, "臓器を立体（3D）と教科書のような平面図で見ます。細胞と組織・発生などは、それぞれの図の「図で学ぶレッスン」で。"),
-    ...ORGAN_GROUPS.flatMap((group) => {
-      const list = group.organs.flatMap((id) => (organById.has(id) ? [organById.get(id)!] : []));
-      return list.length ? [
-        h("h3", { class: "organ-group" }, h("span", { class: "swatch", style: `background:${group.color}` }), group.title),
-        h("ul", { class: "organ-grid" }, ...list.map(card)),
-      ] : [];
-    }),
+    h("p", { class: "muted" }, "臓器を立体（3D）と教科書のような平面図で見ます。見たい図がどの臓器にあるか分からないときは、図の名前や部位の名前で探すか「すべての図」から。"),
+    search, results, rest,
   );
+  if (startQuery) {
+    search.value = startQuery;
+    show();
+  }
 }
 
-/** 臓器の画面の「図で学ぶレッスン」の欄（無ければ空） */
-async function lessonBox(organ: Organ): Promise<HTMLElement | string> {
+/** 図を探した結果の1行: 小さな絵・図の題・臓器の名前と、語で当たったときは「〇〇が載っている」 */
+function figureRow(figure: Figure, term?: string, label?: string): HTMLElement {
+  return h("li", {}, h("a", { class: "look-row fig-row", href: figureHref(figure, term) },
+    figureThumbElement(figure.plate.id),
+    h("span", { class: "look-text" },
+      h("span", { class: "look-ja" }, figure.plate.title),
+      h("span", { class: "look-where" }, `${figure.organ.ja}の図`, label ? ` ・ 「${label}」が載っている` : ""))));
+}
+
+/**
+ * 臓器の画面の図の帯（名前のすぐ下）: 立体（3D）・この臓器の平面図・ほかの臓器の図（organs.json の also）を絵つきの札で。
+ * 今の図は濃く、帯の真ん中に。前は「見方」の文字だけのボタンが説明とレッスンの下にあり、図に辿り着きにくかった
+ */
+function figureStrip(organ: Organ, current: string): HTMLElement {
+  const own: FigureCard[] = [
+    ...(organ.box ? [{ href: `#/organs/${organ.id}/3d`, title: "立体（3D）", kind: "3d" as const, current: current === "3d" }] : []),
+    ...organ.plates.map((plate) => ({ ...figureCard({ organ, plate }), kind: plate.diagram ? ("diagram" as const) : undefined, current: plate.id === current })),
+  ];
+  const others = alsoFigures(organ.also);
+  const count = organ.plates.length;
+  return h("div", { class: "fig-strip-box" },
+    h("p", { class: "fig-head" }, organ.box ? (count ? "立体と平面図" : "立体") : "平面図", count ? h("span", { class: "muted" }, `（平面図 ${count}枚${others.length ? `・ほかの臓器の図 ${others.length}枚` : ""}）`) : ""),
+    figureCards([...own, ...(others.length ? [{ divider: "ほかの臓器の図" }, ...others.map((figure) => figureCard(figure, { showOrgan: true }))] : [])], { label: `${organ.ja}の図` }));
+}
+
+/** 平面図の上の「前の図・次の図」（立体と平面図を帯の順に。ほかの臓器の図には行かない） */
+function figureNav(organ: Organ, plate: PlateSpec): HTMLElement {
+  const views = [...(organ.box ? [{ id: "3d", title: "立体（3D）" }] : []), ...organ.plates];
+  const at = views.findIndex((view) => view.id === plate.id);
+  const link = (view: { id: string; title: string } | undefined, text: string) => view
+    ? h("a", { class: "fig-nav-button", href: `#/organs/${organ.id}/${view.id}`, title: view.title }, text)
+    : h("span", { class: "fig-nav-button off", "aria-hidden": "true" }, text);
+  return h("nav", { class: "fig-nav", "aria-label": "前の図・次の図" },
+    link(views[at - 1], "‹ 前の図"),
+    h("span", { class: "fig-nav-count" }, `平面図 ${organ.plates.indexOf(plate) + 1} / ${organ.plates.length}`),
+    link(views[at + 1], "次の図 ›"));
+}
+
+/** 臓器の画面の「図で学ぶレッスン」の欄（無ければ空）。平面図を見ている間は、図の名前の一覧が下へ押し出されないようたたむ */
+async function lessonBox(organ: Organ, folded = false): Promise<HTMLElement | string> {
   const lessons = organLessons(organ);
   if (!lessons.length) return "";
   const learnedIds = new Set((await db.learned.bulkGet(lessons.flatMap((unit) => unit.terms.map((term) => term.id)))).flatMap((item) => (item ? [item.termId] : [])));
   const done = lessons.filter((unit) => unit.terms.every((term) => learnedIds.has(term.id))).length;
   // 多い（細胞と組織の11レッスンなど）ときは、見方の切りかえが下へ押し出されないよう、初めはたたむ
-  return h("details", { class: "path-group organ-lessons", open: lessons.length <= 4 },
+  return h("details", { class: "path-group organ-lessons", open: !folded && lessons.length <= 4 },
     h("summary", {}, h("span", { class: "path-group-name" }, "図で学ぶレッスン"),
       h("span", { class: "muted" }, done ? `${done} / ${lessons.length} レッスン` : `${lessons.length}レッスン`)),
     h("ol", { class: "home-card lesson-path" }, ...lessons.map((unit, i) => {
@@ -138,19 +211,15 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
   const head = h("div", { class: "organ-head" },
     h("a", { class: "back-link", href: "#/organs" }, "臓器の図"),
     h("h2", {}, h("ruby", {}, organ.ja, h("rt", {}, organ.yomi)), h("span", { class: "organ-en", lang: "en" }, organ.en)),
-    h("p", { class: "muted" }, noteText(organ.about)),
-    motionLinks(organ.id),
   );
-  const tabs = h("div", { class: "organ-tabs", role: "tablist" },
-    organ.box ? h("a", { class: plate ? "chip" : "chip on", href: `#/organs/${organ.id}/3d`, role: "tab", "aria-selected": String(!plate) }, "立体（3D）") : "",
-    ...organ.plates.map((item) => h("a", {
-      class: item === plate ? "chip on" : "chip", href: `#/organs/${organ.id}/${item.id}`, role: "tab", "aria-selected": String(item === plate),
-    }, item.title)),
-  );
+  const about = [h("p", { class: "muted organ-about" }, noteText(organ.about)), motionLinks(organ.id)];
   const body = h("div", {});
-  panel.replaceChildren(head, await lessonBox(organ), h("p", { class: "organ-tabs-title" }, "見方"), tabs, body);
+  const lessonList = await lessonBox(organ, !!plate);
 
   if (plate) {
+    // 平面図: 名前 → 図の帯 → 図で学ぶレッスン（たたむ）→ 前の図・次の図と図の題・名前の一覧 → 臓器の説明
+    panel.replaceChildren(head, figureStrip(organ, plate.id), lessonList, figureNav(organ, plate), body,
+      h("div", { class: "organ-about-end" }, h("h3", {}, `${organ.ja}について`), ...about));
     viewer.highlight([]);
     // 3Dの向きの目印は図のラベルに重なるので隠す（画面を移ると main.ts が戻す）
     viewer.hideCompass(true);
@@ -158,9 +227,11 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
     showPlate(ctx, organ, plate, plateIndex, layer, body, labelMode, (next) => {
       labelMode = next;
       void db.settings.put({ key: LABEL_MODE, value: next, updatedAt: nowIso() });
-    });
+    }, startTerm);
     return;
   }
+  // 立体: 名前 → 図の帯 → 臓器の説明・動きで見る → 図で学ぶレッスン → 向き・切り口・語
+  panel.replaceChildren(head, figureStrip(organ, "3d"), ...about, lessonList, body);
 
   // 立体: 臓器と大血管だけを見せ、部屋・葉の色分け・向き・切り口を選ぶ
   const colorable = Object.keys(organ.colors).length > 0;
@@ -238,6 +309,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
       organ.colorNote ? h("p", { class: "muted" }, noteText(organ.colorNote)) : "",
       selected ? h("div", { class: "detail" },
         termCard(selected, { open: (word) => (ids.has(word.id) ? select(word) : (location.hash = `#/explore/${word.id}`)) }),
+        termFigures(selected.id, { prefer: organ.id }),
         h("div", { class: "nav-row" },
           h("a", { class: "ghost-button", href: `#/explore/${selected.id}` }, "図鑑で開く"),
           h("button", { class: "ghost-button", type: "button", onClick: () => select(null) }, "選択をやめる"),
@@ -258,14 +330,17 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
 /**
  * 平面図を紙（layer）に描く（plate-view.ts の drawPlate）。欄（body）には図の題・名前の出し方・名前の一覧と、選んだ語の説明
  */
-function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateIndex, layer: HTMLElement, body: HTMLElement, startMode: LabelMode, saveMode: (mode: LabelMode) => void): void {
+function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateIndex, layer: HTMLElement, body: HTMLElement, startMode: LabelMode, saveMode: (mode: LabelMode) => void, startTerm = ""): void {
   let labelMode = startMode;
-  let chosen: number | null = null;
   const revealed = new Set<number>();
   const entry = index.plates[spec.id];
   const diagram = spec.diagram === "flow" ? flowDiagram() : null;
   const labels: PlateLabel[] = diagram ? diagram.labels : entry?.labels ?? [];
   const nameOf = labelName;
+  // 図鑑などの「この語が載っている図」から来たときは、その語の名前を選んでおく（隠しているときも、その名前は出す）
+  const start = startTerm ? labels.findIndex((label) => label.term === startTerm) : -1;
+  let chosen: number | null = start >= 0 ? start : null;
+  if (chosen !== null) revealed.add(chosen);
   ctx.hint("");
 
   const paper = h("div", { class: "plate-paper" });
@@ -314,6 +389,7 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
           h("div", { class: "term-head" }, h("span", { class: "term-ja" }, nameOf(chosenLabel).ja)),
           h("div", { class: "term-en" }, h("span", { lang: "en" }, nameOf(chosenLabel).en)),
           chosenLabel.note ? h("p", {}, noteText(chosenLabel.note)) : ""),
+        chosenTerm ? termFigures(chosenTerm.id, { prefer: organ.id, except: spec.id, title: "この語が載っているほかの図" }) : "",
         chosenTerm ? h("div", { class: "nav-row" },
           organ.box && (organTerms(organ).includes(chosenTerm.id) || chosenTerm.of) ? h("a", { class: "ghost-button", href: `#/organs/${organ.id}/3d/${chosenTerm.id}` }, "立体で見る") : null,
           h("a", { class: "ghost-button", href: `#/explore/${chosenTerm.id}` }, "図鑑で開く"),

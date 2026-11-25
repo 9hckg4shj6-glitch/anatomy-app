@@ -754,39 +754,35 @@ export const modelDemo = (signal: AbortSignal): HTMLElement => stepDemo(MODEL_ST
 const ORGAN_STEPS: DemoStep[] = [
   {
     title: "臓器を選ぶ",
-    text: "臓器の図は「学ぶ」と「調べる › 3Dで調べる」から。心臓と血管・呼吸器・消化器・泌尿器と生殖器・神経と感覚器・関節・皮膚と組織と発生に分かれて並びます。",
+    text: "臓器の図は「学ぶ」と「調べる › 3Dで調べる」から。心臓と血管・呼吸器・消化器・泌尿器と生殖器・神経と感覚器・関節・皮膚と組織と発生に分かれて並びます。見たい図がどの臓器にあるか分からなければ、上の欄で図や部位の名前を探すか「すべての図」から。",
     screen: `${topBar("学ぶ")}
       <div class="gd-pad">
         <p class="gd-title">臓器の図</p>
+        <div class="gd-search gd-search-idle">${svg(TAB_ICON.look)}<small>図の名前・部位の名前で探す</small></div>
+        <div class="gd-seg"><span class="on">臓器から</span><span>すべての図</span></div>
         <p class="gd-group"><i style="--c:#c8323c"></i>心臓と血管・リンパ</p>
         <div class="gd-organs">
           <span><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false"><b>心臓</b>${finger()}${ripple()}</span>
           <span><img src="${ORGAN_IMG}vessels.webp" alt="" draggable="false"><b>血管</b></span>
         </div>
-        <p class="gd-group"><i style="--c:#6fa8dc"></i>呼吸器と胸の中</p>
-        <div class="gd-organs">
-          <span><img src="${ORGAN_IMG}lung.webp" alt="" draggable="false"><b>肺</b></span>
-          <span><img src="${ORGAN_IMG}pleura.webp" alt="" draggable="false"><b>胸膜</b></span>
-        </div>
       </div>`,
   },
   {
-    title: "立体（3D）",
-    text: "「立体（3D）」では、その臓器と大血管だけを回して見ます。色を分ける（部屋・葉ごと）・切って中を見る・向きを選べ、部位をタップすると名前と説明が出ます。",
+    title: "立体（3D）と図の帯",
+    text: "臓器の名前のすぐ下の帯に、立体（3D）と平面図が絵で並びます（横に送れます）。「立体（3D）」では臓器と大血管だけを回して見て、色を分ける・切って中を見る・向きを選べます。帯の終わりには、ほかの臓器にある関わりの深い図も。",
     screen: `${topBar("臓器の図")}
       <div class="gd-stage gd-stage-img gd-organ3d"><img src="${IMG}heart.webp" alt="" draggable="false"><span class="gd-f-cut"></span></div>
       <div class="gd-pad">
         <p class="gd-title">心臓 <small>heart</small></p>
-        <p class="gd-label">見方</p>
-        <div class="gd-toggles"><span class="on">立体（3D）</span><span>血液の流れ</span><span>前から見た心臓</span><span>…</span></div>
+        <p class="gd-label">立体と平面図（平面図 10枚）</p>
+        <div class="gd-figstrip"><span class="on"><i>3D</i>立体（3D）</span><span><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">心臓（前から）${finger()}${ripple()}</span><span><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">心臓（後ろから）</span></div>
         <p class="gd-label">切って中を見る</p>
         <div class="gd-toggles"><span>切らない</span><span class="on">前の壁を外す（前頭断）</span><span>四腔断（水平断）</span></div>
-        <div class="gd-toggles"><span class="on">部屋ごとに色を分ける</span></div>
       </div>`,
   },
   {
     title: "平面図",
-    text: "「見方」の2つめからは教科書のような平面図です。名前の出し方は 日本語と英語・日本語・英語・隠して確かめる の4つ。名前を押すと、その語の説明が下に出ます。",
+    text: "帯で平面図を選ぶと、教科書のような図が出ます（「前の図・次の図」で順に見ることも）。名前の出し方は 日本語と英語・日本語・英語・隠して確かめる の4つ。名前を押すと、その語の説明と「この語が載っているほかの図」が下に出ます。",
     screen: `${topBar("臓器の図")}
       <div class="gd-plate"><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">
         <span class="gd-tag" style="left:6%;top:16%">上大静脈</span><span class="gd-tag" style="left:58%;top:8%">大動脈弓</span>
@@ -794,7 +790,23 @@ const ORGAN_STEPS: DemoStep[] = [
       </div>
       <div class="gd-pad">
         <div class="gd-toggles"><span class="on">日本語と英語</span><span>日本語</span><span>英語</span><span>隠して確かめる</span></div>
-        <ol class="gd-names"><li>上大静脈 <small lang="en">superior vena cava</small></li><li>大動脈弓 <small lang="en">arch of aorta</small></li><li>右心房 <small lang="en">right atrium</small></li><li>左心室 <small lang="en">left ventricle</small></li></ol>
+        <div class="gd-fignav"><span>‹ 前の図</span><small>平面図 2 / 10</small><span>次の図 ›</span></div>
+        <ol class="gd-names"><li>上大静脈 <small lang="en">superior vena cava</small></li><li>大動脈弓 <small lang="en">arch of aorta</small></li><li>右心房 <small lang="en">right atrium</small></li></ol>
+      </div>`,
+  },
+  {
+    title: "語から図へ",
+    text: "図鑑・臓器の立体・平面図で語を選ぶと「この語が載っている図」が絵で並び、押すとその名前を選んだ形で図が開きます。調べるで図の名前（四腔断・ネフロン・胎児循環など）を打つと、結果の上に臓器の図も出ます。",
+    screen: `${topBar("図鑑")}
+      <div class="gd-pad">
+        <p class="gd-title">左心室 <small>left ventricle</small></p>
+        <p class="gd-note">心臓の4つの部屋のうち、全身へ血液を送り出す部屋。壁がいちばん厚い。</p>
+        <p class="gd-label">この語が載っている図（8枚）</p>
+        <div class="gd-figstrip"><span><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">心臓（前から）${finger()}${ripple()}</span><span><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">四腔断</span><span><img src="${ORGAN_IMG}vessels.webp" alt="" draggable="false">体循環と肺循環</span></div>
+        <p class="gd-label">押すと、左心室を光らせて図が開く</p>
+        <div class="gd-plate gd-plate-sm"><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">
+          <span class="gd-tag gd-num gd-on" style="left:60%;top:60%">16</span><span class="gd-tag" style="left:66%;top:44%">左心室</span>
+        </div>
       </div>`,
   },
   {
