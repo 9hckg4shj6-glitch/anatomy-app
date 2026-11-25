@@ -1818,10 +1818,13 @@ body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
 .ig-why span { color: var(--muted); font-size: 13px; }
 .ig-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
 .ig-head .start-sub { margin: 0; }
-.ig-device .segment { min-height: 36px; padding: 0 14px; }
+.ig-device .segment { min-height: 36px; padding: 0 14px; white-space: nowrap; }
 .ig-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .ig-step { display: grid; grid-template-columns: 132px 1fr; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
 .ig-text { display: grid; gap: 6px; justify-items: start; }
+.ig-step.no-art { grid-template-columns: 1fr; }
+.ig-in-guide .ig-head .guide-sub { margin: 0 4px; }
+.ig-in-guide .ig-head small { margin-left: 8px; font-size: 13px; font-weight: 500; color: var(--muted); }
 .ig-text p { margin: 0; font-size: 14px; line-height: 1.7; }
 .ig-text .ig-copy { margin-top: 8px; min-height: 40px; font-size: 13px; }
 .ig-num { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-size: 14px; font-weight: 800; }

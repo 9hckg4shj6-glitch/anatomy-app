@@ -37,4 +37,16 @@ describe("ホーム画面に追加の案内", () => {
     ipad.click();
     expect(page.querySelector(".ig-step")!.textContent).toContain("画面の上の右");
   });
+
+  it("使い方の章では題を出さず、Android・PC の手順も選べる（iPhone・iPad でない端末では初めからそれ）", () => {
+    const page = installGuide({ inGuide: true });
+    expect(page.querySelector(".start-title")).toBeNull();
+    const tabs = [...page.querySelectorAll<HTMLButtonElement>(".ig-device .segment")];
+    expect(tabs.map((tab) => tab.textContent)).toEqual(["iPhone", "iPad", "Android・PC"]);
+    // jsdom は iPhone・iPad でない
+    expect(tabs[2].getAttribute("aria-pressed")).toBe("true");
+    expect(page.querySelector(".ig-steps")!.textContent).toContain("Android（Chrome）");
+    tabs[0].click();
+    expect(page.querySelectorAll(".ig-step svg")).toHaveLength(4);
+  });
 });

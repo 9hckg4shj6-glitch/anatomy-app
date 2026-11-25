@@ -1,7 +1,7 @@
 import { h } from "../dom";
 import { iosBrowser, iosDevice } from "../install";
 
-type Device = "iphone" | "ipad";
+type Device = "iphone" | "ipad" | "others";
 type Browser = ReturnType<typeof iosBrowser>;
 
 /**
@@ -9,35 +9,43 @@ type Browser = ReturnType<typeof iosBrowser>;
  * ブラウザとホーム画面のアプリでは記録が別々になり、Safari のままだとしばらく開かないと記録が消されることもあるので、
  * 何も入れる前に追加してもらう。手順は iOS 26 の Safari（iPhone は下の「…」→ 共有、iPad は上の共有ボタン）に合わせ、
  * 古い iOS の共有ボタン（□↑）とも読めるように書く。iPhone と iPad は見分けを間違えることがあるので、切り替えも置く。
- * 中の絵はみな決まった SVG なので innerHTML で入れる（利用者の入れた文は入れない）
+ * 中の絵はみな決まった SVG なので innerHTML で入れる（利用者の入れた文は入れない）。
+ * inGuide は使い方（#/guide/install）の章の中身として使うとき: 題は章のものを使い、端末に「Android・PC」も足す
+ * （iPhone・iPad でなければ初めからそれを出す）
  */
-export function installGuide(): HTMLElement {
-  let device: Device = iosDevice() === "ipad" ? "ipad" : "iphone";
-  const browser = iosBrowser();
-  const box = h("div", { class: "ig" });
+export function installGuide({ inGuide = false } = {}): HTMLElement {
+  const ios = iosDevice();
+  let device: Device = ios === "ipad" ? "ipad" : ios === "iphone" || !inGuide ? "iphone" : "others";
+  // iPhone・iPad でない端末で使い方を読んでいるときは、iPhone・iPad の手順は Safari のものを見せる
+  const browser = ios ? iosBrowser() : "safari";
+  const devices: Device[] = inGuide ? ["iphone", "ipad", "others"] : ["iphone", "ipad"];
+  const box = h("div", { class: inGuide ? "ig ig-in-guide" : "ig" });
 
   const render = () => {
     const tabs = h("div", { class: "segments ig-device", role: "group", "aria-label": "端末" },
-      ...(["iphone", "ipad"] as const).map((id) => h("button", {
+      ...devices.map((id) => h("button", {
         class: id === device ? "segment on" : "segment", type: "button", "aria-pressed": String(id === device),
         onClick: () => { device = id; render(); },
-      }, id === "iphone" ? "iPhone" : "iPad")));
+      }, id === "iphone" ? "iPhone" : id === "ipad" ? "iPad" : "Android・PC")));
     box.replaceChildren(
-      h("p", { class: "start-eyebrow" }, "はじめに・1分"),
-      h("h2", { class: "start-title" }, "ホーム画面に追加してから始めましょう"),
-      h("p", { class: "ig-lead" }, "アプリのように、ホーム画面のアイコンから開けるようになります。App Store からのインストールはいりません。"),
+      inGuide ? "" : h("p", { class: "start-eyebrow" }, "はじめに・1分"),
+      inGuide ? "" : h("h2", { class: "start-title" }, "ホーム画面に追加してから始めましょう"),
+      inGuide ? "" : h("p", { class: "ig-lead" }, "アプリのように、ホーム画面のアイコンから開けるようになります。App Store からのインストールはいりません。"),
       h("ul", { class: "ig-why" },
         h("li", {}, h("b", {}, "記録が消えにくい"), h("span", {}, "ブラウザのままだと、しばらく開かない間に、保存した記録が消されることがあります")),
         h("li", {}, h("b", {}, "全画面で広く"), h("span", {}, "アドレスの帯が消えて、3D がそのぶん大きく見えます")),
-        h("li", {}, h("b", {}, "先に追加する"), h("span", {}, "ブラウザとホーム画面のアプリでは記録が別々です。ここで始めると、追加したあと最初からになります"))),
-      h("div", { class: "ig-head" }, h("h3", { class: "start-sub" }, "追加のしかた", h("small", {}, browserName(browser))), tabs),
-      h("ol", { class: "ig-steps" }, ...steps(device, browser).map((step, i) => h("li", { class: "ig-step" },
-        figure(step.art),
+        h("li", {}, h("b", {}, "先に追加する"), h("span", {}, inGuide
+          ? "ブラウザとホーム画面のアプリでは記録が別々です。ブラウザで学んだ記録は、Google でログインするか、書き出して読み込むとアプリへ移せます"
+          : "ブラウザとホーム画面のアプリでは記録が別々です。ここで始めると、追加したあと最初からになります"))),
+      h("div", { class: "ig-head" }, h("h3", { class: inGuide ? "guide-sub" : "start-sub" }, "追加のしかた",
+        h("small", {}, device === "others" ? "Chrome・Edge の場合" : browserName(browser))), tabs),
+      h("ol", { class: "ig-steps" }, ...(device === "others" ? otherSteps() : steps(device, browser)).map((step, i) => h("li", { class: step.art ? "ig-step" : "ig-step no-art" },
+        step.art ? figure(step.art) : "",
         h("div", { class: "ig-text" },
           h("span", { class: "ig-num", "aria-hidden": "true" }, String(i + 1)),
           h("p", {}, ...step.text),
           step.extra ?? "")))),
-      h("p", { class: "muted ig-note" }, "ボタンの帯が見当たらないときは、画面の下の端を軽く押すと出てきます。"),
+      device === "others" ? "" : h("p", { class: "muted ig-note" }, "ボタンの帯が見当たらないときは、画面の下の端を軽く押すと出てきます。"),
     );
   };
   render();
@@ -49,7 +57,7 @@ function browserName(browser: Browser): string {
 }
 
 interface Step {
-  art: string;
+  art?: string;
   text: (Node | string)[];
   extra?: Node;
 }
@@ -99,6 +107,16 @@ function steps(device: Device, browser: Browser): Step[] {
       art: ART.home,
       text: ["ホーム画面に増えた ", b("「からだ見聞録」"), " のアイコンから開いて始めます。このページは閉じてかまいません。"],
     },
+  ];
+}
+
+/** Android（Chrome）と PC（Chrome・Edge）。どちらもブラウザが「インストール」として出す（絵は無し） */
+function otherSteps(): Step[] {
+  const b = (text: string) => h("b", {}, text);
+  return [
+    { text: [b("Android（Chrome）: "), "右上の ", b("⋮"), " を押し、", b("「ホーム画面に追加」"), "（または ", b("「アプリをインストール」"), "）を押し、出てきた画面で ", b("「インストール」"), "（「追加」）を押します。"] },
+    { text: [b("PC（Chrome・Edge）: "), "アドレスの欄の右にある ", b("インストールのマーク"), "（画面に ↓ の形）を押し、", b("「インストール」"), " を押します。"] },
+    { text: ["追加したアイコン（デスクトップやアプリの一覧の ", b("「からだ見聞録」"), "）から開きます。今日の画面に「ホーム画面に追加」のボタンが出ているときは、それを押しても追加できます。"] },
   ];
 }
 
