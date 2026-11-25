@@ -11,6 +11,7 @@ import { account } from "../account";
 import { nextLesson } from "./lessons";
 import { finishRow, todayCounts } from "./review";
 import { sceneFor, termAt, type AppContext } from "./context";
+import { systemPicker } from "./system-picker";
 import { tabIntro } from "./tab-intro";
 
 /** ホームで最後に選んだ系統（ほかの画面から戻っても同じ系統を見せる） */
@@ -54,17 +55,11 @@ export async function home(ctx: AppContext): Promise<void> {
   stage.append(caption);
   signal.addEventListener("abort", () => caption.remove(), { once: true });
 
-  const chips = bodySystems.map((system) => h("button", {
-    class: "chip", type: "button", style: `--swatch:${system.color}`,
-    onClick: () => void choose(system.id),
-  }, h("span", { class: "swatch" }), short(system.ja)));
+  const picker = systemPicker(bodySystems, shownSystem, (systemId) => void choose(systemId), signal);
 
   const choose = async (systemId: string) => {
     shownSystem = systemId;
-    for (const [i, system] of bodySystems.entries()) {
-      chips[i].classList.toggle("on", system.id === systemId);
-      chips[i].setAttribute("aria-pressed", String(system.id === systemId));
-    }
+    picker.mark(systemId);
     const system = bodySystems.find((item) => item.id === systemId)!;
     // 大きな数（系統の語の数）は出さず、学んだ語があればその数だけ
     const done = courseTerms().filter((term) => term.system === systemId && learnedIds.has(term.id)).length;
@@ -78,7 +73,7 @@ export async function home(ctx: AppContext): Promise<void> {
     viewer.highlight([]);
   };
 
-  ctx.tools.replaceChildren(...chips);
+  ctx.tools.replaceChildren(picker.element);
   // 体の全体を、下の系統のボタンに足がかからないよう少し上に寄せて、やや引いて見せる
   const [lo, hi] = ctx.index.bounds;
   const height = hi[1] - lo[1];
@@ -138,7 +133,7 @@ function today(counts: { review: number; fresh: number }, nextUnit: Unit | undef
     return h("section", { class: "home-card home-today" }, kicker,
       h("h2", { class: "home-title" }, "3Dを見ながら、名前を覚える"),
       nextUnit ? bigButton(`#/learn/${nextUnit.id}`, "最初のレッスン", `${nextUnit.title}・約${lessonMinutes(nextUnit.terms.length)}分`) : "",
-      h("p", { class: "home-note" }, "レッスンで覚えた語が、毎日の復習に入ります。3Dは1本指で回し、2本指でつまんで拡大。部位をタップすると図鑑で開きます。"),
+      h("p", { class: "home-note" }, "レッスンで覚えた語が、毎日の復習に入ります。3Dは1本指で回し、2本指でつまんで拡大。部位をタップすると図鑑で開きます。筋・心臓・内臓・神経なども、3Dの下のボタンで切り替えて見られます。"),
     );
   }
   if (due) {
@@ -182,11 +177,6 @@ function continueRow(unit: Unit, learnedIds: Set<string>): HTMLElement {
     h("span", { class: "home-row-title" }, unit.title),
     h("span", { class: "home-row-meta" }, done ? `${done}/${unit.terms.length}語` : `${unit.terms.length}語`),
   );
-}
-
-/** 3Dの下のボタンの短い名前（「骨格系」→「骨格」。泌尿器・生殖器系は「泌尿・生殖」） */
-function short(name: string): string {
-  return name === "泌尿器・生殖器系" ? "泌尿・生殖" : name.replace(/系$/, "");
 }
 
 function dayKey(date: Date): string {

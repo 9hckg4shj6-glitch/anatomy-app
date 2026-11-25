@@ -9,6 +9,7 @@ import {
 import type { Section } from "../viewer";
 import { motionPlayer, sceneFor, termAt, type AppContext } from "./context";
 import { card, foot, group, row, segmented, toggleRow } from "./settings-kit";
+import { systemPicker } from "./system-picker";
 import { tabIntro } from "./tab-intro";
 import { termCard } from "./term-card";
 
@@ -56,11 +57,6 @@ function modeSwitch(mode: ModelMode): HTMLElement {
 /** 見るで最後に見ていた系統・選んだ語・視点（アプリを開いている間。ほかのタブへ行って戻っても同じ所から） */
 let lookKept: { system: string; termId: string | null; view: [Vec3, Vec3] } | null = null;
 
-/** 3Dの下のボタンの短い名前（「骨格系」→「骨格」。泌尿器・生殖器系は「泌尿・生殖」。今日の3Dと同じ） */
-function shortName(name: string): string {
-  return name === "泌尿器・生殖器系" ? "泌尿・生殖" : name.replace(/系$/, "");
-}
-
 /**
  * 見る（#/model/look）: 系統を1つ選んで3Dを回し、部位をタップすると、欄にその語の図鑑の説明（語のカード）が出る。
  * 3Dではその語を光らせる。寄って見る・図鑑で開く（関係する語・演習などはそちら）。隠す・取り外すなどは自由に操作で
@@ -78,16 +74,11 @@ async function lookModel(ctx: AppContext, head: Head): Promise<void> {
 
   const paint = () => viewer.highlight(selected ? [selected.id] : []);
 
-  const chips = bodySystems.map((system) => h("button", {
-    class: "chip", type: "button", style: `--swatch:${system.color}`, "aria-pressed": "false",
-    onClick: () => void choose(system.id),
-  }, h("span", { class: "swatch" }), shortName(system.ja)));
+  const picker = systemPicker(bodySystems, shown, (systemId) => void choose(systemId), signal,
+    [h("button", { class: "chip", type: "button", onClick: () => viewer.overview() }, "全体")]);
   const choose = async (systemId: string) => {
     shown = systemId;
-    for (const [i, system] of bodySystems.entries()) {
-      chips[i].classList.toggle("on", system.id === systemId);
-      chips[i].setAttribute("aria-pressed", String(system.id === systemId));
-    }
+    picker.mark(systemId);
     // ほかの系統の語を選んでいたら、選ぶのをやめる（光らせる部品が出ていないので）
     if (selected && selected.system !== systemId) {
       selected = null;
@@ -97,7 +88,7 @@ async function lookModel(ctx: AppContext, head: Head): Promise<void> {
     if (signal.aborted) return;
     paint();
   };
-  tools.replaceChildren(...chips, h("button", { class: "chip", type: "button", onClick: () => viewer.overview() }, "全体"));
+  tools.replaceChildren(picker.element);
 
   const detail = h("div", { class: "model-look" });
   const select = (term: Term | null) => {
@@ -123,7 +114,7 @@ async function lookModel(ctx: AppContext, head: Head): Promise<void> {
     if (!selected) {
       detail.replaceChildren(h("div", { class: "model-empty" },
         h("p", {}, h("b", {}, "部位をタップすると、図鑑の説明が出ます")),
-        h("p", { class: "muted" }, "3Dは1本指で回す・2本指でつまんで拡大。3Dの下のボタンで系統を変えます。隠す・取り外す・透かす・切るは「自由に操作」で。"),
+        h("p", { class: "muted" }, "3Dは1本指で回す・2本指でつまんで拡大。3Dの下のボタンで、筋・心臓・内臓・神経などに切り替えます。隠す・取り外す・透かす・切るは「自由に操作」で。"),
       ));
       return;
     }

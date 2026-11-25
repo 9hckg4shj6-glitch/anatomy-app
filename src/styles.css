@@ -1856,3 +1856,58 @@ body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
 @media (max-width: 380px) {
   .ig-step { grid-template-columns: 116px 1fr; gap: 10px; }
 }
+
+/* 3Dの下の系統のボタン（ホームと3D模型の「見る」。src/ui/system-picker.ts）。スマホ・iPad では列が横にすべるので、
+   左端に動かない「系統を選ぶ」を置き（押すと全部の系統の一覧）、まだ切り替えたことのない人には列の上に吹き出しを出す */
+.stage-tools > .system-picker { flex: 1 1 auto; min-width: 0; }
+.system-picker { position: relative; display: flex; align-items: center; gap: 6px; width: 100%; }
+.system-row { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.system-all { display: none; }
+.stage-tools .chip.system-all { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; gap: 7px; }
+.system-all-icon {
+  width: 12px; height: 12px; flex: none;
+  background-image: radial-gradient(circle, currentColor 2.2px, transparent 2.7px); background-size: 6px 6px;
+}
+.system-all-count {
+  min-width: 20px; padding: 0 6px; border-radius: 99px; background: rgb(255 255 255 / 0.22);
+  font-size: 12px; line-height: 20px; text-align: center; font-variant-numeric: tabular-nums;
+}
+.system-nudge {
+  position: absolute; left: 0; bottom: calc(100% + 10px); max-width: min(330px, 100%); display: flex; align-items: flex-start; gap: 4px;
+  padding: 8px 4px 8px 12px; border-radius: 12px; background: #f7f4ee; color: var(--ink); font-size: 13px; line-height: 1.5;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.3);
+}
+.system-nudge::after {
+  content: ""; position: absolute; left: 36px; top: 100%; border: 7px solid transparent; border-top-color: #f7f4ee;
+}
+.system-nudge b { font-weight: 800; }
+.system-nudge-close {
+  flex: none; width: 36px; height: 36px; margin: -6px 0 -6px; border: 0; background: none; color: var(--muted); font-size: 18px; cursor: pointer;
+}
+@media (max-width: 767px), (pointer: coarse) {
+  /* 列だけをすべらせ、「系統を選ぶ」と吹き出しは動かさない */
+  .stage-tools:has(> .system-picker) { overflow: visible; padding: 0; margin: 0; -webkit-mask-image: none; mask-image: none; }
+  .system-all { display: inline-flex; flex: none; }
+  .system-row {
+    flex: 1; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; touch-action: pan-x; padding: 0 20px 0 8px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8px, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8px, #000 calc(100% - 28px), transparent);
+  }
+  .system-row::-webkit-scrollbar { display: none; }
+  .system-row > * { flex: none; }
+}
+/* 全部の系統の一覧（シートの中） */
+.system-grid {
+  flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: max-content; align-content: start;
+  gap: 8px; padding: 4px 16px 24px; overflow-y: auto; overscroll-behavior: contain;
+}
+.system-option {
+  display: flex; align-items: center; gap: 10px; min-height: 58px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px;
+  background: var(--surface); color: var(--ink); font: inherit; text-align: left; cursor: pointer;
+}
+.system-option.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.system-option-swatch { width: 14px; height: 14px; flex: none; border-radius: 50%; background: var(--swatch); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.18); }
+.system-option-text { display: grid; gap: 1px; flex: 1; min-width: 0; }
+.system-option-name { font-size: 15px; font-weight: 700; }
+.system-option-text small { font-size: 12px; line-height: 1.4; color: var(--muted); }
+@media (hover: hover) { .system-option:hover { background: color-mix(in srgb, var(--accent) 5%, var(--surface)); } }
