@@ -32,12 +32,12 @@ describe("臓器の図の続き（声帯・肝臓の臓側面・胸管・手根�
     }
   });
 
-  it("平面図の語はその図の上にある（声帯ひだ・声門・右リンパ本幹はよく見える図へ移した）", () => {
+  it("平面図の語はその図の上にある（右リンパ本幹はよく見える図へ移した。喉頭の中は緻密なモデル その3 で3Dの語になり、小さい語だけ図の棚に入る）", () => {
     const on = (id: string) => plateOfTerm(termById.get(id)!)?.plate.id;
-    expect(on("vestibular-fold")).toBe("larynx-coronal");
+    expect(on("vestibular-fold")).toBe("larynx-superior");
     expect(on("laryngeal-ventricle")).toBe("larynx-coronal");
-    expect(on("vocal-fold")).toBe("larynx-superior");
-    expect(on("glottis")).toBe("larynx-superior");
+    expect(on("vocal-fold")).toBeUndefined();
+    expect(on("glottis")).toBeUndefined();
     expect(on("thoracic-duct")).toBe("thoracic-duct");
     expect(on("cisterna-chyli")).toBe("thoracic-duct");
     expect(on("venous-angle")).toBe("thoracic-duct");

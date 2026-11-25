@@ -257,34 +257,39 @@
       "id": "sens-eye-plate",
       "title": "瞳孔・後眼房と眼底",
       "group": "眼",
-      "intro": ["瞳孔（pupil）・後眼房（posterior chamber）と、網膜（retina）の黄斑（macula）・中心窩（fovea centralis）・視神経円板（optic disc）は3Dに形が無いので、眼球（eyeball）の水平断（horizontal section）と涙器の図で示す。眼底鏡（ophthalmoscope）で瞳孔からのぞくと、網膜の後ろの部分（眼底）に視神経円板と黄斑、そこから出入りする網膜の血管（blood vessel）が見える。"],
+      "intro": ["瞳孔（pupil）・後眼房（posterior chamber）と、網膜（retina）の黄斑（macula）・中心窩（fovea centralis）・視神経円板（optic disc）。眼底鏡（ophthalmoscope）で瞳孔からのぞくと、網膜の後ろの部分（眼底）に視神経円板と黄斑、そこから出入りする網膜の血管（blood vessel）が見える。", "3Dの瞳孔は虹彩（iris）の穴をふさぐ黒い円板（強調したときだけ出す）、後眼房は虹彩と水晶体（lens）の間のすき間の形。黄斑・中心窩・視神経円板は網膜の内面（internal surface）に貼った模式の板で、視神経円板は視神経（optic nerve）の入る所、中心窩は眼（eye）の軸の後ろの端（少し耳側）に置いた。硝子体（vitreous body）ごしに見るので、眼球（eyeball）の水平断（horizontal section）の切り口や図と合わせて見る。"],
       "terms": [
         {
-          "id": "pupil", "ja": "瞳孔", "yomi": "どうこう", "en": "pupil", "la": "pupilla", "plate": "eye-horizontal", "level": 1,
+          "id": "pupil", "ja": "瞳孔", "yomi": "どうこう", "en": "pupil", "la": "pupilla",
+          "parts": ["pupil"], "level": 1, "schematic": true, "xray": true, "veil": true, "tuck": true, "color": "#141011",
           "kanji": "瞳（ひとみ）の孔（あな）",
           "etym": "pupilla「小さな人形」（ラテン語。瞳に映る小さな人の姿から）",
           "note": "虹彩（iris）の中央の丸い穴で、目に入る光の量を変える。瞳孔括約筋（sphincter pupillae）（動眼神経（oculomotor nerve）の副交感神経（parasympathetic nerve））で小さくなり（縮瞳）、瞳孔散大筋（dilator pupillae）（交感神経（sympathetic nerve））で大きくなる（散瞳）。光を当てると両目とも小さくなる対光反射（pupillary light reflex）は、脳幹（brainstem）の働きを確かめる目安。"
         },
         {
-          "id": "posterior-chamber", "ja": "後眼房", "yomi": "こうがんぼう", "en": "posterior chamber of eyeball", "la": "camera posterior bulbi", "plate": "eye-horizontal", "level": 2,
+          "id": "posterior-chamber", "ja": "後眼房", "yomi": "こうがんぼう", "en": "posterior chamber of eyeball", "la": "camera posterior bulbi",
+          "parts": ["posterior chamber of eyeball"], "level": 2, "xray": true, "color": "#dfe9ee", "tissue": "clear",
           "kanji": "後ろの眼の房（部屋）",
           "etym": "camera「部屋」（ラテン語）",
           "note": "虹彩（iris）と水晶体（lens）（と毛様体小帯（ciliary zonule））の間のせまい部屋。毛様体（ciliary body）が作った眼房水（aqueous humor）がここに出て、瞳孔（pupil）を通って前眼房（anterior chamber of eyeball）へ流れ、隅角（iridocorneal angle）のシュレム管（canal of Schlemm）から静脈（vein）へ出る。流れがとどこおると眼圧（intraocular pressure）が上がる（緑内障（glaucoma））。"
         },
         {
-          "id": "macula", "ja": "黄斑", "yomi": "おうはん", "en": "macula lutea", "enAlt": ["macula"], "la": "macula lutea", "plate": "eye-horizontal", "level": 1,
+          "id": "macula", "ja": "黄斑", "yomi": "おうはん", "en": "macula lutea", "enAlt": ["macula"], "la": "macula lutea",
+          "parts": ["macula lutea", "fovea centralis"], "level": 1, "schematic": true, "xray": true, "color": "#d8b13e",
           "kanji": "黄色い斑（まだら）",
           "etym": "macula「しみ・斑点」＋ luteus「黄色の」（ラテン語）",
           "note": "網膜（retina）の後ろの真ん中（視神経円板（optic disc）の約4mm外側（lateral））にある、黄色みをおびた直径約2mmの所。色を感じる錐体（cone）が集まり、ものを細かく見る。年をとって傷むと見たい所が見えにくくなる（加齢黄斑変性）。"
         },
         {
-          "id": "fovea-centralis", "ja": "中心窩", "yomi": "ちゅうしんか", "en": "fovea centralis", "la": "fovea centralis", "plate": "eye-horizontal", "level": 2,
+          "id": "fovea-centralis", "ja": "中心窩", "yomi": "ちゅうしんか", "en": "fovea centralis", "la": "fovea centralis",
+          "parts": ["fovea centralis"], "level": 2, "schematic": true, "xray": true, "color": "#a9442f",
           "kanji": "（黄斑の）中心の窩（くぼみ）",
           "etym": "fovea「小さなくぼみ」（ラテン語）",
           "note": "黄斑（macula）の真ん中の小さなくぼみ。錐体（petrous part）だけがすき間なく並び、上の層がわきへよけて光が直接届くので、視力がいちばん良い。ものを見つめると、その像がここに結ぶ。"
         },
         {
-          "id": "optic-disc", "ja": "視神経円板", "yomi": "ししんけいえんばん", "en": "optic disc", "enAlt": ["optic disk", "optic papilla"], "la": "discus nervi optici", "plate": "eye-horizontal", "level": 1,
+          "id": "optic-disc", "ja": "視神経円板", "yomi": "ししんけいえんばん", "en": "optic disc", "enAlt": ["optic disk", "optic papilla"], "la": "discus nervi optici",
+          "parts": ["optic disc"], "level": 1, "schematic": true, "xray": true, "color": "#f1cda4",
           "kanji": "視神経の（出る所の）円い板",
           "etym": "discus「円盤」（ギリシャ語 diskos）。視神経乳頭とも",
           "note": "網膜（retina）の神経線維（nerve fiber）が集まって視神経（optic nerve）として眼球（eyeball）を出る所（視神経乳頭（optic disc））。黄斑（macula）より鼻（nose）の側にある。視細胞（photoreceptor cell）が無いので光を感じず、視野（visual field）の盲点（マリオット盲点）になる。網膜中心動静脈が出入りする。頭の中の圧が上がるとむくむ（うっ血乳頭）。"

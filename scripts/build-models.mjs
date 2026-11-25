@@ -23,6 +23,7 @@ import { partitionMesh, splitMesh } from "./split-mesh.mjs";
 import { loadHires } from "./hires.mjs";
 import { loadNasal, nasalNames } from "./nasal/index.mjs";
 import { heartNames, loadHeart, REPLACES as HEART_REPLACES } from "./heart/index.mjs";
+import { loadMade, madeDetail, madeNames } from "./made/index.mjs";
 import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, relax, simplify, subdivide } from "./surface.mjs";
 import { loadZa } from "./za/index.mjs";
 import { EAR_DETAIL } from "./ear/index.mjs";
@@ -357,12 +358,20 @@ export function readElements() {
     for (const [id, name] of [...elementNames]) if (id.startsWith("FJ") && HEART_REPLACES.includes(name.toLowerCase())) elementNames.delete(id);
     for (const [id, name] of hearts) elementNames.set(id, name);
   }
+  // 眼球の中・喉頭の中・鼻中隔と硬口蓋（scripts/made/。緻密なモデル その3）。同じ名前の BodyParts3D の部品（上の歯肉・視神経）は置きかえる。
+  // 元の形を書き出すとき（scripts/eye/export.mjs・scripts/palate/export.mjs）は NO_MADE=1 で置きかえない
+  const made = process.env.NO_MADE ? new Map() : madeNames();
+  const madeLower = new Set([...made.values()].map((name) => name.toLowerCase()));
+  for (const [id, name] of [...elementNames]) if (id.startsWith("FJ") && madeLower.has(name.toLowerCase())) elementNames.delete(id);
+  for (const [id, name] of made) elementNames.set(id, name);
+  const madeMesh = loadMade();
   const heart = loadHeart();
   const cache = new Map();
   const nasal = loadNasal({ elementNames, readWhole: (id) => readWhole(id) });
   const readMesh = (id) => {
     if (id.startsWith("NS_")) return nasal(id);
     if (id.startsWith("HT_")) return heart(id);
+    if (made.has(id)) return madeMesh(id);
     if (!cache.has(id)) {
       const [cut, half, source, lower] = cutOf.get(id) ?? [];
       const [guides, i, whole, bias] = pieceOf.get(id) ?? [];
@@ -438,8 +447,8 @@ async function main() {
     const extrasOf = (id) => (["skeletal", "joints"].includes(system.id) && CARTILAGE.test(elementNames.get(id)) ? { cartilage: true } : null);
     // 腎臓の中のつくり（ZK_…、scripts/kidney/）・肺区域（ZL_…、scripts/lung/）・耳の中のつくり（ZE_…、scripts/ear/）は形どうしの面がぴったり接するので、光をさえぎる形に入れない
     // （入れると、中の面がとなりの形にふさがれて真っ暗になる。外から見えるのは腎皮質・肺の表面だけなので、ほかの形の暗さはほとんど変わらない）
-    // 耳の中のつくり（ZE_…）は小さいので細かく残す
-    const shape = { error: (id) => (id.startsWith("ZE_") ? EAR_DETAIL : DETAIL[system.id] ?? 0.0001), ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) || id.startsWith("ZK_") || id.startsWith("ZL_") || id.startsWith("ZE_") };
+    // 耳の中のつくり（ZE_…）と眼球・喉頭の中（EY_…・LX_…、scripts/made/）は小さいので細かく残す
+    const shape = { error: (id) => (id.startsWith("ZE_") ? EAR_DETAIL : madeDetail(id) ?? DETAIL[system.id] ?? 0.0001), ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) || id.startsWith("ZK_") || id.startsWith("ZL_") || id.startsWith("ZE_") };
     let meshes = new Map();
     if (bp.length) {
       const glb = await writeGlb(system.id, bp.map((id) => [id, shown(id)]), shape);

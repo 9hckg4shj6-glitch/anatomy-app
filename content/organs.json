@@ -551,9 +551,9 @@
       "with": ["superior-rectus", "inferior-rectus", "medial-rectus", "lateral-rectus", "superior-oblique", "inferior-oblique", "levator-palpebrae-superioris", "lacrimal-gland", "lacrimal-sac", "nasolacrimal-duct"],
       "around": ["optic-nerve", "ophthalmic-artery"],
       "box": [[-0.055, 1.484, 0.1], [-0.003, 1.546, 0.172]],
-      "colors": {"sclera": "#f2efe8", "cornea": "#b9d3f0", "choroid": "#9b3d34", "ciliary-body": "#c0584a", "iris": "#86b33a", "lens": "#cfd6e6"},
+      "colors": {"sclera": "#f2efe8", "cornea": "#b9d3f0", "choroid": "#9b3d34", "ciliary-body": "#c0584a", "iris": "#86b33a", "lens": "#cfd6e6", "posterior-chamber": "#8fc3e8", "macula": "#e3bc3a", "fovea-centralis": "#a8382a", "optic-disc": "#f6dcb4"},
       "colorLabel": "眼球の層ごとに色を分ける",
-      "colorNote": "平面図の水平断（horizontal section）と同じ色: 強膜は白、角膜は水色、脈絡膜は赤茶、毛様体は赤、虹彩は緑、水晶体は灰白。外から見えるのは強膜と角膜だけなので、切り口で中の層を見る。右の眼だけを見せている。",
+      "colorNote": "平面図の水平断（horizontal section）と同じ色: 強膜は白、角膜は水色、脈絡膜は赤茶、毛様体は赤、虹彩は緑、水晶体は灰白、後眼房は水色。網膜の黄斑（macula）は黄、中心窩（fovea centralis）は赤、視神経円板（optic disc）は淡い肌色（模式の形）。外から見えるのは強膜と角膜だけなので、切り口で中の層を見る（「眼底」の切り口では、眼球の後ろ半分を前から見て、網膜の上の視神経円板・黄斑・中心窩を見る）。右の眼だけを見せている。",
       "views": [
         {"label": "前", "from": [0, 0, 1]},
         {"label": "外側（右から）", "from": [-1, 0.1, 0.25]},
@@ -565,6 +565,7 @@
       "cuts": [
         {"label": "水平断（上から見る）", "normal": [0, -1, 0], "point": [0, 1.518, 0], "from": [0, 1, -0.05]},
         {"label": "前頭断（眼球の後ろ）", "normal": [0, 0, -1], "point": [0, 0, 0.136], "from": [0, 0, 1]},
+        {"label": "眼底（眼球の後ろ半分を前から見る）", "normal": [0, 0, -1], "point": [-0.0305, 1.518, 0.1495], "from": [0, 0, 1], "hide": ["vitreous-body"], "zoom": 0.03},
         {"label": "眼球を外して眼筋を見る", "normal": [0.493, -0.287, -0.821], "point": [-0.059, 1.532, 0.185], "from": [-0.6, 0.35, 1], "hide": ["eyeball", "cornea", "sclera", "iris", "ciliary-body", "lens", "vitreous-body", "retina", "choroid", "ciliary-zonule", "anterior-chamber-of-eyeball"]}
       ],
       "plates": [
@@ -617,9 +618,9 @@
       "with": ["nasal-septal-cartilage"],
       "around": ["nasal-bone", "vomer", "ethmoid-bone", "olfactory-nerve"],
       "box": [[-0.05, 1.455, 0.095], [0.05, 1.582, 0.222]],
-      "colors": {"nasal-cavity": "#e8a2a6", "inferior-nasal-meatus": "#f0a050", "middle-nasal-meatus": "#4fb5a5", "nasal-inferior-concha": "#c4776f", "nasal-middle-concha": "#d99a8e", "maxillary-sinus": "#b48ad6", "frontal-sinus": "#8fb0e6", "ethmoidal-cells": "#9fbf86", "sphenoidal-sinus": "#e6c25c", "nasal-septal-cartilage": "#9fc6d6", "lateral-nasal-cartilage": "#9fc6d6", "major-alar-cartilage": "#9fc6d6"},
+      "colors": {"nasal-cavity": "#e8a2a6", "inferior-nasal-meatus": "#f0a050", "middle-nasal-meatus": "#4fb5a5", "nasal-inferior-concha": "#c4776f", "nasal-middle-concha": "#d99a8e", "maxillary-sinus": "#b48ad6", "frontal-sinus": "#8fb0e6", "ethmoidal-cells": "#9fbf86", "sphenoidal-sinus": "#e6c25c", "nasal-septum": "#c58a9c", "hard-palate": "#d0705f", "nasal-septal-cartilage": "#9fc6d6", "lateral-nasal-cartilage": "#9fc6d6", "major-alar-cartilage": "#9fc6d6"},
       "colorLabel": "鼻甲介・鼻道・副鼻腔を色で分ける",
-      "colorNote": "鼻腔（空気の通り道。薄く透かしている）は桃で、その中の下鼻道は橙、中鼻道（middle nasal meatus）は青緑。下鼻甲介（inferior nasal concha）は赤茶、中鼻甲介（middle nasal concha）は薄い赤茶。副鼻腔は上顎洞が紫、前頭洞が青、篩骨蜂巣が緑、蝶形骨洞が黄。鼻（nose）の軟骨（cartilage）は水色。鼻腔・鼻道（nasal meatus）・鼻甲介・上顎洞は実際の人の CT から作った形。",
+      "colorNote": "鼻腔（空気の通り道。薄く透かしている）は桃で、その中の下鼻道は橙、中鼻道（middle nasal meatus）は青緑。下鼻甲介（inferior nasal concha）は赤茶、中鼻甲介（middle nasal concha）は薄い赤茶。副鼻腔は上顎洞が紫、前頭洞が青、篩骨蜂巣が緑、蝶形骨洞が黄。鼻（nose）の軟骨（cartilage）は水色。鼻中隔（粘膜ごとの形。ふだんは薄く透かしている）は藤色、硬口蓋（hard palate）の粘膜は赤。鼻腔・鼻道（nasal meatus）・鼻甲介・上顎洞は実際の人の CT から作った形。",
       "views": [
         {"label": "右斜め前", "from": [-0.75, 0.25, 1]},
         {"label": "右", "from": [-1, 0.1, 0.1]},
@@ -631,7 +632,7 @@
       ],
       "cuts": [
         {"label": "正中断（鼻中隔を見る）", "normal": [1, 0, 0], "point": [-0.002, 0, 0], "from": [-1, 0, 0.05]},
-        {"label": "鼻中隔を外して外側の壁を見る", "normal": [1, 0, 0], "point": [0.0015, 0, 0], "from": [-1, 0, 0.05], "hide": ["nasal-septal-cartilage", "vomer", "ethmoid-bone"]},
+        {"label": "鼻中隔を外して外側の壁を見る", "normal": [1, 0, 0], "point": [0.0015, 0, 0], "from": [-1, 0, 0.05], "hide": ["nasal-septum", "nasal-septal-cartilage", "vomer", "ethmoid-bone"]},
         {"label": "前頭断（鼻甲介・上顎洞・篩骨蜂巣を通る面）", "normal": [0, 0, -1], "point": [0, 0, 0.15], "from": [0, 0, 1]},
         {"label": "水平断（下鼻甲介と上顎洞の高さ。上から見る）", "normal": [0, -1, 0], "point": [0, 1.492, 0], "from": [0, 1, -0.05]}
       ],
@@ -651,9 +652,9 @@
       "with": ["palatine-tonsil"],
       "around": ["nasal-cavity", "nasal-septal-cartilage", "hyoid-bone", "larynx", "epiglottis", "esophagus", "trachea"],
       "box": [[-0.07, 1.38, 0.08], [0.07, 1.566, 0.212]],
-      "colors": {"nasopharynx": "#8fb0e6", "oropharynx": "#9fbf86", "laryngopharynx": "#e6d672", "nasal-cavity": "#c98a8a", "oral-cavity": "#e8a2b2", "tongue": "#d4606e", "soft-palate": "#e39a8f"},
+      "colors": {"nasopharynx": "#8fb0e6", "oropharynx": "#9fbf86", "laryngopharynx": "#e6d672", "nasal-cavity": "#c98a8a", "oral-cavity": "#e8a2b2", "tongue": "#d4606e", "soft-palate": "#e39a8f", "hard-palate": "#c96a5c"},
       "colorLabel": "咽頭の3部と鼻腔・口腔を色で分ける",
-      "colorNote": "咽頭は上から鼻部（nasal part）（青）・口部（oral part）（緑）・喉頭部（laryngeal part）（黄）。鼻腔は赤茶、口腔は桃、舌（tongue）は赤、軟口蓋は橙。鼻腔と口腔は薄く透かしている。",
+      "colorNote": "咽頭は上から鼻部（nasal part）（青）・口部（oral part）（緑）・喉頭部（laryngeal part）（黄）。鼻腔は赤茶、口腔は桃、舌（tongue）は赤、軟口蓋は橙、硬口蓋（の粘膜（mucosa））は濃い赤。鼻腔と口腔は薄く透かしている。",
       "views": [
         {"label": "右", "from": [-1, 0.1, 0.1]},
         {"label": "前", "from": [0, 0, 1]},
@@ -681,9 +682,9 @@
       "with": ["epiglottis", "thyroid-cartilage", "cricoid-cartilage", "arytenoid-cartilage", "thyroid-gland", "right-lobe-of-thyroid", "left-lobe-of-thyroid", "isthmus-of-thyroid", "pyramidal-lobe", "parathyroid-gland", "superior-parathyroid-gland", "inferior-parathyroid-gland"],
       "around": ["hyoid-bone", "trachea"],
       "box": [[-0.032, 1.372, 0.078], [0.032, 1.446, 0.134]],
-      "colors": {"thyroid-cartilage": "#d8d3a8", "cricoid-cartilage": "#bfc98f", "arytenoid-cartilage": "#a7c4d8", "epiglottis": "#e8cf7a", "thyroid-gland": "#b8574c", "parathyroid-gland": "#e8a33a"},
+      "colors": {"thyroid-cartilage": "#d8d3a8", "cricoid-cartilage": "#bfc98f", "arytenoid-cartilage": "#a7c4d8", "epiglottis": "#e8cf7a", "thyroid-gland": "#b8574c", "parathyroid-gland": "#e8a33a", "vocal-fold": "#f3ece0", "vestibular-fold": "#d9928c", "rima-glottidis": "#4f7fd6", "laryngeal-ventricle": "#7fb6e0", "infraglottic-cavity": "#a9d2ee"},
       "colorLabel": "軟骨と腺を色で分ける",
-      "colorNote": "甲状軟骨は淡い黄、輪状軟骨は淡い緑、披裂軟骨は水色、喉頭蓋（epiglottis）は黄、甲状腺は赤茶、上皮小体は橙。筋と靱帯はふだんの色。",
+      "colorNote": "甲状軟骨は淡い黄、輪状軟骨は淡い緑、披裂軟骨は水色、喉頭蓋（epiglottis）は黄、甲状腺は赤茶、上皮小体は橙。喉頭の中は、声帯ひだが白、前庭ひだ（vestibular fold）が赤、声門裂（rima glottidis）が青、喉頭室（laryngeal ventricle）と声門下腔（infraglottic cavity）が水色（どれも模式の形。空所はふだん薄く透かしている）。筋と靱帯はふだんの色。",
       "views": [
         {"label": "前", "from": [0, 0, 1]},
         {"label": "左斜め前", "from": [0.75, 0.1, 0.7]},
@@ -694,7 +695,8 @@
       ],
       "cuts": [
         {"label": "正中断（左から見る）", "normal": [-1, 0, 0], "point": [0.001, 0, 0], "from": [1, 0, 0.05]},
-        {"label": "前頭断（声帯の高さ）", "normal": [0, 0, -1], "point": [0, 0, 0.106], "from": [0, 0, 1]},
+        {"label": "前頭断（声帯の高さ）", "normal": [0, 0, -1], "point": [-0.0007, 1.402, 0.106], "from": [0, 0, 1], "zoom": 0.05},
+        {"label": "上から（喉頭鏡で見る向き。前庭ひだの上で切る）", "normal": [0, -1, 0], "point": [-0.0007, 1.4102, 0.108], "from": [0, 1, -0.25], "zoom": 0.04},
         {"label": "甲状腺を外して喉頭を見る", "normal": [-0.728, -0.097, -0.679], "point": [0.044, 1.415, 0.147], "from": [0.75, 0.1, 0.7], "hide": ["thyroid-gland", "right-lobe-of-thyroid", "left-lobe-of-thyroid", "isthmus-of-thyroid", "pyramidal-lobe", "parathyroid-gland", "superior-parathyroid-gland", "inferior-parathyroid-gland"]}
       ],
       "plates": [

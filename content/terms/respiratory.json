@@ -773,7 +773,7 @@
       "id": "resp-nose-septum",
       "title": "鼻腔の壁と鼻中隔・硬口蓋",
       "group": "鼻腔と喉頭",
-      "intro": ["3Dの鼻腔（nasal cavity）は CT から作った空気の型で、上鼻道（superior nasal meatus）・蝶篩陥凹（sphenoethmoidal recess）・鼻中隔（nasal septum）の粘膜（mucosa）などの細かい所は形が無いので、鼻腔の外側（lateral）の壁・鼻中隔・正中断の図で示す。"],
+      "intro": ["3Dの鼻腔（nasal cavity）は CT から作った空気の型。鼻中隔（nasal septum）は左右の鼻腔の空気の間を埋めた形で、中に鋤骨（vomer）・篩骨（ethmoid bone）の垂直板（perpendicular plate）・鼻中隔軟骨（septal nasal cartilage）が入る（ふだんは薄く透かす）。硬口蓋（hard palate）は、口蓋（palate）の全体をおおう上の歯肉（gingiva）の形から歯列（dental arch）の内側（medial）を分けた粘膜（mucosa）の形。上鼻道（superior nasal meatus）・蝶篩陥凹（sphenoethmoidal recess）などの細かい所は形が無いので、鼻腔の外側（lateral）の壁・鼻中隔・正中断の図で示す。"],
       "terms": [
         {
           "id": "naris", "ja": "外鼻孔", "yomi": "がいびこう", "en": "naris", "enAlt": ["nostril"], "la": "naris", "plate": "pharynx-sagittal", "level": 2,
@@ -800,7 +800,8 @@
           "note": "上鼻甲介（superior nasal concha）の後ろ上の、蝶形骨（sphenoid bone）の前の小さなくぼみ。蝶形骨洞（sphenoidal sinus）が開く。"
         },
         {
-          "id": "nasal-septum", "ja": "鼻中隔", "yomi": "びちゅうかく", "en": "nasal septum", "la": "septum nasi", "plate": "nose-septum", "level": 1,
+          "id": "nasal-septum", "ja": "鼻中隔", "yomi": "びちゅうかく", "en": "nasal septum", "la": "septum nasi",
+          "parts": ["nasal septum"], "level": 1, "xray": true, "veil": true, "color": "#d98b86", "tissue": "mucosa",
           "kanji": "鼻（腔）の中の隔て（仕切り）",
           "etym": "septum「仕切り」（ラテン語）",
           "note": "左右の鼻腔（nasal cavity）を分ける仕切り。後ろ上は篩骨（ethmoid bone）の垂直板（perpendicular plate）、後ろ下は鋤骨（vomer）（ここまでが骨鼻中隔（bony nasal septum））、前は鼻中隔軟骨（septal nasal cartilage）で、全体を粘膜（mucosa）がおおう。多くの人で少し曲がっていて、強く曲がると鼻づまりの原因になる（鼻中隔弯曲症）。"
@@ -818,7 +819,8 @@
           "note": "硬口蓋（hard palate）の前の正中（median）を上下に貫く管で、口の側は切歯窩（incisive fossa）（切歯孔（incisive foramen））に開く。鼻口蓋神経（nasopalatine nerve）と大口蓋動脈（greater palatine artery）の枝（branch）が通り、鼻中隔（nasal septum）と口蓋（palate）をつなぐ。"
         },
         {
-          "id": "hard-palate", "ja": "硬口蓋", "yomi": "こうこうがい", "en": "hard palate", "la": "palatum durum", "plate": "pharynx-sagittal", "level": 1,
+          "id": "hard-palate", "ja": "硬口蓋", "yomi": "こうこうがい", "en": "hard palate", "la": "palatum durum",
+          "parts": ["mucosa of hard palate"], "level": 1, "xray": true, "color": "#d98b86", "tissue": "mucosa",
           "kanji": "硬い口蓋（口の天井）",
           "etym": "palatum「口蓋」（ラテン語）、durus「硬い」",
           "note": "口蓋（palate）の前2/3で、口腔（oral cavity）の天井と鼻腔（nasal cavity）の床をなす。上顎骨（maxilla）の口蓋突起（palatine process of maxilla）と口蓋骨（palatine bone）の水平板（horizontal plate）（骨口蓋（bony palate））を粘膜（mucosa）がおおう。後ろに軟口蓋（soft palate）が続く。左右がつながらないと口蓋裂（cleft palate）になる。"
@@ -1120,19 +1122,28 @@
       "id": "resp-glottis",
       "title": "声帯ひだ・声門と輪状甲状関節",
       "group": "鼻腔と喉頭",
-      "intro": ["声を出す声帯ひだ（vocal fold）と声門（glottis）は3Dに形が無いので、正中断と喉頭（larynx）の図で示す。喉頭の中は上から喉頭前庭（laryngeal vestibule）（前庭ひだ（vestibular fold）まで）・喉頭室（laryngeal ventricle）（前庭ひだと声帯ひだの間）・声門下腔（infraglottic cavity）に分かれる。"],
+      "intro": ["声を出す声帯ひだ（vocal fold）と声門（glottis）。喉頭（larynx）の中は上から喉頭前庭（laryngeal vestibule）（前庭ひだ（vestibular fold）まで）・喉頭室（laryngeal ventricle）（前庭ひだと声帯ひだの間）・声門下腔（infraglottic cavity）に分かれる。", "3Dの声帯ひだと声門裂（rima glottidis）は、声帯靱帯（vocal ligament）・弾性円錐（conus elasticus）・甲状披裂筋（thyroarytenoid）などを壁として作った喉頭の内腔（lumen）に、粘膜（mucosa）を付けた模式の形（声を出すときに近い、せまく開いた声門）。喉頭の前頭断（frontal section）の切り口で見るとわかりやすい。"],
       "terms": [
         {
-          "id": "vocal-fold", "ja": "声帯ひだ", "yomi": "せいたいひだ", "en": "vocal fold", "enAlt": ["vocal cord", "true vocal cord"], "la": "plica vocalis", "plate": "larynx-superior", "level": 1,
+          "id": "vocal-fold", "ja": "声帯ひだ", "yomi": "せいたいひだ", "en": "vocal fold", "enAlt": ["vocal cord", "true vocal cord"], "la": "plica vocalis",
+          "parts": ["vocal fold"], "level": 1, "schematic": true, "xray": true, "color": "#efe7dc", "tissue": "mucosa",
           "kanji": "声の帯のひだ",
           "etym": "vocalis「声の」＋ plica「ひだ」（ラテン語）",
           "note": "喉頭（larynx）の中の左右のひだ（fold）（いわゆる声帯（vocal cord））。甲状軟骨（thyroid cartilage）の後ろの面から披裂軟骨（arytenoid cartilage）の声帯突起（vocal process of arytenoid cartilage）へ張り、中に声帯靱帯（vocal ligament）と声帯筋（vocalis）がある。息で振動（vibration）して声を出す。上の前庭ひだ（vestibular fold）（仮声帯）との間が喉頭室（laryngeal ventricle）。"
         },
         {
-          "id": "glottis", "ja": "声門", "yomi": "せいもん", "en": "glottis", "la": "glottis", "plate": "larynx-superior", "level": 1,
+          "id": "glottis", "ja": "声門", "yomi": "せいもん", "en": "glottis", "la": "glottis",
+          "parts": ["vocal fold", "rima glottidis"], "level": 1, "schematic": true, "xray": true,
           "kanji": "声の門",
           "etym": "glottis（ギリシャ語 glotta「舌」から）",
           "note": "左右の声帯ひだ（vocal fold）と、その間のすき間（声門裂（rima glottidis））をあわせた所。喉頭（larynx）でいちばんせまく、息をするときは後輪状披裂筋（posterior cricoarytenoid）で開き、声を出すときは外側輪状披裂筋（lateral cricoarytenoid）・披裂筋で閉じる。"
+        },
+        {
+          "id": "rima-glottidis", "ja": "声門裂", "yomi": "せいもんれつ", "en": "rima glottidis", "la": "rima glottidis",
+          "parts": ["rima glottidis"], "level": 2, "schematic": true, "xray": true, "veil": true, "color": "#bfe0f2",
+          "kanji": "声の門の裂け目",
+          "etym": "rima ＝ ラテン語「裂け目」。glottis ← ギリシャ語 glōtta「舌」",
+          "note": "左右の声帯ひだ（vocal fold）の間のすき間で、喉頭（larynx）でいちばんせまい所。前の約5分の3は声帯ひだの間（膜間部）、後ろの約5分の2は披裂軟骨（arytenoid cartilage）の声帯突起（vocal process of arytenoid cartilage）の間（軟骨間部）。息を吸うときは後輪状披裂筋（posterior cricoarytenoid）で大きく開いて三角形になり、声を出すときは外側輪状披裂筋（lateral cricoarytenoid）と披裂筋で閉じてせまくなる。3Dでは声を出すときに近い、せまく開いた形を示す。"
         },
         {
           "id": "cricothyroid-joint", "ja": "輪状甲状関節", "yomi": "りんじょうこうじょうかんせつ", "en": "cricothyroid joint", "la": "articulatio cricothyroidea", "plate": "larynx-anterior", "level": 2,
@@ -1146,25 +1157,25 @@
       "id": "resp-larynx-cavity",
       "title": "喉頭の内腔（前庭ひだと喉頭室）",
       "group": "鼻腔と喉頭",
-      "intro": ["喉頭（larynx）の内腔（lumen）は、上下2対のひだ（fold）で3つに分かれる。上の前庭ひだ（vestibular fold）より上が喉頭前庭（laryngeal vestibule）、前庭ひだと声帯ひだ（vocal fold）の間で外側（lateral）へ袋のように入りこんだ所が喉頭室（laryngeal ventricle）、声帯ひだより下が声門下腔（infraglottic cavity）で、下は気管（trachea）に続く。", "口から喉頭鏡で見下ろすと、白い声帯ひだがV字に見え、その外側に赤みのある前庭ひだが見える。声帯ひだの間のすき間（声門裂（rima glottidis））は、息をするときは広く開き、声を出すときは閉じて細かくふるえる。"],
+      "intro": ["喉頭（larynx）の内腔（lumen）は、上下2対のひだ（fold）で3つに分かれる。上の前庭ひだ（vestibular fold）より上が喉頭前庭（laryngeal vestibule）、前庭ひだと声帯ひだ（vocal fold）の間で外側（lateral）へ袋のように入りこんだ所が喉頭室（laryngeal ventricle）、声帯ひだより下が声門下腔（infraglottic cavity）で、下は気管（trachea）に続く。", "口から喉頭鏡で見下ろすと、白い声帯ひだがV字に見え、その外側に赤みのある前庭ひだが見える。声帯ひだの間のすき間（声門裂（rima glottidis））は、息をするときは広く開き、声を出すときは閉じて細かくふるえる。", "3Dの前庭ひだ・喉頭室・声門下腔は、喉頭の内腔から作った模式の形（喉頭室と声門下腔の空所はふだん薄く透かす）。声門下腔の下の部分は、輪状軟骨（cricoid cartilage）の中まで入っている気管の形と重なる。"],
       "terms": [
         {
           "id": "vestibular-fold", "ja": "前庭ひだ", "yomi": "ぜんていひだ", "en": "vestibular fold", "enAlt": ["false vocal cord", "ventricular fold"], "la": "plica vestibularis",
-          "plate": "larynx-coronal", "level": 2,
+          "parts": ["vestibular fold"], "level": 2, "schematic": true, "xray": true, "color": "#d9928c", "tissue": "mucosa",
           "kanji": "喉頭前庭（入口の間）の下のひだ",
           "etym": "vestibular「前庭（入口の間）の」（ラテン語 vestibulum）＋ fold「ひだ」。室ひだ・仮声帯ともいう",
           "note": "声帯ひだ（vocal fold）のすぐ上にある左右1対の粘膜（mucosa）のひだ（fold）。中に前庭靱帯（vestibular ligament）があり、声帯ひだより厚くやわらかい。声帯ひだのようにふるえて声を出すことはほとんど無いので仮声帯ともいう。物を飲みこむときやいきむときに閉じて、気道（airway）をふさぐ。"
         },
         {
           "id": "laryngeal-ventricle", "ja": "喉頭室", "yomi": "こうとうしつ", "en": "laryngeal ventricle", "enAlt": ["ventricle of larynx"], "la": "ventriculus laryngis",
-          "plate": "larynx-coronal", "level": 2,
+          "parts": ["laryngeal ventricle"], "level": 2, "schematic": true, "xray": true, "veil": true, "color": "#bfe0f2",
           "kanji": "喉頭の（横の小さな）部屋",
           "etym": "laryngeal「喉頭の」＋ ventricle「小さな部屋」（ラテン語 ventriculus）。モルガーニ洞ともいう",
           "note": "前庭ひだ（vestibular fold）と声帯ひだ（vocal fold）の間で、喉頭（larynx）の内腔（lumen）が左右の外側（lateral）へ袋のように入りこんだ所。前上（anterosuperior）へのびる喉頭小嚢には粘液（mucus）を出す腺（gland）が多く、声帯ひだの表面をうるおす。"
         },
         {
           "id": "infraglottic-cavity", "ja": "声門下腔", "yomi": "せいもんかくう", "en": "infraglottic cavity", "enAlt": ["subglottic space"], "la": "cavitas infraglottica",
-          "plate": "larynx-coronal", "level": 3,
+          "parts": ["infraglottic cavity"], "level": 3, "schematic": true, "xray": true, "veil": true, "color": "#bfe0f2",
           "kanji": "声門の下の腔（空間）",
           "etym": "infra-「下の」＋ glottic「声門の」＋ cavity「腔」",
           "note": "声帯ひだ（vocal fold）より下の喉頭（larynx）の内腔（lumen）で、下へ広がって輪状軟骨（cricoid cartilage）の高さで気管（trachea）に続く。粘膜（mucosa）の下の組織（tissue）がゆるいので、子どものクループなどでむくむと息の通り道がせまくなる。息がつまったときの緊急の処置では、この前の輪状甲状靱帯を切って空気の通り道をつくる。"
