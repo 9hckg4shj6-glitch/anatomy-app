@@ -108,7 +108,7 @@ export const DEFAULT_STAMP = "2000-01-01T00:00:00.000Z";
 /**
  * 端末ごとの設定（同期しない・記録の書き出しにも入れない）: 端末ID・その日に開いたこと・「ホーム画面に追加」の案内・同期の状態（sync.…）
  */
-const DEVICE_SETTINGS = new Set(["deviceId", "profileSeenDay", "installHintClosed"]);
+const DEVICE_SETTINGS = new Set(["deviceId", "profileSeenDay", "installHintClosed", "installGuideSkipped"]);
 export const isDeviceSetting = (key: string): boolean => DEVICE_SETTINGS.has(key) || key.startsWith("sync.");
 
 /** FNV-1a（端末によらず同じ値。束を決める） */

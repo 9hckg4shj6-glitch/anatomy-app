@@ -23,6 +23,7 @@ import { partitionMesh, splitMesh } from "./split-mesh.mjs";
 import { loadHires } from "./hires.mjs";
 import { loadNasal, nasalNames } from "./nasal/index.mjs";
 import { heartNames, loadHeart, REPLACES as HEART_REPLACES } from "./heart/index.mjs";
+import { loadMade, madeNames, REPLACES as MADE_REPLACES } from "./made/index.mjs";
 import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, relax, simplify, subdivide } from "./surface.mjs";
 import { loadZa } from "./za/index.mjs";
 import { EAR_DETAIL } from "./ear/index.mjs";
@@ -357,12 +358,19 @@ export function readElements() {
     for (const [id, name] of [...elementNames]) if (id.startsWith("FJ") && HEART_REPLACES.includes(name.toLowerCase())) elementNames.delete(id);
     for (const [id, name] of hearts) elementNames.set(id, name);
   }
+  // 眼球の中・喉頭の中・鼻中隔と硬口蓋（scripts/made/。緻密なモデル その3）。硬口蓋の粘膜を分けた上の歯肉で、元の歯肉を置きかえる。
+  // 元の形を書き出すとき（scripts/palate/export.mjs）は NO_MADE=1 で置きかえない
+  const made = process.env.NO_MADE ? new Map() : madeNames();
+  for (const [id, name] of [...elementNames]) if (id.startsWith("FJ") && made.has(MADE_REPLACES[name.toLowerCase()])) elementNames.delete(id);
+  for (const [id, name] of made) elementNames.set(id, name);
+  const madeMesh = loadMade();
   const heart = loadHeart();
   const cache = new Map();
   const nasal = loadNasal({ elementNames, readWhole: (id) => readWhole(id) });
   const readMesh = (id) => {
     if (id.startsWith("NS_")) return nasal(id);
     if (id.startsWith("HT_")) return heart(id);
+    if (made.has(id)) return madeMesh(id);
     if (!cache.has(id)) {
       const [cut, half, source, lower] = cutOf.get(id) ?? [];
       const [guides, i, whole, bias] = pieceOf.get(id) ?? [];

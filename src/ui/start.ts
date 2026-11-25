@@ -2,7 +2,8 @@ import { h } from "../dom";
 import { COURSES, courseOf, preferences, setCourse, setPreference, type Preferences } from "../settings";
 import { PURPOSES, recommendCourse, shownPurposes, type Purpose } from "../purposes";
 import { db, nowIso } from "../db";
-import { inIosBrowser } from "../install";
+import { inIosBrowser, isStandalone } from "../install";
+import { installGuide } from "./install-guide";
 import { loadProfile, NAME_MAX, needsStart, profileComplete, saveProfile, START_TRIAL_KEY, TRIAL_LESSON, type Profile } from "../profile";
 import { account, accountAvailable } from "../account";
 import { googleButton, inAppNote } from "./account-section";
@@ -12,7 +13,9 @@ import { lessonMinutes } from "./home";
 import { nextLesson } from "./lessons";
 import { profileFields } from "./profile-form";
 
-type Step = "welcome" | "name" | "profile" | "course" | "ready";
+type Step = "install" | "welcome" | "name" | "profile" | "course" | "ready";
+/** 「ホーム画面に追加」の案内を飛ばしたこと（この端末だけ。src/db.ts の DEVICE_SETTINGS） */
+const INSTALL_SKIP_KEY = "installGuideSkipped";
 
 /** 名前の画面の3Dで選べるもの（選んだものは覚える） */
 const MODELS = [
@@ -27,12 +30,15 @@ const MODEL_KEY = "startModel";
  * → ① 名前 → ② 所属（大学・学部学科・学年。管理者に送る）→ ③ 使う目的・覚える量（コース）・英語の発音 → 準備ができました（あなたの使い方）。
  * 3語を試さずに名前から始めることもできる。名前と所属は飛ばせない（3語のあとも、入れるまでスタート画面に戻る）。
  * 今使っている人で所属がまだなら ①② だけ（コースはもう選んでいる）。
- * 2回目からは出さない（おかえりの画面は作らない）。#/start/edit は設定から名前と所属を直すとき（終われば設定へ戻る）
+ * 2回目からは出さない（おかえりの画面は作らない）。#/start/edit は設定から名前と所属を直すとき（終われば設定へ戻る）。
+ * iPhone・iPad のブラウザでは、はじめの前に「ホーム画面に追加」の案内のページ（src/ui/install-guide.ts）を出す
+ * （記録が別々になる前に）。#/start/install は今日・設定からその案内だけを開くとき
  */
 export async function start(ctx: AppContext, arg = ""): Promise<void> {
   const edit = arg === "edit";
-  const [learned, saved, savedModel, trialRecord] = await Promise.all([
-    db.learned.count(), loadProfile(), db.settings.get(MODEL_KEY), db.settings.get(START_TRIAL_KEY),
+  const guideOnly = arg === "install";
+  const [learned, saved, savedModel, trialRecord, installSkipped] = await Promise.all([
+    db.learned.count(), loadProfile(), db.settings.get(MODEL_KEY), db.settings.get(START_TRIAL_KEY), db.settings.get(INSTALL_SKIP_KEY),
   ]);
   if (ctx.signal.aborted) return;
   const draft: Partial<Profile> = { name: saved?.name ?? "", university: saved?.university ?? "", faculty: saved?.faculty ?? "", grade: saved?.grade ?? "" };
@@ -45,7 +51,9 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
   let step: Step = edit ? "name"
     : !learned && !trialStarted && !draft.name ? "welcome"
       : !draft.name ? "name" : !profileComplete(draft) ? "profile" : "course";
-  if (step !== "welcome" && !steps.includes(step)) {
+  if (guideOnly) step = "install";
+  else if (step === "welcome" && inIosBrowser() && !installSkipped?.value) step = "install";
+  if (step !== "welcome" && step !== "install" && !steps.includes(step)) {
     location.replace("#/");
     return;
   }
@@ -105,7 +113,8 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
         // iPhone・iPad のブラウザでは、記録が別々になる前に（何も入れる前に）ホーム画面への追加をすすめる
         inIosBrowser() ? h("aside", { class: "start-install" },
           h("b", {}, "iPhone・iPad では、先にホーム画面に追加するのがおすすめです"),
-          h("span", {}, "共有ボタン（", h("b", {}, "□↑"), "）から「ホーム画面に追加」。追加したアイコンから開いて始めてください。ブラウザとホーム画面のアプリでは、学んだ記録が別々になります（Google でログインすれば同じにできます）。")) : "",
+          h("span", {}, "ブラウザとホーム画面のアプリでは、学んだ記録が別々になります（Google でログインすれば同じにできます）。"),
+          h("button", { class: "start-link", type: "button", onClick: () => go("install") }, "追加のしかたを見る ›")) : "",
         h("p", { class: "muted start-note" }, "名前と所属は、試したあとに伺います。"),
         h("div", { class: "start-links" },
           h("button", { class: "start-link", type: "button", onClick: () => go("name") }, "試さずに始める（名前を入れる）"),
@@ -114,6 +123,38 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
       ],
       // 小さい画面でも、できること3つの下に隠れないよう画面の下に留める
       foot: tryButton,
+    };
+  };
+
+  /**
+   * 「ホーム画面に追加」の案内（iPhone・iPad のブラウザで、はじめの前）。追加はブラウザのボタンでしかできないので、
+   * ここのボタンは「このまま始める」だけ（押したらこの端末では出さない）。ホーム画面から開いていれば、もう追加できていると伝える
+   */
+  const installStep = (): Parts => {
+    ctx.fold(true);
+    ctx.tools.replaceChildren();
+    if (isStandalone()) {
+      return {
+        body: [
+          h("p", { class: "start-eyebrow" }, "ホーム画面に追加"),
+          h("h2", { class: "start-title" }, "もうホーム画面から開いています"),
+          h("p", {}, "このままアプリとして使えます。追加のしかたの案内はいりません。"),
+        ],
+        foot: h("a", { class: "primary", href: "#/" }, "今日へ"),
+      };
+    }
+    const skip = async () => {
+      await db.settings.put({ key: INSTALL_SKIP_KEY, value: true, updatedAt: nowIso() });
+      if (guideOnly) location.hash = "#/";
+      else go("welcome");
+    };
+    return {
+      body: [installGuide()],
+      foot: guideOnly
+        ? h("a", { class: "ghost-button", href: "#/" }, "今日へ戻る")
+        : h("div", { class: "ig-foot" },
+          h("p", {}, "追加したら、ホーム画面のアイコンから開いてください"),
+          h("button", { class: "ghost-button", type: "button", onClick: skip }, "追加せずに、このブラウザで始める")),
     };
   };
 
@@ -351,7 +392,7 @@ export async function start(ctx: AppContext, arg = ""): Promise<void> {
       ctx.viewer.overview();
       ctx.viewer.spin(!matchMedia("(prefers-reduced-motion: reduce)").matches);
     }
-    const { body, foot } = step === "welcome" ? welcomeStep() : step === "name" ? nameStep() : step === "profile" ? profileStep()
+    const { body, foot } = step === "install" ? installStep() : step === "welcome" ? welcomeStep() : step === "name" ? nameStep() : step === "profile" ? profileStep()
       : step === "course" ? courseStep() : await readyStep();
     if (ctx.signal.aborted) return;
     ctx.panel.replaceChildren(

@@ -1,3 +1,4 @@
+import { inIosBrowser } from "../install";
 import { loadMarks } from "../marks";
 import { exportBackup, importBackup, isBackup } from "../backup";
 import { systemById, terms } from "../content";
@@ -166,7 +167,12 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
 
   const installHint = actionRow("「ホーム画面に追加」の案内をもう一度出す", {
     onClick: async () => {
-      await db.settings.delete("installHintClosed");
+      await db.settings.bulkDelete(["installHintClosed", "installGuideSkipped"]);
+      // iPhone・iPad のブラウザでは、絵つきの案内のページ（src/ui/install-guide.ts）を開く
+      if (inIosBrowser()) {
+        location.hash = "#/start/install";
+        return;
+      }
       installHint.querySelector(".set-label")!.textContent = "今日の画面に案内を出しました";
       installHint.setAttribute("disabled", "");
     },

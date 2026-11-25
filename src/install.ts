@@ -27,13 +27,29 @@ export function isStandalone(): boolean {
 }
 
 function isIos(): boolean {
-  // iPadOS の Safari は Mac として名乗るので、タッチの有無で見分ける
-  return /iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+  return iosDevice() !== "";
+}
+
+/** iPhone か iPad か（どちらでもなければ ""）。iPadOS の Safari は Mac として名乗るので、タッチの有無で見分ける */
+export function iosDevice(agent = navigator.userAgent, touchPoints = navigator.maxTouchPoints): "iphone" | "ipad" | "" {
+  if (/iPad/.test(agent) || (/Macintosh/.test(agent) && touchPoints > 1)) return "ipad";
+  return /iPhone|iPod/.test(agent) ? "iphone" : "";
+}
+
+/**
+ * iPhone・iPad のどのブラウザで開いているか。追加のしかた（共有ボタンの場所）がブラウザで違う。
+ * LINE・Instagram などのアプリの中のページ（inapp）からは追加できないので、先に Safari で開いてもらう
+ */
+export function iosBrowser(agent = navigator.userAgent): "safari" | "chrome" | "inapp" | "other" {
+  if (/\bLine\/|FBAN|FBAV|Instagram|MicroMessenger|KAKAOTALK|GSA\//i.test(agent)) return "inapp";
+  if (/CriOS/.test(agent)) return "chrome";
+  if (/FxiOS|EdgiOS|OPiOS/.test(agent)) return "other";
+  return "safari";
 }
 
 /**
  * iPhone・iPad のブラウザ（ホーム画面のアプリでない）で開いているか。ブラウザとホーム画面のアプリでは記録が別々になるので、
- * スタート画面の初めに「先にホーム画面に追加」を出す（src/ui/start.ts）
+ * スタート画面の初めに「先にホーム画面に追加」の案内のページを出す（src/ui/install-guide.ts）
  */
 export function inIosBrowser(): boolean {
   return isIos() && !isStandalone();
@@ -62,7 +78,8 @@ export function installHint(signal: AbortSignal, onClose: () => void): HTMLEleme
     } else if (isIos()) {
       box.replaceChildren(
         h("p", {}, "共有ボタン（Safari では", h("b", {}, " □↑ "), "）から「ホーム画面に追加」でアプリとして使えます。",
-          "Safari とホーム画面のアプリでは学習の記録が別々になるので、追加してから始めるのがおすすめです。"),
+          "Safari とホーム画面のアプリでは学習の記録が別々になるので、追加してから始めるのがおすすめです。",
+          h("br"), h("a", { href: "#/start/install" }, "追加のしかたを絵で見る ›")),
         close(),
       );
     } else box.replaceChildren();

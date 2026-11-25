@@ -1807,3 +1807,49 @@ body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
   .stage-tag.chamber { font-size: 13px; }
   .stage-tag small { font-size: 10px; }
 }
+
+/* 「ホーム画面に追加」の案内（iPhone・iPad のブラウザで、はじめの前。src/ui/install-guide.ts） */
+.ig { display: grid; gap: 12px; }
+.ig .start-title { font-size: 22px; }
+.ig-lead { margin: -4px 0 0; font-size: 15px; line-height: 1.7; }
+.ig-why { list-style: none; margin: 0; padding: 12px 14px; display: grid; gap: 8px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.ig-why li { display: grid; gap: 1px; padding-left: 20px; position: relative; font-size: 14px; line-height: 1.6; }
+.ig-why li::before { content: ""; position: absolute; left: 3px; top: 0.55em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.ig-why span { color: var(--muted); font-size: 13px; }
+.ig-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.ig-head .start-sub { margin: 0; }
+.ig-device .segment { min-height: 36px; padding: 0 14px; }
+.ig-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ig-step { display: grid; grid-template-columns: 132px 1fr; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+.ig-text { display: grid; gap: 6px; justify-items: start; }
+.ig-text p { margin: 0; font-size: 14px; line-height: 1.7; }
+.ig-text .ig-copy { margin-top: 8px; min-height: 40px; font-size: 13px; }
+.ig-num { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-size: 14px; font-weight: 800; }
+.ig-note { margin: 0; font-size: 13px; text-align: center; }
+.ig-foot { display: grid; gap: 6px; }
+.ig-foot p { margin: 0; text-align: center; font-size: 13px; color: var(--muted); }
+.ig-foot .ghost-button, .start-foot > .ghost-button { width: 100%; min-height: 48px; border-radius: 14px; }
+.start-install .start-link { justify-self: start; border: 0; background: none; color: var(--accent); font: inherit; font-weight: 700; padding: 2px 0; cursor: pointer; }
+/* 絵: 枠・画面・帯・押すところ（橙の輪） */
+.ig-art svg { display: block; width: 100%; height: auto; max-height: 190px; }
+.ig-art .f { fill: #2b2a27; }
+.ig-art .s { fill: #f8f6f1; }
+.ig-art .s.home { fill: #cfe3e5; }
+.ig-art .b { fill: #e2ddd1; }
+.ig-art .bar, .ig-art .sheet { fill: #ffffff; stroke: #e2ddd1; }
+.ig-art .pill, .ig-art .row { fill: #eeeae1; }
+.ig-art .row.hot { fill: #fff0e3; }
+.ig-art .l { fill: none; stroke: #2b2a27; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.ig-art .t { fill: #2b2a27; font-size: 13px; font-weight: 700; }
+.ig-art .t.xs { font-size: 9.5px; font-weight: 600; }
+.ig-art .t.strong { font-weight: 800; }
+.ig-art .t.muted { fill: #625e56; }
+.ig-art .k, .ig-art .k-box { fill: none; stroke: var(--highlight); stroke-width: 3; }
+.ig-art .a { fill: var(--accent); }
+.ig-art .mark { fill: #fffdf8; }
+.ig-art .ic { fill: #ffffff; opacity: 0.8; }
+.ig-art .on { fill: var(--ok); }
+.ig-art .knob { fill: #ffffff; }
+@media (max-width: 380px) {
+  .ig-step { grid-template-columns: 116px 1fr; gap: 10px; }
+}
