@@ -8,6 +8,7 @@ import { readZaFile, vertexNormals, ZA_DIR, ZA_FILES } from "./read.mjs";
 import { anchorPairs, icp, makeWarp } from "./warp.mjs";
 import { loadKidney } from "../kidney/index.mjs";
 import { loadLung } from "../lung/index.mjs";
+import { loadEar } from "../ear/index.mjs";
 import { gangliaNames, makeGanglia } from "../nerves/ganglia.mjs";
 
 const VERSION = 1;
@@ -135,6 +136,9 @@ export async function loadZa(bpNames, bpMesh) {
   // 肺区域（Z-Anatomy の肺葉の中を区域気管支・区域動脈で分けたもの。scripts/lung/）
   const lung = await loadLung();
   for (const [id, name] of lung.names) names.set(id, name);
+  // 耳の中のつくり（Z-Anatomy の蝸牛・前庭を分けたものと、膜迷路・鼓室・外耳道など。scripts/ear/）
+  const ear = await loadEar();
+  for (const [id, name] of ear.names) names.set(id, name);
   // 交感神経幹の神経節の模式の形（Z-Anatomy の幹の上に作る。scripts/nerves/ganglia.mjs）
   const ganglia = gangliaNames();
   for (const [id, name] of ganglia) names.set(id, name);
@@ -160,6 +164,7 @@ export async function loadZa(bpNames, bpMesh) {
   const mesh = (id) => {
     if (kidney.has(id)) return kidney.mesh(id);
     if (lung.has(id)) return lung.mesh(id);
+    if (ear.has(id)) return ear.mesh(id);
     if (ganglia.has(id)) {
       const [, slug, side] = id.match(/^ZS_(.+)_([rl])$/);
       return { name: ganglia.get(id), ...gangliaOf(side === "r" ? "right" : "left")[slug] };

@@ -583,9 +583,9 @@
       "with": ["external-ear"],
       "around": ["vestibulocochlear-nerve", "cochlear-nerve", "vestibular-nerve", "chorda-tympani"],
       "box": [[-0.088, 1.475, 0.06], [-0.006, 1.545, 0.11]],
-      "colors": {"external-ear": "#e7c3aa", "tympanic-membrane": "#4f9a2a", "malleus": "#e8e6e0", "incus": "#e8e6e0", "stapes": "#e8e6e0", "cochlea": "#a37bbd", "vestibule": "#b996cc", "auditory-tube": "#ef8a82"},
+      "colors": {"external-ear": "#e7c3aa", "external-acoustic-meatus": "#e3a48f", "tympanic-membrane": "#4f9a2a", "tympanic-cavity": "#9cc8e8", "malleus": "#e8e6e0", "incus": "#e8e6e0", "stapes": "#e8e6e0", "auditory-tube": "#ef8a82", "vestibule": "#b996cc", "semicircular-canals": "#c7a6dd", "scala-vestibuli": "#a37bbd", "scala-tympani": "#8c8fd6", "membranous-labyrinth": "#3f7fd6", "oval-window": "#e0559c", "round-window": "#e0559c"},
       "colorLabel": "外耳・中耳・内耳を色で分ける",
-      "colorNote": "外耳は肌色、鼓膜は緑、耳小骨（ツチ骨・キヌタ骨・アブミ骨）は白、蝸牛と前庭は紫、耳管は赤（平面図と同じ色）。神経（nerve）は黄。右の耳だけを見せている。",
+      "colorNote": "外耳は肌色（外耳道は濃い肌色）、鼓膜は緑、鼓室は水色、耳小骨（ツチ骨・キヌタ骨・アブミ骨）は白、耳管は赤。内耳の骨迷路は紫（前庭・半規管・前庭階（scala vestibuli）・鼓室階（scala tympani）で濃さを変える）、その中の膜迷路（卵形嚢・球形嚢・膜半規管・蝸牛管（cochlear duct））は青、前庭窓と蝸牛窓（round window）は桃色。神経（nerve）は黄。右の耳だけを見せている。鼓室と外耳道はふだん薄く透かしている",
       "views": [
         {"label": "外側（右から）", "from": [-1, 0.1, 0.1]},
         {"label": "前", "from": [0, 0, 1]},
@@ -596,7 +596,9 @@
       ],
       "cuts": [
         {"label": "前頭断（外耳道を通る面）", "normal": [0, 0, -1], "point": [0, 0, 0.085], "from": [0, 0, 1]},
-        {"label": "外耳を外して中耳と内耳を見る", "normal": [0.894, -0.268, -0.358], "point": [-0.11, 1.529, 0.11], "from": [-1, 0.3, 0.4], "hide": ["external-ear"]}
+        {"label": "外耳を外して中耳と内耳を見る", "normal": [0.894, -0.268, -0.358], "point": [-0.11, 1.529, 0.11], "from": [-1, 0.3, 0.4], "hide": ["external-ear"]},
+        {"label": "水平断（前庭と外側半規管を通る面）", "normal": [0, -1, 0], "point": [-0.041, 1.5092, 0.083], "from": [0, 1, -0.05], "hide": ["external-ear"], "zoom": 0.011},
+        {"label": "蝸牛の軸を通る面（前庭階・蝸牛管・鼓室階）", "normal": [-0.518, 0, -0.851], "point": [-0.041, 1.5074, 0.0893], "from": [0.518, 0.15, 0.851], "hide": ["external-ear", "auditory-tube", "vestibulocochlear-nerve", "cochlear-nerve", "vestibular-nerve"], "zoom": 0.007}
       ],
       "plates": [
         {"id": "ear-section", "title": "外耳・中耳・内耳", "en": "outer, middle and inner ear", "art": {"src": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Anatomy_of_the_Human_Ear_blank.svg", "page": "https://commons.wikimedia.org/wiki/File:Anatomy_of_the_Human_Ear_blank.svg", "author": "Lars Chittka, Axel Brockmann（M•Komorniczak がラベルを外した版）", "license": "CC BY 2.5", "licenseUrl": "https://creativecommons.org/licenses/by/2.5/", "changes": "背景を紙の色に", "background": "white"}, "note": "耳（ear）を縦に切った模式図（図の左が外側（lateral）、右が内側（medial））。耳管（auditory tube）は前下内側（anteroinferomedial）へ下って咽頭鼻部（nasopharynx）に開く。", "labels": [{"term": "external-ear", "px": [62, 168]}, {"term": "temporal-bone", "px": [282, 221]}, {"term": "external-acoustic-meatus", "px": [235, 282]}, {"term": "malleus", "px": [360, 236]}, {"term": "incus", "px": [392, 246]}, {"term": "stapes", "px": [432, 268]}, {"term": "tympanic-membrane", "px": [372, 301]}, {"term": "tympanic-cavity", "px": [412, 328]}, {"term": "semicircular-canals", "px": [466, 174]}, {"term": "vestibule", "px": [462, 230]}, {"term": "cochlea", "px": [494, 292]}, {"term": "vestibular-nerve", "px": [575, 243]}, {"term": "cochlear-nerve", "px": [600, 272]}, {"term": "auditory-tube", "px": [508, 391]}], "points": ["外耳（external ear）は耳介（auricle）と外耳道（external acoustic meatus）（約2.5cm、外1/3が軟骨（cartilage）・内2/3が骨（bone））。外耳道は少し曲がっているので、診るときは耳介を後ろ上へ引いてまっすぐにする。", "中耳（middle ear）は鼓膜（tympanic membrane）の内側の鼓室（tympanic cavity）で、耳小骨（auditory ossicles）が入る。後ろは乳突洞（mastoid antrum）を経て乳突蜂巣（mastoid cells）へ、前は耳管で咽頭鼻部へ通じる。", "耳管は鼓室の気圧を外と等しくする。子どもの耳管は短く水平に近いので、かぜの菌が中耳に入って中耳炎（otitis media）になりやすい。", "内耳（internal ear）は側頭骨（temporal bone）の錐体（petrous part）の中にあり、聴覚（hearing）の蝸牛（cochlea）と平衡覚（equilibrium）の前庭（vestibule）・半規管（semicircular canal）からなる。内耳神経（vestibulocochlear nerve）（第VIII脳神経（cranial nerve VIII））は内耳道（internal acoustic meatus）を通って脳幹（brainstem）へ入る。"]},

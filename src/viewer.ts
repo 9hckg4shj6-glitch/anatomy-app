@@ -8,6 +8,8 @@ import { drawingUp, pinCenter, pinSpread, type Cut, type Vec3 } from "./landmark
 import { preferences } from "./settings";
 import { layoutTags, leaderLine, type Rect, type TagBox } from "./tag-layout";
 
+/** ダブルタップで寄るときの、いちばん近い距離（m。以前の controls.minDistance 0.08 の2倍のまま） */
+const ZOOM_FLOOR = 0.16;
 /** 向きの目印の字と、その向き（モデル座標。本人の右は -x） */
 const COMPASS_WORDS: [string, Vec3][] = [["上", [0, 1, 0]], ["下", [0, -1, 0]], ["前", [0, 0, 1]], ["後", [0, 0, -1]], ["右", [-1, 0, 0]], ["左", [1, 0, 0]]];
 /** 見ている向きの言い方（カメラのある側。後ろだけ「後ろ」と読ませる） */
@@ -631,7 +633,8 @@ export class AnatomyViewer {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true;
     this.controls.dampingFactor = 0.12;
-    this.controls.minDistance = 0.08;
+    // 内耳（1cm ほど）の切り口や小さな部位まで寄れるように、3cm まで近づける（ダブルタップで寄るときは ZOOM_FLOOR まで）
+    this.controls.minDistance = 0.03;
     this.controls.maxDistance = 4;
     // ピンチ・ホイールは、体の中心ではなく指（カーソル）の所へ向かって拡大する
     this.controls.zoomToCursor = true;
@@ -1781,7 +1784,7 @@ export class AnatomyViewer {
   private zoomAt(point: Vec3): void {
     const target = new THREE.Vector3(...point);
     const offset = this.camera.position.clone().sub(target);
-    const distance = Math.max(this.controls.minDistance * 2, offset.length() * 0.4);
+    const distance = Math.max(ZOOM_FLOOR, offset.length() * 0.4);
     this.moveTo(target, target.clone().add(offset.setLength(distance)), true, false);
     if (this.homeView) this.resetButton.hidden = false;
   }

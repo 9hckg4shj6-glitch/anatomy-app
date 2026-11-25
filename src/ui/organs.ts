@@ -181,7 +181,7 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
       : null;
     viewer.setSection(section);
     viewer.setPeel(spec?.hide ?? [], []);
-    if (section) viewer.viewSection();
+    if (section) viewer.viewSection(true, spec?.zoom ? spec.point : undefined, spec?.zoom);
     else viewer.viewOrgan(organ.views[0]?.from ?? [0, 0, 1]);
     paint();
   };

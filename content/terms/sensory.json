@@ -343,21 +343,21 @@
         },
         {
           "id": "auditory-tube", "ja": "耳管", "yomi": "じかん", "en": "auditory tube", "enAlt": ["eustachian tube", "pharyngotympanic tube"], "la": "tuba auditiva",
-          "parts": ["za:auditory tube"], "level": 1,
+          "parts": ["za:auditory tube", "za:bony part of auditory tube"], "level": 1,
           "kanji": "耳と咽頭をつなぐ管",
           "etym": "auditory「耳の・聴覚の」＋ tube「管」",
-          "note": "中耳（middle ear）の鼓室（tympanic cavity）と咽頭鼻部（nasopharynx）をつなぐ約3.5cmの管。飲み込むと開き、鼓膜（tympanic membrane）の内外の気圧をそろえる。子どもは短く水平なので、のど（throat）の細菌が中耳へ入りやすい（中耳炎（otitis media））。"
+          "note": "中耳（middle ear）の鼓室（tympanic cavity）と咽頭鼻部（nasopharynx）をつなぐ約3.5cmの管。鼓室に近い外側（lateral）の1/3は側頭骨（temporal bone）の中の骨部、残りの2/3は軟骨部で、その境がいちばん細い（峡部（isthmus））。飲み込むと開き、鼓膜（tympanic membrane）の内外の気圧をそろえる。子どもは短く水平なので、のど（throat）の細菌が中耳へ入りやすい（中耳炎（otitis media））。"
         },
         {
           "id": "cochlea", "ja": "蝸牛", "yomi": "かぎゅう", "en": "cochlea", "la": "cochlea",
-          "parts": ["za:cochlea"], "level": 1,
+          "parts": ["za:scala vestibuli", "za:cochlear duct", "za:scala tympani"], "level": 1, "schematic": true,
           "kanji": "かたつむり（蝸牛）の形",
           "etym": "cochlea「かたつむり・巻き貝」（ラテン語）",
           "note": "内耳（internal ear）の前の部分。約2回転半のらせんの管で、中のコルチ器（organ of Corti）が音の振動（vibration）を神経（nerve）の信号に変える。入口（基部（base））で高い音、先（頂）で低い音を感じる。"
         },
         {
           "id": "vestibule", "ja": "前庭", "yomi": "ぜんてい", "en": "vestibule", "enAlt": ["vestibule of inner ear"], "la": "vestibulum",
-          "parts": ["za:vestibule"], "level": 2,
+          "parts": ["za:vestibule proper"], "level": 2, "schematic": true,
           "kanji": "内耳の玄関",
           "etym": "vestibule ← ラテン語 vestibulum「玄関・入口の間」",
           "note": "内耳（internal ear）の真ん中の部屋。中の卵形嚢（utricle）と球形嚢（saccule）が頭の傾きと直線の加速を感じる。前に蝸牛（cochlea）、後ろに半規管（semicircular canal）が続く。"
@@ -368,70 +368,84 @@
       "id": "sens-ear-plate",
       "title": "外耳道・鼓室と半規管",
       "group": "耳",
-      "intro": ["外耳道（external acoustic meatus）・鼓室（tympanic cavity）と、内耳（internal ear）の半規管（semicircular canal）・卵形嚢（utricle）・球形嚢（saccule）は3Dに形が無い（Z-Anatomy の内耳は蝸牛（cochlea）と前庭（vestibule）だけ）ので、耳（ear）の断面（section）と骨迷路（bony labyrinth）・膜迷路（membranous labyrinth）の図で示す。内耳は骨（bone）の中のトンネル（骨迷路）の中に膜（membrane）の管と袋（膜迷路）が入った二重のつくりで、骨迷路と膜迷路の間は外リンパ（perilymph）、膜迷路の中は内リンパ（endolymph）で満たされる。"],
+      "intro": ["外耳道（external acoustic meatus）・鼓室（tympanic cavity）と、内耳（internal ear）の半規管（semicircular canal）・卵形嚢（utricle）・球形嚢（saccule）。内耳は骨（bone）の中のトンネル（骨迷路（bony labyrinth））の中に膜（membrane）の管と袋（膜迷路（membranous labyrinth））が入った二重のつくりで、骨迷路と膜迷路の間は外リンパ（perilymph）、膜迷路の中は内リンパ（endolymph）で満たされる。", "3Dの骨迷路は Z-Anatomy の前庭（vestibule）と蝸牛（cochlea）の形を分けたもの、膜迷路・鼓室・外耳道はそれをもとに作った模式の形（実物の膜迷路はもっと細い）。中にある形なので、示すときは周りを半透明にする。"],
       "terms": [
         {
-          "id": "external-acoustic-meatus", "ja": "外耳道", "yomi": "がいじどう", "en": "external acoustic meatus", "enAlt": ["external auditory canal"], "la": "meatus acusticus externus", "plate": "ear-section", "level": 1,
+          "id": "bony-labyrinth", "ja": "骨迷路", "yomi": "こつめいろ", "en": "bony labyrinth", "enAlt": ["osseous labyrinth"], "la": "labyrinthus osseus",
+          "parts": ["za:vestibule proper", "za:bony * semicircular canal", "za:common bony limb", "za:scala vestibuli", "za:scala tympani"], "level": 2, "schematic": true,
+          "kanji": "骨の中の迷路",
+          "etym": "labyrinthus「迷路」（ギリシャ語 labyrinthos）＋ osseus「骨の」（ラテン語）",
+          "note": "側頭骨（temporal bone）の錐体（petrous part）の中にある内耳（internal ear）のトンネル。前庭（vestibule）・3つの半規管（semicircular canal）・蝸牛（cochlea）からなり、外リンパ（perilymph）で満たされる。中に同じ形の膜迷路（membranous labyrinth）が浮かぶ。鼓室（tympanic cavity）とは前庭窓（oval window）と蝸牛窓（round window）で接する。"
+        },
+        {
+          "id": "membranous-labyrinth", "ja": "膜迷路", "yomi": "まくめいろ", "en": "membranous labyrinth", "la": "labyrinthus membranaceus",
+          "parts": ["za:utricle", "za:saccule", "za:* semicircular duct", "za:common membranous limb", "za:cochlear duct"], "level": 2, "schematic": true, "xray": true,
+          "kanji": "膜でできた迷路",
+          "etym": "labyrinthus「迷路」＋ membranaceus「膜の」（ラテン語）",
+          "note": "骨迷路（bony labyrinth）の中にある、膜（membrane）の袋と管がつながった閉じた形。卵形嚢（utricle）・球形嚢（saccule）（前庭（vestibule）の中）、3つの膜半規管（semicircular duct）（半規管（semicircular canal）の中）、蝸牛管（cochlear duct）（蝸牛（cochlea）の中）からなり、中はカリウムの多い内リンパ（endolymph）で満たされる。聞こえ（hearing）と平衡（equilibrium）の感覚細胞（sensory cell）（有毛細胞（hair cell））はすべて膜迷路の壁にある。内リンパがふえて膜迷路がふくらむ病気がメニエール病。"
+        },
+        {
+          "id": "external-acoustic-meatus", "ja": "外耳道", "yomi": "がいじどう", "en": "external acoustic meatus", "enAlt": ["external auditory canal"], "la": "meatus acusticus externus", "parts": ["za:external acoustic meatus"], "level": 1, "schematic": true, "xray": true, "veil": true,
           "kanji": "外耳の道",
           "etym": "meatus「通り道」＋ acusticus「聞くことの」（ギリシャ語 akouein「聞く」）",
           "note": "耳介（auricle）の外耳孔（external acoustic opening）から鼓膜（tympanic membrane）までの長さ約2.5cmの、少しS字に曲がった管。外の1/3は軟骨（cartilage）、内の2/3は骨（bone）（側頭骨（temporal bone））でできている。外の部分の皮膚（skin）に耳垢腺と毛（hair）がある。耳（ear）を見るときは耳介を後ろ上に引いて管をまっすぐにする。"
         },
         {
-          "id": "tympanic-cavity", "ja": "鼓室", "yomi": "こしつ", "en": "tympanic cavity", "la": "cavitas tympani", "plate": "ear-section", "level": 1,
+          "id": "tympanic-cavity", "ja": "鼓室", "yomi": "こしつ", "en": "tympanic cavity", "la": "cavitas tympani", "parts": ["za:tympanic cavity"], "level": 1, "schematic": true, "xray": true, "veil": true,
           "kanji": "鼓（つづみ＝鼓膜）の内側の室（部屋）",
           "etym": "tympanum「太鼓」（ギリシャ語 tympanon）",
           "note": "鼓膜（tympanic membrane）の内側（medial）の、空気の入った小さな部屋（中耳（middle ear）の本体）。耳小骨（auditory ossicles）（ツチ骨（malleus）・キヌタ骨（incus）・アブミ骨（stapes））が並び、鼓膜の振動（vibration）を前庭窓（oval window）へ伝える。前は耳管（auditory tube）で咽頭鼻部（nasopharynx）に、後ろは乳突洞（mastoid antrum）・乳突蜂巣（mastoid cells）に通じる。上の壁（鼓室蓋（tegmen tympani））の上は中頭蓋窩（middle cranial fossa）、内側の壁の向こうは内耳（internal ear）。"
         },
         {
-          "id": "semicircular-canals", "ja": "半規管", "yomi": "はんきかん", "en": "semicircular canals", "la": "canales semicirculares", "plate": "ear-section", "level": 1,
+          "id": "semicircular-canals", "ja": "半規管", "yomi": "はんきかん", "en": "semicircular canals", "la": "canales semicirculares", "parts": ["za:bony * semicircular canal", "za:common bony limb", "za:* semicircular duct", "za:common membranous limb"], "level": 1, "schematic": true,
           "kanji": "半円（半分の規＝コンパスで描いた円）の管",
           "etym": "semi-「半分」＋ circulus「輪」（ラテン語）",
           "note": "前・後・外側（lateral）の3つの半円形の管で、互いにほぼ直角の面に並ぶ。中の膜半規管の内リンパ（endolymph）が頭の回転で流れ、根もとの膨大部稜（ampullary crest）の有毛細胞（hair cell）がそれを感じる（回転の加速度）。前庭神経（vestibular nerve）で脳（brain）へ伝える。"
         },
         {
-          "id": "anterior-semicircular-canal", "ja": "前半規管", "yomi": "ぜんはんきかん", "en": "anterior semicircular canal", "enAlt": ["superior semicircular canal"], "la": "canalis semicircularis anterior", "plate": "ear-labyrinth", "level": 2,
+          "id": "anterior-semicircular-canal", "ja": "前半規管", "yomi": "ぜんはんきかん", "en": "anterior semicircular canal", "enAlt": ["superior semicircular canal"], "la": "canalis semicircularis anterior", "parts": ["za:bony anterior semicircular canal", "za:anterior semicircular duct", "za:ampullary crest of anterior semicircular duct", "za:common bony limb", "za:common membranous limb"], "level": 2, "schematic": true,
           "kanji": "前の半規管",
           "etym": "anterior「前の」（ラテン語）",
           "note": "上に縦に立つ半規管（semicircular canal）で、錐体（petrous part）の前の面の弓状隆起（arcuate eminence）をつくる。反対側（contralateral side）の耳（ear）の後半規管（posterior semicircular canal）とほぼ同じ面に並び、うなずく動きなどを感じる。"
         },
         {
-          "id": "posterior-semicircular-canal", "ja": "後半規管", "yomi": "こうはんきかん", "en": "posterior semicircular canal", "la": "canalis semicircularis posterior", "plate": "ear-labyrinth", "level": 2,
+          "id": "posterior-semicircular-canal", "ja": "後半規管", "yomi": "こうはんきかん", "en": "posterior semicircular canal", "la": "canalis semicircularis posterior", "parts": ["za:bony posterior semicircular canal", "za:posterior semicircular duct", "za:ampullary crest of posterior semicircular duct", "za:common bony limb", "za:common membranous limb"], "level": 2, "schematic": true,
           "kanji": "後ろの半規管",
           "etym": "posterior「後ろの」（ラテン語）",
           "note": "後ろに縦に立つ半規管（semicircular canal）。卵形嚢（utricle）からはがれた耳石が入りこみやすく、頭を動かしたときのめまい（良性発作性頭位めまい症）の原因になる。"
         },
         {
-          "id": "lateral-semicircular-canal", "ja": "外側半規管", "yomi": "がいそくはんきかん", "en": "lateral semicircular canal", "enAlt": ["horizontal semicircular canal"], "la": "canalis semicircularis lateralis", "plate": "ear-labyrinth", "level": 2,
+          "id": "lateral-semicircular-canal", "ja": "外側半規管", "yomi": "がいそくはんきかん", "en": "lateral semicircular canal", "enAlt": ["horizontal semicircular canal"], "la": "canalis semicircularis lateralis", "parts": ["za:bony lateral semicircular canal", "za:lateral semicircular duct", "za:ampullary crest of lateral semicircular duct"], "level": 2, "schematic": true,
           "kanji": "外側の半規管",
           "etym": "lateralis「横の」（ラテン語）",
           "note": "水平に近い半規管（semicircular canal）（頭を約30度前に傾けると水平になる）。首（neck）を左右に振る回転を感じる。鼓室（tympanic cavity）の内側（medial）の壁にふくらみ（外側半規管隆起）をつくる。"
         },
         {
-          "id": "ampullary-crest", "ja": "膨大部稜", "yomi": "ぼうだいぶりょう", "en": "ampullary crest", "la": "crista ampullaris", "plate": "ear-labyrinth", "level": 3,
+          "id": "ampullary-crest", "ja": "膨大部稜", "yomi": "ぼうだいぶりょう", "en": "ampullary crest", "la": "crista ampullaris", "parts": ["za:ampullary crest of *"], "level": 3, "schematic": true, "xray": true,
           "kanji": "（半規管の）膨大部の稜（高まり）",
           "etym": "crista「とさか」＋ ampulla「とっくり」（ラテン語）",
           "note": "半規管（semicircular canal）の根もとのふくらみ（膨大部（ampulla））の中にある感覚（sensation）の高まり。有毛細胞（hair cell）の毛（hair）がゼラチンの帽子（クプラ）にささり、内リンパ（endolymph）の流れでクプラが傾くと興奮（excitation）する。"
         },
         {
-          "id": "utricle", "ja": "卵形嚢", "yomi": "らんけいのう", "en": "utricle", "la": "utriculus", "plate": "ear-labyrinth", "level": 2,
+          "id": "utricle", "ja": "卵形嚢", "yomi": "らんけいのう", "en": "utricle", "la": "utriculus", "parts": ["za:utricle"], "level": 2, "schematic": true, "xray": true,
           "kanji": "卵の形の嚢（ふくろ）",
           "etym": "utriculus「小さな革袋」（ラテン語）",
           "note": "前庭（vestibule）の中の膜迷路（membranous labyrinth）の袋で、3つの半規管（semicircular canal）がここにつながる。中の平衡斑（macula）（卵形嚢斑）はほぼ水平で、耳石（炭酸カルシウムの粒）の重みで水平方向の加速度と頭の傾きを感じる。"
         },
         {
-          "id": "saccule", "ja": "球形嚢", "yomi": "きゅうけいのう", "en": "saccule", "la": "sacculus", "plate": "ear-labyrinth", "level": 2,
+          "id": "saccule", "ja": "球形嚢", "yomi": "きゅうけいのう", "en": "saccule", "la": "sacculus", "parts": ["za:saccule"], "level": 2, "schematic": true, "xray": true,
           "kanji": "球の形の嚢（ふくろ）",
           "etym": "sacculus「小さな袋」（ラテン語）",
           "note": "前庭（vestibule）の中の膜迷路（membranous labyrinth）の小さな袋で、卵形嚢（utricle）の前下（anteroinferior）にある。中の平衡斑（macula）（球形嚢斑）はほぼ縦に立ち、上下の加速度を感じる。結合管で蝸牛管（cochlear duct）とつながる。"
         },
         {
-          "id": "oval-window", "ja": "前庭窓", "yomi": "ぜんていそう", "en": "oval window", "enAlt": ["fenestra vestibuli"], "la": "fenestra vestibuli", "plate": "ear-labyrinth", "level": 2,
+          "id": "oval-window", "ja": "前庭窓", "yomi": "ぜんていそう", "en": "oval window", "enAlt": ["fenestra vestibuli"], "la": "fenestra vestibuli", "parts": ["za:oval window"], "level": 2, "schematic": true, "xray": true,
           "kanji": "前庭の窓",
           "etym": "fenestra「窓」（ラテン語）。卵円窓とも",
           "note": "鼓室（tympanic cavity）の内側（medial）の壁にある、前庭（vestibule）へ通じる卵円形の窓（卵円窓（oval window））。アブミ骨底（base of stapes）がはまり、耳小骨（auditory ossicles）の振動（vibration）をここから外リンパ（perilymph）へ伝える。"
         },
         {
-          "id": "round-window", "ja": "蝸牛窓", "yomi": "かぎゅうそう", "en": "round window", "enAlt": ["fenestra cochleae"], "la": "fenestra cochleae", "plate": "ear-labyrinth", "level": 2,
+          "id": "round-window", "ja": "蝸牛窓", "yomi": "かぎゅうそう", "en": "round window", "enAlt": ["fenestra cochleae"], "la": "fenestra cochleae", "parts": ["za:round window"], "level": 2, "schematic": true, "xray": true,
           "kanji": "蝸牛の窓",
           "etym": "fenestra「窓」＋ cochlea「かたつむり」（ラテン語）。正円窓とも",
           "note": "前庭窓（oval window）の下後（posteroinferior）ろにある丸い窓（正円窓）で、鼓室階（scala tympani）の始まりに当たる。第二鼓膜（secondary tympanic membrane）が張り、前庭窓から入った圧を中耳（middle ear）へ逃がして外リンパ（perilymph）が動けるようにする。"
@@ -445,19 +459,19 @@
       "intro": ["蝸牛（cochlea）の断面（section）の図で、音を感じるしくみを見る。蝸牛の管は前庭階（scala vestibuli）・蝸牛管（cochlear duct）・鼓室階（scala tympani）の3階建てで、蝸牛管の底の基底板（basilar membrane）の上にラセン器（spiral organ）がのる。アブミ骨（stapes）の振動（vibration）は前庭階の外リンパ（perilymph）に伝わって基底板をゆらし、蝸牛の頂で鼓室階へ回って蝸牛窓（round window）へぬける。"],
       "terms": [
         {
-          "id": "scala-vestibuli", "ja": "前庭階", "yomi": "ぜんていかい", "en": "scala vestibuli", "la": "scala vestibuli", "plate": "ear-cochlea", "level": 2,
+          "id": "scala-vestibuli", "ja": "前庭階", "yomi": "ぜんていかい", "en": "scala vestibuli", "la": "scala vestibuli", "parts": ["za:scala vestibuli"], "level": 2, "schematic": true,
           "kanji": "前庭に続く階（階段）",
           "etym": "scala「はしご・階段」（ラテン語）",
           "note": "蝸牛（cochlea）の上の階。外リンパ（perilymph）で満ち、前庭窓（oval window）の前庭（vestibule）から始まって蝸牛の頂（蝸牛孔）で鼓室階（scala tympani）とつながる。"
         },
         {
-          "id": "cochlear-duct", "ja": "蝸牛管", "yomi": "かぎゅうかん", "en": "cochlear duct", "enAlt": ["scala media"], "la": "ductus cochlearis", "plate": "ear-cochlea", "level": 2,
+          "id": "cochlear-duct", "ja": "蝸牛管", "yomi": "かぎゅうかん", "en": "cochlear duct", "enAlt": ["scala media"], "la": "ductus cochlearis", "parts": ["za:cochlear duct"], "level": 2, "schematic": true, "xray": true,
           "kanji": "蝸牛の（中の膜の）管",
           "etym": "cochlea「かたつむり」（ラテン語）。中央階とも",
           "note": "前庭階（scala vestibuli）と鼓室階（scala tympani）の間の、膜迷路（membranous labyrinth）の管（中央階（scala media））。断面（section）は三角形で、上を前庭膜（vestibular membrane）、下を基底板（basilar membrane）、外側（lateral）を血管条（stria vascularis）がかこむ。中はカリウムの多い内リンパ（endolymph）で満たされ、底にラセン器（spiral organ）がのる。"
         },
         {
-          "id": "scala-tympani", "ja": "鼓室階", "yomi": "こしつかい", "en": "scala tympani", "la": "scala tympani", "plate": "ear-cochlea", "level": 2,
+          "id": "scala-tympani", "ja": "鼓室階", "yomi": "こしつかい", "en": "scala tympani", "la": "scala tympani", "parts": ["za:scala tympani"], "level": 2, "schematic": true,
           "kanji": "鼓室に面する階（階段）",
           "etym": "scala「階段」＋ tympanum「太鼓」",
           "note": "蝸牛（cochlea）の下の階。外リンパ（perilymph）で満ち、蝸牛の頂で前庭階（scala vestibuli）から続き、蝸牛窓（round window）で鼓室（tympanic cavity）に面して終わる。"

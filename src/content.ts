@@ -265,6 +265,8 @@ export interface OrganCut {
   point: Vec3;
   from: Vec3;
   hide?: string[];
+  /** 寄せる広さ（m。切った面の上の point を中心に、この半分の幅を映す）。無ければ臓器の箱に合わせる（内耳のように臓器の中の小さな所を切るとき） */
+  zoom?: number;
 }
 
 /** 平面図のうち、はじめの JS に入る所（ID・名前・ラベル）。ラベルは語ID か { term, pin } か、語の無い所の { ja, en, uv } */

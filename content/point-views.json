@@ -538,6 +538,7 @@
     "second-molar": "frontRight",
     "secondarily-retroperitoneal-organs": "back",
     "sella-turcica": "backLeft",
+    "semicircular-canals": "back",
     "semimembranosus": "back",
     "semimembranosus-bursa": "frontLeft",
     "seminal-gland": "backLeft",
@@ -665,7 +666,6 @@
     "vermis-of-cerebellum": "back",
     "vertebral-arch": "backRight",
     "vertebral-foramen": "below",
-    "vestibule": "backLeft",
     "visceral-surface-of-liver": "below",
     "zygomatic-process-of-temporal-bone": "right"
   }

@@ -437,7 +437,7 @@ else {
 }
 
 // 臓器の図: 語・レッスンの参照先と、平面図（scripts/plates.mjs が描くか、元の図 art から作る。模式図の diagram は描かない）
-const OrganCut = z.strictObject({ label: z.string().min(1), normal: vec, point: vec, from: vec, hide: z.array(z.string()).optional() });
+const OrganCut = z.strictObject({ label: z.string().min(1), normal: vec, point: vec, from: vec, hide: z.array(z.string()).optional(), zoom: z.number().positive().max(0.2).optional() });
 const PlateLabel = z.union([z.string(), z.strictObject({
   term: z.string().optional(), pin: z.number().int().optional(), ja: z.string().optional(), en: z.string().optional(), note: z.string().optional(),
   uv: z.tuple([z.number(), z.number()]).optional(), point: vec.optional(), side: z.enum(["left", "right"]).optional(),

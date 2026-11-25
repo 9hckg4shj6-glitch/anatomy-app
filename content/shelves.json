@@ -57,7 +57,19 @@
     "malleus": 9.4,
     "incus": 9.2,
     "stapes": 5.8,
-    "cochlea": 14.6
+    "cochlea": 14.6,
+    "vestibule": 10.8,
+    "anterior-semicircular-canal": 13.2,
+    "posterior-semicircular-canal": 14.4,
+    "lateral-semicircular-canal": 10.8,
+    "ampullary-crest": 8.6,
+    "utricle": 4.4,
+    "saccule": 2.6,
+    "oval-window": 3,
+    "round-window": 1.8,
+    "scala-vestibuli": 13.4,
+    "cochlear-duct": 13.8,
+    "scala-tympani": 14
   },
   "seePlate": {
     "sinuatrial-node": "heart-conduction",
@@ -80,6 +92,18 @@
     "malleus": "ear-section",
     "incus": "ear-section",
     "stapes": "ear-section",
-    "cochlea": "ear-section"
+    "cochlea": "ear-section",
+    "vestibule": "ear-section",
+    "anterior-semicircular-canal": "ear-ossicles",
+    "posterior-semicircular-canal": "ear-ossicles",
+    "lateral-semicircular-canal": "ear-ossicles",
+    "ampullary-crest": "ear-labyrinth",
+    "utricle": "ear-labyrinth",
+    "saccule": "ear-labyrinth",
+    "oval-window": "ear-labyrinth",
+    "round-window": "ear-labyrinth",
+    "scala-vestibuli": "ear-labyrinth",
+    "cochlear-duct": "ear-labyrinth",
+    "scala-tympani": "ear-labyrinth"
   }
 }

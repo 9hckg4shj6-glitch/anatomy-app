@@ -25,6 +25,7 @@ import { loadNasal, nasalNames } from "./nasal/index.mjs";
 import { heartNames, loadHeart, REPLACES as HEART_REPLACES } from "./heart/index.mjs";
 import { bakeAo, dropStrays, muscleFibers, nerveFibers, radialFibers, relax, simplify, subdivide } from "./surface.mjs";
 import { loadZa } from "./za/index.mjs";
+import { EAR_DETAIL } from "./ear/index.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const RAW = path.join(ROOT, "data-raw/bp3d");
@@ -141,7 +142,7 @@ const AO_DISTANCE = { skeletal: 0.025, joints: 0.015, muscular: 0.02, cardiovasc
  * extrasOf(部品ID) は部品に付ける印（アプリでは mesh.userData。軟骨は { cartilage: true }）。返り値の meshes は減らした形（部品ID → 形）。
  */
 async function writeGlb(stem, elements, { ratio, error, ao = null, fiberOf = () => null, occluders = [], extrasOf = () => null, clear = () => false }) {
-  const meshes = new Map(elements.map(([id, mesh]) => [id, simplify(mesh, { ratio, error })]));
+  const meshes = new Map(elements.map(([id, mesh]) => [id, simplify(mesh, { ratio, error: typeof error === "function" ? error(id) : error })]));
   const blocking = [...meshes].filter(([id]) => !clear(id)).map(([, mesh]) => mesh);
   const shading = ao ? bakeAo([...meshes.values()], [...blocking, ...occluders], { distance: ao }) : null;
   const doc = new Document();
@@ -435,9 +436,10 @@ async function main() {
     if (!ids.length) continue;
     // 骨格の中の軟骨（肋軟骨・椎間円板）と関節の線維軟骨（半月・関節円板など）は、アプリで骨と違う青みのある白にする
     const extrasOf = (id) => (["skeletal", "joints"].includes(system.id) && CARTILAGE.test(elementNames.get(id)) ? { cartilage: true } : null);
-    // 腎臓の中のつくり（ZK_…、scripts/kidney/）と肺区域（ZL_…、scripts/lung/）は形どうしの面がぴったり接するので、光をさえぎる形に入れない
+    // 腎臓の中のつくり（ZK_…、scripts/kidney/）・肺区域（ZL_…、scripts/lung/）・耳の中のつくり（ZE_…、scripts/ear/）は形どうしの面がぴったり接するので、光をさえぎる形に入れない
     // （入れると、中の面がとなりの形にふさがれて真っ暗になる。外から見えるのは腎皮質・肺の表面だけなので、ほかの形の暗さはほとんど変わらない）
-    const shape = { error: DETAIL[system.id] ?? 0.0001, ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) || id.startsWith("ZK_") || id.startsWith("ZL_") };
+    // 耳の中のつくり（ZE_…）は小さいので細かく残す
+    const shape = { error: (id) => (id.startsWith("ZE_") ? EAR_DETAIL : DETAIL[system.id] ?? 0.0001), ao: AO_DISTANCE[system.id], fiberOf, extrasOf, clear: (id) => veiled.has(id) || id.startsWith("ZK_") || id.startsWith("ZL_") || id.startsWith("ZE_") };
     let meshes = new Map();
     if (bp.length) {
       const glb = await writeGlb(system.id, bp.map((id) => [id, shown(id)]), shape);
