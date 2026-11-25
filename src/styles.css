@@ -706,6 +706,8 @@ a.term-row { color: var(--ink); text-decoration: none; }
    平面図を見ている間は欄を高くし、帯は1段で横にすべらせる。右上の ⤢ と ? が横に並ぶ分をあけ、3Dの「視点を戻す」は出さない */
 @media (max-width: 767px) {
   .layout:has(> .stage > .plate-layer:not([hidden])) { --stage-default: 56svh; }
+  /* 隠して確かめている間は、図と下の欄が並ぶので3Dの欄をもっと高く（欄の説明は確かめ終えてから読む） */
+  .layout:has(> .stage > .plate-layer:not([hidden]) > .pc-tools) { --stage-default: 72svh; }
   .plate-tools {
     right: calc(112px + var(--safe-right)); flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; touch-action: pan-x;
     -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent);
@@ -736,6 +738,103 @@ a.term-row { color: var(--ink); text-decoration: none; }
   border: 1.5px solid #fff; background: #2b2a27; color: #fff; font-size: 13px; font-weight: 700; line-height: 1;
 }
 .plate-num.on { background: var(--highlight); }
+/* 平面図の「隠して確かめる」（src/ui/plate-check.ts）。○は緑・×は赤、今の問いは橙で脈打つ */
+.plate-num.ok { background: var(--ok); }
+.plate-num.ng { background: var(--ng); }
+.plate-num.on.ok, .plate-num.on.ng { box-shadow: 0 0 0 3px var(--highlight); }
+.plate-label.ok .plate-ja { color: #23703f; }
+.plate-label.ng { background: rgb(194 73 58 / 0.1); }
+.plate-label.ng .plate-ja { color: #a93a2c; }
+.flow-item.ng text { text-decoration: underline wavy var(--ng); }
+.mark-ok, .mark-ng { display: inline-block; margin-right: 4px; font-weight: 800; }
+.mark-ok { color: var(--ok); }
+.mark-ng { color: var(--ng); }
+.plate-layer:has(> .pc-tools) .plate-num.on:not(.ok):not(.ng) { width: 30px; height: 30px; margin: -15px 0 0 -15px; font-size: 15px; animation: pc-pulse 1.4s ease-in-out infinite; }
+.plate-layer:has(> .pc-tools) .plate-label.on.hidden-name { background: #fff3e8; box-shadow: inset 0 0 0 2px var(--highlight); }
+@keyframes pc-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgb(255 122 26 / 0.55); } 50% { box-shadow: 0 0 0 8px rgb(255 122 26 / 0); } }
+@media (prefers-reduced-motion: reduce) { .plate-layer:has(> .pc-tools) .plate-num.on { animation: none; } }
+/* 狭い画面で、選んだ番号の名前の吹き出し */
+.plate-bubble {
+  position: absolute; z-index: 2; display: flex; flex-direction: column; gap: 1px; padding: 5px 10px; pointer-events: none;
+  border-radius: 10px; background: rgb(255 253 248 / 0.96); box-shadow: 0 2px 10px rgb(0 0 0 / 0.18); border: 1.5px solid var(--highlight); text-align: center; line-height: 1.2;
+}
+.plate-bubble .plate-ja { white-space: normal; }
+.plate-bubble .plate-en { -webkit-line-clamp: 3; }
+/* 図の上の帯の「隠して確かめる」: 名前の出し方（見るとき）と分けて、色のついたボタンに */
+.pc-start {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px; padding: 4px 12px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--accent); color: var(--accent-ink); font-size: 14px; font-weight: 700; box-shadow: 0 1px 4px rgb(0 0 0 / 0.15);
+}
+.pc-icon { width: 17px; height: 17px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.plate-tools .pc-start + .chip { margin-left: 6px; }
+.plate-tools.pc-tools { align-items: center; }
+.pc-mode { font-size: 14px; font-weight: 700; white-space: nowrap; }
+.pc-count { padding: 2px 9px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* 図の下の欄（隠し方を選ぶ・問い・答え・終わり） */
+.plate-check {
+  position: absolute; z-index: 3; left: calc(8px + var(--safe-left)); right: calc(8px + var(--safe-right)); bottom: 12px; margin: 0 auto; max-width: 640px;
+  padding: 10px 12px; border-radius: 14px; background: var(--surface); box-shadow: 0 4px 18px rgb(0 0 0 / 0.18); border: 1px solid var(--line);
+}
+.pc-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pc-title { margin: 0; font-weight: 800; font-size: 15px; }
+.pc-close { width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--bg); cursor: pointer; font-size: 18px; line-height: 1; }
+.pc-kinds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+.pc-kind {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 64px; padding: 8px 4px; cursor: pointer;
+  border: 1.5px solid var(--accent); border-radius: 12px; background: color-mix(in srgb, var(--accent) 7%, var(--surface)); color: var(--ink);
+}
+.pc-kind b { font-size: 15px; color: var(--accent); }
+.pc-kind small { font-size: 12px; color: var(--muted); }
+.pc-kind .pc-last { color: var(--ink); font-weight: 600; }
+.pc-again-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pc-again-row .chip { min-height: 36px; font-size: 13px; border-color: var(--ng); color: #a93a2c; }
+.pc-how { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+.pc-row { display: flex; align-items: center; gap: 10px; }
+.pc-num { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--highlight); color: #fff; font-weight: 800; font-size: 15px; }
+.pc-text { flex: 1; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 1px; line-height: 1.3; }
+.pc-text b { font-size: 15px; }
+.pc-cue { font-size: 15px; font-weight: 600; color: var(--accent); overflow-wrap: anywhere; }
+.pc-answer .pc-ja { font-size: 17px; font-weight: 800; }
+.pc-answer .pc-en { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.pc-show { flex: none; min-height: 44px; padding: 8px 14px; }
+.pc-grade { flex: none; display: flex; gap: 6px; }
+.pc-ng, .pc-ok { min-height: 44px; padding: 8px 12px; border-radius: 10px; cursor: pointer; font-size: 15px; font-weight: 700; }
+.pc-ng { border: 1.5px solid var(--ng); background: var(--surface); color: #a93a2c; }
+.pc-ok { border: 0; background: var(--ok); color: #fff; }
+.pc-keys { display: none; margin: 4px 0 0 40px; font-size: 12px; color: var(--muted); }
+@media (hover: hover) and (pointer: fine) { .pc-keys { display: block; } }
+.pc-sum { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0; }
+.pc-sum b { font-size: 16px; }
+.pc-sum span { font-size: 13px; color: var(--muted); }
+.pc-end { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pc-end > * { min-height: 40px; padding: 6px 12px; font-size: 14px; }
+@media (max-width: 420px) {
+  .pc-grade { flex-direction: column; gap: 4px; }
+  .pc-ng, .pc-ok { min-height: 38px; padding: 4px 10px; font-size: 14px; }
+  .pc-kind b { font-size: 14px; }
+}
+/* はじめての人への案内（「隠して確かめる」の下に吹き出し） */
+.pc-tip {
+  position: absolute; z-index: 4; left: calc(8px + var(--safe-left)); width: min(300px, calc(100% - 16px)); padding: 10px 12px;
+  border-radius: 12px; background: var(--ink); color: #fff; box-shadow: 0 6px 20px rgb(0 0 0 / 0.25); font-size: 13.5px; line-height: 1.55;
+}
+.pc-tip::before { content: ""; position: absolute; top: -7px; left: calc(var(--tip-x, 60px) - 8px - var(--safe-left)); border: 7px solid transparent; border-top: 0; border-bottom-color: var(--ink); }
+.pc-tip p { margin: 0; }
+.pc-tip-title { font-weight: 800; font-size: 14.5px; margin-bottom: 2px !important; }
+.pc-tip-row { display: flex; gap: 8px; margin-top: 8px; }
+.pc-tip-row > * { min-height: 38px; padding: 6px 14px; font-size: 14px; }
+.pc-tip .ghost-button { background: transparent; color: #fff; border-color: rgb(255 255 255 / 0.4); }
+/* 欄の「この図の名前を覚えたか確かめる」 */
+.pc-card { display: flex; align-items: center; gap: 12px; margin: 12px 0; padding: 12px; border-radius: 12px; border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line)); background: color-mix(in srgb, var(--accent) 6%, var(--surface)); }
+.pc-card-text { flex: 1; min-width: 0; }
+.pc-card p { margin: 0; }
+.pc-card .muted { font-size: 13px; margin-top: 2px; }
+.pc-card-title { font-weight: 800; font-size: 15px; }
+.pc-card-start { flex: none; gap: 6px; min-height: 44px; padding: 8px 14px; font-size: 15px; }
+.pc-card-on { display: block; border-style: dashed; }
+@media (max-width: 420px) {
+  .pc-card:not(.pc-card-on) { flex-direction: column; align-items: stretch; }
+}
 .flow-diagram { position: absolute; top: 48px; left: 0; width: 100%; height: calc(100% - 52px); }
 .flow-item { cursor: pointer; outline: none; }
 .flow-item:focus-visible rect, .flow-item.on rect { filter: drop-shadow(0 0 4px rgb(255 122 26 / 0.8)); }

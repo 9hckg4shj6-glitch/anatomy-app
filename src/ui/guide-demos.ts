@@ -782,14 +782,14 @@ const ORGAN_STEPS: DemoStep[] = [
   },
   {
     title: "平面図",
-    text: "帯で平面図を選ぶと、教科書のような図が出ます（「前の図・次の図」で順に見ることも）。名前の出し方は 日本語と英語・日本語・英語・隠して確かめる の4つ。名前を押すと、その語の説明と「この語が載っているほかの図」が下に出ます。",
+    text: "帯で平面図を選ぶと、教科書のような図が出ます（「前の図・次の図」で順に見ることも）。名前の出し方は 日本語と英語・日本語だけ・英語だけ。名前（スマホでは図の番号）を押すと、図の上に名前が出て、その語の説明と「この語が載っているほかの図」が下に出ます。",
     screen: `${topBar("臓器の図")}
       <div class="gd-plate"><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">
         <span class="gd-tag" style="left:6%;top:16%">上大静脈</span><span class="gd-tag" style="left:58%;top:8%">大動脈弓</span>
         <span class="gd-tag" style="left:2%;top:52%">右心房</span><span class="gd-tag" style="left:62%;top:58%">左心室</span>
       </div>
       <div class="gd-pad">
-        <div class="gd-toggles"><span class="on">日本語と英語</span><span>日本語</span><span>英語</span><span>隠して確かめる</span></div>
+        <div class="gd-toggles"><span class="gd-checkbtn">隠して確かめる</span><span class="on">日本語と英語</span><span>日本語だけ</span><span>英語だけ</span></div>
         <div class="gd-fignav"><span>‹ 前の図</span><small>平面図 2 / 10</small><span>次の図 ›</span></div>
         <ol class="gd-names"><li>上大静脈 <small lang="en">superior vena cava</small></li><li>大動脈弓 <small lang="en">arch of aorta</small></li><li>右心房 <small lang="en">right atrium</small></li></ol>
       </div>`,
@@ -811,16 +811,19 @@ const ORGAN_STEPS: DemoStep[] = [
   },
   {
     title: "隠して確かめる",
-    text: "「隠して確かめる」にすると、図の名前が番号になります。思い出してから番号を押すと名前が出ます。「すべての名前を出す」で答え合わせ。選んだ出し方は次も同じです。",
+    text: "覚えたら、図の上の左の「隠して確かめる」を押し、全部隠す・日本語を隠す（英語を見て日本語を）・英語を隠す（日本語を見て英語を）から選びます。光った番号の名前を思い出してから「答えを見る」→ 自分で ○ か ×。終わったら × だけをもう一度。結果は図ごとに残り、次は「前回の × だけ」からも。",
     screen: `${topBar("臓器の図")}
       <div class="gd-plate"><img src="${ORGAN_IMG}heart.webp" alt="" draggable="false">
-        <span class="gd-tag gd-num" style="left:10%;top:16%">1</span><span class="gd-tag gd-num" style="left:66%;top:8%">2</span>
-        <span class="gd-tag gd-num gd-hide" style="left:6%;top:52%">3${finger()}${ripple()}<b class="gd-later">右心房</b></span><span class="gd-tag gd-num" style="left:68%;top:58%">4</span>
+        <span class="gd-checktools"><i>やめる</i><b>日本語を隠す</b><em>3 / 22</em></span>
+        <span class="gd-tag gd-num gd-num-ok" style="left:10%;top:22%">1</span><span class="gd-tag gd-num gd-num-ng" style="left:66%;top:14%">2</span>
+        <span class="gd-tag gd-num gd-on" style="left:8%;top:52%">3</span><span class="gd-tag gd-num" style="left:68%;top:58%">4</span>
       </div>
       <div class="gd-pad">
-        <div class="gd-toggles"><span>日本語と英語</span><span>日本語</span><span>英語</span><span class="on">隠して確かめる</span></div>
-        <p class="gd-note">名前を隠しています。番号を押すと名前が出ます。</p>
-        <ol class="gd-names"><li>？</li><li>？</li><li><span class="gd-later">右心房</span></li><li>？</li></ol>
+        <div class="gd-checkbar">
+          <span class="gd-checkq"><i>3</i><span><small lang="en">right atrium</small><b>日本語は？</b></span><span class="gd-checkshow">答えを見る${finger()}${ripple()}</span></span>
+          <span class="gd-checka gd-later"><i>3</i><span><b>右心房</b><small lang="en">right atrium</small></span><span class="gd-checkng">× まだ</span><span class="gd-checkok">○ わかった</span></span>
+        </div>
+        <p class="gd-note">終わったら「× の2つをもう一度」。前回の結果は図ごとに残ります。</p>
       </div>`,
   },
   {

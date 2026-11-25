@@ -1,7 +1,5 @@
-import { termById, type PlateLabel } from "../content";
-
-/** 平面図の名前の出し方（organs.ts と同じ） */
-type LabelMode = "both" | "ja" | "en" | "hide";
+import type { PlateLabel } from "../content";
+import type { LabelLine } from "./plate-view";
 
 const SVG = "http://www.w3.org/2000/svg";
 const BLUE = "#3b64b8";
@@ -31,7 +29,7 @@ interface Item {
  * 血液の流れの模式図（心臓）。右の心臓（静脈血・青）を左に、左の心臓（動脈血・赤）を右に置き（前から見た向き）、
  * 心房を上・心室を下にして、全身→大静脈→右心房→三尖弁→右心室→肺動脈弁→肺動脈幹→肺→肺静脈→左心房→僧帽弁→左心室→大動脈弁→大動脈→全身と回す
  */
-export function flowDiagram(): { labels: PlateLabel[]; svg: (choose: (i: number) => void, mode: LabelMode, revealed: Set<number>, chosen: number | null) => SVGSVGElement } {
+export function flowDiagram(): { labels: PlateLabel[]; svg: (choose: (i: number) => void, linesOf: (i: number) => LabelLine[], chosen: number | null) => SVGSVGElement } {
   const term = (id: string): PlateLabel => ({ at: [0, 0], term: id });
   const items: Item[] = [
     { label: term("right-atrium"), x: 80, y: 250, box: [240, 100, "#dfe8f8"], color: BLUE },
@@ -63,7 +61,8 @@ export function flowDiagram(): { labels: PlateLabel[]; svg: (choose: (i: number)
 
   return {
     labels,
-    svg: (choose, mode, revealed, chosen) => {
+    // 名前の行は plate-view.ts の labelLines（名前の出し方・隠して確かめるの様子）
+    svg: (choose, linesOf, chosen) => {
       const svg = el("svg", { viewBox: "0 0 800 890", class: "flow-diagram", role: "img", "aria-label": "血液の流れの模式図" });
       svg.append(el("defs", {}, ...[["blue", BLUE], ["red", RED]].map(([id, color]) =>
         el("marker", { id: `arrow-${id}`, viewBox: "0 0 10 10", refX: 8, refY: 5, markerWidth: 5, markerHeight: 5, orient: "auto-start-reverse" },
@@ -76,11 +75,9 @@ export function flowDiagram(): { labels: PlateLabel[]; svg: (choose: (i: number)
         el("text", { x: 400, y: 750, "text-anchor": "middle", class: "flow-caption en" }, "systemic circulation"),
       );
       for (const [i, item] of items.entries()) {
-        const named = item.label.term ? termById.get(item.label.term) : undefined;
-        const ja = item.label.ja ?? named?.ja ?? "";
-        const en = item.label.en ?? named?.en ?? "";
-        const hidden = mode === "hide" && !revealed.has(i);
-        const group = el("g", { class: i === chosen ? "flow-item on" : "flow-item", tabindex: 0, role: "button" });
+        const rows = linesOf(i);
+        const mark = rows.find((row) => row.mark !== undefined)?.mark;
+        const group = el("g", { class: `flow-item${i === chosen ? " on" : ""}${mark === undefined ? "" : mark ? " ok" : " ng"}`, tabindex: 0, role: "button" });
         group.addEventListener("click", () => choose(i));
         group.addEventListener("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
@@ -88,20 +85,22 @@ export function flowDiagram(): { labels: PlateLabel[]; svg: (choose: (i: number)
             choose(i);
           }
         });
-        const lines = hidden ? [`${i + 1}　？`] : mode === "ja" ? [ja] : mode === "en" ? [en] : [ja, en];
+        // 英語は、日本語と並ぶときだけ小さく
+        const small = (row: LabelLine) => row.en && rows.length > 1;
+        const text = (row: LabelLine) => (row.mark === undefined ? row.text : `${row.mark ? "○" : "×"} ${row.text}`);
         if (item.box) {
           const [w, hgt, fill] = item.box;
           group.append(el("rect", { x: item.x, y: item.y, width: w, height: hgt, rx: 16, fill, stroke: item.color, "stroke-width": i === chosen ? 5 : 2.5 }));
           const cx = item.x + w / 2, cy = item.y + hgt / 2;
-          lines.forEach((text, k) => group.append(el("text", {
-            x: cx, y: cy + (k - (lines.length - 1) / 2) * 30 + 9, "text-anchor": "middle", class: k && mode === "both" && !hidden ? "flow-en" : "flow-ja", fill: item.color,
-          }, text)));
+          rows.forEach((row, k) => group.append(el("text", {
+            x: cx, y: cy + (k - (rows.length - 1) / 2) * 30 + 9, "text-anchor": "middle", class: small(row) ? "flow-en" : "flow-ja", fill: item.color,
+          }, text(row))));
         } else {
           const anchor = item.anchor ?? "start";
-          lines.forEach((text, k) => group.append(el("text", {
-            x: item.x, y: item.y + k * 22, "text-anchor": anchor, class: k && mode === "both" && !hidden ? "flow-en small" : "flow-ja small", fill: item.color,
+          rows.forEach((row, k) => group.append(el("text", {
+            x: item.x, y: item.y + k * 22, "text-anchor": anchor, class: small(row) ? "flow-en small" : "flow-ja small", fill: item.color,
             stroke: "#fbf8f1", "stroke-width": 6, "paint-order": "stroke",
-          }, text)));
+          }, text(row))));
         }
         svg.append(group);
       }

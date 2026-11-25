@@ -6,7 +6,9 @@ import { h } from "../dom";
 import type { Section } from "../viewer";
 import { termAt, type AppContext } from "./context";
 import { flowDiagram } from "./diagrams";
-import { drawPlate, labelName, type LabelMode } from "./plate-view";
+import { drawPlate, labelLines, labelName, markElement, type LabelMode } from "./plate-view";
+import { checkTip, checkTipDone, plateChecker, resultText, HIDE_KINDS } from "./plate-check";
+import { stageTip } from "./stage-tip";
 import { termCard } from "./term-card";
 import { noteText } from "../en-notes";
 import { MOTIONS } from "../motion-list";
@@ -28,7 +30,8 @@ function motionLinks(organId: string): HTMLElement | string {
     ...list.map((motion) => h("a", { class: "chip", href: `#/motions/${motion.id}` }, `▶ ${motion.ja}`))) : "";
 }
 
-const LABEL_MODES: [LabelMode, string][] = [["both", "日本語と英語"], ["ja", "日本語"], ["en", "英語"], ["hide", "隠して確かめる"]];
+/** 名前の出し方（見るとき）。隠して確かめるのは別のボタン（plate-check.ts） */
+const LABEL_MODES: [LabelMode, string][] = [["both", "日本語と英語"], ["ja", "日本語だけ"], ["en", "英語だけ"]];
 const LABEL_MODE = "plateLabelMode";
 
 /**
@@ -126,7 +129,7 @@ async function organList(ctx: AppContext, view: "organs" | "figures", startQuery
 
   ctx.panel.replaceChildren(
     h("h2", {}, "臓器の図"),
-    h("p", { class: "muted" }, "臓器を立体（3D）と教科書のような平面図で見ます。見たい図がどの臓器にあるか分からないときは、図の名前や部位の名前で探すか「すべての図」から。"),
+    h("p", { class: "muted" }, "臓器を立体（3D）と教科書のような平面図で見ます。平面図は「隠して確かめる」で名前を隠し、覚えたか確かめられます。見たい図がどの臓器にあるか分からないときは、図の名前や部位の名前で探すか「すべての図」から。"),
     search, results, rest,
   );
   if (startQuery) {
@@ -232,6 +235,8 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
   }
   // 立体: 名前 → 図の帯 → 臓器の説明・動きで見る → 図で学ぶレッスン → 向き・切り口・語
   panel.replaceChildren(head, figureStrip(organ, "3d"), ...about, lessonList, body);
+  // 右上の ⤢・?・向きの目印の説明は立体のときだけ（平面図では向きの目印を出さず、代わりに隠して確かめるの案内）
+  void stageTip(stage, ctx.signal);
 
   // 立体: 臓器と大血管だけを見せ、部屋・葉の色分け・向き・切り口を選ぶ
   const colorable = Object.keys(organ.colors).length > 0;
@@ -327,63 +332,123 @@ async function organPage(ctx: AppContext, organ: Organ, mode: string, startTerm:
   select(termById.get(startTerm) && ids.has(startTerm) ? termById.get(startTerm)! : null);
 }
 
+/** 「隠して確かめる」のボタンの印（目に斜線） */
+function hideIcon(): SVGSVGElement {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("class", "pc-icon");
+  svg.innerHTML = '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M4 4l16 16"/>';
+  return svg;
+}
+
 /**
- * 平面図を紙（layer）に描く（plate-view.ts の drawPlate）。欄（body）には図の題・名前の出し方・名前の一覧と、選んだ語の説明
+ * 平面図を紙（layer）に描く（plate-view.ts の drawPlate）。図の上の帯に「隠して確かめる」と名前の出し方、
+ * 欄（body）には図の題・要点・隠して確かめるの札・名前の一覧と、選んだ語の説明
  */
 function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateIndex, layer: HTMLElement, body: HTMLElement, startMode: LabelMode, saveMode: (mode: LabelMode) => void, startTerm = ""): void {
   let labelMode = startMode;
-  const revealed = new Set<number>();
   const entry = index.plates[spec.id];
   const diagram = spec.diagram === "flow" ? flowDiagram() : null;
   const labels: PlateLabel[] = diagram ? diagram.labels : entry?.labels ?? [];
   const nameOf = labelName;
-  // 図鑑などの「この語が載っている図」から来たときは、その語の名前を選んでおく（隠しているときも、その名前は出す）
+  // 図鑑などの「この語が載っている図」から来たときは、その語の名前を選んでおく
   const start = startTerm ? labels.findIndex((label) => label.term === startTerm) : -1;
   let chosen: number | null = start >= 0 ? start : null;
-  if (chosen !== null) revealed.add(chosen);
   ctx.hint("");
 
   const paper = h("div", { class: "plate-paper" });
-  const toolbar = h("div", { class: "plate-tools" }, ...LABEL_MODES.map(([key, text]) => h("button", {
-    class: key === labelMode ? "chip on" : "chip", type: "button",
-    onClick: () => {
-      labelMode = key;
-      revealed.clear();
-      saveMode(key);
-      for (const button of toolbar.querySelectorAll("button")) button.classList.toggle("on", button.textContent === text);
-      draw();
-      renderList();
-    },
-  }, text)));
-  layer.replaceChildren(paper, toolbar);
+  const toolbar = h("div", { class: "plate-tools" });
+  // 確かめるの欄（隠し方を選ぶ・問い・答え・終わり）。図の下に重ね、問うている間は図をその上に縮める
+  const bar = h("div", { class: "plate-check", hidden: true, role: "region", "aria-label": "隠して確かめる" });
+  layer.replaceChildren(paper, toolbar, bar);
 
-  const choose = (i: number | null) => {
-    chosen = i;
-    if (i !== null && labelMode === "hide") revealed.add(i);
-    draw();
-    renderList();
-    const term = i !== null ? nameOf(labels[i]).term : undefined;
+  const speak = (i: number) => {
+    const term = nameOf(labels[i]).term;
     if (term) autoSpeak(term);
   };
+  const checker = plateChecker({
+    plateId: spec.id, labels, signal: ctx.signal, bar,
+    changed: (keep) => {
+      if (!keep) chosen = null;
+      refresh();
+    },
+    revealed: speak,
+    started: () => {
+      layer.querySelector(".pc-tip")?.remove();
+      void checkTipDone();
+    },
+  });
+  const openCheck = () => {
+    layer.querySelector(".pc-tip")?.remove();
+    checker.open();
+  };
+  const checkButton = h("button", { class: "pc-start", type: "button", onClick: openCheck }, hideIcon(), "隠して確かめる");
+  const renderTools = () => {
+    toolbar.classList.toggle("pc-tools", checker.active());
+    toolbar.replaceChildren(...(checker.active() ? checker.tools() : [
+      checkButton,
+      ...LABEL_MODES.map(([key, text]) => h("button", {
+        class: key === labelMode ? "chip on" : "chip", type: "button", "aria-pressed": String(key === labelMode),
+        onClick: () => {
+          labelMode = key;
+          saveMode(key);
+          refresh();
+        },
+      }, text)),
+    ]));
+  };
+
+  const choose = (i: number | null) => {
+    if (i !== null && checker.active()) {
+      // 確かめている間: まだ問うていない名前なら、それを先に問う。名前を出した所なら説明を出す
+      if (checker.tap(i)) return;
+      if (checker.view()?.hidden.has(i)) return;
+    }
+    chosen = i;
+    refresh();
+    if (i !== null) speak(i);
+  };
+  /** 光らせる名前（確かめている間は今の問い） */
+  const marked = () => (checker.view() ? checker.current() ?? chosen : chosen);
 
   const draw = () => {
+    const check = checker.view();
+    // 図は帯の下から（狭い画面では帯が2行になる）。問うている間は、下の欄の上まで
+    const top = Math.max(52, toolbar.offsetTop + toolbar.offsetHeight + 8);
+    const bottom = !bar.hidden && !bar.classList.contains("pc-picking") ? bar.offsetHeight + 16 : 0;
     if (diagram) {
-      paper.replaceChildren(diagram.svg((i) => choose(i), labelMode, revealed, chosen));
+      const svg = diagram.svg((i) => choose(i), (i) => labelLines(labels[i], i, labelMode, check), marked());
+      svg.style.top = `${top - 4}px`;
+      svg.style.height = `calc(100% - ${top + Math.max(4, bottom)}px)`;
+      paper.replaceChildren(svg);
       return;
     }
     if (!entry) {
       paper.replaceChildren(h("p", { class: "muted" }, "この図はまだ作られていません（node scripts/plates.mjs）。"));
       return;
     }
-    // 図は名前の出し方のボタンの下から（狭い画面ではボタンが2行になる）
-    drawPlate(layer, paper, { entry, spec, labels, labelMode, revealed, chosen, choose, top: Math.max(52, toolbar.offsetTop + toolbar.offsetHeight + 8) });
+    drawPlate(layer, paper, { entry, spec, labels, labelMode, check, chosen: marked(), choose, top, bottom });
   };
 
   const listBox = h("div", {});
   const renderList = () => {
-    const chosenLabel = chosen !== null ? labels[chosen] : null;
+    const check = checker.view();
+    // 確かめている間は、答えを出した名前だけ説明を出す（今の問いは「答えを見る」のあと）
+    const shownIndex = check ? (checker.shown() ? checker.current() : chosen) : chosen;
+    const chosenLabel = shownIndex !== null && !check?.hidden.has(shownIndex) ? labels[shownIndex] : null;
     const chosenTerm = chosenLabel ? nameOf(chosenLabel).term : undefined;
+    const results = checker.results();
+    const last = HIDE_KINDS.flatMap(([kind, name]) => (results[kind] ? [`${name} ${resultText(results[kind]!).replace("前回 ", "")}`] : []));
     listBox.replaceChildren(
+      check || checker.active() ? h("div", { class: "pc-card pc-card-on" },
+        h("p", { class: "pc-card-title" }, "隠して確かめています"),
+        h("p", { class: "muted" }, "図の下の欄で「答えを見る」→ ○か×。図の番号を押すと、その名前から問います。「やめる」で元に戻ります。"))
+        : h("div", { class: "pc-card" },
+          h("div", { class: "pc-card-text" },
+            h("p", { class: "pc-card-title" }, `この図の${labels.length}の名前を覚えたか確かめる`),
+            h("p", { class: "muted" }, last.length ? `前回: ${last.join("・")}` : "名前を隠して1つずつ思い出します。日本語だけ・英語だけを隠すことも。")),
+          h("button", { class: "primary pc-card-start", type: "button", onClick: openCheck }, hideIcon(), "隠して確かめる")),
       chosenLabel ? h("div", { class: "detail" },
         chosenTerm ? termCard(chosenTerm, { open: (word) => (location.hash = `#/explore/${word.id}`) }) : h("article", { class: "term-card" },
           h("div", { class: "term-head" }, h("span", { class: "term-ja" }, nameOf(chosenLabel).ja)),
@@ -394,16 +459,21 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
           organ.box && (organTerms(organ).includes(chosenTerm.id) || chosenTerm.of) ? h("a", { class: "ghost-button", href: `#/organs/${organ.id}/3d/${chosenTerm.id}` }, "立体で見る") : null,
           h("a", { class: "ghost-button", href: `#/explore/${chosenTerm.id}` }, "図鑑で開く"),
         ) : "",
-      ) : h("p", { class: "muted" }, labelMode === "hide" ? "名前を隠しています。番号を押すと名前が出ます。" : "名前を押すと説明が出ます。"),
+      ) : check ? "" : h("p", { class: "muted" }, "名前を押すと説明が出ます。"),
       h("h3", {}, `この図の名前（${labels.length}）`),
-      labelMode === "hide" ? h("button", { class: "text-button", type: "button", onClick: () => { labels.forEach((_, i) => revealed.add(i)); draw(); renderList(); } }, "すべての名前を出す") : "",
       h("ol", { class: "plate-list" }, ...labels.map((label, i) => {
-        const { ja, en } = nameOf(label);
-        const hidden = labelMode === "hide" && !revealed.has(i);
-        return h("li", {}, h("button", { type: "button", class: i === chosen ? "term-row on" : "term-row", onClick: () => choose(i) },
-          h("span", {}, hidden ? "？" : labelMode === "en" ? en : ja), h("span", { class: "en", lang: "en" }, hidden || labelMode !== "both" ? "" : en)));
+        const rows = labelLines(label, i, labelMode, check, false);
+        const ja = rows.find((row) => !row.en);
+        const en = rows.find((row) => row.en);
+        return h("li", {}, h("button", { type: "button", class: i === marked() ? "term-row on" : "term-row", onClick: () => choose(i) },
+          h("span", {}, ...(ja ? [markElement(ja.mark), ja.text] : [en?.text ?? ""])), h("span", { class: "en", lang: "en" }, ja && en ? en.text : "")));
       })),
     );
+  };
+  const refresh = () => {
+    renderTools();
+    draw();
+    renderList();
   };
 
   const art = spec.art;
@@ -416,10 +486,12 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
       h("a", { href: art.page, target: "_blank", rel: "noopener" }, art.author), "（",
       h("a", { href: art.licenseUrl, target: "_blank", rel: "noopener" }, art.license), `）。${art.changes}`) : "",
   );
+  renderTools();
   renderList();
   // 3Dの欄の大きさ（境目のつまみ・⤢）が変わったら描き直す
   const observer = new ResizeObserver(() => draw());
   observer.observe(layer);
   ctx.signal.addEventListener("abort", () => observer.disconnect(), { once: true });
   draw();
+  if (labels.length) void checkTip(layer, checkButton, ctx.signal, openCheck);
 }

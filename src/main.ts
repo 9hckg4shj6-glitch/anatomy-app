@@ -304,9 +304,9 @@ async function boot(): Promise<void> {
     layout.classList.toggle("is-motion", name === "motions");
     viewer.hideCompass(!PAGES[name] || name === "start");
     showCrumbs(name);
-    // 3Dを動かして見る画面（レッスン・図鑑・臓器の図）を初めて開いたときに、右上の ⤢・?・向きの目印の説明を出す（src/ui/stage-tip.ts）
-    // 臓器の図のすべての図（all）と図を探した結果（find）は一覧なので出さない
-    if (name === "learn" || name === "explore" || name === "model" || ((name === "organs" || name === "motions") && arg && !/^(all|find)(\/|$)/.test(arg))) void stageTip(stage, ctx.signal);
+    // 3Dを動かして見る画面（レッスン・図鑑・動きの図鑑）を初めて開いたときに、右上の ⤢・?・向きの目印の説明を出す（src/ui/stage-tip.ts）。
+    // 臓器の図は立体のときだけ organs.ts が出す（平面図では向きの目印を出さず、隠して確かめるの案内を出す）
+    if (name === "learn" || name === "explore" || name === "model" || (name === "motions" && arg)) void stageTip(stage, ctx.signal);
     window.scrollTo(0, 0);
     try {
       if (name === "learn") await lesson(ctx, arg);

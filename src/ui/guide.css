@@ -553,6 +553,23 @@
 .gd-names { margin: 0; padding: 0 0 0 18px; display: grid; gap: 3px; font-size: 10.5px; font-weight: 700; }
 .gd-names small { font-weight: 500; color: var(--muted); }
 .gd-names .gd-later { color: #1f6e3f; }
+/* 平面図の「隠して確かめる」（src/ui/plate-check.ts の見本）: 色つきのボタン・上の帯・○×の番号・下の欄（問い → 指が触れると答え） */
+.gd-toggles .gd-checkbtn { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 700; }
+.gd-checktools { position: absolute; top: 6px; left: 6px; display: flex; align-items: center; gap: 5px; font-size: 9px; }
+.gd-checktools i { padding: 2px 6px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-style: normal; }
+.gd-checktools em { padding: 1px 6px; border-radius: 999px; background: var(--ink); color: #fff; font-style: normal; font-weight: 700; }
+.gd-num.gd-num-ok { background: var(--ok); border-color: var(--ok); }
+.gd-num.gd-num-ng { background: var(--ng); border-color: var(--ng); }
+.gd-checkbar { display: grid; }
+.gd-checkbar > * { grid-area: 1 / 1; display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 2px 8px rgb(0 0 0 / 0.08); }
+.gd-checkbar i { flex: none; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #f07a1a; color: #fff; font-style: normal; font-size: 9px; font-weight: 800; }
+.gd-checkbar > * > span:nth-child(2) { flex: 1; display: grid; font-size: 10px; line-height: 1.3; }
+.gd-checkbar small { font-size: 9px; color: var(--muted); }
+.gd-checkq small { color: var(--accent); font-weight: 700; font-size: 10px; }
+.gd-checkshow, .gd-checkng, .gd-checkok { position: relative; flex: none; padding: 4px 7px; border-radius: 6px; font-size: 9.5px; font-weight: 700; }
+.gd-checkshow { background: var(--accent); color: #fff; }
+.gd-checkng { border: 1px solid var(--ng); color: #a93a2c; }
+.gd-checkok { background: var(--ok); color: #fff; }
 .gd-motionlink { padding: 6px 8px; border-radius: 8px; background: color-mix(in srgb, #7a4fb5 10%, var(--surface)); border: 1px solid color-mix(in srgb, #7a4fb5 35%, var(--line)); font-size: 9.5px; color: var(--muted); }
 .gd-motionlink b { color: #6b3fa8; }
 .gd-lessonrows i { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: color-mix(in srgb, var(--ink) 8%, transparent); font-size: 9px; font-style: normal; }
