@@ -116,7 +116,7 @@ function daysAgo(iso: string, now = new Date()): string {
  * 入口（#/drill）は「すぐ始める」（最近のレッスン・苦手な語・★を付けた語・前回と同じ条件）と「自分で選ぶ」（3つの段階）。
  * 自分で選ぶは ①範囲（#/drill/custom）→ ②問い方（custom/2。名前と場所 → ＋英語 → 総仕上げの段階か1つずつ）→ ③数と出し方（custom/3）。
  * "#/drill/recent"・"weak"・"stars"・"last" はすぐ始める、"#/drill/term/<語ID>" はその語の問い方をひと通り（図鑑の「この語を演習」）。
- * おまかせ（学んでいない所からも出す）はしない。学んでいない語は、自分で「すべての系統と語」から選んだときだけ。
+ * おまかせ（学んでいない所からも出す）はしない。学んでいない語は、①範囲の一覧を「すべて」にして自分で選んだときだけ。
  * 答えは復習と同じく記録し、次に出る日にも反映する。初心者モードでは範囲は初心者コースの語、問い方は基本の4つから。
  */
 export async function drill(ctx: AppContext, mode: string): Promise<void> {
@@ -146,9 +146,9 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
   const last = parseCondition(lastRow?.value, termIds, offeredKeys);
   const idsOf = (list: Term[]) => list.map((term) => term.id);
 
-  // 選んだ条件。今のコースに無い語・出せない問い方は外す（コースを変えたとき）
+  // 選んだ条件。範囲は初めは何も選ばない（前回の範囲は「よく使う範囲」から）。今のコースに無い語・出せない問い方は外す（コースを変えたとき）
   draft ??= {
-    ids: new Set(last?.ids ?? idsOf(learnedTerms)), kinds: last?.kinds ?? defaultKinds(), count: last?.count ?? 20, order: last?.order ?? "mix",
+    ids: new Set(), kinds: last?.kinds ?? defaultKinds(), count: last?.count ?? 20, order: last?.order ?? "mix",
     view: learnedTerms.length ? "learned" : "all",
   };
   for (const id of draft.ids) if (!termIds.has(id)) draft.ids.delete(id);
@@ -310,7 +310,11 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
   const weak = (): DrillCondition => ({ ids: new Set(idsOf(learnedTerms)), kinds: defaultKinds(), count: 20, order: "weak" });
   const stars = (): DrillCondition => ({ ids: new Set(starredIds().filter((id) => termIds.has(id))), kinds: defaultKinds(), count: 20, order: "mix" });
 
-  if (kind === "custom") return chooser(Math.min(3, Math.max(1, Number(arg) || 1)));
+  if (kind === "custom") {
+    // "custom/1/<系統ID>/<レッスンID>" は①範囲の中の系統・レッスンのページ
+    const [stepArg, ...path] = arg.split("/");
+    return chooser(Math.min(3, Math.max(1, Number(stepArg) || 1)), path.filter(Boolean));
+  }
   if (kind === "recent") return startWith(recent());
   if (kind === "weak") return startWith(weak());
   if (kind === "stars") return startWith(stars());
@@ -340,7 +344,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
       h("span", { class: "ahead-mark", "aria-hidden": "true" }, String(i + 1)),
       h("span", { class: "drill-plan-text" }, h("b", {}, step.title),
         h("span", {}, [
-          learnedTerms.length ? "学んだレッスン・系統・語から" : "系統・レッスン・語から",
+          learnedTerms.length ? "最近のレッスン・学んだ語すべてなどからすぐ。系統 → レッスン → 語と開いても選べます" : "系統 → レッスン → 語と開いて選びます",
           levels.map((level) => level.title).join(" → "),
           "10〜40問か全部・まぜる／苦手から／はじめての問題から",
         ][i]))));
@@ -349,7 +353,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
       h("p", { class: "drill-lead" }, "学んだ範囲を、試験の前に解き直します。答えは今日の復習の記録にも入ります。"),
       h("h3", { class: "list-title" }, "すぐ始める"),
       quick.length ? h("ul", { class: "home-card home-list" }, ...quick)
-        : h("p", { class: "home-card home-note drill-empty" }, "レッスンを1つ終えると、ここから最近のレッスン・苦手な語をすぐ解けます。まだ学んでいない語は、下の「自分で選ぶ」の「すべての系統と語」から選べます。"),
+        : h("p", { class: "home-card home-note drill-empty" }, "レッスンを1つ終えると、ここから最近のレッスン・苦手な語をすぐ解けます。まだ学んでいない語は、下の「自分で選ぶ」で系統を開いて選べます。"),
       h("h3", { class: "list-title" }, "自分で選ぶ"),
       h("section", { class: "home-card drill-plan" },
         h("ol", { class: "drill-plan-steps" }, ...plan),
@@ -357,11 +361,14 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
     );
   }
 
-  /** 自分で選ぶ（3つの段階）。step は 1〜3 */
-  function chooser(step: number): void {
+  /** 自分で選ぶ（3つの段階）。step は 1〜3、path は①範囲の中の系統・レッスン */
+  function chooser(step: number, path: string[] = []): void {
     ctx.fold(true);
-    /** チェック（ids はその下の語、counter は「選んだ数/語の数」を出す所） */
-    const boxes: { box: HTMLInputElement; ids: string[]; counter?: HTMLElement }[] = [];
+    /** チェック（ids はその下の語、counter は「選んだ数/語の数」を出す所。box の無いものは数だけ） */
+    const boxes: { box?: HTMLInputElement; ids: string[]; counter?: HTMLElement; format?: (on: number, all: number) => string }[] = [];
+    /** 選んだものが変わったときに合わせるもの（選んでいる範囲・よく使う範囲の濃さ） */
+    const hooks: (() => void)[] = [];
+    const watch = (ids: string[], counter: HTMLElement, format: (on: number, all: number) => string) => boxes.push({ ids, counter, format });
     const stepValues: HTMLElement[] = [];
     const sum = h("p", { class: "drill-foot-sum" });
     const minutes = h("span", {});
@@ -389,12 +396,15 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
 
     /** 選んだものが変わったら、チェック・数・段階の帯・下の帯を合わせる（描き直さないので、開いたフォルダーとスクロールはそのまま） */
     const refresh = () => {
-      for (const { box, ids, counter } of boxes) {
+      for (const { box, ids, counter, format } of boxes) {
         const on = ids.filter((id) => cond.ids.has(id)).length;
-        box.checked = !!ids.length && on === ids.length;
-        box.indeterminate = on > 0 && on < ids.length;
-        if (counter) counter.textContent = on && on < ids.length ? `${on}/${ids.length}語` : `${ids.length}語`;
+        if (box) {
+          box.checked = !!ids.length && on === ids.length;
+          box.indeterminate = on > 0 && on < ids.length;
+        }
+        if (counter) counter.textContent = format ? format(on, ids.length) : on && on < ids.length ? `${on}/${ids.length}語` : `${ids.length}語`;
       }
+      for (const hook of hooks) hook();
       const pool = candidatesOf(cond).length;
       const size = cond.count ? Math.min(cond.count, pool) : pool;
       [`${cond.ids.size}語`, kindsLabel(cond.kinds, levels), countLabel(cond)].forEach((text, i) => (stepValues[i].textContent = text));
@@ -432,7 +442,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
     /** 描き直す（チップや行を押したとき。スクロールは保つ） */
     const again = () => {
       const [panelTop, pageTop] = [ctx.panel.scrollTop, window.scrollY];
-      chooser(step);
+      chooser(step, path);
       ctx.panel.scrollTop = panelTop;
       window.scrollTo({ top: pageTop });
     };
@@ -447,116 +457,211 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
     );
     refresh();
 
-    /** ①範囲: 学んだレッスン（系統ごと）か、すべての系統と語（今までの一覧と検索） */
+    /**
+     * ①範囲（docs/普段使い.md「演習の範囲の選びやすさ」）。初めは何も選ばない。
+     * 一覧の上に「選んでいる範囲」（レッスンごと。×で外す）と「よく使う範囲」、その下に検索と系統の一覧。
+     * 系統（#/drill/custom/1/<系統ID>）→ レッスンの語（#/drill/custom/1/<系統ID>/<レッスンID>）と1段ずつ開いて選ぶ。
+     * 「学んだ所だけ／すべて」は一覧に出すものの切り替え（学んだ所だけのときは、レッスンや系統を選ぶと学んだ語だけが入る）
+     */
     function rangeStep(): (Node | string)[] {
-      const views = segmented("範囲の選び方", [{ value: "learned" as const, label: "学んだレッスン" }, { value: "all" as const, label: "すべての系統と語" }], cond.view, (value) => {
-        cond.view = value;
-        again();
-      });
-      const textButton = (label: string, ids: () => string[]) => h("button", { class: "text-button", type: "button", onClick: () => setRange(ids()) }, label);
-      if (cond.view === "learned") {
-        const learnedOf = (unit: Unit) => unit.terms.filter((term) => learnedAt.has(term.id));
-        const sections = systems.flatMap((system) => {
-          const list = units.filter((unit) => unit.system === system.id && learnedOf(unit).length);
-          if (!list.length) return [];
-          const counter = h("span", { class: "folder-count" });
-          return [h("section", { class: "drill-sys" },
-            h("label", { class: "drill-sys-head" },
-              checkbox(idsOf(list.flatMap(learnedOf)), `${system.ja}の学んだ語`, counter),
-              h("span", { class: "swatch", style: `background:${system.color}` }), h("span", { class: "drill-sys-name" }, system.ja), counter),
-            h("ul", { class: "home-card pick-list" }, ...list.map((unit) => {
-              const here = learnedOf(unit);
-              const latest = here.reduce((at, term) => ((learnedAt.get(term.id) ?? "") > at ? learnedAt.get(term.id)! : at), "");
-              return h("li", {}, h("label", { class: "pick-row" },
-                checkbox(idsOf(here), unit.title),
-                h("span", { class: "pick-title" }, unit.title, here.length < unit.terms.length ? h("span", { class: "muted" }, "（途中）") : ""),
-                h("span", { class: "pick-meta" }, `${here.length}語`, h("small", {}, daysAgo(latest)))));
-            })))];
+      const onlyLearned = cond.view === "learned" && learnedTerms.length > 0;
+      const shownOf = (unit: Unit) => (onlyLearned ? unit.terms.filter((term) => learnedAt.has(term.id)) : unit.terms);
+      const unitsOf = (systemId: string) => units.filter((unit) => unit.system === systemId && shownOf(unit).length);
+      const swatch = (color: string) => h("span", { class: "swatch", style: `background:${color}`, "aria-hidden": "true" });
+      const views = learnedTerms.length ? h("div", { class: "drill-seg" }, segmented("一覧に出すもの",
+        [{ value: "learned" as const, label: "学んだ所だけ" }, { value: "all" as const, label: "すべて" }],
+        onlyLearned ? "learned" : "all", (value) => {
+          cond.view = value;
+          again();
+        })) : "";
+
+      /** 押すと範囲をそれに入れ替えるチップ。いまの範囲と同じなら濃くする */
+      const presetChip = (label: string, count: string, isOn: () => boolean, onClick: () => void) => {
+        const chip = h("button", { class: "chip drill-preset", type: "button", onClick }, label, count ? h("span", { class: "chip-count" }, count) : "");
+        hooks.push(() => {
+          chip.classList.toggle("on", isOn());
+          chip.setAttribute("aria-pressed", String(isOn()));
         });
+        return chip;
+      };
+      const latestOf = (unit: Unit) => unit.terms.reduce((at, term) => ((learnedAt.get(term.id) ?? "") > at ? learnedAt.get(term.id)! : at), "");
+
+      /** レッスンの行。名前を押すと丸ごと選ぶ、右の「語 ›」で1語ずつ選ぶ画面へ */
+      const lessonRow = (unit: Unit, ids: string[], where = "") => {
+        const counter = h("span", {});
+        const learnedCount = unit.terms.filter((term) => learnedAt.has(term.id)).length;
+        const status = !learnedCount ? "まだ学んでいない"
+          : learnedCount < unit.terms.length ? `途中まで学んだ（${learnedCount}語）・${daysAgo(latestOf(unit))}` : `学んだ・${daysAgo(latestOf(unit))}`;
+        return h("li", { class: "pick-item" },
+          h("label", { class: "pick-row" },
+            checkbox(ids, unit.title, counter),
+            h("span", { class: "pick-text" }, h("span", { class: "pick-title" }, unit.title), h("span", { class: "pick-sub" }, where ? `${where}・${status}` : status)),
+            h("span", { class: "pick-meta" }, counter)),
+          h("a", { class: "pick-open", href: `#/drill/custom/1/${unit.system}/${unit.id}`, "aria-label": `${unit.title}の語を1つずつ選ぶ` },
+            "語", h("span", { "aria-hidden": "true" }, " ›")));
+      };
+      /** 語の行（英語と、学んだ語には「学んだ」） */
+      const termRow = (term: Term, where = "") => h("li", {}, h("label", { class: "pick-row is-term" },
+        checkbox([term.id], term.ja),
+        h("span", { class: "pick-text" }, h("span", { class: "pick-title" }, term.ja),
+          h("span", { class: "pick-sub", lang: "en" }, term.en), where ? h("span", { class: "pick-sub" }, where) : ""),
+        learnedAt.has(term.id) ? h("span", { class: "pick-badge" }, "学んだ") : ""));
+
+      const [systemId, unitId] = path;
+      const system = systems.find((item) => item.id === systemId && units.some((unit) => unit.system === item.id && unit.terms.length));
+      const lessonOf = system && unitId ? units.find((item) => item.id === unitId && item.system === system.id) : undefined;
+      if (system && lessonOf) return lessonPage(system, lessonOf);
+      if (system) return systemPage(system);
+      return topPage();
+
+      /** 一番上: 選んでいる範囲・よく使う範囲・検索・系統の一覧 */
+      function topPage(): (Node | string)[] {
+        const picked = h("section", { class: "home-card drill-picked", "aria-live": "polite" });
+        const starIds = starredIds().filter((id) => termIds.has(id));
+        const presets = [
+          studiedUnits.length ? { label: studiedUnits.length >= 3 ? "最近の3レッスン" : "最近のレッスン", ids: [...recent().ids] } : null,
+          learnedTerms.length ? { label: "学んだ語すべて", ids: idsOf(learnedTerms) } : null,
+          starIds.length ? { label: "★を付けた語", ids: starIds } : null,
+          last ? { label: "前回の範囲", ids: [...last.ids] } : null,
+        ].flatMap((item) => (item ? [presetChip(item.label, `${item.ids.length}語`, () => sameSet(item.ids, cond.ids), () => setRange(item.ids))] : []));
+        hooks.push(() => renderPicked(picked, presets.length > 0));
+
+        const rows = systems.flatMap((item) => {
+          const list = unitsOf(item.id);
+          if (!list.length) return [];
+          const badge = h("span", { class: "drill-sys-picked" });
+          watch(idsOf(units.filter((unit) => unit.system === item.id).flatMap((unit) => unit.terms)), badge, (on) => (on ? `${on}語` : ""));
+          return [h("a", { class: "drill-sys-row", href: `#/drill/custom/1/${item.id}` },
+            swatch(item.color),
+            h("span", { class: "pick-text" }, h("span", { class: "pick-title" }, item.ja),
+              h("span", { class: "pick-sub" }, `${list.length}レッスン・${list.flatMap(shownOf).length}語${onlyLearned ? "（学んだ語）" : ""}`)),
+            badge, h("span", { class: "drill-chev", "aria-hidden": "true" }, "›"))];
+        });
+        const browse = h("div", {}, h("div", { class: "home-card drill-sys-list" }, ...rows),
+          h("p", { class: "set-foot" }, "系統を開くと、レッスンごとに選べます。1語ずつ選ぶときは、レッスンの右の「語 ›」から。"));
+
+        /** ここまでが一覧のチェック。この後ろは検索で当たったもののチェック（打ち直すたびに作り直す） */
+        const listEnd = boxes.length;
+        const results = h("div", { class: "drill-results", hidden: true });
+        const search = h("input", {
+          class: "search drill-search", type: "search", placeholder: "レッスン・語の名前で探す", "aria-label": "演習するレッスンと語を探す",
+          onInput: () => {
+            const query = normalize(search.value.trim());
+            browse.hidden = !!query;
+            results.hidden = !query;
+            boxes.splice(listEnd);
+            if (!query) return results.replaceChildren();
+            const lessons = searchUnits(query).filter((unit) => unit.terms.length);
+            const found = searchTerms(query).filter((term) => termIds.has(term.id));
+            const systemName = (id: string) => systems.find((item) => item.id === id)?.ja ?? "";
+            results.replaceChildren(
+              lessons.length ? h("h3", { class: "list-title" }, `レッスン ${lessons.length}`) : "",
+              lessons.length ? h("ul", { class: "home-card pick-list" }, ...lessons.slice(0, 20).map((unit) => lessonRow(unit, idsOf(unit.terms), systemName(unit.system)))) : "",
+              found.length ? h("h3", { class: "list-title" }, `語 ${found.length}`, found.length > 40 ? h("span", { class: "muted" }, "（はじめの40）") : "") : "",
+              found.length ? h("ul", { class: "home-card pick-list" }, ...found.slice(0, 40).map((term) => termRow(term, `${systemName(term.system)}・${courseUnitOf(term.id)?.title ?? ""}`))) : "",
+              lessons.length || found.length ? "" : h("p", { class: "muted" }, "見つかりませんでした。"),
+            );
+            refresh();
+          },
+        });
+
         return [
-          h("div", { class: "drill-seg" }, views),
-          learnedTerms.length ? h("div", { class: "range-actions" },
-            textButton("最近の3つ", () => [...recent().ids]),
-            textButton("学んだ語すべて", () => idsOf(learnedTerms)),
-            textButton("すべて外す", () => [])) : "",
-          ...(sections.length ? sections : [h("p", { class: "home-card home-note drill-empty" }, "学んだレッスンはまだありません。「すべての系統と語」から選べます。")]),
+          picked,
+          presets.length ? h("h3", { class: "list-title" }, "よく使う範囲") : "",
+          presets.length ? h("div", { class: "chip-list drill-quick" }, ...presets) : "",
+          presets.length ? h("p", { class: "set-foot drill-quick-foot" }, "押すと、範囲がそれに入れ替わります。") : "",
+          h("h3", { class: "list-title" }, "系統・レッスンから選ぶ"),
+          views,
+          search,
+          results,
+          browse,
         ];
       }
-      return [h("div", { class: "drill-seg" }, views), ...allTerms(textButton)];
-    }
 
-    /** すべての系統と語: 系統・まとまり・レッスン・語のチェック（一部だけ選んだものは「−」）と検索。学んでいない語も選べる */
-    function allTerms(textButton: (label: string, ids: () => string[]) => HTMLElement): (Node | string)[] {
-      const termRow = (term: Term, where = "") => h("li", {},
-        h("label", { class: "range-term" },
-          checkbox([term.id], term.ja),
-          h("span", {}, term.ja, where ? h("span", { class: "term-where" }, where) : "",
-            learnedAt.has(term.id) ? h("span", { class: "term-where" }, "学んだ") : ""),
-          h("span", { class: "en", lang: "en" }, term.en)));
-      /** フォルダー（系統・まとまり・レッスン）。チェックは選ぶだけ、名前を押すと開く */
-      const folder = (ids: string[], title: (Node | string)[], className: string, content: HTMLElement) => {
-        const counter = h("span", { class: "folder-count" });
-        return h("details", { class: `${className} range-folder` },
-          h("summary", {},
-            h("label", { class: "range-check" }, checkbox(ids, title.map((part) => (typeof part === "string" ? part : "")).join(""), counter)),
-            h("span", { class: "folder-title" }, ...title),
-            counter),
-          content);
-      };
-      const lessonFolder = (unit: Unit, where = "") => h("li", {}, folder(idsOf(unit.terms),
-        [unit.title, where ? h("span", { class: "term-where" }, where) : ""], "subfolder range-lesson",
-        h("ul", { class: "term-list" }, ...unit.terms.map((term) => termRow(term)))));
-      const tree = h("div", { class: "range-tree" }, ...systems.flatMap((system) => {
-        const list = units.filter((unit) => unit.system === system.id && unit.terms.length);
-        if (!list.length) return [];
-        const lessonList = (inList: Unit[]) => h("ul", { class: "units" }, ...inList.map((unit) => lessonFolder(unit)));
-        // まとまり（骨格系の体幹・上肢など）のある系統は、系統→まとまり→レッスンの入れ子にする
+      /** 選んでいる範囲（レッスンごと。×で外す） */
+      function renderPicked(box: HTMLElement, hasPresets: boolean): void {
+        if (!cond.ids.size) {
+          box.classList.add("is-empty");
+          box.replaceChildren(h("p", { class: "drill-picked-empty" }, h("b", {}, "まだ何も選んでいません"),
+            h("span", {}, hasPresets ? "下の「よく使う範囲」を押すか、系統を開いてレッスン・語にチェックを付けてください。"
+              : "下の系統を開いて、レッスン・語にチェックを付けてください。名前で探すこともできます。")));
+          return;
+        }
+        box.classList.remove("is-empty");
+        const byUnit = units.flatMap((unit) => {
+          const on = unit.terms.filter((term) => cond.ids.has(term.id)).length;
+          return on ? [{ unit, on }] : [];
+        });
+        const shown = byUnit.slice(0, 8);
+        box.replaceChildren(
+          h("div", { class: "drill-picked-head" },
+            h("b", {}, "選んでいる範囲", h("span", { class: "drill-picked-total" }, `${cond.ids.size}語・${byUnit.length}レッスン`)),
+            h("button", { class: "drill-link", type: "button", onClick: () => setRange([]) }, "すべて外す")),
+          h("ul", { class: "drill-picked-list" }, ...shown.map(({ unit, on }) => h("li", { class: "drill-picked-chip" },
+            swatch(systems.find((item) => item.id === unit.system)?.color ?? "#ccc"),
+            h("span", { class: "drill-picked-name" }, unit.title),
+            h("span", { class: "chip-count" }, on < unit.terms.length ? `${on}/${unit.terms.length}語` : `${on}語`),
+            h("button", {
+              class: "drill-picked-x", type: "button", "aria-label": `${unit.title}を外す`,
+              onClick: () => {
+                for (const term of unit.terms) cond.ids.delete(term.id);
+                refresh();
+              },
+            }, "×")))),
+          byUnit.length > shown.length ? h("p", { class: "drill-picked-more" }, `ほか ${byUnit.length - shown.length}レッスン`) : "",
+        );
+      }
+
+      /** 系統のページ: この系統をすべて／まとまり（骨格系の体幹・上肢など）ごと／レッスンごとに選ぶ */
+      function systemPage(item: (typeof systems)[number]): (Node | string)[] {
+        const list = unitsOf(item.id);
+        const allCounter = h("span", {});
         const groups = [...new Set(list.map((unit) => unit.group))];
-        const content = groups[0]
-          ? h("div", { class: "subfolders" }, ...groups.map((name) => {
-            const inGroup = list.filter((unit) => unit.group === name);
-            return folder(idsOf(inGroup.flatMap((unit) => unit.terms)), [name ?? ""], "subfolder", lessonList(inGroup));
-          }))
-          : lessonList(list);
-        return [folder(idsOf(list.flatMap((unit) => unit.terms)),
-          [h("span", { class: "swatch", style: `background:${system.color}` }), system.ja], "folder", content)];
-      }));
-      /** ここまでが一覧のチェック。この後ろは検索で当たったもののチェック（打ち直すたびに作り直す） */
-      const treeEnd = boxes.length;
-      const results = h("div", { class: "range-tree search-results", hidden: true });
-      const search = h("input", {
-        class: "search", type: "search", placeholder: "レッスン・語を探して選ぶ", "aria-label": "演習するレッスンと語を探す",
-        onInput: () => {
-          const query = normalize(search.value.trim());
-          tree.hidden = !!query;
-          results.hidden = !query;
-          // 前の検索で作ったチェックを除く（一覧のチェックは残す）
-          boxes.splice(treeEnd);
-          if (!query) return results.replaceChildren();
-          const lessons = searchUnits(query).filter((unit) => unit.terms.length);
-          const found = searchTerms(query);
-          const where = (term: Term) => `${systems.find((s) => s.id === term.system)?.ja ?? ""}・${courseUnitOf(term.id)?.title ?? ""}`;
-          results.replaceChildren(
-            lessons.length ? h("h3", {}, `レッスン ${lessons.length}`) : "",
-            lessons.length ? h("ul", { class: "units" }, ...lessons.slice(0, 20).map((unit) => lessonFolder(unit, systems.find((s) => s.id === unit.system)?.ja ?? ""))) : "",
-            found.length ? h("h3", {}, `語 ${found.length}`, found.length > 40 ? h("span", { class: "muted" }, "（はじめの40）") : "") : "",
-            found.length ? h("ul", { class: "term-list" }, ...found.slice(0, 40).map((term) => termRow(term, where(term)))) : "",
-            lessons.length || found.length ? "" : h("p", { class: "muted" }, "見つかりませんでした。"),
-          );
+        const sections = groups.map((name) => {
+          const inGroup = list.filter((unit) => unit.group === name);
+          const counter = h("span", { class: "folder-count" });
+          return h("section", { class: "drill-sys" },
+            name ? h("label", { class: "drill-sys-head" },
+              checkbox(idsOf(inGroup.flatMap(shownOf)), `${name}をすべて`, counter),
+              h("span", { class: "drill-sys-name" }, name), counter) : "",
+            h("ul", { class: "home-card pick-list" }, ...inGroup.map((unit) => lessonRow(unit, idsOf(shownOf(unit))))));
+        });
+        return [
+          h("a", { class: "drill-back", href: "#/drill/custom" }, "‹ 選んでいる範囲・系統の一覧"),
+          h("h3", { class: "drill-place" }, swatch(item.color), item.ja),
+          views,
+          ...(list.length ? [
+            h("ul", { class: "home-card pick-list drill-whole" }, h("li", {}, h("label", { class: "pick-row" },
+              checkbox(idsOf(list.flatMap(shownOf)), `${item.ja}をすべて`, allCounter),
+              h("span", { class: "pick-text" }, h("span", { class: "pick-title" }, onlyLearned ? `${item.ja}の学んだ語をすべて` : `${item.ja}をすべて`)),
+              h("span", { class: "pick-meta" }, allCounter)))),
+            ...sections,
+            h("p", { class: "set-foot" }, "レッスンの名前を押すと丸ごと選びます。1語ずつ選ぶときは右の「語 ›」。"),
+          ] : [h("p", { class: "home-card home-note drill-empty" }, `${item.ja}で学んだレッスンはまだありません。上の「すべて」にすると、学んでいない語も選べます。`)]),
+        ];
+      }
+
+      /** レッスンのページ: 1語ずつ選ぶ */
+      function lessonPage(item: (typeof systems)[number], unit: Unit): (Node | string)[] {
+        const own = idsOf(unit.terms);
+        const learnedIds = own.filter((id) => learnedAt.has(id));
+        const onHere = () => own.filter((id) => cond.ids.has(id));
+        const pick = (ids: string[]) => () => {
+          for (const id of own) cond.ids.delete(id);
+          for (const id of ids) cond.ids.add(id);
           refresh();
-        },
-      });
-      const nodes = [
-        h("div", { class: "range-actions" },
-          textButton("すべて選ぶ", () => idsOf(terms)),
-          learnedTerms.length ? textButton("学んだ語だけ", () => idsOf(learnedTerms)) : "",
-          textButton("すべて外す", () => [])),
-        search,
-        results,
-        tree,
-        h("p", { class: "set-foot" }, "系統・まとまり・レッスンを開くと、レッスンや語を1つずつ選べます。レッスンでまだ学んでいない語も選べます。"),
-      ];
-      return nodes;
+        };
+        return [
+          h("a", { class: "drill-back", href: `#/drill/custom/1/${item.id}` }, `‹ ${item.ja}`),
+          h("h3", { class: "drill-place" }, swatch(item.color), unit.title),
+          h("div", { class: "chip-list drill-quick" },
+            presetChip("すべて選ぶ", `${own.length}語`, () => onHere().length === own.length, pick(own)),
+            learnedIds.length && learnedIds.length < own.length
+              ? presetChip("学んだ語だけ", `${learnedIds.length}語`, () => sameSet(learnedIds, new Set(onHere())), pick(learnedIds)) : "",
+            presetChip("このレッスンを外す", "", () => false, pick([]))),
+          h("ul", { class: "home-card pick-list" }, ...unit.terms.map((term) => termRow(term))),
+        ];
+      }
     }
 
     /** ②問い方: 段階（名前と場所 → ＋英語 → 総仕上げ）か、1つずつ */

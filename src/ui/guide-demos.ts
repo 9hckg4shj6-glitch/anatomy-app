@@ -552,17 +552,20 @@ const DRILL_STEPS: DemoStep[] = [
   },
   {
     title: "①範囲",
-    text: "自分で選ぶときは3つの段階で。①範囲は、学んだレッスンの中から系統・レッスン・1語ずつまで選べます。まだ学んでいない語は「すべての系統と語」から。",
+    text: "自分で選ぶときは3つの段階で。①範囲は初めは空です。「よく使う範囲」（最近の3レッスン・学んだ語すべてなど）を押すか、系統 → レッスン → 語と開いてチェックを付けます。選んだものは上の「選んでいる範囲」に並び、×で外せます。まだ学んでいない語は、一覧を「すべて」にすると選べます。",
     screen: `${topBar("演習")}
       <div class="gd-pad">
         ${drillSteps(0)}
         <p class="gd-q">どこを解く？</p>
-        <div class="gd-seg"><span class="on">学んだレッスン</span><span>すべての系統と語</span></div>
         <ul class="gd-rows gd-checks">
-          <li class="on"><b>✓</b>骨格系の学んだ語<small>42語</small></li>
-          <li class="on gd-indent"><b>✓</b>下肢の骨<small>6/6語</small></li>
-          <li class="gd-indent"><b>✓</b>上肢の骨<small>8/8語</small></li>
-          <li><b></b>筋系の学んだ語<small>12語</small></li>
+          <li class="on"><b>✓</b>選んでいる範囲<small>14語・2レッスン</small></li>
+          <li class="on gd-indent"><b>✓</b>下肢の骨<small>6語 ×</small></li>
+          <li class="on gd-indent"><b>✓</b>上肢の骨<small>8語 ×</small></li>
+        </ul>
+        <div class="gd-seg"><span class="on">学んだ所だけ</span><span>すべて</span></div>
+        <ul class="gd-rows gd-checks">
+          <li><b></b>骨格系<small>›</small></li>
+          <li><b></b>筋系<small>›</small></li>
         </ul>
         <div class="gd-btn gd-btn-sm">次へ：問い方<span>→</span>${finger()}${ripple()}</div>
       </div>`,
