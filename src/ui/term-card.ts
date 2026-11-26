@@ -296,7 +296,7 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
     muscle, ...facts, motion, cut, regionNotes(term, options.open), memoRow(term), more, gloss);
 }
 
-/** 神経の語と、その神経で動く筋の語に「神経を切ると」への入口（src/ui/nerve-cut.ts） */
+/** 神経の語と、その神経で動く筋の語に「神経を切る」への入口（src/ui/nerve-cut.ts） */
 function cutLink(term: Term): HTMLElement | null {
   const cut = cutById.get(term.id) ?? (term.nerve ? NERVE_CUTS.find((item) => item.motor.includes(term.nerve!)) : undefined);
   if (!cut) return null;

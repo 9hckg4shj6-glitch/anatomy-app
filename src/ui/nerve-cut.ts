@@ -211,7 +211,7 @@ async function list(ctx: AppContext): Promise<void> {
   ctx.hint("光っている神経を押すと、その神経へ");
   cleanup(ctx);
   ctx.panel.replaceChildren(h("div", { class: "home cut" },
-    h("div", { class: "tab-head" }, h("h2", {}, "神経を切ると")),
+    h("div", { class: "tab-head" }, h("h2", {}, "神経を切る")),
     h("section", { class: "home-card" },
       h("p", { class: "cut-lead" }, "神経を1本選んで「切る」と、その神経が動かす筋が3Dで灰色になり、できなくなる動きと、そのときに出る手足の形（下垂手など）が分かります。"),
       h("p", { class: "home-note" }, "どこで切るかで、止まる筋が変わる神経もあります（枝が分かれる所より先で切ると、上の枝の筋は残る）。"),
@@ -266,7 +266,7 @@ async function nerveScreen(ctx: AppContext, cut: NerveCut, first: CutSite): Prom
   const backChip = h("button", { class: "chip on", type: "button", onClick: () => stopPlaying() }, "‹ 切った神経に戻る");
 
   ctx.panel.replaceChildren(h("div", { class: "home cut" },
-    h("div", { class: "tab-head" }, h("h2", {}, "神経を切ると")),
+    h("div", { class: "tab-head" }, h("h2", {}, "神経を切る")),
     h("section", { class: "home-card cut-head" },
       h("p", { class: "home-kicker" }, `${REGION_JA[cut.region]}の神経・${cut.roots}`),
       h("p", { class: "cut-name" }, h("b", {}, nerve.ja), h("span", { lang: "en" }, nerve.en)),

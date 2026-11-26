@@ -44,7 +44,7 @@ const APP_NAME = "からだ見聞録";
 const PAGES: Record<string, [title: string, href: string]> = {
   study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
-  exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], motions: ["動きの図鑑", "#/motions"], organs: ["臓器の図", "#/organs"], cut: ["神経を切ると", "#/cut"], nerves: ["神経", "#/nerves"], roots: ["語根カード", "#/roots"],
+  exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], motions: ["動きの図鑑", "#/motions"], organs: ["臓器の図", "#/organs"], cut: ["神経を切る", "#/cut"], roots: ["語根カード", "#/roots"],
   progress: ["進捗", "#/progress"], specimen: ["わたしの標本", "#/specimen"], print: ["印刷する", "#/print"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
@@ -53,7 +53,7 @@ const TABS: Record<string, [label: string, href: string]> = {
   today: ["今日", "#/"], study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"],
 };
 const TAB_OF: Record<string, string> = {
-  study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study", print: "study", cut: "study", nerves: "study",
+  study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study", print: "study", cut: "study",
   look: "look", explore: "look", motions: "look",
   model: "model",
   records: "records", progress: "records", specimen: "records",
@@ -325,7 +325,6 @@ async function boot(): Promise<void> {
       else if (name === "drill") await drill(ctx, arg);
       else if (name === "organs") await (await import("./ui/organs")).organScreen(ctx, arg);
       else if (name === "cut") await (await import("./ui/nerve-cut")).nerveCutScreen(ctx, arg);
-      else if (name === "nerves") await (await import("./ui/nerves")).nervesScreen(ctx);
       else if (name === "exam") await (await loadExam()).ui.exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
       else if (name === "specimen") await specimenScreen(ctx);
