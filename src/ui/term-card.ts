@@ -6,6 +6,7 @@ import { noteText } from "../en-notes";
 import { examLoaded } from "../exam-lazy";
 import { rootsOf, splitAtRoot, type Root } from "../roots";
 import { markOf, setMark } from "../marks";
+import { cutById, NERVE_CUTS } from "../nerve-cut";
 import { preferences, setPreference } from "../settings";
 import { INSERTION_COLOR, ORIGIN_COLOR, REGION_BOUND } from "../viewer";
 
@@ -276,20 +277,32 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
   });
   fill();
   const motion = term.motion && options.motion ? motionButton(options.motion) : null;
+  const cut = options.compact ? null : cutLink(term);
   if (beginner) {
     return h("article", { class: "term-card is-beginner" }, head, english, rootChips(term), schematic,
       pointBox(point, "覚えること") ?? h("div", { class: "term-point" }, h("span", { class: "term-point-label" }, "覚えること"),
         h("p", { class: "muted" }, "初心者コースには入っていない語です。くわしい説明は下から。")),
-      motion, memoRow(term), more, gloss);
+      motion, cut, memoRow(term), more, gloss);
   }
   if (standard) {
     // 標準のコース: 覚えること → 筋の起始・停止など・通るもの → 局所の境界 → メモ → くわしく（説明はここ）
     return h("article", { class: "term-card is-standard" }, head, english, rootChips(term), schematic,
       pointBox(pointOf(term.id), "覚えること"),
-      muscle, ...facts, motion, regionNotes(term, options.open), memoRow(term), more, gloss);
+      muscle, ...facts, motion, cut, regionNotes(term, options.open), memoRow(term), more, gloss);
   }
   // 詳細モードは説明がそのまま「覚えること」（初心者コースの短い point と重なるので、point は出さない）
   return h("article", { class: "term-card" }, head, english, rootChips(term), schematic,
     desc,
-    muscle, ...facts, motion, regionNotes(term, options.open), memoRow(term), more, gloss);
+    muscle, ...facts, motion, cut, regionNotes(term, options.open), memoRow(term), more, gloss);
+}
+
+/** 神経の語と、その神経で動く筋の語に「神経を切ると」への入口（src/ui/nerve-cut.ts） */
+function cutLink(term: Term): HTMLElement | null {
+  const cut = cutById.get(term.id) ?? (term.nerve ? NERVE_CUTS.find((item) => item.motor.includes(term.nerve!)) : undefined);
+  if (!cut) return null;
+  const nerve = termById.get(cut.id)?.ja ?? "";
+  return h("a", { class: "term-cut-link", href: `#/cut/${cut.id}` },
+    h("span", { "aria-hidden": "true" }, "✂"),
+    h("span", {}, cut.id === term.id ? "この神経を切ると何が起こる？" : `${nerve}を切ると、この筋は？`),
+    h("small", {}, cut.sign));
 }

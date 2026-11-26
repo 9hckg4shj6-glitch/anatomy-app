@@ -2303,3 +2303,71 @@ body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
 .specimen-complete.is-now .specimen-complete-mark { animation: specimen-pop 0.9s ease-out; }
 @keyframes specimen-pop { 0% { transform: scale(0.4); opacity: 0; } 60% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .specimen-complete.is-now .specimen-complete-mark { animation: none; } }
+
+/* 神経を切ると（#/cut。src/ui/nerve-cut.ts） */
+.cut-lead { margin: 0; font-size: 15px; line-height: 1.7; }
+.cut-quiz-go { margin-top: 14px; }
+.cut-row { color: var(--ink); text-decoration: none; }
+.cut-row .set-value { white-space: nowrap; }
+.cut-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin: 6px 0 0; }
+.cut-name b { font-size: 24px; }
+.cut-name span { color: var(--muted); font-size: 14px; }
+.cut-label { margin: 14px 0 6px; font-size: 14px; font-weight: 700; }
+.cut-sites { display: flex; flex-wrap: wrap; gap: 6px; }
+.cut-sites .chip { min-height: 40px; text-align: left; }
+.cut-cause { margin: 12px 0 0; font-size: 14px; line-height: 1.6; }
+.cut-cause-label { display: inline-block; margin-right: 6px; padding: 0 6px; border-radius: 5px; background: var(--bg); color: var(--muted); font-size: 12px; font-weight: 700; }
+.cut-button {
+  display: flex; align-items: center; gap: 14px; width: 100%; min-height: 64px; margin-top: 14px; padding: 10px 18px; border: 0; border-radius: 16px;
+  background: #c83a2f; color: #fff; text-align: left; cursor: pointer; box-shadow: 0 10px 20px -12px #7a1f18; transition: transform 0.15s, background 0.15s;
+}
+.cut-button:active { transform: scale(0.985); }
+.cut-button.is-done { background: var(--surface); color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
+.cut-button-mark { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: rgb(255 255 255 / 0.18); font-size: 22px; }
+.cut-button.is-done .cut-button-mark { background: var(--bg); }
+.cut-button-text { display: grid; gap: 2px; }
+.cut-button-text b { font-size: 17px; }
+.cut-button-text small { font-size: 13px; opacity: 0.85; }
+.cut-legend { grid-template-columns: 1fr 1fr; margin: 14px 0 0; font-size: 13px; }
+.cut-legend .swatch { border-radius: 50%; }
+.cut-sub { margin-top: 14px; }
+.cut .chip-list { margin-top: 10px; }
+.cut-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; color: var(--ink); }
+.cut-chip .swatch { width: 12px; height: 12px; border-radius: 50%; }
+.cut-guess { margin-top: 6px; }
+.cut-sign { border-color: #e5c6a0; background: linear-gradient(180deg, #fff6ea, var(--surface)); }
+.cut-sign-name { display: block; margin-top: 4px; font-size: 22px; }
+.cut-sign p { margin: 6px 0 0; font-size: 15px; line-height: 1.7; }
+.cut-play { margin-top: 10px; min-height: 40px; font-size: 14px; }
+.cut-moves { display: grid; gap: 10px; margin: 10px 0 0; padding: 0; list-style: none; }
+.cut-moves li { display: grid; gap: 4px; padding-left: 14px; border-left: 3px solid #d8d2c6; font-size: 15px; line-height: 1.6; }
+.cut-moves .cut-play { justify-self: start; margin-top: 2px; }
+.cut-spared { margin: 14px 0 0; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--ok) 9%, var(--surface)); font-size: 14px; line-height: 1.6; }
+.cut-spared b { color: var(--ok); }
+.cut-facts .term-notes { margin-top: 0; }
+.cut-facts .term-notes div { grid-template-columns: 5.5em 1fr; }
+.cut-pick { display: grid; gap: 4px; }
+.cut-pick-name { font-size: 19px; }
+.cut-pick-name small { color: var(--muted); font-size: 13px; font-weight: 500; }
+.cut-pick-state { font-size: 14px; color: var(--muted); }
+.cut-tag { background: rgb(200 58 47 / 0.92); }
+.cut-quiz-count { margin: 0; color: var(--muted); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.cut-ask-text { margin: 8px 0 0; font-size: 17px; line-height: 1.7; }
+.cut-quiz .choice small { color: var(--muted); font-size: 13px; }
+.cut-quiz .choice.right { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, var(--surface)); }
+.cut-quiz .choice.wrong { border-color: var(--ng); background: color-mix(in srgb, var(--ng) 10%, var(--surface)); }
+.cut-quiz .choice:disabled { color: var(--ink); opacity: 1; cursor: default; }
+.cut-result p { margin: 8px 0 0; font-size: 15px; line-height: 1.6; }
+.cut-result-mark { font-size: 18px; }
+.cut-result.is-right .cut-result-mark { color: var(--ok); }
+.cut-result.is-wrong .cut-result-mark { color: var(--ng); }
+.cut-score-count { margin: 6px 0 0; }
+.cut-score-count b { font-size: 40px; font-weight: 800; }
+.cut-score-count span { color: var(--muted); font-size: 16px; font-weight: 700; }
+.cut-score + .set-group, .cut-score ~ .nav-row { margin-top: 4px; }
+/* 語のカードの入口 */
+.term-cut-link {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; padding: 10px 12px; border: 1px solid #ecd7bb; border-radius: 12px;
+  background: #fff8ee; color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.term-cut-link small { margin-left: auto; color: var(--muted); font-size: 12px; font-weight: 500; }

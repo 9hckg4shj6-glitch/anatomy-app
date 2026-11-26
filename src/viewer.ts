@@ -891,6 +891,45 @@ export class AnatomyViewer {
     return !!this.actionTerm;
   }
 
+  /**
+   * 骨の姿勢だけを from → to にくり返し動かす（null でやめる）。神経を切ったときの手足の形（下垂手・下垂足など。src/ui/nerve-cut.ts）。
+   * 起始・停止の帯は出さない。見せる部品は setStage で決めておく（動く骨は右側だけ）。いちばん大きく動く関節の軸の向きから映す
+   */
+  playPose(motion: Motion | null): void {
+    this.stopAction();
+    this.setFigure(null);
+    if (motion) {
+      this.motion = { from: motion.from ?? {}, to: motion.to, start: performance.now(), size: 0, meshes: new Map() };
+      this.prepareMotion();
+      if (this.motion.meshes.size) this.viewAction(motion);
+      else this.stopMotion();
+    }
+    this.refresh();
+  }
+
+  /** 部品（読み込み済みのもの）の表面で、to にいちばん近い点。神経の切る所に印を置く（src/ui/nerve-cut.ts） */
+  nearestPoint(elements: string[], to: Vec3): Vec3 | null {
+    const target = new THREE.Vector3(...to);
+    const v = new THREE.Vector3();
+    let best: THREE.Vector3 | null = null;
+    let bestDistance = Infinity;
+    for (const id of elements) {
+      const mesh = this.meshes.get(id);
+      if (!mesh) continue;
+      mesh.updateMatrixWorld();
+      const position = mesh.geometry.getAttribute("position");
+      for (let i = 0; i < position.count; i++) {
+        v.fromBufferAttribute(position, i).applyMatrix4(mesh.matrixWorld);
+        const distance = v.distanceToSquared(target);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = v.clone();
+        }
+      }
+    }
+    return best ? (best.toArray() as Vec3) : null;
+  }
+
   /** 断面で切る（null でやめる）。切り口は組織の色で平らに塗り、タップでも切り口の構造を選べる */
   setSection(section: Section | null): void {
     // 切る位置を動かすだけなら材質は替えない（つまみを動かしている間に何度も呼ばれる）

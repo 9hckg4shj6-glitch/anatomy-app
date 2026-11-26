@@ -141,6 +141,7 @@ function restSections(): (HTMLElement | "")[] {
       itemRow("#/explore", "explore", "#2f78b0", "図鑑", "人体を回して、タップした所の名前を見る"),
       itemRow("#/organs", "organ", "#c0504d", "臓器の図", "心臓・肺・脳などを、色分けの立体と平面図で"),
       itemRow("#/motions", "motion", "#7a4fb5", "動きの図鑑", "呼吸・心臓の拍動・刺激伝導・肺循環と体循環を動きで"),
+      itemRow("#/cut", "cut", "#b8862b", "神経を切ると", "神経を切ると、どの筋が止まり、どの動きができなくなるか"),
     ),
     starred.length ? "" : h("p", { class: "home-note" }, "語のカードの ☆ を押すと、「★を付けた語」としてここに集まります。先生が「ここは出す」と言った語などに。"),
   ];
