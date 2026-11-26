@@ -482,6 +482,8 @@ function showPlate(ctx: AppContext, organ: Organ, spec: PlateSpec, index: PlateI
     spec.note ? h("p", { class: "muted" }, noteText(spec.note)) : "",
     spec.points?.length ? h("div", { class: "plate-points" }, h("h3", {}, "この図の要点"), h("ul", {}, ...spec.points.map((point) => h("li", {}, noteText(point))))) : "",
     listBox,
+    // 紙のプリント（名前を番号の空欄に。src/ui/print.ts）。手で描いた模式図（血液の流れ）は紙にしない
+    entry && !diagram ? h("a", { class: "ghost-button plate-print", href: `#/print/plate/${spec.id}` }, "この図を印刷する（書き込みプリント）") : "",
     art ? h("p", { class: "plate-credit muted" }, "図: ",
       h("a", { href: art.page, target: "_blank", rel: "noopener" }, art.author), "（",
       h("a", { href: art.licenseUrl, target: "_blank", rel: "noopener" }, art.license), `）。${art.changes}`) : "",

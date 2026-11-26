@@ -44,7 +44,7 @@ const PAGES: Record<string, [title: string, href: string]> = {
   study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
   exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], motions: ["動きの図鑑", "#/motions"], organs: ["臓器の図", "#/organs"], roots: ["語根カード", "#/roots"],
-  progress: ["進捗", "#/progress"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
+  progress: ["進捗", "#/progress"], print: ["印刷する", "#/print"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
 /** 下のタブ（今日・学ぶ・調べる・3D模型・記録・設定）と、ページがどのタブの中にあるか。2026-11-20 に記録から設定を分け、3D模型を足した */
@@ -52,7 +52,7 @@ const TABS: Record<string, [label: string, href: string]> = {
   today: ["今日", "#/"], study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"],
 };
 const TAB_OF: Record<string, string> = {
-  study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study",
+  study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study", print: "study",
   look: "look", explore: "look", motions: "look",
   model: "model",
   records: "records", progress: "records",
@@ -186,7 +186,7 @@ document.addEventListener("keydown", (event) => {
 // そこへ移るときに読み直して切りかえる。ホームだけにすると、臓器の図の中を行き来している間は古い版のまま（新しい平面図が出ない）だった。
 // レッスン・復習・演習・骨学試験の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
 let updated = false;
-const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "motions", "lessons", "progress", "settings", "credits", "guide"]);
+const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "motions", "lessons", "progress", "settings", "credits", "guide", "print"]);
 const canReload = () => RELOADABLE.has(location.hash.split("/")[1] ?? "");
 const serviceWorker = navigator.serviceWorker as ServiceWorkerContainer | undefined; // http の LAN では無い
 // 初めて開いたとき（前の版が無いとき）の入れかわりは数えない
@@ -325,6 +325,7 @@ async function boot(): Promise<void> {
       else if (name === "organs") await (await import("./ui/organs")).organScreen(ctx, arg);
       else if (name === "exam") await (await loadExam()).ui.exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
+      else if (name === "print") await (await import("./ui/print")).printScreen(ctx, arg);
       else if (name === "settings") await settingsScreen(ctx, arg);
       else if (name === "guide") (await import("./ui/guide")).guide(ctx, arg);
       else if (name === "credits") credits(ctx);
