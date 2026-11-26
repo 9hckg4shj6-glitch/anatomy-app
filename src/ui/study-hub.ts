@@ -26,6 +26,7 @@ export const ICONS = {
   model: `<path d="M12 3.2 19.6 7.6v8.8L12 20.8l-7.6-4.4V7.6Z"/><path d="M4.4 7.6 12 12l7.6-4.4M12 12v8.8"/>`,
   today: `<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/>`,
   again: `<path d="M4.5 11a7.5 7.5 0 0 1 13-4.6L19.5 8.5"/><path d="M19.5 4v4.5H15"/><path d="M19.5 13a7.5 7.5 0 0 1-13 4.6L4.5 15.5"/><path d="M4.5 20v-4.5H9"/>`,
+  journey: `<path d="M12 3.5c3 4 5.5 7.2 5.5 10a5.5 5.5 0 0 1-11 0c0-2.8 2.5-6 5.5-10Z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/>`,
   cut: `<circle cx="6.5" cy="6.5" r="2.6"/><circle cx="6.5" cy="17.5" r="2.6"/><path d="M8.7 8.1 20 17M8.7 15.9 20 7"/>`,
   print: `<path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v6H7z"/>`,
   sync: `<path d="M7.2 18.5h9.6a3.9 3.9 0 0 0 .5-7.77A5.6 5.6 0 0 0 6.5 9.6a4.45 4.45 0 0 0 .7 8.9Z"/><path d="m10 14.2 1.6 1.6 3-3.2"/>`,
@@ -128,6 +129,7 @@ export async function studyHub(ctx: AppContext): Promise<void> {
       ? lockedRow("roots", "#2f8f55", "語根カード", "コースを「標準」にすると使えます", COURSE_SETTING)
       : itemRow("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む。知らない英語名も意味が分かる"),
     itemRow("#/cut", "cut", "#b8862b", "神経を切る", "神経を1本切ると、止まる筋が灰色に。下垂手・猿手などの形と、症状から神経を当てる問い"),
+    itemRow("#/journey", "journey", "#c2493a", "からだの旅", "血液の1滴・食べ物・痛みの信号になって進む。分かれ道で血管・器官・神経の名前を選ぶ"),
     itemRow("#/print", "print", "#4f6d8f", "印刷する", "平面図の書き込みプリントと語のテストを、紙や PDF に。答えも付く"),
   ];
 

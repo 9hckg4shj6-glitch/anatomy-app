@@ -2371,3 +2371,87 @@ body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
   background: #fff8ee; color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none;
 }
 .term-cut-link small { margin-left: auto; color: var(--muted); font-size: 12px; font-weight: 500; }
+
+/* からだの旅（src/ui/journey.ts）。3Dの下の帯に今いる所と分かれ道の問い・選択肢、欄に説明と選んだ道 */
+.journey-bar {
+  flex: 1 1 100%; min-width: 0; padding: 9px 10px 10px; border-radius: 14px; color: #f1eee8;
+  background: rgb(20 22 25 / 0.78); border: 1px solid rgb(255 255 255 / 0.16); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.journey-bar.wrong { border-color: rgb(242 145 61 / 0.7); }
+.journey-bar.goal { border-color: rgb(127 214 150 / 0.75); }
+.journey-bar-head { display: flex; flex-direction: column; gap: 2px; line-height: 1.4; }
+.journey-bar-head b { font-size: 15px; }
+.journey-bar-at { font-size: 12px; font-weight: 700; color: #ffd23f; }
+.journey-why { font-size: 13px; opacity: 0.9; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.journey-bar.moving.right .journey-bar-head b { color: #9fe0b0; }
+.journey-bar.wrong .journey-bar-head b { color: #ffb36b; }
+.journey-bar.goal .journey-bar-head b { color: #9fe0b0; font-size: 16px; }
+.journey-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+.journey-options.n3 .journey-option:last-child { grid-column: 1 / -1; }
+.journey-option {
+  display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 10px; border-radius: 10px; text-align: left;
+  border: 1px solid rgb(255 255 255 / 0.28); background: #f7f4ee; color: #1f1d1a; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+.journey-option:active { transform: scale(0.98); }
+.journey-option.wrong { background: rgb(194 73 58 / 0.25); color: rgb(241 238 232 / 0.7); border-color: rgb(194 73 58 / 0.6); text-decoration: line-through; cursor: default; }
+.journey-key {
+  flex: none; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: rgb(31 29 26 / 0.12);
+  font-size: 12px; font-weight: 700;
+}
+.journey-option.wrong .journey-key { background: rgb(255 255 255 / 0.12); }
+@media (pointer: coarse) { .journey-key { display: none; } }
+.journey-message { margin: 8px 0 0; font-size: 13px; line-height: 1.5; }
+.journey-message.no b { color: #ffb36b; }
+.journey-message a { color: #9fd3ff; }
+.journey-bar-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.journey-passing { font-size: 13px; opacity: 0.85; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.journey-skip, .journey-back {
+  flex: none; min-height: 40px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.3);
+  background: rgb(255 255 255 / 0.1); color: #f1eee8; font-size: 14px; font-weight: 700; cursor: pointer;
+}
+.journey-back { background: #f7f4ee; color: #1f1d1a; margin-left: auto; }
+.journey-now .journey-term { font-size: 14px; }
+.journey-target { margin: 6px 0 0; font-size: 13px; }
+.journey-log { margin: 0 0 12px; padding-left: 0; list-style: none; font-size: 14px; line-height: 1.6; }
+.journey-log:empty::before { content: "まだ選んでいません。"; color: var(--muted); }
+.journey-log li b { display: inline-block; width: 1.2em; }
+.journey-log li.right b { color: var(--ok); }
+.journey-log li.dest b, .journey-log li.blocked b { color: var(--ng); }
+.journey-log li small { margin-left: 4px; }
+.journey-result:empty { display: none; }
+.journey-result { margin: 0 0 8px; padding: 2px 12px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.journey-score { margin: 0 0 6px; font-size: 16px; }
+.journey-route { margin: 0 0 12px; padding-left: 1.6em; font-size: 14px; line-height: 1.7; }
+.journey-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.journey-actions .ghost-button { min-height: 40px; padding: 8px 14px; border-radius: 999px; font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; }
+.journey-missions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; }
+.journey-missions > .muted { font-size: 13px; margin-right: 2px; }
+.journey-missions .chip { text-decoration: none; color: var(--ink); font-size: 13px; min-height: 32px; padding: 5px 11px; }
+.journey-missions .chip.on { color: #fff; }
+.journey-missions a.chip.done { border-color: var(--ok); }
+.journey-card { margin: 0 0 12px; padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--journey); }
+.journey-card .home-note { margin: 8px 0 0; }
+.journey-card .journey-missions { margin: 10px 0 0; }
+.journey-card-head { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+.journey-icon { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: color-mix(in srgb, var(--journey) 14%, white); color: var(--journey); }
+.journey-icon svg { width: 24px; height: 24px; }
+.journey-card-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.journey-card-text b { font-size: 16px; }
+.journey-card-text span { font-size: 13px; color: var(--muted); line-height: 1.45; }
+.journey-go { flex: none; font-size: 22px; color: var(--muted); }
+.journey-link { margin: 0 0 10px; font-size: 14px; }
+.stage-tag.goal { outline: 2px solid #9fe0b0; outline-offset: 1px; }
+/* スマホ: 旅の間は3Dの欄を高く（帯の下でも模型が見えるように）。帯と選択肢は小さめに */
+@media (max-width: 767px) {
+  .layout:has(.journey-bar) { --stage-default: 68svh; }
+  .journey-bar { padding: 7px 9px 8px; }
+  .journey-bar-head b { font-size: 14px; }
+  .journey-why { font-size: 12.5px; -webkit-line-clamp: 2; }
+  .journey-options { gap: 5px; margin-top: 6px; }
+  .journey-option { min-height: 40px; padding: 4px 9px; font-size: 14px; }
+  .journey-message { font-size: 12.5px; margin-top: 6px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .journey-bar-row { margin-top: 6px; }
+  .journey-skip, .journey-back { min-height: 38px; font-size: 13px; }
+}
+/* 名前の札の線が帯の上にかからないように */
+.stage-tools:has(.journey-bar) { z-index: 3; }

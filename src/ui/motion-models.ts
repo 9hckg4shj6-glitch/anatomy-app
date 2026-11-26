@@ -13,7 +13,7 @@ import { motionCheck } from "./motion-check";
 import { CM, tag } from "../motion-models/common";
 import { FlowNet, normalizeFlow, Tracer, type FlowPath, type FlowPool, type RGB } from "../motion-models/flow";
 import { ARTERIAL, buildHeart, CHAMBERS, CONDUCTION_PATHS, heartRegion, MUSCLE, VENOUS, VESSELS, type HeartModel, type HeartTag } from "../motion-models/heart";
-import type { SchematicTag } from "../viewer";
+import type { AnatomyViewer, SchematicTag } from "../viewer";
 import type { AppContext } from "./context";
 import { BODY_PATHS, buildBody, ORGANS } from "../motion-models/body";
 import { buildLungs, BREATH, type LungTag } from "../motion-models/lungs";
@@ -67,7 +67,7 @@ function pickBox(ctx: AppContext, name: (id: string, point: Vec3) => [string, st
 /** 札の優先（重なるときは小さい方を先に置き、大きい方をずらす・隠す。src/tag-layout.ts） */
 const TAG_RANK: Record<string, number> = { tracer: -1, chamber: 0, conduction: 0, organ: 1, valve: 1, vessel: 2, note: 3 };
 
-function placeTags<T extends { text: string; note?: string; at: Vec3; kind: string; valve?: ValveKey; phase?: string }>(ctx: AppContext, root: THREE.Object3D, tags: T[]): Map<T, HTMLElement> {
+export function placeTags<T extends { text: string; note?: string; at: Vec3; kind: string; valve?: ValveKey; phase?: string }>(ctx: AppContext, root: THREE.Object3D, tags: T[]): Map<T, HTMLElement> {
   const elements = new Map<T, HTMLElement>();
   const ordered = [...tags].sort((a, b) => (TAG_RANK[a.kind] ?? 2) - (TAG_RANK[b.kind] ?? 2));
   const list: SchematicTag[] = ordered.map((t) => {
@@ -83,7 +83,7 @@ function placeTags<T extends { text: string; note?: string; at: Vec3; kind: stri
 }
 
 /** 模型を3Dに置く（体の部品は隠す） */
-function stageModel(ctx: AppContext, model: THREE.Object3D): THREE.Group {
+export function stageModel(ctx: AppContext, model: THREE.Object3D): THREE.Group {
   const root = new THREE.Group();
   root.scale.setScalar(CM);
   root.add(model);
@@ -98,7 +98,7 @@ function checkSection(...nodes: HTMLElement[]): HTMLElement[] {
   return [h("h3", { class: "list-title" }, "確かめる"), ...nodes];
 }
 
-function viewChips(views: [string, () => void][]): HTMLElement {
+export function viewChips(views: [string, () => void][]): HTMLElement {
   return h("div", { class: "chip-list" }, ...views.map(([label, go]) => h("button", { class: "chip", type: "button", onClick: go }, label)));
 }
 
@@ -605,15 +605,43 @@ const BODY_PICKS: Record<string, [string, string?]> = {
   "r-leg-c": ["脚の毛細血管", "capillary"], "l-leg-c": ["脚の毛細血管", "capillary"], "r-lung-c": ["肺の毛細血管（肺胞のまわり）", "capillary"], "l-lung-c": ["肺の毛細血管（肺胞のまわり）", "capillary"],
 };
 
+/** 全身の模型の道・たまりの名前と図鑑の語（からだの旅の「今通っている所」） */
+export function circulationPartName(id: string): [string, string?] | null {
+  if (id in CHAMBER_NAMES) return CHAMBER_NAMES[id as Chamber];
+  if (id === "tv") return PICK_NAMES["tricuspid-valve"];
+  if (id === "mv") return PICK_NAMES["mitral-valve"];
+  if (id === "aorta") return ["上行大動脈 → 大動脈弓", "aortic-arch"];
+  if (id === "pt") return ["肺動脈弁 → 肺動脈幹", "pulmonary-trunk"];
+  return BODY_PICKS[id] ?? PICK_NAMES[id] ?? null;
+}
+
 /** 肺循環の道（ほかは体循環。弁の通り道は両方） */
 const PULMONARY = new Set(["rv", "pt", "rpa", "lpa", "r-lung-c", "l-lung-c", "rspv", "ripv", "lspv", "lipv", "la"]);
 const BOTH = new Set(["tv", "mv"]);
 
-async function circulationModelScene(ctx: AppContext, player: Player, item: MotionItem): Promise<void> {
-  const { viewer, panel } = ctx;
+/** 全身の血液の通り道の模型と、その中を流れる粒（肺循環と体循環・からだの旅の血液の1滴の旅で使う） */
+export interface CirculationWorld {
+  heart: HeartModel;
+  body: ReturnType<typeof buildBody>;
+  root: THREE.Group;
+  net: FlowNet;
+  cycle: CardiacCycle;
+  /** 1拍の平均の流れ（mL/秒） */
+  mean: number;
+  /** 道・たまり → 肺循環・体循環・両方 */
+  circuit: Map<string, "systemic" | "pulmonary" | "both">;
+  /** 粒の入れ物（最後の1つは1滴に使う） */
+  dots: NonNullable<ReturnType<AnatomyViewer["setDots"]>>;
+  views: [string, () => void][];
+  /** 心臓の拍動と粒を進める（u は1拍の中の位置）。1滴と dotsChanged は呼ぶ側で */
+  frame: (u: number, dt: number, visible?: (id: string) => boolean) => void;
+}
+
+export async function circulationWorld(ctx: AppContext): Promise<CirculationWorld | null> {
+  const { viewer } = ctx;
   ctx.hint("読み込み中…");
   const cycle = await loadMotionData<CardiacCycle>("cardiac-cycle");
-  if (ctx.signal.aborted) return;
+  if (ctx.signal.aborted) return null;
   ctx.hint("");
   const heart = buildHeart();
   const body = buildBody();
@@ -650,6 +678,31 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     circuit.set(id, path.circuit);
   }
   const net = new FlowNet(paths, pools, 5, 0.22);
+  const dots = viewer.setDots(net.count + 1, 0.0034)!;
+  const muscle = new THREE.Color(MUSCLE);
+  const hot = new THREE.Color("#f2913d");
+  const regionColor = Object.fromEntries(CHAMBERS.map((c) => [c, new THREE.Color()])) as Record<Chamber, THREE.Color>;
+  const contract = contraction(cycle);
+  const amount: Record<Chamber, number> = { ra: 0, rv: 0, la: 0, lv: 0 };
+  const open: Record<ValveKey, number> = { ti: 0, po: 0, mi: 0, ao: 0 };
+  const frame = (u: number, dt: number, visible?: (id: string) => boolean) => {
+    Object.assign(open, heartState(cycle, u).open);
+    heart.update(contract(u, amount), open);
+    for (const c of CHAMBERS) regionColor[c].copy(muscle).lerp(hot, Math.min(1, cyclic(cycle.activation[c], u)) * 0.55);
+    heart.paint((_x, _y, region, out) => out.copy(regionColor[region]));
+    heart.arrows.ventricles.visible = false;
+    heart.arrows.atria.visible = false;
+    net.step(u, dt);
+    net.write(dots.position, dots.color, dots.size, CM, visible);
+  };
+  return { heart, body, root, net, cycle, mean, circuit, dots, views, frame };
+}
+
+async function circulationModelScene(ctx: AppContext, player: Player, item: MotionItem): Promise<void> {
+  const { viewer, panel } = ctx;
+  const world = await circulationWorld(ctx);
+  if (!world) return;
+  const { heart, body, root, net, cycle, mean, circuit, dots, views } = world;
   // 1滴を追う: 右心房 → 肺 → 左心室 → 行き先の臓器 → 右心房。行き先は「順番に」なら1周ごとに変える
   let destination = -1;
   let turn = 0;
@@ -661,7 +714,6 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
   const tracer = new Tracer(net, makeRoute(), mean * cycle.period * 0.45);
   let stations = stationsOf(tracer.route);
   const tracerAt: Vec3 = [0, 0, 0];
-  const dots = viewer.setDots(net.count + 1, 0.0034)!;
   let filter = "both" as "both" | "systemic" | "pulmonary";
   const visible = (id: string) => filter === "both" || circuit.get(id) === "both" || circuit.get(id) === filter;
 
@@ -719,22 +771,9 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
   };
   views[0][1]();
 
-  const muscle = new THREE.Color(MUSCLE);
-  const hot = new THREE.Color("#f2913d");
-  const regionColor = Object.fromEntries(CHAMBERS.map((c) => [c, new THREE.Color()])) as Record<Chamber, THREE.Color>;
-  const contract = contraction(cycle);
-  const amount: Record<Chamber, number> = { ra: 0, rv: 0, la: 0, lv: 0 };
-  const open: Record<ValveKey, number> = { ti: 0, po: 0, mi: 0, ao: 0 };
   player.onFrame((time, dt) => {
     const u = (time / cycle.period) % 1;
-    Object.assign(open, heartState(cycle, u).open);
-    heart.update(contract(u, amount), open);
-    for (const c of CHAMBERS) regionColor[c].copy(muscle).lerp(hot, Math.min(1, cyclic(cycle.activation[c], u)) * 0.55);
-    heart.paint((_x, _y, region, out) => out.copy(regionColor[region]));
-    heart.arrows.ventricles.visible = false;
-    heart.arrows.atria.visible = false;
-    net.step(u, dt);
-    net.write(dots.position, dots.color, dots.size, CM, visible);
+    world.frame(u, dt, visible);
     // 1滴（光る粒）は大きく、明るく
     tracer.step(u, dt);
     tracer.position(tracerAt);
@@ -774,6 +813,7 @@ async function circulationModelScene(ctx: AppContext, player: Player, item: Moti
     h("div", { class: "motion-now" }, stationName, stationNote, steps.detail),
     h("h3", { class: "list-title" }, "学ぶ流れ（1滴の道順）"),
     h("p", { class: "home-note" }, "光る大きな粒（1滴）が、右心房から肺を回り、全身の臓器を回って戻ります。1つずつなら駅ごとに止まります。"),
+    h("p", { class: "journey-link" }, h("a", { href: "#/journey/blood" }, "1滴になって、分かれ道で血管を選んで進む（からだの旅）›")),
     h("div", { class: "motion-switch" }, segmented<number>("1滴の行き先", [{ value: -1, label: "順番に" }, ...DESTINATIONS.map((d, i) => ({ value: i, label: d.ja }))], destination, (value) => {
       destination = value;
       reroute();
