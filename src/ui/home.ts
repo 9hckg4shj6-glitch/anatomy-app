@@ -11,6 +11,7 @@ import { account } from "../account";
 import { nextLesson } from "./lessons";
 import { finishRow, todayCounts } from "./review";
 import { sceneFor, termAt, type AppContext } from "./context";
+import { currentSpecimen } from "./specimen";
 import { systemPicker } from "./system-picker";
 import { tabIntro } from "./tab-intro";
 
@@ -91,6 +92,7 @@ export async function home(ctx: AppContext): Promise<void> {
   const rows = [
     counts.review + counts.fresh && nextUnit ? continueRow(nextUnit, learnedIds) : "",
     isBeginner() ? "" : examRow(learnedIds, schedules),
+    specimenRow(learnedIds, schedules),
   ];
   // タブの1行の説明は今日の札の下に（小さい画面でも、今日の一手のボタンが初めの画面に入るように）
   ctx.panel.replaceChildren(h("div", { class: "home" },
@@ -181,6 +183,17 @@ function continueRow(unit: Unit, learnedIds: Set<string>): HTMLElement {
 
 function dayKey(date: Date): string {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+}
+
+/** わたしの標本に忘れかけた骨（色があせた骨）があれば、手入れの1行（src/ui/specimen.ts） */
+function specimenRow(learnedIds: Set<string>, schedules: StoredSchedule[]): HTMLElement | string {
+  const worn = currentSpecimen(learnedIds, schedules).placed.filter((item) => item.level === "faded");
+  if (!worn.length) return "";
+  return h("a", { class: "home-row-card", href: "#/specimen" },
+    h("span", { class: "home-row-label" }, "わたしの標本"),
+    h("span", { class: "home-row-title" }, `色があせた骨 ${worn.reduce((sum, item) => sum + item.count, 0)}本`),
+    h("span", { class: "home-row-meta" }, "手入れ"),
+  );
 }
 
 /** 骨学試験の日を決めていれば、残りの日数と、まだ学んでいない項目を1日いくつ解けば間に合うか（1行。骨学試験は独立のまま、その画面へ） */

@@ -3,6 +3,7 @@ import { db } from "../db";
 import { h } from "../dom";
 import type { AppContext } from "./context";
 import { backupReminder, examLeft, weekDays } from "./home";
+import { currentSpecimen } from "./specimen";
 import { itemRow } from "./study-hub";
 import { tabIntro } from "./tab-intro";
 
@@ -30,6 +31,9 @@ export async function records(ctx: AppContext): Promise<void> {
   const stat = (label: string, value: string, unit: string) =>
     h("div", { class: "rec-stat" }, h("span", { class: "rec-label" }, label), h("span", { class: "rec-value" }, value, h("small", {}, ` ${unit}`)));
   const exam = isBeginner() ? null : examLeft(learnedIds, schedules);
+  const specimen = currentSpecimen(learnedIds, schedules);
+  const worn = specimen.placed.filter((item) => item.level === "faded").reduce((sum, item) => sum + item.count, 0);
+  const specimenRate = specimen.reachable ? Math.round((specimen.bones / specimen.reachable) * 100) : 0;
 
   ctx.panel.replaceChildren(h("div", { class: "home" },
     h("div", { class: "tab-head" }, h("h2", {}, "記録")),
@@ -43,6 +47,12 @@ export async function records(ctx: AppContext): Promise<void> {
       h("span", { class: "home-kicker" }, "骨学試験"),
       h("b", {}, exam.days ? `試験まであと ${exam.days}日` : "試験は今日"),
       h("span", { class: "muted" }, exam.rest ? `まだの項目 ${exam.rest}・1日 ${exam.perDay}項目で間に合います` : "すべての項目を学びました。苦手な順に仕上げましょう")) : "",
+    // わたしの標本（覚えた骨が並ぶ。src/ui/specimen.ts）
+    h("a", { class: "home-card rec-specimen", href: "#/specimen" },
+      h("span", { class: "home-kicker" }, "わたしの標本"),
+      h("b", {}, specimen.bones ? `骨 ${specimen.bones} / ${specimen.reachable}本` : "まだ骨がありません"),
+      h("div", { class: "home-meter", "aria-hidden": "true" }, h("span", { style: `width:${specimenRate}%` })),
+      h("span", { class: "muted" }, worn ? `手入れが必要な骨 ${worn}本` : specimen.bones ? "覚えた骨が標本台に並んでいます" : "骨を覚えると、標本台に1本ずつ立っていきます")),
     backupReminder(learned),
     h("ul", { class: "home-card home-list" },
       itemRow("#/progress", "progress", "#4f6d8f", "進捗", "覚え具合を人体の色で見る・30日の記録・7日の予定"),

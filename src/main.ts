@@ -23,6 +23,7 @@ import { loadExam } from "./exam-lazy";
 import { loadMarks } from "./marks";
 import { progress } from "./ui/progress";
 import { review } from "./ui/review";
+import { specimenScreen } from "./ui/specimen";
 import { rootIndex, rootLesson } from "./ui/roots";
 import { settingsScreen } from "./ui/settings-screen";
 import { setupSplitter } from "./ui/splitter";
@@ -44,7 +45,7 @@ const PAGES: Record<string, [title: string, href: string]> = {
   study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
   exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], motions: ["動きの図鑑", "#/motions"], organs: ["臓器の図", "#/organs"], roots: ["語根カード", "#/roots"],
-  progress: ["進捗", "#/progress"], print: ["印刷する", "#/print"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
+  progress: ["進捗", "#/progress"], specimen: ["わたしの標本", "#/specimen"], print: ["印刷する", "#/print"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
 /** 下のタブ（今日・学ぶ・調べる・3D模型・記録・設定）と、ページがどのタブの中にあるか。2026-11-20 に記録から設定を分け、3D模型を足した */
@@ -55,7 +56,7 @@ const TAB_OF: Record<string, string> = {
   study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study", print: "study",
   look: "look", explore: "look", motions: "look",
   model: "model",
-  records: "records", progress: "records",
+  records: "records", progress: "records", specimen: "records",
   settings: "settings", guide: "settings", credits: "settings", admin: "settings",
 };
 /**
@@ -186,7 +187,7 @@ document.addEventListener("keydown", (event) => {
 // そこへ移るときに読み直して切りかえる。ホームだけにすると、臓器の図の中を行き来している間は古い版のまま（新しい平面図が出ない）だった。
 // レッスン・復習・演習・骨学試験の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
 let updated = false;
-const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "motions", "lessons", "progress", "settings", "credits", "guide", "print"]);
+const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "motions", "lessons", "progress", "specimen", "settings", "credits", "guide", "print"]);
 const canReload = () => RELOADABLE.has(location.hash.split("/")[1] ?? "");
 const serviceWorker = navigator.serviceWorker as ServiceWorkerContainer | undefined; // http の LAN では無い
 // 初めて開いたとき（前の版が無いとき）の入れかわりは数えない
@@ -302,7 +303,7 @@ async function boot(): Promise<void> {
     layout.classList.toggle("is-model", name === "model");
     // 動きの図鑑は3Dの中に字幕・札・向きの目印があるので、スマホでは3Dを高めに（styles.css の .layout.is-motion）
     layout.classList.toggle("is-motion", name === "motions");
-    viewer.hideCompass(!PAGES[name] || name === "start");
+    viewer.hideCompass(!PAGES[name] || name === "start" || name === "specimen");
     showCrumbs(name);
     // 3Dを動かして見る画面（レッスン・図鑑・動きの図鑑）を初めて開いたときに、右上の ⤢・?・向きの目印の説明を出す（src/ui/stage-tip.ts）。
     // 臓器の図は立体のときだけ organs.ts が出す（平面図では向きの目印を出さず、隠して確かめるの案内を出す）
@@ -325,6 +326,7 @@ async function boot(): Promise<void> {
       else if (name === "organs") await (await import("./ui/organs")).organScreen(ctx, arg);
       else if (name === "exam") await (await loadExam()).ui.exam(ctx, arg);
       else if (name === "progress") await progress(ctx);
+      else if (name === "specimen") await specimenScreen(ctx);
       else if (name === "print") await (await import("./ui/print")).printScreen(ctx, arg);
       else if (name === "settings") await settingsScreen(ctx, arg);
       else if (name === "guide") (await import("./ui/guide")).guide(ctx, arg);
@@ -349,7 +351,7 @@ async function boot(): Promise<void> {
   // ほかの端末の記録を受けたら、見るだけの画面（今日・学ぶ・記録・進捗）は描き直す（今日の復習の数など）。
   // はじめに・設定はそれぞれの画面で受ける。レッスンや復習の途中は描き直さない
   window.addEventListener("anatomy:synced", () => {
-    if (["", "study", "records", "progress"].includes(currentName) && !leaveWarning) void route();
+    if (["", "study", "records", "progress", "specimen"].includes(currentName) && !leaveWarning) void route();
   });
 
   window.addEventListener("hashchange", () => {

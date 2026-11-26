@@ -119,6 +119,7 @@ function daysAgo(iso: string, now = new Date()): string {
  * 入口（#/drill）は「すぐ始める」（最近のレッスン・苦手な語・★を付けた語・前回と同じ条件）と「自分で選ぶ」（3つの段階）。
  * 自分で選ぶは ①範囲（#/drill/custom）→ ②問い方（custom/2。名前と場所 → ＋英語 → 総仕上げの段階か1つずつ）→ ③数と出し方（custom/3）。
  * "#/drill/recent"・"weak"・"stars"・"last" はすぐ始める、"#/drill/term/<語ID>" はその語の問い方をひと通り（図鑑の「この語を演習」）。
+ * "#/drill/terms/<語ID>,<語ID>…" はその語だけを苦手な順に（わたしの標本の「手入れする」。src/ui/specimen.ts）。
  * おまかせ（学んでいない所からも出す）はしない。学んでいない語は、①範囲の一覧を「すべて」にして自分で選んだときだけ。
  * 答えは復習と同じく記録し、次に出る日にも反映する。初心者モードでは範囲は初心者コースの語、問い方は基本の4つから。
  */
@@ -324,6 +325,10 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
   if (kind === "last" && last) return startWith(last);
   // その語の問い方をひと通り（筋なら起始・停止なども）
   if (kind === "term" && termById.has(arg)) return startWith({ ids: new Set([arg]), kinds: new Set(offeredKeys), count: 9, order: "mix" }, false);
+  if (kind === "terms") {
+    const ids = arg.split(",").filter((id) => termIds.has(id));
+    if (ids.length) return startWith({ ids: new Set(ids), kinds: defaultKinds(), count: Math.min(30, Math.max(10, ids.length * 2)), order: "weak" }, false);
+  }
   return entry();
 
   /** 入口: すぐ始める（1回押せば始まる）と、自分で選ぶ（3つの段階の見通しと「範囲から選ぶ」） */

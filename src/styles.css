@@ -2267,3 +2267,39 @@ body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
   .print-root .pp-plate { height: 272mm; overflow: hidden; }
   .print-root thead { display: table-header-group; }
 }
+
+/* わたしの標本（#/specimen。src/ui/specimen.ts） */
+.rec-specimen { display: grid; gap: 4px; color: var(--ink); text-decoration: none; }
+.rec-specimen b { font-size: 18px; }
+.rec-specimen .home-meter { margin: 2px 0 4px; }
+.rec-specimen .home-meter > span, .specimen-head .home-meter > span { background: #b8955a; }
+.specimen > .home-card + .home-card, .specimen > .home-card + .home-primary, .specimen-picked:not(:empty) { margin-top: 12px; }
+.specimen-count { display: flex; align-items: baseline; gap: 2px; margin: 6px 0 0; font-variant-numeric: tabular-nums; }
+.specimen-count b { font-size: 40px; font-weight: 800; line-height: 1; }
+.specimen-count span { font-size: 16px; font-weight: 700; color: var(--muted); }
+.specimen-count .specimen-rate { margin-left: auto; font-size: 20px; color: var(--ink); }
+.specimen-head .home-meter { height: 8px; }
+.specimen .home-kicker .swatch { width: 12px; height: 12px; border-radius: 50%; }
+.specimen .chip-list { margin-top: 10px; }
+.specimen-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; color: var(--ink); }
+.specimen-chip .swatch { width: 12px; height: 12px; border-radius: 50%; }
+.specimen-chip .chip-count { margin-left: 0; }
+.specimen-care-go { margin-top: 14px; }
+.specimen-pick { display: grid; gap: 6px; }
+.specimen-pick-name { font-size: 20px; }
+.specimen-pick-name small { margin-left: 4px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.specimen-pick-state { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+.specimen-pick .nav-row { margin-top: 6px; }
+.specimen .set-group { margin-top: 20px; }
+.specimen-region .set-sub { color: var(--accent); text-decoration: none; }
+.specimen-region-bar { flex: none; width: 72px; height: 6px; overflow: hidden; border-radius: 3px; background: var(--ring-track); }
+.specimen-region-bar > span { display: block; height: 100%; border-radius: inherit; background: #b8955a; }
+.specimen-done { color: var(--ok); font-size: 13px; font-weight: 700; }
+.specimen-legend { margin: 0; }
+.specimen-legend .swatch { border-radius: 50%; }
+.specimen-complete { display: grid; justify-items: center; gap: 4px; text-align: center; background: linear-gradient(180deg, #fff7e3, var(--surface)); border-color: #e7cf98; }
+.specimen-complete b { font-size: 20px; }
+.specimen-complete-mark { margin: 0; font-size: 34px; line-height: 1; }
+.specimen-complete.is-now .specimen-complete-mark { animation: specimen-pop 0.9s ease-out; }
+@keyframes specimen-pop { 0% { transform: scale(0.4); opacity: 0; } 60% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .specimen-complete.is-now .specimen-complete-mark { animation: none; } }
