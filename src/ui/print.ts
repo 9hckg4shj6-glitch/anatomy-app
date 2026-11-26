@@ -10,6 +10,7 @@ import {
   imagesReady, mountPrint, openPrintDialog, plateAnswers, platePages, unmountPrint, waitImages, wordList, wordTest,
   type PlatePrint, type PrintHide, type WordAsk,
 } from "./print-sheet";
+import { makePdf, pdfName, sharePdf } from "./print-pdf";
 import { card, choiceRow, foot, group, row, segmented, toggleRow } from "./settings-kit";
 
 /**
@@ -106,58 +107,16 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
     return chosen.length === 1 ? chosen[0].title : `選んだレッスン（${chosen.length}）`;
   };
 
-  /** 語のテスト・語の一覧の今の中身（Safari へ送るときにアドレスに書く） */
-  let words: { title: string; items: Term[] } = { title: "", items: [] };
-
-  /** 今選んでいるものを書いたアドレス（#/print/go?…）。語は ID で送る（Safari とアプリでは記録が別なので、★やメモも書く） */
-  const sheetHash = (): string => {
-    const params = new URLSearchParams({ k: state.kind, a: state.answers ? "1" : "0" });
-    if (state.kind === "plates") {
-      params.set("p", [...state.plateIds].join(","));
-      params.set("h", state.hide);
-      params.set("pt", state.points ? "1" : "0");
-    } else {
-      params.set("title", words.title);
-      params.set("t", words.items.map((term) => term.id).join(","));
-      if (state.kind === "test") params.set("ask", state.ask);
-      else {
-        params.set("n", state.note ? "1" : "0");
-        const memos = Object.fromEntries(words.items.map((term) => [term.id, markOf(term.id).memo.trim()]).filter(([, memo]) => memo));
-        if (Object.keys(memos).length) params.set("m", JSON.stringify(memos));
-      }
-    }
-    return `#/print/go?${params.toString()}`;
-  };
-
   /**
    * ホーム画面に追加した iPhone・iPad のアプリか。印刷の画面を開けず（押しても何も起きない）、開いたかどうかも見分けられないので、
-   * 印刷は試さずに、はじめから Safari で印刷だけの画面（#/print/go?…）を開く
+   * 印刷は試さずに、アプリの中で PDF を作って共有シート（「ファイルに保存」「プリント」）に渡す
    */
   const iosApp = isStandalone() && iosDevice() !== "";
 
-  /** Safari へ送るボタンと、アドレスをコピーするボタン */
-  const safariControls = (label: string): HTMLElement[] => {
-    const url = `${location.origin}${location.pathname}${sheetHash()}`;
-    const copied = h("span", { class: "muted" }, "");
-    return [
-      h("div", { class: "pp-actions" },
-        h("a", { class: "primary pp-print", href: `x-safari-${url}` }, "Safari で開いて印刷・PDFに保存"),
-        h("span", { class: "muted" }, label)),
-      h("div", { class: "pp-help" },
-        h("p", {}, "ホーム画面に追加したアプリからは、iPhone・iPad の決まりで印刷の画面を開けません。",
-          "ボタンを押すと Safari に同じ紙が開くので、そこで「印刷・PDFに保存」を押してください（選んだものはそのまま送ります）。"),
-        h("div", { class: "pp-actions" },
-          h("button", { class: "ghost-button", type: "button", onClick: async () => {
-            try {
-              await navigator.clipboard.writeText(url);
-              copied.textContent = "コピーしました。Safari のアドレス欄に貼り付けて開きます";
-            } catch {
-              copied.textContent = "コピーできませんでした";
-            }
-          } }, "アドレスをコピー"), copied),
-        foot("Safari が開かないとき（iOS 16 まで）は、「アドレスをコピー」を押して Safari のアドレス欄に貼り付けて開きます。")),
-    ];
-  };
+  /** ボタンの下の説明 */
+  const printNote = () => iosApp
+    ? "「PDFファイルを作る」で A4 の PDF にします。できたら「PDFを保存・プリントする」から、ファイルに保存するかプリンタで印刷します。"
+    : "印刷の画面で、プリンタを選ぶか「PDFとして保存」を選びます（iPhone・iPad は印刷の画面の共有 →「ファイルに保存」で PDF に）。用紙は A4 縦、倍率は100%で。「PDFファイルを作る」は印刷の画面を通さずに PDF を作ります。";
 
   /** 印刷の画面が開かなかったときの案内（パソコン・Android など） */
   const printHelp = (): HTMLElement[] =>
@@ -178,25 +137,49 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
     }, 250);
   };
   const printControls = (list: () => HTMLElement[], label: string) => {
-    if (iosApp && label) return safariControls(label);
     const status = h("span", { class: "muted" }, label || "印刷するものを選んでください");
     const help = h("div", { class: "pp-help", role: "status" });
-    const button = h("button", { class: "primary pp-print", type: "button", disabled: !label, onClick: async () => {
+    const printButton = iosApp ? null : h("button", { class: "primary pp-print", type: "button", disabled: !label, onClick: async () => {
       help.replaceChildren();
       clearTimeout(mountTimer);
       const root = mounted ?? (mounted = mountPrint(list()));
       if (!imagesReady(root)) {
-        button.disabled = true;
+        printButton!.disabled = true;
         status.textContent = "図を読み込んでいます…";
         await waitImages(root);
-        button.disabled = false;
+        printButton!.disabled = false;
         status.textContent = label;
         if (ctx.signal.aborted) return;
       }
       const opened = await openPrintDialog();
       if (!opened && !ctx.signal.aborted) help.replaceChildren(...printHelp());
     } }, "印刷・PDFに保存");
-    return [h("div", { class: "pp-actions" }, button, status), help];
+    // PDF を作るのは数秒かかり、その間に押した合図が切れるので、共有シートはできてからもう一度押して開く
+    const pdfButton = h("button", { class: iosApp ? "primary pp-print" : "ghost-button pp-pdf", type: "button", disabled: !label, onClick: async () => {
+      help.replaceChildren();
+      pdfButton.disabled = true;
+      if (printButton) printButton.disabled = true;
+      try {
+        const pages = list();
+        const name = pdfName(pages);
+        const { blob, count } = await makePdf(pages, (done, total) => (status.textContent = `PDFを作っています… ${done} / ${total}枚`));
+        if (ctx.signal.aborted) return;
+        const save = h("button", { class: "primary pp-print", type: "button", onClick: () => void sharePdf(blob, name) },
+          iosApp ? "PDFを保存・プリントする" : "PDFを保存する");
+        help.replaceChildren(
+          h("p", {}, `PDFができました（${count}枚・${(blob.size / 1024 / 1024).toFixed(1)}MB）。`),
+          h("div", { class: "pp-actions" }, save),
+          foot(iosApp ? "共有の一覧の「ファイルに保存」で PDF を保存、「プリント」でプリンタに印刷できます。" : "保存した PDF は、PDF を開くアプリから印刷できます。"));
+      } catch (error) {
+        console.error(error);
+        help.replaceChildren(h("p", {}, "PDFを作れませんでした。図が多いときは、選ぶ図を減らしてもう一度試してください。"), h("p", { class: "muted" }, String(error)));
+      } finally {
+        pdfButton.disabled = false;
+        if (printButton) printButton.disabled = false;
+        status.textContent = label || "印刷するものを選んでください";
+      }
+    } }, "PDFファイルを作る");
+    return [h("div", { class: "pp-actions" }, ...(printButton ? [printButton, pdfButton] : [pdfButton]), status), help];
   };
 
   const preview = h("div", { class: "pp-preview" });
@@ -237,7 +220,7 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
         h("h3", { class: "set-title" }, "見本（1枚目）"),
         preview,
         ...printControls(pages, size),
-        foot("印刷の画面で、プリンタを選ぶか「PDFとして保存」を選びます（iPhone・iPad は印刷の画面の共有 →「ファイルに保存」で PDF に）。用紙は A4 縦、倍率は100%で。"))));
+        foot(printNote()))));
     showPreview();
   };
 
@@ -321,7 +304,6 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
     }
     const title = `${state.kind === "test" ? "語のテスト" : "語の一覧"}・${rangeTitle()}`;
     const fixed = items;
-    words = { title, items: fixed };
     pages = () => state.kind === "test"
       ? [wordTest(title, fixed, state.ask, false), ...(state.answers ? [wordTest(title, fixed, state.ask, true)] : [])]
       : [wordList(title, fixed, { memo: (id) => markOf(id).memo.trim(), note: state.note })];
@@ -448,7 +430,7 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
         h("h3", { class: "set-title" }, "見本（1枚目）"),
         preview,
         ...printControls(list, label),
-        foot("印刷の画面で、プリンタを選ぶか「PDFとして保存」を選びます（iPhone・iPad は印刷の画面の共有 →「ファイルに保存」で PDF に）。用紙は A4 縦、倍率は100%で。"),
+        foot(printNote()),
         h("a", { class: "ghost-button pp-clear", href: "#/print" }, "選び直す")))));
     showPreview();
   }

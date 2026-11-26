@@ -22,6 +22,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
     "dexie": "^4.4.7",
+    "html2canvas-pro": "^2.6.4",
     "three": "^0.186.1",
     "ts-fsrs": "^5.4.2",
     "zod": "^4.6.7"
