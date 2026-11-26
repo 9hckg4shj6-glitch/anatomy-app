@@ -245,7 +245,7 @@ function meaningOf(term: Term): string {
 
 /**
  * 結果・★・系統の一覧の1行: 系統の色の点・日本語と英語（当たった所を太く）・覚えること・読みと場所。
- * ラテン語・英語の別名・メモで当たったときはそれも添える。コースの外の語には札
+ * ラテン語・日本語と英語の別名・メモで当たったときはそれも添える。コースの外の語には札
  */
 function lookRow(hit: Hit, marks: string[], where = true): HTMLElement {
   const { term } = hit;
@@ -253,7 +253,7 @@ function lookRow(hit: Hit, marks: string[], where = true): HTMLElement {
   const parent = term.of ? termById.get(term.of)?.ja : undefined;
   const memo = markOf(term.id).memo;
   const place = where ? [system?.ja ?? "", parent ? `${parent}の部位` : courseUnitOf(term.id)?.title ?? ""].filter(Boolean).join(" › ") : parent ? `${parent}の部位` : "";
-  const extra = hit.via === "la" ? `ラテン ${term.la}` : hit.via === "enAlt" ? `別名 ${term.enAlt?.join("・")}` : "";
+  const extra = hit.via === "la" ? `ラテン ${term.la}` : hit.via === "enAlt" ? `別名 ${term.enAlt?.join("・")}` : hit.via === "jaAlt" ? `別名 ${term.jaAlt?.join("・")}` : "";
   return h("li", {}, h("a", { class: "look-row", href: `#/explore/${term.id}` },
     h("span", { class: "look-dot", style: `background:${system?.color ?? "#999"}`, "aria-hidden": "true" }),
     h("span", { class: "look-text" },

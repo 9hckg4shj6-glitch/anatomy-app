@@ -503,6 +503,8 @@ S状結腸間膜|sigmoid mesocolon
 蝸牛管|cochlear duct
 鼓室階|scala tympani
 骨格|skeleton
+体軸骨格|axial skeleton
+付属肢骨格|appendicular skeleton
 指骨|phalanges
 手根|carpus
 前屈|flexion

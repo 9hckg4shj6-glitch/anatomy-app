@@ -6,11 +6,19 @@
       "title": "脊柱と胸郭",
       "group": "体幹",
       "intro": [
-        "脊柱（vertebral column）は、24個の椎骨（vertebra）（頚椎（cervical vertebrae）7・胸椎（thoracic vertebrae）12・腰椎（lumbar vertebrae）5）と、仙骨（sacrum）（5個の仙椎（sacral vertebra）が癒合（fusion））・尾骨（coccyx）（3〜5個の尾椎（coccygeal vertebra）が癒合）でできる。体重を支える柱なので、下の椎骨ほど大きい。「脊椎（spine）」という解剖学用語（anatomical term）は無く、椎骨・脊柱という。",
+        "成人の全身（whole body）の骨（bone）は、ふつう206個と数える。頭蓋（skull）23（舌骨（hyoid bone）を含む）・耳小骨（auditory ossicles）6・脊柱（vertebral column）26（椎骨（vertebra）24と仙骨（sacrum）・尾骨（coccyx））・胸骨（sternum）1・肋骨（ribs）24・上肢（upper limb）64・下肢（lower limb）62。種子骨（sesamoid bone）は膝蓋骨（patella）のほかは数えず、仙骨や尾骨は癒合（fusion）したものを1個とするので、人や数え方によって少し違う。頭蓋・脊柱・胸郭（thoracic cage）を体軸骨格（axial skeleton）、上肢と下肢の骨（上肢帯（pectoral girdle）と下肢帯（pelvic girdle）を含む）を付属肢骨格（appendicular skeleton）と言う。",
+        "脊柱は、24個の椎骨（頚椎（cervical vertebrae）7・胸椎（thoracic vertebrae）12・腰椎（lumbar vertebrae）5）と、仙骨（5個の仙椎（sacral vertebra）が癒合）・尾骨（3〜5個の尾椎（coccygeal vertebra）が癒合）でできる。体重を支える柱なので、下の椎骨ほど大きい。「脊椎（spine）」という解剖学用語（anatomical term）は無く、椎骨・脊柱という。",
         "横から見ると、頚（neck）と腰（lower back）は前へ（前弯（lordosis））、胸（chest）と仙骨は後ろへ（後弯（kyphosis））ゆるく曲がる。胸と仙骨の後弯は胎児（fetus）のときからあり、腰の前弯は歩き始める1歳ごろからできる（直立二足歩行（upright bipedalism）への適応）。",
-        "胸郭（thoracic cage）は胸椎12個・肋骨（ribs）12対・胸骨（sternum）1個でできる籠。胸郭上口（superior thoracic aperture）は第1胸椎（first thoracic vertebra）・第1肋骨（first rib）・胸骨柄（manubrium of sternum）で、胸郭下口（inferior thoracic aperture）は第12胸椎（twelfth thoracic vertebra）・第12肋骨（twelfth rib）・肋骨弓（costal arch）・剣状突起（xiphoid process）で囲まれる。ヒトの胸郭は前後に平たい（四足の動物では左右に平たい）。"
+        "胸郭は胸椎12個・肋骨12対・胸骨1個でできる籠。胸郭上口（superior thoracic aperture）は第1胸椎（first thoracic vertebra）・第1肋骨（first rib）・胸骨柄（manubrium of sternum）で、胸郭下口（inferior thoracic aperture）は第12胸椎（twelfth thoracic vertebra）・第12肋骨（twelfth rib）・肋骨弓（costal arch）・剣状突起（xiphoid process）で囲まれる。ヒトの胸郭は前後に平たい（四足の動物では左右に平たい）。"
       ],
       "terms": [
+        {
+          "id": "vertebral-column", "ja": "脊柱", "jaAlt": ["背骨", "脊椎"], "yomi": "せきちゅう", "en": "vertebral column", "enAlt": ["spinal column", "spine", "backbone"], "la": "columna vertebralis",
+          "parts": ["atlas", "axis", "* cervical vertebra", "* thoracic vertebra", "* lumbar vertebra", "sacrum", "coccyx"], "level": 1, "from": [-0.4, 0.25, -1],
+          "kanji": "脊（せぼね）の柱",
+          "etym": "vertebral ← ラテン語 vertebra「椎骨」（vertere「回す」）＋ column ← ラテン語 columna「柱」",
+          "note": "体幹（trunk）の後ろの正中（median）を、頭蓋（skull）から骨盤（pelvis）まで縦に通る骨（bone）の柱。頚椎（cervical vertebrae）7・胸椎（thoracic vertebrae）12・腰椎（lumbar vertebrae）5の24個の椎骨（vertebra）と、仙骨（sacrum）・尾骨（coccyx）が、椎間円板（intervertebral disc）と靱帯（ligament）でつながってできる（3Dでは椎骨・仙骨・尾骨と椎間円板で示す）。頭と体幹を支え、椎孔（vertebral foramen）が上下に連なった脊柱管（vertebral canal）に脊髄（spinal cord）を入れて守る。横から見ると頚（neck）と腰（lower back）は前へ（前弯（lordosis））、胸（chest）と仙骨は後ろへ（後弯（kyphosis））ゆるく曲がり、この弯曲が歩くときの衝撃をやわらげる。"
+        },
         {
           "id": "thoracic-cage", "ja": "胸郭", "yomi": "きょうかく", "en": "thoracic cage", "enAlt": ["thorax", "rib cage"], "la": "cavea thoracis",
           "parts": ["* rib", "* costal cartilage", "za:costal cartilage of eighth rib", "za:costal cartilage of ninth rib", "za:costal cartilage of tenth rib", "manubrium", "body of sternum", "xiphoid process", "* thoracic vertebra"], "level": 1,
@@ -26,14 +34,14 @@
           "note": "第7〜第10肋軟骨（seventh to tenth costal cartilages）が連なってできる、胸郭（thoracic cage）の前の下のふち。第8〜第10肋軟骨（eighth to tenth costal cartilages）はそれぞれすぐ上の肋軟骨（costal cartilages）に付き、第7肋軟骨（seventh costal cartilage）を通して胸骨（sternum）につながる。体表（body surface）でよく触れ、左右の肋骨弓は剣状突起（xiphoid process）のつけ根で胸骨下角（infrasternal angle）をつくる。最も低い所は第10肋軟骨（tenth costal cartilage）で、ここを通る水平面（horizontal plane）（肋骨下平面（subcostal plane））はおよそ第3腰椎（third lumbar vertebra）の高さ。右の肋骨弓の下には肝臓（liver）の下縁（inferior border）と胆嚢（gallbladder）が、左の下には胃（stomach）がある。"
         },
         {
-          "id": "atlas", "ja": "環椎", "yomi": "かんつい", "en": "atlas", "la": "atlas",
+          "id": "atlas", "ja": "環椎", "jaAlt": ["第1頚椎"], "yomi": "かんつい", "en": "atlas", "la": "atlas",
           "parts": ["atlas"], "level": 2,
           "kanji": "環（わ）の形をした椎骨。椎体がなく輪になっている",
           "etym": "atlas ← 天球を支えるギリシャ神話の巨人アトラス。頭を支えることから",
           "note": "第1頚椎（first cervical vertebra）。椎体（vertebral body）と棘突起（spinous process）が無く、前弓（anterior arch）と後弓（posterior arch）が左右の外側塊（lateral mass）を結ぶ輪の形。外側塊の上に後頭骨（occipital bone）の後頭顆（occipital condyle）がのって環椎後頭関節（atlanto-occipital joint）（うなずく動き）をつくる。頭を左右に回すときは、頭をのせたまま軸椎（axis）の歯突起（dens）のまわりを回る。"
         },
         {
-          "id": "axis", "ja": "軸椎", "yomi": "じくつい", "en": "axis", "la": "axis",
+          "id": "axis", "ja": "軸椎", "jaAlt": ["第2頚椎"], "yomi": "じくつい", "en": "axis", "la": "axis",
           "parts": ["axis"], "level": 2,
           "kanji": "回る軸になる椎骨",
           "etym": "axis ← ラテン語「軸」",
@@ -69,7 +77,7 @@
           "note": "5個の仙椎（sacral vertebra）が癒合（fusion）した逆三角形の骨（bone）（17〜18歳ごろに癒合が終わる）。前面はへこみ、後面はでこぼこして凸。左右の寛骨（hip bone）と仙腸関節（sacro-iliac joint）をつくり、骨盤（pelvis）の後ろの壁になる。男性では幅が狭く長く、女性では幅が広く短い。"
         },
         {
-          "id": "coccyx", "ja": "尾骨", "yomi": "びこつ", "en": "coccyx", "la": "os coccygis",
+          "id": "coccyx", "ja": "尾骨", "jaAlt": ["尾骶骨", "尾てい骨"], "yomi": "びこつ", "en": "coccyx", "la": "os coccygis",
           "parts": ["coccyx"], "level": 1,
           "kanji": "尾＝しっぽ。しっぽの名残の骨",
           "etym": "coccyx ← ギリシャ語 kokkyx「カッコウ」。形がカッコウのくちばしに似るため",
@@ -507,7 +515,7 @@
           "note": "軸椎（axis）の椎体（vertebral body）から上へ突き出す、歯（tooth）のような突起（process）。環椎（atlas）の前弓（anterior arch）の後ろにはまり、首（neck）を左右に回す軸になる。"
         },
         {
-          "id": "vertebra-prominens", "ja": "隆椎", "yomi": "りゅうつい", "en": "vertebra prominens", "enAlt": ["seventh cervical vertebra"], "la": "vertebra prominens",
+          "id": "vertebra-prominens", "ja": "隆椎", "jaAlt": ["第7頚椎"], "yomi": "りゅうつい", "en": "vertebra prominens", "enAlt": ["seventh cervical vertebra"], "la": "vertebra prominens",
           "parts": ["seventh cervical vertebra"], "level": 2,
           "kanji": "隆（たかく盛り上がる）椎骨",
           "etym": "prominens ← ラテン語「突き出た」→ 英語 prominent",
@@ -950,6 +958,13 @@
           "note": "自由上肢（free upper limb）（上腕（arm）・前腕（forearm）・手（hand））と体幹（trunk）をつなぐ骨（bone）で、鎖骨（clavicle）と肩甲骨（scapula）。鎖骨は前、肩甲骨は後ろにあって胸郭上口（superior thoracic aperture）を外側（lateral）から囲む。体幹とは胸鎖関節（sternoclavicular joint）だけでつながり、肩甲骨は筋（muscle）で胸郭（thoracic cage）の上に吊られているので、大きく動ける。"
         },
         {
+          "id": "bones-of-free-upper-limb", "ja": "自由上肢骨", "yomi": "じゆうじょうしこつ", "en": "bones of free upper limb", "enAlt": ["skeleton of free upper limb"], "la": "skeleton membri superioris liberi",
+          "parts": ["humerus", "radius", "ulna", "scaphoid", "lunate", "triquetral", "pisiform", "trapezium", "trapezoid", "capitate", "hamate", "* metacarpal bone", "* phalanx of * finger", "* phalanx of thumb"], "level": 2,
+          "kanji": "体幹に組み込まれず、自由に動く上肢の骨",
+          "etym": "free「自由な」＋ upper limb「上肢」。上肢帯に対して、肩から先の自由に動く部分",
+          "note": "上肢（upper limb）の骨（bone）のうち、上肢帯（pectoral girdle）（鎖骨（clavicle）・肩甲骨（scapula））より先の骨。上腕骨（humerus）・橈骨（radius）・尺骨（ulna）・手根骨（carpal bones）8・中手骨（metacarpals）5・指骨（phalanges）14の30個（片側）。上肢帯と合わせると上肢の骨は片側32個、左右で64個。肩関節（shoulder joint）で肩甲骨の関節窩（glenoid cavity）につながる。"
+        },
+        {
           "id": "clavicle", "ja": "鎖骨", "yomi": "さこつ", "en": "clavicle", "la": "clavicula",
           "parts": ["clavicle"], "fma": "FMA13321", "level": 1,
           "kanji": "鎖＝錠前（かぎ）。オランダ語 sleutelbeen（鍵の骨）の訳",
@@ -1071,7 +1086,7 @@
           "note": "手のひら（palm）にある5本の骨（bone）。親指側（radial side）から第1〜第5中手骨（first to fifth metacarpals）と数える。近位（proximal）から底・体・頭に分かれる。第2中手骨（second metacarpal）が最も長く、第1中手骨（first metacarpal）は太く短い。"
         },
         {
-          "id": "phalanges-hand", "check": true, "ja": "指骨（手）", "yomi": "しこつ", "en": "phalanges of hand", "enAlt": ["phalanges", "phalanx"], "la": "ossa digitorum manus",
+          "id": "phalanges-hand", "check": true, "ja": "指骨（手）", "jaAlt": ["指節骨（手）"], "yomi": "しこつ", "en": "phalanges of hand", "enAlt": ["phalanges", "phalanx"], "la": "ossa digitorum manus",
           "parts": ["* phalanx of * finger", "* phalanx of thumb"], "level": 1,
           "kanji": "指の骨",
           "etym": "phalanx ← ギリシャ語「兵士の隊列」。骨が列をなして並ぶ様子から",
@@ -1708,6 +1723,13 @@
           "note": "左右の寛骨（hip bone）・仙骨（sacrum）・尾骨（coccyx）でできる、底の抜けたたらいの形の骨格（skeleton）。前で左右の恥骨（pubis）が恥骨結合（pubic symphysis）でつながり、後ろで仙骨と寛骨が仙腸関節（sacro-iliac joint）をつくる。分界線（linea terminalis）より上の大骨盤（greater pelvis）には腹部（abdomen）の内臓（viscera）が、下の小骨盤（lesser pelvis）には膀胱（urinary bladder）・直腸（rectum）・生殖器（genital organs）が入る。女性は出産のため小骨盤が広く、恥骨下角（subpubic angle）も大きい（男性は約60°、女性は約80°以上）。"
         },
         {
+          "id": "bones-of-free-lower-limb", "ja": "自由下肢骨", "yomi": "じゆうかしこつ", "en": "bones of free lower limb", "enAlt": ["skeleton of free lower limb"], "la": "skeleton membri inferioris liberi",
+          "parts": ["femur", "patella", "tibia", "fibula", "talus", "calcaneus", "navicular bone of foot", "cuboid bone", "medial cuneiform bone", "intermediate cuneiform bone", "lateral cuneiform bone", "* metatarsal bone", "* phalanx of * toe", "sesamoid bone of foot"], "level": 2,
+          "kanji": "体幹に組み込まれず、自由に動く下肢の骨",
+          "etym": "free「自由な」＋ lower limb「下肢」。下肢帯に対して、股関節から先の自由に動く部分",
+          "note": "下肢（lower limb）の骨（bone）のうち、下肢帯（pelvic girdle）（寛骨（hip bone））より先の骨。大腿骨（femur）・膝蓋骨（patella）・脛骨（tibia）・腓骨（fibula）・足根骨（tarsal bones）7・中足骨（metatarsals）5・指骨（phalanges）14の30個（片側）。寛骨と合わせると下肢の骨は片側31個、左右で62個（母趾（great toe）の付け根の種子骨（sesamoid bone）は数えない）。股関節（hip joint）で寛骨の寛骨臼（acetabulum）につながる。"
+        },
+        {
           "id": "femur", "ja": "大腿骨", "yomi": "だいたいこつ", "en": "femur", "la": "femur",
           "parts": ["femur"], "fma": "FMA9611", "level": 1,
           "kanji": "大腿＝ふともも",
@@ -1803,7 +1825,7 @@
           "note": "足の甲（dorsum of foot）にある5本の骨（bone）。親指側（radial side）から第1〜第5中足骨（first to fifth metatarsals）と数える。第1中足骨（first metatarsal）はとびぬけて太い。第2中足骨（second metatarsal）の底は3つの楔状骨（cuneiform bones）の間に入り込み、足根中足関節（tarsometatarsal joints）（リスフラン関節（Lisfranc joint））をほとんど動かなくしている。"
         },
         {
-          "id": "phalanges-foot", "check": true, "ja": "指骨（足）", "yomi": "しこつ", "en": "phalanges of foot", "enAlt": ["phalanges", "phalanx"], "la": "ossa digitorum pedis",
+          "id": "phalanges-foot", "check": true, "ja": "指骨（足）", "jaAlt": ["趾骨", "指節骨（足）"], "yomi": "しこつ", "en": "phalanges of foot", "enAlt": ["phalanges", "phalanx"], "la": "ossa digitorum pedis",
           "parts": ["* phalanx of * toe"], "level": 1,
           "kanji": "足の指の骨",
           "etym": "phalanx ← ギリシャ語「兵士の隊列」",
@@ -2747,6 +2769,27 @@
         "下顎骨（顎関節（temporomandibular joint）で動く）と舌骨（筋（muscle）で吊られる）を除き、骨どうしは縫合（suture）でつながって1つの塊になる。脳（brain）を入れる脳頭蓋（neurocranium）と、顔（face）をつくる顔面頭蓋（viscerocranium）に分ける。「頭蓋」は解剖学（anatomy）では「とうがい」と読む。"
       ],
       "terms": [
+        {
+          "id": "skull", "ja": "頭蓋", "jaAlt": ["頭蓋骨"], "yomi": "とうがい", "en": "skull", "enAlt": ["cranium"], "la": "cranium",
+          "parts": ["frontal bone", "parietal bone", "temporal bone", "occipital bone", "sphenoid bone", "ethmoid", "nasal bone", "lacrimal bone", "inferior nasal concha", "maxilla", "zygomatic bone", "palatine bone", "vomer", "mandible", "hyoid bone"], "level": 1,
+          "kanji": "頭の蓋（ふた）。脳をおおう骨",
+          "etym": "skull ← 古ノルド語 skalli「はげ頭」。cranium ← ギリシャ語 kranion「頭」",
+          "note": "頭の骨格（skeleton）。15種23個の骨（bone）でできる（舌骨（hyoid bone）を含めた数。耳小骨（auditory ossicles）は側頭骨（temporal bone）の中にあり、頭蓋の骨には数えない）。脳（brain）を入れる脳頭蓋（neurocranium）と、顔（face）をつくる顔面頭蓋（viscerocranium）に分ける。下顎骨（mandible）と舌骨のほかは縫合（suture）などで動かないようにつながり、1つの塊になる。底の頭蓋底（cranial base）には多くの孔と管があり、脳神経（cranial nerve）と血管（blood vessel）が通る。"
+        },
+        {
+          "id": "neurocranium", "ja": "脳頭蓋", "yomi": "のうとうがい", "en": "neurocranium", "enAlt": ["braincase", "cranial bones"], "la": "neurocranium",
+          "parts": ["frontal bone", "parietal bone", "temporal bone", "occipital bone", "sphenoid bone", "ethmoid"], "level": 1, "from": [-0.7, 0.35, 1],
+          "kanji": "脳を入れる頭蓋",
+          "etym": "neuro-「神経・脳」（ギリシャ語 neuron）＋ cranium「頭」",
+          "note": "頭蓋（skull）のうち、脳（brain）を入れて守る部分。前頭骨（frontal bone）・頭頂骨（parietal bone）（2）・側頭骨（temporal bone）（2）・後頭骨（occipital bone）・蝶形骨（sphenoid bone）・篩骨（ethmoid bone）の6種8個でできる。上の丸天井が頭蓋冠（calvaria）、下の床が頭蓋底（cranial base）。篩骨は鼻腔（nasal cavity）と眼窩（orbit）の壁もつくるので、篩骨を顔面頭蓋（viscerocranium）に入れる本もある（そのときは脳頭蓋5種7個・顔面頭蓋10種16個）。"
+        },
+        {
+          "id": "viscerocranium", "ja": "顔面頭蓋", "yomi": "がんめんとうがい", "en": "viscerocranium", "enAlt": ["facial skeleton", "facial bones", "splanchnocranium"], "la": "viscerocranium",
+          "parts": ["nasal bone", "lacrimal bone", "inferior nasal concha", "maxilla", "zygomatic bone", "palatine bone", "vomer", "mandible", "hyoid bone"], "level": 1,
+          "kanji": "顔の面（おもて）をつくる頭蓋",
+          "etym": "viscero-「内臓」（ラテン語 viscera）＋ cranium「頭」。消化と呼吸の入口（口と鼻）を囲むことから",
+          "note": "頭蓋（skull）のうち、顔（face）をつくり、眼窩（orbit）・鼻腔（nasal cavity）・口腔（oral cavity）を囲む部分。鼻骨（nasal bone）・涙骨（lacrimal bone）・下鼻甲介（inferior nasal concha）・上顎骨（maxilla）・頬骨（zygomatic bone）・口蓋骨（palatine bone）（以上は2個ずつ）と、鋤骨（vomer）・下顎骨（mandible）・舌骨（hyoid bone）の9種15個でできる。篩骨（ethmoid bone）を顔面頭蓋に入れる本もある（そのときは10種16個）。下顎骨は頭蓋でただ1つ関節（joint）で大きく動く骨（bone）で、舌骨はほかの骨と関節をつくらない。"
+        },
         {
           "id": "calvaria", "ja": "頭蓋冠", "yomi": "とうがいかん", "en": "calvaria", "enAlt": ["skullcap"], "la": "calvaria",
           "parts": ["frontal bone", "parietal bone", "occipital bone"], "level": 2,

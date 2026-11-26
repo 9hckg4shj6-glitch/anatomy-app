@@ -82,8 +82,8 @@ export function romajiToKana(text: string): string | null {
 
 // ---- 語を探す ----
 
-/** どこで当たったか（結果の行に、ラテン語や英語の別名・メモで当たったことを添える） */
-export type Via = "ja" | "yomi" | "romaji" | "en" | "enAlt" | "la" | "memo" | "words";
+/** どこで当たったか（結果の行に、ラテン語や日本語・英語の別名・メモで当たったことを添える） */
+export type Via = "ja" | "jaAlt" | "yomi" | "romaji" | "en" | "enAlt" | "la" | "memo" | "words";
 
 export interface Hit {
   term: Term;
@@ -95,6 +95,8 @@ export interface Hit {
 
 interface Folded {
   ja: string;
+  /** 日本語の別名（第1頚椎・頭蓋骨など） */
+  jaAlt: string[];
   yomi: string;
   en: string;
   /** 英語の語の頭（"head of humerus" の head・of・humerus）。語の頭に当たると、途中に当たるより上に */
@@ -107,6 +109,7 @@ let foldedTerms: Map<string, Folded> | null = null;
 function foldedOf(term: Term): Folded {
   foldedTerms ??= new Map(terms.map((item) => [item.id, {
     ja: fold(item.ja),
+    jaAlt: (item.jaAlt ?? []).map(fold),
     yomi: fold(item.yomi),
     en: fold(item.en),
     enWords: normalize(`${item.en} ${(item.enAlt ?? []).join(" ")} ${item.la ?? ""}`).split(/[\s\-/(),]+/).filter(Boolean),
@@ -131,6 +134,8 @@ function scoreTerm(term: Term, query: string, kana: string[], tokens: string[], 
     if (score > best[0]) best = [score, via];
   };
   consider(scoreText(folded.ja, query), "ja");
+  // 日本語の別名は名前より少し下に（「第7頚椎」→ 隆椎。同じ当たり方なら名前で当たった語が先）
+  for (const alt of folded.jaAlt) consider(scoreText(alt, query) - 1, "jaAlt");
   consider(scoreText(folded.yomi, query), "yomi");
   // 英語は日本語より少しだけ下に（同じ当たり方なら日本語の当たった語が先）。英語の語の頭は 60
   consider(scoreText(folded.en, query) - 1, "en");
@@ -141,12 +146,12 @@ function scoreTerm(term: Term, query: string, kana: string[], tokens: string[], 
   for (const reading of kana) consider(scoreText(folded.yomi, reading) - 2, "romaji");
   if (memo && fold(memo).includes(query)) consider(30, "memo");
   // 空白で区切ったとき（「上腕 動脈」）は、どの言葉もどこかに当たる語
-  if (!best[0] && tokens.length > 1 && tokens.every((token) => [folded.ja, folded.yomi, folded.en, folded.la, ...folded.enAlt].some((text) => text.includes(token)))) consider(25, "words");
+  if (!best[0] && tokens.length > 1 && tokens.every((token) => [folded.ja, ...folded.jaAlt, folded.yomi, folded.en, folded.la, ...folded.enAlt].some((text) => text.includes(token)))) consider(25, "words");
   return best;
 }
 
 /**
- * 日本語・読み・英語（別名）・ラテン語・ローマ字の読み・自分のメモから語を探し、当たり方のよい順に並べる。
+ * 日本語（別名）・読み・英語（別名）・ラテン語・ローマ字の読み・自分のメモから語を探し、当たり方のよい順に並べる。
  * 名前がそのまま同じ語 → コースの語 → コースの外の語 の順で、その中は当たり方のよい順、同じなら必修・基礎の語 → 短い名前。
  * all を付けるとコースの外の語も（「調べる」）
  */
@@ -206,7 +211,7 @@ export function suggest(query: string, limit = 5): Term[] {
   const found: { term: Term; distance: number }[] = [];
   for (const term of terms) {
     const folded = foldedOf(term);
-    const distance = Math.min(...queries.flatMap((text) => [folded.ja, folded.yomi, folded.en, ...folded.enAlt].filter(Boolean).map((value) => substringDistance(text, value))));
+    const distance = Math.min(...queries.flatMap((text) => [folded.ja, ...folded.jaAlt, folded.yomi, folded.en, ...folded.enAlt].filter(Boolean).map((value) => substringDistance(text, value))));
     if (distance <= allowed) found.push({ term, distance });
   }
   return found

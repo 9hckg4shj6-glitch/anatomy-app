@@ -114,6 +114,7 @@
       "id": "b-skel-spine", "title": "背骨と胸の骨", "system": "skeletal",
       "intro": ["背骨（脊柱）は上から頚椎7・胸椎12・腰椎5・仙骨・尾骨。数を「7・12・5」で覚えます。"],
       "terms": [
+        { "id": "vertebral-column", "point": "背骨。椎骨（頚椎7・胸椎12・腰椎5）と仙骨・尾骨が縦に連なった柱。中を脊髄が通る。" },
         { "id": "cervical-vertebrae", "point": "首の骨。7個（C1〜C7）。" },
         { "id": "thoracic-vertebrae", "point": "胸の背骨。12個（T1〜T12）。肋骨とつながる。" },
         { "id": "lumbar-vertebrae", "point": "腰の背骨。5個（L1〜L5）。椎骨の中でいちばん大きい。" },
@@ -216,6 +217,7 @@
       "id": "b-skel-skull", "title": "頭の骨", "system": "skeletal",
       "intro": ["頭蓋は、脳を包む骨（前頭骨・頭頂骨・側頭骨・後頭骨など）と顔の骨に分けて見ると覚えやすくなります。"],
       "terms": [
+        { "id": "skull", "point": "頭の骨全体。15種23個の骨でできる。脳を包む脳頭蓋と、顔の顔面頭蓋に分ける。" },
         { "id": "frontal-bone", "point": "額の骨。" },
         { "id": "parietal-bone", "point": "頭のてっぺんにある左右1対の骨。" },
         { "id": "temporal-bone", "point": "耳のまわりの骨。中に耳（中耳・内耳）がある。" },

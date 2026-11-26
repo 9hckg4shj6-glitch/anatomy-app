@@ -326,6 +326,13 @@
           "note": "外耳道（external acoustic meatus）の奥で外耳（external ear）と中耳（middle ear）を分ける、直径約1cmの薄い膜（membrane）。音で震え、ツチ骨（malleus）へ伝える。耳鏡（otoscope）で見ると光の反射（reflex）（光錐（cone of light））が前下（anteroinferior）に見える。"
         },
         {
+          "id": "auditory-ossicles", "ja": "耳小骨", "yomi": "じしょうこつ", "en": "auditory ossicles", "enAlt": ["ossicles", "ear ossicles"], "la": "ossicula auditus",
+          "parts": ["za:malleus", "za:incus", "za:stapes"], "level": 1,
+          "kanji": "耳の中の小さな骨",
+          "etym": "auditory「聴覚の」（ラテン語 audire「聞く」）＋ ossicle「小さな骨」（ラテン語 ossiculum ← os「骨」）",
+          "note": "中耳（middle ear）の鼓室（tympanic cavity）の中で、鼓膜（tympanic membrane）から内耳（internal ear）の前庭窓（oval window）まで鎖のように並ぶ3つの小さな骨（bone）。外側（lateral）からツチ骨（malleus）・キヌタ骨（incus）・アブミ骨（stapes）の順で、関節（joint）でつながる。鼓膜の振動（vibration）をてこのしくみで強めて（鼓膜と前庭窓の面積の差と合わせて約20倍）、内耳の外リンパ（perilymph）へ伝える。左右で6個あり、アブミ骨は体でいちばん小さい骨。頭蓋（skull）の骨には数えない。"
+        },
+        {
           "id": "malleus", "ja": "ツチ骨", "yomi": "つちこつ", "en": "malleus", "la": "malleus",
           "parts": ["za:malleus"], "level": 1,
           "kanji": "槌（つち）の形の骨",

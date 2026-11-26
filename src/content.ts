@@ -15,6 +15,8 @@ export interface SystemInfo {
 export interface Term {
   id: string;
   ja: string;
+  /** 日本語の別名（検索だけに使う。環椎の「第1頚椎」、頭蓋の「頭蓋骨」など、教科書や日常で使う別の呼び方） */
+  jaAlt?: string[];
   yomi: string;
   en: string;
   enAlt?: string[];

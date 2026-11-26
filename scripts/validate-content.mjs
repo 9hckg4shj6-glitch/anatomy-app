@@ -44,6 +44,7 @@ const Region = z.strictObject({
 const Term = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/),
   ja: z.string().min(1),
+  jaAlt: z.array(z.string().min(2)).min(1).optional(),
   yomi: z.string().regex(/^[ぁ-ゖー]+$/, "読みはひらがなだけ"),
   en: word,
   enAlt: z.array(word).optional(),
@@ -127,6 +128,17 @@ for (const system of systems) {
   for (const term of terms.filter((t) => t.system === system.id)) {
     if (names.has(term.ja)) errors.push(`${system.ja}で日本語名が重複: ${term.ja}（${names.get(term.ja)} と ${term.id}）`);
     names.set(term.ja, term.id);
+  }
+}
+// 日本語の別名（jaAlt。検索で引く「第7頚椎」「頭蓋骨」など）は、どの語の日本語名とも、ほかの語の別名とも重ならない
+const allJa = new Map(terms.map((term) => [term.ja, term.id]));
+const altSeen = new Map();
+for (const term of terms) {
+  for (const alt of term.jaAlt ?? []) {
+    if (alt === term.ja) errors.push(`${term.id}: 別名「${alt}」が日本語名と同じ`);
+    else if (allJa.has(alt)) errors.push(`${term.id}: 別名「${alt}」はほかの語（${allJa.get(alt)}）の日本語名`);
+    if (altSeen.has(alt) && altSeen.get(alt) !== term.id) errors.push(`${term.id}: 別名「${alt}」が ${altSeen.get(alt)} と重複`);
+    altSeen.set(alt, term.id);
   }
 }
 
