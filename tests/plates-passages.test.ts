@@ -16,7 +16,8 @@ describe("臓器の図の続き（声帯・肝臓の臓側面・胸管・手根�
   });
 
   it("新しい臓器の図「手根管と鼡径管」は平面図だけで、一覧の局所の通り道のまとまりに入る", () => {
-    expect(plateIds("passages")).toEqual(["carpal-tunnel-section", "inguinal-posterior"]);
+    // 平面図の点検と追加（2026-11-26）で、大腿三角と腹直筋鞘の図を後ろに足した
+    expect(plateIds("passages").slice(0, 2)).toEqual(["carpal-tunnel-section", "inguinal-posterior"]);
     expect(organById.get("passages")?.box).toBeUndefined();
     expect(ORGAN_GROUPS.find((group) => group.organs.includes("passages"))?.title).toBe("局所の通り道");
   });

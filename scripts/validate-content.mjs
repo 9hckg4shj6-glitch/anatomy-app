@@ -456,6 +456,7 @@ const PlateArt = z.strictObject({
   blobs: z.number().int().min(2).max(5).optional(), within: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
   keepAll: z.literal(true).optional(), eraseGray: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).optional(), backColor: z.tuple([z.number().int(), z.number().int(), z.number().int()]).optional(),
   keepInk: z.string().regex(/^#[0-9a-f]{6}$/).optional(), inkTolerance: z.number().min(10).max(200).optional(),
+  minBlob: z.number().int().min(1).optional(), keepLines: z.union([z.literal(true), z.number().gt(0).max(1)]).optional(),
 });
 const Plate = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), en: z.string().min(1), diagram: z.literal("flow").optional(), art: PlateArt.optional(), note: z.string().optional(), points: z.array(z.string().min(1)).optional(),

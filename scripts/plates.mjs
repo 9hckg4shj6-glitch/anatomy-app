@@ -2,7 +2,8 @@
 // 背景を抜いて紙の色に重ねる（ラベルの点は元の図のピクセル px）。無ければ BodyParts3D の形から教科書の図のような絵に描く:
 // なめらかな陰影・部品の境と輪郭の線・切り口の平らな塗りで描き、ラベルの指す点（語の見えている所の真ん中、骨・器官の部位はピン）を求める。
 // 出力: public/plates/<図ID>.<ハッシュ>.webp と public/plates/index.json（画像の大きさ・ラベルの点 0〜1）。
-// 使い方: node scripts/plates.mjs [図ID…]（無ければ全部）。--check を付けると、ラベルの点に印を付けた確認画像を data-raw/plate-check/ に書く
+// 使い方: node scripts/plates.mjs [図ID…]（無ければ全部）。--check を付けると、ラベルの点に印を付けた確認画像を data-raw/plate-check/ に書く。
+// --audit を付けると、元の図から作る図の欠け（捨てた大きな塊・背景として抜けた薄い色・図の外を指すラベル）を data-raw/plate-audit/ に書く
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -19,6 +20,7 @@ const PAPER = [251, 248, 241];
 
 const args = process.argv.slice(2);
 const check = args.includes("--check");
+const audit = args.includes("--audit");
 const only = new Set(args.filter((a) => !a.startsWith("--")));
 
 const organs = JSON.parse(fs.readFileSync(path.join(ROOT, "content/organs.json"), "utf8")).organs;
@@ -409,7 +411,9 @@ async function artPlate(plate) {
     for (const [dx, dy] of directions) {
       const a = march(x, y, dx, dy), b = march(x, y, -dx, -dy);
       if (!a || !b) continue;
-      const score = [0, 1, 2].reduce((sum, ch) => sum + Math.abs(px[a[1] + ch] - px[b[1] + ch]), 0) + 2 * (a[0] + b[0]);
+      let score = [0, 1, 2].reduce((sum, ch) => sum + Math.abs(px[a[1] + ch] - px[b[1] + ch]), 0) + 2 * (a[0] + b[0]);
+      // art.keepLines（true か重みの数）: 両端がともに暗い（消した線が横切った輪郭の線）ならその向きを選びやすくし、輪郭が途切れないようにする
+      if (art.keepLines) score -= (art.keepLines === true ? 0.06 : art.keepLines) * Math.min(765 - px[a[1]] - px[a[1] + 1] - px[a[1] + 2], 765 - px[b[1]] - px[b[1] + 1] - px[b[1] + 2]);
       if (score < best) [best, color] = [score, [0, 1, 2].map((ch) => (px[a[1] + ch] * b[0] + px[b[1] + ch] * a[0]) / (a[0] + b[0]))];
     }
     if (color) filled.push([k * 3, color]);
@@ -467,7 +471,9 @@ async function artPlate(plate) {
     id++;
   }
   // art.keepAll なら塊を全部残す（陰影の線がばらばらの塊になる銅版画。図の外の文字は eraseBoxes で消しておく）
-  const kept = new Set(art.keepAll ? sizes.map((_, id) => id) : sizes.map((size, id) => [size, id]).sort((a, b) => b[0] - a[0]).slice(0, art.blobs ?? 1).map(([, id]) => id));
+  // art.minBlob があれば、keepAll でもその大きさ（px）に満たない塊は捨てる（消した引き出し線の端・文字の切れ端）
+  const kept = new Set(art.keepAll ? sizes.flatMap((size, id) => (size >= (art.minBlob ?? 0) * unit * unit ? [id] : [])) : sizes.map((size, id) => [size, id]).sort((a, b) => b[0] - a[0]).slice(0, art.blobs ?? 1).map(([, id]) => id));
+  if (audit) await auditDropped(plate, { px, W0, H0, label, sizes, kept, back, unit });
   // 紙に重ねる。白い背景は掛け合わせ（縁のなじみが白のまま残らない）、暗い背景は縁を少しぼかした型で重ねる
   const keep = new Float32Array(W0 * H0);
   let x0 = W0, x1 = 0, y0 = H0, y1 = 0;
@@ -519,7 +525,59 @@ async function artPlate(plate) {
     for (const key of ["term", "ja", "en", "note"]) if (spec[key]) entry[key] = spec[key];
     return entry;
   });
+  if (audit) {
+    // ラベルの点のまわり（半径6px）に残した図が無ければ、その所が欠けている
+    const lost = plate.labels.filter((spec) => {
+      const [cx, cy] = spec.px.map((v) => Math.round(v * unit));
+      for (let dy = -6; dy <= 6; dy++) for (let dx = -6; dx <= 6; dx++) {
+        const x = cx + dx, y = cy + dy;
+        if (x >= 0 && y >= 0 && x < W0 && y < H0 && keep[y * W0 + x]) return false;
+      }
+      return true;
+    }).map((spec) => spec.term ?? spec.ja);
+    auditReport[plate.id].lostLabels = lost;
+  }
   return { W, H, pixels, labels };
+}
+
+/**
+ * 欠けの点検（--audit）: 捨てた塊のうち大きいもの（図の一部かもしれない）を数え、元の図に赤紫で塗った画像を data-raw/plate-audit/ に書く。
+ * 色のある塊（文字でない）を「欠け」の候補として data-raw/plate-audit/report.json に書く
+ */
+const AUDIT = path.join(ROOT, "data-raw/plate-audit");
+const auditReport = {};
+async function auditDropped(plate, { px, W0, H0, label, sizes, kept, back, unit }) {
+  const main = Math.max(...[...kept].map((id) => sizes[id]));
+  const stats = new Map();
+  for (let k = 0; k < W0 * H0; k++) {
+    const id = label[k];
+    if (id < 0 || kept.has(id) || sizes[id] < Math.max(300, main * 0.002)) continue;
+    let s = stats.get(id);
+    if (!s) stats.set(id, (s = { size: sizes[id], x0: W0, y0: H0, x1: 0, y1: 0, chroma: 0 }));
+    const x = k % W0, y = (k - x) / W0;
+    s.x0 = Math.min(s.x0, x); s.x1 = Math.max(s.x1, x); s.y0 = Math.min(s.y0, y); s.y1 = Math.max(s.y1, y);
+    const r = px[k * 3], g = px[k * 3 + 1], b = px[k * 3 + 2];
+    s.chroma += Math.max(r, g, b) - Math.min(r, g, b);
+  }
+  const dropped = [...stats.values()].map((s) => ({ size: s.size, share: +(s.size / main).toFixed(4), chroma: Math.round(s.chroma / s.size), box: [s.x0, s.y0, s.x1, s.y1].map((v) => Math.round(v / unit)) }))
+    .sort((a, b) => b.size - a.size);
+  // 背景として抜いた所のうち、真っ白でない点（ごく薄い色の塗り・陰影が背景と一緒に抜けた）を数える
+  let faint = 0;
+  const isFaint = (k) => back[k] && Math.min(px[k * 3], px[k * 3 + 1], px[k * 3 + 2]) < 249;
+  for (let k = 0; k < W0 * H0; k++) if (isFaint(k)) faint++;
+  auditReport[plate.id] = { main, faint: +(faint / main).toFixed(4), dropped: dropped.slice(0, 12) };
+  fs.mkdirSync(AUDIT, { recursive: true });
+  const outPx = Buffer.alloc(W0 * H0 * 3);
+  for (let k = 0; k < W0 * H0; k++) {
+    const id = label[k];
+    let c = [px[k * 3], px[k * 3 + 1], px[k * 3 + 2]];
+    if (isFaint(k)) c = [255, 120, 0];
+    else if (back[k]) c = mix(c, [190, 220, 255], 0.55);
+    else if (!kept.has(id)) c = sizes[id] >= Math.max(300, main * 0.002) ? [230, 0, 200] : mix(c, [255, 160, 240], 0.6);
+    outPx.set(c.map(Math.round), k * 3);
+  }
+  const scale = Math.min(1, 1000 / Math.max(W0, H0));
+  await sharp(outPx, { raw: { width: W0, height: H0, channels: 3 } }).resize(Math.round(W0 * scale), Math.round(H0 * scale)).png().toFile(path.join(AUDIT, `${plate.id}.png`));
 }
 
 /** 確認画像（ラベルの点に番号と名前） */
@@ -587,6 +645,11 @@ for (const organ of organs) {
     }
     await writePlate(plate, { W, H, pixels, labels }, 88);
   }
+}
+if (audit) {
+  const file = path.join(AUDIT, "report.json");
+  const before = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : {};
+  fs.writeFileSync(file, `${JSON.stringify({ ...before, ...auditReport }, null, 1)}\n`);
 }
 // 今の organs.json に無い図は index から除く
 const known = new Set(organs.flatMap((organ) => (organ.plates ?? []).map((plate) => plate.id)));
