@@ -1692,6 +1692,41 @@ a.set-profile .set-value::after { content: " ›"; color: #b9b3a7; font-weight: 
 }
 .drill-picked-x:hover { background: rgb(0 0 0 / 0.06); color: var(--ink); }
 .drill-picked-more { margin: 8px 0 0; font-size: 13.5px; color: var(--muted); }
+/* どこから選ぶか（学んだ語から／すべての語から）の大きなカード2枚。選んでいる方を色と✓で強調 */
+.drill-modes { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 0 0 16px; }
+.drill-mode {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  min-height: 74px; padding: 12px 14px; border: 2px solid var(--line); border-radius: 16px;
+  background: var(--surface); color: var(--ink); text-align: left; font: inherit; cursor: pointer;
+  box-shadow: 0 1px 2px rgb(43 42 39 / 0.04), 0 10px 24px -18px rgb(43 42 39 / 0.3); -webkit-tap-highlight-color: transparent;
+}
+.drill-mode:not(:disabled):not(.is-on):hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.drill-mode:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+.drill-mode.is-on {
+  border-color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+  box-shadow: 0 0 0 1px var(--accent) inset, 0 10px 22px -14px var(--accent);
+}
+.drill-mode:disabled { opacity: 0.6; cursor: default; box-shadow: none; border-style: dashed; }
+.drill-mode-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+.drill-mode.is-on .drill-mode-icon { background: var(--accent); color: var(--accent-ink); }
+.drill-mode-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.drill-mode-text { display: grid; gap: 3px; min-width: 0; }
+.drill-mode-text b { font-size: 16.5px; line-height: 1.35; }
+.drill-mode.is-on .drill-mode-text b { color: var(--accent); }
+.drill-mode-text span { font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+.drill-mode-line { display: block; }
+.drill-mode-check {
+  display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; box-sizing: border-box;
+  font-size: 14px; font-weight: 800; color: var(--accent-ink); background: var(--accent);
+}
+.drill-mode-check:empty { background: none; border: 2px solid #c9c3b5; }
+@media (min-width: 560px) { .drill-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.drill-modes.is-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+.drill-modes.is-compact .drill-mode { min-height: 52px; gap: 8px; padding: 8px 10px; border-radius: 14px; }
+.drill-modes.is-compact .drill-mode-icon { width: 30px; height: 30px; border-radius: 9px; }
+.drill-modes.is-compact .drill-mode-icon svg { width: 18px; height: 18px; }
+.drill-modes.is-compact .drill-mode-text b { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.drill-modes.is-compact .drill-mode-check { width: 20px; height: 20px; font-size: 12px; }
 .drill-quick { padding: 0 2px; }
 .drill-preset { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; font-weight: 600; cursor: pointer; }
 .drill-preset.on { background: var(--accent); border-color: var(--accent); }

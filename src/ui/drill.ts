@@ -14,6 +14,9 @@ import { ask, showPanel } from "./quiz";
 import { card, choiceRow, foot, group, segmented } from "./settings-kit";
 import { ICONS } from "./study-hub";
 
+/** 「すべての語から選ぶ」の絵（4つのます） */
+const ALL_ICON = `<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>`;
+
 /** 問題の数（0 は全部） */
 export const DRILL_COUNTS = [10, 20, 40, 0];
 /** 1問にかかるおよその秒数（「約○分」の目安） */
@@ -461,19 +464,39 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
      * ①範囲（docs/普段使い.md「演習の範囲の選びやすさ」）。初めは何も選ばない。
      * 一覧の上に「選んでいる範囲」（レッスンごと。×で外す）と「よく使う範囲」、その下に検索と系統の一覧。
      * 系統（#/drill/custom/1/<系統ID>）→ レッスンの語（#/drill/custom/1/<系統ID>/<レッスンID>）と1段ずつ開いて選ぶ。
-     * 「学んだ所だけ／すべて」は一覧に出すものの切り替え（学んだ所だけのときは、レッスンや系統を選ぶと学んだ語だけが入る）
+     * 一番上の「学んだ語から選ぶ／すべての語から選ぶ」は一覧に出すものの切り替え（学んだ語からのときは、レッスンや系統を選ぶと学んだ語だけが入る）
      */
     function rangeStep(): (Node | string)[] {
       const onlyLearned = cond.view === "learned" && learnedTerms.length > 0;
       const shownOf = (unit: Unit) => (onlyLearned ? unit.terms.filter((term) => learnedAt.has(term.id)) : unit.terms);
       const unitsOf = (systemId: string) => units.filter((unit) => unit.system === systemId && shownOf(unit).length);
       const swatch = (color: string) => h("span", { class: "swatch", style: `background:${color}`, "aria-hidden": "true" });
-      const views = learnedTerms.length ? h("div", { class: "drill-seg" }, segmented("一覧に出すもの",
-        [{ value: "learned" as const, label: "学んだ所だけ" }, { value: "all" as const, label: "すべて" }],
-        onlyLearned ? "learned" : "all", (value) => {
-          cond.view = value;
-          again();
-        })) : "";
+      const courseSystems = systems.filter((item) => units.some((unit) => unit.system === item.id && unit.terms.length));
+      const learnedLessons = units.filter((unit) => unit.terms.some((term) => learnedAt.has(term.id))).length;
+      /**
+       * どこから選ぶか（学んだ語から／すべての語から）の大きなカード2枚。いま選んでいる方は色と✓で強調する。
+       * 気付きにくいという声で、範囲の画面の一番上に置く（系統のページは小さめに）。学んだ語が無いときは「学んだ語から」を押せない
+       */
+      const modeCards = (compact = false) => {
+        const card2 = (value: "learned" | "all", icon: string, title: string, sub: string, disabled: boolean) => {
+          const on = (value === "learned") === onlyLearned && !disabled;
+          const mark = h("span", { class: "drill-mode-icon", "aria-hidden": "true" });
+          mark.innerHTML = `<svg viewBox="0 0 24 24">${icon}</svg>`;
+          return h("button", {
+            class: `drill-mode${on ? " is-on" : ""}`, type: "button", disabled, "aria-pressed": String(on),
+            onClick: () => {
+              if (on) return;
+              cond.view = value;
+              again();
+            },
+          }, mark, h("span", { class: "drill-mode-text" }, h("b", {}, compact ? title.replace(/から選ぶ$/, "") : title), compact ? "" : h("span", {}, ...sub.split("\n").map((line) => h("span", { class: "drill-mode-line" }, line)))),
+          h("span", { class: "drill-mode-check", "aria-hidden": "true" }, on ? "✓" : ""));
+        };
+        return h("div", { class: `drill-modes${compact ? " is-compact" : ""}`, role: "group", "aria-label": "どこから選ぶか" },
+          card2("learned", ICONS.lessons, "学んだ語から選ぶ",
+            learnedTerms.length ? `レッスンで学んだ ${learnedTerms.length}語・${learnedLessons}レッスン` : "まだありません。\nレッスンを1つ終えると選べます", !learnedTerms.length),
+          card2("all", ALL_ICON, "すべての語から選ぶ", `${courseSystems.length}系統・${terms.length.toLocaleString()}語\nまだ学んでいない語も選べます`, false));
+      };
 
       /** 押すと範囲をそれに入れ替えるチップ。いまの範囲と同じなら濃くする */
       const presetChip = (label: string, count: string, isOn: () => boolean, onClick: () => void) => {
@@ -566,12 +589,12 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
         });
 
         return [
+          modeCards(),
           picked,
           presets.length ? h("h3", { class: "list-title" }, "よく使う範囲") : "",
           presets.length ? h("div", { class: "chip-list drill-quick" }, ...presets) : "",
           presets.length ? h("p", { class: "set-foot drill-quick-foot" }, "押すと、範囲がそれに入れ替わります。") : "",
-          h("h3", { class: "list-title" }, "系統・レッスンから選ぶ"),
-          views,
+          h("h3", { class: "list-title" }, onlyLearned ? "系統・レッスンから選ぶ（学んだ語）" : "系統・レッスンから選ぶ（すべての語）"),
           search,
           results,
           browse,
@@ -629,7 +652,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
         return [
           h("a", { class: "drill-back", href: "#/drill/custom" }, "‹ 選んでいる範囲・系統の一覧"),
           h("h3", { class: "drill-place" }, swatch(item.color), item.ja),
-          views,
+          modeCards(true),
           ...(list.length ? [
             h("ul", { class: "home-card pick-list drill-whole" }, h("li", {}, h("label", { class: "pick-row" },
               checkbox(idsOf(list.flatMap(shownOf)), `${item.ja}をすべて`, allCounter),
@@ -637,7 +660,7 @@ export async function drill(ctx: AppContext, mode: string): Promise<void> {
               h("span", { class: "pick-meta" }, allCounter)))),
             ...sections,
             h("p", { class: "set-foot" }, "レッスンの名前を押すと丸ごと選びます。1語ずつ選ぶときは右の「語 ›」。"),
-          ] : [h("p", { class: "home-card home-note drill-empty" }, `${item.ja}で学んだレッスンはまだありません。上の「すべて」にすると、学んでいない語も選べます。`)]),
+          ] : [h("p", { class: "home-card home-note drill-empty" }, `${item.ja}で学んだレッスンはまだありません。上の「すべての語から選ぶ」にすると、学んでいない語も選べます。`)]),
         ];
       }
 
