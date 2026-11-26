@@ -4,6 +4,7 @@ import { exportBackup, importBackup, isBackup } from "../backup";
 import { systemById, terms } from "../content";
 import { beginnerTermCount, standardTermCount } from "../course";
 import { db, nowIso, type Facet } from "../db";
+import { buildLabel, currentBuild, fetchLatestBuild, sameBuild, updateToLatest } from "../app-version";
 import { canSaveOffline, offlineFiles, savedFiles, saveFiles } from "../offline";
 import { h } from "../dom";
 import {
@@ -39,7 +40,7 @@ export async function settingsScreen(ctx: AppContext, arg = ""): Promise<void> {
   ctx.panel.replaceChildren(h("div", { class: "set-page" },
     h("div", { class: "tab-head" }, h("h2", {}, "設定")),
     await tabIntro("settings"),
-    accountSection(ctx.signal), profile, box, offlineSection(ctx), backup, aboutSection(),
+    accountSection(ctx.signal), profile, box, versionSection(ctx.signal), offlineSection(ctx), backup, aboutSection(),
   ));
   // ほかの端末の記録を受けたら、コース・目的・名前と所属などを描き直す
   window.addEventListener("anatomy:synced", async () => {
@@ -67,6 +68,47 @@ function profileSection(profile: Awaited<ReturnType<typeof loadProfile>>): HTMLE
         h("span", { class: "set-sub" }, [profile?.university, profile?.faculty, profile?.grade].filter(Boolean).join(" · ") || "所属は未入力")),
       h("span", { class: "set-value" }, "直す"))),
     foot("名前と所属は管理者に送られ、利用者の集計に使います。学習の記録は集計に使いません（Google でログインしたときだけ、端末をまたぐためにアカウントに保存します）。"));
+}
+
+/**
+ * アプリの版: 開いている版と公開先の最新版を比べ、ボタンで最新版にする（src/app-version.ts）。
+ * 内容をこまめに直して公開しても、ホーム画面のアプリが前の版のまま開くことがあるため（2026-11-26）
+ */
+function versionSection(signal: AbortSignal): HTMLElement {
+  const latest = h("span", {}, "確かめています…");
+  const status = h("p", { class: "set-foot set-status", "aria-live": "polite" });
+  const button = actionRow("最新版に更新", { disabled: true }) as HTMLButtonElement;
+  const label = button.querySelector(".set-label")!;
+  const busy = (text: string) => {
+    status.textContent = text;
+    button.disabled = true;
+  };
+  button.onclick = () => void updateToLatest(busy);
+  const check = async () => {
+    latest.textContent = "確かめています…";
+    const build = await fetchLatestBuild(signal);
+    if (signal.aborted) return;
+    button.disabled = false;
+    if (!build) {
+      latest.textContent = "確かめられません";
+      label.textContent = "読み込み直す";
+      status.textContent = "公開先につながりませんでした。通信できる所で開き直すと確かめられます。";
+    } else if (sameBuild(build, currentBuild)) {
+      latest.textContent = "最新です";
+      label.textContent = "最新版です（読み込み直す）";
+      status.textContent = "";
+    } else {
+      latest.textContent = buildLabel(build);
+      label.textContent = "最新版に更新";
+      status.textContent = "新しい版があります。押すと取り込んで開き直します。学んだ記録はそのまま残ります。";
+    }
+  };
+  void check();
+  return group("アプリの版", {},
+    card(valueRow("開いている版", buildLabel(currentBuild)), valueRow("公開先の最新版", latest), button),
+    status,
+    foot("ふだんは、アプリを開いたときや画面に戻ってきたときに新しい版を確かめ、レッスンや演習の途中でなければ自動で切りかえます。切りかわらないときはここで更新してください。公開したばかりのときは、行きわたるまで数分かかることがあります。"),
+  );
 }
 
 /** オフライン: 3Dと音声をまとめて保存する（ふだんは開いた系統・聞いた音声だけが保存される） */

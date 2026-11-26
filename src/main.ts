@@ -29,6 +29,7 @@ import { settingsScreen } from "./ui/settings-screen";
 import { setupSplitter } from "./ui/splitter";
 import { stageTip } from "./ui/stage-tip";
 import { AnatomyViewer } from "./viewer";
+import { clearFreshMark } from "./app-version";
 
 const stage = document.getElementById("stage")!;
 const panel = document.getElementById("panel")!;
@@ -186,6 +187,7 @@ document.addEventListener("keydown", (event) => {
 // 新しい版が届いたら（Service Worker が入れかわったら）、見るだけの画面（ホーム・臓器の図・図鑑・レッスン一覧など）にいるときか、
 // そこへ移るときに読み直して切りかえる。ホームだけにすると、臓器の図の中を行き来している間は古い版のまま（新しい平面図が出ない）だった。
 // レッスン・復習・演習・骨学試験の途中では読み直さない（レッスンの進み具合は終わるまで保存しないため）。
+clearFreshMark();
 let updated = false;
 const RELOADABLE = new Set(["", "study", "look", "records", "organs", "explore", "motions", "lessons", "progress", "specimen", "cut", "settings", "credits", "guide", "print"]);
 const canReload = () => RELOADABLE.has(location.hash.split("/")[1] ?? "");

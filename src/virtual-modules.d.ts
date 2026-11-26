@@ -7,3 +7,6 @@ declare module "virtual:organs-detail" {
   const data: { organs: unknown[] };
   export default data;
 }
+
+// vite.config.ts の define で入るアプリの版（src/app-version.ts）
+declare const __APP_BUILD__: { commit: string; builtAt: string };

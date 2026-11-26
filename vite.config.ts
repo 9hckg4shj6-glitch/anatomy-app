@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import type { Plugin } from "vite";
@@ -70,7 +71,33 @@ function organSplit(): Plugin {
   };
 }
 
+/**
+ * アプリの版（設定の「アプリの版」、src/app-version.ts）。ビルドした時刻と git のコミットで1つに決め、
+ * JS に __APP_BUILD__ として入れ、同じものを dist/version.json に書く。version.json はプリキャッシュしない（globIgnores）ので、
+ * 開いている版と公開先の最新版を比べられる
+ */
+function commitOf(): string {
+  if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA.slice(0, 7);
+  try {
+    return execSync("git rev-parse --short HEAD", { cwd: import.meta.dirname, stdio: ["ignore", "pipe", "ignore"] }).toString().trim();
+  } catch {
+    return "local";
+  }
+}
+const BUILD = { commit: commitOf(), builtAt: new Date().toISOString() };
+
+function versionFile(): Plugin {
+  return {
+    name: "anatomy-version-file",
+    apply: "build",
+    generateBundle() {
+      this.emitFile({ type: "asset", fileName: "version.json", source: JSON.stringify(BUILD) });
+    },
+  };
+}
+
 export default defineConfig({
+  define: { __APP_BUILD__: JSON.stringify(BUILD) },
   base: process.env.GITHUB_ACTIONS ? "/anatomy-app/" : "/",
   // three.js（約600KB）と用語データ（2,500語と語根カード）を1つにまとめているため、既定の500KBの警告を上げる。
   // ソースマップは公開版に入れない（5.7MB あった。2026-11-24）。骨学試験・使い方・動きの図鑑・臓器の図は開いたときに読む別のファイル（src/main.ts）
@@ -92,6 +119,7 @@ export default defineConfig({
   plugins: [
     pinWriter(),
     organSplit(),
+    versionFile(),
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
@@ -122,7 +150,8 @@ export default defineConfig({
         // 平面図のラベルの位置（plates/index.json）はプリキャッシュのまま。平面図ごとの小さな絵（plates/thumbs/*.webp、計 0.6MB）も
         // 開いたときに保存する（平面図と同じファイル名＝ハッシュ入り。scripts/organ-thumbs.mjs）
         globPatterns: ["**/*.{html,js,css,json,svg,png,webp,woff2}"],
-        globIgnores: ["models/*.glb", "audio/*.m4a", "plates/*.webp", "plates/thumbs/*.webp", "guide/*.webp"],
+        // version.json は公開先の最新版を確かめるためのものなので、保存しない（src/app-version.ts）
+        globIgnores: ["version.json", "models/*.glb", "audio/*.m4a", "plates/*.webp", "plates/thumbs/*.webp", "guide/*.webp"],
         // 語の内容（content/terms）と臓器の図（content/organs.json）は JS に入るので、語や図が増えると既定の 2 MiB を超える。
         // 超えるとオフラインで開けなくなる（2026-11-20 に JS が 4.2MB になり 4 MiB を超えたので 6 MiB に）
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
