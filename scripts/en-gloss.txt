@@ -2200,3 +2200,19 @@ VIII脳神経|cranial nerve VIII
 β細胞|beta cell
 α細胞|alpha cell
 鈎状突起%膵|uncinate process
+
+# 手引きにあって語の無かった骨（変異の骨・種子骨、2026-11-26）
+鼓室骨|tympanic bone
+頭頂切痕|parietal notch
+ブレグマ骨|bregmatic bone
+骨形成不全症|osteogenesis imperfecta
+先祖返り|atavism
+切歯縫合|incisive suture
+前上顎骨|premaxilla
+口唇裂|cleft lip
+軟骨性骨化|endochondral ossification
+膜性骨|membrane bone
+骨化中心|ossification center
+含気骨|pneumatic bone
+不規則形骨|irregular bone
+胎生期|fetal period

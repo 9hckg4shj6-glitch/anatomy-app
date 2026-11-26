@@ -76,7 +76,8 @@
     "round-window": 1.8,
     "scala-vestibuli": 13.4,
     "cochlear-duct": 13.8,
-    "scala-tympani": 14
+    "scala-tympani": 14,
+    "sesamoid-bones-of-hand": 12.8
   },
   "seePlate": {
     "sinuatrial-node": "heart-conduction",

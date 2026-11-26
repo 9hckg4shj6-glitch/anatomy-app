@@ -1,5 +1,6 @@
 import indexJson from "../public/models/index.json";
-import { termById } from "../src/content";
+import { pins, termById, terms } from "../src/content";
+import { landmarkAt, nearbyLandmarks, nestedLandmarks } from "../src/landmarks";
 import { lookup } from "../src/search";
 import { SPECIMEN_PIECES } from "../src/specimen";
 
@@ -35,9 +36,11 @@ describe("骨を束ねる語", () => {
     for (const element of column) expect(bones.has(element) || discs.has(element), element).toBe(true);
   });
 
-  it("自由上肢骨は片側30個（左右60）で、上肢帯と合わせると上肢の骨64本", () => {
-    expect(elementsOf("bones-of-free-upper-limb").size).toBe(60);
-    expect(sorted(elementsOf("bones-of-free-upper-limb", "pectoral-girdle"))).toEqual(sorted(elementsOf(...piecesOf("upper"))));
+  it("自由上肢骨は片側30個（左右60）と手の種子骨で、上肢帯と合わせると上肢の骨64本と種子骨", () => {
+    const free = elementsOf("bones-of-free-upper-limb");
+    const sesamoid = elementsOf("sesamoid-bones-of-hand");
+    expect(free.size - sesamoid.size).toBe(60);
+    expect(sorted(elementsOf("bones-of-free-upper-limb", "pectoral-girdle"))).toEqual(sorted(elementsOf(...piecesOf("upper"), "sesamoid-bones-of-hand")));
   });
 
   it("自由下肢骨は片側30個（左右60）と足の種子骨で、寛骨と合わせると下肢の骨62本と種子骨", () => {
@@ -51,6 +54,46 @@ describe("骨を束ねる語", () => {
     expect(sorted(elementsOf("auditory-ossicles"))).toEqual(sorted(elementsOf("malleus", "incus", "stapes")));
     expect(elementsOf("auditory-ossicles").size).toBe(6);
   });
+
+  it("種子骨は膝蓋骨・豆状骨と、手（母指の付け根に2個）と足（母趾の付け根に2個）の種子骨", () => {
+    expect(sorted(elementsOf("sesamoid-bones"))).toEqual(sorted(elementsOf("patella", "pisiform", "sesamoid-bones-of-foot", "sesamoid-bones-of-hand")));
+    // 手の種子骨は模式の形（scripts/sesamoid/hand.mjs）で、左右の橈側・尺側の4個。骨格の GLB に入る
+    expect(elementsOf("sesamoid-bones-of-hand").size).toBe(4);
+    expect(index.terms["sesamoid-bones-of-hand"]?.system).toBe("skeletal");
+    expect(termById.get("sesamoid-bones-of-hand")?.schematic).toBe(true);
+    // 206本（わたしの標本）には数えない
+    expect(SPECIMEN_PIECES.some((item) => item.term.startsWith("sesamoid"))).toBe(false);
+  });
+});
+
+/**
+ * 骨学実習の手引きにあって語の無かった変異の骨（docs/設計.md「手引きにあって語の無かった骨」）。3Dに形が無いので、現れる場所をピンで示す。
+ * 同じ所のふつうの部位（ラムダ縫合・プテリオンなど）とは4択に並べず、3Dをタップしたときはふつうの部位を選ぶ
+ */
+describe("変異の骨のピン", () => {
+  const VARIANTS = ["sutural-bones", "fontanelle-bones", "interparietal-bone", "inca-bone", "epipteric-bone", "parietal-notch-bone", "bipartite-zygomatic-bone", "incisive-bone", "cervical-rib", "lumbar-rib"];
+  const SAME_PLACE: [string, string][] = [
+    ["sutural-bones", "lambdoid-suture"],
+    ["fontanelle-bones", "bregma"],
+    ["fontanelle-bones", "lambda"],
+    ["epipteric-bone", "pterion"],
+    ["parietal-notch-bone", "squamous-suture"],
+  ];
+  const term = (id: string) => termById.get(id)!;
+
+  it.each(VARIANTS)("%s は骨の部位で、ピンがある", (id) => {
+    expect(term(id).of).toBeTruthy();
+    expect(pins[id]?.at.length).toBeGreaterThan(0);
+  });
+
+  it.each(SAME_PLACE)("%s と %s は4択に並ばず、その点をタップするとふつうの部位を選ぶ", (variant, usual) => {
+    expect(nestedLandmarks(term(variant), term(usual))).toBe(true);
+    expect(nearbyLandmarks(usual)).not.toContain(variant);
+    // アプリ（src/ui/context.ts の termAt など）と同じく語の並び順で候補を渡す。同じ近さなら先に並ぶふつうの部位になる
+    const candidates = terms.filter((other) => other.id === variant || other.id === usual);
+    expect(candidates[0].id).toBe(usual);
+    for (const point of pins[usual].at) expect(landmarkAt(point as [number, number, number], candidates)?.id).toBe(usual);
+  });
 });
 
 describe("骨の別の呼び方で引く", () => {
@@ -63,6 +106,10 @@ describe("骨の別の呼び方で引く", () => {
     ["背骨", "vertebral-column"],
     ["尾てい骨", "coccyx"],
     ["趾骨", "phalanges-foot"],
+    ["日本骨", "bipartite-zygomatic-bone"],
+    ["肋硬骨", "ribs"],
+    ["鼓室骨", "tympanic-part-of-temporal-bone"],
+    ["顎間骨", "incisive-bone"],
   ])("%s → %s", (query, id) => {
     const [first] = lookup(query, { all: true });
     expect(first?.term.id).toBe(id);

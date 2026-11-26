@@ -3,8 +3,9 @@
 // - 眼球の中（EY_…、scripts/eye/）: 瞳孔・後眼房・黄斑・中心窩・視神経円板
 // - 喉頭の中（LX_…、scripts/larynx/）: 声帯ひだ・前庭ひだ・声門裂・喉頭室・声門下腔
 // - 鼻中隔と硬口蓋（PL_…、scripts/palate/）: 鼻中隔・硬口蓋の粘膜と、それを除いた上の歯肉
+// - 手の種子骨（SH_…、scripts/sesamoid/hand.mjs）: 母指の中手指節関節の手のひら側の2個（模式の楕円体）
 // BodyParts3D の部品と同じ名前の部品（上の歯肉・眼球の中で切りそろえた視神経）は、その名前の BodyParts3D の部品をすべて置きかえる（readElements）。
-// 作り直し方: node scripts/<eye|larynx|palate>/export.mjs && python3 scripts/<eye|larynx|palate>/<eye|larynx|palate>.py
+// 作り直し方: node scripts/<eye|larynx|palate>/export.mjs && python3 scripts/<eye|larynx|palate>/<eye|larynx|palate>.py、手の種子骨は node scripts/sesamoid/hand.mjs
 // ボクセルから作った面は点が多いので、読むときに ERROR（m）のずれまで減らす。
 import fs from "node:fs";
 import path from "node:path";
@@ -16,12 +17,15 @@ const SETS = [
   { file: "data-raw/eye/parts.json", error: 0.00002, nerve: 0.00006 },
   { file: "data-raw/larynx/parts.json", error: 0.00004 },
   { file: "data-raw/palate/parts.json", error: 0.00008 },
+  { file: "data-raw/sesamoid/parts.json", error: 0.00002 },
 ];
 /** GLB に書くときの形の減らし方（m）。眼の板と喉頭の粘膜は薄いので、系統の決まり（0.1mm）より細かくする。ほかは null */
 export function madeDetail(id) {
   if (id.startsWith("EY_optic_nerve")) return null;
   if (id.startsWith("EY_")) return 0.00002;
   if (id.startsWith("LX_")) return 0.00003;
+  // 手の種子骨は直径 4mm ほどの楕円体なので、骨格の決まり（0.1mm）で減らすと角張る
+  if (id.startsWith("SH_")) return 0.00002;
   return null;
 }
 

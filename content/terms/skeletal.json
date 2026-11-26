@@ -6,7 +6,7 @@
       "title": "脊柱と胸郭",
       "group": "体幹",
       "intro": [
-        "成人の全身（whole body）の骨（bone）は、ふつう206個と数える。頭蓋（skull）23（舌骨（hyoid bone）を含む）・耳小骨（auditory ossicles）6・脊柱（vertebral column）26（椎骨（vertebra）24と仙骨（sacrum）・尾骨（coccyx））・胸骨（sternum）1・肋骨（ribs）24・上肢（upper limb）64・下肢（lower limb）62。種子骨（sesamoid bone）は膝蓋骨（patella）のほかは数えず、仙骨や尾骨は癒合（fusion）したものを1個とするので、人や数え方によって少し違う。頭蓋・脊柱・胸郭（thoracic cage）を体軸骨格（axial skeleton）、上肢と下肢の骨（上肢帯（pectoral girdle）と下肢帯（pelvic girdle）を含む）を付属肢骨格（appendicular skeleton）と言う。",
+        "成人の全身（whole body）の骨（bone）は、ふつう206個と数える。頭蓋（skull）23（舌骨（hyoid bone）を含む）・耳小骨（auditory ossicles）6・脊柱（vertebral column）26（椎骨（vertebra）24と仙骨（sacrum）・尾骨（coccyx））・胸骨（sternum）1・肋骨（ribs）24・上肢（upper limb）64・下肢（lower limb）62。種子骨（sesamoid bone）は膝蓋骨（patella）と豆状骨（pisiform）のほかは数えず、仙骨や尾骨は癒合（fusion）したものを1個とするので、人や数え方によって少し違う。頭蓋・脊柱・胸郭（thoracic cage）を体軸骨格（axial skeleton）、上肢と下肢の骨（上肢帯（pectoral girdle）と下肢帯（pelvic girdle）を含む）を付属肢骨格（appendicular skeleton）と言う。",
         "脊柱は、24個の椎骨（頚椎（cervical vertebrae）7・胸椎（thoracic vertebrae）12・腰椎（lumbar vertebrae）5）と、仙骨（5個の仙椎（sacral vertebra）が癒合）・尾骨（3〜5個の尾椎（coccygeal vertebra）が癒合）でできる。体重を支える柱なので、下の椎骨ほど大きい。「脊椎（spine）」という解剖学用語（anatomical term）は無く、椎骨・脊柱という。",
         "横から見ると、頚（neck）と腰（lower back）は前へ（前弯（lordosis））、胸（chest）と仙骨は後ろへ（後弯（kyphosis））ゆるく曲がる。胸と仙骨の後弯は胎児（fetus）のときからあり、腰の前弯は歩き始める1歳ごろからできる（直立二足歩行（upright bipedalism）への適応）。",
         "胸郭は胸椎12個・肋骨12対・胸骨1個でできる籠。胸郭上口（superior thoracic aperture）は第1胸椎（first thoracic vertebra）・第1肋骨（first rib）・胸骨柄（manubrium of sternum）で、胸郭下口（inferior thoracic aperture）は第12胸椎（twelfth thoracic vertebra）・第12肋骨（twelfth rib）・肋骨弓（costal arch）・剣状突起（xiphoid process）で囲まれる。ヒトの胸郭は前後に平たい（四足の動物では左右に平たい）。"
@@ -112,11 +112,11 @@
           "note": "胸骨（sternum）のいちばん下の小さな突起（process）。大人でも大部分が軟骨（cartilage）で、完全に骨（bone）になるのは高齢になってから。みぞおち（epigastric fossa）で触れる。"
         },
         {
-          "id": "ribs", "ja": "肋骨", "yomi": "ろっこつ", "en": "ribs", "enAlt": ["rib"], "la": "costae",
+          "id": "ribs", "ja": "肋骨", "jaAlt": ["肋硬骨"], "yomi": "ろっこつ", "en": "ribs", "enAlt": ["rib"], "la": "costae",
           "parts": ["* rib"], "level": 1,
           "kanji": "肋＝あばら",
           "etym": "ラテン語 costa「肋骨」（costal 肋骨の）",
-          "note": "左右12対の弓状の骨（bone）。後ろは胸椎（thoracic vertebrae）と、前は肋軟骨（costal cartilages）を介して胸骨（sternum）とつながり胸郭（thoracic cage）をつくる。弓のように曲がるうえにねじれている。第7肋骨（seventh rib）あたりが最も長い。骨折（fracture）は第4〜第9肋骨（fourth to ninth ribs）に多い（高齢者ではせきで折れることもある）。肋骨頚（neck of rib）を軸にわずかに回るだけで前の端が大きく上下し、呼吸（respiration）で胸郭が広がる。"
+          "note": "左右12対の弓状の骨（bone）。もとは骨の部分（肋硬骨（bony part of rib））と前の肋軟骨（costal cartilages）を合わせた名前だが、ふつうは骨の部分（狭い意味の肋骨＝肋硬骨）を指す（3Dも肋硬骨）。後ろは胸椎（thoracic vertebrae）と、前は肋軟骨を介して胸骨（sternum）とつながり胸郭（thoracic cage）をつくる。弓のように曲がるうえにねじれている。第7肋骨（seventh rib）あたりが最も長い。骨折（fracture）は第4〜第9肋骨（fourth to ninth ribs）に多い（高齢者ではせきで折れることもある）。肋骨頚（neck of rib）を軸にわずかに回るだけで前の端が大きく上下し、呼吸（respiration）で胸郭が広がる。"
         },
         {
           "id": "costal-cartilages", "ja": "肋軟骨", "yomi": "ろくなんこつ", "en": "costal cartilages", "enAlt": ["costal cartilage"], "la": "cartilagines costales",
@@ -519,7 +519,7 @@
           "parts": ["seventh cervical vertebra"], "level": 2,
           "kanji": "隆（たかく盛り上がる）椎骨",
           "etym": "prominens ← ラテン語「突き出た」→ 英語 prominent",
-          "note": "第7頚椎（seventh cervical vertebra）。棘突起（spinous process）が長く、首（neck）を前に曲げると首の付け根でいちばん出っぱる。背骨（backbone）を数えるときの目印。"
+          "note": "第7頚椎（seventh cervical vertebra）。棘突起（spinous process）が長く、首（neck）を前に曲げると首の付け根でいちばん出っぱる。背骨（backbone）を数えるときの目印。横突起（transverse process）の前の半分が離れて小さな肋骨（ribs）（頚肋（cervical rib））になることがある。"
         }
       ]
     },
@@ -528,7 +528,7 @@
       "title": "頚椎・胸椎・腰椎の見分け方",
       "group": "体幹",
       "intro": [
-        "頚椎（cervical vertebrae）・胸椎（thoracic vertebrae）・腰椎（lumbar vertebrae）の見分け方: 頚椎は横突起（transverse process）に横突孔（foramen transversarium）がある。胸椎は椎体（vertebral body）の横と横突起に、肋骨（ribs）と関節（joint）する面（肋骨窩（costal facet）・横突肋骨窩（transverse costal facet））がある。腰椎は椎体が大きく、横に張り出す突起（process）は肋骨にあたる肋骨突起（costal process）で、上関節突起（superior articular process）の後ろに乳頭突起（mammillary process）がある。",
+        "頚椎（cervical vertebrae）・胸椎（thoracic vertebrae）・腰椎（lumbar vertebrae）の見分け方: 頚椎は横突起（transverse process）に横突孔（foramen transversarium）がある。胸椎は椎体（vertebral body）の横と横突起に、肋骨（ribs）と関節（joint）する面（肋骨窩（costal facet）・横突肋骨窩（transverse costal facet））がある。腰椎は椎体が大きく、横に張り出す突起（process）は肋骨にあたる肋骨突起（costal process）で、上関節突起（superior articular process）の後ろに乳頭突起（mammillary process）がある。頚椎の横突起の前の部分と腰椎の肋骨突起は肋骨にあたる部分で、これが離れて小さな肋骨になる変異が頚肋（cervical rib）（第7頚椎（seventh cervical vertebra））と腰肋（lumbar rib）（第1腰椎（first lumbar vertebra））。",
         "環椎（atlas）（第1頚椎（first cervical vertebra））だけは椎体が無く、前弓（anterior arch）・後弓（posterior arch）と左右の外側塊（lateral mass）でできた輪の形。椎体にあたる部分は軸椎（axis）へ移って歯突起（dens）になった。"
       ],
       "terms": [
@@ -537,7 +537,7 @@
           "of": "lumbar-vertebrae", "parts": ["third lumbar vertebra"], "level": 2, "from": [-0.3, 0.4, -1],
           "kanji": "肋骨にあたる突起",
           "etym": "costal ← ラテン語 costa「肋骨」",
-          "note": "腰椎（lumbar vertebrae）の椎弓（vertebral arch）から左右へ平たく張り出す突起（process）。横突起（transverse process）のように見えるが、肋骨（ribs）にあたる部分が癒合（fusion）したもの（本来の横突起は根もとの副突起（accessory process））。第4腰椎（fourth lumbar vertebra）のものが最も長い（第3腰椎（third lumbar vertebra）とする本もある）。大腰筋（psoas major）が起こり、腰方形筋（quadratus lumborum）が付く。英語では transverse process と呼ぶことが多い。（図は第3腰椎）"
+          "note": "腰椎（lumbar vertebrae）の椎弓（vertebral arch）から左右へ平たく張り出す突起（process）。横突起（transverse process）のように見えるが、肋骨（ribs）にあたる部分が癒合（fusion）したもの（本来の横突起は根もとの副突起（accessory process））。第4腰椎（fourth lumbar vertebra）のものが最も長い（第3腰椎（third lumbar vertebra）とする本もある）。大腰筋（psoas major）が起こり、腰方形筋（quadratus lumborum）が付く。英語では transverse process と呼ぶことが多い。第1腰椎（first lumbar vertebra）のものが離れて小さな肋骨のようになったものを腰肋（lumbar rib）という。（図は第3腰椎）"
         },
         {
           "id": "accessory-process", "ja": "副突起", "yomi": "ふくとっき", "en": "accessory process", "la": "processus accessorius",
@@ -603,6 +603,20 @@
           "of": "cervical-vertebrae", "parts": ["sixth cervical vertebra"], "level": 3,
           "kanji": "頚動脈のそばの結節",
           "note": "第6頚椎（sixth cervical vertebra）の横突起（transverse process）の前結節（anterior tubercle）。大きく、すぐ前を総頚動脈（common carotid artery）が通るので、首（neck）の横で総頚動脈をこれに押しつけて止血（hemostasis）できる。頚椎（cervical vertebrae）の横突起は横突孔（foramen transversarium）をはさんで、前結節（肋骨（ribs）にあたる部分）と後結節（posterior tubercle）（本来の横突起）に分かれる。"
+        },
+        {
+          "id": "cervical-rib", "ja": "頚肋", "yomi": "けいろく", "en": "cervical rib", "la": "costa cervicalis",
+          "of": "vertebra-prominens", "level": 3,
+          "kanji": "頚椎にできた肋骨",
+          "etym": "cervical ← ラテン語 cervix「頚」＋ rib「肋骨」",
+          "note": "第7頚椎（seventh cervical vertebra）の横突起（transverse process）の前の半分（肋骨（ribs）にあたる部分）が離れて、小さな肋骨になったもの。日本人では0.1%前後とまれで、先祖返り（atavism）と考えられる（頚椎（cervical vertebrae）の横突起の前結節（anterior tubercle）は、もともと肋骨にあたる部分）。第1肋骨（first rib）の上を越えて腕（arm）へ向かう腕神経叢（brachial plexus）と鎖骨下動脈（subclavian artery）・鎖骨下静脈（subclavian vein）を下から押し、腕のしびれや痛み（胸郭出口症候群（thoracic outlet syndrome））を起こすことがある。3Dのモデルには無いので、第7頚椎の横突起の前の部分で示す。"
+        },
+        {
+          "id": "lumbar-rib", "ja": "腰肋", "yomi": "ようろく", "en": "lumbar rib", "la": "costa lumbalis",
+          "of": "first-lumbar-vertebra", "level": 3,
+          "kanji": "腰椎にできた肋骨",
+          "etym": "lumbar ← ラテン語 lumbus「腰」＋ rib「肋骨」",
+          "note": "第1腰椎（first lumbar vertebra）の肋骨突起（costal process）が椎骨（vertebra）から離れて、小さな肋骨（ribs）のようになったもの。腰椎（lumbar vertebrae）の肋骨突起は名前のとおり肋骨にあたる部分なので、離れると肋骨に似る。X線写真（radiograph）では第12肋骨（twelfth rib）の下にもう1本あるように見え、椎骨の数え違いや、肋骨突起の骨折（fracture）と見誤ることがある。3Dのモデルには無いので、第1腰椎の肋骨突起で示す。"
         }
       ]
     },
@@ -959,10 +973,10 @@
         },
         {
           "id": "bones-of-free-upper-limb", "ja": "自由上肢骨", "yomi": "じゆうじょうしこつ", "en": "bones of free upper limb", "enAlt": ["skeleton of free upper limb"], "la": "skeleton membri superioris liberi",
-          "parts": ["humerus", "radius", "ulna", "scaphoid", "lunate", "triquetral", "pisiform", "trapezium", "trapezoid", "capitate", "hamate", "* metacarpal bone", "* phalanx of * finger", "* phalanx of thumb"], "level": 2,
+          "parts": ["humerus", "radius", "ulna", "scaphoid", "lunate", "triquetral", "pisiform", "trapezium", "trapezoid", "capitate", "hamate", "* metacarpal bone", "* phalanx of * finger", "* phalanx of thumb", "* sesamoid bone of hand"], "level": 2,
           "kanji": "体幹に組み込まれず、自由に動く上肢の骨",
           "etym": "free「自由な」＋ upper limb「上肢」。上肢帯に対して、肩から先の自由に動く部分",
-          "note": "上肢（upper limb）の骨（bone）のうち、上肢帯（pectoral girdle）（鎖骨（clavicle）・肩甲骨（scapula））より先の骨。上腕骨（humerus）・橈骨（radius）・尺骨（ulna）・手根骨（carpal bones）8・中手骨（metacarpals）5・指骨（phalanges）14の30個（片側）。上肢帯と合わせると上肢の骨は片側32個、左右で64個。肩関節（shoulder joint）で肩甲骨の関節窩（glenoid cavity）につながる。"
+          "note": "上肢（upper limb）の骨（bone）のうち、上肢帯（pectoral girdle）（鎖骨（clavicle）・肩甲骨（scapula））より先の骨。上腕骨（humerus）・橈骨（radius）・尺骨（ulna）・手根骨（carpal bones）8・中手骨（metacarpals）5・指骨（phalanges）14の30個（片側）。上肢帯と合わせると上肢の骨は片側32個、左右で64個（母指（thumb）の付け根の種子骨（sesamoid bone）は数えない）。肩関節（shoulder joint）で肩甲骨の関節窩（glenoid cavity）につながる。"
         },
         {
           "id": "clavicle", "ja": "鎖骨", "yomi": "さこつ", "en": "clavicle", "la": "clavicula",
@@ -1108,7 +1122,7 @@
           "parts": ["first metacarpal bone"], "level": 2,
           "kanji": "親指の側から1番目の中手骨",
           "etym": "first「1番目の」＋ metacarpal（meta-「次の」＋ carpal「手根の」）",
-          "note": "母指（thumb）の中手骨（metacarpals）。最も短く太い。大菱形骨（trapezium）と鞍の形の関節（joint）（母指の手根中手関節（carpometacarpal joint of thumb））をつくり、母指を手のひら（palm）の向かいへ回す動き（対立（opposition））ができる。底に長母指外転筋（abductor pollicis longus）が付く。"
+          "note": "母指（thumb）の中手骨（metacarpals）。最も短く太い。大菱形骨（trapezium）と鞍の形の関節（joint）（母指の手根中手関節（carpometacarpal joint of thumb））をつくり、母指を手のひら（palm）の向かいへ回す動き（対立（opposition））ができる。底に長母指外転筋（abductor pollicis longus）が付く。頭の手のひら側に2つの種子骨（sesamoid bone）がある。"
         },
         {
           "id": "second-metacarpal", "ja": "第2中手骨", "yomi": "だいにちゅうしゅこつ", "en": "second metacarpal", "enAlt": ["second metacarpal bone"], "la": "os metacarpi II",
@@ -1158,6 +1172,13 @@
           "kanji": "指先の節の骨",
           "etym": "distal「遠位の」＋ phalanx「指骨」",
           "note": "指先（fingertip）の骨（bone）。先が広がって爪（nail）の土台になる（末節骨粗面（tuberosity of distal phalanx））。深指屈筋（flexor digitorum profundus）・長母指屈筋（flexor pollicis longus）の腱（tendon）が付く。"
+        },
+        {
+          "id": "sesamoid-bones-of-hand", "ja": "種子骨（手）", "yomi": "しゅしこつ", "en": "sesamoid bones of hand", "enAlt": ["sesamoid bone of hand"], "la": "ossa sesamoidea manus",
+          "parts": ["* sesamoid bone of hand"], "level": 3, "schematic": true,
+          "kanji": "ゴマの種のような小さな骨",
+          "etym": "sesamoid「ゴマの形の」（ギリシャ語 sēsamon＝ゴマ）",
+          "note": "母指（thumb）の中手指節関節（metacarpophalangeal joints）（第1中手骨（first metacarpal）の頭と基節骨（proximal phalanx）の間）の手のひら（palm）側にある2つの小さな骨（bone）。橈側（radial）の1つは短母指屈筋（flexor pollicis brevis）の腱（tendon）の中に、尺側（ulnar）の1つは母指内転筋（adductor pollicis）の腱の中にあり、2つの間を長母指屈筋（flexor pollicis longus）の腱が通る。母指の中手指節関節が軽い屈伸（flexion and extension）しかできないわけの1つ。実習の骨箱にはふつう入っておらず、206個にも数えない。示指（index finger）や小指（little finger）の付け根に出ることもある。3Dの形は模式（BodyParts3D に形が無いので、位置と大きさだけを合わせた楕円体）。"
         }
       ]
     },
@@ -1743,7 +1764,14 @@
           "kanji": "膝の蓋（ふた）＝ひざのお皿",
           "etym": "patella ← ラテン語 patera「平たい皿」の縮小形",
           "placing": "とがった尖を下、広い底を上に置く。なめらかな関節面（articular surface）が後ろ。関節面は縦の隆起（eminence）で内側面（medial surface）と外側面（lateral surface）に分かれ、外側面の方が広い（『解剖学講義』）。広い面を外側（lateral）に向けると右か左かが分かる。",
-          "note": "膝（knee）の前にあるお皿の骨（bone）。大腿四頭筋（quadriceps femoris）の腱（tendon）の中にできた種子骨（sesamoid bone）で、下のとがった端が尖。後ろの関節面は外側半分（lateral half）が広いので左右が分かる。膝を伸ばしているときは、大腿骨（femur）の下端（inferior end）の前に意外と高くのっている。"
+          "note": "膝（knee）の前にあるお皿の骨（bone）。大腿四頭筋（quadriceps femoris）の腱（tendon）の中にできた人体で最大の種子骨（sesamoid bone）で、下のとがった端が尖。後ろの関節面は外側半分（lateral half）が広いので左右が分かる。膝を伸ばしているときは、大腿骨（femur）の下端（inferior end）の前に意外と高くのっている。"
+        },
+        {
+          "id": "sesamoid-bones", "ja": "種子骨", "yomi": "しゅしこつ", "en": "sesamoid bones", "enAlt": ["sesamoid bone"], "la": "ossa sesamoidea",
+          "parts": ["patella", "pisiform", "sesamoid bone of foot", "* sesamoid bone of hand"], "level": 2,
+          "kanji": "ゴマ（胡麻）の種のような骨",
+          "etym": "sesamoid ← ギリシャ語 sēsamon「ゴマ」＋ -eidēs「〜の形の」",
+          "note": "腱（tendon）や靱帯（ligament）の中にできる骨（bone）。腱が関節（joint）の近くで骨の上を曲がって通る所にでき、腱が骨にこすれるのを防ぎ、腱の向きを変えて筋（muscle）の力を伝えやすくする。最も大きいのは膝蓋骨（patella）（大腿四頭筋（quadriceps femoris）の腱の中）。手根骨（carpal bones）の豆状骨（pisiform）も、尺側手根屈筋（flexor carpi ulnaris）の腱の中の種子骨と考えられている。ほかに母指（thumb）の中手指節関節（metacarpophalangeal joints）の手のひら（palm）側に2個（手（hand）の種子骨）、母趾（great toe）の付け根の足（foot）の裏側に2個（足の種子骨）がふつうにあり、示指（index finger）や小指（little finger）の付け根などに出ることもある。206個には膝蓋骨と豆状骨だけを数える。骨の形の分け方（長骨（long bone）・短骨（short bone）・扁平骨（flat bone）・含気骨（pneumatic bone）・不規則形骨（irregular bone）・種子骨）の1つ。"
         },
         {
           "id": "tibia", "ja": "脛骨", "yomi": "けいこつ", "en": "tibia", "la": "tibia",
@@ -4027,11 +4055,11 @@
           "note": "側頭骨（temporal bone）のうち、頭の側面に立つ半円形の薄い板。上の縁は薄く削いだ形で頭頂骨（parietal bone）にうろこのように重なり（鱗状縫合（squamous suture））、前の縁は蝶形骨（sphenoid bone）の大翼（greater wing）に接する。外面（external surface）から頬骨突起（zygomatic process）が前へ出て頬骨弓（zygomatic arch）の後ろ半分となり、その付け根の下に下顎窩（mandibular fossa）がある。"
         },
         {
-          "id": "tympanic-part-of-temporal-bone", "ja": "鼓室部", "yomi": "こしつぶ", "en": "tympanic part of temporal bone", "la": "pars tympanica ossis temporalis",
+          "id": "tympanic-part-of-temporal-bone", "ja": "鼓室部", "jaAlt": ["鼓室骨"], "yomi": "こしつぶ", "en": "tympanic part of temporal bone", "la": "pars tympanica ossis temporalis",
           "of": "temporal-bone", "level": 3,
           "kanji": "側頭骨の鼓膜のまわりの部分",
           "etym": "tympanic ← ギリシャ語 tympanon「太鼓（鼓膜）」",
-          "note": "側頭骨（temporal bone）のうち、外耳孔（external acoustic opening）の前・下・後ろの縁と外耳道（external acoustic meatus）の前下（anteroinferior）の壁をつくる、樋（とい）の形の小さな部分。新生児（newborn）では輪の形の骨（bone）（鼓室輪（tympanic ring））で、成長とともに広がる。前上（anterosuperior）の縁は下顎窩（mandibular fossa）の後ろの錐体鼓室裂（petrotympanic fissure）。名前に反して、鼓室（tympanic cavity）（中耳（middle ear））の壁の大部分は岩様部（petrous part）がつくる。"
+          "note": "側頭骨（temporal bone）のうち、外耳孔（external acoustic opening）の前・下・後ろの縁と外耳道（external acoustic meatus）の前下（anteroinferior）の壁をつくる、樋（とい）の形の小さな部分。もとは独立した骨（bone）（鼓室骨（tympanic bone））として発生（development）し、新生児（newborn）では半分の輪の形（鼓室輪（tympanic ring））で、成長とともに広がって鱗部（squamous part）と岩様部（petrous part）の下の面にくっつき、間に外耳道をつくる。前上（anterosuperior）の縁は下顎窩（mandibular fossa）の後ろの錐体鼓室裂（petrotympanic fissure）。名前に反して、鼓室（tympanic cavity）（中耳（middle ear））の壁の大部分は岩様部がつくる。"
         },
         {
           "id": "body-of-maxilla", "ja": "上顎骨体", "yomi": "じょうがくこつたい", "en": "body of maxilla", "la": "corpus maxillae",
@@ -4295,6 +4323,73 @@
           "etym": "musculo-「筋の」＋ tubal「耳管の」",
           "note": "外頭蓋底（external surface of cranial base）で、錐体（petrous part）と蝶形骨（sphenoid bone）の大翼（greater wing）の境の溝（耳管溝（sulcus of auditory tube））の奥から、中耳（middle ear）（鼓室（tympanic cavity））へ通じる管。棚のような骨（bone）で上下2段に分かれ、上の段（鼓膜張筋半管（canal for tensor tympani））を鼓膜張筋（tensor tympani）、下の段（耳管半管（canal for auditory tube））を耳管（auditory tube）が通る。",
           "passes": "耳管・鼓膜張筋"
+        }
+      ]
+    },
+    {
+      "id": "skel-pt-skull-variants",
+      "title": "頭蓋の変異の骨（縫合骨・インカ骨・二分頬骨など）",
+      "group": "頭蓋",
+      "intro": [
+        "頭蓋（skull）の縫合（suture）の中や泉門（fontanelle）の所には、ときどき小さな骨（bone）が島のように独立してできる（縫合骨（sutural bone））。また、発生（development）のときに別々にできた部分が癒合（fusion）しないで、後頭骨（occipital bone）の上部（インカ骨（Inca bone））・頬骨（zygomatic bone）の下部（二分頬骨（bipartite zygomatic bone））・上顎骨（maxilla）の前の端（切歯骨（incisive bone））が別の骨として残ることがある。どれも206個には数えない変異で、人種差・個体差が大きい（翼上骨（epipteric bone）・頭頂切痕骨（parietal notch bone）・二分頬骨は日本人に多い）。X線写真（radiograph）で骨折（fracture）と見誤らないためにも知っておく。",
+        "3Dのモデル（BodyParts3D）にはこれらの骨の形が無いので、このレッスンでは現れる場所を頭蓋の上に色で示す。"
+      ],
+      "terms": [
+        {
+          "id": "sutural-bones", "ja": "縫合骨", "yomi": "ほうごうこつ", "en": "sutural bones", "enAlt": ["sutural bone", "wormian bones", "wormian bone"], "la": "ossa suturalia",
+          "parts": ["occipital bone", "parietal bone"], "of": "occipital-bone", "level": 3,
+          "kanji": "縫合の中の骨",
+          "etym": "sutural ← ラテン語 sutura「縫い目」。Wormian bones は、これを記したデンマークの医師 O. Worm にちなむ",
+          "note": "頭蓋（skull）の縫合（suture）の中に、島のように独立してある小さな骨（bone）。ラムダ縫合（lambdoid suture）に最も多く、ほかの縫合にも出る。縫合が会う所にもでき、プテリオン（pterion）のものを翼上骨（epipteric bone）、泉門（fontanelle）の所のものを泉門骨（fontanelle bones）と呼ぶ。アステリオン（asterion）にあるものは日本人で約20%、白人で約15%。数が非常に多い（10個を超える）ときは、骨形成不全症（osteogenesis imperfecta）などの骨の病気を疑うきっかけになる。3Dのモデルには無いので、最も多いラムダ縫合で示す。"
+        },
+        {
+          "id": "fontanelle-bones", "ja": "泉門骨", "yomi": "せんもんこつ", "en": "fontanelle bones", "enAlt": ["fontanelle bone", "fontanellar bones", "bregmatic bone"], "la": "ossa fonticuli",
+          "parts": ["frontal bone", "parietal bone", "occipital bone"], "of": "parietal-bone", "level": 3,
+          "kanji": "泉門の所にできる骨",
+          "etym": "fontanelle ← フランス語「小さな泉」（脈打つ様子が泉のわき出るのに似る）",
+          "note": "新生児（newborn）の泉門（fontanelle）（縫合（suture）が会う所の、膜（membrane）でふさがれた広いすき間）が、周りの骨（bone）と癒合（fusion）しないで独立の骨になったもの。縫合骨（sutural bone）の一種。大泉門（anterior fontanelle）の所（ブレグマ（bregma））にできたものはブレグマ骨（bregmatic bone）とも呼び、小泉門（posterior fontanelle）の所（ラムダ（lambda）のすぐ下）のものは頭頂間骨（interparietal bone）と呼ぶ。3Dのモデルには無いので、大泉門と小泉門の位置（ブレグマとラムダ）で示す。"
+        },
+        {
+          "id": "interparietal-bone", "ja": "頭頂間骨", "yomi": "とうちょうかんこつ", "en": "interparietal bone", "la": "os interparietale",
+          "of": "occipital-bone", "level": 3,
+          "kanji": "（左右の）頭頂骨の間の骨",
+          "etym": "inter-「間の」＋ parietal ← ラテン語 paries「壁」（頭頂骨）",
+          "note": "後頭骨（occipital bone）の上の端、矢状縫合（sagittal suture）とラムダ縫合（lambdoid suture）が会うラムダ（lambda）のすぐ下に挟まる骨（bone）。小泉門（posterior fontanelle）の所にできる泉門骨（fontanelle bones）の一種。外後頭隆起（external occipital protuberance）の上で後頭鱗（squamous part of occipital bone）の上部が大きく分かれたもの（インカ骨（Inca bone））も頭頂間骨と呼ぶ本がある。ネズミなど多くの哺乳類では、ふつうに独立した骨としてある。3Dのモデルには無いので、ラムダのすぐ下で示す。"
+        },
+        {
+          "id": "inca-bone", "ja": "インカ骨", "yomi": "いんかこつ", "en": "inca bone", "enAlt": ["inca bones"], "la": "os incae",
+          "of": "occipital-bone", "level": 3,
+          "kanji": "インカ族の頭蓋に多い骨",
+          "etym": "Inca「インカ族」（南米ペルー）。os incae はそのラテン語",
+          "note": "外後頭隆起（external occipital protuberance）の上を横に走る異常な縫合（suture）で、後頭鱗（squamous part of occipital bone）の上部（ラムダ縫合（lambdoid suture）との間の三角形の部分）が分かれ、独立の骨（bone）になったもの。後頭骨（occipital bone）の大部分は軟骨性骨化（endochondral ossification）でできるが、後頭鱗の上の部分は膜性骨化（intramembranous ossification）でできる膜性骨（membrane bone）で、いくつかの骨化中心（ossification center）から生じる。その癒合（fusion）のしかたによって、大きな1個のインカ骨や、2〜4個に分かれたものが残る。ペルーのインカ族の頭蓋（skull）に多く見つかったことからこの名がある。3Dのモデルには無いので、後頭鱗の上部で示す。"
+        },
+        {
+          "id": "epipteric-bone", "ja": "翼上骨", "yomi": "よくじょうこつ", "en": "epipteric bone", "enAlt": ["pterion ossicle"], "la": "os epiptericum",
+          "parts": ["frontal bone", "parietal bone", "temporal bone", "sphenoid bone"], "of": "sphenoid-bone", "level": 3,
+          "kanji": "翼（蝶形骨の大翼）の上の骨",
+          "etym": "epi-「上の」＋ ギリシャ語 pteron「翼」（プテリオンと同じ）",
+          "note": "プテリオン（pterion）（前頭骨（frontal bone）・頭頂骨（parietal bone）・側頭骨（temporal bone）の鱗部（squamous part）・蝶形骨（sphenoid bone）の大翼（greater wing）がH字に会う所）の縫合（suture）の間に挟まる縫合骨（sutural bone）。日本人で30〜40%、白人で約10%と、日本人に多い。X線写真（radiograph）で骨折（fracture）と見誤ったり、プテリオンを目印に頭蓋（skull）に孔をあける手術で迷わせたりする。3Dのモデルには無いので、プテリオンで示す。"
+        },
+        {
+          "id": "parietal-notch-bone", "ja": "頭頂切痕骨", "yomi": "とうちょうせっこんこつ", "en": "parietal notch bone",
+          "parts": ["temporal bone", "parietal bone"], "of": "temporal-bone", "level": 3,
+          "kanji": "頭頂切痕にできる骨",
+          "etym": "parietal「頭頂骨の」＋ notch「切れこみ」",
+          "note": "鱗状縫合（squamous suture）の後ろの端では、頭頂骨（parietal bone）の後ろ下の角が、側頭骨（temporal bone）の鱗部（squamous part）と乳突部（mastoid part）の間の切れこみ（頭頂切痕（parietal notch））に入りこんでいる。この入りこんだ部分が分かれて、独立の骨（bone）になったもの。日本人で30〜40%、白人で約10%に見られる。3Dのモデルには無いので、鱗状縫合の後ろの端（頭頂乳突縫合（parietomastoid suture）との境）で示す。"
+        },
+        {
+          "id": "bipartite-zygomatic-bone", "ja": "二分頬骨", "jaAlt": ["日本骨"], "yomi": "にぶんきょうこつ", "en": "bipartite zygomatic bone", "enAlt": ["os japonicum"], "la": "os zygomaticum bipartitum",
+          "of": "zygomatic-bone", "level": 3,
+          "kanji": "2つに分かれた頬骨",
+          "etym": "bipartite ← ラテン語 bi-「2」＋ partitus「分けられた」。os japonicum「日本の骨」",
+          "note": "頬骨（zygomatic bone）が横に走る縫合（suture）で上下2つに分かれている変異。日本人に多いので日本骨（os japonicum）とも呼ぶ（ベルツ・小金井良精の調査）。日本人では、少しでも横の縫合があるものが約15%、完全に2つに分かれたものが2〜5%。横の縫合は外面（external surface）より内面（internal surface）（側頭窩（temporal fossa）に向く面）に残っていることが多い。3Dのモデルには無いので、頬骨の外面を前後に横切る線で示す。"
+        },
+        {
+          "id": "incisive-bone", "ja": "切歯骨", "jaAlt": ["顎間骨", "前上顎骨"], "yomi": "せっしこつ", "en": "incisive bone", "enAlt": ["premaxilla", "intermaxillary bone"], "la": "os incisivum",
+          "of": "maxilla", "level": 3,
+          "kanji": "切歯を植える骨",
+          "etym": "incisive ← ラテン語 incidere「切る」。premaxilla は pre-「前の」＋ maxilla「上顎骨」",
+          "note": "骨口蓋（bony palate）の前の端の正中部で、上の切歯（incisors）4本を植えている部分。胎生期（fetal period）には左右1対の独立した小さな骨（bone）で、生後に上顎骨（maxilla）と癒合（fusion）する。上顎骨との境の切歯縫合（incisive suture）（切歯窩（incisive fossa）から、側切歯（lateral incisor）と犬歯（canines）の間へ向かう線）は、成人ではたいてい消えている。多くの脊椎動物では一生独立した骨（前上顎骨（premaxilla））で、詩人のゲーテがヒトにもこの骨があることを論じた。口唇裂（cleft lip）・口蓋裂（cleft palate）の顎（jaw）の裂け目は、ふつう側切歯と犬歯の間、つまりこの骨と上顎骨の境にできる。3Dのモデルには無いので、口蓋（palate）の前の部分（切歯窩から側切歯と犬歯の間まで）で示す。"
         }
       ]
     }
