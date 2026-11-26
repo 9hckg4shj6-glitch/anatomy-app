@@ -129,29 +129,39 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
     return `#/print/go?${params.toString()}`;
   };
 
-  /** 印刷の画面が開かなかったときの案内 */
-  const printHelp = (): HTMLElement[] => {
-    if (isStandalone() && iosDevice()) {
-      const url = `${location.origin}${location.pathname}${sheetHash()}`;
-      const copied = h("span", { class: "muted" }, "");
-      return [
+  /**
+   * ホーム画面に追加した iPhone・iPad のアプリか。印刷の画面を開けず（押しても何も起きない）、開いたかどうかも見分けられないので、
+   * 印刷は試さずに、はじめから Safari で印刷だけの画面（#/print/go?…）を開く
+   */
+  const iosApp = isStandalone() && iosDevice() !== "";
+
+  /** Safari へ送るボタンと、アドレスをコピーするボタン */
+  const safariControls = (label: string): HTMLElement[] => {
+    const url = `${location.origin}${location.pathname}${sheetHash()}`;
+    const copied = h("span", { class: "muted" }, "");
+    return [
+      h("div", { class: "pp-actions" },
+        h("a", { class: "primary pp-print", href: `x-safari-${url}` }, "Safari で開いて印刷・PDFに保存"),
+        h("span", { class: "muted" }, label)),
+      h("div", { class: "pp-help" },
         h("p", {}, "ホーム画面に追加したアプリからは、iPhone・iPad の決まりで印刷の画面を開けません。",
-          "同じ紙を Safari で開いて印刷してください（選んだものはそのまま送ります）。"),
+          "ボタンを押すと Safari に同じ紙が開くので、そこで「印刷・PDFに保存」を押してください（選んだものはそのまま送ります）。"),
         h("div", { class: "pp-actions" },
-          h("a", { class: "primary pp-print", href: `x-safari-${url}` }, "Safari で開いて印刷する"),
           h("button", { class: "ghost-button", type: "button", onClick: async () => {
             try {
               await navigator.clipboard.writeText(url);
-              copied.textContent = "コピーしました";
+              copied.textContent = "コピーしました。Safari のアドレス欄に貼り付けて開きます";
             } catch {
               copied.textContent = "コピーできませんでした";
             }
           } }, "アドレスをコピー"), copied),
-        foot("Safari が開かないとき（iOS 16 まで）は、コピーしたアドレスを Safari のアドレス欄に貼り付けて開きます。"),
-      ];
-    }
-    return [h("p", {}, "印刷の画面が開かなかったときは、ブラウザのメニューの「印刷」（パソコンは ⌘P・Ctrl+P）を選んでください。この画面で選んだ紙がそのまま印刷されます。")];
+        foot("Safari が開かないとき（iOS 16 まで）は、「アドレスをコピー」を押して Safari のアドレス欄に貼り付けて開きます。")),
+    ];
   };
+
+  /** 印刷の画面が開かなかったときの案内（パソコン・Android など） */
+  const printHelp = (): HTMLElement[] =>
+    [h("p", {}, "印刷の画面が開かなかったときは、ブラウザのメニューの「印刷」（パソコンは ⌘P・Ctrl+P）を選んでください。この画面で選んだ紙がそのまま印刷されます。")];
 
   /**
    * 「印刷・PDFに保存」のボタンと、その下の案内。紙は選ぶたびに先に入れ物へ入れて図を読んでおき（prepare）、押したらすぐ印刷の画面を開く
@@ -168,6 +178,7 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
     }, 250);
   };
   const printControls = (list: () => HTMLElement[], label: string) => {
+    if (iosApp && label) return safariControls(label);
     const status = h("span", { class: "muted" }, label || "印刷するものを選んでください");
     const help = h("div", { class: "pp-help", role: "status" });
     const button = h("button", { class: "primary pp-print", type: "button", disabled: !label, onClick: async () => {
