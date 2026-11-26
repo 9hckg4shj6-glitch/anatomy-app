@@ -2197,6 +2197,10 @@ body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
 }
 .pp-preview.is-empty { display: grid; place-items: center; min-height: 120px; background: var(--surface); }
 .pp-preview > .pp-page { transform-origin: top left; box-shadow: 0 2px 10px rgb(0 0 0 / 0.12); }
+.pp-help:not(:empty) { display: grid; gap: 8px; margin-top: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.pp-help p { margin: 0; }
+.pp-help .pp-actions { margin: 0; }
+.pp-help a.primary { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 .plate-print { display: block; width: fit-content; margin: 16px 0 4px; }
 
 /* 紙（見本と印刷で同じ）。A4 縦・余白 12mm。字は黒、線は細く */

@@ -284,19 +284,53 @@ export function wordList(title: string, items: Term[], options: { memo: (id: str
 }
 
 /**
- * 紙を印刷する。#app を隠して紙だけを出す入れ物（body 直下の .print-root）に入れ、画像を読み終えてから印刷の画面を開く。
- * 印刷の画面を閉じたら入れ物を消す（iPhone では閉じた知らせが来ないことがあるので、次に印刷するときにも作り直す）
+ * 紙を入れ物（body 直下の .print-root）に入れる。印刷の画面ではこの入れ物だけが出る（styles.css の @media print）。
+ * 印刷の画面を閉じても消さない（iPhone の Safari は印刷の画面を出す前に afterprint が来ることがあり、消すと紙が空になる）。
+ * 次に入れるときか、印刷の画面を離れるとき（unmountPrint）に消す。入れたままならブラウザのメニューの「印刷」でも同じ紙が出る
  */
-export async function printPages(pages: HTMLElement[]): Promise<void> {
+export function mountPrint(pages: HTMLElement[]): HTMLElement {
   document.querySelector(".print-root")?.remove();
   const root = h("div", { class: "print-root" }, ...pages);
   document.body.append(root);
   document.body.classList.add("is-printing");
-  await Promise.all([...root.querySelectorAll("img")].map((img) => img.decode().catch(() => undefined)));
-  const done = () => {
-    document.body.classList.remove("is-printing");
-    root.remove();
-  };
-  window.addEventListener("afterprint", done, { once: true });
-  window.print();
+  return root;
+}
+
+export function unmountPrint(): void {
+  document.querySelector(".print-root")?.remove();
+  document.body.classList.remove("is-printing");
+}
+
+/** 入れ物の図をすべて読み終えたか */
+export const imagesReady = (root: HTMLElement): boolean => [...root.querySelectorAll("img")].every((img) => img.complete);
+
+/** 入れ物の図を読み終えるまで待つ（読めない図や、ms を過ぎたら待たない） */
+export function waitImages(root: HTMLElement, ms = 20000): Promise<void> {
+  const each = [...root.querySelectorAll("img")].filter((img) => !img.complete)
+    .map((img) => new Promise<void>((resolve) => {
+      img.addEventListener("load", () => resolve(), { once: true });
+      img.addEventListener("error", () => resolve(), { once: true });
+    }));
+  return Promise.race([Promise.all(each).then(() => undefined), new Promise<void>((resolve) => setTimeout(resolve, ms))]);
+}
+
+/**
+ * 印刷の画面を開く。押したその場で（await をはさまずに）呼ぶ。待ってから呼ぶと、Safari では押した合図が切れて開かないことがある。
+ * 開いたら true。beforeprint が来ないまま 1.5秒たったら false（ホーム画面に追加した iPhone・iPad のアプリなど、印刷の画面を開けないとき）
+ */
+export function openPrintDialog(): Promise<boolean> {
+  let opened = false;
+  const mark = () => (opened = true);
+  window.addEventListener("beforeprint", mark, { once: true });
+  try {
+    window.print();
+  } catch (error) {
+    console.warn("印刷の画面を開けませんでした", error);
+  }
+  // Chrome などは印刷の画面を閉じるまで print() から戻らない（その間に beforeprint が来ている）
+  if (opened) return Promise.resolve(true);
+  return new Promise((resolve) => setTimeout(() => {
+    window.removeEventListener("beforeprint", mark);
+    resolve(opened || document.visibilityState === "hidden");
+  }, 1500));
 }
