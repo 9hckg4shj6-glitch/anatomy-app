@@ -99,10 +99,11 @@ function versionFile(): Plugin {
 export default defineConfig({
   define: { __APP_BUILD__: JSON.stringify(BUILD) },
   base: process.env.GITHUB_ACTIONS ? "/anatomy-app/" : "/",
-  // three.js（約600KB）と用語データ（2,500語と語根カード）を1つにまとめているため、既定の500KBの警告を上げる。
+  // three.js（約600KB）と用語データ（2,500語と語根カード・語源で単語）を1つにまとめているため、既定の500KBの警告を上げる。
+  // 語源で単語のデータ（約85KB）は今日の画面の復習の数・語のカードにも要るので、初めから読む（2026-11-27 に 3200 → 3400）。
   // ソースマップは公開版に入れない（5.7MB あった。2026-11-24）。骨学試験・使い方・動きの図鑑・臓器の図は開いたときに読む別のファイル（src/main.ts）
   build: {
-    target: "es2022", sourcemap: false, chunkSizeWarningLimit: 3200,
+    target: "es2022", sourcemap: false, chunkSizeWarningLimit: 3400,
     rollupOptions: {
       output: {
         manualChunks(id) {

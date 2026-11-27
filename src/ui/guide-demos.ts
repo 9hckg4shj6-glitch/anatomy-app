@@ -395,7 +395,7 @@ const TAB_SCREENS: Record<GuideTab, string> = {
     <div class="gd-sheet"><p class="gd-kicker">今日の一手</p><div class="gd-btn">今日の復習 <b>12問</b><span>→</span></div><p class="gd-note">続きから<span data-exam>・骨学試験まで○日</span></p></div>`,
   study: `<div class="gd-pad"><p class="gd-title">学ぶ</p>
     <div class="gd-next"><small>次のレッスン</small><b>下肢の骨</b><span class="gd-btn gd-btn-sm">始める<span>→</span></span></div>
-    <ul class="gd-rows"><li><i style="--c:#c4663f"></i>すべてのレッスン</li><li><i style="--c:#b0453b"></i>臓器の図</li><li><i style="--c:#1f6f78"></i>演習</li><li data-exam><i style="--c:#6a5a9e"></i>骨学試験</li><li><i style="--c:#5b8a3a"></i>語根カード</li></ul></div>`,
+    <ul class="gd-rows"><li><i style="--c:#c4663f"></i>すべてのレッスン</li><li><i style="--c:#b0453b"></i>臓器の図</li><li><i style="--c:#1f6f78"></i>演習</li><li data-exam><i style="--c:#6a5a9e"></i>骨学試験</li><li><i style="--c:#3a6ea5"></i>語源で単語</li><li><i style="--c:#5b8a3a"></i>語根カード</li></ul></div>`,
   look: `<div class="gd-pad"><p class="gd-title">調べる</p>
     <div class="gd-search">${svg(TAB_ICON.look)}<span>だいたい</span></div>
     <ul class="gd-rows gd-hits"><li><b>大腿骨</b><small lang="en">femur</small></li><li><b>大腿動脈</b><small lang="en">femoral artery</small></li><li><b>大腿四頭筋</b><small lang="en">quadriceps femoris</small></li></ul>
@@ -512,9 +512,13 @@ export function featureCards(): HTMLElement {
       <div class="gd-f-art gd-f-exam"><span><b>A</b>空欄</span><span><b>B</b>読み・書き</span><span><b>C</b>説明</span><span><b>D</b>図示</span></div>
       <b>骨学試験</b><span>骨学実習の試験の形式で練習。対で覚える語・数と並び・体表の目安も。（標準とすべての語）</span>
     </a>
+    <a class="gd-feature" href="#/etym">
+      <div class="gd-f-art gd-f-etym"><span><u class="c0">胸</u><u class="c1">鎖</u><u class="c2">乳突</u>筋</span><i>＝</i><span lang="en"><u class="c0">sterno</u>·<u class="c1">cleido</u>·<u class="c2">mastoid</u></span></div>
+      <b>語源で単語</b><span>名前を部品に分けて読み、日本語名から部品を順に選んで組み立てる。筋・骨・臓器・神経の名前で。（標準とすべての語）</span>
+    </a>
     <a class="gd-feature" href="#/roots">
       <div class="gd-f-art gd-f-roots"><span lang="en"><u>femor</u>-al artery</span><i>＝</i><span><u>大腿</u>動脈</span></div>
-      <b>語根カード</b><span>英語名を部品から読む。知らない語も意味の見当がつきます。（標準とすべての語）</span>
+      <b>語根カード</b><span>部品（語根）を1つずつ覚える。知らない語も意味の見当がつきます。（標準とすべての語）</span>
     </a>
     <a class="gd-feature" href="#/explore">
       <div class="gd-f-art gd-f-explore"><img src="${IMG}femur.webp" alt="" draggable="false"><span class="gd-label3d">大腿骨</span></div>

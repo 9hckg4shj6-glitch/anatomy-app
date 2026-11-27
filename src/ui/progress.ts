@@ -6,6 +6,7 @@ import { EXAM_KINDS, isExamKey, kindLabels } from "../exam-keys";
 import { examLoaded } from "../exam-lazy";
 import { canUseExam } from "../profile";
 import { isRootKey, rootKey, roots } from "../roots";
+import { etymWords, isEtymKey } from "../etym";
 import { termMastery } from "../study";
 import { sceneFor, type AppContext } from "./context";
 
@@ -58,7 +59,7 @@ export async function progress(ctx: AppContext): Promise<void> {
     ),
     h("table", { class: "progress-table" },
       h("thead", {}, h("tr", {}, h("th", {}, "系統"), h("th", {}, "学んだ語"), h("th", {}, "平均"))),
-      // 初心者モードでは初心者コースの語の数（語根カード・骨学試験の行は詳細モードで）
+      // 初心者モードでは初心者コースの語の数（語根カード・語源で単語・骨学試験の行は詳細モードで）
       h("tbody", {}, ...systems.filter((system) => courseTerms().some((term) => term.system === system.id)).map((system) => {
         const list = courseTerms().filter((term) => term.system === system.id);
         const values = list.map((term) => mastery.get(term.id)).filter((v): v is number => v != null);
@@ -66,7 +67,7 @@ export async function progress(ctx: AppContext): Promise<void> {
           h("td", {}, system.ja),
           h("td", {}, `${list.filter((term) => learnedIds.has(term.id)).length} / ${list.length}`),
           h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
-      }), ...(isBeginner() ? [] : [rootRow(), ...(examLoaded() ? EXAM_KINDS.map(examRow) : [])])),
+      }), ...(isBeginner() ? [] : [rootRow(), etymRow(), ...(examLoaded() ? EXAM_KINDS.map(examRow) : [])])),
     ),
     weakest.length ? h("h3", {}, "覚え具合の低い語（押すと図鑑）") : "",
     weakest.length ? h("ul", { class: "term-list" }, ...weakest.map(([id, value]) => {
@@ -88,10 +89,18 @@ export async function progress(ctx: AppContext): Promise<void> {
   }
 
   function rootRow(): HTMLElement {
-    const keys = roots.map(rootKey);
+    return keyRow("語根カード", roots.map(rootKey));
+  }
+
+  function etymRow(): HTMLElement {
+    return keyRow("語源で単語", etymWords.map((word) => word.key));
+  }
+
+  /** 語根カード・語源で単語の行（学んだ数 / 全部の数と、覚え具合の平均） */
+  function keyRow(label: string, keys: string[]): HTMLElement {
     const values = keys.filter((key) => learnedIds.has(key)).map((key) => termMastery(byTerm.get(key) ?? [])).filter((v): v is number => v != null);
     return h("tr", {},
-      h("td", {}, "語根カード"),
+      h("td", {}, label),
       h("td", {}, `${keys.filter((key) => learnedIds.has(key)).length} / ${keys.length}`),
       h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
   }
@@ -131,7 +140,7 @@ function records(events: ReviewEvent[], allSchedules: StoredSchedule[], now = ne
   const dueBySystem = new Map<string, number>();
   for (const schedule of schedules) {
     if (new Date(schedule.due).getTime() >= endOfToday) continue;
-    const label = isRootKey(schedule.termId) ? "語根カード" : isExamKey(schedule.termId) ? "骨学試験"
+    const label = isRootKey(schedule.termId) ? "語根カード" : isEtymKey(schedule.termId) ? "語源で単語" : isExamKey(schedule.termId) ? "骨学試験"
       : systems.find((system) => system.id === termById.get(schedule.termId)?.system)?.ja;
     if (label) dueBySystem.set(label, (dueBySystem.get(label) ?? 0) + 1);
   }

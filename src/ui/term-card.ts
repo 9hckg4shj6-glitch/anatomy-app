@@ -4,6 +4,7 @@ import { beginnerPoints, isBeginner, isStandard, pointOf } from "../course";
 import { h } from "../dom";
 import { noteText } from "../en-notes";
 import { examLoaded } from "../exam-lazy";
+import { etymOfTerm } from "../etym";
 import { rootsOf, splitAtRoot, type Root } from "../roots";
 import { markOf, setMark } from "../marks";
 import { cutById, NERVE_CUTS } from "../nerve-cut";
@@ -278,6 +279,8 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
   fill();
   const motion = term.motion && options.motion ? motionButton(options.motion) : null;
   const cut = options.compact ? null : cutLink(term);
+  // 語源で単語は「はじめての解剖」では使えないので、標準とすべての語だけ
+  const etym = options.compact || beginner ? null : etymLink(term);
   if (beginner) {
     return h("article", { class: "term-card is-beginner" }, head, english, rootChips(term), schematic,
       pointBox(point, "覚えること") ?? h("div", { class: "term-point" }, h("span", { class: "term-point-label" }, "覚えること"),
@@ -288,12 +291,22 @@ export function termCard(term: Term, options: { compact?: boolean; open?: (word:
     // 標準のコース: 覚えること → 筋の起始・停止など・通るもの → 局所の境界 → メモ → くわしく（説明はここ）
     return h("article", { class: "term-card is-standard" }, head, english, rootChips(term), schematic,
       pointBox(pointOf(term.id), "覚えること"),
-      muscle, ...facts, motion, cut, regionNotes(term, options.open), memoRow(term), more, gloss);
+      muscle, ...facts, motion, cut, etym, regionNotes(term, options.open), memoRow(term), more, gloss);
   }
   // 詳細モードは説明がそのまま「覚えること」（初心者コースの短い point と重なるので、point は出さない）
   return h("article", { class: "term-card" }, head, english, rootChips(term), schematic,
     desc,
-    muscle, ...facts, motion, cut, regionNotes(term, options.open), memoRow(term), more, gloss);
+    muscle, ...facts, motion, cut, etym, regionNotes(term, options.open), memoRow(term), more, gloss);
+}
+
+/** 語源で単語（content/etym-words.json）に入っている語なら、部品に分けた形と入口（#/etym/word/<語ID>） */
+function etymLink(term: Term): HTMLElement | null {
+  const word = etymOfTerm(term.id);
+  if (!word || word.parts.length < 2) return null;
+  return h("a", { class: "term-cut-link term-etym-link", href: `#/etym/word/${encodeURIComponent(term.id)}` },
+    h("span", { "aria-hidden": "true" }, "⌗"),
+    h("span", {}, "語源で単語：部品に分けて読む"),
+    h("small", { lang: "en" }, word.parts.map((part) => part.text).join(" · ")));
 }
 
 /** 神経の語と、その神経で動く筋の語に「神経を切る」への入口（src/ui/nerve-cut.ts） */

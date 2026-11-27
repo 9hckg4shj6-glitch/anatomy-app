@@ -45,7 +45,7 @@ const APP_NAME = "からだ見聞録";
 const PAGES: Record<string, [title: string, href: string]> = {
   study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"], start: ["はじめに", "#/start"],
   lessons: ["レッスン", "#/lessons"], learn: ["レッスン", "#/lessons"], review: ["復習", "#/review"], drill: ["演習", "#/drill"],
-  exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], motions: ["動きの図鑑", "#/motions"], organs: ["臓器の図", "#/organs"], cut: ["神経を切る", "#/cut"], journey: ["からだの旅", "#/journey"], roots: ["語根カード", "#/roots"],
+  exam: ["骨学試験", "#/exam"], explore: ["図鑑", "#/explore"], motions: ["動きの図鑑", "#/motions"], organs: ["臓器の図", "#/organs"], cut: ["神経を切る", "#/cut"], journey: ["からだの旅", "#/journey"], roots: ["語根カード", "#/roots"], etym: ["語源で単語", "#/etym"],
   progress: ["進捗", "#/progress"], specimen: ["わたしの標本", "#/specimen"], print: ["印刷する", "#/print"], guide: ["使い方", "#/guide"], credits: ["出典・クレジット", "#/credits"], admin: ["ピン", "#/admin"],
 };
 
@@ -54,7 +54,7 @@ const TABS: Record<string, [label: string, href: string]> = {
   today: ["今日", "#/"], study: ["学ぶ", "#/study"], look: ["調べる", "#/look"], model: ["3D模型", "#/model"], records: ["記録", "#/records"], settings: ["設定", "#/settings"],
 };
 const TAB_OF: Record<string, string> = {
-  study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", organs: "study", print: "study", cut: "study", journey: "study",
+  study: "study", lessons: "study", learn: "study", drill: "study", exam: "study", roots: "study", etym: "study", organs: "study", print: "study", cut: "study", journey: "study",
   look: "look", explore: "look", motions: "look",
   model: "model",
   records: "records", progress: "records", specimen: "records",
@@ -324,6 +324,8 @@ async function boot(): Promise<void> {
       else if (name === "motions") await (await import("./ui/motions")).motionScreen(ctx, arg);
       // "#/roots/<レッスンID>" は語根のレッスン、"#/roots/root/<語根のキー>" は一覧でその語根を開く
       else if (name === "roots") await (arg && !arg.startsWith("root/") ? rootLesson(ctx, arg) : rootIndex(ctx, arg.slice("root/".length)));
+      // 語源で単語: "#/etym" は一覧、"#/etym/<レッスンID>" はレッスン、"#/etym/word/<語ID>" は一覧でその語を開く（開いたときに読む別のファイル）
+      else if (name === "etym") await (await import("./ui/etym")).etymScreen(ctx, arg);
       else if (name === "drill") await drill(ctx, arg);
       else if (name === "organs") await (await import("./ui/organs")).organScreen(ctx, arg);
       else if (name === "cut") await (await import("./ui/nerve-cut")).nerveCutScreen(ctx, arg);

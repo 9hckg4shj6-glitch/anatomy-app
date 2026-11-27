@@ -445,7 +445,10 @@
 .gd-f-exam span:nth-child(2) b { animation-delay: 0.15s; }
 .gd-f-exam span:nth-child(3) b { animation-delay: 0.3s; }
 .gd-f-exam span:nth-child(4) b { animation-delay: 0.45s; }
-.gd-f-roots { justify-items: center; font-size: 13px; font-weight: 700; }
+.gd-f-roots, .gd-f-etym { justify-items: center; font-size: 13px; font-weight: 700; }
+.gd-f-etym u { text-decoration: none; padding: 0 1px; border-bottom: 2.5px solid var(--u); }
+.gd-f-etym u.c0 { --u: #a8431c; } .gd-f-etym u.c1 { --u: #1f6f78; } .gd-f-etym u.c2 { --u: #5b4bb0; }
+.gd-f-etym i { font-style: normal; color: var(--muted); }
 .gd-f-roots u { text-decoration: none; padding: 0 1px; border-radius: 4px; background: color-mix(in srgb, #5b8a3a 22%, white); }
 .gd-f-roots i { font-style: normal; color: var(--muted); }
 .gd-f-explore img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

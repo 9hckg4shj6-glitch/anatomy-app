@@ -1,0 +1,494 @@
+{
+  "groups": [
+    {
+      "id": "kata",
+      "title": "名前の読み方の型",
+      "lead": "名前の部品の多くは、数・形・大きさ・位置を表す。型を知ると、初めて見る名前も読める。",
+      "lessons": [
+        {
+          "id": "number",
+          "title": "数でよぶ",
+          "lead": "bi-・di-「2」、tri-「3」、quadri-「4」、semi-「半分」、multi-「多い」。頭（起始）や腹の数が、そのまま日本語名の数字になる。",
+          "words": [
+            { "term": "biceps-brachii", "parts": [["bi", "2つの", "二", "ラ bis"], ["ceps", "頭", "頭", "ラ caput"], ["brachii", "腕の", "上腕", "ラ brachium"]], "note": "起始の頭が長頭と短頭の2つ。英語では biceps だけで「力こぶ」の筋を指す" },
+            { "term": "triceps-brachii", "parts": [["tri", "3つの", "三", "ラ tres"], ["ceps", "頭", "頭", "ラ caput"], ["brachii", "腕の", "上腕", "ラ brachium"]], "note": "長頭・外側頭・内側頭の3つの頭。上腕の後ろで肘を伸ばす" },
+            { "term": "quadriceps-femoris", "parts": [["quadri", "4つの", "四", "ラ quattuor"], ["ceps", "頭", "頭", "ラ caput"], ["femoris", "大腿の", "大腿", "ラ femur"]], "note": "大腿直筋と3つの広筋（外側・内側・中間）で4つの頭。膝を伸ばす" },
+            { "term": "biceps-femoris", "parts": [["bi", "2つの", "二", "ラ bis"], ["ceps", "頭", "頭", "ラ caput"], ["femoris", "大腿の", "大腿", "ラ femur"]], "note": "長頭は坐骨結節から、短頭は大腿骨から。上腕二頭筋と同じ組み立て" },
+            { "term": "triceps-surae", "parts": [["tri", "3つの", "三", "ラ tres"], ["ceps", "頭", "頭", "ラ caput"], ["surae", "ふくらはぎの", "下腿", "ラ sura"]], "note": "腓腹筋の2つの頭とヒラメ筋で3つ。sura「ふくらはぎ」を日本語は「下腿」と訳した" },
+            { "term": "digastric", "parts": [["di", "2つの", "二", "ギ dis"], ["gastric", "腹の", "腹", "ギ gastēr"]], "note": "前腹と後腹の2つの筋腹が、中間腱でつながる。日本語は場所の「顎」を足した" },
+            { "term": "trigeminal-nerve", "parts": [["tri", "3つの", "三", "ラ tres"], ["geminal", "双子の（→三つ子の）", "", "ラ geminus"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "trigeminus は「三つ子」。眼神経・上顎神経・下顎神経の3本に分かれる。日本語は「三つ又（叉）」と形で訳した" },
+            { "term": "tricuspid-valve", "parts": [["tri", "3つの", "三", "ラ tres"], ["cuspid", "とがった先", "尖", "ラ cuspis"], ["valve", "弁（扉）", "弁", "ラ valva"]], "note": "前尖・後尖・中隔尖の3枚。右心房と右心室の間にある。左の僧帽弁は2枚" },
+            { "term": "duodenum", "parts": [["duo", "2", "二", "ラ duo"], ["denum", "10ずつ", "十", "ラ deni"]], "note": "duodeni「12ずつ」。長さが指の幅12本分とされたので、日本語も「十二指腸」" },
+            { "term": "semicircular-canals", "parts": [["semi", "半分の", "半", "ラ semi"], ["circular", "円の", "規", "ラ circulus"], ["canals", "管", "管", "ラ canalis"]], "note": "半円の形の管が3本。「規」はコンパス（円を描く道具）のこと" },
+            { "term": "multifidus", "parts": [["multi", "多くの", "多", "ラ multus"], ["fidus", "裂けた", "裂", "ラ findere（裂く）"]], "note": "多くの束に裂けて、椎骨と椎骨の間にわたる。背骨のすぐそばの深い筋" }
+          ]
+        },
+        {
+          "id": "oid-bone",
+          "title": "-oid（〜の形）：骨と突起",
+          "lead": "-oid はギリシャ語 eidos「形」から「〜のような形の」。日本語では「〜状」「〜様」と訳すことが多いが、別の見立てで名付けた語もある。",
+          "words": [
+            { "term": "deltoid", "parts": [["delt", "Δ（デルタ）＝三角", "三角", "ギ delta"], ["oid", "〜の形", "", "ギ eidos"]], "note": "ギリシャ文字 Δ を逆さにした三角形で、肩をおおう" },
+            { "term": "hyoid-bone", "parts": [["hy", "Υ（ユプシロン）", "", "ギ hy"], ["oid", "〜の形", "", "ギ eidos"], ["bone", "骨", "骨", ""]], "note": "ギリシャ文字 Υ（ユプシロン）の形。日本語は舌の付け根を支えることから「舌骨」" },
+            { "term": "xiphoid-process", "parts": [["xiph", "剣", "剣", "ギ xiphos"], ["oid", "〜の形", "状", "ギ eidos"], ["process", "突起", "突起", "ラ processus"]], "note": "胸骨の下の端にある、剣先の形の小さな突起" },
+            { "term": "coracoid-process", "parts": [["corac", "カラス（のくちばし）", "烏口", "ギ korax"], ["oid", "〜の形", "", "ギ eidos"], ["process", "突起", "突起", "ラ processus"]], "note": "肩甲骨から前へ曲がって出る、カラスのくちばしの形。日本語の「烏口」もカラスの口" },
+            { "term": "mastoid-process", "parts": [["mast", "乳房", "乳", "ギ mastos"], ["oid", "〜の形", "様", "ギ eidos"], ["process", "突起", "突起", "ラ processus"]], "note": "耳の後ろの、乳房のような丸い突起。胸鎖乳突筋の「乳突」はここ" },
+            { "term": "styloid-process-of-temporal-bone", "w": "styloid process", "parts": [["styl", "柱（とがったペン）", "茎", "ギ stylos"], ["oid", "〜の形", "状", "ギ eidos"], ["process", "突起", "突起", "ラ processus"]], "note": "細長い柱の形。側頭骨のほか、橈骨と尺骨の下の端にもある" },
+            { "term": "ethmoid-bone", "parts": [["ethm", "ふるい", "篩", "ギ ēthmos"], ["oid", "〜の形", "", "ギ eidos"], ["bone", "骨", "骨", ""]], "note": "嗅神経が通る小さな穴の並ぶ篩板がある。ふるい（篩）のよう" },
+            { "term": "sphenoid-bone", "parts": [["sphen", "くさび", "", "ギ sphēn"], ["oid", "〜の形", "形", "ギ eidos"], ["bone", "骨", "骨", ""]], "note": "頭蓋の底にくさびのように入り込む。日本語は、翼を広げたチョウに見立てて「蝶形骨」" },
+            { "term": "cuboid", "parts": [["cub", "立方体", "立方", "ギ kybos"], ["oid", "〜の形", "", "ギ eidos"]], "note": "足根骨の外側にある、さいころに近い形の骨" },
+            { "term": "scaphoid", "parts": [["scaph", "小舟", "舟", "ギ skaphē"], ["oid", "〜の形", "状", "ギ eidos"]], "note": "手根骨のうち、母指の側にある舟の形の骨。足の舟状骨は navicular（ラテン語の小舟）" },
+            { "term": "sesamoid-bones-of-hand", "w": "sesamoid bones", "parts": [["sesam", "ゴマ", "種子", "ギ sēsamon"], ["oid", "〜の形", "", "ギ eidos"], ["bones", "骨", "骨", ""]], "note": "ゴマ粒のように小さく、腱の中にできる骨。最も大きな種子骨は膝蓋骨" }
+          ]
+        },
+        {
+          "id": "oid-soft",
+          "title": "-oid（〜の形）：軟骨・臓器・膜",
+          "lead": "喉頭の軟骨・結腸・脳の膜にも -oid が付く。もとになった物を思い浮かべると形が分かる。",
+          "words": [
+            { "term": "thyroid-cartilage", "parts": [["thyr", "盾", "甲", "ギ thyreos"], ["oid", "〜の形", "状", "ギ eidos"], ["cartilage", "軟骨", "軟骨", "ラ cartilago"]], "note": "大きな盾の形で、のど仏をつくる。その前にある腺も thyroid（甲状腺）" },
+            { "term": "cricoid-cartilage", "parts": [["cric", "輪", "輪", "ギ krikos"], ["oid", "〜の形", "状", "ギ eidos"], ["cartilage", "軟骨", "軟骨", "ラ cartilago"]], "note": "指輪の形。前が細く、後ろが板のように高い" },
+            { "term": "arytenoid-cartilage", "parts": [["aryten", "水差し（ひしゃく）", "", "ギ arytaina"], ["oid", "〜の形", "", "ギ eidos"], ["cartilage", "軟骨", "軟骨", "ラ cartilago"]], "note": "輪状軟骨の上に左右1対で乗り、声帯の後ろの端が付く" },
+            { "term": "sigmoid-colon", "parts": [["sigm", "Σ（シグマ）", "S", "ギ sigma"], ["oid", "〜の形", "状", "ギ eidos"], ["colon", "結腸", "結腸", "ギ kolon"]], "note": "ギリシャ文字シグマの形に曲がる。日本語はローマ字の S を使う" },
+            { "term": "arachnoid-mater", "parts": [["arachn", "クモ", "くも", "ギ arachnē"], ["oid", "〜の形", "", "ギ eidos"], ["mater", "母（→包むもの）", "膜", "ラ mater"]], "note": "軟膜との間に、クモの巣のような細い糸が張る。硬膜・軟膜の mater も「母」" },
+            { "term": "choroid-plexus", "parts": [["chor", "胎児を包む膜", "", "ギ chorion"], ["oid", "〜の形", "", "ギ eidos"], ["plexus", "編んだもの", "叢", "ラ plexus"]], "note": "血管の多い膜（chorion）に似る。脳室の中で脳脊髄液をつくる。「叢」はくさむら" },
+            { "term": "pterygoid-process", "parts": [["pteryg", "翼", "翼", "ギ pteryx"], ["oid", "〜の形", "状", "ギ eidos"], ["process", "突起", "突起", "ラ processus"]], "note": "蝶形骨から下へ垂れる翼。内側・外側翼突筋がここから起こる" },
+            { "term": "coronoid-process-of-ulna", "w": "coronoid process", "parts": [["coron", "カラス（曲がったくちばし）", "鈎", "ギ korōnē"], ["oid", "〜の形", "状", "ギ eidos"], ["process", "突起", "突起", "ラ processus"]], "note": "尺骨の前に出る、曲がった突起。下顎骨の同じ名前の突起は、日本語では側頭筋が付くので「筋突起」" },
+            { "term": "rhomboid-major", "parts": [["rhomb", "ひし形", "菱形", "ギ rhombos"], ["oid", "〜の形", "", "ギ eidos"], ["major", "大きい", "大", "ラ magnus"]], "note": "肩甲骨の内側縁と背骨の間の、ひし形の筋。小菱形筋 rhomboid minor の下にある" },
+            { "term": "amygdala", "w": "amygdaloid body", "parts": [["amygdal", "アーモンド", "扁桃", "ギ amygdalē"], ["oid", "〜の形", "", "ギ eidos"], ["body", "体", "体", ""]], "note": "アーモンドの形の神経核。「扁桃」はアーモンドの漢名で、のどの扁桃（tonsil）も同じ見立て" }
+          ]
+        },
+        {
+          "id": "form",
+          "title": "-form・-ate（形と持ち物）",
+          "lead": "-form はラテン語 forma「形」で、-oid のラテン語版。-ate（-atus）は「〜を持つ」で、日本語では「有〜」と訳す。",
+          "words": [
+            { "term": "pisiform", "parts": [["pisi", "エンドウ豆", "豆", "ラ pisum"], ["form", "〜の形", "状", "ラ forma"]], "note": "手根骨のうち、小指の側にある豆粒ほどの骨。尺側手根屈筋の腱の中にある" },
+            { "term": "piriformis", "parts": [["piri", "洋ナシ", "梨", "ラ pirum"], ["formis", "〜の形の", "状", "ラ forma"]], "note": "洋ナシの形。大坐骨孔を通り、そのすぐ下から坐骨神経が出てくる" },
+            { "term": "appendix", "w": "appendix vermiformis", "parts": [["appendix", "付け足したもの", "垂", "ラ appendere（ぶら下げる）"], ["vermi", "虫", "虫", "ラ vermis"], ["formis", "〜の形の", "", "ラ forma"]], "note": "盲腸にぶら下がる、虫の形の突起。日本語の「垂」は垂れ下がるもの" },
+            { "term": "cuneiforms", "w": "cuneiform bones", "parts": [["cunei", "くさび", "楔", "ラ cuneus"], ["form", "〜の形", "状", "ラ forma"], ["bones", "骨", "骨", ""]], "note": "足の内側・中間・外側の3つ。くさび形文字も cuneiform" },
+            { "term": "falciform-ligament", "parts": [["falci", "鎌", "鎌", "ラ falx"], ["form", "〜の形", "状", "ラ forma"], ["ligament", "結ぶもの", "間膜", "ラ ligare（結ぶ）"]], "note": "肝臓を前の腹壁につなぐ、鎌の形の腹膜のひだ。大脳鎌 falx cerebri も同じ falx" },
+            { "term": "cribriform-plate", "parts": [["cribri", "ふるい", "篩", "ラ cribrum"], ["form", "〜の形", "", "ラ forma"], ["plate", "板", "板", ""]], "note": "篩骨の上面の、嗅神経が通る穴の並ぶ板。ethmoid（ギリシャ語のふるい）と同じ見立て" },
+            { "term": "lentiform-nucleus", "parts": [["lenti", "レンズ豆", "レンズ", "ラ lens"], ["form", "〜の形", "", "ラ forma"], ["nucleus", "核（木の実）", "核", "ラ nux"]], "note": "被殻と淡蒼球を合わせた形。凸レンズの名も、この豆の形から" },
+            { "term": "capitate", "parts": [["capit", "頭", "頭", "ラ caput"], ["ate", "〜を持つ", "有", "ラ -atus"]], "note": "手根骨でいちばん大きく、丸い頭を持つ。日本語は後ろから読んで「有頭」" },
+            { "term": "hamate", "parts": [["ham", "かぎ（鈎）", "鈎", "ラ hamus"], ["ate", "〜を持つ", "有", "ラ -atus"]], "note": "手のひらの側へ曲がった鈎（有鈎骨鈎）を持つ。釣り針も hamus" },
+            { "term": "lunate", "parts": [["lun", "月", "月", "ラ luna"], ["ate", "〜の形の", "状", "ラ -atus"]], "note": "三日月の形。手根骨のまん中で橈骨と向き合う" },
+            { "term": "triquetrum", "parts": [["tri", "3つの", "三", "ラ tres"], ["quetrum", "角のある", "角", "ラ triquetrus（三角の）"]], "note": "3つの角を持つ形。豆状骨のすぐ後ろ（背側）にある" }
+          ]
+        },
+        {
+          "id": "small-organ",
+          "title": "小さい〜：骨と器官",
+          "lead": "語尾の -ula・-ulus・-ella・-ellum・-icle は「小さい〜」。日本語でも「小」を付けたり、小さな物に見立てたりする。",
+          "words": [
+            { "term": "clavicle", "parts": [["clav", "鍵", "鎖", "ラ clavis"], ["icle", "小さい", "", "ラ -icula"]], "note": "小さな鍵（かんぬき）の形でS字に曲がる。漢字の「鎖」にも錠前の意味がある" },
+            { "term": "patella", "parts": [["pat", "浅い皿", "蓋", "ラ patina"], ["ella", "小さい", "", "ラ -ella"]], "note": "膝の前の小さな皿。日本語は「膝の蓋」で、ふだんは「膝の皿」" },
+            { "term": "lateral-malleolus", "parts": [["lateral", "外側の", "外", "ラ latus（わき）"], ["malle", "槌（ハンマー）", "果", "ラ malleus"], ["olus", "小さい", "", "ラ -olus"]], "note": "小さな槌の頭のように出たくるぶし。「果」はくるぶし（踝）の字を簡単にしたもの" },
+            { "term": "auditory-ossicles", "parts": [["auditory", "聞くための", "耳", "ラ audire（聞く）"], ["oss", "骨", "骨", "ラ os"], ["icles", "小さい", "小", "ラ -iculum"]], "note": "ツチ骨・キヌタ骨・アブミ骨の3つ。体でいちばん小さな骨" },
+            { "term": "cerebellum", "parts": [["cereb", "脳", "脳", "ラ cerebrum"], ["ellum", "小さい", "小", "ラ -ellum"]], "note": "大脳 cerebrum の後ろ下にある「小さな脳」。体の動きを調節する" },
+            { "term": "lingula", "w": "lingula", "parts": [["ling", "舌", "舌", "ラ lingua"], ["ula", "小さい", "小", "ラ -ula"]], "note": "左肺の上葉から下へ、舌のように伸びた部分。右肺の中葉にあたる" },
+            { "term": "right-auricle", "parts": [["right", "右の", "右", ""], ["aur", "耳", "耳", "ラ auris"], ["icle", "小さい", "", "ラ -icula"]], "note": "心房から突き出た、小さな耳のような袋。外耳の耳介も auricle" },
+            { "term": "greater-tubercle", "parts": [["greater", "大きい方の", "大", ""], ["tuber", "こぶ", "結節", "ラ tuber"], ["cle", "小さい", "", "ラ -culum"]], "note": "上腕骨の上の外側にある小さなこぶ。棘上筋・棘下筋・小円筋が付く" },
+            { "term": "capitulum-of-humerus", "w": "capitulum", "parts": [["capit", "頭", "頭", "ラ caput"], ["ulum", "小さい", "小", "ラ -ulum"]], "note": "上腕骨の下の端で、橈骨と向き合う丸い小さな頭" },
+            { "term": "uvula", "parts": [["uv", "ブドウ（の粒）", "", "ラ uva"], ["ula", "小さい", "", "ラ -ula"]], "note": "軟口蓋から垂れる、小さなブドウの粒。いわゆる「のどちんこ」" },
+            { "term": "right-ventricle", "parts": [["right", "右の", "右", ""], ["ventr", "腹", "", "ラ venter"], ["icle", "小さい", "", "ラ -iculus"]], "note": "ventriculus「小さな腹」→ ふくらんだ部屋。脳室も ventricle" }
+          ]
+        },
+        {
+          "id": "small-fine",
+          "title": "小さい〜：細かいつくり",
+          "lead": "顕微鏡で見る細かいつくりにも「小さい〜」が多い。動脈 artery → 細動脈 arteriole のように、日本語は「細」「小」を付ける。",
+          "words": [
+            { "term": "glomerulus", "parts": [["glomer", "毛糸の玉", "糸球", "ラ glomus"], ["ulus", "小さい", "", "ラ -ulus"]], "note": "毛細血管が毛糸玉のように丸まり、尿のもと（原尿）をこし出す" },
+            { "term": "pulmonary-alveolus", "parts": [["pulmonary", "肺の", "肺", "ラ pulmo"], ["alve", "くぼみ（おけ）", "胞", "ラ alveus"], ["olus", "小さい", "", "ラ -olus"]], "note": "気道の終わりの小さな袋。歯の入るくぼみ（歯槽）も alveolus" },
+            { "term": "terminal-bronchiole", "parts": [["terminal", "終わりの", "終末", "ラ terminus"], ["bronchi", "気管支", "気管支", "ギ bronchos"], ["ole", "小さい", "細", "ラ -olus"]], "note": "気管支が枝分かれをくり返した、空気だけを通す最後の細い管" },
+            { "term": "arteriole", "parts": [["arteri", "動脈", "動脈", "ギ artēria"], ["ole", "小さい", "細", "ラ -olus"]], "note": "毛細血管の手前の細い動脈。ここで血圧の多くが調節される" },
+            { "term": "venule", "parts": [["ven", "静脈", "静脈", "ラ vena"], ["ule", "小さい", "細", "ラ -ula"]], "note": "毛細血管のあとの細い静脈" },
+            { "term": "capillary", "parts": [["capill", "髪の毛", "毛", "ラ capillus"], ["ary", "〜のような", "", ""]], "note": "髪の毛のように細い血管。日本語の「毛細」も同じ見方" },
+            { "term": "hair-follicle", "parts": [["hair", "毛", "毛", ""], ["foll", "袋（ふいご）", "包", "ラ follis"], ["icle", "小さい", "", "ラ -iculus"]], "note": "毛の根を包む小さな袋。卵巣の卵胞も follicle" },
+            { "term": "hepatic-lobule", "parts": [["hepatic", "肝臓の", "肝", "ギ hēpar"], ["lob", "葉", "葉", "ギ lobos"], ["ule", "小さい", "小", "ラ -ulus"]], "note": "肝臓をつくる六角柱の小さな単位。まん中を中心静脈が通る" },
+            { "term": "proximal-tubule", "parts": [["proximal", "近い方の", "近位", "ラ proximus"], ["tub", "管", "管", "ラ tubus"], ["ule", "小さい", "細", "ラ -ulus"]], "note": "糸球体に近い方の尿細管。原尿の水と栄養の多くをここで吸収し直す" },
+            { "term": "lacrimal-canaliculus", "parts": [["lacrimal", "涙の", "涙", "ラ lacrima"], ["canal", "管", "管", "ラ canalis"], ["iculus", "小さい", "小", "ラ -iculus"]], "note": "まぶたの涙点から涙嚢へ、涙を流す細い管" }
+          ]
+        },
+        {
+          "id": "supra-sub",
+          "title": "上・下（supra-・infra-・sub-）",
+          "lead": "ラテン語の supra-「上」・infra-「下」・sub-「下・裏」。日本語では「棘上」「鎖骨下」のように後ろに付ける。",
+          "words": [
+            { "term": "supraspinatus", "parts": [["supra", "上の", "上", "ラ supra"], ["spin", "棘（とげ）", "棘", "ラ spina"], ["atus", "〜の", "", ""]], "note": "肩甲棘の上の窩（棘上窩）から起こる。回旋筋腱板の1つ" },
+            { "term": "infraspinatus", "parts": [["infra", "下の", "下", "ラ infra"], ["spin", "棘（とげ）", "棘", "ラ spina"], ["atus", "〜の", "", ""]], "note": "肩甲棘の下の窩（棘下窩）から起こる。腕を外へ回す" },
+            { "term": "subscapularis", "parts": [["sub", "下の（裏の）", "下", "ラ sub"], ["scapul", "肩甲骨", "肩甲", "ラ scapula"], ["aris", "〜の", "", ""]], "note": "肩甲骨の裏（肋骨の側）の肩甲下窩から起こる。腕を内へ回す" },
+            { "term": "subclavius", "parts": [["sub", "下の", "下", "ラ sub"], ["clav", "鍵（→鎖骨）", "鎖骨", "ラ clavis"], ["ius", "〜の", "", ""]], "note": "第1肋骨から鎖骨の下面へ張る小さな筋" },
+            { "term": "subclavian-artery", "parts": [["sub", "下の", "下", "ラ sub"], ["clavian", "鎖骨の", "鎖骨", "ラ clavis"], ["artery", "動脈", "動脈", "ギ artēria"]], "note": "鎖骨の下を通って腋窩へ向かう。右は腕頭動脈から、左は大動脈弓から出る" },
+            { "term": "supra-orbital-foramen", "parts": [["supra", "上の", "上", "ラ supra"], ["orbital", "眼窩の", "眼窩", "ラ orbita"], ["foramen", "孔（あな）", "孔", "ラ forare（穴をあける）"]], "note": "眼窩の上縁の孔。orbita はもとは「車輪の跡」で、丸いくぼみのこと" },
+            { "term": "infra-orbital-foramen", "parts": [["infra", "下の", "下", "ラ infra"], ["orbital", "眼窩の", "眼窩", "ラ orbita"], ["foramen", "孔（あな）", "孔", "ラ forare（穴をあける）"]], "note": "上顎骨の、眼窩の下の孔。眼窩下神経が顔へ出てくる" },
+            { "term": "sublingual-gland", "parts": [["sub", "下の", "下", "ラ sub"], ["lingual", "舌の", "舌", "ラ lingua"], ["gland", "腺", "腺", "ラ glans（どんぐり）"]], "note": "舌の下の粘膜の下にある、いちばん小さな大唾液腺" },
+            { "term": "submandibular-gland", "parts": [["sub", "下の", "下", "ラ sub"], ["mandibular", "下顎の", "顎", "ラ mandibula"], ["gland", "腺", "腺", "ラ glans（どんぐり）"]], "note": "下顎骨の下の内側にある唾液腺。mandibula は mandere「かむ」から" },
+            { "term": "suprapatellar-bursa", "parts": [["supra", "上の", "上", "ラ supra"], ["patellar", "膝蓋骨の", "膝蓋", "ラ patella"], ["bursa", "袋（財布）", "包", "ラ bursa"]], "note": "膝蓋骨の上にある滑液包。膝関節の中とつながっている" },
+            { "term": "subarachnoid-space", "parts": [["sub", "下の", "下", "ラ sub"], ["arachnoid", "くも膜の", "くも膜", "ギ arachnē"], ["space", "すき間", "腔", ""]], "note": "くも膜と軟膜の間。脳脊髄液で満たされ、脳を浮かべている" }
+          ]
+        },
+        {
+          "id": "epi-hypo",
+          "title": "上・下（epi-・hypo-）",
+          "lead": "ギリシャ語の epi-「上に・外に」と hypo-「下に」。ラテン語の supra-・sub- と同じはたらきで、ギリシャ語の語根と組む。",
+          "words": [
+            { "term": "epiglottis", "parts": [["epi", "上に（ふたをする）", "蓋", "ギ epi"], ["glottis", "声門（のどの奥）", "喉頭", "ギ glōtta（舌）"]], "note": "声門の上にかぶさるふた。飲み込むときに喉頭の入口をふさぐ" },
+            { "term": "medial-epicondyle-of-humerus", "w": "medial epicondyle", "parts": [["medial", "内側の", "内側", "ラ medius"], ["epi", "上に", "上", "ギ epi"], ["condyle", "関節のこぶ", "顆", "ギ kondylos"]], "note": "上腕骨顆の上の出っ張り。前腕の屈筋がここから起こる。kondylos は「指の関節のこぶ」" },
+            { "term": "epididymis", "parts": [["epi", "上に", "上", "ギ epi"], ["didymis", "双子（→精巣）", "精巣", "ギ didymos"]], "note": "didymos「双子」は2つ並ぶ精巣のこと。その上から後ろに沿う管の集まり" },
+            { "term": "epigastric-region", "parts": [["epi", "上に", "上", "ギ epi"], ["gastric", "胃（腹）の", "胃", "ギ gastēr"], ["region", "部位", "部", "ラ regio"]], "note": "腹の9区分のまん中の上。みぞおちのあたり" },
+            { "term": "hypoglossal-nerve", "parts": [["hypo", "下に", "下", "ギ hypo"], ["glossal", "舌の", "舌", "ギ glōssa"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "舌の下を通って舌の筋を動かす脳神経（第XII脳神経）" },
+            { "term": "hypothalamus", "parts": [["hypo", "下に", "下", "ギ hypo"], ["thalamus", "奥の部屋（→視床）", "視床", "ギ thalamos"]], "note": "視床の下にある、自律神経とホルモンの中枢。下に下垂体がぶら下がる" },
+            { "term": "pituitary-gland", "w": "hypophysis", "parts": [["hypo", "下に", "下", "ギ hypo"], ["physis", "生えたもの", "垂", "ギ physis"]], "note": "脳の下に生えたように垂れ下がる。英語の pituitary は「粘液」（鼻汁を出すと誤解された名残）" },
+            { "term": "adenohypophysis", "parts": [["adeno", "腺", "腺", "ギ adēn"], ["hypo", "下に", "下", "ギ hypo"], ["physis", "生えたもの", "垂", "ギ physis"]], "note": "下垂体の前葉（と中間部）。成長ホルモンなど多くのホルモンを出す" },
+            { "term": "neurohypophysis", "parts": [["neuro", "神経", "神経", "ギ neuron"], ["hypo", "下に", "下", "ギ hypo"], ["physis", "生えたもの", "垂", "ギ physis"]], "note": "下垂体の後葉。視床下部の神経細胞がのばした軸索の終わりが集まる" },
+            { "term": "right-hypochondriac-region", "parts": [["right", "右の", "右", ""], ["hypo", "下に", "下", "ギ hypo"], ["chondriac", "軟骨の（→肋軟骨）", "肋", "ギ chondros"], ["region", "部位", "部", "ラ regio"]], "note": "肋軟骨の下の部分で、右には肝臓がある。心気症 hypochondria は昔ここが悩みの元とされた名残" }
+          ]
+        },
+        {
+          "id": "layers",
+          "title": "層の名前（peri-・epi-・myo-・endo-）",
+          "lead": "peri-「まわり」、epi-「上・外」、myo-「筋」、endo-「内」。心臓の壁は外から順に心膜・心外膜・心筋層・心内膜。",
+          "words": [
+            { "term": "pericardium", "parts": [["peri", "まわり", "", "ギ peri"], ["cardium", "心臓", "心", "ギ kardia"]], "note": "心臓のまわりを包む袋。外の線維性心膜と内の漿膜性心膜" },
+            { "term": "epicardium", "parts": [["epi", "上に（→外に）", "外", "ギ epi"], ["cardium", "心臓", "心", "ギ kardia"]], "note": "心臓の表面にぴったり付く膜（漿膜性心膜の臓側板）" },
+            { "term": "myocardium", "parts": [["myo", "筋", "筋", "ギ mys"], ["cardium", "心臓", "心", "ギ kardia"]], "note": "心臓の壁の大部分を占める筋の層。mys はもとは「ネズミ」で、皮膚の下で動く筋を見立てた" },
+            { "term": "endocardium", "parts": [["endo", "内", "内", "ギ endon"], ["cardium", "心臓", "心", "ギ kardia"]], "note": "心臓の内面と弁をおおう薄い膜" },
+            { "term": "endometrium", "parts": [["endo", "内", "内", "ギ endon"], ["metrium", "子宮", "子宮", "ギ mētra"]], "note": "子宮の内面の粘膜。月経ではがれ落ち、受精卵はここに着床する" },
+            { "term": "endothelium", "parts": [["endo", "内", "内", "ギ endon"], ["thelium", "乳頭（→薄い皮）", "皮", "ギ thēlē"]], "note": "血管とリンパ管の内面をおおう細胞の層。epithelium（上皮）にならって作られた語" },
+            { "term": "epithelial-tissue", "parts": [["epi", "上に", "上", "ギ epi"], ["thelial", "乳頭（→薄い皮）の", "皮", "ギ thēlē"], ["tissue", "組織", "組織", ""]], "note": "もとは唇の乳頭の上の薄い皮のこと。体の表面と管の内面をおおう" },
+            { "term": "epidermis", "parts": [["epi", "上に", "表", "ギ epi"], ["dermis", "皮膚", "皮", "ギ derma"]], "note": "皮膚のいちばん外の層。その下が真皮 dermis" },
+            { "term": "subcutaneous-tissue", "parts": [["sub", "下の", "下", "ラ sub"], ["cutaneous", "皮膚の", "皮", "ラ cutis"], ["tissue", "組織", "組織", ""]], "note": "真皮の下の、脂肪の多い層。ギリシャ語で組むと hypodermis" },
+            { "term": "periodontal-ligament", "parts": [["peri", "まわり", "", "ギ peri"], ["odontal", "歯の", "歯", "ギ odous"], ["ligament", "結ぶもの", "膜", "ラ ligare（結ぶ）"]], "note": "歯根のまわりで、歯を歯槽の骨に結びつける線維。日本語は「歯根膜」" }
+          ]
+        },
+        {
+          "id": "inter-para",
+          "title": "間・中・そば（inter-・meso-・para-）",
+          "lead": "inter-「間」、meso-「中・間」、para-・juxta-「そば」。日本語では「間」「傍」になる。",
+          "words": [
+            { "term": "external-intercostal", "w": "external intercostal", "parts": [["external", "外の", "外", "ラ externus"], ["inter", "間の", "間", "ラ inter"], ["costal", "肋骨の", "肋", "ラ costa"]], "note": "肋骨と肋骨の間に張る筋の外の層。息を吸うときに肋骨を引き上げる" },
+            { "term": "interosseous-membrane-of-forearm", "w": "interosseous membrane", "parts": [["inter", "間の", "間", "ラ inter"], ["osseous", "骨の", "骨", "ラ os"], ["membrane", "膜", "膜", "ラ membrana"]], "note": "橈骨と尺骨の間に張る丈夫な膜。下腿の脛骨と腓骨の間にもある" },
+            { "term": "intervertebral-disc", "parts": [["inter", "間の", "間", "ラ inter"], ["vertebral", "椎骨の", "椎", "ラ vertebra"], ["disc", "円板", "円板", "ギ diskos"]], "note": "椎体と椎体の間の円板。vertebra は vertere「回る」から" },
+            { "term": "intertubercular-sulcus", "parts": [["inter", "間の", "間", "ラ inter"], ["tubercular", "結節の", "結節", "ラ tuber"], ["sulcus", "溝", "溝", "ラ sulcus"]], "note": "上腕骨の大結節と小結節の間の溝。上腕二頭筋の長頭の腱が通る" },
+            { "term": "transverse-mesocolon", "parts": [["transverse", "横の", "横行", "ラ transversus"], ["meso", "中の（→間の）", "間", "ギ mesos"], ["colon", "結腸", "結腸", "ギ kolon"]], "note": "横行結腸を後ろの腹壁につなぐ腹膜。meso- の付く間膜は臓器を吊るす" },
+            { "term": "superior-mesenteric-artery", "parts": [["superior", "上の", "上", "ラ superus"], ["mes", "中の（→間の）", "間", "ギ mesos"], ["enteric", "腸の", "腸", "ギ enteron"], ["artery", "動脈", "動脈", "ギ artēria"]], "note": "腸間膜の中を通って小腸と大腸の右半分へ。大腸の左半分へは下腸間膜動脈" },
+            { "term": "parotid-gland", "parts": [["par", "そば", "下", "ギ para"], ["otid", "耳の", "耳", "ギ ous（ōtos）"], ["gland", "腺", "腺", "ラ glans（どんぐり）"]], "note": "耳のそば（前下）にある最大の唾液腺。日本語は場所を「耳の下」とした" },
+            { "term": "parahippocampal-gyrus", "parts": [["para", "そば", "傍", "ギ para"], ["hippocampal", "海馬の", "海馬", "ギ hippokampos"], ["gyrus", "回（うねり）", "回", "ギ gyros"]], "note": "海馬のすぐそばの大脳の回。記憶にかかわる" },
+            { "term": "paracentral-lobule", "parts": [["para", "そば", "傍", "ギ para"], ["central", "中心の", "中心", "ラ centrum"], ["lob", "葉", "葉", "ギ lobos"], ["ule", "小さい", "小", "ラ -ulus"]], "note": "中心溝の上の端をかこむ小葉。脚の運動と感覚にかかわる" },
+            { "term": "juxtaglomerular-apparatus", "parts": [["juxta", "すぐそば", "傍", "ラ juxta"], ["glomerular", "糸球体の", "糸球体", "ラ glomus"], ["apparatus", "装置", "装置", "ラ apparatus"]], "note": "糸球体の入口のそばにあり、血圧が下がるとレニンを出す" }
+          ]
+        },
+        {
+          "id": "story-bone",
+          "title": "たとえの名前：骨と耳",
+          "lead": "形を身近な物にたとえた名前。由来の話と一緒に覚えると忘れにくい。日本語は見立てを訳した名前と、場所で名付けた名前がある。",
+          "words": [
+            { "term": "coccyx", "parts": [["coccyx", "カッコウ", "", "ギ kokkyx"]], "note": "背骨のいちばん下の小さな骨。カッコウのくちばしに似るとされた。日本語は場所で「尾骨」" },
+            { "term": "tibia", "parts": [["tibia", "笛", "", "ラ tibia"]], "note": "すねの太い骨。昔はこの骨で笛を作った。日本語の「脛」はすね" },
+            { "term": "fibula", "parts": [["fibula", "留め金（ブローチのピン）", "", "ラ fibula"]], "note": "脛骨と並ぶ細い骨を、留め金の細いピンに見立てた。日本語の「腓」はふくらはぎ" },
+            { "term": "pelvis", "parts": [["pelvis", "たらい", "盤", "ラ pelvis"]], "note": "左右の寛骨と仙骨・尾骨でできる、たらいの形。日本語も「盤（大きな皿）」" },
+            { "term": "sacrum", "parts": [["sacrum", "神聖な（骨）", "仙", "ラ sacer"]], "note": "ラテン語 os sacrum「神聖な骨」。日本語の「仙」も神聖なものを表す" },
+            { "term": "atlas", "parts": [["atlas", "アトラス（天を支える巨人）", "", "ギ Atlas"]], "note": "頭を天球に見立て、それを支える巨人アトラスの名。日本語は輪の形で「環椎」" },
+            { "term": "sella-turcica", "parts": [["sella", "鞍", "鞍", "ラ sella"], ["turcica", "トルコの", "トルコ", ""]], "note": "蝶形骨の上の、トルコ風の鞍の形のくぼみ。下垂体がおさまる" },
+            { "term": "acetabulum", "parts": [["acet", "酢", "", "ラ acetum"], ["abulum", "入れ物", "臼", "ラ -abulum"]], "note": "酢を入れる小皿の形。大腿骨頭がはまる。日本語は「臼（うす）」に見立てた" },
+            { "term": "cochlea", "parts": [["cochlea", "カタツムリ", "蝸牛", "ギ kochlias"]], "note": "カタツムリの殻のように約2回り半巻く。「蝸牛」もカタツムリのこと" },
+            { "term": "malleus", "parts": [["malleus", "槌（ハンマー）", "ツチ", "ラ malleus"]], "note": "鼓膜に付く耳小骨。となりのキヌタ骨 incus（金床）を打つ槌に見立てた" },
+            { "term": "stapes", "parts": [["stapes", "あぶみ（馬具）", "アブミ", "ラ stapes"]], "note": "馬に乗るとき足をかける鐙（あぶみ）の形。底が前庭窓にはまる" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "muscle",
+      "title": "筋と関節の名前",
+      "lead": "筋の名前は「はたらき・場所・形・大きさ」の組み合わせ。ラテン語の並びと日本語の並びは逆になることが多い。",
+      "lessons": [
+        {
+          "id": "neck",
+          "title": "AからB：首と舌の筋",
+          "lead": "sterno（胸骨）＋hyoid（舌骨）のように、筋が付く2つの所を並べた名前。日本語も同じ順に「胸骨舌骨筋」と読む。",
+          "words": [
+            { "term": "sternocleidomastoid", "parts": [["sterno", "胸骨", "胸", "ギ sternon"], ["cleido", "鎖骨", "鎖", "ギ kleis（鍵）"], ["mastoid", "乳様突起", "乳突", "ギ mastos"]], "note": "胸骨と鎖骨から起こり、乳様突起に付く。日本語は1字ずつ取って「胸鎖乳突」" },
+            { "term": "sternohyoid", "parts": [["sterno", "胸骨", "胸骨", "ギ sternon"], ["hyoid", "舌骨", "舌骨", "ギ hyoeidēs（Υの形）"]], "note": "胸骨から舌骨へ。舌骨を下げる舌骨下筋の1つ" },
+            { "term": "sternothyroid", "parts": [["sterno", "胸骨", "胸骨", "ギ sternon"], ["thyroid", "甲状軟骨", "甲状", "ギ thyreos（盾）"]], "note": "胸骨から甲状軟骨へ。胸骨舌骨筋より深くにある" },
+            { "term": "thyrohyoid", "parts": [["thyro", "甲状軟骨", "甲状", "ギ thyreos（盾）"], ["hyoid", "舌骨", "舌骨", "ギ hyoeidēs（Υの形）"]], "note": "甲状軟骨から舌骨へ。胸骨甲状筋の続きのように上へのびる" },
+            { "term": "omohyoid", "parts": [["omo", "肩", "肩甲", "ギ ōmos"], ["hyoid", "舌骨", "舌骨", "ギ hyoeidēs（Υの形）"]], "note": "ōmos は「肩」。肩甲骨の上縁から舌骨へ、中間腱で折れ曲がる" },
+            { "term": "stylohyoid", "parts": [["stylo", "茎状突起", "茎突", "ギ stylos"], ["hyoid", "舌骨", "舌骨", "ギ hyoeidēs（Υの形）"]], "note": "側頭骨の茎状突起から舌骨へ。舌骨を後ろ上へ引く" },
+            { "term": "mylohyoid", "parts": [["mylo", "臼歯（→下顎）", "顎", "ギ mylē（ひき臼）"], ["hyoid", "舌骨", "舌骨", "ギ hyoeidēs（Υの形）"]], "note": "mylē はひき臼で、臼歯のこと。下顎骨の臼歯の内側の線から起こり、口の底をつくる" },
+            { "term": "geniohyoid", "parts": [["genio", "あご先", "オトガイ", "ギ geneion"], ["hyoid", "舌骨", "舌骨", "ギ hyoeidēs（Υの形）"]], "note": "オトガイ（下顎のあご先）の内側から舌骨へ" },
+            { "term": "genioglossus", "parts": [["genio", "あご先", "オトガイ", "ギ geneion"], ["glossus", "舌", "舌", "ギ glōssa"]], "note": "オトガイから舌の中へ扇のように広がる。舌を前へ出す" },
+            { "term": "hyoglossus", "parts": [["hyo", "舌骨", "舌骨", "ギ hyoeidēs（Υの形）"], ["glossus", "舌", "舌", "ギ glōssa"]], "note": "舌骨から舌の横へ。舌を下げる" }
+          ]
+        },
+        {
+          "id": "arm-trunk",
+          "title": "AからB：腕・体幹・脚",
+          "lead": "腕と体幹の筋や筋膜も、つながる骨や部位の名前を並べて呼ぶ。ilio（腸骨）・costa（肋骨）・thoraco（胸）などを見分ける。",
+          "words": [
+            { "term": "coracobrachialis", "parts": [["coraco", "烏口突起", "烏口", "ギ korax（カラス）"], ["brachialis", "腕の", "腕", "ラ brachium"]], "note": "烏口突起から上腕骨の内側へ。腕を前へ上げる" },
+            { "term": "brachioradialis", "parts": [["brachio", "腕（上腕）", "腕", "ラ brachium"], ["radialis", "橈骨の", "橈骨", "ラ radius"]], "note": "上腕骨の下の外側から橈骨の下の端へ。肘を曲げる" },
+            { "term": "iliocostalis", "parts": [["ilio", "腸骨", "腸", "ラ ilium"], ["costalis", "肋骨の", "肋", "ラ costa"]], "note": "腸骨と肋骨の間をのぼる、脊柱起立筋のいちばん外の列" },
+            { "term": "iliopsoas", "parts": [["ilio", "腸骨（腸骨筋）", "腸", "ラ ilium"], ["psoas", "腰（大腰筋）", "腰", "ギ psoa"]], "note": "腸骨筋と大腰筋をまとめた名前。股関節を曲げる最も強い筋" },
+            { "term": "iliotibial-tract", "parts": [["ilio", "腸骨", "腸", "ラ ilium"], ["tibial", "脛骨の", "脛", "ラ tibia"], ["tract", "引きのばした帯", "靱帯", "ラ tractus"]], "note": "腸骨稜から脛骨の外側へのびる、大腿筋膜の厚い帯" },
+            { "term": "thoracolumbar-fascia", "parts": [["thoraco", "胸", "胸", "ギ thōrax"], ["lumbar", "腰の", "腰", "ラ lumbus"], ["fascia", "帯（→筋膜）", "筋膜", "ラ fascia"]], "note": "胸から腰にかけて、背中の深い筋を包む筋膜" },
+            { "term": "temporoparietalis", "parts": [["temporo", "側頭（こめかみ）", "側頭", "ラ tempus"], ["parietalis", "頭頂の（壁の）", "頭頂", "ラ paries"]], "note": "側頭部から頭頂部へ広がる薄い筋。parietal は「壁の」で、頭の横の壁" },
+            { "term": "clavipectoral-fascia", "parts": [["clavi", "鎖骨", "鎖骨", "ラ clavis"], ["pectoral", "胸筋の", "胸筋", "ラ pectus"], ["fascia", "帯（→筋膜）", "筋膜", "ラ fascia"]], "note": "鎖骨と小胸筋の間に張る筋膜。橈側皮静脈などが通り抜ける" }
+          ]
+        },
+        {
+          "id": "forearm",
+          "title": "はたらき＋場所：前腕の筋",
+          "lead": "ラテン語の筋の名前は「はたらき（flexor 屈筋）→ どこを（carpi 手根の）→ どちら側・大きさ（radialis 橈側の）」の順。日本語はふつう後ろから読む。",
+          "words": [
+            { "term": "flexor-carpi-radialis", "parts": [["flexor", "曲げるもの", "屈", "ラ flectere"], ["carpi", "手根の", "手根", "ギ karpos"], ["radialis", "橈骨の側の", "橈側", "ラ radius"]], "note": "手首を曲げる筋のうち、橈側（母指の側）にあるもの" },
+            { "term": "flexor-carpi-ulnaris", "parts": [["flexor", "曲げるもの", "屈", "ラ flectere"], ["carpi", "手根の", "手根", "ギ karpos"], ["ulnaris", "尺骨の側の", "尺側", "ラ ulna"]], "note": "手首を曲げる筋のうち、尺側（小指の側）にあるもの。腱の中に豆状骨がある" },
+            { "term": "extensor-carpi-ulnaris", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["carpi", "手根の", "手根", "ギ karpos"], ["ulnaris", "尺骨の側の", "尺側", "ラ ulna"]], "note": "手首を伸ばし、小指の側へ曲げる" },
+            { "term": "extensor-carpi-radialis-longus", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["carpi", "手根の", "手根", "ギ karpos"], ["radialis", "橈骨の側の", "橈側", "ラ radius"], ["longus", "長い", "長", "ラ longus"]], "note": "手首を伸ばす橈側の2つの筋のうち、長い方" },
+            { "term": "extensor-carpi-radialis-brevis", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["carpi", "手根の", "手根", "ギ karpos"], ["radialis", "橈骨の側の", "橈側", "ラ radius"], ["brevis", "短い", "短", "ラ brevis"]], "note": "長橈側手根伸筋と並ぶ短い方。テニス肘で痛むのはおもにこの筋の付け根" },
+            { "term": "flexor-digitorum-superficialis", "parts": [["flexor", "曲げるもの", "屈", "ラ flectere"], ["digitorum", "指の", "指", "ラ digitus"], ["superficialis", "浅い", "浅", "ラ superficies"]], "note": "指を曲げる筋の浅い層。腱は中節骨に付く" },
+            { "term": "flexor-digitorum-profundus", "parts": [["flexor", "曲げるもの", "屈", "ラ flectere"], ["digitorum", "指の", "指", "ラ digitus"], ["profundus", "深い", "深", "ラ profundus"]], "note": "浅指屈筋の下の深い層。腱は浅指屈筋の腱を貫いて末節骨に付く" },
+            { "term": "extensor-digitorum", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["digitorum", "指の", "指", "ラ digitus"]], "note": "第2〜5指をまとめて伸ばす。手の甲に腱が浮き出る" },
+            { "term": "extensor-indicis", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["indicis", "人差し指の", "示指", "ラ index（指し示すもの）"]], "note": "示指（人差し指）だけを伸ばす筋。index は「指し示すもの」" },
+            { "term": "palmaris-longus", "parts": [["palmaris", "手のひらの", "掌", "ラ palma"], ["longus", "長い", "長", "ラ longus"]], "note": "細長い腱が手掌腱膜へ。無い人も1割ほどいる" },
+            { "term": "pronator-teres", "parts": [["pronator", "手のひらを下へ向けるもの", "回内", "ラ pronus（前へ傾いた）"], ["teres", "丸い（棒の形の）", "円", "ラ teres"]], "note": "前腕を回内する、丸い棒の形の筋。方形回内筋 pronator quadratus は四角い" }
+          ]
+        },
+        {
+          "id": "thumb",
+          "title": "母指と小指の筋",
+          "lead": "pollicis「母指の」・digiti minimi「小指の」に、はたらき（abductor 外転・adductor 内転・opponens 対立）と長さ（longus・brevis）を組み合わせる。",
+          "words": [
+            { "term": "abductor-pollicis-longus", "parts": [["abductor", "引き離すもの（→外転）", "外転", "ラ ab（離れて）＋ducere（導く）"], ["pollicis", "母指の", "母指", "ラ pollex"], ["longus", "長い", "長", "ラ longus"]], "note": "前腕から起こり、母指を手のひらから離す（外転する）" },
+            { "term": "abductor-pollicis-brevis", "parts": [["abductor", "引き離すもの（→外転）", "外転", "ラ ab（離れて）＋ducere（導く）"], ["pollicis", "母指の", "母指", "ラ pollex"], ["brevis", "短い", "短", "ラ brevis"]], "note": "母指球の浅い所にある、母指を外転する短い筋" },
+            { "term": "extensor-pollicis-longus", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["pollicis", "母指の", "母指", "ラ pollex"], ["longus", "長い", "長", "ラ longus"]], "note": "母指の末節骨まで伸ばす。腱は嗅ぎタバコ窩の後ろの縁をつくる" },
+            { "term": "extensor-pollicis-brevis", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["pollicis", "母指の", "母指", "ラ pollex"], ["brevis", "短い", "短", "ラ brevis"]], "note": "母指の基節骨を伸ばす。長母指外転筋と同じ腱鞘を通る" },
+            { "term": "flexor-pollicis-longus", "parts": [["flexor", "曲げるもの", "屈", "ラ flectere"], ["pollicis", "母指の", "母指", "ラ pollex"], ["longus", "長い", "長", "ラ longus"]], "note": "前腕の深い層から母指の末節骨へ。母指の先を曲げる" },
+            { "term": "flexor-pollicis-brevis", "parts": [["flexor", "曲げるもの", "屈", "ラ flectere"], ["pollicis", "母指の", "母指", "ラ pollex"], ["brevis", "短い", "短", "ラ brevis"]], "note": "母指球の筋。母指の付け根（中手指節関節）を曲げる" },
+            { "term": "opponens-pollicis", "parts": [["opponens", "向かい合わせるもの", "対立", "ラ ob（向かって）＋ponere（置く）"], ["pollicis", "母指の", "母指", "ラ pollex"]], "note": "母指を回して、ほかの指の腹と向かい合わせる（対立）。物をつまむのに欠かせない" },
+            { "term": "adductor-pollicis", "parts": [["adductor", "引き寄せるもの（→内転）", "内転", "ラ ad（近くへ）＋ducere（導く）"], ["pollicis", "母指の", "母指", "ラ pollex"]], "note": "母指を人差し指の方へ引き寄せる。斜頭と横頭がある" },
+            { "term": "abductor-digiti-minimi-of-hand", "w": "abductor digiti minimi", "parts": [["abductor", "引き離すもの（→外転）", "外転", "ラ ab（離れて）＋ducere（導く）"], ["digiti", "指の", "指", "ラ digitus"], ["minimi", "いちばん小さい", "小", "ラ minimus"]], "note": "小指を外転する。digiti minimi で「いちばん小さい指の」＝小指の" },
+            { "term": "opponens-digiti-minimi-of-hand", "w": "opponens digiti minimi", "parts": [["opponens", "向かい合わせるもの", "対立", "ラ ob（向かって）＋ponere（置く）"], ["digiti", "指の", "指", "ラ digitus"], ["minimi", "いちばん小さい", "小", "ラ minimus"]], "note": "小指を母指の方へ向ける。小指球の深い所にある" },
+            { "term": "extensor-digiti-minimi", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["digiti", "指の", "指", "ラ digitus"], ["minimi", "いちばん小さい", "小", "ラ minimus"]], "note": "指伸筋のとなりで、小指だけを伸ばす" }
+          ]
+        },
+        {
+          "id": "leg",
+          "title": "下腿と足の筋",
+          "lead": "下肢でも組み立ては同じ。tibialis「脛骨の」、fibularis「腓骨の」、hallucis「母趾の」、digitorum「趾の」。足の指は「趾」と書く。",
+          "words": [
+            { "term": "tibialis-anterior", "parts": [["tibialis", "脛骨の", "脛骨", "ラ tibia"], ["anterior", "前の", "前", "ラ ante"]], "note": "すねの前で、足首を背屈する（つま先を上げる）" },
+            { "term": "tibialis-posterior", "parts": [["tibialis", "脛骨の", "脛骨", "ラ tibia"], ["posterior", "後ろの", "後", "ラ post"]], "note": "下腿の後ろの深い所。足の裏の土踏まずを支える" },
+            { "term": "fibularis-longus", "parts": [["fibularis", "腓骨の", "腓骨", "ラ fibula"], ["longus", "長い", "長", "ラ longus"]], "note": "腓骨の外側から、足の裏を横切って第1中足骨へ。足を外反する" },
+            { "term": "fibularis-brevis", "parts": [["fibularis", "腓骨の", "腓骨", "ラ fibula"], ["brevis", "短い", "短", "ラ brevis"]], "note": "長腓骨筋の下にあり、第5中足骨の粗面に付く" },
+            { "term": "fibularis-tertius", "parts": [["fibularis", "腓骨の", "腓骨", "ラ fibula"], ["tertius", "第三の", "第三", "ラ tertius"]], "note": "長・短の腓骨筋に次ぐ3つ目。長趾伸筋の一部が分かれたもの" },
+            { "term": "extensor-hallucis-longus", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["hallucis", "母趾の", "母趾", "ラ hallux"], ["longus", "長い", "長", "ラ longus"]], "note": "母趾を伸ばす（上げる）。足の甲で腱がよく見える" },
+            { "term": "flexor-hallucis-longus", "parts": [["flexor", "曲げるもの", "屈", "ラ flectere"], ["hallucis", "母趾の", "母趾", "ラ hallux"], ["longus", "長い", "長", "ラ longus"]], "note": "地面をけるとき母趾を曲げる。腱は距骨の後ろの溝を通る" },
+            { "term": "extensor-digitorum-longus", "parts": [["extensor", "伸ばすもの", "伸", "ラ extendere"], ["digitorum", "趾の", "趾", "ラ digitus"], ["longus", "長い", "長", "ラ longus"]], "note": "第2〜5趾を伸ばす。手の指伸筋にあたる" },
+            { "term": "flexor-digitorum-longus", "parts": [["flexor", "曲げるもの", "屈", "ラ flectere"], ["digitorum", "趾の", "趾", "ラ digitus"], ["longus", "長い", "長", "ラ longus"]], "note": "第2〜5趾を曲げる。下腿の後ろの深い所にある" },
+            { "term": "abductor-hallucis", "parts": [["abductor", "引き離すもの（→外転）", "外転", "ラ ab（離れて）＋ducere（導く）"], ["hallucis", "母趾の", "母趾", "ラ hallux"]], "note": "足の裏の内側の縁にある、母趾を外転する筋" },
+            { "term": "quadratus-plantae", "parts": [["quadratus", "四角い", "方形", "ラ quadratus"], ["plantae", "足の裏の", "足底", "ラ planta"]], "note": "足の裏で長趾屈筋の腱を引き、趾をまっすぐ曲げるのを助ける" }
+          ]
+        },
+        {
+          "id": "size-trunk",
+          "title": "大きさと向き：胸・背・腹・殿部",
+          "lead": "major「大」・minor「小」、maximus「最大」・medius「中」・minimus「最小」、rectus「直」・transversus「横」。日本語は「大胸筋」のように前に付ける。",
+          "words": [
+            { "term": "pectoralis-major", "parts": [["pectoralis", "胸の", "胸", "ラ pectus"], ["major", "大きい", "大", "ラ magnus"]], "note": "胸の前の大きな扇形の筋。腕を内へ寄せ、内へ回す" },
+            { "term": "pectoralis-minor", "parts": [["pectoralis", "胸の", "胸", "ラ pectus"], ["minor", "小さい", "小", "ラ parvus"]], "note": "大胸筋の下にある小さな筋。肋骨から烏口突起へ" },
+            { "term": "teres-major", "parts": [["teres", "丸い（棒の形の）", "円", "ラ teres"], ["major", "大きい", "大", "ラ magnus"]], "note": "肩甲骨の下角から上腕骨へ。広背筋と一緒に腕を内へ回す" },
+            { "term": "teres-minor", "parts": [["teres", "丸い（棒の形の）", "円", "ラ teres"], ["minor", "小さい", "小", "ラ parvus"]], "note": "大円筋の上にある細い筋。回旋筋腱板の1つで、腕を外へ回す" },
+            { "term": "gluteus-maximus", "parts": [["gluteus", "殿部の", "殿", "ギ gloutos"], ["maximus", "いちばん大きい", "大", "ラ maximus"]], "note": "おしりの丸みをつくる最大の筋。股関節を伸ばす" },
+            { "term": "gluteus-medius", "parts": [["gluteus", "殿部の", "殿", "ギ gloutos"], ["medius", "中くらいの", "中", "ラ medius"]], "note": "大殿筋の上の外側。片足で立つとき骨盤を水平に保つ" },
+            { "term": "gluteus-minimus", "parts": [["gluteus", "殿部の", "殿", "ギ gloutos"], ["minimus", "いちばん小さい", "小", "ラ minimus"]], "note": "中殿筋の下にある、いちばん小さな殿筋" },
+            { "term": "latissimus-dorsi", "parts": [["latissimus", "いちばん広い", "広", "ラ latus（広い）"], ["dorsi", "背の", "背", "ラ dorsum"]], "note": "背中の下半分をおおう、いちばん広い筋。腕を後ろ下へ引く" },
+            { "term": "rectus-abdominis", "parts": [["rectus", "まっすぐな", "直", "ラ rectus"], ["abdominis", "腹の", "腹", "ラ abdomen"]], "note": "腹の前を縦にまっすぐ走る。腱画で区切られて「割れた腹」になる" },
+            { "term": "transversus-abdominis", "parts": [["transversus", "横の", "横", "ラ transversus"], ["abdominis", "腹の", "腹", "ラ abdomen"]], "note": "腹壁の筋のいちばん深い層で、線維が横に走る" },
+            { "term": "quadratus-lumborum", "parts": [["quadratus", "四角い", "方形", "ラ quadratus"], ["lumborum", "腰の", "腰", "ラ lumbus"]], "note": "第12肋骨・腰椎・腸骨稜の間の四角い筋。体を横へ曲げる" }
+          ]
+        },
+        {
+          "id": "thigh",
+          "title": "大腿の筋",
+          "lead": "vastus「広大な」、semi-「半分」、tensor「張るもの」、obturator「ふさぐもの」。意味が分かれば、大腿のどこにある筋か見当がつく。",
+          "words": [
+            { "term": "rectus-femoris", "parts": [["rectus", "まっすぐな", "直", "ラ rectus"], ["femoris", "大腿の", "大腿", "ラ femur"]], "note": "大腿四頭筋のうち、大腿の前をまっすぐ下る筋。股関節もまたぐ" },
+            { "term": "vastus-lateralis", "parts": [["vastus", "広大な", "広", "ラ vastus"], ["lateralis", "外側の", "外側", "ラ latus（わき）"]], "note": "大腿四頭筋でいちばん大きな筋で、大腿の外側にある" },
+            { "term": "vastus-medialis", "parts": [["vastus", "広大な", "広", "ラ vastus"], ["medialis", "内側の", "内側", "ラ medius"]], "note": "膝のすぐ上の内側で、しずくの形にふくらむ" },
+            { "term": "vastus-intermedius", "parts": [["vastus", "広大な", "広", "ラ vastus"], ["intermedius", "中間の", "中間", "ラ inter＋medius"]], "note": "大腿直筋の下で、外側広筋と内側広筋の中間にある" },
+            { "term": "adductor-magnus", "parts": [["adductor", "引き寄せるもの（→内転）", "内転", "ラ ad（近くへ）＋ducere（導く）"], ["magnus", "大きい", "大", "ラ magnus"]], "note": "大腿の内側でいちばん大きな内転筋" },
+            { "term": "adductor-longus", "parts": [["adductor", "引き寄せるもの（→内転）", "内転", "ラ ad（近くへ）＋ducere（導く）"], ["longus", "長い", "長", "ラ longus"]], "note": "内転筋のうち、いちばん前の浅い所にある長い筋" },
+            { "term": "adductor-brevis", "parts": [["adductor", "引き寄せるもの（→内転）", "内転", "ラ ad（近くへ）＋ducere（導く）"], ["brevis", "短い", "短", "ラ brevis"]], "note": "長内転筋の下にある短い内転筋" },
+            { "term": "semitendinosus", "parts": [["semi", "半分", "半", "ラ semi"], ["tendin", "腱", "腱", "ラ tendo"], ["osus", "〜の多い", "様", "ラ -osus"]], "note": "下半分が長い腱になる。日本語の「様」は「〜のような」" },
+            { "term": "semimembranosus", "parts": [["semi", "半分", "半", "ラ semi"], ["membran", "膜", "膜", "ラ membrana"], ["osus", "〜の多い", "様", "ラ -osus"]], "note": "上半分が膜のように平たい腱になる。半腱様筋の下（深く）にある" },
+            { "term": "tensor-fasciae-latae", "parts": [["tensor", "張るもの", "張", "ラ tendere"], ["fasciae", "筋膜の", "筋膜", "ラ fascia"], ["latae", "広い（→大腿の）", "大腿", "ラ latus（広い）"]], "note": "広い筋膜 fascia lata（＝大腿筋膜）を張る。日本語は「大腿筋膜」をそのまま使う" },
+            { "term": "obturator-internus", "parts": [["obturator", "ふさぐもの（→閉鎖）", "閉鎖", "ラ obturare"], ["internus", "内の", "内", "ラ internus"]], "note": "閉鎖孔をふさぐ閉鎖膜の内側から起こる。閉鎖孔の名もここから" }
+          ]
+        },
+        {
+          "id": "face",
+          "title": "挙げる・下げる・輪：顔の筋",
+          "lead": "levator「挙げるもの」、depressor「下げるもの」、orbicularis「輪の」。そこに labii「唇の」・oris「口の」・oculi「目の」などを組み合わせる。",
+          "words": [
+            { "term": "levator-scapulae", "parts": [["levator", "持ち上げるもの", "挙", "ラ levare"], ["scapulae", "肩甲骨の", "肩甲", "ラ scapula"]], "note": "頚椎から肩甲骨の上角へ。肩をすくめる" },
+            { "term": "levator-labii-superioris", "parts": [["levator", "持ち上げるもの", "挙", "ラ levare"], ["labii", "唇の", "唇", "ラ labium"], ["superioris", "上の", "上", "ラ superus"]], "note": "上唇を持ち上げる。眼窩の下の縁から起こる" },
+            { "term": "levator-anguli-oris", "parts": [["levator", "持ち上げるもの", "挙", "ラ levare"], ["anguli", "角の", "角", "ラ angulus"], ["oris", "口の", "口", "ラ os（oris）"]], "note": "口の角（口角）を引き上げる" },
+            { "term": "depressor-anguli-oris", "parts": [["depressor", "押し下げるもの", "下制", "ラ deprimere"], ["anguli", "角の", "角", "ラ angulus"], ["oris", "口の", "口", "ラ os（oris）"]], "note": "口角を下げて、への字の口にする" },
+            { "term": "depressor-labii-inferioris", "parts": [["depressor", "押し下げるもの", "下制", "ラ deprimere"], ["labii", "唇の", "唇", "ラ labium"], ["inferioris", "下の", "下", "ラ inferus"]], "note": "下唇を下へ引く" },
+            { "term": "levator-palpebrae-superioris", "parts": [["levator", "持ち上げるもの", "挙", "ラ levare"], ["palpebrae", "まぶたの", "眼瞼", "ラ palpebra"], ["superioris", "上の", "上", "ラ superus"]], "note": "上まぶたを持ち上げて目を開ける。動眼神経が支配する" },
+            { "term": "orbicularis-oculi", "parts": [["orbicularis", "小さな輪の", "輪", "ラ orbiculus"], ["oculi", "目の", "眼", "ラ oculus"]], "note": "目のまわりを輪のようにかこみ、まぶたを閉じる" },
+            { "term": "orbicularis-oris", "parts": [["orbicularis", "小さな輪の", "輪", "ラ orbiculus"], ["oris", "口の", "口", "ラ os（oris）"]], "note": "口のまわりを輪のようにかこみ、唇を閉じてとがらせる" },
+            { "term": "corrugator-supercilii", "parts": [["corrugator", "しわを寄せるもの", "皺", "ラ corrugare"], ["supercilii", "眉の", "眉", "ラ super（上）＋cilium（まぶた）"]], "note": "眉を寄せて、眉間に縦のしわをつくる。supercilium は「まぶたの上」で眉" },
+            { "term": "zygomaticus-major", "parts": [["zygomaticus", "頬骨の", "頬骨", "ギ zygon（くびき）"], ["major", "大きい", "大", "ラ magnus"]], "note": "頬骨から口角へ。笑うときに口角を上へ引く。頬骨弓を牛のくびき（zygon）に見立てた" },
+            { "term": "levator-veli-palatini", "parts": [["levator", "持ち上げるもの", "挙", "ラ levare"], ["veli", "帆の", "帆", "ラ velum"], ["palatini", "口蓋の", "口蓋", "ラ palatum"]], "note": "軟口蓋（口蓋帆）を持ち上げ、飲み込むとき鼻への通り道をふさぐ" }
+          ]
+        },
+        {
+          "id": "story-muscle-1",
+          "title": "たとえの名前：筋（体幹と脚）",
+          "lead": "道具・動物・職業にたとえた筋の名前。見立てが分かると、形と場所が浮かぶ。",
+          "words": [
+            { "term": "gastrocnemius", "parts": [["gastro", "腹（ふくらみ）", "腹", "ギ gastēr"], ["cnemius", "すねの", "腓", "ギ knēmē"]], "note": "「すねの腹」＝ふくらはぎ。日本語の「腓」もふくらはぎ" },
+            { "term": "soleus", "parts": [["soleus", "サンダルの底（→ヒラメ）", "ヒラメ", "ラ solea"]], "note": "平たい形を、魚のヒラメ（舌平目 sole）に見立てた。腓腹筋の下にある" },
+            { "term": "sartorius", "parts": [["sartorius", "仕立て屋の", "縫工", "ラ sartor"]], "note": "あぐらをかいて縫い物をする仕立て屋の姿勢をつくる筋。体でいちばん長い筋" },
+            { "term": "gracilis", "parts": [["gracilis", "細い", "薄", "ラ gracilis"]], "note": "大腿の内側を縦に走る、細く平たい筋" },
+            { "term": "trapezius", "parts": [["trapezius", "台形の", "", "ギ trapezion（小さな台）"]], "note": "左右を合わせると台形（ひし形）。日本語は、修道士の頭巾に見立てた古い名前 cucullaris から「僧帽」" },
+            { "term": "serratus-anterior", "parts": [["serratus", "のこぎりの歯のある", "鋸", "ラ serra"], ["anterior", "前の", "前", "ラ ante"]], "note": "肋骨から起こるぎざぎざの縁が、のこぎりの歯に見える" },
+            { "term": "lumbricals-of-hand", "w": "lumbricals", "parts": [["lumbric", "ミミズ", "虫", "ラ lumbricus"], ["als", "〜の形の", "様", ""]], "note": "手のひらの、ミミズのような細い筋。深指屈筋の腱から起こる" },
+            { "term": "superior-gemellus", "parts": [["superior", "上の", "上", "ラ superus"], ["gemellus", "小さな双子", "双子", "ラ geminus（双子）"]], "note": "内閉鎖筋の腱をはさんで上下に並ぶ、双子のような小さな筋の上の方" }
+          ]
+        },
+        {
+          "id": "story-muscle-2",
+          "title": "たとえの名前：筋（頭と首）",
+          "lead": "かむもの・ラッパを吹く人・笑う人・平たい板・ゆがんだ三角。顔と首の筋には、はたらきや形のたとえが多い。",
+          "words": [
+            { "term": "masseter", "parts": [["masseter", "かむもの", "咬", "ギ masētēr"]], "note": "歯をかみしめると、頬で固くなる筋" },
+            { "term": "buccinator", "parts": [["buccinator", "ラッパを吹く人", "頬", "ラ buccina（ラッパ）"]], "note": "頬をふくらませてラッパを吹く人の筋。ラッパ buccina の名は頬 bucca から" },
+            { "term": "risorius", "parts": [["risorius", "笑う人の", "笑", "ラ ridere（笑う）"]], "note": "口角を横へ引いて笑顔をつくる" },
+            { "term": "temporalis", "parts": [["temporalis", "こめかみの", "側頭", "ラ tempora"]], "note": "こめかみ（側頭部）の扇形の筋。下顎を引き上げてかむ" },
+            { "term": "platysma", "parts": [["platysma", "平たい板", "広", "ギ platys（平たい）"]], "note": "首の前で皮膚のすぐ下に広がる、薄い板のような筋" },
+            { "term": "splenius-capitis", "parts": [["splenius", "当て布（包帯）の", "板状", "ギ splēnion"], ["capitis", "頭の", "頭", "ラ caput"]], "note": "首の後ろを包帯のように斜めにおおう。日本語は形で「板状」" },
+            { "term": "anterior-scalene", "parts": [["anterior", "前の", "前", "ラ ante"], ["scalene", "ゆがんだ三角（不等辺）", "斜角", "ギ skalēnos"]], "note": "頚椎から第1肋骨へ。前・中・後の3つが、辺の長さのちがう三角形のように並ぶ" }
+          ]
+        },
+        {
+          "id": "joints",
+          "title": "関節と靱帯：AとBをつなぐ名前",
+          "lead": "関節や靱帯は、つなぐ2つの骨の名前を並べる。sterno＋clavicular＝胸鎖。日本語では1字に縮めることも多い。",
+          "words": [
+            { "term": "sternoclavicular-joint", "parts": [["sterno", "胸骨", "胸", "ギ sternon"], ["clavicular", "鎖骨の", "鎖", "ラ clavis"], ["joint", "関節", "関節", ""]], "note": "胸骨と鎖骨の関節。腕と体幹をつなぐただ1つの関節" },
+            { "term": "acromioclavicular-joint", "parts": [["acromio", "肩峰", "肩", "ギ akron（先）＋ōmos（肩）"], ["clavicular", "鎖骨の", "鎖", "ラ clavis"], ["joint", "関節", "関節", ""]], "note": "肩峰（肩の先）と鎖骨の外側の端の関節。日本語は1字ずつで「肩鎖」" },
+            { "term": "coracoclavicular-ligament", "parts": [["coraco", "烏口突起", "烏口", "ギ korax（カラス）"], ["clavicular", "鎖骨の", "鎖骨", "ラ clavis"], ["ligament", "結ぶもの", "靱帯", "ラ ligare（結ぶ）"]], "note": "烏口突起と鎖骨をつなぐ強い靱帯。円錐靱帯と菱形靱帯からなる" },
+            { "term": "coracoacromial-ligament", "parts": [["coraco", "烏口突起", "烏口", "ギ korax（カラス）"], ["acromial", "肩峰の", "肩峰", "ギ akron（先）＋ōmos（肩）"], ["ligament", "結ぶもの", "靱帯", "ラ ligare（結ぶ）"]], "note": "烏口突起と肩峰の間に張り、肩関節の屋根をつくる" },
+            { "term": "radiocarpal-joint", "parts": [["radio", "橈骨", "橈骨", "ラ radius"], ["carpal", "手根の", "手根", "ギ karpos"], ["joint", "関節", "関節", ""]], "note": "橈骨と手根骨の関節。いわゆる手首の関節" },
+            { "term": "temporomandibular-joint", "parts": [["temporo", "側頭骨", "", "ラ tempus"], ["mandibular", "下顎骨の", "顎", "ラ mandibula"], ["joint", "関節", "関節", ""]], "note": "側頭骨と下顎骨の関節。日本語は短く「顎関節」" },
+            { "term": "atlanto-occipital-joint", "parts": [["atlanto", "環椎", "環椎", "ギ Atlas"], ["occipital", "後頭骨の", "後頭", "ラ occiput"], ["joint", "関節", "関節", ""]], "note": "環椎と後頭骨の関節で、うなずく動き。occiput は ob（後ろ）＋caput（頭）" },
+            { "term": "metacarpophalangeal-joints", "parts": [["meta", "次の", "中", "ギ meta"], ["carpo", "手根", "手", "ギ karpos"], ["phalangeal", "指節の", "指節", "ギ phalanx（隊列）"], ["joints", "関節", "関節", ""]], "note": "中手骨（手根の次の骨）と基節骨の関節。phalanx は兵の隊列で、並んだ指の骨" },
+            { "term": "iliofemoral-ligament", "parts": [["ilio", "腸骨", "腸骨", "ラ ilium"], ["femoral", "大腿骨の", "大腿", "ラ femur"], ["ligament", "結ぶもの", "靱帯", "ラ ligare（結ぶ）"]], "note": "腸骨から大腿骨へ。体でいちばん強い靱帯で、Y字の形" },
+            { "term": "sacrotuberous-ligament", "parts": [["sacro", "仙骨", "仙", "ラ sacrum"], ["tuberous", "結節の（坐骨結節）", "結節", "ラ tuber"], ["ligament", "結ぶもの", "靱帯", "ラ ligare（結ぶ）"]], "note": "仙骨と坐骨結節をつなぐ。仙棘靱帯と一緒に大坐骨孔・小坐骨孔をつくる" },
+            { "term": "sacrospinous-ligament", "parts": [["sacro", "仙骨", "仙", "ラ sacrum"], ["spinous", "棘の（坐骨棘）", "棘", "ラ spina"], ["ligament", "結ぶもの", "靱帯", "ラ ligare（結ぶ）"]], "note": "仙骨と坐骨棘をつなぐ。仙結節靱帯より前にある" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "organ",
+      "title": "臓器・血管・神経の名前",
+      "lead": "臓器の名前には、古いギリシャ語・ラテン語の見立てが残る。日本語は形を訳した名前と、はたらきや場所で名付けた名前がある。",
+      "lessons": [
+        {
+          "id": "digestive",
+          "title": "消化管と腹の臓器",
+          "lead": "空っぽ（jejunum）、行き止まり（cecum）、まっすぐ（rectum）。消化管の名前は、見たままの姿から付いた。",
+          "words": [
+            { "term": "esophagus", "parts": [["eso", "運ぶ", "道", "ギ oisō（運ぼう）"], ["phagus", "食べたもの", "食", "ギ phagein（食べる）"]], "note": "食べたものを運ぶ管。日本語も「食べ物の道」" },
+            { "term": "cardia", "parts": [["cardia", "心臓（のそば）", "", "ギ kardia"]], "note": "心臓のすぐ下にある胃の入口なので cardia。日本語は「噴門」" },
+            { "term": "pylorus", "parts": [["pyl", "門", "門", "ギ pylē"], ["orus", "番人", "", "ギ ouros"]], "note": "胃の出口の門番。十二指腸へ送る量を調節する。日本語の「幽門」も門" },
+            { "term": "jejunum", "parts": [["jejunum", "空っぽの", "空", "ラ jejunus"]], "note": "死後に開くと中が空のことが多かったので「空腸」。小腸の前の5分の2" },
+            { "term": "ileum", "parts": [["ileum", "ねじれた", "回", "ギ eilein（巻く）"]], "note": "曲がりくねって回るので「回腸」。寛骨の腸骨 ilium とつづりが似るので注意" },
+            { "term": "cecum", "parts": [["cecum", "見えない（→行き止まり）", "盲", "ラ caecus"]], "note": "一方が行き止まりの袋なので「盲腸」。いわゆる盲腸炎は虫垂の炎症" },
+            { "term": "rectum", "parts": [["rectum", "まっすぐな", "直", "ラ rectus"]], "note": "動物ではまっすぐなので「直腸」。人では仙骨に沿って曲がる" },
+            { "term": "rectal-ampulla", "parts": [["rectal", "直腸の", "直腸", "ラ rectus"], ["ampulla", "ふくらんだ瓶", "膨大部", "ラ ampulla"]], "note": "直腸の下のふくらんだ所で、便がたまる。卵管・精管の膨大部も ampulla" },
+            { "term": "pancreas", "parts": [["pan", "すべて", "", "ギ pan"], ["creas", "肉", "", "ギ kreas"]], "note": "骨も軟骨もなく、すべて肉に見えた。「膵」は江戸時代に宇田川玄真が作った字" },
+            { "term": "greater-omentum", "parts": [["greater", "大きい方の", "大", ""], ["omentum", "腸をおおう脂肪の膜", "網", "ラ omentum"]], "note": "胃から前掛けのように垂れ下がる、脂肪の多い網目の腹膜" }
+          ]
+        },
+        {
+          "id": "vessels",
+          "title": "血管の名前",
+          "lead": "冠のように囲む（coronary）、対にならない（azygos）、門から入る（portal）。血管の名前は形と道すじを表すものが多い。",
+          "words": [
+            { "term": "ascending-aorta", "parts": [["ascending", "のぼる", "上行", "ラ ascendere"], ["aorta", "持ち上げられたもの", "大動脈", "ギ aortē"]], "note": "左心室から上へのぼる、大動脈のはじめの部分。aortē は aeirein「持ち上げる」から" },
+            { "term": "brachiocephalic-trunk", "parts": [["brachio", "腕", "腕", "ラ brachium"], ["cephalic", "頭の", "頭", "ギ kephalē"], ["trunk", "幹", "", "ラ truncus"]], "note": "右の腕（鎖骨下動脈）と頭（総頚動脈）へ分かれる幹。日本語は「腕頭動脈」" },
+            { "term": "common-carotid-artery", "parts": [["common", "共通の", "総", "ラ communis"], ["carotid", "眠らせる", "頚", "ギ karoun"], ["artery", "動脈", "動脈", "ギ artēria"]], "note": "押さえると気を失うことから「眠らせる」動脈。日本語は場所で「頚」" },
+            { "term": "internal-jugular-vein", "parts": [["internal", "内の", "内", "ラ internus"], ["jugular", "のどの（首の）", "頚", "ラ jugulum"], ["vein", "静脈", "静脈", "ラ vena"]], "note": "頭の血を集めて首を下る太い静脈。jugulum は鎖骨の上のくぼみ" },
+            { "term": "azygos-vein", "parts": [["a", "〜でない", "", "ギ a-"], ["zygos", "対（ペア）", "", "ギ zygon（くびき）"], ["vein", "静脈", "静脈", "ラ vena"]], "note": "左右の対にならず、右だけを上る静脈。「奇」は奇数の奇（対でない）" },
+            { "term": "right-coronary-artery", "parts": [["right", "右の", "右", ""], ["coronary", "冠の", "冠状", "ラ corona"], ["artery", "動脈", "動脈", "ギ artēria"]], "note": "心臓を冠のように取り巻き、心臓の筋に血を送る" },
+            { "term": "celiac-trunk", "parts": [["celiac", "腹の", "腹腔", "ギ koilia（腹のくぼみ）"], ["trunk", "幹", "", "ラ truncus"]], "note": "腹大動脈から出て、すぐに左胃・総肝・脾動脈に分かれる幹" },
+            { "term": "great-saphenous-vein", "parts": [["great", "大きい", "大", ""], ["saphenous", "はっきり見える", "伏在", "ギ saphēnēs（とする説）"], ["vein", "静脈", "静脈", "ラ vena"]], "note": "足の内側から大腿の付け根まで、皮膚の下を上る。日本語は「皮下に伏して在る」と訳した" },
+            { "term": "superior-vena-cava", "parts": [["superior", "上の", "上", "ラ superus"], ["vena", "静脈", "静脈", "ラ vena"], ["cava", "中が空洞の", "", "ラ cavus"]], "note": "vena cava は「空洞の静脈」。日本語は太さで「大静脈」。頭と腕の血を右心房へ" },
+            { "term": "pulmonary-trunk", "parts": [["pulmonary", "肺の", "肺", "ラ pulmo"], ["trunk", "幹", "幹", "ラ truncus"]], "note": "右心室から出て、左右の肺動脈に分かれる幹" },
+            { "term": "hepatic-portal-vein", "parts": [["hepatic", "肝臓の", "", "ギ hēpar"], ["portal", "門の", "門", "ラ porta"], ["vein", "静脈", "脈", "ラ vena"]], "note": "肝臓の門（肝門）から入る静脈。腸で吸収したものを肝臓へ運ぶ" }
+          ]
+        },
+        {
+          "id": "nerves",
+          "title": "神経の名前",
+          "lead": "においをかぐ・目を動かす・外へ向ける・さまよう。脳神経の名前は、はたらきや道すじをそのまま表す。",
+          "words": [
+            { "term": "olfactory-nerve", "parts": [["olfactory", "においをかぐ", "嗅", "ラ olere（におう）＋facere（する）"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第I脳神経。鼻の天井から篩板の穴を通って脳へ" },
+            { "term": "optic-nerve", "parts": [["optic", "見ることの", "視", "ギ optikos"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第II脳神経。眼球の後ろから視交叉へ" },
+            { "term": "oculomotor-nerve", "parts": [["oculo", "目", "眼", "ラ oculus"], ["motor", "動かすもの", "動", "ラ movere"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第III脳神経。目を動かす筋の多くと、上まぶた・瞳孔を縮める筋へ" },
+            { "term": "trochlear-nerve", "parts": [["trochlear", "滑車の", "滑車", "ラ trochlea"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第IV脳神経。滑車に腱をかけて向きを変える上斜筋を動かす" },
+            { "term": "abducens-nerve", "parts": [["ab", "離れて（外へ）", "外", "ラ ab"], ["ducens", "導く", "転", "ラ ducere"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第VI脳神経。目を外へ向ける（外転する）外側直筋を動かす" },
+            { "term": "facial-nerve", "parts": [["facial", "顔の", "顔面", "ラ facies"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第VII脳神経。顔の表情筋を動かし、舌の前の味も伝える" },
+            { "term": "vestibulocochlear-nerve", "parts": [["vestibulo", "前庭（玄関）", "", "ラ vestibulum"], ["cochlear", "蝸牛の", "", "ギ kochlias（カタツムリ）"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第VIII脳神経。前庭（平衡）と蝸牛（聴覚）の神経が合わさる。日本語は場所で「内耳」" },
+            { "term": "glossopharyngeal-nerve", "parts": [["glosso", "舌", "舌", "ギ glōssa"], ["pharyngeal", "咽頭の", "咽", "ギ pharynx"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第IX脳神経。舌の後ろと咽頭の感覚、耳下腺の分泌" },
+            { "term": "vagus-nerve", "parts": [["vagus", "さまよう", "迷走", "ラ vagari"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第X脳神経。首から胸・腹の臓器まで、さまようように広く分布する" },
+            { "term": "accessory-nerve", "parts": [["accessory", "付け加わった", "副", "ラ accedere"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "第XI脳神経。胸鎖乳突筋と僧帽筋を動かす。迷走神経に付け加わるように出る" },
+            { "term": "phrenic-nerve", "parts": [["phrenic", "横隔膜の", "横隔", "ギ phrēn"], ["nerve", "神経", "神経", "ラ nervus"]], "note": "頚神経叢から横隔膜へ。phrēn は横隔膜と「心」の両方の意味（昔は心がここにあると考えた）" }
+          ]
+        },
+        {
+          "id": "brain",
+          "title": "脳と膜の名前",
+          "lead": "タツノオトシゴ（hippocampus）、橋（pons）、かたい母（dura mater）。脳の名前は見立ての宝庫。",
+          "words": [
+            { "term": "hippocampus", "parts": [["hippo", "馬", "馬", "ギ hippos"], ["campus", "海の怪物", "海", "ギ kampos"]], "note": "海馬＝タツノオトシゴ。断面の形が似ている。記憶をつくる" },
+            { "term": "corpus-callosum", "parts": [["corpus", "体", "", "ラ corpus"], ["callosum", "かたい", "", "ラ callosus"]], "note": "左右の大脳半球をつなぐ太い線維の束。「かたい体」の意。日本語は左右に渡した梁（はり）に見立てた" },
+            { "term": "medulla-oblongata", "parts": [["medulla", "髄", "髄", "ラ medulla"], ["oblongata", "長くのびた", "延", "ラ oblongus"]], "note": "脊髄が頭の方へ長くのびた所。日本語も後ろから読んで「延髄」" },
+            { "term": "pons", "parts": [["pons", "橋", "橋", "ラ pons"]], "note": "左右の小脳をつなぐ橋のように、延髄の上に横たわる" },
+            { "term": "thalamus", "parts": [["thalamus", "奥の部屋（寝床）", "床", "ギ thalamos"]], "note": "大脳の奥の部屋。日本語は「床」をとって視床。においを除く感覚の中継所" },
+            { "term": "midbrain", "w": "mesencephalon", "parts": [["mes", "中の", "中", "ギ mesos"], ["encephalon", "脳", "脳", "ギ en（中）＋kephalē（頭）"]], "note": "脳幹のいちばん上。encephalon は「頭の中にあるもの」で脳" },
+            { "term": "dura-mater", "parts": [["dura", "かたい", "硬", "ラ durus"], ["mater", "母（→包むもの）", "膜", "ラ mater"]], "note": "脳を包むいちばん外のかたい膜。アラビア語の「脳の母」をラテン語に訳した名前" },
+            { "term": "pia-mater", "parts": [["pia", "やさしい", "軟", "ラ pius"], ["mater", "母（→包むもの）", "膜", "ラ mater"]], "note": "脳の表面にぴったり付く、やわらかい膜" },
+            { "term": "falx-cerebri", "parts": [["falx", "鎌", "鎌", "ラ falx"], ["cerebri", "大脳の", "大脳", "ラ cerebrum"]], "note": "左右の大脳半球の間に入る、鎌の形の硬膜" },
+            { "term": "cingulate-gyrus", "parts": [["cingulate", "帯の", "帯状", "ラ cingulum"], ["gyrus", "回（うねり）", "回", "ギ gyros"]], "note": "脳梁を帯のように取り巻く回。感情にかかわる" },
+            { "term": "pineal-gland", "parts": [["pineal", "松かさの", "松果", "ラ pinea"], ["gland", "腺", "", "ラ glans（どんぐり）"]], "note": "松かさ（松ぼっくり）の形の小さな内分泌腺。メラトニンを出す" }
+          ]
+        },
+        {
+          "id": "viscera",
+          "title": "呼吸・泌尿・内分泌・生殖の名前",
+          "lead": "ざらざらの管（trachea）、仕切り（diaphragm）、腎臓のそば（adrenal）。体の中の器官も部品で読める。",
+          "words": [
+            { "term": "trachea", "parts": [["trachea", "ざらざらの（管）", "", "ギ tracheia"]], "note": "軟骨の輪でごつごつした管。ギリシャ語 tracheia artēria「ざらざらの管」から" },
+            { "term": "diaphragm", "parts": [["dia", "横切って", "横", "ギ dia"], ["phragm", "仕切り", "隔", "ギ phragma"]], "note": "胸と腹を横に仕切る、膜のような筋。日本語も「横の隔て」" },
+            { "term": "parietal-pleura", "parts": [["parietal", "壁の", "壁側", "ラ paries"], ["pleura", "わき腹（→胸膜）", "胸膜", "ギ pleura"]], "note": "胸の壁の内面をおおう胸膜。肺の表面の胸膜は臓側胸膜" },
+            { "term": "adrenal-cortex", "parts": [["ad", "そばに", "副", "ラ ad"], ["renal", "腎臓の", "腎", "ラ ren"], ["cortex", "樹皮", "皮質", "ラ cortex"]], "note": "腎臓のそば（上）にある副腎の外の層。ステロイドホルモンを出す" },
+            { "term": "adrenal-medulla", "parts": [["ad", "そばに", "副", "ラ ad"], ["renal", "腎臓の", "腎", "ラ ren"], ["medulla", "髄", "髄質", "ラ medulla"]], "note": "副腎の中心の層。アドレナリン（adrenaline）の名もここから" },
+            { "term": "thyroid-gland", "parts": [["thyroid", "盾の形の", "甲状", "ギ thyreos（盾）＋eidos（形）"], ["gland", "腺", "腺", "ラ glans（どんぐり）"]], "note": "盾の形の甲状軟骨の前にある腺。チョウが羽を広げた形" },
+            { "term": "parathyroid-gland", "parts": [["para", "そば", "", "ギ para"], ["thyroid", "甲状腺", "", "ギ thyreos（盾）＋eidos（形）"], ["gland", "腺", "", "ラ glans（どんぐり）"]], "note": "甲状腺のそば（後ろ）にある小さな腺。日本語の正式名は「上皮小体」で、副甲状腺ともいう" },
+            { "term": "ovary", "parts": [["ov", "卵", "卵", "ラ ovum"], ["ary", "〜の所", "巣", "ラ -arium"]], "note": "卵をつくる所。日本語も「卵の巣」" },
+            { "term": "ureter", "parts": [["ure", "尿", "尿", "ギ ouron"], ["ter", "〜するもの（管）", "管", ""]], "note": "腎臓から膀胱へ尿を運ぶ管。urethra（尿道）とつづりが似るので注意" },
+            { "term": "urethra", "parts": [["ure", "尿", "尿", "ギ ouron"], ["thra", "通り道", "道", ""]], "note": "膀胱から体の外へ尿を出す道" },
+            { "term": "uterine-tube", "parts": [["uterine", "子宮の", "", "ラ uterus"], ["tube", "管", "管", "ラ tubus"]], "note": "子宮の上の端から卵巣の方へのびる管。日本語は卵の通り道として「卵管」" }
+          ]
+        }
+      ]
+    }
+  ]
+}

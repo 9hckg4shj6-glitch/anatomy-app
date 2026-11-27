@@ -3,6 +3,7 @@
 // - 基本の用語（figure）の選択肢（foils）と関節（content/joints.json）の参照先、筋の動き（motion）の関節
 // - 局所解剖の語（region）の境界・中を通る語が、部品を持つ語か
 // - 語根カード（content/roots.json）の形と、例の語があるか
+// - 語源で単語（content/etym-words.json）の形、語の参照先、部品をつなぐと英語名になるか、部品の字が日本語名にあるか
 // - 骨学試験（content/exam.json）の形と、空欄・語・3Dで示す語の参照先
 // - 臓器の図（content/organs.json）の形と語・レッスンの参照先、平面図（public/plates/index.json）が作られているか
 // - 向きの問い方（content/directions.json）の語と、答えの向きが3D（ピンと部品の中心、臓器・血管などは at）で見た向きと合うか
@@ -227,6 +228,43 @@ for (const root of rootsParsed.success ? rootsParsed.data.groups.flatMap((group)
   }
   if (!terms.some((term) => [term.en, ...(term.enAlt ?? []), ...(root.la && term.la ? [term.la] : [])].some((name) => re.test(name)))) {
     errors.push(`roots.json: ${root.id}（${root.root}）を含む語がありません`);
+  }
+}
+
+// 語源で単語（content/etym-words.json）: レッスンID・語の重複、語があるか、1レッスン6〜12語、
+// 分ける名前（w か語の en）が語の en・enAlt・la の中にあり、部品をつなぐとその名前になるか（空白・ハイフンは除く）、
+// 部品の字が日本語名の中にあるか（長い字から順に、重ならない所に。src/etym.ts の jaSegments と同じ）、覚え方は90字まで
+const EtymPart = z.tuple([z.string().regex(/^[A-Za-z]+$/), z.string().min(1), z.string(), z.string()]);
+const EtymWord = z.strictObject({ term: z.string(), w: z.string().min(2).optional(), parts: z.array(EtymPart).min(1).max(5), note: z.string().min(5).max(90) });
+const EtymLesson = z.strictObject({ id: z.string().regex(/^[a-z0-9-]+$/), title: z.string().min(1), lead: z.string().min(10), words: z.array(EtymWord).min(6).max(12) });
+const etymParsed = z.strictObject({ groups: z.array(z.strictObject({ id: z.string(), title: z.string(), lead: z.string(), lessons: z.array(EtymLesson).min(1) })).min(1) })
+  .safeParse(JSON.parse(fs.readFileSync(path.join(ROOT, "content/etym-words.json"), "utf8")));
+if (!etymParsed.success) for (const issue of etymParsed.error.issues) errors.push(`etym-words.json ${issue.path.join(".")}: ${issue.message}`);
+const etymLessonIds = new Set();
+const etymTerms = new Set();
+const bare = (text) => text.toLowerCase().replace(/[\s-]/g, "");
+for (const lesson of etymParsed.success ? etymParsed.data.groups.flatMap((group) => group.lessons) : []) {
+  if (etymLessonIds.has(lesson.id)) errors.push(`etym-words.json: レッスンIDが重複: ${lesson.id}`);
+  etymLessonIds.add(lesson.id);
+  for (const entry of lesson.words) {
+    const term = seen.get(entry.term);
+    if (!term) { errors.push(`etym-words.json: ${lesson.id} の「${entry.term}」という語はありません`); continue; }
+    if (etymTerms.has(entry.term)) errors.push(`etym-words.json: 語が2回入っています: ${entry.term}`);
+    etymTerms.add(entry.term);
+    const name = entry.w ?? term.en;
+    if (![term.en, ...(term.enAlt ?? []), term.la ?? ""].some((other) => other.toLowerCase().includes(name.toLowerCase()))) {
+      errors.push(`etym-words.json: ${entry.term} の「${name}」が語の英語名・ラテン語名の中にありません`);
+    }
+    if (bare(entry.parts.map((part) => part[0]).join("")) !== bare(name)) {
+      errors.push(`etym-words.json: ${entry.term} の部品 ${entry.parts.map((part) => part[0]).join("＋")} をつないでも「${name}」になりません`);
+    }
+    const used = Array.from(term.ja.split(""), () => false);
+    for (const kanji of entry.parts.map((part) => part[2]).filter(Boolean).sort((a, b) => b.length - a.length)) {
+      let at = -1;
+      for (let from = 0; (at = term.ja.indexOf(kanji, from)) >= 0 && used.slice(at, at + kanji.length).some(Boolean); from = at + 1);
+      if (at < 0) errors.push(`etym-words.json: ${entry.term} の部品の字「${kanji}」が日本語名「${term.ja}」の中に（ほかの部品と重ならずに）ありません`);
+      else used.fill(true, at, at + kanji.length);
+    }
   }
 }
 
@@ -630,4 +668,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 初心者コース ${beginnerCount}語 / 語根 ${rootIds.size} / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0}・D${examCounts.drawings ?? 0}・対${examCounts.pairs ?? 0}・並び${examCounts.sequences ?? 0}・目安${examCounts.levels ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);
+console.log(`内容OK: ${terms.length}語 / レッスン ${unitIds.size} / 初心者コース ${beginnerCount}語 / 語根 ${rootIds.size} / 語源で単語 ${etymTerms.size}語・${etymLessonIds.size}レッスン / 骨学試験 A${examCounts.cloze ?? 0}・B${examCounts.words ?? 0}・C${examCounts.essays ?? 0}・D${examCounts.drawings ?? 0}・対${examCounts.pairs ?? 0}・並び${examCounts.sequences ?? 0}・目安${examCounts.levels ?? 0} / 要確認 ${flagged.length}語${wikidata ? ` / Wikidataと違う ${differs.length}語` : ""}`);

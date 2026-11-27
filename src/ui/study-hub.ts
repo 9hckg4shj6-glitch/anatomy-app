@@ -17,6 +17,7 @@ export const ICONS = {
   explore: `<circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5 5"/><path d="M8 10.5h5M10.5 8v5"/>`,
   organ: `<path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.2a4.2 4.2 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/><path d="M12 7.2V4"/>`,
   motion: `<path d="M3 12h3.5l2-5 3 10 2.5-7 1.5 2H21"/>`,
+  etym: `<rect x="2.5" y="7.5" width="6" height="7" rx="1.6"/><rect x="9" y="7.5" width="6" height="7" rx="1.6"/><rect x="15.5" y="7.5" width="6" height="7" rx="1.6"/><path d="M5.5 17.5v2h13v-2"/>`,
   roots: `<path d="M12 21v-8"/><path d="M12 13c0-4 2.5-6.5 7-6.5 0 4-2.5 6.5-7 6.5Z"/><path d="M12 13c0-3-2-5-5.5-5 0 3 2 5 5.5 5Z"/>`,
   progress: `<path d="M4 20h16"/><path d="M7 17v-5M12 17V7M17 17v-8"/>`,
   settings: `<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>`,
@@ -69,8 +70,8 @@ export function lockedRow(icon: keyof typeof ICONS, color: string, title: string
 
 /**
  * 学ぶ（#/study）: いちばん上にコースの次の1つ（続きから／次のレッスン）。はじめての人には「このあと」の3つ。
- * その下に学び方（レッスン・臓器の図・演習・骨学試験・語根カード・神経を切る・印刷する）を、いつも全部と「こんなときに」の一言で（何があるかが分かるように）。
- * まだ使えないもの（何も学んでいないときの演習、はじめての解剖の骨学試験・語根カード）は鍵を付け、どうすれば使えるかを書く
+ * その下に学び方（レッスン・臓器の図・演習・骨学試験・語源で単語・語根カード・神経を切る・印刷する）を、いつも全部と「こんなときに」の一言で（何があるかが分かるように）。
+ * まだ使えないもの（何も学んでいないときの演習、はじめての解剖の骨学試験・語源で単語・語根カード）は鍵を付け、どうすれば使えるかを書く
  * （docs/普段使い.md「はじめての人への案内」）。全部で何語・何レッスンといった大きな数は出さない
  */
 export async function studyHub(ctx: AppContext): Promise<void> {
@@ -125,9 +126,13 @@ export async function studyHub(ctx: AppContext): Promise<void> {
     !canUseExam() ? null : beginner
       ? lockedRow("exam", "#b07d10", "骨学試験", "コースを「標準」にすると使えます", COURSE_SETTING)
       : itemRow("#/exam", "exam", "#b07d10", "骨学試験", "骨学実習の試験の前に。A〜D の形式と、整理して覚える"),
+    // 語源で単語は名前ごと（胸鎖乳突筋＝sterno＋cleido＋mastoid）、語根カードは部品ごと（brachi-＝腕）に覚える
+    beginner
+      ? lockedRow("etym", "#3a6ea5", "語源で単語", "コースを「標準」にすると使えます", COURSE_SETTING)
+      : itemRow("#/etym", "etym", "#3a6ea5", "語源で単語", "名前を部品に分け、日本語名の字と対応させて覚える。筋・骨・臓器の名前"),
     beginner
       ? lockedRow("roots", "#2f8f55", "語根カード", "コースを「標準」にすると使えます", COURSE_SETTING)
-      : itemRow("#/roots", "roots", "#2f8f55", "語根カード", "英語名を部品から読む。知らない英語名も意味が分かる"),
+      : itemRow("#/roots", "roots", "#2f8f55", "語根カード", "部品（語根）を1つずつ覚える。brachi-＝腕 など。知らない英語名も意味が分かる"),
     itemRow("#/cut", "cut", "#b8862b", "神経を切る", "神経を1本切ると、止まる筋が灰色に。下垂手・猿手などの形と、症状から神経を当てる問い"),
     itemRow("#/journey", "journey", "#c2493a", "からだの旅", "血液の1滴・食べ物・痛みの信号になって進む。分かれ道で血管・器官・神経の名前を選ぶ"),
     itemRow("#/print", "print", "#4f6d8f", "印刷する", "平面図の書き込みプリントと語のテストを、紙や PDF に。答えも付く"),

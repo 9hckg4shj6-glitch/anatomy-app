@@ -2463,3 +2463,91 @@ body.motion-quiz .motion-flow li.done .motion-flow-item { color: var(--ink); }
 }
 /* 名前の札の線が帯の上にかからないように */
 .stage-tools:has(.journey-bar) { z-index: 3; }
+
+/* ===== 語源で単語（src/ui/etym.ts）: 名前を部品に分け、部品ごとに色を付ける ===== */
+/* 部品の色。字の色に使うので、カード（--surface）と部品の地（8〜12%）のどちらでも 4.8:1 以上 */
+:root { --etym-0: #a8431c; --etym-1: #1f6f78; --etym-2: #5b4bb0; --etym-3: #7a5a00; }
+.etym-k { color: var(--p); box-shadow: inset 0 -3px 0 color-mix(in srgb, var(--p) 28%, transparent); }
+.etym-seg { color: var(--p); font-weight: 700; border-bottom: 2.5px solid color-mix(in srgb, var(--p) 55%, transparent); }
+.etym-seg.plain { color: var(--ink); border-bottom-color: color-mix(in srgb, var(--ink) 22%, transparent); }
+.etym-dot { margin: 0 1px; color: var(--muted); font-weight: 400; }
+.etym-en { overflow-wrap: anywhere; }
+.etym-word { font-size: 20px; }
+.etym-also { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.etym-parts { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; }
+.etym-part {
+  display: grid; grid-template-columns: minmax(5em, auto) minmax(0, 1fr) auto; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 10px; border-left: 4px solid var(--p); background: color-mix(in srgb, var(--p) 8%, var(--surface));
+}
+.etym-part-text { color: var(--p); font-size: 17px; overflow-wrap: anywhere; }
+.etym-part-body { display: grid; gap: 1px; min-width: 0; }
+.etym-part-meaning { font-size: 15px; font-weight: 600; }
+.etym-part-from { font-size: 13px; color: var(--muted); }
+.etym-part-kanji {
+  min-width: 2.2em; padding: 2px 8px; border-radius: 8px; border: 1px solid color-mix(in srgb, var(--p) 35%, var(--line));
+  background: var(--surface); color: var(--p); font-size: 16px; font-weight: 800; text-align: center;
+}
+.etym-note { margin: 12px 0 0; font-size: 15px; line-height: 1.65; }
+.etym-related { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+.etym-related-title { margin: 0 0 4px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.etym-related ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.etym-related-item {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px; width: 100%; padding: 6px 2px;
+  border: 0; background: none; font: inherit; font-size: 14px; color: var(--ink); text-align: left;
+}
+button.etym-related-item { min-height: 40px; cursor: pointer; }
+.etym-related-item .etym-en { color: var(--muted); text-align: right; }
+.etym-related-item .etym-en b { color: var(--ink); }
+@media (hover: hover) { button.etym-related-item:hover .etym-related-ja { color: var(--accent); } }
+
+/* 一覧（#/etym） */
+.etym-sample { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 10px 0 4px; }
+.etym-sample-ja { font-size: 26px; font-weight: 800; }
+.etym-sample-eq { color: var(--muted); font-size: 18px; }
+.etym-sample-parts { display: flex; flex-wrap: wrap; gap: 6px; }
+.etym-sample-part { display: grid; justify-items: center; padding: 4px 8px; border-radius: 8px; border-bottom: 3px solid var(--p); background: color-mix(in srgb, var(--p) 9%, var(--surface)); }
+.etym-sample-part b { color: var(--p); font-size: 15px; }
+.etym-sample-part small { color: var(--muted); font-size: 12px; }
+.etym-count { margin: 10px 0 0; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.etym-number { color: var(--ink); background: color-mix(in srgb, #3a6ea5 10%, var(--surface)); font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.etym-number.done { color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, var(--surface)); }
+.etym-roots-link { margin: 4px 4px 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.etym-detail .nav-row { margin-top: 10px; }
+
+/* レッスンの始めの画面 */
+.etym-lead { font-size: 15px; line-height: 1.7; }
+.etym-word-list { list-style: none; margin: 10px 0 12px; padding: 0; border-top: 1px solid var(--line); }
+.etym-word-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 2px; border-bottom: 1px solid var(--line); font-size: 15px; }
+.etym-word-list li.done .etym-word-list-ja::before { content: "✓ "; color: var(--ok); }
+.etym-word-list .etym-en { color: var(--muted); font-size: 14px; text-align: right; }
+
+/* 問題: 部品から読む・部品で組み立てる */
+.etym-prompt-word { margin: 8px 0 14px; font-size: 26px; font-weight: 700; overflow-wrap: anywhere; }
+.etym-prompt-ja { margin-bottom: 4px; }
+.etym-slots { display: flex; flex-wrap: wrap; gap: 8px; min-height: 48px; margin: 12px 0; }
+.etym-slot {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 72px; min-height: 46px; padding: 6px 12px;
+  border: 1.5px dashed #c9c3b6; border-radius: 10px; background: none; color: var(--muted); font-size: 14px;
+}
+.etym-slot.next { border-color: var(--accent); color: var(--accent); }
+.etym-slot.filled { border: 1.5px solid var(--ink); background: var(--surface); color: var(--ink); font-size: 17px; font-weight: 700; cursor: pointer; }
+.etym-tiles { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.etym-tile {
+  min-height: 48px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 12px;
+  background: var(--surface); color: var(--ink); font-size: 17px; font-weight: 600; cursor: pointer;
+}
+.etym-tile:active { background: var(--bg); }
+.etym-tile:disabled { opacity: 0.35; cursor: default; }
+.etym-tile-key { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .etym-tile-key { display: inline; margin-right: 6px; color: var(--muted); font-size: 12px; font-weight: 500; }
+  .etym-tile:not(:disabled):hover { border-color: var(--accent); }
+}
+.etym-built { display: grid; gap: 6px; margin: 0 0 12px; }
+.etym-built div { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); align-items: baseline; gap: 8px; padding: 8px 12px; border: 1.5px solid var(--line); border-radius: 10px; }
+.etym-built .is-answer { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 9%, var(--surface)); }
+.etym-built .is-picked { border-color: var(--ng); }
+.etym-built dt { color: var(--muted); font-size: 13px; font-weight: 700; }
+.etym-built dd { margin: 0; font-size: 17px; font-weight: 600; overflow-wrap: anywhere; }
+/* 語のカードの入口（神経を切るの入口と同じ形で色だけ変える） */
+.term-etym-link { border-color: color-mix(in srgb, #3a6ea5 30%, var(--line)); background: color-mix(in srgb, #3a6ea5 6%, var(--surface)); }

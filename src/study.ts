@@ -3,12 +3,15 @@ import type { Facet, LearnedTerm, StoredSchedule } from "./db";
 import { retrievability, State } from "./fsrs";
 
 export const FACETS: Facet[] = [
-  "locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "relation", "hormone", "rootMeaning", "rootForm",
+  "locate", "point", "ja2en", "en2ja", "attach", "nerve", "action", "passage", "relation", "hormone", "rootMeaning", "rootForm", "etymRead", "etymBuild",
   "cloze", "read", "spell", "explain", "label", "annotate", "orient", "contrast", "order", "trace", "level", "landmark",
 ];
 
 /** 語根カード（content/roots.json）の問い方 */
 export const ROOT_FACETS: Facet[] = ["rootMeaning", "rootForm"];
+
+/** 語源で単語（content/etym-words.json）の問い方。etymRead＝部品から読む（英語名→日本語名）、etymBuild＝部品で組み立てる（日本語名→部品を順に選ぶ） */
+export const ETYM_FACETS: Facet[] = ["etymRead", "etymBuild"];
 
 /** 骨学試験（content/exam.json）の問い方 */
 export const EXAM_FACETS: Facet[] = ["cloze", "read", "spell", "explain", "label", "annotate", "orient", "contrast", "order", "trace", "level", "landmark"];
@@ -63,6 +66,8 @@ export const facetLabels: Record<Facet, string> = {
   hormone: "ホルモン",
   rootMeaning: "語根→意味",
   rootForm: "意味→語根",
+  etymRead: "部品から読む",
+  etymBuild: "部品で組み立てる",
   cloze: "穴埋め",
   read: "ラテン語→日本語",
   spell: "日本語→英語・ラテン語",
@@ -89,7 +94,7 @@ export function facetsFor(
   chosen: readonly Facet[] = FACETS,
 ): Facet[] {
   return FACETS.filter((facet) => {
-    if (ROOT_FACETS.includes(facet) || EXAM_FACETS.includes(facet) || !chosen.includes(facet)) return false;
+    if (ROOT_FACETS.includes(facet) || ETYM_FACETS.includes(facet) || EXAM_FACETS.includes(facet) || !chosen.includes(facet)) return false;
     if (MUSCLE_FACETS.includes(facet)) return !!term?.nerve && unlocked;
     if (facet === "passage") return !!term?.passes && unlocked;
     if (facet === "relation") return !!term?.toward && unlocked;

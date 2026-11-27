@@ -5,13 +5,14 @@ import Dexie, { type EntityTable } from "dexie";
  * 筋にはさらに attach＝起始・停止, nerve＝支配神経, action＝作用 が付く。孔・溝には passage＝通るもの、
  * 向きのある語（content/directions.json にある語）には relation＝向き（ほかの部位のどちら側か）、ホルモンを出す器官には hormone＝ホルモン（このホルモンを出すのは？）が付く。
  * 語根カード（termId が "root:…"）は rootMeaning＝語根→意味, rootForm＝意味→語根。
+ * 語源で単語（termId が "etym:…"）は etymRead＝部品から読む（英語名→日本語名）, etymBuild＝部品で組み立てる（日本語名→部品を順に）。
  * 骨学試験（termId が "exam:…"）は cloze＝A 穴埋め, read＝B ラ→日, spell＝B 日→英・ラ, explain＝C 短文記述,
  * label＝D 番号→名前, annotate＝D 図に書き込む, orient＝D 骨と向き。
  * 整理して覚える項目は contrast＝対で覚える, order＝数と並び（並べる・選ぶ）, trace＝数と並び（3Dで押す）,
  * level＝体表の目安（目安→高さ）, landmark＝体表の目安（高さ→目安）。
  */
 export type Facet =
-  | "locate" | "point" | "ja2en" | "en2ja" | "attach" | "nerve" | "action" | "passage" | "relation" | "hormone" | "rootMeaning" | "rootForm"
+  | "locate" | "point" | "ja2en" | "en2ja" | "attach" | "nerve" | "action" | "passage" | "relation" | "hormone" | "rootMeaning" | "rootForm" | "etymRead" | "etymBuild"
   | "cloze" | "read" | "spell" | "explain" | "label" | "annotate" | "orient"
   | "contrast" | "order" | "trace" | "level" | "landmark";
 

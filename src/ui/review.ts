@@ -6,6 +6,7 @@ import { h, onKeys, until } from "../dom";
 import { FIRST_FACETS, isExamKey, itemHref } from "../exam-keys";
 import { examLoaded, loadExam } from "../exam-lazy";
 import { isRootKey, rootByKey } from "../roots";
+import { etymByKey, etymFacetsOf, isEtymKey } from "../etym";
 import { preferences, REVIEW_SIZE_OPTIONS, setPreference } from "../settings";
 import { buildQueue, facetLabels, facetsFor, kindHintText, ROOT_FACETS, TERM_KINDS, unlockedTerms, type QueueItem } from "../study";
 import type { AppContext } from "./context";
@@ -39,7 +40,7 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
   ]);
   const inPart = partFilter(learned, startOfDay, part);
   const newToday = today.filter((event) => event.isNew && event.source === "review" && inPart(event.termId)).length;
-  // 内容の更新で消えた語の記録は出さない。語根カード（"root:…"）と骨学試験（"exam:…"）も一緒に出す
+  // 内容の更新で消えた語の記録は出さない。語根カード（"root:…"）・語源で単語（"etym:…"）・骨学試験（"exam:…"）も一緒に出す
   const known = learned.filter((item) => inReview(item.termId) && inPart(item.termId));
   const study = studyFacets();
   const unlocked = unlockedTerms(schedules, study);
@@ -47,6 +48,7 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
   const firstLearned = new Set(schedules.filter((s) => FIRST_FACETS.includes(s.facet) && s.state === State.Review).map((s) => s.termId));
   const facetsOf = (id: string) => {
     if (isRootKey(id)) return ROOT_FACETS;
+    if (isEtymKey(id)) return etymFacetsOf(etymByKey.get(id)!); // inReview で残っている語だけ
     if (isExamKey(id)) {
       const exam = examLoaded()!.data; // inReview で読み込み済みのものだけ
       return exam.examFacetsOf(exam.examByKey.get(id)!, firstLearned.has(id));
@@ -54,7 +56,7 @@ async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean =
     return facetsFor(termById.get(id), unlocked.has(id), study);
   };
   return buildQueue(known, schedules, now, preferences.newPerDay - newToday, facetsOf, aheadUntil)
-    .filter((item) => (isRootKey(item.termId) || isExamKey(item.termId) || study.includes(item.facet)) && keep(item));
+    .filter((item) => (isRootKey(item.termId) || isEtymKey(item.termId) || isExamKey(item.termId) || study.includes(item.facet)) && keep(item));
 }
 
 /** その区分に入る語か（今日 startOfDay より後に学んだ語は仕上げ、それより前に学んだ語は今日の復習） */
@@ -64,15 +66,16 @@ export function partFilter(learned: { termId: string; learnedAt: string }[], sta
   return (termId) => learnedToday.has(termId) === (part === "finish");
 }
 
-/** 今のモードの復習に出す語・語根カード・骨学試験の項目か（内容の更新で消えた語は出さない。骨学試験は使える名前の人だけ） */
+/** 今のモードの復習に出す語・語根カード・語源で単語・骨学試験の項目か（内容の更新で消えた語は出さない。骨学試験は使える名前の人だけ） */
 function inReview(id: string): boolean {
   if (termById.has(id)) return inCourse(id);
-  return !isBeginner() && (rootByKey.has(id) || !!examLoaded()?.data.examByKey.has(id));
+  return !isBeginner() && (rootByKey.has(id) || etymByKey.has(id) || !!examLoaded()?.data.examByKey.has(id));
 }
 
-/** 語の問題か語根の問題か骨学試験の問題かで出し分ける */
+/** 語の問題か語根の問題か語源で単語の問題か骨学試験の問題かで出し分ける（語源で単語の画面は開いたときに読む） */
 export function askItem(ctx: AppContext, item: QueueItem, source: ReviewEvent["source"], progress: string): Promise<Outcome> {
   if (isRootKey(item.termId)) return askRoot(ctx, item, source, progress);
+  if (isEtymKey(item.termId)) return import("./etym").then((ui) => ui.askEtym(ctx, item, source, progress));
   if (isExamKey(item.termId)) return loadExam().then(({ ui }) => ui.askExam(ctx, item, source, progress));
   return ask(ctx, item, source, progress);
 }
@@ -93,22 +96,24 @@ export function finishRow(count: number): HTMLElement {
   );
 }
 
-/** 復習の範囲: 語は系統ごと、ほかは語根カードと骨学試験 */
+/** 復習の範囲: 語は系統ごと、ほかは語根カード・語源で単語・骨学試験 */
 function rangeOf(termId: string): string {
   if (isRootKey(termId)) return "roots";
+  if (isEtymKey(termId)) return "etym";
   if (isExamKey(termId)) return "exam";
   return termById.get(termId)?.system ?? "";
 }
 
 function rangeLabel(key: string): string {
   if (key === "roots") return "語根カード";
+  if (key === "etym") return "語源で単語";
   if (key === "exam") return "骨学試験";
   return systems.find((system) => system.id === key)?.ja ?? key;
 }
 
-/** 語の問い方の区分（TERM_KINDS の key）。語根・骨学試験は範囲で選ぶので null */
+/** 語の問い方の区分（TERM_KINDS の key）。語根・語源で単語・骨学試験は範囲で選ぶので null */
 function kindOf(item: QueueItem): string | null {
-  if (isRootKey(item.termId) || isExamKey(item.termId)) return null;
+  if (isRootKey(item.termId) || isEtymKey(item.termId) || isExamKey(item.termId)) return null;
   return TERM_KINDS.find((kind) => kind.facets.includes(item.facet))?.key ?? null;
 }
 
@@ -152,7 +157,7 @@ export function smallestReviewSize(): number {
 }
 
 /**
- * 復習の始めの画面: 今日の問題の内訳を出し、範囲（系統・語根カード・骨学試験）、問い方、新しい問題を出すか、1回に解く数を選ぶ。
+ * 復習の始めの画面: 今日の問題の内訳を出し、範囲（系統・語根カード・語源で単語・骨学試験）、問い方、新しい問題を出すか、1回に解く数を選ぶ。
  * 1回に解く数は、今日の問題がいちばん小さい数より多いときだけ出す。
  * 1回に解く数は前に選んだものを覚える。範囲と問い方は毎回すべてから始める（ホームの数と食いちがわないように）
  */
@@ -161,7 +166,7 @@ function chooseReview(ctx: AppContext, today: QueueItem[]): Promise<Setup> {
   ctx.viewer.highlight([]);
   ctx.viewer.overview();
   ctx.hint("");
-  const order = [...systems.map((system) => system.id), "roots", "exam"];
+  const order = [...systems.map((system) => system.id), "roots", "etym", "exam"];
   const rangeKeys = order.filter((key) => today.some((item) => rangeOf(item.termId) === key));
   const kindKeys = TERM_KINDS.map((kind) => kind.key).filter((key) => today.some((item) => kindOf(item) === key));
   const hasNew = today.some((item) => item.isNew);
@@ -336,8 +341,10 @@ async function finish(ctx: AppContext, setup: Setup, answered: number, correct: 
   const missedLink = (id: string, facets: Set<string>) => {
     const title = [...facets].join("・");
     const root = rootByKey.get(id);
+    const etym = etymByKey.get(id);
     const exam = examLoaded()?.data.examByKey.get(id);
     if (root) return h("a", { class: "chip", href: `#/roots/root/${encodeURIComponent(id)}`, lang: "en", title }, root.root);
+    if (etym) return h("a", { class: "chip", href: `#/etym/word/${encodeURIComponent(etym.term.id)}`, title }, etym.term.ja, h("span", { class: "chip-count" }, title));
     if (exam) return h("a", { class: "chip", href: itemHref(exam), title }, exam.title);
     return h("a", { class: "chip", href: `#/explore/${id}`, title }, termById.get(id)?.ja ?? id, h("span", { class: "chip-count" }, title));
   };
@@ -386,7 +393,7 @@ async function nothingToday(ctx: AppContext): Promise<void> {
   const learnedIds = new Set(learned.filter((item) => inReview(item.termId)).map((item) => item.termId));
   const study = studyFacets();
   const upcoming = schedules
-    .filter((s) => learnedIds.has(s.termId) && s.state !== State.New && (isRootKey(s.termId) || isExamKey(s.termId) || study.includes(s.facet)))
+    .filter((s) => learnedIds.has(s.termId) && s.state !== State.New && (isRootKey(s.termId) || isEtymKey(s.termId) || isExamKey(s.termId) || study.includes(s.facet)))
     .sort((a, b) => a.due.localeCompare(b.due));
   const tomorrow = Date.now() + 86_400_000;
   const soon = upcoming.filter((s) => new Date(s.due).getTime() <= tomorrow).length;

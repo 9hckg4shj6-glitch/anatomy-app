@@ -178,7 +178,7 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
   const beginner = preferences.mode === "beginner";
   // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）。ほかの人には説明の文からも外す
   const exam = canUseExam();
-  const extras = exam ? "語根カード・骨学試験" : "語根カード";
+  const extras = exam ? "語源で単語・語根カード・骨学試験" : "語源で単語・語根カード";
   const course = courseOf();
   const courseCount = { basic: beginnerTermCount, standard: standardTermCount, free: terms.length } as const;
 
