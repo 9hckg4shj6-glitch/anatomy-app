@@ -179,6 +179,8 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
   // 骨学試験は一旦、名前に「シマエナガ」を含む人だけ（src/profile.ts）。ほかの人には説明の文からも外す
   const exam = canUseExam();
   const extras = exam ? "語源で単語・語根カード・骨学試験" : "語源で単語・語根カード";
+  // はじめての解剖で使えないもの（語根カードは使える）
+  const notInBasic = exam ? "語源で単語・骨学試験" : "語源で単語";
   const course = courseOf();
   const courseCount = { basic: beginnerTermCount, standard: standardTermCount, free: terms.length } as const;
 
@@ -229,7 +231,7 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
         render();
       }, `${courseCount[item.id].toLocaleString()}語`))),
       foot(`${beginner
-        ? `はじめての解剖では、短い「覚えること」と一緒に学びます。問い方は位置・名前・英語の4つだけで、${extras}は出しません。`
+        ? `はじめての解剖では、短い「覚えること」と一緒に学びます。問い方は位置・名前・英語の4つだけで、${notInBasic}は出しません（語根カードは使えます）。`
         : preferences.mode === "standard"
           ? `標準では、細かすぎる発展の語を除いて学びます。筋の起始・停止・支配神経・作用、${extras}も使えます。`
           : `すべての語では、漢字・語源・くわしい説明、筋の起始・停止・支配神経・作用、${extras}まで学びます。`
@@ -249,7 +251,7 @@ function settingRows(render: () => void): (HTMLElement | string)[] {
     group("学ぶ問い方", {},
       card(...kindRows),
       studyNote,
-      foot(`レッスンと復習で出す問題の種類です。初めの3つで十分で、慣れたら足します。外した問い方は出なくなりますが、記録は残ります（戻せば続きから）。${beginner ? "初心者モードでは、筋の起始・停止・神経・作用と孔・溝を通るものは出しません。" : ""}${extras}の問題は、ここでは変わりません。`),
+      foot(`レッスンと復習で出す問題の種類です。初めの3つで十分で、慣れたら足します。外した問い方は出なくなりますが、記録は残ります（戻せば続きから）。${beginner ? "初心者モードでは、筋の起始・停止・神経・作用と孔・溝を通るものは出しません。" : ""}${beginner ? "語根カード" : extras}の問題は、ここでは変わりません。`),
     ),
     group("学び方", {},
       card(

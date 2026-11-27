@@ -1,10 +1,11 @@
 import "fake-indexeddb/auto";
-import { termById } from "../src/content";
+import { termById, type Term } from "../src/content";
+import { beginnerUnits } from "../src/course";
 import { db } from "../src/db";
 import { exportBackup, importBackup, newerSchedule } from "../src/backup";
 import { Rating, nextSchedule } from "../src/fsrs";
 import { relatedTerms } from "../src/related";
-import { examplesOf, isRootKey, rootKey, roots, rootsOf, rootUnits, splitAtRoot } from "../src/roots";
+import { exampleFor, examplesOf, isRootKey, preferring, rootKey, roots, rootsOf, rootUnits, splitAtRoot } from "../src/roots";
 import { buildQueue, facetsFor, practiceQueue, ROOT_FACETS, type PracticeCandidate } from "../src/study";
 
 const root = (id: string) => roots.find((r) => r.id === id)!;
@@ -46,6 +47,22 @@ describe("語根カード", () => {
     expect(queue.map((item) => item.facet)).toEqual(["rootMeaning", "rootForm"]);
     // 語には語根の問い方を付けない
     expect(facetsFor(termById.get("femur")).some((facet) => ROOT_FACETS.includes(facet))).toBe(false);
+  });
+
+  it("はじめての解剖では、コースの語を例に先に出す（無ければほかの語）", () => {
+    const beginnerIds = new Set(beginnerUnits.flatMap((unit) => unit.terms.map((term) => term.id)));
+    const inBasic = (term: Term) => beginnerIds.has(term.id);
+    const femor = root("femor");
+    const list = preferring(examplesOf(femor), inBasic);
+    expect(list).toHaveLength(examplesOf(femor).length);
+    const firstOut = list.findIndex((term) => !inBasic(term));
+    expect(firstOut).toBeGreaterThan(0);
+    expect(list.slice(firstOut).some(inBasic)).toBe(false);
+    // 出題の例は、コースの語があればその中から
+    for (let i = 0; i < 6; i++) expect(inBasic(exampleFor(femor, () => i / 6, inBasic)!)).toBe(true);
+    // コースの語が無い語根でも例は出る
+    const none = roots.find((r) => examplesOf(r).length && !examplesOf(r).some(inBasic));
+    if (none) expect(exampleFor(none, () => 0, inBasic)).not.toBeNull();
   });
 });
 

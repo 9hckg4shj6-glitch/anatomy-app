@@ -2,12 +2,16 @@ import type { Term } from "../content";
 import { db, markLearned, type ReviewEvent } from "../db";
 import { h } from "../dom";
 import { dueLabel, Rating, recordReview } from "../fsrs";
-import { examplesOf, exampleFor, rootByKey, rootKey, roots, rootUnitById, rootUnits, type Root } from "../roots";
+import { inCourse } from "../course";
+import { examplesOf as allExamplesOf, exampleFor, preferring, rootByKey, rootKey, roots, rootUnitById, rootUnits, type Root } from "../roots";
 import { facetLabels, pickChoices, shuffle, type QueueItem } from "../study";
 import { LEAVE_LESSON, type AppContext } from "./context";
 import { turnPage } from "./lesson";
 import { answeredChoices, chooseOne, retryButton, showPanel, waitResult, type Outcome } from "./quiz";
 import { markedRoot as marked } from "./term-card";
+
+/** 語根を含む語。今のコースの語を先に（はじめての解剖なら、レッスンで出会う語から例を見せる） */
+const examplesOf = (root: Root): Term[] => preferring(allExamplesOf(root), (term) => inCourse(term.id));
 
 /** 例の語の3Dを光らせる（部位を持つ語だけ。系統は3つまで読む） */
 async function showExamples(ctx: AppContext, list: Term[]): Promise<void> {
@@ -104,7 +108,7 @@ export async function rootLesson(ctx: AppContext, unitId: string): Promise<void>
 export async function askRoot(ctx: AppContext, item: QueueItem, source: ReviewEvent["source"], progress = ""): Promise<Outcome> {
   const root = rootByKey.get(item.termId)!;
   const started = performance.now();
-  const example = exampleFor(root);
+  const example = exampleFor(root, Math.random, (term) => inCourse(term.id));
   void showExamples(ctx, example ? [example] : []);
   ctx.viewer.setLabel(null);
   ctx.hint("");

@@ -518,7 +518,7 @@ export function featureCards(): HTMLElement {
     </a>
     <a class="gd-feature" href="#/roots">
       <div class="gd-f-art gd-f-roots"><span lang="en"><u>femor</u>-al artery</span><i>＝</i><span><u>大腿</u>動脈</span></div>
-      <b>語根カード</b><span>部品（語根）を1つずつ覚える。知らない語も意味の見当がつきます。（標準とすべての語）</span>
+      <b>語根カード</b><span>部品（語根）を1つずつ覚える。知らない語も意味の見当がつきます。</span>
     </a>
     <a class="gd-feature" href="#/explore">
       <div class="gd-f-art gd-f-explore"><img src="${IMG}femur.webp" alt="" draggable="false"><span class="gd-label3d">大腿骨</span></div>

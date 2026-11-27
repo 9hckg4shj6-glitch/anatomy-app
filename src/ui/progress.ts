@@ -59,7 +59,7 @@ export async function progress(ctx: AppContext): Promise<void> {
     ),
     h("table", { class: "progress-table" },
       h("thead", {}, h("tr", {}, h("th", {}, "系統"), h("th", {}, "学んだ語"), h("th", {}, "平均"))),
-      // 初心者モードでは初心者コースの語の数（語根カード・語源で単語・骨学試験の行は詳細モードで）
+      // 初心者モードでは初心者コースの語の数と語根カード（語源で単語・骨学試験の行は標準・すべての語で）
       h("tbody", {}, ...systems.filter((system) => courseTerms().some((term) => term.system === system.id)).map((system) => {
         const list = courseTerms().filter((term) => term.system === system.id);
         const values = list.map((term) => mastery.get(term.id)).filter((v): v is number => v != null);
@@ -67,7 +67,7 @@ export async function progress(ctx: AppContext): Promise<void> {
           h("td", {}, system.ja),
           h("td", {}, `${list.filter((term) => learnedIds.has(term.id)).length} / ${list.length}`),
           h("td", {}, values.length ? `${Math.round((values.reduce((a, b) => a + b, 0) / values.length) * 100)}%` : "—"));
-      }), ...(isBeginner() ? [] : [rootRow(), etymRow(), ...(examLoaded() ? EXAM_KINDS.map(examRow) : [])])),
+      }), rootRow(), ...(isBeginner() ? [] : [etymRow(), ...(examLoaded() ? EXAM_KINDS.map(examRow) : [])])),
     ),
     weakest.length ? h("h3", {}, "覚え具合の低い語（押すと図鑑）") : "",
     weakest.length ? h("ul", { class: "term-list" }, ...weakest.map(([id, value]) => {

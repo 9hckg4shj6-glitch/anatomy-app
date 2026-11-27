@@ -83,7 +83,7 @@ export const isPurpose = (value: unknown): value is Purpose => typeof value === 
 
 /**
  * 覚える量の段（コース）のおすすめ。1年生で骨学試験・見直しを選んでいなければ「はじめての解剖」、ほかは「標準」。
- * 骨学試験と語根カードは「はじめての解剖」では使えないので、骨学試験を選んだ人には標準。
+ * 骨学試験は「はじめての解剖」では使えないので、骨学試験を選んだ人には標準。
  * 「すべての語」は自分で選ぶ人のためのもので、すすめない
  */
 export function recommendCourse(grade: string | undefined, purposes: readonly Purpose[]): CourseId {

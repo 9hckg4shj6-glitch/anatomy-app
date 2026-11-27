@@ -101,9 +101,19 @@ export function splitAtRoot(text: string, root: Root): [string, string, string] 
   return [text.slice(0, match.index), match[0], text.slice(match.index + match[0].length)];
 }
 
-/** 出題に使う例の語（英語名の中に語根が見える語）。無ければ null */
-export function exampleFor(root: Root, random: () => number = Math.random): Term | null {
+/** prefer に当たる語を先に（それぞれの中の並びはそのまま）。コースの語を先に見せるのに使う */
+export function preferring(list: Term[], prefer: (term: Term) => boolean): Term[] {
+  return [...list.filter(prefer), ...list.filter((term) => !prefer(term))];
+}
+
+/**
+ * 出題に使う例の語（英語名の中に語根が見える語）。無ければ null。
+ * prefer に当たる語（今のコースの語）があればその中から選ぶ（はじめての解剖で、知らない語を例に出さない）
+ */
+export function exampleFor(root: Root, random: () => number = Math.random, prefer: (term: Term) => boolean = () => true): Term | null {
   const visible = examplesOf(root).filter((term) => splitAtRoot(term.en, root));
   const list = visible.length ? visible : examplesOf(root);
-  return list.length ? list[Math.floor(random() * Math.min(list.length, 6))] : null;
+  const preferred = list.filter(prefer);
+  const pool = preferred.length ? preferred : list;
+  return pool.length ? pool[Math.floor(random() * Math.min(pool.length, 6))] : null;
 }

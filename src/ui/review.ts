@@ -27,7 +27,7 @@ export type Part = "main" | "finish";
 /**
  * 今日の出題（期限の来た復習と、1日の上限までの新しい問題）。keep で範囲・問い方を絞る（新しい問題の上限は絞る前に数える）。
  * 設定の「学ぶ問い方」で外した語の問い方は、新しく始めず、期限が来ていても出さない。
- * 初心者モードでは初心者コースの語だけを出す（ほかの語・語根カード・骨学試験の記録は残り、詳細モードで出る）。
+ * 初心者モードでは初心者コースの語と語根カードだけを出す（ほかの語・語源で単語・骨学試験の記録は残り、標準・すべての語で出る）。
  * part で今日の復習（前の日までに学んだ語）か仕上げ（今日学んだ語）かを選ぶ。新しい問題の上限はそれぞれで数える
  */
 async function todayQueue(now = new Date(), keep: (item: QueueItem) => boolean = () => true, aheadUntil?: Date, part: Part = "main"): Promise<QueueItem[]> {
@@ -69,7 +69,9 @@ export function partFilter(learned: { termId: string; learnedAt: string }[], sta
 /** 今のモードの復習に出す語・語根カード・語源で単語・骨学試験の項目か（内容の更新で消えた語は出さない。骨学試験は使える名前の人だけ） */
 function inReview(id: string): boolean {
   if (termById.has(id)) return inCourse(id);
-  return !isBeginner() && (rootByKey.has(id) || etymByKey.has(id) || !!examLoaded()?.data.examByKey.has(id));
+  // 語根カードは、はじめての解剖でも出す
+  if (rootByKey.has(id)) return true;
+  return !isBeginner() && (etymByKey.has(id) || !!examLoaded()?.data.examByKey.has(id));
 }
 
 /** 語の問題か語根の問題か語源で単語の問題か骨学試験の問題かで出し分ける（語源で単語の画面は開いたときに読む） */
