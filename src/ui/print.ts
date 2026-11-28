@@ -10,15 +10,15 @@ import {
   imagesReady, mountPrint, openPrintDialog, plateAnswers, platePages, unmountPrint, waitImages, wordList, wordTest,
   type PlatePrint, type PrintHide, type WordAsk,
 } from "./print-sheet";
-import { makePdf, pdfName, sharePdf } from "./print-pdf";
+import { makePdf, mmToPx, paginate, pdfName, sharePdf } from "./print-pdf";
 import { card, choiceRow, foot, group, row, segmented, toggleRow } from "./settings-kit";
 
 /**
- * 印刷する（#/print。docs/普段使い.md「印刷する」）。作るものを選び（平面図のプリント・語のテスト・語の一覧）、
- * 範囲と形を決めて「印刷・PDFに保存」。下に1枚目の見本を出す。
- * "#/print/plate/<図ID>" は平面図のプリントでその図を選んで開く（臓器の図の「この図を印刷する」）、
- * "#/print/star" は ★を付けた語の一覧で開く。
- * "#/print/go?…" は選んだものをアドレスに書いた印刷だけの画面（ホーム画面の iPhone のアプリは印刷の画面を開けないので、Safari へ送る。sheetHash）
+ * 印刷する（#/print。docs/普段使い.md「印刷する」）。2つのページに分ける。
+ * - 選ぶページ（#/print）: 作るもの（平面図のプリント・語のテスト・語の一覧）と範囲・形を選ぶ。下に留めた帯の「見本を見る」で次へ。
+ * - 見本のページ（#/print/preview）: 印刷する紙を A4 に分けて全部並べ、「印刷・PDFに保存」「PDFファイルを作る」。
+ * "#/print/plate/<図ID>" はその図を選んで見本のページを開く（臓器の図の「この図を印刷する」）、
+ * "#/print/star" は ★を付けた語の一覧を選んで選ぶページを開く
  */
 type Kind = "plates" | "test" | "list";
 type Range = "star" | "weak" | "learned" | "lessons";
@@ -39,6 +39,8 @@ const state = {
   /** 開いている臓器・系統の欄（選ぶたびに描き直しても閉じないように） */
   open: new Set<string>(),
   query: "",
+  /** 語のテストの順（ばらばらの順を、見本のページへ移っても・答えを付け外ししても変えない）。key は範囲と順の決め方 */
+  order: { key: "", ids: [] as string[] },
 };
 
 const KINDS: { value: Kind; label: string }[] = [
@@ -46,7 +48,6 @@ const KINDS: { value: Kind; label: string }[] = [
   { value: "test", label: "語のテスト" },
   { value: "list", label: "語の一覧" },
 ];
-const HIDE_VALUES: PrintHide[] = ["all", "ja", "en", "none"];
 const HIDES: { value: PrintHide; label: string }[] = [
   { value: "all", label: "全部" },
   { value: "ja", label: "日本語" },
@@ -106,6 +107,50 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
     const chosen = units.filter((unit) => state.lessonIds.has(unit.id));
     return chosen.length === 1 ? chosen[0].title : `選んだレッスン（${chosen.length}）`;
   };
+  /** 語のテスト・語の一覧に載せる語（テストのばらばらの順は state.order に覚えておく） */
+  const wordItems = (): Term[] => {
+    const items = rangeTerms(state.range);
+    if (state.kind !== "test") return items;
+    const key = JSON.stringify([state.range, [...state.lessonIds].sort(), state.shuffle, items.map((term) => term.id)]);
+    if (state.order.key !== key) state.order = { key, ids: (state.shuffle ? shuffled(items) : items).map((term) => term.id) };
+    const ordered = state.order.ids.map((id) => termById.get(id)!);
+    return state.count ? ordered.slice(0, state.count) : ordered;
+  };
+
+  const plateList = (): PlatePrint[] => [...state.plateIds].flatMap((id) => {
+    const found = plateById.get(id);
+    const entry = index?.plates[id];
+    if (!found || !entry) return [];
+    const spec = fullOrgan(found.organ).plates.find((plate) => plate.id === id);
+    return spec ? [{ spec, entry, organ: found.organ.ja }] : [];
+  });
+
+  /**
+   * 選んだことから作る紙。pages は見本・印刷・PDF で同じものを作る関数、size は「図 3枚＋答え」のような量（空なら何も選んでいない）、
+   * detail は見本のページの頭に出す、選んだ形の説明
+   */
+  const sheets = (): { pages: () => HTMLElement[]; size: string; detail: string } => {
+    if (state.kind === "plates") {
+      const list = plateList();
+      const hide = state.hide, points = state.points;
+      const withAnswers = state.answers && hide !== "none" && list.length > 0;
+      return {
+        pages: () => [...list.flatMap((plate) => platePages(plate, hide, points)), ...(withAnswers ? [plateAnswers(list)] : [])],
+        size: list.length ? `図 ${list.length}枚${withAnswers ? "＋答え" : ""}` : "",
+        detail: `平面図のプリント・${hide === "none" ? "名前を隠さない" : `${HIDES.find((item) => item.value === hide)!.label}${hide === "all" ? "の名前" : ""}を隠す`}${points ? "・要点つき" : ""}`,
+      };
+    }
+    const items = wordItems();
+    const title = `${state.kind === "test" ? "語のテスト" : "語の一覧"}・${rangeTitle()}`;
+    const { kind, ask, answers, note } = state;
+    return {
+      pages: () => kind === "test"
+        ? [wordTest(title, items, ask, false), ...(answers ? [wordTest(title, items, ask, true)] : [])]
+        : [wordList(title, items, { memo: (id) => markOf(id).memo.trim(), note })],
+      size: items.length ? `${items.length}語${kind === "test" && answers ? "＋答え" : ""}` : "",
+      detail: kind === "test" ? `${title}・${ask === "en" ? "英語を書く" : "日本語を書く"}` : `${title}${note ? "・説明つき" : ""}`,
+    };
+  };
 
   /**
    * ホーム画面に追加した iPhone・iPad のアプリか。印刷の画面を開けず（押しても何も起きない）、開いたかどうかも見分けられないので、
@@ -116,14 +161,14 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
   /** ボタンの下の説明 */
   const printNote = () => iosApp
     ? "「PDFファイルを作る」で A4 の PDF にします。できたら「PDFを保存・プリントする」から、ファイルに保存するかプリンタで印刷します。"
-    : "印刷の画面で、プリンタを選ぶか「PDFとして保存」を選びます（iPhone・iPad は印刷の画面の共有 →「ファイルに保存」で PDF に）。用紙は A4 縦、倍率は100%で。「PDFファイルを作る」は印刷の画面を通さずに PDF を作ります。";
+    : "印刷の画面で、プリンタを選ぶか「PDFとして保存」を選びます（iPhone・iPad は印刷の画面の共有 →「ファイルに保存」で PDF に）。用紙は A4 縦、倍率は100%で。「PDFファイルを作る」は印刷の画面を通さずに、見本と同じ A4 の PDF を作ります。";
 
   /** 印刷の画面が開かなかったときの案内（パソコン・Android など） */
   const printHelp = (): HTMLElement[] =>
-    [h("p", {}, "印刷の画面が開かなかったときは、ブラウザのメニューの「印刷」（パソコンは ⌘P・Ctrl+P）を選んでください。この画面で選んだ紙がそのまま印刷されます。")];
+    [h("p", {}, "印刷の画面が開かなかったときは、ブラウザのメニューの「印刷」（パソコンは ⌘P・Ctrl+P）を選んでください。この画面の紙がそのまま印刷されます。")];
 
   /**
-   * 「印刷・PDFに保存」のボタンと、その下の案内。紙は選ぶたびに先に入れ物へ入れて図を読んでおき（prepare）、押したらすぐ印刷の画面を開く
+   * 「印刷・PDFに保存」のボタンと、その下の案内。紙は先に入れ物へ入れて図を読んでおき（prepare）、押したらすぐ印刷の画面を開く
    */
   const prepare = (list: () => HTMLElement[], ready: boolean) => {
     clearTimeout(mountTimer);
@@ -137,9 +182,9 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
     }, 250);
   };
   const printControls = (list: () => HTMLElement[], label: string) => {
-    const status = h("span", { class: "muted" }, label || "印刷するものを選んでください");
+    const status = h("span", { class: "muted" }, label);
     const help = h("div", { class: "pp-help", role: "status" });
-    const printButton = iosApp ? null : h("button", { class: "primary pp-print", type: "button", disabled: !label, onClick: async () => {
+    const printButton = iosApp ? null : h("button", { class: "primary pp-print", type: "button", onClick: async () => {
       help.replaceChildren();
       clearTimeout(mountTimer);
       const root = mounted ?? (mounted = mountPrint(list()));
@@ -155,7 +200,7 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
       if (!opened && !ctx.signal.aborted) help.replaceChildren(...printHelp());
     } }, "印刷・PDFに保存");
     // PDF を作るのは数秒かかり、その間に押した合図が切れるので、共有シートはできてからもう一度押して開く
-    const pdfButton = h("button", { class: iosApp ? "primary pp-print" : "ghost-button pp-pdf", type: "button", disabled: !label, onClick: async () => {
+    const pdfButton = h("button", { class: iosApp ? "primary pp-print" : "ghost-button pp-pdf", type: "button", onClick: async () => {
       help.replaceChildren();
       pdfButton.disabled = true;
       if (printButton) printButton.disabled = true;
@@ -176,271 +221,235 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
       } finally {
         pdfButton.disabled = false;
         if (printButton) printButton.disabled = false;
-        status.textContent = label || "印刷するものを選んでください";
+        status.textContent = label;
       }
     } }, "PDFファイルを作る");
     return [h("div", { class: "pp-actions" }, ...(printButton ? [printButton, pdfButton] : [pdfButton]), status), help];
   };
 
-  const preview = h("div", { class: "pp-preview" });
-  const form = h("div", {});
-  const root = h("div", { class: "home print-screen" },
-    h("div", { class: "tab-head" }, h("h2", {}, "印刷する")),
-    h("p", { class: "muted" }, "平面図の書き込みプリントや語のテストを、A4 の紙に印刷するか PDF に保存します。答えのページも付けられます。"),
-    form);
-  ctx.panel.replaceChildren(root);
+  if (arg === "preview" || arg.startsWith("plate/")) previewScreen();
+  else chooseScreen();
 
-  const plateList = (): PlatePrint[] => [...state.plateIds].flatMap((id) => {
-    const found = plateById.get(id);
-    const entry = index?.plates[id];
-    if (!found || !entry) return [];
-    const spec = fullOrgan(found.organ).plates.find((plate) => plate.id === id);
-    return spec ? [{ spec, entry, organ: found.organ.ja }] : [];
-  });
+  /** 選ぶページ（#/print）。見本は別のページ。下に留めた帯に、選んだ量と「見本を見る」 */
+  function chooseScreen() {
+    const form = h("div", {});
+    const footSum = h("p", { class: "pp-foot-sum" });
+    const next = h("a", { class: "primary", href: "#/print/preview" }, "見本を見る");
+    ctx.panel.replaceChildren(
+      h("div", { class: "home print-screen" },
+        h("div", { class: "tab-head" }, h("h2", {}, "印刷する")),
+        h("p", { class: "muted" }, "平面図の書き込みプリントや語のテストを、A4 の紙に印刷するか PDF に保存します。答えのページも付けられます。選んだら「見本を見る」で、印刷する紙を全部たしかめてから印刷します。"),
+        form),
+      h("div", { class: "panel-foot pp-foot" }, footSum, next));
 
-  /** 印刷する紙（見本と印刷で同じものを使う。語のテストのばらばらの順も同じに） */
-  let pages: () => HTMLElement[] = () => [];
-  let size = "";
-
-  const render = () => {
-    const sections: HTMLElement[] = [
-      group("作るもの", {}, card(row("種類", undefined, segmented("作るもの", KINDS, state.kind, (value) => {
-        state.kind = value;
-        render();
-      }), true)), foot(state.kind === "plates"
-        ? "平面図の名前を番号の空欄にしたプリント。番号の欄に名前を書きます"
-        : state.kind === "test" ? "語を並べた表に、英語か日本語を書くテスト" : "語の日本語・読み・英語の一覧（★のメモや説明も）")),
-    ];
-    if (state.kind === "plates" && index) sections.push(...plateForm(index));
-    if (state.kind === "plates" && !index) sections.push(h("p", { class: "muted" }, "平面図を読み込めませんでした。オフラインのときは、一度つないでから開いてください。"));
-    if (state.kind !== "plates") sections.push(...wordForm());
-
-    form.replaceChildren(h("div", { class: "set-groups" }, ...sections,
-      h("section", { class: "set-group" },
-        h("h3", { class: "set-title" }, "見本（1枚目）"),
-        preview,
-        ...printControls(pages, size),
-        foot(printNote()))));
-    showPreview();
-  };
-
-  /** 平面図のプリントの欄（図を選ぶ・隠すもの・答えと要点） */
-  const plateForm = (plateIndex: PlateIndex): HTMLElement[] => {
-    const chosen = plateList();
-    const labelsOf = (id: string) => plateIndex.plates[id]?.labels.length ?? 0;
-    pages = () => {
-      const list = plateList();
-      return [...list.flatMap((plate) => platePages(plate, state.hide, state.points)), ...(state.answers && state.hide !== "none" && list.length ? [plateAnswers(list)] : [])];
+    const render = () => {
+      const sections: HTMLElement[] = [
+        group("作るもの", {}, card(row("種類", undefined, segmented("作るもの", KINDS, state.kind, (value) => {
+          state.kind = value;
+          render();
+        }), true)), foot(state.kind === "plates"
+          ? "平面図の名前を番号の空欄にしたプリント。番号の欄に名前を書きます"
+          : state.kind === "test" ? "語を並べた表に、英語か日本語を書くテスト" : "語の日本語・読み・英語の一覧（★のメモや説明も）")),
+      ];
+      if (state.kind === "plates" && index) sections.push(...plateForm(index));
+      if (state.kind === "plates" && !index) sections.push(h("p", { class: "muted" }, "平面図を読み込めませんでした。オフラインのときは、一度つないでから開いてください。"));
+      if (state.kind !== "plates") sections.push(...wordForm());
+      form.replaceChildren(h("div", { class: "set-groups" }, ...sections));
+      const { size } = sheets();
+      footSum.textContent = size ? `${size}を印刷します` : state.kind === "plates" ? "印刷する図を選んでください" : "印刷する語の範囲を選んでください";
+      next.classList.toggle("is-disabled", !size);
+      next.setAttribute("aria-disabled", String(!size));
     };
-    size = chosen.length ? `図 ${chosen.length}枚${state.answers && state.hide !== "none" ? "＋答え" : ""}` : "";
 
-    const toggle = (id: string) => {
-      if (state.plateIds.has(id)) state.plateIds.delete(id);
-      else state.plateIds.add(id);
-      render();
-    };
-    const plateRow = (organ: string, plate: { id: string; title: string }, withOrgan: boolean) =>
-      choiceRow(withOrgan ? `${organ} › ${plate.title}` : plate.title, "", state.plateIds.has(plate.id), true, () => toggle(plate.id), `名前 ${labelsOf(plate.id)}`);
-    const query = state.query.trim().toLowerCase();
-    const search = h("input", {
-      class: "pp-search", type: "search", placeholder: "図や臓器の名前で探す（例: 心臓・断面）", value: state.query, "aria-label": "図を探す",
-      onInput: () => {
-        state.query = search.value;
+    /** 平面図のプリントの欄（図を選ぶ・隠すもの・答えと要点） */
+    const plateForm = (plateIndex: PlateIndex): HTMLElement[] => {
+      const chosen = plateList();
+      const labelsOf = (id: string) => plateIndex.plates[id]?.labels.length ?? 0;
+      const toggle = (id: string) => {
+        if (state.plateIds.has(id)) state.plateIds.delete(id);
+        else state.plateIds.add(id);
         render();
-        const again = form.querySelector<HTMLInputElement>(".pp-search");
-        again?.focus();
-        again?.setSelectionRange(again.value.length, again.value.length);
-      },
-    });
-    const matches = query ? plateOrgans.flatMap(({ organ, plates }) => plates
-      .filter((plate) => `${organ.ja}${organ.yomi}${organ.en}${plate.title}`.toLowerCase().includes(query))
-      .map((plate) => plateRow(organ.ja, plate, true))) : [];
-    const organList = plateOrgans.map(({ organ, plates }) => {
-      const key = `organ:${organ.id}`;
-      const picked = plates.filter((plate) => state.plateIds.has(plate.id)).length;
-      const details = h("details", { class: "pp-group", open: state.open.has(key) },
-        h("summary", {}, h("span", {}, organ.ja), h("span", { class: "muted" }, picked ? `${picked} / ${plates.length}枚` : `${plates.length}枚`)),
-        ...plates.map((plate) => plateRow(organ.ja, plate, false)));
-      details.addEventListener("toggle", () => (details.open ? state.open.add(key) : state.open.delete(key)));
-      return details;
-    });
-    return [
-      group(`図を選ぶ${chosen.length ? `（${chosen.length}枚）` : ""}`, {},
-        chosen.length ? h("div", { class: "pp-chosen" },
-          ...chosen.map((plate) => h("button", { class: "chip on", type: "button", "aria-label": `${plate.spec.title}を外す`, onClick: () => toggle(plate.spec.id) }, `${plate.spec.title} ×`)),
-          h("button", { class: "chip", type: "button", onClick: () => {
-            state.plateIds.clear();
+      };
+      const plateRow = (organ: string, plate: { id: string; title: string }, withOrgan: boolean) =>
+        choiceRow(withOrgan ? `${organ} › ${plate.title}` : plate.title, "", state.plateIds.has(plate.id), true, () => toggle(plate.id), `名前 ${labelsOf(plate.id)}`);
+      const query = state.query.trim().toLowerCase();
+      const search = h("input", {
+        class: "pp-search", type: "search", placeholder: "図や臓器の名前で探す（例: 心臓・断面）", value: state.query, "aria-label": "図を探す",
+        onInput: () => {
+          state.query = search.value;
+          render();
+          const again = form.querySelector<HTMLInputElement>(".pp-search");
+          again?.focus();
+          again?.setSelectionRange(again.value.length, again.value.length);
+        },
+      });
+      const matches = query ? plateOrgans.flatMap(({ organ, plates }) => plates
+        .filter((plate) => `${organ.ja}${organ.yomi}${organ.en}${plate.title}`.toLowerCase().includes(query))
+        .map((plate) => plateRow(organ.ja, plate, true))) : [];
+      const organList = plateOrgans.map(({ organ, plates }) => {
+        const key = `organ:${organ.id}`;
+        const picked = plates.filter((plate) => state.plateIds.has(plate.id)).length;
+        const details = h("details", { class: "pp-group", open: state.open.has(key) },
+          h("summary", {}, h("span", {}, organ.ja), h("span", { class: "muted" }, picked ? `${picked} / ${plates.length}枚` : `${plates.length}枚`)),
+          ...plates.map((plate) => plateRow(organ.ja, plate, false)));
+        details.addEventListener("toggle", () => (details.open ? state.open.add(key) : state.open.delete(key)));
+        return details;
+      });
+      return [
+        group(`図を選ぶ${chosen.length ? `（${chosen.length}枚）` : ""}`, {},
+          chosen.length ? h("div", { class: "pp-chosen" },
+            ...chosen.map((plate) => h("button", { class: "chip on", type: "button", "aria-label": `${plate.spec.title}を外す`, onClick: () => toggle(plate.spec.id) }, `${plate.spec.title} ×`)),
+            h("button", { class: "chip", type: "button", onClick: () => {
+              state.plateIds.clear();
+              render();
+            } }, "すべて外す")) : "",
+          search,
+          query
+            ? card(...(matches.length ? matches : [h("p", { class: "muted pp-empty" }, "見つかりませんでした")]))
+            : h("div", { class: "set-card pp-groups" }, ...organList),
+          foot("1枚の紙に図を1つ。いくつ選んでも、答えは最後にまとめて付きます")),
+        group("隠すもの", {},
+          card(row("名前を隠す", undefined, segmented("隠すもの", HIDES, state.hide, (value) => {
+            state.hide = value;
             render();
-          } }, "すべて外す")) : "",
-        search,
-        query
-          ? card(...(matches.length ? matches : [h("p", { class: "muted pp-empty" }, "見つかりませんでした")]))
-          : h("div", { class: "set-card pp-groups" }, ...organList),
-        foot("1枚の紙に図を1つ。いくつ選んでも、答えは最後にまとめて付きます")),
-      group("隠すもの", {},
-        card(row("名前を隠す", undefined, segmented("隠すもの", HIDES, state.hide, (value) => {
-          state.hide = value;
-          render();
-        }), true),
-        state.hide !== "none" ? toggleRow("答えのページを付ける", "最後のページに、番号と名前（日本語・英語）", state.answers, (value) => {
-          state.answers = value;
-          render();
-        }) : "",
-        toggleRow("要点も載せる", "臓器の図の「この図の要点」を図の下に（図は少し小さくなります）", state.points, (value) => {
-          state.points = value;
-          render();
-        })),
-        foot(state.hide === "all" ? "番号の欄に日本語と英語を書きます" : state.hide === "ja" ? "英語を載せて、日本語を書きます" : state.hide === "en" ? "日本語を載せて、英語を書きます" : "名前を全部載せた、見て覚える用の紙です")),
-    ];
-  };
-
-  /** 語のテスト・語の一覧の欄（範囲・形） */
-  const wordForm = (): HTMLElement[] => {
-    const counts: Record<Range, number> = { star: rangeTerms("star").length, weak: rangeTerms("weak").length, learned: rangeTerms("learned").length, lessons: 0 };
-    let items = rangeTerms(state.range);
-    if (state.kind === "test") {
-      if (state.shuffle) items = shuffled(items);
-      if (state.count) items = items.slice(0, state.count);
-    }
-    const title = `${state.kind === "test" ? "語のテスト" : "語の一覧"}・${rangeTitle()}`;
-    const fixed = items;
-    pages = () => state.kind === "test"
-      ? [wordTest(title, fixed, state.ask, false), ...(state.answers ? [wordTest(title, fixed, state.ask, true)] : [])]
-      : [wordList(title, fixed, { memo: (id) => markOf(id).memo.trim(), note: state.note })];
-    size = items.length ? `${items.length}語${state.kind === "test" && state.answers ? "＋答え" : ""}` : "";
-
-    const pick = (range: Range) => () => {
-      state.range = range;
-      render();
+          }), true),
+          state.hide !== "none" ? toggleRow("答えのページを付ける", "最後のページに、番号と名前（日本語・英語）", state.answers, (value) => {
+            state.answers = value;
+            render();
+          }) : "",
+          toggleRow("要点も載せる", "臓器の図の「この図の要点」を図の下に（図は少し小さくなります）", state.points, (value) => {
+            state.points = value;
+            render();
+          })),
+          foot(state.hide === "all" ? "番号の欄に日本語と英語を書きます" : state.hide === "ja" ? "英語を載せて、日本語を書きます" : state.hide === "en" ? "日本語を載せて、英語を書きます" : "名前を全部載せた、見て覚える用の紙です")),
+      ];
     };
-    const ranges = card(
-      choiceRow("★を付けた語", "図鑑や語のカードで☆を押した語。メモも一覧に載ります", state.range === "star", false, pick("star"), `${counts.star}語`),
-      choiceRow("まちがえたことのある語", "復習・演習でまちがえた回数の多い順", state.range === "weak", false, pick("weak"), `${counts.weak}語`),
-      choiceRow("学んだ語", "レッスンで学んだ語すべて（コースの順）", state.range === "learned", false, pick("learned"), `${counts.learned}語`),
-      choiceRow("レッスンを選ぶ", "系統ごとのレッスンから", state.range === "lessons", false, pick("lessons"), state.lessonIds.size ? `${state.lessonIds.size}レッスン` : ""));
-    const empty = !items.length ? foot(state.range === "star" ? "★を付けた語はまだありません。図鑑の語のカードの☆で付けられます"
-      : state.range === "weak" ? "まちがえた語はまだありません"
-        : state.range === "learned" ? "まだ学んだ語がありません。レッスンを1つ学ぶと選べます" : "下からレッスンを選んでください", "pp-warn") : "";
-    const sections = [group("範囲", {}, ranges, empty)];
-    if (state.range === "lessons") sections.push(lessonPicker());
-    if (state.kind === "test") {
-      sections.push(group("形", {}, card(
-        row("書くもの", undefined, segmented("書くもの", [{ value: "en" as WordAsk, label: "英語を書く" }, { value: "ja" as WordAsk, label: "日本語を書く" }], state.ask, (value) => {
-          state.ask = value;
-          render();
-        }), true),
-        row("数", undefined, segmented("数", [{ value: 20, label: "20語" }, { value: 30, label: "30語" }, { value: 50, label: "50語" }, { value: 0, label: "すべて" }], state.count, (value) => {
-          state.count = value;
-          render();
-        }), true),
-        toggleRow("ばらばらの順にする", "オフなら範囲の順（まちがえた語はまちがえた回数の多い順）", state.shuffle, (value) => {
-          state.shuffle = value;
-          render();
-        }),
-        toggleRow("答えのページを付ける", "最後に、答えを書いた同じ表", state.answers, (value) => {
-          state.answers = value;
-          render();
-        }))));
-    } else {
-      sections.push(group("形", {}, card(
-        toggleRow("説明も載せる", "語の説明を英語の右に（紙が多くなります）", state.note, (value) => {
-          state.note = value;
-          render();
-        })), foot("★のメモは、メモがあればいつも載ります")));
-    }
-    return sections;
-  };
 
-  /** レッスンを選ぶ（系統ごとにたたむ） */
-  const lessonPicker = (): HTMLElement => {
-    const bySystem = systems.map((system) => ({ system, list: units.filter((unit) => unit.system === system.id) })).filter((item) => item.list.length);
-    const toggle = (unit: Unit) => {
-      if (state.lessonIds.has(unit.id)) state.lessonIds.delete(unit.id);
-      else state.lessonIds.add(unit.id);
-      render();
-    };
-    return group("レッスン", {}, h("div", { class: "set-card pp-groups" }, ...bySystem.map(({ system, list }) => {
-      const key = `system:${system.id}`;
-      const picked = list.filter((unit) => state.lessonIds.has(unit.id)).length;
-      const details = h("details", { class: "pp-group", open: state.open.has(key) },
-        h("summary", {}, h("span", { class: "pp-swatch", style: `background:${system.color}` }), h("span", {}, system.ja),
-          h("span", { class: "muted" }, picked ? `${picked} / ${list.length}` : `${list.length}レッスン`)),
-        ...list.map((unit) => choiceRow(unit.title, "", state.lessonIds.has(unit.id), true, () => toggle(unit), `${unit.terms.filter((term) => inCourse(term.id)).length}語`)));
-      details.addEventListener("toggle", () => (details.open ? state.open.add(key) : state.open.delete(key)));
-      return details;
-    })), state.lessonIds.size ? h("button", { class: "ghost-button pp-clear", type: "button", onClick: () => {
-      state.lessonIds.clear();
-      render();
-    } }, "選んだレッスンをすべて外す") : "");
-  };
-
-  /** 1枚目の見本（紙の幅を欄の幅に縮める） */
-  const fit = () => {
-    const sheet = preview.firstElementChild as HTMLElement | null;
-    if (!sheet || !sheet.classList.contains("pp-page")) {
-      preview.style.height = "";
-      return;
-    }
-    const scale = Math.min(1, preview.clientWidth / sheet.offsetWidth);
-    sheet.style.transform = `scale(${scale})`;
-    preview.style.height = `${Math.min(sheet.offsetHeight * scale, 640)}px`;
-  };
-  const showPreview = () => {
-    prepare(pages, Boolean(size));
-    const first = size ? pages()[0] : undefined;
-    preview.replaceChildren(first ?? h("p", { class: "muted pp-empty" }, "選ぶと、ここに1枚目の見本が出ます"));
-    preview.classList.toggle("is-empty", !first);
-    fit();
-    for (const img of preview.querySelectorAll("img")) img.addEventListener("load", fit, { once: true });
-  };
-  /** アドレスに書いた紙だけを出す画面（#/print/go?…。Safari で開く） */
-  function goScreen() {
-    const params = new URLSearchParams(location.hash.split("?").slice(1).join("?"));
-    const kind = (["plates", "test", "list"] as Kind[]).find((value) => value === params.get("k")) ?? "plates";
-    const answers = params.get("a") !== "0";
-    let list: () => HTMLElement[] = () => [];
-    let label = "";
-    if (kind === "plates") {
-      state.plateIds = new Set((params.get("p") ?? "").split(",").filter((id) => plateById.has(id)));
-      const hide = HIDE_VALUES.find((value) => value === params.get("h")) ?? "all";
-      const plates = plateList();
-      list = () => [...plates.flatMap((plate) => platePages(plate, hide, params.get("pt") === "1")), ...(answers && hide !== "none" && plates.length ? [plateAnswers(plates)] : [])];
-      label = plates.length ? `図 ${plates.length}枚${answers && hide !== "none" ? "＋答え" : ""}` : "";
-    } else {
-      const items = (params.get("t") ?? "").split(",").map((id) => termById.get(id)).filter((term): term is Term => Boolean(term));
-      const title = params.get("title") || (kind === "test" ? "語のテスト" : "語の一覧");
-      let memos: Record<string, string> = {};
-      try {
-        memos = JSON.parse(params.get("m") ?? "{}") as Record<string, string>;
-      } catch {
-        memos = {};
+    /** 語のテスト・語の一覧の欄（範囲・形） */
+    const wordForm = (): HTMLElement[] => {
+      const counts: Record<Range, number> = { star: rangeTerms("star").length, weak: rangeTerms("weak").length, learned: rangeTerms("learned").length, lessons: 0 };
+      const items = rangeTerms(state.range);
+      const pick = (range: Range) => () => {
+        state.range = range;
+        render();
+      };
+      const ranges = card(
+        choiceRow("★を付けた語", "図鑑や語のカードで☆を押した語。メモも一覧に載ります", state.range === "star", false, pick("star"), `${counts.star}語`),
+        choiceRow("まちがえたことのある語", "復習・演習でまちがえた回数の多い順", state.range === "weak", false, pick("weak"), `${counts.weak}語`),
+        choiceRow("学んだ語", "レッスンで学んだ語すべて（コースの順）", state.range === "learned", false, pick("learned"), `${counts.learned}語`),
+        choiceRow("レッスンを選ぶ", "系統ごとのレッスンから", state.range === "lessons", false, pick("lessons"), state.lessonIds.size ? `${state.lessonIds.size}レッスン` : ""));
+      const empty = !items.length ? foot(state.range === "star" ? "★を付けた語はまだありません。図鑑の語のカードの☆で付けられます"
+        : state.range === "weak" ? "まちがえた語はまだありません"
+          : state.range === "learned" ? "まだ学んだ語がありません。レッスンを1つ学ぶと選べます" : "下からレッスンを選んでください", "pp-warn") : "";
+      const sections = [group("範囲", {}, ranges, empty)];
+      if (state.range === "lessons") sections.push(lessonPicker());
+      if (state.kind === "test") {
+        sections.push(group("形", {}, card(
+          row("書くもの", undefined, segmented("書くもの", [{ value: "en" as WordAsk, label: "英語を書く" }, { value: "ja" as WordAsk, label: "日本語を書く" }], state.ask, (value) => {
+            state.ask = value;
+            render();
+          }), true),
+          row("数", undefined, segmented("数", [{ value: 20, label: "20語" }, { value: 30, label: "30語" }, { value: 50, label: "50語" }, { value: 0, label: "すべて" }], state.count, (value) => {
+            state.count = value;
+            render();
+          }), true),
+          toggleRow("ばらばらの順にする", "オフなら範囲の順（まちがえた語はまちがえた回数の多い順）", state.shuffle, (value) => {
+            state.shuffle = value;
+            render();
+          }),
+          toggleRow("答えのページを付ける", "最後に、答えを書いた同じ表", state.answers, (value) => {
+            state.answers = value;
+            render();
+          }))));
+      } else {
+        sections.push(group("形", {}, card(
+          toggleRow("説明も載せる", "語の説明を英語の右に（紙が多くなります）", state.note, (value) => {
+            state.note = value;
+            render();
+          })), foot("★のメモは、メモがあればいつも載ります")));
       }
-      const ask: WordAsk = params.get("ask") === "ja" ? "ja" : "en";
-      list = () => kind === "test"
-        ? [wordTest(title, items, ask, false), ...(answers ? [wordTest(title, items, ask, true)] : [])]
-        : [wordList(title, items, { memo: (id) => String(memos[id] ?? ""), note: params.get("n") === "1" })];
-      label = items.length ? `${items.length}語${kind === "test" && answers ? "＋答え" : ""}` : "";
-    }
-    pages = list;
-    size = label;
-    ctx.panel.replaceChildren(h("div", { class: "home print-screen" },
-      h("div", { class: "tab-head" }, h("h2", {}, "印刷する")),
-      h("p", { class: "muted" }, label ? "アプリで選んだ紙です。下のボタンで印刷するか、印刷の画面で PDF に保存します。" : "印刷するものが見つかりませんでした。アプリの「印刷する」で選び直してください。"),
-      h("div", { class: "set-groups" }, h("section", { class: "set-group" },
-        h("h3", { class: "set-title" }, "見本（1枚目）"),
-        preview,
-        ...printControls(list, label),
-        foot(printNote()),
-        h("a", { class: "ghost-button pp-clear", href: "#/print" }, "選び直す")))));
-    showPreview();
+      return sections;
+    };
+
+    /** レッスンを選ぶ（系統ごとにたたむ） */
+    const lessonPicker = (): HTMLElement => {
+      const bySystem = systems.map((system) => ({ system, list: units.filter((unit) => unit.system === system.id) })).filter((item) => item.list.length);
+      const toggle = (unit: Unit) => {
+        if (state.lessonIds.has(unit.id)) state.lessonIds.delete(unit.id);
+        else state.lessonIds.add(unit.id);
+        render();
+      };
+      return group("レッスン", {}, h("div", { class: "set-card pp-groups" }, ...bySystem.map(({ system, list }) => {
+        const key = `system:${system.id}`;
+        const picked = list.filter((unit) => state.lessonIds.has(unit.id)).length;
+        const details = h("details", { class: "pp-group", open: state.open.has(key) },
+          h("summary", {}, h("span", { class: "pp-swatch", style: `background:${system.color}` }), h("span", {}, system.ja),
+            h("span", { class: "muted" }, picked ? `${picked} / ${list.length}` : `${list.length}レッスン`)),
+          ...list.map((unit) => choiceRow(unit.title, "", state.lessonIds.has(unit.id), true, () => toggle(unit), `${unit.terms.filter((term) => inCourse(term.id)).length}語`)));
+        details.addEventListener("toggle", () => (details.open ? state.open.add(key) : state.open.delete(key)));
+        return details;
+      })), state.lessonIds.size ? h("button", { class: "ghost-button pp-clear", type: "button", onClick: () => {
+        state.lessonIds.clear();
+        render();
+      } }, "選んだレッスンをすべて外す") : "");
+    };
+
+    render();
   }
 
-  const observer = new ResizeObserver(fit);
-  observer.observe(preview);
-  ctx.signal.addEventListener("abort", () => observer.disconnect(), { once: true });
+  /**
+   * 見本のページ（#/print/preview）。印刷する紙を PDF と同じ分け方で A4 に分け、全部を欄の幅に縮めて並べる。
+   * 下に留めた帯に「印刷・PDFに保存」「PDFファイルを作る」
+   */
+  function previewScreen() {
+    const { pages, size, detail } = sheets();
+    const box = h("div", { class: "pp-sheets" });
+    const count = h("span", {});
+    const chosen = state.kind === "plates" ? plateList() : [];
+    ctx.panel.replaceChildren(
+      h("div", { class: "home print-screen" },
+        h("div", { class: "tab-head" }, h("h2", {}, "見本と印刷")),
+        h("a", { class: "ghost-button pp-back", href: "#/print" }, size ? "‹ 選び直す・形を変える" : "‹ 印刷するものを選ぶ"),
+        size ? h("div", { class: "pp-summary" },
+          h("p", {}, h("b", {}, detail), h("br", {}), size, count),
+          chosen.length ? h("div", { class: "pp-chosen" }, ...chosen.map((plate) => h("button", {
+            class: "chip on", type: "button", "aria-label": `${plate.spec.title}を外す`,
+            onClick: () => {
+              state.plateIds.delete(plate.spec.id);
+              previewScreen();
+            },
+          }, `${plate.organ} › ${plate.spec.title} ×`))) : "")
+          : h("p", { class: "muted" }, "印刷するものがまだ選ばれていません。"),
+        box,
+        size ? foot(printNote()) : ""),
+      size ? h("div", { class: "panel-foot pp-foot" }, ...printControls(pages, size)) : "");
+    prepare(pages, Boolean(size));
+    if (!size) return;
 
-  if (arg.startsWith("go?")) goScreen();
-  else render();
+    // PDF と同じく A4 の高さで分ける（語の表は2枚目からも見出しをくり返す）。分けるには幅をそろえて測る所が要る
+    const host = h("div", { class: "pp-render", "aria-hidden": "true" });
+    document.body.append(host);
+    const list = pages().flatMap((page) => paginate(page, host, mmToPx(297)));
+    host.remove();
+    count.textContent = `・A4 ${list.length}枚`;
+    const frames = list.map((sheet, i) => {
+      const frame = h("div", { class: "pp-sheet-frame" }, sheet);
+      box.append(h("figure", { class: "pp-sheet" }, frame, h("figcaption", {}, `${i + 1} / ${list.length}枚目`)));
+      return { frame, sheet };
+    });
+    /** 紙の幅（210mm）を欄の幅に縮める */
+    const fit = () => {
+      for (const { frame, sheet } of frames) {
+        const scale = Math.min(1, frame.clientWidth / sheet.offsetWidth);
+        sheet.style.transform = `scale(${scale})`;
+        frame.style.height = `${sheet.offsetHeight * scale}px`;
+      }
+    };
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(box);
+    ctx.signal.addEventListener("abort", () => observer.disconnect(), { once: true });
+  }
 }
 
 function shuffled<T>(list: T[]): T[] {

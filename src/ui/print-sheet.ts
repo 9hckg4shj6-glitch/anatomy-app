@@ -16,6 +16,12 @@ export type PrintHide = "all" | "ja" | "en" | "none";
 /** A4 の中の使える大きさ（mm。@page の余白 12mm を除く） */
 export const PAGE_W = 186;
 export const PAGE_H = 273;
+/**
+ * 平面図の紙の中身の高さ（mm）。A4 の 273mm いっぱいにせず、余裕を残す。
+ * 印刷の画面で PDF にするとき、Safari などは @page の余白より広い余白や頭書き（URL・日付）を足して使える高さが減り、
+ * 273mm いっぱいの紙だと書き込み欄の最後の番号が次の紙に送られていた（2026-11-28）。240mm なら上下の余白が 28mm ずつに増えても収まる
+ */
+export const PLATE_H = 240;
 
 /** 印刷した日（紙の右上） */
 const today = () => {
@@ -163,8 +169,8 @@ function rowHeight(labels: PlateLabel[], hide: PrintHide, columnMm: number): num
   return 8 + (3.5 * long) / Math.max(1, labels.length);
 }
 
-/** 要点の高さの見積もり（mm。1行 約58字・4.4mm） */
-const pointsHeight = (points: string[]) => (points.length ? 9 + points.reduce((sum, point) => sum + Math.ceil(noteText(point).length / 58) * 4.4, 0) : 0);
+/** 要点の高さの見積もり（mm。1行 約58字・4.4mm。印刷の画面で紙の幅が狭くなって折り返しが増えても収まるよう、1行 52字で見積もる） */
+const pointsHeight = (points: string[]) => (points.length ? 9 + points.reduce((sum, point) => sum + Math.ceil(noteText(point).length / 52) * 4.4, 0) : 0);
 
 /**
  * 平面図のプリント（図と書き込み欄。withPoints なら要点も。同じ紙に入らなければ要点だけの紙を続ける）
@@ -174,8 +180,10 @@ export function platePages(plate: PlatePrint, hide: PrintHide, withPoints: boole
   const labels = entry.labels;
   const points = withPoints ? spec.points ?? [] : [];
   const note = hide === "none" && spec.note ? noteText(spec.note) : "";
-  // 頭 20mm・出典 14mm・「〜を書く」5mm・添え書きを除いた高さに、図と欄（と要点）を入れる
-  const avail = PAGE_H - 20 - 14 - 5 - (note ? 3 + Math.ceil(note.length / 62) * 4.2 : 0);
+  const hideNote = hide === "all" ? "番号の名前（日本語・英語）を書く" : hide === "ja" ? "英語を見て日本語を書く" : hide === "en" ? "日本語を見て英語を書く" : "";
+  // 頭 20mm・出典 10mm・「〜を書く」8.5mm・図と欄のあいだ 4mm・添え書きを除いた高さに、図と欄（と要点）を入れる（紙の中身は PLATE_H まで。
+  // 見積もりが外れてはみ出すときは、あとで測って図を縮める。fitPlate）
+  const avail = PLATE_H - 20 - 10 - (hideNote ? 8.5 : 0) - 4 - (note ? 3 + Math.ceil(note.length / 62) * 4.2 : 0);
   const gutter = Math.max(entry.w * 0.1, entry.h * 0.07);
   const totalW = entry.w + 2 * gutter;
   const aspect = entry.h / totalW;
@@ -199,13 +207,13 @@ export function platePages(plate: PlatePrint, hide: PrintHide, withPoints: boole
     text.textContent = String(numberOf.get(mark.i));
     svg.append(text);
   }
-  const figure = h("div", { class: "pp-figure", style: `width:${widthMm}mm;height:${widthMm * aspect}mm` },
+  // 高さは幅と縦横の比で決める（印刷の画面の紙の幅が狭くても、図は縮んで欄からはみ出さない）
+  const figure = h("div", { class: "pp-figure", style: `width:${widthMm}mm;aspect-ratio:${totalW}/${entry.h}` },
     h("img", {
       src: `${import.meta.env.BASE_URL}${entry.url}`, alt: spec.title,
       style: `left:${(gutter / totalW) * 100}%;width:${(entry.w / totalW) * 100}%`,
     }),
     svg);
-  const hideNote = hide === "all" ? "番号の名前（日本語・英語）を書く" : hide === "ja" ? "英語を見て日本語を書く" : hide === "en" ? "日本語を見て英語を書く" : "";
   const rowList = (from: number, to: number, columns: number) => h("ol", {
     class: hide === "none" ? "pp-rows is-names" : "pp-rows", style: `--rows:${Math.ceil((to - from) / columns)};--cols:${columns}`,
   }, ...order.slice(from, to).map((i, k) => answerRow(from + k + 1, labels[i], hide, false)));
@@ -222,9 +230,49 @@ export function platePages(plate: PlatePrint, hide: PrintHide, withPoints: boole
     layout.pointsHere ? pointsBox : "",
     creditLine(spec),
   );
+  fitPlate(page, figure, widthMm);
   return pointsBox && !layout.pointsHere
     ? [page, h("section", { class: "pp-page" }, pageHead(`${title}（要点）`, spec.en, null), pointsBox)]
     : [page];
+}
+
+/** 紙の左右の余白が広い印刷の画面（Safari など）でも収まるか測る幅（mm。A4 の左右に 18mm ずつ） */
+const NARROW_W = 174;
+
+/**
+ * 紙の中身の高さを測り、PLATE_H を超えていたら図を縮める（題が2行に折り返す・要点が長いなど、見積もりが外れたとき）。
+ * 超えたままだと、印刷の画面で最後の行や出典が次の紙に送られる。ふつうの幅（186mm）と狭い幅（NARROW_W。名前や出典の折り返しが増える）の
+ * 高い方で測る。測るあいだだけ紙を画面の外（.pp-render）に置く
+ */
+function fitPlate(page: HTMLElement, figure: HTMLElement, widthMm: number): void {
+  if (typeof document === "undefined" || !document.body) return;
+  const host = h("div", { class: "pp-render", "aria-hidden": "true" }, page);
+  document.body.append(host);
+  try {
+    const mm = page.getBoundingClientRect().width / 210;
+    if (!mm) return;
+    const height = () => {
+      const top = page.getBoundingClientRect().top + parseFloat(getComputedStyle(page).paddingTop);
+      const bottom = Math.max(...[...page.children].map((child) => child.getBoundingClientRect().bottom + parseFloat(getComputedStyle(child).marginBottom || "0")));
+      return (bottom - top) / mm;
+    };
+    let width = widthMm;
+    for (let k = 0; k < 4; k++) {
+      const normal = height();
+      page.style.width = `${NARROW_W + (210 - PAGE_W)}mm`;
+      const narrow = height();
+      page.style.width = "";
+      const over = Math.max(normal, narrow) - PLATE_H;
+      if (over <= 0.5) break;
+      const figureH = figure.getBoundingClientRect().height / mm;
+      if (figureH < 50) break;
+      width *= Math.max(0.6, (figureH - over - 1) / figureH);
+      figure.style.width = `${width}mm`;
+    }
+  } finally {
+    host.remove();
+    page.remove();
+  }
 }
 
 /** 図の出典（作者・ライセンス。印刷した紙にも付ける） */

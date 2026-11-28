@@ -12,13 +12,13 @@ const A4_H = 841.89;
 /** 紙1枚の画像の倍率（210mm ≒ 794px → 約 1,980px。約 240dpi） */
 const SCALE = 2.5;
 
-const mmToPx = (mm: number) => (mm * 96) / 25.4;
+export const mmToPx = (mm: number) => (mm * 96) / 25.4;
 
 /**
  * 紙を A4 の高さで分ける。語の表は行ごとに分けて、2枚目からも表の見出しを付ける。平面図の答えは図ごとのまとまりで分ける。
- * 平面図の紙はもともと1枚に収まるように作ってある（はみ出た分は切れる）
+ * 平面図の紙はもともと1枚に収まるように作ってある（はみ出た分は切れる）。見本のページ（#/print/preview）も同じ分け方で紙を並べる
  */
-function paginate(page: HTMLElement, host: HTMLElement, limit: number): HTMLElement[] {
+export function paginate(page: HTMLElement, host: HTMLElement, limit: number): HTMLElement[] {
   host.append(page);
   if (page.offsetHeight <= limit) return [page];
   const out = [page];
