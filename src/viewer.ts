@@ -1485,8 +1485,12 @@ export class AnatomyViewer {
       });
     }
     this.schematic = object;
-    if (object) this.scene.add(object);
-    else {
+    if (object) {
+      // 臓器の図から移ってきたときの臓器の箱で切る面が残ると、模型が切り取られて札だけが浮く。
+      // 臓器の場面は show でしかやめないので、模型を置くときにここでやめる
+      this.setOrgan(null);
+      this.scene.add(object);
+    } else {
       this.onSchematicPick = null;
       this.frameInset = 0;
     }
