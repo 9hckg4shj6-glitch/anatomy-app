@@ -136,7 +136,7 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
       const withAnswers = state.answers && hide !== "none" && list.length > 0;
       return {
         pages: () => [...list.flatMap((plate) => platePages(plate, hide, points)), ...(withAnswers ? [plateAnswers(list)] : [])],
-        size: list.length ? `図 ${list.length}枚${withAnswers ? "＋答え" : ""}` : "",
+        size: list.length ? `図 ${list.length}枚${withAnswers ? "＋答え" : ""}${points && list.some((plate) => plate.spec.points?.length) ? "・要点つき" : ""}` : "",
         detail: `平面図のプリント・${hide === "none" ? "名前を隠さない" : `${HIDES.find((item) => item.value === hide)!.label}${hide === "all" ? "の名前" : ""}を隠す`}${points ? "・要点つき" : ""}`,
       };
     }
@@ -317,12 +317,18 @@ export async function printScreen(ctx: AppContext, arg: string): Promise<void> {
             state.answers = value;
             render();
           }) : "",
-          toggleRow("要点も載せる", "臓器の図の「この図の要点」を図の下に（図は少し小さくなります）", state.points, (value) => {
+          toggleRow("要点も載せる", pointsNote(chosen), state.points, (value) => {
             state.points = value;
             render();
           })),
           foot(state.hide === "all" ? "番号の欄に日本語と英語を書きます" : state.hide === "ja" ? "英語を載せて、日本語を書きます" : state.hide === "en" ? "日本語を載せて、英語を書きます" : "名前を全部載せた、見て覚える用の紙です")),
       ];
+    };
+
+    /** 「要点も載せる」の説明。選んだ図に要点の無いものがあれば、その名前も（入れても変わらないので） */
+    const pointsNote = (chosen: PlatePrint[]): string => {
+      const without = chosen.filter((plate) => !plate.spec.points?.length).map((plate) => plate.spec.title);
+      return `臓器の図の「この図の要点」を図の下に（図は少し小さくなり、入りきらなければ次の紙に）${without.length ? `。${without.join("・")}には要点がありません` : ""}`;
     };
 
     /** 語のテスト・語の一覧の欄（範囲・形） */

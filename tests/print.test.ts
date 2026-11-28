@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import index from "../public/plates/index.json";
+import organsJson from "../content/organs.json";
 import { gutterLayout, plateLayout, readingOrder } from "../src/ui/print-sheet";
 
 /** 印刷する（#/print）の平面図のプリント: 図の左右の余白に番号の丸を並べる */
@@ -54,6 +55,13 @@ describe("平面図のプリントの番号", () => {
         expect(layout.figureH, id).toBeGreaterThanOrEqual(Math.min(90, 186 * aspect));
       }
     }
+  });
+
+  it("印刷できる図はどれも「この図の要点」を持つ（無いと「要点も載せる」を選んでも何も変わらない）", () => {
+    const printable = new Set(plates.map(([id]) => id));
+    const missing = (organsJson as unknown as { organs: { plates: { id: string; points?: string[] }[] }[] }).organs
+      .flatMap((organ) => organ.plates).filter((plate) => printable.has(plate.id) && !plate.points?.length).map((plate) => plate.id);
+    expect(missing).toEqual([]);
   });
 
   it("要点を入れると図が小さくなりすぎるなら、要点は次の紙に", () => {
